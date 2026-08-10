@@ -1,0 +1,82 @@
+# Golden routing expectations — fixture-001 (Metal Shower Filter, landing-page)
+# Produced by the first dry-run of query/runbook.md against registry v2.0.0
+# (2026-08-10). Regression contract: re-run Steps 2-4 of the runbook after any
+# trigger/index/slot-rules change; every assertion below must still hold, or the
+# change is either a bug or an intended improvement that updates this file in the
+# SAME commit (SPEC section 9).
+#
+# NOTE: reference_photos in content.json is a placeholder hash until the real
+# product photo is hashed. This affects rendering only, never routing.
+
+registry_version: "2.0.0"
+template: "query/runbook.md Steps 2-4"
+
+slots:
+  hero-1:
+    section_role: hero
+    expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: vsinset}}
+    legal_alternatives_must_include:
+      - {type: 06-relief-hero, axes: {register: commercial, inset_mode: recall}}
+    forbidden:
+      - reason: "ugc register is paid-social/advertorial only (slot-rules); this page is landing-page"
+        config: {type: 06-relief-hero, axes: {register: ugc}}
+    gates_that_must_fire:
+      - "G8: visible_output=water-jet -> backlight branch, water jets primary subject"
+      - "operation=passive -> relaxed POSE branch"
+      - "mounting=fixed-installed -> installed mode in every layer (G7-X)"
+      - "colorways has 1 entry -> Zone B shows 1 unit only"
+
+  problem-1:
+    section_role: problem-agitation
+    expected_option_A: {type: 02-symptom-rail, note: "vignette mode visible-symptom; multiple problems_solved -> breadth argument"}
+    legal_alternatives_must_include:
+      - {type: 01-pain-split, note: "legal because symptom_visibility=visible"}
+      - {type: 01-pain-scene, variant: confront, note: "legal on landing-page per slot-rules"}
+    composition_note_required: >
+      01-pain-scene and 01-pain-split are never_with each other — both may appear
+      as OPTIONS for this slot, but the page set may contain only one of them.
+
+  cause-1:
+    section_role: cause
+    expected_option_A: {type: 02-cause-anatomy}
+    only_legal_type: 02-cause-anatomy
+    note: "options B/C must vary on execution (hair-strand vs limescale-in-pipe), not type"
+
+  proof-1:
+    section_role: proof
+    expected_option_A: {type: 04-proof-lockedframe, variant: timelapse, axes: {camera_lock: handheld}}
+    legal_alternatives_must_include:
+      - {type: 04-proof-lockedframe, variant: capture, axes: {context_mode: declared-test}}
+    forbidden:
+      - reason: "VARIANT SELECTION RULE (verified on this very product): filter differences are not visible in a static frame -> object variants are empty"
+        config: {type: 04-proof-lockedframe, variant: rivals}
+      - reason: "same rule"
+        config: {type: 04-proof-lockedframe, variant: verdict}
+    gates_that_must_fire:
+      - "camera_lock=handheld because timelapse panels are separated by time"
+      - "pipeline note: strict variants would be multi-pass; handheld timelapse may run single-pass"
+
+  howto-1:
+    section_role: how-to-use
+    expected_option_A: {type: 03-use-sequence}
+    only_legal_type: 03-use-sequence
+    note: "multi_step_usage=true keeps it; options vary on execution"
+
+  outcome-1:
+    section_role: outcome
+    expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: context}}
+    legal_alternatives_must_include:
+      - {type: 06-relief-scene, conditional: "ONLY if the page set picked 01-pain-scene at problem-1 (requires_pair, same person); result_visibility=on-body keeps it legal"}
+    composition_note_required: >
+      06-relief-hero already serves hero-1: one-type-once rule applies to the FINAL
+      page set — if hero-1 picks relief-hero, outcome-1 must resolve to
+      06-relief-scene (with its pair) or flag the conflict for the human.
+
+page_level:
+  arc: "pain (s2) and cause (s3) precede all relief (s1 is promise-hero, s6 outcome) — acceptable; pain never reappears after s4"
+  out_of_scope_roles: []
+  known_gap: >
+    A 'mechanism' section for this product would be out of library scope today:
+    03-mechanism-ghostbody is gated out by body_contact=false, and the
+    product-internal mechanism device (xray/explode) is reserved with no active
+    type. First real demand signal for promoting one from staging.

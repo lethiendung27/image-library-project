@@ -1,0 +1,71 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Image Prompt Library — query output contract",
+  "description": "What the QUERY operation returns (SPEC section 7, query/runbook.md).",
+  "type": "object",
+  "required": ["page_id", "registry_version", "channel", "slots", "page_composition_notes"],
+  "additionalProperties": false,
+  "properties": {
+    "page_id": { "type": "string", "minLength": 1 },
+    "registry_version": { "type": "string" },
+    "channel": { "enum": ["marketplace", "landing-page", "paid-social", "advertorial"] },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["slot_id", "section_role", "options"],
+        "additionalProperties": false,
+        "properties": {
+          "slot_id": { "type": "string" },
+          "section_role": { "type": "string" },
+          "out_of_scope_reason": {
+            "type": "string",
+            "description": "Present (with empty options) when no library type legally serves this slot."
+          },
+          "options": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": ["opt", "varies_on", "type", "type_version", "ratio", "pipeline", "prompt", "rationale"],
+              "additionalProperties": false,
+              "properties": {
+                "opt": { "enum": ["A", "B", "C"] },
+                "varies_on": {
+                  "type": "string",
+                  "description": "The named dimension this option varies on: 'baseline', 'type: <id>', 'axis: <axis>=<value>', or 'execution: <what>'. G5 decision — picks are only interpretable if this is honest."
+                },
+                "type": { "type": "string", "pattern": "^\\d{2}-[a-z]+-[a-z]+$" },
+                "type_version": { "type": "string", "pattern": "^\\d+\\.\\d+$" },
+                "variant": { "type": ["string", "null"] },
+                "axes": { "type": "object", "additionalProperties": { "type": "string" } },
+                "ratio": { "type": "string", "pattern": "^\\d+:\\d+$" },
+                "pipeline": { "enum": ["single-pass", "multi-pass"] },
+                "steps": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "description": "Required when pipeline is multi-pass: the ordered generate/edit/composite script from the adapter."
+                },
+                "attachments": {
+                  "type": "array",
+                  "items": { "type": "string", "pattern": "^sha256:[0-9a-f]{8,64}$" }
+                },
+                "prompt": { "type": "string", "minLength": 1 },
+                "avoid": {
+                  "type": "string",
+                  "description": "The adapter-rendered exclusion line(s) for models without a negative channel."
+                },
+                "rationale": { "type": "string" },
+                "composition_notes": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "page_composition_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

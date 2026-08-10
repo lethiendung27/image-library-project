@@ -1,0 +1,68 @@
+# Closed vocabulary — adding a value here is a taxonomy decision (PR + review, SPEC §4).
+# This file must stay within the YAML subset defined in SPEC §3.4.
+
+registry_version: "2.0.0"
+
+# Trust Ladder positions. The step number leads every type id and sorts the gallery.
+steps:
+  1: "recognition / stop the scroll with pain"
+  2: "amplify the problem (breadth or cause)"
+  3: "explain why it works (mechanism, spec, operation)"
+  4: "physical proof the skeptic can inspect"
+  5: "identification and social evidence"
+  6: "the state after buying (relief)"
+
+# job = what the image sells. Reserved values exist in the grammar but have no active type yet.
+jobs:
+  pain: "make the viewer recognize their own problem"
+  symptom: "widen the scope of the problem across symptoms"
+  cause: "indict a measurable cause in daily life; not about the product"
+  mechanism: "justify the product's shape via what happens inside the body/object"
+  use: "reassure about operation; teach the steps"
+  spec: "component-level superiority; no people, no symptoms"
+  proof: "physical evidence the viewer judges for themselves"
+  persona: "answer: is this for someone like me"
+  social: "someone credible is recommending it to someone like me"
+  relief: "sell the state after purchase"
+  trust: "reserved — certificates, guarantees, authority"
+
+# device = the signature visual mechanism. Reserved devices are grammar slots awaiting exemplars.
+devices:
+  split: "two-panel comparison, hard divide"
+  rail: "hero photo + vertical vignette band listing symptoms"
+  ghostbody: "anonymous white mannequin with interior cutaway, 3D render"
+  anatomy: "2D medical illustration, skeleton over translucent body"
+  grid: "photographic multi-cell collage, no graphic overlays"
+  hero: "one photographic scene + optional inset/product layers"
+  scene: "single cinematic frame, zero graphic layers"
+  sequence: "stacked panels ordered by action steps"
+  lockedframe: "multi-panel, camera locked (or handheld-continuous), one variable changes"
+  handoff: "two people: advocate points, listener looks; optional product inset"
+  demo: "reserved — close-up hand demonstration"
+  xray: "reserved — see-through product internals"
+  explode: "reserved — exploded parts view"
+  timeline: "reserved — states along a time axis"
+  macro: "reserved — extreme close-up of material/texture"
+
+# Cross-cutting presentation dimensions. A type declares which values it supports
+# in its frontmatter `axes:` map. Definitions of the semantics live in rules/runbooks.
+axes:
+  register: [commercial, ugc]
+  camera_lock: [strict, handheld]
+  gaze: [candid, confront, reflect]
+  context_mode: [natural-use, declared-test]
+  inset_mode: [vsinset, recall, context, detail, none]
+
+generation_modes: [single-pass, multi-pass]
+
+channels: [marketplace, landing-page, paid-social, advertorial]
+
+statuses: [active, reserved, deprecated]
+
+# Section roles a content.json may declare. Routing table: mapping/slot-rules.md.
+section_roles: [hero, problem-agitation, cause, mechanism, proof, social-proof, personas, how-to-use, comparison, outcome, cta]
+
+observation_verdicts: [match, variant-candidate, new-candidate, duplicate, reject]
+
+# Informative: things that are runtime parameters and must NEVER become identity.
+parameters: [ratio, panel_count, colorway, persona_cast, environment]

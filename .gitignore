@@ -1,0 +1,8 @@
+.DS_Store
+__pycache__/
+*.pyc
+# machine-specific, non-authoritative
+*.local.md
+*.local.json
+# source images never live in the repo (SPEC §6.4)
+assets/
