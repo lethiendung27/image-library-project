@@ -27,6 +27,16 @@
         "advertorial"
       ]
     },
+    "awareness_stage": {
+      "enum": [
+        "unaware",
+        "problem-aware",
+        "solution-aware",
+        "product-aware",
+        "most-aware"
+      ],
+      "description": "Copied from the content contract, or inferred and flagged. The weight the COVERAGE PASS uses; an absent ladder rung is not a gap unless this stage says it is."
+    },
     "slots": {
       "type": "array",
       "items": {
@@ -55,6 +65,271 @@
           "out_of_scope_reason": {
             "type": "string",
             "description": "Only legal for slots that carry NO image by definition: the cta cell (standard product shot) and text furniture such as comment threads or pricing tables. An image slot may never use it — Stage 1 derivation always yields candidates."
+          },
+          "options": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": [
+                "opt",
+                "varies_on",
+                "type",
+                "type_version",
+                "ratio",
+                "pipeline",
+                "prompt",
+                "rationale"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "opt": {
+                  "enum": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                },
+                "varies_on": {
+                  "type": "string",
+                  "description": "The named dimension this option varies on: 'baseline', 'type: <id>', 'axis: <axis>=<value>', or 'execution: <what>'. G5 decision — picks are only interpretable if this is honest."
+                },
+                "type": {
+                  "type": "string",
+                  "pattern": "^\\d{2}-[a-z]+-[a-z]+$"
+                },
+                "type_version": {
+                  "type": "string",
+                  "pattern": "^\\d+\\.\\d+$"
+                },
+                "variant": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "axes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "ratio": {
+                  "type": "string",
+                  "pattern": "^\\d+:\\d+$",
+                  "description": "Slot requirement, passed as the generation aspect-ratio PARAMETER. Never written into the prompt text — adapters/nano-banana.md Rule 4, 6/6 renders ignored a written ratio."
+                },
+                "pipeline": {
+                  "enum": [
+                    "single-pass",
+                    "multi-pass"
+                  ]
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Required when pipeline is multi-pass: the ordered generate/edit/composite script from the adapter."
+                },
+                "attachments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^sha256:[0-9a-f]{8,64}$"
+                  }
+                },
+                "asset_candidate": {
+                  "type": "string",
+                  "description": "Filename to render this candidate as, e.g. 'page-01-hero--A.jpg'."
+                },
+                "prompt": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "avoid": {
+                  "type": "string",
+                  "description": "The adapter-rendered exclusion line(s) for models without a negative channel."
+                },
+                "rationale": {
+                  "type": "string"
+                },
+                "composition_notes": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "gif": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "eligible",
+              "form",
+              "reason"
+            ],
+            "properties": {
+              "eligible": {
+                "type": "boolean"
+              },
+              "form": {
+                "enum": [
+                  "whole-frame",
+                  "inset",
+                  "none"
+                ],
+                "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
+              },
+              "reason": {
+                "type": "string",
+                "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
+              },
+              "asset": {
+                "type": "string"
+              },
+              "duration_s": {
+                "type": "number"
+              },
+              "loop": {
+                "type": "string"
+              },
+              "shot": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "result": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "match": {
+                "type": "string"
+              },
+              "delivery": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Evidence for `recommended[]`: which Trust Ladder rungs the routed slots cover, which are absent, and whether the awareness stage makes each absence a gap or a correct omission.",
+      "properties": {
+        "covered": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "absent": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "absent_but_correct": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Rungs missing on purpose for this awareness stage — recorded so a later reader does not 'fix' them."
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Absent rungs the awareness stage says DO matter. Each must have a matching entry in recommended[]."
+        }
+      }
+    },
+    "recommended": {
+      "type": "array",
+      "description": "Product-driven proposals the page did not ask for. Same option shape as a slot, plus earns_its_place and suggested_placement. Additive only — never counted as page sections, never silently added to the asset manifest.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot_id",
+          "earns_its_place",
+          "suggested_placement",
+          "options"
+        ],
+        "properties": {
+          "slot_id": {
+            "type": "string"
+          },
+          "section_role": {
+            "type": "string"
+          },
+          "earns_its_place": {
+            "type": "string",
+            "description": "Which ladder rung it fills and why the awareness stage makes that rung matter. A proposal that cannot name its rung is decoration and does not ship."
+          },
+          "suggested_placement": {
+            "type": "string"
+          },
+          "asset": {
+            "type": "string"
+          },
+          "gif": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "eligible",
+              "form",
+              "reason"
+            ],
+            "properties": {
+              "eligible": {
+                "type": "boolean"
+              },
+              "form": {
+                "enum": [
+                  "whole-frame",
+                  "inset",
+                  "none"
+                ],
+                "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
+              },
+              "reason": {
+                "type": "string",
+                "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
+              },
+              "asset": {
+                "type": "string"
+              },
+              "duration_s": {
+                "type": "number"
+              },
+              "loop": {
+                "type": "string"
+              },
+              "shot": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "result": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "match": {
+                "type": "string"
+              },
+              "delivery": {
+                "type": "string"
+              }
+            }
           },
           "options": {
             "type": "array",

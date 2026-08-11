@@ -3,20 +3,38 @@
   "title": "Image Prompt Library — content.json contract",
   "description": "Input contract for the QUERY operation (SPEC section 7). product.attributes exists so every skeleton conditional resolves from structured data instead of LLM inference — the fields mirror the conditionals that exist in the registry (G7-X mode of use, G8 visible output, pose/light branches, real colorways).",
   "type": "object",
-  "required": ["product", "page"],
+  "required": [
+    "product",
+    "page"
+  ],
   "additionalProperties": false,
   "properties": {
     "product": {
       "type": "object",
-      "required": ["name", "category", "reference_photos", "attributes", "problems_solved"],
+      "required": [
+        "name",
+        "category",
+        "reference_photos",
+        "attributes",
+        "problems_solved"
+      ],
       "additionalProperties": false,
       "properties": {
-        "name": { "type": "string", "minLength": 1 },
-        "category": { "type": "string", "minLength": 1 },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
         "reference_photos": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string", "pattern": "^sha256:[0-9a-f]{8,64}$" },
+          "items": {
+            "type": "string",
+            "pattern": "^sha256:[0-9a-f]{8,64}$"
+          },
           "description": "Content hashes of product reference photos (files live outside the repo, SPEC 6.4)."
         },
         "attributes": {
@@ -34,7 +52,10 @@
           "additionalProperties": false,
           "properties": {
             "operation": {
-              "enum": ["active", "passive"],
+              "enum": [
+                "active",
+                "passive"
+              ],
               "description": "active = user operates it mid-action (pose branch); passive = it works while the user does something else."
             },
             "visible_output": {
@@ -42,13 +63,20 @@
               "description": "What the product visibly emits: mist | spray | water-jet | steam | foam | light | particles | none. Drives G8 (visible mechanism) and the LIGHT branch. Use 'none' when nothing is visible — never invent an effect."
             },
             "mounting": {
-              "enum": ["fixed-installed", "handheld", "worn", "freestanding"],
+              "enum": [
+                "fixed-installed",
+                "handheld",
+                "worn",
+                "freestanding"
+              ],
               "description": "The single mode of use every layer must share (G7-X)."
             },
             "colorways": {
               "type": "array",
               "minItems": 1,
-              "items": { "type": "string" },
+              "items": {
+                "type": "string"
+              },
               "description": "REAL colorways only — fabricated colorways are a G2 violation."
             },
             "body_contact": {
@@ -56,11 +84,18 @@
               "description": "Whether the product acts on a body structure (gates 03-mechanism-ghostbody)."
             },
             "symptom_visibility": {
-              "enum": ["visible", "invisible"],
+              "enum": [
+                "visible",
+                "invisible"
+              ],
               "description": "Can the problem's symptoms be photographed? Gates 01-pain-split and the symptom-rail vignette mode."
             },
             "result_visibility": {
-              "enum": ["on-body", "on-object", "invisible"],
+              "enum": [
+                "on-body",
+                "on-object",
+                "invisible"
+              ],
               "description": "Where the result can be seen. 'invisible' kills 06-relief-scene (verified boundary)."
             },
             "multi_step_usage": {
@@ -72,43 +107,99 @@
         "problems_solved": {
           "type": "array",
           "minItems": 1,
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         },
         "personas": {
           "type": "array",
-          "items": { "type": "string" }
+          "items": {
+            "type": "string"
+          }
         }
       }
     },
     "page": {
       "type": "object",
-      "required": ["channel", "sections"],
+      "required": [
+        "channel",
+        "sections"
+      ],
       "additionalProperties": false,
       "properties": {
-        "channel": { "enum": ["marketplace", "landing-page", "paid-social", "advertorial"] },
+        "channel": {
+          "enum": [
+            "marketplace",
+            "landing-page",
+            "paid-social",
+            "advertorial"
+          ]
+        },
+        "awareness_stage": {
+          "enum": [
+            "unaware",
+            "problem-aware",
+            "solution-aware",
+            "product-aware",
+            "most-aware"
+          ],
+          "description": "Where this page's reader already stands. Optional but strongly recommended — the COVERAGE PASS weighs missing ladder rungs against it, and an absent rung is NOT automatically a gap. Source exports usually carry it (flunnel: brief.awarenessStage). When absent, infer it from the copy and say so in page_composition_notes rather than assuming a default."
+        },
         "sections": {
           "type": "array",
           "minItems": 1,
           "items": {
             "type": "object",
-            "required": ["id", "role", "image_slots"],
+            "required": [
+              "id",
+              "role",
+              "image_slots"
+            ],
             "additionalProperties": false,
             "properties": {
-              "id": { "type": "string", "minLength": 1 },
-              "role": {
-                "enum": ["hero", "problem-agitation", "cause", "mechanism", "proof", "social-proof", "personas", "how-to-use", "comparison", "outcome", "cta"]
+              "id": {
+                "type": "string",
+                "minLength": 1
               },
-              "copy_summary": { "type": "string" },
+              "role": {
+                "enum": [
+                  "hero",
+                  "problem-agitation",
+                  "cause",
+                  "mechanism",
+                  "proof",
+                  "social-proof",
+                  "personas",
+                  "how-to-use",
+                  "comparison",
+                  "outcome",
+                  "cta"
+                ]
+              },
+              "copy_summary": {
+                "type": "string"
+              },
               "image_slots": {
                 "type": "array",
                 "items": {
                   "type": "object",
-                  "required": ["slot_id", "ratio"],
+                  "required": [
+                    "slot_id",
+                    "ratio"
+                  ],
                   "additionalProperties": false,
                   "properties": {
-                    "slot_id": { "type": "string", "minLength": 1 },
-                    "ratio": { "type": "string", "pattern": "^\\d+:\\d+$" },
-                    "position": { "type": "string" }
+                    "slot_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "ratio": {
+                      "type": "string",
+                      "pattern": "^\\d+:\\d+$"
+                    },
+                    "position": {
+                      "type": "string"
+                    }
                   }
                 }
               }

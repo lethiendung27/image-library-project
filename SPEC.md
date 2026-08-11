@@ -222,13 +222,26 @@ image, and competitor brand marks never appear in prompts.
    image by definition — the `cta` cell and text furniture (comment threads, pricing
    tables). Refusing to route a *wrong* type is still correct; refusing to deliver an
    image is not, and the two were conflated.
-5. **Tie-breaker**: pick-rate per (type × section role) from `feedback/picks.jsonl` is a
+5. **Coverage pass** (product-driven, after the sections are routed): compute which
+   Trust Ladder rungs the routed slots cover and which are absent, then weigh each
+   absence against `page.awareness_stage` — **an absent rung is not automatically a
+   gap**. Rungs the stage says matter become `recommended[]`: additive proposals, each
+   naming the rung it fills and where it would sit, bound by the same admission tests
+   and cross-slot rules as any option. Never keyed on page format: two listicles at
+   different awareness stages need different rungs, so no format → rungs table exists.
+   Every image slot also carries a `gif` verdict, positive or negative, per
+   `query/runbook.md` Step 5c.
+6. **Variations**: every image slot offers **at least 2** options. The floor is met by
+   execution when no second type or axis is legal — a different staging of the same
+   argument is a real named dimension, unlike a reroll of the same prompt, which stays
+   banned.
+7. **Tie-breaker**: pick-rate per (type × section role) from `feedback/picks.jsonl` is a
    soft prior, consulted **only** when a (type × role) cell has **≥20 picks**. It never
    overrides `avoid_when` or composition rules.
-6. **Render**: fill skeletons (worked examples serve as few-shot), then apply
+8. **Render**: fill skeletons (worked examples serve as few-shot), then apply
    `adapters/<model>.md` at render time. Canonical NEGATIVE lists are model-agnostic;
    adapters translate them (e.g. semantic negatives for nano banana).
-7. **Feedback**: after the human picks, append one record per slot to
+9. **Feedback**: after the human picks, append one record per slot to
    `feedback/picks.jsonl` with a one-line reason.
 
 ## 8. Validation contract

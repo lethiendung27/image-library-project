@@ -102,6 +102,77 @@ translation, reference-image phrasing, ratio parameter, and — for
 template. The canonical prompt stays model-agnostic in the type file; only the
 rendered output is model-specific.
 
+## Step 5b — COVERAGE PASS (product-driven, runs after the sections are routed)
+
+The section pass answers "what does the page ask for". This pass answers a different
+question: **what does this product have to prove that nothing on the page proves yet.**
+Its output is `recommended[]` — additive proposals, never replacements, kept out of
+`slots[]` so the page's real section count stays honest.
+
+**Awareness stage is the weight, not the page format.** Read `page.awareness_stage`
+(or infer it from the copy and say so). Then judge each absent rung against where the
+reader already stands:
+
+- **unaware** — does not yet believe there is a problem. Recognition and amplification
+  carry the page; proof of a solution they have not asked for is wasted.
+- **problem-aware** — feels it, cannot name the fix. The cause and the mechanism are
+  what move them.
+- **solution-aware** — knows solution classes exist and is comparing them. Mechanism
+  and **physical proof** are what decide it; re-amplifying the problem insults them.
+- **product-aware** — knows this product, not yet convinced. Proof, social evidence and
+  the after-state.
+- **most-aware** — ready. Almost nothing but the after-state and the offer.
+
+**An absent rung is NOT automatically a gap.** That is the whole reason this pass is
+keyed on awareness and not on page type: a listicle for a solution-aware reader is
+*right* to skip step 2, and *wrong* to skip step 4, while the same format for an
+unaware reader inverts both. Do not build a lookup of format → rungs; there is none,
+and hard-coding one would replace judgment with a table that is wrong half the time.
+
+Rules for what may be proposed:
+
+1. Same admission tests as any option — channel legality, attribute gates, `avoid_when`.
+2. Same cross-slot rules — one-type-once, step-3 budget, `avoid_adjacent`, page arc.
+   Coverage is not a licence to bloat; those rules exist because more explanation is
+   not more persuasion.
+3. Every proposal states **which rung it fills** and **where it would sit**. A proposal
+   that cannot name its rung is decoration and does not ship.
+4. Cap: at most one proposal per absent rung that the awareness stage says matters.
+
+**Honest limit:** this pass makes a page *argument-complete*. It cannot make it
+*conversion-optimised* — `feedback/picks.jsonl` has no records, so the ≥20-pick prior
+in Step 6 never fires. Say so in `page_composition_notes` rather than implying the
+recommendations are performance-backed.
+
+## Step 5c — GIF suggestion (per slot)
+
+Every image slot carries a `gif` verdict, including a negative one — silence is harder
+to act on than a stated "no". Two forms:
+
+- **whole-frame** — the entire image becomes a short silent loop. Available to ANY
+  type, because it adds no layer to the frame. This is the default suggestion.
+- **inset** — the motion replaces a layer the type's own SKELETON already legislates
+  (a Zone B/C inset, a rail vignette). Only offered where that layer already exists;
+  proposing a new layer is a graphic-overlay decision this runbook does not make.
+
+A slot earns motion when its declared reason to exist is **temporal** — a transition, a
+sequence, a state changing, an output flowing. A slot that exists to reveal an angle, a
+place or a colorway does not, and gets `eligible: false` with that reason.
+
+Every GIF carries the same five-field brief, each line ≤ 7 words:
+
+```
+GIF · <duration> · <loop behaviour>
+SHOT     <camera and framing>
+ACTION   <what moves, in order>
+RESULT   <what the viewer is left holding>
+MATCH    <the register law it must obey>
+```
+
+`MATCH` is not filler: a loop that ignores the still's grade and light reads as pasted
+in. Delivery is mp4/webm with a size ceiling — a 20 MB `.gif` costs more conversion
+than the motion buys.
+
 ## Step 7 — Emit and log
 
 Where the session lives: `query/sessions/<page_id>/` holds `content.json` (the

@@ -64,6 +64,12 @@ statuses: [active, reserved, deprecated]
 # Section roles a content.json may declare. Routing table: mapping/slot-rules.md.
 section_roles: [hero, problem-agitation, cause, mechanism, proof, social-proof, personas, how-to-use, comparison, outcome, cta]
 
+# Where the page's reader already stands. Drives the COVERAGE PASS (query/runbook.md
+# Step 5) — NOT the page's format. Two listicles at different awareness stages need
+# different rungs of the ladder; a table keyed on page type would say they need the
+# same, which is why no such table exists.
+awareness_stages: [unaware, problem-aware, solution-aware, product-aware, most-aware]
+
 observation_verdicts: [match, variant-candidate, new-candidate, duplicate, reject]
 
 # Informative: things that are runtime parameters and must NEVER become identity.

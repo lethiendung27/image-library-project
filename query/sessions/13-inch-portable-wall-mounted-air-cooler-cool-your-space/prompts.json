@@ -2,6 +2,7 @@
   "page_id": "13-inch-portable-wall-mounted-air-cooler-cool-your-space",
   "registry_version": "2.0.0",
   "channel": "advertorial",
+  "awareness_stage": "solution-aware",
   "slots": [
     {
       "slot_id": "hero-header",
@@ -60,7 +61,20 @@
           "composition_notes": "If this cast wins, any later 06-relief-scene pair must be re-cast to this woman (requires_pair).",
           "asset_candidate": "cooler-listicle-01-hero--C.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "asset": "cooler-listicle-01-hero.mp4",
+        "reason": "The scene's evidence is already motion held still — steam rising, a fan ribbon fluttering weakly, sweat catching light. A 2s loop shows the fan failing, which a still can only imply.",
+        "duration_s": 2,
+        "loop": "seamless",
+        "shot": "locked frame, no camera move",
+        "action": "steam rises, the fan ribbon flutters weakly",
+        "result": "the fan visibly changes nothing",
+        "match": "hero grade and grain exactly; no new light",
+        "delivery": "mp4/webm, gif fallback, max 2 MB"
+      }
     },
     {
       "slot_id": "reason-0-editors-pick",
@@ -131,7 +145,20 @@
           ],
           "asset_candidate": "cooler-listicle-02-editors-pick--C.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "asset": "cooler-listicle-02-editors-pick.mp4",
+        "reason": "G8 output is the argument here, and mist is inherently temporal — a still freezes the one thing that proves the product works.",
+        "duration_s": 3,
+        "loop": "seamless",
+        "shot": "locked frame on the mounted unit and desk",
+        "action": "mist drifts down and outward, curtain lifts once",
+        "result": "the cool stream reads as continuous, not staged",
+        "match": "backlit hero grade; mist stays the brightest element",
+        "delivery": "mp4/webm, gif fallback, max 3 MB"
+      }
     },
     {
       "slot_id": "reason-1-window-ac",
@@ -154,9 +181,31 @@
           "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
           "rationale": "Listicle entry: reason.1 Traditional Window AC Units. 01-pain-scene in its object-only execution — the ledger records this twice already (obs sha256:30c9568…, sha256:4e8f238…, both filed as pain-scene with 'no person as subject, only the indicted OBJECT'). Reached by runbook rung 2 (adjacent step) plus rung 3 (repeating section) after one-type-once spent 04-proof-lockedframe.",
           "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
-          "asset_candidate": "cooler-listicle-03-alt-window-ac.jpg"
+          "asset_candidate": "cooler-listicle-03-alt-window-ac--A.jpg"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: seen from the street, the room it darkens",
+          "type": "01-pain-scene",
+          "type_version": "1.2",
+          "variant": "candid",
+          "axes": {
+            "gaze": "candid"
+          },
+          "ratio": "5:3",
+          "pipeline": "single-pass",
+          "prompt": "Documentary photograph, frame full. Single frame, NO graphic overlays, no signal colours.\n\nSUBJECT, the indicted object: the same boxy window air conditioner seen from OUTSIDE the building, jutting from a first-floor sash with a rust streak running down the render below it, the room behind it dark. Ordinary, intact, plausible.\n\nSYMPTOM EVIDENCE, physical fact: the drip stain on the wall beneath the unit; the sash permanently propped and taped at one corner; a neighbouring window with clean glass and an open curtain for contrast.\n\nMOMENT: an ordinary moment in the room, nothing arranged for the camera.\n\nENVIRONMENT to the edges: a small living room mid-summer, a curtain pushed permanently aside and hooked back, a bookshelf, a mug on the sill. Real lived-in clutter, nothing tidied.\n\nLIGHT: natural window light only, low and directional, raking so the cracked paint around each screw throws a shadow. No fill, no styling.\n\nGRADE: desaturated neutral, fine grain, deep blacks, believable 35mm optics.\n\nFORBIDDEN: no product of ours, no overlays, arrows, badges, glows, insets or split panels.\nEditorial documentary photography, natural, unstaged. No text, no logo, no watermark.",
+          "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
+          "rationale": "Second variation on the same type and entry, varying on execution — a different vantage on the same indicted object. The >=2 floor is met without a reroll: this is a genuinely different staging of the same argument, which is a real named dimension.",
+          "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
+          "asset_candidate": "cooler-listicle-03-alt-window-ac--B.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to indict a static condition — drilled brackets, a hose across a counter, a fan that never moves the air. Nothing in it changes over time, so motion would add duration without adding argument. Temporal test fails."
+      }
     },
     {
       "slot_id": "reason-2-portable-ac",
@@ -179,9 +228,31 @@
           "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
           "rationale": "Listicle entry: reason.2 Hose-Vented Portable AC Units. 01-pain-scene in its object-only execution — the ledger records this twice already (obs sha256:30c9568…, sha256:4e8f238…, both filed as pain-scene with 'no person as subject, only the indicted OBJECT'). Reached by runbook rung 2 (adjacent step) plus rung 3 (repeating section) after one-type-once spent 04-proof-lockedframe.",
           "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
-          "asset_candidate": "cooler-listicle-04-alt-portable-ac.jpg"
+          "asset_candidate": "cooler-listicle-04-alt-portable-ac--A.jpg"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: the hose as the subject, close range",
+          "type": "01-pain-scene",
+          "type_version": "1.2",
+          "variant": "candid",
+          "axes": {
+            "gaze": "candid"
+          },
+          "ratio": "5:3",
+          "pipeline": "single-pass",
+          "prompt": "Documentary photograph, frame full. Single frame, NO graphic overlays, no signal colours.\n\nSUBJECT, the indicted object: the wide corrugated exhaust hose of a generic portable air conditioner filling the frame at close range where it crosses a windowsill into a plastic vent panel, the unit itself soft behind it.\n\nSYMPTOM EVIDENCE, physical fact: gaffer tape sealing the panel edge; a gap where warm outside air leaks back in; the sill's paint scuffed where the hose rests.\n\nMOMENT: an ordinary moment in the room, nothing arranged for the camera.\n\nENVIRONMENT to the edges: a cramped home office, a laptop and papers, a cable tangle, a jacket over the chair back. Real lived-in clutter, nothing tidied.\n\nLIGHT: natural window light only, flat and directional through the propped gap. No fill, no styling.\n\nGRADE: desaturated neutral, fine grain, deep blacks, believable 35mm optics.\n\nFORBIDDEN: no product of ours, no overlays, arrows, badges, glows, insets or split panels.\nEditorial documentary photography, natural, unstaged. No text, no logo, no watermark.",
+          "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
+          "rationale": "Second variation on the same type and entry, varying on execution — a different vantage on the same indicted object. The >=2 floor is met without a reroll: this is a genuinely different staging of the same argument, which is a real named dimension.",
+          "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
+          "asset_candidate": "cooler-listicle-04-alt-portable-ac--B.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to indict a static condition — drilled brackets, a hose across a counter, a fan that never moves the air. Nothing in it changes over time, so motion would add duration without adding argument. Temporal test fails."
+      }
     },
     {
       "slot_id": "reason-3-floor-cooler",
@@ -204,9 +275,31 @@
           "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
           "rationale": "Listicle entry: reason.3 Bulky Floor-Standing Coolers. 01-pain-scene in its object-only execution — the ledger records this twice already (obs sha256:30c9568…, sha256:4e8f238…, both filed as pain-scene with 'no person as subject, only the indicted OBJECT'). Reached by runbook rung 2 (adjacent step) plus rung 3 (repeating section) after one-type-once spent 04-proof-lockedframe.",
           "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
-          "asset_candidate": "cooler-listicle-05-alt-floor-cooler.jpg"
+          "asset_candidate": "cooler-listicle-05-alt-floor-cooler--A.jpg"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: the floor it steals, shot from the doorway",
+          "type": "01-pain-scene",
+          "type_version": "1.2",
+          "variant": "candid",
+          "axes": {
+            "gaze": "candid"
+          },
+          "ratio": "5:3",
+          "pipeline": "single-pass",
+          "prompt": "Documentary photograph, frame full. Single frame, NO graphic overlays, no signal colours.\n\nSUBJECT, the indicted object: the tall floor-standing evaporative cooler seen from the kitchen doorway so its footprint dominates the walkway, its water tank at the base with the fill flap open.\n\nSYMPTOM EVIDENCE, physical fact: the power lead crossing the threshold at ankle height; a shopping bag set down at an angle because the direct line is blocked; a chair pulled out to squeeze past.\n\nMOMENT: an ordinary moment in the room, nothing arranged for the camera.\n\nENVIRONMENT to the edges: a narrow galley, counters both sides, a chopping board mid-use, a kettle, a bin the unit half blocks, a tea towel on the oven rail. Real lived-in clutter, nothing tidied.\n\nLIGHT: natural window light from the galley's end, low and directional, the power lead casting a thin shadow across the floor. No fill, no styling.\n\nGRADE: desaturated neutral, fine grain, deep blacks, believable 35mm optics.\n\nFORBIDDEN: no product of ours, no overlays, arrows, badges, glows, insets or split panels.\nEditorial documentary photography, natural, unstaged. No text, no logo, no watermark.",
+          "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
+          "rationale": "Second variation on the same type and entry, varying on execution — a different vantage on the same indicted object. The >=2 floor is met without a reroll: this is a genuinely different staging of the same argument, which is a real named dimension.",
+          "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
+          "asset_candidate": "cooler-listicle-05-alt-floor-cooler--B.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to indict a static condition — drilled brackets, a hose across a counter, a fan that never moves the air. Nothing in it changes over time, so motion would add duration without adding argument. Temporal test fails."
+      }
     },
     {
       "slot_id": "reason-4-desk-fan",
@@ -229,9 +322,31 @@
           "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
           "rationale": "Listicle entry: reason.4 Standard Plastic Desk Fans. 01-pain-scene in its object-only execution — the ledger records this twice already (obs sha256:30c9568…, sha256:4e8f238…, both filed as pain-scene with 'no person as subject, only the indicted OBJECT'). Reached by runbook rung 2 (adjacent step) plus rung 3 (repeating section) after one-type-once spent 04-proof-lockedframe.",
           "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
-          "asset_candidate": "cooler-listicle-06-alt-desk-fan.jpg"
+          "asset_candidate": "cooler-listicle-06-alt-desk-fan--A.jpg"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: the desk it fails to cool, wide",
+          "type": "01-pain-scene",
+          "type_version": "1.2",
+          "variant": "candid",
+          "axes": {
+            "gaze": "candid"
+          },
+          "ratio": "5:3",
+          "pipeline": "single-pass",
+          "prompt": "Documentary photograph, frame full. Single frame, NO graphic overlays, no signal colours.\n\nSUBJECT, the indicted object: a cheap white plastic desk fan running at the edge of a home-office desk, seen wide so the whole workspace reads.\n\nSYMPTOM EVIDENCE, physical fact: papers held down by a mug rather than lifted by any draft; a cardigan pushed off and hanging on the chair; a glass of water sweating a ring onto the desk; the fan's ribbon limp.\n\nMOMENT: an ordinary moment in the room, nothing arranged for the camera.\n\nENVIRONMENT to the edges: a small home office in high summer, window shut, blinds half down, a laptop, a stack of papers weighted with a book, a cardigan discarded over the chair. Real lived-in clutter, nothing tidied.\n\nLIGHT: flat ambient daylight through the blinds, hot and unhelpful. No fill, no styling.\n\nGRADE: desaturated neutral, fine grain, deep blacks, believable 35mm optics.\n\nFORBIDDEN: no product of ours, no overlays, arrows, badges, glows, insets or split panels.\nEditorial documentary photography, natural, unstaged. No text, no logo, no watermark.",
+          "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
+          "rationale": "Second variation on the same type and entry, varying on execution — a different vantage on the same indicted object. The >=2 floor is met without a reroll: this is a genuinely different staging of the same argument, which is a real named dimension.",
+          "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
+          "asset_candidate": "cooler-listicle-06-alt-desk-fan--B.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to indict a static condition — drilled brackets, a hose across a counter, a fan that never moves the air. Nothing in it changes over time, so motion would add duration without adding argument. Temporal test fails."
+      }
     },
     {
       "slot_id": "reason-5-ceiling-fan",
@@ -254,9 +369,31 @@
           "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
           "rationale": "Listicle entry: reason.5 Built-in Ceiling Fans. 01-pain-scene in its object-only execution — the ledger records this twice already (obs sha256:30c9568…, sha256:4e8f238…, both filed as pain-scene with 'no person as subject, only the indicted OBJECT'). Reached by runbook rung 2 (adjacent step) plus rung 3 (repeating section) after one-type-once spent 04-proof-lockedframe.",
           "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
-          "asset_candidate": "cooler-listicle-07-alt-ceiling-fan.jpg"
+          "asset_candidate": "cooler-listicle-07-alt-ceiling-fan--A.jpg"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: the bed below, looking up",
+          "type": "01-pain-scene",
+          "type_version": "1.2",
+          "variant": "candid",
+          "axes": {
+            "gaze": "candid"
+          },
+          "ratio": "5:3",
+          "pipeline": "single-pass",
+          "prompt": "Documentary photograph, frame full. Single frame, NO graphic overlays, no signal colours.\n\nSUBJECT, the indicted object: a white ceiling fan seen from lying-down height at the foot of a bed, blades still, the ceiling filling the upper frame.\n\nSYMPTOM EVIDENCE, physical fact: the duvet kicked into a heap in the foreground; the repainted ring around the mounting plate; a phone face-up on the nightstand at the frame edge.\n\nMOMENT: an ordinary moment in the room, nothing arranged for the camera.\n\nENVIRONMENT to the edges: a bedroom in high summer, bed with the duvet kicked back, a window cracked onto a still street, a chair with clothes over it, a glass of water on the nightstand. Real lived-in clutter, nothing tidied.\n\nLIGHT: warm bedside lamp and a sodium streetlight through the window gap, low and directional, the ceiling in shadow. No fill, no styling.\n\nGRADE: desaturated neutral, fine grain, deep blacks, believable 35mm optics.\n\nFORBIDDEN: no product of ours, no overlays, arrows, badges, glows, insets or split panels.\nEditorial documentary photography, natural, unstaged. No text, no logo, no watermark.",
+          "avoid": "Avoid: text, watermarks, logos, overlays, arrows, badges, red or signal colours, faces, a damaged or filthy unit, a comically ugly unit, studio lighting, saturated colours.",
+          "rationale": "Second variation on the same type and entry, varying on execution — a different vantage on the same indicted object. The >=2 floor is met without a reroll: this is a genuinely different staging of the same argument, which is a real named dimension.",
+          "composition_notes": "REPEATING SECTION: this slot yields FIVE assets, one per listicle entry, all 01-pain-scene. Cross-slot rule 2 permits the repeat because the instances differ on a named dimension — the indicted object. All five must share ONE register and grade or the block reads as five sources instead of one editorial series. FAIRNESS: the alternative must look like a real product someone genuinely bought. The page's copy dramatises them ('sounded like a jet engine'); the image must not.",
+          "asset_candidate": "cooler-listicle-07-alt-ceiling-fan--B.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to indict a static condition — drilled brackets, a hose across a counter, a fan that never moves the air. Nothing in it changes over time, so motion would add duration without adding argument. Temporal test fails."
+      }
     },
     {
       "slot_id": "compare-mechanism",
@@ -300,7 +437,20 @@
           ],
           "asset_candidate": "cooler-listicle-08-mechanism--C.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "asset": "cooler-listicle-08-mechanism.mp4",
+        "reason": "The claim IS a process: air in, through the wet grille, cool mist out. The maglev rotor floating without contact is a motion claim a still cannot make.",
+        "duration_s": 4,
+        "loop": "seamless",
+        "shot": "locked three-quarter on the ghost shell",
+        "action": "wind wheel spins, the flow ribbon travels intake to louvers",
+        "result": "the rotor never touches its ring",
+        "match": "navy/cyan palette lock; no new components appear",
+        "delivery": "mp4/webm, gif fallback, max 3 MB"
+      }
     },
     {
       "slot_id": "howto-steps",
@@ -348,7 +498,20 @@
           ],
           "asset_candidate": "cooler-listicle-09-howto--C.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": true,
+        "form": "inset",
+        "asset": "cooler-listicle-09-howto-panel3.mp4",
+        "reason": "Panels 1 and 2 are single acts a still holds fine. Panel 3 is the payoff and the only temporal beat — the mist starting. Motion replaces that panel only; the type's own skeleton already legislates three panels, so no new layer is proposed.",
+        "duration_s": 2,
+        "loop": "seamless",
+        "shot": "panel 3 framing, unchanged",
+        "action": "fingertip presses, the first mist stream emerges",
+        "result": "air visibly moving where there was none",
+        "match": "panel 3's warmer light; the other two panels stay still",
+        "delivery": "mp4/webm, gif fallback, max 2 MB"
+      }
     },
     {
       "slot_id": "social-viral",
@@ -416,7 +579,20 @@
           ],
           "asset_candidate": "cooler-listicle-10-social-3.jpg"
         }
-      ]
+      ],
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "asset": "cooler-listicle-10-social-1.mp4",
+        "reason": "A customer's phone clip is MORE authentic than a customer's photo — the register's whole argument is that nothing was staged, and a handheld wobble proves it harder than a still can.",
+        "duration_s": 3,
+        "loop": "once",
+        "shot": "handheld, slight natural drift",
+        "action": "the phone tilts up to the running unit",
+        "result": "it is on, in a real room, right now",
+        "match": "ugc register: honest exposure, visible noise, no grade",
+        "delivery": "mp4/webm, gif fallback, max 2 MB"
+      }
     },
     {
       "slot_id": "comments-thread",
@@ -429,6 +605,89 @@
       "section_role": "cta",
       "options": [],
       "out_of_scope_reason": "The cta cell is empty by design in mapping/slot-rules.md — a standard product shot, outside library scope. Not an image slot in the library's sense."
+    }
+  ],
+  "coverage": {
+    "covered": [
+      "step 1 pain (hero)",
+      "step 3 mechanism (xray)",
+      "step 3 use (use-sequence)",
+      "step 5 social (snapshot)",
+      "step 6 relief (relief-hero)"
+    ],
+    "absent": [
+      "step 2 amplify the problem",
+      "step 4 physical proof"
+    ],
+    "absent_but_correct": [
+      "step 2 amplify the problem — the reader is SOLUTION-AWARE: they already feel the problem and are comparing solution classes. Re-amplifying it would insult them and delay the comparison they came for. This absence is a correct editorial choice, not a gap; recorded so a later reader does not 'fix' it."
+    ],
+    "gaps": [
+      "step 4 physical proof — the material gap. A solution-aware reader decides on evidence, and this page knocks down five alternatives and closes on the product without showing a single inspectable fact. 04-proof-lockedframe is advertorial-legal and unused."
+    ]
+  },
+  "recommended": [
+    {
+      "slot_id": "proof-lockedframe",
+      "section_role": "proof",
+      "earns_its_place": "Fills step 4, the one absent rung the SOLUTION-AWARE stage says matters. The page argues its whole case by assertion — five alternatives dismissed in copy, no inspectable fact anywhere. This is the rung that decides a comparing reader.",
+      "suggested_placement": "Between the `compare` table and the `social` section — after the claims are made and before the testimonials, which is where a skeptic looks for proof.",
+      "asset": "cooler-listicle-11-proof.jpg",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "--rivals is a judgement-free exhibit: three states held equally still so the viewer compares them. Motion would direct the eye and break exactly the neutrality the type exists to protect. Temporal test fails on purpose."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.4",
+          "variant": "rivals",
+          "axes": {
+            "camera_lock": "strict",
+            "context_mode": "natural-use"
+          },
+          "ratio": "5:3",
+          "pipeline": "multi-pass",
+          "prompt": "Three photographs of the same corner of a small rented room, shown as three equal vertical panels, thin white gutters, no outer border. No graphic overlays, badges, arrows or text.\n\nNo reference product appears in this image. All three panels contain generic unbranded alternatives — the cooling appliances people already own.\n\nLOCKED CAMERA: identical camera position, focal length, height and angle in every panel. Every fixed element aligns across all panels: the desk and chair, the window and its blinds, the wall outlet, the rug edge, the skirting board. Identical lighting, exposure and white balance in every panel.\n\nSCENE, constant across all panels: the corner of a small rented room beside a window — a desk with a laptop and papers, a mug, a phone charging, a cable along the skirting, a jacket over the chair. Flat overcast daylight, no strong shadows, no styling.\n\nTHE VARIABLE, the only thing that changes — the cooling appliance occupying the corner:\nPanel 1: a boxy window air conditioner filling the lower half of the window, the sash resting on it, the desk pushed aside to clear it.\nPanel 2: a generic portable compressor air conditioner on the floor, its wide exhaust hose climbing to the propped window sash, crowding the desk.\nPanel 3: a tall floor-standing evaporative cooler in the same corner, water tank visible at the base, taking the walking space.\nAll three look ordinary, intact and plausible — never broken, dirty or mocked.\n\nJUDGEMENT RULE: none of them wins. The image makes no claim. No badge, glow, colour cue or brighter panel. All panels equally lit and equally neutral. The viewer decides.\n\nHonest documentary product test photography, unstyled, natural, sharp. No text, no logo, no watermark.",
+          "avoid": "Avoid: text, watermarks, logos, badges, checkmarks, arrows, glows, people, hands, one panel brighter than the others, damaged or dirty alternatives, red or green cues, motion blur, studio background, staged perfection.",
+          "rationale": "Step 4 for a solution-aware reader. --rivals is the 'I tried three things' beat and needs NO reference photo, so it cannot suffer product drift. Advertorial-legal; --rivals is barred only from marketplace.",
+          "composition_notes": "Additive proposal, not a page section. Cross-slot: 04-proof-lockedframe is unused, one-type-once is satisfied, step-3 budget untouched (this is step 4).",
+          "steps": [
+            "generate — panel 1 only: the room corner with the boxy window unit in the sash.",
+            "edit — 'Keep everything exactly the same and change ONLY the cooling appliance: a portable compressor unit on the floor with its hose to the propped sash.'",
+            "edit — 'Keep everything exactly the same and change ONLY the cooling appliance: a tall floor-standing evaporative cooler, water tank at the base.'",
+            "composite — assemble three panels with thin white gutters in an image editor."
+          ],
+          "asset_candidate": "cooler-listicle-11-proof--A.jpg"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: kitchen corner, the cook's workspace",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.4",
+          "variant": "rivals",
+          "axes": {
+            "camera_lock": "strict",
+            "context_mode": "natural-use"
+          },
+          "ratio": "5:3",
+          "pipeline": "multi-pass",
+          "prompt": "Three photographs of the same end of a small kitchen, shown as three equal vertical panels, thin white gutters, no outer border. No graphic overlays, badges, arrows or text.\n\nNo reference product appears in this image. All three panels contain generic unbranded alternatives.\n\nLOCKED CAMERA: identical camera position, focal length, height and angle in every panel. Every fixed element aligns: the counter edge, the small window above it, the tile line, the kettle, the bin. Identical lighting, exposure and white balance.\n\nSCENE, constant across all panels: the end of a kitchen counter under a small window — a chopping board mid-use, a kettle, a dish rack, a towel on the oven rail, a jar left open. Flat overcast daylight, no strong shadows, no styling.\n\nTHE VARIABLE, the only thing that changes — what cools the cook's corner:\nPanel 1: an ordinary box fan standing ON the counter, crowding the chopping board aside.\nPanel 2: a generic portable compressor air conditioner on the floor, its wide hose climbing across the counter and out the propped window.\nPanel 3: a tall floor-standing evaporative cooler wedged into the galley, water tank at the base, blocking the walkway.\nAll three look ordinary, intact and plausible — never broken, dirty or mocked.\n\nJUDGEMENT RULE: none of them wins. The image makes no claim. No badge, glow, colour cue or brighter panel. All panels equally neutral.\n\nHonest documentary product test photography, unstyled, natural, sharp. No text, no logo, no watermark.",
+          "avoid": "Avoid: text, watermarks, logos, badges, checkmarks, arrows, glows, people, hands, one panel brighter than the others, damaged or dirty alternatives, red or green cues, motion blur, studio background, staged perfection.",
+          "rationale": "Same variant staged where the page's lead pain lives. A hose crossing a chopping board argues the space cost more viscerally than a desk does.",
+          "composition_notes": "Additive proposal. Meets the >=2 floor by execution, not by reroll.",
+          "steps": [
+            "generate — panel 1 only: the kitchen counter corner with the box fan.",
+            "edit — same-frame swap to the portable unit, hose across the counter.",
+            "edit — same-frame swap to the tall floor cooler blocking the galley.",
+            "composite — assemble three panels with thin white gutters."
+          ],
+          "asset_candidate": "cooler-listicle-11-proof--B.jpg"
+        }
+      ]
     }
   ],
   "page_composition_notes": [

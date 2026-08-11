@@ -382,6 +382,78 @@ Honest phone photography, unedited look, natural, slightly imperfect. No text ov
  ATT+" Quality floor: authenticity tolerates softness, never illegibility — the product must stay identifiable at thumbnail size.",
  axes={"register":"ugc"}, cand=f"{PAGE}-10-social-3.jpg")]))
 
+
+GIF = {
+ "hero-header": dict(eligible=True, form="whole-frame", asset=f"{PAGE}-01-hero.mp4",
+   reason="The scene's evidence is already motion held still — steam rising, a fan ribbon fluttering weakly, sweat catching light. A 2s loop shows the fan failing, which a still can only imply.",
+   duration_s=2, loop="seamless", shot="locked frame, no camera move",
+   action="steam rises, the fan ribbon flutters weakly", result="the fan visibly changes nothing",
+   match="hero grade and grain exactly; no new light", delivery="mp4/webm, gif fallback, max 2 MB"),
+ "reason-0-editors-pick": dict(eligible=True, form="whole-frame", asset=f"{PAGE}-02-editors-pick.mp4",
+   reason="G8 output is the argument here, and mist is inherently temporal — a still freezes the one thing that proves the product works.",
+   duration_s=3, loop="seamless", shot="locked frame on the mounted unit and desk",
+   action="mist drifts down and outward, curtain lifts once", result="the cool stream reads as continuous, not staged",
+   match="backlit hero grade; mist stays the brightest element", delivery="mp4/webm, gif fallback, max 3 MB"),
+ "compare-mechanism": dict(eligible=True, form="whole-frame", asset=f"{PAGE}-08-mechanism.mp4",
+   reason="The claim IS a process: air in, through the wet grille, cool mist out. The maglev rotor floating without contact is a motion claim a still cannot make.",
+   duration_s=4, loop="seamless", shot="locked three-quarter on the ghost shell",
+   action="wind wheel spins, the flow ribbon travels intake to louvers", result="the rotor never touches its ring",
+   match="navy/cyan palette lock; no new components appear", delivery="mp4/webm, gif fallback, max 3 MB"),
+ "howto-steps": dict(eligible=True, form="inset", asset=f"{PAGE}-09-howto-panel3.mp4",
+   reason="Panels 1 and 2 are single acts a still holds fine. Panel 3 is the payoff and the only temporal beat — the mist starting. Motion replaces that panel only; the type's own skeleton already legislates three panels, so no new layer is proposed.",
+   duration_s=2, loop="seamless", shot="panel 3 framing, unchanged",
+   action="fingertip presses, the first mist stream emerges", result="air visibly moving where there was none",
+   match="panel 3's warmer light; the other two panels stay still", delivery="mp4/webm, gif fallback, max 2 MB"),
+ "social-viral": dict(eligible=True, form="whole-frame", asset=f"{PAGE}-10-social-1.mp4",
+   reason="A customer's phone clip is MORE authentic than a customer's photo — the register's whole argument is that nothing was staged, and a handheld wobble proves it harder than a still can.",
+   duration_s=3, loop="once", shot="handheld, slight natural drift",
+   action="the phone tilts up to the running unit", result="it is on, in a real room, right now",
+   match="ugc register: honest exposure, visible noise, no grade", delivery="mp4/webm, gif fallback, max 2 MB"),
+}
+NO_GIF_REASON = ("The slot exists to indict a static condition — drilled brackets, a hose "
+ "across a counter, a fan that never moves the air. Nothing in it changes over time, so "
+ "motion would add duration without adding argument. Temporal test fails.")
+for s in slots:
+    if not s["options"]: continue
+    sid=s["slot_id"]
+    if sid in GIF: s["gif"]=GIF[sid]
+    elif sid.startswith("reason-") and sid!="reason-0-editors-pick":
+        s["gif"]=dict(eligible=False, form="none", reason=NO_GIF_REASON)
+
+
+ALT_B = {
+ "reason-1-window-ac": ("execution: seen from the street, the room it darkens",
+  "the same boxy window air conditioner seen from OUTSIDE the building, jutting from a first-floor sash with a rust streak running down the render below it, the room behind it dark. Ordinary, intact, plausible.",
+  "the drip stain on the wall beneath the unit; the sash permanently propped and taped at one corner; a neighbouring window with clean glass and an open curtain for contrast."),
+ "reason-2-portable-ac": ("execution: the hose as the subject, close range",
+  "the wide corrugated exhaust hose of a generic portable air conditioner filling the frame at close range where it crosses a windowsill into a plastic vent panel, the unit itself soft behind it.",
+  "gaffer tape sealing the panel edge; a gap where warm outside air leaks back in; the sill's paint scuffed where the hose rests."),
+ "reason-3-floor-cooler": ("execution: the floor it steals, shot from the doorway",
+  "the tall floor-standing evaporative cooler seen from the kitchen doorway so its footprint dominates the walkway, its water tank at the base with the fill flap open.",
+  "the power lead crossing the threshold at ankle height; a shopping bag set down at an angle because the direct line is blocked; a chair pulled out to squeeze past."),
+ "reason-4-desk-fan": ("execution: the desk it fails to cool, wide",
+  "a cheap white plastic desk fan running at the edge of a home-office desk, seen wide so the whole workspace reads.",
+  "papers held down by a mug rather than lifted by any draft; a cardigan pushed off and hanging on the chair; a glass of water sweating a ring onto the desk; the fan's ribbon limp."),
+ "reason-5-ceiling-fan": ("execution: the bed below, looking up",
+  "a white ceiling fan seen from lying-down height at the foot of a bed, blades still, the ceiling filling the upper frame.",
+  "the duvet kicked into a heap in the foreground; the repainted ring around the mounting plate; a phone face-up on the nightstand at the frame edge."),
+}
+for s in slots:
+    if s["slot_id"] in ALT_B and len(s["options"])==1:
+        base=s["options"][0]; varies, subj, ev = ALT_B[s["slot_id"]]
+        b=dict(base); b["opt"]="B"; b["varies_on"]=varies
+        NL = chr(10)
+        pat = "SUBJECT, the indicted object: .*?" + NL+NL + "SYMPTOM EVIDENCE, physical fact: .*?" + NL
+        rep = ("SUBJECT, the indicted object: " + subj + NL+NL +
+               "SYMPTOM EVIDENCE, physical fact: " + ev + NL)
+        b["prompt"]=re.sub(pat, rep.replace("\\", "\\\\"), base["prompt"], flags=re.S)
+        b["rationale"]=("Second variation on the same type and entry, varying on execution — a different "
+                        "vantage on the same indicted object. The >=2 floor is met without a reroll: this is "
+                        "a genuinely different staging of the same argument, which is a real named dimension.")
+        b["asset_candidate"]=base["asset_candidate"].replace(".jpg","--B.jpg")
+        base["asset_candidate"]=base["asset_candidate"].replace(".jpg","--A.jpg")
+        s["options"].append(b)
+
 # ══════════════════════════════════════════ genuinely imageless
 slots.append({"slot_id":"comments-thread","section_role":"social-proof","options":[],
  "out_of_scope_reason":"A 48-comment discussion thread is page furniture — text, avatars and timestamps rendered by the template. Not an image slot, so the never-empty rule does not apply. The ledger drew this same boundary twice before (a pricing panel, a hero banner)."})
@@ -390,8 +462,101 @@ slots.append({"slot_id":"offer-atc","section_role":"cta","options":[],
 
 for s in slots: s.pop("_setn", None)
 
+
+# ══════════════════════════════════════════ COVERAGE PASS (awareness-driven)
+COVERAGE = {
+ "covered": ["step 1 pain (hero)", "step 3 mechanism (xray)", "step 3 use (use-sequence)",
+             "step 5 social (snapshot)", "step 6 relief (relief-hero)"],
+ "absent": ["step 2 amplify the problem", "step 4 physical proof"],
+ "absent_but_correct": [
+   "step 2 amplify the problem — the reader is SOLUTION-AWARE: they already feel the "
+   "problem and are comparing solution classes. Re-amplifying it would insult them and "
+   "delay the comparison they came for. This absence is a correct editorial choice, not "
+   "a gap; recorded so a later reader does not 'fix' it."],
+ "gaps": [
+   "step 4 physical proof — the material gap. A solution-aware reader decides on "
+   "evidence, and this page knocks down five alternatives and closes on the product "
+   "without showing a single inspectable fact. 04-proof-lockedframe is advertorial-legal "
+   "and unused."],
+}
+REC_AVOID = ("Avoid: text, watermarks, logos, badges, checkmarks, arrows, glows, people, hands, "
+             "one panel brighter than the others, damaged or dirty alternatives, red or green cues, "
+             "motion blur, studio background, staged perfection.")
+rec_scene = ("SCENE, constant across all panels: the corner of a small rented room beside a window "
+ "— a desk with a laptop and papers, a mug, a phone charging, a cable along the skirting, a jacket "
+ "over the chair. Flat overcast daylight, no strong shadows, no styling.")
+recommended = [{
+ "slot_id":"proof-lockedframe","section_role":"proof",
+ "earns_its_place":("Fills step 4, the one absent rung the SOLUTION-AWARE stage says matters. "
+   "The page argues its whole case by assertion — five alternatives dismissed in copy, no "
+   "inspectable fact anywhere. This is the rung that decides a comparing reader."),
+ "suggested_placement":("Between the `compare` table and the `social` section — after the claims "
+   "are made and before the testimonials, which is where a skeptic looks for proof."),
+ "asset":f"{PAGE}-11-proof.jpg",
+ "gif":dict(eligible=False, form="none",
+   reason=("--rivals is a judgement-free exhibit: three states held equally still so the viewer "
+           "compares them. Motion would direct the eye and break exactly the neutrality the type "
+           "exists to protect. Temporal test fails on purpose.")),
+ "options":[
+  O("A","baseline","04-proof-lockedframe","1.4","5:3", f"""
+Three photographs of the same corner of a small rented room, shown as three equal vertical panels, thin white gutters, no outer border. No graphic overlays, badges, arrows or text.
+
+No reference product appears in this image. All three panels contain generic unbranded alternatives — the cooling appliances people already own.
+
+LOCKED CAMERA: identical camera position, focal length, height and angle in every panel. Every fixed element aligns across all panels: the desk and chair, the window and its blinds, the wall outlet, the rug edge, the skirting board. Identical lighting, exposure and white balance in every panel.
+
+{rec_scene}
+
+THE VARIABLE, the only thing that changes — the cooling appliance occupying the corner:
+Panel 1: a boxy window air conditioner filling the lower half of the window, the sash resting on it, the desk pushed aside to clear it.
+Panel 2: a generic portable compressor air conditioner on the floor, its wide exhaust hose climbing to the propped window sash, crowding the desk.
+Panel 3: a tall floor-standing evaporative cooler in the same corner, water tank visible at the base, taking the walking space.
+All three look ordinary, intact and plausible — never broken, dirty or mocked.
+
+JUDGEMENT RULE: none of them wins. The image makes no claim. No badge, glow, colour cue or brighter panel. All panels equally lit and equally neutral. The viewer decides.
+
+Honest documentary product test photography, unstyled, natural, sharp. No text, no logo, no watermark.
+""", REC_AVOID,
+   "Step 4 for a solution-aware reader. --rivals is the 'I tried three things' beat and needs NO reference photo, so it cannot suffer product drift. Advertorial-legal; --rivals is barred only from marketplace.",
+   "Additive proposal, not a page section. Cross-slot: 04-proof-lockedframe is unused, one-type-once is satisfied, step-3 budget untouched (this is step 4).",
+   variant="rivals", axes={"camera_lock":"strict","context_mode":"natural-use"},
+   pipeline="multi-pass", att=False, cand=f"{PAGE}-11-proof--A.jpg",
+   steps=["generate — panel 1 only: the room corner with the boxy window unit in the sash.",
+          "edit — 'Keep everything exactly the same and change ONLY the cooling appliance: a portable compressor unit on the floor with its hose to the propped sash.'",
+          "edit — 'Keep everything exactly the same and change ONLY the cooling appliance: a tall floor-standing evaporative cooler, water tank at the base.'",
+          "composite — assemble three panels with thin white gutters in an image editor."]),
+  O("B","execution: kitchen corner, the cook's workspace","04-proof-lockedframe","1.4","5:3", f"""
+Three photographs of the same end of a small kitchen, shown as three equal vertical panels, thin white gutters, no outer border. No graphic overlays, badges, arrows or text.
+
+No reference product appears in this image. All three panels contain generic unbranded alternatives.
+
+LOCKED CAMERA: identical camera position, focal length, height and angle in every panel. Every fixed element aligns: the counter edge, the small window above it, the tile line, the kettle, the bin. Identical lighting, exposure and white balance.
+
+SCENE, constant across all panels: the end of a kitchen counter under a small window — a chopping board mid-use, a kettle, a dish rack, a towel on the oven rail, a jar left open. Flat overcast daylight, no strong shadows, no styling.
+
+THE VARIABLE, the only thing that changes — what cools the cook's corner:
+Panel 1: an ordinary box fan standing ON the counter, crowding the chopping board aside.
+Panel 2: a generic portable compressor air conditioner on the floor, its wide hose climbing across the counter and out the propped window.
+Panel 3: a tall floor-standing evaporative cooler wedged into the galley, water tank at the base, blocking the walkway.
+All three look ordinary, intact and plausible — never broken, dirty or mocked.
+
+JUDGEMENT RULE: none of them wins. The image makes no claim. No badge, glow, colour cue or brighter panel. All panels equally neutral.
+
+Honest documentary product test photography, unstyled, natural, sharp. No text, no logo, no watermark.
+""", REC_AVOID,
+   "Same variant staged where the page's lead pain lives. A hose crossing a chopping board argues the space cost more viscerally than a desk does.",
+   "Additive proposal. Meets the >=2 floor by execution, not by reroll.",
+   variant="rivals", axes={"camera_lock":"strict","context_mode":"natural-use"},
+   pipeline="multi-pass", att=False, cand=f"{PAGE}-11-proof--B.jpg",
+   steps=["generate — panel 1 only: the kitchen counter corner with the box fan.",
+          "edit — same-frame swap to the portable unit, hose across the counter.",
+          "edit — same-frame swap to the tall floor cooler blocking the galley.",
+          "composite — assemble three panels with thin white gutters."])]
+}]
+
 out = {"page_id":"13-inch-portable-wall-mounted-air-cooler-cool-your-space",
- "registry_version":"2.0.0","channel":"advertorial","slots":slots,
+ "registry_version":"2.0.0","channel":"advertorial","awareness_stage":"solution-aware",
+ "slots":slots,"coverage":COVERAGE,"recommended":recommended,
  "page_composition_notes":[
   "INPUT: flunnel export, lpTypeId `listicle` (TPL-ADV07). The content contract's enum has no `listicle`, so this routes as `advertorial` — editorial byline (Dana Merrick), an Updated date and a pain-first intro are the advertorial signature.",
   "STAGE 1 IS DERIVED, not looked up (SPEC 7.2 as of 2026-08-11): candidates come from registry/index.yaml by channel legality, then attribute gates, then role affinity from step+job. On advertorial the legal pool is 10 types covering every step 1-6, which is why no slot in this run is empty and no fallback exists.",
@@ -421,6 +586,19 @@ for s in out["slots"]:
 for s in out["slots"]:
     if not s["options"]:
         md.append(f"| — | (no image by definition) | `{s['slot_id']}` | — | see note below |")
+md += ["", "## Coverage — awareness stage: **solution-aware**\n"]
+md.append("The reader already feels the problem and is comparing solution classes. That is what")
+md.append("decides which absent rung is a gap and which is a correct omission — not the page format.\n")
+md.append("| Rung | Status |")
+md.append("|---|---|")
+for c in out["coverage"]["covered"]: md.append(f"| {c} | covered |")
+for c in out["coverage"]["absent_but_correct"]: md.append(f"| {c.split(chr(8212))[0].strip()} | **absent, and correct** — {c.split(chr(8212),1)[1].strip()} |")
+for c in out["coverage"]["gaps"]: md.append(f"| {c.split(chr(8212))[0].strip()} | **GAP** — {c.split(chr(8212),1)[1].strip()} |")
+md += ["", "## Recommended — not asked for by the page\n"]
+md.append("Additive proposals. They are NOT page sections and are not counted in the manifest above.\n")
+for r in out["recommended"]:
+    md.append(f"- **`{r['asset']}`** ({r['slot_id']}, `{r['options'][0]['type']}`) — {r['earns_its_place']}")
+    md.append(f"  - Placement: {r['suggested_placement']}")
 md += ["", "## Page-level notes\n"]
 for n in out["page_composition_notes"]: md.append(f"- {n}")
 for s in out["slots"]:
@@ -429,6 +607,18 @@ for s in out["slots"]:
         md.append(f"**NO IMAGE BY DEFINITION.** {s['out_of_scope_reason']}\n"); continue
     md.append(f"**ASSET:** `{s['asset']}` · **RENDER AT:** {s['options'][0]['ratio']} (generation parameter)")
     md.append(f"**PLACEMENT:** {s['placement']}\n")
+    g=s.get("gif")
+    if g:
+        if g["eligible"]:
+            md.append(f"**GIF — {g['form']}** → `{g['asset']}`  ·  {g['reason']}\n")
+            md.append("```text")
+            md.append(f"GIF · {g['duration_s']}s · {g['loop']}")
+            for k in ("shot","action","result","match"):
+                if g.get(k): md.append(f"{k.upper():<8} {g[k]}")
+            md.append("```")
+            md.append(f"*Delivery: {g['delivery']}*\n")
+        else:
+            md.append(f"**GIF — no.** {g['reason']}\n")
     for o in s["options"]:
         md.append(f"### Option {o['opt']} — `{o['type']}` v{o['type_version']}"
                   + (f" --{o['variant']}" if o.get("variant") else "")
@@ -438,6 +628,25 @@ for s in out["slots"]:
         md.append("\n```text\n"+o["prompt"]+"\n```\n")
         md.append(f"**Avoid:** {o['avoid']}\n")
         md.append(f"**Render as:** `{o.get('asset_candidate','—')}`" + ("  ·  **Attach:** `cooler.avif`" if o.get("attachments") else "") + "\n")
+        md.append(f"**Why:** {o['rationale']}\n")
+        md.append(f"**Notes:** {o['composition_notes']}\n")
+
+for r in out["recommended"]:
+    md.append(f"\n---\n\n## RECOMMENDED `{r['slot_id']}` — role: {r['section_role']} (proposal, not a page section)\n")
+    md.append(f"**ASSET:** `{r['asset']}` · **EARNS ITS PLACE:** {r['earns_its_place']}")
+    md.append(f"**PLACEMENT:** {r['suggested_placement']}\n")
+    g=r.get("gif")
+    if g and not g["eligible"]: md.append(f"**GIF — no.** {g['reason']}\n")
+    for o in r["options"]:
+        md.append(f"### Option {o['opt']} — `{o['type']}` v{o['type_version']}"+(f" --{o['variant']}" if o.get('variant') else "")+f" · {o['pipeline']}")
+        md.append(f"*varies_on: {o['varies_on']}*")
+        md.append("\n```text\n"+o["prompt"]+"\n```\n")
+        md.append(f"**Avoid:** {o['avoid']}\n")
+        if o.get("steps"):
+            md.append("**Multi-pass steps:**")
+            for i2,st in enumerate(o["steps"],1): md.append(f"{i2}. {st}")
+            md.append("")
+        md.append(f"**Render as:** `{o.get('asset_candidate','—')}`\n")
         md.append(f"**Why:** {o['rationale']}\n")
         md.append(f"**Notes:** {o['composition_notes']}\n")
 open("/Users/lethiendung/Downloads/listicle-cooler.image-prompts.md","w").write("\n".join(md))
