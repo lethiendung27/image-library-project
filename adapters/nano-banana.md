@@ -96,6 +96,11 @@ waste came from four repeatable mistakes, so the rules are mechanical:
 Reference numbers from that set: a GIF-inset prompt lands at ~1450-1600 characters and
 ~225 words. A prompt past ~2500 characters should be re-read for a duplicated block.
 
+**Render-verified 2026-08-11** (`eval/render-tests.jsonl`, 06-relief-hero v1.6, user
+verdict pass): slot-form prompts at this size render correctly. Single run, so the
+style is confirmed workable rather than proven recurrent — treat a degraded render on
+a compressed prompt as new evidence, not as a settled failure.
+
 ## Rule 5 — Known weaknesses (emphasize, don't fight)
 
 - **Hands at close range**: highest failure rate (03-use-sequence, knife examples).
