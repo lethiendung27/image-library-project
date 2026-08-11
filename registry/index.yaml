@@ -321,6 +321,39 @@ types:
       recommends in person. Not when no natural reason exists for two people
       to stand near the product. Keep distance from 05-persona-grid on the
       same page (same question, different mechanism).
+  - id: 05-social-snapshot
+    step: 5
+    job: social
+    device: snapshot
+    version: "1.0"
+    status: active
+    channels: [landing-page, advertorial]
+    ratios: ["5:3", "4:3", "1:1"]
+    requires_product_photo: true
+    generation_mode: single-pass
+    axes:
+      register: [ugc]
+    variants: []
+    exempt_from: [G3, G4]
+    pairs_with: []
+    never_with: []
+    avoid_adjacent: [05-social-handoff]
+    requires_pair: null
+    evidence_count: 0
+    picks: {}
+    use_when: >
+      Review sections and social-proof blocks on landing pages and
+      advertorials, when the trust gap is "does this actually exist and work
+      in a normal home". Products bought on skepticism of glossy marketing.
+      Use as SECTION imagery with the page's review copy, or beside aggregate
+      ratings.
+    avoid_when: >
+      Marketplace galleries (ugc register is barred there). NEVER pair a
+      generated snapshot with a reviewer name, avatar, star row or verified
+      badge, and never present one as an actual customer upload — that is a
+      fabricated endorsement (FTC), the same line 05-social-card draws. When
+      real customer photos exist, they always win over generated ones. Not for
+      polished brand storytelling — that is 06-relief-hero's register.
   - id: 06-relief-hero
     step: 6
     job: relief

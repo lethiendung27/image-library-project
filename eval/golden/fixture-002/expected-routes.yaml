@@ -1,0 +1,102 @@
+# Golden routing expectations — fixture-002 (Portable wall-mounted personal cooler, advertorial)
+# Built 2026-08-11 from the real query session of the same page, to give the
+# social-proof and mechanism cells a regression contract. fixture-001 covers
+# neither: it has no social-proof slot at all, so it cannot test any step-5
+# candidate, and its mechanism gap was only closed when 03-mechanism-xray
+# promoted. Re-run Steps 2-4 of query/runbook.md after any trigger, index or
+# slot-rules change; every assertion must still hold or the change is a bug or
+# an intended improvement that updates this file in the SAME commit.
+
+registry_version: "2.0.0"
+template: "query/runbook.md Steps 2-4"
+
+slots:
+  hero-header:
+    section_role: hero
+    expected_option_A: {type: 01-pain-scene, variant: candid, axes: {gaze: candid}}
+    legal_alternatives_must_include:
+      - {type: 01-pain-scene, variant: confront, axes: {gaze: confront}}
+    forbidden:
+      - reason: "06-relief-hero is not in the advertorial hero cell; the advertorial header is a pain beat"
+        config: {type: 06-relief-hero}
+    note: "G1-exempt, no reference photo needed"
+
+  story-0-problem:
+    section_role: problem-agitation
+    expected_option_A: {type: 02-symptom-rail, note: "four problems_solved -> breadth argument; vignette mode visible-symptom"}
+    forbidden:
+      - reason: "never_with 01-pain-scene, which serves the header of this same page"
+        config: {type: 01-pain-split}
+
+  story-1-recommendation:
+    section_role: social-proof
+    expected_option_A: {type: 05-social-handoff}
+    note: >
+      The copy is literally the "a coworker recommended" beat — handoff's own
+      use_when. This is the assertion that guards 05-social-snapshot: a
+      recommendation spoken by an advocate must NOT be stolen by a type whose
+      argument is silent possession.
+    forbidden:
+      - reason: "snapshot has no advocate and stages nothing; it shows a product existing in a home"
+        config: {type: 05-social-snapshot}
+
+  story-2-mechanism:
+    section_role: mechanism
+    expected_option_A: {type: 03-mechanism-xray}
+    gates_that_must_fire:
+      - "body_contact=false drops 03-mechanism-ghostbody"
+      - "visible_output=mist -> the emitting path is shown ACTIVE in the render (G8 in technical register)"
+    note: "resolved 2026-08-11 when xray promoted; before that this slot was out of scope"
+
+  story-3-howto:
+    section_role: how-to-use
+    expected_option_A: {type: 03-use-sequence}
+    only_legal_type: 03-use-sequence
+    note: "multi_step_usage=true keeps it"
+
+  comparison:
+    section_role: comparison
+    expected_option_A: {type: 04-proof-lockedframe, variant: verdict, axes: {camera_lock: strict, context_mode: natural-use}}
+    legal_alternatives_must_include:
+      - {type: 04-proof-lockedframe, variant: rivals, note: "advertorial-legal; needs no reference photo"}
+    note: "the difference IS visible in a static frame (floor space, hose, propped sash), so the object variants are legal here — unlike fixture-001"
+
+  reviews:
+    section_role: social-proof
+    expected_option_A: {type: 05-social-snapshot, axes: {register: ugc}}
+    note: >
+      INTENDED IMPROVEMENT 2026-08-11. Before 05-social-snapshot promoted this
+      slot was out of scope: the advertorial social-proof cell held only
+      05-social-handoff, which one-type-once had already spent on story-1.
+      Snapshot fills it without touching story-1 because the two answer
+      different questions — handoff stages a recommendation, snapshot shows
+      possession.
+    forbidden:
+      - reason: "one-type-once; handoff already serves story-1 on this page"
+        config: {type: 05-social-handoff}
+      - reason: "05-persona-grid is marketplace-only in the slot-rules table"
+        config: {type: 05-persona-grid}
+    composition_note_required: >
+      avoid_adjacent 05-social-handoff — both step-5 social types appear on this
+      page, so they must not sit adjacent, and the page must not read as two
+      social mechanisms in a row.
+    compliance_note_required: >
+      Generated snapshots are section imagery, never customer records: no
+      reviewer name, avatar, star row or verified label may sit near them. The
+      five quoted reviews on this page stay text.
+
+  reclaim-outcome:
+    section_role: outcome
+    expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: none}}
+    legal_alternatives_must_include:
+      - {type: 06-relief-scene, conditional: "ONLY if the header keeps a 01-pain-scene of the same person (requires_pair)"}
+
+page_level:
+  arc: "pain (header) -> breadth (story-0) -> social (story-1) -> mechanism (story-2) -> operation (story-3) -> proof (comparison) -> social (reviews) -> relief (reclaim). Pain never reappears after the outcome image."
+  step_3_budget: "2 of 2 used — 03-mechanism-xray and 03-use-sequence. A third step-3 answer would be a lecture."
+  out_of_scope_roles: []
+  known_gap: >
+    story-4 (durability, ABS housing) has no slot here because no active type
+    argues build quality; 03-spec-macro is staging at 4/5 exemplars. Add a
+    durability slot to this fixture when it promotes — that is the next
+    assertion this file should grow.

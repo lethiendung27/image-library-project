@@ -13,7 +13,7 @@ Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
 | cause | `02-cause-anatomy` | `02-cause-anatomy` | — | `02-cause-anatomy` |
 | mechanism | `03-mechanism-ghostbody`, `03-spec-split`, `03-mechanism-xray` | `03-mechanism-ghostbody`, `03-mechanism-xray` | — | `03-mechanism-ghostbody`, `03-mechanism-xray` |
 | proof | `04-proof-lockedframe` (verdict / timelapse) | `04-proof-lockedframe` (verdict / timelapse / capture) | `04-proof-lockedframe` (rivals / timelapse) | `04-proof-lockedframe` (all variants) |
-| social-proof | `05-persona-grid` | `05-social-handoff`, `05-persona-grid` | `05-social-handoff` | `05-social-handoff` |
+| social-proof | `05-persona-grid` | `05-social-handoff`, `05-persona-grid`, `05-social-snapshot` | `05-social-handoff` | `05-social-handoff`, `05-social-snapshot` |
 | personas | `05-persona-grid` | `05-persona-grid` | — | — |
 | how-to-use | `03-use-sequence` | `03-use-sequence` | — | `03-use-sequence` |
 | comparison | `04-proof-lockedframe--verdict`, `03-spec-split`, `01-pain-split` | `04-proof-lockedframe--verdict` | — | `04-proof-lockedframe--verdict` |

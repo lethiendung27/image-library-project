@@ -3,8 +3,8 @@ id: 05-social-snapshot
 step: 5
 job: social
 device: snapshot
-version: "0.1"
-status: reserved
+version: "1.0"
+status: active
 replaced_by: null
 ratios: ["5:3", "4:3", "1:1"]
 channels: [landing-page, advertorial]
@@ -19,15 +19,7 @@ never_with: []
 avoid_adjacent: [05-social-handoff]
 ---
 
-# 05-social-snapshot — STAGING DRAFT
-
-Promotion status (2026-08-11): **6 exemplars ledgered, ~2 distinct source families**
-(one socket-tester reviewer set: obs `sha256:78bfce…`, `sha256:932b7a…`,
-`sha256:09f8b2…`; one-to-two BP-monitor reviewers: `sha256:62e23f…`,
-`sha256:3b860e…`, `sha256:f37e43…` — batch 2026-08-11-D). The §6.3 gate counts
-distinct SOURCES: more reviewer sets across more verticals are still needed.
-Also pending: router-confusion test, ≥1 rendered worked example, human review.
-Not routable.
+# 05-social-snapshot
 
 ## PURPOSE
 The customer-photo texture for review and social-proof blocks: a single raw
@@ -125,19 +117,35 @@ perfect symmetry, magazine polish, influencer aesthetic
 ```
 
 ## WORKED EXAMPLES
-### example: socket-tester-in-use — skeleton@0.1, run: untested
-Product: socket tester · ratio 5:3 · content mode: in-use · axes: register=ugc
-- FRAMING — the tester held one-handed up to a wall outlet, slightly angled, cropped the way a casual one-handed phone photo crops
-- SUBJECT — mid-test at a living-room outlet, screen lit; leave the screen area softly lit for a post-composited readout
-- ANCHOR — an extension plug hanging from the neighbouring socket, the one incidental owner object
-- SCENE — an ordinary lived-in room photographed as found: aged wood paneling, a slightly scuffed skirting board; ambient mixed warm light from a floor lamp
-- CAMERA TRUTH — framing tilted a few degrees and a little too close, focus adequate, mild noise, honest exposure, no styling of any kind
+### example: socket-tester-in-use — skeleton@1.0, run: pass
+```
+A real customer's phone photo, 5:3 ratio. One frame, no layout.
+
+Use the attached product photo as the exact reference for the socket tester.
+Preserve shape, proportions, material, finish and color exactly. It is held
+one-handed up to a wall outlet, slightly angled, cropped the way a casual
+one-handed photo crops.
+
+CONTENT MODE, in-use: the tester is mid-test at a living-room outlet, its
+screen lit. The screen area is left softly lit for a post-composited readout.
+An extension plug hangs from the neighbouring socket — the one incidental
+owner object.
+
+SCENE: an ordinary lived-in room photographed as found — aged wood paneling,
+a slightly scuffed skirting board. Ambient mixed warm light from a floor lamp.
+
+CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
+adequate, mild noise, honest exposure. No styling of any kind.
+
+STYLE: honest phone photography, unedited look, natural, slightly imperfect.
+NO text overlays, no logo, no watermark, no badges, no borders.
+```
 Predicted failures: (1) the model beautifying anyway — clean walls, styled
 light (the negative list and avoid line must both fire); (2) screen digits
 drawn as gibberish if the composite step is skipped; (3) product drift under
 casual cropping (G1 check at review).
 
-### example: bp-monitor-at-rest — skeleton@0.1, run: untested
+### example: bp-monitor-at-rest — skeleton@1.0, run: untested
 Product: arm-tunnel blood pressure monitor · ratio 4:3 · content mode: at-rest · axes: register=ugc
 - FRAMING — the monitor sitting on a kitchen counter where it now lives, its factory instruction sticker still on the side panel
 - ANCHOR — a folded paper manual beside it, the one incidental owner object
@@ -164,6 +172,22 @@ snapshot obeys almost nothing and sells existence — the register is shared,
 the argument is not.
 
 ## CHANGELOG
+- 1.0 (2026-08-11): PROMOTED staging -> active. All four SPEC 6.3 criteria met.
+  (1) 12 exemplars across FIVE distinct source families and five verticals —
+  socket tester (obs `sha256:78bfce…`, `sha256:932b7a…`, `sha256:09f8b2…`),
+  BP monitor (`sha256:62e23f…`, `sha256:3b860e…`, `sha256:f37e43…`), spray
+  grooming brush (`sha256:ea5c16…`), external optical drive (`sha256:fc47f3…`,
+  `sha256:a3e06c…`, `sha256:0ebcf0…`), furniture-mover set (`sha256:598f0a…`,
+  `sha256:24720c…`) — batches 2026-08-11-D and -E. (2) Router-confusion test
+  PASS against the NEW `eval/golden/fixture-002`: 8/8 slots hold, and five
+  boundary checks confirm snapshot takes no cell it should not (absent from
+  marketplace and paid-social social-proof; handoff and persona-grid both
+  keep their landing-page places). fixture-001 could not test this candidate
+  at all — it has no social-proof slot — so the fixture was built rather than
+  the test faked. (3) Rendered worked example: socket-tester-in-use, run pass,
+  owner verdict 2026-08-11. (4) ADR-007 gate. Same-diff changes: slot-rules
+  social-proof cells for landing-page and advertorial, worked-example headers
+  relabelled to skeleton@1.0, fixture-002 added.
 - 0.1 (2026-08-11): staging draft from six real-UGC exemplars in one batch —
   socket tester in-use ×2 + kit (obs `sha256:78bfce…`, `sha256:932b7a…`,
   `sha256:09f8b2…`), BP monitor in-use + at-rest ×2 (obs `sha256:62e23f…`,

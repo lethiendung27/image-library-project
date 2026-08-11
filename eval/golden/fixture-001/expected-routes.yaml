@@ -73,6 +73,10 @@ slots:
       06-relief-scene (with its pair) or flag the conflict for the human.
 
 page_level:
+  coverage_limit: >
+    This fixture has no social-proof and no personas slot, so it cannot test any
+    step-5 candidate. eval/golden/fixture-002 was built 2026-08-11 to cover
+    social-proof; route both when a step-5 trigger changes.
   arc: "pain (s2) and cause (s3) precede all relief (s1 is promise-hero, s6 outcome) — acceptable; pain never reappears after s4"
   out_of_scope_roles: []
   resolved_gap: >
