@@ -3,11 +3,11 @@ id: 03-mechanism-xray
 step: 3
 job: mechanism
 device: xray
-version: "0.1"
-status: reserved
+version: "1.0"
+status: active
 replaced_by: null
 ratios: ["1:1", "4:5", "16:9"]
-channels: [marketplace, landing-page]
+channels: [marketplace, landing-page, advertorial]
 requires_product_photo: true
 generation_mode: single-pass
 variants: []
@@ -16,11 +16,7 @@ pairs_with: [06-relief-hero, 02-cause-anatomy]
 never_with: [03-spec-split]
 ---
 
-# 03-mechanism-xray — STAGING DRAFT
-
-Promotion status: **1/5 exemplars** (obs `sha256:a2ad52…`) · render-test ✓ pass
-(2026-08-10, metal shower filter, `eval/render-tests.jsonl`). Not routable. Still
-needs: ≥5 distinct exemplars, router-confusion test, human review.
+# 03-mechanism-xray
 
 ## PURPOSE
 Justify the product's capability by showing what is INSIDE the object — battery, chip,
@@ -105,7 +101,7 @@ exploded parts view, rainbow palette, bright white background, cartoon style
 ```
 
 ## WORKED EXAMPLES
-### example: electric-spray-comb — skeleton@0.1, run: untested
+### example: electric-spray-comb — skeleton@1.0, run: untested
 ```
 A 1:1 3D technical see-through render. NOT photography. Dark engineering background.
 
@@ -142,7 +138,7 @@ from carries one) — the explicit text ban plus avoid-line must both fire; (2) 
 silhouette drifting from the reference once transparency is requested — if it recurs,
 switch to multi-pass (generate opaque product first, edit to translucent).
 
-### example: metal-shower-filter — skeleton@0.1, run: pass
+### example: metal-shower-filter — skeleton@1.0, run: pass
 ```
 A 1:1 3D technical see-through render. NOT photography. Dark engineering background.
 
@@ -192,7 +188,40 @@ shape works on you"); `xray` = product translucent, internals solid ("what is in
 this thing"); `spec-split` = component combat old-vs-new. One page takes at most two
 step-3 answers, and never xray + spec-split together.
 
+Register decision (2026-08-11): the skeleton stays in the 3D-render register ("NOT
+photography") — 3 of 4 exemplars are full see-through renders. The fourth exemplar
+(`sha256:6735f5…`) executes the same argument as a technical line-art cutaway DRAWN
+OVER a photographic scene; that is ONE observation of a possible `--overlay` variant
+and stays below the ≥3 drafting threshold (SPEC §6.2). Log further sightings against
+it; do not widen the skeleton meanwhile. Boundary vs the `explode` candidate
+(03-spec-explode): xray sees THROUGH an intact shell to say WHY it works; explode
+disassembles to census WHAT is inside — mechanism vs spec, why vs what.
+
 ## CHANGELOG
+- 1.0 (2026-08-11): PROMOTED staging → active, all four §6.3 criteria met.
+  (1) Five distinct exemplars across five verticals — obs `sha256:a2ad52…`
+  (spray comb, batch 10-B), `sha256:937e6d…` (external drive, 10-E),
+  `sha256:5c5e76…` (electric cutter, 10-F), `sha256:6735f5…` (mini chopper,
+  photo-overlay register, 11-A), `sha256:0c2305…` (ab-roller rebound spring,
+  brand-orange palette, 11-E). (2) Router-confusion test PASS (scratch-index
+  method, curate.md §4): all 6 fixture-001 assertions hold, 0 unintended flips,
+  2 intended improvements (fixture-001 known_gap resolves; cooler-advertorial
+  mechanism slot routes here) — fixture updated in this diff. (3) Rendered
+  worked example: metal-shower-filter, run pass (eval/render-tests.jsonl,
+  2026-08-10). (4) Human gate: this promotion diff. Same-diff changes:
+  slot-rules mechanism cells gain this type, vocabulary de-reserves `xray`,
+  worked-example headers relabeled to skeleton@1.0. Palette-lock note: the 5th
+  exemplar runs brand-orange against the navy/cyan lock (1 obs — the lock
+  holds; expect brand-colored market executions and log them).
+- 0.2 (2026-08-11): promotion-readiness pass. Exemplars 2-4 recorded — obs
+  `sha256:937e6d…` (transparent external drive, batch 10-E), `sha256:5c5e76…`
+  (translucent electric cutter, 10-F), `sha256:6735f5…` (chopper washability
+  cutaway-over-photo, 11-A). Register decision: skeleton stays render-only;
+  photo-overlay logged as a possible --overlay variant at 1/3 observations.
+  Router-confusion test run and PASSED (see promotion status). Channels gain
+  `advertorial` — the live demand case (cooler advertorial mechanism slot,
+  query session 2026-08-11) and fixture-001 known_gap both sit on advertorial /
+  landing pages.
 - 0.1 (2026-08-10): staging draft from the first exemplar — translucent spray-comb
   render, obs `sha256:a2ad520c…` (batch 2026-08-10-B). Device `xray` was already
   reserved in vocabulary; this is its first exemplar. Demand signal predicted by

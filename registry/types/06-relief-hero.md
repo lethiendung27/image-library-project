@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["2:1", "4:5"]
@@ -147,17 +147,22 @@ Right half brighter and cleaner than left half.
 
 ### inset_mode: --recall
 ```
-[ZONE C: INSET, single circle]
-One circular cutout containing a photograph of [the problem state],
-positioned [corner], occupying [12-18%] of frame width.
-The inset MUST be visually marked as the past state, either desaturated,
-or carrying a small red X badge. An unlabelled inset reads as a result,
+[ZONE C: INSET — choose ONE execution form]
+FORM 1, single marked cell: one circular cutout containing a photograph of
+[the problem state], positioned [corner], occupying [12-18%] of frame width.
+FORM 2, transition pair: two small cells joined by ONE directional arrow —
+the past cell first, then [the resolved state / the first use].
+Combined footprint [15-22%] of frame width. This arrow is the only
+sanctioned arrow in the type.
+In BOTH forms the past state MUST be visually marked, either desaturated
+or carrying a small red X badge. An unmarked past reads as a result,
 which inverts the entire message.
-REGISTER: the inset photo must match the hero in resolution, grade and
+REGISTER: inset photos must match the hero in resolution, grade and
 light quality — a darker or lower-resolution inset reads as pasted in.
 ```
 Negative additions: `unlabelled before-state inset, low resolution inset,
-inset darker than hero, inset from a different photographic source`
+inset darker than hero, inset from a different photographic source,
+more than one arrow, arrow pointing from now to past`
 
 ### inset_mode: --context
 ```
@@ -261,6 +266,9 @@ person reduced to a shoulder.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.5 (2026-08-10): --recall gains the transition-pair execution form (past-cell
+  marked + one arrow + now-cell). Evidence: 3 observations across 3 domains — obs
+  sha256:cd8e0e…, sha256:5ea857…, sha256:61118d… (batches D, F, H).
 - 1.4 (2026-08-10): inset_mode value `detail` added (magnified product detail: UI
   screen or internal mechanism; composite screens in post, never model-drawn).
   Evidence: 3 observations across 2 domains — obs sha256:b63e19…, sha256:611850…,

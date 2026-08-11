@@ -11,7 +11,7 @@ Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
 | hero | `06-relief-hero` (commercial) | `06-relief-hero` (commercial) | `06-relief-hero` (ugc), `01-pain-scene` | `01-pain-scene` (header) |
 | problem-agitation | `01-pain-split`, `02-symptom-rail` | `01-pain-split`, `02-symptom-rail`, `01-pain-scene` (confront) | `01-pain-scene` | `01-pain-scene`, `02-symptom-rail` |
 | cause | `02-cause-anatomy` | `02-cause-anatomy` | — | `02-cause-anatomy` |
-| mechanism | `03-mechanism-ghostbody`, `03-spec-split` | `03-mechanism-ghostbody` | — | `03-mechanism-ghostbody` |
+| mechanism | `03-mechanism-ghostbody`, `03-spec-split`, `03-mechanism-xray` | `03-mechanism-ghostbody`, `03-mechanism-xray` | — | `03-mechanism-ghostbody`, `03-mechanism-xray` |
 | proof | `04-proof-lockedframe` (verdict / timelapse) | `04-proof-lockedframe` (verdict / timelapse / capture) | `04-proof-lockedframe` (rivals / timelapse) | `04-proof-lockedframe` (all variants) |
 | social-proof | `05-persona-grid` | `05-social-handoff`, `05-persona-grid` | `05-social-handoff` | `05-social-handoff` |
 | personas | `05-persona-grid` | `05-persona-grid` | — | — |
@@ -32,7 +32,7 @@ also on the page.
 | static frame cannot show the product difference | `04-proof-lockedframe`: forbid `--rivals`/`--verdict`, require `--timelapse`/`--capture` (VARIANT SELECTION RULE — verified) |
 | `mounting: fixed-installed` | G7-X: installed mode in every layer; ugc register needs the low-angle reframe (product + output as subject) |
 | `operation: active` / `passive` | POSE branch: mid-action vs relaxed |
-| `body_contact: false` | drop `03-mechanism-ghostbody` |
+| `body_contact: false` | drop `03-mechanism-ghostbody`; mechanism slots fall to `03-mechanism-xray` (whose own `avoid_when` still gates trivial interiors and anti-tech-render categories) |
 | `result_visibility: invisible` | drop `06-relief-scene` (close with `06-relief-hero` instead) |
 | `multi_step_usage: false` | drop `03-use-sequence` unless buyers plausibly assume complexity |
 | `colorways` has 1 entry | Zone B of `06-relief-hero` shows 1 unit only (fabricating a second colorway violates G2) |

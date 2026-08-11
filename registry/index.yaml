@@ -52,7 +52,7 @@ types:
     never_with: [01-pain-scene]
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 8
+    evidence_count: 12
     picks: {}
     use_when: >
       Need to stop the scroll with pain, or occupy one tile in a gallery/grid
@@ -146,6 +146,36 @@ types:
       Main image or scroll-stopper positions, or when the product does not act
       on a body structure. This type is cold — there is nobody to empathize
       with.
+  - id: 03-mechanism-xray
+    step: 3
+    job: mechanism
+    device: xray
+    version: "1.0"
+    status: active
+    channels: [marketplace, landing-page, advertorial]
+    ratios: ["1:1", "4:5", "16:9"]
+    requires_product_photo: true
+    generation_mode: single-pass
+    axes: {}
+    variants: []
+    exempt_from: [G7]
+    pairs_with: [06-relief-hero, 02-cause-anatomy]
+    never_with: [03-spec-split]
+    avoid_adjacent: []
+    requires_pair: null
+    evidence_count: 0
+    picks: {}
+    use_when: >
+      Need to explain WHY the product works by showing its real internal
+      components, for gadget-class products that do not act on a body
+      structure. Step-3 gallery image (image 3-4) or landing-page mechanism
+      section — the slot ghostbody cannot serve when body_contact is false.
+    avoid_when: >
+      Main image or scroll-stopper. Not when the interior is trivial (a shell
+      with nothing meaningful inside). Not for categories where buyers
+      distrust tech-render aesthetics (natural/organic positioning). Never on
+      the same page as 03-spec-split — two component-tech arguments read as
+      protesting too much.
   - id: 03-spec-split
     step: 3
     job: spec
@@ -164,7 +194,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 3
+    evidence_count: 4
     picks: {}
     use_when: >
       Categories where buyers genuinely compare component specs: motors,
@@ -193,7 +223,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 1
+    evidence_count: 3
     picks: {}
     use_when: >
       The product has more than one operation step, or buyers may assume it is
@@ -221,7 +251,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 0
+    evidence_count: 2
     picks: {}
     use_when: >
       The buyer already understands the problem and mechanism, is now
@@ -252,7 +282,7 @@ types:
     never_with: []
     avoid_adjacent: [05-social-handoff]
     requires_pair: null
-    evidence_count: 1
+    evidence_count: 5
     picks: {}
     use_when: >
       Need to show many different kinds of people using the product. Image 4-5
@@ -295,7 +325,7 @@ types:
     step: 6
     job: relief
     device: hero
-    version: "1.4"
+    version: "1.5"
     status: active
     channels: [landing-page, marketplace, paid-social]
     ratios: ["2:1", "4:5"]
@@ -310,7 +340,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 9
+    evidence_count: 19
     picks: {}
     use_when: >
       The product solves a problem the buyer already feels but has not named.

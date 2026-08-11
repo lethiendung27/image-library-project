@@ -79,8 +79,11 @@ exposes one; ALSO state it in the first prompt line ("A wide 2:1 e-commerce bann
 - **Hands at close range**: highest failure rate (03-use-sequence, knife examples).
   Keep hand descriptions short and functional; put `deformed hands, extra fingers` in
   the avoid line; expect retries.
-- **Text in image**: unreliable — the only sanctioned text is `03-spec-split`'s VS
-  badge, and the plan of record is compositing it in post.
+- **Text in image**: this model renders SHORT text well (user-verified 2026-08-10) —
+  sanctioned generated text: `05-social-card`'s review card (≤12-word quotes,
+  glyph-check shipping gate) and `03-spec-split`'s VS badge (composite in post
+  remains the fallback whenever a render misses). Long text and dense UI digits
+  stay composited (screens, memory logs — see G6 scope note).
 - **Multi-region consistency** (same face, same colorway across regions of one image):
   do not fight it in one pass — that is exactly what Rule 3 exists for.
 - **Layered composites** (hero + inset + product view): if a layer drops out, generate
