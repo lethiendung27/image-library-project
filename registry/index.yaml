@@ -52,7 +52,7 @@ types:
     never_with: [01-pain-scene]
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 12
+    evidence_count: 13
     picks: {}
     use_when: >
       Need to stop the scroll with pain, or occupy one tile in a gallery/grid
@@ -340,7 +340,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 19
+    evidence_count: 21
     picks: {}
     use_when: >
       The product solves a problem the buyer already feels but has not named.
