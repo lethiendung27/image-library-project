@@ -136,3 +136,49 @@ a compressed prompt as new evidence, not as a settled failure.
   do not fight it in one pass — that is exactly what Rule 3 exists for.
 - **Layered composites** (hero + inset + product view): if a layer drops out, generate
   the base scene first, then add layers via edit steps one at a time.
+
+## Rule 7 — Marks are model-drawn (ADR-008)
+
+Graphic marks — arrows, glows, hotspots, badges, reference lines, signal arcs, auras,
+squiggles — are **described in the prompt and drawn by the model**. There is no
+compositing pipeline for them and no `marks[]` field in the query output. The mark
+belongs in the prompt text, in the slot its type's SKELETON assigns it.
+
+This settles PRODUCTION only. **Which** mark an image carries is still decided at
+prompt-creation time and is not this adapter's business — that is an argument decision
+governed by the type and by whatever mark rule the registry grows.
+
+Two existing exceptions stand and are NOT marks:
+
+- **Text** — labels, numerals, spec callouts, screen digits. G6's production law already
+  routes these to post-composite. A mark that needs a word is not a mark, it is a
+  callout, and it leaves the render.
+- **Reference-true insets** — Template B above. The model never repaints an inset that
+  must match a real product.
+
+### What this costs, so the cost stays visible
+
+1. **A baked mark cannot be A/B tested.** Changing a mark's colour, count or position
+   means re-rendering the whole image, and the base changes with it — so the comparison
+   is never clean. Optimising marks empirically is off the table while Rule 7 stands.
+2. **One base cannot serve two channels.** A marketplace image without marks and a
+   landing-page image with them are two renders, not one render and one stamp.
+3. **Precision-dependent classes are at the model's mercy.** Named by risk:
+   - paired dashed reference lines (`02-cause-anatomy`) — the `[MEASUREMENT RULE]`
+     demands two lines identical in everything but angle; a model draws two lines that
+     merely resemble each other,
+   - exact counts — "exactly 3 hotspots" (`01-pain-split`), "3 vignettes not 4"
+     (`02-symptom-rail`), "ONE directional arrow" (`06-relief-hero --recall`),
+   - badge position and colour, which the badge law fixes together precisely because
+     the market gets all three wrong and the model has seen a lot of market.
+
+### When a class fails, do this rather than abandon Rule 7
+
+Log the failure to `eval/render-tests.jsonl` like any other. If the SAME class fails on
+≥2/3 runs or across ≥3 observations, that class — and only that class — moves to
+post-composite, recorded as an exception here with its evidence. Rule 7 is the default,
+not a prohibition on ever compositing anything.
+
+Reference material: `~/Downloads/mark-integration-test-v3.md` holds seven skeleton-
+faithful A prompts covering every mark family the registry uses. Rendering the A column
+is the cheapest way to find out which classes, if any, need the exception above.

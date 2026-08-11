@@ -90,3 +90,39 @@ reported with every commit); SPEC §1 invariant 5, §6.3(4), §8, `CLAUDE.md` ru
 the close sections of `classify-batch.md`, `curate.md`, `render-test.md` updated in
 this same diff; a local `.git/hooks/pre-commit` runs the validator as a safety net.
 Supersedes the review-and-commit clauses of ADR-000's governance line.
+
+## ADR-008 · 2026-08-11 · Graphic marks are model-drawn (integration approach A)
+
+Context: the library legislates plenty of marks — 9 of 20 types declare a graphic slot,
+another 4 carry marks inside other slots — but never said HOW they get produced. Three
+architectures were built out as complete prompt sets in
+`~/Downloads/mark-integration-test-v3.md` (21 prompts, 7 types, every mark family):
+**A** the model draws them, **B** every mark is stamped after a clean render, **C** the
+split — integrated marks rendered, geometric marks stamped.
+
+Decision, by the owner: **A**. Marks are described in the prompt and drawn by the model.
+No compositing pipeline, no `marks[]` field, no schema change. `adapters/nano-banana.md`
+Rule 7 carries the production detail.
+
+This was NOT the recommendation. C was, on the grounds that a baked mark cannot be A/B
+tested and that precision-dependent classes are unreliable when model-drawn. A was
+chosen anyway on defensible grounds: it works today with zero tooling, the editor stage
+does not exist yet, and no render evidence yet contradicts it. Recording the
+disagreement is the point — the decision stays auditable.
+
+Consequences, stated so they stay visible rather than being discovered later:
+- optimising marks empirically is off the table while this stands: changing a mark
+  means re-rendering the image, so the base changes with it and no comparison is clean;
+- a marks-free marketplace image and a marked landing-page image are two renders;
+- three classes are at known risk — paired dashed reference lines, exact counts, and
+  badge position/colour — all named in Rule 7.
+
+What flips it: the standing evidence rule, unchanged. If one mark class fails on ≥2/3
+runs or ≥3 observations, **that class alone** moves to post-composite as a Rule 7
+exception with its evidence cited. A is a default, not a prohibition. Whole-scale
+reversal to C needs the same kind of evidence, not a change of taste.
+
+Not decided here: WHICH mark an image may carry. That is an argument decision — the six
+mark families, the instrument and subtraction gates, and the one-class-per-image budget
+were proposed but are the owner's to write, per the standing instruction that the
+graphic-element rules are authored by hand, element by element.
