@@ -60,4 +60,6 @@ earlier hash in `deviations`.
 - [ ] Note the batch id + count + anything odd in the session summary for the user.
 - [ ] Do NOT touch `registry/` from this runbook — patches and candidates are
       curation's job (`curate.md`), with the evidence rule.
+- [ ] Commit the batch as ONE commit (ledger append + regenerated index) once the
+      validator is clean; report hash + revert path (ADR-007).
 - [ ] Every ~5 batches: run `calibrate.md` before the next batch.

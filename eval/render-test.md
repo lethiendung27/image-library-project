@@ -69,5 +69,6 @@ session produced a better example than one of the two stored, replace the weaker
 python3 scripts/validate.py --write-index
 ```
 
-The registry diff (patches + status updates) goes to the user for review — the human
-gate applies to render-test patches exactly as to ingestion patches.
+Commit the render-test session as ONE commit (ledger line + patches + regenerated
+index) once the validator is clean; report hash + revert path (ADR-007). The verdict
+itself is always the owner's — never log a verdict the owner did not state.

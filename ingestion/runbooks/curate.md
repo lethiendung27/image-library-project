@@ -47,5 +47,7 @@ correctly (use `eval/golden/` fixtures). Any flip that is not an intended improv
       proposed registry changes).
 - [ ] Every CHANGELOG entry cites observation hashes (or `seed: conversation.md` for
       grandfathered content — ADR-001).
-- [ ] Present the full diff to the user with per-change evidence counts. The user
-      reviews and commits; the agent never does.
+- [ ] Commit the curation as ONE commit once the validator is clean — per-change
+      evidence counts in the message — then report the commit hash, the evidence
+      counts, and the revert path (`git revert <sha>`). ADR-007: the owner's standing
+      inputs are the gate; no pre-commit review round.

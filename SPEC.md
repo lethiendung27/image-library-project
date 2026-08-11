@@ -30,8 +30,11 @@ Invariants any harness must respect:
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are **append-only**. Corrections
    are new records, never edits.
 4. Anything under `registry/types/_staging/` is **not routable**.
-5. Every change under `registry/` goes through the human gate: a reviewable git diff,
-   validated by `scripts/validate.py` before commit.
+5. Every change under `registry/` is validated by `scripts/validate.py` before commit.
+   The human gate is the owner's explicit inputs — image feeds, render verdicts,
+   picks, direct commands; once given, the harness curates and **commits
+   autonomously**, one commit per operation with evidence cited in the message
+   (ADR-007). Git history is the audit surface; rollback is `git revert`.
 
 ## 2. Data tiers
 
@@ -166,7 +169,10 @@ copy rule text.
 All four required: (1) **≥5 distinct exemplars** (distinct sources, non-near-duplicate)
 in the ledger; (2) passes the **router-confusion test** — with the candidate's trigger
 added to the index, 5 fixture briefs route without stealing an existing type's cases;
-(3) **≥1 worked example** actually rendered (`run:` pass or partial); (4) PR review.
+(3) **≥1 worked example** actually rendered (`run:` pass or partial, always an
+owner-confirmed verdict); (4) the ADR-007 gate: criterion 3's owner verdict plus the
+standing autopilot authorization — the assembled promotion commits autonomously and
+is reported prominently with its revert path.
 Demotion: `deprecated` requires `replaced_by`; a type with no new evidence and no picks
 for 6 months is flagged `review-for-merge` (in curation, not automated).
 
@@ -215,6 +221,11 @@ extraction; worked-example count and staleness; ledger line validity; JSON schem
 parse; index freshness.
 
 Run it after **every** edit under `registry/`.
+
+**Commit policy (ADR-007):** a completed operation (classify batch, curation pass,
+promotion, render-test session) auto-commits when the validator reports 0 errors;
+warnings are allowed but must be surfaced in the commit message. One commit per
+operation; never auto-push; every commit is reported with its hash and revert path.
 
 ## 9. Repo map
 

@@ -68,3 +68,25 @@ structured ones. Added the fourth operation RENDER-TEST (`eval/render-test.md` �
 statuses advance only through recorded generation tests, under the same ≥2/3 evidence
 rule as ingestion. Also fixed the canonical source-image folder (outside the repo,
 per gate G1-B): `/Users/lethiendung/Downloads/image-library-assets/`.
+
+## ADR-007 · 2026-08-11 · Verdict-gated autopilot: curation and commits run without manual review
+
+Context: through batches B–E the owner's real touchpoints were two — feeding images
+and confirming verdicts — while reviewing-and-committing accumulated diffs became the
+bottleneck (five operations sat uncommitted in the working tree). Decision, stated by
+the owner ("sau khi confirm pass … hệ thống sẽ tự chạy curate, commit … tôi không
+cần đụng"): the **human gate is redefined as the owner's explicit inputs** — image
+feeds, render verdicts (`pass | partial | fail`), picks, and direct commands. Once
+such an input exists, the harness runs the consequent pipeline autonomously: ledger
+appends → curation under the UNCHANGED evidence rules (≥2/3 · ≥3 · §6.3) →
+`scripts/validate.py` → `git commit`. One commit per operation, evidence cited in the
+message. Auto-commit requires **0 validator errors** (warnings allowed but surfaced).
+Promotions still need all §6.3 criteria; criterion 4 is satisfied by the
+owner-confirmed render verdict the package carries plus this standing authorization.
+Commits stay **local** — no auto-push. Verdicts are never fabricated or assumed: no
+owner verdict, no `run:` advancement, ever.
+Consequences: git history becomes the audit surface (rollback = `git revert <sha>`,
+reported with every commit); SPEC §1 invariant 5, §6.3(4), §8, `CLAUDE.md` rule 7 and
+the close sections of `classify-batch.md`, `curate.md`, `render-test.md` updated in
+this same diff; a local `.git/hooks/pre-commit` runs the validator as a safety net.
+Supersedes the review-and-commit clauses of ADR-000's governance line.
