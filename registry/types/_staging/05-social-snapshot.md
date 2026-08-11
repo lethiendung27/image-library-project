@@ -126,54 +126,23 @@ perfect symmetry, magazine polish, influencer aesthetic
 
 ## WORKED EXAMPLES
 ### example: socket-tester-in-use — skeleton@0.1, run: untested
-```
-A real customer's phone photo, 5:3 ratio. One frame, no layout.
-
-Use the attached product photo as the exact reference for the socket tester.
-Preserve shape, proportions, material, finish and color exactly. It is held
-one-handed up to a wall outlet, slightly angled, cropped the way a casual
-one-handed photo crops.
-
-CONTENT MODE, in-use: the tester is mid-test at a living-room outlet, its
-screen lit. The screen area is left softly lit for a post-composited readout.
-An extension plug hangs from the neighbouring socket — the one incidental
-owner object.
-
-SCENE: an ordinary lived-in room photographed as found — aged wood paneling,
-a slightly scuffed skirting board. Ambient mixed warm light from a floor lamp.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-NO text overlays, no logo, no watermark, no badges, no borders.
-```
+Product: socket tester · ratio 5:3 · content mode: in-use · axes: register=ugc
+- FRAMING — the tester held one-handed up to a wall outlet, slightly angled, cropped the way a casual one-handed phone photo crops
+- SUBJECT — mid-test at a living-room outlet, screen lit; leave the screen area softly lit for a post-composited readout
+- ANCHOR — an extension plug hanging from the neighbouring socket, the one incidental owner object
+- SCENE — an ordinary lived-in room photographed as found: aged wood paneling, a slightly scuffed skirting board; ambient mixed warm light from a floor lamp
+- CAMERA TRUTH — framing tilted a few degrees and a little too close, focus adequate, mild noise, honest exposure, no styling of any kind
 Predicted failures: (1) the model beautifying anyway — clean walls, styled
 light (the negative list and avoid line must both fire); (2) screen digits
 drawn as gibberish if the composite step is skipped; (3) product drift under
 casual cropping (G1 check at review).
 
 ### example: bp-monitor-at-rest — skeleton@0.1, run: untested
-```
-A real customer's phone photo, 4:3 ratio. One frame, no layout.
-
-Use the attached product photo as the exact reference for the arm-tunnel blood
-pressure monitor. Preserve shape, proportions, material, finish and color
-exactly. Its factory instruction sticker is still on the side panel.
-
-CONTENT MODE, at-rest: the monitor sits on a kitchen counter where it now
-lives, a folded paper manual beside it — the one incidental owner object.
-
-SCENE: an ordinary kitchen counter photographed as found, crumbs and a faint
-water mark included, another small appliance blurred at the frame edge.
-Flat overhead kitchen light.
-
-CAMERA TRUTH: slightly off-center, a little flat, focus adequate, honest
-exposure, no styling.
-
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-NO text overlays, no logo, no watermark, no badges, no borders.
-```
+Product: arm-tunnel blood pressure monitor · ratio 4:3 · content mode: at-rest · axes: register=ugc
+- FRAMING — the monitor sitting on a kitchen counter where it now lives, its factory instruction sticker still on the side panel
+- ANCHOR — a folded paper manual beside it, the one incidental owner object
+- SCENE — an ordinary kitchen counter photographed as found, crumbs and a faint water mark included, another small appliance blurred at the frame edge; flat overhead kitchen light
+- CAMERA TRUTH — slightly off-centre, a little flat, focus adequate, honest exposure, no styling
 Predicted failures: (1) the sticker rendered with legible invented micro-print
 (must stay illegible-at-size); (2) the counter arriving implausibly clean.
 

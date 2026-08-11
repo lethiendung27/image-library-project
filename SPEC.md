@@ -85,6 +85,13 @@ Optional sections: `SLOT CONSTRAINTS`, `VARIANTS`, `WORKED EXAMPLES`, `KNOWN-FLA
 - `WORKED EXAMPLES`: hard cap **2** per type, curated. Header format (enforced):
   `### example: <slug> — skeleton@<version>, run: <untested|pass|partial|fail>`.
   An example whose skeleton major version lags the type's current major is flagged stale.
+  **Form follows evidence.** An example with `run: pass|partial` keeps its FULL prompt
+  text: that text is the only record of what actually rendered, since the render ledger
+  stores verdicts and not prompts. Every other example is stored **diff-only** — a
+  product-and-parameter line, then one line per skeleton slot carrying only the fill.
+  The skeleton supplies the structure, the example supplies the values, and neither
+  repeats the other (the same rule VARIANTS already follow). An example that is later
+  rendered is rewritten to full text in the same diff that records its verdict.
 - `KNOWN-FLAKY` holds one-off observed failures. Promotion into `SKELETON`/`NEGATIVE`
   requires the ≥2/3 recurrence rule with observation evidence (see 6.2).
 - `CHANGELOG` entries must cite evidence: observation hashes, or for the founding corpus,

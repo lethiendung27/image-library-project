@@ -88,35 +88,10 @@ vignettes too small, overlapping circles, product obscured
 
 ## WORKED EXAMPLES
 ### example: shower-filter — skeleton@1.1, run: untested
-```
-A 1:1 e-commerce infographic tile.
-
-Use the attached product photo as the exact reference for the shower filter. Preserve
-shape, proportions, material, finish and color exactly.
-
-ZONE A (left 72%): A woman in her late 20s with long dark hair stands under a running
-shower in a bright modern bathroom, head tilted back, eyes closed, calm content
-expression. The reference filter is clearly visible screwed between the hose and the
-showerhead above her, unobstructed. Setting: white marble tile, a glass partition, a
-small eucalyptus bundle, soft daylight from a frosted window, background blurred.
-Bright high-key white and warm grey grade. Subject offset left.
-
-ZONE B: Three blue rounded arrows overlaid on the water stream below the filter
-pointing downward, evenly spaced, semi-transparent, fading at the tips, flat vector
-style.
-
-ZONE C (right 26%, vertical band with a soft S-curved left edge): Pale aqua gradient
-panel. Three circular photo vignettes stacked evenly, white ring border, equal
-diameter, generous spacing. Each vignette is a tight crop with no face visible, in
-visible-symptom mode, sharing the hero's lighting and photographic style:
-- top: a hand running through dry brittle hair with strands breaking away, red radial
-  glow at the hair ends
-- middle: a forearm with flaky irritated dry skin, red radial glow on the patch
-- bottom: fingers scratching a scalp at the hairline, red radial glow at the scalp
-
-STYLE: clean e-commerce infographic tile, bright airy, sharp focus, 4K.
-NO text, no logo, no watermark.
-```
+Product: metal shower filter · ratio 1:1 · vignette mode: visible-symptom
+- ZONE A (left 72%) — woman late 20s, long dark hair, under a running shower in a bright modern bathroom, head tilted back, eyes closed, calm content; the reference filter screwed between hose and showerhead above her, unobstructed; white marble tile, glass partition, a eucalyptus bundle, soft daylight from a frosted window, background blurred; bright high-key white and warm grey; subject offset left
+- ZONE B — three BLUE rounded arrows on the water stream below the filter, pointing down, evenly spaced, semi-transparent, fading at the tips, flat vector
+- ZONE C (right 26%, soft S-curved left edge) — pale aqua gradient panel; three circular vignettes, white ring border, equal diameter, no face visible, sharing the hero's light and style: top, a hand through dry brittle hair with strands breaking, red glow at the ends; middle, a forearm with flaky irritated skin, red glow on the patch; bottom, fingers scratching a scalp at the hairline, red glow at the scalp
 Predicted failure: the model regressing to pain-gesture (hands clutching) even in
 visible-symptom mode — the reason the two modes must be named explicitly in the prompt.
 

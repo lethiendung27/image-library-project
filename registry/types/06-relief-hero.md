@@ -206,69 +206,20 @@ No Zone C. Use when the scene carries the whole argument.
 
 ## WORKED EXAMPLES
 ### example: shower-filter-commercial-vsinset — skeleton@1.1, run: untested
-```
-A wide 2:1 e-commerce banner.
-
-Use the attached product photo as the exact reference for the shower filter. Preserve
-its shape, proportions, material, finish and color exactly. Do not redesign or add
-features. The product must be identical in every layer of this image.
-
-MAIN SCENE (right two-thirds): A woman in her late 20s with long dark hair stands under
-a running shower, head tilted back, eyes closed, calm satisfied expression, water
-streaming over her shoulders. The filter is installed above her between the hose and
-the showerhead, seen from a low three-quarter angle, unobstructed. Setting: bright
-modern bathroom, white marble tile, glass partition, a small eucalyptus bundle, soft
-daylight from a frosted window. Background blurred, high-key white and warm grey grade,
-steam catching the light. Subject offset right, empty mid-frame.
-
-PRODUCT VIEW (bottom-left foreground): The same filter from the reference, shown from a
-top-down angle looking into the inlet, floating above the surface, occupying about 25
-percent of the frame width. Studio lighting, soft contact shadow, razor sharp, clean
-cutout edge. Show one unit only.
-
-INSET PANEL (top-left, white 3px border, split 50/50, red circular VS badge at the
-seam): LEFT: desaturated grayscale macro photo of a showerhead nozzle plate caked with
-white limescale, dull uneven dripping water, glowing red hotspots at three clogged
-nozzles. RIGHT: full-color macro photo of a clean nozzle plate spraying clear even
-jets, with a cyan translucent overlay tracing the water path. Both halves photographic,
-right half brighter and cleaner.
-
-STYLE: clean commercial e-commerce banner, bright airy, sharp focus, 4K.
-NO text, no logo, no watermark.
-```
+Product: metal shower filter · ratio 2:1 · axes: register=commercial, inset_mode=vsinset
+- ZONE A — woman late 20s, long dark hair, under a running shower, head tilted back, eyes closed, calm satisfied, water streaming over her shoulders; the filter installed above her between hose and showerhead, low three-quarter angle, unobstructed
+- SETTING — bright modern bathroom filled to the edges: white marble tile, glass partition, eucalyptus bundle, frosted window; background blurred, high-key white and warm grey, steam catching the light; subject offset right, the inset occupying the offset space
+- ZONE B — the same filter top-down looking into the inlet, floating, about 25% of frame width, studio light, soft contact shadow, razor sharp, clean cutout; one unit only
+- ZONE C (top-left, white 3px border, split 50/50, red circular VS badge at the seam) — LEFT: desaturated grayscale macro of a nozzle plate caked with white limescale, dull uneven dripping, red hotspots at three clogged nozzles. RIGHT: full-color macro of a clean plate spraying clear even jets, cyan translucent overlay tracing the water path. Both halves photographic, right brighter and cleaner
 Predicted failure: Zone C right half slipping into 2D illustration against the photo
 macro (register mismatch inside the inset).
 
 ### example: shower-filter-ugc-context — skeleton@1.3, run: untested
-```
-A photograph taken on a phone by an ordinary person, 2:1 ratio.
-
-Use the attached product photo as the exact reference for the shower filter. Preserve
-shape, proportions, material, finish and color exactly. It appears installed in both
-the main scene and the inset. Never handheld.
-
-MAIN SCENE (right two-thirds): A man in his early 40s standing in his own bathroom with
-his eyes closed and his face tilted up under the running shower, water hitting his
-shoulders, an unguarded relaxed expression. The reference filter is fitted above him
-between the arm and the shower head, clearly visible in the upper part of the frame.
-The water spray is the primary subject: dense individual streams and fine mist backlit
-by a window behind him, occupying a large part of the frame and clearly readable at
-small size.
-
-REGISTER: shot on a phone. Slightly overexposed on the tiles and the window, no rim
-light, no negative space. Framing casual and a little too close, tilted a few degrees.
-The bathroom left exactly as it is: shampoo bottles crowded on the corner shelf, a
-razor on the ledge, towels bunched on the rail, water spots on the glass. Not styled,
-not cleaned up.
-
-INSET (top-left corner, rectangular, thin white border): a plain closer shot of the
-same filter installed on the same shower arm, taken from a step back so the whole
-fitting is clear. Same mode of use as the main scene: installed, never in hand. Same
-room, same daylight.
-
-STYLE: casual phone photography, natural, unstyled, honest.
-NO text, no logo, no watermark, no badges, no arrows.
-```
+Product: metal shower filter · ratio 2:1 · axes: register=ugc, inset_mode=context
+- ZONE A — man early 40s standing in his own bathroom, eyes closed, face tilted up under the running shower, water hitting his shoulders, unguarded relaxed expression; the reference filter fitted above him between arm and shower head, clearly visible in the upper frame; installed in every layer, never handheld
+- VISIBLE MECHANISM — the spray is the primary subject: dense individual streams and fine mist backlit by a window behind him, filling a large part of the frame and readable at small size
+- REGISTER OVERRIDE — shot on a phone: slightly overexposed on tiles and window, no rim light, no negative space, framing casual and a little too close, tilted a few degrees; the bathroom left as it is — shampoo bottles crowded on the corner shelf, a razor on the ledge, towels bunched on the rail, water spots on the glass
+- ZONE C (top-left, rectangular, thin white border) — a plain closer shot of the same filter installed on the same shower arm, taken a step back so the whole fitting is clear; same mode of use, same room, same daylight
 Predicted failure: distance — an installed filter high in frame may render at
 unrecognizable size; fallback framing is low-angle, filter + water jet as subject,
 person reduced to a shoulder.

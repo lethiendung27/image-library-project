@@ -96,36 +96,12 @@ cluttered inset, gore, realistic flesh, medical horror
 
 ## WORKED EXAMPLES
 ### example: mouth-tape — skeleton@1.0, run: untested
-```
-A 1:1 3D technical render on a seamless white infinity background. NOT photography.
-
-BASE: A featureless matte white 3D mannequin head and upper chest in profile, no face
-details, no hair, no clothing, no skin tone, lying back as if asleep. The head is
-cross-sectioned along the sagittal plane to reveal the interior airway. Soft even
-studio lighting, subtle grey ambient occlusion only.
-
-ANATOMY CUTAWAY: The nasal cavity, soft palate, tongue and throat rendered inside the
-head silhouette, not floating on top. Tissue in off-white ivory, the open nasal passage
-highlighted with a smooth blue airflow ribbon travelling from the nostril down the
-throat. The collapsed area behind the tongue marked in red.
-
-PRODUCT: A single horizontal strip of mouth tape in soft matte beige placed across the
-closed lips, the only object with a real material finish, slightly textured fabric
-weave, gently rounded corners, sharp silhouette against white.
-
-XCHECK: Two small rounded-square panels side by side in the top-left corner, flat 2D
-vector illustration style, light grey outline, white fill. LEFT: an open mouth in
-profile with orange heat glow at the throat and small motion squiggles for turbulent
-air, red circle with white X above. RIGHT: a closed mouth with a blue airflow arrow
-entering the nose and the yellow tongue resting in neutral position, green circle with
-white check above.
-
-PALETTE LOCK: achromatic white and grey everywhere. The ONLY colors permitted are red
-for collapsed tissue, orange for wrong airflow, blue for correct airflow, yellow for
-structure.
-STYLE: clean medical-technical product render, e-commerce infographic, sharp, 4K.
-NO text, no numbers, no logo, no watermark.
-```
+Product: mouth tape · ratio 1:1
+- BASE — featureless matte white 3D mannequin head and upper chest in profile, no face details, hair, clothing or skin tone, lying back as if asleep, cross-sectioned along the sagittal plane; soft even studio light, subtle grey ambient occlusion, seamless white infinity background
+- ANATOMY CUTAWAY — nasal cavity, soft palate, tongue and throat rendered INSIDE the head silhouette, not floating on top; tissue in off-white ivory; open nasal passage carrying a smooth blue airflow ribbon from nostril down the throat; collapsed area behind the tongue marked red
+- PRODUCT — one horizontal strip of soft matte beige tape across the closed lips, the only object with a real material finish: slightly textured weave, rounded corners, sharp silhouette against white
+- XCHECK (top-left, two rounded-square panels, flat 2D vector, grey outline, white fill) — LEFT: open mouth in profile, orange heat glow at the throat, motion squiggles for turbulent air, red X above; RIGHT: closed mouth, blue airflow arrow entering the nose, yellow tongue neutral, green check above
+- PALETTE LOCK — achromatic white and grey; only red = collapsed tissue, orange = wrong airflow, blue = correct airflow, yellow = structure
 (Pre-dates the G2 rewrite — the PRODUCT paragraph still describes texture; when re-run,
 replace with a G1 reference block + G2-clean placement.)
 Predicted failures: the sagittal head cut sliding into gruesome medical render or into

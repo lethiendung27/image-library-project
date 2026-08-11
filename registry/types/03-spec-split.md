@@ -139,40 +139,13 @@ insets between panels`
 
 ## WORKED EXAMPLES
 ### example: knife-sharpener — skeleton@1.0, run: untested
-```
-A high-contrast technical comparison graphic, 1:1 ratio.
-
-Use the attached product photo as the exact reference for the inset only. Preserve
-shape, proportions, material, finish and color exactly.
-
-SPLIT: a diagonal division running from top-left to bottom-right, edged with a thin
-glowing cyan line. The right half advances into the left.
-
-LEFT PANEL, THE OLD COMPONENT: photographic register, desaturated grayscale. A generic
-unbranded ceramic sharpening rod and a worn steel honing rod lying in a dim drawer, the
-ceramic chipped along its length, the steel scored with deep uneven scratches, metal
-filings and grey dust around them. It must look like a real object photographed in the
-real world.
-
-RIGHT PANEL, THE NEW COMPONENT: 3D render register. A pristine circular abrasive disc
-of the diamond-coated type, its surface covered in a dense uniform field of fine
-crystalline grit catching the light, edge-on so both the flat face and the thin profile
-are visible, cool cyan rim lighting, floating against a dark gradient, sharp reflective
-surfaces. It must look engineered, not photographed.
-
-CENTER BADGE: a large brushed-gold "VS" at the intersection of the diagonal, with a
-burst of warm orange sparks at the seam. Nothing else at the center.
-
-PRODUCT INSET, bottom: the reference sharpener, complete and whole, on a plain white
-background inside a rounded rectangle, occupying about 22 percent of the frame width.
-This is the only place the finished product appears.
-
-HONESTY CONSTRAINT: the left components carry no brand mark, logo or identifiable
-design.
-
-STYLE: high-contrast technical comparison graphic, e-commerce, sharp, 4K.
-NO text beyond the VS badge, no logo, no watermark.
-```
+Product: rolling knife sharpener (inset only) · ratio 1:1 · axes: register=commercial
+- SPLIT — diagonal top-left to bottom-right, edged with a thin glowing cyan line; the right half advances into the left
+- LEFT PANEL, OLD COMPONENT — photographic register, desaturated grayscale: a generic unbranded ceramic sharpening rod and a worn steel honing rod in a dim drawer, ceramic chipped along its length, steel scored with deep uneven scratches, metal filings and grey dust around them; must read as a real object photographed
+- RIGHT PANEL, NEW COMPONENT — 3D render register: a pristine circular diamond-coated abrasive disc, dense uniform crystalline grit catching the light, edge-on so face and profile both read, cool cyan rim light, dark gradient behind, sharp reflective surfaces; must read as engineered, not photographed
+- CENTER BADGE — large brushed-gold VS at the diagonal intersection with a burst of warm orange sparks at the seam; nothing else at center
+- PRODUCT INSET (bottom) — the reference sharpener, complete and whole, on plain white inside a rounded rectangle, about 22% of frame width; the only place the finished product appears
+- HONESTY — the left components carry no brand mark, logo or identifiable design
 Predicted failures: (1) diamond grit rendering as generic roughness — the light-effect
 phrasing above is the mitigation; (2) the VS text coming out mangled — composite in
 post.

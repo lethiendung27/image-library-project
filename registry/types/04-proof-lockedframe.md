@@ -187,49 +187,12 @@ Panel 2: the reference product fitted, the same [medium] clean and evenly damp.
 
 ## WORKED EXAMPLES
 ### example: shower-filter-timelapse-handheld — skeleton@1.3, run: untested
-```
-Three photographs taken on different days, shown as three equal vertical panels, 5:3
-ratio overall, thin white gutters, no outer border. NO graphic overlays, badges, arrows
-or text.
-
-Use the attached product photo as the exact reference for the filter cartridge.
-Preserve shape, proportions, material and finish exactly. It is the same unit in every
-panel, unscrewed and set down for inspection.
-
-HANDHELD CONTINUITY: same bathroom counter, same basin, same daylight direction from
-the left, same rough shooting distance. Shot by the same person on a phone on three
-separate occasions, never on a tripod. Vary naturally between panels: camera position
-shifted 10 to 20 centimetres, camera angle differing by 5 to 10 degrees, the cartridge
-rotated 15 to 30 degrees and resting at a different tilt, placed a few centimetres from
-where it sat before, water droplets scattered differently, the towel at the frame edge
-folded differently, slight drift in exposure and white balance as if shot under
-different daylight. Keep constant: the room, the counter surface, the light direction,
-the identity of the cartridge, and the single thing being compared.
-
-SCENE: a real bathroom counter beside a basin, the cartridge just removed and laid on
-its side, still faintly wet, its open threaded end angled toward the camera so the
-packed filter media inside is visible at the opening. Ordinary real-world detail: water
-spots on the counter, a damp ring under the cartridge, a towel at the edge of frame.
-Overcast daylight from the left, soft, no styling.
-
-THE VARIABLE, the only thing being compared: the color of the filter media visible
-inside the open end. Panel 1: media clean, uniform white and pale grey granules, evenly
-packed. Panel 2: media partly discolored, dull ochre and light rust across the exposed
-surface, uneven, pale granules still showing through. Panel 3: media heavily
-discolored, deep rust brown across the whole exposed surface, the granule texture still
-clearly readable as granules, darker staining at the rim, and light rust staining
-creeping onto the outer shell near the threads.
-
-CONTEXT INTEGRITY: an ordinary inspection moment, a cartridge unscrewed and set on the
-counter. Nothing cut open, propped up or arranged for the camera.
-
-JUDGEMENT RULE: no badge, no glow, no color cue, no arrow. All panels equally neutral.
-The image makes no claim, it only shows the object.
-
-STYLE: honest phone photography, natural, unstyled, slightly imperfect, sharp enough to
-read the media texture.
-NO text, no logo, no watermark.
-```
+Product: metal shower filter cartridge · ratio 5:3 · 3 panels · variant --timelapse · axes: camera_lock=handheld, context_mode=natural-use
+- HANDHELD CONTINUITY — same bathroom counter, basin, daylight from the left and rough shooting distance; shot on a phone on three separate occasions, never a tripod. VARY: camera position 10-20cm, angle 5-10°, cartridge rotated 15-30° at a different tilt and a few cm from where it sat, droplets scattered differently, towel folded differently, slight exposure and white-balance drift. CONSTANT: room, surface, light direction, identity of the cartridge, and the single variable
+- SCENE — the cartridge just removed and laid on its side, still faintly wet, open threaded end angled to camera so the packed media shows at the opening; water spots on the counter, a damp ring under it, a towel at frame edge; overcast daylight from the left
+- THE VARIABLE — colour of the media visible inside the open end. Panel 1: clean, uniform white and pale grey granules, evenly packed. Panel 2: partly discoloured, dull ochre and light rust across the exposed surface, uneven, pale granules still showing. Panel 3: heavily discoloured, deep rust brown across the whole surface, granule texture still clearly readable AS granules, darker staining at the rim, light rust creeping onto the shell near the threads
+- CONTEXT INTEGRITY — an ordinary inspection moment; nothing cut open, propped or arranged for the camera
+- JUDGEMENT — no badge, glow, colour cue or arrow; all panels equally neutral
 Evidence chain: the strict-camera predecessor of this prompt was rendered and READ AS
 CGI (identical droplets, identical tilt across "months") — that run produced the
 handheld mode (v1.3). Panel 3 of that run also drifted into mud; the granularity

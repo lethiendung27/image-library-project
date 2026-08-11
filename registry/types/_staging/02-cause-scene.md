@@ -106,32 +106,13 @@ saturated colors, product placement, new undamaged objects presented as evidence
 
 ## WORKED EXAMPLES
 ### example: furniture-mover-scratched-floor — skeleton@0.1, run: untested
-```
-A documentary photograph, 5:3 ratio. Single frame. NO graphic overlays,
-no signal colors.
-
-PROTAGONIST: a dark hardwood living-room floor scored with long pale scratch
-trails where heavy furniture has been dragged — the gouges catch the window
-light and run diagonally through the frame's center. Inflicted-damage mode:
-the marks are fresh, splintered at the edges, unmistakably recent.
-
-HUMANS, ANONYMOUS: two movers carry a fabric sofa through the upper frame,
-their heads cropped out by the framing, bodies in plain work clothes.
-No face visible anywhere.
-
-MOMENT RULE: an ordinary mid-move minute — boxes half-packed against the
-wall, one box open with packing paper spilling out.
-
-ENVIRONMENT: a lived-in family living room mid-relocation, window light
-raking low across the floor so every scratch throws a shadow.
-
-LIGHT: natural window light only, low and directional. No fill, no styling.
-
-GRADE: full black-and-white, fine grain, deep blacks, believable 35mm optics.
-
-STYLE: editorial documentary photography, natural, unstaged.
-NO overlay text, no logo, no watermark.
-```
+Product: none in frame · ratio 5:3 · mode: inflicted-damage
+- PROTAGONIST — a dark hardwood living-room floor scored with long pale scratch trails from dragged furniture, gouges catching window light and running diagonally through the frame's centre; marks fresh, splintered at the edges, unmistakably recent
+- HUMANS, ANONYMOUS — two movers carry a fabric sofa through the upper frame, heads cropped out by the framing, plain work clothes, no face visible anywhere
+- MOMENT — an ordinary mid-move minute: boxes half-packed against the wall, one open with packing paper spilling out
+- ENVIRONMENT — a lived-in family living room mid-relocation, window light raking low across the floor so every scratch throws a shadow
+- LIGHT — natural window light only, low and directional, no fill, no styling
+- GRADE — full black-and-white, fine grain, deep blacks, believable 35mm optics
 Predicted failures: (1) the model adding a visible face on the movers —
 faceless framing is an unusual ask; (2) scratch trails rendering as wood grain
 instead of damage — the raking-light instruction is the mitigation.

@@ -105,42 +105,13 @@ studio lighting, empty background, unrelated location
 
 ## WORKED EXAMPLES
 ### example: shower-filter-hallway — skeleton@1.0, run: untested
-```
-A candid documentary photograph, 5:3 ratio. One scene, one inset overlay.
-
-Use the attached product photo as the exact reference for the shower filter. Preserve
-shape, proportions, material, finish and color exactly. The filter must appear
-identical in the scene and in the inset, same colorway, same finish.
-
-CHARACTER A, THE ADVOCATE: A woman in her early 40s in a soft grey sweatshirt, hair
-damp, standing in a hallway doorway, face turned toward camera, mid-sentence, warm
-relaxed expression, pointing with her right hand through the open bathroom door toward
-the shower. The pointing gesture forms a clear diagonal line ending exactly at the
-filter fitted above the showerhead.
-
-CHARACTER B, THE LISTENER: A woman in her late 20s in a casual jacket holding a mug,
-seen from behind, face not visible, head turned to follow the pointing gesture, gaze
-parallel to the pointing line.
-
-PRODUCT IN SCENE: The reference filter installed between the hose and the showerhead,
-visible through the open doorway, partially framed by the door edge, sitting exactly
-where the pointing line terminates.
-
-INSET: Circular white cutout containing the reference filter on a plain white
-background, positioned just below and left of the pointing hand, never opposite it,
-occupying about 18 percent of the frame width. Clean edge, no border, no connecting
-arrow. Colorway matching the in-scene product exactly.
-
-ENVIRONMENT: An ordinary apartment hallway opening into a small bathroom, a laundry
-basket on the floor, a towel over the rail, a plant on a shelf. Flat natural daylight,
-no dramatic shadows, nothing styled.
-
-COMPOSITION RULE: the pointing arm and the listener's gaze must converge on the filter.
-Nothing else in the frame may compete for attention.
-
-STYLE: candid lifestyle photography, natural, unposed, sharp, 4K.
-NO text, no logo, no watermark, no arrows, no badges.
-```
+Product: metal shower filter · ratio 5:3 · multi-pass (inset composited)
+- ADVOCATE — woman early 40s in a soft grey sweatshirt, hair damp, standing in a hallway doorway, face to camera, mid-sentence, warm relaxed expression, pointing with her right hand through the open bathroom door toward the shower; the gesture forms a clear diagonal ending exactly at the filter
+- LISTENER — woman late 20s in a casual jacket holding a mug, seen from behind, FACE NOT VISIBLE, head turned to follow the gesture, gaze parallel to the pointing line
+- PRODUCT IN SCENE — the reference filter installed between hose and showerhead, visible through the open doorway, partially framed by the door edge, exactly where the pointing line terminates
+- INSET — circular white cutout of the reference filter on plain white, just below and left of the pointing hand (never opposite), about 18% of frame width, clean edge, no border, no connecting arrow, colorway matching the in-scene product exactly
+- ENVIRONMENT — ordinary apartment hallway opening into a small bathroom, a laundry basket on the floor, a towel over the rail, a plant on a shelf; flat natural daylight, no dramatic shadows
+- COMPOSITION — pointing arm and listener's gaze converge on the filter; nothing else competes
 Predicted failures (this is a deliberate avoid_when boundary probe — a private-use
 product): (1) the filter beyond a doorway shrinking to unrecognizable pixels, voiding
 the pointing line — candidate hard rule if confirmed: in-scene product ≥8% of frame

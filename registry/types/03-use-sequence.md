@@ -100,38 +100,12 @@ inconsistent palette, staged perfection
 
 ## WORKED EXAMPLES
 ### example: shower-filter-install — skeleton@1.0, run: untested
-```
-A warm lifestyle photograph, 1:1 ratio, three horizontal panels stacked vertically,
-thin white gutters, no outer border, no numbers, no arrows, no text.
-
-Use the attached product photo as the exact reference for the shower filter. Preserve
-shape, proportions, material, finish and color exactly in every panel.
-
-CONTINUITY LOCK: the same pair of hands in every panel, same skin tone, same nails,
-same wrists, sleeves pushed up. The same chrome shower arm and the same white tiled
-wall in every panel. Same warm neutral palette, same soft daylight from the left
-throughout. Camera distance may vary between panels and framing may shift naturally.
-
-SEQUENCE RULE: one action per panel, never two. The order must be readable from the
-actions alone. The filter sits near the center of every panel.
-
-PANEL 1, PREPARE: both hands unscrewing the existing shower head from the arm, the
-head coming free, the bare threaded arm visible. Close range.
-
-PANEL 2, USE: one hand holding the reference filter against the threaded arm, the
-other hand turning it into place, mid-motion, thread engaging.
-
-PANEL 3, RESULT: the filter fitted and the shower head reattached below it, water
-running in a clean even spray, backlit from the window so the individual streams and
-fine mist are clearly visible. One hand held open under the flow, palm up, fingers
-relaxed. Warmer light than the previous panels.
-
-ENVIRONMENT: an ordinary home bathroom, soft daylight, a folded towel on a rail, a
-small plant on the sill. Same location across all three panels.
-
-STYLE: warm lifestyle product photography, natural, unstyled, sharp, 4K.
-NO text, no numbers, no logo, no watermark, no arrows, no step markers.
-```
+Product: metal shower filter · ratio 1:1 · 3 panels stacked · axes: camera_lock=handheld
+- CONTINUITY LOCK — the same pair of hands in every panel (same skin tone, nails, wrists, sleeves pushed up); the same chrome shower arm and white tiled wall throughout; same warm neutral palette, same soft daylight from the left; camera distance and framing may shift naturally
+- PANEL 1, PREPARE — both hands unscrewing the existing shower head from the arm, the head coming free, the bare threaded arm visible; close range
+- PANEL 2, USE — one hand holding the reference filter against the threaded arm, the other turning it into place, mid-motion, thread engaging
+- PANEL 3, RESULT — filter fitted, shower head reattached below it, water running in a clean even spray backlit from the window so individual streams and fine mist read; one hand held open under the flow, palm up, fingers relaxed; warmer light than the previous panels
+- ENVIRONMENT — ordinary home bathroom, soft daylight, a folded towel on a rail, a small plant on the sill; same location in all three panels
 Predicted failures: (1) close-range hands manipulating hardware — highest extra-finger
 risk in the library; (2) panel 3 demands both "result visible" and "product centered",
 which compete for space — if it breaks, split the slot: either the result or the

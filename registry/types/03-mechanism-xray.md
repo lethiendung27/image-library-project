@@ -102,37 +102,12 @@ exploded parts view, rainbow palette, bright white background, cartoon style
 
 ## WORKED EXAMPLES
 ### example: electric-spray-comb — skeleton@1.0, run: untested
-```
-A 1:1 3D technical see-through render. NOT photography. Dark engineering background.
-
-Use the attached product photo as the exact reference for the electric spray massage
-comb. The outer shell becomes translucent, but its silhouette, proportions and every
-visible external part — the oval head, the button, the handle, the massage bristles —
-must match the reference exactly. Do not redesign or add features.
-
-CANVAS: a deep navy engineering canvas with faint copper and cyan circuit-board traces
-at very low contrast, and two corner blueprint micro-diagrams of an atomizer module.
-Motifs stay dim.
-
-GHOST SHELL: the comb rendered with its cream shell translucent and glass-like, lying
-horizontally with the head to the right, filling about 70 percent of the frame width.
-
-INTERNALS: rendered solid and detailed inside the shell, each at its true location: a
-small cylindrical lithium battery inside the handle, a compact control board with fine
-colored wiring behind the button, a small serum reservoir and an ultrasonic atomizer
-module inside the head above the bristle bed.
-
-VISIBLE MECHANISM: the atomizer shown ACTIVE, a fine mist of particles streaming out
-of the head to the right, the brightest element in the frame.
-
-HONESTY CONSTRAINT: render only these component types. No text, numbers or spec labels
-anywhere in the image.
-
-PALETTE LOCK: deep navy and steel grey throughout; cyan/blue marks the working
-mechanism; copper traces stay decorative and dim.
-STYLE: premium technical product visualization, sharp, high detail, 4K.
-NO text, no numbers, no logo, no watermark.
-```
+Product: electric spray massage comb · ratio 1:1
+- CANVAS — deep navy engineering canvas, faint copper and cyan circuit traces at very low contrast, two corner blueprint micro-diagrams of an atomizer module, all dim
+- GHOST SHELL — the comb lying horizontally, head to the right, cream shell translucent and glass-like, silhouette matching the reference (oval head, button, handle, bristles), filling about 70% of frame width
+- INTERNALS — small cylindrical lithium battery in the handle; compact control board with fine colored wiring behind the button; serum reservoir and ultrasonic atomizer module in the head above the bristle bed
+- VISIBLE MECHANISM — the atomizer ACTIVE, a fine mist of particles streaming out of the head to the right, the brightest element in the frame
+- PALETTE LOCK — deep navy and steel grey; cyan/blue marks the working mechanism; copper traces stay decorative and dim
 Predicted failures: (1) the model adding a spec label anyway (the exemplar it learns
 from carries one) — the explicit text ban plus avoid-line must both fire; (2) shell
 silhouette drifting from the reference once transparency is requested — if it recurs,

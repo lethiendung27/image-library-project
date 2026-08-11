@@ -107,30 +107,13 @@ step numbers, instruction-manual look
 
 ## WORKED EXAMPLES
 ### example: pedal-trainer-positions-2x2 — skeleton@0.1, run: untested
-```
-A 1:1 photographic grid, four equal square cells, thin white gutters, no outer
-border, no numbers, no arrows, no text.
-
-Use the attached product photo as the exact reference for the pedal resistance
-trainer. Preserve shape, proportions, material, finish and color exactly in
-every cell.
-
-CELL VARIABLE, positions: the same woman in the same pale studio in every cell,
-same braided hair, same outfit, same soft light; only the exercise changes.
-Cell 1: lying leg-raise, feet in the pedals, rope tensioned overhead.
-Cell 2: seated V-sit row, mid-pull, back straight.
-Cell 3: seated forward row, rope drawn to the waist.
-Cell 4: kneeling overhead pull, arms extended behind the head.
-
-CONSTANCY LOCK: the person, wardrobe, set, light and grade are identical across
-cells; the trainer is identical in every cell; only the position varies.
-
-CELL LAW: each cell a real mid-action moment, product legible at thumbnail
-size, natural Z reading order from easiest to hardest movement.
-
-STYLE: bright commercial fitness photography, one register, consistent grade.
-NO text, no numbers, no logo, no watermark, no badges, no arrows.
-```
+Product: pedal resistance trainer · ratio 1:1 · cell variable: positions · 2x2
+- CONSTANCY LOCK — the same woman in the same pale studio in every cell: same braided hair, same outfit, same soft light, same grade; the trainer identical throughout; only the exercise varies
+- CELL 1 — lying leg-raise, feet in the pedals, rope tensioned overhead
+- CELL 2 — seated V-sit row, mid-pull, back straight
+- CELL 3 — seated forward row, rope drawn to the waist
+- CELL 4 — kneeling overhead pull, arms extended behind the head
+- CELL LAW — each cell a real mid-action moment, product legible at thumbnail size, natural Z reading order from easiest to hardest movement
 Predicted failures: (1) face/outfit drift between cells (the same-person lock is
 the make-or-break — if it recurs, switch to multi-pass edit chains); (2) the
 model adding step numbers from instruction-manual priors; (3) rope physics

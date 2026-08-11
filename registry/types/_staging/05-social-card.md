@@ -141,38 +141,12 @@ it must not impersonate a reviewer.
 
 ## WORKED EXAMPLES
 ### example: l-cushion-office-verbatim — skeleton@0.3, run: untested
---verbatim layout. Quote and name taken verbatim from the product's own landing-page
-reviews section (ErgoSupport L-Shape Cushion, flunnel export 2026-08-06); the scene
-persona is matched to the quoted reviewer. Ship only if the page's reviews are
-genuine; otherwise drop the attribution line (--illustrative).
-```
-A 3:2 bright lifestyle photograph with a testimonial card overlay.
-
-Use the attached product photo as the exact reference for the L-shape seat cushion.
-Preserve shape, proportions, material, finish and color exactly.
-
-HERO BASE: A woman in her late 30s in a soft knit top sits sideways on her office
-chair at a tidy home-office desk, turning toward the window with a relaxed
-closed-eyes laugh, one hand holding a warm mug — the unguarded ease of an afternoon
-without back ache. The reference cushion is clearly visible on the chair she sits
-on, hugging the junction of seat and backrest, unobstructed. Late-afternoon window
-light, a laptop and a small plant on the desk. She is offset to the right third of
-the frame. The left 40 percent of the frame is calm negative space: a plain
-warm-grey wall, gently out of focus. Bright, airy, warm grade.
-
-REVIEW CARD: A clean white rounded-corner card floats over the left negative space,
-occupying about a third of the frame width, soft drop shadow, generous padding.
-On the card, top to bottom: a row of five golden stars; below it, in friendly dark
-sans-serif, large and legible, exactly this quote:
-"Finally, my back doesn't ache by the end of the day."
-Below the quote, a smaller lighter attribution line, exactly this text:
-"— Laura"
-Render all card text exactly, character for character, cleanly kerned, no
-misspellings. No other text anywhere in the image.
-
-STYLE: clean lifestyle photography for e-commerce, bright, natural, sharp, 4K.
-No lettering outside the card beyond the product's own label. No logo, no watermark.
-```
+Product: ErgoSupport L-shape seat cushion · ratio 3:2 · variant --verbatim
+- SOURCE — quote and name taken verbatim from the product's own landing-page reviews (flunnel export 2026-08-06); ship only if those reviews are genuine, otherwise drop the attribution and run --illustrative
+- HERO BASE — woman late 30s in a soft knit top sitting sideways on her office chair at a tidy home-office desk, turning toward the window with a relaxed closed-eyes laugh, one hand holding a warm mug; the reference cushion clearly visible on the chair, hugging the seat-backrest junction, unobstructed; late-afternoon window light, a laptop and a small plant; offset to the right third
+- NEGATIVE SPACE — the left 40% is calm: plain warm-grey wall, gently out of focus
+- REVIEW CARD — white rounded card over the left negative space, about a third of frame width, soft drop shadow, generous padding; five golden stars, then the quote in friendly dark sans-serif, large and legible: "Finally, my back doesn't ache by the end of the day."; below it a smaller lighter attribution line: "— Laura"
+- GLYPH GATE — render all card text exactly, character for character, cleanly kerned; no other text anywhere in the image
 Predicted failures: (1) glyph errors across the TWO text lines (quote +
 attribution) — proofread character by character, regenerate on any miss; (2) the
 cushion hidden by the sitter — seat products live UNDER people; the

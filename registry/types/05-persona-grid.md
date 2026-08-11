@@ -104,42 +104,14 @@ rule in fifth-size cells.
 
 ## WORKED EXAMPLES
 ### example: knife-sharpener — skeleton@1.1, run: untested
-```
-A 1:1 photographic lifestyle collage, layout one large cell on the right and three
-stacked cells on the left, thin white 4px gutters, no outer border, no graphic
-overlays.
-
-Use the attached product photo as the exact reference for the knife sharpener. Preserve
-shape, proportions, material, finish and color exactly across all cells.
-
-MUST MATCH: warm cream, pale oak, soft white and matte black palette. Soft diffused
-daylight in every cell, never harsh or colored. One product colorway throughout. Same
-lens character, contrast and skin rendering.
-
-MUST DIFFER: age, gender, environment, camera angle and shot distance in every cell.
-
-The product must be clearly visible and unobstructed in every cell, occupying at least
-15 percent of that cell's height.
-
-HERO CELL (large, right): A woman in her early 30s in a cream linen apron sharpens a
-chef's knife on a pale oak counter in a bright modern kitchen, looking down with a
-focused satisfied expression. Camera: waist-level frontal, medium shot.
-
-SUPPORT CELL 1 (top left): A man in his late 60s with grey hair sharpens a small paring
-knife at a rustic wooden counter, relaxed. Camera: eye-level side profile, wide shot
-showing the room.
-
-SUPPORT CELL 2 (middle left): A young man in his 20s sharpens a santoku in a narrow
-apartment kitchen at night, warm lamp light kept soft. Camera: high three-quarter
-looking down over his hands, close crop on the interaction.
-
-SUPPORT CELL 3 (bottom left): A woman in her 40s sharpens a hunting knife on a wooden
-picnic table outdoors, blurred trees behind. Camera: low angle from table height,
-medium shot.
-
-STYLE: clean lifestyle collage for e-commerce, bright airy, sharp focus, 4K.
-NO text, no logo, no watermark, no badges, no arrows.
-```
+Product: rolling knife sharpener · ratio 1:1 · variant --1plus3
+- MUST MATCH — warm cream, pale oak, soft white and matte black palette; soft diffused daylight in every cell, never harsh or coloured; one product colorway throughout; same lens character, contrast and skin rendering
+- MUST DIFFER — age, gender, environment, camera angle and shot distance in every cell
+- PRODUCT VISIBILITY — clearly visible and unobstructed in every cell, at least 15% of that cell's height
+- HERO CELL (large, right) — woman early 30s in a cream linen apron sharpening a chef's knife on a pale oak counter in a bright modern kitchen, looking down, focused and satisfied; waist-level frontal, medium shot
+- SUPPORT 1 (top left) — man late 60s, grey hair, sharpening a small paring knife at a rustic wooden counter, relaxed; eye-level side profile, wide shot showing the room
+- SUPPORT 2 (middle left) — man in his 20s sharpening a santoku in a narrow apartment kitchen at night, warm lamp light kept soft; high three-quarter over his hands, close crop
+- SUPPORT 3 (bottom left) — woman in her 40s sharpening a hunting knife on a wooden picnic table outdoors, blurred trees behind; low angle from table height, medium shot
 Predicted failures: (1) a handheld product this small dropping under 15% in the support
 cells — the deliberate stress test of the avoid_when threshold; (2) knives in many
 hands tripping safety filters or producing deformed hands.

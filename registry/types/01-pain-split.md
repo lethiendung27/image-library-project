@@ -139,65 +139,21 @@ cleaner (G4).
 
 ## WORKED EXAMPLES
 ### example: knife-sharpener-object — skeleton@1.1, run: untested
-```
-A 1:1 e-commerce comparison tile, hard vertical split 50/50, thin white outer border.
-
-LEFT PANEL: Desaturated grayscale close-up of a woman's hands pressing hard with a dull
-kitchen knife into a ripe tomato on a wooden board, the tomato skin tearing and
-crushing, juice and seeds squeezed out, knuckles white from force. Glowing red hotspots
-on the crushed tomato flesh, the knife edge, and the straining wrist, soft red radial
-glow, red jagged marks along the blade edge. Neutral cropped background, hands fill the
-frame.
-
-RIGHT PANEL: Full-color close-up of the same hands gliding a knife through a tomato in
-one clean pass, producing paper-thin uniform slices fanned on a light wood board. The
-reference rolling knife sharpener sits beside the board in soft focus. Clean
-uncluttered marble counter, bright even daylight, noticeably brighter and cleaner than
-the left panel.
-
-BADGES: Red circle with a white X in the top-left corner of the left panel. Green
-circle with a white check in the top-right corner of the right panel. Both flat, solid,
-identical diameter.
-
-STYLE: e-commerce comparison tile, high contrast, sharp. Both panels must share the
-same lighting register, camera distance and shooting style.
-NO text, no logo, no watermark.
-```
+Product: rolling knife sharpener · ratio 1:1 · variant --object
+- LEFT PANEL — desaturated grayscale close-up of a woman's hands pressing hard with a dull knife into a ripe tomato on a wooden board, skin tearing, juice and seeds squeezed out, knuckles white; hands fill the frame, neutral cropped background
+- HOTSPOTS — 3: crushed tomato flesh, knife edge, straining wrist; soft red radial glow, red jagged marks along the blade edge
+- RIGHT PANEL — full-color close-up of the same hands gliding through a tomato in one pass, paper-thin uniform slices fanned on light wood; the reference sharpener beside the board in soft focus; clean marble counter, bright even daylight, brighter and cleaner than the left
+- BADGES — red circle with white X top-left of left panel, green circle with white check top-right of right panel, flat, solid, identical diameter
 Predicted failures: close-up hands holding a knife in both panels (weakest model
 skill); "3 points" degrading into scattered hotspots; knife + red possibly tripping
 safety filters.
 
 ### example: mouth-tape-mirror — skeleton@1.2, run: untested
-```
-A 1:1 e-commerce comparison tile, hard vertical split 50/50, thin white outer border.
-
-Use the attached product photo as the exact reference for the mouth tape. Preserve
-shape, proportions, material and color exactly.
-
-LEFT PANEL, THE PROBLEM: Desaturated grayscale photo of a man in his late 30s in a
-plain grey t-shirt lying on his back in bed, head on a pillow, mouth hanging open, brow
-furrowed, neck slightly strained, one arm thrown across the duvet. Shot from a high
-three-quarter angle above the pillow. Neutral cropped background, subject fills the
-frame.
-
-RIGHT PANEL, THE ANSWER: Full-color photo of the same man in the same bed, same
-t-shirt, same pillow, same camera angle, same distance, same framing, now lying relaxed
-with his mouth closed, jaw soft, brow smooth, both arms resting easily at his sides.
-The reference mouth tape is on his lips, secondary to him. Brighter, warmer and cleaner
-than the left panel, but the same lighting setup and time of day. Only the grade
-differs.
-
-MIRROR RULE: both panels show the same person in the same shot. The only differences
-permitted are posture, expression, presence of the product, and color grade.
-
-BADGES: Red circle with a white X in the top-left corner of the left panel. Green
-circle with a white check in the top-right corner of the right panel. Flat, solid, same
-diameter. No VS badge, no third marker.
-
-STYLE: e-commerce comparison tile, high contrast, sharp. Both panels share the same
-lighting register and shooting style.
-NO text, no logo, no watermark.
-```
+Product: mouth tape · ratio 1:1 · variant --mirror · multi-pass
+- LEFT PANEL — desaturated grayscale, man late 30s in a plain grey t-shirt lying on his back in bed, head on the pillow, mouth hanging open, brow furrowed, neck slightly strained, one arm thrown across the duvet; high three-quarter angle above the pillow; hotspots dropped per the variant
+- RIGHT PANEL — the same man, same bed, same t-shirt, same pillow, same angle, distance and framing, now relaxed with mouth closed, jaw soft, brow smooth, both arms resting; the reference tape on his lips, secondary to him; brighter, warmer, cleaner, same lighting setup and time of day, only the grade differs
+- MIRROR RULE — only posture, expression, presence of the product and grade may differ
+- BADGES — X top-left, check top-right, flat, solid, same diameter; no VS, no third marker
 Predicted failure: same-face consistency across independently generated panels — this
 is why the variant is multi-pass (generate left, edit into right, composite).
 

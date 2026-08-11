@@ -110,31 +110,12 @@ insets, split frames, dark gothic grading, oil sheen added for drama
 
 ## WORKED EXAMPLES
 ### example: drill-shear-gearhead — skeleton@0.1, run: untested
-```
-A 1:1 polished commercial studio macro photograph, extreme close range.
-
-Use the attached product photo as the exact reference for the drill-mounted
-metal shear attachment. The magnified region must be a true region of the
-reference: the gear-cut drive wheel, its bearing race and the hex arbor
-bolt, same geometry, material and finish. Do not redesign or add features.
-
-MACRO SUBJECT: the gear-cut drive wheel filling about 80 percent of the
-frame, every machined tooth individually resolved, the bearing race and hex
-bolt sharp behind it. LIGHT BEHAVIOR: one crisp glint per tooth edge along
-the light side, matte tool-steel grain between teeth, no bloom.
-
-ACTION ANCHOR: the wheel caught mid-cut through galvanized sheet metal, a
-clean curl of cut steel sweeping behind the head, physically plausible,
-motion minimal.
-
-SCALE WITNESS: the sheet metal itself at the frame edge.
-
-SIGNAL SILENCE: no glow, no emblem, no highlight colors — bare machined
-steel carries the argument.
-
-STYLE: premium macro product photography, razor sharp, high detail, 4K.
-NO text, no numbers, no logo, no watermark, no badges.
-```
+Product: drill-mounted metal shear attachment · ratio 1:1
+- MACRO SUBJECT — the gear-cut drive wheel filling about 80% of the frame, every machined tooth individually resolved, bearing race and hex arbor bolt sharp behind it; the magnified region is a true region of the reference
+- LIGHT BEHAVIOUR — one crisp glint per tooth edge along the light side, matte tool-steel grain between teeth, no bloom
+- ACTION ANCHOR — the wheel caught mid-cut through galvanised sheet metal, a clean curl of cut steel sweeping behind, physically plausible, motion minimal
+- SCALE WITNESS — the sheet metal itself at the frame edge
+- SIGNAL SILENCE — no glow, no emblem, no highlight colours; bare machined steel carries the argument
 Predicted failures: (1) generic knurling instead of countable gear teeth (the
 verified carry-over risk — the light-behavior line is the mitigation);
 (2) the cut curl rendering as soft ribbon instead of metal; (3) a cyan rim

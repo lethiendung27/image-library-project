@@ -117,35 +117,11 @@ rainbow palette, cartoon style
 
 ## WORKED EXAMPLES
 ### example: mini-camera-fullframe — skeleton@0.1, run: untested
-```
-A 16:9 3D technical render. NOT photography. Dark engineering background.
-
-Use the attached product photo as the exact reference for the mini security
-camera. Every outer part — the clear upper shell, the red-ringed lens, the
-black chassis, the USB-C port — must match the reference exactly. Do not
-redesign or add features.
-
-CANVAS: a deep navy engineering canvas with faint cyan traces at very low
-contrast, dim.
-
-FRAMING, full-frame: the exploded stack fills about 70 percent of the frame.
-
-EXPLODE STACK: the camera separated vertically into five real component
-groups in true assembly order, evenly spaced, each solid and detailed: the
-clear upper shell; the lens module with its red identity ring; the populated
-main board with visible chips; the flat battery cell; the black lower chassis
-with its USB-C port. Nothing rotated out of line, nothing duplicated.
-
-HONESTY CENSUS: render only these component types at plausible sizes.
-
-FOCUS COMPONENT: the populated main board, brightest and most detailed, near
-the visual center, a faint cyan glow marking it. The lens ring's red stays
-exactly as the reference shows it.
-
-NO text, no numbers, no part labels, no callout lines.
-STYLE: premium technical product visualization, sharp, high detail, 4K.
-NO text, no logo, no watermark.
-```
+Product: mini security camera · ratio 16:9 · framing: full-frame
+- CANVAS — deep navy engineering canvas, faint cyan traces at very low contrast, dim
+- STACK — the camera separated vertically into five real component groups in true assembly order, evenly spaced, each solid and detailed: clear upper shell; lens module with its red identity ring; populated main board with visible chips; flat battery cell; black lower chassis with its USB-C port. Nothing rotated out of line, nothing duplicated; the stack fills about 70% of the frame
+- HONESTY CENSUS — only these component types, at plausible sizes
+- FOCUS COMPONENT — the populated main board, brightest and most detailed, near the visual centre, a faint cyan glow marking it; the lens ring's red stays exactly as the reference shows it
 Predicted failures: (1) the model inventing extra boards/screws to fill the
 stack (the census rule and avoid line must both fire); (2) parts drifting
 off-axis into a decorative cloud; (3) the battery rendering as a second PCB.

@@ -98,41 +98,13 @@ cluttered motifs, anatomically wrong structures
 
 ## WORKED EXAMPLES
 ### example: shower-filter-hair-strand — skeleton@1.0, run: untested
-```
-A 2D medical illustration, 5:3 ratio, airbrushed textbook style. NOT photography.
-NOT 3D render.
-
-CANVAS: One continuous pale blue clinical gradient background shared by both panels,
-divided by a single thin vertical line, not a hard split. Background motifs at very low
-opacity: hexagon mesh, faint water-drop icons, an oversized ghosted cross-section of a
-hair strand as a watermark. A ghosted silhouette of a showerhead behind the left panel.
-
-SUBJECT TREATMENT, both panels: a magnified longitudinal cross-section of a single hair
-strand drawn in warm ivory as the top layer, its cuticle scales clearly defined, the
-surrounding water reduced to a translucent glowing outline behind it. Same strand, same
-scale, same viewing angle in both panels.
-
-LEFT PANEL, WRONG: The hair strand under falling untreated water, with hard water
-minerals drawn as small angular crystals. The cuticle scales lifted, splayed open and
-chipped, highlighted in red. A red curved line tracing the roughened outer surface. A
-red dashed reference line along the cuticle surface, clearly JAGGED AND UNEVEN. A red
-double-headed curved arrow along the strand showing mineral scale accumulating on it.
-Red circle with white X badge in the corner.
-
-RIGHT PANEL, CORRECT: The same strand under filtered water, no crystals. The cuticle
-scales lying flat, closed and overlapping, highlighted in blue. A soft blue aura along
-the smooth outer surface. A blue dashed reference line at the same cuticle surface,
-clearly SMOOTH AND EVEN. Green circle with white check badge in the corner. Brighter
-and cleaner than the left panel.
-
-MEASUREMENT RULE: the paired dashed reference lines are the core argument. Identical
-position, thickness and dash pattern, differing ONLY in how even they run.
-
-PALETTE LOCK: pale blue and ivory throughout. The ONLY signal colors permitted are red
-for damage, blue for healthy, green for the confirmation badge.
-STYLE: clinical medical illustration, e-commerce infographic, crisp linework, 4K.
-NO text, no numbers, no logo, no watermark.
-```
+Product: none in frame (G1-exempt) · ratio 5:3
+- CANVAS — one continuous pale blue clinical gradient shared by both panels, divided by a single thin vertical line; low-opacity motifs: hexagon mesh, faint water-drop icons, an oversized ghosted hair cross-section watermark, a ghosted showerhead silhouette behind the left panel
+- SUBJECT TREATMENT (both panels) — magnified longitudinal cross-section of ONE hair strand in warm ivory as the top layer, cuticle scales clearly defined, surrounding water reduced to a translucent glowing outline behind; same strand, scale and viewing angle both sides
+- LEFT PANEL, WRONG — strand under untreated water, hard-water minerals as small angular crystals; cuticle scales lifted, splayed and chipped, highlighted red; red curved line tracing the roughened surface; red dashed reference line, JAGGED AND UNEVEN; red double-headed arrow showing scale accumulating; red X badge in the corner
+- RIGHT PANEL, CORRECT — same strand under filtered water, no crystals; scales flat, closed, overlapping, highlighted blue; soft blue aura along the smooth surface; blue dashed reference line at the same position, SMOOTH AND EVEN; green check badge; brighter and cleaner than the left
+- MEASUREMENT RULE — the paired dashed lines are the argument: identical position, thickness and dash pattern, differing only in how evenly they run
+- PALETTE LOCK — pale blue and ivory throughout; red = damage, blue = healthy, green = confirmation badge, nothing else
 Predicted failure: the exemplar's dashed lines differ by ANGLE (a clean binary the
 model draws reliably); this test substitutes EVENNESS, a fuzzy variable — the two lines
 will likely render identical and the argument collapses. See NOTES.

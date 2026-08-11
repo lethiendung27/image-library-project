@@ -108,30 +108,10 @@ thumbs-up to camera, red glows, dark grade, product obscured
 
 ## WORKED EXAMPLES
 ### example: chopper-outputs-band — skeleton@0.1, run: untested
-```
-A 1:1 clean e-commerce capability tile.
-
-Use the attached product photo as the exact reference for the mini electric
-chopper. Preserve shape, proportions, material, finish and color exactly, in
-the hero and in every band cell where its output appears.
-
-ZONE A (top 65%): a cook's hands press the chopper's button at a warm wooden
-counter mid-prep, the transparent bowl half-filled with chopped onion, herbs
-and a cutting board beside, soft window light, background blurred. The chopper
-clearly visible, centered, unobstructed.
-
-ZONE B (bottom 35%, horizontal band, straight edge): a pale warm-grey panel
-holding three rounded-rectangle white-bordered vignettes, equal size, generous
-spacing, band content OUTPUTS, each cell one real result photographed in the
-same light and grade as the hero:
-- left: a small bowl of fine garlic mince
-- center: a bowl of red chili paste
-- right: a bowl of pale green herb puree
-Ordered by frequency of use. No cell carries text or badges.
-
-STYLE: clean e-commerce capability tile, bright, sharp, 4K.
-NO text, no logo, no watermark, no badges, no checks, no arrows.
-```
+Product: mini electric chopper · ratio 1:1 · band content: outputs · band on the bottom edge
+- ZONE A (top 65%) — a cook's hands press the chopper's button at a warm wooden counter mid-prep, transparent bowl half-filled with chopped onion, herbs and a cutting board beside; soft window light, background blurred; the chopper centred and unobstructed
+- ZONE B (bottom 35%, horizontal band, straight edge) — pale warm-grey panel holding three rounded-rectangle white-bordered vignettes, equal size, generous spacing, each one real result photographed in the hero's light and grade: left, fine garlic mince; centre, red chilli paste; right, pale green herb puree
+- ORDER — by frequency of use; no cell carries text or badges
 Predicted failures: (1) the model stamping checks or numbers onto band cells
 (instruction-tile priors — the negative must fire); (2) band bowls rendering in
 studio-white light against the warm hero (the G5 register law is the fragile

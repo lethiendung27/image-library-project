@@ -106,36 +106,13 @@ reflection out of focus, product in frame, saturated colors, stock photo look
 
 ## WORKED EXAMPLES
 ### example: mouth-tape-morning-commute — skeleton@1.0, run: untested
-```
-A candid documentary photograph, 5:3 ratio. Single frame. NO graphic overlays.
-
-SUBJECT: A man in his late 30s in a plain shirt and an open jacket, walking to work in
-the early morning, pausing for a second on the pavement. He is looking at his own
-reflection in a shop window, adjusting his collar. Expression: a small closed-mouth
-smile, private and understated. Not performing, not aware of a camera.
-
-EVIDENCE OF CHANGE: his face is visibly rested. Skin even rather than sallow, eyes
-fully open and clear, no shadowing or puffiness beneath them, jaw relaxed, lips closed
-and not dry. This must be readable both in the direct view and in the reflection.
-
-REFLECTION: a shop window filling roughly 30 percent of the frame on the left, showing
-him from a different angle, sharp enough to read his face. Geometrically consistent
-with his position.
-
-ENVIRONMENT: an ordinary city street early in the morning, bare trees, a bus stop sign,
-two blurred commuters passing behind him, overcast weather. Nothing aspirational, no
-travel-brochure location, no styling.
-
-LIGHT: even natural daylight, bright, soft shadows. Slightly kinder than a night-time
-scene but with the same plain documentary character. No golden hour, no rim light, no
-glamour lighting.
-
-GRADE: muted blue-grey and neutral palette, light film grain, shallow depth of field.
-Desaturated, never warm-boosted.
-
-STYLE: candid lifestyle photography, natural, unposed, sharp.
-NO text, no logo, no watermark, no product.
-```
+Product: none in frame (G1-exempt) · ratio 5:3 · axes: gaze=reflect · requires_pair 01-pain-scene
+- SUBJECT — man late 30s in a plain shirt and open jacket, walking to work in the early morning, pausing on the pavement, looking at his own reflection in a shop window while adjusting his collar; small closed-mouth smile, private and understated, not performing
+- EVIDENCE OF CHANGE — his face is visibly rested: skin even rather than sallow, eyes fully open and clear, no shadowing or puffiness beneath, jaw relaxed, lips closed and not dry; readable in BOTH the direct view and the reflection
+- REFLECTION — a shop window filling roughly 30% of the frame on the left, showing him from a different angle, sharp enough to read his face, geometrically consistent with his position
+- ENVIRONMENT — ordinary city street early morning, bare trees, a bus stop sign, two blurred commuters passing behind, overcast; nothing aspirational
+- LIGHT — even natural daylight, bright, soft shadows, slightly kinder than a night scene but the same plain documentary character
+- GRADE — muted blue-grey and neutral, light grain, shallow depth of field, desaturated, never warm-boosted
 Predicted failure — and the type's boundary: "a visibly rested face" is inference, not
 physical evidence; the render will likely show an ordinary man and say nothing. If
 confirmed, the avoid_when hardens into: this type ONLY for results visible on body or

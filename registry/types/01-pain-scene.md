@@ -135,85 +135,25 @@ product placement
 
 ## WORKED EXAMPLES
 ### example: mouth-tape-candid — skeleton@1.1, run: untested
-```
-A cinematic film still, 5:3 ratio. Single frame. NO graphic overlays of any kind.
-
-SUBJECT: A man in his late 30s in a worn grey t-shirt, caught mid-action sitting up on
-the edge of an unmade bed in the middle of the night, feet on the floor, shoulders
-slumped forward, one hand braced on the mattress, the other reaching for the nightstand.
-Unaware of the camera, gaze down and unfocused. Face showing genuine involuntary
-exhaustion: eyes heavy and half open, deep creases beneath them, lips dry and parted,
-jaw slack.
-
-SYMPTOM EVIDENCE, must be visible as physical fact: an almost empty glass of water on
-the nightstand with a second empty glass beside it, the pillow deeply creased and shoved
-to one side, the duvet kicked into a tangle at the foot of the bed, a phone face-up on
-the nightstand casting a small cold glow. These objects independently signal a night
-that has been interrupted more than once.
-
-MOMENT RULE: this is the ordinary act of waking again at 3am, not a demonstration of
-wrong behaviour.
-
-ENVIRONMENT: A small suburban bedroom, deep night, curtains half drawn, a chair in the
-corner with clothes over the back. Real lived-in clutter, nothing styled, nothing
-arranged, nothing removed to tidy the frame.
-
-LIGHT: Low-key. Key light: cold blue streetlight through the gap in the curtains from
-behind and to the left. Fill: faint warm glow from a hallway door left ajar. Rim light
-along his shoulder and jaw separating him from the dark wall. Deep shadow across most
-of the frame.
-
-GRADE: Desaturated blue-grey palette, crushed blacks, fine film grain, shallow depth of
-field, 35mm lens character. NO saturated colors. NO red anywhere in the frame.
-
-FORBIDDEN: No product. No overlays, arrows, badges, glows, hotspots, insets or split
-panels. Nothing that signals advertising.
-
-STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
-NO text, no logo, no watermark.
-```
+Product: none in frame (G1-exempt) · ratio 5:3 · variant --candid
+- SUBJECT — man late 30s, worn grey t-shirt, sitting up on the edge of an unmade bed mid-night, shoulders slumped, one hand braced on the mattress, the other reaching for the nightstand; unaware of camera, gaze down and unfocused; eyes heavy and half open, deep creases beneath, lips dry and parted, jaw slack
+- SYMPTOM EVIDENCE — an almost empty glass of water with a second empty glass beside it, pillow deeply creased and shoved aside, duvet kicked into a tangle at the foot, phone face-up casting a cold glow
+- MOMENT — the ordinary act of waking again at 3am, not a demonstration of wrong behaviour
+- ENVIRONMENT — small suburban bedroom, deep night, curtains half drawn, a chair with clothes over the back
+- LIGHT — low-key; key: cold blue streetlight through the curtain gap from behind left; fill: faint warm hallway spill; rim along shoulder and jaw; deep shadow across most of the frame
+- GRADE — desaturated blue-grey, crushed blacks, fine grain, shallow depth of field, 35mm
 Predicted failure: the two glasses may collapse into one, losing the "repeats every
 night" layer. Fallback evidence: a water-ring stain on the nightstand (carries
 repetition in a single object).
 
 ### example: knife-sharpener-confront — skeleton@1.1, run: untested
-```
-A cinematic film still, 5:3 ratio. Single frame. NO graphic overlays of any kind.
-
-SUBJECT: A woman in her early 40s in a plain t-shirt and an apron, standing at a
-kitchen counter, turned toward the camera and looking directly into the lens, holding
-the viewer's eye. She holds a knife loosely in one hand, the other hand raised slightly
-in a small gesture of giving up. Face showing genuine everyday frustration: brow drawn
-together, mouth pressed flat and slightly turned down, chin tucked, the look of someone
-who has been fighting this for ten minutes.
-
-SYMPTOM EVIDENCE, must be visible as physical fact: on the board in front of her, a
-tomato mangled into thick uneven wedges, its skin torn and juice and seeds spread
-across the wood. Beside it, a second half-crushed tomato pushed aside. A cheap
-pull-through sharpener sits on the counter, clearly already tried and abandoned. A dish
-towel bunched under her wrist.
-
-MOMENT RULE: this is the ordinary act of stopping mid-task because the tool will not do
-its job, not a demonstration of wrong technique.
-
-ENVIRONMENT: A small ordinary home kitchen, mid-morning, worn wooden counter, an open
-drawer behind her with utensils visible, a chopping board leaning against the tiles,
-dishes stacked in the sink. Real lived-in clutter, nothing styled, nothing arranged,
-nothing removed to tidy the frame.
-
-LIGHT: Even ambient daylight from a window to the left, bright, minimal shadow, flat
-and unflattering. No golden hour, no rim light, no drama.
-
-GRADE: Desaturated neutral palette, muted greens and greys, fine film grain, moderate
-depth of field, 35mm lens character. NO saturated colors. NO red glow or highlight
-anywhere; the tomato is the only red and it must read as ordinary food color.
-
-FORBIDDEN: No hero product. No overlays, arrows, badges, glows, hotspots, insets or
-split panels. Nothing that signals advertising.
-
-STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
-NO text, no logo, no watermark.
-```
+Product: none in frame (G1-exempt) · ratio 5:3 · variant --confront
+- SUBJECT — woman early 40s, plain t-shirt and apron, standing at a kitchen counter turned to camera holding the lens; knife loose in one hand, the other raised in a small giving-up gesture; brow drawn together, mouth pressed flat and slightly down, chin tucked
+- SYMPTOM EVIDENCE — a tomato mangled into thick uneven wedges, skin torn, juice and seeds across the wood; a second half-crushed tomato pushed aside; a cheap pull-through sharpener already tried and abandoned; a dish towel bunched under her wrist
+- MOMENT — stopping mid-task because the tool will not do its job, not a demonstration of wrong technique
+- ENVIRONMENT — small ordinary kitchen, mid-morning, worn wooden counter, an open utensil drawer behind, a board against the tiles, dishes in the sink
+- LIGHT — even ambient daylight from a window left, bright, minimal shadow, flat and unflattering
+- GRADE — desaturated neutral, muted greens and greys, fine grain, moderate depth of field, 35mm; the tomato is the only red and must read as ordinary food color
 Predicted failures: (1) knife-in-hand + direct gaze may trip safety filters or read as
 threatening — fallback: knife down on the board, both hands braced on the counter;
 (2) frustration drifting into theatrical anger — the variant lives on restraint.
