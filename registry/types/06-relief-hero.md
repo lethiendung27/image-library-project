@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["2:1", "4:5"]
@@ -56,8 +56,12 @@ The product must be identical in every layer of this image.
 [pose — see POSE], while [activity], [warm expression].
 The product visible at [contact point], seen from [angle A], unobstructed,
 in [ONE mode of use — G7-X: the same mode in every layer].
-Setting: [environment], [3 props], [light source — see LIGHT]. Background blurred,
-high-key [neutral palette] grade. Subject offset right, empty mid-frame for headline.
+Setting: [environment] filled to the edges — [6-8 objects that genuinely belong there],
+[light source — see LIGHT]. Background blurred but never blank: no bare wall or floor
+area larger than the product. High-key [neutral palette] grade.
+Subject offset [side]. When a Zone B or Zone C layer is present it OCCUPIES that offset
+space — do NOT also reserve empty mid-frame; two reservations for one area render as
+dead air (see SLOT CONSTRAINTS).
 
 [VISIBLE MECHANISM — required slot, G8]
 If the product emits, produces or moves anything visible (mist, spray, steam,
@@ -96,6 +100,13 @@ NO text, no logo, no watermark.
 ```
 
 ## SLOT CONSTRAINTS
+- **The offset space belongs to the layer, not to the headline.** A layer occupies
+  70-85% of the space the subject is offset from (the proportion `05-social-card`
+  already uses: 35-45% negative space, 28-38% card). A small layer floating in a large
+  reserved void is the observed failure mode — both renders of 2026-08-11 came back
+  with a dead middle. Page copy sits outside the image.
+- G10 (frame safety) binds every layer here — safe area, bleed cap, and the
+  shrink-never-move escape. Referenced by ID, never restated in a prompt.
 - Pain exists ONLY inside the inset (when present). Zone A is 100% relief. Never mixed.
 - [ZONE B] exists only to reveal an angle Zone A hides (its reason to exist); a layer
   repeating information costs frame space and buys nothing.
@@ -266,6 +277,13 @@ person reduced to a shoulder.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.6 (2026-08-11): Setting slot rewritten for density (6-8 objects, no bare area
+  larger than the product) and the headline reservation removed when a layer is
+  present — the offset space belongs to the layer. G10 (frame safety) adopted by
+  reference. Evidence: render tests 2026-08-11, wet-dry floor washer and travel
+  stroller — 2/2 runs returned a dead mid-frame with `Subject offset right, empty
+  mid-frame for headline` combined with a corner layer, and 2/2 bleeding-shape runs
+  cropped their content. Both faults are compositional, not product-specific.
 - 1.5 (2026-08-10): --recall gains the transition-pair execution form (past-cell
   marked + one arrow + now-cell). Evidence: 3 observations across 3 domains — obs
   sha256:cd8e0e…, sha256:5ea857…, sha256:61118d… (batches D, F, H).

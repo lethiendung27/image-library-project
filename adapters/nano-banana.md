@@ -74,6 +74,28 @@ Pass the slot's `ratio` as the generation aspect-ratio parameter where the surfa
 exposes one; ALSO state it in the first prompt line ("A wide 2:1 e-commerce banner…")
 — belt and suspenders, and it survives surfaces without the parameter.
 
+## Rule 6 — Prompt economy (house style)
+
+Measured 2026-08-11 on the GIF-inset test set: a rendered prompt written as flowing
+prose carried ~57% waste against the same prompt written in slot form, with every
+functional constraint intact. Compression is not a stylistic preference here — the
+waste came from four repeatable mistakes, so the rules are mechanical:
+
+1. **Never invent a block a slot already covers.** Density belongs in the skeleton's
+   own `Setting:` slot, not in a new `ENVIRONMENT DENSITY` heading beside it. A new
+   block where a slot fix was needed is how skeletons rot.
+2. **Never restate a global rule.** Rules are referenced by ID in the type file and
+   expanded here at render time — G6 and G10 both work this way. A prompt carries the
+   expansion once; the type file never carries the text.
+3. **Enforce Rule 1 above.** 63% of the avoid tokens in the pre-compression set were
+   already asserted positively in the prompt body. Drop them; the remainder is usually
+   5-7 tokens, not 16.
+4. **Slot form, not prose.** `SCENE right 58%:` then the fills. Connectives, restated
+   negatives and hedging words cost tokens and buy nothing from this model.
+
+Reference numbers from that set: a GIF-inset prompt lands at ~1450-1600 characters and
+~225 words. A prompt past ~2500 characters should be re-read for a duplicated block.
+
 ## Rule 5 — Known weaknesses (emphasize, don't fight)
 
 - **Hands at close range**: highest failure rate (03-use-sequence, knife examples).

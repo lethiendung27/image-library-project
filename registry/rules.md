@@ -144,3 +144,34 @@ must be visible as physical fact. Rank available evidence and use the strongest 
 3. the failed tool still in hand;
 4. gesture alone (weakest — if used, at least one object in frame must independently
    imply the problem).
+
+## G10 — Frame safety
+
+**Scope:** every layer of every type — insets, product views, panels, rails, badges,
+and any text a type is permitted to carry. No exemptions: a layer leaving the frame is
+not a style choice, it is a defect.
+
+```
+No text and no product may touch or cross a frame edge. Keep every element at
+least 8% of the frame width from the left and right edges, and 8% of the frame
+height from the top and bottom edges.
+
+Content inside a shape is centred on the part of the shape that is INSIDE the
+frame, never on the shape's true centre.
+
+A shape may bleed off a corner by at most 10% of its size on each bleeding edge
+— a thin crescent, never a quadrant.
+
+When content does not fit the safe area, make it SMALLER. Never move it outward,
+never let it run off, never widen the shape.
+```
+
+The last clause is the load-bearing one: a prohibition without a sanctioned escape
+route is resolved by the model in whichever direction it likes, and outward is the
+direction that breaks the frame.
+
+Evidence: render tests 2026-08-11 (`06-relief-hero`, wet-dry floor washer and travel
+stroller). A bleed specified as "a quarter of the shape" pushed a four-line label off
+the frame; the same session cropped a static product inset by the identical mechanism.
+The failure is medium-independent and type-independent, which is why it lives here
+rather than in a type file.
