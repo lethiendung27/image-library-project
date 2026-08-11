@@ -194,8 +194,17 @@ image, and competitor brand marks never appear in prompts.
 ## 7. Query protocol
 
 1. **Validate** `content.json` against `mapping/content.schema.json`.
-2. **Stage 1 — shortlist** (mechanical): per slot, look up `role × channel` in
-   `mapping/slot-rules.md`.
+2. **Stage 1 — shortlist** (mechanical, DERIVED): per slot, take every active type in
+   `registry/index.yaml` that satisfies, in order:
+   (a) **channel legality** — the slot's channel appears in the type's own `channels`;
+   (b) **attribute gates** — the deterministic kill-rules in `mapping/slot-rules.md`;
+   then rank by **role affinity**, read from the type's `step` and `job` (both already
+   in the index). `mapping/slot-rules.md`'s shortlist table is a human-readable **view**
+   of the same derivation, and `scripts/validate.py` fails if the two disagree — the
+   table may never claim a channel a type does not declare. Deriving rather than
+   looking up is what makes the shortlist non-empty: on any channel several types are
+   legal, so a slot runs out only if every one of them is gated out on attributes,
+   which the gates make explicit rather than silent.
 3. **Stage 2 — portfolio** (judgment, one pass over the whole page): apply
    `product.attributes` against skeleton conditionals and `avoid_when`; enforce
    cross-slot constraints (`pairs_with`, `never_with`, `avoid_adjacent`,
@@ -204,6 +213,15 @@ image, and competitor brand marks never appear in prompts.
 4. **Options**: 3 per slot, each differing on a **named dimension** — `type`, `axis`,
    or `execution` — and labeled with `varies_on`. Options carry `composition_notes` so
    a human picking per-slot cannot silently violate a cross-slot rule.
+   **Never-empty rule**: an image slot ALWAYS returns at least one renderable option,
+   and every option is a real active type carrying that type's laws. There is no
+   fallback tier and no unrouted image: Stage 1 derives from the whole channel-legal
+   set, not from one table cell, so exhausting a cell is not exhausting the registry.
+   When the obvious type is spent by one-type-once, take the next by role affinity and
+   say so in `varies_on`. `out_of_scope_reason` survives only for slots that carry no
+   image by definition — the `cta` cell and text furniture (comment threads, pricing
+   tables). Refusing to route a *wrong* type is still correct; refusing to deliver an
+   image is not, and the two were conflated.
 5. **Tie-breaker**: pick-rate per (type × section role) from `feedback/picks.jsonl` is a
    soft prior, consulted **only** when a (type × role) cell has **≥20 picks**. It never
    overrides `avoid_when` or composition rules.

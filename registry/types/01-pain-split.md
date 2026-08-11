@@ -3,11 +3,11 @@ id: 01-pain-split
 step: 1
 job: pain
 device: split
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
-channels: [marketplace]
+channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass
 variants: [object, mirror, oldway]
@@ -161,6 +161,10 @@ is why the variant is multi-pass (generate left, edit into right, composite).
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.4 (2026-08-11): channels gain `landing-page`. use_when already scopes the type to
+  "one tile in a gallery/grid where the viewer glances for half a second", which a
+  landing-page grid is; nothing in avoid_when was channel-specific. The routing table
+  had listed it on landing-page all along — this reconciles the two.
 - 1.3 (2026-08-10): --oldway variant added (wrong side = legacy solution in use).
   Evidence: 4 observations across 2 domains — obs sha256:0b0260…, sha256:3b4499…,
   sha256:f53928…, sha256:9ae982… (batches D-E). Market badge habits (VS, emoji,

@@ -3,11 +3,11 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
-channels: [marketplace]
+channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass
 variants: []
@@ -99,6 +99,10 @@ visible-symptom mode — the reason the two modes must be named explicitly in th
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.2 (2026-08-11): channels gain `landing-page` (the routing table already assumed
+  it). Deliberately NOT advertorial: 03-spec-split's avoid_when sets the precedent
+  that this infographic-tile aesthetic "signals cheap goods off-marketplace", and the
+  rail shares that register. The advertorial cell is trimmed instead of widened.
 - 1.1 (2026-08-10): vignette slot split into pain-gesture / visible-symptom modes
   (Test D exposed that a hard-coded "hand pressing" does not generalize); rail reduced
   to 3 vignettes; G1 block added; hero product slot rewritten to G2.

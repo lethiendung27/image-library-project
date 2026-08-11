@@ -3,11 +3,11 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
-channels: [marketplace]
+channels: [marketplace, landing-page, advertorial]
 requires_product_photo: true
 generation_mode: single-pass
 variants: []
@@ -117,6 +117,10 @@ more than one or two: `ghostbody` = "why does this shape work", `03-spec-split` 
 "what is better inside", `03-use-sequence` = "can I operate it".
 
 ## CHANGELOG
+- 1.2 (2026-08-11): channels gain `landing-page` and `advertorial`, for parity with
+  03-mechanism-xray (same step, same job, same 3D-render register, already
+  [marketplace, landing-page, advertorial]). Two mechanism types answering the same
+  question on different channel sets was an accident, not a decision.
 - 1.1 (2026-08-10): PRODUCT slot rewritten to G1 reference + G2 placement-only (matte
   texture and feature description removed); DIMS gated to products with clear 3D
   volume. seed: conversation.md.

@@ -53,6 +53,32 @@ Rules: an option that requires a pair or has channel restrictions carries that i
 `composition_notes`. Options must all be legal — never present a gated-out type as
 an option. Fewer than 3 legal possibilities → emit fewer, never pad with rerolls.
 
+**The table cell is exhausted → widen the derivation, never empty the slot.** An image
+slot with no options is a contract violation (SPEC §7.4). Work down this ladder and
+stop at the first rung that yields a legal type:
+
+1. **The role's own cell.** The normal case.
+2. **Adjacent steps.** Role affinity is a preference, not a wall: a `comparison` slot
+   may take a step-3 or step-4 type; a roundup entry that indicts an object may take a
+   step-1 `job: pain` type. Say which step you moved to in `varies_on`.
+3. **A repeating-section repeat.** Cross-slot rule 2 permits one type to serve every
+   entry of a list section, provided the instances differ on a named dimension.
+4. **Another execution of a type already on the page.** Different subject class, same
+   type, named in `varies_on` — this is not one-type-once evasion, it is the honesty
+   the rule asks for.
+
+The only test that never bends is the type's own admission: `channels` must contain
+the slot's channel and `avoid_when` must not exclude the case. A type that fails
+either is not a candidate at any rung — that is refusing a *wrong* type, which stays
+correct. Every option emitted is a real active type carrying its own laws; there is no
+fallback tier, and no image ships unrouted.
+
+Worked precedent: a listicle's five ranked entries, each indicting one alternative, had
+no comparison type left after one-type-once spent `04-proof-lockedframe`. Rung 2 plus
+rung 3 resolved it to `01-pain-scene` in its object-only execution — an execution the
+ledger already records twice (obs `sha256:30c9568…`, `sha256:4e8f238…`, both filed as
+pain-scene with "no person as subject, only the indicted OBJECT").
+
 ## Step 5 — Fill skeletons
 
 Load the selected type files now. For each option:
@@ -78,8 +104,15 @@ rendered output is model-specific.
 
 ## Step 7 — Emit and log
 
+Where the session lives: `query/sessions/<page_id>/` holds `content.json` (the
+contract as assembled from the source export), `prompts.json` (the machine artifact,
+valid against `query/output.schema.json`) and `prompts.md` (the human view). The JSON
+is the single source of truth; the Markdown is **generated from it**, never
+hand-edited, so the two cannot drift. Every slot in both carries an `asset` filename
+and a `placement` line, so an editor never has to guess which image goes where.
+
 1. Emit JSON per `query/output.schema.json`, including `page_composition_notes`
-   (page-level warnings: pairs chosen, arcs enforced, slots left out of scope).
+   (page-level warnings: pairs chosen, arcs enforced, fallbacks emitted and why).
 2. After the human picks: append ONE record per slot to `feedback/picks.jsonl`:
 
 ```json

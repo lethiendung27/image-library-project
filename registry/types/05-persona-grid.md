@@ -3,11 +3,11 @@ id: 05-persona-grid
 step: 5
 job: persona
 device: grid
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
-channels: [marketplace]
+channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass
 variants: [1plus3, 2x2, 1plus4]
@@ -120,6 +120,9 @@ hands tripping safety filters or producing deformed hands.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.2 (2026-08-11): channels gain `landing-page` (the routing table listed it in both
+  the social-proof and personas cells). Nothing in use_when or avoid_when was
+  channel-specific; the restriction was never argued, only inherited.
 - 1.1 (2026-08-10): cohesion moved from posture-lock to grade+light+colorway; per-cell
   camera angle and shot distance made mandatory-different; 15% visibility rule added;
   G1 block added. Evidence: v1.0 grids rendered four near-identical cells

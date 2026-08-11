@@ -3,11 +3,11 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
-channels: [paid-social, advertorial]
+channels: [paid-social, advertorial, landing-page]
 requires_product_photo: false
 generation_mode: single-pass
 axes:
@@ -162,6 +162,10 @@ threatening — fallback: knife down on the board, both hands braced on the coun
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.2 (2026-08-11): channels gain `landing-page`. The type contradicted ITSELF: the
+  --confront variant already declares "Channels: advertorial body, landing-page"
+  while the frontmatter excluded it. Frontmatter corrected to match the variant.
+  Found by the new slot-rules/frontmatter drift check in scripts/validate.py.
 - 1.1 (2026-08-10): SYMPTOM EVIDENCE made required (→G9); GAZE and LIGHT split into
   per-variant conditionals; [MIRROR] slot added; environment clutter law tightened.
   Evidence: seed conversation.md (bathroom-mirror confront exemplar confirmed the

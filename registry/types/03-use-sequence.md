@@ -3,11 +3,11 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
-channels: [marketplace, landing-page]
+channels: [marketplace, landing-page, advertorial]
 requires_product_photo: true
 generation_mode: single-pass
 axes:
@@ -115,5 +115,8 @@ centered product, not both.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.1 (2026-08-11): channels gain `advertorial`. Demand evidence: two real advertorial
+  pages for the wall cooler carry explicit numbered step sections ("Setup in Under 5
+  Minutes", the 3-step howto block), which is exactly what this type serves.
 - 1.0 (2026-08-10): initial from the pet-brush three-panel exemplar; exemplar fault
   encoded (two actions crowded into panel 1). seed: conversation.md.

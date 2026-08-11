@@ -3,11 +3,11 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
-channels: [landing-page, marketplace]
+channels: [landing-page, marketplace, advertorial]
 requires_product_photo: false
 generation_mode: single-pass
 variants: []
@@ -125,5 +125,8 @@ is the **culprit**, not the product; the sentence is "this is what harms you", n
 share one palette or they read as two sources.
 
 ## CHANGELOG
+- 1.1 (2026-08-11): channels gain `advertorial`. Self-contradiction: use_when already
+  says the type "fits the middle of an advertorial" while the frontmatter excluded
+  that channel. Frontmatter corrected to match the trigger.
 - 1.0 (2026-08-10): initial from the car-seat spine exemplar; exemplar faults encoded
   (correct-side-left inversion, missing X badge). seed: conversation.md.

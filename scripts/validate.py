@@ -504,6 +504,54 @@ def check_json_files():
                         err(rel, f"invalid JSON: {e}")
 
 
+# ---------------------------------------------------------------- routing table
+
+CHANNEL_COLS = ["marketplace", "landing-page", "paid-social", "advertorial"]
+
+
+def check_slot_rules(types):
+    """The shortlist table is a VIEW of data the type files already own.
+
+    Every type named in a channel column must declare that channel in its own
+    frontmatter. Without this check the two drift silently: eight such
+    contradictions accumulated before it existed, and query runs routed through
+    them, producing prompts that were illegal on their own channel.
+    """
+    rel = "mapping/slot-rules.md"
+    path = os.path.join(ROOT, rel)
+    if not os.path.exists(path):
+        err(rel, "file not found")
+        return
+    with open(path, encoding="utf-8") as f:
+        lines = f.read().splitlines()
+    in_table = False
+    for line in lines:
+        if line.startswith("| Role "):
+            in_table = True
+            continue
+        if in_table:
+            if not line.startswith("|"):
+                break
+            if set(line.replace("|", "").strip()) <= set("- "):
+                continue
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if len(cells) < 5:
+                continue
+            role, cols = cells[0], cells[1:5]
+            for chan, cell in zip(CHANNEL_COLS, cols):
+                for tid in re.findall(r"`([^`]+)`", cell):
+                    tid = re.sub(r"--\w+$", "", tid).strip()
+                    if tid not in types:
+                        err(rel, f"role `{role}` / {chan}: unknown type `{tid}`")
+                        continue
+                    declared = types[tid]["fm"].get("channels") or []
+                    if chan not in declared:
+                        err(rel,
+                            f"role `{role}` / {chan}: `{tid}` is listed here but "
+                            f"its frontmatter declares channels {declared} — the "
+                            f"table and the type disagree")
+
+
 # ---------------------------------------------------------------- main
 
 def main(argv):
@@ -568,6 +616,7 @@ def main(argv):
     stats = pick_stats(picks, types)
 
     check_json_files()
+    check_slot_rules(types)
 
     index_text = render_index(vocab, types, evidence, stats)
     if write_index:

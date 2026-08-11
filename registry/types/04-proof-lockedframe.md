@@ -3,11 +3,11 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
-channels: [advertorial, landing-page, marketplace]
+channels: [advertorial, landing-page, marketplace, paid-social]
 requires_product_photo: true
 generation_mode: multi-pass
 axes:
@@ -210,6 +210,11 @@ completeness violation that helped produce G7.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.4 (2026-08-11): channels gain `paid-social`. Self-contradiction: the --rivals
+  variant already declares "Channels: advertorial, paid-social only" while the
+  frontmatter excluded paid-social. The type-level avoid_when ("never as a
+  scroll-stopper") still gates the slow variants there — that is a Stage 2 judgment,
+  not a channel ban.
 - 1.3 (2026-08-10): camera_lock axis (strict/handheld) with time-gap selection rule;
   granularity constraint on saturated media. Evidence: rendered strict-timelapse output
   read as CGI (user test, seed conversation.md).

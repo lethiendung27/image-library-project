@@ -3,11 +3,11 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.6"
+version: "1.7"
 status: active
 replaced_by: null
 ratios: ["2:1", "4:5"]
-channels: [landing-page, marketplace, paid-social]
+channels: [landing-page, marketplace, paid-social, advertorial]
 requires_product_photo: true
 generation_mode: single-pass
 axes:
@@ -228,6 +228,11 @@ person reduced to a shoulder.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.7 (2026-08-11): channels gain `advertorial`. Proved by a sibling: 06-relief-scene's
+  avoid_when says that for invisible results "the closing image must be 06-relief-hero
+  with the product in frame" — and relief-scene lives on advertorial, so relief-hero
+  had to be legal there for its own escape hatch to exist. Two real advertorial pages
+  demanded it independently.
 - 1.6 (2026-08-11): Setting slot rewritten for density (6-8 objects, no bare area
   larger than the product) and the headline reservation removed when a layer is
   present — the offset space belongs to the layer. G10 (frame safety) adopted by
