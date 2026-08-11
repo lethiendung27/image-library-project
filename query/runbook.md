@@ -109,9 +109,15 @@ question: **what does this product have to prove that nothing on the page proves
 Its output is `recommended[]` — additive proposals, never replacements, kept out of
 `slots[]` so the page's real section count stays honest.
 
-**Awareness stage is the weight, not the page format.** Read `page.awareness_stage`
-(or infer it from the copy and say so). Then judge each absent rung against where the
-reader already stands:
+**Awareness stage is the weight, not the page format — and you READ it, you do not ask
+for it.** The content already says where the reader stands: what the hero assumes they
+believe, whether the page spends words re-establishing the problem or goes straight to
+comparing solutions, whether the copy names competitor classes or the product itself.
+There is deliberately no `awareness_stage` field in the content contract: a declared
+field is one more thing to fill, one more thing to go stale against the copy it
+describes, and one more chance to constrain a judgement the copy already supports.
+State the stage you read and the basis for it in `page_composition_notes`, then judge
+each absent rung against where that reader stands:
 
 - **unaware** — does not yet believe there is a problem. Recognition and amplification
   carry the page; proof of a solution they have not asked for is wasted.

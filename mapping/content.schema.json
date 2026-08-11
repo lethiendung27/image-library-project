@@ -135,16 +135,6 @@
             "advertorial"
           ]
         },
-        "awareness_stage": {
-          "enum": [
-            "unaware",
-            "problem-aware",
-            "solution-aware",
-            "product-aware",
-            "most-aware"
-          ],
-          "description": "Where this page's reader already stands. Optional but strongly recommended — the COVERAGE PASS weighs missing ladder rungs against it, and an absent rung is NOT automatically a gap. Source exports usually carry it (flunnel: brief.awarenessStage). When absent, infer it from the copy and say so in page_composition_notes rather than assuming a default."
-        },
         "sections": {
           "type": "array",
           "minItems": 1,

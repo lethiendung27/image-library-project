@@ -35,7 +35,7 @@
         "product-aware",
         "most-aware"
       ],
-      "description": "Copied from the content contract, or inferred and flagged. The weight the COVERAGE PASS uses; an absent ladder rung is not a gap unless this stage says it is."
+      "description": "INFERRED from the page's own copy — the section structure, what the hero assumes the reader already believes, how much the page spends re-establishing the problem. Not an input field: the content says it, so declaring it separately would add a surface that can go stale against the copy it describes. Record the basis for the inference in page_composition_notes. It is the weight the coverage pass uses; an absent ladder rung is not a gap unless this stage says it is."
     },
     "slots": {
       "type": "array",

@@ -224,7 +224,8 @@ image, and competitor brand marks never appear in prompts.
    image is not, and the two were conflated.
 5. **Coverage pass** (product-driven, after the sections are routed): compute which
    Trust Ladder rungs the routed slots cover and which are absent, then weigh each
-   absence against `page.awareness_stage` — **an absent rung is not automatically a
+   absence against the reader's awareness stage — **read from the page's own copy, not
+   declared as an input field** — because **an absent rung is not automatically a
    gap**. Rungs the stage says matter become `recommended[]`: additive proposals, each
    naming the rung it fills and where it would sit, bound by the same admission tests
    and cross-slot rules as any option. Never keyed on page format: two listicles at
