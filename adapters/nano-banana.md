@@ -70,9 +70,30 @@ real product):**
 
 ## Rule 4 — Ratio and framing
 
-Pass the slot's `ratio` as the generation aspect-ratio parameter where the surface
-exposes one; ALSO state it in the first prompt line ("A wide 2:1 e-commerce banner…")
-— belt and suspenders, and it survives surfaces without the parameter.
+Pass the slot's `ratio` as the generation aspect-ratio **parameter**. Do NOT state it
+in the prompt text: this model ignores a written ratio, so the words cost tokens and
+buy nothing.
+
+**Evidence (supersedes the earlier belt-and-suspenders instruction), 2026-08-11 —
+6 of 6 renders across three sessions, every one off the requested ratio:**
+
+| session | prompt asked | render returned |
+|---|---|---|
+| GIF-inset v1 | 2:1 (2.00) | 1376x768 = 1.79:1 |
+| GIF-inset v2 | 5:3 (1.67) | 1200x896 = 1.34:1 |
+| GIF-inset v3/v4 | 5:3 (1.67) | 1200x896 = 1.34:1 |
+
+Recurrence 6/6, far past the >=2/3 rule, and the owner's verdict on those renders was
+`pass` — the outputs were usable at whatever aspect the model chose. The written ratio
+was never doing the work the old rule claimed. Ratio remains a real slot requirement:
+it lives in slot metadata and in the render parameter, and the page layout depends on
+it. It simply stops being prompt text.
+
+Corollary for framing: what a prompt CAN control is composition — the share of frame a
+subject occupies, which side it is offset to, layer footprints in percent. Those
+survive any aspect the model returns, and they are what the framing sentences should
+spend their words on. The register still opens the prompt ("a cinematic film still",
+"an e-commerce lifestyle banner"); only the numeric ratio is dropped.
 
 ## Rule 6 — Prompt economy (house style)
 
