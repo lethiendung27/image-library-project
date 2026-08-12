@@ -3,7 +3,7 @@ id: 01-pain-split
 step: 1
 job: pain
 device: split
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -36,9 +36,9 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 01-pain-split v1.2
-RATIO: [1:1 / 4:5]
-LAYERS: 2 panels, hard vertical split 50/50, thin white outer border
+TYPE: 01-pain-split v1.5 [--object | --mirror | --oldway]
+LAYERS: 2 panels, hard vertical split 50/50. Each panel runs all the way to the
+frame edge. No outer border, no drawn border line anywhere in the image.
 
 [PRODUCT REFERENCE]
 Use the attached product photo as the exact reference. Preserve shape,
@@ -75,13 +75,28 @@ NO text, no logo, no watermark.
 - [BADGES] top corners only — the eye reads top-down; a bottom badge arrives after the
   verdict is already formed. Never add a VS badge on top of X/check (one binary
   argument, one pair of markers).
+- **No outer border, and say so in the prompt** (v1.5). A border is layout furniture: a
+  page adds it in CSS for nothing, while a rendered one costs frame area and competes with
+  G10's safe margin. Worse, this model does not render a border as a margin — it draws a
+  thin white rectangle INSET from the edges, floating over the photograph and cutting
+  through whatever is behind it. 3/3 renders on 2026-08-12 did exactly that, on all three
+  variants. The four other multi-panel types in the library (`03-use-sequence`,
+  `04-proof-lockedframe`, `05-persona-grid`, `03-use-grid` in staging) have said "no outer
+  border" all along; this type was the only one still asking for one, and it was an
+  oversight rather than a decision. The 50/50 split line stays — it is the argument's
+  divider, and it rendered correctly every time.
 
 ## NEGATIVE
 ```
 [G6] + cluttered background on right panel, dim right panel,
 mismatched photo style between panels, visible test rigs or props,
-red cues on right panel, distorted face, blood, injury
+red cues on right panel, distorted face, blood, injury,
+inset white rectangle, drawn border line
 ```
+The last two are kept even though the skeleton now asserts the positive form ("each panel
+runs to the frame edge"), which Rule 1 step 1 would normally have dropped. They stay
+because a bordered comparison tile is a strong market prior and this was the type's only
+3/3 failure. Neither token shares a lemma with anything a prompt here requires.
 
 ## VARIANTS
 ### --object (default)
@@ -158,9 +173,41 @@ Predicted failure: same-face consistency across independently generated panels �
 is why the variant is multi-pass (generate left, edit into right, composite).
 
 ## KNOWN-FLAKY
-(populated from observation evidence only)
+- **Register split between panels on `--oldway`, 1/3 renders, 2026-08-12.** The garment
+  steamer run put a lived-in room on the left and what reads as a studio packshot on the
+  right — an isolated shirt on a plain white wall, no room around it. The base NEGATIVE
+  already bars `mismatched photo style between panels` and G5 binds here, so this is not a
+  missing law; it is the model reaching for catalogue lighting the moment the right panel
+  holds a product and nothing else. One observation, below the §6.2 threshold, so the
+  skeleton is untouched. If it recurs, the fix is a slot patch: name the right panel's room
+  as explicitly as the left panel's.
 
 ## CHANGELOG
+- 1.5 (2026-08-12): **the outer border leaves the render.** `LAYERS` asked for a "thin
+  white outer border"; this model does not render that as a margin, it draws a thin white
+  rectangle inset from the frame edges, floating over the photograph and cutting through
+  the content behind it. Evidence 3/3, well past the §6.2 threshold, one render per
+  variant: `--object` (under-desk footrest, the line crosses the subject's arm),
+  `--mirror` (cervical pillow, it crosses the sleeper's body), `--oldway` (garment steamer,
+  it crosses the ironing board). Owner report: "always a white frame in the image".
+  The line now asserts the positive — each panel runs to the frame edge — and names the
+  prohibition once. Two tokens added to NEGATIVE despite the positive assertion, because a
+  bordered comparison tile is a strong market prior and this is the type's only 3/3 fault.
+  Worth recording WHY this survived so long: the four other multi-panel types
+  (`03-use-sequence`, `04-proof-lockedframe`, `05-persona-grid`, `03-use-grid` in staging)
+  have all said "no outer border" since they were written. This type was the sole outlier,
+  and nothing in its own history argued for the border — it was inherited from the founding
+  exemplar and never questioned. A border is layout furniture: the page adds it in CSS for
+  free, while a rendered one costs frame area and fights G10's safe margin.
+  The 50/50 split line is untouched — it is the argument's divider and rendered correctly
+  in all three.
+  The `RATIO:` line goes too, in the same block and for the same reason it went from
+  `01-pain-scene` at 1.4: adapter Rule 4 has 6/6 renders ignoring a written ratio, so the
+  line taught every filler to write something the adapter then stripped. Ratio stays a
+  render parameter and a slot requirement; it stops being prompt text.
+  Also logged: KNOWN-FLAKY gains a register split on `--oldway` at 1/3, where the right
+  panel came back as a studio packshot against a lived-in left panel. Below threshold, so
+  the skeleton is not patched for it.
 - 1.4 (2026-08-11): channels gain `landing-page`. use_when already scopes the type to
   "one tile in a gallery/grid where the viewer glances for half a second", which a
   landing-page grid is; nothing in avoid_when was channel-specific. The routing table
