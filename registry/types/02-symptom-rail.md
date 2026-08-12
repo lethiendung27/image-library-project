@@ -171,8 +171,13 @@ visible-symptom mode — the reason the two modes must be named explicitly in th
   G3's `orange = wrong heat`; read strictly G3 would give blue for a working mechanism, but
   blue heat fights the stronger prior that blue means cold. Letting the FORM carry the
   meaning in neutral warm-white leaves G3 untouched instead of seeking an exemption from it.
-  Skeleton 2069 -> 2160 characters: the HERO and RAIL blocks were compressed in the
-  same pass, so the new branch cost nothing net.
+  Skeleton 2069 -> 2160 characters. HERO and RAIL were compressed in the same pass and it
+  was not enough: the branch still cost 91 characters net. Stated plainly because the
+  claim first written here — that it cost nothing — was wrong, and because this type's
+  skeleton has now grown 1587 -> 2160 across two versions while the owner has asked twice
+  for shorter. Every added rule has evidence behind it, but the honest position is that
+  adding rules and shrinking the file are pulling in opposite directions, and something
+  has to leave if length is to win.
 - 1.3 (2026-08-12): **the arrow is made of the substance the product moves, or there is no
   arrow.** Owner rule, given as: for a dehumidifier the arrow must be formed by the water
   droplets being drawn back in. It repairs a logic error the old wording invited, and the
