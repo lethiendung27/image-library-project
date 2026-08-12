@@ -228,17 +228,63 @@ Panel 2: the reference product fitted, the same [medium] clean and evenly damp.
   position between panels, dramatic staining, black mold, cartoonish contrast`
 
 ## WORKED EXAMPLES
-### example: shower-filter-timelapse-handheld — skeleton@1.3, run: untested
-Product: metal shower filter cartridge · ratio 5:3 · 3 panels · variant --timelapse · axes: camera_lock=handheld, context_mode=natural-use
-- HANDHELD CONTINUITY — same bathroom counter, basin, daylight from the left and rough shooting distance; shot on a phone on three separate occasions, never a tripod. VARY: camera position 10-20cm, angle 5-10°, cartridge rotated 15-30° at a different tilt and a few cm from where it sat, droplets scattered differently, towel folded differently, slight exposure and white-balance drift. CONSTANT: room, surface, light direction, identity of the cartridge, and the single variable
-- SCENE — the cartridge just removed and laid on its side, still faintly wet, open threaded end angled to camera so the packed media shows at the opening; water spots on the counter, a damp ring under it, a towel at frame edge; overcast daylight from the left
-- THE VARIABLE — colour of the media visible inside the open end. Panel 1: clean, uniform white and pale grey granules, evenly packed. Panel 2: partly discoloured, dull ochre and light rust across the exposed surface, uneven, pale granules still showing. Panel 3: heavily discoloured, deep rust brown across the whole surface, granule texture still clearly readable AS granules, darker staining at the rim, light rust creeping onto the shell near the threads
-- CONTEXT INTEGRITY — an ordinary inspection moment; nothing cut open, propped or arranged for the camera
-- JUDGEMENT — no badge, glow, colour cue or arrow; all panels equally neutral
-Evidence chain: the strict-camera predecessor of this prompt was rendered and READ AS
-CGI (identical droplets, identical tilt across "months") — that run produced the
-handheld mode (v1.3). Panel 3 of that run also drifted into mud; the granularity
-constraint above is the fix.
+### example: herb-storage-rivals-handheld — skeleton@1.5, run: pass
+Product: none in frame · ratio param 5:3 · 3 panels · variant --rivals · axes: camera_lock=handheld, context_mode=natural-use · advertorial · single-pass
+```
+TYPE: 04-proof-lockedframe v1.5 --rivals, camera_lock handheld
+REGISTER: documentary phone photography. No overlays, badges, arrows or text.
+LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
+
+PRODUCT REFERENCE: not applicable. No product appears in this image.
+
+SCENE, the same in all three: one glass shelf of a domestic fridge, a jar of
+jam and a butter dish pushed to the back, a faint dried spill mark on the glass.
+Cold even fridge light from above, no styling.
+
+GRADE, the same in all three: muted and cool, low saturation, no warm tone
+anywhere. It comes from the fridge light and the drab shelf rather than a
+filter. Still colour, never black and white. All three panels are unsolved
+states, so one shared unresolved tone across them favours none of them.
+
+FRAMING: one person photographed this three times across a fortnight from where
+they always stand, phone held level with the shelf, the shelf edge running
+across the lower third. It reads as one shot taken three times, never as three
+different shots — drift is a few degrees of tilt and a few centimetres of
+position, no more. Light differs only in exposure, never in warmth.
+
+THE VARIABLE: three storage methods people already use, each photographed after
+a fortnight, each holding the same bunch of basil.
+1 — standing in a tumbler of cloudy water, stems slimy below the waterline,
+leaves drooping and blackened at the edges.
+2 — unwrapped from a limp damp kitchen towel lying open beside it, the leaves
+bruised and darkened where they were pressed.
+3 — lifted from a plastic bag, condensation beaded inside it, the leaves
+collapsed and translucent.
+
+WHAT ELSE MOVES: 1 — jam jar at the back left, label facing out. 2 — jar turned,
+butter dish pulled forward. 3 — jar moved to the right, a new ring of spill on
+the glass.
+
+FAIRNESS: three ordinary methods anyone would try, none exaggerated, none
+favoured. Every panel ends the same way. The image makes no claim.
+
+Strictly avoid: sparkle glyphs, brand logos, human figures, hands, studio
+lighting, staged perfection, identical framing between panels, mould, fur,
+liquefied sludge, CGI.
+```
+Rendered 2026-08-12, owner verdict pass (`eval/render-tests.jsonl`). Kept at full text
+because that is the only record of what actually rendered (SPEC §3.3). This is the
+variant whose predecessor FAILED and produced v1.5, so its pass is the type's proof
+that all three fixes work: the band held on one shared framing plus small named
+per-panel prop deviations, and one shared muted grade read as three unsolved states
+rather than a neutral lineup.
+
+Replaces an `untested` `--timelapse` example at skeleton@1.3. Nothing evidentiary was
+lost — that example carried no verdict, and its evidence chain (a strict-camera
+predecessor rendered and read as CGI, panel 3 drifting into mud) is recorded in the
+v1.3 CHANGELOG entry below. `--timelapse` now has a real ledger line of its own from
+the same session (car cabin air filter, pass), including the granularity constraint
+holding.
 
 ### example: shower-filter-verdict — skeleton@1.2, run: fail
 Full prompt in seed conversation.md (three filters on one shower arm, locked camera).
@@ -283,7 +329,18 @@ completeness violation that helped produce G7.
   threshold — so v1.5 rests on mechanism reasoning, not on recurrence. The patches
   are kept: each names a mechanism that is true independently of how often it fires
   (relative deltas have no referent in one canvas; the type had no prominence rule
-  at all; nothing governed absolute grade). v1.5's own skeleton remains untested.
+  at all; nothing governed absolute grade).
+  **v1.5's skeleton is now tested: all four variants pass** (owner verdicts 2026-08-12,
+  `~/Downloads/lockedframe-v15-set.md`, four unrelated product domains, four ledger
+  lines). Each fix was exercised and held — the band on one shared framing plus named
+  per-panel prop deviations (`--rivals`, herb storage), the unpolarised grade on the
+  resolved panel (`--verdict`, carpet stain remover), `[PRODUCT PROMINENCE]` at 35%,
+  60% and 25% floors, and the granularity constraint that the set itself named as the
+  likeliest failure (`--timelapse`, car cabin air filter — pleats stayed countable).
+  `--capture` is also the first rendered evidence for `context_mode: declared-test`.
+  All four ran handheld SINGLE-PASS, which v1.5 made conditional on the wording law
+  holding; it held, so the multi-pass fallback stays a fallback. One run per variant,
+  so this is breadth across four domains rather than recurrence within one.
 - 1.4 (2026-08-11): channels gain `paid-social`. Self-contradiction: the --rivals
   variant already declares "Channels: advertorial, paid-social only" while the
   frontmatter excluded paid-social. The type-level avoid_when ("never as a
