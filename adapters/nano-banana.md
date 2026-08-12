@@ -213,7 +213,8 @@ add a missing mark, so an omission costs exactly what a malformed one costs — 
 Two causes, one confirmed present and one hypothesised:
 
 - **negative bleed** (Rule 1a) — confirmed by inspection in the prompts that produced the
-  reports; fixed there, not yet re-rendered, so its share of the blame is unmeasured;
+  reports and fixed there; re-rendered 2026-08-12 (see below) but never in isolation, so
+  its individual share of the blame is still unmeasured;
 - **burial** — a mark written as a sub-clause inside a photographic slot competes with a
   register stated first and reinforced every line. Marks that own a named slot
   (`[BADGES]`, `[CENTER BADGE]`) are hypothesised to survive where buried ones drop.
@@ -222,6 +223,28 @@ Two causes, one confirmed present and one hypothesised:
 The reverse mode — the model ADDING a mark nobody asked for — has one observation: a
 four-pointed sparkle glyph in the corner of a zero-mark documentary render. It may be a
 platform watermark rather than a drawn element, which no prompt can remove. Unresolved.
+
+### First re-render after both fixes: marks present in 10 of 10 (2026-08-12)
+
+`~/Downloads/mark-restraint-test.md` was rendered in full — 10 prompts, 6 mark cases
+across the BADGE and GRAPH families, 4 mark-free controls — every one owner-verdict
+`pass` (`eval/render-tests.jsonl`, ts 2026-08-12). What that does and does not settle:
+
+- **Omission did not recur.** Every mark the six mark cases asked for was drawn. But
+  both fixes were applied to every prompt TOGETHER, so the session cannot apportion
+  credit between them. That file's own claim — that cases 1 and 4 isolate the
+  negative-bleed fix — is wrong: those prompts carry the named-slot rewrite too. The
+  burial test named above, a prompt pair differing ONLY in slot structure, is still unrun.
+- **The three at-risk classes each survived one run**: paired dashed reference lines
+  (case 6), exact counts (case 1 — two badges and three hotspots; case 4 — three diagram
+  badges where the ledger's exemplar showed six), badge position and colour (cases 1–3).
+  One run per class is breadth, not a denominator; the risk list above stands unchanged.
+- **No spurious mark appeared** in any of the four controls, against the single prior
+  observation of an unrequested sparkle glyph. That observation stays unresolved; it did
+  not recur.
+- **No class has earned the post-composite exception.** ADR-008's approach A survives its
+  first real test. Nothing here flips it — and nothing here proves it either, at one run
+  per class.
 
 ### When a class fails, do this rather than abandon Rule 7
 

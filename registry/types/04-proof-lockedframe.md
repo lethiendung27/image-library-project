@@ -267,6 +267,14 @@ completeness violation that helped produce G7.
   `01-pain-split` left, `03-spec-split` left). Still open: that convention is
   practised in five types and written in none — a global saturation rule is proposed
   and NOT taken here, since it would bind sixteen types.
+  **Render evidence, logged 2026-08-12** (`eval/render-tests.jsonl`): the failing
+  render this entry cites is now on the ledger, where Rule 7 always required it, and
+  a re-render of the SAME v1.4 `--rivals` prompt came back `pass` (owner verdict).
+  The three faults therefore stand at 1/2 across sessions — below the §6.2 ≥2/3
+  threshold — so v1.5 rests on mechanism reasoning, not on recurrence. The patches
+  are kept: each names a mechanism that is true independently of how often it fires
+  (relative deltas have no referent in one canvas; the type had no prominence rule
+  at all; nothing governed absolute grade). v1.5's own skeleton remains untested.
 - 1.4 (2026-08-11): channels gain `paid-social`. Self-contradiction: the --rivals
   variant already declares "Channels: advertorial, paid-social only" while the
   frontmatter excluded paid-social. The type-level avoid_when ("never as a
