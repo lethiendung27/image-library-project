@@ -37,6 +37,38 @@ Transform it:
 The rendered `avoid` line is emitted separately in the output JSON (`avoid` field) so a
 future model with a real negative channel can consume the canonical list instead.
 
+### Rule 1a — Never put a REQUIRED element in the avoid line (measured 2026-08-12)
+
+The `avoid` line is prose to this model: no negative channel, no logical operators. A
+qualifier therefore does not survive. "No third badge" in a prompt that mandates two
+badges reads as "no badge", and the badges do not render. Owner report that opened this:
+"model chưa thực hiện đủ dấu, có những image trả về không có bất kì dấu gì."
+
+The trap is worse than it looks, because the natural fix fails the same way — rephrasing
+keeps the token and keeps the bleed. Six instances caught by script across four prompt
+sets in one session, every one written by an author who already knew the rule:
+
+| written in `avoid` | element it suppressed |
+|---|---|
+| `a second badge` | the mandated centre VS badge |
+| `a fourth badge` | the three mandated rail badges |
+| `an arc in the right panel` | the mandated left-panel angle arc |
+| `a smooth featureless coating` | the mandated amber coating |
+| `brand logos on the old filter` | the reference filter itself |
+| `one panel brighter than the others` | the required exposure drift |
+
+**The rule is DROP, not rephrase.** Any `avoid` phrase that uses an adjective to qualify
+a noun the prompt requires will bleed. Assert the bound positively in the slot instead —
+"exactly two badges, both in the top corners, the only badges present" — and delete the
+token from `avoid` entirely. This is Rule 1 step 1 applied strictly; the additions above
+are all cases where step 1 was skipped because the negative *felt* more precise.
+
+Mechanical gate before shipping any prompt: for every token in `avoid`, search the prompt
+body for the same lemma. A hit that is not a deliberate prohibition is a bug. Match
+lemmas exactly — a `stain\w*` pattern matches "stainless" and yields false positives, and
+layout vocabulary (`panel`, `framing`) is not at suppression risk because the layout is
+restated every line.
+
 ## Rule 2 — Product reference (G1)
 
 When `requires_product_photo: true`: attach `product.reference_photos` and keep the G1
@@ -171,6 +203,25 @@ Two existing exceptions stand and are NOT marks:
      (`02-symptom-rail`), "ONE directional arrow" (`06-relief-hero --recall`),
    - badge position and colour, which the badge law fixes together precisely because
      the market gets all three wrong and the model has seen a lot of market.
+
+### Omission is the third failure mode (2026-08-12)
+
+The risk list above is entirely about drawing marks WRONG. Owner reports add a mode it
+did not anticipate: marks **absent altogether**. Under approach A nothing downstream can
+add a missing mark, so an omission costs exactly what a malformed one costs — a re-render.
+
+Two causes, one confirmed present and one hypothesised:
+
+- **negative bleed** (Rule 1a) — confirmed by inspection in the prompts that produced the
+  reports; fixed there, not yet re-rendered, so its share of the blame is unmeasured;
+- **burial** — a mark written as a sub-clause inside a photographic slot competes with a
+  register stated first and reinforced every line. Marks that own a named slot
+  (`[BADGES]`, `[CENTER BADGE]`) are hypothesised to survive where buried ones drop.
+  Untested; the cheapest test is a prompt pair differing only in slot structure.
+
+The reverse mode — the model ADDING a mark nobody asked for — has one observation: a
+four-pointed sparkle glyph in the corner of a zero-mark documentary render. It may be a
+platform watermark rather than a drawn element, which no prompt can remove. Unresolved.
 
 ### When a class fails, do this rather than abandon Rule 7
 
