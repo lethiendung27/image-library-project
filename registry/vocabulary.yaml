@@ -34,7 +34,7 @@ devices:
   anatomy: "2D medical illustration, skeleton over translucent body"
   grid: "photographic multi-cell collage, no graphic overlays"
   hero: "one photographic scene + optional inset/product layers"
-  scene: "single cinematic frame, zero graphic layers"
+  scene: "single cinematic frame, no panels and no insets"
   sequence: "stacked panels ordered by action steps"
   lockedframe: "multi-panel, camera locked (or handheld-continuous), one variable changes"
   handoff: "two people: advocate points, listener looks; optional product inset"

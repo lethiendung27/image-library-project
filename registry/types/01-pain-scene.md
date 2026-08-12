@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -12,7 +12,7 @@ requires_product_photo: false
 generation_mode: single-pass
 axes:
   gaze: [candid, confront]
-variants: [candid, confront]
+variants: [candid, confront, marked]
 exempt_from: [G1, G3, G4]
 pairs_with: [06-relief-hero, 06-relief-scene, 04-proof-lockedframe]
 never_with: [01-pain-split]
@@ -106,8 +106,18 @@ NO text, no logo, no watermark.
 
 ## SLOT CONSTRAINTS
 - [SYMPTOM EVIDENCE] is mandatory (G9). Expression alone carries nothing.
-- No red pixel anywhere — this type replaces the red pain signal with acting; adding a
-  red glow makes the image confess it is an ad.
+- **No red pixel anywhere, on `--candid` and `--confront`** — those variants replace the
+  red pain signal with acting, and a red glow there makes the image confess it is an ad.
+  `--marked` is the sanctioned exception and narrows the rule to "red appears only in the
+  mark": natural skin, food and household colour were never the target of this ban, and
+  writing around them cost a render (see CHANGELOG 1.3).
+- **State the force, never the meaning** (v1.3). The subject slot must name a force being
+  applied or a movement in progress, not a pause and not an intention. "Both hands
+  stopped over the jar" and "an ordinary lunch interrupted" both rendered as nothing;
+  "both hands locked on the lid, turning against it, the lid has not moved" rendered
+  correctly. The same applies to [SYMPTOM EVIDENCE] rank 3: a failed tool must be
+  described in the state that shows it failed — "the jar key lying where it slipped off,
+  its jaws still spread" — because "already tried" is a meaning and has no picture.
 - [ENVIRONMENT] specificity is the only defense against the "stock photo of back pain"
   failure mode. Generic = dead.
 
@@ -131,7 +141,52 @@ product placement
 - Channels: advertorial body, landing-page.
 - May use the optional [MIRROR] slot.
 - Restraint rule: frustration, not drama — the flatter the face, the truer it reads.
+  **Scope of that rule (v1.3):** it governs EMOTION, not effort. A flat face over a slack
+  body renders as nothing at all. When the moment is physical exertion, the face still
+  carries the involuntary signs — jaw set, breath held, lips dragged at one corner — and
+  those are not drama.
 - Negative additions: `golden hour, warm flattering light, exaggerated grimace, theatrical anger`
+
+### --marked
+The only variant that carries a graphic layer. One mark, placed on the evidence, never a
+verdict. Composes WITH the gaze variants rather than replacing them — name both in the
+prompt (`--confront --marked`), because gaze and mark are independent decisions.
+Diff vs base:
+```
+[FORBIDDEN, replaces the base block]
+No product. No insets, no split panels, no badges of any kind.
+Exactly ONE graphic mark is permitted, defined in [PAIN MARK]. Nothing else in
+the frame is marked.
+
+[PAIN MARK — required slot when this variant is used]
+ONE mark class only, chosen from: a soft red radial glow, or a thin red ring.
+It sits ON the physical evidence [SYMPTOM EVIDENCE] already names, sized to that
+evidence and no larger, fading out before it touches anything else.
+Close the count in the slot itself: "the only mark in this image".
+
+[MARK LAW]
+The mark POINTS AT evidence. It never delivers a verdict. No X, no check, no VS,
+no thumbs, no exclamation glyph — that is 01-pain-split's language, and a glyph is
+text, which G6 routes out of the render and into post.
+If [SYMPTOM EVIDENCE] has nothing physical to point at, this variant is ILLEGAL:
+use the base variant. A mark over an empty frame invents the pain instead of
+marking it.
+
+[GRADE adjustment]
+The desaturated grade stays exactly as the base sets it — G11's whole-frame
+unresolved tone. The mark is an accent on top of it, not a replacement for it.
+Red appears ONLY in the mark.
+```
+- G3 note: the base type is `exempt_from: [G3]` because it uses no signal colour at all.
+  This variant uses one, so its mark obeys G3 — red = pain — even though the exemption
+  stands for the rest of the frame.
+- The mark is model-drawn (ADR-008 approach A) and owns a named slot with a count,
+  because a mark buried in prose is the one that vanishes (adapter Rule 7).
+- Deliberately NOT in the negative list: any phrasing like `second mark`. That qualifies
+  a noun this variant requires, which is Rule 1a's exact bleed shape and the same
+  structure as the rule's own worked example `a second badge`. The bound lives in the
+  slot's own "only mark in this image" instead.
+- Negative additions: `badge, checkmark, VS, thumbs, exclamation glyph, arrow, text label`
 
 ## WORKED EXAMPLES
 ### example: mouth-tape-candid — skeleton@1.1, run: untested
@@ -162,6 +217,31 @@ threatening — fallback: knife down on the board, both hands braced on the coun
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.3 (2026-08-12): **`--marked` variant added** — one graphic mark, on the evidence,
+  never a verdict. Owner decision; the standing instruction is that graphic-element rules
+  are the owner's to write, and this is that decision. `vocabulary.yaml` drops "zero
+  graphic layers" from the `scene` device in the same change: the device's identity is its
+  geometry (one frame, no panels, no insets), and the graphics ban was never carried by
+  the device in practice — both `scene` types already state it in their own files
+  (`[FORBIDDEN]` here, REGISTER line + NEGATIVE in `06-relief-scene`), so nothing lost a
+  law. `--candid` and `--confront` keep the full ban.
+  Evidence, three strands. (1) **Measured cost of acting-only emphasis**: the same jar
+  prompt went from 1379 characters to 2153 (+774) purely to force visible exertion out of
+  prose — elbow, shoulder, neck tendon, held breath — which is a mark's job written the
+  long way. The `--marked` rewrite of the same image lands at 1544. (2) **Owner report on
+  four renders of this type in one session**: all technically sound, none legible at a
+  glance, and a buyer has to study the frame to find the problem. `1.3b` is on the ledger
+  as `pass` (`eval/render-tests.jsonl`, 2026-08-12) with the two logic faults recorded as
+  prompt faults, not skeleton faults. (3) **A structural gap in routing**: on paid-social
+  and advertorial this is the ONLY pain type — `01-pain-split`, the half-second one with
+  hotspots and badges, is marketplace/landing-page and requires a product photo. So those
+  two channels had no fast-reading pain option at all.
+  Also in this change: the SLOT CONSTRAINTS gain the **state-the-force rule** (a slot must
+  name a force or a movement, never a pause or an intention — "already tried" and "an
+  ordinary lunch" both rendered as nothing), and `--confront`'s restraint rule is scoped
+  to emotion rather than effort, because a flat face over a slack body renders as nothing.
+  `never_with: 01-pain-split` stands, with its reason updated: it was "graphics versus
+  acting", and it is now simply one pain beat per page.
 - 1.2 (2026-08-11): channels gain `landing-page`. The type contradicted ITSELF: the
   --confront variant already declares "Channels: advertorial body, landing-page"
   while the frontmatter excluded it. Frontmatter corrected to match the variant.
