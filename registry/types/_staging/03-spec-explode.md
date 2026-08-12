@@ -3,7 +3,7 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "16:9"]
@@ -20,12 +20,25 @@ avoid_adjacent: [03-mechanism-xray]
 
 # 03-spec-explode — STAGING DRAFT
 
-Promotion status (2026-08-11): **3 exemplars ledgered, 3 distinct sources**
-(full-frame: obs `sha256:1abb6e…` batch 11-B wearable audio puck;
-`sha256:620fb5…` 11-E mini camera; inset execution: `sha256:bb60ab…` 11-E
-ab-roller material layers). Criterion 3 MET 2026-08-11: worked example `mini-camera-fullframe` rendered,
-owner verdict pass (`eval/render-tests.jsonl`). Pending: 2 more exemplars and
-the router-confusion test against 03-mechanism-xray. Not routable.
+Promotion status (2026-08-12): **5 exemplars ledgered — criterion 1 MET by owner
+ruling.** Three from the market (full-frame: obs `sha256:1abb6e…` batch 11-B wearable
+audio puck; `sha256:620fb5…` 11-E mini camera; inset execution: `sha256:bb60ab…` 11-E
+ab-roller material layers) plus two admitted from batch 12-A: `sha256:af3cd1…`
+(198×255 thumbnail, `low-res`) and `sha256:8903444…` (stock asset, `watermarked`, with
+HUD data panels). Both 12-A records carry the classifier's own caveat that they hold no
+product identity and should be weighed low; the owner overruled that on 2026-08-12,
+wanting the candidate's result range widened rather than kept narrow. The caveat stays
+readable in the records because the ledger is append-only — the ruling changes what the
+count means, not what the records say.
+
+Criterion 3 MET 2026-08-11: worked example `mini-camera-fullframe` rendered, owner
+verdict pass (`eval/render-tests.jsonl`).
+
+**Remaining gap is now criterion 2 alone** — the router-confusion test against
+`03-mechanism-xray`, whose boundary this type's SLOT CONSTRAINTS already state
+(explode SEPARATES for job=spec; xray looks THROUGH an intact shell for
+job=mechanism). Criterion 4 is the standing ADR-007 authorisation. Not routable until
+that test runs.
 
 ## PURPOSE
 A census of what is inside: the product separated into its real components,
@@ -160,7 +173,38 @@ answers, never two of these three together beyond the pairing laws above.
 The inset execution (obs `sha256:bb60ab…`) is drafted as a FRAMING option, not
 a variant — same argument, same layers, different footprint.
 
+**The dark canvas is a SKELETON decision, not an exemplar-count one (2026-08-12).**
+The owner's reason for admitting the two 12-A exemplars was to widen this candidate's
+result range instead of every output being a breakdown on a monotone deep-navy ground.
+Worth stating plainly: admitting exemplars cannot do that, because the ground is fixed
+in three places in this file and all three would have to move —
+
+1. `REGISTER:` in the SKELETON header hardcodes `Dark engineering background`;
+2. `[CANVAS]` offers only `[deep navy / graphite]`;
+3. NEGATIVE bans `bright white background` outright.
+
+The stored worked example is a dark 16:9 render, so the type's de-facto house look is
+the navy breakdown, and a filler copying the example inherits it.
+
+Evidence for widening exists and is short of the bar: **2 of the 5 exemplars are on a
+non-dark ground** — `sha256:1abb6e…` on a studio grey field and `sha256:bb60ab…` as a
+marketplace tile with a white-rimmed circular inset. That is 2 observations against the
+§6.2 threshold of 3, so the `[CANVAS]` slot is NOT patched here. One further
+light-ground exemplar makes it actionable, and the patch shape is already clear: turn
+the ground into a named parameter (`[deep navy / graphite / studio grey / light tile]`)
+and narrow the NEGATIVE's white-background ban to the blown-out case it was aimed at.
+Note the direction of the two exemplars just admitted: both are near-black grounds, so
+they push the ledger toward the monotony rather than away from it.
+
 ## CHANGELOG
+- 0.2 (2026-08-12): promotion accounting only — no skeleton, slot, negative or trigger
+  change. Criterion 1 recorded as MET at 5 exemplars by owner ruling, admitting the two
+  batch-12-A records (`sha256:af3cd1…` low-res thumbnail, `sha256:8903444…` watermarked
+  stock with HUD panels) over the caveat their own records carry. Criterion 2, the
+  router-confusion test against `03-mechanism-xray`, is now the only open gate. NOTES
+  gains the finding that the owner's stated goal — widening the result range beyond the
+  deep-navy breakdown — is a `[CANVAS]`/REGISTER/NEGATIVE decision that exemplar count
+  cannot reach, with its own evidence at 2/5 and the patch shape named but not taken.
 - 0.1 (2026-08-11): staging draft from three ledgered exemplars across three
   verticals — wearable audio puck full-frame (obs `sha256:1abb6e…`, 11-B),
   ab-roller six-layer fan as inset (`sha256:bb60ab…`, 11-E), mini camera
