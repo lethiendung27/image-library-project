@@ -29,7 +29,8 @@ tasks to entry points and must stay logic-free.
 7. ADR-007 autopilot: after any COMPLETED operation (classify batch, curation pass,
    promotion, render-test logging), run `python3 scripts/validate.py --write-index`;
    on 0 errors, `git commit` that operation immediately — one commit per operation,
-   evidence cited in the message, `Co-Authored-By: Claude Fable 5
-   <noreply@anthropic.com>` trailer — then report the commit hash and revert path.
+   evidence cited in the message, and a `Co-Authored-By` trailer naming the model that
+   actually performed the operation (`Claude <model> <noreply@anthropic.com>`) — then
+   report the commit hash and revert path.
    Never push. The human gate is the user's explicit inputs (image feeds, verdicts
    `pass|partial|fail`, picks, commands): never fabricate or assume a verdict.
