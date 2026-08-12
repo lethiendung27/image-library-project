@@ -256,3 +256,54 @@ still carry the convention as loose skeleton wording rather than a G11 reference
 `06-relief-hero`'s Zone A grade line was annotated, because it was already being edited.
 Annotating the rest is bookkeeping for whenever each is next touched, not a sweep to run
 now.
+
+## ADR-011 · 2026-08-12 · Render verdicts may be harness-assigned, for renders it has seen
+
+Context: the owner's instruction, verbatim — "hãy tự gán nhãn cho ảnh, tôi sẽ không gán
+nhãn. đã duyệt pass". Until now four separate places on disk said the verdict is the
+owner's and must never be assumed: ADR-007, `eval/render-test.md` §6, `CLAUDE.md` rule 7,
+and SPEC §6.3(3). This entry changes three of them and deliberately leaves the fourth.
+
+**What made the old rule right, and what changed.** The rule existed because the owner
+renders the images and the harness could not see them, so any harness verdict would have
+been a claim about an image it had never opened. That is fabrication and the ban on it
+stands. What changed is factual: since 2026-08-12 the owner drops every render into
+`/Users/lethiendung/Downloads/image-library-assets/feedback/`, and the harness reads them.
+Across seven renders that day its independent reading matched the owner's report every
+time — it found the white border on all three `01-pain-split` frames, the absent exertion
+on the first jar frame, and the packshot drift on the steamer frame before being told.
+Assessing an image in hand is not assuming a verdict.
+
+**Decision.** The harness assigns the verdict where the owner does not, under three
+binding conditions:
+
+1. **The render must be in hand.** No file in the feedback folder, no verdict. This is
+   the anti-fabrication core and it is not negotiable.
+2. **The label measures skeleton fidelity, and it is attributed.** Every self-assigned
+   record carries `verdict_by: "harness"` in `notes` and states what was checked. `pass`
+   keeps its defined meaning — an empty `failures` list — so a render with a visible
+   defect is `partial` even when the owner has approved the set. Recording an approved-but
+   -defective render as `pass` would delete the defect from the evidence base that
+   justifies patching it, which is self-defeating: the white border that produced
+   `01-pain-split` 1.5 is exactly such a defect.
+3. **Promotion is excluded. SPEC §6.3(3) is left untouched** and still requires the
+   owner's own verdict. A self-assigned label can support a §6.2 patch; it can never make
+   a staging type routable. This is where the old rule's protection actually matters —
+   a patch is one file and a `git revert`, while a promotion makes a type routable for
+   every future page.
+
+**The cost, stated rather than discovered later.** A harness label measures fidelity to
+the skeleton. The owner's label measures fitness for purpose, and the two diverge. Today
+gave the clean example: the second jar render was faithful on every slot and the harness
+would have passed it, yet the owner's real objection was that a buyer still had to study
+the frame to find the problem — and that objection is what produced the `--marked` variant
+and the whole `01-pain-scene` 1.3/1.4 line. A harness-only loop would have missed it. So
+the useful shape is not delegation-in-full: the harness carries the labelling, and the
+owner keeps saying what the images have to DO.
+
+Consequences: `SPEC.md` §1 invariant 5, `eval/render-test.md` §6 and `CLAUDE.md` rule 7
+updated in this same diff; SPEC §6.3(3) deliberately unchanged. The owner keeps the veto,
+and since the ledger is append-only a disputed label is corrected by a new record rather
+than an edit. Supersedes the never-assume-a-verdict clause of ADR-007 only as to WHO may
+label a render that has been examined; the ban on inventing a verdict for an unseen image
+is unchanged.

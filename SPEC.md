@@ -31,10 +31,13 @@ Invariants any harness must respect:
    are new records, never edits.
 4. Anything under `registry/types/_staging/` is **not routable**.
 5. Every change under `registry/` is validated by `scripts/validate.py` before commit.
-   The human gate is the owner's explicit inputs — image feeds, render verdicts,
-   picks, direct commands; once given, the harness curates and **commits
-   autonomously**, one commit per operation with evidence cited in the message
-   (ADR-007). Git history is the audit surface; rollback is `git revert`.
+   The human gate is the owner's explicit inputs — image feeds, picks, direct
+   commands, and render verdicts where the owner gives them; once given, the harness
+   curates and **commits autonomously**, one commit per operation with evidence cited
+   in the message (ADR-007). Git history is the audit surface; rollback is
+   `git revert`. Since ADR-011 the harness may also assign a render verdict itself,
+   but **only for a render it has actually examined**, and never for promotion
+   criterion §6.3(3), which still requires the owner's own verdict.
 
 ## 2. Data tiers
 

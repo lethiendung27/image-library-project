@@ -70,5 +70,23 @@ python3 scripts/validate.py --write-index
 ```
 
 Commit the render-test session as ONE commit (ledger line + patches + regenerated
-index) once the validator is clean; report hash + revert path (ADR-007). The verdict
-itself is always the owner's — never log a verdict the owner did not state.
+index) once the validator is clean; report hash + revert path (ADR-007).
+
+**Who assigns the verdict (ADR-011).** The owner may state it, and their word always
+wins. Where they delegate, the harness assigns it — under three conditions, all
+binding:
+
+1. **The render must be in hand.** A verdict for an image the harness has not examined
+   is fabrication, and that has not changed. The owner drops renders in
+   `image-library-assets/feedback/`; if a render is not there, there is no verdict.
+2. **Label against the skeleton, and say whose label it is.** Every self-assigned
+   record carries `verdict_by: "harness"` in `notes` and names what was checked. A
+   `pass` still means an empty `failures` list, so a render with a visible defect is
+   `partial` even when the owner has approved the set — otherwise the defect vanishes
+   from the evidence base that justifies patching it.
+3. **Promotion is excluded.** SPEC §6.3(3) still requires the owner's own verdict, so
+   a self-assigned label can support a patch under §6.2 but can never make a staging
+   type routable.
+
+The owner keeps the veto. The ledger is append-only, so a disputed label is corrected
+by a new record, never by an edit.
