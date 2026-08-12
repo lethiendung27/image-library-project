@@ -44,6 +44,19 @@ grep -o '"hash": *"sha256:[0-9a-f]*"' ingestion/observations.jsonl | grep -o 'sh
 
 Pick the next 15–25 undone images as this batch. Batch id: `YYYY-MM-DD-<letter>`.
 
+**Format note (2026-08-12).** The manifest above includes `.avif`, and much of the corpus
+is AVIF — but the harness image reader used in this session could not render it and
+returned the file as binary. Decode before classifying, keeping the hash of the ORIGINAL
+file as the record's identity (the PNG is a working copy, never a source):
+
+```sh
+sips -s format png "<source>.avif" --out "<scratch>/<name>.png"
+```
+
+Never classify an image you could not actually see; a filename is not evidence. Formats
+outside the manifest list are outside the to-do by definition — `.gif` in particular is
+not a manifest format, so motion assets are not batch input.
+
 ## 2. Classify
 
 Load `registry/index.yaml` + `registry/vocabulary.yaml` +

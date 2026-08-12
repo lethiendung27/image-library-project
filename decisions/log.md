@@ -126,3 +126,69 @@ Not decided here: WHICH mark an image may carry. That is an argument decision �
 mark families, the instrument and subtraction gates, and the one-class-per-image budget
 were proposed but are the owner's to write, per the standing instruction that the
 graphic-element rules are authored by hand, element by element.
+
+## ADR-009 · 2026-08-12 · First scored calibration: 82%, no template change
+
+Context: the anchor set was built 2026-08-11 but never scored, while 14 batches had run
+against a rule of every ~5 (SPEC §6.1). The set's own note deferred the first run to a
+later session, because building the table from the ledger and re-classifying in the same
+session scores a classifier that has just read the answers. That trap bit again here in a
+new form: the maintainer session had read `anchor-set.md` in full during orientation, so
+it could no longer classify anything honestly. Method, owner-authorised: the 10 anchors
+were classified in an **isolated classifier context** given exactly what SPEC §6.1
+prescribes — `index.yaml`, `vocabulary.yaml`, `classify.md`, the images — and explicitly
+denied `anchor-set.md` and `observations.jsonl`. Scoring then happened outside that
+context. This separation is now the standing shape for calibration: whoever holds the
+expected values may not produce the classifications.
+
+Result, by the formula in `anchor-set.md`: **23/28 = 82%** — verdict 8/10, type 9/10,
+axis-values 6/8. Above the 80% bar, so `calibrate.md` step 3 applies: record the score,
+change nothing. `ingestion/prompts/classify.md` is **untouched** and `template_version`
+stays `c1.0`, which matters more than the score does — a bump would discount all 104
+existing records (curate.md §1) and every staging exemplar count rests on them.
+
+Findings, in order of what they cost:
+
+1. **Two genuine misses, one shape.** A6 answered `new-candidate → 03-use-rail` where the
+   band is a four-step operation loop with ordering arrows; `03-use-rail` exhibits
+   BREADTH (outputs, places, movements, zones), so ordered steps in rail geometry are
+   still the `sequence` device. A7 answered `match → 01-pain-split --oldway` on a
+   whole-product comparison with a gold VS at the seam; `--oldway` requires a person
+   struggling with the legacy product and that panel has no person, while
+   `03-spec-split --products` describes the image clause for clause. Both misses read the
+   device and the job off surface geometry instead of argument structure — the one thing
+   `classify.md` opens by forbidding. The invitation is partly in `vocabulary.yaml`: the
+   `rail` gloss is geometric plus symptom content, and the index carries variant NAMES
+   without their definitions, so `oldway` is guessable from the word alone. Proposed and
+   NOT taken, because 82% does not authorise it and the cost is the whole corpus:
+   a `classify.md` clause requiring the variant's own definition to be read before
+   `match` is declared on it, plus an explicit rung for "matches an EXISTING declared
+   variant → `match`", which the ladder currently omits.
+2. **Two anchor rows were stale, and one of them was simply wrong.** A7 froze a
+   `variant-candidate` whose proposal has since become the `--products` variant, so
+   `match` is correct today — the A8 mechanism one rung lower. A5 froze
+   `inset_mode=none` on the claim that no value covered a magnified-display inset, but
+   `detail` has been in the vocabulary since the scaffold commit; the fresh run answered
+   `detail` and corrected a ledger error. Calibration is designed to catch the classifier
+   drifting from the anchors; it caught an anchor instead, which is worth knowing is
+   possible. Both rows superseded per calibrate.md §5. Against the corrected expectations
+   the same run scores 25/28 = 89%.
+3. **The `gaze` axis has a hole.** A2 disagreed (`candid` vs frozen `confront`) on an
+   image where the subject's face is squarely presented to camera with his eyes just off
+   the lens axis — neither `--candid` ("unaware of the camera, gaze on their task or the
+   ground") nor `--confront` ("looking directly into the lens") fits. `vocabulary.yaml`
+   already carries a third value, `reflect`, which `01-pain-scene` does not declare. The
+   founding record independently flagged the same slot (gaze hard-bundled with lighting).
+   Two pieces of evidence, below the §6.2 threshold: proposed, not taken.
+4. **The runbook could not be executed literally.** The manifest includes `.avif` and
+   most of the corpus is AVIF, but the image reader returned AVIF as binary. A decode
+   step is now in `classify-batch.md` §1, with the original file's hash kept as identity.
+   A runbook fix, not a template fix, so no version bump. Also recorded there: formats
+   outside the manifest list are outside the to-do by definition, which is what excludes
+   `.gif` motion assets from batch input.
+
+Consequences: `duplicate` remains uncalibrated (still zero such verdicts in 104
+records). A9's proposed id diverged (`02-cause-cutaway` vs `02-cause-aura`) with neither
+device value in the vocabulary, so both need a taxonomy addition and the divergence
+decides nothing yet. Next calibration is due after ~5 further batches, and must again be
+run by a context that has not read the expected values.
