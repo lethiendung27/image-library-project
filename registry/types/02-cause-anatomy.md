@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.6"
+version: "1.7"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -36,128 +36,90 @@ avoid_when: >
   to one concrete object. Never as a main image.
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once
+and is never restated here or in a prompt.
+
 ```
-TYPE: 02-cause-anatomy v1.6 [+ --diagnostic]
-MEDIUM: 2D illustration, [airbrushed / flat-vector]. NOT photography, NOT 3D.
+TYPE: 02-cause-anatomy v1.7 [+ --diagnostic]
+MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
 [PRODUCT REFERENCE]
 Use the attached product photo as the exact reference for the item in the RIGHT
 panel. Preserve shape, proportions, material, finish and colour exactly.
 
-[GROUND]
-One continuous [low-chroma colour from the culprit's material world] field across
-both panels, split by a single thin vertical line.
-BASELINE: one horizontal line at the SAME height in both panels — the surface both
-figures rest on and the datum everything is measured against. Nothing else is in
-the background.
+[GROUND]                                                      -> PARTS/ground
+[BODY]                                                        -> PARTS/body
+[PANELS] LEFT is wrong, RIGHT is correct.                     -> PARTS/panels
 
-[BODY TREATMENT, both panels]
-[anatomical structure] in warm ivory over a translucent body outline.
-EXACTLY ONE figure per panel, same scale and viewing angle in both.
-
-[PANELS — LEFT is wrong, RIGHT is correct]
-LEFT: figure [wrong position] on [culprit, realistic, unbranded], the culprit
-clearly visible where it acts on the body. [affected elements] red, a red curved
-line tracing [wrong contour], a red dashed line at [landmark] in [state A], ONE
-red double-headed arrow along [surface causing the problem], red X badge TOP
-corner.
-RIGHT: same figure [correct position] on the reference product, at THE SAME
-interface as the culprit and comparable in size, exposed rather than housed.
-[affected elements] blue, a soft blue aura along [correct contour], a blue dashed
-line at the same [landmark] in [state B], green check badge TOP corner. Brighter
-and cleaner than LEFT.
-
-[MEASUREMENT RULE]
-Two dashed reference lines, one per panel, anchored to the SAME two anatomical
-landmarks, identical thickness and dash pattern.
-Exactly ONE property may differ — the line's angle, or its length, or the gap it
-spans. Every other property must read as identical.
-Straight LINES, never boxes, brackets or outlines.
+[MARKS] name each one used, with its count and its panel:     -> MARKS
+  required: measure, verdict
+  then 1-3 more that the argument actually needs
+  nothing in the frame is marked that is not named here
 
 Colour follows G3 exactly: red wrong, blue correct, green badge, nothing else.
 ```
 
+## PARTS
+
+**`style`** — one, named in the prompt. `airbrushed`: soft gradients, modelled volume,
+textbook shading. `flat-vector`: flat fills, hard edges, no gradients. `line-engraving`
+is held out — see KNOWN-FLAKY.
+
+**`ground`** — one continuous field across both panels, split by a single thin vertical
+line. Its colour is DERIVED from the culprit object's own material world: low-chroma, far
+in hue from both red and blue so neither signal fights it, and separated from the ivory
+structure layer by VALUE and not only by hue. Nothing else is in the background.
+
+**`body`** — the relevant anatomical structure in warm ivory (G3: yellow = neutral
+structure) over a translucent body outline. EXACTLY ONE figure per panel, same scale and
+viewing angle in both.
+
+**`panels`** — LEFT: the figure in the wrong position on the culprit, drawn realistically
+and unbranded, the culprit clearly visible where it acts on the body. RIGHT: the same
+figure in the correct position on the reference product, at THE SAME interface as the
+culprit and comparable in size, exposed rather than housed. RIGHT is brighter and cleaner
+than LEFT.
+
+## MARKS
+
+This type's own mark library. Marks are called by name from the skeleton. Every one obeys
+G3 and carries a count. The `also in` notes exist so that a mark which looks the same in
+another type stays visible from here — each type owns its own library, so drift is made
+visible rather than centralised away.
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `measure` | two dashed straight reference lines, one per panel | red left, blue right | exactly 2 | 4 renders |
+| `verdict` | circle badge, X on the wrong panel and check on the correct one, TOP corners, flat and solid, same diameter | red X, green check | exactly 2 | 4 renders · also in `01-pain-split`, `03-mechanism-ghostbody`, `06-relief-hero` |
+| `contour` | a curved line tracing a surface or an edge | red wrong, blue correct | 1 per panel | 4 renders |
+| `aura` | a soft glow following a correct contour | blue only | 1, right panel | 3 renders |
+| `fill` | the affected anatomical elements filled | red wrong, blue correct | as many as are affected | 4 renders |
+| `force` | a double-headed curved arrow along the surface causing the problem | red only | exactly 1, left panel | 3 renders |
+| `baseline` | one horizontal datum line at the SAME height in both panels — the surface both figures rest on | neutral, no signal colour | exactly 1, spanning both panels | **none** |
+| `axis` | a straight construction line showing the alignment the body should hold, a plumb line through two named landmarks | neutral dashed, no signal colour | 1 per panel | **none** |
+| `pressure` | a soft shaded area showing where load concentrates on a surface | red wrong, blue correct | 1 per panel | **none** |
+| `range` | a shaded wedge between two limbs or two surfaces, showing the angle available | red wrong, blue correct | 1 per panel | **none** |
+
+**`measure` carries the whole argument and has its own rule.** Both lines anchor to the
+SAME two anatomical landmarks with identical thickness and dash pattern. Exactly ONE
+property may differ — the line's angle, its length, or the gap it spans — and every other
+property must read as identical. They are straight LINES, never boxes, brackets or
+outlines. For an angle comparison the landmarks are expected to rotate; what must hold
+still is length.
+
+**Budget.** `measure` and `verdict` are required. Beyond them take 1–3 marks and no more:
+this type's argument is one measurement, and a frame carrying six mark classes stops being
+a measurement and becomes a diagram of everything.
+
 ## SLOT CONSTRAINTS
-- **Derive the look, do not choose it** (v1.2). The ground and the motifs come from the
-  culprit object's own material world, which is already in the prompt and is different
-  every time — so the diversity is a by-product of the argument rather than a taste call.
-  Worked examples of the derivation: a single-strap bag gives warm sand with strap-weave
-  and buckle motifs; a sagging mattress gives soft grey-green with foam-cell and quilting
-  motifs; a high-heeled shoe gives cool graphite with shoe-last and heel-column motifs.
-  Writing "choose a fitting style" instead would produce the model's default every time —
-  abstract instruction has no picture, which this library has now proved twice.
-- **The old pale-blue ground broke G3, which is why it had to go.** G3 makes blue mean
-  "correct support, correct flow, working mechanism", so a pale blue canvas put the entire
-  image inside the correct-side signal and the blue aura on the right had to fight a blue
-  field to read. All three renders of 2026-08-12 show it: red carried easily because it was
-  the only colour contrasting with the ground. The ivory structure layer stays exactly as
-  it was — G3 assigns yellow to neutral structure, so that one was never a style choice.
-- **Illustration STYLE is a named slot, not an axis** — SPEC §3.2 reserves axes for
-  dimensions cutting across several types and this cuts across one, so it follows
-  `02-symptom-rail`'s vignette-mode pattern and needs no vocabulary change. The three
-  values, defined here rather than in the skeleton so a prompt only carries the name:
-  `airbrushed` = soft gradients, modelled volume, textbook shading. `flat-vector` = flat
-  fills, hard edges, no gradients. `line-engraving` = hatching and stipple carrying the
-  form, colour as spot fills.
-  Evidence: `airbrushed` has four renders behind it. `flat-vector` has none.
-  **`line-engraving` is held OUT of the skeleton's list** (v1.4) after its only render
-  failed — the style held and so did the ground and the signals, but the paired reference
-  lines came back as dashed BOXES and took the argument with them. It is not withdrawn,
-  because one failure is not the threshold; it is simply not offered by default, so it
-  cannot be reached for by accident. The retest that would restore it changes ONLY the
-  style value on a prompt already known to work, and checks one thing: whether the
-  LINES-never-boxes wording added at 1.3 holds under hatching. That wording has since been
-  confirmed on `airbrushed` — the 2026-08-12 insole render produced clean straight dashed
-  lines where the previous one produced boxes.
-  The MEDIUM is not part of this choice and cannot move — `anatomy` is the device and 2D
-  illustration is what the device means.
-- **The background motifs are gone, and a BASELINE takes their place** (v1.4). Owner
-  report: the motif band carries no important information. True, and the type had admitted
-  it — the old wording asked for motifs "at very low opacity", which is a way of saying they
-  must not be noticed. Five renders confirmed the whole idea was decoration: hexagon mesh
-  and medical crosses first, then shoe lasts and heel columns arranged as a footer border.
-  What replaces them is the thing the argument actually lacked. This type claims a
-  MEASURED difference, and across five renders the two panels never shared a datum: the
-  left foot stood on an implied floor at one height and the right on a shoe sole at another,
-  so "the heel raises you" had nothing to be measured against. One horizontal line at the
-  same height in both panels supplies that, forces the panels into alignment, and costs one
-  sentence. It is not decoration — remove it and the dashed pair loses its reference.
-  If the owner later wants ticks along it, that would give the CHART mark family its first
-  active host in the library, and it is a mark decision for the owner to write rather than
-  something to add quietly here.
-- **The product sits at the SAME interface as the culprit, at comparable size** (v1.4).
-  Owner report: the insole was sometimes visible and sometimes not, and the comparison was
-  lopsided. Both trace to one cause. The culprit is always a bold shaped object at the
-  point where it acts — a heel wedge under the heel bone, a strap over a shoulder, a
-  sagging surface under a hip. The product was being placed wherever it normally lives,
-  which for an insole is INSIDE a shoe, so it rendered as a sliver of outline lost in
-  another object while the heel opposite it read instantly. Asking for it "visibly carried"
-  while also asking for it "fitted inside" was self-defeating.
-  So: show the product exposed at the interface, at a size comparable to the culprit, even
-  when real use would hide it. A foot resting ON a contoured insole mirrors a foot on a heel
-  wedge; a foot in a shoe containing an insole does not.
-- **Exactly ONE property of the line may differ** (v1.6). This replaces the v1.2 wording,
-  which said both endpoints must sit on structures the culprit does not move — and that was
-  wrong, drawn too widely from one failure. It would have forbidden the render that PASSED:
-  the shoulder-bag frame ran its line from acromion to acromion, and the bag does pull one
-  shoulder down, so an endpoint moved. That movement WAS the variable.
-  The real fault in the high-heel render was different: the line ran along the Achilles and
-  changed both its length AND its inclination, so neither read as the thing being compared.
-  So the rule is about the line's properties, not about which bones are allowed to move.
-  Anchor both lines to the same two landmarks, then let exactly one property change: angle,
-  or length, or the gap spanned. For an angle comparison the landmarks are expected to
-  rotate; what must not change is the line's length.
-- Wrong on the LEFT, correct on the RIGHT — locked across the whole library. The
-  original exemplar inverted this and misread at first glance; never copy that.
-- Both panels carry a badge (X left, check right) — one unlabeled panel leaves the
-  verdict dangling. **TOP corners** (v1.2): the mattress render put them at the bottom,
-  which the old wording allowed by saying only "in the corner". `01-pain-split` has fixed
-  top corners all along on the ground that the eye reads top-down and a bottom badge
-  arrives after the verdict has already formed; this type now borrows that wording.
-- The dashed reference lines carry the entire argument. Without them the image says
-  "sitting curves your back", which everyone already knows.
-- The culprit object is drawn realistically but unbranded.
+- Wrong on the LEFT, correct on the RIGHT — locked across the whole library.
+- Both panels carry a `verdict` badge; one unlabelled panel leaves the verdict dangling.
+- The culprit is drawn realistically but unbranded.
 - Strictest G3 compliance in the library; G4 and G5 apply in full.
+- `measure` only works where a measurable landmark exists. If the harm cannot be pinned to
+  two anatomical points, this type is the wrong choice — see `avoid_when`.
+- The four marks with no evidence are proposals, not proven instruments. The first render
+  of each is its founding evidence and should be logged as such.
 
 ## NEGATIVE
 ```
@@ -165,190 +127,105 @@ Colour follows G3 exactly: red wrong, blue correct, green badge, nothing else.
 facial features, gore, wet tissue, correct side on the left,
 both dashed lines identical, missing badge on either panel,
 different figure scale between panels, extra signal colours, saturated ground,
-anatomically wrong structures
+anatomically wrong structures, background pattern
 ```
-Two tokens were DROPPED at v1.2 rather than rephrased. `cluttered motifs` qualified a noun
-the canvas requires, and `extra colors` fought the derived ground now that the base is a
-free colour — both are Rule 1a bleed shapes. The bounds live positively in the slots
-instead: motifs "all at very low opacity", and the palette lock naming the three signals as
-the only colours that may carry meaning. `both dashed lines at the same angle` became
-`both dashed lines identical`, because angle is no longer always the compared variable.
+Two tokens are deliberately absent because each would qualify a noun a prompt here
+requires, which Rule 1a makes a bleed: `cluttered motifs` and `extra colors`. Their bounds
+live positively in PARTS instead.
 
 ## VARIANTS
 ### --diagnostic
-The product leaves the frame: the right panel shows the corrected state reached by the
-category rather than by the reference product ("no object, or a generic [supportive
-object]"). This was the base behaviour until v1.3 and it has a real use — the advertorial
-middle, where the culprit is indicted before the product is revealed, with
-`03-mechanism-ghostbody` or a step-3 image carrying the product afterwards.
+The product leaves the frame: the RIGHT panel shows the corrected state reached by the
+category rather than by the reference product. This was the base behaviour until v1.3 and
+it has a real use — the advertorial middle, where the culprit is indicted before the
+product is revealed, with a later step-3 image carrying the product.
 Diff vs base: `[PRODUCT REFERENCE]` is dropped, G1 is exempt because no product appears
 (G1's own scope note), and `requires_product_photo` reads false for this variant.
 - Use it only when a later image on the same page carries the product. Alone it argues
-  "stop doing this" rather than "buy this", which is the fault that made the product the
-  default at v1.3.
+  "stop doing this" rather than "buy this", which is why the product became the default.
 - Negative additions: `reference product in frame, branded remedy object`
 
 ## WORKED EXAMPLES
-### example: shower-filter-hair-strand — skeleton@1.0, run: untested
-Product: none in frame (G1-exempt) · ratio 5:3
-- CANVAS — one continuous pale blue clinical gradient shared by both panels, divided by a single thin vertical line; low-opacity motifs: hexagon mesh, faint water-drop icons, an oversized ghosted hair cross-section watermark, a ghosted showerhead silhouette behind the left panel
-- SUBJECT TREATMENT (both panels) — magnified longitudinal cross-section of ONE hair strand in warm ivory as the top layer, cuticle scales clearly defined, surrounding water reduced to a translucent glowing outline behind; same strand, scale and viewing angle both sides
-- LEFT PANEL, WRONG — strand under untreated water, hard-water minerals as small angular crystals; cuticle scales lifted, splayed and chipped, highlighted red; red curved line tracing the roughened surface; red dashed reference line, JAGGED AND UNEVEN; red double-headed arrow showing scale accumulating; red X badge in the corner
-- RIGHT PANEL, CORRECT — same strand under filtered water, no crystals; scales flat, closed, overlapping, highlighted blue; soft blue aura along the smooth surface; blue dashed reference line at the same position, SMOOTH AND EVEN; green check badge; brighter and cleaner than the left
-- MEASUREMENT RULE — the paired dashed lines are the argument: identical position, thickness and dash pattern, differing only in how evenly they run
-- PALETTE LOCK — pale blue and ivory throughout; red = damage, blue = healthy, green = confirmation badge, nothing else
-Predicted failure: the exemplar's dashed lines differ by ANGLE (a clean binary the
-model draws reliably); this test substitutes EVENNESS, a fuzzy variable — the two lines
-will likely render identical and the argument collapses. See NOTES.
+### example: shower-filter-hair-strand — skeleton@1.7, run: untested
+Product: none in frame (`--diagnostic`) · ratio 5:3 · style airbrushed
+- GROUND — pale mineral grey, derived from limescale, darker in value than the ivory
+- BODY — one magnified hair strand per panel, cuticle scales in ivory over a translucent
+  water outline, same strand and angle in both
+- PANELS — LEFT: the strand under untreated water, angular mineral crystals lodged in
+  lifted cuticle scales. RIGHT: the same strand under filtered water, scales flat and
+  closed, no crystals
+- MARKS — `measure` (2 lines across the same two scale roots, differing only in the gap
+  they span), `verdict`, `contour` (1 per panel along the scale surface), `fill` (lifted
+  scales red, closed scales blue)
+Kept as the type's only `--diagnostic` example. Its earlier version compared the two lines
+by EVENNESS, which the `measure` rule now forbids — evenness is not one of the three
+permitted properties, and it is exactly the fault that rule was written to prevent.
 
 ## KNOWN-FLAKY
-(populated from observation evidence only)
+- **`line-engraving` style, 1/1 failed, 2026-08-12.** Its only render turned the `measure`
+  pair into dashed BOXES rather than lines and took the argument with it. Held out of the
+  offered `style` list — not withdrawn, since one failure is not the threshold, but not
+  reachable by accident either. The retest changes ONLY the style value on a prompt already
+  known to work and checks whether the straight-LINES wording holds under hatching. That
+  wording has since been confirmed on `airbrushed`.
 
 ## NOTES
-**The measurement hypothesis has been tested — result at v1.2.** It began as an untested
-guess from the shower-filter stress test: the compared variable of the dashed reference
-lines must be a measurable binary (angle, distance, length), never texture or evenness.
-Three renders on 2026-08-12 took one variable each. Angle isolated cleanly and is the
-safest of the three. Distance was inconclusive for an unrelated reason — the render put
-four figures on the canvas instead of two, so the pair stopped being legible. Length
-failed on its own terms and produced the refinement now in `[MEASUREMENT RULE]`: both
-endpoints must sit on structures the culprit does not tilt, because a line's length and
-its angle are visually coupled the moment one endpoint rides something the culprit moves.
-Still open: whether `flat-vector` and `line-engraving` hold the same measurement discipline
-as `airbrushed`. A hatched line is a weaker carrier of "identical dash pattern" than an
-airbrushed one, so the paired lines are the first thing to check on those two styles.
+The measurement hypothesis is settled as far as one render each can settle it. Angle
+isolates cleanly. Distance was inconclusive because a render put four figures on the
+canvas instead of two. Length failed on its own terms and produced the one-property rule
+now in MARKS. Open: whether `flat-vector` carries an identical dash pattern as reliably as
+`airbrushed` does.
 
-Distinction from `03-mechanism-ghostbody`: 2D illustration vs 3D render; clinical blue
-canvas vs infinite white; skeleton over body vs body over skeleton; the object in frame
-is the **culprit**, not the product; the sentence is "this is what harms you", not
-"this shape exists for a reason". The two may run in one gallery (02 then 03) but must
-share one palette or they read as two sources.
+Distinction from `03-mechanism-ghostbody`: 2D illustration vs 3D render; the object in
+frame is the CULPRIT, not the product's mechanism; the sentence is "this is what harms
+you", not "this shape exists for a reason". The two may run in one gallery (02 then 03)
+but must share one palette or they read as two sources.
 
 ## CHANGELOG
-- 1.6 (2026-08-12): **[MEASUREMENT RULE] rewritten — the v1.2 wording was wrong.** It said
-  both endpoints must sit on structures the culprit does not move, generalised from the one
-  high-heel failure, and it would have forbidden the render that PASSED: the shoulder-bag
-  frame ran its line acromion to acromion, and a single-strap bag pulls one shoulder down,
-  so an endpoint moved. That movement was the whole variable.
-  The high-heel fault was never about which bones move. That line changed its length AND its
-  inclination at once, so neither property read as the comparison. The rule now governs the
-  LINE rather than the skeleton: anchor both lines to the same two landmarks, then let
-  exactly one property differ — angle, or length, or the gap spanned — with everything else
-  visibly identical. For an angle comparison the landmarks are expected to rotate; what must
-  hold still is the line's length.
-  Caught while writing a prompt that would have violated the old wording for no good reason,
-  which is the cheapest way to find a rule that misfires.
-- 1.5 (2026-08-12): **the compression 1.4 promised and did not deliver.** The two panel
-  blocks were near-identical in structure — each naming its colour, its contour line, its
-  dashed line and its badge on separate lines — so they collapse into one `[PANELS]` block
-  holding LEFT and RIGHT as two entries. Nothing about either panel changed; only the
-  repeated scaffolding went. With the baseline sentence tightened too, the skeleton lands at
-  1868 characters, against 1962 before this session began and 2822 at its worst.
-  Every rule added from 1.2 to 1.4 survives intact: ground derived from the culprit, shared
-  baseline, product at the culprit's interface, one figure per panel, top-corner badges,
-  lines-never-boxes, and a G3 reference in place of a restatement.
-  Recorded because it is the honest version of events. 1.2 grew the skeleton 44% while
-  presenting itself as a tidy-up; 1.4 grew it again; this is the first entry that actually
-  reduced it. Separately, 1.4's COMMIT MESSAGE claimed "1918 -> 1699 characters" — that
-  number was wrong and the CHANGELOG entry in the file always held the correct 2027. The
-  message is left as written rather than amended, since git history is this project's audit
-  surface and hiding an error there is worse than showing its correction. The commit message
-  on 1.5 then repeated the mistake, claiming 1734; the true figure is 1868, which is what this
-  entry has always said. Root cause, fixed rather than apologised for: character counts were
-  being typed into commit messages by hand from a measurement taken before the last edit.
-  They are now generated from the file at commit time.
-- 1.4 (2026-08-12): **the decorative background becomes a measuring datum, and the product
-  stops hiding.** Three owner reports on the v1.3 insole render, all accepted.
-  (1) The motif band carries no information. True, and the type had already admitted it by
-  asking for motifs "at very low opacity" — a way of saying they must not be noticed. Five
-  renders proved the whole idea decorative: hexagon mesh and medical crosses, then shoe
-  lasts and heel columns arranged as a footer border. They are gone. **A BASELINE replaces
-  them**: one horizontal line at the same height in both panels. Across all five renders
-  the panels never shared a datum — the left foot stood on an implied floor at one height,
-  the right on a shoe sole at another — so a type whose whole claim is a MEASURED difference
-  had nothing to measure against. This is the opposite of decoration: remove it and the
-  dashed pair loses its reference.
-  (2) The insole was sometimes visible, sometimes not, and the comparison was lopsided.
-  Both come from one cause. The culprit is always a bold shaped object at the point where it
-  acts; the product was being placed wherever it normally lives, which for an insole is
-  inside a shoe, so it rendered as a sliver lost in another object while the heel opposite
-  read instantly. Asking for it "visibly carried" AND "fitted inside" was self-defeating.
-  The right panel now requires the product at THE SAME interface as the culprit, at
-  comparable size, exposed rather than housed.
-  (3) Skeleton still too long. `PALETTE LOCK` is gone — two lines restating G3, which
-  Rule 6 rule 2 forbids; one clause now references the rule instead. MEDIUM and STYLE merged
-  into one line. `line-engraving` is held out of the offered list so it cannot be reached
-  for by accident. Skeleton 1918 -> 2027 characters.
-  Confirmed by this render and worth recording: the LINES-never-boxes wording added at 1.3
-  worked. The previous render turned the dashed pair into boxes under `line-engraving`; this
-  one produced clean straight dashed lines under `airbrushed`.
-- 1.3 (2026-08-12): **the product becomes the thing on the right.** Owner report on the
-  first v1.2 render: the image logic is not good because there is no comparison object that
-  is the product. Correct, and it was the type's oldest assumption rather than an oversight.
-  The right panel used to show "no object or [supportive object]", so every render argued
-  "stop wearing heels" or "stop carrying that bag" and never "buy this". The base now puts
-  the reference product in the right panel, visibly doing the correcting;
-  `requires_product_photo` flips to true and the G1 exemption is dropped.
-  The old product-free behaviour survives as **`--diagnostic`**, because it has a real use:
-  the advertorial middle, where the culprit is indicted before the product is revealed and a
-  later step-3 image carries the product. Its own note says what it costs - alone it argues
-  stop-doing-this rather than buy-this.
-  **Motifs are a field, not a sprinkle.** Owner report: the elements are placed carelessly
-  in the ground. Confirmed in all four renders - mesh, crosses, shoe lasts and heel columns
-  floating at unrelated sizes, some over the figures, some marooned. Deriving them from the
-  culprit at v1.2 fixed WHAT they are and said nothing about WHERE they go, which was half a
-  fix. They now form one continuous field anchored to a named edge, stopping where a figure
-  begins.
-  **Skeleton back under control.** Owner report: still long, still guiding style too much -
-  and they were right, because v1.2 grew it from 1962 to 2822 characters while claiming to be
-  a tidy-up. The three illustration-style DEFINITIONS moved to SLOT CONSTRAINTS so a prompt
-  carries only the name; the palette reasoning went with them; the MEDIUM stopped explaining
-  itself. Now 1918 characters, below where it started, with a product panel, a placement law
-  and a style slot added since.
-  **`line-engraving` is marked do-not-use pending a retest.** Its only render failed: the
-  style held and the signals held, but the paired reference lines came back as dashed BOXES
-  and took the argument with them. `[MEASUREMENT RULE]` now says the lines are straight
-  lines, never boxes, brackets or outlines. If it fails a second time the value should be
-  withdrawn rather than patched around.
-- 1.2 (2026-08-12): **the design language stops being hard-coded.** Owner report after
-  three renders: the elements are locked to one style and one colour scheme, with no
-  diversity, and the fix should be a mechanism for reasoning about style rather than a
-  fixed example. Three levels, all patched here.
-  (1) `[CANVAS]` now DERIVES its ground and its 2-3 motifs from the culprit object's own
-  material world - a source already in every prompt and different every time. The old text
-  hard-coded a pale blue clinical gradient plus a hexagon mesh and medical cross icons, so
-  every render of this type came out as the same picture with different anatomy. Deriving
-  also retires the medical cross automatically, which was making a kitchen or a shoe look
-  like hospital material.
-  (2) The fixed palette becomes a FUNCTIONAL constraint: the base must be low-chroma, far
-  in hue from both red and blue so neither signal fights it, and separated from the ivory
-  structure layer by VALUE rather than only hue. That last clause matters - a warm sand
-  ground would otherwise collide with ivory bone on the first render.
-  The rule-based reason the old ground had to go, rather than a taste-based one: G3 makes
-  blue mean correct support and working mechanism, so a pale blue canvas placed the whole
-  image inside the correct-side signal, and all three renders show the right panel's blue
-  aura fighting a blue field while red carried easily. The ivory structures are untouched -
-  G3 assigns yellow to neutral structure, so those were never a style choice.
-  (3) Illustration STYLE becomes a named slot with three values - `airbrushed`,
-  `flat-vector`, `line-engraving` - chosen and stated in every prompt. A named slot rather
-  than an axis, because SPEC §3.2 reserves axes for dimensions cutting across several types
-  and this cuts across one; it follows `02-symptom-rail`'s vignette-mode pattern, so no
-  vocabulary change was needed. Evidence status recorded in SLOT CONSTRAINTS: `airbrushed`
-  has three passing renders, the other two have none and are the owner's design decision.
-  The MEDIUM stays fixed, because `anatomy` is the device and 2D illustration is what the
-  device means.
-  Three smaller fixes from the same three renders: `[BODY TREATMENT]` now says EXACTLY ONE
-  figure per panel (the mattress render stacked two rows per panel and the dashed pair
-  stopped being legible); the badges move to TOP corners, borrowing `01-pain-split`'s
-  wording and its reason (the mattress render put them at the bottom, which the old "in the
-  corner" allowed); and `[MEASUREMENT RULE]` gains the refinement that both endpoints of
-  the line must sit on structures the culprit does not tilt - the high-heel render measured
-  along the Achilles, whose lower endpoint rides the tilted heel bone, so length and angle
-  moved together and neither read as the variable.
-  The `RATIO:` line goes, as it did from `01-pain-scene` 1.4 and `01-pain-split` 1.6:
-  adapter Rule 4, 6/6 renders ignoring a written ratio.
-- 1.1 (2026-08-11): channels gain `advertorial`. Self-contradiction: use_when already
-  says the type "fits the middle of an advertorial" while the frontmatter excluded
-  that channel. Frontmatter corrected to match the trigger.
+- 1.7 (2026-08-12): **restructured into a call-map plus two libraries, and the file
+  cleaned.** Owner decision: each type gets its own mark library to call, rather than
+  if/else inside the skeleton. `PARTS` holds the non-mark building blocks (style, ground,
+  body, panels); `MARKS` holds this type's ten marks with form, colour, count and evidence
+  status; the skeleton became a map naming them. Worth recording why the branches were
+  never a context cost: `query/runbook.md` Step 5 already required every conditional to be
+  resolved before a prompt ships, so no branch ever reached the model. What branches cost
+  was correctness — two faults this session came from choosing a branch wrongly, not from
+  leaked text — and naming them makes each choice a deliberate lookup.
+  Four marks are carried with NO evidence: `baseline`, `axis`, `pressure`, `range`. They
+  are labelled as proposals and the first render of each is its founding evidence.
+  Cleanup in the same pass: SLOT CONSTRAINTS held 6681 characters of history and CHANGELOG
+  10501, together 67% of a 25455-character file. Decisions stay here in compressed form,
+  process errors stay in git history where the audit surface is, and SLOT CONSTRAINTS keeps
+  only constraints. SPEC §3.3's optional-section list gains PARTS and MARKS in this diff.
+- 1.6 (2026-08-12): `measure`'s rule rewritten. The v1.2 wording required both endpoints to
+  sit on structures the culprit does not move, generalised from one failure, and it would
+  have forbidden the render that PASSED — the shoulder-bag line ran acromion to acromion
+  and the bag pulls one shoulder down, which was the variable itself. The rule now governs
+  the line: same two landmarks, exactly one property differing.
+- 1.5 (2026-08-12): the two parallel panel blocks collapsed into one. Skeleton 2027 → 1868.
+- 1.4 (2026-08-12): background motifs removed, `baseline` datum put in their place. Owner
+  report: the motif band carried no information — true, and the type had admitted it by
+  asking for motifs "at very low opacity". Across five renders the panels never shared a
+  datum, so a type claiming a MEASURED difference had nothing to measure against. Also: the
+  product must sit at the SAME interface as the culprit, at comparable size, exposed rather
+  than housed — an insole asked for "fitted inside" a shoe AND "visibly carried" cannot be
+  both, and rendered as a sliver while the heel opposite it read instantly.
+- 1.3 (2026-08-12): **the product became the thing on the right.** Owner report: no
+  comparison object that is the product. The RIGHT panel used to read "no object or
+  [supportive object]", so every render argued "stop wearing heels" and never "buy this".
+  `requires_product_photo` → true, G1 exemption dropped, product-free form kept as
+  `--diagnostic`. `measure` gained the straight-LINES-never-boxes wording after the
+  `line-engraving` failure.
+- 1.2 (2026-08-12): **the design language stopped being hard-coded.** Owner report: the
+  elements were locked to one style and one colour scheme. Ground and motifs became DERIVED
+  from the culprit's material world, the fixed palette became a functional constraint, and
+  illustration style became a named choice. The rule-based reason the pale blue ground had
+  to go: G3 makes blue mean correct support and working mechanism, so a blue canvas put the
+  whole image inside the correct-side signal, and all three renders show the right panel's
+  blue aura fighting a blue field. Ivory structures untouched — G3 assigns yellow to
+  neutral structure. Badges moved to TOP corners, borrowing `01-pain-split`'s wording;
+  `[BODY]` fixed at one figure per panel; the `RATIO:` line dropped per adapter Rule 4.
+- 1.1 (2026-08-11): channels gain `advertorial`. Self-contradiction: use_when already said
+  the type "fits the middle of an advertorial" while the frontmatter excluded that channel.
 - 1.0 (2026-08-10): initial from the car-seat spine exemplar; exemplar faults encoded
   (correct-side-left inversion, missing X badge). seed: conversation.md.

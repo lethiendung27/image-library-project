@@ -78,7 +78,12 @@ A classifier may only escalate a level after the lower level demonstrably fails.
 ### 3.3 Anatomy of a type file
 
 Required sections, in order: `PURPOSE`, `TRIGGER`, `SKELETON`, `NEGATIVE`, `CHANGELOG`.
-Optional sections: `SLOT CONSTRAINTS`, `VARIANTS`, `WORKED EXAMPLES`, `KNOWN-FLAKY`, `NOTES`.
+Optional sections: `PARTS`, `MARKS`, `SLOT CONSTRAINTS`, `VARIANTS`,
+`WORKED EXAMPLES`, `KNOWN-FLAKY`, `NOTES`. `PARTS` and `MARKS` are a type's own
+callable definitions: the skeleton names an entry and the definition lives in the
+section once, never restated in the skeleton or in a rendered prompt. A type's mark
+library is its own (ADR-012); a mark that looks the same in two types is noted in
+both rather than owned centrally.
 
 - `TRIGGER` contains `use_when: >` and `avoid_when: >` folded blocks written in **router
   language** (section roles, buyer state, channel). It is extracted verbatim into the index.

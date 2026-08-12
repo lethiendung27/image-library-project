@@ -307,3 +307,52 @@ and since the ledger is append-only a disputed label is corrected by a new recor
 than an edit. Supersedes the never-assume-a-verdict clause of ADR-007 only as to WHO may
 label a render that has been examined; the ban on inventing a verdict for an unseen image
 is unchanged.
+
+## ADR-012 · 2026-08-12 · Each type owns its own mark library; the skeleton calls by name
+
+Context: after five versions in one day, two skeletons had grown while the owner asked
+repeatedly for shorter — `02-cause-anatomy` from 1962 to 2822 characters, `02-symptom-rail`
+from 1587 to 2160. Every rule added had evidence; they were simply being written INSIDE the
+skeleton. The owner then asked two questions: does an if/else in a skeleton consume prompt
+context without engaging any reasoning, and should a type carry a small callable library
+instead.
+
+**On the first question, the contract already had the answer.** `query/runbook.md` Step 5
+requires every conditional branch to be resolved before a prompt ships — "no branch may
+remain unresolved in the output prompt" — so a branch never reaches the model at all. It is
+a decision table for the writer. What branches cost is therefore not context but
+correctness, and this session proved it twice: the dehumidifier arrow pointed out instead
+of in, and the heat mark was amber where G3 reserves orange for wrong heat. Both were
+branches resolved cleanly and chosen wrongly. The lesson is that a branch which states a
+checkable condition defends itself, and a branch that only says "pick one of three" does
+not.
+
+**Decision, by the owner: each type gets its OWN mark library.** Not a central one. Two new
+optional sections, added to SPEC §3.3 in the same diff: `PARTS` for a type's non-mark
+building blocks, `MARKS` for its mark library. The skeleton becomes a call-map that names
+entries; definitions live in the section once and are never restated in the skeleton or in a
+rendered prompt.
+
+I had proposed the opposite for one case — lifting the X/check verdict badge into
+`rules.md` as a global rule, on the evidence that four types state that same law in four
+different wordings (`01-pain-split`, `02-cause-anatomy`, `03-mechanism-ghostbody`,
+`06-relief-hero`). The owner chose per-type ownership, and there is a real argument for it
+that my proposal missed: a mark that looks identical can MEAN different things per type. The
+X/check pair delivers a verdict in `01-pain-split`, where the whole image is a judgement,
+and merely labels which panel is which in `02-cause-anatomy`, where the argument is a
+measurement. Centralising the form would have implied a shared meaning that does not exist.
+Per-type ownership also keeps a type self-contained, which costs nothing under progressive
+disclosure since the type file is loaded whole at fill time anyway.
+
+**The cost, accepted rather than argued away:** drift. Four types will keep describing the
+same-looking badge four ways, and nothing forces them to converge. Mitigation, cheap and
+non-centralising: each library entry carries an `also in` note listing the other types
+where a same-looking mark lives, so drift stays visible from inside each file instead of
+being invisible everywhere.
+
+Consequences: `02-cause-anatomy` is the model implementation at v1.7 — file 25455 → 14171
+characters, skeleton 1926 → 966, with ten marks carrying form, colour, count and evidence
+status. Four of those ten have no render evidence (`baseline`, `axis`, `pressure`, `range`)
+and are labelled proposals whose first render is their founding evidence. Whether to repeat
+the structure on the other fourteen types is a decision to take after the model type has
+been rendered against, not before.
