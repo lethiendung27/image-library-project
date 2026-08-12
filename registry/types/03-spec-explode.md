@@ -3,8 +3,8 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "0.2"
-status: reserved
+version: "1.0"
+status: active
 replaced_by: null
 ratios: ["1:1", "16:9"]
 channels: [marketplace, landing-page]
@@ -18,27 +18,7 @@ never_with: [03-spec-split]
 avoid_adjacent: [03-mechanism-xray]
 ---
 
-# 03-spec-explode — STAGING DRAFT
-
-Promotion status (2026-08-12): **5 exemplars ledgered — criterion 1 MET by owner
-ruling.** Three from the market (full-frame: obs `sha256:1abb6e…` batch 11-B wearable
-audio puck; `sha256:620fb5…` 11-E mini camera; inset execution: `sha256:bb60ab…` 11-E
-ab-roller material layers) plus two admitted from batch 12-A: `sha256:af3cd1…`
-(198×255 thumbnail, `low-res`) and `sha256:8903444…` (stock asset, `watermarked`, with
-HUD data panels). Both 12-A records carry the classifier's own caveat that they hold no
-product identity and should be weighed low; the owner overruled that on 2026-08-12,
-wanting the candidate's result range widened rather than kept narrow. The caveat stays
-readable in the records because the ledger is append-only — the ruling changes what the
-count means, not what the records say.
-
-Criterion 3 MET 2026-08-11: worked example `mini-camera-fullframe` rendered, owner
-verdict pass (`eval/render-tests.jsonl`).
-
-**Remaining gap is now criterion 2 alone** — the router-confusion test against
-`03-mechanism-xray`, whose boundary this type's SLOT CONSTRAINTS already state
-(explode SEPARATES for job=spec; xray looks THROUGH an intact shell for
-job=mechanism). Criterion 4 is the standing ADR-007 authorisation. Not routable until
-that test runs.
+# 03-spec-explode
 
 ## PURPOSE
 A census of what is inside: the product separated into its real components,
@@ -62,7 +42,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-explode v0.1
+TYPE: 03-spec-explode v1.0
 RATIO: [1:1 / 16:9]
 REGISTER: 3D technical render. NOT photography. Dark engineering background.
 
@@ -129,7 +109,7 @@ rainbow palette, cartoon style
 ```
 
 ## WORKED EXAMPLES
-### example: mini-camera-fullframe — skeleton@0.1, run: pass
+### example: mini-camera-fullframe — skeleton@1.0, run: pass
 ```
 A 16:9 3D technical render. NOT photography. Dark engineering background.
 
@@ -197,6 +177,33 @@ Note the direction of the two exemplars just admitted: both are near-black groun
 they push the ledger toward the monotony rather than away from it.
 
 ## CHANGELOG
+- 1.0 (2026-08-12): **promoted to active** on the owner's direct command. All four
+  SPEC §6.3 criteria, each with its evidence:
+  (1) **5 exemplars** — three from the market (`sha256:1abb6e…` 11-B wearable audio puck
+  full-frame; `sha256:620fb5…` 11-E mini camera full-frame; `sha256:bb60ab…` 11-E
+  ab-roller six-layer fan as inset) plus two admitted by owner ruling from batch 12-A
+  (`sha256:af3cd1…` low-res thumbnail, `sha256:8903444…` watermarked stock with HUD
+  panels). Those two carry their own recorded caveat — no product identity, weigh low —
+  and the ruling changes what the count means, not what the records say. A curator
+  reading this later should know criterion 1 rests on 3 market exemplars and 2 admitted
+  ones, not on 5 equal ones.
+  (2) **Router-confusion test PASSED** against both golden fixtures, 14 slot assertions,
+  **0 unintended flips**. The live boundary held on its own gate rather than on wording:
+  both fixtures' mechanism slots require the emitting path shown ACTIVE
+  (`visible_output=water-jet` / `mist`, G8 in technical register), and this type's own
+  NEGATIVE bans an exploded view combined with a translucent intact shell — so it cannot
+  serve a WHY slot even when channel-legal. `03-use-sequence`'s `only_legal_type` slots
+  are job=use and unaffected; fixture-002's `comparison` is advertorial, which this type
+  does not declare.
+  (3) **Worked example rendered** — `mini-camera-fullframe`, owner verdict pass
+  2026-08-11 (`eval/render-tests.jsonl`). Header rebased @0.1 → @1.0: the skeleton text
+  did not change on promotion, so the example still matches it exactly, and leaving @0.1
+  under a v1.0 type would flag stale on a MAJOR lag that is only a renumbering.
+  (4) ADR-007 gate — the owner's explicit command plus the standing authorisation.
+  Vocabulary `explode` loses its `reserved` marker; `mapping/slot-rules.md` gains the
+  type in the `mechanism` row on its two declared channels. `never_with: [03-spec-split]`
+  and `avoid_adjacent: [03-mechanism-xray]` were already resolvable and now bind between
+  three active types.
 - 0.2 (2026-08-12): promotion accounting only — no skeleton, slot, negative or trigger
   change. Criterion 1 recorded as MET at 5 exemplars by owner ruling, admitting the two
   batch-12-A records (`sha256:af3cd1…` low-res thumbnail, `sha256:8903444…` watermarked

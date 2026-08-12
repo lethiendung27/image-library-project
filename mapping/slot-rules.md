@@ -11,7 +11,7 @@ Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
 | hero | `06-relief-hero` (commercial) | `06-relief-hero` (commercial) | `06-relief-hero` (ugc), `01-pain-scene` | `01-pain-scene` (header) |
 | problem-agitation | `01-pain-split`, `02-symptom-rail` | `01-pain-split`, `02-symptom-rail`, `01-pain-scene` (confront) | `01-pain-scene` | `01-pain-scene` |
 | cause | `02-cause-anatomy` | `02-cause-anatomy` | — | `02-cause-anatomy` |
-| mechanism | `03-mechanism-ghostbody`, `03-spec-split`, `03-mechanism-xray` | `03-mechanism-ghostbody`, `03-mechanism-xray` | — | `03-mechanism-ghostbody`, `03-mechanism-xray` |
+| mechanism | `03-mechanism-ghostbody`, `03-spec-split`, `03-mechanism-xray`, `03-spec-explode` | `03-mechanism-ghostbody`, `03-mechanism-xray`, `03-spec-explode` | — | `03-mechanism-ghostbody`, `03-mechanism-xray` |
 | proof | `04-proof-lockedframe` (verdict / timelapse) | `04-proof-lockedframe` (verdict / timelapse / capture) | `04-proof-lockedframe` (rivals / timelapse) | `04-proof-lockedframe` (all variants) |
 | social-proof | `05-persona-grid` | `05-social-handoff`, `05-persona-grid`, `05-social-snapshot` | `05-social-handoff` | `05-social-handoff`, `05-social-snapshot` |
 | personas | `05-persona-grid` | `05-persona-grid` | — | — |

@@ -176,6 +176,38 @@ types:
       distrust tech-render aesthetics (natural/organic positioning). Never on
       the same page as 03-spec-split — two component-tech arguments read as
       protesting too much.
+  - id: 03-spec-explode
+    step: 3
+    job: spec
+    device: explode
+    version: "1.0"
+    status: active
+    channels: [marketplace, landing-page]
+    ratios: ["1:1", "16:9"]
+    requires_product_photo: true
+    generation_mode: single-pass
+    axes: {}
+    variants: []
+    exempt_from: [G7]
+    pairs_with: []
+    never_with: [03-spec-split]
+    avoid_adjacent: [03-mechanism-xray]
+    requires_pair: null
+    evidence_count: 0
+    picks: {}
+    use_when: >
+      Compact products whose value is component density — cameras, audio gear,
+      battery devices, layered materials — where the buyer suspects "cheap
+      shell, empty inside". Step-3 gallery image or landing-page build
+      section. Choose explode when the question is WHAT is in there; choose
+      03-mechanism-xray when the question is WHY it works.
+    avoid_when: >
+      Products with trivial interiors (a shell and one part reads as emptiness
+      made large). Never beside 03-spec-split (two component-tech arguments
+      read as protesting too much — never_with) and never adjacent to
+      03-mechanism-xray on one page (two dark technical renders read as one
+      template; the page takes at most two step-3 answers anyway). Not for
+      natural/organic positioning where tech renders break trust.
   - id: 03-spec-split
     step: 3
     job: spec

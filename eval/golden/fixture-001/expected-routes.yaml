@@ -88,3 +88,13 @@ page_level:
     anti-tech-render categories. A mechanism slot added to this page would
     expect: {type: 03-mechanism-xray, note: "internals: mesh disc, granule bed,
     outlet channel; G8 water path active"}.
+  confusion_test_2026_08_12: >
+    03-spec-explode promoted to active v1.0. Re-ran Steps 2-4 against this
+    fixture: all 6 slot assertions held, 0 unintended flips. It is channel-legal
+    here (landing-page) and shares the mechanism cell, but the documented
+    mechanism expectation above stays 03-mechanism-xray on the type's own gate
+    rather than on wording — that slot needs the water path shown ACTIVE, and
+    explode's NEGATIVE bans an exploded view combined with a translucent intact
+    shell, so it cannot serve a WHY slot at all. A granule bed is also near the
+    "trivial interiors" case explode's avoid_when excludes. howto-1 is job=use
+    and untouched.

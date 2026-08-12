@@ -42,7 +42,7 @@ devices:
   snapshot: "raw single-frame customer-style phone photo; authenticity is the argument"
   demo: "reserved — close-up hand demonstration"
   xray: "see-through product internals: product translucent, internals solid"
-  explode: "reserved — exploded parts view"
+  explode: "product separated into its real component groups along one axis, technical render"
   timeline: "reserved — states along a time axis"
   macro: "reserved — extreme close-up of material/texture"
 
