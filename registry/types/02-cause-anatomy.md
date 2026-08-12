@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -37,7 +37,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 02-cause-anatomy v1.4 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.5 [+ --diagnostic]
 MEDIUM: 2D illustration, [airbrushed / flat-vector]. NOT photography, NOT 3D.
 
 [PRODUCT REFERENCE]
@@ -48,28 +48,24 @@ panel. Preserve shape, proportions, material, finish and colour exactly.
 One continuous [low-chroma colour from the culprit's material world] field across
 both panels, split by a single thin vertical line.
 BASELINE: one horizontal line at the SAME height in both panels — the surface both
-figures rest on, and the datum everything is measured against.
-Nothing else occupies the background.
+figures rest on and the datum everything is measured against. Nothing else is in
+the background.
 
 [BODY TREATMENT, both panels]
 [anatomical structure] in warm ivory over a translucent body outline.
 EXACTLY ONE figure per panel, same scale and viewing angle in both.
 
-[LEFT PANEL: WRONG]
-Figure [wrong position] on [culprit object, drawn realistically, unbranded],
-the culprit clearly visible at [the interface where it acts on the body].
-[affected elements] red. A red curved line tracing [wrong contour].
-A red dashed reference line at [landmark], [state A of the variable].
-ONE red double-headed curved arrow along [surface causing the problem].
-Red circle with white X, TOP corner.
-
-[RIGHT PANEL: CORRECT]
-Same figure [correct position] on the reference product, shown at THE SAME
-interface as the culprit and at comparable size — exposed and readable, never
-tucked inside a housing that hides it.
-[affected elements] blue. A soft blue aura along [correct contour].
-A blue dashed reference line at the same [landmark], [state B of the variable].
-Green circle with white check, TOP corner. Brighter and cleaner than the left.
+[PANELS — LEFT is wrong, RIGHT is correct]
+LEFT: figure [wrong position] on [culprit, realistic, unbranded], the culprit
+clearly visible where it acts on the body. [affected elements] red, a red curved
+line tracing [wrong contour], a red dashed line at [landmark] in [state A], ONE
+red double-headed arrow along [surface causing the problem], red X badge TOP
+corner.
+RIGHT: same figure [correct position] on the reference product, at THE SAME
+interface as the culprit and comparable in size, exposed rather than housed.
+[affected elements] blue, a soft blue aura along [correct contour], a blue dashed
+line at the same [landmark] in [state B], green check badge TOP corner. Brighter
+and cleaner than LEFT.
 
 [MEASUREMENT RULE]
 Two dashed reference lines, one per panel, at the identical landmark, identical
@@ -223,6 +219,21 @@ is the **culprit**, not the product; the sentence is "this is what harms you", n
 share one palette or they read as two sources.
 
 ## CHANGELOG
+- 1.5 (2026-08-12): **the compression 1.4 promised and did not deliver.** The two panel
+  blocks were near-identical in structure — each naming its colour, its contour line, its
+  dashed line and its badge on separate lines — so they collapse into one `[PANELS]` block
+  holding LEFT and RIGHT as two entries. Nothing about either panel changed; only the
+  repeated scaffolding went. With the baseline sentence tightened too, the skeleton lands at
+  1868 characters, against 1962 before this session began and 2822 at its worst.
+  Every rule added from 1.2 to 1.4 survives intact: ground derived from the culprit, shared
+  baseline, product at the culprit's interface, one figure per panel, top-corner badges,
+  lines-never-boxes, and a G3 reference in place of a restatement.
+  Recorded because it is the honest version of events. 1.2 grew the skeleton 44% while
+  presenting itself as a tidy-up; 1.4 grew it again; this is the first entry that actually
+  reduced it. Separately, 1.4's COMMIT MESSAGE claimed "1918 -> 1699 characters" — that
+  number was wrong and the CHANGELOG entry in the file always held the correct 2027. The
+  message is left as written rather than amended, since git history is this project's audit
+  surface and hiding an error there is worse than showing its correction.
 - 1.4 (2026-08-12): **the decorative background becomes a measuring datum, and the product
   stops hiding.** Three owner reports on the v1.3 insole render, all accepted.
   (1) The motif band carries no information. True, and the type had already admitted it by
