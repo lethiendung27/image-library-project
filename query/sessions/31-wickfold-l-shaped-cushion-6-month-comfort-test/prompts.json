@@ -1,0 +1,573 @@
+{
+  "page_id": "31",
+  "registry_version": "unknown",
+  "channel": "advertorial",
+  "awareness_stage": "solution-aware",
+  "slots": [
+    {
+      "slot_id": "hero.image",
+      "section_role": "hero",
+      "asset": "01-hero-relief-hero.png",
+      "placement": "Advertorial header, directly under the eyebrow 'Comfort · 6-Month Test'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "reason": "The declared reason to exist is a body settling into support — a transition, so it is temporal."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--commercial, inset --none",
+          "varies_on": "baseline",
+          "ratio": "2:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Zone B skipped by the skeleton's own rule: the product is at the contact point and legible. Inset --none keeps the editorial register clean.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --commercial, inset_mode --none\nREGISTER: clean commercial e-commerce banner, bright airy, sharp focus, 4K.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve\nshape, proportions, material, finish and colour exactly. Do not redesign or add\nfeatures.\n\nZONE A, HERO: a man in his late forties in an open-collar shirt, seated in the\ndriver's seat of a modern estate car on a bright weekday morning, one hand resting\non the wheel, shoulders dropped back against the seat, gaze out through the\nwindscreen, expression of settled ease. The product in place beneath and behind him,\nits seat section under his hips and its lumbar section rising into the small of his\nback, seen from a front three-quarter angle through the open driver's door,\nunobstructed, in fitted car-seat use.\nSetting: a suburban driveway filled to the edges — a travel mug in the console, a\nlanyard hanging from the mirror, a folded jacket on the passenger seat, a phone\nmount, a parking permit on the screen, hedges and a neighbour's gate beyond the open\ndoor. Morning side light through the windscreen. Background blurred but never blank,\nno bare panel area larger than the product. High-key warm-neutral grade.\nSubject offset right; no layer occupies the left space and no empty mid-frame is\nreserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. What carries\nthe frame instead is contact — the continuous line where the cushion meets his lower\nback with no gap behind the lumbar curve.\n\nPOSE: the product works passively while he does something else, so the pose is\nrelaxed, hands on the wheel, gaze away from the product.\n\nLIGHT: soft even morning daylight through the windscreen, background blurred,\nhigh-key grade.",
+          "avoid": "text, numbers, watermarks, logos, pain cues, cluttered background, dark moody lighting, blurry product, invented mist or steam, malformed fingers, extra fingers"
+        },
+        {
+          "opt": "B",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --none",
+          "varies_on": "axis: register commercial → ugc",
+          "ratio": "2:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "ugc register suits the editorial 'our editors tested it' framing. Never legal on marketplace; advertorial only here.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve\nshape, proportions, material, finish and colour exactly.\n\nZONE A, HERO: a man in his fifties in a creased polo, half-turned in the driver's\nseat of an ordinary hatchback as if about to get out, one foot already on the\ndriveway, easy unposed expression. The product in place behind and beneath him, its\nlumbar section filling the curve of his lower back, seen from outside the open door,\nunobstructed, in fitted car-seat use.\nSetting: a real driveway filled to the edges — a supermarket bag in the footwell, a\nphone cable trailing from the console, a coffee cup in the holder, a hi-vis vest on\nthe back seat, wheelie bins by the fence, wet tarmac. Flat overcast daylight.\nBackground blurred but never blank. Honest ordinary grade, not high-key.\nSubject offset right; nothing occupies the left space.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact\ncarries the frame — the unbroken line where the lumbar section meets his back.\n\nPOSE: relaxed, mid-exit, gaze away from the product.\n\nLIGHT: flat overcast daylight, no rim light, no glamour.",
+          "avoid": "text, numbers, watermarks, logos, studio lighting, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        }
+      ]
+    },
+    {
+      "slot_id": "problems.items.0.image",
+      "section_role": "pain",
+      "asset": "02-problem-pain-scene.png",
+      "placement": "Section 'Why most seat cushions end up in the closet', beside the note list.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "A single held moment of recognition. Nothing transitions; motion would turn a photograph into a performance."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "01-pain-scene",
+          "version": "1.2",
+          "variant": "--candid",
+          "varies_on": "baseline",
+          "ratio": "5:3",
+          "attachments": [],
+          "composition_notes": "requires_pair — satisfied by slot 1 and slots 9-12 downstream. G1-exempt: no product in frame. Page arc: this is the only pain beat and nothing pain-coded appears after slot 3.",
+          "prompt": "TYPE: 01-pain-scene v1.2, variant --candid\nREGISTER: cinematic film still. Single frame. NO graphic overlays of any kind.\n\nSUBJECT: a man in his late forties in a wrinkled button-down, caught mid-action\npushing himself up out of an office chair at the end of the afternoon, weight on\nboth hands on the desk edge, hips still low, one knee not yet straight. Face showing\na flat involuntary tightening around the eyes and a set jaw, not a grimace. Gaze\ndown at the desk, unaware of the camera. Weight unbalanced, mid-motion, not posed.\n\nMOMENT RULE: this is a mundane moment anyone lives daily, not a demonstration of\nwrong behaviour.\n\nSYMPTOM EVIDENCE: the failed remedies are in frame and carry the problem as physical\nfact. A thin flat foam cushion has slid forward off the front of the seat and hangs\nhalf off; a separate lumbar pillow has dropped down and is wedged between the\nseatback and the seat pan; a rolled-up sweater is stuffed behind it as a third\nattempt. The seat pan itself is visibly dished and shiny where he sits.\n\nENVIRONMENT: an ordinary open-plan office at four in the afternoon in late autumn,\nthe window grey behind half-closed blinds. Real lived-in clutter that belongs there\nand signals the interrupted routine: a cold mug, a lanyard on the monitor arm, a\nstack of printouts, a phone face-down. Nothing styled, nothing arranged.\n\nLIGHT: low-key. Key from the window on his left, cool and directional. Weak fill\nfrom the ceiling panel. A rim separating his shoulder from the dark partition. Deep\nshadow across 40% of the frame.\n\nGRADE: desaturated cool-grey palette, fine film grain, shallow depth of field, 35mm\nlens character, crushed blacks.\n\nFORBIDDEN: no product. No overlays, arrows, badges, glows, hotspots, insets or split\npanels. No red anywhere in the frame. Nothing that signals advertising.",
+          "avoid": "text, watermarks, logos, studio lighting, stock photo look, posed model, fake grimace, smiling, looking at camera, warm flattering light, saturated colours"
+        },
+        {
+          "opt": "B",
+          "type": "01-pain-scene",
+          "version": "1.2",
+          "variant": "--candid",
+          "varies_on": "execution: office desk → driver's seat, the page's second named context",
+          "ratio": "5:3",
+          "attachments": [],
+          "composition_notes": "Same type and axes as A; only the persona context changes. The brief names commuters and drivers first, so this execution may fit the section better.",
+          "prompt": "TYPE: 01-pain-scene v1.2, variant --candid\nREGISTER: cinematic film still. Single frame. NO graphic overlays of any kind.\n\nSUBJECT: a man in his fifties in a work fleece, caught mid-action swinging one leg\nout of a van cab in a service-station bay after a long stretch of driving, one hand\nbraced hard on the door frame, the other flat against his lower back, hips still in\nthe seat. Face showing a brief involuntary stillness, brow drawn, mouth closed. Gaze\ndown at the step, unaware of the camera. Weight unbalanced, mid-motion.\n\nMOMENT RULE: this is a mundane moment anyone lives daily, not a demonstration of\nwrong behaviour.\n\nSYMPTOM EVIDENCE: the failed remedies are in frame. A flat foam pad has slid forward\nand folded against the front edge of the seat squab; a separate mesh lumbar support\nhangs by one elastic hook, the other unclipped; a folded towel is jammed into the\ngap where the seatback meets the base. The squab is visibly compressed and glazed.\n\nENVIRONMENT: a service-station bay at dusk in late autumn, sodium light beginning to\ncome up. Real clutter that belongs there: a crushed drinks bottle in the door bin, a\nlanyard on the gear lever, receipts on the dash, a hi-vis on the passenger seat.\nNothing styled, nothing arranged.\n\nLIGHT: low-key. Key from the forecourt canopy above and behind, cool and hard. Weak\nfill off the wet tarmac. Rim along his shoulder. Deep shadow across 45% of frame.\n\nGRADE: desaturated cool-grey palette, fine film grain, shallow depth of field, 35mm\nlens character, crushed blacks.\n\nFORBIDDEN: no product. No overlays, arrows, badges, glows, hotspots, insets or split\npanels. No red anywhere in the frame. Nothing that signals advertising.",
+          "avoid": "text, watermarks, logos, studio lighting, stock photo look, posed model, fake grimace, smiling, looking at camera, warm flattering light, saturated colours"
+        }
+      ]
+    },
+    {
+      "slot_id": "problems.items.1.image",
+      "section_role": "proof",
+      "asset": "03-sixmonth-timelapse.png",
+      "placement": "Section 'What we set out to measure', beside 'The test' note list. This image IS the page's central claim.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "The argument is the side-by-side comparison of three time points. Motion would replace a comparison the viewer must hold in one glance."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "04-proof-lockedframe",
+          "version": "1.5",
+          "variant": "--timelapse, camera_lock handheld",
+          "varies_on": "baseline",
+          "ratio": "5:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "camera_lock handheld is mandatory: panels are separated by months, and a pixel-locked frame across six months is proof of staging. Written per the v1.5 WORDING LAW so it runs single-pass.",
+          "prompt": "TYPE: 04-proof-lockedframe v1.5 --timelapse, camera_lock handheld\nREGISTER: documentary phone photography. No overlays, badges, arrows or text.\nLAYOUT: 3 equal vertical panels, thin white gutters, no outer border.\n\nPRODUCT REFERENCE: use the attached photo as the exact reference for the cushion in\nevery panel. Preserve shape, proportions, material, finish and colour exactly.\n\nPRODUCT PROMINENCE: the cushion is the subject of every panel and fills at least 65%\nof it, stood on its side on the same table so the seat section's thickness is edge-on\nto the camera. Nothing else competes for attention.\n\nSCENE, the same in all three: a scratched office breakroom table against a painted\nbreeze-block wall, a steel ruler lying flat beside the cushion, a chipped mug and a\nset of van keys pushed to the back edge. Flat overcast daylight from a high window.\n\nGRADE, one grade for all three and no polarity in it: neutral, low saturation, from\nthe window light rather than a filter. Panel 1 is not made to look fresher and panel\n3 is not darkened to dramatise wear. What changes is the object, never the treatment.\n\nFRAMING: one person photographed this three times across six months from where they\nalways stand, phone held level with the table, ruler across the lower third. It reads\nas one shot taken three times, never as three different shots — drift is a few\ndegrees of tilt and a few centimetres of position, no more. Light differs only in\nexposure, never in warmth.\n\nTHE VARIABLE, the only thing that changes, the seat section seen edge-on:\n1 — new: the foam block square and full, its top face flat and its side wall\nstraight, the cover taut over the corners.\n2 — three months: the same block a little lower under the sit area, one soft dish\nforming where the hips land, the side wall still straight, the cover slightly relaxed.\n3 — six months: the dish clearly settled and the cover creased along it, but the\nblock still standing to its own height at the front lip and the side wall still\nstraight, the foam plainly still foam and not a flattened pad.\n\nWHAT ELSE MOVES: 1 — mug upright at the back. 2 — mug turned, keys moved forward.\n3 — keys gone, a fresh ring mark on the table.\n\nCONTEXT: an ordinary inspection moment, the cushion simply stood up where someone\nwould look at it. Nothing cut open, propped or arranged for the camera.\n\nJUDGEMENT: no panel is favoured. The image only shows.",
+          "avoid": "text, numbers, month labels, watermarks, logos, sparkle glyphs, badges, arrows, glows, human figures, hands, studio lighting, staged perfection, identical framing between panels, CGI"
+        },
+        {
+          "opt": "B",
+          "type": "04-proof-lockedframe",
+          "version": "1.5",
+          "variant": "--rivals, camera_lock handheld",
+          "varies_on": "variant: timelapse → rivals; the beat becomes 'we tried three kinds' instead of 'one cushion over six months'",
+          "ratio": "5:3",
+          "attachments": [],
+          "composition_notes": "No product in frame, so advertorial and paid-social only — legal here. --rivals is the one variant whose GRADE carries polarity for the whole image, because all three panels are failed states.",
+          "prompt": "TYPE: 04-proof-lockedframe v1.5 --rivals, camera_lock handheld\nREGISTER: documentary phone photography. No overlays, badges, arrows or text.\nLAYOUT: 3 equal vertical panels, thin white gutters, no outer border.\n\nPRODUCT REFERENCE: not applicable. No reference product appears in this image.\n\nSCENE, the same in all three: the driver's seat of an ordinary hatchback photographed\nthrough the open door, the same worn fabric squab, the same seatbelt buckle lying in\nthe same place, a parking permit on the dash. Flat overcast daylight.\n\nGRADE, the same in all three: muted and cool, low saturation, no warm tone anywhere.\nIt comes from the weather and the grey trim rather than a filter. Still colour, never\nblack and white. All three panels are unsolved states, so one shared unresolved tone\nacross them favours none of them.\n\nFRAMING: one person photographed this three times across a month from where they\nalways stand beside the open door, phone at chest height, headrest across the upper\nthird. It reads as one shot taken three times, never as three different shots — drift\nis a few degrees of tilt and a few centimetres, no more. Light differs only in\nexposure, never in warmth.\n\nTHE VARIABLE: three common existing approaches, generic and unbranded, each\nphotographed after a week of use.\n1 — a flat square foam pad, slid forward so its front edge overhangs the seat lip and\na wedge of bare squab shows behind it.\n2 — a separate mesh lumbar pillow hanging by one elastic strap, dropped to the base\nof the seatback, the other strap unclipped and curled.\n3 — a beaded seat cover rucked diagonally across the squab, its ties slack, the\nbeads pooled to one side.\n\nWHAT ELSE MOVES: 1 — buckle lying flat. 2 — buckle twisted, a receipt in the door\nbin. 3 — receipt gone, a coffee ring on the sill.\n\nFAIRNESS: three ordinary things people already own, none broken or exaggerated, none\nfavoured. Every panel ends the same way. The image makes no claim.",
+          "avoid": "text, watermarks, logos, sparkle glyphs, badges, arrows, glows, brand marks, one item obviously better, human figures, hands, studio lighting, staged perfection, identical framing between panels, CGI"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.0.image",
+      "section_role": "cause",
+      "asset": "04-feature-two-piece-cause.png",
+      "placement": "Feature 1 'Continuous support that never separates or slides'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "reason": "The indicted event is a slide — the pillow dropping and the pad creeping forward is a transition, not a state."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "02-cause-anatomy",
+          "version": "1.1",
+          "variant": null,
+          "varies_on": "baseline",
+          "ratio": "16:9",
+          "attachments": [],
+          "composition_notes": "Blames a concrete object — the two-piece setup — which is exactly this type's job. Placed after the pain image, before the mechanism images.",
+          "prompt": "TYPE: 02-cause-anatomy v1.1\nREGISTER: 2D medical illustration, airbrushed textbook style. NOT photography, NOT 3D render.\n\nCANVAS: one continuous pale blue clinical gradient shared by both panels, divided by a\nsingle thin vertical line, not a hard split. Background motifs at very low opacity:\nhexagon mesh, faint medical cross icons, an oversized ghosted lumbar spine as a watermark.\n\nBODY TREATMENT, both panels: the lumbar spine and pelvis drawn in warm ivory as the top\nlayer, the seated human body reduced to a translucent glowing outline behind it. Same\nfigure, same scale, same side-on viewing angle in both panels.\n\nLEFT PANEL, WRONG: the figure seated on a car seat drawn realistically, with a flat pad\nunder the hips that has crept forward off the seat lip and a separate lumbar pillow that\nhas dropped to the base of the seatback. A wedge of empty space opens between the small\nof the back and the seatback. The lower lumbar vertebrae highlighted in red. A red curved\nline tracing the backward bowed lumbar contour.\n\nRIGHT PANEL, CORRECT: the same figure on the same seat with one continuous L-shaped\nsupport, its seat section under the hips and its back section filling the space the pad\nand pillow left empty. The same vertebrae highlighted in blue. A soft blue aura along the\nrestored forward lumbar curve. Brighter and cleaner than the left panel.\n\nREFERENCE LINES, a required graphic layer: one dashed line in each panel at the same\nlandmark, the plane through the top of the pelvis. Identical thickness, identical dash\nlength, identical length on screen. The left one clearly tilted backward, the right one\nclearly level. They differ in angle and in nothing else. Left line red, right line blue.\n\nBADGES, a required graphic layer: exactly two, one per panel, in the outer top corner of\neach. Left, a flat red circle with a white X. Right, a flat green circle with a white\ncheck. Same diameter, both fully opaque.\n\nPALETTE LOCK: pale blue and ivory throughout. The only signal colours are red for wrong,\nblue for correct, green for the confirmation badge.",
+          "avoid": "words, letters, numerals, watermarks, logos, photographic texture, 3D render shading, orange, yellow, purple"
+        },
+        {
+          "opt": "B",
+          "type": "02-cause-anatomy",
+          "version": "1.1",
+          "variant": null,
+          "varies_on": "execution: car seat → office chair, the page's other named context",
+          "ratio": "16:9",
+          "attachments": [],
+          "composition_notes": "Same type and axes as A. The features copy names both contexts; this execution serves readers who sit rather than drive.",
+          "prompt": "TYPE: 02-cause-anatomy v1.1\nREGISTER: 2D medical illustration, airbrushed textbook style. NOT photography, NOT 3D render.\n\nCANVAS: one continuous pale blue clinical gradient shared by both panels, divided by a\nsingle thin vertical line, not a hard split. Background motifs at very low opacity:\nhexagon mesh, faint medical cross icons, an oversized ghosted pelvis as a watermark.\n\nBODY TREATMENT, both panels: the lumbar spine and pelvis drawn in warm ivory as the top\nlayer, the seated human body reduced to a translucent glowing outline behind it. Same\nfigure, same scale, same side-on viewing angle in both panels.\n\nLEFT PANEL, WRONG: the figure seated on a mesh office chair drawn realistically, a flat\nfoam pad slipped forward under the hips and a strapped lumbar cushion riding up between\nthe shoulder blades, pushing the upper back forward while the hips stay sunk. The\nresulting S-twist through the lower spine highlighted in red. A red curved line tracing\nthe twisted contour.\n\nRIGHT PANEL, CORRECT: the same figure on the same chair with one continuous L-shaped\nsupport, hips raised level with the knees and the back section meeting the lumbar curve\nwithout pushing the shoulders forward. The same region highlighted in blue. A soft blue\naura along the aligned contour. Brighter and cleaner than the left panel.\n\nREFERENCE LINES, a required graphic layer: one dashed line in each panel through the hip\njoint and the knee joint. Identical thickness, identical dash length, identical length on\nscreen. Left clearly sloping down toward the hip, right clearly level. They differ in\nangle and in nothing else. Left line red, right line blue.\n\nBADGES, a required graphic layer: exactly two, one per panel, in the outer top corner of\neach. Left, a flat red circle with a white X. Right, a flat green circle with a white\ncheck. Same diameter, both fully opaque.\n\nPALETTE LOCK: pale blue and ivory throughout. The only signal colours are red for wrong,\nblue for correct, green for the confirmation badge.",
+          "avoid": "words, letters, numerals, watermarks, logos, photographic texture, 3D render shading, orange, yellow, purple"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.1.image",
+      "section_role": "mechanism",
+      "asset": "05-feature-pelvic-gap-ghostbody.png",
+      "placement": "Feature 2 'Bridges the pelvic rollback gap completely'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "reason": "The pelvis rolling back into the gap is a state change inside the body — temporal by definition."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "03-mechanism-ghostbody",
+          "version": "1.2",
+          "variant": null,
+          "varies_on": "baseline",
+          "ratio": "4:5",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Step-3 budget: this plus 03-use-sequence makes two of the named set {ghostbody, spec-split, use-sequence} — at the cap, not over it.",
+          "prompt": "TYPE: 03-mechanism-ghostbody v1.2\nREGISTER: 3D medical visualization on a dark clinical background. NOT photography.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly. Do not redesign or add features.\n\nBASE: GHOST BODY — a translucent glass-like human figure seen in side profile, seated,\nfilling 70% of the frame height, rendered against a deep navy gradient with faint\nanatomical grid motifs at very low contrast.\n\nANATOMY CUTAWAY: the pelvis, sacrum and lumbar spine rendered solid and detailed inside\nthe translucent figure at their true positions, warm ivory bone against the glass body.\n\nTHE MECHANISM: the figure is seated on a car seat whose base tilts backward. Without\nsupport, the pelvis has rotated backward and dropped into the open wedge where the seat\nbase meets the backrest, and that wedge is the subject of the frame — an empty dark void\nbehind the sacrum, the single thing the eye lands on first.\nThe reference product is shown filling that wedge exactly, its seat section under the\npelvis and its back section continuous into the lumbar curve, one piece with no seam\nbetween them.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. The working\nelement is the contact interface, marked with a cool cyan glow running the whole\ncontinuous length where the product meets sacrum and lumbar spine — unbroken, which is\nthe entire argument. Red stress highlight on the rearward-rotated sacrum only where the\nsupport is absent.\n\nHONESTY CONSTRAINT: render only the anatomy and the product geometry that genuinely\nexist. No invented muscles, no exaggerated angles.\n\nPALETTE LOCK: deep navy and ivory. Cyan marks the working mechanism, red marks the\nunsupported stress, and no other signal colour appears.",
+          "avoid": "words, letters, numerals, spec labels, watermarks, logos, photographic skin texture, green, orange, yellow"
+        },
+        {
+          "opt": "B",
+          "type": "02-cause-anatomy",
+          "version": "1.1",
+          "variant": null,
+          "varies_on": "type: 03-mechanism-ghostbody → 02-cause-anatomy; a flat clinical illustration instead of a 3D ghost body",
+          "ratio": "16:9",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Legal alternative if the 3D register reads too cold beside the editorial copy. Note it would put cause-anatomy on the page three times across two sections — allowed only because features.items is one repeating section (cross-slot rule 2).",
+          "prompt": "TYPE: 02-cause-anatomy v1.1\nREGISTER: 2D medical illustration, airbrushed textbook style. NOT photography, NOT 3D render.\n\nCANVAS: one continuous pale blue clinical gradient shared by both panels, divided by a\nsingle thin vertical line. Background motifs at very low opacity: hexagon mesh, faint\nmedical cross icons, an oversized ghosted pelvis as a watermark.\n\nBODY TREATMENT, both panels: pelvis, sacrum and lumbar spine in warm ivory as the top\nlayer, the seated body a translucent glowing outline behind. Same figure, same scale,\nsame side-on angle in both panels.\n\nLEFT PANEL, WRONG: the figure on a rearward-tilted car seat drawn realistically, hips\ndropped below knee level, the pelvis rotated backward into the open wedge where the seat\nbase meets the backrest. That wedge drawn as an empty dark gap. Sacrum and lower lumbar\nhighlighted in red. A red curved line tracing the backward-bowed contour.\n\nRIGHT PANEL, CORRECT: the same figure on the same seat with the reference support filling\nthe wedge, hips raised level with the knees, pelvis upright. The same region highlighted\nin blue. A soft blue aura along the restored curve. Brighter and cleaner than the left.\n\nREFERENCE LINES, a required graphic layer: one dashed line in each panel through hip and\nknee joints, identical thickness and dash length, left clearly sloping down toward the\nhip, right clearly level. Left red, right blue.\n\nBADGES, a required graphic layer: exactly two, one per panel, outer top corner of each.\nLeft a flat red circle with a white X, right a flat green circle with a white check. Same\ndiameter, both fully opaque.\n\nPALETTE LOCK: pale blue and ivory. Signal colours are red for wrong, blue for correct,\ngreen for the confirmation badge.",
+          "avoid": "words, letters, numerals, watermarks, logos, photographic texture, 3D render shading, orange, yellow, purple"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.2.image",
+      "section_role": "mechanism",
+      "asset": "06-feature-foam-core-xray.png",
+      "placement": "Feature 3 'High-density foam that absorbs road vibration'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "reason": "Slow-rebound foam recovering after compression is a state returning over time — the product's own named behaviour."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "03-mechanism-xray",
+          "version": "1.0",
+          "variant": null,
+          "varies_on": "baseline",
+          "ratio": "1:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "avoid_when tension recorded honestly: xray's use_when names gadget-class products that do NOT act on a body structure. This cushion does. It is admitted because the subject here is the foam's own internal structure, not the body interface — but flag it if the render reads cold against the editorial copy.",
+          "prompt": "TYPE: 03-mechanism-xray v1.0\nREGISTER: 3D technical see-through render. NOT photography. Dark engineering background.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. The outer cover\nbecomes translucent, but the silhouette, proportions and every visible external part must\nmatch the reference exactly. Do not redesign or add features.\n\nCANVAS: a deep navy engineering canvas with faint copper and cyan circuit-board traces at\nvery low contrast, and one corner blueprint micro-diagram of a foam cell lattice. Motifs\nstay dim — they buy credibility, they carry no information.\n\nBASE: GHOST SHELL — the cushion rendered with its cover translucent and glass-like,\nsilhouette matching the reference, positioned three-quarter with the seat section toward\ncamera, filling 70% of the frame width.\n\nINTERNALS: the slow-rebound memory foam core rendered solid and detailed inside the\ncover, its open-cell lattice visible as a dense fine structure through the seat section\nand continuing unbroken up through the lumbar section — one core, no seam, no join. The\nnon-slip base layer rendered as a thin distinct stratum along the underside.\n\nVISIBLE MECHANISM: the product emits nothing, so the primary working component is\nhighlighted instead. A cool cyan glow diffuses through the foam lattice directly under\nthe sit area and fades outward, marking where load is absorbed and spread. It is the\nbrightest element in the frame.\n\nHONESTY CONSTRAINT: render only component types the product genuinely contains — a foam\ncore, a cover, a base layer. No invented modules, no springs, no gel pods, no electronics.\n\nPALETTE LOCK: deep navy and steel grey throughout. Cyan marks the working mechanism.\nCopper traces stay decorative and dim and never mark a component.",
+          "avoid": "words, letters, numerals, spec labels, watermarks, logos, exploded parts, springs, gel inserts, electronics, orange on any component"
+        },
+        {
+          "opt": "B",
+          "type": "03-mechanism-xray",
+          "version": "1.0",
+          "variant": null,
+          "varies_on": "execution: whole-cushion ghost shell → a cut block of the core at macro scale",
+          "ratio": "1:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Same type and axes as A. Narrows the subject to the material claim alone, which is what the feature copy actually argues.",
+          "prompt": "TYPE: 03-mechanism-xray v1.0\nREGISTER: 3D technical see-through render. NOT photography. Dark engineering background.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference for the cover\nmaterial and colour. Silhouette and finish must match the reference exactly.\n\nCANVAS: a deep navy engineering canvas with faint copper and cyan circuit-board traces at\nvery low contrast, and one corner blueprint micro-diagram of a cell wall. Motifs stay dim.\n\nBASE: GHOST SHELL — a rectangular block of the cushion's own core with its cover\ntranslucent and glass-like along the top face, standing upright at a slight three-quarter\nangle, filling 65% of the frame width.\n\nINTERNALS: the open-cell foam lattice rendered solid and detailed through the whole block,\ncells visibly finer and denser toward the load-bearing top face and more open toward the\nbase, each wall distinct. The thin non-slip base layer as its own stratum underneath.\n\nVISIBLE MECHANISM: the product emits nothing, so the primary working component is\nhighlighted. A cool cyan glow enters at the top face and diffuses downward and outward\nthrough the lattice, dispersing rather than passing straight through — the absorption the\nfeature copy claims, shown as light spreading. It is the brightest element in the frame.\n\nHONESTY CONSTRAINT: render only what the product genuinely contains — one continuous foam\nstructure, a cover, a base layer. No springs, no gel, no laminated sheets it does not have.\n\nPALETTE LOCK: deep navy and steel grey. Cyan marks the working mechanism. Copper traces\nstay decorative and dim and never mark a component.",
+          "avoid": "words, letters, numerals, spec labels, watermarks, logos, springs, gel inserts, laminated layers, orange on any component"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.3.image",
+      "section_role": "spec",
+      "asset": "07-feature-base-grip-xray.png",
+      "placement": "Feature 4 'Non-slip grip that stays put without straps'.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "This slot exists to reveal a surface at close range, not a transition. The sliding it argues against is temporal, but showing it would mean animating a failure the type does not stage."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "03-mechanism-xray",
+          "version": "1.0",
+          "variant": null,
+          "varies_on": "execution: foam core → base grip layer. Second xray in the features.items repeating section (cross-slot rule 2), differing on named subject.",
+          "ratio": "1:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Nearest-fit type is 03-spec-macro, which is STAGING at 4/5 exemplars and therefore not routable. Ladder rung 4 applied: another execution of a type already on the page, named here rather than hidden.",
+          "prompt": "TYPE: 03-mechanism-xray v1.0\nREGISTER: 3D technical see-through render. NOT photography. Dark engineering background.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Silhouette,\nproportions and every visible external part must match the reference exactly.\n\nCANVAS: a deep navy engineering canvas with faint copper and cyan traces at very low\ncontrast, and one corner blueprint micro-diagram of a single grip dot in section. Motifs\nstay dim.\n\nBASE: GHOST SHELL — the cushion tipped to show its underside toward camera, the cover\ntranslucent and glass-like, silhouette matching the reference, filling 70% of the frame\nwidth.\n\nINTERNALS: the rubberised micro-dot grip layer rendered solid and detailed across the\nwhole underside, an even field of small raised dots at true scale and true spacing,\ncovering the base edge to edge with no bare zone. The foam core visible above it as a\ndimmer translucent mass. A cross-section wedge cut at the near corner shows the dot\nprofile standing proud of the backing.\n\nVISIBLE MECHANISM: the product emits nothing, so the primary working component is\nhighlighted. A cool cyan glow sits in the contact plane at the dot tips, densest where the\ndots meet an implied seat surface, marking the grip interface as the working element. It\nis the brightest thing in the frame.\n\nHONESTY CONSTRAINT: render only what the product genuinely contains — a dotted rubberised\nbase, a foam core, a cover. No straps, no hooks, no adhesive layer, no suction elements.\n\nPALETTE LOCK: deep navy and steel grey. Cyan marks the working mechanism. Copper traces\nstay decorative and dim.",
+          "avoid": "words, letters, numerals, spec labels, watermarks, logos, straps, hooks, suction cups, adhesive film, orange on any component"
+        },
+        {
+          "opt": "B",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--commercial, inset --detail",
+          "varies_on": "type: 03-mechanism-xray → 06-relief-hero with a magnifier inset; a photographic answer instead of a technical one",
+          "ratio": "2:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Ladder rung 4 again, on the other type already on the page. Keeps the section photographic if the two xrays read as a lecture. The --detail inset is linked by proximity only: no arrow, no glow border.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --commercial, inset_mode --detail\nREGISTER: clean commercial e-commerce banner, bright airy, sharp focus, 4K.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly. The product is identical in every layer.\n\nZONE A, HERO: a woman in her forties in a knit cardigan, seated at a home-office desk\nmid-task with one hand on a mouse, weight settled back, calm focused expression. The\nproduct in place beneath and behind her on a mesh task chair, seen from a rear\nthree-quarter angle, unobstructed, in fitted chair use.\nSetting: a home office filled to the edges — a plant on the sill, a mug, a stack of\npaperbacks, a cable tray, a wall calendar, a coat on the door hook, a printer on a\nsideboard. Soft window light from the left. Background blurred but never blank. High-key\nwarm-neutral grade. Subject offset right; the inset occupies the left space and no empty\nmid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken meeting line of cushion and chair with no gap behind the lumbar.\n\nPOSE: the product works passively while she does something else, so the pose is relaxed,\ngaze away from the product.\n\nLIGHT: soft even window light, background blurred, high-key grade.\n\nZONE C, INSET, circle, lower-left corner, 22% of frame width: a magnified view of the\ncushion's underside alone, the rubberised micro-dot field filling the circle at macro\nscale, dots sharp and countable, pressed against the chair fabric so the fibres deform\nslightly around them. Linked to the in-scene product by proximity only. Its edge is a\nclean hard cut with nothing drawn around it and nothing drawn between it and the product.",
+          "avoid": "words, letters, numerals, watermarks, logos, digital displays, arrows, badges, cluttered background, dark moody lighting, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.4.image",
+      "section_role": "use",
+      "asset": "08-feature-fit-use-sequence.png",
+      "placement": "Feature 5 'Fits standard seats, no installation needed'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "reason": "An ordered sequence is the definition of temporal. This is the strongest GIF candidate on the page."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "03-use-sequence",
+          "version": "1.1",
+          "variant": null,
+          "varies_on": "baseline",
+          "ratio": "1:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Second of the two permitted step-3 types from the named set. The copy's claim is 'moves in three seconds', so the sequence is the argument.",
+          "prompt": "TYPE: 03-use-sequence v1.1\nREGISTER: warm lifestyle photography, close range.\nLAYOUT: 3 horizontal panels stacked vertically, thin white gutters, no outer border, no\nnumbers, no arrows, no text.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly in every panel.\n\nCONTINUITY LOCK: the same hands in every panel, same skin tone, same short unpainted\nnails, same wrists, same rolled charcoal sleeves. The same cushion in every panel. Same\nwarm neutral palette, same soft daylight from the left throughout. Camera distance may\nvary between panels and framing may shift naturally.\n\nSEQUENCE RULE: one action per panel, never two. The order is readable from the actions\nalone, with no numbering. The product sits near the centre of every panel.\n\nPANEL 1, PREPARE: both hands setting the cushion down into a mesh office chair, the seat\nsection landing on the squab and the back section standing up against the backrest, the\ninside corner of the L meeting the join where seat and back meet.\n\nPANEL 2, USE: one hand pressing down firmly on the seat section while the other steadies\nthe backrest, the foam compressing under the heel of the hand and the base gripping so\nnothing shifts. The whole cushion stays square to the chair.\n\nPANEL 3, RESULT: the same cushion lifted free in one hand and carried a step away toward\nan open car door visible beyond, the other hand resting on the chair back. Warmer light\nthan the previous panels. No new mechanics introduced.\n\nENVIRONMENT: an ordinary home office opening onto a driveway, soft daylight, a doormat\nand a set of keys on a side table at the frame edge. Same location across all panels.\n\nSTYLE: warm lifestyle product photography, natural, unstyled, sharp, 4K.",
+          "avoid": "words, numbers, step numbers, watermarks, logos, arrows, step markers, badges, two actions in one panel, instruction manual look, cold clinical lighting, malformed fingers, extra fingers"
+        },
+        {
+          "opt": "B",
+          "type": "03-use-sequence",
+          "version": "1.1",
+          "variant": null,
+          "varies_on": "execution: office chair → car seat, with the carry beat first instead of last",
+          "ratio": "1:1",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Same type and axes as A. Puts the driver context first, which the persona field ranks above desk workers.",
+          "prompt": "TYPE: 03-use-sequence v1.1\nREGISTER: warm lifestyle photography, close range.\nLAYOUT: 3 horizontal panels stacked vertically, thin white gutters, no outer border, no\nnumbers, no arrows, no text.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly in every panel.\n\nCONTINUITY LOCK: the same hands in every panel, same skin tone, same short unpainted\nnails, same wrists, same rolled olive sleeves. The same cushion in every panel. Same warm\nneutral palette, same soft daylight from the right throughout. Camera distance may vary\nbetween panels and framing may shift naturally.\n\nSEQUENCE RULE: one action per panel, never two. The order is readable from the actions\nalone, with no numbering. The product sits near the centre of every panel.\n\nPANEL 1, PREPARE: one hand carrying the cushion by its lumbar section through an open car\ndoor, the other hand on the door frame, the seat visible empty beyond.\n\nPANEL 2, USE: both hands seating the cushion into the driver's seat, the seat section\nsettling onto the squab and the back section rising flush against the seatback, the inner\ncorner of the L closing the gap where squab meets backrest.\n\nPANEL 3, RESULT: one hand pressing the seat section down to check it, the other resting\non the steering wheel, the cushion square and unmoved in the seat. Warmer light than the\nprevious panels. No new mechanics introduced.\n\nENVIRONMENT: an ordinary car on a driveway, soft daylight, a travel mug in the console\nand a lanyard on the mirror at the frame edge. Same location across all panels.\n\nSTYLE: warm lifestyle product photography, natural, unstyled, sharp, 4K.",
+          "avoid": "words, numbers, step numbers, watermarks, logos, arrows, step markers, badges, two actions in one panel, instruction manual look, cold clinical lighting, malformed fingers, extra fingers"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.0.image",
+      "section_role": "social",
+      "asset": "09-review-shot-car.png",
+      "placement": "Reader-notes section, first shot. NOT adjacent to a reviewer name or verified badge — see the fence note.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "This slot exists to reveal a place, not a transition. No state changes inside it."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --none",
+          "varies_on": "baseline for this section; ladder rung 4 against slot 1, which is the same type in --commercial register",
+          "ratio": "4:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "05-social-snapshot is the natural type here and is BARRED: this section displays reviewer names and verified labels, and the snapshot AUTHENTICITY FENCE forbids a generated snapshot anywhere near them. That is an FTC line, not a style preference.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nZONE A, HERO: a man in his fifties in a work fleece, seated in the driver's seat of an ordinary hatchback, photographed from the passenger side, weight settled back, easy unposed expression,\ngaze away from the camera. The product in place beneath and behind them, the seat section under the hips and the back section rising into the lumbar curve, seen\nfrom a rear three-quarter angle, unobstructed, in fitted seat use.\nSetting: a real car interior — a travel mug in the holder, a phone cable over the gear lever, a parking permit on the screen, a hi-vis on the back seat, a supermarket bag in the footwell, wet tarmac beyond the window. Background blurred but never blank, no bare panel or wall area larger\nthan the product. Honest ordinary grade, not high-key. Subject offset right; nothing\noccupies the left space and no empty mid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken line where the lumbar section meets the small of the back, with\nno gap behind it.\n\nPOSE: the product works passively while the person does something else, so the pose is\nrelaxed and the gaze is away from the product.\n\nLIGHT: flat overcast daylight through the windscreen, no rim light, no glamour.",
+          "avoid": "words, letters, numerals, watermarks, logos, studio lighting, softbox reflections, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        },
+        {
+          "opt": "B",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --detail",
+          "varies_on": "axis: inset_mode none → detail; adds a magnifier circle on the seat-to-back join",
+          "ratio": "4:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Offers the section one image that also carries the one-piece claim. The --detail inset is linked by proximity only: no arrow, no glow border.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nZONE A, HERO: a man in his fifties in a work fleece, seated in the driver's seat of an ordinary hatchback, photographed from the passenger side, weight settled back, easy unposed expression,\ngaze away from the camera. The product in place beneath and behind them, the seat section under the hips and the back section rising into the lumbar curve, seen\nfrom a rear three-quarter angle, unobstructed, in fitted seat use.\nSetting: a real car interior — a travel mug in the holder, a phone cable over the gear lever, a parking permit on the screen, a hi-vis on the back seat. Background blurred but never blank, no bare panel or wall area larger\nthan the product. Honest ordinary grade, not high-key. Subject offset right; nothing\noccupies the left space and no empty mid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken line where the lumbar section meets the small of the back, with\nno gap behind it.\n\nPOSE: the product works passively while the person does something else, so the pose is\nrelaxed and the gaze is away from the product.\n\nLIGHT: flat overcast daylight through the windscreen, no rim light, no glamour.\n\nZONE C, INSET, circle, lower-left corner, 20% of frame width: a magnified view of the\ninner corner of the L where the seat section meets the back section, showing one\ncontinuous surface with no seam, no zip and no join. Linked to the in-scene product by\nproximity only. Its edge is a clean hard cut with nothing drawn around it and nothing\ndrawn between it and the product.",
+          "avoid": "words, letters, numerals, watermarks, logos, studio lighting, softbox reflections, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers, arrows, badges"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.1.image",
+      "section_role": "social",
+      "asset": "10-review-shot-office.png",
+      "placement": "Reader-notes section, second shot.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "Reveals a second place, not a transition."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --none",
+          "varies_on": "execution: car → home office; the section's named dimension is environment (cross-slot rule 2)",
+          "ratio": "4:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Same type and axes as reviews.shots.0 option A, differing on the named dimension the repeating-section exception requires.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nZONE A, HERO: a woman in her forties in a fleece hoodie, seated in a high-back mesh task chair at a home desk, photographed from behind and to one side, weight settled back, easy unposed expression,\ngaze away from the camera. The product in place beneath and behind them, the seat section under the hips and the back section filling the lumbar curve against the mesh, seen\nfrom a rear three-quarter angle, unobstructed, in fitted seat use.\nSetting: a real home office — a plant with one dead leaf, a mug ring on the desk, a cable tray, a printer on a sideboard, a wall calendar, a coat on the door hook. Background blurred but never blank, no bare panel or wall area larger\nthan the product. Honest ordinary grade, not high-key. Subject offset right; nothing\noccupies the left space and no empty mid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken line where the lumbar section meets the small of the back, with\nno gap behind it.\n\nPOSE: the product works passively while the person does something else, so the pose is\nrelaxed and the gaze is away from the product.\n\nLIGHT: grey window daylight from the side, ceiling bulb on, mixed and uncorrected.",
+          "avoid": "words, letters, numerals, watermarks, logos, studio lighting, softbox reflections, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        },
+        {
+          "opt": "B",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --none",
+          "varies_on": "execution: home office → shared workplace desk, older persona",
+          "ratio": "4:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Second execution on the same axes; widens the cast without adding a type.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nZONE A, HERO: a man in his sixties in a checked shirt, seated in a fabric-backed office chair at a shared workplace desk, photographed from behind and to one side, weight settled back, easy unposed expression,\ngaze away from the camera. The product in place beneath and behind them, the seat section under the hips and the back section filling the lumbar curve, seen\nfrom a rear three-quarter angle, unobstructed, in fitted seat use.\nSetting: a real workplace — a lanyard on the monitor arm, a stack of printouts, a keyboard with worn keys, a jacket over the next chair, a fire-exit sign beyond. Background blurred but never blank, no bare panel or wall area larger\nthan the product. Honest ordinary grade, not high-key. Subject offset right; nothing\noccupies the left space and no empty mid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken line where the lumbar section meets the small of the back, with\nno gap behind it.\n\nPOSE: the product works passively while the person does something else, so the pose is\nrelaxed and the gaze is away from the product.\n\nLIGHT: flat ceiling-panel light with grey daylight from a far window, uncorrected.",
+          "avoid": "words, letters, numerals, watermarks, logos, studio lighting, softbox reflections, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.2.image",
+      "section_role": "social",
+      "asset": "11-review-shot-handoff.png",
+      "placement": "Reader-notes section, third shot. Keep clear of the quote cards so no name or verified badge sits beside it.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "The recommendation beat is a held moment; the pointing gesture is composition, not a transition to animate."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "05-social-handoff",
+          "version": "1.0",
+          "variant": null,
+          "varies_on": "type: 06-relief-hero → 05-social-handoff; the only step-5 type legal on this page",
+          "ratio": "5:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Multi-pass, Template B: render the scene WITHOUT the inset, then composite the circular cutout from the real product photo. The model never repaints a reference-true inset. The INSET block below is the compositing spec, not render text.",
+          "prompt": "STEP 1, RENDER, scene only:\n\nTYPE: 05-social-handoff v1.0\nREGISTER: candid documentary photograph. One scene.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nCHARACTER A, THE ADVOCATE: a man in his forties in a lanyard and open jacket, face turned\ntoward camera, caught mid-sentence, warm relaxed expression, pointing with his right hand\ntoward the product. The pointing gesture forms a clear diagonal line ending exactly at the\nproduct.\n\nCHARACTER B, THE LISTENER: a man in his thirties in a rucksack, seen from behind over his\nleft shoulder, FACE NOT VISIBLE, head turned to follow the pointing gesture, gaze parallel\nto the pointing line.\n\nPRODUCT IN SCENE: the reference product resting on the open driver's seat of a car in the\nstaff car park, framed by the open door, sitting exactly where the pointing line\nterminates.\n\nENVIRONMENT: an office car park on an overcast weekday afternoon, two blurred colleagues\nwalking to another car, a bollard and a line of hedges beyond. Flat natural daylight, no\ndramatic shadows, nothing styled.\n\nCOMPOSITION RULE: two vectors, the pointing arm and the listener's gaze, converge on the\nproduct. Nothing else in the frame competes for attention. The link between viewer and\nproduct is made by these vectors alone.\n\nReserve the lower-right 18% of frame width as ordinary continuous background near the\nterminus of the pointing line. Do not place a subject, a face or a bright highlight there.\n\nSTEP 2, COMPOSITE, not rendered:\nCircular cutout of the reference product on plain white, placed in the reserved\nlower-right area, 18% of frame width, near the terminus of the pointing line and never\nopposite it. Clean edge. No border, no ring, no drop shadow, no connecting arrow. Colorway\nidentical to the in-scene product.",
+          "avoid": "words, letters, numerals, watermarks, logos, arrows, badges, connecting lines, both faces visible, staged posing, studio lighting, malformed fingers, extra fingers"
+        },
+        {
+          "opt": "B",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --none",
+          "varies_on": "type: 05-social-handoff → 06-relief-hero; drops the second person if the handoff staging reads posed",
+          "ratio": "4:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Fallback that keeps the section photographic and single-pass. Costs the page its only step-5 type — say so when picking.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nZONE A, HERO: a man in his forties in a lanyard and open jacket, seated in the driver's seat of a saloon in an office car park, photographed through the open door, weight settled back, easy unposed expression,\ngaze away from the camera. The product in place beneath and behind them, the seat section under the hips and the back section rising into the lumbar curve, seen\nfrom a rear three-quarter angle, unobstructed, in fitted seat use.\nSetting: a real car park — a rucksack on the passenger seat, a coffee cup in the holder, a lanyard swinging from the mirror, blurred colleagues walking behind, hedges beyond. Background blurred but never blank, no bare panel or wall area larger\nthan the product. Honest ordinary grade, not high-key. Subject offset right; nothing\noccupies the left space and no empty mid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken line where the lumbar section meets the small of the back, with\nno gap behind it.\n\nPOSE: the product works passively while the person does something else, so the pose is\nrelaxed and the gaze is away from the product.\n\nLIGHT: flat overcast afternoon daylight, no rim light, no glamour.",
+          "avoid": "words, letters, numerals, watermarks, logos, studio lighting, softbox reflections, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.3.image",
+      "section_role": "social",
+      "asset": "12-review-shot-passenger.png",
+      "placement": "Reader-notes section, fourth shot.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "Reveals a place and a fit, not a transition."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --none",
+          "varies_on": "execution: driver's seat → passenger seat, younger persona, tighter framing",
+          "ratio": "4:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Third execution in the reviews.shots repeating section. Environment, cast and shot distance all differ from shots.0 and shots.1.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nZONE A, HERO: a woman in her thirties in a denim jacket, seated in the front passenger seat of a family car, photographed from the rear seat at close range, weight settled back, easy unposed expression,\ngaze away from the camera. The product in place beneath and behind them, the seat section under the hips and the back section flush to the seatback, seen\nfrom a rear three-quarter angle, unobstructed, in fitted seat use.\nSetting: a real family car — a child's booster seat beside the camera, a crumpled map in the door bin, a hair tie on the gear lever, crumbs in the seat seam, a school bag in the footwell. Background blurred but never blank, no bare panel or wall area larger\nthan the product. Honest ordinary grade, not high-key. Subject offset right; nothing\noccupies the left space and no empty mid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken line where the lumbar section meets the small of the back, with\nno gap behind it.\n\nPOSE: the product works passively while the person does something else, so the pose is\nrelaxed and the gaze is away from the product.\n\nLIGHT: low afternoon daylight through the side window, slightly blown on the door trim.",
+          "avoid": "words, letters, numerals, watermarks, logos, studio lighting, softbox reflections, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        },
+        {
+          "opt": "B",
+          "type": "06-relief-hero",
+          "version": "1.7",
+          "variant": "--ugc, inset --none",
+          "varies_on": "execution: car → long-haul truck cab, the persona field's third named group",
+          "ratio": "4:3",
+          "attachments": [
+            "product.reference_photos"
+          ],
+          "composition_notes": "Serves the truckers and rideshare drivers the persona names but no other slot depicts.",
+          "prompt": "TYPE: 06-relief-hero v1.7, register --ugc, inset_mode --none\nREGISTER: an owner's own photo, natural, unstyled, slightly imperfect.\n\nPRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape,\nproportions, material, finish and colour exactly.\n\nZONE A, HERO: a man in his fifties in a padded gilet, seated in the driver's seat of a long-haul truck cab, photographed from the passenger side, weight settled back, easy unposed expression,\ngaze away from the camera. The product in place beneath and behind them, the seat section under the hips and the back section rising into the lumbar curve, seen\nfrom a rear three-quarter angle, unobstructed, in fitted seat use.\nSetting: a real cab — a thermos in the door, a logbook on the dash, a curtain drawn behind the seats, a phone cradle, an air freshener, a service-station forecourt beyond the glass. Background blurred but never blank, no bare panel or wall area larger\nthan the product. Honest ordinary grade, not high-key. Subject offset right; nothing\noccupies the left space and no empty mid-frame is reserved.\n\nVISIBLE MECHANISM: the product emits nothing, so no effect is invented. Contact carries\nthe frame — the unbroken line where the lumbar section meets the small of the back, with\nno gap behind it.\n\nPOSE: the product works passively while the person does something else, so the pose is\nrelaxed and the gaze is away from the product.\n\nLIGHT: flat forecourt daylight through the windscreen, uncorrected.",
+          "avoid": "words, letters, numerals, watermarks, logos, studio lighting, softbox reflections, magazine polish, pain cues, invented mist or steam, malformed fingers, extra fingers"
+        }
+      ]
+    },
+    {
+      "slot_id": "product.image",
+      "section_role": "offer",
+      "asset": "(supplied)",
+      "placement": "Product card, main offer block.",
+      "out_of_scope_reason": "route: asset — the export declares supplied product photography, not a generation request. This is NOT the library refusing to route an image: no generation was asked for. A standard packshot is also out of library scope by cross-slot rule 6 (the library covers gallery images 2+). Say the word and it gets a generated option instead.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "No generated image in this slot to animate."
+      },
+      "options": []
+    },
+    {
+      "slot_id": "product_end.image",
+      "section_role": "offer",
+      "asset": "(supplied)",
+      "placement": "Closing product block 'The cushion that came through all of it'.",
+      "out_of_scope_reason": "route: asset — supplied product photography, same as product.image. Not a generation request and not a library refusal.",
+      "gif": {
+        "eligible": false,
+        "form": null,
+        "reason": "No generated image in this slot to animate."
+      },
+      "options": []
+    }
+  ],
+  "coverage": {
+    "covered": [
+      "1 pain — 01-pain-scene",
+      "2 cause — 02-cause-anatomy",
+      "3 mechanism — 03-mechanism-ghostbody, 03-mechanism-xray, 03-use-sequence",
+      "4 proof — 04-proof-lockedframe --timelapse",
+      "5 social — 05-social-handoff",
+      "6 relief — 06-relief-hero"
+    ],
+    "absent": [],
+    "absent_but_correct": [],
+    "gaps": [
+      "No rung is absent, so no gap is claimed. The single proposal below is not a missing rung; it is a missing BEAT inside rung 6 that the product's own core pain statement names."
+    ]
+  },
+  "recommended": [
+    {
+      "slot_id": "recommended.closing-relief-scene",
+      "section_role": "relief",
+      "asset": "13-closing-relief-scene.png",
+      "earns_its_place": "Rung 6, but a different beat from the relief-hero images already on the page: those show the product in place, none shows the lived after-state. brief.personaCorePain names it explicitly — 'getting out of the car means stiffness' — and no slot depicts getting out of the car without it. 01-pain-scene at problems.items.0 carries requires_pair; this is its canonical bookend and closes the page arc pain -> relief.",
+      "suggested_placement": "After the closing product block, as the last image on the page.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "reason": "Standing up and walking away is the transition the whole page has been promising."
+      },
+      "options": [
+        {
+          "opt": "A",
+          "type": "06-relief-scene",
+          "version": "1.0",
+          "variant": null,
+          "varies_on": "baseline",
+          "ratio": "5:3",
+          "attachments": [],
+          "composition_notes": "Multi-pass, Template C: generate problems.items.0 option B first, then edit from that output so the person is the same. This type carries no argument alone and must run beside its pain image.",
+          "prompt": "STEP 1: the problems.items.0 option B output (the man leaving the van cab).\nSTEP 2, EDIT, using that render as reference input:\n\nSame person, same palette, same lens character and same grain.\n\nTYPE: 06-relief-scene v1.0\nREGISTER: candid documentary photograph. Single frame. NO graphic overlays.\n\nSUBJECT: the same man in his fifties, same work fleece, now walking away from the parked\nvan across a service-station forecourt, pausing briefly. Gaze on his own reflection in the\nshop window ahead. Expression: a small closed-mouth smile, private and understated. Not\nperforming, not aware of a camera.\n\nEVIDENCE OF CHANGE: he is upright and square through the hips, no hand at his back, stride\neven and both shoulders level — readable from both the direct view and the reflection.\n\nREFLECTION: the forecourt shop window fills 30% of the frame, showing him from a different\nangle with his back and gait clearly visible, sharp enough to read the evidence. The\nreflection is geometrically consistent with his position.\n\nENVIRONMENT: an ordinary service station on a flat weekday afternoon, two blurred people at\nthe pumps, a bin and a stack of screenwash by the door, wet tarmac. Ordinary overcast\nweather. Nothing aspirational, no styling.\n\nLIGHT: even natural daylight, bright, soft shadows. Slightly kinder than the paired pain\nimage but the same time-of-day character. No golden hour, no rim light, no glamour.\n\nGRADE: muted cool-grey palette matching the paired pain image, light film grain, shallow\ndepth of field. Desaturated, never warm-boosted.",
+          "avoid": "words, letters, numerals, watermarks, logos, badges, arrows, overlays, looking at camera, posing, arms raised, celebration gesture, golden hour, glamour lighting, beauty retouching, product in frame, saturated colours, stock photo look"
+        }
+      ]
+    }
+  ],
+  "page_composition_notes": [
+    "Channel advertorial, read from page.lpTypeId and confirmed by the register: editorial byline, disclosure line, 'Updated October 15, 2026', six-month test framing.",
+    "Awareness read as SOLUTION-AWARE from the copy itself, not from a declared field. Basis: the hero opens 'Seat cushions are easy to buy badly' and indicts flat foam and separate pillows by name, so the reader is assumed to own the problem AND to have already tried the solution class; problems.items.0 is titled 'Why most seat cushions end up in the closet', which is a failure-of-the-category argument, not a pain-recognition one. brief.awarenessStage independently says 'solution' — corroboration, not the source.",
+    "Consequence of that reading: mechanism and physical proof decide this reader, and re-amplifying the problem insults them. The page gets ONE pain beat (problems.items.0) and nothing pain-coded appears after problems.items.1, per cross-slot rule 3.",
+    "05-social-snapshot is BARRED from all four reviews.shots slots. That section displays reviewer names and verified labels, and the snapshot AUTHENTICITY FENCE forbids a generated snapshot anywhere near a reviewer name, avatar, star row or verified badge. This is an FTC line, not a style preference — the four shots route to 06-relief-hero --ugc and 05-social-handoff instead.",
+    "Repetition is legal but heavy and worth seeing plainly: 06-relief-hero appears at hero.image and at three reviews.shots slots, 03-mechanism-xray twice inside features.items, 02-cause-anatomy twice inside features.items. Cross-slot rule 2's repeating-section exception covers the within-section repeats; the hero-to-reviews reuse is ladder rung 4 and is named in each varies_on.",
+    "Step-3 budget (cross-slot rule 4) allows at most two of {03-mechanism-ghostbody, 03-spec-split, 03-use-sequence}. The page uses ghostbody and use-sequence — exactly at the cap. 03-mechanism-xray is not in that named set because it postdates the rule, but with two xray executions the page carries four step-3 images in total. That is at the edge of 'three is a lecture' and is the first thing to cut if the section feels didactic.",
+    "features.items.3 (non-slip base) has no active type: its natural fit 03-spec-macro is STAGING at 4/5 exemplars and staging is never routable. Resolved by ladder rung 4, not by inventing a type.",
+    "03-mechanism-xray carries a recorded fit tension at features.items.2 and .3: its use_when names gadget-class products that do NOT act on a body structure, and this cushion does. Admitted because the subject in both is the product's own material structure rather than the body interface. Flagged rather than hidden.",
+    "product.image and product_end.image carry route: asset in the export — supplied product photography, not generation requests. They are not library refusals; nothing asked the library for an image. Cross-slot rule 6 also puts a standard packshot outside library scope. Say the word and either gets a generated option.",
+    "Four of the fourteen export slots declare route: figma (features 0, 1, 4 and problems 1). Three of those route cleanly to illustration types. features.items.4's dimension blueprint does not — it is spec numerals, which G6 sends to post-composite, and its natural type 03-spec-explode is staging. It is routed to 03-use-sequence instead, which answers the same 'will it fit my seat' question photographically.",
+    "HONEST LIMIT: this pass makes the page argument-complete. It cannot make it conversion-optimised. feedback/picks.jsonl holds 0 records, so the >=20-pick tie-breaker in Step 6 never fired and nothing here is performance-backed.",
+    "Nothing in this run has been rendered. Every claim is about what the prompts ask for, not about what came back."
+  ]
+}
