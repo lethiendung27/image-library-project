@@ -20,7 +20,7 @@ types:
     never_with: [01-pain-split]
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 4
+    evidence_count: 5
     picks: {}
     use_when: >
       Cold traffic that does not know the product yet. Advertorial header
@@ -223,7 +223,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 3
+    evidence_count: 4
     picks: {}
     use_when: >
       The product has more than one operation step, or buyers may assume it is
@@ -373,7 +373,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 21
+    evidence_count: 22
     picks: {}
     use_when: >
       The product solves a problem the buyer already feels but has not named.
