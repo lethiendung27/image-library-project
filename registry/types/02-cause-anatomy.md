@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -37,7 +37,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 02-cause-anatomy v1.5 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.6 [+ --diagnostic]
 MEDIUM: 2D illustration, [airbrushed / flat-vector]. NOT photography, NOT 3D.
 
 [PRODUCT REFERENCE]
@@ -68,10 +68,11 @@ line at the same [landmark] in [state B], green check badge TOP corner. Brighter
 and cleaner than LEFT.
 
 [MEASUREMENT RULE]
-Two dashed reference lines, one per panel, at the identical landmark, identical
-thickness, identical dash pattern, differing ONLY in [the one variable].
-They are straight LINES, never boxes, brackets or outlines.
-Both endpoints sit on structures the culprit does not move.
+Two dashed reference lines, one per panel, anchored to the SAME two anatomical
+landmarks, identical thickness and dash pattern.
+Exactly ONE property may differ — the line's angle, or its length, or the gap it
+spans. Every other property must read as identical.
+Straight LINES, never boxes, brackets or outlines.
 
 Colour follows G3 exactly: red wrong, blue correct, green badge, nothing else.
 ```
@@ -135,12 +136,17 @@ Colour follows G3 exactly: red wrong, blue correct, green badge, nothing else.
   So: show the product exposed at the interface, at a size comparable to the culprit, even
   when real use would hide it. A foot resting ON a contoured insole mirrors a foot on a heel
   wedge; a foot in a shoe containing an insole does not.
-- **The compared variable must be measurable AND independent of the pose the culprit
-  forces** (v1.2, refinement of the NOTES hypothesis). Three renders on 2026-08-12 tested
-  angle, distance and length one each. Angle isolated cleanly. Length did not: the line ran
-  along the Achilles, whose lower endpoint sits on the heel bone, and the shoe tilts the
-  heel bone — so length and angle moved together and neither read as the variable. Put both
-  endpoints on structures the culprit leaves alone.
+- **Exactly ONE property of the line may differ** (v1.6). This replaces the v1.2 wording,
+  which said both endpoints must sit on structures the culprit does not move — and that was
+  wrong, drawn too widely from one failure. It would have forbidden the render that PASSED:
+  the shoulder-bag frame ran its line from acromion to acromion, and the bag does pull one
+  shoulder down, so an endpoint moved. That movement WAS the variable.
+  The real fault in the high-heel render was different: the line ran along the Achilles and
+  changed both its length AND its inclination, so neither read as the thing being compared.
+  So the rule is about the line's properties, not about which bones are allowed to move.
+  Anchor both lines to the same two landmarks, then let exactly one property change: angle,
+  or length, or the gap spanned. For an angle comparison the landmarks are expected to
+  rotate; what must not change is the line's length.
 - Wrong on the LEFT, correct on the RIGHT — locked across the whole library. The
   original exemplar inverted this and misread at first glance; never copy that.
 - Both panels carry a badge (X left, check right) — one unlabeled panel leaves the
@@ -219,6 +225,19 @@ is the **culprit**, not the product; the sentence is "this is what harms you", n
 share one palette or they read as two sources.
 
 ## CHANGELOG
+- 1.6 (2026-08-12): **[MEASUREMENT RULE] rewritten — the v1.2 wording was wrong.** It said
+  both endpoints must sit on structures the culprit does not move, generalised from the one
+  high-heel failure, and it would have forbidden the render that PASSED: the shoulder-bag
+  frame ran its line acromion to acromion, and a single-strap bag pulls one shoulder down,
+  so an endpoint moved. That movement was the whole variable.
+  The high-heel fault was never about which bones move. That line changed its length AND its
+  inclination at once, so neither property read as the comparison. The rule now governs the
+  LINE rather than the skeleton: anchor both lines to the same two landmarks, then let
+  exactly one property differ — angle, or length, or the gap spanned — with everything else
+  visibly identical. For an angle comparison the landmarks are expected to rotate; what must
+  hold still is the line's length.
+  Caught while writing a prompt that would have violated the old wording for no good reason,
+  which is the cheapest way to find a rule that misfires.
 - 1.5 (2026-08-12): **the compression 1.4 promised and did not deliver.** The two panel
   blocks were near-identical in structure — each naming its colour, its contour line, its
   dashed line and its badge on separate lines — so they collapse into one `[PANELS]` block
