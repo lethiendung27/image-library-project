@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -33,7 +33,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 02-symptom-rail v1.3
+TYPE: 02-symptom-rail v1.4
 LAYERS: photographic hero + optional action layer + vignette rail on the right edge.
 
 [PRODUCT REFERENCE]
@@ -43,50 +43,64 @@ proportions, material, finish and colour exactly. Do not redesign or add feature
 [HERO, left 72%]
 [age/gender] in [wardrobe, muted neutral tones], [correct posture/behaviour] while
 [everyday activity], calm content expression, [gaze direction].
-The reference product AT ITS REAL MOUNTING POINT and actually working — the thing
-it mounts to is present and whole in the frame (G7). Seen from [angle],
-unobstructed, at least [X%] of the hero height. It is part of the scene, never a
-cutout floating over it.
+The reference product part of the scene and actually working, at its real mounting
+point with the thing it mounts to present and whole (G7). From [angle],
+unobstructed, at least [X%] of the hero height.
 Setting: [environment], [3 props], soft natural window light, background blurred.
 Bright high-key [neutral palette] grade. Subject offset left.
 
-[ACTION — include ONLY if the product moves something visible]
-The moving substance itself, gathered into a directional form: [N] streams of
-[the real material — moist air, water, steam, dust, foam, light], evenly spaced,
-thinning and fading where the substance disperses.
-DIRECTION IS PHYSICAL TRUTH: if the product draws in, the substance converges INTO
-its intake; if it emits, it leaves the outlet. One direction only, never both.
-The substance keeps its own real colour. Red is reserved for the rail.
-If the product moves nothing visible, OMIT this block — inventing an effect is
-what G8 forbids.
+[ACTION — include only if the product genuinely does this. Choose ONE form.]
+SUBSTANCE — the product moves matter (water, moist air, steam, dust, foam, light):
+the mark is MADE of that substance, [N] streams gathered into a directional form,
+thinning where it disperses, keeping the substance's own real colour.
+FIELD — the product transfers something real but unseeable (heat, support,
+vibration, pressure): the mark is [N] contour lines or a soft radiating envelope
+that WRAPS the receiving surface and shows which way the transfer runs. Neutral
+warm-white or translucent, carrying no signal colour.
+Either way: DIRECTION IS PHYSICAL TRUTH — into an intake, out of an outlet, or into
+the body it treats. One direction, one form, counted, and nothing else is marked.
+Never mark something the product does not do.
 
 [RAIL, right 25-28%, vertical band, [straight / soft S-curved] left edge]
 Pale [tint] gradient panel. [3] circular vignettes stacked evenly, white ring
-border, equal diameter, generous spacing.
-Each vignette: tight crop of [same-role person or object], no face visible,
-showing [pain gesture at body zone / visible symptom], red radial glow centred on
-that point.
-Ordered top to bottom: [item1], [item2], [item3].
-All vignettes share the hero's lighting, wardrobe tone and photographic style.
+border, equal diameter, generous spacing, sharing the hero's light and style.
+Each is a tight crop of [same-role person or object], no face visible, showing
+[pain gesture at body zone / visible symptom], red radial glow centred on it.
+Top to bottom: [item1], [item2], [item3].
 
 STYLE: clean e-commerce infographic tile, bright airy, sharp focus, 4K.
 NO text, no letters, no logo, no watermark.
 ```
 
 ## SLOT CONSTRAINTS
-- **The arrow is made of the substance, or there is no arrow** (v1.3). Owner rule, and it
-  fixes a logic error the old wording invited. `[ZONE B]` used to ask for "[N] [color]
-  rounded arrows overlaid on the product pointing [direction], flat vector style" — an
-  abstract graphic that CLAIMS a direction. Two of three renders on 2026-08-12 got the
-  claim wrong or made it meaningless: a dehumidifier drew three blue arrows pointing UP AND
-  OUT of its top, which inverts what a dehumidifier does, and a heating pad drew amber
-  arrows for heat, which is not visible at all. Making the arrow out of the moving substance
-  fixes both at once, because a stream of water droplets converging into an intake cannot
-  point the wrong way without looking absurd, and a substance that does not exist cannot be
-  drawn.
-  The omit branch is G8's own logic, one type over: if the product produces nothing visible,
-  do not invent an effect. It also retires the amber-arrow problem, where a warm arrow for
-  GOOD heat collided with G3's `orange = wrong heat`.
+- **The mark shows what the product actually does, and its FORM follows the kind of
+  thing that is** (v1.4, correcting v1.3). The old `[ZONE B]` asked for "[N] [color] rounded
+  arrows overlaid on the product pointing [direction], flat vector style" — an abstract
+  graphic that CLAIMS a direction instead of showing one — and the dehumidifier render drew
+  three blue arrows pointing UP AND OUT of its top, inverting what the machine does. The
+  substance rule fixes that class outright: a stream of droplets converging into an intake
+  cannot point the wrong way without looking absurd.
+  **v1.3 then over-generalised, and the owner caught it.** It made the test
+  visible-versus-invisible and told the writer to omit the block for anything unseeable,
+  citing G8. That was wrong twice over. Heat is unseeable and it is also REAL — it transfers
+  into the body, which is the product's entire function — and this library already marks
+  invisible-but-real phenomena elsewhere: `02-cause-anatomy` draws an arrow for FORCE and
+  `01-pain-split` draws hotspots for PAIN. G8's actual subject is photographic honesty:
+  do not fake an emission so a PHOTO looks like it is working. It says nothing about a
+  graphic mark visualising something true.
+  So the test is not visibility, it is truth: does the product genuinely do this? If yes it
+  may be marked, and the form follows the kind. Matter moving gets a mark made of the
+  matter. A field transferring gets contour lines or a radiating envelope that wraps the
+  receiving surface — the form the owner named, and a better instrument than an arrow
+  because it shows the TARGET and the envelope rather than only a direction.
+  What stays forbidden is marking something the product does not do.
+- **A field mark carries no signal colour** (v1.4). The heating-pad render used amber, which
+  collides with G3, where orange means wrong pressure or wrong heat — so a warm arrow for
+  GOOD heat reads against the system lock. Reading G3 strictly, a working mechanism is
+  blue/cyan, but blue heat fights an even stronger prior that blue means cold. The way out
+  is to let the FORM carry the meaning and leave colour out of it: neutral warm-white or
+  translucent contours. That keeps G3 untouched rather than seeking an exemption from it,
+  and it is worth flagging as the cheaper of two paths the owner may want to revisit.
 - **Zone names must not be single letters** (v1.3). One render printed large blue circled
   letters A, B and C into the image — the prompt carried `ZONE A`, `ZONE B`, `ZONE C` as
   headings and the model drew the headings it was shown. G6 bans letters, and the avoid line
@@ -138,6 +152,27 @@ visible-symptom mode — the reason the two modes must be named explicitly in th
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.4 (2026-08-12): **the visible-versus-invisible test was wrong; the test is whether the
+  product actually does it.** Owner correction on v1.3, and it lands. v1.3 told the writer to
+  OMIT the action block for anything unseeable, citing G8. But heat is unseeable and also
+  real — it transfers into the body, which is the whole function of a heating pad — and this
+  library already marks invisible-but-real phenomena: `02-cause-anatomy` draws an arrow for
+  FORCE, `01-pain-split` draws hotspots for PAIN. G8's subject is photographic honesty, not
+  graphic marks: it forbids faking an emission so a PHOTO looks like it is working, and says
+  nothing about visualising something true.
+  So the block now branches on the KIND of phenomenon rather than on whether a camera could
+  see it. SUBSTANCE — matter the product moves — keeps the v1.3 rule, a mark made of the
+  matter with direction as physical truth. FIELD — heat, support, vibration, pressure —
+  gets contour lines or a soft radiating envelope that wraps the receiving surface, which is
+  the form the owner proposed and a better instrument than an arrow because it shows the
+  target and the envelope rather than only a direction. Marking something the product does
+  NOT do stays forbidden, which is what G8 was always about.
+  A field mark carries NO signal colour. The amber in the heating-pad render collided with
+  G3's `orange = wrong heat`; read strictly G3 would give blue for a working mechanism, but
+  blue heat fights the stronger prior that blue means cold. Letting the FORM carry the
+  meaning in neutral warm-white leaves G3 untouched instead of seeking an exemption from it.
+  Skeleton 2069 -> 2160 characters: the HERO and RAIL blocks were compressed in the
+  same pass, so the new branch cost nothing net.
 - 1.3 (2026-08-12): **the arrow is made of the substance the product moves, or there is no
   arrow.** Owner rule, given as: for a dehumidifier the arrow must be formed by the water
   droplets being drawn back in. It repairs a logic error the old wording invited, and the
