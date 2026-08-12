@@ -6,7 +6,7 @@ types:
     step: 1
     job: pain
     device: scene
-    version: "1.3"
+    version: "1.4"
     status: active
     channels: [paid-social, advertorial, landing-page]
     ratios: ["16:9", "5:3", "4:5"]
@@ -32,9 +32,9 @@ types:
     avoid_when: >
       Marketplace galleries, main image, or any position where the product
       must be visible. Cannot sell alone — must be paired with a relief/proof
-      image. Never in the same set as 01-pain-split: one speaks pain through
-      graphics, the other through acting, and the two philosophies read as two
-      brands.
+      image. Never in the same set as 01-pain-split: one pain beat per page,
+      and two of them compete for the same job rather than building on each
+      other.
   - id: 01-pain-split
     step: 1
     job: pain

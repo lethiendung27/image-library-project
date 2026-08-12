@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -22,7 +22,8 @@ never_with: [01-pain-split]
 
 ## PURPOSE
 Make a cold viewer recognize themselves in a raw, cinematic pain moment — before they
-know any product exists. Acting and physical evidence carry the pain; zero graphics.
+know any product exists. Acting and physical evidence carry the pain. No product, no
+layout, no verdict; `--marked` may add ONE mark that points at the evidence.
 
 ## TRIGGER
 use_when: >
@@ -35,77 +36,59 @@ use_when: >
 avoid_when: >
   Marketplace galleries, main image, or any position where the product must be
   visible. Cannot sell alone — must be paired with a relief/proof image. Never
-  in the same set as 01-pain-split: one speaks pain through graphics, the other
-  through acting, and the two philosophies read as two brands.
+  in the same set as 01-pain-split: one pain beat per page, and two of them
+  compete for the same job rather than building on each other.
 
 ## SKELETON
 ```
-TYPE: 01-pain-scene v1.1
-RATIO: [16:9 / 5:3 / 4:5]
-REGISTER: cinematic film still. Single frame. NO graphic overlays of any kind.
+TYPE: 01-pain-scene v1.4 [--candid | --confront] [+ --marked]
+REGISTER: cinematic film still. Single frame.
 
 [SUBJECT]
-[age/gender] in [ordinary specific wardrobe, lived-in not styled],
-caught mid-action while [everyday transitional movement], or pausing at
-[the moment the problem is noticed],
-[hand/body position expressing the symptom],
-face showing [genuine involuntary discomfort or frustration: which muscles,
-which expression]. Body weight unbalanced, mid-motion, not posed.
+[age/gender] in [ordinary specific wardrobe, lived-in not styled], mid-way
+through [an ordinary daily action]: [the force being applied or the movement in
+progress]. Never a pause, never a demonstration.
+Under that force: [which limb, which brace, where the weight goes].
+Face: [the involuntary signs, named by muscle].
 
-[MOMENT RULE]
-The action must be a mundane moment anyone lives daily,
-not a demonstration of wrong behavior.
-
-[SYMPTOM EVIDENCE — required, see G9]
-The symptom must be visible as physical fact in the frame, not only as expression.
-Rank the available evidence and use the strongest present:
-  1. The symptom itself on the body or object ([visible condition])
-  2. Physical residue or debris it produces ([what it leaves behind, and where])
-  3. The failed tool the person is holding ([what they tried, still in hand])
-  4. Gesture alone (weakest, use only when 1-3 are impossible)
-If only gesture is available, at least one object in frame must independently
-imply the problem.
-
-[GAZE — set by variant, never mix]
---candid: subject unaware of the camera, gaze on their task or the ground.
---confront: subject looking directly into the lens, holding the viewer's eye.
-A half-turned glance reads as a model waiting for direction.
-
-[MIRROR] (optional, --confront only)
-A mirror behind or beside the subject showing them from another angle.
-Gives a natural reason for the confrontation moment and doubles the symptom
-evidence without adding a second person.
-The reflection must be consistent with the subject's actual position.
+[SYMPTOM EVIDENCE — required, G9]
+The symptom as physical fact: [strongest evidence present — ladder in SLOT
+CONSTRAINTS]. [if it is a failed tool: the state that shows it failed].
 
 [ENVIRONMENT]
-[specific ordinary place tied to the moment the problem is noticed],
-[time of day], [seasonal or temporal marker].
-Real lived-in clutter that belongs to that place and independently signals
-the routine being disrupted: [3-4 mundane objects].
-Nothing styled, nothing arranged, nothing removed to tidy the frame.
+[specific ordinary place, tied to where the problem gets noticed], [time of day].
+Lived-in clutter belonging to that place, signalling the routine it disrupts:
+[3-4 mundane objects]. Nothing arranged, nothing removed to tidy the frame.
 
-[LIGHT — set by variant]
---candid: low-key. Key light: [source, direction, color temperature].
-  Fill: [weaker source]. Rim light separating subject from background.
-  Deep shadow across [X%] of the frame.
---confront: even ambient daylight, bright, minimal shadow, flat and unflattering.
-Both variants stay desaturated. Neither may use warm flattering light.
+[GAZE] — filled by --candid or --confront.
+[LIGHT] — filled by --candid or --confront.
+[MIRROR] — optional, --confront only.
+[PAIN MARK] — required by --marked, absent otherwise.
 
 [GRADE]
-Desaturated [dominant hue] palette, fine film grain, shallow depth of field,
-[lens character]. Crushed blacks for --candid.
-NO saturated colors. NO red anywhere in the frame.
+Desaturated [dominant hue], fine film grain, shallow depth of field,
+[lens character].
 
 [FORBIDDEN]
-No product. No overlays, arrows, badges, glows, hotspots, insets or split panels.
-Nothing that signals advertising.
+No product. No insets, no split panels. No mark unless --marked is in use.
 
 STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
-NO text, no logo, no watermark.
 ```
 
 ## SLOT CONSTRAINTS
-- [SYMPTOM EVIDENCE] is mandatory (G9). Expression alone carries nothing.
+- [SYMPTOM EVIDENCE] is mandatory (G9). Expression alone carries nothing. **The ladder —
+  pick the strongest present, then write only that one into the slot** (it moved out of
+  the skeleton at v1.4 because ranking is the writer's job and the model only needs the
+  choice):
+  1. the symptom itself on the body or object;
+  2. physical residue or debris it produces — what it leaves behind, and where;
+  3. the failed tool, in the state that shows it failed;
+  4. gesture alone — weakest, only when 1-3 are impossible, and then at least one object
+     in frame must imply the problem independently.
+- **The moment must be mundane** — something anyone lives daily, never a demonstration of
+  wrong behaviour. Also moved out of the skeleton at v1.4: it steers the writer's choice
+  of action and has no picture of its own, which is why "an ordinary lunch stopped by a
+  jar" rendered as nothing at all.
 - **No red pixel anywhere, on `--candid` and `--confront`** — those variants replace the
   red pain signal with acting, and a red glow there makes the image confess it is an ad.
   `--marked` is the sanctioned exception and narrows the rule to "red appears only in the
@@ -128,18 +111,41 @@ white background, studio lighting, stock photo look, posed model, fake grimace,
 smiling, clean staged interior, saturated colors, advertising composition,
 product placement
 ```
+**Under `--marked`, three tokens DROP from this list: `red glow`, `pain hotspots`,
+`graphic overlay`.** That variant requires a red glow or ring, so carrying those tokens
+into a rendered avoid line is a Rule 1a bleed — the avoid line has no negative channel
+and no operators, so "red glow" beside a required red glow suppresses the mark. Drop,
+never rephrase. `arrows` and `badges` stay in every variant: the mark law bars them.
 
 ## VARIANTS
 ### --candid (default)
-- Gaze: unaware. Light: low-key. Problem class: physical pain, physical limitation.
-- Channels: paid-social, advertorial header. Reads cinematic, survives being scrolled past.
+Problem class: physical pain, physical limitation. Channels: paid-social, advertorial
+header. Reads cinematic, survives being scrolled past.
+Fills the two variant slots:
+```
+[GAZE] unaware of the camera, gaze on the task or the ground.
+[LIGHT] low-key. Key: [source, direction, colour temperature]. Fill: [weaker
+source]. Rim light separating subject from background. Deep shadow across [X%] of
+the frame.
+[GRADE addition] crushed blacks.
+```
 - Negative additions: `bright airy lighting, flat daylight look, looking at camera`
 
 ### --confront
-- Gaze: direct into the lens. Light: even ambient daylight, legible at thumbnail size.
-- Problem class: appearance, self-image, daily frustration.
-- Channels: advertorial body, landing-page.
-- May use the optional [MIRROR] slot.
+Problem class: appearance, self-image, daily frustration. Channels: advertorial body,
+landing-page. Legible at thumbnail size.
+Fills the variant slots:
+```
+[GAZE] looking directly into the lens, holding the viewer's eye. A half-turned
+glance reads as a model waiting for direction.
+[LIGHT] even ambient daylight, bright, minimal shadow, flat and unflattering.
+[MIRROR, optional] a mirror behind or beside the subject showing them from another
+angle, the reflection consistent with their actual position.
+```
+- The [MIRROR] slot earns its space twice: it gives the confrontation a natural reason,
+  and it doubles the symptom evidence without adding a second person. Render-confirmed
+  2026-08-12 on a thinning-hair frame — the mirror carried the crown the subject cannot
+  see himself.
 - Restraint rule: frustration, not drama — the flatter the face, the truer it reads.
   **Scope of that rule (v1.3):** it governs EMOTION, not effort. A flat face over a slack
   body renders as nothing at all. When the moment is physical exertion, the face still
@@ -217,6 +223,29 @@ threatening — fallback: knife down on the board, both hands braced on the coun
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.4 (2026-08-12): **skeleton compressed, no change to what renders.** Same slots, same
+  laws, same image — only where the text lives moved, so this is MINOR: no layer, zone or
+  panel changed. The skeleton block drops from 2144 to 1314 characters, 38% smaller, and
+  every prompt written from it inherits that.
+  Six cuts, each with its reason. (1) The `RATIO:` line is gone — adapter Rule 4 has 6/6
+  renders ignoring a written ratio, and keeping it in the skeleton taught every filler to
+  write a line the adapter then had to strip. (2) `[MOMENT RULE]` and (3) the four-rank
+  evidence ladder moved to SLOT CONSTRAINTS: both are instruments for choosing, and the
+  model only needs the choice. Today's evidence for (2) is direct — "an ordinary lunch
+  stopped by a jar" was a MOMENT fill and rendered as nothing. (4) `[GAZE]` and `[LIGHT]`
+  carried BOTH variants inline, so every writer hauled the unused branch and deleted it;
+  the filler text now lives in the `--candid` and `--confront` blocks where it is chosen,
+  and `[MIRROR]`'s rationale went to the variant bullet while its filler text went to the
+  block. (5) `NO saturated colors` / `NO red anywhere` / `Nothing that signals
+  advertising` / `NO text, no logo, no watermark` are gone: the positive form is already
+  asserted ("desaturated"), and the rest is G6, which the adapter emits into the avoid
+  line — Rule 1 step 1 and Rule 6 rule 2.
+  One quality fix, not a cut: `[SUBJECT]` no longer offers "**or pausing at** the moment
+  the problem is noticed". That branch is what produced the dead render this morning, and
+  it contradicted the state-the-force rule added at 1.3 in the same file. The slot now
+  names a force or a movement and says so twice.
+  `[PAIN MARK]` is named in the base skeleton as variant-set, so `--marked` is visible to
+  anyone reading the skeleton alone.
 - 1.3 (2026-08-12): **`--marked` variant added** — one graphic mark, on the evidence,
   never a verdict. Owner decision; the standing instruction is that graphic-element rules
   are the owner's to write, and this is that decision. `vocabulary.yaml` drops "zero
