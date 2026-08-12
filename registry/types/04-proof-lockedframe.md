@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -14,7 +14,7 @@ axes:
   camera_lock: [strict, handheld]
   context_mode: [natural-use, declared-test]
 variants: [rivals, verdict, timelapse, capture]
-exempt_from: [G3, G4]
+exempt_from: [G3, G4, G11]
 pairs_with: [02-cause-anatomy, 06-relief-hero, 01-pain-scene]
 never_with: []
 ---
@@ -41,7 +41,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 04-proof-lockedframe v1.5
+TYPE: 04-proof-lockedframe v1.6
 RATIO: [5:3 / 16:9 / 1:1]
 LAYOUT: [N] equal vertical panels, thin white gutters, no outer border.
 REGISTER: documentary photography. NO graphic overlays, badges, arrows or text.
@@ -252,6 +252,15 @@ completeness violation that helped produce G7.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.6 (2026-08-12): `exempt_from` gains **G11**, the saturation rule v1.5's own CHANGELOG
+  proposed and declined (now written — ADR-010). The exemption is not a softening: G11
+  requires a saturation difference wherever an unresolved and a resolved state share a
+  frame, and this type forbids exactly that — `[JUDGEMENT RULE]` and `--verdict`'s
+  `[FAIRNESS RULE]` bar any panel from being favoured by treatment, which is why
+  `--verdict` puts our product beside two alternatives at identical grade. G11's own
+  scope note names this type as the opt-out case, so the declaration is bookkeeping, not
+  a new freedom. The whole-image polarity `[GRADE]` already gives `--rivals` is the form
+  of G11 this type does honour, and it stays.
 - 1.5 (2026-08-12): `[WORDING LAW]`, `[GRADE]`, `[PRODUCT PROMINENCE]`; `[JUDGEMENT
   RULE]` disambiguated. Evidence: owner-reported failed render of a `--rivals`
   drain-unblocker triptych — pixel-identical background across all three panels

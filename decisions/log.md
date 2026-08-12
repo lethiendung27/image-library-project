@@ -192,3 +192,67 @@ records). A9's proposed id diverged (`02-cause-cutaway` vs `02-cause-aura`) with
 device value in the vocabulary, so both need a taxonomy addition and the divergence
 decides nothing yet. Next calibration is due after ~5 further batches, and must again be
 run by a context that has not read the expected values.
+
+## ADR-010 · 2026-08-12 · G11: the saturation convention becomes a global rule
+
+Context: an aggregation pass over all 110 observations (curate.md §1) surfaced three
+deviation clusters at or past the §6.2 threshold. Two survived inspection; the third did
+not, and how it failed is worth recording because the same trap will recur.
+
+**The trap.** Raw deviation counts include deviations that have ALREADY been promoted into
+a skeleton. The ledger is append-only, so a patched deviation keeps counting forever. The
+`06-relief-hero [ZONE C]` cluster — `recall` executed as a two-cell transition with one
+arrow, three observations, one of them literally annotated "THIRD observation, threshold
+reached, patch due" — was already shipped as `FORM 2, transition pair` in **v1.5 on
+2026-08-10**, citing those exact three hashes. Any future aggregation must diff candidate
+clusters against the CHANGELOG before calling anything due. Nothing was changed for it.
+
+**Cluster that did hold, and was split.** `06-relief-hero [ZONE A]` had five observations
+of the human subject being reduced or absent, which is TWO decisions and not one:
+`reduced` (present as hands, forearms or a shoulder) at 3 distinct observations, and
+`absent` (no person at all) at 2. The first met the bar and is now a SUBJECT form choice
+in the skeleton (v1.8) with the guardrail that a faceless subject needs a visible output
+or finished state to carry what the expression would have. The second is a variant
+cluster — its founding record proposes a `--product` hero — and at 2/3 it went to
+KNOWN-FLAKY with both hashes and an explicit instruction not to ship a person-free hero
+until a third distinct observation drafts the variant.
+
+**Decision: G11.** The saturation convention — unresolved states desaturated, resolved
+states high-key — is now a global rule in `registry/rules.md`. It was practised in seven
+types and stated in none, and `04-proof-lockedframe` v1.5's CHANGELOG proposed exactly
+this and deliberately declined it because it binds so many types. The owner authorised it
+this session.
+
+Two things make it safe to write at this scope rather than expensive:
+
+- **Scope, not sweep.** SPEC §5 binds a rule by its own declared scope, so no type file
+  needed editing to come under G11 — the G8/G9 precedent (ADR-003) promoted a practice
+  without rewriting the types that originated it. Scope is photographic state-bearing
+  layers; technical registers are out by construction, so `03-mechanism-*` and the
+  `_staging` render types need no exemption flag and no version bump. Exactly one type
+  declares `exempt_from: [G11]`: `04-proof-lockedframe` (v1.6), whose `[JUDGEMENT RULE]`
+  and `--verdict` `[FAIRNESS RULE]` forbid the between-state difference G11 requires.
+- **The substitution clause.** G11 lets a type mark an unresolved state with an explicit
+  signal instead of desaturation where its own skeleton says so — `02-symptom-rail`'s
+  red-glow vignettes and `06-relief-hero --recall`'s desaturate-or-X both already work
+  that way. Without that clause G11 would have silently re-legislated types no evidence
+  was collected about. What it forbids is an unresolved state carrying no marking at all,
+  which is the actual observed failure.
+
+**Evidence, stated in the direction it actually points.** The three ledger observations in
+this cluster (`sha256:4f24b8…`, `sha256:6ab523…`, `sha256:cf4c74…`, all `01-pain-split`)
+show source images DECLINING to desaturate the wrong panel — full colour, only duller and
+flatter. They met the ≥3 threshold pointing the opposite way from the rule. So they are
+not the warrant for G11; they are the proof that market imagery will not teach it, which
+is the same shape as the VS-badge dialect the type refuses at nine observations. The
+warrant is the library's own failure: the `--rivals` triptych of 2026-08-12 came back
+cheerful on three panels all meant to read as unsolved. No practising type's skeleton was
+weakened, and `01-pain-split` in particular keeps its desaturation law intact.
+
+Consequences: G4 and G11 now split a boundary that used to have a hole in it — G4 governs
+relative brightness between the sides of a comparison, G11 governs absolute grade
+including the single-state image G4 never spoke about. Six of the seven practising types
+still carry the convention as loose skeleton wording rather than a G11 reference; only
+`06-relief-hero`'s Zone A grade line was annotated, because it was already being edited.
+Annotating the rest is bookkeeping for whenever each is next touched, not a sweep to run
+now.

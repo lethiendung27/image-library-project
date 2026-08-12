@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.7"
+version: "1.8"
 status: active
 replaced_by: null
 ratios: ["2:1", "4:5"]
@@ -52,13 +52,21 @@ proportions, material, finish and color exactly. Do not redesign or add features
 The product must be identical in every layer of this image.
 
 [ZONE A: HERO, right 60%]
-[age/gender] in [wardrobe, tone matching background],
-[pose — see POSE], while [activity], [warm expression].
+SUBJECT — choose ONE form:
+  full person: [age/gender] in [wardrobe, tone matching background],
+    [pose — see POSE], while [activity], [warm expression].
+  reduced: the person present only as working hands, forearms or a shoulder —
+    no face, and therefore no expression available to carry the relief.
+    Choose it when the RESULT is more legible than the user: the product's
+    output, the finished surface, the loaded container.
+When the form is `reduced`, the result must carry what the expression would have
+carried — a visible output (G8) or a visible finished state (G9's ranking). A
+reduced subject with nothing finished in frame argues nothing.
 The product visible at [contact point], seen from [angle A], unobstructed,
 in [ONE mode of use — G7-X: the same mode in every layer].
 Setting: [environment] filled to the edges — [6-8 objects that genuinely belong there],
 [light source — see LIGHT]. Background blurred but never blank: no bare wall or floor
-area larger than the product. High-key [neutral palette] grade.
+area larger than the product. High-key [neutral palette] grade (G11).
 Subject offset [side]. When a Zone B or Zone C layer is present it OCCUPIES that offset
 space — do NOT also reserve empty mid-frame; two reservations for one area render as
 dead air (see SLOT CONSTRAINTS).
@@ -116,6 +124,12 @@ NO text, no logo, no watermark.
   humidifier ugc exemplar failed exactly this (wall-mounted inset, handheld hero).
 - G8 evidence note: three exemplars in a row proved the visible output outweighs image
   polish — a badly-shot frame with visible mist beats a clean frame without it.
+- **SUBJECT form (v1.8):** `reduced` is a general form on both registers, not a rescue.
+  Distinguish it from the `--ugc` fixed-installation caveat below, which is a *fallback*
+  triggered by the product shrinking below recognition at phone distance. Different
+  reasons, same shape — the caveat stays where it is because its trigger is distance,
+  not legibility of the result. When `reduced` is chosen, the persona, wardrobe and pose
+  slots are simply not exercised; do not fill them with a face that is not in frame.
 
 ## NEGATIVE
 ```
@@ -225,9 +239,29 @@ unrecognizable size; fallback framing is low-angle, filter + water jet as subjec
 person reduced to a shoulder.
 
 ## KNOWN-FLAKY
-(populated from observation evidence only)
+- **Subject ABSENT entirely — variant candidate at 2/3, deliberately not in the skeleton.**
+  Two observations show no person at all, the product in its finished situation carrying
+  the hero zone: obs `sha256:61118d…` (batch 10-H, purifier bottle posed on a marble
+  poolside) and `sha256:c28dac…` (batch 11-C, a campsite rigged drum-tight with the
+  product's ropes). The first record proposes it as a `--product` hero decision, so this
+  is a VARIANT cluster, not a slot patch — and at 2 observations it is below both the ≥3
+  bar and curate.md §3's variant bar. `reduced` (v1.8) is a different form and does not
+  cover it: a steadying hand still puts a user in frame. A third distinct observation
+  drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.8 (2026-08-12): `[ZONE A]` gains an explicit SUBJECT form choice — `full person` or
+  `reduced` (hands, forearms or a shoulder, no face), with the guardrail that a reduced
+  subject requires a visible output or finished state to carry what the expression would
+  have carried. Evidence: 3 distinct observations, all on this type — obs
+  `sha256:5ea857…` (batch 10-F, hands and forearms working the tool, action-crop),
+  `sha256:2a8cda…` (11-A, person reduced to a steadying hand, persona/wardrobe/pose
+  slots unexercised), `sha256:d186f6…` (11-A, a presenting hand tilting the loaded
+  bowl). The skeleton had mandated `[age/gender] … [warm expression]` outright, so every
+  one of these read as a violation of a slot the market simply does not fill that way.
+  The person-ABSENT form is a separate decision at 2/3 and went to KNOWN-FLAKY, not
+  here. Also: the Zone A grade line now cites G11 by ID rather than carrying the law as
+  loose wording (G8/G9 precedent, ADR-003; the rule itself is ADR-010).
 - 1.7 (2026-08-11): channels gain `advertorial`. Proved by a sibling: 06-relief-scene's
   avoid_when says that for invisible results "the closing image must be 06-relief-hero
   with the product in frame" — and relief-scene lives on advertorial, so relief-hero

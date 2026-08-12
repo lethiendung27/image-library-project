@@ -175,3 +175,51 @@ stroller). A bleed specified as "a quarter of the shape" pushed a four-line labe
 the frame; the same session cropped a static product inset by the identical mechanism.
 The failure is medium-independent and type-independent, which is why it lives here
 rather than in a type file.
+
+## G11 — Saturation carries the state
+
+**Scope:** photographic layers that depict a state as part of their type's argument —
+the problem, the wrong way, the past, the legacy solution, or the resolved state after
+buying. **Not binding for:** technical registers (3D render, 2D illustration), where the
+palette is set by the render rather than by the argument; and deliberately neutral proof
+layouts, which opt out via `exempt_from: [G11]` — `04-proof-lockedframe` does, because
+its own `[GRADE]` slot legislates this differently and on purpose (one grade for the
+WHOLE image, polarity never between panels).
+
+```
+An UNRESOLVED state is marked as unresolved. Desaturation is the default
+instrument: reduced saturation or grayscale, cool or neutral, never warm.
+A RESOLVED state is high-key: brighter, airier, full colour, never boosted
+past plausible.
+
+Where both states appear in one frame, the difference between them is a
+REQUIREMENT, not a stylistic option — it is what makes two states read as two.
+
+Where only ONE state appears, this rule sets the ABSOLUTE grade of the frame.
+
+A type may substitute an explicit signal mark for desaturation — a red hotspot,
+glow or X per G3 — where its own skeleton says so; `02-symptom-rail`'s vignettes
+and `06-relief-hero --recall` both already do. What is forbidden is an unresolved
+state carrying NO marking of any kind.
+```
+
+The single-state clause is the load-bearing one, and it is the half **G4 never covered**:
+G4 governs relative brightness between the sides of a comparison and says nothing about
+an image in which every layer is a failure. That gap is how three panels all meant to
+read as unsolved rendered cheerful.
+
+**Evidence.** The convention was practised in seven types and stated in none:
+`01-pain-scene`, `01-pain-split`, `02-symptom-rail`, `03-spec-split`, `06-relief-hero`,
+`06-relief-scene`, and `04-proof-lockedframe --rivals` in whole-image form. Its absence
+produced a real failure — the `--rivals` drain-unblocker triptych of 2026-08-12
+(`eval/render-tests.jsonl`), which drove `04-proof-lockedframe` v1.5 and whose CHANGELOG
+proposed exactly this rule and deliberately declined to take it.
+
+Market imagery will not teach it. Three ledger observations record source images
+declining to desaturate the wrong panel at all — obs `sha256:4f24b8…`, `sha256:6ab523…`,
+`sha256:cf4c74…`, all on `01-pain-split`, all "full colour, only duller and flatter".
+Those three met the ≥3 threshold pointing the OPPOSITE way, and the library declines to
+import them, exactly as it declines the VS-badge dialect (nine observations, recorded in
+`01-pain-split`'s CHANGELOG). No practising type's skeleton is weakened by this rule.
+G11 exists because the library's own practice is not inherited from the market — which is
+precisely what made leaving it unwritten expensive.
