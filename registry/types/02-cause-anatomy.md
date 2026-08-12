@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -37,34 +37,36 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 02-cause-anatomy v1.3 [+ --diagnostic]
-MEDIUM: 2D illustration. NOT photography. NOT 3D render.
-STYLE: [airbrushed / flat-vector / line-engraving] — name one.
+TYPE: 02-cause-anatomy v1.4 [+ --diagnostic]
+MEDIUM: 2D illustration, [airbrushed / flat-vector]. NOT photography, NOT 3D.
 
 [PRODUCT REFERENCE]
 Use the attached product photo as the exact reference for the item in the RIGHT
 panel. Preserve shape, proportions, material, finish and colour exactly.
 
-[CANVAS]
-One continuous ground across both panels, split by a single thin vertical line.
-BASE: [low-chroma colour from the culprit's own material world].
-MOTIFS: [2 motifs from that same world] as ONE continuous field at very low
-opacity, anchored to [one edge] and stopping where a figure begins.
+[GROUND]
+One continuous [low-chroma colour from the culprit's material world] field across
+both panels, split by a single thin vertical line.
+BASELINE: one horizontal line at the SAME height in both panels — the surface both
+figures rest on, and the datum everything is measured against.
+Nothing else occupies the background.
 
 [BODY TREATMENT, both panels]
 [anatomical structure] in warm ivory over a translucent body outline.
 EXACTLY ONE figure per panel, same scale and viewing angle in both.
 
 [LEFT PANEL: WRONG]
-Figure [wrong position] in/on [culprit object, drawn realistically, unbranded].
+Figure [wrong position] on [culprit object, drawn realistically, unbranded],
+the culprit clearly visible at [the interface where it acts on the body].
 [affected elements] red. A red curved line tracing [wrong contour].
 A red dashed reference line at [landmark], [state A of the variable].
 ONE red double-headed curved arrow along [surface causing the problem].
 Red circle with white X, TOP corner.
 
 [RIGHT PANEL: CORRECT]
-Same figure [correct position], with the reference product [in place / worn /
-supporting the structure] visibly doing the correcting.
+Same figure [correct position] on the reference product, shown at THE SAME
+interface as the culprit and at comparable size — exposed and readable, never
+tucked inside a housing that hides it.
 [affected elements] blue. A soft blue aura along [correct contour].
 A blue dashed reference line at the same [landmark], [state B of the variable].
 Green circle with white check, TOP corner. Brighter and cleaner than the left.
@@ -75,8 +77,7 @@ thickness, identical dash pattern, differing ONLY in [the one variable].
 They are straight LINES, never boxes, brackets or outlines.
 Both endpoints sit on structures the culprit does not move.
 
-PALETTE LOCK: red wrong, blue correct, green badge, and nothing else means
-anything.
+Colour follows G3 exactly: red wrong, blue correct, green badge, nothing else.
 ```
 
 ## SLOT CONSTRAINTS
@@ -101,20 +102,43 @@ anything.
   `airbrushed` = soft gradients, modelled volume, textbook shading. `flat-vector` = flat
   fills, hard edges, no gradients. `line-engraving` = hatching and stipple carrying the
   form, colour as spot fills.
-  Evidence: `airbrushed` has three passing renders. `flat-vector` has none.
-  **`line-engraving` has one render and it FAILED** (2026-08-12, high heel) — the style
-  held, the ground and signals held, and the paired reference lines came back as dashed
-  BOXES rather than lines, which took the whole argument with them. Do not use it for this
-  type again until the LINES-not-boxes wording has been tested on it; if it fails twice the
-  value should be withdrawn rather than patched around.
+  Evidence: `airbrushed` has four renders behind it. `flat-vector` has none.
+  **`line-engraving` is held OUT of the skeleton's list** (v1.4) after its only render
+  failed — the style held and so did the ground and the signals, but the paired reference
+  lines came back as dashed BOXES and took the argument with them. It is not withdrawn,
+  because one failure is not the threshold; it is simply not offered by default, so it
+  cannot be reached for by accident. The retest that would restore it changes ONLY the
+  style value on a prompt already known to work, and checks one thing: whether the
+  LINES-never-boxes wording added at 1.3 holds under hatching. That wording has since been
+  confirmed on `airbrushed` — the 2026-08-12 insole render produced clean straight dashed
+  lines where the previous one produced boxes.
   The MEDIUM is not part of this choice and cannot move — `anatomy` is the device and 2D
   illustration is what the device means.
-- **Motifs are a field, not a sprinkle** (v1.3). Owner report: the elements sit around the
-  ground carelessly. Confirmed in all four renders — mesh, crosses, shoe lasts and heel
-  columns floated at unrelated sizes, some overlapping the figures, some marooned in dead
-  space. Deriving them from the culprit at v1.2 changed WHAT they are and said nothing
-  about WHERE they go, which was half a fix. They now form one continuous field, anchored
-  to a named edge, confined to the ground outside the figures.
+- **The background motifs are gone, and a BASELINE takes their place** (v1.4). Owner
+  report: the motif band carries no important information. True, and the type had admitted
+  it — the old wording asked for motifs "at very low opacity", which is a way of saying they
+  must not be noticed. Five renders confirmed the whole idea was decoration: hexagon mesh
+  and medical crosses first, then shoe lasts and heel columns arranged as a footer border.
+  What replaces them is the thing the argument actually lacked. This type claims a
+  MEASURED difference, and across five renders the two panels never shared a datum: the
+  left foot stood on an implied floor at one height and the right on a shoe sole at another,
+  so "the heel raises you" had nothing to be measured against. One horizontal line at the
+  same height in both panels supplies that, forces the panels into alignment, and costs one
+  sentence. It is not decoration — remove it and the dashed pair loses its reference.
+  If the owner later wants ticks along it, that would give the CHART mark family its first
+  active host in the library, and it is a mark decision for the owner to write rather than
+  something to add quietly here.
+- **The product sits at the SAME interface as the culprit, at comparable size** (v1.4).
+  Owner report: the insole was sometimes visible and sometimes not, and the comparison was
+  lopsided. Both trace to one cause. The culprit is always a bold shaped object at the
+  point where it acts — a heel wedge under the heel bone, a strap over a shoulder, a
+  sagging surface under a hip. The product was being placed wherever it normally lives,
+  which for an insole is INSIDE a shoe, so it rendered as a sliver of outline lost in
+  another object while the heel opposite it read instantly. Asking for it "visibly carried"
+  while also asking for it "fitted inside" was self-defeating.
+  So: show the product exposed at the interface, at a size comparable to the culprit, even
+  when real use would hide it. A foot resting ON a contoured insole mirrors a foot on a heel
+  wedge; a foot in a shoe containing an insole does not.
 - **The compared variable must be measurable AND independent of the pose the culprit
   forces** (v1.2, refinement of the NOTES hypothesis). Three renders on 2026-08-12 tested
   angle, distance and length one each. Angle isolated cleanly. Length did not: the line ran
@@ -199,6 +223,31 @@ is the **culprit**, not the product; the sentence is "this is what harms you", n
 share one palette or they read as two sources.
 
 ## CHANGELOG
+- 1.4 (2026-08-12): **the decorative background becomes a measuring datum, and the product
+  stops hiding.** Three owner reports on the v1.3 insole render, all accepted.
+  (1) The motif band carries no information. True, and the type had already admitted it by
+  asking for motifs "at very low opacity" — a way of saying they must not be noticed. Five
+  renders proved the whole idea decorative: hexagon mesh and medical crosses, then shoe
+  lasts and heel columns arranged as a footer border. They are gone. **A BASELINE replaces
+  them**: one horizontal line at the same height in both panels. Across all five renders
+  the panels never shared a datum — the left foot stood on an implied floor at one height,
+  the right on a shoe sole at another — so a type whose whole claim is a MEASURED difference
+  had nothing to measure against. This is the opposite of decoration: remove it and the
+  dashed pair loses its reference.
+  (2) The insole was sometimes visible, sometimes not, and the comparison was lopsided.
+  Both come from one cause. The culprit is always a bold shaped object at the point where it
+  acts; the product was being placed wherever it normally lives, which for an insole is
+  inside a shoe, so it rendered as a sliver lost in another object while the heel opposite
+  read instantly. Asking for it "visibly carried" AND "fitted inside" was self-defeating.
+  The right panel now requires the product at THE SAME interface as the culprit, at
+  comparable size, exposed rather than housed.
+  (3) Skeleton still too long. `PALETTE LOCK` is gone — two lines restating G3, which
+  Rule 6 rule 2 forbids; one clause now references the rule instead. MEDIUM and STYLE merged
+  into one line. `line-engraving` is held out of the offered list so it cannot be reached
+  for by accident. Skeleton 1918 -> 2027 characters.
+  Confirmed by this render and worth recording: the LINES-never-boxes wording added at 1.3
+  worked. The previous render turned the dashed pair into boxes under `line-engraving`; this
+  one produced clean straight dashed lines under `airbrushed`.
 - 1.3 (2026-08-12): **the product becomes the thing on the right.** Owner report on the
   first v1.2 render: the image logic is not good because there is no comparison object that
   is the product. Correct, and it was the type's oldest assumption rather than an oversight.
