@@ -3,15 +3,15 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
 channels: [landing-page, marketplace, advertorial]
-requires_product_photo: false
+requires_product_photo: true
 generation_mode: single-pass
-variants: []
-exempt_from: [G1]
+variants: [diagnostic]
+exempt_from: []
 pairs_with: [01-pain-scene, 03-mechanism-ghostbody]
 never_with: []
 ---
@@ -20,8 +20,10 @@ never_with: []
 
 ## PURPOSE
 Indict a measurable cause in the customer's daily life (car seat, desk, mattress, tap
-water) with a 2D medical illustration. A diagnostic image about the culprit — the
-product does not appear.
+water) with a 2D illustration, and show the product as the thing that corrects it. The
+culprit is on the left, the product doing its job is on the right, and one measured line
+proves the difference. `--diagnostic` drops the product for the advertorial middle, where
+the culprit is named before the product is revealed.
 
 ## TRIGGER
 use_when: >
@@ -35,61 +37,46 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 02-cause-anatomy v1.2
-MEDIUM: 2D illustration. NOT photography. NOT 3D render. This is fixed — the
-device is `anatomy`, and the medium is what the device means.
+TYPE: 02-cause-anatomy v1.3 [+ --diagnostic]
+MEDIUM: 2D illustration. NOT photography. NOT 3D render.
+STYLE: [airbrushed / flat-vector / line-engraving] — name one.
 
-[ILLUSTRATION STYLE — choose ONE and name it in the prompt]
-airbrushed: soft gradients, modelled volume, textbook shading.
-flat-vector: flat fills, hard edges, no gradients, limited tonal steps.
-line-engraving: fine hatching and stipple, linework carrying the form,
-  colour applied as spot fills over the line.
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference for the item in the RIGHT
+panel. Preserve shape, proportions, material, finish and colour exactly.
 
-[CANVAS — derived from the culprit, not fixed]
-One continuous ground shared by both panels, divided by a single thin vertical
-line, not a hard split.
-BASE: [a low-chroma colour taken from the culprit object's own material world].
-It must sit far in hue from BOTH red and blue so neither signal has to fight it,
-and it must separate from the ivory structure layer by VALUE, not only by hue.
-MOTIFS, 2-3, all at very low opacity, all drawn from that same material world:
-[motif 1], [motif 2], plus an oversized ghosted [anatomical structure] as a
-watermark.
-[optional: ghosted silhouette of [the culprit object] behind one panel]
+[CANVAS]
+One continuous ground across both panels, split by a single thin vertical line.
+BASE: [low-chroma colour from the culprit's own material world].
+MOTIFS: [2 motifs from that same world] as ONE continuous field at very low
+opacity, anchored to [one edge] and stopping where a figure begins.
 
 [BODY TREATMENT, both panels]
-[anatomical structure] drawn in warm ivory as the top layer (G3: yellow =
-neutral structure), the human body reduced to a translucent glowing outline
-behind it.
-EXACTLY ONE figure per panel, two in the image. Same figure, same scale, same
-viewing angle in both.
+[anatomical structure] in warm ivory over a translucent body outline.
+EXACTLY ONE figure per panel, same scale and viewing angle in both.
 
 [LEFT PANEL: WRONG]
-Figure [wrong position] in/on [culprit object, drawn realistically].
-[affected elements] highlighted in red. A red curved line tracing [wrong contour].
-A red dashed reference line at [landmark], clearly TILTED.
-A red double-headed curved arrow along [surface causing the problem].
-Red circle with white X badge, TOP corner.
+Figure [wrong position] in/on [culprit object, drawn realistically, unbranded].
+[affected elements] red. A red curved line tracing [wrong contour].
+A red dashed reference line at [landmark], [state A of the variable].
+ONE red double-headed curved arrow along [surface causing the problem].
+Red circle with white X, TOP corner.
 
 [RIGHT PANEL: CORRECT]
-Same figure [correct position], no object or [supportive object].
-[affected elements] highlighted in blue. A soft blue aura along [correct contour].
-A blue dashed reference line at the same [landmark], clearly HORIZONTAL.
-Green circle with white check badge, TOP corner.
-Brighter and cleaner than the left panel.
+Same figure [correct position], with the reference product [in place / worn /
+supporting the structure] visibly doing the correcting.
+[affected elements] blue. A soft blue aura along [correct contour].
+A blue dashed reference line at the same [landmark], [state B of the variable].
+Green circle with white check, TOP corner. Brighter and cleaner than the left.
 
 [MEASUREMENT RULE]
-The paired dashed reference lines are the core argument.
-They must be at the identical anatomical landmark in both panels,
-identical thickness and dash pattern, differing ONLY in [the one variable].
-Both endpoints of the line must sit on structures the culprit does NOT tilt,
-or the variable stops being isolated (see SLOT CONSTRAINTS).
+Two dashed reference lines, one per panel, at the identical landmark, identical
+thickness, identical dash pattern, differing ONLY in [the one variable].
+They are straight LINES, never boxes, brackets or outlines.
+Both endpoints sit on structures the culprit does not move.
 
-PALETTE LOCK: the SIGNALS are locked and nothing else is. Red [wrong], blue
-[correct], green [confirmation badge] — those three and no other colour may
-carry meaning. The base ground and the motifs are derived per [CANVAS] and carry
-no meaning at all.
-STYLE: e-commerce infographic, crisp linework, 4K, in the chosen illustration
-style. NO text, no numbers, no logo, no watermark.
+PALETTE LOCK: red wrong, blue correct, green badge, and nothing else means
+anything.
 ```
 
 ## SLOT CONSTRAINTS
@@ -107,14 +94,27 @@ style. NO text, no numbers, no logo, no watermark.
   field to read. All three renders of 2026-08-12 show it: red carried easily because it was
   the only colour contrasting with the ground. The ivory structure layer stays exactly as
   it was — G3 assigns yellow to neutral structure, so that one was never a style choice.
-- **Illustration STYLE is a named slot, not an axis.** SPEC §3.2 reserves axes for
-  presentation dimensions that cut across several types, and this cuts across one. It
-  follows `02-symptom-rail`'s vignette-mode pattern instead: three named values, one chosen
-  and stated explicitly in every prompt. Evidence status, stated plainly: `airbrushed` has
-  three passing renders behind it; `flat-vector` and `line-engraving` have NONE and are the
-  owner's design decision, logged here so the first render of each is recognised as its
-  founding evidence. The MEDIUM is not part of this choice and cannot move — `anatomy` is
-  the device and 2D illustration is what the device means.
+- **Illustration STYLE is a named slot, not an axis** — SPEC §3.2 reserves axes for
+  dimensions cutting across several types and this cuts across one, so it follows
+  `02-symptom-rail`'s vignette-mode pattern and needs no vocabulary change. The three
+  values, defined here rather than in the skeleton so a prompt only carries the name:
+  `airbrushed` = soft gradients, modelled volume, textbook shading. `flat-vector` = flat
+  fills, hard edges, no gradients. `line-engraving` = hatching and stipple carrying the
+  form, colour as spot fills.
+  Evidence: `airbrushed` has three passing renders. `flat-vector` has none.
+  **`line-engraving` has one render and it FAILED** (2026-08-12, high heel) — the style
+  held, the ground and signals held, and the paired reference lines came back as dashed
+  BOXES rather than lines, which took the whole argument with them. Do not use it for this
+  type again until the LINES-not-boxes wording has been tested on it; if it fails twice the
+  value should be withdrawn rather than patched around.
+  The MEDIUM is not part of this choice and cannot move — `anatomy` is the device and 2D
+  illustration is what the device means.
+- **Motifs are a field, not a sprinkle** (v1.3). Owner report: the elements sit around the
+  ground carelessly. Confirmed in all four renders — mesh, crosses, shoe lasts and heel
+  columns floated at unrelated sizes, some overlapping the figures, some marooned in dead
+  space. Deriving them from the culprit at v1.2 changed WHAT they are and said nothing
+  about WHERE they go, which was half a fix. They now form one continuous field, anchored
+  to a named edge, confined to the ground outside the figures.
 - **The compared variable must be measurable AND independent of the pose the culprit
   forces** (v1.2, refinement of the NOTES hypothesis). Three renders on 2026-08-12 tested
   angle, distance and length one each. Angle isolated cleanly. Length did not: the line ran
@@ -147,6 +147,20 @@ free colour — both are Rule 1a bleed shapes. The bounds live positively in the
 instead: motifs "all at very low opacity", and the palette lock naming the three signals as
 the only colours that may carry meaning. `both dashed lines at the same angle` became
 `both dashed lines identical`, because angle is no longer always the compared variable.
+
+## VARIANTS
+### --diagnostic
+The product leaves the frame: the right panel shows the corrected state reached by the
+category rather than by the reference product ("no object, or a generic [supportive
+object]"). This was the base behaviour until v1.3 and it has a real use — the advertorial
+middle, where the culprit is indicted before the product is revealed, with
+`03-mechanism-ghostbody` or a step-3 image carrying the product afterwards.
+Diff vs base: `[PRODUCT REFERENCE]` is dropped, G1 is exempt because no product appears
+(G1's own scope note), and `requires_product_photo` reads false for this variant.
+- Use it only when a later image on the same page carries the product. Alone it argues
+  "stop doing this" rather than "buy this", which is the fault that made the product the
+  default at v1.3.
+- Negative additions: `reference product in frame, branded remedy object`
 
 ## WORKED EXAMPLES
 ### example: shower-filter-hair-strand — skeleton@1.0, run: untested
@@ -185,6 +199,34 @@ is the **culprit**, not the product; the sentence is "this is what harms you", n
 share one palette or they read as two sources.
 
 ## CHANGELOG
+- 1.3 (2026-08-12): **the product becomes the thing on the right.** Owner report on the
+  first v1.2 render: the image logic is not good because there is no comparison object that
+  is the product. Correct, and it was the type's oldest assumption rather than an oversight.
+  The right panel used to show "no object or [supportive object]", so every render argued
+  "stop wearing heels" or "stop carrying that bag" and never "buy this". The base now puts
+  the reference product in the right panel, visibly doing the correcting;
+  `requires_product_photo` flips to true and the G1 exemption is dropped.
+  The old product-free behaviour survives as **`--diagnostic`**, because it has a real use:
+  the advertorial middle, where the culprit is indicted before the product is revealed and a
+  later step-3 image carries the product. Its own note says what it costs - alone it argues
+  stop-doing-this rather than buy-this.
+  **Motifs are a field, not a sprinkle.** Owner report: the elements are placed carelessly
+  in the ground. Confirmed in all four renders - mesh, crosses, shoe lasts and heel columns
+  floating at unrelated sizes, some over the figures, some marooned. Deriving them from the
+  culprit at v1.2 fixed WHAT they are and said nothing about WHERE they go, which was half a
+  fix. They now form one continuous field anchored to a named edge, stopping where a figure
+  begins.
+  **Skeleton back under control.** Owner report: still long, still guiding style too much -
+  and they were right, because v1.2 grew it from 1962 to 2822 characters while claiming to be
+  a tidy-up. The three illustration-style DEFINITIONS moved to SLOT CONSTRAINTS so a prompt
+  carries only the name; the palette reasoning went with them; the MEDIUM stopped explaining
+  itself. Now 1918 characters, below where it started, with a product panel, a placement law
+  and a style slot added since.
+  **`line-engraving` is marked do-not-use pending a retest.** Its only render failed: the
+  style held and the signals held, but the paired reference lines came back as dashed BOXES
+  and took the argument with them. `[MEASUREMENT RULE]` now says the lines are straight
+  lines, never boxes, brackets or outlines. If it fails a second time the value should be
+  withdrawn rather than patched around.
 - 1.2 (2026-08-12): **the design language stops being hard-coded.** Owner report after
   three renders: the elements are locked to one style and one colour scheme, with no
   diversity, and the fix should be a mechanism for reasoning about style rather than a
