@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -41,7 +41,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 04-proof-lockedframe v1.3
+TYPE: 04-proof-lockedframe v1.5
 RATIO: [5:3 / 16:9 / 1:1]
 LAYOUT: [N] equal vertical panels, thin white gutters, no outer border.
 REGISTER: documentary photography. NO graphic overlays, badges, arrows or text.
@@ -49,6 +49,11 @@ REGISTER: documentary photography. NO graphic overlays, badges, arrows or text.
 [PRODUCT REFERENCE]
 Use the attached product photo as the exact reference for the item in panel [N].
 Preserve shape, proportions, material, finish and color exactly.
+
+[PRODUCT PROMINENCE — required whenever a product is in frame]
+The product is the SUBJECT of the panel it appears in and fills at least [X%]
+of that panel. It is never a small object resting at the edge of a scene the
+viewer is actually looking at.
 
 [CAMERA — choose ONE mode, see CAMERA LOCK SELECTION]
 
@@ -59,24 +64,45 @@ Every fixed element in the frame must align pixel for pixel across all panels:
 Identical lighting, identical exposure, identical white balance in every panel.
 
 [HANDHELD CONTINUITY — camera_lock: handheld]
-Same room, same surface, same light direction, same rough shooting distance.
 Shot by the same person on a phone on different days, not on a tripod.
-MUST VARY between panels, naturally and independently:
-  camera position shifted 10-20cm in any direction,
-  camera angle differing by 5-10 degrees,
-  the object rotated 15-30 degrees, resting at a different tilt,
-  the object placed a few centimetres from where it sat before,
-  incidental details different (droplets, towel folds, a different item at frame edge),
-  slight exposure and white balance drift, as if shot under different daylight.
+Describe ONE framing, once, for every panel: [where the subject sits in frame],
+[camera height and distance], [what occupies the upper and lower thirds].
+Then state the band: it reads as one shot taken [N] times, never as [N]
+different shots — drift is a few degrees of tilt and a few centimetres of
+position, no more.
+Put most of the variation on the PROPS rather than the camera, named per panel:
+  Panel 1: [prop state]. Panel 2: [prop state]. Panel 3: [prop state].
+  (a towel refolded, an item moved, one thing missing, a new incidental mark)
+Their light differs only in exposure, never in warmth.
 MUST STAY CONSTANT: the room, the surface, the light direction,
 the identity of the object, the single variable being compared.
 The panels must look like photographs a person took, not renders from one
 scene file. Perfect alignment reads as CGI and destroys the evidence.
 
+[WORDING LAW — camera_lock: handheld, evidence-based v1.5]
+Never write the drift as a delta: "shifted 10-20cm", "a few centimetres from
+where it sat before". A relative instruction needs a reference point the model
+does not have inside one canvas, so it renders a single background and swaps the
+object — the observed failure. But giving each panel a fully independent framing
+overshoots into three unrelated photographs. One shared framing plus one small
+named per-panel deviation is the only wording that lands in the band.
+
 [SCENE, constant across all panels]
 [specific environment], [surface the variable sits on].
 Deliberate real-world clutter: [2-3 mundane untidy details].
 Flat [light quality], no strong shadows, no sunlight, no styling.
+
+[GRADE — set by variant, never polarised BETWEEN panels]
+One grade across every panel, coming from the room and the weather rather than
+a filter. Still colour, never black and white — a mono conversion on a
+documentary register reads as edited and destroys the credibility it is selling.
+--rivals: muted and cool, low saturation, no warm tone anywhere. Every panel is
+  an unsolved state, so one shared unresolved tone favours none of them. This is
+  the only variant whose grade carries polarity, and it carries it for the WHOLE
+  image, never between panels.
+--verdict / --timelapse / --capture: neutral, with no panel warmer, brighter or
+  more saturated than the others. If the resolved panel also looks better graded,
+  the image has won by treatment and the argument is void.
 
 [THE VARIABLE, the only thing that changes]
 Panel 1: [state/item 1].
@@ -85,7 +111,9 @@ Panel 3: [state/item 3].
 
 [JUDGEMENT RULE]
 No panel may be favoured. No badge, no glow, no color cue, no brighter exposure.
-The viewer decides. All panels equally lit and equally neutral.
+The viewer decides. All panels equally lit and equally neutral IN JUDGEMENT:
+"neutral" here means no panel is argued for, NOT that the image carries no
+grade. The grade is set by [GRADE] above and applies to every panel alike.
 
 STYLE: honest documentary product test photography, unstyled, natural, sharp.
 NO text, no logo, no watermark.
@@ -103,6 +131,20 @@ NO text, no logo, no watermark.
   supplements, skincare, software.
 - G7 applies at its strictest here (natural-use), except --capture which runs as
   `context_mode: declared-test`.
+- **`handheld` single-pass is conditional on the WORDING LAW** (v1.5). It is viable
+  only when the framing is written once and shared with small named per-panel
+  deviations. Written as relative deltas it produces one repeated background;
+  written as independent per-panel framings it produces unrelated photographs.
+  Multi-pass (three renders, composited) remains the fallback when a single pass
+  will not land in the band.
+- **Product prominence** (v1.5): the type carried no size or placement rule for the
+  product, the only product-bearing type in the registry without one — so the product
+  drifted to the frame edge while a background object held the eye. `[PRODUCT
+  PROMINENCE]` now fixes a floor. Note the deeper constraint it does not lift: the
+  JUDGEMENT and FAIRNESS rules forbid winning by image treatment, so this type can
+  make a product the SUBJECT but can never make it the HERO. When the brief is
+  "emphasise the product", route to a type whose law lets it win — `01-pain-split`
+  (G4) or `06-relief-hero` — instead of stretching this one.
 - Multi-pass is mandatory for `strict` (generate one panel, edit-swap the variable,
   composite); `handheld` may run single-pass.
 
@@ -210,6 +252,21 @@ completeness violation that helped produce G7.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.5 (2026-08-12): `[WORDING LAW]`, `[GRADE]`, `[PRODUCT PROMINENCE]`; `[JUDGEMENT
+  RULE]` disambiguated. Evidence: owner-reported failed render of a `--rivals`
+  drain-unblocker triptych — pixel-identical background across all three panels
+  (one brown chip at one coordinate), no object emphasised, and full-colour grade
+  on three panels that were all meant to read as failures. Three findings, each
+  fixed above. (a) The handheld slot was written in relative deltas, unusable in a
+  single canvas; the second attempt overcorrected into three unrelated framings, so
+  the law now names the band. (b) The type was the only product-bearing type with no
+  prominence rule at all. (c) `exempt_from: [G3, G4]` was read as exemption from all
+  tonal grammar — G4 governs brightness BETWEEN panels, and nothing governed the
+  absolute grade of the image, so `--rivals` rendered cheerful while the library's
+  own unwritten convention marks unsolved states desaturated (`01-pain-scene`,
+  `01-pain-split` left, `03-spec-split` left). Still open: that convention is
+  practised in five types and written in none — a global saturation rule is proposed
+  and NOT taken here, since it would bind sixteen types.
 - 1.4 (2026-08-11): channels gain `paid-social`. Self-contradiction: the --rivals
   variant already declares "Channels: advertorial, paid-social only" while the
   frontmatter excluded paid-social. The type-level avoid_when ("never as a
