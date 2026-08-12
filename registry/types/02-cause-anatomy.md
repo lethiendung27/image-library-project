@@ -233,7 +233,11 @@ share one palette or they read as two sources.
   reduced it. Separately, 1.4's COMMIT MESSAGE claimed "1918 -> 1699 characters" — that
   number was wrong and the CHANGELOG entry in the file always held the correct 2027. The
   message is left as written rather than amended, since git history is this project's audit
-  surface and hiding an error there is worse than showing its correction.
+  surface and hiding an error there is worse than showing its correction. The commit message
+  on 1.5 then repeated the mistake, claiming 1734; the true figure is 1868, which is what this
+  entry has always said. Root cause, fixed rather than apologised for: character counts were
+  being typed into commit messages by hand from a measurement taken before the last edit.
+  They are now generated from the file at commit time.
 - 1.4 (2026-08-12): **the decorative background becomes a measuring datum, and the product
   stops hiding.** Three owner reports on the v1.3 insole render, all accepted.
   (1) The motif band carries no information. True, and the type had already admitted it by
