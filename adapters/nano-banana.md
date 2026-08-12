@@ -220,9 +220,21 @@ Two causes, one confirmed present and one hypothesised:
   (`[BADGES]`, `[CENTER BADGE]`) are hypothesised to survive where buried ones drop.
   Untested; the cheapest test is a prompt pair differing only in slot structure.
 
-The reverse mode — the model ADDING a mark nobody asked for — has one observation: a
-four-pointed sparkle glyph in the corner of a zero-mark documentary render. It may be a
-platform watermark rather than a drawn element, which no prompt can remove. Unresolved.
+The reverse mode — the model ADDING a mark nobody asked for — now has **6 observations** of
+one glyph: a four-pointed sparkle in the corner. Five of them arrived together in the
+`02-cause-anatomy` MARKS batch of 2026-08-12, and the consistency is the finding — same
+bottom-right corner, same form, same neutral grey, across two illustration styles, five
+different grounds and mark counts of four and five. A drawn element would vary with style,
+and every one of those prompts closed its mark block with "nothing in the frame is marked
+that is not named here", which did not suppress it.
+
+That reads as a platform watermark rather than a drawn element, and no prompt can remove
+one. It is **not settled**, and the reason is on this page: the four mark-free controls of
+the restraint test below were explicitly clean, so the glyph is not on every render this
+model returns. Two cheap things would settle it — whether the render tool has a watermark
+setting, and whether the glyph survives a prompt that names the bottom-right corner as
+deliberately empty. Until then, treat it as a platform artefact rather than a Rule 7
+failure, and crop it in post on any channel that cannot carry it.
 
 ### First re-render after both fixes: marks present in 10 of 10 (2026-08-12)
 
@@ -240,8 +252,9 @@ across the BADGE and GRAPH families, 4 mark-free controls — every one owner-ve
   badges where the ledger's exemplar showed six), badge position and colour (cases 1–3).
   One run per class is breadth, not a denominator; the risk list above stands unchanged.
 - **No spurious mark appeared** in any of the four controls, against the single prior
-  observation of an unrequested sparkle glyph. That observation stays unresolved; it did
-  not recur.
+  observation of an unrequested sparkle glyph. It did not recur in this batch — and that
+  clean result is now the main evidence AGAINST the watermark reading above, which five
+  further observations on 2026-08-12 otherwise support.
 - **No class has earned the post-composite exception.** ADR-008's approach A survives its
   first real test. Nothing here flips it — and nothing here proves it either, at one run
   per class.
