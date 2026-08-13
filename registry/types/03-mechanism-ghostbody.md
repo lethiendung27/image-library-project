@@ -3,7 +3,7 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -37,7 +37,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-ghostbody v1.3
+TYPE: 03-mechanism-ghostbody v1.4
 REGISTER: 3D technical render. NOT photography.               -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -87,12 +87,34 @@ the colour G3 already assigns it.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `structure` | the neutral anatomy the argument sits in — bone, cartilage, the body's own framework | yellow / off-white ivory | as much as the cutaway shows | **none** |
-| `stress` | the loaded or deformed element, filled where the load lands | red | as many as are loaded | **none** |
-| `support` | the structure the product is carrying, filled along the contact | blue | 1 per supported structure | **none** |
+| `structure` | the neutral anatomy the argument sits in — bone, cartilage, the body's own framework | yellow / off-white ivory | as much as the cutaway shows | 2 renders · drew cleanly |
+| `stress` | the loaded or deformed element, filled where the load lands — **`xcheck` wrong panel only** | red | as many as are loaded, inset only | 0 of 2 · inverted the argument in the main frame |
+| `support` | the structure the product is carrying, filled along the contact — on the BODY, never on the product | blue | 1 per supported structure | 0 of 1 · landed on the product |
 | `heat` | wrong pressure or wrong heat, in the `xcheck` wrong panel only | orange | 1, inset only | **none** |
-| `dims` | thin black double-headed arrows with fine extension lines offset clear of the product outline, drafting style | black | exactly 2 | **none** |
+| `dims` | thin black double-headed arrows with fine extension lines offset clear of the product outline, drafting style, **no numbers and no letters** | black | exactly 2 | 1 render · form good, came back labelled |
 | `verdict` | circle badge above each `xcheck` panel, a FILLED SOLID DISC with the glyph cut out of it | red X, green check | exactly 2, inset only | **none** · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
+
+**A harm mark never appears in the main frame.** The main frame shows the product IN USE and
+working, so everything in it reads as something the product is doing — and a red `stress` mark
+there reads as harm the product CAUSES. Two founding renders proved it in one batch: red on
+both shoulders under a pillow, red on the big-toe joint inside the shoe, and a viewer reads
+"this hurts me". `stress` and `heat` belong in the `xcheck` wrong panel, which is precisely
+what the inset exists for. The main frame carries `structure` and `support` only.
+
+**And a mark cannot carry a counterfactual.** The shoe prompt asked for red where a NARROW
+shoe would press. No mark can say "would have"; it can only say "is". Marking a harm the
+product prevents is the same error as marking something the product does not do.
+
+**No mark may be placed ON the product, and the product's own colours are not marks.** The
+product is the only object with a real material finish; the marks go on the BODY. Left
+unstated, the two rules collided and the model resolved them by painting the product: a blue
+pillow surface, then an entirely blue shoe — G3's correct-support colour applied to the thing
+being sold. Say it in every prompt: the product keeps its own reference colours and carries no
+signal colour at all.
+
+**`dims` carries no letters either.** The arrows came back labelled `W` and `L`. G6 bans
+letters, the prompt banned only numbers, and a dimension arrow attracts a label the way a slot
+named ZONE A attracted a printed A. Ban both, or drop the mark.
 
 **Every mark in this type is unproven.** It has never been rendered — zero records in
 `eval/render-tests.jsonl`. The first render of each is its founding evidence and should be
@@ -159,6 +181,15 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.4 (2026-08-13): **three faults from the founding batch, all of them mine.** A harm mark in
+  the main frame inverts the argument — red on a shoulder under a pillow reads as the pillow
+  hurting the shoulder — so `stress` and `heat` are now `xcheck`-only and the main frame
+  carries `structure` and `support` alone. A mark cannot carry a counterfactual: the shoe asked
+  for red where a NARROW shoe would press, and no mark can say "would have". And no mark may be
+  placed ON the product, whose own colours are not marks — left unstated, the model painted the
+  pillow surface blue and then the whole shoe blue, applying G3's support colour to the thing
+  being sold. `dims` gains a letter ban after its arrows returned labelled W and L. 2 records,
+  2 fail. `5af6d8f`
 - 1.3 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012). `PARTS`
   holds register, ghost, cutaway, product and xcheck; `MARKS` names the four palette-lock
   colours as marks for the first time, plus `dims` and `verdict`. The `RATIO:` line dropped
