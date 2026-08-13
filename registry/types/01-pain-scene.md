@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -40,69 +40,141 @@ avoid_when: >
   compete for the same job rather than building on each other.
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
+
 ```
-TYPE: 01-pain-scene v1.5 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.6 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
-[SUBJECT]
-[age/gender] in [ordinary specific wardrobe, lived-in not styled], mid-way
-through [an ordinary daily action]: [the force being applied or the movement in
-progress]. Never a pause, never a demonstration.
-Under that force: [which limb, which brace, where the weight goes].
-Face: [the involuntary signs, named by muscle].
+[SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
+[EVIDENCE] the symptom as physical fact. Required, G9.           -> PARTS/evidence
+[ENVIRONMENT] one specific place, and the clutter of the routine
+              it disrupts.                                       -> PARTS/environment
+[GAZE]                                                           -> PARTS/gaze
+[LIGHT]                                                          -> PARTS/light
+[MIRROR] --confront only, optional.                              -> PARTS/mirror
+[MARK] --marked only. One, on the evidence, count closed.        -> MARKS
+[GRADE] desaturated: one unresolved state, G11.                  -> PARTS/grade
 
-[SYMPTOM EVIDENCE — required, G9]
-The symptom as physical fact: [strongest evidence present — ladder in SLOT
-CONSTRAINTS]. [if it is a failed tool: the state that shows it failed].
-
-[ENVIRONMENT]
-[specific ordinary place, tied to where the problem gets noticed], [time of day].
-Lived-in clutter belonging to that place, signalling the routine it disrupts:
-[3-4 mundane objects]. Nothing arranged, nothing removed to tidy the frame.
-
-[GAZE] — filled by --candid or --confront.
-[LIGHT] — filled by --candid or --confront.
-[MIRROR] — optional, --confront only.
-[PAIN MARK] — required by --marked, absent otherwise.
-
-[GRADE]
-Desaturated [dominant hue], fine film grain, shallow depth of field,
-[lens character].
-
-[FORBIDDEN]
-No product. No insets, no split panels. No mark unless --marked is in use.
-
+No product, no panels, no insets. No mark unless --marked is in use.
 STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 ```
 
+## PARTS
+
+**`subject`** — [age/gender] in [ordinary specific wardrobe, lived-in not styled], mid-way
+through [an ordinary daily action]. Then `Under that force:` [which limb, which brace,
+where the weight goes], and `Face:` [the involuntary signs, named by muscle].
+
+**State the force, never the meaning.** The slot names a force being applied or a movement
+in progress — never a pause, never an intention. "Both hands stopped over the jar" and "an
+ordinary lunch interrupted" both rendered as nothing; "both hands locked on the lid,
+turning against it, the lid has not moved" rendered correctly.
+
+**Restraint governs EMOTION, not effort.** A flat face over a slack body renders as nothing
+at all. Where the moment is physical exertion the face still carries the involuntary signs
+— jaw set, breath held, lips dragged at one corner — and those are not drama.
+
+**The moment must be mundane** — something anyone lives daily, never a demonstration of
+wrong behaviour. It has no picture of its own, so it is a rule here and never a prompt slot.
+
+**`evidence`** — the symptom as physical fact. Mandatory in every variant (G9): expression
+alone carries nothing. Pick the strongest rank present and write **only that one** into the
+prompt; ranking is the writer's job and the model needs the choice, not the ladder.
+
+1. the symptom itself on the body or object;
+2. physical residue or debris it produces — what it leaves behind, and where;
+3. the failed tool, in the state that shows it failed — "the jar key lying where it slipped
+   off, its jaws still spread", because "already tried" is a meaning and has no picture;
+4. gesture alone — weakest, only when 1-3 are impossible, and then at least one object in
+   frame must imply the problem independently.
+
+Evidence status: rank 1 has carried the passing renders and rank 3 held in the jar frames;
+rank 2 has never yet been the ONLY evidence in a render, and rank 4 has never been rendered.
+
+**`environment`** — [one specific ordinary place, tied to where the problem gets noticed],
+[time of day], and the lived-in clutter belonging to that place, signalling the routine it
+disrupts: [3-4 mundane objects]. Nothing arranged, nothing removed to tidy the frame.
+
+Specificity is the only defence against the "stock photo of back pain" failure mode.
+Generic is dead.
+
+**`gaze`** — two values, each carrying its own problem class.
+
+- `candid` (default) — unaware of the camera, gaze on the task or the ground. Physical pain
+  and physical limitation; moments nobody would choose to be seen in.
+- `confront` — looking directly into the lens, holding the viewer's eye. A half-turned
+  glance reads as a model waiting for direction. Appearance, self-image, daily frustration.
+
+**Gaze and light are bundled today, and two records say they should not be.**
+`vocabulary.yaml` carries a third value, `reflect`, that this type does not declare; ADR-009
+recorded an image fitting neither declared value, and the founding record flagged the same
+bundling. Two records against a §6.2 bar of three. Un-bundling would make combinations
+legal that are not legal today, so it is the owner's rule change, not a restructure.
+
+**`light`** — two values, each selected by the gaze variant that names it.
+
+- `low-key` (with `--candid`) — Key: [source, direction, colour temperature]. Fill: [weaker
+  source]. Rim light separating subject from background. Deep shadow across [X%] of frame.
+- `flat-ambient` (with `--confront`) — even ambient daylight, bright, minimal shadow, flat
+  and unflattering.
+
+**`mirror`** — optional, `--confront` only. A mirror behind or beside the subject showing
+them from another angle, the reflection consistent with their actual position. It earns its
+space twice: it gives the confrontation a natural reason, and it doubles the symptom
+evidence without adding a second person. Render-confirmed 2026-08-12 on a thinning-hair
+frame — the mirror carried the crown the subject cannot see himself.
+
+**`grade`** — Desaturated [dominant hue], fine film grain, shallow depth of field, [lens
+character]. `--candid` adds crushed blacks. This is G11's single-state clause: the whole
+frame is one unresolved state, so the grade is absolute and not a difference between sides.
+
+## MARKS
+
+This type's own mark library, called by name from the skeleton and used by `--marked`
+alone. Every mark obeys G3 and carries a count. `also in` notes keep a same-looking mark in
+another type visible from here.
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 1 render · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
+| `ring` | a thin red ring — a clean open circle of even line weight drawn around the evidence, touching nothing else | red only | exactly 1 | 0 renders · a proposal, and its first render is its founding evidence |
+
+**The mark POINTS AT evidence. It never delivers a verdict.** No X, no check, no VS, no
+thumbs, no exclamation glyph — that is `01-pain-split`'s language, and a glyph is text,
+which G6 routes out of the render and into post.
+
+**If `evidence` has nothing physical to point at, `--marked` is ILLEGAL** — use the base
+variant. A mark over an empty frame invents the pain instead of marking it.
+
+The mark owns a named slot and closes its own count inside that slot ("the only mark in
+this image"), because a mark buried in prose is the one that vanishes (adapter Rule 7).
+Deliberately NOT in the negative list: any phrasing like `second mark`. That qualifies a
+noun the variant requires, which is Rule 1a's exact bleed shape.
+
+Red appears ONLY in the mark, and the desaturated grade stays exactly as `grade` sets it.
+G3 note: the base type is `exempt_from: [G3]` because it uses no signal colour at all —
+this variant uses one, so its mark obeys G3 (red = pain) while the exemption stands for the
+rest of the frame.
+
+**Budget: exactly ONE mark, and never two classes in one frame.** This type's argument is
+recognition, not diagnosis. A second mark makes it a diagram, which is `01-pain-split`'s
+job and the reason the two are `never_with`.
+
 ## SLOT CONSTRAINTS
-- [SYMPTOM EVIDENCE] is mandatory (G9). Expression alone carries nothing. **The ladder —
-  pick the strongest present, then write only that one into the slot** (it moved out of
-  the skeleton at v1.4 because ranking is the writer's job and the model only needs the
-  choice):
-  1. the symptom itself on the body or object;
-  2. physical residue or debris it produces — what it leaves behind, and where;
-  3. the failed tool, in the state that shows it failed;
-  4. gesture alone — weakest, only when 1-3 are impossible, and then at least one object
-     in frame must imply the problem independently.
-- **The moment must be mundane** — something anyone lives daily, never a demonstration of
-  wrong behaviour. Also moved out of the skeleton at v1.4: it steers the writer's choice
-  of action and has no picture of its own, which is why "an ordinary lunch stopped by a
-  jar" rendered as nothing at all.
-- **No red pixel anywhere, on `--candid` and `--confront`** — those variants replace the
-  red pain signal with acting, and a red glow there makes the image confess it is an ad.
+- **No red pixel anywhere, on `--candid` and `--confront`.** Those variants replace the red
+  pain signal with acting, and a red glow there makes the image confess it is an ad.
   `--marked` is the sanctioned exception and narrows the rule to "red appears only in the
   mark": natural skin, food and household colour were never the target of this ban, and
   writing around them cost a render (see CHANGELOG 1.3).
-- **State the force, never the meaning** (v1.3). The subject slot must name a force being
-  applied or a movement in progress, not a pause and not an intention. "Both hands
-  stopped over the jar" and "an ordinary lunch interrupted" both rendered as nothing;
-  "both hands locked on the lid, turning against it, the lid has not moved" rendered
-  correctly. The same applies to [SYMPTOM EVIDENCE] rank 3: a failed tool must be
-  described in the state that shows it failed — "the jar key lying where it slipped off,
-  its jaws still spread" — because "already tried" is a meaning and has no picture.
-- [ENVIRONMENT] specificity is the only defense against the "stock photo of back pain"
-  failure mode. Generic = dead.
+- **The prompt budget.** A clause earns its place in a rendered prompt only if a render has
+  failed without it. Everything else is a rule for the writer and stays in this file.
+  Reference sizes, measured rather than guessed: the one proven `--marked` render at
+  1669 characters, and the v1.5 set at 1760/1770/1880. Adapter Rule 6 asks for a re-read
+  past 2500 and nothing this type has shipped has come near it. The measured history runs
+  the opposite way from drift — forcing exertion out of prose alone took the jar prompt from
+  1379 to 2153 characters, and the marked rewrite of the same image did three more jobs
+  at 1669.
 
 ## NEGATIVE
 ```
@@ -125,81 +197,28 @@ The canonical list keeps them; the adapter drops them and the body asserts the l
 positively instead. `golden hour` is safe — it qualifies nothing a prompt needs.
 
 ## VARIANTS
+Diffs only. Each variant names the PARTS values it takes; the definitions stay in PARTS.
+
 ### --candid (default)
-Problem class: physical pain, physical limitation. Channels: paid-social, advertorial
-header. Reads cinematic, survives being scrolled past.
-Fills the two variant slots:
-```
-[GAZE] unaware of the camera, gaze on the task or the ground.
-[LIGHT] low-key. Key: [source, direction, colour temperature]. Fill: [weaker
-source]. Rim light separating subject from background. Deep shadow across [X%] of
-the frame.
-[GRADE addition] crushed blacks.
-```
+Channels: paid-social, advertorial header. Reads cinematic, survives being scrolled past.
+Diff vs base: `gaze` = candid · `light` = low-key · `grade` adds crushed blacks.
 - Negative additions: `bright airy lighting, flat daylight look, looking at camera`
 
 ### --confront
-Problem class: appearance, self-image, daily frustration. Channels: advertorial body,
-landing-page. Legible at thumbnail size.
-Fills the variant slots:
-```
-[GAZE] looking directly into the lens, holding the viewer's eye. A half-turned
-glance reads as a model waiting for direction.
-[LIGHT] even ambient daylight, bright, minimal shadow, flat and unflattering.
-[MIRROR, optional] a mirror behind or beside the subject showing them from another
-angle, the reflection consistent with their actual position.
-```
-- The [MIRROR] slot earns its space twice: it gives the confrontation a natural reason,
-  and it doubles the symptom evidence without adding a second person. Render-confirmed
-  2026-08-12 on a thinning-hair frame — the mirror carried the crown the subject cannot
-  see himself.
-- Restraint rule: frustration, not drama — the flatter the face, the truer it reads.
-  **Scope of that rule (v1.3):** it governs EMOTION, not effort. A flat face over a slack
-  body renders as nothing at all. When the moment is physical exertion, the face still
-  carries the involuntary signs — jaw set, breath held, lips dragged at one corner — and
-  those are not drama.
+Channels: advertorial body, landing-page. Legible at thumbnail size.
+Diff vs base: `gaze` = confront · `light` = flat-ambient · `mirror` becomes available.
 - Negative additions: `golden hour, warm flattering light, exaggerated grimace, theatrical anger`
 
 ### --marked
-The only variant that carries a graphic layer. One mark, placed on the evidence, never a
-verdict. Composes WITH the gaze variants rather than replacing them — name both in the
-prompt (`--confront --marked`), because gaze and mark are independent decisions.
-Diff vs base:
-```
-[FORBIDDEN, replaces the base block]
-No product. No insets, no split panels, no badges of any kind.
-Exactly ONE graphic mark is permitted, defined in [PAIN MARK]. Nothing else in
-the frame is marked.
-
-[PAIN MARK — required slot when this variant is used]
-ONE mark class only, chosen from: a soft red radial glow, or a thin red ring.
-It sits ON the physical evidence [SYMPTOM EVIDENCE] already names, sized to that
-evidence and no larger, fading out before it touches anything else.
-Close the count in the slot itself: "the only mark in this image".
-
-[MARK LAW]
-The mark POINTS AT evidence. It never delivers a verdict. No X, no check, no VS,
-no thumbs, no exclamation glyph — that is 01-pain-split's language, and a glyph is
-text, which G6 routes out of the render and into post.
-If [SYMPTOM EVIDENCE] has nothing physical to point at, this variant is ILLEGAL:
-use the base variant. A mark over an empty frame invents the pain instead of
-marking it.
-
-[GRADE adjustment]
-The desaturated grade stays exactly as the base sets it — G11's whole-frame
-unresolved tone. The mark is an accent on top of it, not a replacement for it.
-Red appears ONLY in the mark.
-```
-- G3 note: the base type is `exempt_from: [G3]` because it uses no signal colour at all.
-  This variant uses one, so its mark obeys G3 — red = pain — even though the exemption
-  stands for the rest of the frame.
-- The mark is model-drawn (ADR-008 approach A) and owns a named slot with a count,
-  because a mark buried in prose is the one that vanishes (adapter Rule 7).
-- Deliberately NOT in the negative list: any phrasing like `second mark`. That qualifies
-  a noun this variant requires, which is Rule 1a's exact bleed shape and the same
-  structure as the rule's own worked example `a second badge`. The bound lives in the
-  slot's own "only mark in this image" instead.
+The only variant that carries a graphic layer, and the only one that uses MARKS. It
+composes WITH the gaze variants rather than replacing them — name both in the prompt
+(`--confront --marked`), because gaze and mark are independent decisions.
+Diff vs base: `[MARK]` becomes required and takes exactly one entry from MARKS · the base
+line "No mark unless --marked is in use" is replaced by that entry's own closed count · the
+mark is model-drawn (ADR-008 approach A).
 - Negative additions: `badge, checkmark, VS, thumbs, exclamation glyph, arrow, text label`
+- Three tokens DROP from the rendered avoid line — `red glow`, `pain hotspots`,
+  `graphic overlay`. The reasoning is in NEGATIVE.
 
 ## WORKED EXAMPLES
 ### example: mouth-tape-candid — skeleton@1.1, run: untested
@@ -237,6 +256,16 @@ threatening — fallback: knife down on the board, both hands braced on the coun
   one prompt names that corner as bare, two omit the clause.
 
 ## CHANGELOG
+- 1.6 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), on the
+  owner's instruction to repeat the `02-cause-anatomy` shape. Same slots, same laws, same
+  image — MINOR, as the model type's own 1.7 was. `PARTS` owns `subject`, `evidence`,
+  `environment`, `gaze`, `light`, `mirror`, `grade`; `MARKS` owns `glow` and `ring`, the
+  second entering with zero renders as a labelled proposal. The compression is where the
+  duplication was: VARIANTS restated filler the skeleton already named and drops
+  4052 → 1354, the skeleton block 1315 → 967. NOT copied
+  from the model type: its removal test and 2:1 test, which are gates for a two-panel
+  comparison this type has none of. `PARTS/gaze` records the gaze/light bundling and does
+  not act on it — two records against a §6.2 bar of three. File 19394 → 22478.
 - 1.5 (2026-08-13): **avoid-line law completed; the corner glyph recorded.** The NEGATIVE
   note dropped three Rule 1a bleeds under `--marked` and missed four that bleed in every
   variant — `studio lighting`, `bright airy lighting`, `flat daylight look` and `warm
