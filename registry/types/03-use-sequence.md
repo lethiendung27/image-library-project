@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.8"
+version: "1.9"
 status: active
 replaced_by: null
 ratios: ["3:4", "1:1"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-use-sequence v1.8
+TYPE: 03-use-sequence v1.9
 REGISTER: a real home, close range, available light.          -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference, in every panel.
@@ -206,69 +206,117 @@ inconsistent palette, staged perfection
 Canonical and model-agnostic; the adapter transforms it and no avoid line ships (ADR-014).
 
 ## WORKED EXAMPLES
-### example: shower-filter-install — skeleton@1.0, run: untested
-Product: metal shower filter · ratio 1:1 · camera_lock=handheld
-- CONTINUITY — the same pair of hands throughout, the same chrome shower arm and white tiled
-  wall, soft daylight from the left
-- PREPARE — both hands unscrewing the existing shower head, the bare threaded arm visible
-- USE — one hand holding the reference filter to the thread, the other turning it, mid-motion;
-  water running in a clean even spray backlit so the streams read — `emission`
-- RESULT — filter fitted; the collected grit from the old head sitting in the palm held open
-  under the flow — `residue`; same light as the panels above
-- ENVIRONMENT — ordinary home bathroom, a folded towel, a plant on the sill
-Predicted failures: close-range hands on hardware, the library's highest extra-finger risk;
-and a RESULT panel asked for both a visible result and a centred product, which compete for
-space — if it breaks, choose one. The second prediction was confirmed on the grinder before
-this example was ever rendered; see `panels`.
+The two renders that passed with an empty `failures` list, kept in full because that text is
+the only record of what actually rendered — the ledger stores verdicts, not prompts (SPEC 3.3).
 
-### example: garment-steamer-shirt — skeleton@1.2, run: partial
-Product: handheld garment steamer · ratio param 4:5 · camera_lock=handheld
-Kept in full because it is this type's founding `emission` evidence and the ledger stores
-verdicts, not prompts. **Do not copy the panel headings** — they are the Rule 1b fault `panels`
-now bans, and the sibling run of this same text printed them into the frame. Its closing
-paragraph also asks for warmer light, which 1.8 removed; it is kept because this is the record
-of what rendered, not a template.
+**Both predate 1.7 and 1.8 and each contains three clauses that are now removed law**: a
+`ratio param` line, a LAYOUT sentence reasoning about the shape of the frame, and a closing
+panel lit warmer than the two above it. They are records, not templates. Current law is in
+PARTS; copy from there.
+
+### example: foam-soap-dispenser — skeleton@1.4, run: pass
+Product: touchless foam soap dispenser · camera_lock=handheld
+Three panels stacked as asked. `emission` on foam, the second substance after steam and the
+render that took the mark beyond a single product. The reservoir is named in all three panels,
+which is `fill` before it had a name.
 
 ```
-TYPE: 03-use-sequence v1.2
+TYPE: 03-use-sequence v1.4
 REGISTER: warm lifestyle photography, close range, natural and unstyled, soft
 daylight.
 
-PRODUCT REFERENCE: the attached photo is the exact reference for the handheld
-garment steamer, in every panel. Preserve shape, proportions, material, finish and
+PRODUCT REFERENCE: the attached photo is the exact reference for the touchless foam
+soap dispenser, in every panel. Preserve shape, proportions, material, finish and
 colour exactly.
 
-LAYOUT: three horizontal panels stacked vertically, thin white gutters, no outer
+LAYOUT: exactly three photographs, one above another, each the full width of the
+frame and all three the same height, separated by thin white gutters, no outer
 border.
 
 CONTINUITY: the SAME pair of hands in all three panels - same skin tone, same
-nails, same wrists, same rolled sleeves. The same pale blue linen shirt hanging on
-the same wooden rail throughout. The same warm neutral palette and the same soft
-daylight from the left in every panel. Camera distance and framing shift naturally
-between panels.
+nails, same wrists, same cuffs. The same white basin and the same brushed tap
+throughout. The same warm neutral palette and the same soft daylight from the left
+in every panel. Camera distance and framing shift naturally between panels.
 
-PANEL 1, PREPARE: both hands twisting the filled water tank back onto the body of
-the steamer, the tank's water level visible through it.
-PANEL 2, USE: one hand holding the shirt taut by its hem, the other drawing the
-steamer head upward across the fabric, mid-motion.
-PANEL 3, RESULT: the steamer lowered and held at rest in one hand, the other hand
-running flat down the now-smooth shirt panel. Warmer light than the panels above,
-and no new mechanics.
+At the top, the dispenser's lid is hinged open and still attached, and one hand
+pours soap from a refill bottle into the reservoir, the liquid rising to fill the
+translucent body.
 
-The steamer sits near the centre of every panel and is never cropped out.
+In the middle, the lid is closed and the reservoir is full, and one open palm is
+held flat and still beneath the nozzle with no contact anywhere on the dispenser.
 
-MARK, one, in PANEL 2 only: emission - real steam leaving the steamer head into
-the fabric, backlit from the left so the plume reads clearly against the shirt. It
-is steam in the room, not a graphic.
+At the bottom, the reservoir is still full and the dispenser stands untouched on
+the ledge while both hands rub the lather together, in warmer light than the two
+photographs above, with no new mechanics.
 
-ENVIRONMENT: an ordinary bedroom corner, a woven basket on the floor, a folded
-towel over the rail. The same location in all three panels.
+The dispenser sits near the centre of all three photographs, whole and uncropped in
+each.
+
+Only the middle photograph carries foam: a real dose of white foam leaving the
+nozzle and landing on the open palm, lit from the left so its texture reads against
+the skin. It is foam in the room, not a graphic.
+
+ENVIRONMENT: an ordinary bathroom basin, a folded hand towel, a small plant. The
+same location in all three panels, and the details named here are the only
+furniture and surfaces that appear in any of them. Nothing is set down on a
+surface not named here.
 ```
-Held: the stack, the gutters, one pair of hands across all three panels, one room, one light
-direction, a warmer close, and `emission` as real backlit steam in the middle panel only, twice.
-Broke: the run above printed the three beat names into the frame; this run did not, so the leak
-is intermittent. This run also cropped the steamer to its water tank in the opening panel and
-parked it at the far left edge of the closing one, against the centred-and-uncropped rule.
+
+### example: descaling-kettle — skeleton@1.6, run: pass
+Product: electric kettle · camera_lock=handheld
+The clearest render this type has produced, and it carries no marks at all. Three panels
+stacked, the limescale filter named in all three, and a closing panel that removes a part and
+says what the kettle looks like without it. It is also the shortest prompt of its set and the
+only one in it that stacked, which is the observation that became the prompt-budget rule.
+
+```
+TYPE: 03-use-sequence v1.6
+REGISTER: a real home photographed plainly at close range on the light that is
+there. Not a diagram and not a manual.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the electric
+kettle, in every panel. Preserve shape, proportions, material, finish and colour
+exactly.
+
+LAYOUT: exactly three photographs, one above another, each the full width of the
+frame and all three the same height, separated by thin white gutters, no outer
+border.
+
+CONTINUITY: the SAME pair of hands in all three panels - pale freckled hands,
+short nails, a grey t-shirt sleeve at the shoulder. The same bare white laminate
+worktop and the same white tiled wall throughout. A plain utilitarian kitchen at
+midday with hard direct sun coming through an uncurtained window on the right,
+throwing sharp-edged shadows and blowing the white surfaces bright. That same hard
+sun and those same sharp shadows in all three panels. Camera distance and framing
+shift naturally between panels.
+
+At the top, one hand holds the kettle by its handle while the other swings the lid
+open, the limescale filter visible clipped in behind the spout and furred pale
+white with scale.
+
+In the middle, the kettle is set down on its base and one hand presses the switch,
+the lid closed, the water going cloudy as it comes up to the boil, the same furred
+filter still clipped in behind the spout.
+
+At the bottom, the filter has been unclipped and is held in one hand under the
+running tap with the scale rinsing off it, while the kettle stands on its base
+beside them with the lid open and the empty slot behind the spout plainly visible.
+There is exactly one filter in this photograph. Warmer light than the two
+photographs above, with no new mechanics.
+
+The kettle sits near the centre of all three photographs, whole and uncropped in
+each, its filter included in the frame.
+
+Nothing is drawn onto the photographs. This product emits nothing visible and
+nothing seats onto anything, so the actions carry the sequence on their own. Each
+frame is a plain unretouched photograph and everything visible in it is a real
+object in the room.
+
+ENVIRONMENT: a plain kitchen worktop, a single mug waiting beside the kettle, a
+box of teabags. The same location in all three panels, and the details named here
+are the only furniture and surfaces that appear in any of them. Nothing is set down
+on a surface not named here.
+```
 
 ## KNOWN-FLAKY
 Below the §6.2 bar, not promoted.
@@ -300,6 +348,10 @@ more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.9 (2026-08-13): type passed by the owner; file finalised. WORKED EXAMPLES replaced with the
+  two renders that passed with an empty failures list — the foam soap dispenser and the
+  descaling kettle — both in full prompt text, both labelled for the three clauses in them that
+  1.7 and 1.8 removed. The untested shower-filter example and the `partial` steamer are dropped.
 - 1.8 (2026-08-13): a mark library built to what this register actually renders. Four entries,
   every one made of real substance: `fill`, `emission`, `trace`, `residue`. The closing panel
   stops being lit warmer — that clause contradicted `continuity` since 1.0 and shipped 15 times,
