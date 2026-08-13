@@ -74,46 +74,30 @@ shape entering from the edge. A frame that cannot show a person using the produc
 serve a type whose PURPOSE is to show the product doing its job. `whole` was 2 of 2 and
 produced the strongest render this type has made.
 
-**`ground`** — two field values, differing in WHICH LAYER IS LIGHT, not merely in brightness.
+**`ground`** — one continuous field across both panels, same hue and chroma, **stepping once
+in VALUE at the divider: one step lighter on the right.** The step is the only discontinuity;
+nothing else is in the background.
 
-- `dark-field` — ground far below the structures in value; the structures are the lightest
-  thing in frame. Nineteen renders, separation 156 to 209. The reliable one.
-- `light-field` — ground pale, and **the structures INVERT to a deep ochre or tan**, keeping
-  G3's yellow hue at a low value so the separation comes back. PROPOSAL, no evidence in this
-  form; the owner asked for pale grounds on 2026-08-13. Tried once at 1.8 as pale ground PLUS
-  ivory structures, it failed 0 of 2 at separations of 5 and 8 and was withdrawn — but that
-  version left both layers light, which cannot separate at all. The inversion is what was never
-  tried. Caveat before using it: a pale ground has little headroom for the RIGHT-brighter step,
-  so on this field the step is small and the correct side must earn its difference through
-  cleaner, less cluttered structure instead.
+The step is not decoration — it is the only way this type's RIGHT-brighter requirement can be
+met, and the two rules were in silent conflict until measured. Across eleven renders the
+groups do not overlap: a flat field never exceeded +5 of 255, a step whose brightness the
+right panel's own content ate back reached +2.2, an unspent step never fell below +17.6. So:
+step the field, and do not let the right panel's content spend it.
 
-Whichever field is chosen, the two layers must be far apart in VALUE — One continuous field, same hue and chroma
-throughout, **stepping once in VALUE at the divider, one step lighter on the right.**
+`dark-field` is the working value — ground far below the ivory in value, structures the
+lightest thing in frame, separation 156–209 across nineteen renders. `light-field` returns at
+1.14 as a PROPOSAL in an inverted form, the structures dropping to a deep ochre so the two
+layers separate; its 1.8 version failed 0 of 2 by leaving both layers light. On a pale field
+the RIGHT-brighter step has little headroom, so the correct side must earn its difference
+through cleaner structure instead.
 
-The step is not decoration — it is the only way this type's RIGHT-brighter requirement can
-be met, and the two rules were in silent conflict until measured. Across eleven renders the
-groups do not overlap: a flat field has never exceeded +5 of 255, a step whose brightness the
-right panel's own content ate back reached +2.2, and an unspent step has never fallen below
-+17.6. So: step the field, and do not let the right panel's content spend it.
+**Colour is free.** Owner decision at 1.13: pick what suits the product, no rule about which
+hues to avoid. The v1.9 exclusion rule required a hue far from red, blue and warm ivory, which
+leaves the green band and nothing else — and green is G3's third signal — so it drove the
+ground into a signal colour and produced six green backgrounds in a row. What survives is the
+VALUE rule above, not a colour rule. Craft note, not a rule: a ground under a mark of its own
+colour is a judgement per image; legislating hue is what caused the detour.
 
-**Colour is free. Pick what suits the product; there is no rule about which hues the ground
-must avoid.** Owner decision, 2026-08-13, after the previous rule produced six green
-backgrounds in a row.
-
-The history is worth one paragraph so nobody reinstates it. v1.9 required a hue far from red,
-blue and warm ivory. Those three exclusions leave the green band and nothing else — and green
-is G3's third signal, the check badge — so the rule drove the ground into a signal colour, the
-same fault v1.2 removed when it killed the pale blue canvas. Three versions of measurement did
-not catch it; the owner caught it in one glance at six renders.
-
-What survives is a VALUE rule, not a colour rule: `dark-field` still holds, because the ground
-sitting far below the ivory in value is what makes the structures read, measured across eleven
-renders. A deep warm umber is as dark as a deep green. Choose the hue from the product's own
-world and keep the value low.
-
-One craft note, not a rule: v1.2 has three renders showing a blue ground fighting a blue mark
-on the correct side. Putting a ground under a mark of its own colour is a judgement to make
-per image, not a band to legislate — legislating it is what caused this whole detour.
 
 **`body`** — the structure in warm ivory (G3: yellow = neutral structure) over a translucent
 outline. EXACTLY ONE figure per panel, same scale and view in both. Name the SUBJECT CLASS
@@ -335,36 +319,21 @@ Strictly avoid: text, numbers, letters, watermark, photographic elements, 3D ren
 ```
 
 ## KNOWN-FLAKY
-- **`measure` on a soft-tissue groove, 0 of 2, 2026-08-13.** Both camera-strap renders failed
-  where every other subject in the same set succeeded — one drew a bent line, the other an
-  arrow. A groove pressed into muscle has no crisp second landmark, the skin surface being a
-  curve rather than a point, so the 2:1 gate passes while the mark has nothing to anchor to.
-  Prefer a landmark pair with BOTH ends on a hard edge.
-- **`frame` values `interface` and `macro`, WITHDRAWN at 1.12 on 0 of 4, 2026-08-13.** Both
-  were proposed at 1.11 as the answer to visual sameness and both obeyed their own wording into
-  failure: `macro` cropped the hand and the bicycle out of a grip comparison, leaving a beige
-  cylinder against a tissue section; `interface` reduced a mouthpiece to a grey sliver inside a
-  head cutaway. The same crop had already cost the kneeling-pad prompt its leg. Withdrawn not
-  for being ugly but for removing the person and the product, which are what this type argues
-  about. `whole` stands at 2 of 2.
-- **`verdict` badges drifting to OUTLINE, 2 of 6, 2026-08-13.** Drawn as a thin ring with the
-  glyph inside where the mark demands a filled disc. Below the bar. The mark's form line now
-  names the filled disc, which is what fixed `contour`'s count.
-- **Exact counts on `measure` and `contour`, 4 observations across 8 renders.** Two lines per
-  panel where one was asked for; every scale outlined where one edge was asked for. Restating
-  the count inside a prompt did not bind it; naming ONE bounded structure did.
-- **Canvas duplicated into a 2×2 grid, 2 observations, 2026-08-12.** The two-panel comparison
-  rendered a second time below itself. Both instances asked for a WIDE ratio on
-  wide-and-short content, and every render of that batch came back 1024×1024 square whatever
-  was requested — a tall empty band the model filled by repeating the row. Compose
+- **`frame` values `interface` and `macro`, WITHDRAWN at 1.12 on 0 of 4.** Both cropped the
+  person and the product out of the frame — a hand and a bicycle gone, a mouthpiece reduced to
+  a sliver. `whole` stands at 2 of 2.
+- **`light-field` in its 1.8 form, withdrawn at 1.9 on 0 of 2.** Ground-to-ivory separation of
+  5 and 8 against dark-field's 178, and a pale ground left no headroom for the RIGHT-brighter
+  law. Returns inverted at 1.14.
+- **`verdict` badges drifting to OUTLINE, 2 of 6.** The mark's form line now names the filled
+  disc, which is what fixed `contour`'s count.
+- **Exact counts on `measure` and `contour`, 4 observations across 8 renders.** Restating a
+  count inside a prompt did not bind it; naming ONE bounded structure did.
+- **Canvas duplicated into a 2×2 grid, 2 observations.** Both instances asked for a WIDE ratio
+  on wide-and-short content while every render returned 1024×1024 square. Compose
   wide-and-short subjects to fill a square frame.
-- **`light-field` ground, WITHDRAWN at 1.9 on 0 of 2.** Ground-to-ivory separation of 5 and 8
-  against dark-field's 178. A pale ground leaves no headroom to brighten into, so it fights
-  the RIGHT-brighter law directly — one render came back with the right half darker. Not
-  withdrawn for being ugly, but for being unable to satisfy two of this type's rules at once.
-- **`line-engraving` style, 1/1 failed, 2026-08-12.** Turned the `measure` pair into dashed
-  BOXES. Held out of the offered list. A retest changes ONLY the style value on a prompt
-  already known to work.
+- **`line-engraving` style, 1/1 failed.** Turned the `measure` pair into dashed BOXES. Held out;
+  a retest changes ONLY the style value on a prompt already known to work.
 
 ## NOTES
 The measurement hypothesis is as settled as one render each can settle it: angle isolates
@@ -385,102 +354,43 @@ is the CULPRIT, not the product's mechanism; the sentence is "this is what harms
 one palette or they read as two sources.
 
 ## CHANGELOG
-Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
-git is the audit surface, so decisions are recorded here and workings are not.
-- 1.15 (2026-08-13): **type passed by the owner; file finalised.** The two worked examples
-  are now renders that actually happened, carried in full text per SPEC §3.3 — the
-  postpartum band, where `measure` first carried its own difference in twenty-one attempts,
-  and the patellar knee brace, the clearest measure pair the type has produced. The
-  untested `shower-filter-hair-strand` example is retired: it predates both admission gates
-  and fails the removal test outright, since a filter cannot close an already-lifted cuticle.
-  Its fill survives as a sketch inside VARIANTS, where a diff belongs, with that failure
-  stated so nobody renders it blind. Closing state: ten marks, eight with render evidence;
-  `measure` at 30 renders carrying its own difference in four, all since 1.12; `pressure`
-  working at 3 of 6; `paper-cut` clean at three renders; `light-field` inverted and
-  `frame`'s single value both awaiting founding evidence in the set delivered this turn.
-- 1.14 (2026-08-13): **the formula holds; `light-field` returns inverted.** Evidence: six
-  records at ts 2026-08-13, all `partial`. The v1.13 formula — whole frame, product worn on a
-  recognisable body, 2:1 gap — fixed what was broken: **six of six renders show a product a
-  buyer could name**, against two of six the set before. The ground step delivered in all six at
-  +24.7 to +62.8, separation ran 156–209, and `measure` carried its own difference in three of
-  the six against once in the previous twenty-one. `pressure` succeeded twice more and is a
-  working mark at 3 of 6; `paper-cut` has three clean renders at two marks.
-  Owner report in the same turn: pale grounds are missing. `light-field` returns as a PROPOSAL
-  in a form never tried — the structures INVERT to a deep ochre, keeping G3's yellow hue at a
-  low value. The 1.8 version failed because it left ground and structures both light, which is a
-  different thing from what is proposed here.
-  KNOWN-FLAKY gains the one subject that failed twice while everything around it worked.
-- 1.13 (2026-08-13): **ground colour is unrestricted.** Owner decision, taken after six
-  consecutive green backgrounds: no rule about which hues the ground must avoid, only that it
-  suits the product. The exclusion rule is gone; the VALUE rule that `dark-field` rests on
-  stays, being what eleven renders show makes the structures read. The blue-ground-under-blue-
-  mark risk from v1.2 is kept as a craft note rather than a band, since legislating hue is
-  what produced the green trap in the first place.
-- 1.12 (2026-08-13): **two frame values withdrawn, and a logical error in the ground rule
-  found by the owner's eye.** Evidence: six records at ts 2026-08-13, four `partial` and two
-  `fail`. Owner report: the product barely interacts with the person using it, and the
-  background is always some deep green.
-  `frame`'s two tight values are WITHDRAWN at 0 of 4. `interface` and `macro` obeyed their own
-  wording into failure — crop to the contact and the hand, the bicycle and the person go with
-  it, leaving an anonymous shape against a tissue section. A frame that cannot show somebody
-  using the product cannot serve a type whose purpose is the product doing its job. `whole` is
-  the only value at 2 of 2, and it produced the strongest render this type has made: a
-  recognisable band on a recognisable torso, and **the first time in 21 renders that the
-  `measure` pair carried its own difference** — whole-body frame, product worn on that body,
-  2:1 gap.
-  The green was a plain logical error of mine at 1.9: the rule required a hue far from red,
-  blue and warm ivory, which leaves the green band and nothing else — and green is G3's third
-  signal, the check badge. So the rule drove the ground into a signal colour, the same fault
-  v1.2 removed when it killed the pale blue canvas. Six of six renders came back green. The
-  rule now excludes all FOUR — red, blue, green, ivory — leaving the violet–plum band and true
-  neutrals named as having no colour cast, and derivation from the culprit's material world is
-  demoted to a second step, because deriving first is what produced six greens.
-  `panels` gains the rule that four of six renders broke: the product must be recognisable AS
-  THAT PRODUCT, with a person visible using it.
-- 1.11 (2026-08-13): **compressed, and `frame` added.** Owner report: the prompts had grown
-  bloated and the outputs still lacked style variety. Both were true and both were mine.
-  Measured: rendered prompts went 2321 → 3330 characters across four sets while adapter
-  Rule 6 asks for a re-read past 2500, and this file went 14171 → 36631 characters in three
-  versions, undoing the compression 1.7 had just performed — CHANGELOG alone reached 31% of
-  it. New `PROMPT BUDGET` section states the rule that was missing: a clause earns its place
-  in a prompt only if a render has failed without it, ceiling ~1800 characters. On variety,
-  the diagnosis was wrong at 1.8 and is corrected here — three style values changed technique
-  while every render kept one composition, so `frame` (`whole` / `interface` / `macro`) is
-  added as the untried lever. No rule was weakened in this pass; the workings moved to git.
-- 1.10 (2026-08-13): ground step CONFIRMED at 5 of 6, the type's most reliable rule.
-  `pressure` drew correctly at last, on the CONTACT SURFACE respecification; `contour` held
-  its count once ONE bounded edge was named. `measure` admitted to have never carried its own
-  difference in 18 renders, and given four clauses: STOP at landmarks, direction named against
-  the structure, both lines anchored at the same place, and a 2:1 admission test. `panels`
-  gained the drawn-in-both-panels and in-contact requirements. Six records, ts 2026-08-13.
-- 1.9 (2026-08-13): the REMOVAL TEST added as the type's first admission gate, after two of
-  three prompts argued a repair their product cannot make. `ground` gained the value step at
-  the divider, resolving a conflict between the flat field and the RIGHT-brighter law.
-  `light-field` withdrawn at 0 of 2. Three records, ts 2026-08-13.
-- 1.8 (2026-08-12): five renders of the MARKS library. `axis` and `range` became instruments;
-  `pressure` drifted; `baseline` failed 0 of 2 as a divider-crossing line and was respecified.
-  `body` gained a named SUBJECT CLASS after five of five renders drew a skeleton. Five
-  records, ts 2026-08-12.
-- 1.7 (2026-08-12): **restructured into a call-map plus two libraries** (ADR-012). `PARTS`
-  holds the non-mark building blocks, `MARKS` this type's marks with form, colour, count and
-  evidence; the skeleton became a map naming them. Branches never cost context —
-  `query/runbook.md` Step 5 resolves them before a prompt ships — they cost correctness, so
-  naming each choice makes it a deliberate lookup. File 25455 → 14171, skeleton 1926 → 966.
-- 1.6 (2026-08-12): `measure`'s rule rewritten to govern the LINE — same two landmarks,
-  exactly one property differing. The v1.2 wording was generalised from one failure and would
-  have forbidden a render that passed.
-- 1.5 (2026-08-12): the two parallel panel blocks collapsed into one.
-- 1.4 (2026-08-12): background motifs removed and the `baseline` datum put in their place;
-  the product must sit at the SAME interface as the culprit, comparable in size and exposed
-  rather than housed.
-- 1.3 (2026-08-12): **the product became the thing on the right.** The RIGHT panel used to
-  read "no object or supportive object", so every render argued "stop doing this" and never
-  "buy this". `requires_product_photo` → true; the product-free form kept as `--diagnostic`.
-- 1.2 (2026-08-12): **the design language stopped being hard-coded.** Ground derived from the
-  culprit's material world, the fixed palette became a functional constraint, illustration
-  style became a named choice. G3 makes blue mean correct, so a blue canvas put the whole
-  image inside the correct-side signal. Badges moved to TOP corners; `RATIO:` dropped per
-  adapter Rule 4.
-- 1.1 (2026-08-11): channels gain `advertorial`, resolving a self-contradiction with use_when.
+A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.15 (2026-08-13): type passed by the owner; file finalised. Worked examples become two
+  renders that happened, in full text per SPEC §3.3; the untested shower-filter example is
+  retired for failing the removal test and survives as a sketch in VARIANTS. `c6e3b77`
+- 1.14 (2026-08-13): the whole-frame formula holds — 6 of 6 renders show a product a buyer
+  could name. `light-field` returns as a proposal in an inverted form, structures in deep
+  ochre. 6 records. `01e3b08`
+- 1.13 (2026-08-13): ground colour is unrestricted, owner decision after six green
+  backgrounds. The VALUE rule behind `dark-field` stays. `ef71a87`
+- 1.12 (2026-08-13): `frame`'s two tight values withdrawn at 0 of 4 — cropping to the contact
+  removes the person and the product. The v1.9 hue rule was a logical error, leaving only
+  green, which is G3's third signal. The product must be recognisable AS that product.
+  6 records. `a366726`
+- 1.11 (2026-08-13): compressed, `frame` added, and a prompt budget written — a clause earns
+  its place only if a render has failed without it. `1eaf62a`
+- 1.10 (2026-08-13): the ground step confirmed at 5 of 6 and now the file's most reliable
+  rule; `pressure` drew at last on the CONTACT SURFACE respecification; `measure` admitted to
+  have never carried its own difference in 18 renders, and given four clauses. 6 records.
+  `fe9b92c`, corrected by `c46b357`
+- 1.9 (2026-08-13): the REMOVAL TEST added as the first admission gate; `ground` gains the
+  value step at the divider; `light-field` withdrawn at 0 of 2. 3 records. `5448936`
+- 1.8 (2026-08-12): five renders of the MARKS library. `axis` and `range` became instruments,
+  `pressure` drifted, `baseline` failed 0 of 2 and was respecified, `body` gained a named
+  SUBJECT CLASS. `ebfceb4`
+- 1.7 (2026-08-12): restructured into a call-map plus PARTS and MARKS (ADR-012); file
+  25455 → 14171, skeleton 1926 → 966. `ba327d4`
+- 1.6 (2026-08-12): `measure`'s rule rewritten to govern the LINE — same two landmarks, exactly
+  one property differing. The v1.2 wording would have forbidden a render that passed.
+  `2d14683`
+- 1.5 (2026-08-12): the two parallel panel blocks collapsed into one. `16c3639`
+- 1.4 (2026-08-12): background motifs removed and the `baseline` datum put in their place; the
+  product must sit at the SAME interface as the culprit, comparable in size. `56528bd`
+- 1.3 (2026-08-12): the product became the thing on the right; `requires_product_photo` → true,
+  the product-free form kept as `--diagnostic`. `a6279ce`
+- 1.2 (2026-08-12): the design language stopped being hard-coded — ground derived from the
+  culprit's world, style a named choice, badges to TOP corners, `RATIO:` dropped per adapter
+  Rule 4. `f1c9b6a`
+- 1.1 (2026-08-11): channels gain `advertorial`, resolving a contradiction with use_when.
 - 1.0 (2026-08-10): initial from the car-seat spine exemplar; exemplar faults encoded
   (correct-side-left inversion, missing X badge). seed: conversation.md.
