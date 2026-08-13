@@ -3,7 +3,7 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5", "16:9"]
@@ -44,7 +44,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-explode v1.4
+TYPE: 03-spec-explode v1.5
 REGISTER: 3D technical render. NOT photography.
 
 [PRODUCT REFERENCE] attached photo is the exact reference for every outer part.
@@ -63,13 +63,11 @@ composited in post if the page needs them (G6 production law).
 ## PARTS
 
 **`canvas`** — an engineering ground carrying a faint motif at very low contrast. It stays
-dim: credibility, not information. Two things are chosen, and for six renders only one of
-them was.
+dim: credibility, not information. Two things are chosen: a value and a geometry.
 
-**The MOTIF is named by its GEOMETRY, and the domain only chooses among geometries.** Naming
-the meaning does not work: `isotherm bands`, `ripple contours` and `concentric waveform rings`
-were given to three products and all three rendered as the SAME concentric circles, 3 of 3.
-The model holds one default abstract ground and maps every meaning onto it. So name the shape:
+**The MOTIF is named by its GEOMETRY; the domain only chooses among geometries.** Naming a
+meaning does not bind — three different motif meanings returned one identical concentric-ring
+ground, 3 of 3, because the model holds one default and maps every meaning onto it.
 
 | geometry | drawn as | fits |
 |---|---|---|
@@ -80,12 +78,13 @@ The model holds one default abstract ground and maps every meaning onto it. So n
 | open arcs | curved strokes that do not close | sport, motion |
 | hexagonal tessellation | a honeycomb field | filtration, membranes |
 
-**And name the default OUT.** Concentric rings are where this model goes unasked, so every
-non-ring geometry must say what it is not — the same shape as `02-cause-anatomy`'s subject
-rule, where a skeleton arrives unless the prompt says "not a skeleton".
+**And name the default OUT.** Rings are where this model goes unasked, so every non-ring
+geometry must say what it is not — the `not a skeleton` mechanism.
 
-The motif is abstract line-work at low contrast, never an illustration of the thing and never
-a photographic scene — the G7 exemption is structural and holds here.
+The motif is abstract line-work, never an illustration of the thing and never a photographic
+scene — the G7 exemption is structural. **Bound its contrast against the frame, not with an
+adjective: it must stay fainter than the darkest shadow on any part.** Soft rings obeyed "very
+low contrast"; a square grid ignored it and rendered as engineering graph paper.
 
 **Its VALUE is derived from the product, not fixed.** The ground must sit far enough in value
 from the product's dominant value that the silhouette separates. This was a fixed deep navy
@@ -106,8 +105,9 @@ keep the hue out of the signal's way.
 
 Two of the five exemplars already sit on a non-dark ground, which is why the light values are
 named rather than invented. NEGATIVE still bans a BLOWN-OUT white; a mid or pale grey is not
-that. Where a product carries both extremes, as the toothbrush does, pick against the LARGEST
-part — the shell — because that is the silhouette a scroller sees.
+that. Where a product carries both extremes, pick against the LARGEST part — that is the silhouette
+a scroller sees. A MID-value product takes the DARK ground: light has no headroom left against
+it, and a mid-grey cushion on warm off-white barely separated.
 
 **`framing`** — one of two.
 
@@ -115,12 +115,14 @@ part — the shell — because that is the silhouette a scroller sees.
 - `inset` — a packshot base with the stack inside ONE circular inset at 30-40% of frame
   width, for gallery positions that must stay recognisable at thumbnail size. 1 render.
 
-**The RATIO follows the product's proportion.** `4:5` was added at 1.4 for exactly this: a
-portafilter has one axis and it is vertical, so the 1.2 axis rule cannot save it and a square
-frame leaves dead ground on both sides. Tall product, tall frame; long product, wide frame.
+**A tall narrow product explodes on a DIAGONAL.** The frame will not save it: ratio cannot be
+requested, 3 of 3 on tall products here and 6 of 6 in adapter Rule 4. The axis can — run it
+corner to corner and the stack uses both dimensions while staying one line in assembly order.
+`4:5` stays in `ratios` for the page's layout, not for the composition.
 
 **`stack`** — the product separated along ONE axis into its real component groups, in true
-assembly order, evenly spaced, each part solid and detailed.
+assembly order, evenly spaced **including the LAST pair, where a run breaks**, each part
+solid and detailed.
 
 **Explode the WHOLE product by default.** A sub-assembly explode — one part group separated
 while the rest stays intact — is legal only when the intact part is visually DISTINCT from the
@@ -254,6 +256,11 @@ a variant — same argument, same layers, different footprint.
 The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
+- 1.5 (2026-08-13): **four logic fixes, no new sections.** Motif contrast is bounded against
+  the frame — fainter than the darkest shadow on any part — because a grid ignored the adjective
+  and rendered as graph paper. A tall narrow product explodes on a DIAGONAL, since ratio cannot
+  be requested and the frame will not save it. A MID-value product takes the dark ground. Even
+  spacing must hold to the LAST pair, where one run broke. Case history cut to pay for it.
 - 1.4 (2026-08-13): **the motif is named by GEOMETRY, not by meaning** — owner-approved after
   three motif names produced one identical concentric-ring ground, 3 of 3. `PARTS/canvas` lists
   geometries and every non-ring one must name the ring default OUT. Two census rules the batch
