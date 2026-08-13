@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.9"
+version: "1.10"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 02-symptom-rail v1.9
+TYPE: 02-symptom-rail v1.10
 LAYERS: photographic hero on the left, vignette rail down the right edge.
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -92,7 +92,7 @@ same-looking mark in another type visible from here.
 |---|---|---|---|---|
 | `symptom-glow` | a soft radial glow centred on the symptom inside a vignette | red only | exactly 3, one per vignette | 4 renders · also in `01-pain-split` as hotspots |
 | `substance` | the matter the product moves, gathered into a directional form and thinning where it disperses — the mark is MADE of that matter | the substance's own real colour, never red | N streams, on the product | 3 renders · shows presence and place only |
-| `transform` | a short before-and-after ALONG THE FLOW at the product itself: the substance dulled, clouded or speckled where it enters, bright and glass-clear where it leaves | the substance's own real colour on both sides, differing only in clarity — no signal colour | exactly 1, at the product's housing or outlet | **none** |
+| `transform` | TWO COHERENT BODIES of the same substance in one frame, one dulled and one clear, each with edges a viewer can look through | the substance's own real colour on both sides, differing only in clarity — no signal colour | exactly 2 bodies, at or from the product | 1 of 3 · works only on a body, never on a spray or on air |
 | `field` | contour lines or a soft radiating envelope that WRAPS the receiving surface and shows which way the transfer runs | neutral warm-white or translucent, no signal colour | N contours, on the receiving surface | 2 renders · works on powered AND passive products |
 
 **A field is not only heat.** `field` covers heat, SUPPORT, vibration and PRESSURE, so a
@@ -128,8 +128,28 @@ hair the rail complained about, and a plain shower head would have produced an i
 stream. Filtration is the whole benefit and nothing in the frame carried it. A substance mark
 can say water is here and falling on her; it cannot say what kind of water it is.
 
-`transform` says it by showing the change happen at the one place it happens — inside the
-product. This is also the ONLY place this type permits drawing matter the product removes:
+**`transform` needs two BODIES, and that is the whole of it.** Three renders decided this in
+one batch: the tap worked and the shower and the vacuum failed, and the difference is not
+wording. The tap put a dulled grey column inside a transparent housing and a crystal-clear
+column falling into a held glass — two volumes with edges, side by side, judgeable by eye. The
+shower's output was a SPRAY, and a fine stream has no body to look through, so clarity had
+nowhere to live. The vacuum's flowing substance was AIR, which has no body at all, and its
+trap rendered empty.
+
+So the test before using this mark: **name the two bodies.** If you cannot point at two
+volumes or two surfaces of the same substance that a viewer can compare in one frame, the mark
+will not render, whatever the prompt says. A glass beside a housing. A dirty-water tank beside
+a clean-water tank. A cleaned strip of floor beside an untouched one. Where a product's output
+is a spray or a gas, find the body elsewhere — hands cupped under the water, a tank, a treated
+surface — or accept that the mark does not apply.
+
+**The rail should ECHO the transform.** Undesigned and probably half the reason the tap render
+lands: its middle vignette is a drinking glass dulled with cloudy film while the hero's hand
+holds a clear one. The same object in its bad state and its good state, across the two halves
+of the image. When a type carries `transform`, give one vignette the object the hero shows
+transformed.
+
+`transform` shows the change at the one place it happens — at or from the product. This is also the ONLY place this type permits drawing matter the product removes:
 sediment inside a filter housing reads as CAUGHT, whereas the same sediment loose in the room
 reads as dirt, which is what ruined the purifier render. Keep the clouded half inside the
 housing or at the inlet and let the outlet run clear; never let the before-state spread into
@@ -275,6 +295,21 @@ the amber-versus-neutral question above is the thing to watch.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.10 (2026-08-13): **`transform` needs two BODIES.** Three renders in one batch settled it,
+  the owner confirming the tap as the one that works: a dulled grey column inside a transparent
+  housing beside a crystal-clear column falling into a held glass — two volumes with edges,
+  comparable by eye. The shower failed because its output is a SPRAY and a fine stream has no
+  body to look through; the vacuum failed because its substance is AIR, which has no body at
+  all, and its trap rendered empty. Wording was identical in shape across all three, so the
+  form of the substance is the variable. Pre-flight test added: name the two bodies, and if you
+  cannot point at two volumes or surfaces a viewer can compare in one frame, the mark will not
+  render. This also closes the extension question 1.9 left open — `transform` does NOT stretch
+  to cover a visible trap alone.
+  Second finding, undesigned: **the rail should ECHO the transform.** The tap render's middle
+  vignette is a glass dulled with cloudy film while the hero holds a clear one — the same
+  object in both states across the two halves of the image, which is probably half of why it
+  reads. When a type carries `transform`, give one vignette the object the hero shows
+  transformed.
 - 1.9 (2026-08-13): **`transform` added — the mark of QUALITY.** Owner report: there is no
   mark for showing the water is clean and clear. He is right, and the filtered-shower render
   is the clean proof: the water arrived, landed on the hair the rail counts, and a plain
