@@ -150,6 +150,14 @@ was never doing the work the old rule claimed. Ratio remains a real slot require
 it lives in slot metadata and in the render parameter, and the page layout depends on
 it. It simply stops being prompt text.
 
+**A two-panel comparison in a square canvas may duplicate into a 2×2 grid** — 3 observations
+across 2 types. The earlier reading, that this followed from asking a WIDE ratio on
+wide-and-short content, is superseded: the third case asked 1:1, received 1:1, and still
+repeated its two panels as a second row with the badges on the top row only. The common factor
+is a two-panel comparison in a square frame, where the model fills the vertical space it has by
+repeating what it already drew. Mitigation: state that each panel occupies the FULL HEIGHT of
+the frame and that the frame contains nothing else. Untested.
+
 Corollary for framing: what a prompt CAN control is composition — the share of frame a
 subject occupies, which side it is offset to, layer footprints in percent. Those
 survive any aspect the model returns, and they are what the framing sentences should

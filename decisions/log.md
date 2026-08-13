@@ -418,3 +418,27 @@ mark. If such leaks recur across types, the rule returns with evidence behind it
 Consequences: a concurrent session is writing prompts against Rule 1 right now, so this change
 reaches it immediately — which is the reason it is recorded here rather than left as a habit.
 
+## ADR-015 · 2026-08-13 · A clause is cut only when a render has done without it
+
+Supersedes one clause of ADR-013. That entry gave the prompt budget as "a clause earns its
+place in a rendered prompt only if a render has failed without it", and the wording is right
+read forwards and wrong read backwards. Applied to an existing prompt it becomes "a clause
+that has never coincided with a failure may go" — which is a different test, and a false one,
+because a clause that has always been present has never been tested at all.
+
+Measured on `03-mechanism-ghostbody` 2.0. Five clause groups were cut on the strength of ten
+renders that had "held them without failing"; all ten renders carried them. Three cuts held.
+Two broke on the very next render: `support` ran the whole thoracic spine once its length
+limit was gone, and a defined face appeared in 2 of 3 mannequins once the ghost's negatives
+were gone.
+
+**Decision.** A clause may be removed only when a render has ALREADY done without it and come
+back correct. Absent that, removing it is an experiment, not a cleanup, and is recorded as
+one: cut it in a single prompt, keep it in the others, and let the pair decide. The
+earn-its-place rule is unchanged for ADDING a clause; this governs removal only.
+
+Consequences: the ADR-013 size guards stand — they measure the file, not the prompt, and
+nothing here weakens them. What changes is the pace of compression: prompts get shorter one
+tested clause at a time rather than in a sweep, which is slower and is the reason the sweep
+looked attractive.
+

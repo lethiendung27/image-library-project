@@ -3,7 +3,7 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "2.0"
+version: "2.1"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -37,7 +37,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-ghostbody v2.0
+TYPE: 03-mechanism-ghostbody v2.1
 REGISTER: 3D technical render.                                -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -61,7 +61,8 @@ a floor. Sharp, e-commerce infographic. **The product is the ONLY object in the 
 real material finish** — everything else is matte white or grey. That is this type's
 signature and the thing a viewer reads first.
 
-**`ghost`** — a featureless matte white mannequin: no face, no hair, no clothing, no skin
+**`ghost`** — a featureless matte white mannequin, **no face, no hair, no clothing, no skin
+tone** — restored at 2.1 after a defined face appeared in 2 of 3 renders without it: no face, no hair, no clothing, no skin
 tone. Named pose, named interaction with the product, and the body cross-sectioned at a named
 plane to reveal the interior. The anonymity is the argument, not a shortcut: nobody is being
 empathised with, so nobody is excluded.
@@ -105,7 +106,7 @@ the colour G3 already assigns it.
 |---|---|---|---|---|
 | `structure` | the neutral anatomy the argument sits in — bone, cartilage, the body's own framework | yellow / off-white ivory | as much as the cutaway shows | 2 renders · drew cleanly |
 | `stress` | a flat hard-edged red overlay on the loaded or deformed element — **LEFT panel only** | red | as many as are loaded, left only | 3 renders in an inset · reads there |
-| `support` | a flat hard-edged blue band drawn BESIDE the structure the product carries, following its line — never a fill of the anatomy — **RIGHT panel only** | blue | 1 per supported structure | **0 of 3 as a fill** · read as intervertebral discs |
+| `support` | a flat hard-edged blue band drawn BESIDE the structure the product carries, following its line and running ONLY the length the product reaches — never a fill of the anatomy — **RIGHT panel only** | blue | 1 per supported structure | 3 renders as an overlay · reads · 0 of 3 as a fill |
 | `heat` | a flat hard-edged orange overlay, wrong pressure or wrong heat — LEFT panel only | orange | 1, left only | **none** |
 | `dims` | ~~two black double-headed arrows outside the product silhouette~~ **WITHDRAWN at 1.6** | — | — | **0 of 3** · see KNOWN-FLAKY |
 | `verdict` | circle badge in the TOP corner of each panel, a FILLED SOLID DISC with the glyph cut out of it | red X, green check | exactly 2, one per panel | 5 renders · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
@@ -181,12 +182,13 @@ product causing harm (`02-symptom-rail` 1.7).
 ## SLOT CONSTRAINTS
 - **The prompt budget** (ADR-013): a clause earns its place in a rendered prompt only if a
   render has failed without it. Measured at 2.0 across this type's own prompts, which had grown
-  2056 → 2916 characters in four sets: **19% of a prompt was ceremony no render had ever failed
-  without.** These never go in a rendered prompt again, because ten renders held them without
-  being asked — the register's studio description beyond the words "3D technical render"; the
-  ghost's list of negatives (no face, no hair, no clothing, no skin tone); "rendered INSIDE the
-  silhouette and never floating on top of it"; "anatomically accurate"; and the closing
-  enumeration of the palette lock. Name the four signal colours once in MARKS and stop.
+  2056 → 2916 characters in four sets: 19% of a prompt was cut as ceremony,
+  and **two of the five cuts were wrong** — corrected at 2.1 (see ADR-015). Gone for good, each
+  shown unnecessary by a render that did without it: the register's studio description beyond
+  the words "3D technical render"; "rendered INSIDE the silhouette and never floating on top of
+  it"; "anatomically accurate"; and the closing enumeration of the palette lock. RESTORED,
+  because removing them broke the next render: the ghost's four negatives, and `support`'s
+  length limit.
 - The product is the ONLY object with a real material finish.
 - `cutaway` lives inside the silhouette, never floating on top.
 - G7 exempt: technical-render register, so context integrity does not bind — the product need
@@ -219,6 +221,9 @@ paragraph still describes texture, which `product` now forbids.
   least one across or inside the product every time. Retired for geometry, not for text: the
   letter and number ban worked on the last two renders. It can return if a future model draws
   reliable extension lines.
+- **Two panels rendered as a 2×2 grid, 1 render.** Third observation of the class across two
+  types, so it is recorded in `adapters/nano-banana.md` Rule 4 as model behaviour rather than
+  here.
 - **A pose written twice drifts, 2 renders.** A pillow inset came back with an illogical lying
   posture when the pose was pinned only in the main frame; the next render fixed the inset and
   the MAIN frame then ignored the pose instead. At 2.0 the pose is named ONCE in `ghost` and
@@ -245,6 +250,12 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 2.1 (2026-08-13): **two clauses restored; the budget rule corrected.** Evidence: 3 records at
+  2.0 — 1 `pass`, 1 `partial`, 1 `fail`. The 2.0 structure works: the argument reads at any size
+  and A11 is fixed at 3 of 3, every mark now a drawn overlay rather than anatomy. Two of the
+  five clauses I cut as ceremony were not ceremony — `support`'s length limit and the ghost's
+  four negatives — and the next render broke on both. They are back. The rule that let me cut
+  them is corrected in ADR-015. `PENDING`
 - 2.0 (2026-08-13): **the comparison becomes the frame, and every mark becomes an overlay.**
   MAJOR bump: the layer structure changes from one main frame plus a corner inset to two equal
   panels. Owner-approved on two recommendations from a self-audit. Evidence: 3 records at 1.6,
