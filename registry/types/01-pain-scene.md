@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.7"
+version: "1.8"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,7 +43,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.7 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.8 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -71,6 +71,14 @@ in progress — never a pause, never an intention. "Both hands stopped over the 
 ordinary lunch interrupted" both rendered as nothing; "both hands locked on the lid,
 turning against it, the lid has not moved" rendered correctly.
 
+**The action must be DIAGNOSTIC.** Naming a force is not enough — it must be a force only
+someone with this problem would apply. The renders that read do it before the evidence is
+found: both hands wrapped around a calf mid-press, a hand pushing hair off the crown at a
+mirror, both hands locked on a lid that has not moved. Nobody performs any of those without
+the problem. Wiggling a charging plug reads as charging a phone, and turning a glass to the
+light reads as checking a glass; both were written here on 2026-08-13, both named a force,
+and neither body said a problem existed.
+
 **Restraint governs EMOTION, not effort.** A flat face over a slack body renders as nothing
 at all. Where the moment is physical exertion the face still carries the involuntary signs
 — jaw set, breath held, lips dragged at one corner — and those are not drama.
@@ -91,6 +99,15 @@ prompt; ranking is the writer's job and the model needs the choice, not the ladd
 
 Evidence status: rank 1 has carried the passing renders and rank 3 held in the jar frames;
 rank 2 has never yet been the ONLY evidence in a render, and rank 4 has never been rendered.
+
+**Evidence may be SMALL, and an inset is not available.** In the two strongest renders the
+symptom is a small part of the frame — a calf, a crown — and both read instantly, because
+the action named the problem and the evidence only confirmed it. So a weak image is not
+repaired by enlarging the evidence, and it cannot be repaired by an inset at all:
+`vocabulary.yaml` defines `scene` as a single cinematic frame with **no panels and no
+insets**. That is the device, not this type's preference. A pain argument that genuinely
+needs a magnified inset is a `hero`-device or `macro`-device image and belongs in another
+slot on the page.
 
 **`environment`** — [one specific ordinary place, tied to where the problem gets noticed],
 [time of day], and the lived-in clutter belonging to that place, signalling the routine it
@@ -227,9 +244,10 @@ mark is model-drawn (ADR-008 approach A).
   `graphic overlay`. The reasoning is in NEGATIVE.
 
 ## KNOWN-FLAKY
-- **Unrequested four-pointed sparkle glyph, bottom-right, 2 of 2 jar renders examined
-  2026-08-13.** Same corner and same form in both, and it takes the tone of whatever is
-  beneath it — wood on the tabletop, white on the envelopes — which is a composite
+- **Unrequested four-pointed sparkle glyph, bottom-right, 4 of 4 renders examined
+  2026-08-13.** Same corner and same form in all four, and it takes the tone of whatever is
+  beneath it — wood on a tabletop, white on envelopes, dark on a bath panel, pale on a navy
+  shirt — which is a composite
   overlay's signature rather than a drawn element. Not this type's defect: it is the
   platform artefact `adapters/nano-banana.md` Rule 7 tracks, and the blend behaviour is
   new evidence for the watermark reading there. Intermittent — this type's mark-free
@@ -239,6 +257,17 @@ mark is model-drawn (ADR-008 approach A).
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.8 (2026-08-13): **the action must be DIAGNOSTIC**, added to `PARTS/subject`. A force in
+  progress is not enough; it must be a force only someone with this problem would apply. The
+  owner rejected two of the six v1.7 prompts before rendering — both named a force, neither
+  named a problem. Tested against all five passing renders first: every one clears the rule,
+  so it forbids no render this type has produced, and it also explains the 1.2 partial and
+  the two dead renders behind 1.3. `PARTS/evidence` gains the finding that kills the obvious
+  wrong fix: in the strongest renders the symptom is a small part of the frame and reads
+  anyway, so a weak image is not repaired by enlarging the evidence — and `scene` is defined
+  in `vocabulary.yaml` as having no insets at all, which makes the magnified-inset fix a
+  different device rather than a patch here. KNOWN-FLAKY's corner glyph goes from 2 of 2 to
+  4 of 4 renders examined, now across four different surface tones. File 17428 → 19695.
 - 1.7 (2026-08-13): **compressed, on the owner's instruction.** No law changed and no
   render behaviour changed. The CHANGELOG gains the preamble it never had and entries
   1.3-1.6 are cut to their decisions, the workings staying where they already were, in git.
