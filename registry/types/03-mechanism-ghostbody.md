@@ -189,7 +189,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   placed ON the product, whose own colours are not marks — left unstated, the model painted the
   pillow surface blue and then the whole shoe blue, applying G3's support colour to the thing
   being sold. `dims` gains a letter ban after its arrows returned labelled W and L. 2 records,
-  2 fail. `5af6d8f`
+  2 fail. `1fa3cc0`
 - 1.3 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012). `PARTS`
   holds register, ghost, cutaway, product and xcheck; `MARKS` names the four palette-lock
   colours as marks for the first time, plus `dims` and `verdict`. The `RATIO:` line dropped
