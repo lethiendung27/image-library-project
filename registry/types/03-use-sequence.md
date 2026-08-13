@@ -236,7 +236,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   watermark on every output — measured by stacking 19 corners across two types against a
   shuffled control and a bottom-left control. Moved out of KNOWN-FLAKY into NOTES, and the two
   ledger records that listed it as a failure are corrected by new records, not edited. Neither
-  verdict changes: both wine renders keep their other failures.
+  verdict changes: both wine renders keep their other failures. `c2624ee`
 - 1.3 (2026-08-13): first render evidence for this type — six renders, three products, 0 pass /
   4 partial / 2 fail. `emission` gains its founding evidence, 2/2 as real backlit steam. Three
   rules earned in `panels`: the beat names never reach the model (Rule 1b, third type), a
