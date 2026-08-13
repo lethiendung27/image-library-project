@@ -248,7 +248,7 @@ types:
     step: 3
     job: use
     device: sequence
-    version: "1.7"
+    version: "1.8"
     status: active
     channels: [marketplace, landing-page, advertorial]
     ratios: ["3:4", "1:1"]

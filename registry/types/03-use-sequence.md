@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.7"
+version: "1.8"
 status: active
 replaced_by: null
 ratios: ["3:4", "1:1"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-use-sequence v1.7
+TYPE: 03-use-sequence v1.8
 REGISTER: a real home, close range, available light.          -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference, in every panel.
@@ -47,8 +47,9 @@ REGISTER: a real home, close range, available light.          -> PARTS/register
 [CONTINUITY] one pair of hands, one place, one light.         -> PARTS/continuity
 [PANELS] prepare, then use, then result.                      -> PARTS/panels
 [ENVIRONMENT] one ordinary room, named once.                  -> PARTS/environment
-[MARKS] emission only, in the USE panel, if the product     -> MARKS
-        visibly emits. Nothing is ever drawn over the photo.
+[MARKS] made of real substance, never drawn.                  -> MARKS
+  fill, all three panels     trace, the USE panel
+  emission, the USE panel    residue, the RESULT panel
 ```
 
 ## PARTS
@@ -88,9 +89,16 @@ its first panel and lost a beat.
 - **PREPARE**: the single setup action, hands in frame, and the readiness signal visible — an
   indicator light, an opened part, a loaded state.
 - **USE**: the core action in progress, mid-motion.
-- **RESULT**: the action finishing, plus a second hand or gesture expressing the outcome.
-  Warmer light than the previous panels, and **no new mechanics** — this panel closes on the
-  relationship, not on more machinery, which is what separates the type from a dry manual.
+- **RESULT**: the action finishing, plus a second hand or gesture expressing the outcome, and
+  **no new mechanics** — this panel closes on the relationship, not on more machinery, which is
+  what separates the type from a dry manual.
+
+**The closing panel is lit exactly like the two above it.** It carried "warmer light than the
+previous panels" from 1.0 until 1.8 and shipped that way 15 times across four sets, in flat
+contradiction of `continuity` on the same page: one light direction and one palette across all
+three. The owner caught it on the images — the last panel always came back a different colour,
+which is three photographs of three moments, and this type has exactly one moment. What
+resolves the closing panel is `residue`, not a grade.
 
 The product sits near the centre of every panel and is never cropped out.
 
@@ -107,46 +115,65 @@ grinder it came off, the model duplicated the jar in one run and dropped the gri
 other. 2 of 2. Setting the WHOLE product down needs no such wording — proven on the steamer and
 on both wine-opener runs.
 
-**Any part of the product whose state visibly changes must be named in every panel, including
-the one where it is still empty.** `continuity` declares hands, place and light identical
-across the three panels and the model extends that to the product's own state: a cork named
-only in the middle panel was already inside the opener's window in the first, so the first two
-panels showed one state and the middle beat was empty. 2 of 2.
+**Any part of the product whose state visibly changes is named in every panel, including the
+one where it is still empty** — that is `fill` in MARKS. `continuity` declares hands, place and
+light identical across the three panels and the model extends that to the product's own state:
+a cork named only in the middle panel was already inside the opener's window in the first, so
+the first two panels showed one state and the middle beat was empty. 2 of 2.
 
 **`environment`** — one ordinary domestic setting with one or two incidental details, named
 once and identical in all three panels.
 
 ## MARKS
 
-**No mark here may carry the reading order.** Every other step-3 type argues with graphic
-marks; this one argues with actions in sequence, and a step number or an arrow running between
-panels would turn it into the instruction manual its PURPOSE exists to avoid. What a mark may
-do is state, inside one panel, something the action alone leaves ambiguous. **One entry,**
-and the second was cut on evidence rather than never tried — see below.
+**Every mark in this type is made of something physically in the scene, and nothing is ever
+drawn over the photograph.** That is measured, not a preference: a mark made of real substance
+has rendered correctly 7 times out of 7, and a drawn mark at the scale of a seam rendered
+usably 0 times out of 8 before `fit` was cut at 1.7. A11 in `registry/argument-faults.md` is
+not contradicted — drawn geometry does read in a photographic register at the scale of rings
+and glows sized to the whole frame, and that is not a scale this type has any use for.
 
-| name | form | colour | count | evidence |
-|---|---|---|---|---|
-| `emission` | whatever the product visibly puts out — spray, steam, light, foam — lit so it reads, made of the substance itself | the substance's own real colour | 1, in the USE panel only | 7/7 — steam, foam, a water jet, falling ground pepper |
+**No mark carries the reading order**, and nothing points from one panel to another. A step
+number or a linking arrow would make this the instruction manual its PURPOSE exists to avoid.
 
-**`fit` is cut at 1.7, 0 of 8.** It was tried in the gap beside the junction and then respecified
-onto the contact line; the second form placed correctly once, as a hairline that ran past the
-junction and vanished at full size, and was absent entirely the other time. The owner's verdict
-across both attempts: the marks either do not appear or cannot be seen.
+The four entries are the four things a plain photograph of someone using a product does not say
+on its own, and between them they carry the type's whole argument.
 
-**What the eight renders actually say is a rule about form, not about this one mark.** In this
-register a mark made OF something physically in the scene renders every time — `emission` is 7
-for 7 across steam, foam, a water jet and falling ground pepper. A mark DRAWN over the
-photograph, small and at a junction, rendered usably 0 times in 8. A11 in
-`registry/argument-faults.md` says drawn geometry does read in a photographic register, and it
-still holds: its evidence is `01-pain-scene`, where the drawn marks were rings and glows sized
-to the frame. The refinement this type pays for is scale — a drawn mark the size of a seam is
-below what survives. **If this type needs to say how a thing fits, the action has to say it:
-hands seating the part, in contact, with nothing drawn.**
+| name | made of | panel | evidence |
+|---|---|---|---|
+| `fill` | the level of a real substance inside a transparent part of the product | all three | ~6 correct, no failure attributable to it |
+| `emission` | whatever the product visibly puts out — steam, spray, foam, a jet, a falling solid | USE | 7/7 |
+| `trace` | the acted-on surface itself: done behind the head, not-yet-done ahead of it | USE | 2, both correct in frames that failed on layout |
+| `residue` | what the product removed or produced, collected and visible | RESULT | 2 |
 
-**`emission` exists only if the product genuinely emits** (G8). It is not a mark laid over the
-photograph; it is a real thing in the scene, lit to be visible. Never invent an emission so a
-panel looks active — G8's whole subject is not faking an effect so a PHOTO looks like it is
-working, and a photographic register is where that is easiest to do and hardest to forgive.
+**`fill` is the through-line, and it is what makes three photographs one event.** A tank going
+down, a jar filling with grounds, a cork rising into a window, a chamber greying with lint. It
+is named in every panel including the one where it is still empty, because `continuity` tells
+the model everything is identical across panels and it applies that to the product's own state
+unless the state is named each time. It is the only mark that appears in all three panels, and
+it is the one to reach for first: it needs no substance leaving the product and no mess left
+behind, so it is available on almost every product.
+
+**`emission` exists only if the product genuinely emits** (G8). Never invent one so a panel
+looks active — G8's subject is exactly not faking an effect so a photograph looks like it is
+working, and a photographic register is where that is easiest and least forgivable. It is a
+real thing in the room, lit to be visible, in its own real colour.
+
+**`trace` is A8 applied to this type.** A change of state needs a boundary rather than two
+states side by side, so the product sits ON the boundary of one continuous surface: cleared
+carpet behind the head and grit ahead of it, wet floor behind the mop and dry ahead, stitched
+hem behind the foot and torn ahead. It costs nothing to render because it is the surface
+itself, and it is the cheapest proof in the library that the product does something.
+
+**`residue` is how the closing panel resolves.** Lint tipped into a bin, scale rinsing off a
+filter, grounds sitting in the paper, the open tin. It replaces the warmer light that used to
+close these images and that contradicted `continuity` for eight versions: the last panel is
+lit like the others and earns its ending by showing what came out. It is the only mark that may
+appear after the action has finished.
+
+**Marks are optional and a bare sequence is not a defect.** The clearest render this type has
+produced carried none: three panels, one kettle, no mark of any kind. A mark is added when the
+action alone leaves the argument short, never to fill the library.
 
 The type is `exempt_from: [G3, G4]`: no signal colours, no correct-versus-wrong grading. There
 is no wrong state here at all — nobody is doing it badly, because the argument is "this is
@@ -184,9 +211,10 @@ Product: metal shower filter · ratio 1:1 · camera_lock=handheld
 - CONTINUITY — the same pair of hands throughout, the same chrome shower arm and white tiled
   wall, soft daylight from the left
 - PREPARE — both hands unscrewing the existing shower head, the bare threaded arm visible
-- USE — one hand holding the reference filter to the thread, the other turning it, mid-motion
-- RESULT — filter fitted, water running in a clean even spray backlit so the streams read; one
-  hand held open under the flow, palm up; warmer light
+- USE — one hand holding the reference filter to the thread, the other turning it, mid-motion;
+  water running in a clean even spray backlit so the streams read — `emission`
+- RESULT — filter fitted; the collected grit from the old head sitting in the palm held open
+  under the flow — `residue`; same light as the panels above
 - ENVIRONMENT — ordinary home bathroom, a folded towel, a plant on the sill
 Predicted failures: close-range hands on hardware, the library's highest extra-finger risk;
 and a RESULT panel asked for both a visible result and a centred product, which compete for
@@ -197,7 +225,9 @@ this example was ever rendered; see `panels`.
 Product: handheld garment steamer · ratio param 4:5 · camera_lock=handheld
 Kept in full because it is this type's founding `emission` evidence and the ledger stores
 verdicts, not prompts. **Do not copy the panel headings** — they are the Rule 1b fault `panels`
-now bans, and the sibling run of this same text printed them into the frame.
+now bans, and the sibling run of this same text printed them into the frame. Its closing
+paragraph also asks for warmer light, which 1.8 removed; it is kept because this is the record
+of what rendered, not a template.
 
 ```
 TYPE: 03-use-sequence v1.2
@@ -270,6 +300,11 @@ more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.8 (2026-08-13): a mark library built to what this register actually renders. Four entries,
+  every one made of real substance: `fill`, `emission`, `trace`, `residue`. The closing panel
+  stops being lit warmer — that clause contradicted `continuity` since 1.0 and shipped 15 times,
+  and the owner caught it as the last panel always changing colour. `residue` closes the
+  sequence instead.
 - 1.7 (2026-08-13): `fit` cut at 0/8. Substance marks are 7/7 and drawn overlay at seam scale
   is 0/8, so this type argues with things in the scene, never with overlay. `layout` stops
   describing frame geometry — the owner sets the ratio, and reasoning about the frame buys
