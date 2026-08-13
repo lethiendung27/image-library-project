@@ -351,7 +351,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
 - 1.9 (2026-08-13): type passed by the owner; file finalised. WORKED EXAMPLES replaced with the
   two renders that passed with an empty failures list — the foam soap dispenser and the
   descaling kettle — both in full prompt text, both labelled for the three clauses in them that
-  1.7 and 1.8 removed. The untested shower-filter example and the `partial` steamer are dropped.
+  1.7 and 1.8 removed. The untested shower-filter example and the `partial` steamer are dropped. `ffee670`
 - 1.8 (2026-08-13): a mark library built to what this register actually renders. Four entries,
   every one made of real substance: `fill`, `emission`, `trace`, `residue`. The closing panel
   stops being lit warmer — that clause contradicted `continuity` since 1.0 and shipped 15 times,
