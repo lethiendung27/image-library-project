@@ -68,7 +68,7 @@ types:
     step: 2
     job: cause
     device: anatomy
-    version: "1.10"
+    version: "1.11"
     status: active
     channels: [landing-page, marketplace, advertorial]
     ratios: ["5:3", "16:9", "1:1"]

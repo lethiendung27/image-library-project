@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.10"
+version: "1.11"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -39,231 +39,150 @@ avoid_when: >
   cannot make. Never as a main image.
 
 ## SKELETON
-A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once
-and is never restated here or in a prompt.
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 02-cause-anatomy v1.10 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.11 [+ --diagnostic]
 MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference for the item in the RIGHT
-panel. Preserve shape, proportions, material, finish and colour exactly.
-
-[GROUND] dark-field; the value steps once at the divider.     -> PARTS/ground
-[BODY] name the subject class first.                          -> PARTS/body
-[REMOVAL TEST] passes, or this is the wrong type.             -> SLOT CONSTRAINTS
+[PRODUCT REFERENCE] attached photo is the exact reference.
+[FRAME]                                                       -> PARTS/frame
+[GROUND] dark-field, value steps once at the divider.         -> PARTS/ground
+[BODY] name the subject class, and what it is not.            -> PARTS/body
 [PANELS] LEFT is wrong, RIGHT is correct.                     -> PARTS/panels
-
-[MARKS] name each one used, with its count and its panel:     -> MARKS
-  required: measure, verdict
-  then 1-3 more that the argument actually needs
-  nothing in the frame is marked that is not named here
+[MARKS] measure + verdict, then 1-3 more. Name count and panel. -> MARKS
 
 Colour follows G3 exactly: red wrong, blue correct, green badge, nothing else.
 ```
 
 ## PARTS
 
-**`style`** — one, named in the prompt. `airbrushed`: soft gradients, modelled volume,
-textbook shading. `flat-vector`: flat fills, hard edges, no gradients — it carried the
-`measure` dash pattern on both renders that used it, which answers the question NOTES had
-left open. `paper-cut`: flat layered shapes with soft drop shadows, hard edges throughout.
-One render, and it split — the STYLE came back convincingly, scales as separate cut layers
-with cast shadows and unmistakably distinct from the other two values, while every mark in
-the same frame degraded at once (measure and contour counts wrong, fill delivered on one
-side only). Recorded as visually successful and mark-hostile pending a second run on a
-prompt whose argument is sound; do not use it yet for a frame carrying more than
-`measure` and `verdict`. `line-engraving` is held out — see KNOWN-FLAKY.
+**`style`** — one, named in the prompt. `airbrushed`: soft gradients, modelled volume.
+`flat-vector`: flat fills, hard edges, no gradients; it holds the `measure` dash pattern.
+`paper-cut`: flat layered shapes with soft drop shadows; renders convincingly but degraded
+every mark around it on its first outing, so it is restricted to frames carrying `measure`
+and `verdict` only. `line-engraving` is held out — see KNOWN-FLAKY.
 
-**`ground`** — one continuous field across both panels, same hue and same chroma
-throughout, **stepping once in VALUE at the divider: one step lighter on the right.** The
-step is the only discontinuity; nothing else is in the background.
+**`frame`** — how much of the world is in shot. All three values are PROPOSALS with no
+render evidence; the first render of each is its founding evidence. This is the type's last
+untried lever and the one most likely to answer visual sameness, because style values change
+technique while the frame changes the picture.
 
-That step is not decoration; it is the only way this type's own G4 requirement can be met,
-and the two rules sat in silent conflict until the grounds were measured panel by panel
-across all eight renders. Taking a ground step of 10 of 255 as the cut:
+- `whole` — the entire body or object in shot, the interface small within it.
+- `interface` — the frame is filled by the contact between culprit and body; everything else
+  is cropped away.
+- `macro` — the landmark pair fills the frame and the object enters only as the edge that
+  touches it.
 
-- **Flat field, 4 renders** (headrest, ear tip, toothbrush, hair): whole-panel differences
-  of +4.1, +4.2, −0.8 and +4.9. Not one exceeded +5, and one inverted. A flat field leaves
-  only the structures to brighten, and that is too small an effect to read.
-- **Stepped field, 4 renders**: +31.9, +21.1, +17.6 — and +2.2.
+**`ground`** — `dark-field` is the only value: a ground far below the ivory in value, so the
+structures read as the lightest thing in frame. One continuous field, same hue and chroma
+throughout, **stepping once in VALUE at the divider, one step lighter on the right.**
 
-So the step is **necessary but not sufficient**, and the fourth case says why. The sock
-render stepped its ground by +15.6 and still finished at +2.2, because its right panel is
-covered by a dark sock that ate the brightness back. The rule that holds is therefore in
-two parts: step the field, AND do not let the right panel's own content spend the step.
+The step is not decoration — it is the only way this type's RIGHT-brighter requirement can
+be met, and the two rules were in silent conflict until measured. Across eleven renders the
+groups do not overlap: a flat field has never exceeded +5 of 255, a step whose brightness the
+right panel's own content ate back reached +2.2, and an unspent step has never fallen below
++17.6. So: step the field, and do not let the right panel's content spend it.
 
-**Confirmed at 1.10, 5 of 6.** The first six renders written against the step rule stepped
-their grounds by +11.6 to +46.9 and delivered whole-panel differences of +24.7, +29.1,
-+29.3, +31.8 and +40.5. The sixth kept a flat field (−1.3) and finished at −2.1, inverted —
-the same failure, in the same place, as every flat-field render before it. Eleven renders
-now separate cleanly: flat field has never exceeded +5, a spent step reached +2.2, and an
-unspent step has never fallen below +17.6. This is the most reliable rule in the file.
+Colour is DERIVED from the culprit's material world, at low chroma, and must sit far in hue
+from THREE things: red, blue, **and the warm ivory of the body** — a warm ground and a warm
+structure read as one material. Grey words are not neutral to this model: `stone grey`,
+`charcoal` and `slate` all returned inside the blue band G3 reserves for the correct side.
+Name the hue direction explicitly.
 
-Restating the requirement in words does nothing on its own — v1.8 told the prompts the
-difference "must be obvious, not slight" and all three renders that followed ignored it.
+**`body`** — the structure in warm ivory (G3: yellow = neutral structure) over a translucent
+outline. EXACTLY ONE figure per panel, same scale and view in both. Name the SUBJECT CLASS
+**and name what it is not**: skeleton is this model's default for anatomy and it will
+substitute one unasked. Tooth and gum, hair shaft and cuticle, skin layers, vein and valve,
+trachea and rings, follicle and scalp, bursa and sac all satisfy the type.
 
-`dark-field` is the only field value. The ground sits far below the ivory in value and the
-structures read as the lightest thing in the frame: measured separation 178, 179 and 178 on
-the three renders that used it. `light-field` was proposed at v1.8 and is **withdrawn at
-1.9 on 2 of 2 failures** — see KNOWN-FLAKY.
+Subject class is the widest diversity lever the type owns. G3 fixes the marks and fixes the
+body's ivory, so colour cannot carry variety; what is drawn can. Confirmed: the strongest
+renders this type has produced are the ones that left the skeleton behind.
 
-The colour is DERIVED from the culprit object's own material world, at low chroma, and
-must be far in hue from THREE things rather than two: red, blue, **and the warm ivory of
-the body**. The third was learned by measurement — the two renders whose ground was warm
-(oat at hue 37°, putty at 35°) gave the batch's weakest structure separation at 33 and 58,
-because the ivory is itself warm. Grey words are not neutral to this model either: `stone
-grey`, `charcoal` and `slate` came back at hues 205°, 182° and 208°, inside the blue band
-G3 reserves for the correct side. Name the hue direction explicitly instead of trusting a
-grey word to stay neutral.
+**`panels`** — LEFT: the figure in the wrong position on the culprit, drawn realistically and
+unbranded, the culprit visible where it acts. RIGHT: the same figure in the correct position
+on the reference product, at THE SAME interface, comparable in size, exposed rather than
+housed.
 
-**`body`** — the relevant anatomical structure in warm ivory (G3: yellow = neutral
-structure) over a translucent body outline. EXACTLY ONE figure per panel, same scale and
-viewing angle in both. Name the SUBJECT CLASS: this type is not restricted to bone.
-Skeleton, tooth and gum, hair shaft and cuticle, skin layers, vein and valve, canal and
-cartilage all satisfy it, and the type's own `--diagnostic` example is a hair strand.
-Measured 2026-08-12: five of five renders in the MARKS batch drew a SKELETON. That is the
-largest single reason this type reads as one repeated image, and the subject class is the
-widest diversity lever it owns — G3 fixes the marks and fixes the body's ivory, so colour
-cannot carry variety here, but the structure being drawn can. **Confirmed 2026-08-13**: the
-one non-skeletal subject whose argument was sound, a vein with two valve cusps, produced the
-strongest render this type has made and resembles the bone renders in nothing but grammar.
+Three ways the comparison is lost, all observed:
 
-**`panels`** — LEFT: the figure in the wrong position on the culprit, drawn realistically
-and unbranded, the culprit clearly visible where it acts on the body. RIGHT: the same
-figure in the correct position on the reference product, at THE SAME interface as the
-culprit and comparable in size, exposed rather than housed. RIGHT is brighter and cleaner
-than LEFT; that difference is delivered by `ground`'s value step, not by asking for it in
-words, which was tried at v1.8 and failed on all three following renders.
-
-**Neither object may occlude the structure under argument.** The toothbrush render put the
-reference product across the whole crown, so the gum margin the comparison was measuring
-could not be seen on the correct side — the panel that is supposed to prove the case was
-the one panel where the evidence was hidden.
-
-**The structure under argument must be DRAWN IN BOTH PANELS, and both objects must be in
-contact with it.** Two ways of losing the comparison, both found on 2026-08-13 and neither
-covered by "one figure per panel, same scale, same view":
-
-- *Missing on one side.* One harness render drew a full dog skeleton and put the tracheal
-  rings in the right panel only, so the left panel indicted a collar sitting on vertebrae
-  and there was nothing to compare. Naming the subject class is not enough on its own — the
-  model will substitute the skeleton, which is its default for anatomy, so say what the
-  subject is AND that the skeleton is not it.
-- *Present but not touching.* Both contact-lens renders floated the lens clear of the eye
-  with open space between them. A culprit that touches nothing acts on nothing, and the
-  second run drew both lenses free of the cornea, leaving two panels that differ only in
-  lens thickness. State the contact explicitly.
+- the structure under argument is drawn in ONE panel only — say it appears in both;
+- an object does not touch the structure, so it acts on nothing — state the contact;
+- an object covers the structure, hiding the evidence on the very panel meant to prove the
+  case — state that neither may cover it.
 
 ## MARKS
 
-This type's own mark library. Marks are called by name from the skeleton. Every one obeys
-G3 and carries a count. The `also in` notes exist so that a mark which looks the same in
-another type stays visible from here — each type owns its own library, so drift is made
-visible rather than centralised away.
+This type's own mark library, called by name from the skeleton. Every mark obeys G3 and
+carries a count. `also in` notes keep a same-looking mark in another type visible from here.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `measure` | two dashed straight reference lines, one per panel, each STOPPING at its two landmarks | red left, blue right | exactly 2 | 18 renders · **never yet carried its own difference** |
-| `verdict` | circle badge, X on the wrong panel and check on the correct one, TOP corners, flat and solid, same diameter | red X, green check | exactly 2 | 18 renders · also in `01-pain-split`, `03-mechanism-ghostbody`, `06-relief-hero` |
-| `contour` | a curved line tracing a surface or an edge, named as ONE bounded edge | red wrong, blue correct | 1 per panel | 9 renders · count held once named |
-| `fill` | the affected anatomical elements filled | red wrong, blue correct | as many as are affected | 8 renders |
-| `aura` | a soft glow following a correct contour | blue only | 1, right panel | 5 renders |
+| `measure` | two dashed straight lines, one per panel, each STOPPING at its two landmarks | red left, blue right | exactly 2 | 18 renders · **never yet carried its own difference** |
+| `verdict` | badge, a FILLED SOLID DISC with the glyph cut out of it, TOP corners, same diameter | red X, green check | exactly 2 | 18 renders · also in `01-pain-split`, `03-mechanism-ghostbody`, `06-relief-hero` |
+| `contour` | a curved line tracing ONE named bounded edge | red wrong, blue correct | 1 per panel | 9 renders |
+| `fill` | the affected elements filled | red wrong, blue correct | as many as are affected | 8 renders |
 | `force` | a double-headed curved arrow along the surface causing the problem | red only | exactly 1, left panel | 6 renders |
-| `range` | a shaded wedge between two limbs or two surfaces, showing the angle available | red wrong, blue correct | 1 per panel | 2 renders |
-| `baseline` | one horizontal datum line PER PANEL, both drawn at the same height — the surface both figures rest on | neutral, no signal colour | exactly 2, one per panel | 0 of 2 as first written · **1 of 1 respecified** |
-| `axis` | a straight construction line showing the alignment the body should hold, a plumb line through two named landmarks | neutral dashed, no signal colour | 1 per panel | 1 render |
-| `pressure` | a filled region bounded by the CONTACT SURFACE between body and object, as wide as the contact itself | red wrong, blue correct | 1 per panel | **1 of 4** · first success 2026-08-13 |
+| `aura` | a soft glow following a correct contour | blue only | 1, right panel | 5 renders |
+| `range` | a shaded wedge between two limbs or surfaces, showing the angle available | red wrong, blue correct | 1 per panel | 2 renders |
+| `baseline` | one horizontal datum line PER PANEL, both at the same height — never one line crossing the divider | neutral, no signal colour | exactly 2 | 1 of 1 respecified |
+| `axis` | a construction line through two named landmarks, showing the alignment the body should hold | neutral dashed, no signal colour | 1 per panel | 1 render |
+| `pressure` | a filled region bounded by the CONTACT SURFACE, as wide as the contact itself — never a line, never a glow along an edge | red wrong, blue correct | 1 per panel | 1 of 4 |
 
-**`measure` carries the whole argument and has its own rule.** Both lines anchor to the
-SAME two anatomical landmarks with identical thickness and dash pattern. Exactly ONE
-property may differ — the line's angle, its length, or the gap it spans — and every other
-property must read as identical. They are straight LINES, never boxes, brackets or
-outlines. For an angle comparison the landmarks are expected to rotate; what must hold
-still is length. **The differing property must be visible at a glance** — the headrest
-render obeyed every clause above and still failed, because both lines read at a similar
-length and the gap the argument rested on was carried by the panels rather than by the
-mark. A measure pair the reader has to compare carefully has not measured anything.
+**`measure` carries the whole argument and has its own rule.** Both lines anchor to the SAME
+two landmarks, identical in thickness and dash pattern. Exactly ONE property may differ —
+angle, length, or the gap spanned — and every other property reads as identical. Straight
+LINES, never boxes or brackets. For an angle comparison the landmarks rotate; length holds.
 
-**Each line STOPS at its landmarks and may not run past either one.** Two renders failed
-the same way — the headrest pair and the sock pair were both drawn across the whole panel
-rather than between the two points they were supposed to span, so the gap under argument
-was swamped by line that meant nothing. Every clause about form was obeyed in both. What
-was missing was anything binding the ENDS of the line to the structure, and without that a
-measure mark decorates instead of measuring.
+Four clauses added by failure, each of which cost a render:
 
-**Name the line's direction against the STRUCTURE, never against the frame.** The contact
-lens prompt said the line runs from the lens "straight down" to the cornea beneath it. In a
-side cutaway the eye faces sideways, so the tear gap is horizontal and "straight down" was a
-frame direction that contradicted the anatomy — both renders obeyed the words, drew a
-vertical line along the corneal curve, and measured a distance nobody was arguing about.
-"Perpendicular to the corneal surface" would have been unambiguous in any orientation the
-model chose. Up, down, across and beneath are frame words and this model is free to rotate
-the frame.
+1. **Each line STOPS at its landmarks** and runs past neither. Two pairs were drawn across
+   the whole panel and measured nothing.
+2. **Name the direction against the STRUCTURE, never the frame.** "Perpendicular to the
+   corneal surface" holds however the model rotates the frame; "straight down" does not, and
+   two renders obeyed it into the wrong axis.
+3. **Both lines start from corresponding points at the same place in their panel**, so the
+   pair reads as a pair.
+4. **Admission — use `measure` only where the real difference is at least 2:1.** In 18
+   renders the pair has never carried the argument by itself; part of that is the faults
+   above, and part is that a dashed line cannot show a 20% difference to a scrolling reader.
+   Below 2:1, pick another landmark pair or another type. Same shape of decision as the
+   removal test.
 
-**Both lines start from corresponding points at the same place in their panel.** Four
-renders now have correct counts, correct colours and correct orientation while still failing
-to carry their difference, because the two lines sit in different parts of their panels and
-the reader has no way to compare their extents. Anchor them so the pair can be read as a
-pair.
+**Marks on the same structure compete** — a wedge and a fill on one bone read as one mass.
+Give every mark its own structure, or drop one.
 
-**Admission: use `measure` only where the real difference is at least 2:1.** This is the
-uncomfortable one. In 18 renders the measure pair has never once carried the argument by
-itself — the difference has always been legible from the panels, the fill or the geometry
-instead. Part of that is drawing faults, fixed above. Part of it is that a dashed line
-cannot show a 20% difference to a scrolling reader, and several of these comparisons were
-20% differences. If the gap does not roughly double or halve, this type's central mark
-cannot prove it, and the honest move is to pick a different landmark pair or a different
-type — the same shape of decision as the removal test.
-
-**Where the four proposals stand** (8 renders, 2026-08-12 and 2026-08-13):
-
-- `axis` — 1 render, drew in both panels and stayed neutral. Instrument.
-- `range` — 2 renders, read as an angle available both times without needing explanation.
-  Instrument.
-- `baseline` — 0 of 2 as first written, then **1 of 1 respecified**. The original asked for
-  ONE line spanning BOTH panels, which forces the mark across the divider that `ground`
-  makes the hardest edge in the frame; as one line per panel at a shared height it drew
-  immediately, neutral and correct. This is the cheapest lesson in the file: the mark was
-  never the problem, the instruction to cross the divider was.
-- `pressure` — **0 of 2**, and it failed differently each time: a glow along the plantar
-  fascia on one render, a radial blob on the gum margin on the other, where the same
-  prompt's blue half attached itself to the product's bristles instead of to the body. The
-  shape of both failures is that no bounded region was ever named, so the model reached for
-  the nearest thing it could draw. Respecified above to fill the CONTACT SURFACE, which
-  gives it two edges to obey. Third attempt is its last as a proposal.
-
-**Marks that sit on the same structure compete.** On the carrier render the `range` wedge
-and the `fill` on the femoral heads ran together, each side reading as one blue or one red
-mass; `range` survived only because the wedge was much larger. Two marks of the same signal
-colour on the same structure need a size difference or one of them should go.
-
-**Budget.** `measure` and `verdict` are required. Beyond them take 1–3 marks and no more:
-this type's argument is one measurement, and a frame carrying six mark classes stops being
-a measurement and becomes a diagram of everything. The deliberate five-mark test of
-2026-08-12 settles nothing either way — that frame failed by canvas duplication, not by
-clutter, so the ceiling is still unmeasured.
+**Budget.** `measure` and `verdict` are required; beyond them take 1–3 and no more. This
+type's argument is one measurement, and six mark classes make it a diagram of everything.
 
 ## SLOT CONSTRAINTS
 - **The removal test, before anything else is written.** Take the culprit out of the LEFT
-  panel and ask whether the harmful state goes away with it. If it does, this type applies:
-  the two panels are one structure in two states and the product moves it between them the
-  moment it is used. If the state persists, the image is showing DAMAGE rather than a
-  mechanism, and the RIGHT panel will silently claim a repair the product cannot perform.
-  Every render that has worked passes the test — the foot off the tile, the neck away from
-  the seat back, the infant out of the narrow carrier, the vein out of the cuff. The two
-  that failed on 2026-08-13 do not: a gum stays receded and a hair cuticle stays lifted
-  after the brush and the pillowcase are gone. Both were prompt-authoring failures, caught
-  by the owner on the image and not by any rule, which is why the rule is now written down.
+  panel: does the harmful state go with it? If yes, the type applies — two panels are one
+  structure in two states and the product switches between them now. If the state persists,
+  the image shows DAMAGE, not a mechanism, and the RIGHT panel will claim a repair the
+  product cannot perform.
+- **The prompt budget.** A clause earns its place in a rendered prompt only if a render
+  has failed without it. Everything else is a rule for the writer and stays in this file.
+  Ceiling, measured rather than guessed: **~1800 characters at two marks, ~2050 at three** —
+  what three prompts came to once every clause in them had been earned, the third being
+  larger only because `pressure` carries a long form definition. Four earlier sets ran 2321,
+  2731, 2884 then 3330 characters as versions accumulated, against adapter Rule 6's
+  instruction to re-read anything past 2500. Each version restated more of this file into the
+  prompt, and none of the added prose was ever tested for whether it did anything.
+  Never in a prompt, because 14+ renders have never failed on it: the panels being split by a
+  vertical line, the ground being one continuous field, the ground's low chroma, the material
+  a colour was derived from, the structures reading as the lightest thing in frame. Name the
+  colour, not its derivation.
+  Never in a prompt because the model cannot act on it: anything about spending the ground
+  step, and any rationale clause ("so the pair can be read against each other"). Those are
+  choices the writer makes when picking the product, the pose and the palette.
 - Wrong on the LEFT, correct on the RIGHT — locked across the whole library.
 - Both panels carry a `verdict` badge; one unlabelled panel leaves the verdict dangling.
 - The culprit is drawn realistically but unbranded.
 - Strictest G3 compliance in the library; G4 and G5 apply in full.
-- `measure` only works where a measurable landmark exists. If the harm cannot be pinned to
-  two anatomical points, this type is the wrong choice — see `avoid_when`.
-- `pressure` is the last unproven mark, at 0 of 2, and `paper-cut` is an unproven style.
-  `baseline` earned its place on the respecified form; `light-field` was withdrawn.
+- `measure` needs a measurable landmark pair, and a difference of at least 2:1 between them.
+- Unproven and awaiting founding evidence: the three `frame` values, and `paper-cut`.
 - Wide ratios are a canvas risk on wide-and-short content — see KNOWN-FLAKY.
 
 ## NEGATIVE
@@ -274,9 +193,11 @@ both dashed lines identical, missing badge on either panel,
 different figure scale between panels, extra signal colours, saturated ground,
 anatomically wrong structures, background pattern
 ```
-Two tokens are deliberately absent because each would qualify a noun a prompt here
-requires, which Rule 1a makes a bleed: `cluttered motifs` and `extra colors`. Their bounds
-live positively in PARTS instead.
+This list is canonical and model-agnostic; the adapter drops from it at render time. Two
+tokens are deliberately absent because each would qualify a noun a prompt here requires,
+which Rule 1a makes a bleed: `cluttered motifs` and `extra colors`. Note that `extra signal
+colours`, `background pattern` and `human face` above are all Rule 1a bleeds when a prompt
+needs those words, and are dropped from the rendered `avoid` line rather than rephrased.
 
 ## VARIANTS
 ### --diagnostic
@@ -302,208 +223,95 @@ Product: none in frame (`--diagnostic`) · ratio 5:3 · style airbrushed
 - MARKS — `measure` (2 lines across the same two scale roots, differing only in the gap
   they span), `verdict`, `contour` (1 per panel along the scale surface), `fill` (lifted
   scales red, closed scales blue)
-Kept as the type's only `--diagnostic` example. Its earlier version compared the two lines
-by EVENNESS, which the `measure` rule now forbids — evenness is not one of the three
-permitted properties, and it is exactly the fault that rule was written to prevent.
+Kept as the type's only `--diagnostic` example. Stale in two ways to fix when it is next
+rendered: it predates both the removal test — a filter does not close a lifted cuticle —
+and the 2:1 admission.
 
 ## KNOWN-FLAKY
-- **`verdict` badges drifting to OUTLINE, 2 of 6, 2026-08-13.** Two renders drew the badge as
-  a thin ring with the glyph inside, where the mark demands flat and solid. Both were frames
-  in which every other mark was correct, so this is not general degradation. Below the bar;
-  if it reaches 3 the badge needs the treatment `contour` got — name the filled disc
-  explicitly instead of trusting the words "flat, solid".
-- **Canvas duplicated into a 2×2 grid, 2 observations, 2026-08-12.** The whole two-panel
-  comparison rendered a second time below itself, badges on the top row only. Below the
-  §6.2 bar at 2 distinct observations, so nothing is legislated yet, but both instances
-  share a shape worth stating: each asked for a WIDE ratio on content that is intrinsically
-  wide and short, and all five renders of the 2026-08-12 batch came back 1024×1024 square
-  whatever ratio was requested — leaving a tall empty band the model filled by repeating the
-  row. Until a third observation, compose wide-and-short subjects to fill a square frame
-  rather than relying on the ratio to crop them.
-- **`light-field` ground, WITHDRAWN at 1.9 on 0 of 2, 2026-08-13.** Proposed at v1.8 as the
-  answer to visual sameness, and the measurement killed it: ground-to-ivory value separation
-  of 5 and 8 of 255, against 178 for `dark-field`. Both renders held together only on the
-  dark outline the prompt asked for — edge contrast standing in for tonal contrast. The
-  mechanical reason it cannot be rescued is that a pale ground leaves no headroom to
-  brighten into, so it fights the RIGHT-brighter law directly: the toothbrush render came
-  back with the right half 0.8 DARKER than the left. Not withdrawn for being ugly; withdrawn
-  for being unable to satisfy two of this type's own rules at once.
-- **Exact counts on `measure` and `contour`, 4 observations across 8 renders, to 2026-08-13.**
-  `measure` drew two lines per panel instead of one on the carrier and the hair renders;
-  `contour` drew three per panel on the ear tip and outlined every scale on the hair render.
-  Restating the count inside the prompt ("exactly one curved line in each panel, one line and
-  no more") did not bind it. Exact counts are already a named risk in adapter Rule 7 and this
-  is the type where the risk is realest, because a second line looks like a second
-  measurement.
-- **`line-engraving` style, 1/1 failed, 2026-08-12.** Its only render turned the `measure`
-  pair into dashed BOXES rather than lines and took the argument with it. Held out of the
-  offered `style` list — not withdrawn, since one failure is not the threshold, but not
-  reachable by accident either. The retest changes ONLY the style value on a prompt already
-  known to work and checks whether the straight-LINES wording holds under hatching. That
-  wording has since been confirmed on `airbrushed`.
+- **`verdict` badges drifting to OUTLINE, 2 of 6, 2026-08-13.** Drawn as a thin ring with the
+  glyph inside where the mark demands a filled disc. Below the bar. The mark's form line now
+  names the filled disc, which is what fixed `contour`'s count.
+- **Exact counts on `measure` and `contour`, 4 observations across 8 renders.** Two lines per
+  panel where one was asked for; every scale outlined where one edge was asked for. Restating
+  the count inside a prompt did not bind it; naming ONE bounded structure did.
+- **Canvas duplicated into a 2×2 grid, 2 observations, 2026-08-12.** The two-panel comparison
+  rendered a second time below itself. Both instances asked for a WIDE ratio on
+  wide-and-short content, and every render of that batch came back 1024×1024 square whatever
+  was requested — a tall empty band the model filled by repeating the row. Compose
+  wide-and-short subjects to fill a square frame.
+- **`light-field` ground, WITHDRAWN at 1.9 on 0 of 2.** Ground-to-ivory separation of 5 and 8
+  against dark-field's 178. A pale ground leaves no headroom to brighten into, so it fights
+  the RIGHT-brighter law directly — one render came back with the right half darker. Not
+  withdrawn for being ugly, but for being unable to satisfy two of this type's rules at once.
+- **`line-engraving` style, 1/1 failed, 2026-08-12.** Turned the `measure` pair into dashed
+  BOXES. Held out of the offered list. A retest changes ONLY the style value on a prompt
+  already known to work.
 
 ## NOTES
-The measurement hypothesis is settled as far as one render each can settle it. Angle
-isolates cleanly. Distance was inconclusive because a render put four figures on the
-canvas instead of two. Length failed on its own terms and produced the one-property rule
-now in MARKS. The `flat-vector` question is answered: it carried the dashed pair with an
-identical pattern on both renders that used it (carrier, ear tip), so the dash is not an
-airbrushed-only effect.
+The measurement hypothesis is as settled as one render each can settle it: angle isolates
+cleanly, distance was inconclusive, length failed and produced the one-property rule.
+`flat-vector` carries the dashed pair as reliably as `airbrushed`.
 
-**Why this type renders as the same image every time** (owner report 2026-08-12: the colour
-and the visual style repeat from render to render). It is mostly legislated, not
-accidental, and worth stating so nobody tries to fix it in the wrong place. G3 fixes the marks at red, blue and green and
-fixes the body at warm ivory; `ground` must then avoid red, blue AND warm, which leaves a
-narrow band of greens, olives and cool greys — and three of five grounds drifted into the
-blue band anyway. So colour is close to fully determined and cannot carry variety.
+**Why this type renders as the same image every time.** Mostly legislated, not careless: G3
+fixes the marks at red, blue and green and fixes the body at warm ivory, and `ground` must
+then avoid red, blue and warm alike. Colour is close to fully determined and cannot carry
+variety. Two levers can. SUBJECT CLASS is proven — the non-skeletal subjects produced the
+strongest renders. FRAME is proposed and untried, and is the more promising of the two,
+because three style values changed technique while every render kept the same composition:
+two equal panels, badges in the top corners, the structure centred at middle distance.
 
-Three levers were tried against it on 2026-08-13 and the results are not what was expected.
-**SUBJECT CLASS works and is the answer** — the compression-sock render, a vein and two
-valve cusps, is the strongest image this type has produced and resembles the bone renders in
-nothing but its grammar. **STYLE half works**: `paper-cut` came back unmistakably its own
-style while every mark in the frame degraded, so it buys variety at a price not yet
-measured. **FIELD does not work at all**: `light-field` was the direct attempt to make the
-type look different and it is withdrawn on 0 of 2, because a pale ground cannot satisfy the
-RIGHT-brighter law. Framing scale remains untested and is now the only unexamined lever
-left. The lesson is worth keeping in this order: the variety had to come from WHAT is drawn,
-not from how it is lit.
-
-Distinction from `03-mechanism-ghostbody`: 2D illustration vs 3D render; the object in
-frame is the CULPRIT, not the product's mechanism; the sentence is "this is what harms
-you", not "this shape exists for a reason". The two may run in one gallery (02 then 03)
-but must share one palette or they read as two sources.
+Distinction from `03-mechanism-ghostbody`: 2D illustration vs 3D render; the object in frame
+is the CULPRIT, not the product's mechanism; the sentence is "this is what harms you", not
+"this shape exists for a reason". The two may run in one gallery (02 then 03) but must share
+one palette or they read as two sources.
 
 ## CHANGELOG
-- 1.10 (2026-08-13): **the ground step is confirmed, `pressure` finally drew, and `measure`
-  is admitted to have never once carried its own argument.** Evidence:
-  `eval/render-tests.jsonl`, six records at ts 2026-08-13 — the three v1.9 prompts run TWICE
-  each, three `partial` and three `fail`, `verdict_by: harness` under ADR-011. Running each
-  prompt twice is what made the batch worth its cost: the two harness runs share every word
-  and differ completely, which separates wording faults from variance.
-  **The ground step holds at 5 of 6** and is now the most reliable rule in the file. Stepped
-  grounds returned whole-panel differences of +24.7 to +40.5; the one render that kept a flat
-  field returned −2.1, inverted. Across eleven renders: flat has never exceeded +5, a spent
-  step reached +2.2, an unspent step has never fallen below +17.6.
-  **`pressure` drew correctly for the first time in four attempts**, as a filled region
-  bounded by the teat-and-tongue contact, narrow red against broad blue. The CONTACT SURFACE
-  respecification at 1.9 is what did it — twice before it had no bounded region and became a
-  glow, then a blob. `contour` also held its count once the prompt named ONE bounded edge and
-  added "and no more", after failing that count twice.
-  **`measure` is the type's unsolved problem and 1.10 says so plainly.** In 18 renders the
-  pair has never carried its difference by itself; the argument has always been legible from
-  the panels, the fill or the geometry instead. Three fixable causes are now written into its
-  rule — direction must be named against the STRUCTURE and never the frame, which is exactly
-  how both contact-lens renders measured the wrong axis from the words "straight down"; both
-  lines must start from corresponding points at the same place in their panels; and an
-  admission test, that a difference below roughly 2:1 cannot be shown by a dashed line at all
-  and needs a different landmark pair or a different type.
-  `panels` gains two failure modes that "one figure per panel" never covered: the structure
-  under argument must be DRAWN IN BOTH panels — one harness run substituted a full skeleton
-  and put the tracheal rings on the right only — and both objects must be IN CONTACT with it,
-  after both lens renders floated the lens clear of the eye. KNOWN-FLAKY gains badge outline
-  drift at 2 of 6. File 36631 characters, skeleton 898.
-- 1.9 (2026-08-13): **an admission test the type never had, and a rule conflict measurement
-  found.** Evidence: `eval/render-tests.jsonl`, three records at ts 2026-08-13 — one
-  `partial` and two `fail`, `verdict_by: harness` under ADR-011 from renders opened. Owner
-  report opening it: the toothbrush image is bad in product logic and in output alike.
-  **The removal test** is now the first thing in SLOT CONSTRAINTS and the third clause of
-  `avoid_when`. Two of the three prompts in that set argued something their product cannot
-  do — a toothbrush does not restore a receded gum and a pillowcase does not lay a lifted
-  cuticle back down — because this type's grammar is one structure in two states with the
-  product switching between them NOW, and accumulated damage is not such a state. The type
-  had never said so, so nothing caught it; the owner caught it on the image. The test is
-  checkable: remove the culprit and ask whether the harm goes with it.
-  **`ground` now steps once in value at the divider**, and that is a real conflict resolved
-  rather than a preference. One continuous flat field and "RIGHT brighter than LEFT" cannot
-  both hold. Measured across all eight renders: the four that kept the field flat finished
-  at +4.1, +4.2, −0.8 and +4.9 of 255, none above +5 and one inverted; of the four that
-  stepped it, three finished at +31.9, +21.1 and +17.6 while the fourth managed only +2.2
-  because a dark sock covered its right panel and spent the step. So the step is necessary
-  and not sufficient — the right panel's own content must not eat it back. v1.8 tried to fix
-  this by telling prompts the difference must be obvious; all three following renders ignored
-  the words. (First written in this entry from a partial reading of the same measurements —
-  three flat renders and two stepped — which undercounted both groups and missed the sock
-  counter-example. Corrected here before any prompt was written against it.)
-  `light-field` **withdrawn on 0 of 2** — separations of 5 and 8 against dark-field's 178,
-  and a pale ground leaves no headroom for the brightening the type requires. It was
-  proposed at 1.8 as the cure for visual sameness; the cure turned out to be subject class,
-  which is what actually worked.
-  Marks: `baseline` earns its place at 1 of 1 on the respecified one-line-per-panel form
-  after 0 of 2 as a divider-crossing line — the mark was never the problem, the instruction
-  to cross the divider was. `pressure` fails 0 of 2, differently each time, and is
-  respecified to fill the CONTACT SURFACE so it finally has edges to obey. `measure` gains
-  the clause its two silent failures shared: each line STOPS at its landmarks. `range`
-  confirms at 2 renders. `paper-cut` records one render that was visually convincing and
-  hostile to every mark in the frame.
-  KNOWN-FLAKY gains exact-count drift on `measure` and `contour` at 4 observations across 8
-  renders, where restating the count in the prompt did not bind it. File 30489 characters, skeleton 897.
-- 1.8 (2026-08-12): **the MARKS library met five renders; two proposals became instruments,
-  two did not, and the design language gained a field and a subject choice.** Evidence:
-  `eval/render-tests.jsonl`, five records at ts 2026-08-12 covering the standing mat,
-  carrier, headrest, ear tip and wrist rest — four `partial` and one `fail`, every one
-  `verdict_by: harness` under ADR-011 from a render actually opened.
-  Of the four marks that carried no evidence, `axis` and `range` drew clean and are
-  instruments now; `pressure` drifted into a glow along a contour and its wording is
-  tightened; `baseline` failed 2 of 2, because both attempts sent ONE line across the panel
-  divider, and it is respecified as one line per panel at a shared height — untested again.
-  Owner report in the same turn: this type repeats its colours and its visual style. Most of
-  that is legislated rather than careless — G3 fixes the marks and fixes the ivory body, so
-  `ground` must avoid red, blue and warm alike and colour cannot carry variety here. Variety
-  moves to where it can live: `ground` gains a `dark-field` / `light-field` choice, `body`
-  gains a named SUBJECT CLASS after five of five renders drew a skeleton while this type's
-  own example is a hair strand, `style` gains `paper-cut` as a proposal, and `panels` now
-  requires the RIGHT-brighter difference to be visible rather than nominal. The measurements
-  behind each live in the section they govern, not here; one is worth surfacing, that the
-  grey words `stone grey`, `charcoal` and `slate` all returned inside the blue band G3
-  reserves for the correct side — v1.2's pale-blue canvas arriving through a neutral word.
-  Held below the §6.2 bar rather than legislated: the canvas duplicating into a 2×2 grid
-  (2 observations) and a `contour` count overrun at 1 of 6. Still unsettled: the
-  1–3 mark budget, because the deliberate five-mark test failed by duplication and not by
-  clutter. File 22078 characters against 14171 at 1.7, skeleton 815 against 966.
-- 1.7 (2026-08-12): **restructured into a call-map plus two libraries, and the file
-  cleaned.** Owner decision: each type gets its own mark library to call, rather than
-  if/else inside the skeleton. `PARTS` holds the non-mark building blocks (style, ground,
-  body, panels); `MARKS` holds this type's ten marks with form, colour, count and evidence
-  status; the skeleton became a map naming them. Worth recording why the branches were
-  never a context cost: `query/runbook.md` Step 5 already required every conditional to be
-  resolved before a prompt ships, so no branch ever reached the model. What branches cost
-  was correctness — two faults this session came from choosing a branch wrongly, not from
-  leaked text — and naming them makes each choice a deliberate lookup.
-  Four marks are carried with NO evidence: `baseline`, `axis`, `pressure`, `range`. They
-  are labelled as proposals and the first render of each is its founding evidence.
-  Cleanup in the same pass: SLOT CONSTRAINTS held 6681 characters of history and CHANGELOG
-  10501, together 67% of a 25455-character file. Decisions stay here in compressed form,
-  process errors stay in git history where the audit surface is, and SLOT CONSTRAINTS keeps
-  only constraints. SPEC §3.3's optional-section list gains PARTS and MARKS in this diff.
-- 1.6 (2026-08-12): `measure`'s rule rewritten. The v1.2 wording required both endpoints to
-  sit on structures the culprit does not move, generalised from one failure, and it would
-  have forbidden the render that PASSED — the shoulder-bag line ran acromion to acromion
-  and the bag pulls one shoulder down, which was the variable itself. The rule now governs
-  the line: same two landmarks, exactly one property differing.
-- 1.5 (2026-08-12): the two parallel panel blocks collapsed into one. Skeleton 2027 → 1868.
-- 1.4 (2026-08-12): background motifs removed, `baseline` datum put in their place. Owner
-  report: the motif band carried no information — true, and the type had admitted it by
-  asking for motifs "at very low opacity". Across five renders the panels never shared a
-  datum, so a type claiming a MEASURED difference had nothing to measure against. Also: the
-  product must sit at the SAME interface as the culprit, at comparable size, exposed rather
-  than housed — an insole asked for "fitted inside" a shoe AND "visibly carried" cannot be
-  both, and rendered as a sliver while the heel opposite it read instantly.
-- 1.3 (2026-08-12): **the product became the thing on the right.** Owner report: no
-  comparison object that is the product. The RIGHT panel used to read "no object or
-  [supportive object]", so every render argued "stop wearing heels" and never "buy this".
-  `requires_product_photo` → true, G1 exemption dropped, product-free form kept as
-  `--diagnostic`. `measure` gained the straight-LINES-never-boxes wording after the
-  `line-engraving` failure.
-- 1.2 (2026-08-12): **the design language stopped being hard-coded.** Owner report: the
-  elements were locked to one style and one colour scheme. Ground and motifs became DERIVED
-  from the culprit's material world, the fixed palette became a functional constraint, and
-  illustration style became a named choice. The rule-based reason the pale blue ground had
-  to go: G3 makes blue mean correct support and working mechanism, so a blue canvas put the
-  whole image inside the correct-side signal, and all three renders show the right panel's
-  blue aura fighting a blue field. Ivory structures untouched — G3 assigns yellow to
-  neutral structure. Badges moved to TOP corners, borrowing `01-pain-split`'s wording;
-  `[BODY]` fixed at one figure per panel; the `RATIO:` line dropped per adapter Rule 4.
-- 1.1 (2026-08-11): channels gain `advertorial`. Self-contradiction: use_when already said
-  the type "fits the middle of an advertorial" while the frontmatter excluded that channel.
+Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
+git is the audit surface, so decisions are recorded here and workings are not.
+- 1.11 (2026-08-13): **compressed, and `frame` added.** Owner report: the prompts had grown
+  bloated and the outputs still lacked style variety. Both were true and both were mine.
+  Measured: rendered prompts went 2321 → 3330 characters across four sets while adapter
+  Rule 6 asks for a re-read past 2500, and this file went 14171 → 36631 characters in three
+  versions, undoing the compression 1.7 had just performed — CHANGELOG alone reached 31% of
+  it. New `PROMPT BUDGET` section states the rule that was missing: a clause earns its place
+  in a prompt only if a render has failed without it, ceiling ~1800 characters. On variety,
+  the diagnosis was wrong at 1.8 and is corrected here — three style values changed technique
+  while every render kept one composition, so `frame` (`whole` / `interface` / `macro`) is
+  added as the untried lever. No rule was weakened in this pass; the workings moved to git.
+- 1.10 (2026-08-13): ground step CONFIRMED at 5 of 6, the type's most reliable rule.
+  `pressure` drew correctly at last, on the CONTACT SURFACE respecification; `contour` held
+  its count once ONE bounded edge was named. `measure` admitted to have never carried its own
+  difference in 18 renders, and given four clauses: STOP at landmarks, direction named against
+  the structure, both lines anchored at the same place, and a 2:1 admission test. `panels`
+  gained the drawn-in-both-panels and in-contact requirements. Six records, ts 2026-08-13.
+- 1.9 (2026-08-13): the REMOVAL TEST added as the type's first admission gate, after two of
+  three prompts argued a repair their product cannot make. `ground` gained the value step at
+  the divider, resolving a conflict between the flat field and the RIGHT-brighter law.
+  `light-field` withdrawn at 0 of 2. Three records, ts 2026-08-13.
+- 1.8 (2026-08-12): five renders of the MARKS library. `axis` and `range` became instruments;
+  `pressure` drifted; `baseline` failed 0 of 2 as a divider-crossing line and was respecified.
+  `body` gained a named SUBJECT CLASS after five of five renders drew a skeleton. Five
+  records, ts 2026-08-12.
+- 1.7 (2026-08-12): **restructured into a call-map plus two libraries** (ADR-012). `PARTS`
+  holds the non-mark building blocks, `MARKS` this type's marks with form, colour, count and
+  evidence; the skeleton became a map naming them. Branches never cost context —
+  `query/runbook.md` Step 5 resolves them before a prompt ships — they cost correctness, so
+  naming each choice makes it a deliberate lookup. File 25455 → 14171, skeleton 1926 → 966.
+- 1.6 (2026-08-12): `measure`'s rule rewritten to govern the LINE — same two landmarks,
+  exactly one property differing. The v1.2 wording was generalised from one failure and would
+  have forbidden a render that passed.
+- 1.5 (2026-08-12): the two parallel panel blocks collapsed into one.
+- 1.4 (2026-08-12): background motifs removed and the `baseline` datum put in their place;
+  the product must sit at the SAME interface as the culprit, comparable in size and exposed
+  rather than housed.
+- 1.3 (2026-08-12): **the product became the thing on the right.** The RIGHT panel used to
+  read "no object or supportive object", so every render argued "stop doing this" and never
+  "buy this". `requires_product_photo` → true; the product-free form kept as `--diagnostic`.
+- 1.2 (2026-08-12): **the design language stopped being hard-coded.** Ground derived from the
+  culprit's material world, the fixed palette became a functional constraint, illustration
+  style became a named choice. G3 makes blue mean correct, so a blue canvas put the whole
+  image inside the correct-side signal. Badges moved to TOP corners; `RATIO:` dropped per
+  adapter Rule 4.
+- 1.1 (2026-08-11): channels gain `advertorial`, resolving a self-contradiction with use_when.
 - 1.0 (2026-08-10): initial from the car-seat spine exemplar; exemplar faults encoded
   (correct-side-left inversion, missing X badge). seed: conversation.md.
