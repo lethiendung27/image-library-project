@@ -3,7 +3,7 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "1.6"
+version: "2.0"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]

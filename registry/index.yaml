@@ -129,7 +129,7 @@ types:
     step: 3
     job: mechanism
     device: ghostbody
-    version: "1.6"
+    version: "2.0"
     status: active
     channels: [marketplace, landing-page, advertorial]
     ratios: ["1:1", "4:5"]
