@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.10"
+version: "1.11"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 02-symptom-rail v1.10
+TYPE: 02-symptom-rail v1.11
 LAYERS: photographic hero on the left, vignette rail down the right edge.
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -92,7 +92,7 @@ same-looking mark in another type visible from here.
 |---|---|---|---|---|
 | `symptom-glow` | a soft radial glow centred on the symptom inside a vignette | red only | exactly 3, one per vignette | 4 renders · also in `01-pain-split` as hotspots |
 | `substance` | the matter the product moves, gathered into a directional form and thinning where it disperses — the mark is MADE of that matter | the substance's own real colour, never red | N streams, on the product | 3 renders · shows presence and place only |
-| `transform` | TWO COHERENT BODIES of the same substance in one frame, one dulled and one clear, each with edges a viewer can look through | the substance's own real colour on both sides, differing only in clarity — no signal colour | exactly 2 bodies, at or from the product | 1 of 3 · works only on a body, never on a spray or on air |
+| `transform` | PROGRESS across one continuous surface or flow: the product sits ON the boundary, done behind it and not-yet-done ahead | the substance or surface's own real colour on both sides, differing only in how clean — no signal colour | one boundary, at the product's own edge | 2 of 6 · needs a boundary, never two side-by-side containers |
 | `field` | contour lines or a soft radiating envelope that WRAPS the receiving surface and shows which way the transfer runs | neutral warm-white or translucent, no signal colour | N contours, on the receiving surface | 2 renders · works on powered AND passive products |
 
 **A field is not only heat.** `field` covers heat, SUPPORT, vibration and PRESSURE, so a
@@ -128,7 +128,30 @@ hair the rail complained about, and a plain shower head would have produced an i
 stream. Filtration is the whole benefit and nothing in the frame carried it. A substance mark
 can say water is here and falling on her; it cannot say what kind of water it is.
 
-**`transform` needs two BODIES, and that is the whole of it.** Three renders decided this in
+**`transform` must read as PROGRESS, not as two co-present states.** This is the owner's
+finding and it supersedes the two-bodies wording below, which was the right observation with
+the wrong cause. The vacuum works because a pale cleaned strip lies behind the head against
+matted pile ahead of it and the boundary runs along the head's own edge — the machine is
+visibly the agent, the dirty half is what is LEFT TO DO, and direction is unambiguous. The
+floor washer failed with the same substance and the same product class because two tanks side
+by side are two objects: nothing says one becomes the other.
+
+So: **put the product ON the boundary of one continuous surface or one continuous flow.** Done
+behind, not-yet-done ahead. That is what the tap did too — the flow ran down through the
+housing into the glass, so before and after lay along one path with the filter between them.
+
+**And never attach the dulled state to what the person RECEIVES.** The shower render pooled
+unclear water in the woman's cupped hands while the rail showed the same hands holding cloudy
+water: it reads as bathing in dirty water, whatever the prompt says. A dirty body may sit in a
+sealed housing, in a tank, or on a surface not yet reached. It may never sit in the hands, on
+the skin, or in the air of the person using the product.
+
+**A product whose output arrives everywhere at once cannot carry this mark at all** — no
+container to judge, no boundary to cross, and the only available body belongs to the person
+being treated. A shower filter is that case, confirmed over three renders and three different
+failures, and it is the same class as the air products for the same reason.
+
+The earlier wording, kept because the observation under it still holds: Three renders decided this in
 one batch: the tap worked and the shower and the vacuum failed, and the difference is not
 wording. The tap put a dulled grey column inside a transparent housing and a crystal-clear
 column falling into a held glass — two volumes with edges, side by side, judgeable by eye. The
@@ -295,6 +318,26 @@ the amber-versus-neutral question above is the thing to watch.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.11 (2026-08-13): **`transform` is PROGRESS, not co-presence.** Owner finding, and it
+  supersedes 1.10's two-bodies wording — the right observation with the wrong cause. Three
+  renders: the vacuum passed, the floor washer and the shower failed.
+  The vacuum works because a pale cleaned strip lies behind the head against matted pile ahead
+  of it, with the boundary along the head's own edge: the machine is visibly the agent, the
+  dirty half is what is LEFT TO DO, and direction is unambiguous. The floor washer failed with
+  the same substance and the same product class, because two tanks side by side are two
+  objects and nothing says one becomes the other. So the product goes ON the boundary of one
+  continuous surface or flow — which is what the tap did too, the flow running down through
+  the housing into the glass with the filter between.
+  Second clause, from the shower: **never attach the dulled state to what the person
+  RECEIVES.** Unclear water pooled in her cupped hands, with the rail showing the same hands
+  holding cloudy water, reads as bathing in dirty water whatever the prompt says. A dirty body
+  may sit in a sealed housing, a tank, or a surface not yet reached — never in the hands, on
+  the skin, or in the air of the person using the product.
+  Third: **a product whose output arrives everywhere at once cannot carry this mark.** No
+  container, no boundary, and the only body available belongs to the person being treated. The
+  shower filter is that case across three renders and three different failures, and it is the
+  same class as the air products for the same reason. Recorded so it is not attempted a fourth
+  time.
 - 1.10 (2026-08-13): **`transform` needs two BODIES.** Three renders in one batch settled it,
   the owner confirming the tap as the one that works: a dulled grey column inside a transparent
   housing beside a crystal-clear column falling into a held glass — two volumes with edges,
