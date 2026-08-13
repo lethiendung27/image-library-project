@@ -3,7 +3,7 @@ id: 05-persona-grid
 step: 5
 job: persona
 device: grid
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once.
 nothing is added to the frame.
 
 ```
-TYPE: 05-persona-grid v1.3 [--1plus3 | --2x2 | --1plus4]
+TYPE: 05-persona-grid v1.4 [--1plus3 | --2x2 | --1plus4]
 
 [LAYOUT] cells, thin white gutters, no outer border.        -> PARTS/layout
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -56,15 +56,20 @@ REGISTER: clean lifestyle collage for e-commerce, bright, airy, sharp.
 **`layout`** — the variant's cell arrangement, thin white gutters, no outer border, and no
 graphic overlay of any kind.
 
-**`constant`** — what carries cohesion, and it is three things and not four: the colour grade
-and palette (**name the tones, never a count of them**), the light quality — soft, diffused or
-directional, never harsh or coloured — and ONE product colourway throughout. A second colourway
-reads as a different product.
+**`constant`** — TWO things only: ONE product colourway, and one photographic FINISH — the
+same lens character, the same contrast, the same skin rendering. That finish is what makes four
+photographs read as one set.
 
-Posture is deliberately NOT locked. Locking it produced four near-identical cells at v1.0, and
-cohesion moved onto grade, light and colourway instead.
+**Palette and light are NOT constant, and this is the type's third pass at the same mistake.**
+v1.0 locked posture and got four near-identical cells. v1.1 moved cohesion onto grade and light
+and got four identical WORLDS — a bouldering wall, a hospital ward, a building site and a park
+all rendered in one warm-sand palette under one soft daylight, with no night, no overcast and no
+interior light anywhere. Each time the lock was moved up a level rather than removed. Cohesion
+is the finish and the colourway; everything else belongs to the place.
 
-**`variation`** — what must differ, one value per cell, never repeated: the age, gender and
+**`variation`** — what must differ, one value per cell, never repeated: **the palette and the
+light, each taken from that cell's own real place and time of day** — an evening ward is
+tungsten and dim, a building site is flat overcast, a park at noon is warm; the age, gender and
 body situation of the subject; the camera angle, chosen from eye-level side profile, high
 three-quarter, low angle, over-the-shoulder, waist-level frontal, close crop on the
 interaction; the environment; and the shot distance.
@@ -91,8 +96,8 @@ for more readers than a generic one.
 ```
 [G6] + borders around cells, badges, arrows,
 product hidden or cropped out in any cell, product smaller than 15% of cell height,
-different product colors between cells, mismatched color grade between cells,
-one cell darker than the others, identical camera angles, repeated framing,
+different product colors between cells, stylised or filtered grade on any cell,
+identical camera angles, repeated framing,
 same environment twice, stock photo collage look, duplicate-looking people
 ```
 Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
@@ -110,6 +115,12 @@ rule in fifth-size cells.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.4 (2026-08-13): **palette and light move from `constant` to `variation`.** Owner: meaning
+  and logic good, but one colour, one space, one weather — and the render was a faithful
+  execution of the old law. The type's THIRD pass at one mistake: v1.0 locked posture, v1.1
+  locked grade and light, each time moving the lock up a level instead of removing it. Cohesion
+  is now one product colourway and one photographic FINISH. NEGATIVE drops two tokens that
+  encoded the uniformity — an evening ward SHOULD be darker.
 - 1.3 (2026-08-13): **restructured into a call-map plus PARTS** (ADR-012), owner instruction.
   `PARTS` owns `layout`, `constant`, `variation`, `product`, `casting`. **No MARKS section** —
   a photographic collage that casts rather than argues adds nothing to the frame, the same
