@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -41,7 +41,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 01-pain-scene v1.4 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.5 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT]
@@ -116,6 +116,13 @@ product placement
 into a rendered avoid line is a Rule 1a bleed — the avoid line has no negative channel
 and no operators, so "red glow" beside a required red glow suppresses the mark. Drop,
 never rephrase. `arrows` and `badges` stay in every variant: the mark law bars them.
+
+**Four more bleed in EVERY variant** — `studio lighting` here, plus `bright airy
+lighting`, `flat daylight look` and `warm flattering light` in the variant blocks. Each
+qualifies *light*, which every prompt in this type requires, so each is the shape Rule 1a
+measured as `one panel brighter than the others` suppressing a required exposure drift.
+The canonical list keeps them; the adapter drops them and the body asserts the lighting
+positively instead. `golden hour` is safe — it qualifies nothing a prompt needs.
 
 ## VARIANTS
 ### --candid (default)
@@ -220,9 +227,29 @@ threatening — fallback: knife down on the board, both hands braced on the coun
 (2) frustration drifting into theatrical anger — the variant lives on restraint.
 
 ## KNOWN-FLAKY
-(populated from observation evidence only)
+- **Unrequested four-pointed sparkle glyph, bottom-right, 2 of 2 jar renders examined
+  2026-08-13.** Same corner and same form in both, and it takes the tone of whatever is
+  beneath it — wood on the tabletop, white on the envelopes — which is a composite
+  overlay's signature rather than a drawn element. Not this type's defect: it is the
+  platform artefact `adapters/nano-banana.md` Rule 7 tracks, and the blend behaviour is
+  new evidence for the watermark reading there. Intermittent — this type's mark-free
+  control of 2026-08-12 recorded none. The v1.5 prompt set runs Rule 7's own untried test:
+  one prompt names that corner as bare, two omit the clause.
 
 ## CHANGELOG
+- 1.5 (2026-08-13): **avoid-line law completed; the corner glyph recorded.** The NEGATIVE
+  note dropped three Rule 1a bleeds under `--marked` and missed four that bleed in every
+  variant — `studio lighting`, `bright airy lighting`, `flat daylight look` and `warm
+  flattering light` all qualify *light*, which every prompt here requires. Nothing about
+  what renders changed, and no passing render would have been forbidden by it. KNOWN-FLAKY
+  opens with the unrequested bottom-right sparkle, 2 of 2 jar renders examined, carrying
+  one fact the adapter does not have: the glyph takes the tone of the surface beneath it,
+  so it is a composite overlay and not a drawn element. Shipped with it, three `--marked`
+  prompts at 1760/1770/1880 characters against the variant's one proven render at 1669,
+  Rule 1a gate clean at 0 unexplained hits with the checker verified against known-bad
+  input first. `--marked` still stands on ONE render: the set asks whether the ring class
+  exists at all, whether the glow survives crushed blacks, and whether the mark may sit on
+  residue instead of on the body. File 17118 → 19394 characters.
 - 1.4 (2026-08-12): **skeleton compressed, no change to what renders.** Same slots, same
   laws, same image — only where the text lives moved, so this is MINOR: no layer, zone or
   panel changed. The skeleton block drops from 2144 to 1314 characters, 38% smaller, and
