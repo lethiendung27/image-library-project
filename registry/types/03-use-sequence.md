@@ -152,7 +152,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   1645 → 608. `emission` named as the type's only mark, and the MARKS section states plainly
   that the near-absence is the design: this type argues with actions rather than graphics, and
   an arrow or a number would make it the manual its PURPOSE avoids. `RATIO:` dropped per
-  adapter Rule 4. `PENDING`
+  adapter Rule 4. `e8ca963`
 - 1.1 (2026-08-11): channels gain `advertorial`. Demand evidence: two real advertorial pages
   for the wall cooler carry explicit numbered step sections, which is what this type serves.
 - 1.0 (2026-08-10): initial from the pet-brush three-panel exemplar; exemplar fault encoded —

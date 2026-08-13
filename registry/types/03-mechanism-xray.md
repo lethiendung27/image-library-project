@@ -252,7 +252,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   in full text per SPEC §3.3. The 1.2 decisions are confirmed at 2 of 2 — a hair dryer whose
   orange coil the old lock forbade, and a robot vacuum carrying `caught` inside its bin and
   `working` as a path along a duct. The shower-filter example is retired with the palette lock
-  it was written under. Closing state: three marks, all with render evidence. `PENDING`
+  it was written under. Closing state: three marks, all with render evidence. `e8ca963`
 - 1.2 (2026-08-13): **the palette lock and the canvas motifs are gone.** Owner-approved on three
   recommendations. Evidence: 3 records at 1.1 — 2 `partial`, 1 `fail`. Colour is free and chosen
   for the product, the ruling `02-cause-anatomy` took at its 1.13; the navy-and-steel lock had
