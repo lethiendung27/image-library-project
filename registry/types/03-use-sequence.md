@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.6"
+version: "1.7"
 status: active
 replaced_by: null
 ratios: ["3:4", "1:1"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-use-sequence v1.6
+TYPE: 03-use-sequence v1.7
 REGISTER: a real home, close range, available light.          -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference, in every panel.
@@ -47,9 +47,8 @@ REGISTER: a real home, close range, available light.          -> PARTS/register
 [CONTINUITY] one pair of hands, one place, one light.         -> PARTS/continuity
 [PANELS] prepare, then use, then result.                      -> PARTS/panels
 [ENVIRONMENT] one ordinary room, named once.                  -> PARTS/environment
-[MARKS] never carries the reading order.                      -> MARKS
-  fit, in the PREPARE panel, if a part seats onto something
-  emission, in the USE panel, if the product visibly emits
+[MARKS] emission only, in the USE panel, if the product     -> MARKS
+        visibly emits. Nothing is ever drawn over the photo.
 ```
 
 ## PARTS
@@ -64,11 +63,13 @@ times and "soft daylight" 8. The register fixes the KIND of photograph. The home
 the light and the person are chosen per prompt, and **two prompts in one set may not share
 them** — a set that comes back as one look is a fault in the set, not in the model.
 
-**`layout`** — three horizontal panels stacked vertically with thin white gutters, no outer
-border. **No numbers, no step markers, no text of any kind, and nothing that points from one
-panel to another.** The order is read from the actions themselves, which is this type's entire
-discipline. A mark inside a single panel may state how a part seats; nothing may carry the
-reading order — see MARKS.
+**`layout`** — three photographs stacked one above another, filling the whole image, thin white
+gutters, no outer border, and no panel other than those three. **Never describe the frame's
+shape or ratio**: the owner sets the ratio at render time, and a prompt that reasons about frame
+geometry leaves the model space to reconcile, and it fills that space with extra small panels.
+
+**No numbers, no step markers, no text of any kind, and nothing that points from one panel to
+another.** The order is read from the actions themselves, which is this type's entire discipline.
 
 **`continuity`** — the make-or-break. The SAME hands in every panel: same skin tone, same
 nails, same wrists, same sleeves. The same subject or surface throughout. **One palette and one
@@ -120,48 +121,47 @@ once and identical in all three panels.
 **No mark here may carry the reading order.** Every other step-3 type argues with graphic
 marks; this one argues with actions in sequence, and a step number or an arrow running between
 panels would turn it into the instruction manual its PURPOSE exists to avoid. What a mark may
-do is state, inside one panel, something the action alone leaves ambiguous. Two entries.
+do is state, inside one panel, something the action alone leaves ambiguous. **One entry,**
+and the second was cut on evidence rather than never tried — see below.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `emission` | whatever the product visibly puts out — spray, steam, light, foam — lit so it reads, made of the substance itself | the substance's own real colour | 1, in the USE panel only | 2/2 as steam, garment steamer, 2026-08-13 |
-| `fit` | a mark drawn ON the contact line where the two parts meet, spanning it and touching both at that line, at least as wide as the narrower part | thin neutral white or light grey; never a signal colour | 1, in the PREPARE panel only | **0/6 as first specified** — respecified once |
+| `emission` | whatever the product visibly puts out — spray, steam, light, foam — lit so it reads, made of the substance itself | the substance's own real colour | 1, in the USE panel only | 7/7 — steam, foam, a water jet, falling ground pepper |
+
+**`fit` is cut at 1.7, 0 of 8.** It was tried in the gap beside the junction and then respecified
+onto the contact line; the second form placed correctly once, as a hairline that ran past the
+junction and vanished at full size, and was absent entirely the other time. The owner's verdict
+across both attempts: the marks either do not appear or cannot be seen.
+
+**What the eight renders actually say is a rule about form, not about this one mark.** In this
+register a mark made OF something physically in the scene renders every time — `emission` is 7
+for 7 across steam, foam, a water jet and falling ground pepper. A mark DRAWN over the
+photograph, small and at a junction, rendered usably 0 times in 8. A11 in
+`registry/argument-faults.md` says drawn geometry does read in a photographic register, and it
+still holds: its evidence is `01-pain-scene`, where the drawn marks were rings and glows sized
+to the frame. The refinement this type pays for is scale — a drawn mark the size of a seam is
+below what survives. **If this type needs to say how a thing fits, the action has to say it:
+hands seating the part, in contact, with nothing drawn.**
 
 **`emission` exists only if the product genuinely emits** (G8). It is not a mark laid over the
 photograph; it is a real thing in the scene, lit to be visible. Never invent an emission so a
 panel looks active — G8's whole subject is not faking an effect so a PHOTO looks like it is
 working, and a photographic register is where that is easiest to do and hardest to forgive.
 
-**`fit` failed as first specified — 0 of 6, and the failure was the wording, not the model.**
-It was written as a mark sitting IN THE GAP beside the junction, off both parts. The renders
-show what that buys: on the jar opener the mark came back as four short dashes floating in
-blurred background air several centimetres from the lid, attached to nothing and stating
-nothing. Only the water flosser put it at the junction at all, and that frame also carried a
-stray tick on the product body, which A5 forbids. A mark told to touch nothing lands nowhere.
-
-**Respecified: draw it ON the contact line.** It spans the line where the two parts meet and
-touches both there, and it is at least as wide as the narrower part — a mark of the junction
-rather than a mark near it. A5 still holds, because A5 bans a signal colour applied to a
-product's body, not a neutral line at the seam.
-
-**The panel must show the junction being made.** A2: a mark states, it cannot suppose. One
-frother run drew a clean arrow at a whisk already seated, so it pointed at a junction nobody
-was making and read as decoration; its sibling held the whisk off the shaft and the same arrow
-read. Where the panel shows two parts already joined, `fit` has nothing to say and is omitted.
-It names the shared axis rather than up or down (A10), and PREPARE only.
-
-**If the respecified form also comes back unreadable, the mark is cut.** The owner's verdict on
-the first attempt was that the marks were too small to make out and served no logic or purpose,
-and one respecification is what that buys.
-
 The type is `exempt_from: [G3, G4]`: no signal colours, no correct-versus-wrong grading. There
 is no wrong state here at all — nobody is doing it badly, because the argument is "this is
 easy", not "this is better".
 
 ## SLOT CONSTRAINTS
-- **The prompt budget** (ADR-013, ADR-015): a clause earns its place in a rendered prompt only
-  if a render has failed without it, and it is removed only once a render has done without it
-  and come back correct.
+- **The prompt budget is this type's hardest constraint, and length is what breaks the layout.**
+  Measured across four sets into the same renderer: 1533 characters average and the stack held
+  4 of 6; 2054 and it held 1 of 8; 2296, 1 of 8; 2368, 1 of 4. The last set rendered into
+  1200x896, the identical frame the first set used, so the frame is not the variable — the
+  wording is. Every clause added to fix a content fault was paid for out of the layout. **Keep a
+  rendered prompt under about 1500 characters**, and when a new clause is earned, find its cost
+  somewhere else in the prompt rather than appending it.
+- A clause earns its place only if a render has failed without it, and is removed only once a
+  render has done without it and come back correct (ADR-013, ADR-015).
 - One action per panel; the order readable without numbering.
 - Continuity of hands before everything else.
 - **Hands at close range are this type's highest model risk** — adapter Rule 5 names hands as
@@ -270,6 +270,11 @@ more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.7 (2026-08-13): `fit` cut at 0/8. Substance marks are 7/7 and drawn overlay at seam scale
+  is 0/8, so this type argues with things in the scene, never with overlay. `layout` stops
+  describing frame geometry — the owner sets the ratio, and reasoning about the frame buys
+  extra small panels. SLOT CONSTRAINTS gains the measurement: prompt length breaks the stack,
+  1533 characters held 4/6 and 2368 held 1/4 into the same frame.
 - 1.6 (2026-08-13): three owner corrections. Ratios move to the five allowed by ADR-016, so
   `4:5` becomes `3:4`. `register` stops prescribing one look — it was the source of the slop,
   4 mandated palettes and 8 mandated lights in one four-prompt set — and now varies per prompt,
