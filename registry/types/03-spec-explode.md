@@ -3,7 +3,7 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 ratios: ["1:1", "16:9"]
@@ -41,63 +41,97 @@ avoid_when: >
   where tech renders break trust.
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
+
 ```
-TYPE: 03-spec-explode v1.0
-RATIO: [1:1 / 16:9]
-REGISTER: 3D technical render. NOT photography. Dark engineering background.
+TYPE: 03-spec-explode v1.1
+REGISTER: 3D technical render. NOT photography.
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference. Every outer part
-(shell halves, buttons, ports, lens rings) must match the reference exactly
-in shape, proportion, material and color. Do not redesign or add features.
+[PRODUCT REFERENCE] attached photo is the exact reference for every outer part.
+[CANVAS]                                                      -> PARTS/canvas
+[FRAMING] full-frame or inset.                                -> PARTS/framing
+[STACK] name the real parts in assembly order.                -> PARTS/stack
+[CENSUS] only what the product genuinely contains.            -> PARTS/census
+[FOCUS] the one part that carries the buying argument.        -> PARTS/focus
+[MARKS] focus glow, or none.                                  -> MARKS
 
-[CANVAS]
-Dark [deep navy / graphite] engineering canvas, faint [cyan] traces at very
-low contrast. Motifs stay dim — credibility, not information.
-
-[FRAMING — choose ONE]
-full-frame: the exploded stack IS the image, parts filling [60-80%] of frame.
-inset: a packshot base with the exploded stack inside ONE [circular] inset,
-  occupying [30-40%] of frame width — for gallery positions that must keep
-  the product recognizable at thumbnail size.
-
-[EXPLODE STACK]
-The product separated along ONE axis into [3-6] REAL component groups, in
-true assembly order, evenly spaced, each part solid and detailed:
-[part 1], [part 2], [part 3], [part 4]. Nothing rotated out of line;
-nothing duplicated; gaps even enough that the eye can reassemble it.
-
-[HONESTY CENSUS — hard rule]
-Render ONLY component types the product genuinely contains, at plausible
-sizes. No invented modules, no doubled parts, no filler pieces. The census IS
-the claim — padding it is lying at the argument's core.
-For layered materials (soles, wheels, mats): the stack may fan the REAL
-layers like pages; layer count must match the spec.
-
-[FOCUS COMPONENT]
-[The one part that carries the buying argument] rendered brightest /
-most detailed, placed nearest the visual center. A faint [cyan] glow may
-mark it (G3: blue = working component). Product-identity colors (a lens
-ring, brand accents) stay as the reference shows them.
-
-NO text, no numbers, no part labels, no callout lines — indices and specs
-are composited in post if the page needs them.
-STYLE: premium technical product visualization, sharp, high detail, 4K.
-NO text, no logo, no watermark.
+STYLE: premium technical product visualization, sharp, high detail.
+No text, no numerals, no part labels, no callout lines — indices and specs are
+composited in post if the page needs them (G6 production law).
 ```
+
+## PARTS
+
+**`canvas`** — a dark engineering ground, `deep navy` or `graphite`, with faint cyan traces
+at very low contrast. Motifs stay dim: credibility, not information.
+
+*Open proposal, below threshold.* 2 of the 5 exemplars sit on a NON-dark ground — a studio
+grey field and a marketplace tile with a white-rimmed circular inset — against a §6.2 bar of
+3, so the slot is not widened. The patch shape is already known and needs one more
+light-ground exemplar: make the ground a named parameter and narrow NEGATIVE's white-ground
+ban to the blown-out case it was aimed at. Note that the ground is fixed in three places —
+REGISTER, this slot, and NEGATIVE — so widening means moving all three.
+
+**`framing`** — one of two.
+
+- `full-frame` — the exploded stack IS the image, parts filling 60-80% of frame. 1 render.
+- `inset` — a packshot base with the stack inside ONE circular inset at 30-40% of frame
+  width, for gallery positions that must stay recognisable at thumbnail size. 0 renders.
+
+**`stack`** — the product separated along ONE axis into its real component groups, in true
+assembly order, evenly spaced, each part solid and detailed. Nothing rotated out of line,
+nothing duplicated, gaps even enough that the eye can reassemble it.
+
+**Name the PARTS, never a number of them.** A count does not bind in this library and never
+has; a list of named components binds because each name is a thing the model can find in the
+reference. The one passing render named five: clear upper shell, lens module with its red
+identity ring, populated main board, flat battery cell, lower chassis with its port.
+
+Assembly order IS the credibility. A scattered parts cloud reads as decoration and kills the
+census.
+
+**`census`** — render ONLY component types the product genuinely contains, at plausible
+sizes. No invented modules, no doubled parts, no filler pieces. **The census IS the claim, so
+padding it is lying at the argument's core.** For layered materials — soles, wheels, mats,
+filter media — the stack may fan the REAL layers like pages, and the layer count must match
+the spec.
+
+**`focus`** — the one part that carries the buying argument, rendered brightest and most
+detailed, nearest the visual centre. Product-identity colours — a lens ring, a brand accent —
+stay exactly as the reference shows them.
+
+## MARKS
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `focus-glow` | a faint glow around the focus component only | cyan — G3, working component | at most 1 | 1 render |
+
+**`argument-faults.md` A5 does not bind here, and the reason is worth stating.** A5 says a
+signal colour on the product reads as the product being coloured, because the mark belongs on
+the body instead. This frame contains nothing but the product, so there is no body to move
+the mark to: the focus glow is either on a component or the type has no mark at all. It is
+the one exception the catalogue's own logic allows, and it rests on a single passing render.
+
+**The register is a 3D render, which is why a glow works here at all.** In a photographic
+register a mark must have a form the scene could not produce (A11); in a technical render
+everything is already synthetic, so a glow reads as emphasis rather than as a light source.
+The same reasoning is why a fill works in `02-cause-anatomy` and fails in `01-pain-scene` —
+mark forms do not travel between registers without their own evidence.
 
 ## SLOT CONSTRAINTS
-- Assembly order is the credibility: parts float where they belong, on one
-  axis. A scattered "parts cloud" reads as decoration and kills the census.
-- The observed market habit of numbering layers (digits 1-6, obs
-  `sha256:bb60ab…`) goes to post-composite, never generated (G6 production
-  law — model-drawn digits are gibberish).
-- Boundary with xray, to hold in every prompt: explode SEPARATES (what is
-  inside, job=spec); xray keeps the shell intact and looks THROUGH it (why it
-  works, job=mechanism). If the prompt wants function explained, it is in the
-  wrong type.
-- G7 exemption is structural: an exploded product only exists in technical
-  register; never place the exploded parts into a photographic scene.
+- **Trivial interiors are an admission test.** A shell and one part reads as emptiness made
+  large. If the census would run to two entries, this is the wrong type.
+- **Boundary with `03-mechanism-xray`, to hold in every prompt:** explode SEPARATES — what is
+  inside, job=spec. Xray keeps the shell intact and looks THROUGH it — why it works,
+  job=mechanism. If a prompt starts explaining function, it is in the wrong type.
+- **Never combine an exploded view with a translucent intact shell.** That is the xray
+  argument wearing this type's clothes, and it is what keeps the two apart at routing.
+- Layer numbering is a market habit (obs `sha256:bb60ab…`) and goes to post-composite, never
+  generated: model-drawn digits are gibberish (G6 production law).
+- G7 exemption is structural — an exploded product exists only in technical register. Never
+  place exploded parts into a photographic scene.
+- **The prompt budget.** A clause earns its place only if a render has failed without it.
+  Since ADR-014 no `Strictly avoid:` line is rendered at all.
 
 ## NEGATIVE
 ```
@@ -107,9 +141,12 @@ parts scattered off-axis, opaque parts hiding the census, exploded view
 combined with translucent intact shell, bright white background,
 rainbow palette, cartoon style
 ```
+Canonical and model-agnostic. Since ADR-014 it is **not rendered into the prompt at all**; it
+stays here and in the query output's `avoid` field for a future model with a real negative
+channel.
 
 ## WORKED EXAMPLES
-### example: mini-camera-fullframe — skeleton@1.0, run: pass
+### example: mini-camera-fullframe — skeleton@1.1, run: pass
 ```
 A 16:9 3D technical render. NOT photography. Dark engineering background.
 
@@ -153,65 +190,22 @@ answers, never two of these three together beyond the pairing laws above.
 The inset execution (obs `sha256:bb60ab…`) is drafted as a FRAMING option, not
 a variant — same argument, same layers, different footprint.
 
-**The dark canvas is a SKELETON decision, not an exemplar-count one (2026-08-12).**
-The owner's reason for admitting the two 12-A exemplars was to widen this candidate's
-result range instead of every output being a breakdown on a monotone deep-navy ground.
-Worth stating plainly: admitting exemplars cannot do that, because the ground is fixed
-in three places in this file and all three would have to move —
-
-1. `REGISTER:` in the SKELETON header hardcodes `Dark engineering background`;
-2. `[CANVAS]` offers only `[deep navy / graphite]`;
-3. NEGATIVE bans `bright white background` outright.
-
-The stored worked example is a dark 16:9 render, so the type's de-facto house look is
-the navy breakdown, and a filler copying the example inherits it.
-
-Evidence for widening exists and is short of the bar: **2 of the 5 exemplars are on a
-non-dark ground** — `sha256:1abb6e…` on a studio grey field and `sha256:bb60ab…` as a
-marketplace tile with a white-rimmed circular inset. That is 2 observations against the
-§6.2 threshold of 3, so the `[CANVAS]` slot is NOT patched here. One further
-light-ground exemplar makes it actionable, and the patch shape is already clear: turn
-the ground into a named parameter (`[deep navy / graphite / studio grey / light tile]`)
-and narrow the NEGATIVE's white-background ban to the blown-out case it was aimed at.
-Note the direction of the two exemplars just admitted: both are near-black grounds, so
-they push the ledger toward the monotony rather than away from it.
+The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
-- 1.0 (2026-08-12): **promoted to active** on the owner's direct command. All four
-  SPEC §6.3 criteria, each with its evidence:
-  (1) **5 exemplars** — three from the market (`sha256:1abb6e…` 11-B wearable audio puck
-  full-frame; `sha256:620fb5…` 11-E mini camera full-frame; `sha256:bb60ab…` 11-E
-  ab-roller six-layer fan as inset) plus two admitted by owner ruling from batch 12-A
-  (`sha256:af3cd1…` low-res thumbnail, `sha256:8903444…` watermarked stock with HUD
-  panels). Those two carry their own recorded caveat — no product identity, weigh low —
-  and the ruling changes what the count means, not what the records say. A curator
-  reading this later should know criterion 1 rests on 3 market exemplars and 2 admitted
-  ones, not on 5 equal ones.
-  (2) **Router-confusion test PASSED** against both golden fixtures, 14 slot assertions,
-  **0 unintended flips**. The live boundary held on its own gate rather than on wording:
-  both fixtures' mechanism slots require the emitting path shown ACTIVE
-  (`visible_output=water-jet` / `mist`, G8 in technical register), and this type's own
-  NEGATIVE bans an exploded view combined with a translucent intact shell — so it cannot
-  serve a WHY slot even when channel-legal. `03-use-sequence`'s `only_legal_type` slots
-  are job=use and unaffected; fixture-002's `comparison` is advertorial, which this type
-  does not declare.
-  (3) **Worked example rendered** — `mini-camera-fullframe`, owner verdict pass
-  2026-08-11 (`eval/render-tests.jsonl`). Header rebased @0.1 → @1.0: the skeleton text
-  did not change on promotion, so the example still matches it exactly, and leaving @0.1
-  under a v1.0 type would flag stale on a MAJOR lag that is only a renumbering.
-  (4) ADR-007 gate — the owner's explicit command plus the standing authorisation.
-  Vocabulary `explode` loses its `reserved` marker; `mapping/slot-rules.md` gains the
-  type in the `mechanism` row on its two declared channels. `never_with: [03-spec-split]`
-  and `avoid_adjacent: [03-mechanism-xray]` were already resolvable and now bind between
-  three active types.
-- 0.2 (2026-08-12): promotion accounting only — no skeleton, slot, negative or trigger
-  change. Criterion 1 recorded as MET at 5 exemplars by owner ruling, admitting the two
-  batch-12-A records (`sha256:af3cd1…` low-res thumbnail, `sha256:8903444…` watermarked
-  stock with HUD panels) over the caveat their own records carry. Criterion 2, the
-  router-confusion test against `03-mechanism-xray`, is now the only open gate. NOTES
-  gains the finding that the owner's stated goal — widening the result range beyond the
-  deep-navy breakdown — is a `[CANVAS]`/REGISTER/NEGATIVE decision that exemplar count
-  cannot reach, with its own evidence at 2/5 and the patch shape named but not taken.
+- 1.1 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), owner
+  instruction. `PARTS` owns `canvas`, `framing`, `stack`, `census`, `focus`; `MARKS` owns the
+  single `focus-glow`. `RATIO:` dropped per adapter Rule 4. Recorded rather than assumed:
+  A5 cannot bind in a frame containing nothing but the product, and a glow works here because
+  the register is already synthetic. The canvas proposal moves to `PARTS/canvas`, still 2 of
+  5. ADR-014 adopted. · this commit
+- 1.0 (2026-08-12): **promoted to active** on the owner's direct command, all four SPEC §6.3
+  criteria met. Criterion 1 rests on **3 market exemplars plus 2 admitted by owner ruling**
+  whose own records carry a no-product-identity caveat — a curator reading a bare "5" later
+  should know that. Router-confusion test passed on both golden fixtures with 0 unintended
+  flips. · 916bacf
+- 0.2 (2026-08-12): promotion accounting only, no skeleton or trigger change. Criterion 1
+  recorded MET at 5 exemplars by owner ruling over the caveat two of them carry. · e0f280f
 - 0.1 (2026-08-11): staging draft from three ledgered exemplars across three
   verticals — wearable audio puck full-frame (obs `sha256:1abb6e…`, 11-B),
   ab-roller six-layer fan as inset (`sha256:bb60ab…`, 11-E), mini camera
