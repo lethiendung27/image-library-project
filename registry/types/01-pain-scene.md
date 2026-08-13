@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.10"
+version: "1.11"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,7 +43,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.10 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.11 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -163,11 +163,30 @@ another type visible from here.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 5 renders · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
+| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 6 renders · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
 | `ring` | a thin red ring — a clean open circle of even line weight drawn around the evidence, touching nothing else | red only | exactly 1 | 2 renders · FORM confirmed, a clean open circle of even weight; extent bound to the wrong object |
-| `heat` | a soft radial glow on the bounded object that is too hot, fading out at its outline | **orange** — G3's value for wrong heat | exactly 1 | 0 renders · proposal, its first render is its founding evidence |
+| `heat` | a soft radial glow on the bounded object that is too hot, fading out at its outline | **orange** — G3's value for wrong heat | exactly 1 | 1 render · CONFIRMED, orange reads as heat at a glance |
 | `pressure` | a filled band covering the CONTACT between object and body, as wide as the contact itself — never a line, never a glow along an edge | **orange** — G3's value for wrong pressure | exactly 1 | 0 renders · proposal · also in `02-cause-anatomy`, which reached this form after 3 failed ones |
-| `fill` | the bounded object washed through with a translucent tint kept inside its own outline | red | exactly 1 | 0 renders · proposal · also in `02-cause-anatomy` |
+| `fill` | the bounded object washed through with a translucent tint kept inside its own outline | red | exactly 1 | 1 render · needs an OPAQUE object; on glass the tint became the material |
+
+**A mark can LOCATE. It cannot ADJUDICATE.** The glassware subject was attempted three
+times with three classes and failed three different ways: `ring` blew its extent, `ring`
+bound correctly and only pointed, `fill` classified so completely that the glass read as a
+pink glass and no mark was visible at all. The conclusion is about the SUBJECT. Hard-water
+spotting is a property of a whole object, and a property has no place to point at, so a
+pointer adds nothing and a fill replaces the object's own appearance.
+
+**Admission gate: the fault must have a PLACE.** A knuckle, a kneecap, a neck muscle, a
+plug, a crusted spout — somewhere a viewer could put a finger. Where the fault is a quality
+spread over a whole object (dirty, cloudy, blunt, worn), `--marked` is ILLEGAL: use the base
+variant and let light and scale carry the evidence, or take the argument to a comparison
+type, which is what "this one is wrong" actually needs.
+
+**Two form limits, both measured 2026-08-13.** `glow` BLOOMS — a radial falloff cannot be
+stopped at an outline, and asking it to fade before it reaches a neighbouring part failed on
+2 of 2 renders. Where a hard boundary matters, use `ring` or `fill`. And `fill` needs an
+OPAQUE object whose own colour sits far from the tint; on transparent pale glass the tint
+became the material.
 
 **A mark can POINT or it can CLASSIFY, and the first two classes only point.** `glow` and
 `ring` say *here*. On a BODY that is enough: red on a knuckle reads as pain because the
@@ -306,6 +325,20 @@ mark is model-drawn (ADR-008 approach A).
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.11 (2026-08-13): **the admission gate a mark needs — the fault must have a PLACE.** The
+  glassware subject failed three times with three classes, which is 3 of 3 against a §6.2 bar
+  of two-thirds, and the finding is about the subject rather than the library: a mark locates
+  a fault, it cannot adjudicate one, and a property spread over a whole object has nowhere to
+  point. `--marked` is now illegal on such a subject. Two form limits recorded with it: `glow`
+  blooms and cannot be stopped at an outline (2 of 2), so a hard boundary needs `ring` or
+  `fill`; and `fill` needs an OPAQUE object whose colour is far from the tint, since on glass
+  the tint became the material and the owner could no longer see a mark at all.
+  Against those, two classes earned their keep. `heat` is CONFIRMED on its founding render —
+  orange reads as heat at a glance, and it carried the whole warning with no glyph, which is
+  the point, because a warning triangle is text and G6 routes text out of the render. And the
+  rebuilt neck subject proves the 1.10 face finding: given a body under real load the
+  involuntary signs arrive unasked. Marked renders: 6 `glow`, 2 `ring`, 1 `fill`, 1 `heat`.
+  File 26227 → 28774.
 - 1.10 (2026-08-13): **three mark classes added — `heat`, `pressure`, `fill` — on the
   owner's decision**, against my recommendation to add none until binding was solved. Binding
   IS now solved: the two subjects that failed extent at v1.7 both bound correctly at v1.9
