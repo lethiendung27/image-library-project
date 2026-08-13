@@ -6,7 +6,7 @@ types:
     step: 1
     job: pain
     device: scene
-    version: "1.13"
+    version: "1.14"
     status: active
     channels: [paid-social, advertorial, landing-page]
     ratios: ["16:9", "5:3", "4:5"]

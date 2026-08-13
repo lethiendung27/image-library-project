@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.13"
+version: "1.14"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,7 +43,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.13 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.14 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -221,24 +221,13 @@ white background, studio lighting, stock photo look, posed model, fake grimace,
 smiling, clean staged interior, saturated colors, advertising composition,
 product placement
 ```
-**Seven of the tokens above are Rule 1a bleeds: DROP them from a rendered avoid line,
-never rephrase.** The avoid line is prose to this model — no negative channel, no operators
-— so a token qualifying a noun the prompt requires suppresses that noun.
-- Under `--marked`: `red glow`, `pain hotspots`, `graphic overlay`. The variant requires a
-  red glow or ring.
-- In every variant: `studio lighting`, plus `bright airy lighting`, `flat daylight look`
-  and `warm flattering light` from the variant blocks. All four qualify *light*, which
-  every prompt in this type requires — Rule 1a's measured row `one panel brighter than the
-  others`, which suppressed a required exposure drift, is the same shape.
-
-The list stays canonical and model-agnostic; the adapter drops from it at render time and
-the body asserts the positive form instead. `arrows` and `badges` stay in every variant,
-the mark law bars them; `golden hour` is safe, qualifying nothing a prompt needs.
-
-`02-symptom-rail` measured the general case on 2026-08-13: pasting its canonical list whole
-into three prompts produced 27 Rule 1a hits. Copying this block instead of transforming it
-is the error. A rendered avoid line here is usually G6 core plus the two hand descriptors
-adapter Rule 5 mandates.
+This list is canonical and model-agnostic. Since ADR-014 it is **not rendered into the
+prompt at all** — the owner removed the `Strictly avoid:` sentence by hand, re-rendered, and
+the output did not change. The list stays here and in the query output's `avoid` field for a
+future model with a real negative channel. Seven of its tokens were Rule 1a bleeds when it
+WAS rendered (`red glow`, `pain hotspots`, `graphic overlay` under `--marked`; `studio
+lighting` plus the three lighting tokens in the variant blocks, all qualifying *light*), and
+that is why the bounds they carried are asserted positively in the body instead.
 
 ## VARIANTS
 Diffs only. Each variant names the PARTS values it takes; the definitions stay in PARTS.
@@ -264,6 +253,100 @@ mark is model-drawn (ADR-008 approach A).
 - Three tokens DROP from the rendered avoid line — `red glow`, `pain hotspots`,
   `graphic overlay`. The reasoning is in NEGATIVE.
 
+## WORKED EXAMPLES
+Both rendered, both owner-passed, both kept in FULL text per SPEC §3.3 — the render ledger
+stores verdicts and not prompts, so this is the only record of what actually rendered. Both
+carry a closing `Strictly avoid:` line because they were rendered before ADR-014 dropped it;
+do not copy that line into a new prompt.
+
+### example: wet-laundry-candid — skeleton@1.12, run: pass
+```
+TYPE: 01-pain-scene v1.12 --candid
+REGISTER: cinematic film still. Single frame.
+
+[SUBJECT]
+Man late 30s, t-shirt and tracksuit bottoms, in a cramped utility room late at night,
+mid-way through hauling a sodden tangle of washing out of the machine drum with both
+arms: the bundle already clear of the door and sagging heavily between his hands, water
+running off it. Under that force: the back rounded over the load, both elbows locked,
+the weight dragging his shoulders down and forward.
+Face: jaw set, breath held, eyes down on the bundle.
+
+[EVIDENCE]
+Water runs off the bundle in a steady stream and has spread into a wide pool across the
+vinyl floor, his forearms and the front of his t-shirt soaked through, a dark tide line
+already up the leg of his tracksuit bottoms.
+
+[ENVIRONMENT]
+Narrow utility room off a kitchen, late night. Lived-in clutter belonging to that place:
+a basket of dry washing shoved against the wall, a mop leaning in the corner, boxes of
+powder on a shelf, a bin bag by the door. Nothing arranged, nothing removed to tidy the
+frame.
+
+[GAZE] unaware of the camera, gaze down on the load in his arms.
+
+[LIGHT] low-key. Key: a bare bulb overhead, hard and close. Fill: cold spill from the
+kitchen doorway behind him. Rim light along the shoulder and the wet forearms. Deep
+shadow across most of the frame.
+
+[FORBIDDEN] No product, no panels, no insets. No mark of any kind.
+
+[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of field,
+35mm.
+
+STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
+
+Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers.
+```
+The mark-free case. Nothing is pointed at and the frame reads at a glance, because the action
+is one nobody performs without the problem and the evidence is the whole floor rather than a
+detail.
+
+### example: blister-ring-confront — skeleton@1.12, run: pass
+```
+TYPE: 01-pain-scene v1.12 --confront --marked
+REGISTER: cinematic film still. Single frame.
+
+[SUBJECT]
+Woman early 30s, office clothes with the jacket off, sitting sideways on a hallway chair
+turned to camera, one bare foot hauled up across the opposite knee, mid-way through
+pressing a thumb into the ball of that foot to test what is there: the thumb sunk in and
+the toes splayed back away from it. Under that force: the ankle gripped hard by her other
+hand, the knee pulled in, the shoulders twisted round to face the lens.
+Face: mouth pressed flat, brow drawn in, chin tucked.
+
+[EVIDENCE]
+A taut shiny blister has risen at the base of the little toe where the shoe has worn, the
+skin around it thickened and glazed, one heeled shoe lying on its side on the floor below
+with the lining rubbed through at that exact spot.
+
+[ENVIRONMENT]
+Narrow hallway of a rented flat, early evening. Lived-in clutter belonging to that place:
+a bag dropped by the door, post on the shelf, a coat over the chair back, the other shoe
+still upright. Nothing arranged, nothing removed to tidy the frame.
+
+[GAZE] looking directly into the lens, holding the viewer's eye.
+
+[LIGHT] even ambient daylight from a glazed front door, minimal shadow, flat and
+unflattering.
+
+[MARK]
+ONE thin red ring: a clean open circle of even line weight drawn around THE BLISTER and
+sized to it, touching nothing else. It is the only mark in this image.
+
+[FORBIDDEN] No insets, no split panels, no badges, no glyphs. Nothing else in the frame
+is marked.
+
+[GRADE] Desaturated neutral, muted greys and greens, fine film grain, moderate depth of
+field, 35mm. Red appears only in the ring.
+
+STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
+
+Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers.
+```
+The `ring` case. A small target is the one job a ring does better than a glow: it held its
+extent exactly where a glow blooms.
+
 ## KNOWN-FLAKY
 - **Unrequested four-pointed sparkle glyph, bottom-right, 10 of 10 renders examined
   2026-08-13.** Same corner and same form in all four, and it takes the tone of whatever is
@@ -287,6 +370,12 @@ mark is model-drawn (ADR-008 approach A).
 ## CHANGELOG
 Current law is above; the reasoning behind each entry is in the commit it cites (ADR-013).
 
+- 1.14 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES returns
+  with the two renders that earned it — the mark-free laundry frame and the blister ring — in
+  full text per SPEC §3.3, closing the gap opened at 1.7. ADR-014 adopted: the canonical
+  NEGATIVE list is no longer rendered into a prompt. Contributed to `argument-faults.md`: the
+  glassware failure joins A3, and **A11 is new** — a mark must have a form the register could
+  not have produced. · this commit
 - 1.13 (2026-08-13): **a mark reads as a mark only when its form is one the photographed scene
   could not produce.** Filled forms withdrawn at 0 of 2 — a red `fill` turned a glass pink, an
   orange `pressure` band turned into a sock cuff. MARKS reorganised around the two proven

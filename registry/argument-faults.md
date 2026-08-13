@@ -53,6 +53,10 @@ nothing from the viewer. If you cannot, no wording rescues it.
   everywhere and nowhere, so the viewer must already know that vapour in a room relieves a dry
   throat. 5 renders.
 
+- `01-pain-scene`: hard-water spotting on a drinking glass failed across three mark classes
+  in three rounds. A fault that is a PROPERTY of a whole object — dirty, cloudy, blunt, worn —
+  has no place to point at, so a pointer adds nothing and a fill replaces the object. 3 renders.
+
 This is an admission test, not a drawing problem. Such products belong in a mechanism type or
 a before/after type, not in one that marks a body.
 
@@ -126,3 +130,19 @@ Perpendicular, along, and between describe the structure and hold in any orienta
 
 - `02-cause-anatomy`: "straight down" in a side cutaway of an eye, where the gap is horizontal,
   produced two renders measuring the wrong axis. 2 renders.
+
+## A11 · A mark must have a form the register could not have produced
+
+In a PHOTOGRAPHIC register a mark reads as a mark only when its form is one the scene could
+not contain: emitted light, or drawn geometry. A filled region that follows an object's own
+surface is exactly what paint, dye, tape and fabric look like, so the eye files it as
+material and the mark disappears as a mark.
+
+- `01-pain-scene`: a translucent red `fill` turned a drinking glass into a pink glass; an
+  orange `pressure` band on a sock elastic turned into an orange cuff. Both rendered exactly
+  as specified. 0 of 2. In the same type a soft glow and a drawn ring read as marks on 10 of
+  10 renders.
+
+**Register decides, so this is not a fault in the forms themselves.** Both were borrowed from
+`02-cause-anatomy`, where they work, because that type is a 2D illustration and everything in
+frame is already drawn. Carrying a mark form across registers needs its own evidence.
