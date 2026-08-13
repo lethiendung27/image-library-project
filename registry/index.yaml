@@ -99,7 +99,7 @@ types:
     step: 2
     job: symptom
     device: rail
-    version: "1.7"
+    version: "1.8"
     status: active
     channels: [marketplace, landing-page]
     ratios: ["1:1", "4:5"]
@@ -120,7 +120,11 @@ types:
       Fits a broad audience where each buyer hurts in a different way.
     avoid_when: >
       The product solves exactly one problem — the rail becomes padding. Never
-      as a main image. Not when the symptoms cannot be photographed.
+      as a main image. Not when the symptoms cannot be photographed, and **not
+      when the product's effect has no location you can point at** — an air
+      purifier, a humidifier, a diffuser change the medium rather than a body
+      zone, and no mark can show a medium changing. Route those to a mechanism
+      type instead.
   - id: 03-mechanism-ghostbody
     step: 3
     job: mechanism

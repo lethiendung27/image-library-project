@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.7"
+version: "1.8"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -29,14 +29,17 @@ use_when: >
   broad audience where each buyer hurts in a different way.
 avoid_when: >
   The product solves exactly one problem — the rail becomes padding. Never as a
-  main image. Not when the symptoms cannot be photographed.
+  main image. Not when the symptoms cannot be photographed, and **not when the
+  product's effect has no location you can point at** — an air purifier, a
+  humidifier, a diffuser change the medium rather than a body zone, and no mark
+  can show a medium changing. Route those to a mechanism type instead.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 02-symptom-rail v1.7
+TYPE: 02-symptom-rail v1.8
 LAYERS: photographic hero on the left, vignette rail down the right edge.
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -152,6 +155,22 @@ nothing said BEFORE and the eye supplied AFTER. Give the vignettes a different c
 another room, another time of day, dressed differently. The hero is life with the product;
 the rail is life without it.
 
+**A LOCATABLE EFFECT IS AN ADMISSION TEST, and it is the one this type failed three times.**
+Point at where the product's effect arrives. If you can — a shoulder under a heated wrap, a
+hip sunk into foam, a calf under compression — the mark occupies that place and the image
+needs no prior knowledge from the viewer. If you cannot, no wording saves it. Three renders
+across three different wordings proved that: the vapour aimed at her face read as causation,
+the vapour filling the room read as nothing, and both were obeying their instructions
+exactly. An air product's effect is everywhere and nowhere, and the viewer has to already
+know that vapour in a room relieves a dry throat — which is the one thing an image must not
+require.
+
+**A `substance` mark may only draw matter the product ADDS.** The purifier render is the
+proof: dust motes thickening toward the intake rendered faithfully, and the result is a room
+that looks dirty beside a man and his dog. The more honest the mark, the worse the frame
+looks. Matter a product takes away has no positive form, so a removal product gets no
+substance mark — and, by the test above, usually does not belong in this type at all.
+
 **Products that act on the environment rather than on the body** — a diffuser, a humidifier,
 an air purifier — pass the test differently. Their `substance` must travel TOWARD the person
 rather than dispersing into empty room air, and the rail must count symptoms that the
@@ -237,6 +256,24 @@ the amber-versus-neutral question above is the thing to watch.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.8 (2026-08-13): **a locatable effect becomes an admission test, and this type stops
+  taking air products.** Evidence: three records at ts 2026-08-13 — one `pass`, two `fail`.
+  Owner report after the third attempt: the purifier and diffuser images still do not express
+  what the product does.
+  Every 1.7 fix worked and the images were still empty, which is the cleanest possible proof
+  that the fault was never the wording. Point at where the effect arrives: if you can, the
+  mark occupies that place and no prior knowledge is required of the viewer; if you cannot,
+  nothing saves it. An air product changes the medium, which is everywhere and nowhere. That
+  clause is now in `avoid_when`, and such products should route to a mechanism type.
+  Second rule from the same batch: **a `substance` mark may only draw matter the product
+  ADDS.** Dust thickening toward an intake rendered faithfully and made the room look dirty —
+  the more honest the mark, the worse the frame. Matter a product removes has no positive
+  form, which also explains the dehumidifier that started this line.
+  My error, recorded: an aroma diffuser was the wrong product for this type on its own
+  `avoid_when` — scent and mood is ONE problem and the rail becomes padding — and the symptom
+  list I gave it was a humidifier's argument. Two products conflated, three renders spent.
+  **First `pass` this type has earned**: the heated shoulder wrap, with `field` on HEAT under
+  the no-signal-colour rule that heat itself produced at 1.4 and had never been tested against.
 - 1.7 (2026-08-13): **the mark must not be drawn arriving at a symptom, and the rail is a
   different moment.** Two owner findings on the 1.6 set.
   The landing rule added at 1.6 has one failure mode and the first render found it. Where the
