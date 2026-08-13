@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.11"
+version: "1.12"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -42,7 +42,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 02-cause-anatomy v1.11 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.12 [+ --diagnostic]
 MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -63,16 +63,16 @@ Colour follows G3 exactly: red wrong, blue correct, green badge, nothing else.
 every mark around it on its first outing, so it is restricted to frames carrying `measure`
 and `verdict` only. `line-engraving` is held out — see KNOWN-FLAKY.
 
-**`frame`** — how much of the world is in shot. All three values are PROPOSALS with no
-render evidence; the first render of each is its founding evidence. This is the type's last
-untried lever and the one most likely to answer visual sameness, because style values change
-technique while the frame changes the picture.
+**`frame`** — how much of the world is in shot. **`whole` is the only value: the entire body
+or object in shot, the interface small within it.** `interface` and `macro` were proposed at
+1.11 and WITHDRAWN at 1.12 on 0 of 4 — see KNOWN-FLAKY.
 
-- `whole` — the entire body or object in shot, the interface small within it.
-- `interface` — the frame is filled by the contact between culprit and body; everything else
-  is cropped away.
-- `macro` — the landmark pair fills the frame and the object enters only as the edge that
-  touches it.
+The withdrawal is the type's sharpest lesson so far, because the two tight values did exactly
+what they were told and that is what broke the images. Crop to the contact and the hand, the
+bicycle and the person go with it; what is left is a tissue cross-section with an anonymous
+shape entering from the edge. A frame that cannot show a person using the product cannot
+serve a type whose PURPOSE is to show the product doing its job. `whole` was 2 of 2 and
+produced the strongest render this type has made.
 
 **`ground`** — `dark-field` is the only value: a ground far below the ivory in value, so the
 structures read as the lightest thing in frame. One continuous field, same hue and chroma
@@ -84,11 +84,23 @@ groups do not overlap: a flat field has never exceeded +5 of 255, a step whose b
 right panel's own content ate back reached +2.2, and an unspent step has never fallen below
 +17.6. So: step the field, and do not let the right panel's content spend it.
 
-Colour is DERIVED from the culprit's material world, at low chroma, and must sit far in hue
-from THREE things: red, blue, **and the warm ivory of the body** — a warm ground and a warm
-structure read as one material. Grey words are not neutral to this model: `stone grey`,
-`charcoal` and `slate` all returned inside the blue band G3 reserves for the correct side.
-Name the hue direction explicitly.
+Colour must sit far in hue from FOUR things: **red, blue, green** — G3's three signals, the
+green being the check badge — **and the warm ivory of the body**, since a warm ground and a
+warm structure read as one material.
+
+The v1.9 rule named only three of those four and left green out, which was a plain logical
+error: far from red, blue and ivory leaves the green band and nothing else, so the rule drove
+the ground INTO a signal colour. Six of six renders on 2026-08-13 came back green, and the
+owner's report — that the background is always some deep green — is the rule working as
+written. This is the same fault v1.2 removed when it killed the pale blue canvas, arriving by
+a different road.
+
+What is left once all four are excluded: the **violet–plum band**, and true neutrals carrying
+no colour cast. Neutrals need care because grey words are not neutral to this model —
+`stone grey`, `charcoal` and `slate` all returned inside the blue band — so name a neutral as
+having no colour cast rather than trusting a grey word. Derivation from the culprit's material
+world is now SUBORDINATE: choose from the permitted band first, and derive within it if the
+culprit's world allows. Deriving first is what produced six greens.
 
 **`body`** — the structure in warm ivory (G3: yellow = neutral structure) over a translucent
 outline. EXACTLY ONE figure per panel, same scale and view in both. Name the SUBJECT CLASS
@@ -111,6 +123,14 @@ Three ways the comparison is lost, all observed:
 - an object does not touch the structure, so it acts on nothing — state the contact;
 - an object covers the structure, hiding the evidence on the very panel meant to prove the
   case — state that neither may cover it.
+
+**The product must be recognisable AS THAT PRODUCT, and a person must be visible using it.**
+Four of six renders on 2026-08-13 drew the product as an anonymous grey sliver or beige
+cylinder; two of those had no body left in frame at all. A viewer who cannot name the object
+cannot be sold it, and v1.3 already fixed this fault once from the other direction — the
+product has shrunk back to nothing while the anatomy and the marks grew to fill the frame.
+Draw it at a size and angle where its category is obvious, worn or held on a body part that is
+itself recognisable.
 
 ## MARKS
 
@@ -182,7 +202,7 @@ type's argument is one measurement, and six mark classes make it a diagram of ev
 - The culprit is drawn realistically but unbranded.
 - Strictest G3 compliance in the library; G4 and G5 apply in full.
 - `measure` needs a measurable landmark pair, and a difference of at least 2:1 between them.
-- Unproven and awaiting founding evidence: the three `frame` values, and `paper-cut`.
+- Unproven and awaiting founding evidence: `paper-cut`. `frame` now has one value only.
 - Wide ratios are a canvas risk on wide-and-short content — see KNOWN-FLAKY.
 
 ## NEGATIVE
@@ -228,6 +248,13 @@ rendered: it predates both the removal test — a filter does not close a lifted
 and the 2:1 admission.
 
 ## KNOWN-FLAKY
+- **`frame` values `interface` and `macro`, WITHDRAWN at 1.12 on 0 of 4, 2026-08-13.** Both
+  were proposed at 1.11 as the answer to visual sameness and both obeyed their own wording into
+  failure: `macro` cropped the hand and the bicycle out of a grip comparison, leaving a beige
+  cylinder against a tissue section; `interface` reduced a mouthpiece to a grey sliver inside a
+  head cutaway. The same crop had already cost the kneeling-pad prompt its leg. Withdrawn not
+  for being ugly but for removing the person and the product, which are what this type argues
+  about. `whole` stands at 2 of 2.
 - **`verdict` badges drifting to OUTLINE, 2 of 6, 2026-08-13.** Drawn as a thin ring with the
   glyph inside where the mark demands a filled disc. Below the bar. The mark's form line now
   names the filled disc, which is what fixed `contour`'s count.
@@ -268,6 +295,27 @@ one palette or they read as two sources.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.12 (2026-08-13): **two frame values withdrawn, and a logical error in the ground rule
+  found by the owner's eye.** Evidence: six records at ts 2026-08-13, four `partial` and two
+  `fail`. Owner report: the product barely interacts with the person using it, and the
+  background is always some deep green.
+  `frame`'s two tight values are WITHDRAWN at 0 of 4. `interface` and `macro` obeyed their own
+  wording into failure — crop to the contact and the hand, the bicycle and the person go with
+  it, leaving an anonymous shape against a tissue section. A frame that cannot show somebody
+  using the product cannot serve a type whose purpose is the product doing its job. `whole` is
+  the only value at 2 of 2, and it produced the strongest render this type has made: a
+  recognisable band on a recognisable torso, and **the first time in 21 renders that the
+  `measure` pair carried its own difference** — whole-body frame, product worn on that body,
+  2:1 gap.
+  The green was a plain logical error of mine at 1.9: the rule required a hue far from red,
+  blue and warm ivory, which leaves the green band and nothing else — and green is G3's third
+  signal, the check badge. So the rule drove the ground into a signal colour, the same fault
+  v1.2 removed when it killed the pale blue canvas. Six of six renders came back green. The
+  rule now excludes all FOUR — red, blue, green, ivory — leaving the violet–plum band and true
+  neutrals named as having no colour cast, and derivation from the culprit's material world is
+  demoted to a second step, because deriving first is what produced six greens.
+  `panels` gains the rule that four of six renders broke: the product must be recognisable AS
+  THAT PRODUCT, with a person visible using it.
 - 1.11 (2026-08-13): **compressed, and `frame` added.** Owner report: the prompts had grown
   bloated and the outputs still lacked style variety. Both were true and both were mine.
   Measured: rendered prompts went 2321 → 3330 characters across four sets while adapter
