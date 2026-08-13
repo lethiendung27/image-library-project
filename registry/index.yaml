@@ -187,7 +187,7 @@ types:
     step: 3
     job: spec
     device: explode
-    version: "1.6"
+    version: "1.7"
     status: active
     channels: [marketplace, landing-page]
     ratios: ["1:1", "4:5", "16:9"]

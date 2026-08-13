@@ -3,7 +3,7 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "1.6"
+version: "1.7"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5", "16:9"]
@@ -44,7 +44,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-explode v1.6
+TYPE: 03-spec-explode v1.7
 REGISTER: 3D technical render. NOT photography.
 
 [PRODUCT REFERENCE] attached photo is the exact reference for every outer part.
@@ -213,39 +213,107 @@ stays here and in the query output's `avoid` field for a future model with a rea
 channel.
 
 ## WORKED EXAMPLES
-### example: mini-camera-fullframe — skeleton@1.1, run: pass
+Both rendered and owner-passed, kept in FULL text per SPEC §3.3. They replace the founding
+mini-camera example, which passed at 1.1 and predates every rule this type has since earned —
+ground geometry, rim light, contact shadow, the diagonal axis and the optional focus glow. Git
+holds it at 916bacf.
+
+### example: purifier-cartridge-hex — skeleton@1.4, run: pass
 ```
-A 16:9 3D technical render. NOT photography. Dark engineering background.
+TYPE: 03-spec-explode v1.4
+REGISTER: 3D technical render. NOT photography.
 
-Use the attached product photo as the exact reference for the mini security
-camera. Every outer part — the clear upper shell, the red-ringed lens, the
-black chassis, the USB-C port — must match the reference exactly. Do not
-redesign or add features.
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference. Every outer part — the cylinder
+form, the end caps, the mesh face, the colourway — must match the reference exactly in
+shape, proportion, material and colour. Do not redesign or add features. Render no
+wordmark or logo on any part, whatever the reference shows.
 
-CANVAS: a deep navy engineering canvas with faint cyan traces at very low
-contrast, dim.
+[CANVAS]
+A deep slate engineering canvas carrying a faint HEXAGONAL TESSELLATION — a honeycomb
+field of six-sided cells tiling evenly across the whole frame. NOT concentric circles,
+NOT rings, NOT contour lines. Abstract line-work at very low contrast, dim. No cyan or
+teal in the ground. A soft contact shadow pools beneath the lowest part.
 
-FRAMING, full-frame: the exploded stack fills about 70 percent of the frame.
+[FRAMING]
+Full-frame: the exploded stack IS the image, filling about 70 percent of the frame.
 
-EXPLODE STACK: the camera separated vertically into five real component
-groups in true assembly order, evenly spaced, each solid and detailed: the
-clear upper shell; the lens module with its red identity ring; the populated
-main board with visible chips; the flat battery cell; the black lower chassis
-with its USB-C port. Nothing rotated out of line, nothing duplicated.
+[STACK]
+The whole cartridge separated VERTICALLY along its own axis, in true assembly order,
+evenly spaced, each part fully clear of its neighbours and solid and detailed: the upper
+end cap with its grille; the coarse pre-filter mesh sleeve; the pleated HEPA media pack
+with its concertina folds; the activated carbon granule sleeve; the inner support cage;
+the lower end cap with its gasket. Nothing rotated out of line, nothing duplicated,
+nothing left fused to the part below it.
 
-HONESTY CENSUS: render only these component types at plausible sizes.
+[LIGHT]
+A thin cool rim light traces the top edge of every part, separating each from the part
+above it and from the ground. Fill stays low.
 
-FOCUS COMPONENT: the populated main board, brightest and most detailed, near
-the visual center, a faint cyan glow marking it. The lens ring's red stays
-exactly as the reference shows it.
+[CENSUS]
+Render only those component types, at plausible sizes for a purifier cartridge, and only
+things that live INSIDE the product — no housing, no fan, no appliance beside it.
 
-NO text, no numbers, no part labels, no callout lines.
-STYLE: premium technical product visualization, sharp, high detail, 4K.
-NO text, no logo, no watermark.
+[FOCUS]
+The pleated HEPA media pack, brightest and most detailed, nearest the visual centre,
+with a faint cyan glow around that one part.
+
+STYLE: premium technical product visualization, sharp, high detail.
+No text, no numerals, no part labels, no callout lines.
 ```
-Predicted failures: (1) the model inventing extra boards/screws to fill the
-stack (the census rule and avoid line must both fire); (2) parts drifting
-off-axis into a decorative cloud; (3) the battery rendering as a second PCB.
+The best census this type has rendered: six named parts separated on one axis, evenly spaced,
+nothing fused, nothing invented, a honeycomb ground that never competes.
+
+### example: torch-diagonal — skeleton@1.5, run: pass
+```
+TYPE: 03-spec-explode v1.5
+REGISTER: 3D technical render. NOT photography.
+
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference. Every outer part — the body tube,
+the knurling, the head bezel, the tail cap — must match the reference exactly in shape,
+proportion, material and colour. Do not redesign or add features. Render no wordmark or
+logo on any part, whatever the reference shows.
+
+[CANVAS]
+A pale slate engineering canvas, clearly lighter than the dark torch, carrying a faint
+motif of OPEN ARCS — long curved strokes that fan outward and never close on themselves,
+in a slightly darker grey than the ground. NOT concentric circles, NOT rings, NOT closed
+shapes of any kind. The motif stays fainter than the darkest shadow on any part. A soft
+contact shadow pools beneath the stack.
+
+[FRAMING]
+Full-frame: the exploded stack IS the image, laid along a DIAGONAL running from the lower
+left corner to the upper right, using both dimensions of the frame and filling about 80
+percent of it.
+
+[STACK]
+The whole torch separated along that one DIAGONAL axis, in true assembly order, evenly
+spaced with equal gaps all the way to the last pair, each part fully clear of its
+neighbours and solid and detailed: the head bezel with its lens; the smooth reflector
+cone; the LED emitter on its star board; the driver circuit board; the cylindrical
+battery cell; the knurled body tube; the tail cap with its switch and spring. Every part
+sits on that one straight diagonal line, none scattered off it, none duplicated, none
+left fused to its neighbour.
+
+[LIGHT]
+A thin cool rim light traces the upper edge of every part, separating each from its
+neighbour and from the ground. Fill stays low.
+
+[CENSUS]
+Render only those component types, at plausible sizes for a rechargeable torch, and only
+things that live INSIDE the product — no charger, no cradle, no accessory beside it.
+
+[FOCUS]
+The LED emitter on its star board, brightest and most detailed, nearest the visual
+centre, with a faint cyan glow around that one part.
+
+STYLE: premium technical product visualization, sharp, high detail.
+No text, no numerals, no part labels, no callout lines.
+```
+The diagonal that solved dead ground on tall narrow products. Note that the model drew no glow
+at all here and the LED still reads as the focus — the evidence that made the glow optional at
+1.6, preserved in the prompt that produced it.
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
@@ -260,6 +328,11 @@ a variant — same argument, same layers, different footprint.
 The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
+- 1.7 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES rebuilt on
+  two current-law renders — the hex-ground cartridge census and the diagonal torch — replacing
+  the founding mini-camera example, which passed at 1.1 and teaches none of the rules earned
+  since. The derived focus hue confirmed on its first render: amber on a flask, the first
+  non-cyan mark in 13 renders, reading as emphasis and not as a signal.
 - 1.6 (2026-08-13): **the focus glow is optional and its hue is derived.** Owner: the mark is
   stuck on one colour, true at 12 of 12. It is EMPHASIS, not a G3 signal — an explode judges
   nothing — so G3 never bound it and the type paid a monotony tax for a rule that did not
