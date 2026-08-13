@@ -334,7 +334,7 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
 - 2.2 (2026-08-13): type passed by the owner; file finalised with two rendered worked examples
   in full text per SPEC §3.3. Closing state: five live marks, `structure` `stress` `support`
-  `verdict` proven and `heat` still unrendered; `dims` withdrawn at 1.6 on 0 of 3. `PENDING`
+  `verdict` proven and `heat` still unrendered; `dims` withdrawn at 1.6 on 0 of 3. `3e32167`
 - 2.1 (2026-08-13): **two clauses restored; the budget rule corrected.** Evidence: 3 records at
   2.0 — 1 `pass`, 1 `partial`, 1 `fail`. The 2.0 structure works: the argument reads at any size
   and A11 is fixed at 3 of 3, every mark now a drawn overlay rather than anatomy. Two of the

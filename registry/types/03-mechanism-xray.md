@@ -196,7 +196,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
 - 1.1 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   1925 → 609. Three marks named for the first time — `working`, `output` and `caught` — all
   founded on the one rendered example, where they existed as unnamed sentences inside the
-  skeleton. `RATIO:` dropped per adapter Rule 4. `PENDING`
+  skeleton. `RATIO:` dropped per adapter Rule 4. `3e32167`
 - 1.0 (2026-08-11): PROMOTED staging → active on all four §6.3 criteria: five distinct
   exemplars across five verticals, router-confusion test passed with 0 unintended flips, one
   rendered worked example at `run: pass`, and the human gate. Palette-lock note: the fifth
