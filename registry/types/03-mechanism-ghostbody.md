@@ -255,7 +255,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   and A11 is fixed at 3 of 3, every mark now a drawn overlay rather than anatomy. Two of the
   five clauses I cut as ceremony were not ceremony — `support`'s length limit and the ghost's
   four negatives — and the next render broke on both. They are back. The rule that let me cut
-  them is corrected in ADR-015. `PENDING`
+  them is corrected in ADR-015. `d982bb2`
 - 2.0 (2026-08-13): **the comparison becomes the frame, and every mark becomes an overlay.**
   MAJOR bump: the layer structure changes from one main frame plus a corner inset to two equal
   panels. Owner-approved on two recommendations from a self-audit. Evidence: 3 records at 1.6,
