@@ -252,7 +252,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   junction where the product seats onto what it acts on, PREPARE only, form still under test.
   The blanket ban on arrows is replaced by the distinction that carries the type's actual
   argument: no mark may carry the reading order, and a mark inside one panel may state what
-  the action leaves ambiguous. `emission` and NEGATIVE unchanged in substance.
+  the action leaves ambiguous. `emission` and NEGATIVE unchanged in substance. `8432ba6`
 - 1.4 (2026-08-13): retraction. The sparkle 1.3 filed as an unrequested mark is a generator
   watermark on every output — measured by stacking 19 corners across two types against a
   shuffled control and a bottom-left control. Moved out of KNOWN-FLAKY into NOTES, and the two
