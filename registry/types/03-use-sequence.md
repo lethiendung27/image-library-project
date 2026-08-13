@@ -304,7 +304,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   every one made of real substance: `fill`, `emission`, `trace`, `residue`. The closing panel
   stops being lit warmer — that clause contradicted `continuity` since 1.0 and shipped 15 times,
   and the owner caught it as the last panel always changing colour. `residue` closes the
-  sequence instead.
+  sequence instead. `0defcb8`
 - 1.7 (2026-08-13): `fit` cut at 0/8. Substance marks are 7/7 and drawn overlay at seam scale
   is 0/8, so this type argues with things in the scene, never with overlay. `layout` stops
   describing frame geometry — the owner sets the ratio, and reasoning about the frame buys
