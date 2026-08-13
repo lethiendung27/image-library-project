@@ -3,7 +3,7 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -37,7 +37,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-ghostbody v1.5
+TYPE: 03-mechanism-ghostbody v1.6
 REGISTER: 3D technical render. NOT photography.               -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -84,6 +84,15 @@ beautiful render this type has produced, and it argued nothing at all. A viewer 
 insole is shaped. "Why does this shape work" is a comparative question, and once harm marks are
 banned from the main frame the inset is the only place a comparison can live.
 
+**Both panels are the same body in the same pose, differing only in the thing under argument.**
+This is the `measure` discipline from `02-cause-anatomy` applied to an inset: exactly one
+property may differ and everything else must read as identical. The pillow prompt pinned the
+pose in the main frame and left the inset to inherit it, and the wrong panel came back with a
+lying posture that makes no sense — the owner's only objection to an otherwise passing set.
+Name the pose inside the inset, in both panels, in the same words. And name the difference
+against the STRUCTURE, never the frame: "the neck bent sharply toward the shoulder it lies on",
+not "bent down toward the mattress", which is the A10 fault the library already records.
+
 **Never name this slot in a rendered prompt.** One render printed `XCHECK` in capitals above
 the inset because the prompt showed it as a heading — the same leak that made another type
 print circled A, B and C. Describe the thing: "a small two-panel inset in the top-left corner".
@@ -101,7 +110,7 @@ the colour G3 already assigns it.
 | `stress` | the loaded or deformed element, filled where the load lands — **`inset` wrong panel only** | red | as many as are loaded, inset only | 0 of 2 · inverted the argument in the main frame |
 | `support` | the structure the product is carrying, filled along the contact — on the BODY, never on the product | blue | 1 per supported structure | 0 of 1 · landed on the product |
 | `heat` | wrong pressure or wrong heat, in the `inset` wrong panel only | orange | 1, inset only | **none** |
-| `dims` | thin black double-headed arrows with fine extension lines offset clear of the product outline, drafting style, **no numbers and no letters** | black | exactly 2 | 1 render · form good, came back labelled |
+| `dims` | ~~two black double-headed arrows outside the product silhouette~~ **WITHDRAWN at 1.6** | — | — | **0 of 3** · see KNOWN-FLAKY |
 | `verdict` | circle badge above each `inset` panel, a FILLED SOLID DISC with the glyph cut out of it | red X, green check | exactly 2, inset only | **none** · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
 
 **A harm mark never appears in the main frame.** The main frame shows the product IN USE and
@@ -134,11 +143,18 @@ logged as such.
 between bone and product it reads as a coloured layer of the product — the insole render's blue
 could be a gel insert. Draw it along the bone's own length, on the side away from the product.
 
-**`dims` is at 0 of 2 and is now the type's least reliable mark.** Both renders got the count
-and the placement wrong: three or four arrows instead of exactly two, crossing the product
-outline instead of standing on extension lines clear of it. Name the two arrows as two separate
-items with their own endpoints, and put both entirely outside the product's silhouette. A third
-failure withdraws the mark — see KNOWN-FLAKY.
+**`dims` is WITHDRAWN at 1.6, on 0 of 3.** The withdrawal condition was set at 1.5 before the
+render that triggered it, which is the only honest way to retire a mark. Three attempts, three
+failures on the same two properties: the count came back as three or four arrows every time,
+and at least one arrow lay across or inside the product silhouette every time. The final
+attempt named the two arrows as separate items with their own endpoints and said both lay
+entirely outside the shoe on the white background; it still returned three, with the topmost
+drawn on the metatarsal bones inside the shoe.
+
+What it cost to learn: an arrow crossing the product is worse than no arrow, because it reads
+as damage to the thing being sold. What is NOT the reason: text. The letter and number ban
+worked on both of the last two renders. The mark is retired for geometry, not for labels, and
+if a future model draws reliable extension lines it can come back with evidence.
 
 **`dims` carries no numbers and no letters**, because G6 bans text. Without real specs a dimension arrow is
 decoration, so enable it only when the product has a clear 3D volume that a drafting register
@@ -187,9 +203,12 @@ Stale in one way to fix when it is next rendered: it predates the G2 rewrite and
 paragraph still describes texture, which `product` now forbids.
 
 ## KNOWN-FLAKY
-- **`dims` count and placement, 0 of 2.** Three or four arrows where two were asked for,
-  crossing the product outline instead of standing clear of it. Tightened at 1.5; a third
-  failure withdraws the mark, since an arrow crossing the product is worse than no arrow.
+- **`dims`, WITHDRAWN at 1.6 on 0 of 3.** Three or four arrows where two were asked for, and at
+  least one across or inside the product every time. Retired for geometry, not for text: the
+  letter and number ban worked on the last two renders. It can return if a future model draws
+  reliable extension lines.
+- **An inset panel whose pose is left to inherit, 1 render.** The pillow's wrong panel came back
+  with an illogical lying posture because the pose was pinned only in the main frame.
 - **Slot names printed into the image, 1 render** (`XCHECK` in capitals). Second observation of
   the class across the library after `02-symptom-rail`'s circled A, B and C; recorded in the
   adapter as Rule 1b, since it is model behaviour and not specific to this type.
@@ -209,6 +228,18 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.6 (2026-08-13): **the inset requirement is proved, and `dims` is withdrawn.** Evidence: 3
+  records — 2 `pass` and 1 `partial`; the owner passed the set apart from the pillow.
+  The isolation test landed: the same insole that argued nothing, with one inset added and
+  nothing else changed, now makes a claim a viewer can read unaided. `support` also read
+  correctly for the first time, on the top edge of the arch bones away from the product.
+  `dims` is retired on 0 of 3, against a withdrawal condition set at 1.5 before the render that
+  triggered it. Three attempts, three failures on count and placement; the letter and number ban
+  worked, so it is retired for geometry and not for text.
+  One fault from the owner: an inset panel whose pose is left to inherit from the main frame
+  comes back illogical. Both panels are now the same body in the same pose, named inside the
+  inset, differing only in the thing under argument — and that difference named against the
+  structure, never the frame. `PENDING`
 - 1.5 (2026-08-13): **the inset becomes required, and `dims` goes on notice.** Evidence: 3
   records, 2 partial and 1 fail. All three 1.4 fixes landed — no harm mark in a main frame, no
   signal colour on a product, `support` on the bone, `dims` free of letters — and the inset
