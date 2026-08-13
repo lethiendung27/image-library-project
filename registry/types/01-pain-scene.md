@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.9"
+version: "1.10"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,7 +43,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.9 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.10 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -82,6 +82,13 @@ and neither body said a problem existed.
 **Restraint governs EMOTION, not effort.** A flat face over a slack body renders as nothing
 at all. Where the moment is physical exertion the face still carries the involuntary signs
 — jaw set, breath held, lips dragged at one corner — and those are not drama.
+
+**A face cannot carry effort the body is not making.** The posture subject was attempted
+twice and the correction oscillated — a theatrical pout, then a blank face — because the act
+named was pulling the shoulders back, which is not strenuous. Neither wording was the fault.
+Where the body genuinely strains, the involuntary signs arrive without being asked twice: a
+calf gripped mid-press, a lid being forced. And never describe the face by ABSENCE: "still
+and unperformed" is not a muscle doing something, and it rendered as nothing at all.
 
 **The moment must be mundane** — something anyone lives daily, never a demonstration of
 wrong behaviour. It has no picture of its own, so it is a rule here and never a prompt slot.
@@ -156,8 +163,20 @@ another type visible from here.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 3 renders · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
-| `ring` | a thin red ring — a clean open circle of even line weight drawn around the evidence, touching nothing else | red only | exactly 1 | 1 render · FORM confirmed, a clean open circle of even weight; extent bound to the wrong object |
+| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 5 renders · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
+| `ring` | a thin red ring — a clean open circle of even line weight drawn around the evidence, touching nothing else | red only | exactly 1 | 2 renders · FORM confirmed, a clean open circle of even weight; extent bound to the wrong object |
+| `heat` | a soft radial glow on the bounded object that is too hot, fading out at its outline | **orange** — G3's value for wrong heat | exactly 1 | 0 renders · proposal, its first render is its founding evidence |
+| `pressure` | a filled band covering the CONTACT between object and body, as wide as the contact itself — never a line, never a glow along an edge | **orange** — G3's value for wrong pressure | exactly 1 | 0 renders · proposal · also in `02-cause-anatomy`, which reached this form after 3 failed ones |
+| `fill` | the bounded object washed through with a translucent tint kept inside its own outline | red | exactly 1 | 0 renders · proposal · also in `02-cause-anatomy` |
+
+**A mark can POINT or it can CLASSIFY, and the first two classes only point.** `glow` and
+`ring` say *here*. On a BODY that is enough: red on a knuckle reads as pain because the
+viewer supplies the meaning. On an OBJECT it is not — a red ring round a glass says "this
+glass" and nothing about what is wrong with it, which is exactly what the glassware render
+came back as. The three classes added at 1.10 carry meaning in the colour or the form:
+orange says the thing is too hot, an orange contact band says the thing is pressing, a red
+wash says the object itself is the fault. Choose by what the argument is, not by what looks
+clearest.
 
 **A mark binds to a BOUNDED STRUCTURE, not to a size instruction.** Every marked render
 carried "sized to it and no larger". It bound in two and failed in two, and the discriminator
@@ -270,7 +289,7 @@ mark is model-drawn (ADR-008 approach A).
   `graphic overlay`. The reasoning is in NEGATIVE.
 
 ## KNOWN-FLAKY
-- **Unrequested four-pointed sparkle glyph, bottom-right, 7 of 7 renders examined
+- **Unrequested four-pointed sparkle glyph, bottom-right, 10 of 10 renders examined
   2026-08-13.** Same corner and same form in all four, and it takes the tone of whatever is
   beneath it — wood on a tabletop, white on envelopes, dark on a bath panel, pale on a navy
   shirt — which is a composite
@@ -287,6 +306,19 @@ mark is model-drawn (ADR-008 approach A).
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.10 (2026-08-13): **three mark classes added — `heat`, `pressure`, `fill` — on the
+  owner's decision**, against my recommendation to add none until binding was solved. Binding
+  IS now solved: the two subjects that failed extent at v1.7 both bound correctly at v1.9
+  once a bounded object was named, so the objection has expired. What the renders then
+  exposed is the reason his instinct was right and mine was wrong: `glow` and `ring` only
+  POINT. On a body that suffices because the viewer supplies the meaning; on an object a red
+  ring says "this glass" and nothing more. The new classes carry meaning in colour or form
+  and all three obey G3 — orange is its value for wrong heat and wrong pressure, which is
+  what "warning" resolves to here, because a warning GLYPH is text and G6 routes it out of
+  the render. All three ship as labelled proposals at 0 renders. Budget stays at exactly ONE
+  mark. `PARTS/subject` gains the finding behind the posture failure: a face cannot carry
+  effort the body is not making, and a face must never be described by absence. Marked
+  renders now stand at 5 `glow` and 2 `ring`. File 23201 → 26227.
 - 1.9 correction (2026-08-13): the `glow` evidence column read 4 renders; counted from the
   ledger it is 3 — the jar, posture and cable frames — and `ring` has 1, the glass frame.
   Four is the number of MARKED renders, not of `glow`. Two scripted counts disagreed before
