@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.9"
+version: "1.10"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -46,7 +46,7 @@ argues with something added to the frame; this one argues by adding nothing, so 
 not an omission to fill in later.
 
 ```
-TYPE: 04-proof-lockedframe v1.9 [--rivals | --verdict | --timelapse | --capture]
+TYPE: 04-proof-lockedframe v1.10 [--rivals | --verdict | --timelapse | --capture]
 REGISTER: documentary photography. No overlays, badges, arrows or text.
 
 [LAYOUT] N equal vertical panels, thin white gutters, no outer border.  -> PARTS/layout
@@ -73,18 +73,16 @@ STYLE: honest documentary product test photography, unstyled, natural, sharp.
   composite.
 
   **A panel-1 prompt carries NO multi-panel language** — no layout, no gutters, no "every
-  panel", no anchor list. Step 1 is ONE photograph; told about panels the model draws them,
-  and one such prompt returned a 2×2 grid of one state. The cross-panel constraints belong to
-  the EDIT step, which enforces them by construction: *keep everything exactly the same and
-  change ONLY [X]*.
+  panel", no anchor list. Step 1 is ONE photograph; told about panels, the model draws them.
+  The cross-panel constraints belong to the EDIT step, which enforces them by construction:
+  *keep everything exactly the same and change ONLY [X]*.
 - `handheld` — shot by one person on a phone on different days. **Describe ONE framing once**
   for every panel — where the subject sits, camera height and distance, what occupies the
   upper and lower thirds — then state the band: it reads as one shot taken [N] times, never
   as [N] different shots. Put the variation on the PROPS, named per panel: a towel refolded,
   an item moved, one thing missing. Light differs only in exposure, never in warmth.
-  **Drift may not reveal area another panel does not have** — a few degrees and a few
-  centimetres, never enough to open up a part of the room the other panels never show. That is
-  a change of framing wearing drift's clothes. 1 observation.
+  **Drift may not reveal area another panel does not have.** Opening up part of the room the
+  others never show is a change of framing wearing drift's clothes.
 
 **Choose by TIME, not by preference.** `strict` when every panel belongs to one session and
 the variable is an object swapped in and out; `handheld` when the panels are separated by
@@ -92,10 +90,9 @@ time. A pixel-locked frame across "six months" is proof of staging, not of proce
 betrays its own argument.
 
 **Then by CAPABILITY.** `strict` needs compositing, so where the renderer cannot composite it
-is unavailable and the panels run `handheld` — including `--verdict`. The fairness rule governs
-TREATMENT, not pixel lock, so three objects shot from one hand-held framing are still fairly
-compared; what is lost is the alignment that makes a swap self-evident, so the variable has to
-be the more visible for it.
+is unavailable and the panels run `handheld`, `--verdict` included. The fairness rule governs
+TREATMENT, not pixel lock; what is lost is the alignment that makes a swap self-evident, so the
+variable has to be the more visible for it.
 
 **The wording law for `handheld`.** Never write the drift as a delta — "shifted 10-20cm" — and
 never give each panel its own framing. The first renders one background with the object
@@ -111,9 +108,9 @@ shadows, no sunlight, no styling. **Perfect alignment reads as CGI and destroys 
 room, the surface, the light direction, the identity of the object — is constant.
 
 **The MOMENT is part of that one variable.** Every panel sits at the same point in the
-process: all before, all during, or all after. A surface photographed with the food still on
-it against a surface photographed after the food is lifted compares two things, and the empty
-one wins for being empty. One render did exactly that.
+process: all before, all during, or all after. A surface shown with the food still on it
+against one shown after it is lifted compares two things, and the empty one wins for being
+empty.
 
 **`product`** — the SUBJECT of the panel it appears in, filling at least [X%] of that panel,
 never a small object at the edge of a scene the viewer is actually looking at.
@@ -206,100 +203,132 @@ Diff: `scene` becomes a declared at-home test staged the way an ordinary person 
 tied with a rubber band, slightly crooked, a basin underneath — because **amateur staging reads
 truer than neat staging** · `variable` is panel 1 without the product fitted and the medium
 marked, panel 2 with it fitted and the medium clean — and **the product must be identifiable
-in panel 2**, not merely present. A clean medium with no visible cause is a clean medium; the
-cause is the only thing this variant supplies, and one render lost it to bare pipework.
+in panel 2**, not merely present. A clean medium with no visible cause is a clean medium, and
+the cause is the only thing this variant supplies.
 - Channels: advertorial only. Weaker than `--timelapse`, since the viewer never sees the
   process; if both run, `--timelapse` goes first so it vouches for this one.
 - Negative additions: `laboratory equipment, clinical setup, cloth in different position
   between panels, dramatic staining, black mold, cartoonish contrast`
 
 ## WORKED EXAMPLES
-### example: herb-storage-rivals-handheld — skeleton@1.5, run: pass
-Product: none in frame · ratio param 5:3 · 3 panels · variant --rivals · axes: camera_lock=handheld, context_mode=natural-use · advertorial · single-pass
+Both rendered and owner-passed, kept in FULL text per SPEC §3.3. They replace a `run: fail`
+example stored at skeleton@1.2 and a pass at 1.5, neither of which teaches the rules earned
+since; git holds both. These two predate the 1.9 clauses on the moment and on drift, and are
+kept because they are what actually rendered.
+
+### example: bread-storage-rivals — skeleton@1.7, run: pass
 ```
-TYPE: 04-proof-lockedframe v1.5 --rivals, camera_lock handheld
+TYPE: 04-proof-lockedframe v1.7 --rivals, camera handheld
 REGISTER: documentary phone photography. No overlays, badges, arrows or text.
 LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
 
-PRODUCT REFERENCE: not applicable. No product appears in this image.
+[PRODUCT REFERENCE]
+Not applicable. No product appears in this image.
 
-SCENE, the same in all three: one glass shelf of a domestic fridge, a jar of
-jam and a butter dish pushed to the back, a faint dried spill mark on the glass.
-Cold even fridge light from above, no styling.
+[SCENE — the same in all three]
+The same corner of a domestic kitchen worktop, the same wooden board, a kettle and a
+tea caddy pushed to the back, a faint crumb scatter on the wood. Flat overcast light
+from a window off to the left, no strong shadows, no styling.
 
-GRADE, the same in all three: muted and cool, low saturation, no warm tone
-anywhere. It comes from the fridge light and the drab shelf rather than a
-filter. Still colour, never black and white. All three panels are unsolved
-states, so one shared unresolved tone across them favours none of them.
+[FRAMING]
+One person photographed this three times across a week from where they always stand,
+phone held level with the worktop, the board filling the middle third and the tiled
+splashback across the upper third. It reads as one shot taken three times, never as
+three different shots. Light differs only in exposure, never in warmth.
 
-FRAMING: one person photographed this three times across a fortnight from where
-they always stand, phone held level with the shelf, the shelf edge running
-across the lower third. It reads as one shot taken three times, never as three
-different shots — drift is a few degrees of tilt and a few centimetres of
-position, no more. Light differs only in exposure, never in warmth.
+[THE VARIABLE]
+Three ways people already store a cut loaf, each photographed on day four, each holding
+the same kind of white sourdough half-loaf.
+1 — in its original plastic bag, the bag slack and beaded with condensation inside, the
+cut face gone grey and damp.
+2 — under an upturned bowl on the board, the cut face dried to a pale hard crust that has
+cracked away at one corner.
+3 — wrapped in a tea towel, the towel loose and fallen open, the crumb dry and crumbling
+onto the board.
 
-THE VARIABLE: three storage methods people already use, each photographed after
-a fortnight, each holding the same bunch of basil.
-1 — standing in a tumbler of cloudy water, stems slimy below the waterline,
-leaves drooping and blackened at the edges.
-2 — unwrapped from a limp damp kitchen towel lying open beside it, the leaves
-bruised and darkened where they were pressed.
-3 — lifted from a plastic bag, condensation beaded inside it, the leaves
-collapsed and translucent.
+[WHAT ELSE MOVES]
+1 — the tea caddy at the back right, lid on. 2 — the caddy turned, lid resting beside it.
+3 — the caddy gone, a mug in its place.
 
-WHAT ELSE MOVES: 1 — jam jar at the back left, label facing out. 2 — jar turned,
-butter dish pulled forward. 3 — jar moved to the right, a new ring of spill on
-the glass.
+[GRADE — the same in all three]
+Muted and cool, low saturation, no warm tone anywhere. It comes from the overcast window
+and the drab worktop rather than from a filter. Still colour, never black and white. All
+three are unsolved states, so one shared unresolved tone favours none of them.
 
-FAIRNESS: three ordinary methods anyone would try, none exaggerated, none
-favoured. Every panel ends the same way. The image makes no claim.
+No panel is favoured. No badge, no glow, no colour cue, no brighter exposure. None of the
+three wins and the image makes no claim.
 
-Strictly avoid: sparkle glyphs, brand logos, human figures, hands, studio
-lighting, staged perfection, identical framing between panels, mould, fur,
-liquefied sludge, CGI.
+STYLE: honest documentary phone photography, unstyled, natural, sharp.
 ```
-Rendered 2026-08-12, owner verdict pass (`eval/render-tests.jsonl`). Kept at full text
-because that is the only record of what actually rendered (SPEC §3.3). This is the
-variant whose predecessor FAILED and produced v1.5, so its pass is the type's proof
-that all three fixes work: the band held on one shared framing plus small named
-per-panel prop deviations, and one shared muted grade read as three unsolved states
-rather than a neutral lineup.
+The best render this type has produced. The handheld band landed exactly: the board edge and
+the kettle shift a little between panels, so it reads as one person's phone across a week.
 
-Replaces an `untested` `--timelapse` example at skeleton@1.3. Nothing evidentiary was
-lost — that example carried no verdict, and its evidence chain (a strict-camera
-predecessor rendered and read as CGI, panel 3 drifting into mud) is recorded in the
-v1.3 CHANGELOG entry below. `--timelapse` now has a real ledger line of its own from
-the same session (car cabin air filter, pass), including the granularity constraint
-holding.
+### example: machine-filter-timelapse — skeleton@1.7, run: pass
+```
+TYPE: 04-proof-lockedframe v1.7 --timelapse, camera handheld
+REGISTER: documentary phone photography. No overlays, badges, arrows or text.
+LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
 
-### example: shower-filter-verdict — skeleton@1.2, run: fail
-Full prompt in seed conversation.md (three filters on one shower arm, locked camera).
-The lock held perfectly — and the image argued nothing: three filters merely LOOK
-different; better-looking is not better-filtering, and buyers know it. Kept as the
-boundary case that produced the VARIANT SELECTION RULE. Secondary fault: panel 3
-mounted the filter with no shower head behind it — half-installed device, the G7
-completeness violation that helped produce G7.
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference for the filter unit held in every
+panel. Preserve its shape, proportions, material, finish and colour exactly as shown.
+
+[SCENE — the same in all three]
+The same utility-room floor in front of an open washing-machine door, the same tiled
+floor, a folded towel down to catch drips and a shallow bowl beside it. Flat ceiling
+light, no strong shadows, no styling.
+
+[FRAMING]
+One person photographed this three times across several months, crouched where they
+always crouch, phone held low and close with the machine door filling the upper third
+and the tiled floor across the lower third. It reads as one shot taken three times, never
+as three different shots. Light differs only in exposure, never in warmth.
+
+[THE VARIABLE]
+The condition of the SAME filter unit at three points of use, held in the same hand
+position each time, lifted out for an ordinary look — nothing cut open, propped up or
+arranged for the camera.
+1 — new: the mesh clean and open, the metal bright.
+2 — partway: a thin chalky bloom across the mesh, still open, the individual strands of
+mesh still separate and readable.
+3 — saturated: the mesh crusted with hard white scale, thick enough to bridge between
+strands, but the crystalline texture still reading clearly as mineral crust rather than
+as mud or slime.
+
+[WHAT ELSE MOVES]
+1 — the towel folded square. 2 — the towel rucked at one corner. 3 — the bowl moved
+closer, a damp mark on the tile.
+
+[GRADE — the same in all three]
+Neutral, coming from the ceiling light and the tiled room rather than a filter. Still
+colour, never black and white. No panel warmer, brighter or more saturated than another.
+
+No panel is favoured. No badge, no glow, no colour cue, no brighter exposure. The image
+only shows the condition; it makes no count and no claim.
+
+STYLE: honest documentary phone photography, unstyled, natural, sharp.
+```
+The variant's named risk cleared — the scale crust bridges the mesh strands and still reads as
+mineral rather than as mud or mould.
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
-- 1.9 (2026-08-13): **three fixes, all from prompts rather than the model.** The MOMENT is now
-  part of the one variable — every panel sits at the same point in the process, after a sheet
-  shown with food on it was compared against a mat shown empty and the empty one won for being
-  empty. `--capture` panel 2 must show the product IDENTIFIABLY, since a clean medium with no
-  visible cause is just a clean medium. And handheld drift may not reveal area another panel
-  does not have, which is a change of framing wearing drift's clothes.
-- 1.8 (2026-08-13): **three fixes after a panel-1 prompt returned a 2×2 grid.** A panel-1
-  prompt carries NO multi-panel language and the anchor list moves to the EDIT step, which
-  enforces alignment by construction. Owner-approved: the camera choice gains a CAPABILITY
-  gate — `strict` needs compositing, so where the renderer cannot composite, `--verdict` runs
-  `handheld`. The fairness rule governs treatment, not pixel lock.
-- 1.7 (2026-08-13): **restructured into a call-map plus PARTS** (ADR-012), owner instruction.
-  `PARTS` owns `layout`, `camera`, `scene`, `variable`, `product`, `grade`. **There is no MARKS
-  section and that is the type** — every other type argues with something added to the frame
-  and this one argues by adding nothing, so the absence is recorded as law rather than left to
-  look like an omission. `RATIO:` dropped per adapter Rule 4. ADR-014 adopted.
+- 1.10 (2026-08-13): **compression pass; no rule removed.** Case history behind the 1.7-1.9
+  rules moved to the commits that made them, and WORKED EXAMPLES rebuilt on two current passes,
+  replacing a `run: fail` example stored at skeleton@1.2 and a pass at 1.5.
+- 1.9 (2026-08-13): the MOMENT is part of the one variable — every panel at the same point in
+  the process. `--capture` panel 2 must show the product IDENTIFIABLY. Handheld drift may not
+  reveal area another panel does not have. · f762ca9
+- 1.8 (2026-08-13): a panel-1 prompt carries no multi-panel language, and the anchor list moves
+  to the EDIT step which enforces alignment by construction. The camera choice gains a
+  CAPABILITY gate: `strict` needs compositing, so where the renderer cannot composite,
+  `--verdict` runs `handheld`. · c15107c
+- 1.7 (2026-08-13): **restructured into a call-map plus PARTS** (ADR-012). **No MARKS section,
+  and that is the type** — every other type argues with something added to the frame; this one
+  argues by adding nothing, so the absence is law rather than an omission. `RATIO:` dropped per
+  adapter Rule 4. · 1da1da2
 - 1.6 (2026-08-12): `exempt_from` gains **G11**. The type's `grade` slot legislates saturation
   differently and on purpose — one grade for the WHOLE image, polarity never between panels —
   which is the opposite of what G11 requires of a two-state frame. · see git
