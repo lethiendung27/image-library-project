@@ -57,7 +57,7 @@ REGISTER: documentary photography. No overlays, badges, arrows or text.
 [PRODUCT] the subject of its panel, never the hero.                     -> PARTS/product
 [GRADE] one grade across every panel.                                   -> PARTS/grade
 
-No panel is favoured. No badge, glow, colour cue or brighter exposure.
+[JUDGEMENT] no panel favoured.                                          -> SLOT CONSTRAINTS
 STYLE: honest documentary product test photography, unstyled, natural, sharp.
 ```
 
@@ -107,15 +107,13 @@ shadows, no sunlight, no styling. **Perfect alignment reads as CGI and destroys 
 **`variable`** — the only thing that changes, named panel by panel. Everything else — the
 room, the surface, the light direction, the identity of the object — is constant.
 
-**Name the object's INVARIANTS before the panels.** Single-pass handheld does not hold an
-object's identity on its own: a sandwich gained grill marks in one panel, an insole came back
-a different insole, the shoes behind it changed. List what must not change — the same loaf,
-the same filling, the same outline and colour — the way `01-pain-split` lists a person's face,
-hair and clothes to hold them across a single-pass `--mirror`.
+**Name the object's INVARIANTS before the panels** — the same loaf, the same outline and
+colour. Single-pass handheld does not hold identity on its own, and this is the clause
+`01-pain-split` proved on a person.
 
-**The difference must be visible on the object that CARRIES the argument.** Three wraps that
-differ around three sandwiches that do not is a comparison of packaging, not of outcomes. If
-the carrying object will not show it, change the product or change the variable.
+**The difference must be visible on the object that CARRIES the argument.** Three wraps
+differing around three identical sandwiches compares packaging, not outcomes. If the carrying
+object will not show it, change the product or change the variable.
 
 **The MOMENT is part of that one variable.** Every panel sits at the same point in the
 process: all before, all during, or all after. A surface shown with the food still on it
@@ -151,12 +149,10 @@ register reads as edited and destroys the credibility it is selling.
   filter, where the object variants produced pretty and empty images.
 - G7 applies at its strictest here, except `--capture`, which runs `context_mode:
   declared-test`.
-- **The prompt budget**, and it has three parts because two were missing while prompt sizes
-  grew 22% across three rounds. A clause earns its place only if a render has failed without
-  it; it enters a given prompt only if THAT product can fail that way — the drift bound is for
-  handheld, the identifiable-product clause is for `--capture`, the fairness block is for
-  `--verdict`; and each law is stated ONCE, where "no panel is favoured" had reached three
-  statements in one prompt. Since ADR-014 no `Strictly avoid:` line is rendered at all.
+- **The prompt budget, three parts.** A clause earns its place only if a render has failed
+  without it; it enters a GIVEN prompt only if that product can fail that way — drift for
+  handheld, identifiable-product for `--capture`, fairness for `--verdict`; and each law is
+  stated ONCE. Since ADR-014 no `Strictly avoid:` line is rendered at all.
 
 ## NEGATIVE
 ```
@@ -329,12 +325,10 @@ mineral rather than as mud or mould.
 (populated from observation evidence only)
 
 ## CHANGELOG
-- 1.11 (2026-08-13): **four fixes.** `PARTS/variable` gains an INVARIANTS clause — single-pass
-  handheld does not hold an object's identity, and the fix is the one `01-pain-split` proved on
-  a person — and the rule that the difference must be visible on the object CARRYING the
-  argument, after three wraps differed around three identical sandwiches. The prompt budget
-  gains its two missing parts: a clause enters a prompt only if that product can fail that way,
-  and each law is stated once.
+- 1.11 (2026-08-13): **four fixes.** `PARTS/variable` gains an INVARIANTS clause and the rule
+  that the difference must show on the object CARRYING the argument. The prompt budget gains
+  its two missing parts: a clause enters a prompt only if that product can fail that way, and
+  each law is stated once. · b4928de
 - 1.10 (2026-08-13): **compression pass; no rule removed.** Case history behind the 1.7-1.9
   rules moved to the commits that made them, and WORKED EXAMPLES rebuilt on two current passes,
   replacing a `run: fail` example stored at skeleton@1.2 and a pass at 1.5.
