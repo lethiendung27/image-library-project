@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-use-sequence v1.3
+TYPE: 03-use-sequence v1.4
 REGISTER: warm lifestyle photography, close range.            -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference, in every panel.
@@ -206,24 +206,37 @@ is intermittent. This run also cropped the steamer to its water tank in the open
 parked it at the far left edge of the closing one, against the centred-and-uncropped rule.
 
 ## KNOWN-FLAKY
-Both are below the §6.2 bar and neither is promoted.
+Below the §6.2 bar, not promoted.
 
 - **The stack reflows.** 2 of 6 renders on 2026-08-13 ignored three-panels-stacked — one came
   back a 2x2 grid of four with the USE beat drawn twice, one a tall left panel with two stacked
   at the right. 4 of 6 held. Untested hypothesis: all six frames arrived 1200x896 landscape
   whatever ratio was asked, and a three-high stack in a landscape frame gives very wide short
   panels that both alternative arrangements fit better.
-- **An unrequested sparkle appears.** The same white four-point sparkle graphic sat at the lower
-  right of the closing panel on both electric wine opener renders, under prompts that said no
-  marks. 2 of 2 on that product, 2 of 6 on the type, no other product produced it.
 
 ## NOTES
+**The corner sparkle is a generator watermark, not a render fault.** 1.3 recorded it here as an
+unrequested mark on 2 of 6 renders. That was wrong. Stacking the bottom-right corner of 19
+renders across two types, five products and three batches — content cancels, a fixed overlay
+survives — leaves a clean 48x48 four-point star whose centre sits 100 px in from the right edge
+and 100 px up from the bottom of a 1200x896 frame. A shuffled-offset control of the same 19
+leaves nothing, and the bottom-left corner leaves nothing. Round numbers and a fixed position
+across unrelated prompts make it an overlay stamped on the output. It is on every render this
+library has, faint over light ground and obvious over dark. **No prompt clause can remove it and
+none should try** — naming it would spend budget on a thing the model never drew. Whether the
+adapter should carry this for all types is with the owner.
+
 Distinction within step 3: `ghostbody` and `xray` explain WHY a product works, `spec-split`
 argues what is better inside, and this type answers "can I operate it". A gallery rarely needs
 more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.4 (2026-08-13): retraction. The sparkle 1.3 filed as an unrequested mark is a generator
+  watermark on every output — measured by stacking 19 corners across two types against a
+  shuffled control and a bottom-left control. Moved out of KNOWN-FLAKY into NOTES, and the two
+  ledger records that listed it as a failure are corrected by new records, not edited. Neither
+  verdict changes: both wine renders keep their other failures.
 - 1.3 (2026-08-13): first render evidence for this type — six renders, three products, 0 pass /
   4 partial / 2 fail. `emission` gains its founding evidence, 2/2 as real backlit steam. Three
   rules earned in `panels`: the beat names never reach the model (Rule 1b, third type), a
