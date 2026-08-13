@@ -3,7 +3,7 @@ id: 05-persona-grid
 step: 5
 job: persona
 device: grid
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -34,55 +34,58 @@ avoid_when: >
   sub-cell (15% rule).
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS; the definition lives there once.
+**No MARKS section:** this is a photographic collage and it casts rather than argues, so
+nothing is added to the frame.
+
 ```
-TYPE: 05-persona-grid v1.1
-RATIO: [1:1 / 4:5]
-LAYOUT: [1plus3 / 2x2 / 1plus4], thin white 4px gutters, no outer border,
-photographic collage, no graphic overlays.
+TYPE: 05-persona-grid v1.3 [--1plus3 | --2x2 | --1plus4]
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference. Preserve shape,
-proportions, material, finish and color exactly across all cells.
+[LAYOUT] cells, thin white gutters, no outer border.        -> PARTS/layout
+[PRODUCT REFERENCE] attached photo is the exact reference.
+[CONSTANT] what must match across every cell.               -> PARTS/constant
+[VARIATION] what must differ, cell by cell.                 -> PARTS/variation
+[PRODUCT] visible and unobstructed in EVERY cell.           -> PARTS/product
+[CELLS] the hero, then the supports.                        -> PARTS/casting
 
-[MUST MATCH across cells]
-Color grade and palette: [3-4 neutral tones].
-Light quality: [soft / diffused / directional], never harsh or colored.
-Product colorway: [one only].
-Overall photographic finish: same lens character, contrast and skin rendering.
-
-[MUST DIFFER across cells]
-Age, gender and body situation of the subject.
-Camera angle, one per cell, chosen from: eye-level side profile / high three-quarter /
-low angle / over-the-shoulder / waist-level frontal / close crop on the interaction.
-Environment type, one per cell, and shot distance (wide, medium, close).
-
-[PRODUCT VISIBILITY RULE]
-The product must be clearly visible and unobstructed in EVERY cell,
-occupying at least 15% of that cell's height.
-If a cell cannot meet this, tighten the crop until it does.
-
-[HERO CELL, largest]
-[most specific persona: age, gender, distinguishing condition] in [wardrobe],
-[interaction with product] in [environment 1], [warm emotional expression].
-Camera: [angle 1], [shot distance].
-
-[SUPPORT CELL 1] [persona 2] in [environment 2], [activity]. Camera: [angle 2], [distance].
-[SUPPORT CELL 2] [persona 3] in [environment 3], [activity]. Camera: [angle 3], [distance].
-[SUPPORT CELL 3] [persona 4] in [environment 4], [activity]. Camera: [angle 4], [distance].
-
-STYLE: clean lifestyle collage for e-commerce, bright airy, sharp focus, 4K.
-NO text, no logo, no watermark, no badges, no arrows.
+REGISTER: clean lifestyle collage for e-commerce, bright, airy, sharp.
 ```
+
+## PARTS
+
+**`layout`** — the variant's cell arrangement, thin white gutters, no outer border, and no
+graphic overlay of any kind.
+
+**`constant`** — what carries cohesion, and it is three things and not four: the colour grade
+and palette (**name the tones, never a count of them**), the light quality — soft, diffused or
+directional, never harsh or coloured — and ONE product colourway throughout. A second colourway
+reads as a different product.
+
+Posture is deliberately NOT locked. Locking it produced four near-identical cells at v1.0, and
+cohesion moved onto grade, light and colourway instead.
+
+**`variation`** — what must differ, one value per cell, never repeated: the age, gender and
+body situation of the subject; the camera angle, chosen from eye-level side profile, high
+three-quarter, low angle, over-the-shoulder, waist-level frontal, close crop on the
+interaction; the environment; and the shot distance.
+
+**`product`** — clearly visible and unobstructed in EVERY cell, occupying at least 15% of that
+cell's height. **This is the survival threshold**: below it a cell degrades into a photograph
+of a person. If a cell cannot meet it, tighten that crop until it does — and if the smallest
+cells of a variant cannot hold the product at all, the variant is the wrong one.
+
+**`casting`** — the largest cell goes to the persona with the **most specific condition and
+the strongest emotion**, never to the most numerous persona. The type does not argue, it casts:
+its whole job is answering *is this for someone like me*, and a specific person answers that
+for more readers than a generic one.
 
 ## SLOT CONSTRAINTS
-- Casting law: the largest cell always goes to the persona with the most specific
-  condition and strongest emotion — never the most numerous persona.
-- The cohesion burden sits on grade + light quality + product colorway (v1.1 change);
-  posture is deliberately NOT locked — locking it produced four near-identical cells.
-- One product colorway across all cells, no exceptions (a second colorway reads as a
-  different product).
-- The 15% visibility rule is the survival threshold — below it a cell degrades into a
-  photo of a person.
+- G7 binds: every cell is a real person in a real place doing a real thing, and nothing is
+  arranged only to make a photograph.
+- **The prompt budget, four parts.** A clause reaches a rendered prompt only if a render has
+  failed without it, THAT product can fail that way, **the model can act on it inside one
+  generation**, and it is stated once. Ceiling **1800 characters**. Since ADR-014 no
+  `Strictly avoid:` line is rendered.
 
 ## NEGATIVE
 ```
@@ -92,6 +95,7 @@ different product colors between cells, mismatched color grade between cells,
 one cell darker than the others, identical camera angles, repeated framing,
 same environment twice, stock photo collage look, duplicate-looking people
 ```
+Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
 
 ## VARIANTS
 ### --1plus3 (default)
@@ -102,24 +106,16 @@ Four equal cells; no hero emphasis — use when no persona dominates.
 One large + four small; only at 4:5 ratio, and only when the product passes the 15%
 rule in fifth-size cells.
 
-## WORKED EXAMPLES
-### example: knife-sharpener — skeleton@1.1, run: untested
-Product: rolling knife sharpener · ratio 1:1 · variant --1plus3
-- MUST MATCH — warm cream, pale oak, soft white and matte black palette; soft diffused daylight in every cell, never harsh or coloured; one product colorway throughout; same lens character, contrast and skin rendering
-- MUST DIFFER — age, gender, environment, camera angle and shot distance in every cell
-- PRODUCT VISIBILITY — clearly visible and unobstructed in every cell, at least 15% of that cell's height
-- HERO CELL (large, right) — woman early 30s in a cream linen apron sharpening a chef's knife on a pale oak counter in a bright modern kitchen, looking down, focused and satisfied; waist-level frontal, medium shot
-- SUPPORT 1 (top left) — man late 60s, grey hair, sharpening a small paring knife at a rustic wooden counter, relaxed; eye-level side profile, wide shot showing the room
-- SUPPORT 2 (middle left) — man in his 20s sharpening a santoku in a narrow apartment kitchen at night, warm lamp light kept soft; high three-quarter over his hands, close crop
-- SUPPORT 3 (bottom left) — woman in her 40s sharpening a hunting knife on a wooden picnic table outdoors, blurred trees behind; low angle from table height, medium shot
-Predicted failures: (1) a handheld product this small dropping under 15% in the support
-cells — the deliberate stress test of the avoid_when threshold; (2) knives in many
-hands tripping safety filters or producing deformed hands.
-
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.3 (2026-08-13): **restructured into a call-map plus PARTS** (ADR-012), owner instruction.
+  `PARTS` owns `layout`, `constant`, `variation`, `product`, `casting`. **No MARKS section** —
+  a photographic collage that casts rather than argues adds nothing to the frame, the same
+  shape as `04-proof-lockedframe`. `RATIO:` dropped per adapter Rule 4, and the skeleton header
+  had read v1.1 under a v1.2 type. Carried in: name the palette TONES, never a count of them.
+  WORKED EXAMPLES removed, untested and predating this shape. ADR-014 adopted.
 - 1.2 (2026-08-11): channels gain `landing-page` (the routing table listed it in both
   the social-proof and personas cells). Nothing in use_when or avoid_when was
   channel-specific; the restriction was never argued, only inherited.
