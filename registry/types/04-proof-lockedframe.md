@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.7"
+version: "1.8"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -46,7 +46,7 @@ argues with something added to the frame; this one argues by adding nothing, so 
 not an omission to fill in later.
 
 ```
-TYPE: 04-proof-lockedframe v1.7 [--rivals | --verdict | --timelapse | --capture]
+TYPE: 04-proof-lockedframe v1.8 [--rivals | --verdict | --timelapse | --capture]
 REGISTER: documentary photography. No overlays, badges, arrows or text.
 
 [LAYOUT] N equal vertical panels, thin white gutters, no outer border.  -> PARTS/layout
@@ -71,6 +71,12 @@ STYLE: honest documentary product test photography, unstyled, natural, sharp.
   named anchor objects that align across all of them, and identical lighting, exposure and
   white balance. **Multi-pass is mandatory**: generate one panel, edit-swap the variable,
   composite.
+
+  **A panel-1 prompt carries NO multi-panel language** — no layout, no gutters, no "every
+  panel", no anchor list. Step 1 is ONE photograph; told about panels the model draws them,
+  and one such prompt returned a 2×2 grid of one state. The cross-panel constraints belong to
+  the EDIT step, which enforces them by construction: *keep everything exactly the same and
+  change ONLY [X]*.
 - `handheld` — shot by one person on a phone on different days. **Describe ONE framing once**
   for every panel — where the subject sits, camera height and distance, what occupies the
   upper and lower thirds — then state the band: it reads as one shot taken [N] times, never
@@ -82,12 +88,17 @@ the variable is an object swapped in and out; `handheld` when the panels are sep
 time. A pixel-locked frame across "six months" is proof of staging, not of process — it
 betrays its own argument.
 
-**The wording law for `handheld`.** Never write the drift as a delta — "shifted 10-20cm", "a
-few centimetres from where it sat". A relative instruction needs a reference point the model
-does not have inside one canvas, so it renders one background and swaps the object. But giving
-each panel its own independent framing overshoots into unrelated photographs. **One shared
-framing plus one small named per-panel deviation** is the only wording that lands in the band,
-and it is what makes a single pass viable at all.
+**Then by CAPABILITY.** `strict` needs compositing, so where the renderer cannot composite it
+is unavailable and the panels run `handheld` — including `--verdict`. The fairness rule governs
+TREATMENT, not pixel lock, so three objects shot from one hand-held framing are still fairly
+compared; what is lost is the alignment that makes a swap self-evident, so the variable has to
+be the more visible for it.
+
+**The wording law for `handheld`.** Never write the drift as a delta — "shifted 10-20cm" — and
+never give each panel its own framing. The first renders one background with the object
+swapped, the second renders unrelated photographs. One shared framing plus one small named
+per-panel deviation is the only wording that lands in the band, and it is what makes a single
+pass viable.
 
 **`scene`** — [specific environment] and [the surface the variable sits on], the SAME in every
 panel, with deliberate real-world clutter: [2-3 mundane untidy details]. Flat light, no strong
@@ -263,6 +274,11 @@ completeness violation that helped produce G7.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.8 (2026-08-13): **three fixes after a panel-1 prompt returned a 2×2 grid.** A panel-1
+  prompt carries NO multi-panel language and the anchor list moves to the EDIT step, which
+  enforces alignment by construction. Owner-approved: the camera choice gains a CAPABILITY
+  gate — `strict` needs compositing, so where the renderer cannot composite, `--verdict` runs
+  `handheld`. The fairness rule governs treatment, not pixel lock.
 - 1.7 (2026-08-13): **restructured into a call-map plus PARTS** (ADR-012), owner instruction.
   `PARTS` owns `layout`, `camera`, `scene`, `variable`, `product`, `grade`. **There is no MARKS
   section and that is the type** — every other type argues with something added to the frame
