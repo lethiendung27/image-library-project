@@ -187,10 +187,10 @@ types:
     step: 3
     job: spec
     device: explode
-    version: "1.3"
+    version: "1.4"
     status: active
     channels: [marketplace, landing-page]
-    ratios: ["1:1", "16:9"]
+    ratios: ["1:1", "4:5", "16:9"]
     requires_product_photo: true
     generation_mode: single-pass
     axes: {}

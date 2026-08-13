@@ -3,10 +3,10 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
-ratios: ["1:1", "16:9"]
+ratios: ["1:1", "4:5", "16:9"]
 channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass
@@ -44,7 +44,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-explode v1.3
+TYPE: 03-spec-explode v1.4
 REGISTER: 3D technical render. NOT photography.
 
 [PRODUCT REFERENCE] attached photo is the exact reference for every outer part.
@@ -66,23 +66,23 @@ composited in post if the page needs them (G6 production law).
 dim: credibility, not information. Two things are chosen, and for six renders only one of
 them was.
 
-**The MOTIF is derived from what the product DOES.** "Faint cyan traces" was the library's
-single default and it printed circuit-board schematics behind a hair straightener, a running
-shoe and a filter jug — a motif that says *generic electronics* on products whose argument is
-ceramic heat, foam layers and filtration. Where it was not circuits it was a flat empty field,
-which says nothing at all. It happened to suit the smartwatch, and that accident hid the
-problem for six renders. Derive it:
+**The MOTIF is named by its GEOMETRY, and the domain only chooses among geometries.** Naming
+the meaning does not work: `isotherm bands`, `ripple contours` and `concentric waveform rings`
+were given to three products and all three rendered as the SAME concentric circles, 3 of 3.
+The model holds one default abstract ground and maps every meaning onto it. So name the shape:
 
-| the product's domain | motif |
-|---|---|
-| electronics, wearables | printed-circuit traces |
-| audio | waveform contours, concentric driver rings |
-| water, filtration | flow contours, ripple rings, hexagonal mesh |
-| heat, styling, cooking | isotherm bands, radiant contours |
-| footwear, sport | topographic contours, stride arcs, lane lines |
-| optics, camera | concentric lens rings, focus reticles |
-| textile, bedding | weave lattice |
-| air, ventilation | streamline flow lines |
+| geometry | drawn as | fits |
+|---|---|---|
+| concentric rings | closed rings nested around one centre | sound, water |
+| nested irregular contours | uneven blobby bands like a thermal map, **never circular** | heat |
+| parallel wavy bands | long undulating lines crossing the frame, **never closed** | air, flow |
+| orthogonal lattice | a sparse square grid | textile, material |
+| open arcs | curved strokes that do not close | sport, motion |
+| hexagonal tessellation | a honeycomb field | filtration, membranes |
+
+**And name the default OUT.** Concentric rings are where this model goes unasked, so every
+non-ring geometry must say what it is not — the same shape as `02-cause-anatomy`'s subject
+rule, where a skeleton arrives unless the prompt says "not a skeleton".
 
 The motif is abstract line-work at low contrast, never an illustration of the thing and never
 a photographic scene — the G7 exemption is structural and holds here.
@@ -113,10 +113,20 @@ part — the shell — because that is the silhouette a scroller sees.
 
 - `full-frame` — the exploded stack IS the image, parts filling 60-80% of frame. 1 render.
 - `inset` — a packshot base with the stack inside ONE circular inset at 30-40% of frame
-  width, for gallery positions that must stay recognisable at thumbnail size. 0 renders.
+  width, for gallery positions that must stay recognisable at thumbnail size. 1 render.
+
+**The RATIO follows the product's proportion.** `4:5` was added at 1.4 for exactly this: a
+portafilter has one axis and it is vertical, so the 1.2 axis rule cannot save it and a square
+frame leaves dead ground on both sides. Tall product, tall frame; long product, wide frame.
 
 **`stack`** — the product separated along ONE axis into its real component groups, in true
 assembly order, evenly spaced, each part solid and detailed.
+
+**Explode the WHOLE product by default.** A sub-assembly explode — one part group separated
+while the rest stays intact — is legal only when the intact part is visually DISTINCT from the
+exploded one. A headband beside an exploded earcup worked; one eyecup of a swim goggle
+returned three whole goggles and no explosion at all, because an eyecup is most of a goggle
+and the boundary did not exist. 1 of 2. When in doubt, explode the whole product.
 
 **The axis follows the product's proportion, not gravity.** A long thin product exploded
 vertically in a square frame leaves the stack filling the height and a fifth of the width,
@@ -133,7 +143,10 @@ identity ring, populated main board, flat battery cell, lower chassis with its p
 Assembly order IS the credibility. A scattered parts cloud reads as decoration and kills the
 census.
 
-**`census`** — render ONLY component types the product genuinely contains, at plausible
+**`census`** — render ONLY component types the product genuinely contains, **and only what is
+INSIDE it**. External mounting hardware, stands, cradles and accessories are not components: a
+shock-mount cradle rendered into a microphone stack counts a part the buyer does not get
+inside the product, which is the census claiming more than the box holds. Plausible
 sizes. No invented modules, no doubled parts, no filler pieces. **The census IS the claim, so
 padding it is lying at the argument's core.** For layered materials — soles, wheels, mats,
 filter media — the stack may fan the REAL layers like pages, and the layer count must match
@@ -148,6 +161,11 @@ stay exactly as the reference shows them.
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `focus-glow` | a faint glow around the focus component only | cyan — G3, working component | at most 1 | 1 render |
+
+**The focus glow BLOOMS, 2 of 2.** It reached the size of the whole basket on the portafilter
+frame and became the brightest object in it. A radial falloff cannot be stopped at an outline
+in any register — the same limit `01-pain-scene` measured at 3 of 3. Bind it by naming ONE
+bounded component as its target and keep the fill low around it; do not ask it to stop.
 
 **`argument-faults.md` A5 does not bind here, and the reason is worth stating.** A5 says a
 signal colour on the product reads as the product being coloured, because the mark belongs on
@@ -236,6 +254,11 @@ a variant — same argument, same layers, different footprint.
 The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
+- 1.4 (2026-08-13): **the motif is named by GEOMETRY, not by meaning** — owner-approved after
+  three motif names produced one identical concentric-ring ground, 3 of 3. `PARTS/canvas` lists
+  geometries and every non-ring one must name the ring default OUT. Two census rules the batch
+  earned: explode the WHOLE product unless the intact part is visually distinct (1 of 2), and
+  count only what is INSIDE. `ratios` gains **4:5** for products with one vertical axis.
 - 1.3 (2026-08-13): **the motif is derived from what the product DOES.** Owner: the background
   is still monotonous and does not evoke the product. 1.2 fixed the ground's VALUE, which was
   only half — the motif stayed one default, printing circuit schematics behind a straightener
