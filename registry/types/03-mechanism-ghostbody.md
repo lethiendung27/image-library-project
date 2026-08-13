@@ -216,7 +216,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   experiment settled the open question: an insole with no inset produced the best-looking render
   this type has made and argued nothing. `[XCHECK] optional` becomes `[INSET] REQUIRED`. Three
   faults written in: never name the slot in a prompt; `support` away from the bone-product
-  boundary; `dims` at 0 of 2, tightened and on notice. `PENDING`
+  boundary; `dims` at 0 of 2, tightened and on notice. `62febe7`
 - 1.4 (2026-08-13): **three faults from the founding batch, all of them mine.** A harm mark in
   the main frame inverts the argument — red on a shoulder under a pillow reads as the pillow
   hurting the shoulder — so `stress` and `heat` are now `inset`-only and the main frame
