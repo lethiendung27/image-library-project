@@ -177,6 +177,9 @@ copy rule text.
   worked-example `run:` statuses advance only through this loop.
 - Model-weakness failures (hands, text, faces) are pushed to `NEGATIVE`, not into
   longer descriptions.
+- Failures of ARGUMENT — where a render is correct in every slot and wrong in what it
+  says — go to `registry/argument-faults.md`, not into the type that found them. They
+  recur across types and are read before the first prompt of any new type (ADR-014).
 - Ambiguous slots are split into two specific slots rather than padded.
 
 ### 6.3 Promotion (staging → active)
@@ -280,6 +283,7 @@ operation; never auto-push; every commit is reported with its hash and revert pa
 SPEC.md                  this contract
 CLAUDE.md                thin Claude Code adapter
 registry/                tier 2 + generated tier 3 (index.yaml)
+registry/argument-faults.md  cross-type catalogue of argument faults (ADR-014)
 ingestion/               classify template, runbooks, observations ledger
 mapping/                 content.json schema + role→type routing table
 query/                   query runbook + output schema

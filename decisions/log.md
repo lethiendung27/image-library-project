@@ -386,3 +386,35 @@ Consequences: 33 warnings on the day it was added, most of them earned. Types th
 has not reached are largely unaffected. `01-pain-scene` is over both limits and is owned by a
 concurrent session; the warning is how it finds out, which is the guard doing its job rather
 than one session editing another's file.
+
+## ADR-014 · 2026-08-13 · Argument faults are catalogued centrally; the avoid line is dropped
+
+Two owner decisions in one instruction, both from the same observation: the faults that keep
+costing renders are not about wording, and they are not about the model.
+
+**Argument faults get their own file.** Over four types the owner repeatedly caught images
+that were correct in every slot and wrong in what they said — a pillow whose red mark read as
+the pillow hurting the shoulder, a diffuser whose vapour read as causing a sore nose, a mark
+that landed where nothing was claimed to be wrong. Each was recorded in the type that found
+it, so each cost the next type the same discovery. `registry/argument-faults.md` now holds
+them as a cross-type catalogue with observation counts, read before the first prompt of any
+type and again when auditing one. SPEC §9's repo map and §6.2 name it in this diff. It is
+deliberately NOT `registry/rules.md`: these are descriptive failures with evidence counts, not
+prescriptive laws with scopes, and folding them into G-rules would give them a bindingness the
+evidence does not yet support.
+
+**The `avoid` sentence leaves the prompt.** Measured, not argued: the owner removed
+`Strictly avoid: …` from a prompt set by hand, re-rendered, and the output did not change. The
+line had been inherited by habit and never tested in isolation — which is the earn-its-place
+rule the library already applies to every other clause. `adapters/nano-banana.md` Rule 1
+step 2 is rewritten. The canonical NEGATIVE list stays in each type file and the `avoid` field
+stays in the query output, so a future model with a real negative channel loses nothing.
+
+One observation against it is recorded in the adapter rather than suppressed: a ghostbody
+render with no avoid line returned dimension arrows labelled `W` and `L`, which G6 bans. The
+likelier cause is the `dims` mark attracting a label, and the letter ban now lives in that
+mark. If such leaks recur across types, the rule returns with evidence behind it.
+
+Consequences: a concurrent session is writing prompts against Rule 1 right now, so this change
+reaches it immediately — which is the reason it is recorded here rather than left as a habit.
+

@@ -25,10 +25,22 @@ Transform it:
 1. **Positive assertions first**: where the skeleton already asserts the positive form
    ("clean uncluttered background", "flat solid badges"), the matching negative token
    is DROPPED (it is already covered semantically).
-2. **Hard exclusions** become one closing `avoid` sentence appended to the prompt:
-   `Strictly avoid: text, letters, numbers, watermarks, logos, deformed hands, extra fingers.`
-   Keep it to the tokens that matter for this render (cap ~12 items); prioritize
-   G6 items + the type's highest-risk items (from worked-example annotations).
+2. **No closing `avoid` sentence.** Owner decision, 2026-08-13, measured: he removed
+   `Strictly avoid: text, letters, circled letters, watermark, deformed hands, extra
+   fingers` from a prompt set by hand and re-rendered, and the output did not change. The
+   line had never been tested in isolation because it was inherited by habit. Prompts for
+   every type now ship without it.
+
+   What that leaves: the canonical NEGATIVE list stays in each type file, model-agnostic,
+   and the `avoid` field stays in the query output for a future model with a real negative
+   channel. Nothing is emitted into the prompt text.
+
+   One observation on the other side, recorded rather than argued away: a
+   `03-mechanism-ghostbody` render with no avoid line came back with dimension arrows
+   labelled `W` and `L`, which G6 bans. The likelier cause is the `dims` mark itself — a
+   dimension arrow attracts a label the way a slot named ZONE A attracted a printed A — and
+   the letter ban now lives in that mark's own definition. If letters, watermarks or
+   malformed hands recur across types, this rule comes back with evidence behind it.
 3. **Drop SD-idiom tokens** that carry no semantics for this model: quality boilerplate
    ("low resolution", "blurry" as generic tokens), style-negation stacks. Keep concrete
    content exclusions (e.g. "no VS badge", "no red glow on the right panel") — phrase
@@ -38,6 +50,11 @@ The rendered `avoid` line is emitted separately in the output JSON (`avoid` fiel
 future model with a real negative channel can consume the canonical list instead.
 
 ### Rule 1a — Never put a REQUIRED element in the avoid line (measured 2026-08-12)
+
+**Scope after 2026-08-13:** no avoid line reaches the model any more (step 2 above), so this
+rule no longer guards a rendered prompt. It still governs the canonical NEGATIVE list and the
+`avoid` field in the query output, and it is kept in full because it is the reason the field
+must never be pasted anywhere verbatim. If the line ever returns, it returns under this rule.
 
 The `avoid` line is prose to this model: no negative channel, no logical operators. A
 qualifier therefore does not survive. "No third badge" in a prompt that mandates two
