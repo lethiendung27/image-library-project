@@ -3,7 +3,7 @@ id: 03-spec-split
 step: 3
 job: spec
 device: split
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-split v1.2 [+ --products]
+TYPE: 03-spec-split v1.3 [+ --products]
 
 [PRODUCT REFERENCE] attached photo is the reference for the INSET only.
 [SPLIT] one diagonal; the halves unequal in energy.       -> PARTS/split
@@ -71,23 +71,26 @@ surfaces. It must read as engineered, not photographed.
 fine crystalline grit catching the light" renders; "diamond coating" does not — the model has
 no way to draw a material name.
 
-**`inset`** — the reference product, complete and whole, on a plain ground inside a rounded
-rectangle at 20-25% of frame width, along the bottom. **This is the only place the finished
-product appears.** Dropped by `--products`, where whole products are already the two halves.
+**`inset`** — the reference product ALONE, complete and whole, on a plain ground inside a
+rounded rectangle at 20-25% of frame width along the bottom, **clear of every frame edge by at
+least 8% (G10): if it will not fit, make it smaller, never move it outward.** Both faults have
+rendered. **The only place the finished product appears.** Dropped by `--products`.
 
 ## MARKS
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `seam` | a thin glowing line along the diagonal, with a burst of warm sparks where it crosses the centre | one accent hue, warm sparks | exactly 1 | 1 render |
-| `vs` | a large metallic VS at the seam's centre | metallic | exactly 1 | 0 renders · **it is TEXT** |
-| `verdict` | filled solid discs with the glyph cut out, one per half | red X left, green check right | exactly 2 | also in `01-pain-split` (4 renders), `02-cause-anatomy`, `06-relief-hero` |
+| `vs` | a large metallic VS at the seam's centre, with a burst of warm sparks | metallic | exactly 1 | 1 render, clean · letters are the risk class |
+| `verdict` | a filled solid disc with the glyph CUT OUT of it, one per half, same diameter | red disc left, green disc right — **never name the glyph's own colour** | exactly 2 | 5 renders · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
 
-**`vs` is text and text does not render.** G6 routes letters to post-composite, and this
-library's renderer does not composite. Two letters are the risk class: a `03-mechanism-ghostbody`
-render returned dimension arrows labelled `W` and `L` unasked. The proven alternative is
-`verdict` — a filled disc with a cut-out glyph, which rendered clean on 4 of 4 `01-pain-split`
-frames and carries the same binary judgement without a letter in the frame.
+**Both markers are offered; `vs` is the risk class.** The post-composite note carried since 1.0
+was inherited, never tested, and the VS rendered clean first time. Letters still fail elsewhere
+— ghostbody returned arrows labelled `W` and `L` unasked — so `verdict` is the default at 5
+renders and `vs` is chosen where the marketplace dialect wants it.
+
+**Never name the glyph's colour.** Cut-out and white are two constructions; asking for both
+returned black on one frame and white on another.
 
 **ONE marker at the seam, never two.** One binary argument takes one marker: `vs` or `verdict`,
 not both stacked. Source exemplars used a VS plus emoji; market habit, deliberately not
@@ -143,14 +146,17 @@ lighting beyond that · **both halves are photographs, so the G5 exemption does 
 (populated from observation evidence only)
 
 ## NOTES
-Credibility risks, accepted with open eyes: the aesthetic (gold VS, sparks, neon rim)
-is learned by buyers as a cheap-goods signal — it lifts conversion on price-driven
-marketplaces and depresses it upmarket. The right half is a render and proves nothing;
-the left half is not actually a competitor's part. Both are soft claims. The
-[HONESTY CONSTRAINT] is the guardrail: never render a component the product does not
-contain.
+Credibility risks, accepted with open eyes: this aesthetic reads to buyers as a cheap-goods
+signal — it lifts conversion on price-driven marketplaces and depresses it upmarket, which is
+why the type is `marketplace` only. Both halves are soft claims; the honesty constraint in SLOT
+CONSTRAINTS is the guardrail.
 
 ## CHANGELOG
+- 1.3 (2026-08-13): **four logic fixes.** `vs` goes from untested to 1 render clean, so both
+  centre markers are offered rather than one replacing the other; letters stay the risk class
+  and `verdict` the safe default. Never name the glyph's colour — cut-out and white are two
+  constructions and asking for both returned black on one frame, white on another. `inset` gains
+  G10's 8% margin with shrink-don't-move, and carries the product ALONE; both faults rendered.
 - 1.2 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), owner
   instruction. `PARTS` owns `split`, `old`, `new`, `inset`; `MARKS` owns `seam`, `vs`,
   `verdict`. `RATIO:` dropped per adapter Rule 4; the skeleton header had read v1.0 under a
