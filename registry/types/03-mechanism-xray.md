@@ -3,7 +3,7 @@ id: 03-mechanism-xray
 step: 3
 job: mechanism
 device: xray
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5", "16:9"]
@@ -42,18 +42,18 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-xray v1.1
+TYPE: 03-mechanism-xray v1.2
 REGISTER: 3D technical see-through render. NOT photography.  -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
-[CANVAS] dark engineering ground.                            -> PARTS/canvas
+[CANVAS] a ground chosen for the product.                    -> PARTS/canvas
 [SHELL] the product, shell translucent, silhouette exact.    -> PARTS/shell
 [INTERNALS] name 2-4 real components and where each sits.    -> PARTS/internals
 [MARKS] name each one used, with its count:                  -> MARKS
   required: working
   nothing in the frame is marked that is not named here
 
-PALETTE LOCK: deep navy and steel grey except the marks.
+The marks are the only added colour. `working` is the brightest thing in frame.
 ```
 
 ## PARTS
@@ -63,11 +63,20 @@ detail. Not photography. The product is the only subject; there is no scene, no 
 environment. G7 is exempt here by the type's frontmatter: a technical render need not mount
 the product to anything real.
 
-**`canvas`** — a dark engineering ground, deep navy, with faint circuit-board traces at very
-low contrast and one or two corner blueprint micro-diagrams of a key component. **Motifs stay
-dim: they buy credibility and carry no information.** Copper traces are decoration only —
-the moment copper or orange marks a component it collides with G3, where orange means wrong
-pressure or wrong heat.
+**`canvas`** — a plain ground chosen to suit the product, and nothing else on it. **No motifs.**
+The old rule asked for circuit traces and corner blueprint micro-diagrams while admitting in its
+own words that they "buy credibility and carry no information"; `02-cause-anatomy` deleted
+exactly that at its 1.4 on exactly that reasoning, and three renders here put the same traces
+behind a power tool, a jewellery cleaner and a water bottle.
+
+**Colour is free** — the ruling `02-cause-anatomy` took at its 1.13. The navy-and-steel lock came
+from `ghostbody`, whose subject is a white mannequin where four signal colours are the entire
+information channel. This type's subject is real hardware — copper windings, a green board, gold
+contacts, a filter bed — and those material colours ARE the information. Locking them destroys
+what the type exists to show.
+
+One requirement survives, about contrast rather than hue: **`working` must be the brightest thing
+in the frame and must read clearly against whatever ground is chosen.**
 
 **`shell`** — the reference product with its outer shell rendered translucent and glass-like.
 **G1 binds the silhouette hard**: proportions and every visible external part must match the
@@ -98,15 +107,22 @@ compares, so it has no verdict badge and no wrong state: there is only the worki
 | `output` | what the product emits, made of the substance itself, leaving the product toward a named direction | the substance's own colour | 1, only when the product emits something visible | 1 render · pass |
 | `caught` | what the product traps or removes, held where the mechanism holds it | the trapped matter's own colour, warm-toned | as many as are held, in one layer | 1 render · pass |
 
+**`working` carries direction by its own form and never takes an arrow.** One render added an
+unrequested cyan arrow inside a filter where the flow ribbon already ran through it — an abstract
+direction claim laid over a physical one, which is what `02-symptom-rail` spent three versions
+removing.
+
 **`output` only exists if the product genuinely emits.** Mist, light, flow, spray. Where
 nothing leaves the product, `working` alone carries the argument as a cool glow on the
 component that does the work. Never invent an emission so a render looks alive — that is what
 G8 forbids, and this type is the easiest place in the library to break it.
 
-**`caught` is the only warm colour permitted anywhere in the frame**, and it is permitted
-because the trapped matter IS the problem being solved. It stays in ONE layer where the
-mechanism holds it; scattered through the whole medium it reads as a dirty product rather
-than a working one.
+**`caught` is used ONLY where the mechanism physically ENCLOSES what it holds** — a filter
+sleeve, a bin, a bed, a cartridge. Two renders decided this in one batch: sediment held in a
+bottle's pre-filter read correctly, and tarnish lifting off a ring in an open tank swirled
+through the whole volume and made the frame read as dirty water. Where nothing encloses it the
+caught matter drifts and turns the product into the problem, so the mark is dropped rather than
+weakened. Inside its enclosure it stays in ONE layer.
 
 **Borrowed from types that have been rendered**, so the same faults are not paid for twice:
 a mark whose form the register could have produced stops reading as a mark (A11), which here
@@ -120,7 +136,8 @@ prompt verbatim.
   and come back correct.
 - One product, one shell — no exploded parts, which is the reserved `explode` device.
 - G1 binds the outer silhouette; the internal layout is illustrative.
-- Copper and orange stay decorative and dim, never a signal.
+- The ground and the product's own materials carry any colour that suits them; only the marks
+  are added colour.
 
 ## NEGATIVE
 ```
@@ -193,6 +210,14 @@ not widen the skeleton meanwhile.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.2 (2026-08-13): **the palette lock and the canvas motifs are gone.** Owner-approved on three
+  recommendations. Evidence: 3 records at 1.1 — 2 `partial`, 1 `fail`. Colour is free and chosen
+  for the product, the ruling `02-cause-anatomy` took at its 1.13; the navy-and-steel lock had
+  been inherited from `ghostbody`, whose subject is a white mannequin, while this type's subject
+  is real hardware whose material colours ARE the information. Motifs deleted — the rule admitted
+  in its own words that they carry none. `caught` now requires the mechanism to ENCLOSE what it
+  holds, after one batch showed it read inside a pre-filter and drifted through an open tank.
+  `working` never takes an arrow. `PENDING`
 - 1.1 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   1925 → 609. Three marks named for the first time — `working`, `output` and `caught` — all
   founded on the one rendered example, where they existed as unnamed sentences inside the
