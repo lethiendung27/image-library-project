@@ -3,7 +3,7 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5", "16:9"]
@@ -44,7 +44,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-explode v1.5
+TYPE: 03-spec-explode v1.6
 REGISTER: 3D technical render. NOT photography.
 
 [PRODUCT REFERENCE] attached photo is the exact reference for every outer part.
@@ -53,7 +53,7 @@ REGISTER: 3D technical render. NOT photography.
 [STACK] name the real parts in assembly order.                -> PARTS/stack
 [CENSUS] only what the product genuinely contains.            -> PARTS/census
 [FOCUS] the one part that carries the buying argument.        -> PARTS/focus
-[MARKS] focus glow, or none.                                  -> MARKS
+[MARKS] focus glow OPTIONAL; hue derived.                     -> MARKS
 
 STYLE: premium technical product visualization, sharp, high detail.
 No text, no numerals, no part labels, no callout lines — indices and specs are
@@ -162,7 +162,14 @@ stay exactly as the reference shows them.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `focus-glow` | a faint glow around the focus component only | cyan — G3, working component | at most 1 | 1 render |
+| `focus-glow` | a faint glow around the focus component only | derived; never red, orange or green | **optional**, at most 1 | 12 renders, all cyan; 1 render omitted it with nothing lost |
+
+**The glow is EMPHASIS, not a G3 signal.** An explode judges nothing — no wrong state, no
+corrected state, no comparison — so G3's closed list never bound it, and cyan came from a gloss
+about working mechanisms that is not the claim here. **Prefer NO glow**: `focus` already fixes
+brightness, detail and centre, and one render omitted it with nothing lost. Where used, derive
+the hue from the product's own accent or from what separates it from the ground. **Never red,
+orange or green** — those carry library-wide meaning and a page shows several types at once.
 
 **The focus glow BLOOMS, 2 of 2.** It reached the size of the whole basket on the portafilter
 frame and became the brightest object in it. A radial falloff cannot be stopped at an outline
@@ -175,11 +182,8 @@ the body instead. This frame contains nothing but the product, so there is no bo
 the mark to: the focus glow is either on a component or the type has no mark at all. It is
 the one exception the catalogue's own logic allows, and it rests on a single passing render.
 
-**The register is a 3D render, which is why a glow works here at all.** In a photographic
-register a mark must have a form the scene could not produce (A11); in a technical render
-everything is already synthetic, so a glow reads as emphasis rather than as a light source.
-The same reasoning is why a fill works in `02-cause-anatomy` and fails in `01-pain-scene` —
-mark forms do not travel between registers without their own evidence.
+**A glow works here because the register is already synthetic** — A11 in reverse. Mark forms do
+not travel between registers without their own evidence.
 
 ## SLOT CONSTRAINTS
 - **Trivial interiors are an admission test.** A shell and one part reads as emptiness made
@@ -256,6 +260,10 @@ a variant — same argument, same layers, different footprint.
 The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
+- 1.6 (2026-08-13): **the focus glow is optional and its hue is derived.** Owner: the mark is
+  stuck on one colour, true at 12 of 12. It is EMPHASIS, not a G3 signal — an explode judges
+  nothing — so G3 never bound it and the type paid a monotony tax for a rule that did not
+  apply. Prefer no glow; where used, derive the hue, never red, orange or green.
 - 1.5 (2026-08-13): **four logic fixes, no new sections.** Motif contrast is bounded against
   the frame — fainter than the darkest shadow on any part — because a grid ignored the adjective
   and rendered as graph paper. A tall narrow product explodes on a DIAGONAL, since ratio cannot
