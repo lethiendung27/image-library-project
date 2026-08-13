@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.9"
+version: "1.10"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a prompt.
 
 ```
-TYPE: 02-cause-anatomy v1.9 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.10 [+ --diagnostic]
 MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
 [PRODUCT REFERENCE]
@@ -94,6 +94,13 @@ render stepped its ground by +15.6 and still finished at +2.2, because its right
 covered by a dark sock that ate the brightness back. The rule that holds is therefore in
 two parts: step the field, AND do not let the right panel's own content spend the step.
 
+**Confirmed at 1.10, 5 of 6.** The first six renders written against the step rule stepped
+their grounds by +11.6 to +46.9 and delivered whole-panel differences of +24.7, +29.1,
++29.3, +31.8 and +40.5. The sixth kept a flat field (−1.3) and finished at −2.1, inverted —
+the same failure, in the same place, as every flat-field render before it. Eleven renders
+now separate cleanly: flat field has never exceeded +5, a spent step reached +2.2, and an
+unspent step has never fallen below +17.6. This is the most reliable rule in the file.
+
 Restating the requirement in words does nothing on its own — v1.8 told the prompts the
 difference "must be obvious, not slight" and all three renders that followed ignored it.
 
@@ -135,6 +142,20 @@ reference product across the whole crown, so the gum margin the comparison was m
 could not be seen on the correct side — the panel that is supposed to prove the case was
 the one panel where the evidence was hidden.
 
+**The structure under argument must be DRAWN IN BOTH PANELS, and both objects must be in
+contact with it.** Two ways of losing the comparison, both found on 2026-08-13 and neither
+covered by "one figure per panel, same scale, same view":
+
+- *Missing on one side.* One harness render drew a full dog skeleton and put the tracheal
+  rings in the right panel only, so the left panel indicted a collar sitting on vertebrae
+  and there was nothing to compare. Naming the subject class is not enough on its own — the
+  model will substitute the skeleton, which is its default for anatomy, so say what the
+  subject is AND that the skeleton is not it.
+- *Present but not touching.* Both contact-lens renders floated the lens clear of the eye
+  with open space between them. A culprit that touches nothing acts on nothing, and the
+  second run drew both lenses free of the cornea, leaving two panels that differ only in
+  lens thickness. State the contact explicitly.
+
 ## MARKS
 
 This type's own mark library. Marks are called by name from the skeleton. Every one obeys
@@ -144,16 +165,16 @@ visible rather than centralised away.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `measure` | two dashed straight reference lines, one per panel, each STOPPING at its two landmarks | red left, blue right | exactly 2 | 12 renders |
-| `verdict` | circle badge, X on the wrong panel and check on the correct one, TOP corners, flat and solid, same diameter | red X, green check | exactly 2 | 12 renders · also in `01-pain-split`, `03-mechanism-ghostbody`, `06-relief-hero` |
-| `contour` | a curved line tracing a surface or an edge | red wrong, blue correct | 1 per panel | 7 renders |
-| `fill` | the affected anatomical elements filled | red wrong, blue correct | as many as are affected | 6 renders |
+| `measure` | two dashed straight reference lines, one per panel, each STOPPING at its two landmarks | red left, blue right | exactly 2 | 18 renders · **never yet carried its own difference** |
+| `verdict` | circle badge, X on the wrong panel and check on the correct one, TOP corners, flat and solid, same diameter | red X, green check | exactly 2 | 18 renders · also in `01-pain-split`, `03-mechanism-ghostbody`, `06-relief-hero` |
+| `contour` | a curved line tracing a surface or an edge, named as ONE bounded edge | red wrong, blue correct | 1 per panel | 9 renders · count held once named |
+| `fill` | the affected anatomical elements filled | red wrong, blue correct | as many as are affected | 8 renders |
 | `aura` | a soft glow following a correct contour | blue only | 1, right panel | 5 renders |
-| `force` | a double-headed curved arrow along the surface causing the problem | red only | exactly 1, left panel | 4 renders |
+| `force` | a double-headed curved arrow along the surface causing the problem | red only | exactly 1, left panel | 6 renders |
 | `range` | a shaded wedge between two limbs or two surfaces, showing the angle available | red wrong, blue correct | 1 per panel | 2 renders |
 | `baseline` | one horizontal datum line PER PANEL, both drawn at the same height — the surface both figures rest on | neutral, no signal colour | exactly 2, one per panel | 0 of 2 as first written · **1 of 1 respecified** |
 | `axis` | a straight construction line showing the alignment the body should hold, a plumb line through two named landmarks | neutral dashed, no signal colour | 1 per panel | 1 render |
-| `pressure` | a filled region bounded by the CONTACT SURFACE between body and object, as wide as the contact itself | red wrong, blue correct | 1 per panel | **0 of 2** |
+| `pressure` | a filled region bounded by the CONTACT SURFACE between body and object, as wide as the contact itself | red wrong, blue correct | 1 per panel | **1 of 4** · first success 2026-08-13 |
 
 **`measure` carries the whole argument and has its own rule.** Both lines anchor to the
 SAME two anatomical landmarks with identical thickness and dash pattern. Exactly ONE
@@ -171,6 +192,30 @@ rather than between the two points they were supposed to span, so the gap under 
 was swamped by line that meant nothing. Every clause about form was obeyed in both. What
 was missing was anything binding the ENDS of the line to the structure, and without that a
 measure mark decorates instead of measuring.
+
+**Name the line's direction against the STRUCTURE, never against the frame.** The contact
+lens prompt said the line runs from the lens "straight down" to the cornea beneath it. In a
+side cutaway the eye faces sideways, so the tear gap is horizontal and "straight down" was a
+frame direction that contradicted the anatomy — both renders obeyed the words, drew a
+vertical line along the corneal curve, and measured a distance nobody was arguing about.
+"Perpendicular to the corneal surface" would have been unambiguous in any orientation the
+model chose. Up, down, across and beneath are frame words and this model is free to rotate
+the frame.
+
+**Both lines start from corresponding points at the same place in their panel.** Four
+renders now have correct counts, correct colours and correct orientation while still failing
+to carry their difference, because the two lines sit in different parts of their panels and
+the reader has no way to compare their extents. Anchor them so the pair can be read as a
+pair.
+
+**Admission: use `measure` only where the real difference is at least 2:1.** This is the
+uncomfortable one. In 18 renders the measure pair has never once carried the argument by
+itself — the difference has always been legible from the panels, the fill or the geometry
+instead. Part of that is drawing faults, fixed above. Part of it is that a dashed line
+cannot show a 20% difference to a scrolling reader, and several of these comparisons were
+20% differences. If the gap does not roughly double or halve, this type's central mark
+cannot prove it, and the honest move is to pick a different landmark pair or a different
+type — the same shape of decision as the removal test.
 
 **Where the four proposals stand** (8 renders, 2026-08-12 and 2026-08-13):
 
@@ -262,6 +307,11 @@ by EVENNESS, which the `measure` rule now forbids — evenness is not one of the
 permitted properties, and it is exactly the fault that rule was written to prevent.
 
 ## KNOWN-FLAKY
+- **`verdict` badges drifting to OUTLINE, 2 of 6, 2026-08-13.** Two renders drew the badge as
+  a thin ring with the glyph inside, where the mark demands flat and solid. Both were frames
+  in which every other mark was correct, so this is not general degradation. Below the bar;
+  if it reaches 3 the badge needs the treatment `contour` got — name the filled disc
+  explicitly instead of trusting the words "flat, solid".
 - **Canvas duplicated into a 2×2 grid, 2 observations, 2026-08-12.** The whole two-panel
   comparison rendered a second time below itself, badges on the top row only. Below the
   §6.2 bar at 2 distinct observations, so nothing is legislated yet, but both instances
@@ -324,6 +374,34 @@ you", not "this shape exists for a reason". The two may run in one gallery (02 t
 but must share one palette or they read as two sources.
 
 ## CHANGELOG
+- 1.10 (2026-08-13): **the ground step is confirmed, `pressure` finally drew, and `measure`
+  is admitted to have never once carried its own argument.** Evidence:
+  `eval/render-tests.jsonl`, six records at ts 2026-08-13 — the three v1.9 prompts run TWICE
+  each, three `partial` and three `fail`, `verdict_by: harness` under ADR-011. Running each
+  prompt twice is what made the batch worth its cost: the two harness runs share every word
+  and differ completely, which separates wording faults from variance.
+  **The ground step holds at 5 of 6** and is now the most reliable rule in the file. Stepped
+  grounds returned whole-panel differences of +24.7 to +40.5; the one render that kept a flat
+  field returned −2.1, inverted. Across eleven renders: flat has never exceeded +5, a spent
+  step reached +2.2, an unspent step has never fallen below +17.6.
+  **`pressure` drew correctly for the first time in four attempts**, as a filled region
+  bounded by the teat-and-tongue contact, narrow red against broad blue. The CONTACT SURFACE
+  respecification at 1.9 is what did it — twice before it had no bounded region and became a
+  glow, then a blob. `contour` also held its count once the prompt named ONE bounded edge and
+  added "and no more", after failing that count twice.
+  **`measure` is the type's unsolved problem and 1.10 says so plainly.** In 18 renders the
+  pair has never carried its difference by itself; the argument has always been legible from
+  the panels, the fill or the geometry instead. Three fixable causes are now written into its
+  rule — direction must be named against the STRUCTURE and never the frame, which is exactly
+  how both contact-lens renders measured the wrong axis from the words "straight down"; both
+  lines must start from corresponding points at the same place in their panels; and an
+  admission test, that a difference below roughly 2:1 cannot be shown by a dashed line at all
+  and needs a different landmark pair or a different type.
+  `panels` gains two failure modes that "one figure per panel" never covered: the structure
+  under argument must be DRAWN IN BOTH panels — one harness run substituted a full skeleton
+  and put the tracheal rings on the right only — and both objects must be IN CONTACT with it,
+  after both lens renders floated the lens clear of the eye. KNOWN-FLAKY gains badge outline
+  drift at 2 of 6. File 36631 characters, skeleton 898.
 - 1.9 (2026-08-13): **an admission test the type never had, and a rule conflict measurement
   found.** Evidence: `eval/render-tests.jsonl`, three records at ts 2026-08-13 — one
   `partial` and two `fail`, `verdict_by: harness` under ADR-011 from renders opened. Owner
