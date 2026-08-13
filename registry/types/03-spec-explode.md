@@ -3,7 +3,7 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["1:1", "16:9"]
@@ -44,11 +44,11 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-explode v1.1
+TYPE: 03-spec-explode v1.2
 REGISTER: 3D technical render. NOT photography.
 
 [PRODUCT REFERENCE] attached photo is the exact reference for every outer part.
-[CANVAS]                                                      -> PARTS/canvas
+[CANVAS] value chosen AGAINST the product's own value.        -> PARTS/canvas
 [FRAMING] full-frame or inset.                                -> PARTS/framing
 [STACK] name the real parts in assembly order.                -> PARTS/stack
 [CENSUS] only what the product genuinely contains.            -> PARTS/census
@@ -62,15 +62,25 @@ composited in post if the page needs them (G6 production law).
 
 ## PARTS
 
-**`canvas`** — a dark engineering ground, `deep navy` or `graphite`, with faint cyan traces
-at very low contrast. Motifs stay dim: credibility, not information.
+**`canvas`** — an engineering ground carrying faint traces at very low contrast. Motifs stay
+dim: credibility, not information.
 
-*Open proposal, below threshold.* 2 of the 5 exemplars sit on a NON-dark ground — a studio
-grey field and a marketplace tile with a white-rimmed circular inset — against a §6.2 bar of
-3, so the slot is not widened. The patch shape is already known and needs one more
-light-ground exemplar: make the ground a named parameter and narrow NEGATIVE's white-ground
-ban to the blown-out case it was aimed at. Note that the ground is fixed in three places —
-REGISTER, this slot, and NEGATIVE — so widening means moving all three.
+**Its VALUE is derived from the product, not fixed.** The ground must sit far enough in value
+from the product's dominant value that the silhouette separates. This was a fixed deep navy
+until three renders in one batch ordered themselves by exactly that distance: a white shoe on
+graphite read instantly; a charcoal toothbrush shell sank into deep navy while its bright
+metal parts above it popped, so one render separated well and badly at once; a navy jug on
+deep navy nearly disappeared. Choose:
+
+- a **dark** ground — `deep navy`, `graphite`, `near-black` — for a product that is pale,
+  metallic or brightly coloured;
+- a **light** ground — `studio grey`, `warm off-white`, `pale slate` — for a product that is
+  dark, black or navy.
+
+Two of the five exemplars already sit on a non-dark ground, which is why the light values are
+named rather than invented. NEGATIVE still bans a BLOWN-OUT white; a mid or pale grey is not
+that. Where a product carries both extremes, as the toothbrush does, pick against the LARGEST
+part — the shell — because that is the silhouette a scroller sees.
 
 **`framing`** — one of two.
 
@@ -79,7 +89,13 @@ REGISTER, this slot, and NEGATIVE — so widening means moving all three.
   width, for gallery positions that must stay recognisable at thumbnail size. 0 renders.
 
 **`stack`** — the product separated along ONE axis into its real component groups, in true
-assembly order, evenly spaced, each part solid and detailed. Nothing rotated out of line,
+assembly order, evenly spaced, each part solid and detailed.
+
+**The axis follows the product's proportion, not gravity.** A long thin product exploded
+vertically in a square frame leaves the stack filling the height and a fifth of the width,
+with dead ground on both sides — one render did exactly that. The axis may run vertical,
+horizontal or diagonal; choose the one that lets the stack use the frame's LONGEST dimension.
+Assembly order is unaffected: what matters is that every part sits on one line. Nothing rotated out of line,
 nothing duplicated, gaps even enough that the eye can reassemble it.
 
 **Name the PARTS, never a number of them.** A count does not bind in this library and never
@@ -193,6 +209,15 @@ a variant — same argument, same layers, different footprint.
 The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
+- 1.2 (2026-08-13): **the ground is derived from the product's value; the explode axis follows
+  the product's proportion.** Owner report that the backgrounds lack variety, and three renders
+  in one batch ordered themselves by value distance: a white shoe on graphite separated, a navy
+  jug on deep navy nearly vanished, a charcoal shell sank while its own bright metals popped.
+  `PARTS/canvas` stops being a fixed deep navy and names dark and light values to choose
+  between, which is the widening the file has carried as a proposal since 0.2 — the trigger is
+  the owner's report plus this batch, not the exemplar count, which is still 2 of 5. Also:
+  the `inset` framing and the layered-materials fan both earned their founding renders and both
+  pass. · this commit
 - 1.1 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), owner
   instruction. `PARTS` owns `canvas`, `framing`, `stack`, `census`, `focus`; `MARKS` owns the
   single `focus-glow`. `RATIO:` dropped per adapter Rule 4. Recorded rather than assumed:
