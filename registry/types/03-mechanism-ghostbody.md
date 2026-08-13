@@ -37,19 +37,20 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-ghostbody v1.6
-REGISTER: 3D technical render. NOT photography.               -> PARTS/register
+TYPE: 03-mechanism-ghostbody v2.0
+REGISTER: 3D technical render.                                -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
-[GHOST] pose, and where the body is cut.                      -> PARTS/ghost
+[PANELS] two equal panels. LEFT wrong, RIGHT correct.         -> PARTS/panels
+[GHOST] one pose, named once, identical in both panels.       -> PARTS/ghost
 [CUTAWAY] name the structure the product acts on.             -> PARTS/cutaway
-[PRODUCT] placement and angle only.                           -> PARTS/product
-[INSET] REQUIRED. Wrong state beside correct.                 -> PARTS/inset
-[MARKS] name each one used, with its count:                   -> MARKS
-  required: structure, and one of stress / support
+[PRODUCT] RIGHT panel only. Placement and angle.              -> PARTS/product
+[MARKS] name each one used, with its count and its panel:     -> MARKS
+  required: structure, verdict
+  then stress on the LEFT, support on the RIGHT
   nothing in the frame is marked that is not named here
 
-PALETTE LOCK: achromatic white and grey everywhere except the marks.
+PALETTE LOCK: achromatic white and grey except the marks.
 ```
 
 ## PARTS
@@ -73,30 +74,26 @@ the product's contour, because the alignment between the two is the whole claim.
 it, never describe it. Its contour must visibly align with the structure named in `cutaway`.
 Sharp silhouette against white.
 
-**`inset`** — **REQUIRED, not optional.** Two small rounded-square panels side by side in one
-corner, flat 2D vector, light grey outline, white fill. LEFT the wrong state, RIGHT the correct
-one, each carrying a `verdict` badge, and the difference between them large enough to read at a
-glance.
+**`panels`** — **two equal panels side by side, each a full 3D technical render**, divided by a
+single thin vertical line. LEFT is the wrong state: the body without the product, or with an
+ordinary one. RIGHT is the correct state with the reference product.
 
-It became required at 1.5 on a deliberate experiment. An arch-support insole was prompted with
-no inset, no harm mark and nothing but a correct body and a product carrying it — the most
-beautiful render this type has produced, and it argued nothing at all. A viewer learns that the
-insole is shaped. "Why does this shape work" is a comparative question, and once harm marks are
-banned from the main frame the inset is the only place a comparison can live.
+This replaced a corner inset at 2.0 and the evidence was unambiguous. From 1.5 the inset was
+the only place a comparison could live, and three renders then showed the same shape: a
+beautiful anatomical study filling nine tenths of the frame and stating little, while two small
+panels in a corner stated everything. At mobile size the part that argued was the part that
+could not be read. **The comparison is the argument, so the comparison is the frame.**
 
-**Both panels are the same body in the same pose, differing only in the thing under argument.**
-This is the `measure` discipline from `02-cause-anatomy` applied to an inset: exactly one
-property may differ and everything else must read as identical. The pillow prompt pinned the
-pose in the main frame and left the inset to inherit it, and the wrong panel came back with a
-lying posture that makes no sense — the owner's only objection to an otherwise passing set.
-Name the pose inside the inset, in both panels, in the same words. And name the difference
-against the STRUCTURE, never the frame: "the neck bent sharply toward the shoulder it lies on",
-not "bent down toward the mattress", which is the A10 fault the library already records.
+Both panels are the SAME body in the SAME pose from the SAME angle, cut the same way, differing
+only in the product and in what the structure does — the `measure` discipline from
+`02-cause-anatomy`: exactly one thing differs and everything else reads as identical. Naming
+the pose ONCE, in `ghost`, and declaring it identical in both panels is what stops the halves
+drifting; writing a main frame and an inset separately drifted twice, in opposite directions.
 
-**Never name this slot in a rendered prompt.** One render printed `XCHECK` in capitals above
-the inset because the prompt showed it as a heading — the same leak that made another type
-print circled A, B and C. Describe the thing: "a small two-panel inset in the top-left corner".
-The slot's name belongs to this file, not to the model.
+Distinction from `02-cause-anatomy`, now that both types carry two panels: that type is a 2D
+illustration indicting a CULPRIT in the customer's life, and its sentence is "this is what harms
+you". This one is a 3D technical render of the product's own mechanism, and its sentence is
+"this shape exists for a reason".
 
 ## MARKS
 
@@ -107,18 +104,28 @@ the colour G3 already assigns it.
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `structure` | the neutral anatomy the argument sits in — bone, cartilage, the body's own framework | yellow / off-white ivory | as much as the cutaway shows | 2 renders · drew cleanly |
-| `stress` | the loaded or deformed element, filled where the load lands — **`inset` wrong panel only** | red | as many as are loaded, inset only | 0 of 2 · inverted the argument in the main frame |
-| `support` | the structure the product is carrying, filled along the contact — on the BODY, never on the product | blue | 1 per supported structure | 0 of 1 · landed on the product |
-| `heat` | wrong pressure or wrong heat, in the `inset` wrong panel only | orange | 1, inset only | **none** |
+| `stress` | a flat hard-edged red overlay on the loaded or deformed element — **LEFT panel only** | red | as many as are loaded, left only | 3 renders in an inset · reads there |
+| `support` | a flat hard-edged blue band drawn BESIDE the structure the product carries, following its line — never a fill of the anatomy — **RIGHT panel only** | blue | 1 per supported structure | **0 of 3 as a fill** · read as intervertebral discs |
+| `heat` | a flat hard-edged orange overlay, wrong pressure or wrong heat — LEFT panel only | orange | 1, left only | **none** |
 | `dims` | ~~two black double-headed arrows outside the product silhouette~~ **WITHDRAWN at 1.6** | — | — | **0 of 3** · see KNOWN-FLAKY |
-| `verdict` | circle badge above each `inset` panel, a FILLED SOLID DISC with the glyph cut out of it | red X, green check | exactly 2, inset only | **none** · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
+| `verdict` | circle badge in the TOP corner of each panel, a FILLED SOLID DISC with the glyph cut out of it | red X, green check | exactly 2, one per panel | 5 renders · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
 
-**A harm mark never appears in the main frame.** The main frame shows the product IN USE and
+**Every mark here is a FLAT, UNSHADED, HARD-EDGED OVERLAY.** This is the one form a shaded 3D
+render never contains, and it is the difference between a mark and a piece of anatomy. Three
+renders of `support` came back as blue along or between vertebrae and every one read as coloured
+intervertebral discs — which is what a medical render puts there anyway. The mark had not failed
+to draw; it had failed to be a mark. Fault A11 in `registry/argument-faults.md`, contributed the
+same day from another type: a mark whose form the register could have produced stops reading as
+one. Draw marks as clean vector shapes laid ON TOP of the render — flat colour, no shading, no
+gradient, hard edges, obviously added. A band beside a bone, never a fill of it, and never a
+tint of the anatomy itself.
+
+**A harm mark never appears in the correct panel.** The main frame shows the product IN USE and
 working, so everything in it reads as something the product is doing — and a red `stress` mark
 there reads as harm the product CAUSES. Two founding renders proved it in one batch: red on
 both shoulders under a pillow, red on the big-toe joint inside the shoe, and a viewer reads
-"this hurts me". `stress` and `heat` belong in the `inset` wrong panel, which is precisely
-what the inset exists for. The main frame carries `structure` and `support` only.
+"this hurts me". `stress` and `heat` belong in the LEFT panel only; the RIGHT panel carries
+`structure` and `support` and nothing else.
 
 **And a mark cannot carry a counterfactual.** The shoe prompt asked for red where a NARROW
 shoe would press. No mark can say "would have"; it can only say "is". Marking a harm the
@@ -173,8 +180,13 @@ product causing harm (`02-symptom-rail` 1.7).
 
 ## SLOT CONSTRAINTS
 - **The prompt budget** (ADR-013): a clause earns its place in a rendered prompt only if a
-  render has failed without it. Everything else is a rule for the writer and stays here. This
-  type has no renders yet, so its prompts start from the skeleton and nothing more.
+  render has failed without it. Measured at 2.0 across this type's own prompts, which had grown
+  2056 → 2916 characters in four sets: **19% of a prompt was ceremony no render had ever failed
+  without.** These never go in a rendered prompt again, because ten renders held them without
+  being asked — the register's studio description beyond the words "3D technical render"; the
+  ghost's list of negatives (no face, no hair, no clothing, no skin tone); "rendered INSIDE the
+  silhouette and never floating on top of it"; "anatomically accurate"; and the closing
+  enumeration of the palette lock. Name the four signal colours once in MARKS and stop.
 - The product is the ONLY object with a real material finish.
 - `cutaway` lives inside the silhouette, never floating on top.
 - G7 exempt: technical-render register, so context integrity does not bind — the product need
@@ -207,8 +219,13 @@ paragraph still describes texture, which `product` now forbids.
   least one across or inside the product every time. Retired for geometry, not for text: the
   letter and number ban worked on the last two renders. It can return if a future model draws
   reliable extension lines.
-- **An inset panel whose pose is left to inherit, 1 render.** The pillow's wrong panel came back
-  with an illogical lying posture because the pose was pinned only in the main frame.
+- **A pose written twice drifts, 2 renders.** A pillow inset came back with an illogical lying
+  posture when the pose was pinned only in the main frame; the next render fixed the inset and
+  the MAIN frame then ignored the pose instead. At 2.0 the pose is named ONCE in `ghost` and
+  declared identical in both panels, which is the only arrangement that has not drifted.
+- **`support` as a fill reads as anatomy, 0 of 3.** Blue along or between vertebrae in a medical
+  3D render is indistinguishable from coloured intervertebral discs. Fixed at 2.0 by making
+  every mark a flat hard-edged overlay — see MARKS and fault A11.
 - **Slot names printed into the image, 1 render** (`XCHECK` in capitals). Second observation of
   the class across the library after `02-symptom-rail`'s circled A, B and C; recorded in the
   adapter as Rule 1b, since it is model behaviour and not specific to this type.
@@ -228,6 +245,20 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 2.0 (2026-08-13): **the comparison becomes the frame, and every mark becomes an overlay.**
+  MAJOR bump: the layer structure changes from one main frame plus a corner inset to two equal
+  panels. Owner-approved on two recommendations from a self-audit. Evidence: 3 records at 1.6,
+  all `partial`, and 12 renders in total.
+  The inset went from optional at 1.3 to required at 1.5 to the whole frame at 2.0, and each
+  step was forced by a render. Once harm marks were banned from a single-state frame, the
+  comparison was the only thing that could argue — and three renders then showed a beautiful
+  anatomical study filling nine tenths of the frame and stating little, while two small corner
+  panels stated everything. At mobile size the arguing part was the unreadable part.
+  Every mark is now a flat, unshaded, hard-edged overlay. `support` drawn as a fill along bone
+  came back three times out of three as coloured intervertebral discs — it had not failed to
+  draw, it had failed to be a mark, which is fault A11 in `registry/argument-faults.md`.
+  Prompt budget measured and written in: 19% of this type's prompts was ceremony no render had
+  ever failed without, and the specific clauses are now named as never-again. `PENDING`
 - 1.6 (2026-08-13): **the inset requirement is proved, and `dims` is withdrawn.** Evidence: 3
   records — 2 `pass` and 1 `partial`; the owner passed the set apart from the pillow.
   The isolation test landed: the same insole that argued nothing, with one inset added and
