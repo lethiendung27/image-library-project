@@ -217,7 +217,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   is real hardware whose material colours ARE the information. Motifs deleted — the rule admitted
   in its own words that they carry none. `caught` now requires the mechanism to ENCLOSE what it
   holds, after one batch showed it read inside a pre-filter and drifted through an open tank.
-  `working` never takes an arrow. `PENDING`
+  `working` never takes an arrow. `5612f49`
 - 1.1 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   1925 → 609. Three marks named for the first time — `working`, `output` and `caught` — all
   founded on the one rendered example, where they existed as unnamed sentences inside the
