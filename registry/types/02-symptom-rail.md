@@ -132,12 +132,22 @@ mismatched lighting between hero and vignettes, heat or warming cues,
 cluttered background, dark grade, vignettes too small, overlapping circles,
 floating product cutout, product mounted to nothing
 ```
-This list is canonical and model-agnostic; the adapter drops from it at render time.
-`red arrows on product` was dropped at v1.3 — with an arrow made of water or air the token
-risked suppressing the stream itself, which is Rule 1a. `letters` and `circled letters` were
-added after a render printed A, B and C into the frame. Note that `heat or warming cues`
-becomes a Rule 1a bleed in any prompt whose `field` mark is heat, and must be dropped from
-that prompt's avoid line rather than rephrased.
+This list is canonical and model-agnostic; **the adapter TRANSFORMS it at render time and a
+prompt must never carry it verbatim.** Measured 2026-08-13: pasting this list straight into
+three prompts produced 27 Rule 1a hits, because almost every token here qualifies a noun a
+rendered prompt requires — `faces inside the vignettes` against a hero who has a face,
+`mismatched lighting between hero and vignettes` against three nouns the prompt cannot do
+without, `cluttered background` against a background, `dark grade` against a grade,
+`overlapping circles` against the three circles that ARE the rail, `product mounted to
+nothing` against the product itself. Every one of those bounds is asserted positively in the
+skeleton already, which is exactly the case adapter Rule 1 step 1 says to drop. A rendered
+avoid line for this type is usually G6's core — text, letters, circled letters, watermark —
+plus the two hand descriptors Rule 5 mandates when hands are close.
+
+`red arrows on product` was dropped at v1.3: with an arrow made of water or air the token
+risked suppressing the stream itself. `letters` and `circled letters` were added after a
+render printed A, B and C into the frame. `heat or warming cues` is a Rule 1a bleed in any
+prompt whose `field` mark is heat, and is dropped from that prompt rather than rephrased.
 
 ## WORKED EXAMPLES
 (none rendered yet — the three renders of 2026-08-12 all predate v1.4 and every one of them
