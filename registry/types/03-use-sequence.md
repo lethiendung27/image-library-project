@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-use-sequence v1.2
+TYPE: 03-use-sequence v1.3
 REGISTER: warm lifestyle photography, close range.            -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference, in every panel.
@@ -82,6 +82,25 @@ its first panel and lost a beat.
 
 The product sits near the centre of every panel and is never cropped out.
 
+**These three names are the type file's vocabulary and never reach the model.** A prompt that
+carried `PANEL 1, PREPARE:` as a heading had PREPARE, USE and RESULT printed in white capitals
+into the frame — adapter Rule 1b, now measured on a third type. Describe each panel in prose:
+the top panel, the middle panel, the bottom panel. The whole-image headings shipped in that
+same prompt and were not drawn, so what leaks is a name attached to a REGION of the frame, not
+capitals as such.
+
+**If the closing action removes a part from the product, the panel must describe the product
+without that part.** Asked for a catch jar poured into a filter and told nothing about the
+grinder it came off, the model duplicated the jar in one run and dropped the grinder in the
+other. 2 of 2. Setting the WHOLE product down needs no such wording — proven on the steamer and
+on both wine-opener runs.
+
+**Any part of the product whose state visibly changes must be named in every panel, including
+the one where it is still empty.** `continuity` declares hands, place and light identical
+across the three panels and the model extends that to the product's own state: a cork named
+only in the middle panel was already inside the opener's window in the first, so the first two
+panels showed one state and the middle beat was empty. 2 of 2.
+
 **`environment`** — one ordinary domestic setting with one or two incidental details, named
 once and identical in all three panels.
 
@@ -94,7 +113,7 @@ exactly one entry here.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `emission` | whatever the product visibly puts out — spray, steam, light, foam — lit so it reads, made of the substance itself | the substance's own real colour | 1, in the USE panel only | **none** |
+| `emission` | whatever the product visibly puts out — spray, steam, light, foam — lit so it reads, made of the substance itself | the substance's own real colour | 1, in the USE panel only | 2/2 as steam, garment steamer, 2026-08-13 |
 
 **`emission` exists only if the product genuinely emits** (G8). It is not a mark laid over the
 photograph; it is a real thing in the scene, lit to be visible. Never invent an emission so a
@@ -136,10 +155,67 @@ Product: metal shower filter · ratio 1:1 · camera_lock=handheld
 - ENVIRONMENT — ordinary home bathroom, a folded towel, a plant on the sill
 Predicted failures: close-range hands on hardware, the library's highest extra-finger risk;
 and a RESULT panel asked for both a visible result and a centred product, which compete for
-space — if it breaks, choose one.
+space — if it breaks, choose one. The second prediction was confirmed on the grinder before
+this example was ever rendered; see `panels`.
+
+### example: garment-steamer-shirt — skeleton@1.2, run: partial
+Product: handheld garment steamer · ratio param 4:5 · camera_lock=handheld
+Kept in full because it is this type's founding `emission` evidence and the ledger stores
+verdicts, not prompts. **Do not copy the panel headings** — they are the Rule 1b fault `panels`
+now bans, and the sibling run of this same text printed them into the frame.
+
+```
+TYPE: 03-use-sequence v1.2
+REGISTER: warm lifestyle photography, close range, natural and unstyled, soft
+daylight.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the handheld
+garment steamer, in every panel. Preserve shape, proportions, material, finish and
+colour exactly.
+
+LAYOUT: three horizontal panels stacked vertically, thin white gutters, no outer
+border.
+
+CONTINUITY: the SAME pair of hands in all three panels - same skin tone, same
+nails, same wrists, same rolled sleeves. The same pale blue linen shirt hanging on
+the same wooden rail throughout. The same warm neutral palette and the same soft
+daylight from the left in every panel. Camera distance and framing shift naturally
+between panels.
+
+PANEL 1, PREPARE: both hands twisting the filled water tank back onto the body of
+the steamer, the tank's water level visible through it.
+PANEL 2, USE: one hand holding the shirt taut by its hem, the other drawing the
+steamer head upward across the fabric, mid-motion.
+PANEL 3, RESULT: the steamer lowered and held at rest in one hand, the other hand
+running flat down the now-smooth shirt panel. Warmer light than the panels above,
+and no new mechanics.
+
+The steamer sits near the centre of every panel and is never cropped out.
+
+MARK, one, in PANEL 2 only: emission - real steam leaving the steamer head into
+the fabric, backlit from the left so the plume reads clearly against the shirt. It
+is steam in the room, not a graphic.
+
+ENVIRONMENT: an ordinary bedroom corner, a woven basket on the floor, a folded
+towel over the rail. The same location in all three panels.
+```
+Held: the stack, the gutters, one pair of hands across all three panels, one room, one light
+direction, a warmer close, and `emission` as real backlit steam in the middle panel only, twice.
+Broke: the run above printed the three beat names into the frame; this run did not, so the leak
+is intermittent. This run also cropped the steamer to its water tank in the opening panel and
+parked it at the far left edge of the closing one, against the centred-and-uncropped rule.
 
 ## KNOWN-FLAKY
-(nothing observed — this type has one render in the ledger and no failures recorded)
+Both are below the §6.2 bar and neither is promoted.
+
+- **The stack reflows.** 2 of 6 renders on 2026-08-13 ignored three-panels-stacked — one came
+  back a 2x2 grid of four with the USE beat drawn twice, one a tall left panel with two stacked
+  at the right. 4 of 6 held. Untested hypothesis: all six frames arrived 1200x896 landscape
+  whatever ratio was asked, and a three-high stack in a landscape frame gives very wide short
+  panels that both alternative arrangements fit better.
+- **An unrequested sparkle appears.** The same white four-point sparkle graphic sat at the lower
+  right of the closing panel on both electric wine opener renders, under prompts that said no
+  marks. 2 of 2 on that product, 2 of 6 on the type, no other product produced it.
 
 ## NOTES
 Distinction within step 3: `ghostbody` and `xray` explain WHY a product works, `spec-split`
@@ -148,6 +224,11 @@ more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.3 (2026-08-13): first render evidence for this type — six renders, three products, 0 pass /
+  4 partial / 2 fail. `emission` gains its founding evidence, 2/2 as real backlit steam. Three
+  rules earned in `panels`: the beat names never reach the model (Rule 1b, third type), a
+  removed part must be described as absent, and a changing product state must be named in every
+  panel. Stack reflow and an unrequested sparkle go to KNOWN-FLAKY, both under the §6.2 bar.
 - 1.2 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   1645 → 608. `emission` named as the type's only mark, and the MARKS section states plainly
   that the near-absence is the design: this type argues with actions rather than graphics, and
