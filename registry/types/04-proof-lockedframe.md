@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.8"
+version: "1.9"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -46,7 +46,7 @@ argues with something added to the frame; this one argues by adding nothing, so 
 not an omission to fill in later.
 
 ```
-TYPE: 04-proof-lockedframe v1.8 [--rivals | --verdict | --timelapse | --capture]
+TYPE: 04-proof-lockedframe v1.9 [--rivals | --verdict | --timelapse | --capture]
 REGISTER: documentary photography. No overlays, badges, arrows or text.
 
 [LAYOUT] N equal vertical panels, thin white gutters, no outer border.  -> PARTS/layout
@@ -82,6 +82,9 @@ STYLE: honest documentary product test photography, unstyled, natural, sharp.
   upper and lower thirds — then state the band: it reads as one shot taken [N] times, never
   as [N] different shots. Put the variation on the PROPS, named per panel: a towel refolded,
   an item moved, one thing missing. Light differs only in exposure, never in warmth.
+  **Drift may not reveal area another panel does not have** — a few degrees and a few
+  centimetres, never enough to open up a part of the room the other panels never show. That is
+  a change of framing wearing drift's clothes. 1 observation.
 
 **Choose by TIME, not by preference.** `strict` when every panel belongs to one session and
 the variable is an object swapped in and out; `handheld` when the panels are separated by
@@ -106,6 +109,11 @@ shadows, no sunlight, no styling. **Perfect alignment reads as CGI and destroys 
 
 **`variable`** — the only thing that changes, named panel by panel. Everything else — the
 room, the surface, the light direction, the identity of the object — is constant.
+
+**The MOMENT is part of that one variable.** Every panel sits at the same point in the
+process: all before, all during, or all after. A surface photographed with the food still on
+it against a surface photographed after the food is lifted compares two things, and the empty
+one wins for being empty. One render did exactly that.
 
 **`product`** — the SUBJECT of the panel it appears in, filling at least [X%] of that panel,
 never a small object at the edge of a scene the viewer is actually looking at.
@@ -197,7 +205,9 @@ Output filtered against unfiltered through an intermediate medium.
 Diff: `scene` becomes a declared at-home test staged the way an ordinary person would — cloth
 tied with a rubber band, slightly crooked, a basin underneath — because **amateur staging reads
 truer than neat staging** · `variable` is panel 1 without the product fitted and the medium
-marked, panel 2 with it fitted and the medium clean.
+marked, panel 2 with it fitted and the medium clean — and **the product must be identifiable
+in panel 2**, not merely present. A clean medium with no visible cause is a clean medium; the
+cause is the only thing this variant supplies, and one render lost it to bare pipework.
 - Channels: advertorial only. Weaker than `--timelapse`, since the viewer never sees the
   process; if both run, `--timelapse` goes first so it vouches for this one.
 - Negative additions: `laboratory equipment, clinical setup, cloth in different position
@@ -274,6 +284,12 @@ completeness violation that helped produce G7.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.9 (2026-08-13): **three fixes, all from prompts rather than the model.** The MOMENT is now
+  part of the one variable — every panel sits at the same point in the process, after a sheet
+  shown with food on it was compared against a mat shown empty and the empty one won for being
+  empty. `--capture` panel 2 must show the product IDENTIFIABLY, since a clean medium with no
+  visible cause is just a clean medium. And handheld drift may not reveal area another panel
+  does not have, which is a change of framing wearing drift's clothes.
 - 1.8 (2026-08-13): **three fixes after a panel-1 prompt returned a 2×2 grid.** A panel-1
   prompt carries NO multi-panel language and the anchor list moves to the EDIT step, which
   enforces alignment by construction. Owner-approved: the camera choice gains a CAPABILITY
