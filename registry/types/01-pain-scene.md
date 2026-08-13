@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.6"
+version: "1.7"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,7 +43,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.6 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.7 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -183,18 +183,24 @@ white background, studio lighting, stock photo look, posed model, fake grimace,
 smiling, clean staged interior, saturated colors, advertising composition,
 product placement
 ```
-**Under `--marked`, three tokens DROP from this list: `red glow`, `pain hotspots`,
-`graphic overlay`.** That variant requires a red glow or ring, so carrying those tokens
-into a rendered avoid line is a Rule 1a bleed — the avoid line has no negative channel
-and no operators, so "red glow" beside a required red glow suppresses the mark. Drop,
-never rephrase. `arrows` and `badges` stay in every variant: the mark law bars them.
+**Seven of the tokens above are Rule 1a bleeds: DROP them from a rendered avoid line,
+never rephrase.** The avoid line is prose to this model — no negative channel, no operators
+— so a token qualifying a noun the prompt requires suppresses that noun.
+- Under `--marked`: `red glow`, `pain hotspots`, `graphic overlay`. The variant requires a
+  red glow or ring.
+- In every variant: `studio lighting`, plus `bright airy lighting`, `flat daylight look`
+  and `warm flattering light` from the variant blocks. All four qualify *light*, which
+  every prompt in this type requires — Rule 1a's measured row `one panel brighter than the
+  others`, which suppressed a required exposure drift, is the same shape.
 
-**Four more bleed in EVERY variant** — `studio lighting` here, plus `bright airy
-lighting`, `flat daylight look` and `warm flattering light` in the variant blocks. Each
-qualifies *light*, which every prompt in this type requires, so each is the shape Rule 1a
-measured as `one panel brighter than the others` suppressing a required exposure drift.
-The canonical list keeps them; the adapter drops them and the body asserts the lighting
-positively instead. `golden hour` is safe — it qualifies nothing a prompt needs.
+The list stays canonical and model-agnostic; the adapter drops from it at render time and
+the body asserts the positive form instead. `arrows` and `badges` stay in every variant,
+the mark law bars them; `golden hour` is safe, qualifying nothing a prompt needs.
+
+`02-symptom-rail` measured the general case on 2026-08-13: pasting its canonical list whole
+into three prompts produced 27 Rule 1a hits. Copying this block instead of transforming it
+is the error. A rendered avoid line here is usually G6 core plus the two hand descriptors
+adapter Rule 5 mandates.
 
 ## VARIANTS
 Diffs only. Each variant names the PARTS values it takes; the definitions stay in PARTS.
@@ -220,31 +226,6 @@ mark is model-drawn (ADR-008 approach A).
 - Three tokens DROP from the rendered avoid line — `red glow`, `pain hotspots`,
   `graphic overlay`. The reasoning is in NEGATIVE.
 
-## WORKED EXAMPLES
-### example: mouth-tape-candid — skeleton@1.1, run: untested
-Product: none in frame (G1-exempt) · ratio 5:3 · variant --candid
-- SUBJECT — man late 30s, worn grey t-shirt, sitting up on the edge of an unmade bed mid-night, shoulders slumped, one hand braced on the mattress, the other reaching for the nightstand; unaware of camera, gaze down and unfocused; eyes heavy and half open, deep creases beneath, lips dry and parted, jaw slack
-- SYMPTOM EVIDENCE — an almost empty glass of water with a second empty glass beside it, pillow deeply creased and shoved aside, duvet kicked into a tangle at the foot, phone face-up casting a cold glow
-- MOMENT — the ordinary act of waking again at 3am, not a demonstration of wrong behaviour
-- ENVIRONMENT — small suburban bedroom, deep night, curtains half drawn, a chair with clothes over the back
-- LIGHT — low-key; key: cold blue streetlight through the curtain gap from behind left; fill: faint warm hallway spill; rim along shoulder and jaw; deep shadow across most of the frame
-- GRADE — desaturated blue-grey, crushed blacks, fine grain, shallow depth of field, 35mm
-Predicted failure: the two glasses may collapse into one, losing the "repeats every
-night" layer. Fallback evidence: a water-ring stain on the nightstand (carries
-repetition in a single object).
-
-### example: knife-sharpener-confront — skeleton@1.1, run: untested
-Product: none in frame (G1-exempt) · ratio 5:3 · variant --confront
-- SUBJECT — woman early 40s, plain t-shirt and apron, standing at a kitchen counter turned to camera holding the lens; knife loose in one hand, the other raised in a small giving-up gesture; brow drawn together, mouth pressed flat and slightly down, chin tucked
-- SYMPTOM EVIDENCE — a tomato mangled into thick uneven wedges, skin torn, juice and seeds across the wood; a second half-crushed tomato pushed aside; a cheap pull-through sharpener already tried and abandoned; a dish towel bunched under her wrist
-- MOMENT — stopping mid-task because the tool will not do its job, not a demonstration of wrong technique
-- ENVIRONMENT — small ordinary kitchen, mid-morning, worn wooden counter, an open utensil drawer behind, a board against the tiles, dishes in the sink
-- LIGHT — even ambient daylight from a window left, bright, minimal shadow, flat and unflattering
-- GRADE — desaturated neutral, muted greens and greys, fine grain, moderate depth of field, 35mm; the tomato is the only red and must read as ordinary food color
-Predicted failures: (1) knife-in-hand + direct gaze may trip safety filters or read as
-threatening — fallback: knife down on the board, both hands braced on the counter;
-(2) frustration drifting into theatrical anger — the variant lives on restraint.
-
 ## KNOWN-FLAKY
 - **Unrequested four-pointed sparkle glyph, bottom-right, 2 of 2 jar renders examined
   2026-08-13.** Same corner and same form in both, and it takes the tone of whatever is
@@ -256,77 +237,46 @@ threatening — fallback: knife down on the board, both hands braced on the coun
   one prompt names that corner as bare, two omit the clause.
 
 ## CHANGELOG
+Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
+git is the audit surface, so decisions are recorded here and workings are not.
+- 1.7 (2026-08-13): **compressed, on the owner's instruction.** No law changed and no
+  render behaviour changed. The CHANGELOG gains the preamble it never had and entries
+  1.3-1.6 are cut to their decisions, the workings staying where they already were, in git.
+  NEGATIVE's two Rule 1a notes merged: they stated one mechanism twice, for two groups of
+  tokens. WORKED EXAMPLES removed entirely — both examples were `run: untested` since 1.1,
+  five versions behind the call-map, and both named slots that no longer exist
+  (`SYMPTOM EVIDENCE`, `MOMENT`), so as few-shot material they taught the wrong form. SPEC
+  §3.3 makes the section optional and this type is active under ADR-001, so no promotion
+  criterion rests on it. What is lost is few-shot at fill time, and the honest note is that
+  this type has five passing renders whose prompt text survives nowhere: the section earns
+  its place back the first time a rendered prompt can fill it in full, per SPEC §3.3.
+  CHANGELOG 6685 → 4061, NEGATIVE 1218 → 1536, WORKED EXAMPLES
+  2744 → 0. File 22478 → 17428 characters.
 - 1.6 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), on the
-  owner's instruction to repeat the `02-cause-anatomy` shape. Same slots, same laws, same
-  image — MINOR, as the model type's own 1.7 was. `PARTS` owns `subject`, `evidence`,
-  `environment`, `gaze`, `light`, `mirror`, `grade`; `MARKS` owns `glow` and `ring`, the
-  second entering with zero renders as a labelled proposal. The compression is where the
-  duplication was: VARIANTS restated filler the skeleton already named and drops
-  4052 → 1354, the skeleton block 1315 → 967. NOT copied
-  from the model type: its removal test and 2:1 test, which are gates for a two-panel
-  comparison this type has none of. `PARTS/gaze` records the gaze/light bundling and does
-  not act on it — two records against a §6.2 bar of three. File 19394 → 22478.
-- 1.5 (2026-08-13): **avoid-line law completed; the corner glyph recorded.** The NEGATIVE
-  note dropped three Rule 1a bleeds under `--marked` and missed four that bleed in every
-  variant — `studio lighting`, `bright airy lighting`, `flat daylight look` and `warm
-  flattering light` all qualify *light*, which every prompt here requires. Nothing about
-  what renders changed, and no passing render would have been forbidden by it. KNOWN-FLAKY
-  opens with the unrequested bottom-right sparkle, 2 of 2 jar renders examined, carrying
-  one fact the adapter does not have: the glyph takes the tone of the surface beneath it,
-  so it is a composite overlay and not a drawn element. Shipped with it, three `--marked`
-  prompts at 1760/1770/1880 characters against the variant's one proven render at 1669,
-  Rule 1a gate clean at 0 unexplained hits with the checker verified against known-bad
-  input first. `--marked` still stands on ONE render: the set asks whether the ring class
-  exists at all, whether the glow survives crushed blacks, and whether the mark may sit on
-  residue instead of on the body. File 17118 → 19394 characters.
-- 1.4 (2026-08-12): **skeleton compressed, no change to what renders.** Same slots, same
-  laws, same image — only where the text lives moved, so this is MINOR: no layer, zone or
-  panel changed. The skeleton block drops from 2144 to 1314 characters, 38% smaller, and
-  every prompt written from it inherits that.
-  Six cuts, each with its reason. (1) The `RATIO:` line is gone — adapter Rule 4 has 6/6
-  renders ignoring a written ratio, and keeping it in the skeleton taught every filler to
-  write a line the adapter then had to strip. (2) `[MOMENT RULE]` and (3) the four-rank
-  evidence ladder moved to SLOT CONSTRAINTS: both are instruments for choosing, and the
-  model only needs the choice. Today's evidence for (2) is direct — "an ordinary lunch
-  stopped by a jar" was a MOMENT fill and rendered as nothing. (4) `[GAZE]` and `[LIGHT]`
-  carried BOTH variants inline, so every writer hauled the unused branch and deleted it;
-  the filler text now lives in the `--candid` and `--confront` blocks where it is chosen,
-  and `[MIRROR]`'s rationale went to the variant bullet while its filler text went to the
-  block. (5) `NO saturated colors` / `NO red anywhere` / `Nothing that signals
-  advertising` / `NO text, no logo, no watermark` are gone: the positive form is already
-  asserted ("desaturated"), and the rest is G6, which the adapter emits into the avoid
-  line — Rule 1 step 1 and Rule 6 rule 2.
-  One quality fix, not a cut: `[SUBJECT]` no longer offers "**or pausing at** the moment
-  the problem is noticed". That branch is what produced the dead render this morning, and
-  it contradicted the state-the-force rule added at 1.3 in the same file. The slot now
-  names a force or a movement and says so twice.
-  `[PAIN MARK]` is named in the base skeleton as variant-set, so `--marked` is visible to
-  anyone reading the skeleton alone.
-- 1.3 (2026-08-12): **`--marked` variant added** — one graphic mark, on the evidence,
-  never a verdict. Owner decision; the standing instruction is that graphic-element rules
-  are the owner's to write, and this is that decision. `vocabulary.yaml` drops "zero
-  graphic layers" from the `scene` device in the same change: the device's identity is its
-  geometry (one frame, no panels, no insets), and the graphics ban was never carried by
-  the device in practice — both `scene` types already state it in their own files
-  (`[FORBIDDEN]` here, REGISTER line + NEGATIVE in `06-relief-scene`), so nothing lost a
-  law. `--candid` and `--confront` keep the full ban.
-  Evidence, three strands. (1) **Measured cost of acting-only emphasis**: the same jar
-  prompt went from 1379 characters to 2153 (+774) purely to force visible exertion out of
-  prose — elbow, shoulder, neck tendon, held breath — which is a mark's job written the
-  long way. The `--marked` rewrite of the same image lands at 1544. (2) **Owner report on
-  four renders of this type in one session**: all technically sound, none legible at a
-  glance, and a buyer has to study the frame to find the problem. `1.3b` is on the ledger
-  as `pass` (`eval/render-tests.jsonl`, 2026-08-12) with the two logic faults recorded as
-  prompt faults, not skeleton faults. (3) **A structural gap in routing**: on paid-social
-  and advertorial this is the ONLY pain type — `01-pain-split`, the half-second one with
-  hotspots and badges, is marketplace/landing-page and requires a product photo. So those
-  two channels had no fast-reading pain option at all.
-  Also in this change: the SLOT CONSTRAINTS gain the **state-the-force rule** (a slot must
-  name a force or a movement, never a pause or an intention — "already tried" and "an
-  ordinary lunch" both rendered as nothing), and `--confront`'s restraint rule is scoped
-  to emotion rather than effort, because a flat face over a slack body renders as nothing.
-  `never_with: 01-pain-split` stands, with its reason updated: it was "graphics versus
-  acting", and it is now simply one pain beat per page.
+  owner's instruction to repeat the `02-cause-anatomy` shape. `PARTS` owns `subject`,
+  `evidence`, `environment`, `gaze`, `light`, `mirror` and `grade`; `MARKS` owns `glow` and
+  `ring`. Same slots, same laws, same image — MINOR, as the model type's own 1.7 was. NOT
+  copied from it: the removal test and the 2:1 test, which gate a two-panel comparison this
+  type has none of.
+- 1.5 (2026-08-13): **four more Rule 1a bleeds found in NEGATIVE**, all four qualifying
+  *light*, which every prompt here requires. Tested against this type's five passing renders
+  first: none would have been forbidden. KNOWN-FLAKY opened with the unrequested
+  bottom-right sparkle, 2 of 2 jar renders examined.
+- 1.4 (2026-08-12): **skeleton compressed, no change to what renders** — 2144 to 1314
+  characters. The `RATIO:` line dropped per adapter Rule 4; the moment rule and the evidence
+  ladder moved out as instruments for the writer; `[GAZE]` and `[LIGHT]` filler moved into
+  the variant blocks that choose them; four negative lines dropped as already asserted
+  positively or already G6. One quality fix, not a cut: `[SUBJECT]` lost its "or pausing at"
+  branch, which had produced a dead render that morning and contradicted the state-the-force
+  rule added at 1.3.
+- 1.3 (2026-08-12): **`--marked` variant added** — one graphic mark, on the evidence, never
+  a verdict. Owner decision, per the standing rule that graphic-element rules are his to
+  write. `vocabulary.yaml` dropped "zero graphic layers" from the `scene` device in the same
+  change, the device's identity being its geometry. Three strands of evidence: the measured
+  cost of forcing visible exertion out of prose alone (figures in SLOT CONSTRAINTS); four
+  renders in one session, technically sound and none legible at a glance; and no
+  fast-reading pain option existing on paid-social or advertorial at all. Also here: the
+  state-the-force rule, and `--confront`'s restraint scoped to emotion rather than effort.
 - 1.2 (2026-08-11): channels gain `landing-page`. The type contradicted ITSELF: the
   --confront variant already declares "Channels: advertorial body, landing-page"
   while the frontmatter excluded it. Frontmatter corrected to match the variant.
