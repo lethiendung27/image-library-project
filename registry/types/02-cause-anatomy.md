@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.14"
+version: "1.15"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -42,7 +42,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 02-cause-anatomy v1.14 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.15 [+ --diagnostic]
 MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -243,23 +243,96 @@ Diff vs base: `[PRODUCT REFERENCE]` is dropped, G1 is exempt because no product 
 (G1's own scope note), and `requires_product_photo` reads false for this variant.
 - Use it only when a later image on the same page carries the product. Alone it argues
   "stop doing this" rather than "buy this", which is why the product became the default.
+- Fill sketch, since the variant no longer holds a worked-example slot: a magnified hair
+  strand per panel, cuticle scales in ivory over a translucent water outline, the same
+  strand and angle in both; LEFT under untreated water with mineral crystals lodged in
+  lifted scales, RIGHT under filtered water with scales flat and closed. Note before using
+  it that this exact case FAILS the removal test — a filter does not close a scale that is
+  already lifted — so a `--diagnostic` fill needs a switchable state like any other.
 - Negative additions: `reference product in frame, branded remedy object`
 
 ## WORKED EXAMPLES
-### example: shower-filter-hair-strand — skeleton@1.7, run: untested
-Product: none in frame (`--diagnostic`) · ratio 5:3 · style airbrushed
-- GROUND — pale mineral grey, derived from limescale, darker in value than the ivory
-- BODY — one magnified hair strand per panel, cuticle scales in ivory over a translucent
-  water outline, same strand and angle in both
-- PANELS — LEFT: the strand under untreated water, angular mineral crystals lodged in
-  lifted cuticle scales. RIGHT: the same strand under filtered water, scales flat and
-  closed, no crystals
-- MARKS — `measure` (2 lines across the same two scale roots, differing only in the gap
-  they span), `verdict`, `contour` (1 per panel along the scale surface), `fill` (lifted
-  scales red, closed scales blue)
-Kept as the type's only `--diagnostic` example. Stale in two ways to fix when it is next
-rendered: it predates both the removal test — a filter does not close a lifted cuticle —
-and the 2:1 admission.
+Both are renders that happened, kept in full because that text is the only record of what
+actually drew (SPEC §3.3). Both are `partial`, and their remaining faults are named — an
+example is a demonstration of the type working, not a claim of perfection.
+
+### example: postpartum-support-band — skeleton@1.11, run: partial
+Fault on the render: the band covered the lower half of the muscle gap it was closing.
+Everything else held, and this is the render where `measure` first carried its own
+difference unaided in twenty-one attempts.
+```
+TYPE: 02-cause-anatomy v1.11
+MEDIUM: 2D illustration, paper-cut. NOT photography, NOT 3D.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the postpartum support
+band in the RIGHT panel.
+
+FRAME: the whole torso from ribs to hips is in shot, the muscle gap small within it.
+GROUND: deep desaturated olive, the right half one step lighter than the left.
+BODY: the two vertical rectus abdominis muscles and the linea alba between them, cut as
+separate paper layers in warm ivory over a translucent torso outline, seen from the
+front. NOT a skeleton, NOT a ribcage. Exactly one torso in EACH panel, same scale and
+view.
+
+PANELS. LEFT: the bare torso unsupported, the two muscle bellies pulled apart and the
+linea alba between them stretched wide and slack. RIGHT: the reference band fastened
+across the same torso at the same height, touching the skin over the gap, the two
+bellies drawn back toward each other and the linea alba narrow. The band must not cover
+the gap it is closing.
+
+MARKS, two, nothing else marked:
+- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE INNER
+  BORDER OF THE RIGHT-HAND MUSCLE, running across to the inner border of the left-hand
+  muscle and STOPPING at both. Both sit at the same height on the torso, at the same
+  place in their panel. Identical thickness and dash. One property differs: the gap -
+  wide on the left, narrow on the right. Red left, blue right. Straight lines, not boxes.
+- verdict: filled solid discs, red with a white X in the left panel's TOP corner, green
+  with a white check in the right panel's. Same diameter, not rings.
+
+G3: red wrong, blue correct, green badge, nothing else.
+
+Strictly avoid: text, numbers, letters, watermark, photographic elements, 3D render,
+human face, gore.
+```
+
+### example: patellar-knee-brace — skeleton@1.13, run: partial
+Fault on the render: the leg read as a translucent grey band rather than a recognisable
+leg. The measure pair is the clearest this type has produced — a long red span against a
+short blue one, identical in form and at the same height — and `paper-cut` renders cleanly
+at two marks.
+```
+TYPE: 02-cause-anatomy v1.13
+MEDIUM: 2D illustration, paper-cut. NOT photography, NOT 3D.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the patellar tracking
+knee brace in the RIGHT panel.
+
+FRAME: the whole leg from mid-thigh to mid-shin, seen from the front.
+GROUND: deep charcoal violet, the right half one step lighter than the left.
+BODY: the kneecap and the shallow groove in the thigh bone that it rides in, cut as
+separate paper layers in warm ivory over a translucent leg outline. NOT a full skeleton.
+Exactly one leg in EACH panel, same scale and same front view.
+
+PANELS. LEFT: the bare unsupported knee, the kneecap slid outward so it sits off the
+groove, its inner edge standing clear of the groove's inner ridge. RIGHT: the reference
+brace worn on the same knee, its open kneecap ring, straps and hinges clearly visible and
+reading as the product itself, the kneecap held back in the groove with its inner edge
+against the ridge. The brace's opening leaves the kneecap and the groove visible in full.
+
+MARKS, two, nothing else marked:
+- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE INNER
+  RIDGE OF THE GROOVE, running from that ridge across to the inner edge of the kneecap
+  and STOPPING at both. Both begin at the same point on the ridge, at the same place in
+  their panel. Identical thickness and dash. One property differs: the gap - wide on the
+  left, closed to almost nothing on the right. Red left, blue right. Straight lines, not
+  boxes.
+- verdict: filled solid discs, red with a white X in the left panel's TOP corner, green
+  with a white check in the right panel's. Same diameter, not rings.
+
+G3: red wrong, blue correct, green badge, nothing else.
+
+Strictly avoid: text, numbers, letters, watermark, photographic elements, 3D render, gore.
+```
 
 ## KNOWN-FLAKY
 - **`measure` on a soft-tissue groove, 0 of 2, 2026-08-13.** Both camera-strap renders failed
@@ -314,6 +387,17 @@ one palette or they read as two sources.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.15 (2026-08-13): **type passed by the owner; file finalised.** The two worked examples
+  are now renders that actually happened, carried in full text per SPEC §3.3 — the
+  postpartum band, where `measure` first carried its own difference in twenty-one attempts,
+  and the patellar knee brace, the clearest measure pair the type has produced. The
+  untested `shower-filter-hair-strand` example is retired: it predates both admission gates
+  and fails the removal test outright, since a filter cannot close an already-lifted cuticle.
+  Its fill survives as a sketch inside VARIANTS, where a diff belongs, with that failure
+  stated so nobody renders it blind. Closing state: ten marks, eight with render evidence;
+  `measure` at 30 renders carrying its own difference in four, all since 1.12; `pressure`
+  working at 3 of 6; `paper-cut` clean at three renders; `light-field` inverted and
+  `frame`'s single value both awaiting founding evidence in the set delivered this turn.
 - 1.14 (2026-08-13): **the formula holds; `light-field` returns inverted.** Evidence: six
   records at ts 2026-08-13, all `partial`. The v1.13 formula — whole frame, product worn on a
   recognisable body, 2:1 gap — fixed what was broken: **six of six renders show a product a
