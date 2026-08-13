@@ -3,7 +3,7 @@ id: 03-spec-split
 step: 3
 job: spec
 device: split
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-split v1.3 [+ --products]
+TYPE: 03-spec-split v1.4 [+ --products]
 
 [PRODUCT REFERENCE] attached photo is the reference for the INSET only.
 [SPLIT] one diagonal; the halves unequal in energy.       -> PARTS/split
@@ -142,6 +142,97 @@ lighting beyond that · **both halves are photographs, so the G5 exemption does 
 - Negative additions: `shattered or destroyed rival product, debris, exaggerated failure scene,
   check and X badges stacked with the VS, mismatched instrument insets between panels`
 
+## WORKED EXAMPLES
+Both rendered at 1.3 and owner-passed, kept in FULL text per SPEC §3.3. Between them they
+carry both centre markers, which is why there are two.
+
+### example: shaver-cutter-vs — skeleton@1.3, run: pass
+```
+TYPE: 03-spec-split v1.3
+
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference for the INSET only. Preserve its
+shape, proportions, material, finish and colour exactly as shown. Do not redesign or add
+features.
+
+[SPLIT]
+One diagonal running from the top-left corner to the bottom-right, edged with a thin
+glowing cyan line. The two halves are unequal in energy, the right half advancing into
+the left.
+
+[OLD — left half]
+Photographic register, desaturated. A generic unbranded shaver foil and cutter block
+lying on a dim bathroom shelf: the foil dented and rubbed through in two places, the
+cutter teeth rounded off at their tips, grey stubble packed into the gaps between them.
+It must read as a real object photographed in the real world, not as a render.
+
+[NEW — right half]
+3D render register. A pristine cutter block of the improved type, floating against a
+dark gradient: each blade edge a continuous unbroken line of light running its full
+length, the foil above it a fine even honeycomb with every cell identical. Cool cyan rim
+lighting, sharp reflective surfaces. It must read as engineered, not photographed.
+
+[MARK]
+A single large brushed-metal VS at the centre of the diagonal, with a burst of warm
+sparks at the seam. Nothing else at the centre.
+
+[INSET]
+The reference shaver ALONE — no loose parts, no second object — complete and whole, on a
+plain light ground inside a rounded rectangle along the bottom, about 22 percent of the
+frame width. Keep the whole rectangle clear of every frame edge by at least 8 percent of
+the frame height; if it will not fit, make it smaller rather than moving it outward. This
+is the only place the finished product appears.
+
+STYLE: high-contrast technical comparison graphic, e-commerce, sharp.
+```
+The `vs` marker on its second clean render. Also the inset fix: product alone, clear of the
+bottom edge.
+
+### example: drill-cells-verdict — skeleton@1.3, run: pass
+```
+TYPE: 03-spec-split v1.3
+
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference for the INSET only. Preserve its
+shape, proportions, material, finish and colour exactly as shown. Do not redesign or add
+features.
+
+[SPLIT]
+One diagonal running from the top-left corner to the bottom-right, edged with a thin
+glowing cyan line. The two halves are unequal in energy, the right half advancing into
+the left.
+
+[OLD — left half]
+Photographic register, desaturated. A generic unbranded battery pack opened on a dim
+workbench: its cylindrical cells corroded white around the terminals, one cell visibly
+swollen out of round, the connecting straps soldered in uneven blobs. It must read as a
+real object photographed in the real world, not as a render.
+
+[NEW — right half]
+3D render register. A pristine lithium cell array of the improved type, floating against
+a dark gradient: the cells in a tight even block with no gap between them, the nickel
+tabs laser-welded in identical rows of dots that catch the light in a straight line
+across the whole pack. Cool cyan rim lighting, sharp reflective surfaces. It must read as
+engineered, not photographed.
+
+[MARK]
+Two flat solid discs of the same diameter, each with its glyph CUT OUT of the disc so the
+background shows through the shape: a RED disc bearing an X in the upper-left half, a
+GREEN disc bearing a check in the lower-right half. No letters anywhere, no VS, no third
+marker.
+
+[INSET]
+The reference drill ALONE — no loose parts, no second object — complete and whole, on a
+plain light ground inside a rounded rectangle along the bottom, about 22 percent of the
+frame width. Keep the whole rectangle clear of every frame edge by at least 8 percent of
+the frame height; if it will not fit, make it smaller rather than moving it outward. This
+is the only place the finished product appears.
+
+STYLE: high-contrast technical comparison graphic, e-commerce, sharp.
+```
+The `verdict` pair with the glyph CUT OUT and no colour named — the wording that made both
+discs match after a colour word had split them.
+
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
@@ -152,6 +243,10 @@ why the type is `marketplace` only. Both halves are soft claims; the honesty con
 CONSTRAINTS is the guardrail.
 
 ## CHANGELOG
+- 1.4 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES opens with
+  the two 1.3 passes in full text, one per centre marker. `vs` is confirmed at 2 of 2 clean,
+  which settles the post-composite note this type carried untested since 1.0. The inset margin
+  and inset-alone fixes both held, and the cut-out wording made the two discs match.
 - 1.3 (2026-08-13): **four logic fixes.** `vs` goes from untested to 1 render clean, so both
   centre markers are offered rather than one replacing the other; letters stay the risk class
   and `verdict` the safe default. Never name the glyph's colour — cut-out and white are two
