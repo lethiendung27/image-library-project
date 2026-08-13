@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.12"
+version: "1.13"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -42,7 +42,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 02-cause-anatomy v1.12 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.13 [+ --diagnostic]
 MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -84,23 +84,24 @@ groups do not overlap: a flat field has never exceeded +5 of 255, a step whose b
 right panel's own content ate back reached +2.2, and an unspent step has never fallen below
 +17.6. So: step the field, and do not let the right panel's content spend it.
 
-Colour must sit far in hue from FOUR things: **red, blue, green** — G3's three signals, the
-green being the check badge — **and the warm ivory of the body**, since a warm ground and a
-warm structure read as one material.
+**Colour is free. Pick what suits the product; there is no rule about which hues the ground
+must avoid.** Owner decision, 2026-08-13, after the previous rule produced six green
+backgrounds in a row.
 
-The v1.9 rule named only three of those four and left green out, which was a plain logical
-error: far from red, blue and ivory leaves the green band and nothing else, so the rule drove
-the ground INTO a signal colour. Six of six renders on 2026-08-13 came back green, and the
-owner's report — that the background is always some deep green — is the rule working as
-written. This is the same fault v1.2 removed when it killed the pale blue canvas, arriving by
-a different road.
+The history is worth one paragraph so nobody reinstates it. v1.9 required a hue far from red,
+blue and warm ivory. Those three exclusions leave the green band and nothing else — and green
+is G3's third signal, the check badge — so the rule drove the ground into a signal colour, the
+same fault v1.2 removed when it killed the pale blue canvas. Three versions of measurement did
+not catch it; the owner caught it in one glance at six renders.
 
-What is left once all four are excluded: the **violet–plum band**, and true neutrals carrying
-no colour cast. Neutrals need care because grey words are not neutral to this model —
-`stone grey`, `charcoal` and `slate` all returned inside the blue band — so name a neutral as
-having no colour cast rather than trusting a grey word. Derivation from the culprit's material
-world is now SUBORDINATE: choose from the permitted band first, and derive within it if the
-culprit's world allows. Deriving first is what produced six greens.
+What survives is a VALUE rule, not a colour rule: `dark-field` still holds, because the ground
+sitting far below the ivory in value is what makes the structures read, measured across eleven
+renders. A deep warm umber is as dark as a deep green. Choose the hue from the product's own
+world and keep the value low.
+
+One craft note, not a rule: v1.2 has three renders showing a blue ground fighting a blue mark
+on the correct side. Putting a ground under a mark of its own colour is a judgement to make
+per image, not a band to legislate — legislating it is what caused this whole detour.
 
 **`body`** — the structure in warm ivory (G3: yellow = neutral structure) over a translucent
 outline. EXACTLY ONE figure per panel, same scale and view in both. Name the SUBJECT CLASS
@@ -295,6 +296,12 @@ one palette or they read as two sources.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.13 (2026-08-13): **ground colour is unrestricted.** Owner decision, taken after six
+  consecutive green backgrounds: no rule about which hues the ground must avoid, only that it
+  suits the product. The exclusion rule is gone; the VALUE rule that `dark-field` rests on
+  stays, being what eleven renders show makes the structures read. The blue-ground-under-blue-
+  mark risk from v1.2 is kept as a craft note rather than a band, since legislating hue is
+  what produced the green trap in the first place.
 - 1.12 (2026-08-13): **two frame values withdrawn, and a logical error in the ground rule
   found by the owner's eye.** Evidence: six records at ts 2026-08-13, four `partial` and two
   `fail`. Owner report: the product barely interacts with the person using it, and the
