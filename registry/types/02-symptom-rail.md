@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -36,7 +36,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 02-symptom-rail v1.5
+TYPE: 02-symptom-rail v1.6
 LAYERS: photographic hero on the left, vignette rail down the right edge.
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -44,7 +44,8 @@ LAYERS: photographic hero on the left, vignette rail down the right edge.
 [RAIL] right 25-28%. Name the vignette mode.              -> PARTS/rail
 [MARKS] name each one used, with its count:               -> MARKS
   required: symptom-glow
-  then substance OR field — only if the product truly does it
+  then substance OR field — only if the product truly does it,
+  and it must LAND on a zone the rail counts
   nothing in the frame is marked that is not named here
 [STYLE]                                                   -> PARTS/style
 ```
@@ -87,7 +88,14 @@ same-looking mark in another type visible from here.
 |---|---|---|---|---|
 | `symptom-glow` | a soft radial glow centred on the symptom inside a vignette | red only | exactly 3, one per vignette | 4 renders · also in `01-pain-split` as hotspots |
 | `substance` | the matter the product moves, gathered into a directional form and thinning where it disperses — the mark is MADE of that matter | the substance's own real colour, never red | N streams, on the product | 1 render |
-| `field` | contour lines or a soft radiating envelope that WRAPS the receiving surface and shows which way the transfer runs | neutral warm-white or translucent, no signal colour | N contours, on the receiving surface | **none** |
+| `field` | contour lines or a soft radiating envelope that WRAPS the receiving surface and shows which way the transfer runs | neutral warm-white or translucent, no signal colour | N contours, on the receiving surface | 1 render · drew correctly |
+
+**A field is not only heat.** `field` covers heat, SUPPORT, vibration and PRESSURE, so a
+mattress topper, a cushion, an insole, a brace or a pillow is a `field` case and never a
+no-mark case: it transfers support into the body and that transfer is what the buyer is
+paying for. Read narrowly, this mark looks like it is only for machines; read as written, it
+covers most of the passive products this type routes. Two renders were spent on a topper
+prompt that declared it had no field at all.
 
 **The mark shows what the product actually does, and its FORM follows the kind of thing
 that is.** The test is not whether a camera could see it — it is whether the product
@@ -112,6 +120,25 @@ the cheaper of two paths, and one the owner may want to revisit.
 **`substance` must not read red.** Red belongs to the rail; a red stream on the product
 reads as a heating feature.
 
+**THE ACTION MARK MUST LAND WHERE THE RAIL COMPLAINS.** Owner decision, 2026-08-13. Both
+action marks answer what the product EMITS and neither answers where that arrives, so an
+image can show a product working and a rail counting pains and never join the two — which is
+what four renders did. The frame then states a problem and stands a product beside it.
+
+The test is checkable, and it is the last thing to run before a prompt ships. Name the three
+zones the rail counts. Name the zone the action mark lands on. **If that zone is not one of
+the three, the frame does not join and the prompt is not ready.** The massage-gun render
+fails it outright: the contours wrapped the thigh while the rail counted shoulder, knee and
+calf, so the product was drawn treating a zone the image never claimed hurt. Either the
+product moves to a counted zone or the rail counts the zone the product treats — both are
+legitimate, and choosing is the writer's job.
+
+**Products that act on the environment rather than on the body** — a diffuser, a humidifier,
+an air purifier — pass the test differently. Their `substance` must travel TOWARD the person
+rather than dispersing into empty room air, and the rail must count symptoms that the
+environment causes: a dry throat, a stuffy nose, dry skin. The humidifier render failed on
+both halves at once, sending mist up into the room while the rail counted a cracked heel.
+
 ## SLOT CONSTRAINTS
 - **Zone names must never be single letters.** One render printed large circled A, B and C
   into the image: the prompt carried `ZONE A`, `ZONE B`, `ZONE C` as headings and the model
@@ -123,6 +150,9 @@ reads as a heating feature.
   place in a rendered prompt only if a render has failed without it. Everything else is a
   rule for the writer and stays in this file.
 - The hero is the argument's calm half; the rail is its count. Neither may be cropped away.
+- Before shipping: name the three rail zones, name where the action mark lands, and check
+  that it is one of them — see MARKS.
+- The reference product appears ONCE. One render drew two humidifiers in the same frame.
 - G5 binds hero and vignettes to one register; G7 binds the hero's mounting point.
 
 ## NEGATIVE
@@ -169,6 +199,22 @@ the amber-versus-neutral question above is the thing to watch.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.6 (2026-08-13): **the action mark must land where the rail complains.** Owner decision
+  after four renders in which the hero's mark and the rail's symptoms never met — contours on
+  a thigh while the rail counted shoulder, knee and calf; mist into empty room air while the
+  rail counted a cracked heel. Both action marks answer what the product emits and neither
+  answered where it arrives, so the frame stated a problem and stood a product beside it. The
+  rule is a checkable pre-flight test rather than a new mark: name the three rail zones, name
+  where the mark lands, and if it is not one of them the prompt is not ready. Products acting
+  on the environment pass it differently — the substance travels toward the person and the
+  rail counts what the environment causes.
+  Also corrected: `field` covers heat, SUPPORT, vibration and PRESSURE, so a topper, cushion,
+  insole, brace or pillow is a `field` case and never a no-mark case. Reading it as machines-
+  only cost two renders on a prompt that declared a mattress topper had no field at all.
+  `field` gains its founding evidence in the same batch and it is positive: warm-white
+  contours wrapping the thigh around the massage-gun head, carrying no signal colour, exactly
+  as v1.4 specified. Added to SLOT CONSTRAINTS: the reference product appears once, after a
+  render drew two humidifiers.
 - 1.5 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), and the
   file compressed on the same shape `02-cause-anatomy` proved at 1.7. `PARTS` holds the
   non-mark building blocks (hero, rail, vignette mode, style); `MARKS` holds this type's

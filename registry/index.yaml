@@ -99,7 +99,7 @@ types:
     step: 2
     job: symptom
     device: rail
-    version: "1.5"
+    version: "1.6"
     status: active
     channels: [marketplace, landing-page]
     ratios: ["1:1", "4:5"]
