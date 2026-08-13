@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -22,8 +22,8 @@ never_with: []
 
 ## PURPOSE
 Reassure about operation: three stacked panels, one action each, read by action logic
-alone — no numbers, no arrows. Answers "can I actually use this?" without looking like
-an instruction manual.
+alone — nothing in the frame numbers the steps or points from one panel to the next.
+Answers "can I actually use this?" without looking like an instruction manual.
 
 ## TRIGGER
 use_when: >
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-use-sequence v1.4
+TYPE: 03-use-sequence v1.5
 REGISTER: warm lifestyle photography, close range.            -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference, in every panel.
@@ -47,8 +47,9 @@ REGISTER: warm lifestyle photography, close range.            -> PARTS/register
 [CONTINUITY] one pair of hands, one place, one light.         -> PARTS/continuity
 [PANELS] prepare, then use, then result.                      -> PARTS/panels
 [ENVIRONMENT] one ordinary room, named once.                  -> PARTS/environment
-[MARKS] only if the product emits something visible:          -> MARKS
-  emission, in the USE panel
+[MARKS] never carries the reading order.                      -> MARKS
+  fit, in the PREPARE panel, if a part seats onto something
+  emission, in the USE panel, if the product visibly emits
 ```
 
 ## PARTS
@@ -58,8 +59,10 @@ soft daylight. Not a diagram and not a manual: the whole point of the type is th
 like someone's kitchen rather than an instruction sheet.
 
 **`layout`** — three horizontal panels stacked vertically with thin white gutters, no outer
-border. **No numbers, no arrows, no step markers, no text of any kind.** The order is read
-from the actions themselves, which is this type's entire discipline — see MARKS.
+border. **No numbers, no step markers, no text of any kind, and nothing that points from one
+panel to another.** The order is read from the actions themselves, which is this type's entire
+discipline. A mark inside a single panel may state how a part seats; nothing may carry the
+reading order — see MARKS.
 
 **`continuity`** — the make-or-break. The SAME hands in every panel: same skin tone, same
 nails, same wrists, same sleeves. The same subject or surface throughout. The same warm
@@ -106,19 +109,28 @@ once and identical in all three panels.
 
 ## MARKS
 
-**This type carries almost no marks, and the absence is the design.** Every other step-3 type
-argues with graphic marks; this one argues with actions in sequence, and adding an arrow or a
-number would turn it into the instruction manual its PURPOSE exists to avoid. The library has
-exactly one entry here.
+**No mark here may carry the reading order.** Every other step-3 type argues with graphic
+marks; this one argues with actions in sequence, and a step number or an arrow running between
+panels would turn it into the instruction manual its PURPOSE exists to avoid. What a mark may
+do is state, inside one panel, something the action alone leaves ambiguous. Two entries.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `emission` | whatever the product visibly puts out — spray, steam, light, foam — lit so it reads, made of the substance itself | the substance's own real colour | 1, in the USE panel only | 2/2 as steam, garment steamer, 2026-08-13 |
+| `fit` | the junction where the product meets what it acts on. Form under test: an alignment mark sitting in the gap on the shared axis, or a short arrow along that axis. First renders decide | thin neutral white or light grey; never a signal colour | 1, in the PREPARE panel only | **none** — proposal |
 
 **`emission` exists only if the product genuinely emits** (G8). It is not a mark laid over the
 photograph; it is a real thing in the scene, lit to be visible. Never invent an emission so a
 panel looks active — G8's whole subject is not faking an effect so a PHOTO looks like it is
 working, and a photographic register is where that is easiest to do and hardest to forgive.
+
+**`fit` states a seating that IS, never a travel about to happen.** A2 in
+`registry/argument-faults.md`: a mark states, it cannot suppose, and a line drawn along the
+path a part is about to take has produced the wrong reading on two other types. It sits in the
+gap at the junction and never on either part (A5), and it names the shared axis rather than up
+or down (A10). PREPARE only — past that panel the seating is established and marking it again
+would be restating. Its founding evidence is its first render; the owner asked for it after
+the wine opener failed on exactly this junction, with the opener never touching the bottle.
 
 The type is `exempt_from: [G3, G4]`: no signal colours, no correct-versus-wrong grading. There
 is no wrong state here at all — nobody is doing it badly, because the argument is "this is
@@ -135,7 +147,8 @@ easy", not "this is better".
 
 ## NEGATIVE
 ```
-[G6] + step numbers, arrows, badges, different hands between panels,
+[G6] + step numbers, arrows carrying the reading order, arrows between panels,
+badges, different hands between panels,
 different subject between panels, two actions in one panel,
 product off-center, product cropped out, instruction manual look,
 technical diagram, cold clinical lighting, different location between panels,
@@ -235,6 +248,11 @@ more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.5 (2026-08-13): the type gains a second mark, by the owner's decision. `fit` states the
+  junction where the product seats onto what it acts on, PREPARE only, form still under test.
+  The blanket ban on arrows is replaced by the distinction that carries the type's actual
+  argument: no mark may carry the reading order, and a mark inside one panel may state what
+  the action leaves ambiguous. `emission` and NEGATIVE unchanged in substance.
 - 1.4 (2026-08-13): retraction. The sparkle 1.3 filed as an unrequested mark is a generator
   watermark on every output — measured by stacking 19 corners across two types against a
   shuffled control and a bottom-left control. Moved out of KNOWN-FLAKY into NOTES, and the two
