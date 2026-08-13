@@ -3,10 +3,10 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
-ratios: ["1:1", "4:5"]
+ratios: ["3:4", "1:1"]
 channels: [marketplace, landing-page, advertorial]
 requires_product_photo: true
 generation_mode: single-pass
@@ -39,8 +39,8 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-use-sequence v1.5
-REGISTER: warm lifestyle photography, close range.            -> PARTS/register
+TYPE: 03-use-sequence v1.6
+REGISTER: a real home, close range, available light.          -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference, in every panel.
 [LAYOUT] three panels stacked, thin white gutters.            -> PARTS/layout
@@ -54,9 +54,15 @@ REGISTER: warm lifestyle photography, close range.            -> PARTS/register
 
 ## PARTS
 
-**`register`** — warm lifestyle product photography at close range, natural and unstyled,
-soft daylight. Not a diagram and not a manual: the whole point of the type is that it looks
-like someone's kitchen rather than an instruction sheet.
+**`register`** — a real home photographed plainly at close range, on available light, with
+ordinary surfaces and nothing propped or colour-matched. Not a diagram and not a manual.
+
+**The look is not fixed, and fixing it is how this type produced slop.** Sixteen renders came
+back as one beige room in one soft light because `register` prescribed a warm neutral palette
+and every prompt repeated it: in a single four-prompt set, "warm neutral palette" appears 4
+times and "soft daylight" 8. The register fixes the KIND of photograph. The home, the palette,
+the light and the person are chosen per prompt, and **two prompts in one set may not share
+them** — a set that comes back as one look is a fault in the set, not in the model.
 
 **`layout`** — three horizontal panels stacked vertically with thin white gutters, no outer
 border. **No numbers, no step markers, no text of any kind, and nothing that points from one
@@ -65,9 +71,11 @@ discipline. A mark inside a single panel may state how a part seats; nothing may
 reading order — see MARKS.
 
 **`continuity`** — the make-or-break. The SAME hands in every panel: same skin tone, same
-nails, same wrists, same sleeves. The same subject or surface throughout. The same warm
-neutral palette and the same soft light direction. Get this wrong and the image reads as three
-stock photos rather than one sequence.
+nails, same wrists, same sleeves. The same subject or surface throughout. **One palette and one
+light direction held across all three panels — whichever palette and light this image was
+given.** Continuity governs sameness INSIDE one image; `register` governs difference BETWEEN
+images, and confusing the two is what produced sixteen identical rooms. Get continuity wrong
+and the image reads as three stock photos rather than one sequence.
 
 Camera distance and framing may shift naturally between panels — the `camera_lock: handheld`
 axis is definitional here, because pixel-locked framing would read as renders rather than as
@@ -117,20 +125,34 @@ do is state, inside one panel, something the action alone leaves ambiguous. Two 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `emission` | whatever the product visibly puts out — spray, steam, light, foam — lit so it reads, made of the substance itself | the substance's own real colour | 1, in the USE panel only | 2/2 as steam, garment steamer, 2026-08-13 |
-| `fit` | the junction where the product meets what it acts on. Form under test: an alignment mark sitting in the gap on the shared axis, or a short arrow along that axis. First renders decide | thin neutral white or light grey; never a signal colour | 1, in the PREPARE panel only | **none** — proposal |
+| `fit` | a mark drawn ON the contact line where the two parts meet, spanning it and touching both at that line, at least as wide as the narrower part | thin neutral white or light grey; never a signal colour | 1, in the PREPARE panel only | **0/6 as first specified** — respecified once |
 
 **`emission` exists only if the product genuinely emits** (G8). It is not a mark laid over the
 photograph; it is a real thing in the scene, lit to be visible. Never invent an emission so a
 panel looks active — G8's whole subject is not faking an effect so a PHOTO looks like it is
 working, and a photographic register is where that is easiest to do and hardest to forgive.
 
-**`fit` states a seating that IS, never a travel about to happen.** A2 in
-`registry/argument-faults.md`: a mark states, it cannot suppose, and a line drawn along the
-path a part is about to take has produced the wrong reading on two other types. It sits in the
-gap at the junction and never on either part (A5), and it names the shared axis rather than up
-or down (A10). PREPARE only — past that panel the seating is established and marking it again
-would be restating. Its founding evidence is its first render; the owner asked for it after
-the wine opener failed on exactly this junction, with the opener never touching the bottle.
+**`fit` failed as first specified — 0 of 6, and the failure was the wording, not the model.**
+It was written as a mark sitting IN THE GAP beside the junction, off both parts. The renders
+show what that buys: on the jar opener the mark came back as four short dashes floating in
+blurred background air several centimetres from the lid, attached to nothing and stating
+nothing. Only the water flosser put it at the junction at all, and that frame also carried a
+stray tick on the product body, which A5 forbids. A mark told to touch nothing lands nowhere.
+
+**Respecified: draw it ON the contact line.** It spans the line where the two parts meet and
+touches both there, and it is at least as wide as the narrower part — a mark of the junction
+rather than a mark near it. A5 still holds, because A5 bans a signal colour applied to a
+product's body, not a neutral line at the seam.
+
+**The panel must show the junction being made.** A2: a mark states, it cannot suppose. One
+frother run drew a clean arrow at a whisk already seated, so it pointed at a junction nobody
+was making and read as decoration; its sibling held the whisk off the shaft and the same arrow
+read. Where the panel shows two parts already joined, `fit` has nothing to say and is omitted.
+It names the shared axis rather than up or down (A10), and PREPARE only.
+
+**If the respecified form also comes back unreadable, the mark is cut.** The owner's verdict on
+the first attempt was that the marks were too small to make out and served no logic or purpose,
+and one respecification is what that buys.
 
 The type is `exempt_from: [G3, G4]`: no signal colours, no correct-versus-wrong grading. There
 is no wrong state here at all — nobody is doing it badly, because the argument is "this is
@@ -248,6 +270,12 @@ more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.6 (2026-08-13): three owner corrections. Ratios move to the five allowed by ADR-016, so
+  `4:5` becomes `3:4`. `register` stops prescribing one look — it was the source of the slop,
+  4 mandated palettes and 8 mandated lights in one four-prompt set — and now varies per prompt,
+  while `continuity` keeps sameness inside an image. `fit` is recorded as 0/6 as first
+  specified: told to sit in the gap touching neither part, it landed in background air stating
+  nothing. Respecified onto the contact line, with one attempt before it is cut.
 - 1.5 (2026-08-13): the type gains a second mark, by the owner's decision. `fit` states the
   junction where the product seats onto what it acts on, PREPARE only, form still under test.
   The blanket ban on arrows is replaced by the distinction that carries the type's actual

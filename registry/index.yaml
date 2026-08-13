@@ -248,10 +248,10 @@ types:
     step: 3
     job: use
     device: sequence
-    version: "1.5"
+    version: "1.6"
     status: active
     channels: [marketplace, landing-page, advertorial]
-    ratios: ["1:1", "4:5"]
+    ratios: ["3:4", "1:1"]
     requires_product_photo: true
     generation_mode: single-pass
     axes:

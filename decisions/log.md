@@ -442,3 +442,34 @@ nothing here weakens them. What changes is the pace of compression: prompts get 
 tested clause at a time rather than in a sweep, which is slower and is the reason the sweep
 looked attractive.
 
+## ADR-016 · 2026-08-13 · Only five aspect ratios, and a type declares from that set
+
+Owner instruction, system-wide and not scoped to one type: **only 16:9, 4:3, 1:1, 3:4 and
+9:16 may be used. No other aspect ratio.**
+
+**What this invalidates today.** `03-use-sequence` declared `ratios: ["1:1", "4:5"]` and every
+prompt it has shipped asked for 4:5, which is not in the set; it moves to `["1:1", "3:4"]`.
+`04-proof-lockedframe` declares `["5:3", "16:9", "1:1", "3:2"]`, of which **5:3 and 3:2 are
+outside the set** — that file belongs to a concurrent session and is not touched here, which is
+the reason this is written down centrally rather than fixed in passing. Any other type
+declaring a ratio outside the five is wrong from now on and is corrected when it is next
+opened.
+
+**Why it is worth an entry rather than a habit.** A ratio is not decoration for this library, it
+is the thing a multi-panel layout has to survive. Measured on `03-use-sequence` the same day:
+with a 1200x896 frame, 4 of 6 renders kept the three panels stacked as instructed; with a
+1376x768 frame, 2 of 16 did. The layout wording did not weaken between those two batches, it
+got stronger. Three stacked panels inside 16:9 gives each panel a 5.4:1 strip, and every
+arrangement the model substituted — side by side, 2x2, one large panel with two small — fits a
+wide frame better than the instruction does. One product settled it: the soap dispenser ran
+twice on identical text and came back stacked once and side by side once.
+
+So a declared ratio has to be a ratio the renderer will actually produce, and a short closed
+set is what makes that checkable. A type whose layout needs height declares `3:4` or `9:16` and
+stops asking for something in between.
+
+**Consequences.** `scripts/validate.py` has no ratio check today; adding one would make this
+enforceable rather than remembered, and it is proposed rather than done here because the
+validator is shared and a second session is live. Until then it is a reading rule. The standing
+`RATIO:` sweep already owed on five active types and five staging files should apply this set
+when it happens, rather than preserving whatever each file currently names.
