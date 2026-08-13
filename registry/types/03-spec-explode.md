@@ -210,14 +210,11 @@ The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
 - 1.2 (2026-08-13): **the ground is derived from the product's value; the explode axis follows
-  the product's proportion.** Owner report that the backgrounds lack variety, and three renders
-  in one batch ordered themselves by value distance: a white shoe on graphite separated, a navy
-  jug on deep navy nearly vanished, a charcoal shell sank while its own bright metals popped.
-  `PARTS/canvas` stops being a fixed deep navy and names dark and light values to choose
-  between, which is the widening the file has carried as a proposal since 0.2 — the trigger is
-  the owner's report plus this batch, not the exemplar count, which is still 2 of 5. Also:
-  the `inset` framing and the layered-materials fan both earned their founding renders and both
-  pass. · this commit
+  the product's proportion.** Owner report that backgrounds lack variety, and three renders
+  ordered themselves by value distance: a white shoe on graphite separated, a navy jug on deep
+  navy nearly vanished. `PARTS/canvas` stops being a fixed deep navy and names both directions.
+  The trigger is the owner's report plus this batch, not the exemplar count, still 2 of 5.
+  `inset` and the layered fan both earned founding renders and both pass. · ebc54a2
 - 1.1 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), owner
   instruction. `PARTS` owns `canvas`, `framing`, `stack`, `census`, `focus`; `MARKS` owns the
   single `focus-glow`. `RATIO:` dropped per adapter Rule 4. Recorded rather than assumed:
