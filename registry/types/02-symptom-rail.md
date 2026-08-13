@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.6"
+version: "1.7"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -36,7 +36,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 02-symptom-rail v1.6
+TYPE: 02-symptom-rail v1.7
 LAYERS: photographic hero on the left, vignette rail down the right edge.
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -88,7 +88,7 @@ same-looking mark in another type visible from here.
 |---|---|---|---|---|
 | `symptom-glow` | a soft radial glow centred on the symptom inside a vignette | red only | exactly 3, one per vignette | 4 renders · also in `01-pain-split` as hotspots |
 | `substance` | the matter the product moves, gathered into a directional form and thinning where it disperses — the mark is MADE of that matter | the substance's own real colour, never red | N streams, on the product | 1 render |
-| `field` | contour lines or a soft radiating envelope that WRAPS the receiving surface and shows which way the transfer runs | neutral warm-white or translucent, no signal colour | N contours, on the receiving surface | 1 render · drew correctly |
+| `field` | contour lines or a soft radiating envelope that WRAPS the receiving surface and shows which way the transfer runs | neutral warm-white or translucent, no signal colour | N contours, on the receiving surface | 2 renders · works on powered AND passive products |
 
 **A field is not only heat.** `field` covers heat, SUPPORT, vibration and PRESSURE, so a
 mattress topper, a cushion, an insole, a brace or a pillow is a `field` case and never a
@@ -133,6 +133,25 @@ calf, so the product was drawn treating a zone the image never claimed hurt. Eit
 product moves to a counted zone or the rail counts the zone the product treats — both are
 legitimate, and choosing is the writer's job.
 
+**But the mark may never be drawn ARRIVING AT a symptom.** The rule above has one failure
+mode and the owner found it on its first outing. Where the product touches the body, landing
+and treating are the same act — a gun head on a shoulder, foam under a hip — and the mark
+reads as relief. Where the product acts through the air, a plume drawn flying INTO a face
+beside a rail showing a raw red nostril reads as the product CAUSING the symptom. His words:
+it looks like she breathes the oil in and then her nose, throat and face hurt.
+
+So for an airborne product the substance fills the air the person is IN, as an ambient state,
+and is not aimed at a body part the rail has marked red.
+
+**The rail is a DIFFERENT MOMENT from the hero.** This was never stated and every render has
+had rail and hero as the same person in the same setting. It survived only by accident: in
+the renders that read correctly the vignette person is in a different posture — pressing a
+sore shoulder, gripping a back — which carries "this is my ongoing problem" on its own. The
+diffuser's vignettes were static close-ups of skin in the same room in the same moment, so
+nothing said BEFORE and the eye supplied AFTER. Give the vignettes a different context:
+another room, another time of day, dressed differently. The hero is life with the product;
+the rail is life without it.
+
 **Products that act on the environment rather than on the body** — a diffuser, a humidifier,
 an air purifier — pass the test differently. Their `substance` must travel TOWARD the person
 rather than dispersing into empty room air, and the rail must count symptoms that the
@@ -153,6 +172,12 @@ both halves at once, sending mist up into the room while the rail counted a crac
 - Before shipping: name the three rail zones, name where the action mark lands, and check
   that it is one of them — see MARKS.
 - The reference product appears ONCE. One render drew two humidifiers in the same frame.
+- **No face inside a vignette, and a nose or an eye in close crop IS a face.** Two vignettes
+  in one render showed a nostril and an eye socket; both read as portrait fragments and both
+  broke the rule the type has carried since 1.1.
+- **A symptom is a discomfort, not an injury.** The same render drew a nostril raw and
+  scarlet, which reads as a wound rather than as dry air. The rail counts what a buyer
+  recognises in themselves, and nobody recognises themselves in a medical photograph.
 - G5 binds hero and vignettes to one register; G7 binds the hero's mounting point.
 
 ## NEGATIVE
@@ -162,8 +187,21 @@ mismatched lighting between hero and vignettes, heat or warming cues,
 cluttered background, dark grade, vignettes too small, overlapping circles,
 floating product cutout, product mounted to nothing
 ```
-This list is canonical and model-agnostic; **the adapter TRANSFORMS it at render time and a
-prompt must never carry it verbatim.** Measured 2026-08-13: pasting this list straight into
+**Measured 2026-08-13: this type's prompts carry NO avoid line at all.** The owner removed
+`text, letters, circled letters, watermark, deformed hands, extra fingers` from a prompt set
+by hand and re-rendered: no difference in the output. That is the earn-its-place test run
+properly — a clause belongs in a prompt only if a render has failed without it, and this one
+had never been tested in isolation because it was inherited by habit. The bounds it claimed
+to hold are held elsewhere: G6 lives in the model's own behaviour on this register, and the
+one render that ever printed letters did so because the SLOT NAMES were single letters, which
+1.3 fixed at the source. Two consequences worth flagging rather than acting on alone: this
+bears on adapter Rule 1 step 2, which assumes every prompt closes with an avoid sentence, and
+on Rule 5, which mandates `deformed hands, extra fingers` wherever hands are close. Both are
+global law and a parallel session is writing prompts against them right now, so the finding
+goes to the owner rather than into the adapter from here.
+
+The list below stays canonical and model-agnostic; **the adapter TRANSFORMS it at render time
+and a prompt must never carry it verbatim.** Measured 2026-08-13: pasting this list straight into
 three prompts produced 27 Rule 1a hits, because almost every token here qualifies a noun a
 rendered prompt requires — `faces inside the vignettes` against a hero who has a face,
 `mismatched lighting between hero and vignettes` against three nouns the prompt cannot do
@@ -199,6 +237,28 @@ the amber-versus-neutral question above is the thing to watch.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.7 (2026-08-13): **the mark must not be drawn arriving at a symptom, and the rail is a
+  different moment.** Two owner findings on the 1.6 set.
+  The landing rule added at 1.6 has one failure mode and the first render found it. Where the
+  product touches the body, landing and treating are the same act and the mark reads as
+  relief. Where it acts through the air, a plume flying INTO a face beside a rail showing a
+  raw red nostril reads as the product CAUSING the symptom — the owner's reading was that she
+  breathes the oil in and then her nose, throat and face hurt. So an airborne substance now
+  fills the air the person is in rather than aiming at a marked body part.
+  Underneath that sits something the type never said: **the rail is a different moment from
+  the hero.** Every render has had both as the same person in the same room, and it survived
+  only because the vignette person was usually in a different posture, which carries "ongoing
+  problem" by itself. The diffuser's vignettes were static skin close-ups in the same room in
+  the same moment, so nothing said BEFORE and the eye supplied AFTER.
+  **The avoid line is gone from this type's prompts**, measured rather than argued: the owner
+  removed it by hand and re-rendered with no difference. It had never been tested in isolation
+  because it was inherited by habit. Flagged, not acted on: this bears on adapter Rule 1 step
+  2 and Rule 5, which are global law with a parallel session writing against them.
+  Also: a nose or an eye in close crop IS a face inside a vignette; and a symptom is a
+  discomfort, not an injury — a scarlet raw nostril reads as a wound, and nobody recognises
+  themselves in a medical photograph. `field` reaches 2 renders and now works on a passive
+  product as well as a powered one: white contours wrapped a sleeping body at shoulder and
+  hip, the three zones the rail counted.
 - 1.6 (2026-08-13): **the action mark must land where the rail complains.** Owner decision
   after four renders in which the hero's mark and the rail's symptoms never met — contours on
   a thigh while the rail counted shoulder, knee and calf; mist into empty room air while the
