@@ -129,7 +129,7 @@ types:
     step: 3
     job: mechanism
     device: ghostbody
-    version: "2.1"
+    version: "2.2"
     status: active
     channels: [marketplace, landing-page, advertorial]
     ratios: ["1:1", "4:5"]
@@ -157,7 +157,7 @@ types:
     step: 3
     job: mechanism
     device: xray
-    version: "1.0"
+    version: "1.1"
     status: active
     channels: [marketplace, landing-page, advertorial]
     ratios: ["1:1", "4:5", "16:9"]

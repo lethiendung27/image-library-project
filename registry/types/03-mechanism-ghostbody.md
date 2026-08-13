@@ -3,7 +3,7 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "2.1"
+version: "2.2"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -37,7 +37,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-ghostbody v2.1
+TYPE: 03-mechanism-ghostbody v2.2
 REGISTER: 3D technical render.                                -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -206,15 +206,97 @@ cluttered inset, gore, realistic flesh, medical horror
 ```
 
 ## WORKED EXAMPLES
-### example: mouth-tape — skeleton@1.0, run: untested
-Product: mouth tape · ratio 1:1 · inset enabled, dims dropped
-- GHOST — head and upper chest in profile, lying back as if asleep, cut on the sagittal plane
-- CUTAWAY — nasal cavity, soft palate, tongue and throat inside the head silhouette
-- PRODUCT — one horizontal strip of tape across the closed lips
-- MARKS — `structure` (tissue in ivory), `support` (blue airflow from nostril down the
-  throat), `stress` (red at the collapsed area behind the tongue), `verdict` in the inset
-Stale in one way to fix when it is next rendered: it predates the G2 rewrite and its PRODUCT
-paragraph still describes texture, which `product` now forbids.
+Two renders that happened, kept in full because that text is the only record of what actually
+drew (SPEC §3.3). Both are the 2.0 two-panel structure; 2.1 added a length limit to `support`
+and restored the ghost's negatives, so read them with that diff in mind.
+
+### example: kneeling-ergonomic-chair — skeleton@2.0, run: pass
+Empty failures list. The clearest image this type has produced and the proof of the two-panel
+structure: a slumped spine on a plain stool with a flat red block at the lumbar base, against
+an upright spine on the reference chair with a flat blue band drawn beside it. Reads at any
+size and needs nothing from the viewer.
+```
+TYPE: 03-mechanism-ghostbody v2.0
+REGISTER: 3D technical render on seamless white. NOT photography.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the kneeling
+ergonomic chair. Preserve shape, proportions, material, finish and colour exactly.
+It keeps its own reference colours and carries no mark of any kind.
+
+PANELS: two equal panels side by side, divided by one thin vertical line. Both
+show the SAME featureless matte white mannequin in the SAME pose from the SAME
+angle: seated at a desk, seen from the side, facing left, forearms on the desk,
+cut along the sagittal plane so the lower spine and pelvis are open to view. The
+only differences between the panels are what the figure sits on and what its
+pelvis and lower spine do.
+
+LEFT: an ordinary flat stool. The pelvis is rolled backward and the lower spine
+slumps into a long outward curve.
+RIGHT: the reference kneeling chair, its sloped seat under the buttocks and its
+lower pad under the shins. The pelvis is tipped forward and the lower spine stands
+in its natural inward curve.
+
+CUTAWAY: the lumbar spine and the pelvis, inside the body silhouette, in both
+panels.
+
+MARKS, four, nothing else in either panel is marked. Every one is a flat
+unshaded hard-edged overlay laid on top of the render, never a tint or fill of the
+anatomy:
+- structure: the lumbar vertebrae and the pelvis in yellow off-white ivory, both
+  panels.
+- stress: LEFT panel only. A flat red shape over the base of the lumbar spine
+  where the slump loads it.
+- support: RIGHT panel only. A flat blue band drawn BESIDE the lumbar spine,
+  running alongside its inward curve and following its line, clearly sitting on
+  top of the render rather than inside the bone.
+- verdict: one badge in the top corner of each panel - a red filled disc with a
+  white X in the left, a green filled disc with a white check in the right. Same
+  diameter, not rings.
+
+PALETTE LOCK: achromatic white and grey except the marks.
+```
+
+### example: side-sleeper-pillow — skeleton@2.0, run: partial
+Kept because it is where the pose finally held in both panels on the third attempt. Its two
+faults are the ones 2.1 repairs: the blue band ran the whole thoracic spine without a length
+limit, and the mannequin grew a face once the ghost's negatives were cut.
+```
+TYPE: 03-mechanism-ghostbody v2.0
+REGISTER: 3D technical render on seamless white. NOT photography.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the orthopaedic
+side-sleeper pillow. Preserve shape, proportions, material, finish and colour
+exactly. It keeps its own reference colours and carries no mark of any kind.
+
+PANELS: two equal panels side by side, divided by one thin vertical line. Both
+show the SAME featureless matte white mannequin in the SAME pose from the SAME
+angle: lying on its LEFT side on a flat mattress, seen from the front of the body,
+head to the left, left shoulder underneath taking the weight, cut along the
+coronal plane so the neck and shoulder interior are open to view. The only
+differences between the panels are what is under the head and what the neck does.
+
+LEFT: a thin flat pillow that gives the head nothing to rest on. The neck bends
+sharply toward the shoulder it lies on and the ear drops close to that shoulder.
+RIGHT: the reference pillow filling the space between the head and the mattress.
+The neck runs straight in line with the spine of the upper back.
+
+CUTAWAY: the cervical spine and the shoulder girdle, inside the body silhouette,
+in both panels.
+
+MARKS, four, nothing else in either panel is marked. Every one is a flat unshaded
+hard-edged overlay laid on top of the render, never a tint or fill of the anatomy:
+- structure: the cervical vertebrae, the collarbone and the shoulder blade in
+  yellow off-white ivory, both panels.
+- stress: LEFT panel only. A flat red shape at the bend in the neck.
+- support: RIGHT panel only. A flat blue band drawn BESIDE the cervical spine,
+  running alongside it in a straight line and following its line, clearly sitting
+  on top of the render rather than inside the bone.
+- verdict: one badge in the top corner of each panel - a red filled disc with a
+  white X in the left, a green filled disc with a white check in the right. Same
+  diameter, not rings.
+
+PALETTE LOCK: achromatic white and grey except the marks.
+```
 
 ## KNOWN-FLAKY
 - **`dims`, WITHDRAWN at 1.6 on 0 of 3.** Three or four arrows where two were asked for, and at
@@ -250,6 +332,9 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 2.2 (2026-08-13): type passed by the owner; file finalised with two rendered worked examples
+  in full text per SPEC §3.3. Closing state: five live marks, `structure` `stress` `support`
+  `verdict` proven and `heat` still unrendered; `dims` withdrawn at 1.6 on 0 of 3. `PENDING`
 - 2.1 (2026-08-13): **two clauses restored; the budget rule corrected.** Evidence: 3 records at
   2.0 — 1 `pass`, 1 `partial`, 1 `fail`. The 2.0 structure works: the argument reads at any size
   and A11 is fixed at 3 of 3, every mark now a drawn overlay rather than anatomy. Two of the

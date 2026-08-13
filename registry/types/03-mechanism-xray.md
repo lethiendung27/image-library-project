@@ -3,7 +3,7 @@ id: 03-mechanism-xray
 step: 3
 job: mechanism
 device: xray
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5", "16:9"]
@@ -38,59 +38,89 @@ avoid_when: >
   too much.
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once
+and is never restated here or in a rendered prompt.
+
 ```
-TYPE: 03-mechanism-xray v0.1
-RATIO: [1:1 / 4:5 / 16:9]
-REGISTER: 3D technical see-through render. NOT photography.
-Dark engineering background.
+TYPE: 03-mechanism-xray v1.1
+REGISTER: 3D technical see-through render. NOT photography.  -> PARTS/register
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference. The outer shell becomes
-translucent, but its silhouette, proportions and every visible external part
-must match the reference exactly. Do not redesign or add features.
+[PRODUCT REFERENCE] the attached photo is the exact reference.
+[CANVAS] dark engineering ground.                            -> PARTS/canvas
+[SHELL] the product, shell translucent, silhouette exact.    -> PARTS/shell
+[INTERNALS] name 2-4 real components and where each sits.    -> PARTS/internals
+[MARKS] name each one used, with its count:                  -> MARKS
+  required: working
+  nothing in the frame is marked that is not named here
 
-[CANVAS]
-Dark [deep navy] engineering canvas with faint [copper and cyan] circuit-board
-traces at very low contrast, and [1-2] corner blueprint micro-diagrams of key
-components. Motifs stay dim — they buy credibility, they carry no information.
-
-[BASE: GHOST SHELL]
-The product rendered with its shell translucent and glass-like, silhouette
-matching the reference, positioned [orientation], filling [60-75%] of the
-frame width.
-
-[INTERNALS]
-[2-4 real internal components] rendered solid and detailed inside the shell,
-each at its true location: [component 1 at location], [component 2 at
-location], [component 3 at location]. Fine [colored] wiring connecting them.
-
-[VISIBLE MECHANISM — G8 in technical register]
-IF the product emits anything visible: the emitting module shown ACTIVE, its
-output ([mist / light / flow]) rendered as a [particle stream] leaving the
-product toward [direction], the brightest element in the frame.
-ELSE: the primary working component highlighted with a cool [cyan] glow.
-
-[HONESTY CONSTRAINT]
-Render ONLY component types the product genuinely contains. No invented
-modules, no exaggerated part counts. NO text, numbers or spec labels inside
-the image — specs live in page copy or are composited in post.
-
-PALETTE LOCK: deep navy and steel grey throughout. Cyan/blue marks the working
-mechanism (G3: blue = correct mechanism). Copper traces stay decorative and
-dim, never used as a signal.
-STYLE: premium technical product visualization, sharp, high detail, 4K.
-NO text, no numbers, no logo, no watermark.
+PALETTE LOCK: deep navy and steel grey except the marks.
 ```
+
+## PARTS
+
+**`register`** — a premium technical see-through product visualization, sharp and high
+detail. Not photography. The product is the only subject; there is no scene, no hands, no
+environment. G7 is exempt here by the type's frontmatter: a technical render need not mount
+the product to anything real.
+
+**`canvas`** — a dark engineering ground, deep navy, with faint circuit-board traces at very
+low contrast and one or two corner blueprint micro-diagrams of a key component. **Motifs stay
+dim: they buy credibility and carry no information.** Copper traces are decoration only —
+the moment copper or orange marks a component it collides with G3, where orange means wrong
+pressure or wrong heat.
+
+**`shell`** — the reference product with its outer shell rendered translucent and glass-like.
+**G1 binds the silhouette hard**: proportions and every visible external part must match the
+reference exactly, because a translucent shell is the one place a model will quietly redesign
+a product. Named orientation, filling a named share of the frame.
+
+**`internals`** — two to four real internal components rendered solid and detailed inside the
+shell, each named with its true location, connected by fine wiring where wiring is real.
+
+**The honesty constraint is this type's admission test.** Render only component types the
+product genuinely contains: no invented modules, no exaggerated part counts. The internal
+LAYOUT is illustrative and approximate by nature; the component TYPES are not. This image is
+never presented as an engineering drawing.
+
+**The text ban is stricter here than anywhere in the library.** The seed exemplar carried a
+`300mAh Li-ion` label — an unverifiable in-image claim and a model weakness at once. No specs,
+no capacities, no callout text inside the image; specs live in page copy or are composited in
+post.
+
+## MARKS
+
+This type's own mark library, called by name from the skeleton. It exhibits rather than
+compares, so it has no verdict badge and no wrong state: there is only the working mechanism.
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `working` | the primary working component, or the module that emits, shown ACTIVE and made the brightest element in the frame | cyan / blue (G3: blue = correct mechanism) | exactly 1 | 1 render · pass |
+| `output` | what the product emits, made of the substance itself, leaving the product toward a named direction | the substance's own colour | 1, only when the product emits something visible | 1 render · pass |
+| `caught` | what the product traps or removes, held where the mechanism holds it | the trapped matter's own colour, warm-toned | as many as are held, in one layer | 1 render · pass |
+
+**`output` only exists if the product genuinely emits.** Mist, light, flow, spray. Where
+nothing leaves the product, `working` alone carries the argument as a cool glow on the
+component that does the work. Never invent an emission so a render looks alive — that is what
+G8 forbids, and this type is the easiest place in the library to break it.
+
+**`caught` is the only warm colour permitted anywhere in the frame**, and it is permitted
+because the trapped matter IS the problem being solved. It stays in ONE layer where the
+mechanism holds it; scattered through the whole medium it reads as a dirty product rather
+than a working one.
+
+**Borrowed from types that have been rendered**, so the same faults are not paid for twice:
+a mark whose form the register could have produced stops reading as a mark (A11), which here
+means the cyan `working` glow must be brighter and cleaner than any ambient reflection the
+render puts on a component anyway; and the canonical NEGATIVE below is never pasted into a
+prompt verbatim.
 
 ## SLOT CONSTRAINTS
-- G1 binds the OUTER SILHOUETTE hard (reference photo); the internal layout is
-  illustrative — component TYPES must be real (honesty constraint), exact positions
-  are approximate by nature. Never present this image as an engineering drawing.
-- Text ban is stricter here than anywhere: the seed exemplar carried a "300mAh Li-ion"
-  label — an unverifiable in-image claim AND a model weakness. Externalize all specs.
-- G3 tension to police: copper/orange may exist only as dim background decoration;
-  the moment orange marks a component it collides with orange = wrong-pressure.
-- One product, one shell — no exploded parts (that is the reserved `explode` device).
+- **The prompt budget** (ADR-013, ADR-015): a clause earns its place in a rendered prompt only
+  if a render has failed without it, and it is removed only once a render has done without it
+  and come back correct.
+- One product, one shell — no exploded parts, which is the reserved `explode` device.
+- G1 binds the outer silhouette; the internal layout is illustrative.
+- Copper and orange stay decorative and dim, never a signal.
 
 ## NEGATIVE
 ```
@@ -99,23 +129,16 @@ spec labels, capacity text, callout lines with text, opaque shell,
 internals floating outside the product, invented components,
 exploded parts view, rainbow palette, bright white background, cartoon style
 ```
+Canonical and model-agnostic; the adapter transforms it at render time and a prompt never
+carries it verbatim (Rule 1, and no avoid line ships at all since ADR-014).
 
 ## WORKED EXAMPLES
-### example: electric-spray-comb — skeleton@1.0, run: untested
-Product: electric spray massage comb · ratio 1:1
-- CANVAS — deep navy engineering canvas, faint copper and cyan circuit traces at very low contrast, two corner blueprint micro-diagrams of an atomizer module, all dim
-- GHOST SHELL — the comb lying horizontally, head to the right, cream shell translucent and glass-like, silhouette matching the reference (oval head, button, handle, bristles), filling about 70% of frame width
-- INTERNALS — small cylindrical lithium battery in the handle; compact control board with fine colored wiring behind the button; serum reservoir and ultrasonic atomizer module in the head above the bristle bed
-- VISIBLE MECHANISM — the atomizer ACTIVE, a fine mist of particles streaming out of the head to the right, the brightest element in the frame
-- PALETTE LOCK — deep navy and steel grey; cyan/blue marks the working mechanism; copper traces stay decorative and dim
-Predicted failures: (1) the model adding a spec label anyway (the exemplar it learns
-from carries one) — the explicit text ban plus avoid-line must both fire; (2) shell
-silhouette drifting from the reference once transparency is requested — if it recurs,
-switch to multi-pass (generate opaque product first, edit to translucent).
-
 ### example: metal-shower-filter — skeleton@1.0, run: pass
+The type's only rendered example and the founding evidence for all three marks: a cyan flow
+ribbon threading the granule bed (`working`), a fine spray leaving the outlet (`output`), and
+rust-toned mineral specks held in the upper layer (`caught`).
 ```
-A 1:1 3D technical see-through render. NOT photography. Dark engineering background.
+A 3D technical see-through render. NOT photography. Dark engineering background.
 
 Use the attached product photo as the exact reference for the metal shower filter. The
 outer shell becomes translucent, but its silhouette, proportions and every visible
@@ -148,57 +171,38 @@ problem being caught); copper traces stay decorative and dim.
 STYLE: premium technical product visualization, sharp, high detail, 4K.
 NO text, no numbers, no logo, no watermark.
 ```
-Predicted failures: (1) the granule bed rendering as mud instead of readable granules
-(the lockedframe lesson — texture must stay granular); (2) the cyan ribbon and the
-exit spray merging into one glow blob, losing the enter-filter-exit story; (3) trapped
-specks scattering through the whole bed instead of staying in the upper layer, which
-would read as a dirty filter rather than a working one.
 
 ## KNOWN-FLAKY
-(populated from observation evidence only)
+- **Spec labels appear unasked, 1 observation.** The seed exemplar this type learns from
+  carries a `300mAh Li-ion` label. Watch for it; the text ban is in `internals` for that
+  reason.
+- **Shell silhouette drifting once transparency is requested**, predicted and not yet
+  observed. If it recurs, the fallback is multi-pass — generate the opaque product, then edit
+  it to translucent (adapter Rule 3).
 
 ## NOTES
-Distinction within step 3: `ghostbody` = body translucent, product solid ("why this
-shape works on you"); `xray` = product translucent, internals solid ("what is inside
-this thing"); `spec-split` = component combat old-vs-new. One page takes at most two
-step-3 answers, and never xray + spec-split together.
+Distinction within step 3: `ghostbody` = body translucent, product solid ("why this shape
+works on you"); `xray` = product translucent, internals solid ("what is inside this thing");
+`spec-split` = component combat, old versus new. One page takes at most two step-3 answers,
+and never xray + spec-split together. Boundary against `03-spec-explode`: xray sees THROUGH an
+intact shell to say WHY it works; explode disassembles to census WHAT is inside.
 
-Register decision (2026-08-11): the skeleton stays in the 3D-render register ("NOT
-photography") — 3 of 4 exemplars are full see-through renders. The fourth exemplar
-(`sha256:6735f5…`) executes the same argument as a technical line-art cutaway DRAWN
-OVER a photographic scene; that is ONE observation of a possible `--overlay` variant
-and stays below the ≥3 drafting threshold (SPEC §6.2). Log further sightings against
-it; do not widen the skeleton meanwhile. Boundary vs the `explode` candidate
-(03-spec-explode): xray sees THROUGH an intact shell to say WHY it works; explode
-disassembles to census WHAT is inside — mechanism vs spec, why vs what.
+A possible `--overlay` variant sits at 1 observation (`sha256:6735f5…`, a technical line-art
+cutaway drawn over a photographic scene). Below the ≥3 threshold; log further sightings, do
+not widen the skeleton meanwhile.
 
 ## CHANGELOG
-- 1.0 (2026-08-11): PROMOTED staging → active, all four §6.3 criteria met.
-  (1) Five distinct exemplars across five verticals — obs `sha256:a2ad52…`
-  (spray comb, batch 10-B), `sha256:937e6d…` (external drive, 10-E),
-  `sha256:5c5e76…` (electric cutter, 10-F), `sha256:6735f5…` (mini chopper,
-  photo-overlay register, 11-A), `sha256:0c2305…` (ab-roller rebound spring,
-  brand-orange palette, 11-E). (2) Router-confusion test PASS (scratch-index
-  method, curate.md §4): all 6 fixture-001 assertions hold, 0 unintended flips,
-  2 intended improvements (fixture-001 known_gap resolves; cooler-advertorial
-  mechanism slot routes here) — fixture updated in this diff. (3) Rendered
-  worked example: metal-shower-filter, run pass (eval/render-tests.jsonl,
-  2026-08-10). (4) Human gate: this promotion diff. Same-diff changes:
-  slot-rules mechanism cells gain this type, vocabulary de-reserves `xray`,
-  worked-example headers relabeled to skeleton@1.0. Palette-lock note: the 5th
-  exemplar runs brand-orange against the navy/cyan lock (1 obs — the lock
-  holds; expect brand-colored market executions and log them).
-- 0.2 (2026-08-11): promotion-readiness pass. Exemplars 2-4 recorded — obs
-  `sha256:937e6d…` (transparent external drive, batch 10-E), `sha256:5c5e76…`
-  (translucent electric cutter, 10-F), `sha256:6735f5…` (chopper washability
-  cutaway-over-photo, 11-A). Register decision: skeleton stays render-only;
-  photo-overlay logged as a possible --overlay variant at 1/3 observations.
-  Router-confusion test run and PASSED (see promotion status). Channels gain
-  `advertorial` — the live demand case (cooler advertorial mechanism slot,
-  query session 2026-08-11) and fixture-001 known_gap both sit on advertorial /
-  landing pages.
-- 0.1 (2026-08-10): staging draft from the first exemplar — translucent spray-comb
-  render, obs `sha256:a2ad520c…` (batch 2026-08-10-B). Device `xray` was already
-  reserved in vocabulary; this is its first exemplar. Demand signal predicted by
-  eval/golden/fixture-001 known_gap (body_contact=false products had no mechanism
-  type).
+A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.1 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
+  1925 → 609. Three marks named for the first time — `working`, `output` and `caught` — all
+  founded on the one rendered example, where they existed as unnamed sentences inside the
+  skeleton. `RATIO:` dropped per adapter Rule 4. `PENDING`
+- 1.0 (2026-08-11): PROMOTED staging → active on all four §6.3 criteria: five distinct
+  exemplars across five verticals, router-confusion test passed with 0 unintended flips, one
+  rendered worked example at `run: pass`, and the human gate. Palette-lock note: the fifth
+  exemplar runs brand-orange against the navy/cyan lock at 1 observation — the lock holds.
+- 0.2 (2026-08-11): promotion-readiness pass; exemplars 2–4 recorded, register decision to
+  stay render-only, channels gain `advertorial`.
+- 0.1 (2026-08-10): staging draft from the translucent spray-comb render, obs
+  `sha256:a2ad520c…`. Demand predicted by `eval/golden/fixture-001` known_gap — body_contact
+  false products had no mechanism type.
