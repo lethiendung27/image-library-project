@@ -3,7 +3,7 @@ id: 03-mechanism-xray
 step: 3
 job: mechanism
 device: xray
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5", "16:9"]
@@ -42,7 +42,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-xray v1.2
+TYPE: 03-mechanism-xray v1.3
 REGISTER: 3D technical see-through render. NOT photography.  -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -150,43 +150,81 @@ Canonical and model-agnostic; the adapter transforms it at render time and a pro
 carries it verbatim (Rule 1, and no avoid line ships at all since ADR-014).
 
 ## WORKED EXAMPLES
-### example: metal-shower-filter — skeleton@1.0, run: pass
-The type's only rendered example and the founding evidence for all three marks: a cyan flow
-ribbon threading the granule bed (`working`), a fine spray leaving the outlet (`output`), and
-rust-toned mineral specks held in the upper layer (`caught`).
+Two renders that happened, kept in full because that text is the only record of what actually
+drew (SPEC §3.3). Both `pass`, both written after 1.2 freed the palette — the earlier
+shower-filter example was retired with the lock it was written under.
+
+### example: cordless-hair-dryer — skeleton@1.2, run: pass
+The case where the old lock hurt most: the heating coil glows ORANGE-HOT as `working`, a
+colour the navy lock forbade outright, and copper windings appear in copper. `output` is warm
+air made of the moving air itself.
 ```
-A 3D technical see-through render. NOT photography. Dark engineering background.
+TYPE: 03-mechanism-xray v1.2
+REGISTER: 3D technical see-through render. NOT photography.
 
-Use the attached product photo as the exact reference for the metal shower filter. The
-outer shell becomes translucent, but its silhouette, proportions and every visible
-external part — the threaded inlet, the body, the outlet — must match the reference
-exactly. Do not redesign or add features.
+PRODUCT REFERENCE: the attached photo is the exact reference for the cordless hair
+dryer. The outer shell becomes translucent, but its silhouette, proportions and
+every visible external part must match the reference exactly. Do not redesign or
+add features.
 
-CANVAS: a deep navy engineering canvas with faint copper and cyan circuit-board traces
-at very low contrast, and two corner blueprint micro-diagrams of a filtration stage.
-Motifs stay dim.
+CANVAS: a plain pale warm sand ground, and nothing else in the frame
+behind the product.
 
-GHOST SHELL: the filter rendered upright with its metal shell translucent and
-glass-like, inlet at the top, outlet at the bottom, silhouette matching the reference,
-filling about 65 percent of the frame height.
+SHELL: the dryer lying horizontally, nozzle to the right, its body translucent and
+glass-like, filling about 75 percent of the frame width.
 
-INTERNALS: rendered solid and detailed inside the shell, each at its true location: a
-fine stainless mesh disc just below the inlet, a packed bed of white and pale grey
-filtration granules filling the body, and a narrow outlet channel at the bottom.
-Sparse rust-toned mineral specks held in the upper granule layer, caught by the media.
+INTERNALS, solid and detailed inside the shell, each at its true location: a
+cylindrical battery pack in the handle; a control board behind the switch, in its
+own real board colour; a brushless motor with copper windings in the barrel, the
+copper in its own colour; a coiled heating element in the nozzle throat.
 
-VISIBLE MECHANISM: the water path shown ACTIVE — a smooth cyan flow ribbon entering
-the inlet, threading down through the granule bed, and leaving the outlet as a clean
-fine spray of droplets, the brightest element in the frame.
+MARKS, two, nothing else in the frame is marked:
+- working: the heating element shown ACTIVE and glowing orange-hot in its own real
+  colour, the brightest thing in the frame and clearly brighter than the ground.
+  No arrow anywhere.
+- output: warm air leaving the nozzle to the right, made of the moving air itself,
+  drawn as a soft stream that widens and thins as it travels.
 
-HONESTY CONSTRAINT: render only these component types. No text, numbers or spec labels
-anywhere in the image.
+No text, numbers or spec labels anywhere in the image.
+The marks are the only added colour; the product and its parts keep their own.
+```
 
-PALETTE LOCK: deep navy and steel grey throughout; cyan/blue marks the correct water
-path; the trapped mineral specks are the only warm-toned elements (they are the
-problem being caught); copper traces stay decorative and dim.
-STYLE: premium technical product visualization, sharp, high detail, 4K.
-NO text, no numbers, no logo, no watermark.
+### example: robot-vacuum — skeleton@1.2, run: pass
+Both 1.2 rules in one frame: `caught` held inside a sealed bin, which is what drifted through
+an open tank when nothing enclosed it; and `working` drawn as a luminous PATH along the suction
+duct rather than a glow on a part, direction carried by the duct's own shape with no arrow.
+```
+TYPE: 03-mechanism-xray v1.2
+REGISTER: 3D technical see-through render. NOT photography.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the robot vacuum.
+The outer shell becomes translucent, but its silhouette, proportions and every
+visible external part must match the reference exactly. Do not redesign or add
+features.
+
+CANVAS: a plain soft pale grey-green ground, and nothing else in the frame
+behind the product.
+
+SHELL: the vacuum seen from the front and slightly above, its top casing
+translucent and glass-like, filling about 70 percent of the frame width.
+
+INTERNALS, solid and detailed inside the shell, each at its true location: a
+rotating brush bar across the underside at the front; a suction duct running back
+from the brush; a sealed dust bin behind the duct; a filter panel at the back of
+the bin; a battery pack and a control board beneath, each in its own real colour.
+
+MARKS, three, nothing else in the frame is marked:
+- working: a cool glow along the suction duct from the brush bar back to the bin,
+  the brightest thing in the frame and clearly brighter than the ground. No arrow
+  anywhere - the duct's own shape carries the direction.
+- caught: grey dust and hair packed inside the SEALED DUST BIN and nowhere else
+  in the machine, filling the lower part of the bin in one layer, held by the bin
+  walls.
+- output: clean air leaving the filter panel at the back, made of the air itself,
+  drawn as a thin pale stream.
+
+No text, numbers or spec labels anywhere in the image.
+The marks are the only added colour; the product and its parts keep their own.
 ```
 
 ## KNOWN-FLAKY
@@ -210,6 +248,11 @@ not widen the skeleton meanwhile.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.3 (2026-08-13): type passed by the owner; file finalised with two rendered worked examples
+  in full text per SPEC §3.3. The 1.2 decisions are confirmed at 2 of 2 — a hair dryer whose
+  orange coil the old lock forbade, and a robot vacuum carrying `caught` inside its bin and
+  `working` as a path along a duct. The shower-filter example is retired with the palette lock
+  it was written under. Closing state: three marks, all with render evidence. `PENDING`
 - 1.2 (2026-08-13): **the palette lock and the canvas motifs are gone.** Owner-approved on three
   recommendations. Evidence: 3 records at 1.1 — 2 `partial`, 1 `fail`. Colour is free and chosen
   for the product, the ruling `02-cause-anatomy` took at its 1.13; the navy-and-steel lock had
