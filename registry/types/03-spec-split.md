@@ -3,7 +3,7 @@ id: 03-spec-split
 step: 3
 job: spec
 device: split
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -36,61 +36,80 @@ avoid_when: >
   main image.
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
+
 ```
-TYPE: 03-spec-split v1.0
-RATIO: [1:1 / 4:5]
-LAYERS: diagonal two-panel split + center badge + product inset at bottom.
+TYPE: 03-spec-split v1.2 [+ --products]
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference for the inset only.
-Preserve shape, proportions, material, finish and color exactly.
+[PRODUCT REFERENCE] attached photo is the reference for the INSET only.
+[SPLIT] one diagonal; the halves unequal in energy.       -> PARTS/split
+[OLD] left, photographic: the legacy component aged.      -> PARTS/old
+[NEW] right, rendered: the improved component.            -> PARTS/new
+[INSET] the finished product, bottom.                     -> PARTS/inset
+[MARKS] the seam, and one marker on it.                   -> MARKS
 
-[SPLIT]
-A diagonal division running from [top-left to bottom-right / top-right to
-bottom-left], edged with a thin glowing [accent color] line.
-The two halves must be visually unequal in energy: the right half advancing.
-
-[LEFT PANEL: THE OLD COMPONENT]
-Photographic register. Desaturated grayscale.
-A generic, unbranded [component type] in aged condition:
-[3 signs of degradation]. Dusty, dim environment, no styling.
-It must look like a real object photographed in the real world.
-
-[RIGHT PANEL: THE NEW COMPONENT]
-3D render register. A pristine [component type] of the improved type,
-[key visible technical differentiator], cool [accent color] rim lighting,
-floating against a dark gradient, sharp reflective surfaces.
-It must look engineered, not photographed.
-
-[CENTER BADGE]
-Large [metallic] "VS" at the intersection of the diagonal,
-with a burst of [warm] sparks at the seam. Nothing else at the center.
-
-[PRODUCT INSET, bottom]
-The reference product, complete and whole, on a plain white background
-inside a rounded rectangle, occupying [20-25%] of the frame width.
-This is the only place the finished product appears.
-
-[HONESTY CONSTRAINT]
-The left component must not carry any brand mark, logo or identifiable design.
-The right component must be the type genuinely used inside the product.
-Do not render a component the product does not contain.
-
-STYLE: high-contrast technical comparison graphic, e-commerce, sharp, 4K.
-NO text beyond the VS badge, no logo, no watermark.
+STYLE: high-contrast technical comparison graphic, e-commerce, sharp.
 ```
+
+## PARTS
+
+**`split`** — ONE diagonal, running from a named corner to its opposite. The two halves must
+be visually unequal in energy, the right advancing into the left. Never a vertical split: that
+is `01-pain-split`'s geometry and this type's diagonal is what separates them at a glance.
+
+**`old`** — left half, PHOTOGRAPHIC register, desaturated. A generic, unbranded component of
+the legacy type, in a dim unstyled setting. **Name the signs of age as things, not as a
+number** — a chipped edge, scoring across the face, grey dust settled in the seams — because a
+count has never bound in this library. It must read as a real object photographed in the real
+world.
+
+**`new`** — right half, 3D RENDER register. The same component class, pristine and of the
+improved type, floating against a dark gradient with cool rim lighting and sharp reflective
+surfaces. It must read as engineered, not photographed.
+
+**Name the differentiator as LIGHT BEHAVIOUR, not as a material.** "A dense uniform field of
+fine crystalline grit catching the light" renders; "diamond coating" does not — the model has
+no way to draw a material name.
+
+**`inset`** — the reference product, complete and whole, on a plain ground inside a rounded
+rectangle at 20-25% of frame width, along the bottom. **This is the only place the finished
+product appears.** Dropped by `--products`, where whole products are already the two halves.
+
+## MARKS
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `seam` | a thin glowing line along the diagonal, with a burst of warm sparks where it crosses the centre | one accent hue, warm sparks | exactly 1 | 1 render |
+| `vs` | a large metallic VS at the seam's centre | metallic | exactly 1 | 0 renders · **it is TEXT** |
+| `verdict` | filled solid discs with the glyph cut out, one per half | red X left, green check right | exactly 2 | also in `01-pain-split` (4 renders), `02-cause-anatomy`, `06-relief-hero` |
+
+**`vs` is text and text does not render.** G6 routes letters to post-composite, and this
+library's renderer does not composite. Two letters are the risk class: a `03-mechanism-ghostbody`
+render returned dimension arrows labelled `W` and `L` unasked. The proven alternative is
+`verdict` — a filled disc with a cut-out glyph, which rendered clean on 4 of 4 `01-pain-split`
+frames and carries the same binary judgement without a letter in the frame.
+
+**ONE marker at the seam, never two.** One binary argument takes one marker: `vs` or `verdict`,
+not both stacked. Source exemplars used a VS plus emoji; market habit, deliberately not
+imported.
+
+**Polarity is locked: the legacy half is on the LEFT.** All four source exemplars inverted it.
 
 ## SLOT CONSTRAINTS
-- G5 exemption is deliberate and meaningful: photo = "what rots in the real world",
-  render = "what was engineered". This is the only type where breaking register lock
-  is the message.
-- The left component is generic and unbranded — a claim about a category, never about
-  a competitor.
-- Material differentiators render better as **light behavior** than as material names
-  (e.g. "a dense uniform field of fine crystalline grit catching the light" instead of
-  "diamond coating").
-- The VS badge is the only text permitted anywhere in the library; models render text
-  unreliably — plan to composite it in post.
+- **The G5 exemption IS the message.** Photograph on the left means *what rots in the real
+  world*; render on the right means *what was engineered*. This is the only type in the library
+  where breaking the register lock carries the argument, which is why it is declared in
+  frontmatter rather than argued per prompt.
+- **The left component is generic and unbranded** — a claim about a category, never about a
+  competitor. No brand mark, no recognisable design, no readable model number.
+- **Never render a component the product does not contain.** The census risk of
+  `03-spec-explode` in a comparison frame: the right half is a render and proves nothing on its
+  own, so the honesty constraint is the only thing holding the claim up.
+- **Wear is evidence; catastrophe is staging.** Never broken, shattered or surrounded by debris
+  — a demolished legacy part reads as theatre and voids the comparison
+  (`argument-faults.md` shares this shape with `04-proof-lockedframe`).
+- **The prompt budget.** A clause earns its place only if a render has failed without it. Since
+  ADR-014 no `Strictly avoid:` line is rendered at all.
 
 ## NEGATIVE
 ```
@@ -100,55 +119,25 @@ vertical split, dull center, low contrast, product inset missing,
 product inset cropped, cartoonish explosion, fire, smoke, gore,
 human hands, human figures
 ```
+Canonical and model-agnostic. Since ADR-014 it is **not rendered into the prompt at all**; it
+stays here and in the query output's `avoid` field for a future model with a real negative
+channel.
 
 ## VARIANTS
+Diffs only. Each variant names the PARTS and MARKS it changes.
+
 ### --products
-Whole-product photographic comparison — category displacement: the legacy solution
-class vs the reference product. Both halves are real photographs (G5 symmetric in
-this variant; the base's photo-vs-render asymmetry does not apply).
-Diff vs base:
-```
-[LEFT PANEL, replaces THE OLD COMPONENT]
-The generic legacy/rival-class product, photographed in ordinary aged-but-
-plausible condition, desaturated or cool-graded. UNBRANDED.
-FAIRNESS RULE (imported from 04-proof-lockedframe): wear is evidence,
-catastrophe is staging. Never broken, shattered, or surrounded by debris —
-a demolished rival reads as theater and voids the comparison.
-
-[RIGHT PANEL, replaces THE NEW COMPONENT]
-The reference product, photographic register, in an honest use context,
-brighter and cleaner (G4). No hero lighting beyond that.
-
-[CENTER BADGE] unchanged: the VS at the seam remains the single marker.
-No X/check pair on top of it — one binary argument, one marker.
-POLARITY LOCK: wrong/legacy on the LEFT. (All four source exemplars
-inverted this; market habit, deliberately not imported.)
-
-[PRODUCT INSET, bottom] does NOT apply — the whole products are already
-in frame.
-
-[MEASURED EVIDENCE] (optional)
-Matching instrument insets on BOTH panels — same instrument, same position,
-same scale (e.g. sound-level meters). Instrument digits are diegetic text
-(G6 scope note) and must come from real measurements; composite real
-readouts in post, never model-drawn.
-```
-Negative additions: `shattered or destroyed rival product, debris, exaggerated
-failure scene, check and X badges stacked with the VS, mismatched instrument
-insets between panels`
-
-## WORKED EXAMPLES
-### example: knife-sharpener — skeleton@1.0, run: untested
-Product: rolling knife sharpener (inset only) · ratio 1:1 · axes: register=commercial
-- SPLIT — diagonal top-left to bottom-right, edged with a thin glowing cyan line; the right half advances into the left
-- LEFT PANEL, OLD COMPONENT — photographic register, desaturated grayscale: a generic unbranded ceramic sharpening rod and a worn steel honing rod in a dim drawer, ceramic chipped along its length, steel scored with deep uneven scratches, metal filings and grey dust around them; must read as a real object photographed
-- RIGHT PANEL, NEW COMPONENT — 3D render register: a pristine circular diamond-coated abrasive disc, dense uniform crystalline grit catching the light, edge-on so face and profile both read, cool cyan rim light, dark gradient behind, sharp reflective surfaces; must read as engineered, not photographed
-- CENTER BADGE — large brushed-gold VS at the diagonal intersection with a burst of warm orange sparks at the seam; nothing else at center
-- PRODUCT INSET (bottom) — the reference sharpener, complete and whole, on plain white inside a rounded rectangle, about 22% of frame width; the only place the finished product appears
-- HONESTY — the left components carry no brand mark, logo or identifiable design
-Predicted failures: (1) diamond grit rendering as generic roughness — the light-effect
-phrasing above is the mitigation; (2) the VS text coming out mangled — composite in
-post.
+Whole-product photographic comparison — category displacement rather than component
+superiority: the legacy solution class against the reference product.
+Diff vs base: `old` becomes the generic legacy-class PRODUCT, unbranded, aged but plausible ·
+`new` becomes the reference product itself, photographic, brighter and cleaner (G4), no hero
+lighting beyond that · **both halves are photographs, so the G5 exemption does not apply here**
+· `inset` is dropped, the whole products already being in frame.
+- **Measured evidence, optional:** matching instrument insets on BOTH halves — same instrument,
+  same position, same scale. Instrument digits are diegetic text (G6 scope note) and must come
+  from real measurements, composited in post, never model-drawn.
+- Negative additions: `shattered or destroyed rival product, debris, exaggerated failure scene,
+  check and X badges stacked with the VS, mismatched instrument insets between panels`
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
@@ -162,6 +151,12 @@ the left half is not actually a competitor's part. Both are soft claims. The
 contain.
 
 ## CHANGELOG
+- 1.2 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), owner
+  instruction. `PARTS` owns `split`, `old`, `new`, `inset`; `MARKS` owns `seam`, `vs`,
+  `verdict`. `RATIO:` dropped per adapter Rule 4; the skeleton header had read v1.0 under a
+  v1.1 type and now tracks. Recorded: `vs` is TEXT, which G6 routes to post and this renderer
+  does not composite, so `verdict`'s filled disc — clean on 4 of 4 `01-pain-split` frames — is
+  the alternative with evidence. WORKED EXAMPLES removed, untested. ADR-014 adopted.
 - 1.1 (2026-08-10): --products variant added (whole-product photographic comparison,
   fairness rule, polarity lock, optional measured-evidence insets). Evidence: 3
   observations across 3 domains — obs sha256:d4165b…, sha256:a98ef3…, sha256:262bca…

@@ -219,7 +219,7 @@ types:
     step: 3
     job: spec
     device: split
-    version: "1.1"
+    version: "1.2"
     status: active
     channels: [marketplace]
     ratios: ["1:1", "4:5"]
