@@ -274,7 +274,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   is 0/8, so this type argues with things in the scene, never with overlay. `layout` stops
   describing frame geometry — the owner sets the ratio, and reasoning about the frame buys
   extra small panels. SLOT CONSTRAINTS gains the measurement: prompt length breaks the stack,
-  1533 characters held 4/6 and 2368 held 1/4 into the same frame.
+  1533 characters held 4/6 and 2368 held 1/4 into the same frame. `0f256e2`
 - 1.6 (2026-08-13): three owner corrections. Ratios move to the five allowed by ADR-016, so
   `4:5` becomes `3:4`. `register` stops prescribing one look — it was the source of the slop,
   4 mandated palettes and 8 mandated lights in one four-prompt set — and now varies per prompt,
