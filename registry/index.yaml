@@ -68,7 +68,7 @@ types:
     step: 2
     job: cause
     device: anatomy
-    version: "1.8"
+    version: "1.9"
     status: active
     channels: [landing-page, marketplace, advertorial]
     ratios: ["5:3", "16:9", "1:1"]
@@ -91,7 +91,10 @@ types:
       measurable landmark exists.
     avoid_when: >
       The problem has no internal structure to draw, or the cause cannot be
-      pinned to one concrete object. Never as a main image.
+      pinned to one concrete object, or the harm PERSISTS after the culprit is
+      taken away. Accumulated damage — a receded gum, a lifted hair cuticle —
+      is not a state the product switches, and two panels claiming it is will
+      claim a repair the product cannot make. Never as a main image.
   - id: 02-symptom-rail
     step: 2
     job: symptom
