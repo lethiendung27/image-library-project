@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.8"
+version: "1.9"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,7 +43,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.8 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.9 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -141,6 +141,8 @@ them from another angle, the reflection consistent with their actual position. I
 space twice: it gives the confrontation a natural reason, and it doubles the symptom
 evidence without adding a second person. Render-confirmed 2026-08-12 on a thinning-hair
 frame — the mirror carried the crown the subject cannot see himself.
+Composes with `--marked`, render-confirmed 2026-08-13: the single glow appeared in the
+reflection alone and the man himself carried none, so the count survives a doubled subject.
 
 **`grade`** — Desaturated [dominant hue], fine film grain, shallow depth of field, [lens
 character]. `--candid` adds crushed blacks. This is G11's single-state clause: the whole
@@ -154,8 +156,32 @@ another type visible from here.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 1 render · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
-| `ring` | a thin red ring — a clean open circle of even line weight drawn around the evidence, touching nothing else | red only | exactly 1 | 0 renders · a proposal, and its first render is its founding evidence |
+| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 4 renders · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
+| `ring` | a thin red ring — a clean open circle of even line weight drawn around the evidence, touching nothing else | red only | exactly 1 | 1 render · FORM confirmed, a clean open circle of even weight; extent bound to the wrong object |
+
+**A mark binds to a BOUNDED STRUCTURE, not to a size instruction.** Every marked render
+carried "sized to it and no larger". It bound in two and failed in two, and the discriminator
+was the TARGET, not the wording:
+
+| target named in the prompt | what rendered |
+|---|---|
+| the gripping knuckles | glow on the hand — correct |
+| the apex of the rounded upper back | glow on that region, in the reflection only — correct |
+| the densest patch of spots on the glass | ring around the WHOLE GLASS |
+| the split in the cable sheath | glow the size of the subject's lap |
+
+Named a structure, the mark takes its extent. Named a patch, a scatter or a split, the model
+either substitutes the nearest bounded object or spreads the mark across the area. This is
+`02-cause-anatomy`'s finding reached independently — restating a count or a size does not
+bind, naming ONE bounded structure does.
+
+**Admission gate: `--marked` is legal only where the evidence IS a bounded structure** — a
+hand, a knee, a shoulder seam, a section of back, one object. Where the evidence is a
+scatter, a patch, a stain or a split, either name the bounded object that CARRIES it and
+accept that the mark will cover that object, or use the base variant. An unbindable mark
+stops pointing and becomes the subject, which is the one thing the mark law forbids: the
+cable render came back with the glow as the largest object in frame and the photojournalism
+register broken with it.
 
 **The mark POINTS AT evidence. It never delivers a verdict.** No X, no check, no VS, no
 thumbs, no exclamation glyph — that is `01-pain-split`'s language, and a glyph is text,
@@ -244,7 +270,7 @@ mark is model-drawn (ADR-008 approach A).
   `graphic overlay`. The reasoning is in NEGATIVE.
 
 ## KNOWN-FLAKY
-- **Unrequested four-pointed sparkle glyph, bottom-right, 4 of 4 renders examined
+- **Unrequested four-pointed sparkle glyph, bottom-right, 7 of 7 renders examined
   2026-08-13.** Same corner and same form in all four, and it takes the tone of whatever is
   beneath it — wood on a tabletop, white on envelopes, dark on a bath panel, pale on a navy
   shirt — which is a composite
@@ -253,10 +279,26 @@ mark is model-drawn (ADR-008 approach A).
   new evidence for the watermark reading there. Intermittent — this type's mark-free
   control of 2026-08-12 recorded none. The v1.5 prompt set runs Rule 7's own untried test:
   one prompt names that corner as bare, two omit the clause.
+- **Over-acted faces on the `--marked` renders, 2 observations, 2026-08-13.** A pushed-out
+  lower lip on the posture frame, acute physical pain on the cable frame where the problem is
+  a cable. Below the bar, and both prompts named the signs by muscle as the slot asks. Watch
+  whether the mark itself invites the model to overplay the face.
 
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.9 (2026-08-13): **a mark binds to a bounded structure, not to a size instruction** —
+  added to MARKS with an admission gate. Three renders (D, E, F of the v1.7 set) plus the one
+  earlier marked render make four, all carrying the same "sized to it and no larger" wording:
+  the two naming a bounded structure bound correctly, the two naming a patch and a split did
+  not. `--marked` is now illegal where the evidence is a scatter, patch, stain or split.
+  Two positive results recorded rather than buried: `[MIRROR]` and `--marked` COMPOSE — one
+  glow, in the reflection alone — and the `ring` class earned its founding render with its
+  FORM confirmed as a clean open circle. Answering the owner's question directly: this type
+  does not need more mark classes; both existing classes render as specified and both failed
+  on target selection, which a third class would inherit. KNOWN-FLAKY gains over-acted faces
+  at 2 observations, and the corner glyph goes to 7 of 7 renders examined.
+  File 19695 → 22709.
 - 1.8 (2026-08-13): **the action must be DIAGNOSTIC**, added to `PARTS/subject`. A force in
   progress is not enough; it must be a force only someone with this problem would apply. The
   owner rejected two of the six v1.7 prompts before rendering — both named a force, neither
