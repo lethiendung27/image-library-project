@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.11"
+version: "1.12"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 02-symptom-rail v1.11
+TYPE: 02-symptom-rail v1.12
 LAYERS: photographic hero on the left, vignette rail down the right edge.
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -196,8 +196,94 @@ render printed A, B and C into the frame. `heat or warming cues` is a Rule 1a bl
 prompt whose `field` mark is heat, and is dropped from that prompt rather than rephrased.
 
 ## WORKED EXAMPLES
-(none rendered yet — the three renders of 2026-08-12 all predate v1.4 and every one of them
-produced a rule rather than an example)
+Two renders that happened, kept in full because that text is the only record of what actually
+drew (SPEC §3.3). Both `pass` — an empty failures list — and between them they carry the two
+marks this type took eleven versions to get right.
+
+### example: heated-shoulder-wrap — skeleton@1.7, run: pass
+The type's first pass. `field` on HEAT under the no-signal-colour rule that heat itself
+produced at 1.4 and had never been tested against: warm-white contours over the shoulders and
+neck, no orange, no amber, no red, landing on all three zones the rail counts.
+```
+TYPE: 02-symptom-rail v1.7
+LAYERS: photographic hero on the left, vignette rail down the right edge.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the heated
+shoulder wrap. Preserve shape, proportions, material, finish and colour exactly.
+It appears once in the frame.
+
+HERO, left 72%: a woman in her forties in a soft grey lounge set, sitting
+sideways on a sofa in the evening with a mug in both hands, calm and content,
+gaze down into the mug. The reference wrap is worn over both shoulders and around
+the base of her neck, sitting on her shoulders with its own weight and its strap
+fastened at the front, part of the scene and in use, unobstructed, seen from the
+side, at least 25% of the hero height. Setting: a warm living room, a folded
+blanket, a floor lamp, a low table. Soft natural window light, background
+blurred, bright high-key neutral grade, subject offset left.
+
+RAIL, right 26%, soft S-curved left edge: pale clay gradient panel. Three
+circular vignettes stacked evenly, white ring border, equal diameter, generous
+spacing, sharing the hero's light and style. These are a DIFFERENT MOMENT from
+the hero: the same woman earlier, at a laptop at her desk, in a work shirt, no
+wrap. Vignette mode is pain-gesture, each a tight crop from the chest down or
+from behind, no face and no part of a face in any of them. Top to bottom: her
+hand reaching back to press the base of her neck; her hand pressing the top of
+her shoulder; her hand pressing the upper back beside her spine.
+
+MARKS, two, nothing else in the frame is marked:
+- field: the heat the wrap transfers into her shoulders and neck, drawn as four
+  thin contour lines that WRAP the shoulders and the base of the neck beneath the
+  wrap, following the curve of the body, closest together where the wrap sits
+  against her and loosening outward as they travel down toward the shoulder
+  blades. Neutral warm-white and translucent, carrying no colour of its own -
+  no orange, no amber, no red. Not an arrow, not a glow, not a haze.
+- symptom-glow: one soft red radial glow centred on the aching zone inside each
+  of the three vignettes, three in total.
+
+STYLE: clean e-commerce infographic tile, bright and airy, sharp focus.
+```
+
+### example: cordless-vacuum — skeleton@1.10, run: pass
+`transform` as PROGRESS, the form the type spent six versions finding. A cleaned strip behind
+the head against matted pile ahead of it, the boundary along the head's own edge, so the
+machine is visibly the agent and the dirty half reads as what is left to do.
+```
+TYPE: 02-symptom-rail v1.10
+LAYERS: photographic hero on the left, vignette rail down the right edge.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the cordless
+vacuum. Preserve shape, proportions, material, finish and colour exactly. It
+appears once in the frame.
+
+HERO, left 72%: a man in his thirties in a plain olive tee, vacuuming a pale wool
+rug, calm and content, gaze down at the rug ahead of the head. He holds the
+reference vacuum with its floor head flat on the rug and the rug and floor
+present and whole beneath it, part of the scene and running, unobstructed, seen
+from the side, at least 25% of the hero height. Setting: a bright living room, a
+low sofa, a floor plant, a stack of books. Soft natural window light, background
+blurred, bright high-key neutral grade, subject offset left.
+
+RAIL, right 26%, soft S-curved left edge: pale stone gradient panel. Three
+circular vignettes stacked evenly, white ring border, equal diameter, generous
+spacing, sharing the hero's light and style. These are a DIFFERENT MOMENT from
+the hero: the same home before cleaning, with no person in any of them. Vignette
+mode is visible-symptom, each a tight crop of an object. Top to bottom: the same
+pale wool rug, its pile dulled grey and matted with settled dust; pet hair worked
+deep into the weave of a sofa cushion; crumbs and grit in the seam of a car seat.
+
+MARKS, two, nothing else in the frame is marked:
+- transform: two bodies of the SAME RUG SURFACE in one frame, meeting at the
+  cleaning head, differing only in how clean they are. BEHIND the head, a broad
+  strip of rug the machine has already passed over - pale, bright, its pile
+  lifted and even. AHEAD of the head, the untouched rug - the same wool dulled
+  grey, its pile flattened and dust settled in it. The boundary between them runs
+  straight along the edge of the head. No loose dust anywhere in the air or the
+  room.
+- symptom-glow: one soft red radial glow centred on the symptom inside each of
+  the three vignettes, three in total.
+
+STYLE: clean e-commerce infographic tile, bright and airy, sharp focus.
+```
 
 ## KNOWN-FLAKY
 - **The model regresses to pain-gesture** in the rail even when visible-symptom is intended.
@@ -214,6 +300,11 @@ the amber-versus-neutral question above is the thing to watch.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.12 (2026-08-13): type passed by the owner; file finalised with two rendered worked
+  examples in full text per SPEC §3.3 — the heated shoulder wrap for `field` and the cordless
+  vacuum for `transform`. Closing state: four marks, all with render evidence; `field` the
+  best-evidenced at 4 renders across vibration, support, heat and pressure. Air products and
+  the shower filter are excluded by the locatable-effect test.
 - 1.11 (2026-08-13): `transform` is PROGRESS, not co-presence — the product sits ON the
   boundary of one continuous surface, done behind and not-yet ahead, and the dulled state never
   attaches to what the person receives. A product whose output arrives everywhere at once
