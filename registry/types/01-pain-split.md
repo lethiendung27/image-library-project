@@ -3,7 +3,7 @@ id: 01-pain-split
 step: 1
 job: pain
 device: split
-version: "1.7"
+version: "1.8"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-split v1.7 [--object | --mirror | --oldway]
+TYPE: 01-pain-split v1.8 [--object | --mirror | --oldway]
 
 [LAYOUT] two panels, hard vertical 50/50, both running to the frame edge.
                                                               -> PARTS/layout
@@ -76,7 +76,7 @@ the right panel came back as an isolated shirt on a bare white wall against a li
 panel, which breaks G5 and drops the comparison. G4 still binds — brighter and airier than the
 left — but by light and calm, **never by deleting the room**.
 
-**`product`** — in the AFTER panel only, placed per G2: position, angle, scale in frame,
+**`product`** — ONE unit, in the AFTER panel only, in use, placed per G2: position, angle, scale in frame,
 relation to other objects. Never described. It keeps its own reference colours and **carries
 no signal colour at all** (`argument-faults.md` A5).
 
@@ -89,6 +89,10 @@ This type's own mark library. Every mark obeys G3 and carries a count.
 | `verdict` | flat solid disc with the glyph cut out of it, in a TOP corner, both the same diameter | red X left, green check right | exactly 2 | 4 renders · also in `02-cause-anatomy`, `03-mechanism-ghostbody`, `06-relief-hero` |
 | `hotspot` | a soft red radial glow on one named structure | red only | one per structure, BEFORE panel only | 4 renders · a glow blooms and cannot be held to a boundary |
 | `jag` | short red jagged strokes running ALONG one named structure | red only | 1 structure, BEFORE panel only | 4 renders |
+
+**Name the SIDE as well as the structure.** Naming a structure binds the structure; on a
+symmetric body it does not bind the side, and one render put every mark on both arms. Say
+"the near wrist" and then say the marks appear on that arm only.
 
 **Name structures, not counts.** "Exactly 3 hotspots" does not bind — a restated number never
 has, in this library or in `02-cause-anatomy`. Name the three structures the glows sit on and
@@ -145,8 +149,12 @@ framing, and only posture, expression, presence of the product and colour grade 
 `hotspot` and `jag` are DROPPED, posture and expression carry the problem · lighting setup and
 time of day are identical, only the grade differs.
 - generation_mode override: **multi-pass** — generate the left panel, edit into the right,
-  composite the split in post. A single pass has been tried once and returned two different
-  people: the hair was dark and long on the left, lighter and shorter on the right.
+  composite the split in post. A single pass has been tried twice with opposite results: it
+  returned two different people when the person was described inside each panel, and ONE
+  person when an explicit invariants block named face, hair, beard, clothes, camera height,
+  distance and framing BEFORE either panel was described. 1 of 1 each way, so multi-pass
+  stays the declared route and the invariants block is the recorded alternative — it is also
+  the only route available to a renderer who does not composite.
 - Negative additions: `different person between panels, different camera angle between panels,
   different wardrobe, different time of day, golden hour on one side only, VS badge, third
   badge, badges at bottom of frame`
@@ -164,7 +172,107 @@ panel is a room with a person struggling in it.
 - Negative additions: `brand logos on the legacy device, damaged or mocked legacy device,
   emoji, money props, price-claim imagery`
 
+## WORKED EXAMPLES
+Both rendered at 1.7 and owner-passed, kept in FULL text per SPEC §3.3.
+
+### example: lumbar-cushion-mirror — skeleton@1.7, run: pass
+```
+TYPE: 01-pain-split v1.7 --mirror
+
+[LAYOUT]
+Two panels side by side, hard vertical split at exactly 50/50. Each panel runs all the
+way to the frame edge. No outer border and no drawn border line anywhere in the image.
+
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference for the product.
+Preserve its shape, proportions, material, finish and color exactly as shown.
+Do not redesign, restyle, simplify or add features.
+Render it from the same side-on angle as the scene, at roughly a quarter of the right
+panel's height, integrated with the scene lighting.
+
+[THE SAME PERSON IN BOTH PANELS]
+One man, mid 40s, short dark hair cut close at the sides, a trimmed beard, a plain
+charcoal sweatshirt and dark jeans. He is identical in both panels: same face, same hair
+length, same beard, same clothes, same body. Both panels are shot from the same side-on
+camera at the same distance and the same height, framing him from the knees up on the same
+grey two-seat sofa in the same room, with the same lamp and the same window behind him.
+
+[BEFORE — left panel]
+Desaturated grayscale. He is slumped back into the sofa with his lower back hollow and
+unsupported, the pelvis slid forward, the spine curved into a long C and the head carried
+in front of his shoulders. Face: mouth set, brow drawn.
+
+[AFTER — right panel]
+Full colour. The SAME man, same sofa, same camera, same clothes, sitting upright with the
+lower back filled and the pelvis under him, the spine long, the head over his shoulders.
+Face relaxed. The reference lumbar cushion is between his lower back and the sofa back,
+secondary to him. Same lighting setup and the same time of day as the left panel — only
+the posture, the expression, the cushion and the colour grade differ.
+
+[MARKS]
+No glows and no jagged marks in either panel: the posture carries the problem.
+
+[BADGES]
+A flat solid red disc with a white X cut out of it in the TOP-LEFT corner of the left
+panel. A flat solid green disc with a white check cut out of it in the TOP-RIGHT corner of
+the right panel. Same diameter, no other badge.
+
+STYLE: e-commerce comparison tile, high contrast, sharp. Both panels share one lighting
+register and one shooting style.
+```
+Rendered in a SINGLE pass and the identity held. The invariants block before the panels is
+what this example exists to preserve.
+
+### example: spin-mop-oldway — skeleton@1.7, run: pass
+```
+TYPE: 01-pain-split v1.7 --oldway
+
+[LAYOUT]
+Two panels side by side, hard vertical split at exactly 50/50. Each panel runs all the
+way to the frame edge. No outer border and no drawn border line anywhere in the image.
+
+[PRODUCT REFERENCE]
+Use the attached product photo as the exact reference for the product.
+Preserve its shape, proportions, material, finish and color exactly as shown.
+Do not redesign, restyle, simplify or add features.
+Render it from a front three-quarter angle at roughly a third of the right panel's height,
+integrated with the scene lighting.
+
+[BEFORE — left panel]
+Desaturated grayscale. Man early 50s in an old t-shirt with the sleeves pushed up,
+crouched on a kitchen floor wringing out a plain grey string mop head with both bare
+hands over an ordinary plastic bucket: grey water running back off his forearms, the mop
+head twisted and dripping, a wet trail and splashes spread across the tiles around the
+bucket. The bucket and mop are generic and unbranded, ordinary and in good condition.
+Face: mouth pressed flat, brow drawn in.
+
+[AFTER — right panel]
+Full colour. The SAME kitchen — same tiles, same units, same window, same man — now
+standing upright, one hand on the handle, pressing the reference spin mop down into its
+own wringer basket. The floor behind him is finished and dry, his hands and forearms are
+dry. Brighter and airier than the left panel by light and by calm; the kitchen stays
+exactly where it is and nothing is removed from it.
+
+[MARKS]
+No glows and no jagged marks: the friction on the left carries the problem.
+
+[BADGES]
+A flat solid red disc with a white X cut out of it in the TOP-LEFT corner of the left
+panel. A flat solid green disc with a white check cut out of it in the TOP-RIGHT corner of
+the right panel. Same diameter, no other badge.
+
+STYLE: e-commerce comparison tile, high contrast, sharp. Both panels share one lighting
+register and one shooting style.
+```
+The same-setting rule on the variant that invites breaking it: same kitchen, same man, only
+the job and the grade change.
+
 ## KNOWN-FLAKY
+- **The product rendered TWICE in the AFTER panel, 1 of 1, 2026-08-13.** Once in use as
+  placed, and again as a second unit lying alone in the foreground under packshot light. Same
+  instinct as the register split below — the model reaches for a catalogue shot the moment
+  the right panel holds a product — but here it ADDS one instead of replacing the room.
+  `PARTS/product` now says ONE unit, in use.
 - **Identity breaks across panels on a single-pass `--mirror`, 1 of 1, 2026-08-12.** Hair dark
   and long on the left, lighter and shorter on the right — two people, so no comparison. This
   is why the variant declares multi-pass. Anyone rendering it in one pass is testing whether
@@ -182,6 +290,13 @@ panel is a room with a person struggling in it.
   room to be named a second time inside the AFTER slot.
 
 ## CHANGELOG
+- 1.8 (2026-08-13): **type PASSED by the owner; file finalised.** Three renders, one per
+  variant: `--mirror` and `--oldway` pass, `--object` partial. WORKED EXAMPLES returns with
+  the two passes in full text. Two findings patched: naming a structure does not bind the
+  SIDE on a symmetric body, and `product` is ONE unit in use — a render placed a second one
+  beside it as a packshot. `--mirror`'s multi-pass declaration now records the single-pass
+  alternative that worked, an explicit invariants block, which is the only route open to a
+  renderer who does not composite. · this commit
 - 1.7 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), owner
   instruction. `PARTS` owns `layout`, `before`, `after`, `product`; `MARKS` owns `verdict`,
   `hotspot`, `jag`. Three laws carried in from `01-pain-scene` and `argument-faults.md`: name

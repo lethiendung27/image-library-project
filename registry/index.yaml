@@ -39,7 +39,7 @@ types:
     step: 1
     job: pain
     device: split
-    version: "1.7"
+    version: "1.8"
     status: active
     channels: [marketplace, landing-page]
     ratios: ["1:1", "4:5"]
