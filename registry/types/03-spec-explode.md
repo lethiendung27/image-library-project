@@ -3,7 +3,7 @@ id: 03-spec-explode
 step: 3
 job: spec
 device: explode
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 ratios: ["1:1", "16:9"]
@@ -44,11 +44,11 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-spec-explode v1.2
+TYPE: 03-spec-explode v1.3
 REGISTER: 3D technical render. NOT photography.
 
 [PRODUCT REFERENCE] attached photo is the exact reference for every outer part.
-[CANVAS] value chosen AGAINST the product's own value.        -> PARTS/canvas
+[CANVAS] value against the product, motif from what it DOES. -> PARTS/canvas
 [FRAMING] full-frame or inset.                                -> PARTS/framing
 [STACK] name the real parts in assembly order.                -> PARTS/stack
 [CENSUS] only what the product genuinely contains.            -> PARTS/census
@@ -62,8 +62,30 @@ composited in post if the page needs them (G6 production law).
 
 ## PARTS
 
-**`canvas`** — an engineering ground carrying faint traces at very low contrast. Motifs stay
-dim: credibility, not information.
+**`canvas`** — an engineering ground carrying a faint motif at very low contrast. It stays
+dim: credibility, not information. Two things are chosen, and for six renders only one of
+them was.
+
+**The MOTIF is derived from what the product DOES.** "Faint cyan traces" was the library's
+single default and it printed circuit-board schematics behind a hair straightener, a running
+shoe and a filter jug — a motif that says *generic electronics* on products whose argument is
+ceramic heat, foam layers and filtration. Where it was not circuits it was a flat empty field,
+which says nothing at all. It happened to suit the smartwatch, and that accident hid the
+problem for six renders. Derive it:
+
+| the product's domain | motif |
+|---|---|
+| electronics, wearables | printed-circuit traces |
+| audio | waveform contours, concentric driver rings |
+| water, filtration | flow contours, ripple rings, hexagonal mesh |
+| heat, styling, cooking | isotherm bands, radiant contours |
+| footwear, sport | topographic contours, stride arcs, lane lines |
+| optics, camera | concentric lens rings, focus reticles |
+| textile, bedding | weave lattice |
+| air, ventilation | streamline flow lines |
+
+The motif is abstract line-work at low contrast, never an illustration of the thing and never
+a photographic scene — the G7 exemption is structural and holds here.
 
 **Its VALUE is derived from the product, not fixed.** The ground must sit far enough in value
 from the product's dominant value that the silhouette separates. This was a fixed deep navy
@@ -76,6 +98,11 @@ deep navy nearly disappeared. Choose:
   metallic or brightly coloured;
 - a **light** ground — `studio grey`, `warm off-white`, `pale slate` — for a product that is
   dark, black or navy.
+
+**The HUE may follow the product's world at low chroma, but it must stay far from CYAN.**
+Cyan is this type's only signal colour and marks the focus component; a teal or aqua ground
+for a water product would swallow the one mark the type has. Let the MOTIF do the evoking and
+keep the hue out of the signal's way.
 
 Two of the five exemplars already sit on a non-dark ground, which is why the light values are
 named rather than invented. NEGATIVE still bans a BLOWN-OUT white; a mid or pale grey is not
@@ -209,6 +236,12 @@ a variant — same argument, same layers, different footprint.
 The canvas question and its 2-of-5 evidence live in `PARTS/canvas`.
 
 ## CHANGELOG
+- 1.3 (2026-08-13): **the motif is derived from what the product DOES.** Owner: the background
+  is still monotonous and does not evoke the product. 1.2 fixed the ground's VALUE, which was
+  only half — the motif stayed one default, printing circuit schematics behind a straightener
+  and a shoe, or nothing at all behind a headphone. `PARTS/canvas` derives it by domain, and
+  the hue must stay far from CYAN, the type's only signal. Confirmed same batch: the value
+  rule in its light direction, the axis rule, and rim light plus contact shadow. · this commit
 - 1.2 (2026-08-13): **the ground is derived from the product's value; the explode axis follows
   the product's proportion.** Owner report that backgrounds lack variety, and three renders
   ordered themselves by value distance: a white shoe on graphite separated, a navy jug on deep
