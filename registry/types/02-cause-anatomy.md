@@ -80,14 +80,22 @@ prompt whose argument is sound; do not use it yet for a frame carrying more than
 throughout, **stepping once in VALUE at the divider: one step lighter on the right.** The
 step is the only discontinuity; nothing else is in the background.
 
-That step is not decoration, it is the only way this type's own G4 requirement can be met,
-and the two rules were in silent conflict until measurement found it. A field held at one
-value across both panels leaves only the structures to brighten, which is a small effect:
-the three renders that kept the field flat delivered right-minus-left differences of 4.1,
-2.2 and −0.8 of 255, the last of them inverted. The two that stepped the field delivered
-31.9 and 21.1. Restating the requirement in stronger words did nothing — v1.8 told the
-prompts the difference "must be obvious, not slight" and all three following renders
-ignored it. The field has to carry it.
+That step is not decoration; it is the only way this type's own G4 requirement can be met,
+and the two rules sat in silent conflict until the grounds were measured panel by panel
+across all eight renders. Taking a ground step of 10 of 255 as the cut:
+
+- **Flat field, 4 renders** (headrest, ear tip, toothbrush, hair): whole-panel differences
+  of +4.1, +4.2, −0.8 and +4.9. Not one exceeded +5, and one inverted. A flat field leaves
+  only the structures to brighten, and that is too small an effect to read.
+- **Stepped field, 4 renders**: +31.9, +21.1, +17.6 — and +2.2.
+
+So the step is **necessary but not sufficient**, and the fourth case says why. The sock
+render stepped its ground by +15.6 and still finished at +2.2, because its right panel is
+covered by a dark sock that ate the brightness back. The rule that holds is therefore in
+two parts: step the field, AND do not let the right panel's own content spend the step.
+
+Restating the requirement in words does nothing on its own — v1.8 told the prompts the
+difference "must be obvious, not slight" and all three renders that followed ignored it.
 
 `dark-field` is the only field value. The ground sits far below the ivory in value and the
 structures read as the lightest thing in the frame: measured separation 178, 179 and 178 on
@@ -329,10 +337,15 @@ but must share one palette or they read as two sources.
   checkable: remove the culprit and ask whether the harm goes with it.
   **`ground` now steps once in value at the divider**, and that is a real conflict resolved
   rather than a preference. One continuous flat field and "RIGHT brighter than LEFT" cannot
-  both hold — the three renders that kept the field flat delivered 4.1, 2.2 and −0.8 of 255,
-  the last inverted, while the two that stepped it delivered 31.9 and 21.1. v1.8 tried to
-  fix this by telling prompts the difference must be obvious; all three following renders
-  ignored the words. The field carries it now.
+  both hold. Measured across all eight renders: the four that kept the field flat finished
+  at +4.1, +4.2, −0.8 and +4.9 of 255, none above +5 and one inverted; of the four that
+  stepped it, three finished at +31.9, +21.1 and +17.6 while the fourth managed only +2.2
+  because a dark sock covered its right panel and spent the step. So the step is necessary
+  and not sufficient — the right panel's own content must not eat it back. v1.8 tried to fix
+  this by telling prompts the difference must be obvious; all three following renders ignored
+  the words. (First written in this entry from a partial reading of the same measurements —
+  three flat renders and two stepped — which undercounted both groups and missed the sock
+  counter-example. Corrected here before any prompt was written against it.)
   `light-field` **withdrawn on 0 of 2** — separations of 5 and 8 against dark-field's 178,
   and a pale ground leaves no headroom for the brightening the type requires. It was
   proposed at 1.8 as the cure for visual sameness; the cure turned out to be subject class,
@@ -345,7 +358,7 @@ but must share one palette or they read as two sources.
   confirms at 2 renders. `paper-cut` records one render that was visually convincing and
   hostile to every mark in the frame.
   KNOWN-FLAKY gains exact-count drift on `measure` and `contour` at 4 observations across 8
-  renders, where restating the count in the prompt did not bind it. File 29557 characters, skeleton 897.
+  renders, where restating the count in the prompt did not bind it. File 30489 characters, skeleton 897.
 - 1.8 (2026-08-12): **the MARKS library met five renders; two proposals became instruments,
   two did not, and the design language gained a field and a subject choice.** Evidence:
   `eval/render-tests.jsonl`, five records at ts 2026-08-12 covering the standing mat,
