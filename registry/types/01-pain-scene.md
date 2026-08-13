@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.12"
+version: "1.13"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,7 +43,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.12 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.13 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -137,13 +137,24 @@ This type's own mark library, called by name from the skeleton and used by `--ma
 Every mark obeys G3 and carries a count. `also in` notes keep a same-looking mark in another
 type visible from here.
 
-| name | form | colour | count | evidence |
-|---|---|---|---|---|
-| `glow` | a soft radial glow sitting ON the evidence, sized to it, fading outward | red | exactly 1 | 6 renders · blooms past its target · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
-| `ring` | a clean open circle of even line weight drawn around the evidence, touching nothing else | red | exactly 1 | 2 renders · form confirmed |
-| `heat` | a soft radial glow on the bounded object that is too hot, fading outward | **orange** — G3, wrong heat | exactly 1 | 1 render · CONFIRMED, reads as heat at a glance |
-| `pressure` | a filled band covering the CONTACT between object and body, as wide as the contact — never a line, never an edge glow | **orange** — G3, wrong pressure | exactly 1 | 0 renders · proposal · also in `02-cause-anatomy` |
-| `fill` | the bounded object washed through with a translucent tint kept inside its own outline | red | exactly 1 | 1 render · needs an OPAQUE object whose own colour is far from the tint |
+| form | how it is drawn | count | evidence |
+|---|---|---|---|
+| `glow` | a soft radial bloom sitting ON the target, brightest at its centre and fading outward | exactly 1 | 7 renders · CANNOT be held to a boundary, 3 of 3 · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
+| `ring` | a clean open circle of even line weight drawn around the target, touching nothing else | exactly 1 | 3 renders · holds its extent exactly · the class for a small target |
+
+**Two forms, and colour supplies the meaning.** The form only makes the thing read AS a mark;
+G3 says what it means — red for pain and wrong, orange for wrong heat and wrong pressure.
+Confirmed: red glow on a body reads as pain, orange glow on an object reads as too hot to
+touch, red ring on a small target reads as look-here.
+
+**No FILLED form, ever, in this register.** A mark reads as a mark only when its form is one
+the photographed scene could not have produced — emitted light, or drawn geometry. A filled
+region that follows an object's own surface is exactly what paint, dye, tape and fabric look
+like, so the eye reads it as material: a red tint made a glass into a pink glass, an orange
+contact band made a sock look like it had an orange cuff. Both forms were borrowed from
+`02-cause-anatomy` and both work there, because that type is a 2D ILLUSTRATION where
+everything in frame is already drawn. This type is photographic, and a fill has no way to
+announce itself. Wrong pressure is therefore an ORANGE GLOW on the contact, not a band.
 
 **Three admission gates. Check them before choosing a class.**
 
@@ -165,9 +176,9 @@ where a hard boundary matters the class is `ring` or `fill`. And `fill` needs an
 whose colour is far from the tint; on transparent pale glass the tint becomes the material and
 no mark is visible at all.
 
-**A mark can POINT or it can CLASSIFY.** `glow` and `ring` only point, which suffices on a
-BODY because the viewer supplies the meaning, and fails on an OBJECT. `heat`, `pressure` and
-`fill` carry meaning in the colour or the form. Choose by what the argument is.
+**A mark can POINT or it can CLASSIFY.** A form only points; the colour classifies. On a BODY
+pointing suffices because the viewer supplies the meaning. On an OBJECT it does not, and the
+colour has to do the work — which is what orange did on the plug where red could not.
 
 **The mark POINTS AT evidence. It never delivers a verdict.** No X, no check, no VS, no
 thumbs, no exclamation glyph — that is `01-pain-split`'s language, and a glyph is text, which
@@ -263,6 +274,11 @@ mark is model-drawn (ADR-008 approach A).
   new evidence for the watermark reading there. Intermittent — this type's mark-free
   control of 2026-08-12 recorded none. The v1.5 prompt set runs Rule 7's own untried test:
   one prompt names that corner as bare, two omit the clause.
+- **Filled marks, WITHDRAWN at 1.13 on 0 of 2.** `fill` on a drinking glass and an orange
+  `pressure` band on a sock elastic. Both rendered exactly as specified and both stopped being
+  marks: the glass read as a pink glass, the band as an orange cuff. Not withdrawn for being
+  ugly, but for being unable to announce themselves inside a photograph. Retest only if this
+  type ever gains a non-photographic register.
 - **Over-acted faces on the `--marked` renders, 2 observations, 2026-08-13.** A pushed-out
   lower lip on the posture frame, acute physical pain on the cable frame where the problem is
   a cable. Below the bar, and both prompts named the signs by muscle as the slot asks. Watch
@@ -271,6 +287,12 @@ mark is model-drawn (ADR-008 approach A).
 ## CHANGELOG
 Current law is above; the reasoning behind each entry is in the commit it cites (ADR-013).
 
+- 1.13 (2026-08-13): **a mark reads as a mark only when its form is one the photographed scene
+  could not produce.** Filled forms withdrawn at 0 of 2 — a red `fill` turned a glass pink, an
+  orange `pressure` band turned into a sock cuff. MARKS reorganised around the two proven
+  forms, `glow` and `ring`, with G3 colour supplying the meaning; wrong pressure is an orange
+  glow, not a band. Also settled: `glow` cannot be held to a boundary at 3 of 3, so extent
+  belongs to `ring`; and the mark-free control read at a glance with nothing pointed at. · this commit
 - 1.12 (2026-08-13): **`--marked` is a choice, not a default** — a mark laid over a surface
   condition covers the evidence it points at. On object subjects the base variant is weighed
   first, and prompt sets carry mark-free cases deliberately. Owner judgement on the glassware
