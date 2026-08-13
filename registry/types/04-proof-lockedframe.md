@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.6"
+version: "1.7"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -40,113 +40,93 @@ avoid_when: >
   --rivals never on marketplace (no product in frame violates gallery rules).
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS; the definition lives there once.
+**This type has no MARKS section, and that is the type.** Every other type in the library
+argues with something added to the frame; this one argues by adding nothing, so the absence is
+not an omission to fill in later.
+
 ```
-TYPE: 04-proof-lockedframe v1.6
-RATIO: [5:3 / 16:9 / 1:1]
-LAYOUT: [N] equal vertical panels, thin white gutters, no outer border.
-REGISTER: documentary photography. NO graphic overlays, badges, arrows or text.
+TYPE: 04-proof-lockedframe v1.7 [--rivals | --verdict | --timelapse | --capture]
+REGISTER: documentary photography. No overlays, badges, arrows or text.
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference for the item in panel [N].
-Preserve shape, proportions, material, finish and color exactly.
+[LAYOUT] N equal vertical panels, thin white gutters, no outer border.  -> PARTS/layout
+[PRODUCT REFERENCE] attached photo is the exact reference.
+[CAMERA] strict or handheld.                                            -> PARTS/camera
+[SCENE] constant across every panel.                                    -> PARTS/scene
+[VARIABLE] the only thing that changes, named per panel.                -> PARTS/variable
+[PRODUCT] the subject of its panel, never the hero.                     -> PARTS/product
+[GRADE] one grade across every panel.                                   -> PARTS/grade
 
-[PRODUCT PROMINENCE — required whenever a product is in frame]
-The product is the SUBJECT of the panel it appears in and fills at least [X%]
-of that panel. It is never a small object resting at the edge of a scene the
-viewer is actually looking at.
-
-[CAMERA — choose ONE mode, see CAMERA LOCK SELECTION]
-
-[LOCKED CAMERA — camera_lock: strict]
-Identical camera position, focal length, height and angle in every panel.
-Every fixed element in the frame must align pixel for pixel across all panels:
-[list 3-4 anchor objects that must not move].
-Identical lighting, identical exposure, identical white balance in every panel.
-
-[HANDHELD CONTINUITY — camera_lock: handheld]
-Shot by the same person on a phone on different days, not on a tripod.
-Describe ONE framing, once, for every panel: [where the subject sits in frame],
-[camera height and distance], [what occupies the upper and lower thirds].
-Then state the band: it reads as one shot taken [N] times, never as [N]
-different shots — drift is a few degrees of tilt and a few centimetres of
-position, no more.
-Put most of the variation on the PROPS rather than the camera, named per panel:
-  Panel 1: [prop state]. Panel 2: [prop state]. Panel 3: [prop state].
-  (a towel refolded, an item moved, one thing missing, a new incidental mark)
-Their light differs only in exposure, never in warmth.
-MUST STAY CONSTANT: the room, the surface, the light direction,
-the identity of the object, the single variable being compared.
-The panels must look like photographs a person took, not renders from one
-scene file. Perfect alignment reads as CGI and destroys the evidence.
-
-[WORDING LAW — camera_lock: handheld, evidence-based v1.5]
-Never write the drift as a delta: "shifted 10-20cm", "a few centimetres from
-where it sat before". A relative instruction needs a reference point the model
-does not have inside one canvas, so it renders a single background and swaps the
-object — the observed failure. But giving each panel a fully independent framing
-overshoots into three unrelated photographs. One shared framing plus one small
-named per-panel deviation is the only wording that lands in the band.
-
-[SCENE, constant across all panels]
-[specific environment], [surface the variable sits on].
-Deliberate real-world clutter: [2-3 mundane untidy details].
-Flat [light quality], no strong shadows, no sunlight, no styling.
-
-[GRADE — set by variant, never polarised BETWEEN panels]
-One grade across every panel, coming from the room and the weather rather than
-a filter. Still colour, never black and white — a mono conversion on a
-documentary register reads as edited and destroys the credibility it is selling.
---rivals: muted and cool, low saturation, no warm tone anywhere. Every panel is
-  an unsolved state, so one shared unresolved tone favours none of them. This is
-  the only variant whose grade carries polarity, and it carries it for the WHOLE
-  image, never between panels.
---verdict / --timelapse / --capture: neutral, with no panel warmer, brighter or
-  more saturated than the others. If the resolved panel also looks better graded,
-  the image has won by treatment and the argument is void.
-
-[THE VARIABLE, the only thing that changes]
-Panel 1: [state/item 1].
-Panel 2: [state/item 2].
-Panel 3: [state/item 3].
-
-[JUDGEMENT RULE]
-No panel may be favoured. No badge, no glow, no color cue, no brighter exposure.
-The viewer decides. All panels equally lit and equally neutral IN JUDGEMENT:
-"neutral" here means no panel is argued for, NOT that the image carries no
-grade. The grade is set by [GRADE] above and applies to every panel alike.
-
+No panel is favoured. No badge, glow, colour cue or brighter exposure.
 STYLE: honest documentary product test photography, unstyled, natural, sharp.
-NO text, no logo, no watermark.
 ```
+
+## PARTS
+
+**`layout`** — [N] equal vertical panels, thin white gutters, no outer border.
+
+**`camera`** — two values, and the choice is evidence, not taste.
+
+- `strict` — identical position, focal length, height and angle in every panel, with 3-4
+  named anchor objects that align across all of them, and identical lighting, exposure and
+  white balance. **Multi-pass is mandatory**: generate one panel, edit-swap the variable,
+  composite.
+- `handheld` — shot by one person on a phone on different days. **Describe ONE framing once**
+  for every panel — where the subject sits, camera height and distance, what occupies the
+  upper and lower thirds — then state the band: it reads as one shot taken [N] times, never
+  as [N] different shots. Put the variation on the PROPS, named per panel: a towel refolded,
+  an item moved, one thing missing. Light differs only in exposure, never in warmth.
+
+**Choose by TIME, not by preference.** `strict` when every panel belongs to one session and
+the variable is an object swapped in and out; `handheld` when the panels are separated by
+time. A pixel-locked frame across "six months" is proof of staging, not of process — it
+betrays its own argument.
+
+**The wording law for `handheld`.** Never write the drift as a delta — "shifted 10-20cm", "a
+few centimetres from where it sat". A relative instruction needs a reference point the model
+does not have inside one canvas, so it renders one background and swaps the object. But giving
+each panel its own independent framing overshoots into unrelated photographs. **One shared
+framing plus one small named per-panel deviation** is the only wording that lands in the band,
+and it is what makes a single pass viable at all.
+
+**`scene`** — [specific environment] and [the surface the variable sits on], the SAME in every
+panel, with deliberate real-world clutter: [2-3 mundane untidy details]. Flat light, no strong
+shadows, no sunlight, no styling. **Perfect alignment reads as CGI and destroys the evidence.**
+
+**`variable`** — the only thing that changes, named panel by panel. Everything else — the
+room, the surface, the light direction, the identity of the object — is constant.
+
+**`product`** — the SUBJECT of the panel it appears in, filling at least [X%] of that panel,
+never a small object at the edge of a scene the viewer is actually looking at.
+
+**The product can be the subject; it can never be the hero.** The judgement and fairness rules
+forbid winning by treatment, so a brief that says "emphasise the product" belongs in a type
+whose law lets it win — `01-pain-split` under G4, or `06-relief-hero` — rather than stretching
+this one.
+
+**`grade`** — ONE grade across every panel, coming from the room and the weather rather than
+from a filter. **Still colour, never black and white**: a mono conversion on a documentary
+register reads as edited and destroys the credibility it is selling.
+
+- `--rivals`: muted and cool, low saturation, no warm tone anywhere. Every panel is an
+  unsolved state, so one shared unresolved tone favours none of them. **This is the only
+  variant whose grade carries polarity, and it carries it for the WHOLE image.**
+- every other variant: neutral, no panel warmer, brighter or more saturated than another. If
+  the resolved panel also looks better graded, the image has won by treatment and is void.
 
 ## SLOT CONSTRAINTS
-- **CAMERA LOCK SELECTION** (evidence-based, v1.3): `strict` when all panels belong to
-  one session and the variable is an object swapped in and out; `handheld` when panels
-  are separated by time. A pixel-locked frame across "six months" is proof of staging,
-  not of process — it betrays its own argument.
-- **VARIANT SELECTION RULE** (verified on shower filter): if the difference between
-  products does NOT appear inside a static frame, do not use --rivals or --verdict.
-  Switch the variable from "which product" to "which state of the same object"
-  (--timelapse / --capture). Applies to every invisible-mechanism product: filters,
-  supplements, skincare, software.
-- G7 applies at its strictest here (natural-use), except --capture which runs as
-  `context_mode: declared-test`.
-- **`handheld` single-pass is conditional on the WORDING LAW** (v1.5). It is viable
-  only when the framing is written once and shared with small named per-panel
-  deviations. Written as relative deltas it produces one repeated background;
-  written as independent per-panel framings it produces unrelated photographs.
-  Multi-pass (three renders, composited) remains the fallback when a single pass
-  will not land in the band.
-- **Product prominence** (v1.5): the type carried no size or placement rule for the
-  product, the only product-bearing type in the registry without one — so the product
-  drifted to the frame edge while a background object held the eye. `[PRODUCT
-  PROMINENCE]` now fixes a floor. Note the deeper constraint it does not lift: the
-  JUDGEMENT and FAIRNESS rules forbid winning by image treatment, so this type can
-  make a product the SUBJECT but can never make it the HERO. When the brief is
-  "emphasise the product", route to a type whose law lets it win — `01-pain-split`
-  (G4) or `06-relief-hero` — instead of stretching this one.
-- Multi-pass is mandatory for `strict` (generate one panel, edit-swap the variable,
-  composite); `handheld` may run single-pass.
+- **The judgement rule is the type.** No panel may be favoured: no badge, no glow, no colour
+  cue, no brighter exposure. The viewer decides. "Neutral" means no panel is argued for — not
+  that the image carries no grade, which `grade` sets for all panels alike.
+- **Variant selection.** If the difference between products does not appear inside a static
+  frame, do not use `--rivals` or `--verdict`. Switch the variable from *which product* to
+  *which state of the same object* — `--timelapse` or `--capture`. This binds every
+  invisible-mechanism product: filters, supplements, skincare, software. Verified on a shower
+  filter, where the object variants produced pretty and empty images.
+- G7 applies at its strictest here, except `--capture`, which runs `context_mode:
+  declared-test`.
+- **The prompt budget.** A clause earns its place only if a render has failed without it.
+  Since ADR-014 no `Strictly avoid:` line is rendered at all.
 
 ## NEGATIVE
 ```
@@ -159,73 +139,58 @@ For `strict` add: `different camera angle between panels, shifted background ele
 For `handheld` add: `identical framing between panels, pixel-perfect alignment,
 tripod shot, 3D render look, CGI, product visualization,
 identical water droplets between panels`.
+Canonical and model-agnostic. Since ADR-014 it is **not rendered into the prompt at all**; it
+stays here and in the query output's `avoid` field.
 
 ## VARIANTS
+Diffs only. Each variant names the PARTS it changes.
+
 ### --rivals
-Three common existing alternatives, unbranded; our product absent. The "I tried three
-things, none worked" beat. Diff:
-```
-[PRODUCT REFERENCE] Not applicable. No reference product appears in this image.
-[THE VARIABLE] Panel 1-3: [generic alternative type], unbranded, placed on [surface].
-All three are common existing solutions people already try.
-They must look ordinary and plausible, not deliberately broken or dirty.
-[JUDGEMENT RULE addition] None of them wins. The image makes no claim.
-```
-- Channels: advertorial, paid-social only (no product in frame → not marketplace-legal).
-- Trap: uglifying the alternatives confesses staging — they must look like things the
-  viewer owns.
+Three common existing alternatives, unbranded; the product absent. The "I tried three things,
+none worked" beat.
+Diff: no `[PRODUCT REFERENCE]` and no `product` · `variable` becomes three generic alternatives
+people already use, ordinary and plausible · `grade` takes its polarised value, muted and cool
+for the whole image · none of them wins and the image makes no claim.
+- Channels: advertorial and paid-social only — no product in frame is not marketplace-legal.
+- **Uglifying the alternatives confesses staging.** They must look like things the viewer owns.
 - Negative additions: `damaged or dirty items, exaggerated flaws, one item obviously better`
 
 ### --verdict
-Two unbranded alternatives + the reference product in the LAST panel. Diff:
-```
-[PRODUCT REFERENCE] ...for the item in panel 3 ONLY. Panels 1 and 2 contain
-generic unbranded alternatives, not the reference product.
-[ORDER RULE] The reference product is always in the LAST panel.
-Left-to-right reading ends on it, which is the resolution position.
-[FAIRNESS RULE, replaces JUDGEMENT RULE]
-Panels 1 and 2 must be given exactly the same photographic respect as panel 3:
-identical exposure, identical background tidiness, identical framing generosity.
-The alternatives must look like reasonable products someone would genuinely buy.
-The difference between panels must be VISIBLE IN THE OBJECTS THEMSELVES,
-never in how they are lit, styled, cropped or graded.
-No badge, no glow, no arrow, no color cue on any panel.
-```
-- May only win by physics, never by image treatment — otherwise it collapses into a
-  long 01-pain-split and loses all evidentiary value.
-- Pick the two MOST COMMON alternatives buyers already own, never the worst.
-- Negative additions: `last panel brighter or cleaner than the others, hero lighting
-  on the final panel, alternatives made to look broken, cluttered first panels`
+Two unbranded alternatives plus the reference product in the LAST panel.
+Diff: `product` appears in the final panel ONLY · **order rule** — the product is always last,
+because left-to-right reading ends on it and that is the resolution position · the **fairness
+rule** replaces the judgement rule.
+- **Fairness rule.** Panels 1 and 2 get exactly the same photographic respect as panel 3:
+  identical exposure, identical background tidiness, identical framing generosity. The
+  alternatives must look like reasonable products someone would genuinely buy, and the two
+  chosen are the MOST COMMON ones buyers already own, never the worst. **The difference must
+  be visible in the OBJECTS themselves, never in how they are lit, styled, cropped or graded.**
+- It may win by physics, never by treatment — otherwise it collapses into a long
+  `01-pain-split` and loses all evidentiary value.
+- Negative additions: `last panel brighter or cleaner than the others, hero lighting on the
+  final panel, alternatives made to look broken, cluttered first panels`
 
-### --timelapse (camera_lock: handheld)
-Same object across time; the variable is its condition. Diff:
-```
-[THE VARIABLE] the color/condition of [the same component] at different points of use:
-Panel 1: clean/new state. Panel 2: partial state. Panel 3: saturated state,
-[texture must remain readable as what it is — e.g. granules stay granular].
-[CONTEXT INTEGRITY] an ordinary inspection moment ([how a real person would
-actually see this state]). Nothing cut open, propped up or arranged for the camera.
-```
-- Strongest proof for invisible-mechanism products: the viewer already believes
-  something is in the water/air — this shows it, without touching any competitor.
-- Legal: no day counts, no captured-substance claims in text. The image only shows.
-- Negative additions: `cut-open product, cross-section, product standing upright
-  unnaturally, staged arrangement, mold, slime, blood-like color, mud,
-  texture losing its granular structure`
+### --timelapse (`camera_lock: handheld`)
+Same object across time; the variable is its condition.
+Diff: `variable` becomes the condition of ONE component at different points of use — clean,
+partial, saturated — and **the texture must stay readable as what it is**, granules staying
+granular · the moment is an ordinary inspection, nothing cut open, propped or arranged.
+- The strongest proof for invisible-mechanism products: the viewer already believes something
+  is in the water or the air, and this shows it without touching any competitor.
+- The image only shows. No day counts, no captured-substance claims.
+- Negative additions: `cut-open product, cross-section, product standing upright unnaturally,
+  staged arrangement, mold, slime, blood-like color, mud, texture losing its granular structure`
 
-### --capture (context_mode: declared-test, 2 panels, ratio 3:2)
-Output filtered vs unfiltered through an intermediate medium (white cloth). Diff:
-```
-[SCENE addition] A declared at-home test, staged the way an ordinary person would:
-[cloth tied with a rubber band, slightly crooked, a basin underneath] —
-amateur staging reads truer than neat staging.
-[THE VARIABLE] Panel 1: no product fitted, [medium] marked with [residue pattern].
-Panel 2: the reference product fitted, the same [medium] clean and evenly damp.
-```
-- Channels: advertorial only. Weaker than --timelapse (viewer never sees the process);
-  if both run, --timelapse first so it vouches for --capture.
-- Negative additions: `laboratory equipment, clinical setup, cloth in different
-  position between panels, dramatic staining, black mold, cartoonish contrast`
+### --capture (`context_mode: declared-test`, 2 panels)
+Output filtered against unfiltered through an intermediate medium.
+Diff: `scene` becomes a declared at-home test staged the way an ordinary person would — cloth
+tied with a rubber band, slightly crooked, a basin underneath — because **amateur staging reads
+truer than neat staging** · `variable` is panel 1 without the product fitted and the medium
+marked, panel 2 with it fitted and the medium clean.
+- Channels: advertorial only. Weaker than `--timelapse`, since the viewer never sees the
+  process; if both run, `--timelapse` goes first so it vouches for this one.
+- Negative additions: `laboratory equipment, clinical setup, cloth in different position
+  between panels, dramatic staining, black mold, cartoonish contrast`
 
 ## WORKED EXAMPLES
 ### example: herb-storage-rivals-handheld — skeleton@1.5, run: pass
@@ -298,49 +263,19 @@ completeness violation that helped produce G7.
 (populated from observation evidence only)
 
 ## CHANGELOG
-- 1.6 (2026-08-12): `exempt_from` gains **G11**, the saturation rule v1.5's own CHANGELOG
-  proposed and declined (now written — ADR-010). The exemption is not a softening: G11
-  requires a saturation difference wherever an unresolved and a resolved state share a
-  frame, and this type forbids exactly that — `[JUDGEMENT RULE]` and `--verdict`'s
-  `[FAIRNESS RULE]` bar any panel from being favoured by treatment, which is why
-  `--verdict` puts our product beside two alternatives at identical grade. G11's own
-  scope note names this type as the opt-out case, so the declaration is bookkeeping, not
-  a new freedom. The whole-image polarity `[GRADE]` already gives `--rivals` is the form
-  of G11 this type does honour, and it stays.
-- 1.5 (2026-08-12): `[WORDING LAW]`, `[GRADE]`, `[PRODUCT PROMINENCE]`; `[JUDGEMENT
-  RULE]` disambiguated. Evidence: owner-reported failed render of a `--rivals`
-  drain-unblocker triptych — pixel-identical background across all three panels
-  (one brown chip at one coordinate), no object emphasised, and full-colour grade
-  on three panels that were all meant to read as failures. Three findings, each
-  fixed above. (a) The handheld slot was written in relative deltas, unusable in a
-  single canvas; the second attempt overcorrected into three unrelated framings, so
-  the law now names the band. (b) The type was the only product-bearing type with no
-  prominence rule at all. (c) `exempt_from: [G3, G4]` was read as exemption from all
-  tonal grammar — G4 governs brightness BETWEEN panels, and nothing governed the
-  absolute grade of the image, so `--rivals` rendered cheerful while the library's
-  own unwritten convention marks unsolved states desaturated (`01-pain-scene`,
-  `01-pain-split` left, `03-spec-split` left). Still open: that convention is
-  practised in five types and written in none — a global saturation rule is proposed
-  and NOT taken here, since it would bind sixteen types.
-  **Render evidence, logged 2026-08-12** (`eval/render-tests.jsonl`): the failing
-  render this entry cites is now on the ledger, where Rule 7 always required it, and
-  a re-render of the SAME v1.4 `--rivals` prompt came back `pass` (owner verdict).
-  The three faults therefore stand at 1/2 across sessions — below the §6.2 ≥2/3
-  threshold — so v1.5 rests on mechanism reasoning, not on recurrence. The patches
-  are kept: each names a mechanism that is true independently of how often it fires
-  (relative deltas have no referent in one canvas; the type had no prominence rule
-  at all; nothing governed absolute grade).
-  **v1.5's skeleton is now tested: all four variants pass** (owner verdicts 2026-08-12,
-  `~/Downloads/lockedframe-v15-set.md`, four unrelated product domains, four ledger
-  lines). Each fix was exercised and held — the band on one shared framing plus named
-  per-panel prop deviations (`--rivals`, herb storage), the unpolarised grade on the
-  resolved panel (`--verdict`, carpet stain remover), `[PRODUCT PROMINENCE]` at 35%,
-  60% and 25% floors, and the granularity constraint that the set itself named as the
-  likeliest failure (`--timelapse`, car cabin air filter — pleats stayed countable).
-  `--capture` is also the first rendered evidence for `context_mode: declared-test`.
-  All four ran handheld SINGLE-PASS, which v1.5 made conditional on the wording law
-  holding; it held, so the multi-pass fallback stays a fallback. One run per variant,
-  so this is breadth across four domains rather than recurrence within one.
+- 1.7 (2026-08-13): **restructured into a call-map plus PARTS** (ADR-012), owner instruction.
+  `PARTS` owns `layout`, `camera`, `scene`, `variable`, `product`, `grade`. **There is no MARKS
+  section and that is the type** — every other type argues with something added to the frame
+  and this one argues by adding nothing, so the absence is recorded as law rather than left to
+  look like an omission. `RATIO:` dropped per adapter Rule 4. ADR-014 adopted.
+- 1.6 (2026-08-12): `exempt_from` gains **G11**. The type's `grade` slot legislates saturation
+  differently and on purpose — one grade for the WHOLE image, polarity never between panels —
+  which is the opposite of what G11 requires of a two-state frame. · see git
+- 1.5 (2026-08-12): **the wording law for `handheld`**, and `[PRODUCT PROMINENCE]`. Relative
+  drift deltas produced one repeated background; independent per-panel framings produced
+  unrelated photographs; one shared framing plus a small named per-panel deviation is the only
+  wording that lands. Separately, this was the only product-bearing type with no size or
+  placement rule, so the product drifted to the frame edge. · 8949f33
 - 1.4 (2026-08-11): channels gain `paid-social`. Self-contradiction: the --rivals
   variant already declares "Channels: advertorial, paid-social only" while the
   frontmatter excluded paid-social. The type-level avoid_when ("never as a

@@ -275,7 +275,7 @@ types:
     step: 4
     job: proof
     device: lockedframe
-    version: "1.6"
+    version: "1.7"
     status: active
     channels: [advertorial, landing-page, marketplace, paid-social]
     ratios: ["5:3", "16:9", "1:1", "3:2"]
