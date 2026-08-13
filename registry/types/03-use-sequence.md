@@ -275,7 +275,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   4 mandated palettes and 8 mandated lights in one four-prompt set — and now varies per prompt,
   while `continuity` keeps sameness inside an image. `fit` is recorded as 0/6 as first
   specified: told to sit in the gap touching neither part, it landed in background air stating
-  nothing. Respecified onto the contact line, with one attempt before it is cut.
+  nothing. Respecified onto the contact line, with one attempt before it is cut. `6936cf6`
 - 1.5 (2026-08-13): the type gains a second mark, by the owner's decision. `fit` states the
   junction where the product seats onto what it acts on, PREPARE only, form still under test.
   The blanket ban on arrows is replaced by the distinction that carries the type's actual
