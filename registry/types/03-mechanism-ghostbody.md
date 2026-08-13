@@ -239,7 +239,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   One fault from the owner: an inset panel whose pose is left to inherit from the main frame
   comes back illogical. Both panels are now the same body in the same pose, named inside the
   inset, differing only in the thing under argument — and that difference named against the
-  structure, never the frame. `PENDING`
+  structure, never the frame. `c922a37`
 - 1.5 (2026-08-13): **the inset becomes required, and `dims` goes on notice.** Evidence: 3
   records, 2 partial and 1 fail. All three 1.4 fixes landed — no harm mark in a main frame, no
   signal colour on a product, `support` on the bone, `dims` free of letters — and the inset
