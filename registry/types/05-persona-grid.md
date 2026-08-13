@@ -3,7 +3,7 @@ id: 05-persona-grid
 step: 5
 job: persona
 device: grid
-version: "1.5"
+version: "1.6"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once.
 nothing is added to the frame.
 
 ```
-TYPE: 05-persona-grid v1.5 [--1plus3 | --2x2 | --1plus4]
+TYPE: 05-persona-grid v1.6 [--1plus3 | --2x2 | --1plus4]
 
 [LAYOUT] cells, thin white gutters, no outer border.        -> PARTS/layout
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -120,10 +120,61 @@ Four equal cells; no hero emphasis — use when no persona dominates.
 One large + four small; only at 4:5 ratio, and only when the product passes the 15%
 rule in fifth-size cells.
 
+## WORKED EXAMPLES
+Rendered at 1.5 and owner-passed, kept in FULL text per SPEC §3.3.
+
+### example: food-flask-1plus3 — skeleton@1.5, run: pass
+```
+TYPE: 05-persona-grid v1.5 --1plus3
+REGISTER: clean lifestyle collage for e-commerce, sharp.
+LAYOUT: one large cell on the right, three stacked on the left, thin white gutters, no
+outer border, no graphic overlay.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the flask in every cell. Preserve its
+shape, proportions, material, finish and colour exactly.
+
+[CONSTANT]
+One flask colourway, and one photographic finish across all cells: same lens character,
+same contrast, same skin rendering. Nothing else is shared.
+
+[VARIATION]
+Each cell has its own light, its own posture and its own relation to the flask. No cell is
+stylised or filtered.
+
+[PRODUCT]
+The flask is clearly visible and unobstructed in every cell, at least 15% of that cell's
+height.
+
+[HERO CELL, large right]
+Woman in her 50s crouched on a school playing field in flat grey drizzle, coat hood up,
+pouring from the flask into its cup for a child out of frame. Low angle from grass height,
+medium shot.
+
+[SUPPORT, top left]
+Man in his 30s walking a snowy platform at blue dusk, flask clamped under one arm while
+both hands zip his coat. Eye-level side profile, wide shot.
+
+[SUPPORT, middle left]
+Woman in her 20s in a night nursing station under warm tungsten, filling the flask at a
+sink with her back half turned, a chart in her other hand. High three-quarter, close crop.
+
+[SUPPORT, bottom left]
+Man in his 60s seated on a garage floor under a bare bulb, mending a bike, flask standing
+open beside his knee, not being touched. Waist-level frontal, medium shot.
+```
+Four different bodies under four different lights, cohering on finish and colourway alone —
+the state this type took four versions to reach. The garage cell is the one that is not about
+the product: he is mending a bike and the flask simply stands beside him.
+
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.6 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES opens with
+  the 1.5 flask grid in full text — four bodies, four lights, cohesion on finish and colourway
+  alone, and one cell that is not about the product. Four versions were spent moving one lock
+  up a level at a time; the sentence that ended it is that unlocked is not required-to-differ.
 - 1.5 (2026-08-13): **posture, activity and relation to the product join `variation`.** Owner:
   the poses, activities and contexts are not flexible. The 1.4 light fix landed and the
   uniformity moved again, to the body. Fourth slot, same disease, and the sentence that ends it
