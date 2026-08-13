@@ -3,7 +3,7 @@ id: 05-persona-grid
 step: 5
 job: persona
 device: grid
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once.
 nothing is added to the frame.
 
 ```
-TYPE: 05-persona-grid v1.4 [--1plus3 | --2x2 | --1plus4]
+TYPE: 05-persona-grid v1.5 [--1plus3 | --2x2 | --1plus4]
 
 [LAYOUT] cells, thin white gutters, no outer border.        -> PARTS/layout
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -67,10 +67,19 @@ all rendered in one warm-sand palette under one soft daylight, with no night, no
 interior light anywhere. Each time the lock was moved up a level rather than removed. Cohesion
 is the finish and the colourway; everything else belongs to the place.
 
+**UNLOCKED IS NOT REQUIRED-TO-DIFFER, and that is the fourth pass.** v1.1 unlocked posture and
+left it free; free means the model converges, and it did — four people upright and alone at a
+flat surface, both hands on the product, looking down at it, under four genuinely different
+lights. Posture and activity are now named per cell like the camera angle. **Not every cell is
+about the product**: in some it is simply present and in use while the person gets on with
+something else, which is what makes a grid look like life rather than a catalogue.
+
 **`variation`** — what must differ, one value per cell, never repeated: **the palette and the
 light, each taken from that cell's own real place and time of day** — an evening ward is
 tungsten and dim, a building site is flat overcast, a park at noon is warm; the age, gender and
-body situation of the subject; the camera angle, chosen from eye-level side profile, high
+body situation of the subject; **the posture, the activity, and the person's RELATION to the
+product** — carrying it, wearing it, filling it, packing it away, reaching for it, handing it
+to someone, or using it hands-free while occupied with something else; the camera angle, chosen from eye-level side profile, high
 three-quarter, low angle, over-the-shoulder, waist-level frontal, close crop on the
 interaction; the environment; and the shot distance.
 
@@ -115,6 +124,11 @@ rule in fifth-size cells.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.5 (2026-08-13): **posture, activity and relation to the product join `variation`.** Owner:
+  the poses, activities and contexts are not flexible. The 1.4 light fix landed and the
+  uniformity moved again, to the body. Fourth slot, same disease, and the sentence that ends it
+  is that UNLOCKED IS NOT REQUIRED-TO-DIFFER — v1.1 unlocked posture and left it free, and free
+  converges.
 - 1.4 (2026-08-13): **palette and light move from `constant` to `variation`.** Owner: meaning
   and logic good, but one colour, one space, one weather — and the render was a faithful
   execution of the old law. The type's THIRD pass at one mistake: v1.0 locked posture, v1.1
