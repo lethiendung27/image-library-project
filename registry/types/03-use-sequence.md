@@ -213,6 +213,9 @@ Below the §6.2 bar, not promoted.
   at the right. 4 of 6 held. Untested hypothesis: all six frames arrived 1200x896 landscape
   whatever ratio was asked, and a three-high stack in a landscape frame gives very wide short
   panels that both alternative arrangements fit better.
+- **The last panel opens onto new ground.** 1 of 6: a steamer RESULT stood the product on a
+  side table that `environment` never named and no panel above it showed. Prompts now state
+  that the named details are the whole of the room. One observation is not a rule.
 
 ## NOTES
 **The corner sparkle is a generator watermark, not a render fault.** 1.3 recorded it here as an
