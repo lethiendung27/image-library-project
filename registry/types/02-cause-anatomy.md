@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.13"
+version: "1.14"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1"]
@@ -42,7 +42,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 02-cause-anatomy v1.13 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.14 [+ --diagnostic]
 MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -74,8 +74,20 @@ shape entering from the edge. A frame that cannot show a person using the produc
 serve a type whose PURPOSE is to show the product doing its job. `whole` was 2 of 2 and
 produced the strongest render this type has made.
 
-**`ground`** — `dark-field` is the only value: a ground far below the ivory in value, so the
-structures read as the lightest thing in frame. One continuous field, same hue and chroma
+**`ground`** — two field values, differing in WHICH LAYER IS LIGHT, not merely in brightness.
+
+- `dark-field` — ground far below the structures in value; the structures are the lightest
+  thing in frame. Nineteen renders, separation 156 to 209. The reliable one.
+- `light-field` — ground pale, and **the structures INVERT to a deep ochre or tan**, keeping
+  G3's yellow hue at a low value so the separation comes back. PROPOSAL, no evidence in this
+  form; the owner asked for pale grounds on 2026-08-13. Tried once at 1.8 as pale ground PLUS
+  ivory structures, it failed 0 of 2 at separations of 5 and 8 and was withdrawn — but that
+  version left both layers light, which cannot separate at all. The inversion is what was never
+  tried. Caveat before using it: a pale ground has little headroom for the RIGHT-brighter step,
+  so on this field the step is small and the correct side must earn its difference through
+  cleaner, less cluttered structure instead.
+
+Whichever field is chosen, the two layers must be far apart in VALUE — One continuous field, same hue and chroma
 throughout, **stepping once in VALUE at the divider, one step lighter on the right.**
 
 The step is not decoration — it is the only way this type's RIGHT-brighter requirement can
@@ -140,7 +152,7 @@ carries a count. `also in` notes keep a same-looking mark in another type visibl
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `measure` | two dashed straight lines, one per panel, each STOPPING at its two landmarks | red left, blue right | exactly 2 | 18 renders · **never yet carried its own difference** |
+| `measure` | two dashed straight lines, one per panel, each STOPPING at its two landmarks | red left, blue right | exactly 2 | 30 renders · carried its own difference in 4, all since 1.12 |
 | `verdict` | badge, a FILLED SOLID DISC with the glyph cut out of it, TOP corners, same diameter | red X, green check | exactly 2 | 18 renders · also in `01-pain-split`, `03-mechanism-ghostbody`, `06-relief-hero` |
 | `contour` | a curved line tracing ONE named bounded edge | red wrong, blue correct | 1 per panel | 9 renders |
 | `fill` | the affected elements filled | red wrong, blue correct | as many as are affected | 8 renders |
@@ -149,7 +161,7 @@ carries a count. `also in` notes keep a same-looking mark in another type visibl
 | `range` | a shaded wedge between two limbs or surfaces, showing the angle available | red wrong, blue correct | 1 per panel | 2 renders |
 | `baseline` | one horizontal datum line PER PANEL, both at the same height — never one line crossing the divider | neutral, no signal colour | exactly 2 | 1 of 1 respecified |
 | `axis` | a construction line through two named landmarks, showing the alignment the body should hold | neutral dashed, no signal colour | 1 per panel | 1 render |
-| `pressure` | a filled region bounded by the CONTACT SURFACE, as wide as the contact itself — never a line, never a glow along an edge | red wrong, blue correct | 1 per panel | 1 of 4 |
+| `pressure` | a filled region bounded by the CONTACT SURFACE, as wide as the contact itself — never a line, never a glow along an edge | red wrong, blue correct | 1 per panel | 3 of 6 · working |
 
 **`measure` carries the whole argument and has its own rule.** Both lines anchor to the SAME
 two landmarks, identical in thickness and dash pattern. Exactly ONE property may differ —
@@ -203,7 +215,8 @@ type's argument is one measurement, and six mark classes make it a diagram of ev
 - The culprit is drawn realistically but unbranded.
 - Strictest G3 compliance in the library; G4 and G5 apply in full.
 - `measure` needs a measurable landmark pair, and a difference of at least 2:1 between them.
-- Unproven and awaiting founding evidence: `paper-cut`. `frame` now has one value only.
+- Unproven: `light-field` in its inverted form. `paper-cut` is working at three clean renders,
+  restricted to two marks. `frame` has one value.
 - Wide ratios are a canvas risk on wide-and-short content — see KNOWN-FLAKY.
 
 ## NEGATIVE
@@ -249,6 +262,11 @@ rendered: it predates both the removal test — a filter does not close a lifted
 and the 2:1 admission.
 
 ## KNOWN-FLAKY
+- **`measure` on a soft-tissue groove, 0 of 2, 2026-08-13.** Both camera-strap renders failed
+  where every other subject in the same set succeeded — one drew a bent line, the other an
+  arrow. A groove pressed into muscle has no crisp second landmark, the skin surface being a
+  curve rather than a point, so the 2:1 gate passes while the mark has nothing to anchor to.
+  Prefer a landmark pair with BOTH ends on a hard edge.
 - **`frame` values `interface` and `macro`, WITHDRAWN at 1.12 on 0 of 4, 2026-08-13.** Both
   were proposed at 1.11 as the answer to visual sameness and both obeyed their own wording into
   failure: `macro` cropped the hand and the bicycle out of a grip comparison, leaving a beige
@@ -296,6 +314,18 @@ one palette or they read as two sources.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.14 (2026-08-13): **the formula holds; `light-field` returns inverted.** Evidence: six
+  records at ts 2026-08-13, all `partial`. The v1.13 formula — whole frame, product worn on a
+  recognisable body, 2:1 gap — fixed what was broken: **six of six renders show a product a
+  buyer could name**, against two of six the set before. The ground step delivered in all six at
+  +24.7 to +62.8, separation ran 156–209, and `measure` carried its own difference in three of
+  the six against once in the previous twenty-one. `pressure` succeeded twice more and is a
+  working mark at 3 of 6; `paper-cut` has three clean renders at two marks.
+  Owner report in the same turn: pale grounds are missing. `light-field` returns as a PROPOSAL
+  in a form never tried — the structures INVERT to a deep ochre, keeping G3's yellow hue at a
+  low value. The 1.8 version failed because it left ground and structures both light, which is a
+  different thing from what is proposed here.
+  KNOWN-FLAKY gains the one subject that failed twice while everything around it worked.
 - 1.13 (2026-08-13): **ground colour is unrestricted.** Owner decision, taken after six
   consecutive green backgrounds: no rule about which hues the ground must avoid, only that it
   suits the product. The exclusion rule is gone; the VALUE rule that `dark-field` rests on
