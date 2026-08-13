@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.8"
+version: "1.9"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -39,7 +39,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 02-symptom-rail v1.8
+TYPE: 02-symptom-rail v1.9
 LAYERS: photographic hero on the left, vignette rail down the right edge.
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
@@ -49,6 +49,7 @@ LAYERS: photographic hero on the left, vignette rail down the right edge.
   required: symptom-glow
   then substance OR field — only if the product truly does it,
   and it must LAND on a zone the rail counts
+  add transform when the product's benefit is the substance's QUALITY
   nothing in the frame is marked that is not named here
 [STYLE]                                                   -> PARTS/style
 ```
@@ -90,7 +91,8 @@ same-looking mark in another type visible from here.
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `symptom-glow` | a soft radial glow centred on the symptom inside a vignette | red only | exactly 3, one per vignette | 4 renders · also in `01-pain-split` as hotspots |
-| `substance` | the matter the product moves, gathered into a directional form and thinning where it disperses — the mark is MADE of that matter | the substance's own real colour, never red | N streams, on the product | 1 render |
+| `substance` | the matter the product moves, gathered into a directional form and thinning where it disperses — the mark is MADE of that matter | the substance's own real colour, never red | N streams, on the product | 3 renders · shows presence and place only |
+| `transform` | a short before-and-after ALONG THE FLOW at the product itself: the substance dulled, clouded or speckled where it enters, bright and glass-clear where it leaves | the substance's own real colour on both sides, differing only in clarity — no signal colour | exactly 1, at the product's housing or outlet | **none** |
 | `field` | contour lines or a soft radiating envelope that WRAPS the receiving surface and shows which way the transfer runs | neutral warm-white or translucent, no signal colour | N contours, on the receiving surface | 2 renders · works on powered AND passive products |
 
 **A field is not only heat.** `field` covers heat, SUPPORT, vibration and PRESSURE, so a
@@ -119,6 +121,23 @@ G3, where orange means wrong heat. Read strictly, G3 would give blue for a worki
 but blue heat fights the stronger prior that blue means cold. Letting the FORM carry the
 meaning in neutral warm-white leaves G3 untouched instead of seeking an exemption from it —
 the cheaper of two paths, and one the owner may want to revisit.
+
+**`substance` is a mark of presence and place. `transform` is the mark of QUALITY.** The
+filtered-shower render is why this distinction exists: the water arrived, it landed on the
+hair the rail complained about, and a plain shower head would have produced an identical
+stream. Filtration is the whole benefit and nothing in the frame carried it. A substance mark
+can say water is here and falling on her; it cannot say what kind of water it is.
+
+`transform` says it by showing the change happen at the one place it happens — inside the
+product. This is also the ONLY place this type permits drawing matter the product removes:
+sediment inside a filter housing reads as CAUGHT, whereas the same sediment loose in the room
+reads as dirt, which is what ruined the purifier render. Keep the clouded half inside the
+housing or at the inlet and let the outlet run clear; never let the before-state spread into
+the scene.
+
+It follows that a product whose transformation happens inside an OPAQUE body — an air
+purifier, most water softeners — still cannot use this mark and still fails the locatable
+test. The transformation has to be visible at the product, not merely true of it.
 
 **`substance` must not read red.** Red belongs to the rail; a red stream on the product
 reads as a heating feature.
@@ -256,6 +275,22 @@ the amber-versus-neutral question above is the thing to watch.
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.9 (2026-08-13): **`transform` added — the mark of QUALITY.** Owner report: there is no
+  mark for showing the water is clean and clear. He is right, and the filtered-shower render
+  is the clean proof: the water arrived, landed on the hair the rail counts, and a plain
+  shower head would have produced an identical stream. `substance` is a mark of PRESENCE AND
+  PLACE; purity is a quality of the substance and the library had no instrument for a quality.
+  `transform` shows the change where it happens — a short before-and-after along the flow at
+  the product's own housing or outlet, dulled or speckled entering and glass-clear leaving,
+  the substance's real colour on both sides differing only in clarity. This is also the only
+  place the type permits drawing matter the product REMOVES: sediment inside a filter housing
+  reads as caught, while the same sediment loose in a room reads as dirt and ruined the
+  purifier render. It follows that a product transforming inside an opaque body still fails
+  the locatable test, since the change must be visible at the product and not merely true.
+  Evidence in the same batch: two records, one `partial` and the type's **second `pass`** —
+  the compression sleeves, where `field` on PRESSURE read as graduated squeeze without an
+  arrow. `field` now has four renders across vibration, support, heat and pressure and is the
+  best-evidenced mark this type owns.
 - 1.8 (2026-08-13): **a locatable effect becomes an admission test, and this type stops
   taking air products.** Evidence: three records at ts 2026-08-13 — one `pass`, two `fail`.
   Owner report after the third attempt: the purifier and diffuser images still do not express
