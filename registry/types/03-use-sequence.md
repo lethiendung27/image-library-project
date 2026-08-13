@@ -229,6 +229,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   rules earned in `panels`: the beat names never reach the model (Rule 1b, third type), a
   removed part must be described as absent, and a changing product state must be named in every
   panel. Stack reflow and an unrequested sparkle go to KNOWN-FLAKY, both under the §6.2 bar.
+  `f225ba2`
 - 1.2 (2026-08-13): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   1645 → 608. `emission` named as the type's only mark, and the MARKS section states plainly
   that the near-absence is the design: this type argues with actions rather than graphics, and
