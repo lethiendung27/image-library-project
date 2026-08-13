@@ -356,3 +356,33 @@ status. Four of those ten have no render evidence (`baseline`, `axis`, `pressure
 and are labelled proposals whose first render is their founding evidence. Whether to repeat
 the structure on the other fourteen types is a decision to take after the model type has
 been rendered against, not before.
+
+## ADR-013 · 2026-08-13 · A type file states current law; git holds the reasoning
+
+Context: three type files went from roughly 10k characters to 28774, 32409 and 32678 in a
+single day of render-loop work. Measured at the point the owner called it: CHANGELOG entries
+written before 2026-08-12 have a median of 240 characters, those written after it a median of
+934 — 4.3x — and in `02-symptom-rail` the CHANGELOG reached 36% of the file. A second
+measure isolated the same fault inside MARKS: `02-cause-anatomy` spent 337 characters per
+mark, `02-symptom-rail` 2899, both written the same day by the same author. The difference in
+both cases is not rules. It is the reasoning BEHIND the rules, written into the type file even
+though ADR-007 already makes the commit message this project's audit surface — so every "why"
+was being written twice, and the second copy is the one nobody ever deletes.
+
+**Decision, owner-approved.** A type file carries current law only. Every explanation of how a
+rule was arrived at is a pointer to the commit that made it. Concretely: a CHANGELOG entry
+states the decision in a sentence or two and cites its commit; `MARKS` and `PARTS` carry
+definitions and their own rules, not case histories; superseded wording is deleted rather than
+kept beside its replacement, because git already holds it.
+
+**Enforced as warnings, never errors.** `scripts/validate.py` gains two soft limits — a type
+file over 22000 characters, and a single CHANGELOG entry over 600. Warnings only, deliberately:
+ADR-007 blocks an auto-commit on errors, and a size guard that could block a commit would put
+tidiness above evidence. The thresholds are derived rather than chosen — 22000 sits above every
+untouched type file and below all three bloated ones, and only 4 of 44 pre-2026-08-12 CHANGELOG
+entries exceed 600.
+
+Consequences: 33 warnings on the day it was added, most of them earned. Types the render loop
+has not reached are largely unaffected. `01-pain-scene` is over both limits and is owned by a
+concurrent session; the warning is how it finds out, which is the guard doing its job rather
+than one session editing another's file.

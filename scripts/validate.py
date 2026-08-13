@@ -240,6 +240,13 @@ OPTIONAL_KEYS = [
     "avoid_adjacent", "requires_pair",
 ]
 REQUIRED_SECTIONS = ["PURPOSE", "TRIGGER", "SKELETON", "NEGATIVE", "CHANGELOG"]
+
+# Soft size limits, warnings only (ADR-013). Derived from the registry as it
+# stood on 2026-08-13: untouched type files averaged 9831 characters, and the
+# three that had been through the render loop had reached 28774, 32409 and
+# 32678 with 25-36% of each file being CHANGELOG prose.
+TYPE_FILE_WARN = 22000
+CHANGELOG_ENTRY_WARN = 600
 EXAMPLE_RE = re.compile(
     r"^### example: ([a-z0-9-]+) — skeleton@(\d+)\.(\d+), run: "
     r"(untested|pass|partial|fail)\s*$", re.M)
@@ -322,6 +329,31 @@ def validate_type_file(path, vocab, rule_ids):
     for s in REQUIRED_SECTIONS:
         if s not in sections:
             err(where, f"missing required section `## {s}`")
+
+    # --- size guards (warnings only; never block a commit) -------------------
+    # A type file states current law. The reasoning behind each change lives in
+    # the commit that made it, which ADR-007 makes this project's audit surface.
+    # Writing the reasoning twice is what took three type files from ~10k to
+    # ~30k characters in one day. Thresholds are derived, not guessed: the
+    # median CHANGELOG entry written before 2026-08-12 is 240 characters and
+    # only 4 of 44 exceed 600, while the entries written after it have a median
+    # of 934. See ADR-013.
+    # WORKED EXAMPLES is excluded: SPEC 3.3 requires a rendered example to keep
+    # its FULL prompt text, so that section is mandated content and not authorial
+    # prose. Measure only what the author chooses to write.
+    discretionary = len(text) - len(sections.get("WORKED EXAMPLES", ""))
+    if discretionary > TYPE_FILE_WARN:
+        warn(where, f"type file is {discretionary} discretionary characters "
+                    f"(soft limit {TYPE_FILE_WARN}, worked examples excluded); "
+                    f"move workings to the commit message")
+    if "CHANGELOG" in sections:
+        for entry in re.split(r"\n(?=- \d)", sections["CHANGELOG"]):
+            m = re.match(r"- ([\d.]+) \(", entry.strip())
+            if m and len(entry.strip()) > CHANGELOG_ENTRY_WARN:
+                warn(where, f"CHANGELOG entry {m.group(1)} is "
+                            f"{len(entry.strip())} characters (soft limit "
+                            f"{CHANGELOG_ENTRY_WARN}); state the decision and "
+                            f"cite the commit")
 
     use_when = avoid_when = ""
     if "TRIGGER" in sections:
