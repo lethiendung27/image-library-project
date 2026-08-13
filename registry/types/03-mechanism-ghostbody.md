@@ -258,7 +258,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   came back three times out of three as coloured intervertebral discs — it had not failed to
   draw, it had failed to be a mark, which is fault A11 in `registry/argument-faults.md`.
   Prompt budget measured and written in: 19% of this type's prompts was ceremony no render had
-  ever failed without, and the specific clauses are now named as never-again. `PENDING`
+  ever failed without, and the specific clauses are now named as never-again. `1d0b5be`
 - 1.6 (2026-08-13): **the inset requirement is proved, and `dims` is withdrawn.** Evidence: 3
   records — 2 `pass` and 1 `partial`; the owner passed the set apart from the pillow.
   The isolation test landed: the same insole that argued nothing, with one inset added and
