@@ -156,7 +156,7 @@ another type visible from here.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 4 renders · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
+| `glow` | a soft red radial glow sitting ON the evidence, sized to it and no larger, fading out before it touches anything else | red only | exactly 1 | 3 renders · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
 | `ring` | a thin red ring — a clean open circle of even line weight drawn around the evidence, touching nothing else | red only | exactly 1 | 1 render · FORM confirmed, a clean open circle of even weight; extent bound to the wrong object |
 
 **A mark binds to a BOUNDED STRUCTURE, not to a size instruction.** Every marked render
@@ -287,6 +287,12 @@ mark is model-drawn (ADR-008 approach A).
 ## CHANGELOG
 Evidence for every entry is in `eval/render-tests.jsonl` and in the commit that made it;
 git is the audit surface, so decisions are recorded here and workings are not.
+- 1.9 correction (2026-08-13): the `glow` evidence column read 4 renders; counted from the
+  ledger it is 3 — the jar, posture and cable frames — and `ring` has 1, the glass frame.
+  Four is the number of MARKED renders, not of `glow`. Two scripted counts disagreed before
+  this one: a substring matcher scored the jar frame as `ring` because its note contains
+  "delivering". Token match, never substring, is the same lesson the Rule 1a gate carries.
+  No rule changed, so no version bump.
 - 1.9 (2026-08-13): **a mark binds to a bounded structure, not to a size instruction** —
   added to MARKS with an admission gate. Three renders (D, E, F of the v1.7 set) plus the one
   earlier marked render make four, all carrying the same "sized to it and no larger" wording:
