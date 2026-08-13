@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.11"
+version: "1.12"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -46,7 +46,7 @@ argues with something added to the frame; this one argues by adding nothing, so 
 not an omission to fill in later.
 
 ```
-TYPE: 04-proof-lockedframe v1.11 [--rivals | --verdict | --timelapse | --capture]
+TYPE: 04-proof-lockedframe v1.12 [--rivals | --verdict | --timelapse | --capture]
 REGISTER: documentary photography. No overlays, badges, arrows or text.
 
 [LAYOUT] N equal vertical panels, thin white gutters, no outer border.  -> PARTS/layout
@@ -149,10 +149,14 @@ register reads as edited and destroys the credibility it is selling.
   filter, where the object variants produced pretty and empty images.
 - G7 applies at its strictest here, except `--capture`, which runs `context_mode:
   declared-test`.
-- **The prompt budget, three parts.** A clause earns its place only if a render has failed
-  without it; it enters a GIVEN prompt only if that product can fail that way — drift for
-  handheld, identifiable-product for `--capture`, fairness for `--verdict`; and each law is
-  stated ONCE. Since ADR-014 no `Strictly avoid:` line is rendered at all.
+- **The prompt budget, four parts.** A clause reaches a rendered prompt only if (1) a render
+  has failed without it, (2) THAT product can fail that way — drift for handheld,
+  identifiable-product for `--capture`, fairness for `--verdict` — (3) **the model can act on
+  it inside one generation**, and (4) it is stated once. Part 3 was missing and it is the
+  largest cut: "never opens up area another panel does not have" cannot be checked by a model
+  drawing ONE frame, so it is a rule for the writer and lives here only. Ceiling **1800
+  characters**; past it, re-read for a duplicated block. Since ADR-014 no `Strictly avoid:`
+  line is rendered.
 
 ## NEGATIVE
 ```
