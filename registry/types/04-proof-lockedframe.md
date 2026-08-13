@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.12"
+version: "1.13"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -46,7 +46,7 @@ argues with something added to the frame; this one argues by adding nothing, so 
 not an omission to fill in later.
 
 ```
-TYPE: 04-proof-lockedframe v1.12 [--rivals | --verdict | --timelapse | --capture]
+TYPE: 04-proof-lockedframe v1.13 [--rivals | --verdict | --timelapse | --capture]
 REGISTER: documentary photography. No overlays, badges, arrows or text.
 
 [LAYOUT] N equal vertical panels, thin white gutters, no outer border.  -> PARTS/layout
@@ -329,6 +329,16 @@ mineral rather than as mud or mould.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.13 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES keeps the
+  two 1.7 passes — the later frames that would replace them are `partial` after the G7
+  corrections, and an example is a record of what rendered. Standing note: `--rivals` is legal
+  and channel-scoped but carries no product, so it is not sent for render; the owner cannot
+  judge an image with no product in it.
+- 1.12 (2026-08-13): **the prompt budget gains a fourth part** — a clause reaches a rendered
+  prompt only if the model can ACT on it inside one generation. "Never opens up area another
+  panel does not have" cannot be checked by a model drawing one frame, so it is a writer's rule
+  and lives here only. `STYLE` restating `REGISTER` and a separate `WHAT ELSE MOVES` block go
+  with it. Ceiling 2100 → 1800. This entry was missing from the 1.12 commit. · 474e77b
 - 1.11 (2026-08-13): **four fixes.** `PARTS/variable` gains an INVARIANTS clause and the rule
   that the difference must show on the object CARRYING the argument. The prompt budget gains
   its two missing parts: a clause enters a prompt only if that product can fail that way, and
