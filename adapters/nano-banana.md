@@ -86,6 +86,18 @@ lemmas exactly — a `stain\w*` pattern matches "stainless" and yields false pos
 layout vocabulary (`panel`, `framing`) is not at suppression risk because the layout is
 restated every line.
 
+### Rule 1b — A slot name shown to the model gets drawn (measured, 2 types)
+
+The model draws headings it is shown. `02-symptom-rail` printed large circled A, B and C into a
+frame because its prompt carried `ZONE A`, `ZONE B`, `ZONE C` as headings, and G6 plus an avoid
+line containing `text` did not stop it. `03-mechanism-ghostbody` then printed `XCHECK` in
+capitals above an inset, for the same reason.
+
+**A rendered prompt describes the thing; it never names the slot.** "A small two-panel inset in
+the top-left corner", not `XCHECK:`. Slot names are the type file's vocabulary and have no
+business reaching the model. Banning letters does not fix this, because the leak comes from the
+prompt's own structure rather than from an instruction.
+
 ## Rule 2 — Product reference (G1)
 
 When `requires_product_photo: true`: attach `product.reference_photos` and keep the G1

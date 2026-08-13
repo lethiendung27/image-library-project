@@ -3,7 +3,7 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "1.4"
+version: "1.5"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -37,14 +37,14 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-ghostbody v1.4
+TYPE: 03-mechanism-ghostbody v1.5
 REGISTER: 3D technical render. NOT photography.               -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
 [GHOST] pose, and where the body is cut.                      -> PARTS/ghost
 [CUTAWAY] name the structure the product acts on.             -> PARTS/cutaway
 [PRODUCT] placement and angle only.                           -> PARTS/product
-[XCHECK] optional inset, wrong state beside correct.          -> PARTS/xcheck
+[INSET] REQUIRED. Wrong state beside correct.                 -> PARTS/inset
 [MARKS] name each one used, with its count:                   -> MARKS
   required: structure, and one of stress / support
   nothing in the frame is marked that is not named here
@@ -73,11 +73,21 @@ the product's contour, because the alignment between the two is the whole claim.
 it, never describe it. Its contour must visibly align with the structure named in `cutaway`.
 Sharp silhouette against white.
 
-**`xcheck`** — an optional inset in one corner: two small rounded-square panels side by side,
-flat 2D vector, light grey outline, white fill. LEFT the wrong state, RIGHT the correct one,
-each carrying a `verdict` badge. Use it when the mechanism needs a before beside its after;
-skip it when the cutaway already carries the argument, because the inset costs frame at
-mobile size.
+**`inset`** — **REQUIRED, not optional.** Two small rounded-square panels side by side in one
+corner, flat 2D vector, light grey outline, white fill. LEFT the wrong state, RIGHT the correct
+one, each carrying a `verdict` badge, and the difference between them large enough to read at a
+glance.
+
+It became required at 1.5 on a deliberate experiment. An arch-support insole was prompted with
+no inset, no harm mark and nothing but a correct body and a product carrying it — the most
+beautiful render this type has produced, and it argued nothing at all. A viewer learns that the
+insole is shaped. "Why does this shape work" is a comparative question, and once harm marks are
+banned from the main frame the inset is the only place a comparison can live.
+
+**Never name this slot in a rendered prompt.** One render printed `XCHECK` in capitals above
+the inset because the prompt showed it as a heading — the same leak that made another type
+print circled A, B and C. Describe the thing: "a small two-panel inset in the top-left corner".
+The slot's name belongs to this file, not to the model.
 
 ## MARKS
 
@@ -88,17 +98,17 @@ the colour G3 already assigns it.
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `structure` | the neutral anatomy the argument sits in — bone, cartilage, the body's own framework | yellow / off-white ivory | as much as the cutaway shows | 2 renders · drew cleanly |
-| `stress` | the loaded or deformed element, filled where the load lands — **`xcheck` wrong panel only** | red | as many as are loaded, inset only | 0 of 2 · inverted the argument in the main frame |
+| `stress` | the loaded or deformed element, filled where the load lands — **`inset` wrong panel only** | red | as many as are loaded, inset only | 0 of 2 · inverted the argument in the main frame |
 | `support` | the structure the product is carrying, filled along the contact — on the BODY, never on the product | blue | 1 per supported structure | 0 of 1 · landed on the product |
-| `heat` | wrong pressure or wrong heat, in the `xcheck` wrong panel only | orange | 1, inset only | **none** |
+| `heat` | wrong pressure or wrong heat, in the `inset` wrong panel only | orange | 1, inset only | **none** |
 | `dims` | thin black double-headed arrows with fine extension lines offset clear of the product outline, drafting style, **no numbers and no letters** | black | exactly 2 | 1 render · form good, came back labelled |
-| `verdict` | circle badge above each `xcheck` panel, a FILLED SOLID DISC with the glyph cut out of it | red X, green check | exactly 2, inset only | **none** · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
+| `verdict` | circle badge above each `inset` panel, a FILLED SOLID DISC with the glyph cut out of it | red X, green check | exactly 2, inset only | **none** · also in `01-pain-split`, `02-cause-anatomy`, `06-relief-hero` |
 
 **A harm mark never appears in the main frame.** The main frame shows the product IN USE and
 working, so everything in it reads as something the product is doing — and a red `stress` mark
 there reads as harm the product CAUSES. Two founding renders proved it in one batch: red on
 both shoulders under a pillow, red on the big-toe joint inside the shoe, and a viewer reads
-"this hurts me". `stress` and `heat` belong in the `xcheck` wrong panel, which is precisely
+"this hurts me". `stress` and `heat` belong in the `inset` wrong panel, which is precisely
 what the inset exists for. The main frame carries `structure` and `support` only.
 
 **And a mark cannot carry a counterfactual.** The shoe prompt asked for red where a NARROW
@@ -120,7 +130,17 @@ named ZONE A attracted a printed A. Ban both, or drop the mark.
 `eval/render-tests.jsonl`. The first render of each is its founding evidence and should be
 logged as such.
 
-**`dims` carries no numbers**, because G6 bans text. Without real specs a dimension arrow is
+**`support` sits ON the bone and away from the contact edge.** Where the mark hugs the boundary
+between bone and product it reads as a coloured layer of the product — the insole render's blue
+could be a gel insert. Draw it along the bone's own length, on the side away from the product.
+
+**`dims` is at 0 of 2 and is now the type's least reliable mark.** Both renders got the count
+and the placement wrong: three or four arrows instead of exactly two, crossing the product
+outline instead of standing on extension lines clear of it. Name the two arrows as two separate
+items with their own endpoints, and put both entirely outside the product's silhouette. A third
+failure withdraws the mark — see KNOWN-FLAKY.
+
+**`dims` carries no numbers and no letters**, because G6 bans text. Without real specs a dimension arrow is
 decoration, so enable it only when the product has a clear 3D volume that a drafting register
 actually clarifies. This gate came from the mouth-tape example, where dims were dropped.
 
@@ -157,7 +177,7 @@ cluttered inset, gore, realistic flesh, medical horror
 
 ## WORKED EXAMPLES
 ### example: mouth-tape — skeleton@1.0, run: untested
-Product: mouth tape · ratio 1:1 · xcheck enabled, dims dropped
+Product: mouth tape · ratio 1:1 · inset enabled, dims dropped
 - GHOST — head and upper chest in profile, lying back as if asleep, cut on the sagittal plane
 - CUTAWAY — nasal cavity, soft palate, tongue and throat inside the head silhouette
 - PRODUCT — one horizontal strip of tape across the closed lips
@@ -167,7 +187,15 @@ Stale in one way to fix when it is next rendered: it predates the G2 rewrite and
 paragraph still describes texture, which `product` now forbids.
 
 ## KNOWN-FLAKY
-(nothing observed — this type has never been rendered)
+- **`dims` count and placement, 0 of 2.** Three or four arrows where two were asked for,
+  crossing the product outline instead of standing clear of it. Tightened at 1.5; a third
+  failure withdraws the mark, since an arrow crossing the product is worse than no arrow.
+- **Slot names printed into the image, 1 render** (`XCHECK` in capitals). Second observation of
+  the class across the library after `02-symptom-rail`'s circled A, B and C; recorded in the
+  adapter as Rule 1b, since it is model behaviour and not specific to this type.
+- **A cutaway that removes the evidence, 1 render.** The shoe's upper was cut away exactly where
+  the toe-box width was being claimed. Cut the body, not the part of the product the argument
+  rests on.
 
 ## NOTES
 Step 3 has three types answering three different questions, and a gallery rarely needs more
@@ -181,9 +209,17 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.5 (2026-08-13): **the inset becomes required, and `dims` goes on notice.** Evidence: 3
+  records, 2 partial and 1 fail. All three 1.4 fixes landed — no harm mark in a main frame, no
+  signal colour on a product, `support` on the bone, `dims` free of letters — and the inset
+  rendered as a real comparison, the first time this type's argument has read at all. The
+  experiment settled the open question: an insole with no inset produced the best-looking render
+  this type has made and argued nothing. `[XCHECK] optional` becomes `[INSET] REQUIRED`. Three
+  faults written in: never name the slot in a prompt; `support` away from the bone-product
+  boundary; `dims` at 0 of 2, tightened and on notice. `PENDING`
 - 1.4 (2026-08-13): **three faults from the founding batch, all of them mine.** A harm mark in
   the main frame inverts the argument — red on a shoulder under a pillow reads as the pillow
-  hurting the shoulder — so `stress` and `heat` are now `xcheck`-only and the main frame
+  hurting the shoulder — so `stress` and `heat` are now `inset`-only and the main frame
   carries `structure` and `support` alone. A mark cannot carry a counterfactual: the shoe asked
   for red where a NARROW shoe would press, and no mark can say "would have". And no mark may be
   placed ON the product, whose own colours are not marks — left unstated, the model painted the
