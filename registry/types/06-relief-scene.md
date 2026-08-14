@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.3"
+version: "3.4"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.3
+TYPE: 06-relief-scene v3.4
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -157,10 +157,35 @@ product entirely.
 is not centred or lit for the camera. It simply occupies its own space in the picture the way a
 documentary photographer standing in the right place would include it.
 
-**Admission test, second clause: a product that only ever lives INSIDE or UNDER something
-cannot be argued by this type.** Insoles, inserts, under-clothing wraps, anything in a shoe or
-beneath a garment. No camera position and no moment rescues them in a candid single frame.
-Those close with `06-relief-hero`, which has a product-view layer for exactly this.
+**Admission test, second clause — three classes, and only the third is excluded.** The first
+wording of this said "inside or under something" and was too blunt: a compression sock and an
+insole are not the same case at all.
+
+| class | test | verdict |
+|---|---|---|
+| **standalone** | it sits in the scene as its own object | works — the eye-drops bottle |
+| **worn-external** | it can be the outermost layer if the wardrobe allows | works, on a wardrobe condition |
+| **conforming or enclosed** | no silhouette of its own, or always inside another object | excluded |
+
+**Worn-external is the class the blunt rule was wrong about.** A compression sock, a knee
+support, a wrist brace, a splint — these ARE the visible surface once the wardrobe exposes the
+limb. The condition is that the wardrobe must be chosen for it AND the situation must make that
+wardrobe ordinary: shorts on a runner, bare calves at home, a rolled sleeve at a sink. A trouser
+leg pushed up for the camera is a pose and fails.
+
+**Conforming products are excluded for a different reason from enclosed ones**, and the
+distinction matters because the fixes differ. An insole is enclosed — it is inside a shoe and no
+frame reaches it. An adhesive heat patch is conforming — it may be perfectly visible on a
+shoulder and still unreadable, because a flat beige rectangle following the curve of a body has
+no silhouette to recognise. Being in shot is not the same as being identifiable.
+
+**The one opening for a conforming product** is the second the hand comes away from it, when it
+is flat to the camera, near the lens and its printed face is readable. That is an action rather
+than a presentation and it is the only moment the form problem is solved. If the product has no
+printed face, there is no opening at all.
+
+Everything excluded closes with `06-relief-hero`, which has a product-view layer for exactly
+this.
 
 **The admission test.** If the resolved state cannot be shown as a body behaving differently in
 a situation that costs something, this type is the wrong one. Close with `06-relief-hero`, which
@@ -187,7 +212,8 @@ arms raised, celebration gesture, golden hour, warm flattering light,
 glamour lighting, beauty retouching, plastic skin, aspirational travel location,
 empty clean street, styled outfit, product presented to camera,
 product centred or held up, product hidden inside or under something,
-product turned away so its face cannot be read, blank expression,
+product turned away so its face cannot be read, trouser leg or sleeve pushed up
+for the camera, blank expression,
 collapsed posture, head lolled back, limbs flung limp, eyes shut and slack,
 drained joyless grade, saturated colors, stock photo look
 ```
@@ -242,6 +268,11 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.4 (2026-08-14): the admission test splits into three classes. "Inside or under something"
+  was too blunt — a compression sock is worn-external and works once the wardrobe exposes the
+  limb, where an insole is enclosed and never can. Conforming products like an adhesive patch
+  are excluded for a third reason: no silhouette, so visible is not identifiable. Their one
+  opening is the second the hand comes away, flat to the lens with a printed face.
 - 3.3 (2026-08-14): the emotion is solved 4/4 and the product is not. It has to stand in the
   frame as its own object, near the camera, turned so it can be read — the one legible render
   was a bottle upright on a desk with its label toward the lens. `present, not presented` had
