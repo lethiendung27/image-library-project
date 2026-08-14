@@ -311,7 +311,7 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
   `01-pain-scene`'s `glow` with its two measured limits: a glow cannot be held to a boundary
   (3/3) and a red one on a body reads as pain. It states position where `--detail` states
   mechanism. And the cutaway's LOOK is now chosen per prompt with no two in a set alike; only
-  its KIND is fixed. Fixing a look is what produced sixteen identical rooms on `03-use-sequence`.
+  its KIND is fixed. Fixing a look is what produced sixteen identical rooms on `03-use-sequence`. `31dffa3`
 - 3.5 (2026-08-14): the excluded class gets a variant instead of a refusal. `inset_mode:
   [none, detail]` using existing vocabulary. A conforming or enclosed product is shown by what
   it DOES: a `cutaway` window into the body at its place, with `reach` as flat hard-edged bands
