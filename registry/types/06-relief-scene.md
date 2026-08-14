@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.6"
+version: "3.7"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -44,7 +44,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.6
+TYPE: 06-relief-scene v3.7
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -58,9 +58,8 @@ REGISTER: candid documentary photograph, single frame.        -> PARTS/register
          would have demanded bracing.
 
 [MARKS]                                                  -> MARKS
-  locate   a bloom through the garment, where it is. Either variant.
   cutaway  a window into the body at the product's place.  --detail
-  reach    flat bands stepping inward, how far it travels. --detail
+  reach    one tapering shape from the product inward.     --detail
 
 ```
 
@@ -74,9 +73,9 @@ put-together but ordinary clothes from the same palette family, doing an everyda
 public and pausing briefly.
 
 **`gaze`** — `candid`, absorbed in their own business, or `reflect`, on their own image in
-glass. Both are existing values of the shared axis. **Never at the camera**: looking at the lens
-reads as showing off and the barrier goes up. `reflect` is no longer compulsory, which is what
-2.0 changed — `candid` is now the default and the ordinary case.
+glass. Both are existing values of the shared axis, and `candid` is the default. **Never at the
+camera**: looking at the lens reads as showing off and the barrier goes up. It fails at the
+gate — a render that meets every other rule is still a fail if the eyes find the lens.
 
 **`environment`** — a public everyday place the subject would actually pass through, with two
 or three incidental blurred passers-by or street details, ordinary weather. Nothing
@@ -87,16 +86,10 @@ bathroom; the promise ends in the world**, which is why this type is never set a
 glamour lighting. Where a pain counterpart exists, keep the same time-of-day character.
 
 **`grade`** — a natural palette, light film grain, shallow depth of field. **Honest, not
-drained.** Desaturating came from matching a paired pain image and over a released body it reads
-as despair. Real rather than glossy, the light allowed to be kind: no glamour lighting, no
-warm-boosting into an advert, nothing bleached out.
+drained** — over a released body a desaturated grade reads as despair. Real rather than glossy,
+the light allowed to be kind: no glamour lighting, no warm-boosting into an advert.
 
 ## THE RELIEF
-
-**This type has no marks and no inset.** Sixteen renders across four rounds went into a
-comparison device — a drained macro, then a suffering scene — and the owner's test retires it:
-cover the inset and look at the main photograph alone. Relief survived that test once in
-sixteen. The device was never the problem to solve.
 
 **Relief is a body that has stopped defending itself, in a situation that would have demanded
 defence.** Both halves are required and neither works alone.
@@ -106,6 +99,11 @@ is not relieved of anything, because nothing is being asked of him. Kneeling on 
 carrying a full load up steps, sitting out in bright light, plunging hands into cold water —
 these are situations the problem would have made a person avoid, ration or brace against.
 Choose the situation from what the problem forbade.
+
+**`environment` and cost are one rule seen twice, 8 of 8.** Domestic or idle settings — a bed, a
+bench, an empty yard — asked nothing and the release did not read. Real load — a box onto a
+shelf, a toddler onto a hip, a crate on cobbles, a reach to a high shelf — read every time. A
+public place is not a style preference; it is where something is asked of a body.
 
 **The body must not be guarding.** Guarding is visible and specific: bracing a hand against
 furniture, holding or covering a part, favouring one side, keeping a part tucked away or out of
@@ -142,10 +140,16 @@ Any one alone reads as an ordinary photograph. Release without the return reads 
 binds it: the attached photo is the exact reference.
 
 **It must STAND IN THE FRAME AS ITS OWN OBJECT, near the camera, turned so it can be read.**
-Four renders sorted on this alone: a bottle upright on a desk near the lens with its label
-toward it was the only one a viewer could name; a tube edge-on in a pocket showed something was
-there but not what; an insole in a boot and a wrap under a jumper were not objects in the frame
-at all, and that render dropped the product rather than resolve it.
+Measured twice: of four renders at 3.2 and eight more at 3.5–3.6, the only two a viewer could
+name were a bottle upright on a desk and an open tub on a worktop, both near the lens with the
+label toward it. Everything inside, under or edge-on failed.
+
+**A LABEL THAT CAN BE READ IS TEXT, and the type banned both.** The one nameable product in
+eight carried its name in clean type; the one turned away came back with a gibberish
+back-of-pack panel and read as a household cleaner. The no-text rule's evidence was a named
+NEWSPAPER — an object whose content IS text — and it was over-generalised onto labels, where G1
+binds the product to the reference anyway. **The label carries the NAME and nothing else.**
+Amount is the discriminator: two words render clean, a paragraph renders as gibberish.
 
 **Not presented still holds** — the person does not hold it up, look at it or offer it, and it
 is not centred or lit for the camera. It simply occupies its own space in the picture the way a
@@ -157,19 +161,24 @@ documentary photographer standing in the right place would include it.
 |---|---|---|
 | **standalone** | sits in the scene as its own object | `--none` — the eye-drops bottle |
 | **worn-external** | can be the outermost layer if the wardrobe allows | `--none`, on a wardrobe condition |
-| **conforming or enclosed** | no silhouette of its own, or always inside another object | **`--detail`** |
+| **conforming or enclosed** | no silhouette of its own, or always inside another object | **its package in frame, `--detail` for the mechanism** |
 
 **Worn-external** — a compression sock, a knee support, a wrist brace — IS the visible surface
 once the wardrobe exposes the limb. The wardrobe must be chosen for the product and the
 situation must make it ordinary; a trouser leg pushed up for the camera is a pose and fails.
 
-**Conforming and enclosed fail differently.** An insole is enclosed — inside a shoe, no camera
-reaches it. An adhesive patch is conforming — visible on a shoulder and still unreadable,
-because a flat rectangle following a body's curve has no silhouette. In shot is not identifiable.
+**Conforming and enclosed fail differently.** An insole is enclosed, inside a shoe where no
+camera reaches. A patch is conforming — flat against a curve, so no silhouette. In shot is not
+identifiable.
 
-**Neither is a reason to refuse a product.** Two answers, and they are not alternatives to each
-other: `locate` says WHERE it is through the clothing, `--detail` says WHAT IT DOES. Use
-`locate` when the product's position is the missing fact and `--detail` when its mechanism is.
+**Neither is a reason to refuse a product — but THE INSET IS NOT THE PRODUCT.** 3.5 and 3.6
+tried to admit this class by drawing it instead of photographing it, and the product then left
+the frame in 4 of 8. `requires_product_photo` and G1 bind in every variant, and a drawn product
+satisfies neither.
+
+**So it enters the frame AS ITS PACKAGE** — box, tub, sleeve or packet standing in the scene as
+its own object under the rule above — and `--detail` says what the contents do. The package is
+the photographed product, the cutaway is the mechanism, and neither substitutes for the other.
 
 **The admission test.** If the resolved state cannot be shown as a body behaving differently in
 a situation that costs something, this type is the wrong one. Close with `06-relief-hero`, which
@@ -178,52 +187,62 @@ a candid documentary photograph does neither.
 
 ## MARKS
 
-**`--none` carries no marks by default.** `cutaway` and `reach` exist only inside the
-`--detail` inset and nothing from them ever appears in the photograph. **`locate` is the
-exception**: it sits in the photograph itself and is available in either variant, because a glow
-is emitted light and A11 names emitted light as a form a photographic register cannot produce by
-itself — which is exactly what makes it read as a mark rather than as lighting.
+**No mark ever appears in the photograph.** `cutaway` and `reach` exist only inside the
+`--detail` inset; `--none` carries nothing at all. 3.6's one exception, `locate`, is retired
+below.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `cutaway` | a clean-edged window into the body at the product's place, the product on the surface and the layer beneath shown in a plain technical register | the tissue's own neutral tones | 1, in the inset only | borrowed — the device is `03-mechanism-ghostbody`, 14 renders |
-| `reach` | flat hard-edged bands stepping inward from the product's face into the layer beneath, showing how far the effect travels | one warm hue, never red | 1 set, inside the cutaway | **none** — proposal |
-| `locate` | a soft radial bloom through the garment where the product sits beneath it, brightest at its centre and fading outward | a warm low hue, never red and never saturated | 1, in the photograph | borrowed — `01-pain-scene` `glow`, 7 renders |
+| `reach` | ONE continuous shape running from the product's face into the layer beneath, tapering as it goes so its own width says how far the effect reaches | one warm hue, never red | 1, inside the cutaway | 5 renders, restated from 0/5 |
 
-**Every mark is a FLAT, UNSHADED, HARD-EDGED OVERLAY**, drawn on top like clean vector shapes.
-This is `03-mechanism-ghostbody`'s hardest-won rule and it transfers unchanged: three renders of
-its `support` mark came back as a tint of the anatomy and every one read as coloured tissue
-rather than as a mark — 0 of 3 as a fill, 3 of 3 as a band beside the structure. A11: a mark
-whose form the register could have produced stops being a mark. **Never a tint of the anatomy.**
+**Every mark is a FLAT, UNSHADED, HARD-EDGED, FULLY OPAQUE OVERLAY**, drawn on top like clean
+vector shapes. `03-mechanism-ghostbody` measured its `support` mark 0 of 3 as a tint of the
+anatomy and 3 of 3 as a band laid on top; A11 is why — a mark whose form the register could have
+produced stops being a mark. **Never a tint of the anatomy.**
 
-**`reach` must travel, and the direction is the whole argument.** A static warm patch on a
-muscle reads as inflammation — as the thing that hurts. Bands stepping from the product INTO
-the tissue read as the product delivering something. Direction is what separates a benefit from
-a symptom, and it is why the hue is warm but never red: red on a body is pain in every other
-type in this library.
+**Opacity is the half of that rule the wording kept losing, 2 of 5.** Two renders obeyed
+hard-edged and unshaded and still filled the shape translucently, so tissue boundaries and bone
+read straight through it — which is a tint with a crisp outline, and it drifts back toward being
+anatomy. Say opaque, and say that nothing beneath shows through.
 
-**`locate` answers the covered product without a diagram, and it comes with two limits already
-paid for.** `01-pain-scene` measured its `glow` over 7 renders and found it **cannot be held to
-a boundary, 3 of 3** — a radial falloff will not stop at an outline, so never ask for a glow the
-shape or size of the product. Describe a bloom that spreads and let it. The same type found that
-**a red glow on a body reads as pain and a saturated orange glow reads as too hot to touch**, so
-the hue is warm, low and unsaturated, or the mark says the product is hurting or burning the
-person wearing it.
+**NEVER N SHAPES OF GRADED SIZE — that is a bar chart, and it rendered as one 5 of 5.** Spec'd
+as "flat bands, each one further in than the last", `reach` came back four times as a bar chart
+and once as arrowheads; 0 of 5 read as travel. Graded repetition IS a chart idiom and it
+overrides direction — ascending bars claim MAGNITUDE BY CATEGORY, not mechanism. A different hue
+or wider spacing only makes the chart cleaner. **One continuous shape that changes along its
+length**, its taper carrying the distance. Arrows stay banned (G6): an arrowhead is the same
+glyph in a hat.
 
-It states position, not mechanism. If what is missing is what the product DOES rather than where
-it is, that is `--detail`.
+**It must still travel, and the direction is the argument.** A static warm patch on a muscle
+reads as inflammation — the thing that hurts. A shape running from the product INTO the tissue
+reads as delivery. Hence warm but never red: red on a body is pain everywhere else in this
+library. **And it must start ON the product**, so the product is drawn inside the cutaway — 2 of
+5 panels had none, and their marks floated sourceless.
+
+**`locate` is retired at 0 of 2 — do not re-propose it.** A bloom through the garment read as
+LENS FLARE on a light shirt and as a DIRT SMUDGE on dark knit. Both of `01-pain-scene`'s
+paid-for limits held, so it was not mistuned but mis-founded: **A11 was applied to the wrong
+property.** Emitted light is not a form a photographic register cannot produce — it is among the
+commonest things a photograph contains, and a viewer takes the ordinary explanation. The one
+form that would make a bloom read as a mark is a hard boundary, which is exactly what
+`01-pain-scene` measured 3 of 3 a glow cannot hold. **A borrowed mark must be re-tested in the
+borrowing type's register**, because A11 is a claim about a register, not about a mark.
 
 **The cutaway stays in the inset.** Internals bleeding into the photographic hero break G5 —
 that rule is `06-relief-hero --detail`'s and it applies here for the same reason. The hero
 remains a photograph a passer-by could have taken; the inset is plainly a diagram, and the two
 do not blend at the border.
 
-**The cutaway's LOOK is not fixed, and fixing it is how every type in this library has produced
-slop.** What is fixed is the KIND: a plain technical section, confined to a border, flat
-hard-edged marks laid on top. The panel shape, where it sits, its ground tone, its line weight,
-the angle of the section and the hue of `reach` are chosen per prompt, and **no two prompts in a
-set may share them**. A set whose insets all look alike is a fault in the set, the same fault
-`03-use-sequence` measured when one prescribed palette produced sixteen identical rooms.
+**KIND-not-LOOK is confirmed, 4 of 4.** A bordered corner box, a borderless bottom strip, a torn
+tall panel and a bevelled window all held their separation from the photograph, and 3 of 4 read
+at once as technical sections. Fixed is the KIND: a plain technical section, plainly a drawing,
+flat hard-edged marks on top. Panel shape, placement, ground, line weight, section angle,
+border-or-none and `reach`'s hue are chosen per prompt and **no two in a set may share them**.
+
+**It must show recognisable anatomy** — the fourth panel did not, and generic layered bands with
+a lump on top could be a section through anything. The three that worked each gave a landmark a
+viewer knows: a foot in a boot, a nose in profile, a lumbar spine. Name the landmark.
 
 **The hero still has to carry the relief on its own.** The cutaway explains the mechanism; it
 does not excuse a body that is not releasing. If the photograph fails the release test, the
@@ -236,8 +255,10 @@ not made.
 - **The zone names never reach the model.** Region labels are the tier that leaks; whole-image
   and subject labels do not (adapter Rule 1b, tiers set by ADR-017). Describe the region:
   "a shop window fills the left third", not `[REFLECTION]`.
-- **No object in the scene may carry printed text.** Model-drawn text arrives as gibberish and
-  this type bans text outright. Named newspaper filled two `06-relief-hero` frames with nonsense.
+- **No object in the SCENE may carry printed text** — a named newspaper filled two
+  `06-relief-hero` frames with nonsense. **The product's own label is the exception**: it carries
+  the product NAME and nothing else, because the product law requires a label that can be read.
+  Never a back-of-pack panel, body copy or barcode; those come back as gibberish.
 - A clause earns its place only if a render has failed without it, and is removed only once a
   render has done without it and come back correct (ADR-013, ADR-015).
 
@@ -250,8 +271,9 @@ arms raised, celebration gesture, golden hour, warm flattering light,
 glamour lighting, beauty retouching, plastic skin, aspirational travel location,
 empty clean street, styled outfit, product presented to camera,
 product centred or held up, product hidden inside or under something,
-product turned away so its face cannot be read, trouser leg or sleeve pushed up
-for the camera, blank expression,
+product turned away so its face cannot be read, back-of-pack label, barcode,
+bar chart, bars of stepped or graded height, arrowheads, translucent marks,
+trouser leg or sleeve pushed up for the camera, blank expression,
 collapsed posture, head lolled back, limbs flung limp, eyes shut and slack,
 drained joyless grade, saturated colors, stock photo look
 ```
@@ -306,6 +328,12 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.7 (2026-08-14): the inset is not the product, and `reach` was a bar chart. 8 renders, 0
+  pass. `reach` rendered as a chart glyph 5/5 — graded repetition IS a chart idiom — restated as
+  ONE tapering shape starting on the product. `locate` retires 0/2: A11 was applied to the wrong
+  property, emitted light being just what a photographic register produces. The product left the
+  frame in 4/8, all conforming or enclosed, so that class now enters as its PACKAGE. The no-text
+  rule splits — the only nameable product in eight carried its name. KIND-not-LOOK holds 4/4.
 - 3.6 (2026-08-14): a third route for a covered product, and the cutaway stops having a fixed
   look. `locate` — a soft bloom through the garment saying where the product is — borrowed from
   `01-pain-scene`'s `glow` with its two measured limits: a glow cannot be held to a boundary
@@ -343,32 +371,17 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
   MARKS is replaced by THE RELIEF, the thing the type actually needs and never had: a body that
   has stopped defending itself, in a situation that would have demanded defence. A smile is not
   relief. MAJOR — the inset layer is removed. `db2c5dc`
-- 2.3 (2026-08-14): both cells are SCENES. Absolute description fixed the crop 4/4 after eight
-  failures, and with the crops finally matched the images were plainly macro surface studies —
-  a spec device, not a relief scene. Owner's correction: relief scene, suffering scene inset.
-  The drain goes with it, because a suffering scene marks itself and draining it only hid the
-  problem; the tonal admission test dissolves with the drain, so hue-signalled problems return.
-  The crop-to-the-evidence rule is reversed: a scene needs room to be one. `5fbea1d`
-- 2.2 (2026-08-14): the crop is the whole problem. Eight renders never once matched crop
-  between the cells, because both rules asking for it were RELATIVE — "framed the same way",
-  "smaller in the inset" — and `smaller` was read as `wider shot`. Each cell now gets its own
-  absolute description. Two conditions added from a clean 2-2 split: the inset holds the
-  evidence and almost nothing else, and whatever `evidence` names must be visible in both cells. `423f1b8`
-- 2.1 (2026-08-14): the inset mechanism works, with two conditions the first four renders
-  bought. `past` gains an admission test — the drain preserves a TONAL problem and destroys a
-  COLOUR one, 2/2 against 0/1, so a hue-signalled problem routes to `06-relief-hero --vsinset`
-  instead. `evidence` gains a size floor: the hero's copy is never smaller than the inset's,
-  which is exactly how the four renders sort. 2 pass, 1 partial, 1 fail. `c795d1b`
-- 2.0 (2026-08-14): the argument moves from two angles to two moments. Four first renders
-  returned flawless reflections and no argument, so the founding premise is withdrawn: two
-  angles are one moment. `past`, a desaturated inset of the problem, becomes the required
-  mechanism — 5 obs and 2/2 on `06-relief-hero`. `reflection` demoted to optional. MAJOR:
-  layer structure changes and `requires_pair` is dropped, the before now being in-frame.
-  `gaze` gains `candid`; `4:3` added. `59678e1`
-- 1.1 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
-  cut. First MARKS library, and all three entries are proposals: this type has 0 observations
-  and 0 renders, so there is nothing to count. Every entry is made of the scene, because the
-  drawn class is the unreliable one across three sibling types. `ratios` move to ADR-016's set —
-  `5:3` and `4:5` become `16:9` and `3:4`. `RATIO:` dropped per adapter Rule 4. `3fb74a2`
+- Pre-3.0 entries below describe the before/after inset layer that 3.0 removed outright. Kept as
+  decision plus hash; the reasoning is in the commits (ADR-013).
+- 2.3 (2026-08-14): both cells become SCENES, not macro surface studies, and the drain goes with
+  the change; a scene needs room to be one. `5fbea1d`
+- 2.2 (2026-08-14): the crop was the whole problem — both rules asking for it were RELATIVE, so
+  each cell gets its own absolute description. `423f1b8`
+- 2.1 (2026-08-14): the inset mechanism works with two conditions — `past` gains an admission
+  test (drain preserves a TONAL problem, destroys a COLOUR one) and `evidence` a size floor. `c795d1b`
+- 2.0 (2026-08-14): two angles are one moment, so the founding premise is withdrawn; `past`
+  becomes the required mechanism and `reflection` is demoted. MAJOR: `requires_pair` dropped. `59678e1`
+- 1.1 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); ratios move to
+  ADR-016's set; `RATIO:` dropped per adapter Rule 4. `3fb74a2`
 - 1.0 (2026-08-10): initial from the shop-window reflection exemplar; --reflect gaze
   mode contributed to the shared gaze axis. seed: conversation.md.
