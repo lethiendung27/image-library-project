@@ -146,3 +146,24 @@ material and the mark disappears as a mark.
 **Register decides, so this is not a fault in the forms themselves.** Both were borrowed from
 `02-cause-anatomy`, where they work, because that type is a 2D illustration and everything in
 frame is already drawn. Carrying a mark form across registers needs its own evidence.
+
+## A12 · A limb doing a job cannot also be a pointer
+
+Where the argument is carried by a body vector — a point, a reach, a turned head — that limb has
+to be unemployed. Give it something to hold and the render keeps the object and drops the
+vector, with every other slot correct, because an object is concrete and a vector is only a
+relationship between things.
+
+- `05-social-handoff`: an advocate written as holding two mugs *and* gesturing toward the floor
+  rendered the mugs and no gesture at all; an advocate written as lifting the product toward the
+  neighbour rendered both gloved hands on the machine and no gesture at all. The third render of
+  the same set gave the advocate free hands and returned a clean pointing diagonal landing on
+  the product. 2 of 3, with the third as the positive control.
+
+**The fix is an empty hand, not a stronger verb.** No wording of the gesture competes with an
+object the model can draw. The cost is invisible from inside the prompt: in both failures five
+of six slots rendered exactly as written, and the images read as competent candid photographs
+that happen to argue nothing.
+
+Corollary, same set, 1 render: **a person asked to SHOW the product holds it up for the lens**
+and breaks G7's placement test. A person asked to POINT AT it leaves it in the world.

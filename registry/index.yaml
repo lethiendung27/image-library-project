@@ -335,10 +335,10 @@ types:
     step: 5
     job: social
     device: handoff
-    version: "1.1"
+    version: "1.2"
     status: active
     channels: [paid-social, advertorial, landing-page]
-    ratios: ["5:3", "16:9", "4:5"]
+    ratios: ["16:9", "1:1", "3:4"]
     requires_product_photo: true
     generation_mode: multi-pass
     axes: {}
