@@ -275,7 +275,7 @@ Use when the buying argument depends on a feature too small to read in scene
 (memory log, measurement display, mechanism quality).
 
 ### inset_mode: --none
-No Zone C. Use when the scene carries the whole argument.
+No inset layer at all. Use when the scene carries the whole argument.
 
 ### inset_motion: --still (default)
 The layer is the finished picture; nothing is reserved.
@@ -293,24 +293,116 @@ asset filename. Four founding renders, 1 pass and 3 partial: the plate's letteri
 settled at 20 of 20 lines exact, its edge is not. ADR-019.
 
 ## WORKED EXAMPLES
-### example: shower-filter-commercial-vsinset — skeleton@1.1, run: untested
-Product: metal shower filter · ratio 2:1 · axes: register=commercial, inset_mode=vsinset
-- ZONE A — woman late 20s, long dark hair, under a running shower, head tilted back, eyes closed, calm satisfied, water streaming over her shoulders; the filter installed above her between hose and showerhead, low three-quarter angle, unobstructed
-- SETTING — bright modern bathroom filled to the edges: white marble tile, glass partition, eucalyptus bundle, frosted window; background blurred, high-key white and warm grey, steam catching the light; subject offset right, the inset occupying the offset space
-- ZONE B — the same filter top-down looking into the inlet, floating, about 25% of frame width, studio light, soft contact shadow, razor sharp, clean cutout; one unit only
-- ZONE C (top-left, white 3px border, split 50/50, red circular VS badge at the seam) — LEFT: desaturated grayscale macro of a nozzle plate caked with white limescale, dull uneven dripping, red hotspots at three clogged nozzles. RIGHT: full-color macro of a clean plate spraying clear even jets, cyan translucent overlay tracing the water path. Both halves photographic, right brighter and cleaner
-Predicted failure: Zone C right half slipping into 2D illustration against the photo
-macro (register mismatch inside the inset).
+### example: pet-fountain-commercial-detail-loop — skeleton@1.14, run: partial
+Product: automatic pet water fountain · axes: register=commercial, inset_mode=detail,
+inset_motion=loop · ledger `sha256:f798e1bf2d119f86…`
 
-### example: shower-filter-ugc-context — skeleton@1.3, run: untested
-Product: metal shower filter · ratio 2:1 · axes: register=ugc, inset_mode=context
-- ZONE A — man early 40s standing in his own bathroom, eyes closed, face tilted up under the running shower, water hitting his shoulders, unguarded relaxed expression; the reference filter fitted above him between arm and shower head, clearly visible in the upper frame; installed in every layer, never handheld
-- VISIBLE MECHANISM — the spray is the primary subject: dense individual streams and fine mist backlit by a window behind him, filling a large part of the frame and readable at small size
-- REGISTER OVERRIDE — shot on a phone: slightly overexposed on tiles and window, no rim light, no negative space, framing casual and a little too close, tilted a few degrees; the bathroom left as it is — shampoo bottles crowded on the corner shelf, a razor on the ledge, towels bunched on the rail, water spots on the glass
-- ZONE C (top-left, rectangular, thin white border) — a plain closer shot of the same filter installed on the same shower arm, taken a step back so the whole fitting is clear; same mode of use, same room, same daylight
-Predicted failure: distance — an installed filter high in frame may render at
-unrecognizable size; fallback framing is low-angle, filter + water jet as subject,
-person reduced to a shoulder.
+```
+TYPE: 06-relief-hero v1.14 --commercial, inset --detail, inset_motion --loop
+REGISTER: clean commercial photograph, controlled light, sharp.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the water fountain. Preserve
+shape, proportions, material, finish and colour exactly.
+
+[SUBJECT]
+Woman in her thirties in a jumper and thick socks, kneeling back on her heels a
+step away from the fountain on the kitchen floor, one hand on her knee, watching
+her cat drink rather than the machine. Relaxed, gaze away from the product.
+
+[PRODUCT]
+The fountain on the floor between her and the cat, low front three-quarter angle,
+whole and unobstructed.
+
+[OUTPUT]
+The stream of water falling from the spout into the bowl, lit so it reads as clear
+moving water against the darker cabinet behind it, at least 15% of the picture.
+
+[SETTING]
+A real kitchen corner filled to the edges: a food bowl, a folded tea towel, a mop
+by the units, a collar on the worktop edge, a door mat, a bin. None of them carries
+printed words. Background soft, never blank.
+
+[LIGHT]
+Hard side light from a window to the left, raking across the falling water.
+
+[LAYOUT]
+She kneels to the left of the frame; the right side carries the depth of the room.
+
+[PLATE]
+In the lower right corner sits a flat dark grey circle with a thin white border,
+about a third of the picture's width, held well clear of both frame edges. Inside
+it, in clean white sans-serif, five short lines, each on one line and centred:
+GIF SLOT · 2s · seamless loop
+SHOT close on the falling stream
+ACTION water falls into the bowl
+RESULT the water is never still
+MATCH hard side light, same grade
+This is the only text in the picture.
+```
+
+Observed: text 5 of 5 lines exact and the truth test passed — the falling stream is in
+frame and the water is in the bowl. The circle was cut by the right frame edge despite
+"held well clear of both frame edges", and at 26% of frame width it was the tightest plate
+of the set to read. Both faults are geometry and both are answered in G12.
+
+### example: window-cleaner-ugc-detail-loop — skeleton@1.14, run: partial
+Product: robot window cleaner · axes: register=ugc, inset_mode=detail, inset_motion=loop ·
+ledger `sha256:83f0e07a052be97d…`
+
+```
+TYPE: 06-relief-hero v1.14 --ugc, inset --detail, inset_motion --loop
+REGISTER: shot on a phone by an ordinary person. Slightly off exposure, mild
+overexposure at the window, no rim light, framing casual and a little too close.
+The room is left exactly as it is.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the robot window cleaner.
+Preserve shape, proportions, material, finish and colour exactly.
+
+[SUBJECT]
+Man in his forties in a T-shirt, sitting back on the arm of a sofa a couple of
+metres from the window with a mug in one hand, watching the machine work rather
+than touching it. Relaxed.
+
+[PRODUCT]
+The cleaner clamped to the middle of the window pane, straight on from inside the
+room, whole and unobstructed, its safety cord hanging down the glass.
+
+[EVIDENCE IN FRAME]
+The pane is clear where the machine has already passed and carries a faint even
+film where it has not, so the boundary between the two is visible.
+
+[SETTING]
+A real living room filled to the edges: a throw pushed to one end of the sofa, a
+bucket and cloth on the floor, a child's shoe, a radiator under the window, a plant
+on the sill. None of them carries printed words. Background soft, never blank.
+
+[LIGHT]
+Flat daylight through the window, slightly blown at the glass. No studio light.
+
+[LAYOUT]
+He sits to the left of the frame; the window fills the right side.
+
+[PLATE]
+In the lower right corner sits a flat dark grey rounded rectangle with a thin white
+border, about a third of the picture's width, held well clear of both frame edges.
+Inside it, in clean white sans-serif, five short lines, each on one line, left
+aligned:
+GIF SLOT · 2s · seamless loop
+SHOT close on the pad edge
+ACTION pad tracks across the glass
+RESULT clear glass behind the pad
+MATCH flat daylight, phone exposure
+This is the only text in the picture.
+```
+
+Observed: this is the render that settled a crisp plate does NOT break the ugc register —
+it reads as an annotation on a phone photo rather than as an advert. Text 5 of 5 exact, and
+at 42% of frame width the most legible plate of the set, costing the picture nothing because
+it sat in the corner the subject was offset from. Two faults: the plate was cut by the right
+frame edge, and the child's trainer named as incidental clutter came back carrying a
+recognisable sportswear swoosh, which SPEC 6.4 bars — name props unbranded.
 
 ## KNOWN-FLAKY
 - **`hotspot` is 1 observation and 1 of 2 renders** — anchoring it to named places cured an
@@ -329,76 +421,41 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
-- 1.15 (2026-08-14): four founding renders of `--loop`, 1 pass 3 partial. Every line of text
-  came back exact, 20 of 20, including a card carrying nothing else — the lettering is settled.
-  What is not: 3 of 3 plates were cut by a frame edge, and the ugc case proved a crisp plate
-  does NOT break that register. Both findings are G12's, not this file's.
-- 1.14 (2026-08-14): new axis `inset_motion: still | loop`, from six renders of how to hand a
-  loop to an editor. `--loop` turns the layer into a brief plate carrying the five-field work
-  order as text, in any declared shape; what it promises must be visible in the frame it sits
-  on, which was the fault in 2 of 4. Not a MARKS entry — it occupies a layer the skeleton
-  already legislates, and motion has no G3 colour. Absorbs 1.13, whose no-text reading lasted
-  one commit (`2458407`). ADR-019. Untested.
-- 1.12 (2026-08-14): eight renders. Naming a badge's glyph settles it, 2/2; describing an arrow
-  by its endpoints settles it, 2/2; anchoring hotspots to named places cures the over-count but
-  not a zero, 1/2. Three new rules, each 2/2: a recall pair changes only the product and never
-  the activity, `pose` must say where the person stands relative to the work, and no object in
-  `setting` may carry printed text. `output` is 4/4 and has never needed a rule. `639e338`
-- 1.11 (2026-08-14): first four renders, 0 pass. A drawn mark's stated COUNT does not survive
-  (2/2 runs that named one), a badge returns empty unless its glyph is named, and `path` needs a
-  named physical feature to follow. `pose` gains the constraint that it must leave the contact
-  point visible — asking for a lower-back product on a man sunk into a sofa put the massager on
-  his abdomen. `reduced` gains its operational half: name what makes finished look different.
-  `output` needed nothing and was the one unqualified success. `2df3c2f`
-- 1.10 (2026-08-14): SLOT CONSTRAINTS gains adapter Rule 1b — the zone names never reach the
-  model. The 1.8 skeleton shipped `[ZONE A: HERO]` and `LEFT:` as headings, the shape measured
-  printing `ZONE A/B/C` into an 02-symptom-rail frame. Whole-image headings are unaffected. `42b2dea`
-- 1.9 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
-  3398 → 1229. First MARKS library, counted off the 37 observations rather than off the
-  skeleton: `step` 7, `output` 6, `past` 5, `path` 4-for-4-against, `vs` and `hotspot` 1 each —
-  so the skeleton had mandated the two thinnest and confined the strongest to a sub-form.
-  `ratios` move to ADR-016: 5:3 and 2:1 become `16:9`, `1:1` kept on 5 observations. `RATIO:`
-  dropped (adapter Rule 4); the skeleton header had read v1.3 against a 1.8 file. `28b384d`
-- 1.8 (2026-08-12): `[ZONE A]` gains an explicit SUBJECT form choice — `full person` or
-  `reduced` (hands, forearms or a shoulder, no face), with the guardrail that a reduced
-  subject requires a visible output or finished state to carry what the expression would
-  have carried. Evidence: 3 distinct observations, all on this type — obs
-  `sha256:5ea857…` (batch 10-F, hands and forearms working the tool, action-crop),
-  `sha256:2a8cda…` (11-A, person reduced to a steadying hand, persona/wardrobe/pose
-  slots unexercised), `sha256:d186f6…` (11-A, a presenting hand tilting the loaded
-  bowl). The skeleton had mandated `[age/gender] … [warm expression]` outright, so every
-  one of these read as a violation of a slot the market simply does not fill that way.
-  The person-ABSENT form is a separate decision at 2/3 and went to KNOWN-FLAKY, not
-  here. Also: the Zone A grade line now cites G11 by ID rather than carrying the law as
-  loose wording (G8/G9 precedent, ADR-003; the rule itself is ADR-010).
-- 1.7 (2026-08-11): channels gain `advertorial`. Proved by a sibling: 06-relief-scene's
-  avoid_when says that for invisible results "the closing image must be 06-relief-hero
-  with the product in frame" — and relief-scene lives on advertorial, so relief-hero
-  had to be legal there for its own escape hatch to exist. Two real advertorial pages
-  demanded it independently.
-- 1.6 (2026-08-11): Setting slot rewritten for density (6-8 objects, no bare area
-  larger than the product) and the headline reservation removed when a layer is
-  present — the offset space belongs to the layer. G10 (frame safety) adopted by
-  reference. Evidence: render tests 2026-08-11, wet-dry floor washer and travel
-  stroller — 2/2 runs returned a dead mid-frame with `Subject offset right, empty
-  mid-frame for headline` combined with a corner layer, and 2/2 bleeding-shape runs
-  cropped their content. Both faults are compositional, not product-specific.
-- 1.5 (2026-08-10): --recall gains the transition-pair execution form (past-cell
-  marked + one arrow + now-cell). Evidence: 3 observations across 3 domains — obs
-  sha256:cd8e0e…, sha256:5ea857…, sha256:61118d… (batches D, F, H).
-- 1.4 (2026-08-10): inset_mode value `detail` added (magnified product detail: UI
-  screen or internal mechanism; composite screens in post, never model-drawn).
-  Evidence: 3 observations across 2 domains — obs sha256:b63e19…, sha256:611850…,
-  sha256:d51192… (batches D-E). Vocabulary axis updated in the same change.
-- 1.3 (2026-08-10): register axis (commercial/ugc) and inset_mode axis
-  (vsinset/recall/context/none) separated; VISIBLE MECHANISM promoted to required
-  (→G8); G7-X cross-layer rule adopted. Evidence: humidifier ugc exemplar (stronger
-  proof despite worse photography; mounted-vs-handheld contradiction).
-  seed: conversation.md.
-- 1.2 (2026-08-10): Zone B made conditional; visible-mechanism and pose/light
-  conditionals added. Evidence: spray-brush exemplar outperformed the 3-layer original
-  on argument and thumbnail legibility. seed: conversation.md.
-- 1.1 (2026-08-10): Zone B rebuilt as complementary view (real colorways only, must
-  reveal a hidden side); G1 block added. seed: conversation.md.
+- 1.15 (2026-08-14): four founding renders of `--loop`, 1 pass 3 partial. Lettering is settled
+  at 20 of 20 lines exact; geometry is not, with 3 of 3 plates cut by a frame edge. A crisp
+  plate does NOT break the ugc register. Both findings are G12's, not this file's. `4ff41d4`
+- 1.14 (2026-08-14): new axis `inset_motion: still | loop`. `--loop` turns the layer into a
+  brief plate carrying the five-field work order as text; what it promises must be visible in
+  the frame it sits on, which was the fault in 2 of 4. Not a MARKS entry — it occupies a layer
+  the skeleton already legislates and motion has no G3 colour. Absorbs 1.13, whose no-text
+  reading lasted one commit. ADR-019. `78ff655`
+- 1.12 (2026-08-14): eight renders. Naming a badge's glyph settles it 2/2, describing an arrow
+  by its endpoints 2/2, anchoring hotspots cures the over-count but not a zero at 1/2. Three
+  new rules each 2/2: a recall pair changes only the product, `pose` says where the person
+  stands relative to the work, no object in `setting` carries printed text. `output` 4/4 and
+  has never needed a rule. `639e338`
+- 1.11 (2026-08-14): first four renders, 0 pass. A drawn mark's stated COUNT does not survive,
+  2/2; a badge returns empty unless its glyph is named; `path` needs a named physical feature
+  to follow. `pose` must leave the contact point visible. `reduced` gains its operational
+  half. `2df3c2f`
+- 1.10 (2026-08-14): the zone names never reach the model, adapter Rule 1b. `42b2dea`
+- 1.9 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012), skeleton
+  3398 → 1229. First MARKS library, counted off the observations rather than off the skeleton,
+  which had mandated the two thinnest marks and confined the strongest to a sub-form. `ratios`
+  brought inside ADR-016's five. `28b384d`
+- 1.8 (2026-08-12): `subject` gains the `full person` | `reduced` choice, 3 observations. The
+  grade line cites G11 by ID instead of carrying the law. `6682208`
+- 1.7 (2026-08-11): channels gain `advertorial` — 06-relief-scene's own escape hatch names
+  this type, and relief-scene lives there. `973addf`
+- 1.6 (2026-08-11): `setting` rewritten for density, and the headline reservation removed when
+  a layer is present. G10 adopted by reference. 2/2 on both faults. `365370f`
+- 1.5 (2026-08-10): `--recall` gains the transition-pair form, 3 observations. `0fdfb6b`
+- 1.4 (2026-08-10): inset_mode value `detail` added, 3 observations. `145f9f9`
+- 1.3 (2026-08-10): register and inset_mode separated into two axes; visible mechanism
+  promoted to G8; G7-X adopted. seed: conversation.md
+- 1.2 (2026-08-10): the second layer made conditional; visible-mechanism and pose/light
+  conditionals added. seed: conversation.md
+- 1.1 (2026-08-10): the second layer rebuilt as a complementary view; G1 block added.
+  seed: conversation.md
 - 1.0 (2026-08-10): initial as BNR-RELIEF-VSINSET from the S-cushion office exemplar.
-  seed: conversation.md.
+  seed: conversation.md
