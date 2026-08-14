@@ -52,6 +52,27 @@ Each option differs from A on a NAMED dimension, recorded in `varies_on`:
 Rules: an option that requires a pair or has channel restrictions carries that in
 `composition_notes`. Options must all be legal — never present a gated-out type as
 an option. Fewer than 3 legal possibilities → emit fewer, never pad with rerolls.
+**C is always available** — it is a different execution of A, so a slot falls below
+three only when its own law forbids one.
+
+**Name one of them.** Every slot with options sets `recommended_opt` and explains it
+in `recommendation_basis`, against these five criteria in this order:
+
+1. **FIT** — does the type's own `use_when` name this beat, in the copy's own words.
+2. **PAGE LEGALITY** — does it keep the whole recommended SET legal under
+   `one-type-once`, `never_with`, `requires_pair` and the page arc.
+3. **EVIDENCE** — how many renders stand behind the variant, the style and every
+   mark it uses, counted from the type file and `eval/render-tests.jsonl`.
+4. **PRODUCT PRESENCE** — is the product in frame where this section's argument
+   needs it.
+5. **PROMPT RISK** — characters against that type's own ceiling, and how many
+   clauses in it have never been rendered.
+
+Where two criteria disagree the basis says which decided and why. A recommendation
+is a suggestion and nothing more: `feedback/picks.jsonl` records what the human
+chose, never what was suggested, or the loop starts learning from itself. Options
+are individually legal but not necessarily legal in COMBINATION — where picking one
+option forces another slot to change, say so in that option's `composition_notes`.
 
 **The table cell is exhausted → widen the derivation, never empty the slot.** An image
 slot with no options is a contract violation (SPEC §7.4). Work down this ladder and
@@ -160,6 +181,10 @@ to act on than a stated "no". Two forms:
 - **inset** — the motion replaces a layer the type's own SKELETON already legislates
   (a Zone B/C inset, a rail vignette). Only offered where that layer already exists;
   proposing a new layer is a graphic-overlay decision this runbook does not make.
+  **Check for the layer before defaulting to whole-frame** — a page can go a whole
+  routing without one and that is normal, since most types ban layers outright, but
+  where a legislated layer DOES exist and the still is a held state, the layer is
+  usually the half that should move. Say in `reason` which of the two applied.
 
 A slot earns motion when its declared reason to exist is **temporal** — a transition, a
 sequence, a state changing, an output flowing. A slot that exists to reveal an angle, a
@@ -178,6 +203,12 @@ MATCH    <the register law it must obey>
 `MATCH` is not filler: a loop that ignores the still's grade and light reads as pasted
 in. Delivery is mp4/webm with a size ceiling — a 20 MB `.gif` costs more conversion
 than the motion buys.
+
+**The brief is the summary; the loop also ships a runnable `prompt`.** It animates the
+STILL the recommended option produces and never regenerates it, so the loop cannot
+drift from the image the page already approved — it names what moves, freezes
+everything else by name, and restates the grade. For `form: inset` it must name the
+layer that moves and say the rest of the frame is frozen, or the whole picture moves.
 
 ## Step 7 — Emit and log
 

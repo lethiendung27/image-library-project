@@ -210,8 +210,24 @@
               },
               "delivery": {
                 "type": "string"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "A runnable motion prompt for this loop, written against the STILL the slot's recommended option produces — animate that frame, never regenerate it. The five-field brief stays as the human summary; this is the thing you paste into the tool. For form 'inset' it must name the layer that moves and freeze everything outside it."
               }
             }
+          },
+          "recommended_opt": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ],
+            "description": "Which option this operation recommends. Required whenever the slot has options. The reasoning goes in recommendation_basis — an unexplained pick is not interpretable later, and picks.jsonl records what the human chose, not what was suggested."
+          },
+          "recommendation_basis": {
+            "type": "string",
+            "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
           }
         }
       }
@@ -328,6 +344,10 @@
               },
               "delivery": {
                 "type": "string"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "A runnable motion prompt for this loop, written against the STILL the slot's recommended option produces — animate that frame, never regenerate it. The five-field brief stays as the human summary; this is the thing you paste into the tool. For form 'inset' it must name the layer that moves and freeze everything outside it."
               }
             }
           },
@@ -424,6 +444,18 @@
                 }
               }
             }
+          },
+          "recommended_opt": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ],
+            "description": "Which option this operation recommends. Required whenever the slot has options. The reasoning goes in recommendation_basis — an unexplained pick is not interpretable later, and picks.jsonl records what the human chose, not what was suggested."
+          },
+          "recommendation_basis": {
+            "type": "string",
+            "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
           }
         }
       }
