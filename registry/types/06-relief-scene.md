@@ -210,7 +210,7 @@ one thing this frame does settle.
   bought. `past` gains an admission test — the drain preserves a TONAL problem and destroys a
   COLOUR one, 2/2 against 0/1, so a hue-signalled problem routes to `06-relief-hero --vsinset`
   instead. `evidence` gains a size floor: the hero's copy is never smaller than the inset's,
-  which is exactly how the four renders sort. 2 pass, 1 partial, 1 fail.
+  which is exactly how the four renders sort. 2 pass, 1 partial, 1 fail. `c795d1b`
 - 2.0 (2026-08-14): the argument moves from two angles to two moments. Four first renders
   returned flawless reflections and no argument, so the founding premise is withdrawn: two
   angles are one moment. `past`, a desaturated inset of the problem, becomes the required
