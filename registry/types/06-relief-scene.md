@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.1"
+version: "3.2"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.1
+TYPE: 06-relief-scene v3.2
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -82,8 +82,11 @@ bathroom; the promise ends in the world**, which is why this type is never set a
 **`light`** — even natural daylight, bright, soft shadows. No golden hour, no rim light, no
 glamour lighting. Where a pain counterpart exists, keep the same time-of-day character.
 
-**`grade`** — a muted palette, light film grain, shallow depth of field. Desaturated, never
-warm-boosted. One photograph, in full colour throughout.
+**`grade`** — a natural palette, light film grain, shallow depth of field. **Honest, not
+drained.** Desaturating was inherited from matching a paired pain image, and against a released
+body it reads as despair — the locker-room render is muted blue-green over a man who looks
+finished. Keep it real rather than glossy, and let the light be kind. No glamour lighting, no
+warm-boosting into an advert, but nothing bleached out either.
 
 ## THE RELIEF
 
@@ -106,20 +109,37 @@ furniture, holding or covering a part, favouring one side, keeping a part tucked
 the light, bearing weight through one leg. Relief is the same body doing none of that — weight
 even through both sides, the part in the open, limbs loose, nothing held.
 
-**Relief is a MOMENT OF LETTING GO, not a state of being fine.** Six versions went wrong in two
-opposite directions here. A smile is a mood and says nothing — a woman laughing over a mug tells
-you nothing about her hands. But blankness is worse: four renders asked for no particular
-expression and returned people doing ordinary things, which is not relief, it is nothing.
-**Photograph the release itself**, in the second it happens:
+**RELEASE ALONE IS COLLAPSE. Relief is release PLUS something coming back.** Three versions
+went wrong here in three directions: a smile gave a mood that said nothing, no-expression gave
+people doing ordinary things, and letting-go gave bodies that had given out — a woman thrown
+back in a chair with her arms flung limp, a man sprawled along a bench under strip light. The
+third is the worst of them, because the first two said nothing and this one says the opposite
+of the argument.
 
-- **expression** — eyes closing, head going back, the breath going out, the jaw and the brow
-  letting go. Never a smile, and never blank.
-- **gesture** — the specific movement of stopping: shoulders rolling down and back, a held part
-  stretched out, a hand opening, sitting down into something and letting it take the weight.
-- **action** — doing the thing freely, mid-movement, with the product visibly the reason it is
-  possible.
+The discriminator is visible and checkable, and it is mostly the eyes:
 
-All three at once, in one frame. Any one of them alone reads as an ordinary photograph.
+| | collapse | relief |
+|---|---|---|
+| eyes | shut, lolling | **open, or opening**; creased at the corners |
+| head | thrown back, throat bared, mouth slack | level or lifted, the chin doing something |
+| limbs | flung, limp | loose but with tone, doing something small |
+| direction | everything sinking | the chest opening, shoulders back AND down |
+| face | slack | a small smile that arrives on its own |
+
+**The smile comes back — as a consequence, never as a pose.** What failed at 2.3 was a laugh
+performed at a camera-friendly moment. What is wanted is the smile that turns up by itself
+because something has stopped hurting: small, often only in the eyes, and usually while the
+person is looking at something other than the lens.
+
+Photograph the second the release happens, and require all three of these together:
+
+- **expression** — the breath going out AND the eyes coming open, the brow releasing, a small
+  involuntary smile
+- **gesture** — the chest opening, shoulders rolling back and down, a held part stretched out,
+  a hand opening
+- **action** — doing the thing freely, mid-movement, with the product visibly the reason
+
+Any one alone reads as an ordinary photograph. Release without the return reads as collapse.
 
 **`product`** — the product is in the scene as the reason the release is happening: in the
 hand, on the body, on the surface just used, within reach. It is **never presented to the
@@ -151,7 +171,9 @@ a guarded body, hand braced on furniture, a part held or covered,
 arms raised, celebration gesture, golden hour, warm flattering light,
 glamour lighting, beauty retouching, plastic skin, aspirational travel location,
 empty clean street, styled outfit, product presented to camera,
-product centred or held up, blank expression, saturated colors, stock photo look
+product centred or held up, blank expression, collapsed posture, head lolled
+back, limbs flung limp, eyes shut and slack, drained joyless grade,
+saturated colors, stock photo look
 ```
 
 ## WORKED EXAMPLES
@@ -205,6 +227,11 @@ No text, no logo, no watermark, no product, no arrows, no badges.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.2 (2026-08-14): release alone is collapse. 3.1's letting-go produced bodies that had given
+  out — thrown back, limbs flung, eyes shut — which says the opposite of the argument. Relief is
+  release PLUS something coming back, and the discriminator is a table now in the file: eyes
+  open not lolling, head level not thrown back, chest opening not sinking, and a small smile
+  that arrives on its own. `grade` stops being desaturated, which was fighting the joy.
 - 3.1 (2026-08-14): the product comes into the frame and the relief becomes a moment. Twenty
   renders with no product could not say what relieved anyone; `requires_product_photo` is now
   true and G1 binds. And relief is neither a smile nor a blank face — 3.0 banned the smile and
