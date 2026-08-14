@@ -179,7 +179,7 @@ existence. Shared register, different argument.
   light). **1.1's restructure is not itself render-tested**, but it added no law except the MARKS
   bar and otherwise only removed clauses ADR-014, ADR-016 and adapter Rule 4 had already retired
   registry-wide. The reading-light prompt text was never stored, so that render survives as a
-  verdict and nothing else — the gap `WORKED EXAMPLES` exists to close.
+  verdict and nothing else — the gap `WORKED EXAMPLES` exists to close. `a2307aa`
 - 1.1 (2026-08-14): **restructured into a call-map plus PARTS** (ADR-012), with `mode`, `scene`,
   `anchor`, `camera` and `person` owning their definitions and the skeleton cut to the call-map
   alone. Fixed on contact: header read `v0.1` against a 1.0 file; `RATIO:` and the rendered avoid
