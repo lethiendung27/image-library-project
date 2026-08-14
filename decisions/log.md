@@ -473,3 +473,46 @@ enforceable rather than remembered, and it is proposed rather than done here bec
 validator is shared and a second session is live. Until then it is a reading rule. The standing
 `RATIO:` sweep already owed on five active types and five staging files should apply this set
 when it happens, rather than preserving whatever each file currently names.
+
+## ADR-017 · 2026-08-14 · What a slot label may name, and where a called definition is expanded
+
+Two contradictions surfaced by `05-social-handoff`'s first render round, both delegated by the
+owner with the instruction to decide for the system rather than for the type.
+
+**1. Rule 6 taught authors to write the fault Rule 1b bans.** Rule 6's worked example of house
+slot form was `SCENE right 58%:` — a region name carrying a frame share — and Rule 1b bans
+exactly that shape, measured drawn into frames on two types. An author following the house style
+therefore produced the leak the adapter's own rule forbids, which is how `06-relief-hero` 1.9
+reached ten instances in one prompt set before a gate caught them (`42b2dea`).
+
+Slot form was never what leaked; the LABEL was. Rule 1b now states the three tiers the evidence
+supports — whole-image headings and subject headings have never been drawn, region headings have
+been drawn on every type that used them — and Rule 6 item 4 keeps slot form with a legal example.
+Frame share and offset stay a real prompt job under Rule 4 and move from the label into the block
+body. Nothing measured is weakened: Rule 6's 57% compression stands, and Rule 1b's ban narrows
+from "any slot name" to the class that actually leaks, which makes it enforceable by a gate.
+
+The distinction itself is not new — it was found and used when `06-relief-hero` 1.10 rewrote its
+zone names — but it existed only in a commit message, so the file kept teaching the fault. That
+is the reason this is worth an entry: an unwritten refinement cannot reach the other lane. The
+subject tier is new evidence, and thin: `05-social-handoff` shipped `[ADVOCATE]`, `[LISTENER]`,
+`[PRODUCT]`, `[ENVIRONMENT]` and `[COMPOSITION]` three times with nothing drawn (`27f19e3`),
+recorded as three runs rather than generalised.
+
+**2. SPEC §3.3 forbade what every working prompt in this library does.** It said a `PARTS` or
+`MARKS` definition is "never restated in the skeleton or in a rendered prompt". The first half is
+ADR-012's actual decision and stands. The second half was never true and cannot be: the model
+never reads the type file, so a called name that is not expanded arrives as a bare word. Every
+rendered prompt this library has shipped expands its definitions in full, and must.
+
+The contract already held the correct pattern one file away — adapter Rule 6 item 2 gives global
+rules precisely this treatment: referenced by ID in the type file, expanded at render time,
+carried once in the prompt. §3.3 now gives `PARTS` and `MARKS` the same law. This corrects a
+false statement rather than changing practice: no type file and no prompt changes.
+
+**Why an ADR and not a passing fix.** Both files are global law and a second session is live in
+this repo, so the log is how the other lane finds out — the precedent ADR-014 set for the same
+reason. `scripts/validate.py` encodes neither wording, so nothing enforces or breaks, and
+`registry_version` is unchanged because no data or structure moves.
+
+Consequences: `adapters/nano-banana.md` Rules 1b and 6, and `SPEC.md` §3.3, edited in this diff.

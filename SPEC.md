@@ -81,9 +81,12 @@ Required sections, in order: `PURPOSE`, `TRIGGER`, `SKELETON`, `NEGATIVE`, `CHAN
 Optional sections: `PARTS`, `MARKS`, `SLOT CONSTRAINTS`, `VARIANTS`,
 `WORKED EXAMPLES`, `KNOWN-FLAKY`, `NOTES`. `PARTS` and `MARKS` are a type's own
 callable definitions: the skeleton names an entry and the definition lives in the
-section once, never restated in the skeleton or in a rendered prompt. A type's mark
-library is its own (ADR-012); a mark that looks the same in two types is noted in
-both rather than owned centrally.
+section once, never restated in the skeleton. At render time a called definition is
+**expanded into the prompt** and carried there once — the model never reads the type
+file, so a name that is not expanded reaches it as a bare word. This is the same
+treatment global rules already get (`adapters/` Rule 6.2): referenced by ID in the type
+file, expanded at render time. A type's mark library is its own (ADR-012); a mark that
+looks the same in two types is noted in both rather than owned centrally.
 
 - `TRIGGER` contains `use_when: >` and `avoid_when: >` folded blocks written in **router
   language** (section roles, buyer state, channel). It is extracted verbatim into the index.

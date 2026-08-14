@@ -86,17 +86,28 @@ lemmas exactly — a `stain\w*` pattern matches "stainless" and yields false pos
 layout vocabulary (`panel`, `framing`) is not at suppression risk because the layout is
 restated every line.
 
-### Rule 1b — A slot name shown to the model gets drawn (measured, 2 types)
+### Rule 1b — A heading that names a REGION gets drawn into that region (measured, 3 types)
 
-The model draws headings it is shown. `02-symptom-rail` printed large circled A, B and C into a
-frame because its prompt carried `ZONE A`, `ZONE B`, `ZONE C` as headings, and G6 plus an avoid
-line containing `text` did not stop it. `03-mechanism-ghostbody` then printed `XCHECK` in
-capitals above an inset, for the same reason.
+The model draws headings it is shown — but not all of them, and the difference is what the
+heading is attached to. `02-symptom-rail` printed large circled A, B and C into a frame because
+its prompt carried `ZONE A`, `ZONE B`, `ZONE C` as headings, and G6 plus an avoid line
+containing `text` did not stop it. `03-mechanism-ghostbody` then printed `XCHECK` in capitals
+above an inset. `06-relief-hero` 1.9 carried ten instances — `HERO:`, `INSET,`, `LEFT`, `RIGHT`,
+`FIRST`, `SECOND` — and was caught by a gate before rendering (`42b2dea`).
 
-**A rendered prompt describes the thing; it never names the slot.** "A small two-panel inset in
-the top-left corner", not `XCHECK:`. Slot names are the type file's vocabulary and have no
-business reaching the model. Banning letters does not fix this, because the leak comes from the
-prompt's own structure rather than from an instruction.
+Three tiers of heading, and only the third has ever leaked:
+
+| tier | examples | evidence |
+|---|---|---|
+| whole-image | `REGISTER`, `PRODUCT REFERENCE`, `LIGHT` | shipped alongside every measured leak on 3 types, never drawn |
+| subject | `[ADVOCATE]`, `[LISTENER]`, `[PRODUCT]`, `[ENVIRONMENT]` | `05-social-handoff`, 3 of 3 renders clean (`27f19e3`) — three runs, recorded as three |
+| **region** | `ZONE A`, `LEFT:`, `HERO:`, `SCENE right 58%:` | drawn on 2 types, caught pre-render on a third |
+
+**A rendered prompt describes a region; it never names one.** "A small two-panel inset in the
+top-left corner" or "the half on the left", not `XCHECK:` or `LEFT:`. A region's position and
+frame share are still a real prompt job (Rule 4) — they belong in the block's BODY, never in its
+label. Banning letters does not fix this, because the leak comes from the prompt's own structure
+rather than from an instruction.
 
 ## Rule 2 — Product reference (G1)
 
@@ -180,8 +191,11 @@ waste came from four repeatable mistakes, so the rules are mechanical:
 3. **Enforce Rule 1 above.** 63% of the avoid tokens in the pre-compression set were
    already asserted positively in the prompt body. Drop them; the remainder is usually
    5-7 tokens, not 16.
-4. **Slot form, not prose.** `SCENE right 58%:` then the fills. Connectives, restated
-   negatives and hedging words cost tokens and buy nothing from this model.
+4. **Slot form, not prose.** A labelled block, then the fills. Connectives, restated
+   negatives and hedging words cost tokens and buy nothing from this model. **Label the
+   block for its subject or for the whole image, never for a region of the frame** —
+   `[ADVOCATE]`, not `SCENE right 58%:`, per Rule 1b. Slot form was never what leaked; the
+   label was, and frame share belongs in the block body.
 
 Reference numbers from that set: a GIF-inset prompt lands at ~1450-1600 characters and
 ~225 words. A prompt past ~2500 characters should be re-read for a duplicated block.
