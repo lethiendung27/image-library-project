@@ -182,6 +182,7 @@ Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
   only. Base sharpened by the same renders: `product` separates by HUE first, value only as
   fallback; `moment` must differ in tone or colour, never texture (A7), which `avoid_when` now
   screens on; `advocate` is a second AFTER the stroke, since mid-action the eyes go to the work.
+  `de17866`
 - 2.3 (2026-08-14): **the product must differ from the whole frame, not from the surface behind
   it.** 2.2 renders: eyes off the lens and listener geometry landed 4 of 4, uncovering the next
   fault — the product vanished in 3 of 4, each into a scene built from its own colour.
