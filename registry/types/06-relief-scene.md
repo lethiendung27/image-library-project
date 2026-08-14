@@ -168,7 +168,7 @@ predicted this before the type was ever rendered.
   angles are one moment. `past`, a desaturated inset of the problem, becomes the required
   mechanism — 5 obs and 2/2 on `06-relief-hero`. `reflection` demoted to optional. MAJOR:
   layer structure changes and `requires_pair` is dropped, the before now being in-frame.
-  `gaze` gains `candid`; `4:3` added.
+  `gaze` gains `candid`; `4:3` added. `59678e1`
 - 1.1 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   cut. First MARKS library, and all three entries are proposals: this type has 0 observations
   and 0 renders, so there is nothing to count. Every entry is made of the scene, because the
