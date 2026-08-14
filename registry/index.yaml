@@ -433,16 +433,16 @@ types:
     step: 6
     job: relief
     device: scene
-    version: "3.0"
+    version: "3.1"
     status: active
     channels: [paid-social, advertorial]
     ratios: ["16:9", "4:3", "3:4"]
-    requires_product_photo: false
+    requires_product_photo: true
     generation_mode: single-pass
     axes:
       gaze: [candid, reflect]
     variants: []
-    exempt_from: [G1, G3, G4]
+    exempt_from: [G3, G4]
     pairs_with: [01-pain-scene]
     never_with: []
     avoid_adjacent: []
@@ -451,8 +451,9 @@ types:
     picks: {}
     use_when: >
       Closing image of an advertorial or final frame of an ads creative, when
-      the product's promise is a state of living rather than a feature. Pairs
-      naturally with a 01-pain-scene of the same person, and no longer depends
+      the product's promise is a state of living rather than a feature, and
+      the product can plausibly be present where the relief happens. Pairs
+      naturally with a 01-pain-scene of the same person, and does not depend
       on one.
     avoid_when: >
       Marketplace galleries, main images, or anywhere the image must stand

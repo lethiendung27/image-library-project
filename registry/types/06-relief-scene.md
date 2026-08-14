@@ -3,17 +3,17 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.0"
+version: "3.1"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
 channels: [paid-social, advertorial]
-requires_product_photo: false
+requires_product_photo: true
 generation_mode: single-pass
 axes:
   gaze: [candid, reflect]
 variants: []
-exempt_from: [G1, G3, G4]
+exempt_from: [G3, G4]
 pairs_with: [01-pain-scene]
 never_with: []
 ---
@@ -21,15 +21,17 @@ never_with: []
 # 06-relief-scene
 
 ## PURPOSE
-The closing bookend of a pain→relief arc: one photograph of a person whose body has stopped
-defending itself, in a situation that would have demanded defence. No product, no inset, no
-graphics of any kind. The whole craft is in the body.
+The closing bookend of a pain→relief arc: one photograph of a person visibly letting go of
+something they had been bracing against, **with the product there in the scene as the reason**.
+Candid, single frame, no inset and no graphics — the product is part of the life, not presented
+to the camera.
 
 ## TRIGGER
 use_when: >
   Closing image of an advertorial or final frame of an ads creative, when the
-  product's promise is a state of living rather than a feature. Pairs naturally
-  with a 01-pain-scene of the same person, and no longer depends on one.
+  product's promise is a state of living rather than a feature, and the product
+  can plausibly be present where the relief happens. Pairs naturally with a
+  01-pain-scene of the same person, and does not depend on one.
 avoid_when: >
   Marketplace galleries, main images, or anywhere the image must stand alone.
   Not when the result is invisible on the body or an object — for invisible
@@ -41,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.0
+TYPE: 06-relief-scene v3.1
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -50,10 +52,11 @@ REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 [LIGHT] plain daylight, no glamour.                           -> PARTS/light
 [GRADE] muted, desaturated, never warm-boosted.               -> PARTS/grade
 
-[RELIEF] the body not defending itself, and a situation      -> PARTS/relief
-         that would have demanded it.
+[PRODUCT] in the scene as the reason, never presented.        -> PARTS/product
+[RELIEF] the moment of letting go, in a situation that        -> PARTS/relief
+         would have demanded bracing.
 
-NO MARKS. This type has none, and that is the type.
+NO MARKS and NO INSET. This type has neither, and that is the type.
 
 ```
 
@@ -103,18 +106,31 @@ furniture, holding or covering a part, favouring one side, keeping a part tucked
 the light, bearing weight through one leg. Relief is the same body doing none of that — weight
 even through both sides, the part in the open, limbs loose, nothing held.
 
-**Attention is elsewhere.** On a person, a view, a task — never on the body. A person aware of
-the part is still managing it.
+**Relief is a MOMENT OF LETTING GO, not a state of being fine.** Six versions went wrong in two
+opposite directions here. A smile is a mood and says nothing — a woman laughing over a mug tells
+you nothing about her hands. But blankness is worse: four renders asked for no particular
+expression and returned people doing ordinary things, which is not relief, it is nothing.
+**Photograph the release itself**, in the second it happens:
 
-**A SMILE IS NOT RELIEF.** It is the single most common substitute and it fails outright: a
-woman laughing over a mug reads as a pleasant mood and says nothing about her hands. Relief
-reads as release — a head tipped back, a spine settled into a bench, shoulders down — and it
-can wear no expression at all.
+- **expression** — eyes closing, head going back, the breath going out, the jaw and the brow
+  letting go. Never a smile, and never blank.
+- **gesture** — the specific movement of stopping: shoulders rolling down and back, a held part
+  stretched out, a hand opening, sitting down into something and letting it take the weight.
+- **action** — doing the thing freely, mid-movement, with the product visibly the reason it is
+  possible.
+
+All three at once, in one frame. Any one of them alone reads as an ordinary photograph.
+
+**`product`** — the product is in the scene as the reason the release is happening: in the
+hand, on the body, on the surface just used, within reach. It is **never presented to the
+camera**, never centred, never held up — that is `06-relief-hero`'s job and its register. Here
+it sits where it would really be and the person is not looking at it. It must be legible enough
+to recognise at a glance, and G1 binds it: the attached photo is the exact reference.
 
 **The admission test.** If the resolved state cannot be shown as a body behaving differently in
 a situation that costs something, this type is the wrong one. Close with `06-relief-hero`, which
-has the product in frame and can argue with an inset because its register expects composed
-layers; a candid documentary photograph does not.
+presents the product and can argue with an inset because its register expects composed layers;
+a candid documentary photograph does neither.
 
 ## SLOT CONSTRAINTS
 - **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
@@ -134,8 +150,8 @@ posing, laughing as the relief, a situation that costs nothing,
 a guarded body, hand braced on furniture, a part held or covered,
 arms raised, celebration gesture, golden hour, warm flattering light,
 glamour lighting, beauty retouching, plastic skin, aspirational travel location,
-empty clean street, styled outfit, product in frame, saturated colors,
-stock photo look
+empty clean street, styled outfit, product presented to camera,
+product centred or held up, blank expression, saturated colors, stock photo look
 ```
 
 ## WORKED EXAMPLES
@@ -189,6 +205,11 @@ No text, no logo, no watermark, no product, no arrows, no badges.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.1 (2026-08-14): the product comes into the frame and the relief becomes a moment. Twenty
+  renders with no product could not say what relieved anyone; `requires_product_photo` is now
+  true and G1 binds. And relief is neither a smile nor a blank face — 3.0 banned the smile and
+  got blankness, which is worse. It is the second of letting go: eyes closing, shoulders
+  rolling down, a held part stretched out, with the product visibly the reason.
 - 3.0 (2026-08-14): the marks and the inset are cut. Owner: the inset is obscure, and with it
   covered the main photograph shows no relief — true in 15 of 16 renders across four rounds.
   MARKS is replaced by THE RELIEF, the thing the type actually needs and never had: a body that
