@@ -223,7 +223,7 @@ one thing this frame does settle.
   between the cells, because both rules asking for it were RELATIVE — "framed the same way",
   "smaller in the inset" — and `smaller` was read as `wider shot`. Each cell now gets its own
   absolute description. Two conditions added from a clean 2-2 split: the inset holds the
-  evidence and almost nothing else, and whatever `evidence` names must be visible in both cells.
+  evidence and almost nothing else, and whatever `evidence` names must be visible in both cells. `423f1b8`
 - 2.1 (2026-08-14): the inset mechanism works, with two conditions the first four renders
   bought. `past` gains an admission test — the drain preserves a TONAL problem and destroys a
   COLOUR one, 2/2 against 0/1, so a hue-signalled problem routes to `06-relief-hero --vsinset`
