@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.9"
+version: "1.10"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -45,7 +45,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 06-relief-hero v1.9
+TYPE: 06-relief-hero v1.10
 REGISTER: commercial | ugc                                    -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference,
@@ -171,6 +171,15 @@ appears in the hero except `output`.
 - G7-X binds hard: one mode of use across hero, inset and product view. The humidifier ugc
   exemplar failed exactly this — wall-mounted inset, handheld hero.
 - Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.
+- **The zone names never reach the model.** `HERO`, `INSET`, `ZONE A/B/C`, `LEFT`, `RIGHT`,
+  `FIRST`, `SECOND` are this file's vocabulary. Adapter Rule 1b is measured on three types: a
+  name attached to a REGION of the frame gets printed into that region, while whole-image
+  headings — `REGISTER`, `PRODUCT REFERENCE`, `LIGHT` — shipped alongside every one of those
+  leaks and were never drawn. The 1.8 skeleton carried `[ZONE A: HERO, right 60%]` and
+  `LEFT:` / `RIGHT:` verbatim, which is the exact shape that printed `ZONE A/B/C` into a
+  02-symptom-rail frame. Describe instead: "in the upper left corner sits a small rectangular
+  panel with a thin white border", "the half on the left". The first draft of the 1.9 prompt
+  set reproduced the fault in 10 places before a gate caught it.
 
 ## NEGATIVE
 ```
@@ -288,6 +297,10 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.10 (2026-08-14): SLOT CONSTRAINTS gains adapter Rule 1b — the zone names never reach the
+  model. The 1.8 skeleton shipped `[ZONE A: HERO]` and `LEFT:` / `RIGHT:` as headings, which is
+  the shape measured printing `ZONE A/B/C` into a frame on 02-symptom-rail; whole-image headings
+  are unaffected and stay. Found by gating the 1.9 prompt set, which had reproduced it 10 times.
 - 1.9 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   3398 → 1229. First MARKS library, counted off the 37 observations rather than off the
   skeleton: `step` 7, `output` 6, `past` 5, `path` 4-for-4-against, `vs` and `hotspot` 1 each —

@@ -397,7 +397,7 @@ types:
     step: 6
     job: relief
     device: hero
-    version: "1.9"
+    version: "1.10"
     status: active
     channels: [landing-page, marketplace, paid-social, advertorial]
     ratios: ["16:9", "1:1"]
