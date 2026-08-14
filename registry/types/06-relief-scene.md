@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "2.3"
+version: "3.0"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -21,9 +21,9 @@ never_with: []
 # 06-relief-scene
 
 ## PURPOSE
-The closing bookend of a pain→relief arc: **a relief scene with a suffering scene inset.** The
-same person, twice — living without the problem in the main photograph, enduring it in a small
-one — so the change is a change in a life rather than on a surface. No product.
+The closing bookend of a pain→relief arc: one photograph of a person whose body has stopped
+defending itself, in a situation that would have demanded defence. No product, no inset, no
+graphics of any kind. The whole craft is in the body.
 
 ## TRIGGER
 use_when: >
@@ -41,7 +41,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v2.3
+TYPE: 06-relief-scene v3.0
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -50,11 +50,11 @@ REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 [LIGHT] plain daylight, no glamour.                           -> PARTS/light
 [GRADE] muted, desaturated, never warm-boosted.               -> PARTS/grade
 
-[MARKS]                                                       -> MARKS
-  past        the problem, a desaturated inset. REQUIRED
-  evidence    the same thing resolved, in the hero
-  carry-over  one thing identical in both cells
-  reflection  optional second angle, in real glass
+[RELIEF] the body not defending itself, and a situation      -> PARTS/relief
+         that would have demanded it.
+
+NO MARKS. This type has none, and that is the type.
+
 ```
 
 ## PARTS
@@ -80,69 +80,41 @@ bathroom; the promise ends in the world**, which is why this type is never set a
 glamour lighting. Where a pain counterpart exists, keep the same time-of-day character.
 
 **`grade`** — a muted palette, light film grain, shallow depth of field. Desaturated, never
-warm-boosted. The hero is full colour; only `past` is drained.
+warm-boosted. One photograph, in full colour throughout.
 
-## MARKS
+## THE RELIEF
 
-**Every entry is made of the scene; nothing is drawn over the photograph.** Measured across
-three sibling types, a mark of real substance renders reliably (`emission` 7/7, `output` 4/4)
-and a drawn mark at small scale does not (`fit` cut at 0/8, `hotspot` 1/3). A desaturated inset
-is a photograph, not an overlay, so it sits on the reliable side.
+**This type has no marks and no inset.** Sixteen renders across four rounds went into a
+comparison device — a drained macro, then a suffering scene — and the owner's test retires it:
+cover the inset and look at the main photograph alone. Relief survived that test once in
+sixteen. The device was never the problem to solve.
 
-| name | made of | where | evidence |
-|---|---|---|---|
-| `past` | a photograph of the same person in the pain moment — a SCENE, in full colour | a small inset, 15-25% of the frame, one corner | 0/12 as a drained detail; scene form untested |
-| `evidence` | what the person is visibly enduring in one cell and visibly free of in the other — a situation, not a surface | both cells, described absolutely | 4/4 crop match once described absolutely |
-| `carry-over` | one thing identical in both cells — the jacket, the doorway, the bag | both cells | **none** — proposal |
-| `reflection` | the subject's own image in real glass, at a second angle | optional, one surface | 5/5 rendered; proves nothing alone, and sits quietly beside `past` |
+**Relief is a body that has stopped defending itself, in a situation that would have demanded
+defence.** Both halves are required and neither works alone.
 
-**Whatever `evidence` names must be visible in BOTH cells.** A parting named as the evidence
-and then hidden under a clip in the hero leaves the after state absent, however good the inset
-is. Check the hero shows the same named thing before anything else.
+**The situation has to cost something.** A man walking a towpath with his hands in his pockets
+is not relieved of anything, because nothing is being asked of him. Kneeling on a hard floor,
+carrying a full load up steps, sitting out in bright light, plunging hands into cold water —
+these are situations the problem would have made a person avoid, ration or brace against.
+Choose the situation from what the problem forbade.
 
-**`past` is the mechanism and it is REQUIRED.** Two angles are two viewpoints of one moment; a
-change needs two moments, so the problem has to be physically in the frame. An unmarked past
-cell reads as a result, so the drain is load-bearing rather than stylistic.
+**The body must not be guarding.** Guarding is visible and specific: bracing a hand against
+furniture, holding or covering a part, favouring one side, keeping a part tucked away or out of
+the light, bearing weight through one leg. Relief is the same body doing none of that — weight
+even through both sides, the part in the open, limbs loose, nothing held.
 
-**The inset is NOT drained, and dropping the drain dissolves the admission test that went with
-it.** A drained cell was inherited from `06-relief-hero`, where the past cell is a mundane
-moment that could be read either way and needs marking. **A suffering scene marks itself** —
-nobody reads a person enduring the problem as the after state. Draining it only makes the
-problem harder to see, and it cost this type a whole class of problems: redness, inflammation
-and staining by hue are all legible again now that the cell keeps its colour.
+**Attention is elsewhere.** On a person, a view, a task — never on the body. A person aware of
+the part is still managing it.
 
-Keep the drain only where a past cell's content is genuinely ambiguous. That is the condition
-`06-relief-hero`'s 5 observations actually support, and it is not this type's case.
+**A SMILE IS NOT RELIEF.** It is the single most common substitute and it fails outright: a
+woman laughing over a mug reads as a pleasant mood and says nothing about her hands. Relief
+reads as release — a head tipped back, a spine settled into a bench, shoulders down — and it
+can wear no expression at all.
 
-**`evidence` must be nameable rather than inferred.** "A visibly rested face" renders as an
-ordinary person; a collar clean where it was marked is a fact a stranger could point at.
-
-**Describe each cell ABSOLUTELY. Never describe one relative to the other.** "Framed the same
-way as the hero" and "smaller in the inset than in the main photograph" are relational
-instructions about two compositions the model builds independently, and across eight renders
-they never once produced a matching crop — `smaller` was read as `wider shot`, which is the
-opposite of the intent and destroys the evidence. Give the inset its own absolute close crop and
-give the hero the same body part at its own absolute closeness, and let the match be a
-consequence.
-
-**The inset is a SCENE, so it needs enough room to be one.** An earlier version of this rule
-said the opposite — crop to the evidence and nothing else — and it was right for the macro
-comparison this type had accidentally become and wrong for what it is. Twelve renders of
-surfaces argued nothing, however well matched. The inset shows the person, what they are doing,
-and enough of where they are to read as a moment: the same framing discipline as the hero, at a
-smaller size.
-
-**`carry-over` is what stops the pair changing two things at once.** Hold one thing identical
-between inset and hero — the same jacket, the same doorway, the same bag — so the change reads
-against something that demonstrably did not change. Changing everything at once isolates
-nothing; that cost `06-relief-hero` two renders when a recall inset changed the activity as well
-as the product.
-
-**`reflection` is demoted to optional and kept only because it renders.** 4 of 4 came back
-plausible, sharp and geometrically consistent, including one holding two subjects in a car door
-— the best-executed mechanism this library has had on a first attempt, and it carried no
-argument at all. Use it where the evidence genuinely needs a second angle, such as the back of a
-head. Never as the thing that makes the case.
+**The admission test.** If the resolved state cannot be shown as a body behaving differently in
+a situation that costs something, this type is the wrong one. Close with `06-relief-hero`, which
+has the product in frame and can argue with an inset because its register expects composed
+layers; a candid documentary photograph does not.
 
 ## SLOT CONSTRAINTS
 - **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
@@ -157,72 +129,71 @@ head. Never as the thing that makes the case.
 
 ## NEGATIVE
 ```
-[G6] + badges, arrows, drawn overlays, looking at camera, posing, laughing,
-undrained past cell, past cell larger than the hero subject,
+[G6] + badges, arrows, drawn overlays, insets of any kind, looking at camera,
+posing, laughing as the relief, a situation that costs nothing,
+a guarded body, hand braced on furniture, a part held or covered,
 arms raised, celebration gesture, golden hour, warm flattering light,
 glamour lighting, beauty retouching, plastic skin, aspirational travel location,
-empty clean street, styled outfit, geometrically wrong reflection,
-reflection out of focus, product in frame, saturated colors, stock photo look
+empty clean street, styled outfit, product in frame, saturated colors,
+stock photo look
 ```
 
 ## WORKED EXAMPLES
-### example: skatepark-trainers — skeleton@2.0, run: pass
+### example: park-bench-hay-fever — skeleton@2.3, run: partial
 Product: none in frame (G1-exempt) · axes: gaze=candid · frame delivered 1200x896
-**Superseded content model — kept as a record, not as a template.** This was the first frame
-that read as before-and-after, and 2.3 retired the model it belongs to: both cells are surfaces,
-and the type argues with scenes. The drain and the tonal test it depends on are also gone. What
-still holds from it is the discipline of two cells showing the same thing at the same closeness.
+**Kept for its main photograph, which is the only one in sixteen renders that carries relief on
+its own.** She is sitting back into the bench with her head tipped up, eyes open and clear,
+hands loose on her bag, her weight settled — nothing about her is defending anything, in a
+place and a season that used to cost her something. Cover the inset and the photograph still
+says it.
+
+**Do not copy the inset half.** 3.0 bans insets outright and the full text is kept only because
+SPEC 3.3 requires a rendered example to record what actually rendered.
 
 ```
-TYPE: 06-relief-scene v2.0
+TYPE: 06-relief-scene v2.3
 REGISTER: a candid documentary photograph a passer-by could have taken. Single
 frame, natural, unposed, sharp. Nobody aware of a camera.
 
-A young man in dark jeans is sitting on a low concrete step at the edge of a
-skatepark, forearms on his knees, looking out at the ramps. Not at the camera.
-His white trainers are square on in the lower third of the picture.
+A young woman in a denim jacket is sitting back on a park bench with her face
+tipped up into the light and her eyes open, watching something across the grass.
+Not at the camera. She is at half length, seated, with the bench and the park
+behind her.
 
-The change is in the trainers and it must be a fact anyone could point at: the
-toe caps and the midsole are one clean white the whole way round, the rubber
-edge unbroken and bright, with no grey scuffing across the toe and no dark
-grained line along the midsole.
+The relief is in her eyes and face and it must be a fact anyone could point at:
+both eyes are wide open and clear, the whites unmarked, the skin around them and
+across the nose even in tone, and her hands are resting on the bench with
+nothing held to her face.
 
-In the upper right corner sits a small photograph, drained to grey, about a
-fifth of the picture wide, with a thin white border. It shows the same trainers
-on the same step from the same angle, framed the same way as the trainers in the
-main photograph — but the toe caps are grey and abraded and a dark grained line
-runs the length of the midsole.
+In the upper right corner sits a small photograph in full colour, about a fifth
+of the picture wide, with a thin white border. It shows the same woman on the
+same bench in the same jacket, earlier: she is hunched forward with a crumpled
+tissue pressed under her nose, her eyes screwed almost shut and streaming, the
+lids and the skin around her nose red and swollen, turned away from the light.
+The bench and the park are in it so it reads as a moment.
 
-The frayed hem of the same dark jeans falls across the ankle the same way in both
-the small photograph and the main one. Nothing else is shared.
+The same denim jacket and the same canvas bag beside her are in both
+photographs. Nothing else is shared.
 
-An ordinary skatepark on a flat afternoon: a scarred concrete ramp, a chained
-bin, a bag dumped on the step behind him, one blurred skater on the far side.
+An ordinary park: mown grass, a litter bin, two blurred people on the path
+behind, a line of trees.
 
-LIGHT: even daylight, bright, soft shadows, no rim light.
-GRADE: muted concrete grey and denim blue, light film grain, shallow depth of
-field, desaturated, never warm-boosted. Only the small photograph is drained.
+LIGHT: bright flat daylight, even, no rim light.
+GRADE: muted green and denim blue, light film grain, shallow depth of field,
+desaturated, never warm-boosted. Both photographs are in full colour.
 
 No text, no logo, no watermark, no product, no arrows, no badges.
 ```
-
-### example: car-park-windscreen — skeleton@2.2, run: fail
-Product: none in frame (G1-exempt) · axes: gaze=candid · frame delivered 1200x896
-- HERO — a woman in her fifties at the wheel of a parked car in a supermarket car park, both
-  hands on the wheel, about to set off, looking ahead through clear glass
-- INSET — the same windscreen from the same seat, drained to grey, a milky film across the
-  middle and a greasy arc where the wipers stop
-- CARRY-OVER — the same air freshener on the same mirror stem in both
-Kept because it shows the fix rather than only the fault. The crop match is exact — the two
-cells are the same view of the same glass, which is what 2.2's absolute descriptions bought
-after eight renders that never managed it. And the hero is a real moment: a woman about to
-drive somewhere. Then the inset repeats her windscreen as a study of glass and the comparison
-drops out of the scene onto a surface. **Keep this hero and make the inset another moment.**
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.0 (2026-08-14): the marks and the inset are cut. Owner: the inset is obscure, and with it
+  covered the main photograph shows no relief — true in 15 of 16 renders across four rounds.
+  MARKS is replaced by THE RELIEF, the thing the type actually needs and never had: a body that
+  has stopped defending itself, in a situation that would have demanded defence. A smile is not
+  relief. MAJOR — the inset layer is removed.
 - 2.3 (2026-08-14): both cells are SCENES. Absolute description fixed the crop 4/4 after eight
   failures, and with the crops finally matched the images were plainly macro surface studies —
   a spec device, not a relief scene. Owner's correction: relief scene, suffering scene inset.
