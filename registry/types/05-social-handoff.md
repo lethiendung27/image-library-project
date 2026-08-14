@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.0"
+version: "2.1"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
@@ -42,7 +42,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.0
+TYPE: 05-social-handoff v2.1
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
@@ -79,8 +79,11 @@ retires the mechanism rather than repairing it.
 the moment rather than on the advocate. The turned back is an empty seat for the viewer's
 identity, and **both faces visible kills the mechanism**. Held on 2 of 3 founding renders.
 
-**`product`** — the reference product where it is genuinely used, and **dominant**: the largest,
-sharpest and best-lit man-made object in frame, with clear space around it.
+**`product`** — the reference product where it is genuinely used, and **dominant at any size**.
+Dominance is not bulk: a handheld tool cannot be the biggest thing in a room and must still
+command the frame. Four instruments, all of them the register's own — the product is the only
+thing in sharp focus and everything behind it is softer; it carries the strongest light in the
+frame; nothing overlaps or crowds it; and the surface behind it separates from it in value.
 
 **Nothing of similar size, finish or family stands near it.** A kettle beside a coffee grinder,
 both brushed silver, both the same size, leaves the frame unreadable — a viewer cannot tell
@@ -144,12 +147,18 @@ Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
   on the product deliberately, so this one is worth watching.
 
 ## CHANGELOG
+- 2.1 (2026-08-14): `PARTS/product`'s dominance law was **unachievable as written**. "The largest
+  man-made object in frame" cannot be met by a handheld tool in a room, and a model asked for it
+  either ignores the clause or distorts the product's scale — the reference photo governs scale
+  under G1/G2, so a size instruction fights it. Dominance is now four register-native
+  instruments: sole sharp focus, strongest light, nothing overlapping, value separation behind.
+  Caught while writing the first 2.0 prompt set, before any render.
 - 2.0 (2026-08-14): **MAJOR — the spine moves from a gesture to a result.** Owner verdict on all
   3 founding renders: the product does not stand out, and neither interaction is real. New
   `PARTS/moment` — something in frame is different because of the product and both people are
   dealing with THAT. `advocate` retires pointing and puts hands back on the product; `product`
   gains a dominance law and a no-decoy rule; the ≥8% floor is retired as the wrong instrument.
-  Decisive: the grinder render, whose gesture drew perfectly and still read as staged.
+  Decisive: the grinder render, whose gesture drew perfectly and still read as staged. `2d04cc9`
 - 1.2 (2026-08-14): **first renders this type has ever had** — 3 products, verdicts fail /
   partial / fail (render ledger, ts 2026-08-14). `PARTS/advocate` gains **both hands empty**:
   2 of 3 renders dropped the pointing arm because a hand was holding something (two mugs; the
