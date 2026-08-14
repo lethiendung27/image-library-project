@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.2"
+version: "3.3"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.2
+TYPE: 06-relief-scene v3.3
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -141,11 +141,26 @@ Photograph the second the release happens, and require all three of these togeth
 
 Any one alone reads as an ordinary photograph. Release without the return reads as collapse.
 
-**`product`** — the product is in the scene as the reason the release is happening: in the
-hand, on the body, on the surface just used, within reach. It is **never presented to the
-camera**, never centred, never held up — that is `06-relief-hero`'s job and its register. Here
-it sits where it would really be and the person is not looking at it. It must be legible enough
-to recognise at a glance, and G1 binds it: the attached photo is the exact reference.
+**`product`** — the product is in the scene as the reason the release is happening, and G1
+binds it: the attached photo is the exact reference.
+
+**It must STAND IN THE FRAME AS ITS OWN OBJECT, near the camera, turned so it can be read.** An
+earlier wording said "present, not presented — never centred, never held up", which conflated
+NOT PRESENTED with NOT PROMINENT and put products inside boots and under jumpers. Four renders
+sorted on this and on nothing else: a bottle standing upright on a desk close to the lens with
+its label toward it was the only one a viewer could name. A tube edge-on in a pocket showed that
+something was there but not what. An insole inside a boot and a wrap under a jumper were not
+objects in the frame at all, and the wrap render resolved the contradiction by dropping the
+product entirely.
+
+**Not presented still holds** — the person does not hold it up, look at it or offer it, and it
+is not centred or lit for the camera. It simply occupies its own space in the picture the way a
+documentary photographer standing in the right place would include it.
+
+**Admission test, second clause: a product that only ever lives INSIDE or UNDER something
+cannot be argued by this type.** Insoles, inserts, under-clothing wraps, anything in a shoe or
+beneath a garment. No camera position and no moment rescues them in a candid single frame.
+Those close with `06-relief-hero`, which has a product-view layer for exactly this.
 
 **The admission test.** If the resolved state cannot be shown as a body behaving differently in
 a situation that costs something, this type is the wrong one. Close with `06-relief-hero`, which
@@ -171,62 +186,67 @@ a guarded body, hand braced on furniture, a part held or covered,
 arms raised, celebration gesture, golden hour, warm flattering light,
 glamour lighting, beauty retouching, plastic skin, aspirational travel location,
 empty clean street, styled outfit, product presented to camera,
-product centred or held up, blank expression, collapsed posture, head lolled
-back, limbs flung limp, eyes shut and slack, drained joyless grade,
-saturated colors, stock photo look
+product centred or held up, product hidden inside or under something,
+product turned away so its face cannot be read, blank expression,
+collapsed posture, head lolled back, limbs flung limp, eyes shut and slack,
+drained joyless grade, saturated colors, stock photo look
 ```
 
 ## WORKED EXAMPLES
-### example: park-bench-hay-fever — skeleton@2.3, run: partial
-Product: none in frame (G1-exempt) · axes: gaze=candid · frame delivered 1200x896
-**Kept for its main photograph, which is the only one in sixteen renders that carries relief on
-its own.** She is sitting back into the bench with her head tipped up, eyes open and clear,
-hands loose on her bag, her weight settled — nothing about her is defending anything, in a
-place and a season that used to cost her something. Cover the inset and the photograph still
-says it.
+### example: desk-eye-drops — skeleton@3.2, run: partial
+Product: eye drops · axes: gaze=candid · frame delivered 1200x896
+**The closest this type has come, and the only render where a viewer can name the product.**
+The emotion is right: sitting up rather than slumped, one hand at the back of the neck
+mid-stretch, both eyes wide and clear on the street outside the window, a half smile that
+arrived on its own. And the bottle stands upright on the desk close to the camera with its label
+toward the lens — its own object, in its own light, while he is not looking at it or touching
+it. That is the placement rule 3.3 was written from.
 
-**Do not copy the inset half.** 3.0 bans insets outright and the full text is kept only because
-SPEC 3.3 requires a rendered example to record what actually rendered.
+Still partial: nothing in the frame connects the bottle to the release, so it could be anyone's
+desk bottle. That is the open question this type now has left.
 
 ```
-TYPE: 06-relief-scene v2.3
+TYPE: 06-relief-scene v3.2
 REGISTER: a candid documentary photograph a passer-by could have taken. Single
 frame, natural, unposed, sharp. Nobody aware of a camera.
 
-A young woman in a denim jacket is sitting back on a park bench with her face
-tipped up into the light and her eyes open, watching something across the grass.
-Not at the camera. She is at half length, seated, with the bench and the park
-behind her.
+PRODUCT REFERENCE: use the attached photo as the exact reference. Preserve
+shape, proportions, material, finish and colour exactly. Do not redesign or add
+features.
 
-The relief is in her eyes and face and it must be a fact anyone could point at:
-both eyes are wide open and clear, the whites unmarked, the skin around them and
-across the nose even in tone, and her hands are resting on the bench with
-nothing held to her face.
+A man in his thirties at an office desk has just looked up from his screen and
+out of the window beside him, and is watching something down in the street. Not
+at the camera. He is sitting up, not slumped, one forearm still on the desk and
+the other hand resting on the back of his neck mid-stretch.
 
-In the upper right corner sits a small photograph in full colour, about a fifth
-of the picture wide, with a thin white border. It shows the same woman on the
-same bench in the same jacket, earlier: she is hunched forward with a crumpled
-tissue pressed under her nose, her eyes screwed almost shut and streaming, the
-lids and the skin around her nose red and swollen, turned away from the light.
-The bench and the park are in it so it reads as a moment.
+Both eyes are wide open and clear and he is looking out of the window, the skin
+around them smooth rather than screwed up, the brow out of its frown. A half
+smile has arrived on its own at whatever he can see. His chest is open and his
+shoulders are rolled back and down. His head is level, not tipped back.
 
-The same denim jacket and the same canvas bag beside her are in both
-photographs. Nothing else is shared.
+The bottle of eye drops is on the desk by the keyboard where he set it down, cap
+back on. He is not looking at it and not touching it.
 
-An ordinary park: mown grass, a litter bin, two blurred people on the path
-behind, a line of trees.
+An ordinary office desk: a monitor pushed back, a keyboard, a mug, a coat over
+the chair, a window with afternoon light and the street beyond it.
 
-LIGHT: bright flat daylight, even, no rim light.
-GRADE: muted green and denim blue, light film grain, shallow depth of field,
-desaturated, never warm-boosted. Both photographs are in full colour.
+LIGHT: daylight from the window, kind and even, no rim light, no glamour
+lighting.
+GRADE: natural colour, light film grain, shallow depth of field. Honest, not
+glossy, and not drained.
 
-No text, no logo, no watermark, no product, no arrows, no badges.
+No text, no logo, no watermark, no inset, no arrows, no badges.
 ```
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.3 (2026-08-14): the emotion is solved 4/4 and the product is not. It has to stand in the
+  frame as its own object, near the camera, turned so it can be read — the one legible render
+  was a bottle upright on a desk with its label toward the lens. `present, not presented` had
+  conflated not-presented with not-prominent. Admission test gains a second clause: a product
+  that only lives inside or under something cannot be argued here at all.
 - 3.2 (2026-08-14): release alone is collapse. 3.1's letting-go produced bodies that had given
   out — thrown back, limbs flung, eyes shut — which says the opposite of the argument. Relief is
   release PLUS something coming back, and the discriminator is a table now in the file: eyes
