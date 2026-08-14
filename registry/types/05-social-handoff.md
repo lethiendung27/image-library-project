@@ -3,14 +3,14 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.3"
+version: "2.4"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
 channels: [paid-social, advertorial, landing-page]
 requires_product_photo: true
 generation_mode: multi-pass
-variants: []
+variants: [marked]
 exempt_from: [G3, G4]
 pairs_with: [04-proof-lockedframe, 06-relief-hero]
 never_with: []
@@ -32,17 +32,18 @@ use_when: >
   whose effect is visible in the room afterwards.
 avoid_when: >
   Marketplace galleries and main images. Not for private products nobody
-  recommends in person. Not where the product leaves no visible trace, because
-  the two people then have nothing to be dealing with. Keep distance from
-  05-persona-grid on the same page (same question, different mechanism), and
-  send a solo step-by-step demonstration to 03-use-sequence instead.
+  recommends in person. Not where the product leaves no visible trace, and not
+  where its only trace is a change of texture — crease, nap, sheen — which
+  cannot be seen quickly. Keep distance from 05-persona-grid on the same page
+  (same question, different mechanism), and send a solo step-by-step
+  demonstration to 03-use-sequence instead.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS; the definition lives there once and is
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.3
+TYPE: 05-social-handoff v2.4 [--marked]
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
@@ -71,9 +72,15 @@ Two panes, two cushions, two of anything are two objects and nothing turns one i
 `argument-faults.md` A8, now observed here too: 2 of 4 renders lost the argument to a dividing
 frame or a gap.
 
+**The difference must be one of tone or colour, never of texture.** Crease, nap, pile, sheen,
+softness — texture falls under the threshold at which a difference survives a quick look (A7). A
+steamed curtain rendered with no boundary at all, while frost, a stain and a cut line all
+rendered. A product whose only result is a texture does not belong in this type.
+
 **`advocate`** — [age/gender] in ordinary specific wardrobe, mid-sentence, warm and relaxed.
-**Hands on the product or a second off it** — they have just this moment finished using it and
-the posture says so.
+**Hands on the product, and a second AFTER the stroke rather than inside it.** Mid-action the
+eyes go to the work instead of to the listener — 2 of 4 renders, both written as *at the end of
+a stroke*, which the model reads as mid-stroke.
 
 **Eyes on the listener, never on the lens.** The listener stands BETWEEN the advocate and the
 camera, so the face reads to us over a turned shoulder while the look stays inside the scene.
@@ -91,10 +98,10 @@ identity, and **both faces visible kills the mechanism**. Held on 2 of 3 foundin
 Dominance is not bulk: a handheld tool cannot be the biggest thing in a room and must still
 command the frame. Four instruments, all of them the register's own — the product is the only
 thing in sharp focus and everything behind it is softer; it carries the strongest light in the
-frame; nothing overlaps or crowds it; and **it differs in hue or value from everything else in
-frame** — floor, walls and what the people are wearing included, because a scene built out of
-the product's own colour leaves no surface anywhere that can separate it. 3 of 4 renders
-vanished that way; the one that read was the only saturated object in a desaturated scene.
+frame; nothing overlaps or crowds it; and **it differs from everything else in frame** — floor,
+walls and what the people are wearing included. **Separate by HUE where the product has one, by
+value only where it does not**: all 3 products found at a glance separated by hue, two of them
+near-complementary, while the one separating by value alone was the weakest read of its set.
 
 **Nothing of similar size, finish or family stands near it.** A kettle beside a coffee grinder,
 both brushed silver, both the same size, leaves the frame unreadable — a viewer cannot tell
@@ -127,16 +134,32 @@ was given. `one warm ceiling light` beat the dominance clause inside the same pr
 
 ## SLOT CONSTRAINTS
 - G3 and G4 are exempt: this type carries no signal colour and ranks nothing.
-- **No MARKS section, and the reason has changed.** It is not that the pointing arm was the
-  arrow — that mechanism is retired. It is that the register is candid documentary and its
-  credibility IS the argument: a drawn arrow or badge on it reads as an advertisement, which is
-  the objection this type exists to clear (A11 — register decides). Where a page needs the
-  product flagged, the route is a `--marked` variant on `01-pain-scene`'s precedent, a CHOICE
-  and never a default. Unbuilt until the base passes.
+- **The base carries no mark.** The register is candid documentary and its credibility IS the
+  argument: a drawn arrow or badge on it reads as an advertisement, which is the objection this
+  type exists to clear (A11 — register decides). `--marked` is the sanctioned exception, a CHOICE
+  and never a default, on `01-pain-scene`'s precedent.
 - **The prompt budget, four parts.** A clause reaches a rendered prompt only if a render has
   failed without it, THAT product can fail that way, the model can act on it inside one
   generation, and it is stated once. Ceiling **1800 characters**. Since ADR-014 no
   `Strictly avoid:` line is rendered.
+
+## VARIANTS
+
+### --marked
+Diff only; everything else is the base.
+
+**`[MARK]`** — a thin drawn line lying along the boundary `moment` names, following it exactly,
+neutral white, and **the only drawn element in the frame**. Stated that way and never as a
+number, because a count has never bound this model.
+
+It marks the **boundary, never the product**. 3 of 4 v2.3 renders found the product at a glance
+with nothing drawn on it, so a mark there would solve a solved problem and spend the candid
+register for nothing. What a scrolling reader misses is what CHANGED: a half-lifted stain read
+as an intact stain. Neutral white rather than a signal colour, because this type is `G3`-exempt
+and ranks nothing — importing red or blue would import a meaning it does not carry.
+
+**Legal on landing-page and advertorial only**; paid social keeps the plain candid, where the
+absence of any graphic is the credibility. Untested, 0 renders.
 
 ## NEGATIVE
 ```
@@ -153,6 +176,12 @@ Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.4 (2026-08-14): **`--marked` added, marking the boundary rather than the product.** The 2.3
+  dominance fix worked — 3 of 4 find the product at a glance with nothing drawn on it — so the
+  gap left is the RESULT. One neutral white line along the boundary, landing-page and advertorial
+  only. Base sharpened by the same renders: `product` separates by HUE first, value only as
+  fallback; `moment` must differ in tone or colour, never texture (A7), which `avoid_when` now
+  screens on; `advocate` is a second AFTER the stroke, since mid-action the eyes go to the work.
 - 2.3 (2026-08-14): **the product must differ from the whole frame, not from the surface behind
   it.** 2.2 renders: eyes off the lens and listener geometry landed 4 of 4, uncovering the next
   fault — the product vanished in 3 of 4, each into a scene built from its own colour.
