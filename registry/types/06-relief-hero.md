@@ -293,7 +293,7 @@ person reduced to a shoulder.
   skeleton: `step` 7, `output` 6, `past` 5, `path` 4-for-4-against, `vs` and `hotspot` 1 each —
   so the skeleton had mandated the two thinnest and confined the strongest to a sub-form.
   `ratios` move to ADR-016: 5:3 and 2:1 become `16:9`, `1:1` kept on 5 observations. `RATIO:`
-  dropped (adapter Rule 4); the skeleton header had read v1.3 against a 1.8 file.
+  dropped (adapter Rule 4); the skeleton header had read v1.3 against a 1.8 file. `28b384d`
 - 1.8 (2026-08-12): `[ZONE A]` gains an explicit SUBJECT form choice — `full person` or
   `reduced` (hands, forearms or a shoulder, no face), with the guardrail that a reduced
   subject requires a visible output or finished state to carry what the expression would
