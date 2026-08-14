@@ -159,7 +159,7 @@ Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
   `PARTS/product` dominance now binds against everything in frame, clothing included.
   `PARTS/environment` gains **never name a light fixture** — `one warm ceiling light` beat the
   dominance clause inside one prompt. `PARTS/moment` cites A8: a boundary lies on ONE continuous
-  surface, 2 of 4.
+  surface, 2 of 4. `a19381a`
 - 2.2 (2026-08-14): **the advocate looks at the listener, not at the lens.** Owner finding on the
   v1.2 set: 2 of 3 stared down the lens and read as presenters; the third disobeyed a prompt
   ordering face-to-camera and gave this type's best frame. `NEGATIVE` had banned lens contact
