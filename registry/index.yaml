@@ -335,7 +335,7 @@ types:
     step: 5
     job: social
     device: handoff
-    version: "1.2"
+    version: "2.0"
     status: active
     channels: [paid-social, advertorial, landing-page]
     ratios: ["16:9", "1:1", "3:4"]
@@ -354,12 +354,14 @@ types:
       Need social proof without a face-to-camera testimonial. The "a friend
       told me" beat mid-advertorial, cold-ads creative, or a closing image on
       a landing page. Fits products people genuinely recommend to each other
-      out loud.
+      out loud, and whose effect is visible in the room afterwards.
     avoid_when: >
       Marketplace galleries and main images. Not for private products nobody
-      recommends in person. Not when no natural reason exists for two people
-      to stand near the product. Keep distance from 05-persona-grid on the
-      same page (same question, different mechanism).
+      recommends in person. Not where the product leaves no visible trace,
+      because the two people then have nothing to be dealing with. Keep
+      distance from 05-persona-grid on the same page (same question, different
+      mechanism), and send a solo step-by-step demonstration to 03-use-
+      sequence instead.
   - id: 05-social-snapshot
     step: 5
     job: social
@@ -397,7 +399,7 @@ types:
     step: 6
     job: relief
     device: hero
-    version: "1.11"
+    version: "1.12"
     status: active
     channels: [landing-page, marketplace, paid-social, advertorial]
     ratios: ["16:9", "1:1"]

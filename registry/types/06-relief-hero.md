@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.11"
+version: "1.12"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -45,7 +45,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 06-relief-hero v1.11
+TYPE: 06-relief-hero v1.12
 REGISTER: commercial | ugc                                    -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference,
@@ -78,13 +78,10 @@ a pose from `pose`, a warm expression. `reduced`: present only as working hands,
 shoulder — no face, and so no expression available to carry the relief.
 
 **`reduced` is a general form on both registers, not a rescue.** Choose it when the RESULT is
-more legible than the user: the product's output, a finished surface, a loaded container. A
-reduced subject with nothing finished in frame argues nothing, and its first render proved the
-rule needs an operational half: **name what makes finished look different from unfinished**, or
-the result is in the prompt and absent from the photograph. When
-`reduced` is chosen the persona,
-wardrobe and expression slots are simply not exercised — do not fill them with a face that is
-not in shot. Distinct from the `--ugc` fixed-installation fallback, whose trigger is distance
+more legible than the user. A reduced subject with nothing finished in frame argues nothing, so
+**name what makes finished look different from unfinished** and **tie what it is compared
+against to the action** — described that way it read; merely listed, one run dropped it. The
+persona, wardrobe and expression slots are then simply not exercised. Distinct from the `--ugc` fixed-installation fallback, whose trigger is distance
 rather than legibility.
 
 **`pose`** — if the user actively operates the product: mid-action, hands engaged, gaze on the
@@ -97,9 +94,19 @@ moves the product somewhere it can be seen. The passive branch is where this bit
 positions are the ones that put the body against furniture. Choose the pose from where the
 product has to sit, not the reverse.
 
+**Say where the person stands relative to the work.** A pressure washer given the jet and the
+slabs but no working distance sprayed at its operator's own feet and soaked his trousers; one
+sentence putting the whole jet between the person and the surface fixed it 2 of 2 on a steam
+cleaner. Without it the wet-dry boundary replaces the clean-dirty one the frame exists to prove.
+
 **`setting`** — one real room filled to the edges with 6-8 objects that genuinely belong there.
 Background blurred but **never blank: no bare wall or floor area larger than the product**.
 High-key neutral grade (G11).
+
+**None of those objects may carry printed text.** Newspaper, packaging, letters, labelled boxes:
+model-drawn text arrives as gibberish and this type bans text outright. Sheets of newspaper
+named in a setting filled a large part of both runs with nonsense newsprint. Diegetic text on
+the product itself is a separate question (G6 scope note); incidental props are not.
 
 **`light`** — if `output` is present: backlight or hard side light, strong enough to make the
 output glow against a darker part of the frame. Accept lens flare and blown highlights, they
@@ -110,38 +117,34 @@ space.** Do not also reserve empty mid-frame; two reservations for one area rend
 measured 2 of 2 on 2026-08-11. A layer takes 70-85% of the space the subject is offset from.
 Page copy sits outside the image.
 
-**`product-view`** — the optional bottom-left foreground layer, front z-layer. **Include it only
-if the hero scene cannot show the product clearly**, and skip it entirely when the product is
-held in hand, centred and legible at thumbnail size. It exists to reveal the side the hero
-hides, so its angle MUST differ from the hero's; a layer repeating information costs frame
-space and buys nothing. 20-30% of frame width, studio light, soft contact shadow, razor sharp,
-clean cutout. Real colorways only (G2): two units if the product genuinely has two, otherwise
-one.
+**`product-view`** — an optional bottom-left foreground layer, front z-layer, **included only if
+the hero cannot show the product clearly** and skipped when it is held in hand, centred and
+legible small. It exists to reveal the side the hero hides, so its angle MUST differ; a layer
+repeating information costs space and buys nothing. 20-30% of frame width, studio light, soft
+contact shadow, clean cutout. Real colorways only (G2).
 
 ## MARKS
 
-**Six entries. The counts are of the 37 classified observations of this type**, read for
-whether the mark was seen rather than merely mentioned.
+**Six entries, counted off the 37 classified observations** and now carrying render results
+too.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `output` | whatever the product emits — mist, spray, steam, foam, water, particles, light — made of the substance itself | the substance's own real colour | 1, in the hero | 6 obs, 0 against |
-| `step` | one directional arrow joining the past cell to the resolved cell | neutral or a single flat colour | 1, transition form only | 7 obs, 2 against |
+| `step` | one directional arrow joining the past cell to the resolved cell | neutral or a single flat colour | 1, transition form only | 7 obs; **2/2 rendered** when described by its two endpoints |
 | `past` | the marking that flags a recall cell as the past: desaturation to grey, or a small X badge | grey, or red for the badge | 1, on the past cell only | 5 obs, 0 against |
-| `path` | a translucent overlay following **a named physical feature** — a groove, a seam, a duct — where the mechanism acts | blue or cyan | 1 | 4 obs, 4 against — contested |
-| `vs` | a circular badge at the seam of a split inset, **carrying the letters VS** | red, white glyph | 1 | 1 obs here; 2/2 on `03-spec-split`, which names its glyph |
-| `hotspot` | glowing points on the wrong state | red | 3 | **1 obs** |
+| `path` | a translucent overlay following **a named physical feature** — a groove, a seam, a duct | blue or cyan | 1 | 4 obs, 4 against; 2/2 rendered on a named curve, but as a tint over the whole part |
+| `vs` | a circular badge at the seam of a split inset, **carrying the letters VS** | red, white glyph | 1 | **2/2 rendered** once the glyph was named; blank disc before that |
+| `hotspot` | glowing points on the wrong state, each on a named place | red | one per named place | 1 obs; **1/2 rendered** — anchoring cured an over-count and produced a zero |
 
-**`output` is required whenever the product emits (G8), and it outranks everything.** If the
-product produces anything visible, that output is the PRIMARY subject of the frame — not the
-person and not the product. Frame, light and expose for it; it occupies at least 15% of the
-frame and reads at thumbnail size. **If the product produces nothing visible, do not invent an
-effect.** Three exemplars in a row proved a badly-shot frame with visible mist beats a clean
-frame without it. It is also the only mark here made of real substance rather than drawn, which
-is the class that renders most reliably in a photographic register.
+**`output` is required whenever the product emits (G8) and outranks everything in the frame** —
+not the person, not the product. Frame, light and expose for it; at least 15% of the frame,
+readable at thumbnail size. **If the product emits nothing visible, do not invent an effect.**
+It is the only entry here made of real substance rather than drawn, and the only one that has
+never needed a rule: 4/4.
 
-**`past` is what stops a recall inset inverting the message.** An unmarked past cell reads as a
-result. Either form carries it; the observations show both and neither has a case against it.
+**`past` is what stops a recall inset inverting the message** — an unmarked past cell reads as a
+result. Either form carries it; 2/2 rendered.
 
 **`step` is the only sanctioned arrow in this type** and it exists solely to join a past cell to
 a resolved one inside a recall inset. It never points from now to past, there is never more than
@@ -163,13 +166,13 @@ only where the mechanism genuinely has a path to trace.
 **Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.** No mark of any kind
 appears in the hero except `output`.
 
-**A drawn mark renders, but its stated COUNT does not survive** — 2 of the 2 renders that named
-one got it wrong. Where the count carries meaning, give each instance its own anchor: name the
-three places, name the two cells the one arrow joins, so the count follows from the description
-instead of being an instruction to obey.
+**A drawn mark's stated COUNT does not survive; an anchored instance mostly does.** Two renders
+that named a number both got it wrong. Anchoring instead — naming the two cells the one arrow
+joins, naming the three places the points sit on — put `step` at 2/2 and `hotspot` at 1/2, the
+miss being a zero rather than an excess. Anchor, and expect a mark still to be droppable.
 
-**A badge returns empty unless its glyph is named.** Asked for `a red circular badge` it comes
-back a blank red disc. `vs` names its letters in the prompt, as `03-spec-split` does.
+**A badge returns empty unless its glyph is named** — asked for `a red circular badge` it comes
+back a blank red disc, and 2/2 once the letters were named. Settled.
 
 **A mark that follows something must be told what to follow.** Name the physical feature — this
 groove, this seam, this duct — or the overlay lands as a highlighter stroke across everything.
@@ -177,10 +180,9 @@ groove, this seam, this duct — or the overlay lands as a highlighter stroke ac
 ## SLOT CONSTRAINTS
 - **The prompt budget.** A clause earns its place only if a render has failed without it, and
   is removed only once a render has done without it and come back correct (ADR-013, ADR-015).
-  Measured on `03-use-sequence`, whose prompts are single-layer and so a floor rather than a
-  ceiling for this one: 1533 characters average held its layout 4 times in 6, and 2368 held it
-  1 in 4. This type carries more layers and will run longer, but length is a cost that buys
-  something and every added clause is paid for out of composition.
+  Length is a cost paid out of composition: on single-layer `03-use-sequence` a 55% longer
+  prompt took its layout from 4-in-6 to 1-in-4. This type is multi-layer and runs longer, so
+  that is a floor to reason from rather than a ceiling.
 - **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
   time (ADR-016); a prompt that reasons about frame geometry leaves the model something to
   reconcile and it fills the leftover with extra small panels.
@@ -189,15 +191,10 @@ groove, this seam, this duct — or the overlay lands as a highlighter stroke ac
 - G7-X binds hard: one mode of use across hero, inset and product view. The humidifier ugc
   exemplar failed exactly this — wall-mounted inset, handheld hero.
 - Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.
-- **The zone names never reach the model.** `HERO`, `INSET`, `ZONE A/B/C`, `LEFT`, `RIGHT`,
-  `FIRST`, `SECOND` are this file's vocabulary. Adapter Rule 1b is measured on three types: a
-  name attached to a REGION of the frame gets printed into that region, while whole-image
-  headings — `REGISTER`, `PRODUCT REFERENCE`, `LIGHT` — shipped alongside every one of those
-  leaks and were never drawn. The 1.8 skeleton carried `[ZONE A: HERO, right 60%]` and
-  `LEFT:` / `RIGHT:` verbatim, which is the exact shape that printed `ZONE A/B/C` into a
-  02-symptom-rail frame. Describe instead: "in the upper left corner sits a small rectangular
-  panel with a thin white border", "the half on the left". The first draft of the 1.9 prompt
-  set reproduced the fault in 10 places before a gate caught it.
+- **The zone names never reach the model** — `HERO`, `INSET`, `ZONE A/B/C`, `LEFT`, `RIGHT`,
+  `FIRST`, `SECOND` are this file's vocabulary, not the prompt's. Region labels are the tier
+  that leaks; whole-image and subject labels do not (adapter Rule 1b, tiers set by ADR-017).
+  Describe the region instead: "in the upper left corner sits a small rectangular panel".
 
 ## NEGATIVE
 ```
@@ -232,8 +229,7 @@ LEFT   the wrong state.                                -> MARKS/hotspot
 RIGHT  the correct state, brighter and cleaner.        -> MARKS/path
 Both halves share ONE register: both photographic, or both illustrated.
 ```
-Thin on this type's own evidence — `vs` and `hotspot` have one observation each. Do not mandate
-either in a prompt that has not earned it; see MARKS.
+`hotspot` is the thin entry here and still unreliable at 1/2; see MARKS.
 
 
 ### inset_mode: --recall
@@ -245,6 +241,12 @@ Inset photos match the hero in resolution, grade and light quality.
 ```
 A darker or lower-resolution inset reads as pasted in. Best-evidenced inset mode here: `step`
 has 7 observations and `past` 5.
+
+**The two cells change ONE thing: the product.** Hold the activity, the place and the person
+constant and let the brace, the tool, the machine be the only difference. A pair that also
+changes what the person is doing isolates nothing — a knee brace shown struggling on stairs and
+then sitting on a sofa argues that the product lets you sit down. 2 of 2, and the fault was in
+the prompt rather than in the render.
 
 Negative additions: `unlabelled before-state inset, low resolution inset,
 inset darker than hero, inset from a different photographic source,
@@ -264,12 +266,11 @@ G7-X binds: installed in the inset while handheld in the hero contradicts itself
 ONE magnified product detail the hero cannot show at scene scale.
 Linked to the in-scene product by proximity: no arrows, no glow borders.
 ```
-Use when the buying argument depends on a feature too small to read in scene. If the detail is
-a screen or UI it is **never model-drawn** — render or photograph the real interface and
-composite it in post; model-drawn digits come back as gibberish, and screen digits are diegetic
-product UI rather than overlay copy (G6 scope note). If it is an internal mechanism, keep the
-cutaway in a clean technical register and confine it to the inset: internals bleeding into the
-photographic hero break G5.
+Use when the argument depends on a feature too small to read in scene. A screen or UI is
+**never model-drawn** — composite the real interface in post; model-drawn digits come back
+gibberish, and screen digits are diegetic product UI rather than overlay copy (G6 scope note).
+An internal mechanism stays in a clean technical register inside the inset: internals bleeding
+into the photographic hero break G5.
 
 Use when the buying argument depends on a feature too small to read in scene
 (memory log, measurement display, mechanism quality).
@@ -298,11 +299,10 @@ unrecognizable size; fallback framing is low-angle, filter + water jet as subjec
 person reduced to a shoulder.
 
 ## KNOWN-FLAKY
-- **`vs` and `hotspot` sit on one observation each**, below the SPEC 6.2 bar, and both are
-  mandated by the `--vsinset` block. `vs` is carried on borrowed evidence from `03-spec-split`
-  (2/2 rendered, no post-composite fallback); `hotspot` is carried because A1 requires the wrong
-  state to have somewhere to live. Neither has been rendered on this type. A `--vsinset` render
-  is the cheapest way to settle both.
+- **`hotspot` is 1 observation and 1 of 2 renders** — anchoring it to named places cured an
+  over-count on one run and produced a zero on the other. It is kept because A1 requires the
+  wrong state to have somewhere to live and the inset is that somewhere. `vs` is no longer
+  flaky: 2/2 once its glyph was named.
 - **`path` is contested, 4 observations for and 4 against.** The entry most likely to be cut.
 - **Subject ABSENT entirely — variant candidate at 2/3, deliberately not in the skeleton.**
   Two observations show no person at all, the product in its finished situation carrying
@@ -315,6 +315,11 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.12 (2026-08-14): eight renders. Naming a badge's glyph settles it, 2/2; describing an arrow
+  by its endpoints settles it, 2/2; anchoring hotspots to named places cures the over-count but
+  not a zero, 1/2. Three new rules, each 2/2: a recall pair changes only the product and never
+  the activity, `pose` must say where the person stands relative to the work, and no object in
+  `setting` may carry printed text. `output` is 4/4 and has never needed a rule.
 - 1.11 (2026-08-14): first four renders, 0 pass. A drawn mark's stated COUNT does not survive
   (2/2 runs that named one), a badge returns empty unless its glyph is named, and `path` needs a
   named physical feature to follow. `pose` gains the constraint that it must leave the contact
