@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "2.1"
+version: "2.2"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -41,7 +41,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v2.1
+TYPE: 06-relief-scene v2.2
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -96,6 +96,10 @@ is a photograph, not an overlay, so it sits on the reliable side.
 | `carry-over` | one thing identical in both cells — the jacket, the doorway, the bag | both cells | **none** — proposal |
 | `reflection` | the subject's own image in real glass, at a second angle | optional, one surface | 5/5 rendered; proves nothing alone, and sits quietly beside `past` |
 
+**Whatever `evidence` names must be visible in BOTH cells.** A parting named as the evidence
+and then hidden under a clip in the hero leaves the after state absent, however good the inset
+is. Check the hero shows the same named thing before anything else.
+
 **`past` is the mechanism and it is REQUIRED.** Two angles are two viewpoints of one moment; a
 change needs two moments, so the problem has to be physically in the frame. An unmarked past
 cell reads as a result, so the drain is load-bearing rather than stylistic.
@@ -107,13 +111,22 @@ drained swollen ankle simply looks like an ankle. 2/2 tonal, 0/1 colour, 1 mixed
 **If the problem's signal is a hue, this type cannot carry it**: route to `06-relief-hero
 --vsinset`, where both halves stay in colour and a badge does the marking.
 
-**`evidence` must be nameable rather than inferred, and legible at the size it is rendered.**
-"A visibly rested face" renders as an ordinary person; a collar clean where it was marked is a
-fact a stranger could point at. Nameable is not enough on its own. **The hero's copy of the
-evidence is never smaller than the inset's copy of it** — the four renders sort exactly on this:
-the two that read show it larger in the hero, the one that failed worst put a distant ankle in
-shadow beneath an inset that showed the same ankle bigger. Frame the two comparably and let the
-hero win on size.
+**`evidence` must be nameable rather than inferred.** "A visibly rested face" renders as an
+ordinary person; a collar clean where it was marked is a fact a stranger could point at.
+
+**Describe each cell ABSOLUTELY. Never describe one relative to the other.** "Framed the same
+way as the hero" and "smaller in the inset than in the main photograph" are relational
+instructions about two compositions the model builds independently, and across eight renders
+they never once produced a matching crop — `smaller` was read as `wider shot`, which is the
+opposite of the intent and destroys the evidence. Give the inset its own absolute close crop and
+give the hero the same body part at its own absolute closeness, and let the match be a
+consequence.
+
+**The inset holds the evidence and almost nothing else.** Eight renders split cleanly on this
+and on nothing else: the ones that read are inset crops that are nearly all evidence, and the
+ones that fail have context filling the inset — a whole car in a car park, an arm and a mug and
+a table — with the evidence a few pixels somewhere inside. No background, no second object, no
+room. Crop to the thing that changed.
 
 **`carry-over` is what stops the pair changing two things at once.** Hold one thing identical
 between inset and hero — the same jacket, the same doorway, the same bag — so the change reads
@@ -206,6 +219,11 @@ one thing this frame does settle.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.2 (2026-08-14): the crop is the whole problem. Eight renders never once matched crop
+  between the cells, because both rules asking for it were RELATIVE — "framed the same way",
+  "smaller in the inset" — and `smaller` was read as `wider shot`. Each cell now gets its own
+  absolute description. Two conditions added from a clean 2-2 split: the inset holds the
+  evidence and almost nothing else, and whatever `evidence` names must be visible in both cells.
 - 2.1 (2026-08-14): the inset mechanism works, with two conditions the first four renders
   bought. `past` gains an admission test — the drain preserves a TONAL problem and destroys a
   COLOUR one, 2/2 against 0/1, so a hue-signalled problem routes to `06-relief-hero --vsinset`
