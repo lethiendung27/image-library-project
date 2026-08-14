@@ -263,6 +263,7 @@ car further down the road. Flat cold daylight from a low overcast sky, nothing s
   here from 1.0 with zero renders and one founding exemplar; 15 renders across 5 versions
   retired the pointing mechanism, moved the spine to a visible result, and taught the product to
   separate from the whole frame. `--marked` ships untested and is a choice, never a default.
+  `5fbea1d`
 - 2.4 (2026-08-14): **`--marked` added, marking the boundary rather than the product.** The 2.3
   dominance fix worked — 3 of 4 find the product at a glance with nothing drawn on it — so the
   gap left is the RESULT. One neutral white line along the boundary, landing-page and advertorial
