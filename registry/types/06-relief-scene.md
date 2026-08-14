@@ -231,7 +231,7 @@ No text, no logo, no watermark, no product, no arrows, no badges.
   out — thrown back, limbs flung, eyes shut — which says the opposite of the argument. Relief is
   release PLUS something coming back, and the discriminator is a table now in the file: eyes
   open not lolling, head level not thrown back, chest opening not sinking, and a small smile
-  that arrives on its own. `grade` stops being desaturated, which was fighting the joy.
+  that arrives on its own. `grade` stops being desaturated, which was fighting the joy. `df30f43`
 - 3.1 (2026-08-14): the product comes into the frame and the relief becomes a moment. Twenty
   renders with no product could not say what relieved anyone; `requires_product_photo` is now
   true and G1 binds. And relief is neither a smile nor a blank face — 3.0 banned the smile and
