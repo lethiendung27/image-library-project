@@ -1,0 +1,100 @@
+{
+  "product": {
+    "name": "Ergonomic Memory Foam Seat Cushion",
+    "category": "health",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "none",
+      "mounting": "freestanding",
+      "colorways": ["black"],
+      "body_contact": true,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": false
+    },
+    "problems_solved": [
+      "The pelvis rolls backward into the open gap where a seat base meets the backrest, collapsing the lumbar curve",
+      "A flat foam pad compresses flat within weeks and stops raising the hips",
+      "A separate lumbar pillow does not reach the seat base, so the gap stays open, and it slides out of position",
+      "Lower-back ache and hip stiffness that build over a long sitting session at a desk or behind the wheel",
+      "Stiffness on standing up after sitting, and a slow walk afterwards"
+    ],
+    "personas": [
+      "Office workers aged 35-60 who sit through a full working day",
+      "Long-distance drivers and truck drivers",
+      "Gamers who sit for long unbroken sessions",
+      "Wheelchair users",
+      "Pregnant women needing support on dining and desk chairs"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "How I Finally Ended My Sitting Pain And Restored My Active Life Without Expensive Chairs. Bylined advertorial header by Michael, a long-distance commuter and driver. Subtitle names the failure of standard cushions.",
+        "image_slots": [{ "slot_id": "hero.image", "ratio": "16:9", "position": "advertorial header, full width above the byline" }]
+      },
+      {
+        "id": "story.0",
+        "role": "problem-agitation",
+        "copy_summary": "My 3:00 PM Office Nightmare. Dull ache in the lower back at his desk, then stiff hips; by the drive home he can barely stand, hobbling to the front door; evenings lost on the couch.",
+        "image_slots": [{ "slot_id": "story.0.image", "ratio": "4:3", "position": "beside the first story block" }]
+      },
+      {
+        "id": "story.1",
+        "role": "comparison",
+        "copy_summary": "I Spent Hundreds On Half-Measures. A flat foam cushion went flat in two weeks; a separate lumbar pillow pushed his shoulders forward; the hips still sank into the unsupported gap; chiropractor relief lasted a day.",
+        "image_slots": [{ "slot_id": "story.1.image", "ratio": "4:3", "position": "beside the second story block" }]
+      },
+      {
+        "id": "story.2",
+        "role": "cause",
+        "copy_summary": "The Pelvic Roll Trap Discovered. An ergonomic specialist names the culprit: standard chairs have a deep gap at the backrest, the pelvis rolls backward into the void and pinches nerves, and separate cushions cannot bridge it.",
+        "image_slots": [{ "slot_id": "story.2.image", "ratio": "4:3", "position": "beside the third story block" }]
+      },
+      {
+        "id": "story.3",
+        "role": "mechanism",
+        "copy_summary": "An Integrated, One-Piece Solution. A one-piece L-shaped cushion bridges the seat-to-backrest gap and holds hips and lumbar spine aligned as a single unit; high-density slow-rebound foam; it does not slide.",
+        "image_slots": [{ "slot_id": "story.3.image", "ratio": "4:3", "position": "beside the fourth story block" }]
+      },
+      {
+        "id": "story.4",
+        "role": "outcome",
+        "copy_summary": "Sitting Pain, Gone In Days. Eight hours seated and up without stiffness; the drive home relaxed; no more hobbling to the door; evening walks with his wife again.",
+        "image_slots": [{ "slot_id": "story.4.image", "ratio": "4:3", "position": "beside the fifth story block" }]
+      },
+      {
+        "id": "story.5",
+        "role": "cta",
+        "copy_summary": "A Fractional Cost For Freedom. Premium chairs cost hundreds or thousands and physiotherapy recurs; the cushion costs a fraction; try it risk-free under the 90-day money-back guarantee.",
+        "image_slots": [{ "slot_id": "story.5.image", "ratio": "4:3", "position": "beside the closing story block, above the offer" }]
+      },
+      {
+        "id": "reviews",
+        "role": "social-proof",
+        "copy_summary": "It's Not Just Me... Five named carousel reviews with avatars and Verified Purchase badges, followed by a separate uncaptioned six-up square image grid.",
+        "image_slots": [
+          { "slot_id": "reviews.gallery.0.image", "ratio": "1:1", "position": "review grid cell 1, below the review carousel" },
+          { "slot_id": "reviews.gallery.1.image", "ratio": "1:1", "position": "review grid cell 2" },
+          { "slot_id": "reviews.gallery.2.image", "ratio": "1:1", "position": "review grid cell 3" },
+          { "slot_id": "reviews.gallery.3.image", "ratio": "1:1", "position": "review grid cell 4" },
+          { "slot_id": "reviews.gallery.4.image", "ratio": "1:1", "position": "review grid cell 5" },
+          { "slot_id": "reviews.gallery.5.image", "ratio": "1:1", "position": "review grid cell 6" }
+        ]
+      },
+      {
+        "id": "offer",
+        "role": "cta",
+        "copy_summary": "Limited-Time Deal, 50% off badge, timer, 90-day money-back fineprint, Claim Now CTA.",
+        "image_slots": [
+          { "slot_id": "offer.image", "ratio": "1:1", "position": "offer card product image" },
+          { "slot_id": "hero.sidebar.image", "ratio": "1:1", "position": "Editor's Pick sidebar product image, top of page" }
+        ]
+      }
+    ]
+  }
+}
