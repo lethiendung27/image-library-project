@@ -185,10 +185,12 @@ to act on than a stated "no". Two forms:
   routing without one and that is normal, since most types ban layers outright, but
   where a legislated layer DOES exist and the still is a held state, the layer is
   usually the half that should move. Say in `reason` which of the two applied.
-  When the form IS `inset`, the option's own STILL prompt must set that layer to
-  `--loop` and carry G12's reservation clause — the hole has to exist in the render
-  before anything can be composited into it (ADR-018). A `form: inset` verdict beside
-  a still prompt that reserves nothing is the one inconsistency to check for.
+  When the form IS `inset`, the option's own prompt must set that layer to `--loop`
+  and carry G12's plate — the editor's work order has to be IN the render, not in a
+  file they will not open (ADR-019). A `form: inset` verdict beside a prompt that
+  draws no plate is the one inconsistency to check for. When the form is
+  `whole-frame`, the plate is the whole delivered image and no photograph is made:
+  emit the brief, not three photographic options for a frame that gets replaced.
 
 A slot earns motion when its declared reason to exist is **temporal** — a transition, a
 sequence, a state changing, an output flowing. A slot that exists to reveal an angle, a
@@ -208,11 +210,12 @@ MATCH    <the register law it must obey>
 in. Delivery is mp4/webm with a size ceiling — a 20 MB `.gif` costs more conversion
 than the motion buys.
 
-**The brief is the summary; the loop also ships a runnable `prompt`.** It animates the
-STILL the recommended option produces and never regenerates it, so the loop cannot
-drift from the image the page already approved — it names what moves, freezes
-everything else by name, and restates the grade. For `form: inset` it must name the
-layer that moves and say the rest of the frame is frozen, or the whole picture moves.
+**The brief is what the editor reads off the plate; `prompt` is the same brief written
+out.** It names what moves, freezes everything else by name, and restates the grade, so
+the loop cannot drift from the frame it lands in. For `form: inset` it describes only the
+plate's own content; for `whole-frame` it describes the whole picture. Every line of it
+must be satisfiable by the still it accompanies (G12) — a brief promising something the
+frame does not contain sends the editor to build the wrong loop.
 
 ## Step 7 — Emit and log
 

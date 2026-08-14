@@ -553,3 +553,46 @@ concurrent session, and the claim should be measured once and recorded once.
 Consequences: `registry/rules.md` gains G12; `registry/types/06-relief-hero.md` goes to
 1.13; `query/runbook.md` Step 5c states where the reservation clause is emitted.
 `registry_version` is unchanged — an axis value moves, no structure does.
+
+## ADR-019 · 2026-08-14 · Supersedes ADR-018: the cell carries the brief, and an editor fills it
+
+ADR-018 was written the same day from a premise I invented and the owner corrected within
+the hour. It said the owner composites the loop by hand, and concluded that the cell should
+be a mask-free HOLE holding the loop's first frame, with no text anywhere near it. Both
+halves are wrong.
+
+**An editor builds the loop.** The render is not a hole for the owner to fill, it is a
+**work order** for someone else: the loop's five-field brief drawn INTO the frame, inside a
+plate whose shape the slot declares — square, circle or rounded rectangle. Where the
+verdict is `whole-frame` the plate IS the delivered image and no photograph is made,
+because the whole frame gets replaced anyway.
+
+**So the text belongs in the picture.** ADR-018's "no text, no digits and no glyph" was the
+load-bearing clause of the old G12 and it is now inverted. The owner's grounds, and they
+are his to give: the model writes text well enough in his hands, and an editor who has to
+open a JSON to find the brief is an editor who will not. G6 is not breached because the
+plate is **production-only** and never reaches a page — a render carrying one takes the
+`--brief` suffix so it cannot be mistaken for the slot's asset.
+
+**What survives from ADR-018, unchanged.** The unit: an axis value on a layer four types
+already legislate, not a MARKS entry repeated four times with a G3 colour motion does not
+have. The scope: `06-relief-hero` only, the other three hosts inheriting G12 by reference.
+The capability finding: four type files still each guess separately at whether this
+pipeline composites, and it does — an editor is the compositing step, which strengthens
+rather than weakens that flag.
+
+**What the six renders of 2026-08-14 actually taught,** now that the plate is the
+deliverable. The dominant fault was never the lettering: two of four plates described
+motion the frame could not support, which is G7 applied to a caption, and a caption
+describing a different picture cannot be checked against the picture it sits on. One
+rendered its markdown asterisks literally, so the brief goes in as plain words. Two took
+55% of the frame width, so a plate that will not fit its host drops lines rather than
+growing. Five of six bled to an edge, so G10 binds as it always did. Circle and rounded
+rectangle both rendered clean, which is why shape is now free.
+
+**Why supersede rather than edit.** This file's own header forbids editing past entries,
+and a second session reads it. The wrong version cost one commit, `2458407`, and is left
+standing so the correction is legible rather than silent.
+
+Consequences: `registry/rules.md` G12 rewritten; `registry/types/06-relief-hero.md` at
+1.14; `query/runbook.md` Step 5c. `registry_version` unchanged.

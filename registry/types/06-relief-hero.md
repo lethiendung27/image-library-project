@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.13"
+version: "1.14"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -46,7 +46,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 06-relief-hero v1.13
+TYPE: 06-relief-hero v1.14
 REGISTER: commercial | ugc                                    -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference,
@@ -282,12 +282,14 @@ The layer is the finished picture; nothing is reserved.
 
 ### inset_motion: --loop
 ```
-[INSET MOTION] the inset is a reserved cell.                  -> G12
+[INSET MOTION] the inset carries the motion brief plate.      -> G12
 ```
-A short video replaces the cell in post. Legal on every `inset_mode` except `--none`,
-which has no layer to reserve, and only where the layer's content is TEMPORAL — a state
-changing, an output flowing, a mechanism travelling. The brief and the loop prompt travel
-in the query output, never in the frame. Untested: no `--loop` render exists. ADR-018.
+An editor builds the loop and replaces the plate, so the render owes a legible work order
+sitting in the layer's own footprint. Legal on every `inset_mode` except `--none`, which
+has no layer to host it, and only where the layer's content is TEMPORAL — a state changing,
+an output flowing, a mechanism travelling. What the plate promises must be visible in the
+frame it sits on. A render carrying one takes the `--brief` suffix and never the slot's
+asset filename. Untested: no `--loop` render exists. ADR-019.
 
 ## WORKED EXAMPLES
 ### example: shower-filter-commercial-vsinset — skeleton@1.1, run: untested
@@ -326,10 +328,12 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
-- 1.13 (2026-08-14): new axis `inset_motion: still | loop`, from six renders of how to hand a
-  loop to post. Four put the brief in the frame and all four faulted; two drew a cell and both
-  read as a hole. `--loop` reserves the layer and calls G12. Not a MARKS entry — it occupies a
-  layer the skeleton already legislates, and motion has no G3 colour. ADR-018. Untested.
+- 1.14 (2026-08-14): new axis `inset_motion: still | loop`, from six renders of how to hand a
+  loop to an editor. `--loop` turns the layer into a brief plate carrying the five-field work
+  order as text, in any declared shape; what it promises must be visible in the frame it sits
+  on, which was the fault in 2 of 4. Not a MARKS entry — it occupies a layer the skeleton
+  already legislates, and motion has no G3 colour. Absorbs 1.13, whose no-text reading lasted
+  one commit (`2458407`). ADR-019. Untested.
 - 1.12 (2026-08-14): eight renders. Naming a badge's glyph settles it, 2/2; describing an arrow
   by its endpoints settles it, 2/2; anchoring hotspots to named places cures the over-count but
   not a zero, 1/2. Three new rules, each 2/2: a recall pair changes only the product and never

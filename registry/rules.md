@@ -224,40 +224,52 @@ import them, exactly as it declines the VS-badge dialect (nine observations, rec
 G11 exists because the library's own practice is not inherited from the market — which is
 precisely what made leaving it unwritten expensive.
 
-## G12 — Motion reservation
+## G12 — The motion brief plate
 
-**Scope:** a layer a type's own SKELETON already legislates — an inset, a recall cell, a
-rail vignette. G12 never creates a layer. A type with no layer has nothing to reserve, so
-a slot of that type earning motion is whole-frame or nothing.
+**Scope:** a slot whose `gif` verdict is positive. On `inset` the plate occupies a layer
+the type's own SKELETON already legislates; on `whole-frame` the plate IS the delivered
+image and no photograph is made. G12 never creates a layer.
+
+**The plate never ships.** It is a work order for the editor who builds the loop, and the
+editor replaces it. A page asset carrying a plate is a defect — so a render that carries
+one takes the `--brief` suffix and never the slot's own asset filename.
 
 ```
-The [named layer] is a RESERVED CELL: a short video replaces it in post, so what
-the render owes is the shape of the hole, not the detail inside it.
-Draw it with a hard clean edge and a thin white border. No drop shadow, glow or
-blur crosses that edge; any shadow it casts falls on the scene OUTSIDE it.
-Fill it with the FIRST frame of that motion — the same surface, the same light
-and the same grade as the rest of the picture.
-No text, no digits and no glyph inside the cell or beside it.
+In the [named corner] sits a [square / circle / rounded rectangle] plate, flat
+dark grey with a thin white border, held clear of every frame edge. Inside it, in
+clean white sans-serif, five short lines, each on one line:
+  GIF SLOT · [duration] · [loop behaviour]
+  SHOT     [camera and framing]
+  ACTION   [what moves, in order]
+  RESULT   [what the viewer is left holding]
+  MATCH    [the register law the loop must obey]
+No other text anywhere in the picture.
 ```
 
-Geometry is INHERITED, never invented: corner, footprint and shape come from the host
-layer, and G10 binds them as it binds every layer. Where the host offers a choice the
-reserved cell takes the rounded rectangle — a rectangular video dropped into a circular
-hole costs a mask — and where the host mandates a circle it stays a circle. The cell's
-aspect IS the loop's aspect; a hole and a loop that disagree get cropped by hand.
+**Write those lines as plain words.** Asterisks, backticks and any other markup are drawn
+literally — one render returned `**GIF SLOT · 2s · seamless loop**` with its asterisks
+intact. Keep each line inside seven words so it cannot wrap; a wrapped line broke the
+block's alignment in the same render. White on dark grey stayed legible in 4 of 4.
 
-Two properties carry the rule. **The first frame, not a sample frame**: the still then
-stands alone if the loop never ships, and the composite lands with no jump. **No text,
-ever** — a readout that changes is a real screen capture composited in post, which
-`06-relief-hero --detail` already required before this rule existed, never model-drawn.
+**The plate is a claim about THIS frame, and G7 binds it exactly as it binds the picture.**
+What `ACTION` and `RESULT` name has to be present and possible in the still: a plate
+promising a grime strip turning clean needs a grime strip in frame, and one specifying a
+macro of a display needs that display legible. Two of four failed here, and it is the
+dominant fault — a picture cannot be checked against a caption describing a different
+picture.
 
-**Evidence,** six renders on 2026-08-14. Four wrote the loop's brief into the frame as a
-text card and all four faulted: one specified a shot absent from the frame, one claimed a
-result absent from the frame, one rendered its markdown asterisks literally, and the clean
-one took 55% of the frame width and came within 3% of two edges. The two that drew a CELL
-instead — a macro readout and a split vsinset — both read as a bounded hole; the fault in
-the weaker of them was an inset showing white square tile against a hero showing beige
-stone, which is why the surface clause above is not optional.
+**Geometry is INHERITED where a host layer exists**: corner, footprint and shape come from
+that layer, and G10 binds them as it binds every layer — five of six renders bled to an
+edge. Shape is otherwise free; circle and rounded rectangle have both rendered clean. Put
+the plate in the corner the subject is offset FROM: three renders put it over the scene and
+destroyed the setting the type had just spent its words building, two put it in dead space
+and cost nothing.
 
-Motion itself is untested. No loop exists in `eval/render-tests.jsonl`, so this rule
-governs the RESERVATION only, and the first `--loop` render is its founding evidence.
+**When five lines will not read at the host's footprint, carry fewer lines — never a bigger
+plate.** Two renders took 55% of the frame width and a third of its height, which is a
+second subject rather than an annotation. The observed legible band is a quarter to a third
+of frame width for five lines; below that, keep the header and `ACTION` and drop the rest.
+Same logic as G10's last clause: shrink the content, never widen the shape.
+
+**Evidence:** six renders on 2026-08-14, four carrying a plate. Motion itself is untested —
+no loop exists in `eval/render-tests.jsonl`.
