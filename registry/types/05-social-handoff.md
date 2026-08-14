@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "4:5"]
@@ -36,63 +36,66 @@ avoid_when: >
   (same question, different mechanism).
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS; the definition lives there once.
+**No MARKS section:** no arrow, no badge, no connecting line. The pointing arm IS the arrow,
+and drawing one on top says the gesture failed.
+
 ```
-TYPE: 05-social-handoff v1.0
-RATIO: [5:3 / 16:9 / 4:5]
-REGISTER: candid documentary photograph. One scene. One inset overlay maximum.
+TYPE: 05-social-handoff v1.1
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference. Preserve shape,
-proportions, material, finish and color exactly.
-The product must appear IDENTICAL in the scene and in the inset,
-same colorway, same finish. This is the single most important constraint.
+[PRODUCT REFERENCE] attached photo is the exact reference.
+[ADVOCATE] face to camera, mid-sentence, pointing.        -> PARTS/advocate
+[LISTENER] face NOT visible, following the gesture.       -> PARTS/listener
+[PRODUCT] where the pointing line terminates.             -> PARTS/product
+[INSET] optional, and unavailable without compositing.    -> PARTS/inset
+[ENVIRONMENT] a real reason for two people to be here.    -> PARTS/environment
+[COMPOSITION] two vectors converge on the product.        -> PARTS/composition
 
-[CHARACTER A: THE ADVOCATE]
-[age/gender] in [ordinary specific wardrobe], face turned toward camera,
-mid-sentence, [warm relaxed expression], pointing with [hand] toward the product.
-The pointing gesture forms a clear diagonal line ending exactly at the product.
-
-[CHARACTER B: THE LISTENER]
-[age/gender] in [wardrobe], seen from behind or in profile, FACE NOT VISIBLE,
-head turned to follow the pointing gesture, gaze parallel to the pointing line.
-This character is a placeholder for the viewer.
-
-[PRODUCT IN SCENE]
-The reference product placed at [natural location], partially framed by
-[foreground element], sitting exactly where the pointing line terminates.
-
-[INSET] (include ONLY if the scene cannot show the product clearly)
-Circular white cutout containing the reference product on a plain white background,
-positioned [near the terminus of the pointing line, never opposite it],
-occupying [15-20%] of the frame width. Clean edge, no border, no connecting arrow.
-Product colorway MUST match the in-scene product exactly.
-
-[ENVIRONMENT]
-[specific place directly related to the moment of use],
-[2-3 incidental background people or details], flat natural daylight,
-no dramatic shadows, nothing styled.
-
-[COMPOSITION RULE]
-Two vectors, the pointing arm and the listener's gaze, must converge on the product.
-Nothing else in the frame may compete for attention.
-
-STYLE: candid lifestyle photography, natural, unposed, sharp, 4K.
-NO text, no logo, no watermark, no arrows, no badges.
+REGISTER: candid documentary photograph, natural, unposed, sharp.
 ```
+
+## PARTS
+
+**`advocate`** — [age/gender] in ordinary specific wardrobe, face turned toward camera,
+mid-sentence, warm and relaxed, pointing at the product. **The gesture forms a clear diagonal
+ending exactly at the product**, and it is the compositional spine: take the gesture away and
+the product disappears from the frame.
+
+**`listener`** — [age/gender], seen from behind or in profile, **face NOT visible**, head
+turned to follow the gesture, gaze parallel to the pointing line. The turned back is an empty
+seat for the viewer's identity, and **both faces visible kills the mechanism**.
+
+**`product`** — the reference product at a natural location, partially framed by a foreground
+element, sitting exactly where the pointing line terminates.
+
+*Proposal, 0 renders:* an in-scene floor of **≥8% of frame height**. The founding exemplar's
+own predicted failure was a product seen through a doorway shrinking to unrecognisable pixels,
+which voids the pointing line — a gesture ending at nothing. First render decides.
+
+**`inset`** — a circular white cutout of the product on plain white, near the terminus of the
+pointing line and **never opposite it**, at 15-20% of frame width, clean edge, no border, no
+connecting arrow.
+
+**Include it ONLY if the scene cannot show the product clearly — and it needs compositing, so
+where the renderer cannot composite it is unavailable.** G1 applies TWICE when it is used and
+the colourway must match exactly; the founding exemplar failed on that alone, beige in scene
+and charcoal in inset, which reads as two products. The safer route is to choose a moment
+where the scene carries the product, and skip the inset entirely.
+
+**`environment`** — a specific place **directly related to the moment of use**, with 2-3
+incidental background people or details, flat natural daylight, nothing styled. **It must give
+a natural reason for two people to be standing near the product** — G7's third test, and the
+founding exemplar's documented miss was an airport pickup framed around a car seat.
+
+**`composition`** — the pointing arm and the listener's gaze are two vectors and both converge
+on the product. Nothing else in the frame competes.
 
 ## SLOT CONSTRAINTS
-- The pointing line is the compositional spine — remove the gesture and the product
-  vanishes from the frame.
-- The listener's turned back is deliberate: an empty seat for the viewer's identity.
-  Both faces visible kills the mechanism.
-- G1 applies TWICE (scene + inset) and the colorway must match exactly — the original
-  exemplar failed this (beige in scene, charcoal in inset = two products).
-- The environment must give a natural reason for two people to stand near the product
-  (G7 test 3) — the exemplar's airport-pickup framing around a car seat was the
-  documented miss.
-- Multi-pass: generate the scene first; composite the inset in post from the actual
-  reference photo rather than letting the model repaint it (colorway drift is
-  near-certain in single-pass).
+- G3 and G4 are exempt: this type carries no signal colour and ranks nothing.
+- **The prompt budget, four parts.** A clause reaches a rendered prompt only if a render has
+  failed without it, THAT product can fail that way, the model can act on it inside one
+  generation, and it is stated once. Ceiling **1800 characters**. Since ADR-014 no
+  `Strictly avoid:` line is rendered.
 
 ## NEGATIVE
 ```
@@ -102,25 +105,18 @@ two different products, inset placed opposite the pointing direction,
 product outside the pointing line, staged posing, direct eye contact with camera,
 studio lighting, empty background, unrelated location
 ```
-
-## WORKED EXAMPLES
-### example: shower-filter-hallway — skeleton@1.0, run: untested
-Product: metal shower filter · ratio 5:3 · multi-pass (inset composited)
-- ADVOCATE — woman early 40s in a soft grey sweatshirt, hair damp, standing in a hallway doorway, face to camera, mid-sentence, warm relaxed expression, pointing with her right hand through the open bathroom door toward the shower; the gesture forms a clear diagonal ending exactly at the filter
-- LISTENER — woman late 20s in a casual jacket holding a mug, seen from behind, FACE NOT VISIBLE, head turned to follow the gesture, gaze parallel to the pointing line
-- PRODUCT IN SCENE — the reference filter installed between hose and showerhead, visible through the open doorway, partially framed by the door edge, exactly where the pointing line terminates
-- INSET — circular white cutout of the reference filter on plain white, just below and left of the pointing hand (never opposite), about 18% of frame width, clean edge, no border, no connecting arrow, colorway matching the in-scene product exactly
-- ENVIRONMENT — ordinary apartment hallway opening into a small bathroom, a laundry basket on the floor, a towel over the rail, a plant on a shelf; flat natural daylight, no dramatic shadows
-- COMPOSITION — pointing arm and listener's gaze converge on the filter; nothing else competes
-Predicted failures (this is a deliberate avoid_when boundary probe — a private-use
-product): (1) the filter beyond a doorway shrinking to unrecognizable pixels, voiding
-the pointing line — candidate hard rule if confirmed: in-scene product ≥8% of frame
-height; (2) scene-vs-inset colorway drift — the reason the type is multi-pass.
+Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.1 (2026-08-14): **restructured into a call-map plus PARTS** (ADR-012). `PARTS` owns
+  `advocate`, `listener`, `product`, `inset`, `environment`, `composition`. **No MARKS
+  section** — the pointing arm IS the arrow. `RATIO:` dropped per adapter Rule 4. Carried in
+  from `04-proof-lockedframe`: the **capability gate** — the inset needs compositing, so where
+  the renderer cannot composite it is unavailable and the scene must carry the product, which
+  makes this type single-pass in practice. The exemplar's ≥8% floor stays a proposal.
 - 1.0 (2026-08-10): initial from the airport / car-seat pointing exemplar; exemplar
   faults encoded (inset colorway mismatch, inset far from the pointing terminus,
   location unrelated to the use moment). seed: conversation.md.

@@ -335,7 +335,7 @@ types:
     step: 5
     job: social
     device: handoff
-    version: "1.0"
+    version: "1.1"
     status: active
     channels: [paid-social, advertorial, landing-page]
     ratios: ["5:3", "16:9", "4:5"]
