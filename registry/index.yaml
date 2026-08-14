@@ -397,10 +397,10 @@ types:
     step: 6
     job: relief
     device: hero
-    version: "1.8"
+    version: "1.9"
     status: active
     channels: [landing-page, marketplace, paid-social, advertorial]
-    ratios: ["2:1", "4:5"]
+    ratios: ["16:9", "1:1"]
     requires_product_photo: true
     generation_mode: single-pass
     axes:

@@ -3,10 +3,10 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.8"
+version: "1.9"
 status: active
 replaced_by: null
-ratios: ["2:1", "4:5"]
+ratios: ["16:9", "1:1"]
 channels: [landing-page, marketplace, paid-social, advertorial]
 requires_product_photo: true
 generation_mode: single-pass
@@ -24,7 +24,7 @@ never_with: []
 ## PURPOSE
 Sell the state after buying, with the product in frame. Configured on two independent
 axes — `register` (commercial | ugc) and `inset_mode` (vsinset | recall | context |
-none) — named `06-relief-hero--{register}--{inset_mode}`.
+detail | none) — named `06-relief-hero--{register}--{inset_mode}`.
 
 ## TRIGGER
 use_when: >
@@ -41,95 +41,136 @@ avoid_when: >
   internal mechanisms). ugc register never on marketplace galleries.
 
 ## SKELETON
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once
+and is never restated here or in a rendered prompt.
+
 ```
-TYPE: 06-relief-hero v1.3
-RATIO: [2:1 / 4:5]
-LAYERS: hero base + optional inset panel + optional product view
+TYPE: 06-relief-hero v1.9
+REGISTER: commercial | ugc                                    -> PARTS/register
 
-[PRODUCT REFERENCE]
-Use the attached product photo as the exact reference. Preserve shape,
-proportions, material, finish and color exactly. Do not redesign or add features.
-The product must be identical in every layer of this image.
+[PRODUCT REFERENCE] the attached photo is the exact reference,
+  identical in every layer.
+[SUBJECT] one person, full or reduced to hands and forearms.  -> PARTS/subject
+[POSE] operated: mid-action. passive: relaxed, gaze away.     -> PARTS/pose
+[SETTING] one real room, filled to the edges, never blank.    -> PARTS/setting
+[LIGHT] set by whether an output has to carry.                -> PARTS/light
+[OFFSET] subject to one side; a layer occupies that space.    -> PARTS/offset
+[PRODUCT VIEW] only if the hero cannot show the product.      -> PARTS/product-view
+[INSET] content set by inset_mode.                            -> VARIANTS-BY-AXIS
 
-[ZONE A: HERO, right 60%]
-SUBJECT — choose ONE form:
-  full person: [age/gender] in [wardrobe, tone matching background],
-    [pose — see POSE], while [activity], [warm expression].
-  reduced: the person present only as working hands, forearms or a shoulder —
-    no face, and therefore no expression available to carry the relief.
-    Choose it when the RESULT is more legible than the user: the product's
-    output, the finished surface, the loaded container.
-When the form is `reduced`, the result must carry what the expression would have
-carried — a visible output (G8) or a visible finished state (G9's ranking). A
-reduced subject with nothing finished in frame argues nothing.
-The product visible at [contact point], seen from [angle A], unobstructed,
-in [ONE mode of use — G7-X: the same mode in every layer].
-Setting: [environment] filled to the edges — [6-8 objects that genuinely belong there],
-[light source — see LIGHT]. Background blurred but never blank: no bare wall or floor
-area larger than the product. High-key [neutral palette] grade (G11).
-Subject offset [side]. When a Zone B or Zone C layer is present it OCCUPIES that offset
-space — do NOT also reserve empty mid-frame; two reservations for one area render as
-dead air (see SLOT CONSTRAINTS).
-
-[VISIBLE MECHANISM — required slot, G8]
-If the product emits, produces or moves anything visible (mist, spray, steam,
-foam, water, particles, light), that output is the PRIMARY subject of the frame,
-not the person and not the product. Frame, light and expose for the output.
-It must occupy at least 15% of the frame and read at thumbnail size.
-If the product produces nothing visible, do NOT invent an effect.
-
-[POSE]
-IF the product is actively operated by the user: mid-action, hands engaged,
-gaze on the point of use, expression of focused satisfaction rather than repose.
-IF the product works passively while the user does something else:
-relaxed pose, [relief position], gaze away from the product.
-
-[LIGHT]
-IF visible mechanism present: [backlight / hard side light] from [source],
-strong enough to make the output glow against a darker background area.
-Accept lens flare and blown highlights, they read as real.
-ELSE: soft even [natural window light], background blurred, high-key grade.
-
-[ZONE B: PRODUCT VIEW, bottom-left foreground, front z-layer]
-INCLUDE THIS LAYER ONLY IF the hero scene cannot show the product clearly.
-Skip it entirely when the product is held in hand, centered, and legible at
-thumbnail size.
-The same product from the reference, shown from [angle B, MUST differ from angle A
-and reveal the side hidden in Zone A], floating above the surface,
-occupying [20-30%] of the frame width.
-Studio lighting, soft contact shadow, razor sharp, clean cutout edge.
-[IF product has multiple real colorways: show 2 units, colorways: [c1], [c2].
- IF single colorway: show 1 unit only.]
-
-[ZONE C: INSET — content set by inset_mode, see VARIANTS-BY-AXIS]
-
-STYLE: clean commercial e-commerce banner, bright airy, sharp focus, 4K.
-NO text, no logo, no watermark.
+[MARKS]                                                       -> MARKS
+  output   the hero, required if the product emits (G8)
+  past     a recall inset, on the past cell
+  step     a recall inset, one arrow, transition form only
+  vs       a vsinset seam        hotspot  a vsinset left half
+  path     a vsinset right half
 ```
+
+## PARTS
+
+**`register`** — `commercial` is a professional camera, controlled light, deliberate negative
+space. `ugc` is a phone in an ordinary person's hand: slightly off exposure, mild overexposure
+on skin and windows, no rim light, no negative space, framing casual and a little too close,
+the room left exactly as it is. **This register buys trust, not beauty; do not clean it up.**
+
+**`subject`** — choose ONE form. `full person`: age, gender, wardrobe toned to the background,
+a pose from `pose`, a warm expression. `reduced`: present only as working hands, forearms or a
+shoulder — no face, and so no expression available to carry the relief.
+
+**`reduced` is a general form on both registers, not a rescue.** Choose it when the RESULT is
+more legible than the user: the product's output, a finished surface, a loaded container. A
+reduced subject with nothing finished in frame argues nothing. When it is chosen the persona,
+wardrobe and expression slots are simply not exercised — do not fill them with a face that is
+not in shot. Distinct from the `--ugc` fixed-installation fallback, whose trigger is distance
+rather than legibility.
+
+**`pose`** — if the user actively operates the product: mid-action, hands engaged, gaze on the
+point of use, focused satisfaction rather than repose. If the product works passively while
+the user does something else: relaxed, gaze away from the product.
+
+**`setting`** — one real room filled to the edges with 6-8 objects that genuinely belong there.
+Background blurred but **never blank: no bare wall or floor area larger than the product**.
+High-key neutral grade (G11).
+
+**`light`** — if `output` is present: backlight or hard side light, strong enough to make the
+output glow against a darker part of the frame. Accept lens flare and blown highlights, they
+read as real. Otherwise: soft even window light, background blurred, high-key.
+
+**`offset`** — the subject sits to one side. **When a layer is present it OCCUPIES that offset
+space.** Do not also reserve empty mid-frame; two reservations for one area render as dead air,
+measured 2 of 2 on 2026-08-11. A layer takes 70-85% of the space the subject is offset from.
+Page copy sits outside the image.
+
+**`product-view`** — the optional bottom-left foreground layer, front z-layer. **Include it only
+if the hero scene cannot show the product clearly**, and skip it entirely when the product is
+held in hand, centred and legible at thumbnail size. It exists to reveal the side the hero
+hides, so its angle MUST differ from the hero's; a layer repeating information costs frame
+space and buys nothing. 20-30% of frame width, studio light, soft contact shadow, razor sharp,
+clean cutout. Real colorways only (G2): two units if the product genuinely has two, otherwise
+one.
+
+## MARKS
+
+**Six entries, and the counts below are the reason the library is shaped this way.** They come
+from the 37 classified observations of this type, read for whether the mark was actually seen
+rather than merely mentioned — an earlier pass of mine counted "no badges, no text" as evidence
+FOR badges, and matched the prose word "vs" as a VS badge.
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `output` | whatever the product emits — mist, spray, steam, foam, water, particles, light — made of the substance itself | the substance's own real colour | 1, in the hero | 6 obs, 0 against |
+| `step` | one directional arrow joining the past cell to the resolved cell | neutral or a single flat colour | 1, transition form only | 7 obs, 2 against |
+| `past` | the marking that flags a recall cell as the past: desaturation to grey, or a small X badge | grey, or red for the badge | 1, on the past cell only | 5 obs, 0 against |
+| `path` | a translucent overlay tracing where the mechanism acts on the right half | blue or cyan | 1 | 4 obs, 4 against — contested |
+| `vs` | a circular badge at the seam of a split inset | red | 1 | **1 obs here**; 2/2 rendered on `03-spec-split` |
+| `hotspot` | glowing points on the wrong state | red | 3 | **1 obs** |
+
+**`output` is required whenever the product emits (G8), and it outranks everything.** If the
+product produces anything visible, that output is the PRIMARY subject of the frame — not the
+person and not the product. Frame, light and expose for it; it occupies at least 15% of the
+frame and reads at thumbnail size. **If the product produces nothing visible, do not invent an
+effect.** Three exemplars in a row proved a badly-shot frame with visible mist beats a clean
+frame without it. It is also the only mark here made of real substance rather than drawn, which
+is the class that renders most reliably in a photographic register.
+
+**`past` is what stops a recall inset inverting the message.** An unmarked past cell reads as a
+result. Either form carries it; the observations show both and neither has a case against it.
+
+**`step` is the only sanctioned arrow in this type** and it exists solely to join a past cell to
+a resolved one inside a recall inset. It never points from now to past, there is never more than
+one, and it never appears in the hero. With 7 observations it is the best-evidenced mark here —
+which is worth noticing, because until 1.9 the skeleton confined it to a sub-form of one variant
+while mandating `vs` and `hotspot`, the two entries with one observation each.
+
+**`vs` and `hotspot` are kept but thin.** One observation apiece is below the SPEC 6.2 bar and
+neither would be promotable on this type's own evidence. `vs` is retained because the same
+badge rendered 2 of 2 on `03-spec-split` without falling back to post-composite, and ADR-012
+says a mark shared by two types is noted in both. `hotspot` is retained because A1 in
+`registry/argument-faults.md` requires the wrong state to have somewhere to live, and the inset
+is that somewhere — a hotspot there cannot read as harm the product causes. **Neither should be
+mandated by a prompt that has not earned it.**
+
+**`path` is contested at 4 for and 4 against** and is the entry most likely to be cut. Ship it
+only where the mechanism genuinely has a path to trace.
+
+**Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.** No mark of any kind
+appears in the hero except `output`.
 
 ## SLOT CONSTRAINTS
-- **The offset space belongs to the layer, not to the headline.** A layer occupies
-  70-85% of the space the subject is offset from (the proportion `05-social-card`
-  already uses: 35-45% negative space, 28-38% card). A small layer floating in a large
-  reserved void is the observed failure mode — both renders of 2026-08-11 came back
-  with a dead middle. Page copy sits outside the image.
-- G10 (frame safety) binds every layer here — safe area, bleed cap, and the
-  shrink-never-move escape. Referenced by ID, never restated in a prompt.
-- Pain exists ONLY inside the inset (when present). Zone A is 100% relief. Never mixed.
-- [ZONE B] exists only to reveal an angle Zone A hides (its reason to exist); a layer
-  repeating information costs frame space and buys nothing.
-- Colorways in Zone B: only real ones (G2 — fabricated colorways was the original
-  exemplar-era failure).
-- G7-X binds hard here: one mode of use across hero, inset and product view. The
-  humidifier ugc exemplar failed exactly this (wall-mounted inset, handheld hero).
-- G8 evidence note: three exemplars in a row proved the visible output outweighs image
-  polish — a badly-shot frame with visible mist beats a clean frame without it.
-- **SUBJECT form (v1.8):** `reduced` is a general form on both registers, not a rescue.
-  Distinguish it from the `--ugc` fixed-installation caveat below, which is a *fallback*
-  triggered by the product shrinking below recognition at phone distance. Different
-  reasons, same shape — the caveat stays where it is because its trigger is distance,
-  not legibility of the result. When `reduced` is chosen, the persona, wardrobe and pose
-  slots are simply not exercised; do not fill them with a face that is not in frame.
+- **The prompt budget.** A clause earns its place only if a render has failed without it, and
+  is removed only once a render has done without it and come back correct (ADR-013, ADR-015).
+  Measured on `03-use-sequence`, whose prompts are single-layer and so a floor rather than a
+  ceiling for this one: 1533 characters average held its layout 4 times in 6, and 2368 held it
+  1 in 4. This type carries more layers and will run longer, but length is a cost that buys
+  something and every added clause is paid for out of composition.
+- **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
+  time (ADR-016); a prompt that reasons about frame geometry leaves the model something to
+  reconcile and it fills the leftover with extra small panels.
+- G10 (frame safety) binds every layer — safe area, bleed cap, shrink-never-move. Referenced by
+  ID, never restated in a prompt.
+- G7-X binds hard: one mode of use across hero, inset and product view. The humidifier ugc
+  exemplar failed exactly this — wall-mounted inset, handheld hero.
+- Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.
 
 ## NEGATIVE
 ```
@@ -146,13 +187,9 @@ Channels: marketplace, landing-page, A+ content.
 
 ### register: --ugc
 ```
-[REGISTER OVERRIDE]
-Shot on a phone by an ordinary person. Slightly off exposure,
-mild overexposure on skin or windows, no rim light, no negative space,
-the room behind left exactly as it is: furniture, cables, books, clutter.
-Framing casual and a little too close. Subject not styled.
-This register buys trust, not beauty. Do not clean it up.
+[REGISTER OVERRIDE] shot on a phone by an ordinary person.   -> PARTS/register
 ```
+
 Channels: paid-social, advertorial header.
 Negative additions: `professional lighting, studio setup, clean composition,
 styled interior, negative space, color graded, retouched skin, magazine look,
@@ -163,55 +200,50 @@ to a shoulder in frame.
 
 ### inset_mode: --vsinset
 ```
-[ZONE C: INSET, top-left, white 3px border, split 50/50, red circular VS badge at seam]
-LEFT: desaturated grayscale [wrong state], glowing red hotspots at [3 points].
-RIGHT: full-color [correct state] with [blue/cyan] overlay showing [mechanism].
-Both halves must share the same register (both photographic, or both illustrated).
-Right half brighter and cleaner than left half.
+[INSET] top-left, white 3px border, split 50/50.       -> MARKS/vs at the seam
+LEFT   the wrong state.                                -> MARKS/hotspot
+RIGHT  the correct state, brighter and cleaner.        -> MARKS/path
+Both halves share ONE register: both photographic, or both illustrated.
 ```
+Thin on this type's own evidence — `vs` and `hotspot` have one observation each. Do not mandate
+either in a prompt that has not earned it; see MARKS.
+
 
 ### inset_mode: --recall
 ```
-[ZONE C: INSET — choose ONE execution form]
-FORM 1, single marked cell: one circular cutout containing a photograph of
-[the problem state], positioned [corner], occupying [12-18%] of frame width.
-FORM 2, transition pair: two small cells joined by ONE directional arrow —
-the past cell first, then [the resolved state / the first use].
-Combined footprint [15-22%] of frame width. This arrow is the only
-sanctioned arrow in the type.
-In BOTH forms the past state MUST be visually marked, either desaturated
-or carrying a small red X badge. An unmarked past reads as a result,
-which inverts the entire message.
-REGISTER: inset photos must match the hero in resolution, grade and
-light quality — a darker or lower-resolution inset reads as pasted in.
+[INSET] choose ONE form.
+FORM 1  one cell, the problem state, 12-18% of frame width.   -> MARKS/past
+FORM 2  the past cell, then the resolved cell, 15-22% total.  -> MARKS/past, step
+Inset photos match the hero in resolution, grade and light quality.
 ```
+A darker or lower-resolution inset reads as pasted in. Best-evidenced inset mode here: `step`
+has 7 observations and `past` 5.
+
 Negative additions: `unlabelled before-state inset, low resolution inset,
 inset darker than hero, inset from a different photographic source,
 more than one arrow, arrow pointing from now to past`
 
 ### inset_mode: --context
 ```
-[ZONE C: INSET, rectangular, thin white border]
-A plain closer shot of the same product in its real installed position or real
-place of use, taken from a step back so the whole fitting is clear.
-HARD CONSTRAINT (G7-X): the mode of use in the inset and in the hero must be
-the SAME. Installed in the inset while handheld in the hero contradicts itself.
+[INSET] rectangular, thin white border. A plain closer shot of the same product
+in its real installed position, from a step back so the whole fitting is clear.
 ```
+G7-X binds: installed in the inset while handheld in the hero contradicts itself.
+
 
 ### inset_mode: --detail
 ```
-[ZONE C: INSET, rounded rectangle or circle]
-A MAGNIFIED view of ONE product detail the hero cannot show at scene scale:
-the display/UI, an internal mechanism, or a port array.
-Occupying [15-25%] of frame width, positioned [corner], linked to the
-in-scene product by proximity — no arrows, no glow borders.
-IF the detail is a screen/UI: NEVER model-drawn. Render or photograph the
-real interface and composite it in post (screen digits are diegetic product
-UI — see the G6 scope note). Model-drawn digits will be gibberish.
-IF the detail is an internal mechanism: keep the cutaway in a clean technical
-register and confine it to the inset — internals bleeding into the
-photographic hero break G5.
+[INSET] rounded rectangle or circle, 15-25% of frame width, at a corner.
+ONE magnified product detail the hero cannot show at scene scale.
+Linked to the in-scene product by proximity: no arrows, no glow borders.
 ```
+Use when the buying argument depends on a feature too small to read in scene. If the detail is
+a screen or UI it is **never model-drawn** — render or photograph the real interface and
+composite it in post; model-drawn digits come back as gibberish, and screen digits are diegetic
+product UI rather than overlay copy (G6 scope note). If it is an internal mechanism, keep the
+cutaway in a clean technical register and confine it to the inset: internals bleeding into the
+photographic hero break G5.
+
 Use when the buying argument depends on a feature too small to read in scene
 (memory log, measurement display, mechanism quality).
 
@@ -239,6 +271,12 @@ unrecognizable size; fallback framing is low-angle, filter + water jet as subjec
 person reduced to a shoulder.
 
 ## KNOWN-FLAKY
+- **`vs` and `hotspot` sit on one observation each**, below the SPEC 6.2 bar, and both are
+  mandated by the `--vsinset` block. `vs` is carried on borrowed evidence from `03-spec-split`
+  (2/2 rendered, no post-composite fallback); `hotspot` is carried because A1 requires the wrong
+  state to have somewhere to live. Neither has been rendered on this type. A `--vsinset` render
+  is the cheapest way to settle both.
+- **`path` is contested, 4 observations for and 4 against.** The entry most likely to be cut.
 - **Subject ABSENT entirely — variant candidate at 2/3, deliberately not in the skeleton.**
   Two observations show no person at all, the product in its finished situation carrying
   the hero zone: obs `sha256:61118d…` (batch 10-H, purifier bottle posed on a marble
@@ -250,6 +288,12 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.9 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
+  3398 → 1229. First MARKS library, counted off the 37 observations rather than off the
+  skeleton: `step` 7, `output` 6, `past` 5, `path` 4-for-4-against, `vs` and `hotspot` 1 each —
+  so the skeleton had mandated the two thinnest and confined the strongest to a sub-form.
+  `ratios` move to ADR-016: 5:3 and 2:1 become `16:9`, `1:1` kept on 5 observations. `RATIO:`
+  dropped (adapter Rule 4); the skeleton header had read v1.3 against a 1.8 file.
 - 1.8 (2026-08-12): `[ZONE A]` gains an explicit SUBJECT form choice — `full person` or
   `reduced` (hands, forearms or a shoulder, no face), with the guardrail that a reduced
   subject requires a visible output or finished state to carry what the expression would
