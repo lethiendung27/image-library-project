@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.4"
+version: "3.5"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -12,6 +12,7 @@ requires_product_photo: true
 generation_mode: single-pass
 axes:
   gaze: [candid, reflect]
+  inset_mode: [none, detail]
 variants: []
 exempt_from: [G3, G4]
 pairs_with: [01-pain-scene]
@@ -43,7 +44,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.4
+TYPE: 06-relief-scene v3.5
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -56,7 +57,9 @@ REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 [RELIEF] the moment of letting go, in a situation that        -> PARTS/relief
          would have demanded bracing.
 
-NO MARKS and NO INSET. This type has neither, and that is the type.
+[MARKS] --none carries none. --detail only:              -> MARKS
+  cutaway  a window into the body at the product's place
+  reach    flat bands stepping inward, how far it travels
 
 ```
 
@@ -157,40 +160,64 @@ product entirely.
 is not centred or lit for the camera. It simply occupies its own space in the picture the way a
 documentary photographer standing in the right place would include it.
 
-**Admission test, second clause — three classes, and only the third is excluded.** The first
-wording of this said "inside or under something" and was too blunt: a compression sock and an
-insole are not the same case at all.
+**Three product classes, and the third takes `--detail` rather than being excluded.**
 
-| class | test | verdict |
+| class | test | route |
 |---|---|---|
-| **standalone** | it sits in the scene as its own object | works — the eye-drops bottle |
-| **worn-external** | it can be the outermost layer if the wardrobe allows | works, on a wardrobe condition |
-| **conforming or enclosed** | no silhouette of its own, or always inside another object | excluded |
+| **standalone** | sits in the scene as its own object | `--none` — the eye-drops bottle |
+| **worn-external** | can be the outermost layer if the wardrobe allows | `--none`, on a wardrobe condition |
+| **conforming or enclosed** | no silhouette of its own, or always inside another object | **`--detail`** |
 
-**Worn-external is the class the blunt rule was wrong about.** A compression sock, a knee
-support, a wrist brace, a splint — these ARE the visible surface once the wardrobe exposes the
-limb. The condition is that the wardrobe must be chosen for it AND the situation must make that
-wardrobe ordinary: shorts on a runner, bare calves at home, a rolled sleeve at a sink. A trouser
-leg pushed up for the camera is a pose and fails.
+**Worn-external**: a compression sock, a knee support, a wrist brace, a splint. These ARE the
+visible surface once the wardrobe exposes the limb. The wardrobe must be chosen for the product
+AND the situation must make that wardrobe ordinary — shorts on a runner, bare calves at home. A
+trouser leg pushed up for the camera is a pose and fails.
 
-**Conforming products are excluded for a different reason from enclosed ones**, and the
-distinction matters because the fixes differ. An insole is enclosed — it is inside a shoe and no
-frame reaches it. An adhesive heat patch is conforming — it may be perfectly visible on a
-shoulder and still unreadable, because a flat beige rectangle following the curve of a body has
-no silhouette to recognise. Being in shot is not the same as being identifiable.
+**Conforming and enclosed fail for different reasons and both are answered by the same
+variant.** An insole is enclosed: inside a shoe, no camera reaches it. An adhesive patch is
+conforming: perfectly visible on a shoulder and still unreadable, because a flat rectangle
+following the curve of a body has no silhouette. Being in shot is not being identifiable.
 
-**The one opening for a conforming product** is the second the hand comes away from it, when it
-is flat to the camera, near the lens and its printed face is readable. That is an action rather
-than a presentation and it is the only moment the form problem is solved. If the product has no
-printed face, there is no opening at all.
-
-Everything excluded closes with `06-relief-hero`, which has a product-view layer for exactly
-this.
+**Neither is a reason to refuse the product — it is a reason to show what it DOES instead of
+what it looks like.** That is `--detail`, and it also closes the one thing this type has never
+had: nothing in a scene connects the product to the release. A cutaway does.
 
 **The admission test.** If the resolved state cannot be shown as a body behaving differently in
 a situation that costs something, this type is the wrong one. Close with `06-relief-hero`, which
 presents the product and can argue with an inset because its register expects composed layers;
 a candid documentary photograph does neither.
+
+## MARKS
+
+**`--none` carries no marks at all and that is still the default.** Everything below exists only
+inside the `--detail` inset, and nothing from it ever appears in the photograph.
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `cutaway` | a clean-edged window into the body at the product's place, the product on the surface and the layer beneath shown in a plain technical register | the tissue's own neutral tones | 1, in the inset only | borrowed — the device is `03-mechanism-ghostbody`, 14 renders |
+| `reach` | flat hard-edged bands stepping inward from the product's face into the layer beneath, showing how far the effect travels | one warm hue, never red | 1 set, inside the cutaway | **none** — proposal |
+
+**Every mark is a FLAT, UNSHADED, HARD-EDGED OVERLAY**, drawn on top like clean vector shapes.
+This is `03-mechanism-ghostbody`'s hardest-won rule and it transfers unchanged: three renders of
+its `support` mark came back as a tint of the anatomy and every one read as coloured tissue
+rather than as a mark — 0 of 3 as a fill, 3 of 3 as a band beside the structure. A11: a mark
+whose form the register could have produced stops being a mark. **Never a tint of the anatomy.**
+
+**`reach` must travel, and the direction is the whole argument.** A static warm patch on a
+muscle reads as inflammation — as the thing that hurts. Bands stepping from the product INTO
+the tissue read as the product delivering something. Direction is what separates a benefit from
+a symptom, and it is why the hue is warm but never red: red on a body is pain in every other
+type in this library.
+
+**The cutaway stays in the inset.** Internals bleeding into the photographic hero break G5 —
+that rule is `06-relief-hero --detail`'s and it applies here for the same reason. The hero
+remains a photograph a passer-by could have taken; the inset is plainly a diagram, and the two
+do not blend at the border.
+
+**The hero still has to carry the relief on its own.** The cutaway explains the mechanism; it
+does not excuse a body that is not releasing. If the photograph fails the release test, the
+inset cannot rescue it — sixteen renders proved an inset cannot carry an argument the hero has
+not made.
 
 ## SLOT CONSTRAINTS
 - **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
@@ -268,6 +295,12 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.5 (2026-08-14): the excluded class gets a variant instead of a refusal. `inset_mode:
+  [none, detail]` using existing vocabulary. A conforming or enclosed product is shown by what
+  it DOES: a `cutaway` window into the body at its place, with `reach` as flat hard-edged bands
+  stepping inward. Device and form law borrowed from `03-mechanism-ghostbody`, which measured
+  0/3 for a mark drawn as a tint of anatomy and 3/3 as a band laid on top. This also closes the
+  causal link the type never had. `--none` is unchanged and still carries no marks.
 - 3.4 (2026-08-14): the admission test splits into three classes. "Inside or under something"
   was too blunt — a compression sock is worn-external and works once the wardrobe exposes the
   limb, where an insole is enclosed and never can. Conforming products like an adhesive patch

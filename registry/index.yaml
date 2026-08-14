@@ -433,7 +433,7 @@ types:
     step: 6
     job: relief
     device: scene
-    version: "3.4"
+    version: "3.5"
     status: active
     channels: [paid-social, advertorial]
     ratios: ["16:9", "4:3", "3:4"]
@@ -441,6 +441,7 @@ types:
     generation_mode: single-pass
     axes:
       gaze: [candid, reflect]
+      inset_mode: [none, detail]
     variants: []
     exempt_from: [G3, G4]
     pairs_with: [01-pain-scene]
