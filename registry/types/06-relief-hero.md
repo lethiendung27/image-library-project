@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.10"
+version: "1.11"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -45,7 +45,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 06-relief-hero v1.10
+TYPE: 06-relief-hero v1.11
 REGISTER: commercial | ugc                                    -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference,
@@ -79,7 +79,10 @@ shoulder — no face, and so no expression available to carry the relief.
 
 **`reduced` is a general form on both registers, not a rescue.** Choose it when the RESULT is
 more legible than the user: the product's output, a finished surface, a loaded container. A
-reduced subject with nothing finished in frame argues nothing. When it is chosen the persona,
+reduced subject with nothing finished in frame argues nothing, and its first render proved the
+rule needs an operational half: **name what makes finished look different from unfinished**, or
+the result is in the prompt and absent from the photograph. When
+`reduced` is chosen the persona,
 wardrobe and expression slots are simply not exercised — do not fill them with a face that is
 not in shot. Distinct from the `--ugc` fixed-installation fallback, whose trigger is distance
 rather than legibility.
@@ -87,6 +90,12 @@ rather than legibility.
 **`pose`** — if the user actively operates the product: mid-action, hands engaged, gaze on the
 point of use, focused satisfaction rather than repose. If the product works passively while
 the user does something else: relaxed, gaze away from the product.
+
+**The pose must leave the product's contact point visible, and that constrains the pose before
+anything else does.** Ask for a lower-back product on a body sunk into a sofa and the model
+moves the product somewhere it can be seen. The passive branch is where this bites: relaxed
+positions are the ones that put the body against furniture. Choose the pose from where the
+product has to sit, not the reverse.
 
 **`setting`** — one real room filled to the edges with 6-8 objects that genuinely belong there.
 Background blurred but **never blank: no bare wall or floor area larger than the product**.
@@ -111,18 +120,16 @@ one.
 
 ## MARKS
 
-**Six entries, and the counts below are the reason the library is shaped this way.** They come
-from the 37 classified observations of this type, read for whether the mark was actually seen
-rather than merely mentioned — an earlier pass of mine counted "no badges, no text" as evidence
-FOR badges, and matched the prose word "vs" as a VS badge.
+**Six entries. The counts are of the 37 classified observations of this type**, read for
+whether the mark was seen rather than merely mentioned.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `output` | whatever the product emits — mist, spray, steam, foam, water, particles, light — made of the substance itself | the substance's own real colour | 1, in the hero | 6 obs, 0 against |
 | `step` | one directional arrow joining the past cell to the resolved cell | neutral or a single flat colour | 1, transition form only | 7 obs, 2 against |
 | `past` | the marking that flags a recall cell as the past: desaturation to grey, or a small X badge | grey, or red for the badge | 1, on the past cell only | 5 obs, 0 against |
-| `path` | a translucent overlay tracing where the mechanism acts on the right half | blue or cyan | 1 | 4 obs, 4 against — contested |
-| `vs` | a circular badge at the seam of a split inset | red | 1 | **1 obs here**; 2/2 rendered on `03-spec-split` |
+| `path` | a translucent overlay following **a named physical feature** — a groove, a seam, a duct — where the mechanism acts | blue or cyan | 1 | 4 obs, 4 against — contested |
+| `vs` | a circular badge at the seam of a split inset, **carrying the letters VS** | red, white glyph | 1 | 1 obs here; 2/2 on `03-spec-split`, which names its glyph |
 | `hotspot` | glowing points on the wrong state | red | 3 | **1 obs** |
 
 **`output` is required whenever the product emits (G8), and it outranks everything.** If the
@@ -155,6 +162,17 @@ only where the mechanism genuinely has a path to trace.
 
 **Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.** No mark of any kind
 appears in the hero except `output`.
+
+**A drawn mark renders, but its stated COUNT does not survive** — 2 of the 2 renders that named
+one got it wrong. Where the count carries meaning, give each instance its own anchor: name the
+three places, name the two cells the one arrow joins, so the count follows from the description
+instead of being an instruction to obey.
+
+**A badge returns empty unless its glyph is named.** Asked for `a red circular badge` it comes
+back a blank red disc. `vs` names its letters in the prompt, as `03-spec-split` does.
+
+**A mark that follows something must be told what to follow.** Name the physical feature — this
+groove, this seam, this duct — or the overlay lands as a highlighter stroke across everything.
 
 ## SLOT CONSTRAINTS
 - **The prompt budget.** A clause earns its place only if a render has failed without it, and
@@ -297,10 +315,15 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.11 (2026-08-14): first four renders, 0 pass. A drawn mark's stated COUNT does not survive
+  (2/2 runs that named one), a badge returns empty unless its glyph is named, and `path` needs a
+  named physical feature to follow. `pose` gains the constraint that it must leave the contact
+  point visible — asking for a lower-back product on a man sunk into a sofa put the massager on
+  his abdomen. `reduced` gains its operational half: name what makes finished look different.
+  `output` needed nothing and was the one unqualified success.
 - 1.10 (2026-08-14): SLOT CONSTRAINTS gains adapter Rule 1b — the zone names never reach the
-  model. The 1.8 skeleton shipped `[ZONE A: HERO]` and `LEFT:` / `RIGHT:` as headings, which is
-  the shape measured printing `ZONE A/B/C` into a frame on 02-symptom-rail; whole-image headings
-  are unaffected and stay. Found by gating the 1.9 prompt set, which had reproduced it 10 times. `42b2dea`
+  model. The 1.8 skeleton shipped `[ZONE A: HERO]` and `LEFT:` as headings, the shape measured
+  printing `ZONE A/B/C` into an 02-symptom-rail frame. Whole-image headings are unaffected. `42b2dea`
 - 1.9 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   3398 → 1229. First MARKS library, counted off the 37 observations rather than off the
   skeleton: `step` 7, `output` 6, `past` 5, `path` 4-for-4-against, `vs` and `hotspot` 1 each —
