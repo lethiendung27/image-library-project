@@ -3,7 +3,7 @@ id: 05-social-snapshot
 step: 5
 job: social
 device: snapshot
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 ratios: ["4:3", "1:1", "3:4"]
@@ -45,7 +45,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-snapshot v1.1
+TYPE: 05-social-snapshot v1.2
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MODE] one of three, chosen before the prompt ships.  -> PARTS/mode
@@ -174,6 +174,12 @@ still obeys hero laws and sells the relief state; snapshot obeys almost nothing 
 existence. Shared register, different argument.
 
 ## CHANGELOG
+- 1.2 (2026-08-14): **type passed by the owner; file finalised.** The pass rests on 2 of 2
+  renders, both `pass` with empty failure lists, at 0.1 (socket tester) and 1.0 (clip-on reading
+  light). **1.1's restructure is not itself render-tested**, but it added no law except the MARKS
+  bar and otherwise only removed clauses ADR-014, ADR-016 and adapter Rule 4 had already retired
+  registry-wide. The reading-light prompt text was never stored, so that render survives as a
+  verdict and nothing else — the gap `WORKED EXAMPLES` exists to close.
 - 1.1 (2026-08-14): **restructured into a call-map plus PARTS** (ADR-012), with `mode`, `scene`,
   `anchor`, `camera` and `person` owning their definitions and the skeleton cut to the call-map
   alone. Fixed on contact: header read `v0.1` against a 1.0 file; `RATIO:` and the rendered avoid
