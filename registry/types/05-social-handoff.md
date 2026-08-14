@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.2"
+version: "2.3"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
@@ -42,7 +42,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.2
+TYPE: 05-social-handoff v2.3
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
@@ -66,6 +66,11 @@ two people standing near an appliance — 3 of 3 founding renders, owner verdict
 The moment is a RESULT, never a demonstration. G9's ranking decides which to use: the result
 itself beats residue, residue beats the tool still in hand, and gesture alone is the weakest.
 
+**Where the moment is a boundary, it lies on ONE continuous surface with the product on it.**
+Two panes, two cushions, two of anything are two objects and nothing turns one into the other —
+`argument-faults.md` A8, now observed here too: 2 of 4 renders lost the argument to a dividing
+frame or a gap.
+
 **`advocate`** — [age/gender] in ordinary specific wardrobe, mid-sentence, warm and relaxed.
 **Hands on the product or a second off it** — they have just this moment finished using it and
 the posture says so.
@@ -86,15 +91,17 @@ identity, and **both faces visible kills the mechanism**. Held on 2 of 3 foundin
 Dominance is not bulk: a handheld tool cannot be the biggest thing in a room and must still
 command the frame. Four instruments, all of them the register's own — the product is the only
 thing in sharp focus and everything behind it is softer; it carries the strongest light in the
-frame; nothing overlaps or crowds it; and the surface behind it separates from it in value.
+frame; nothing overlaps or crowds it; and **it differs in hue or value from everything else in
+frame** — floor, walls and what the people are wearing included, because a scene built out of
+the product's own colour leaves no surface anywhere that can separate it. 3 of 4 renders
+vanished that way; the one that read was the only saturated object in a desaturated scene.
 
 **Nothing of similar size, finish or family stands near it.** A kettle beside a coffee grinder,
 both brushed silver, both the same size, leaves the frame unreadable — a viewer cannot tell
 which object is being sold. Owner verdict, and the fault the type had no law against.
 
-*Retired, 3 renders:* a bare floor of ≥8% of frame height. All three renders cleared it and not
-one of the three products stood out, so the floor was measuring readability while the type
-needed dominance.
+*Retired, 3 renders:* a bare floor of ≥8% of frame height — it measured readability, not
+dominance.
 
 **`inset`** — a circular white cutout of the product on plain white, near the moment and at
 15-20% of frame width, clean edge, no border, no connecting arrow.
@@ -113,6 +120,10 @@ car seat.
 **Incidental detail only survives if it would survive the product being used.** A child's book
 lying on a rug out-read a robot vacuum for contrast and made the machine's own operation
 impossible in the same frame; clutter written in for candour argued against the product instead.
+
+**Never name a light fixture.** Describe light by quality and direction, never by the lamp
+making it: a named source becomes the brightest object in frame and takes the role `product`
+was given. `one warm ceiling light` beat the dominance clause inside the same prompt.
 
 ## SLOT CONSTRAINTS
 - G3 and G4 are exempt: this type carries no signal colour and ranks nothing.
@@ -142,6 +153,13 @@ Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.3 (2026-08-14): **the product must differ from the whole frame, not from the surface behind
+  it.** 2.2 renders: eyes off the lens and listener geometry landed 4 of 4, uncovering the next
+  fault — the product vanished in 3 of 4, each into a scene built from its own colour.
+  `PARTS/product` dominance now binds against everything in frame, clothing included.
+  `PARTS/environment` gains **never name a light fixture** — `one warm ceiling light` beat the
+  dominance clause inside one prompt. `PARTS/moment` cites A8: a boundary lies on ONE continuous
+  surface, 2 of 4.
 - 2.2 (2026-08-14): **the advocate looks at the listener, not at the lens.** Owner finding on the
   v1.2 set: 2 of 3 stared down the lens and read as presenters; the third disobeyed a prompt
   ordering face-to-camera and gave this type's best frame. `NEGATIVE` had banned lens contact
