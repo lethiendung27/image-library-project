@@ -135,6 +135,7 @@ Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
   product itself), and the one with free hands drew a clean diagonal onto it. Catalogued as
   `argument-faults.md` A12. `ratios` corrected to ADR-016's legal set, `1:1` added on 3 of 3
   render evidence. Listener geometry and the 8% floor stay unpatched at 1 of 3 and 0 of 3.
+  `27f19e3`
 - 1.1 (2026-08-14): **restructured into a call-map plus PARTS** (ADR-012). `PARTS` owns
   `advocate`, `listener`, `product`, `inset`, `environment`, `composition`. **No MARKS
   section** — the pointing arm IS the arrow. `RATIO:` dropped per adapter Rule 4. Carried in
