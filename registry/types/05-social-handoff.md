@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.1"
+version: "2.2"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
@@ -42,11 +42,11 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.1
+TYPE: 05-social-handoff v2.2
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
-[ADVOCATE] using it or a second past it, face to camera.  -> PARTS/advocate
+[ADVOCATE] just used it, eyes on the listener.            -> PARTS/advocate
 [LISTENER] face NOT visible, attention on the moment.     -> PARTS/listener
 [PRODUCT] dominant, and nothing beside it competes.       -> PARTS/product
 [INSET] optional, and unavailable without compositing.    -> PARTS/inset
@@ -66,14 +66,17 @@ two people standing near an appliance — 3 of 3 founding renders, owner verdict
 The moment is a RESULT, never a demonstration. G9's ranking decides which to use: the result
 itself beats residue, residue beats the tool still in hand, and gesture alone is the weakest.
 
-**`advocate`** — [age/gender] in ordinary specific wardrobe, face turned toward camera,
-mid-sentence, warm and relaxed. **Hands on the product or a second off it** — they have just
-this moment finished using it and the posture says so.
+**`advocate`** — [age/gender] in ordinary specific wardrobe, mid-sentence, warm and relaxed.
+**Hands on the product or a second off it** — they have just this moment finished using it and
+the posture says so.
+
+**Eyes on the listener, never on the lens.** The listener stands BETWEEN the advocate and the
+camera, so the face reads to us over a turned shoulder while the look stays inside the scene.
+A glance down the lens makes a presenter and the frame an advertisement — 2 of 3 renders did it,
+and `NEGATIVE` had banned it since 1.0 while this entry ordered it.
 
 **Never pointing at it from across the room.** A person does not point at their own appliance
-mid-conversation; the gesture is itself the staging. The one founding render whose pointing arm
-drew perfectly — extended, straight, landing on the product — still read as posed, which is what
-retires the mechanism rather than repairing it.
+mid-conversation; the gesture is itself the staging.
 
 **`listener`** — [age/gender], seen from behind or in profile, **face NOT visible**, attention on
 the moment rather than on the advocate. The turned back is an empty seat for the viewer's
@@ -136,17 +139,15 @@ direct eye contact with camera, studio lighting, empty background, unrelated loc
 Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
 
 ## KNOWN-FLAKY
-- **The listener's head turns away from the product when the product sits across the frame from
-  the listener.** 1 of 3 (2026-08-14, burr coffee grinder). `face NOT visible` and the gaze
-  clause were in direct conflict for that geometry — turning to look would have brought the face
-  round toward camera — and the model kept the face hidden. Carried into 2.0 unpatched: under
-  `moment` the listener has a result to attend to rather than a direction to match, which may
-  dissolve it without a rule.
-- **The advocate turns to face the listener instead of the camera.** 1 of 3 (2026-08-14,
-  cordless leaf blower), in the render where both hands were on the product. 2.0 puts hands back
-  on the product deliberately, so this one is worth watching.
+(populated from observation evidence only)
 
 ## CHANGELOG
+- 2.2 (2026-08-14): **the advocate looks at the listener, not at the lens.** Owner finding on the
+  v1.2 set: 2 of 3 stared down the lens and read as presenters; the third disobeyed a prompt
+  ordering face-to-camera and gave this type's best frame. `NEGATIVE` had banned lens contact
+  since 1.0, so `PARTS/advocate` and the skeleton were contradicting the same file. The law is
+  geometric: the listener stands between the advocate and the camera. Both KNOWN-FLAKY entries
+  deleted — the geometry one resolved by the pram render, the other now the required behaviour.
 - 2.1 (2026-08-14): `PARTS/product`'s dominance law was **unachievable as written**. "The largest
   man-made object in frame" cannot be met by a handheld tool in a room, and a model asked for it
   either ignores the clause or distorts the product's scale — the reference photo governs scale
