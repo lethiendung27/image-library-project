@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.5"
+version: "3.6"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -44,7 +44,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.5
+TYPE: 06-relief-scene v3.6
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -57,9 +57,10 @@ REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 [RELIEF] the moment of letting go, in a situation that        -> PARTS/relief
          would have demanded bracing.
 
-[MARKS] --none carries none. --detail only:              -> MARKS
-  cutaway  a window into the body at the product's place
-  reach    flat bands stepping inward, how far it travels
+[MARKS]                                                  -> MARKS
+  locate   a bloom through the garment, where it is. Either variant.
+  cutaway  a window into the body at the product's place.  --detail
+  reach    flat bands stepping inward, how far it travels. --detail
 
 ```
 
@@ -86,10 +87,9 @@ bathroom; the promise ends in the world**, which is why this type is never set a
 glamour lighting. Where a pain counterpart exists, keep the same time-of-day character.
 
 **`grade`** — a natural palette, light film grain, shallow depth of field. **Honest, not
-drained.** Desaturating was inherited from matching a paired pain image, and against a released
-body it reads as despair — the locker-room render is muted blue-green over a man who looks
-finished. Keep it real rather than glossy, and let the light be kind. No glamour lighting, no
-warm-boosting into an advert, but nothing bleached out either.
+drained.** Desaturating came from matching a paired pain image and over a released body it reads
+as despair. Real rather than glossy, the light allowed to be kind: no glamour lighting, no
+warm-boosting into an advert, nothing bleached out.
 
 ## THE RELIEF
 
@@ -112,14 +112,9 @@ furniture, holding or covering a part, favouring one side, keeping a part tucked
 the light, bearing weight through one leg. Relief is the same body doing none of that — weight
 even through both sides, the part in the open, limbs loose, nothing held.
 
-**RELEASE ALONE IS COLLAPSE. Relief is release PLUS something coming back.** Three versions
-went wrong here in three directions: a smile gave a mood that said nothing, no-expression gave
-people doing ordinary things, and letting-go gave bodies that had given out — a woman thrown
-back in a chair with her arms flung limp, a man sprawled along a bench under strip light. The
-third is the worst of them, because the first two said nothing and this one says the opposite
-of the argument.
-
-The discriminator is visible and checkable, and it is mostly the eyes:
+**RELEASE ALONE IS COLLAPSE. Relief is release PLUS something coming back.** A smile alone is
+a mood, no expression is nothing, and letting-go alone produces bodies that have given out —
+which says the opposite of the argument. The discriminator is visible, and mostly the eyes:
 
 | | collapse | relief |
 |---|---|---|
@@ -129,10 +124,9 @@ The discriminator is visible and checkable, and it is mostly the eyes:
 | direction | everything sinking | the chest opening, shoulders back AND down |
 | face | slack | a small smile that arrives on its own |
 
-**The smile comes back — as a consequence, never as a pose.** What failed at 2.3 was a laugh
-performed at a camera-friendly moment. What is wanted is the smile that turns up by itself
-because something has stopped hurting: small, often only in the eyes, and usually while the
-person is looking at something other than the lens.
+**The smile is a consequence, never a pose.** Not one performed at a camera-friendly moment:
+the one that turns up by itself because something stopped hurting — small, often only in the
+eyes, while the person looks at something other than the lens.
 
 Photograph the second the release happens, and require all three of these together:
 
@@ -147,14 +141,11 @@ Any one alone reads as an ordinary photograph. Release without the return reads 
 **`product`** — the product is in the scene as the reason the release is happening, and G1
 binds it: the attached photo is the exact reference.
 
-**It must STAND IN THE FRAME AS ITS OWN OBJECT, near the camera, turned so it can be read.** An
-earlier wording said "present, not presented — never centred, never held up", which conflated
-NOT PRESENTED with NOT PROMINENT and put products inside boots and under jumpers. Four renders
-sorted on this and on nothing else: a bottle standing upright on a desk close to the lens with
-its label toward it was the only one a viewer could name. A tube edge-on in a pocket showed that
-something was there but not what. An insole inside a boot and a wrap under a jumper were not
-objects in the frame at all, and the wrap render resolved the contradiction by dropping the
-product entirely.
+**It must STAND IN THE FRAME AS ITS OWN OBJECT, near the camera, turned so it can be read.**
+Four renders sorted on this alone: a bottle upright on a desk near the lens with its label
+toward it was the only one a viewer could name; a tube edge-on in a pocket showed something was
+there but not what; an insole in a boot and a wrap under a jumper were not objects in the frame
+at all, and that render dropped the product rather than resolve it.
 
 **Not presented still holds** — the person does not hold it up, look at it or offer it, and it
 is not centred or lit for the camera. It simply occupies its own space in the picture the way a
@@ -168,19 +159,17 @@ documentary photographer standing in the right place would include it.
 | **worn-external** | can be the outermost layer if the wardrobe allows | `--none`, on a wardrobe condition |
 | **conforming or enclosed** | no silhouette of its own, or always inside another object | **`--detail`** |
 
-**Worn-external**: a compression sock, a knee support, a wrist brace, a splint. These ARE the
-visible surface once the wardrobe exposes the limb. The wardrobe must be chosen for the product
-AND the situation must make that wardrobe ordinary — shorts on a runner, bare calves at home. A
-trouser leg pushed up for the camera is a pose and fails.
+**Worn-external** — a compression sock, a knee support, a wrist brace — IS the visible surface
+once the wardrobe exposes the limb. The wardrobe must be chosen for the product and the
+situation must make it ordinary; a trouser leg pushed up for the camera is a pose and fails.
 
-**Conforming and enclosed fail for different reasons and both are answered by the same
-variant.** An insole is enclosed: inside a shoe, no camera reaches it. An adhesive patch is
-conforming: perfectly visible on a shoulder and still unreadable, because a flat rectangle
-following the curve of a body has no silhouette. Being in shot is not being identifiable.
+**Conforming and enclosed fail differently.** An insole is enclosed — inside a shoe, no camera
+reaches it. An adhesive patch is conforming — visible on a shoulder and still unreadable,
+because a flat rectangle following a body's curve has no silhouette. In shot is not identifiable.
 
-**Neither is a reason to refuse the product — it is a reason to show what it DOES instead of
-what it looks like.** That is `--detail`, and it also closes the one thing this type has never
-had: nothing in a scene connects the product to the release. A cutaway does.
+**Neither is a reason to refuse a product.** Two answers, and they are not alternatives to each
+other: `locate` says WHERE it is through the clothing, `--detail` says WHAT IT DOES. Use
+`locate` when the product's position is the missing fact and `--detail` when its mechanism is.
 
 **The admission test.** If the resolved state cannot be shown as a body behaving differently in
 a situation that costs something, this type is the wrong one. Close with `06-relief-hero`, which
@@ -189,13 +178,17 @@ a candid documentary photograph does neither.
 
 ## MARKS
 
-**`--none` carries no marks at all and that is still the default.** Everything below exists only
-inside the `--detail` inset, and nothing from it ever appears in the photograph.
+**`--none` carries no marks by default.** `cutaway` and `reach` exist only inside the
+`--detail` inset and nothing from them ever appears in the photograph. **`locate` is the
+exception**: it sits in the photograph itself and is available in either variant, because a glow
+is emitted light and A11 names emitted light as a form a photographic register cannot produce by
+itself — which is exactly what makes it read as a mark rather than as lighting.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
 | `cutaway` | a clean-edged window into the body at the product's place, the product on the surface and the layer beneath shown in a plain technical register | the tissue's own neutral tones | 1, in the inset only | borrowed — the device is `03-mechanism-ghostbody`, 14 renders |
 | `reach` | flat hard-edged bands stepping inward from the product's face into the layer beneath, showing how far the effect travels | one warm hue, never red | 1 set, inside the cutaway | **none** — proposal |
+| `locate` | a soft radial bloom through the garment where the product sits beneath it, brightest at its centre and fading outward | a warm low hue, never red and never saturated | 1, in the photograph | borrowed — `01-pain-scene` `glow`, 7 renders |
 
 **Every mark is a FLAT, UNSHADED, HARD-EDGED OVERLAY**, drawn on top like clean vector shapes.
 This is `03-mechanism-ghostbody`'s hardest-won rule and it transfers unchanged: three renders of
@@ -209,10 +202,28 @@ the tissue read as the product delivering something. Direction is what separates
 a symptom, and it is why the hue is warm but never red: red on a body is pain in every other
 type in this library.
 
+**`locate` answers the covered product without a diagram, and it comes with two limits already
+paid for.** `01-pain-scene` measured its `glow` over 7 renders and found it **cannot be held to
+a boundary, 3 of 3** — a radial falloff will not stop at an outline, so never ask for a glow the
+shape or size of the product. Describe a bloom that spreads and let it. The same type found that
+**a red glow on a body reads as pain and a saturated orange glow reads as too hot to touch**, so
+the hue is warm, low and unsaturated, or the mark says the product is hurting or burning the
+person wearing it.
+
+It states position, not mechanism. If what is missing is what the product DOES rather than where
+it is, that is `--detail`.
+
 **The cutaway stays in the inset.** Internals bleeding into the photographic hero break G5 —
 that rule is `06-relief-hero --detail`'s and it applies here for the same reason. The hero
 remains a photograph a passer-by could have taken; the inset is plainly a diagram, and the two
 do not blend at the border.
+
+**The cutaway's LOOK is not fixed, and fixing it is how every type in this library has produced
+slop.** What is fixed is the KIND: a plain technical section, confined to a border, flat
+hard-edged marks laid on top. The panel shape, where it sits, its ground tone, its line weight,
+the angle of the section and the hue of `reach` are chosen per prompt, and **no two prompts in a
+set may share them**. A set whose insets all look alike is a fault in the set, the same fault
+`03-use-sequence` measured when one prescribed palette produced sixteen identical rooms.
 
 **The hero still has to carry the relief on its own.** The cutaway explains the mechanism; it
 does not excuse a body that is not releasing. If the photograph fails the release test, the
@@ -295,6 +306,12 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.6 (2026-08-14): a third route for a covered product, and the cutaway stops having a fixed
+  look. `locate` — a soft bloom through the garment saying where the product is — borrowed from
+  `01-pain-scene`'s `glow` with its two measured limits: a glow cannot be held to a boundary
+  (3/3) and a red one on a body reads as pain. It states position where `--detail` states
+  mechanism. And the cutaway's LOOK is now chosen per prompt with no two in a set alike; only
+  its KIND is fixed. Fixing a look is what produced sixteen identical rooms on `03-use-sequence`.
 - 3.5 (2026-08-14): the excluded class gets a variant instead of a refusal. `inset_mode:
   [none, detail]` using existing vocabulary. A conforming or enclosed product is shown by what
   it DOES: a `cutaway` window into the body at its place, with `reach` as flat hard-edged bands
