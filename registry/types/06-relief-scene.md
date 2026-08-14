@@ -228,7 +228,7 @@ drops out of the scene onto a surface. **Keep this hero and make the inset anoth
   a spec device, not a relief scene. Owner's correction: relief scene, suffering scene inset.
   The drain goes with it, because a suffering scene marks itself and draining it only hid the
   problem; the tonal admission test dissolves with the drain, so hue-signalled problems return.
-  The crop-to-the-evidence rule is reversed: a scene needs room to be one.
+  The crop-to-the-evidence rule is reversed: a scene needs room to be one. `5fbea1d`
 - 2.2 (2026-08-14): the crop is the whole problem. Eight renders never once matched crop
   between the cells, because both rules asking for it were RELATIVE — "framed the same way",
   "smaller in the inset" — and `smaller` was read as `wider shot`. Each cell now gets its own
