@@ -168,6 +168,6 @@ object (hair, skin, posture, a repaired thing); invisible-result products close 
   cut. First MARKS library, and all three entries are proposals: this type has 0 observations
   and 0 renders, so there is nothing to count. Every entry is made of the scene, because the
   drawn class is the unreliable one across three sibling types. `ratios` move to ADR-016's set —
-  `5:3` and `4:5` become `16:9` and `3:4`. `RATIO:` dropped per adapter Rule 4.
+  `5:3` and `4:5` become `16:9` and `3:4`. `RATIO:` dropped per adapter Rule 4. `3fb74a2`
 - 1.0 (2026-08-10): initial from the shop-window reflection exemplar; --reflect gaze
   mode contributed to the shared gaze axis. seed: conversation.md.
