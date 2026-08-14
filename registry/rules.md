@@ -265,11 +265,22 @@ the plate in the corner the subject is offset FROM: three renders put it over th
 destroyed the setting the type had just spent its words building, two put it in dead space
 and cost nothing.
 
-**When five lines will not read at the host's footprint, carry fewer lines — never a bigger
-plate.** Two renders took 55% of the frame width and a third of its height, which is a
-second subject rather than an annotation. The observed legible band is a quarter to a third
-of frame width for five lines; below that, keep the header and `ACTION` and drop the rest.
-Same logic as G10's last clause: shrink the content, never widen the shape.
+**Size it for the reader; the dead corner sets the ceiling.** Legibility is the plate's only
+job, so it takes as much of that corner as it can without covering anything the argument
+needs. **A third to a half of the frame width is the working band.** Measured across four
+renders: 26% was legible but tight, 32% comfortable, 42% clearly the best and it cost the
+picture nothing. What made two earlier plates at 55% a failure was not their size but their
+PLACE — both sat on top of the scene. In the corner the subject is offset from a large plate
+costs nothing; over the subject a small one still costs everything.
 
-**Evidence:** six renders on 2026-08-14, four carrying a plate. Motion itself is untested —
-no loop exists in `eval/render-tests.jsonl`.
+**Say where the plate STOPS, not only that it is clear.** Three of three plated renders were
+cut by a frame edge under the instruction "held well clear of both frame edges" — a
+corner-anchored shape bleeds by default. Name the stop positively: its outer edge finishes a
+visible margin short of the picture on both sides. Beyond G10, the practical reason is that
+a plate running off the edge loses characters the moment the asset is dropped into a
+container of a different shape.
+
+**Evidence:** ten renders on 2026-08-14, eight carrying a plate. The four run against this
+rule returned every line exact — 20 of 20, including one carrying nothing but text — so the
+lettering is settled and the geometry is not. Motion itself is still untested: no loop exists
+in `eval/render-tests.jsonl`.

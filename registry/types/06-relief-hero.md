@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.14"
+version: "1.15"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -46,7 +46,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 06-relief-hero v1.14
+TYPE: 06-relief-hero v1.15
 REGISTER: commercial | ugc                                    -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference,
@@ -289,7 +289,8 @@ sitting in the layer's own footprint. Legal on every `inset_mode` except `--none
 has no layer to host it, and only where the layer's content is TEMPORAL — a state changing,
 an output flowing, a mechanism travelling. What the plate promises must be visible in the
 frame it sits on. A render carrying one takes the `--brief` suffix and never the slot's
-asset filename. Untested: no `--loop` render exists. ADR-019.
+asset filename. Four founding renders, 1 pass and 3 partial: the plate's lettering is
+settled at 20 of 20 lines exact, its edge is not. ADR-019.
 
 ## WORKED EXAMPLES
 ### example: shower-filter-commercial-vsinset — skeleton@1.1, run: untested
@@ -328,6 +329,10 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.15 (2026-08-14): four founding renders of `--loop`, 1 pass 3 partial. Every line of text
+  came back exact, 20 of 20, including a card carrying nothing else — the lettering is settled.
+  What is not: 3 of 3 plates were cut by a frame edge, and the ugc case proved a crisp plate
+  does NOT break that register. Both findings are G12's, not this file's.
 - 1.14 (2026-08-14): new axis `inset_motion: still | loop`, from six renders of how to hand a
   loop to an editor. `--loop` turns the layer into a brief plate carrying the five-field work
   order as text, in any declared shape; what it promises must be visible in the frame it sits
