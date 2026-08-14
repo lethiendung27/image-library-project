@@ -193,7 +193,7 @@ No text, no logo, no watermark, no product, no arrows, no badges.
   covered the main photograph shows no relief — true in 15 of 16 renders across four rounds.
   MARKS is replaced by THE RELIEF, the thing the type actually needs and never had: a body that
   has stopped defending itself, in a situation that would have demanded defence. A smile is not
-  relief. MAJOR — the inset layer is removed.
+  relief. MAJOR — the inset layer is removed. `db2c5dc`
 - 2.3 (2026-08-14): both cells are SCENES. Absolute description fixed the crop 4/4 after eight
   failures, and with the crops finally matched the images were plainly macro surface studies —
   a spec device, not a relief scene. Owner's correction: relief scene, suffering scene inset.
