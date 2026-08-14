@@ -320,7 +320,7 @@ person reduced to a shoulder.
   named physical feature to follow. `pose` gains the constraint that it must leave the contact
   point visible — asking for a lower-back product on a man sunk into a sofa put the massager on
   his abdomen. `reduced` gains its operational half: name what makes finished look different.
-  `output` needed nothing and was the one unqualified success.
+  `output` needed nothing and was the one unqualified success. `2df3c2f`
 - 1.10 (2026-08-14): SLOT CONSTRAINTS gains adapter Rule 1b — the zone names never reach the
   model. The 1.8 skeleton shipped `[ZONE A: HERO]` and `LEFT:` as headings, the shape measured
   printing `ZONE A/B/C` into an 02-symptom-rail frame. Whole-image headings are unaffected. `42b2dea`
