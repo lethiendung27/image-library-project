@@ -272,7 +272,7 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
   was too blunt — a compression sock is worn-external and works once the wardrobe exposes the
   limb, where an insole is enclosed and never can. Conforming products like an adhesive patch
   are excluded for a third reason: no silhouette, so visible is not identifiable. Their one
-  opening is the second the hand comes away, flat to the lens with a printed face.
+  opening is the second the hand comes away, flat to the lens with a printed face. `74ebfac`
 - 3.3 (2026-08-14): the emotion is solved 4/4 and the product is not. It has to stand in the
   frame as its own object, near the camera, turned so it can be read — the one legible render
   was a bottle upright on a desk with its label toward the lens. `present, not presented` had
