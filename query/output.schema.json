@@ -180,6 +180,21 @@
                 ],
                 "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
               },
+              "kind": {
+                "enum": [
+                  "pain",
+                  "symptom",
+                  "cause",
+                  "mechanism",
+                  "use",
+                  "spec",
+                  "proof",
+                  "persona",
+                  "social",
+                  "relief"
+                ],
+                "description": "What the loop ARGUES, from the `jobs` vocabulary. It is the job of the LAYER the loop lives in, which is often not the type's own job — an inset is not a pain slot. For form 'whole-frame' there is no layer, so it is the type's own job. Sets what SHOT, ACTION and RESULT name; nothing else about the plate changes with it."
+              },
               "reason": {
                 "type": "string",
                 "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
@@ -313,6 +328,21 @@
                   "none"
                 ],
                 "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
+              },
+              "kind": {
+                "enum": [
+                  "pain",
+                  "symptom",
+                  "cause",
+                  "mechanism",
+                  "use",
+                  "spec",
+                  "proof",
+                  "persona",
+                  "social",
+                  "relief"
+                ],
+                "description": "What the loop ARGUES, from the `jobs` vocabulary. It is the job of the LAYER the loop lives in, which is often not the type's own job — an inset is not a pain slot. For form 'whole-frame' there is no layer, so it is the type's own job. Sets what SHOT, ACTION and RESULT name; nothing else about the plate changes with it."
               },
               "reason": {
                 "type": "string",

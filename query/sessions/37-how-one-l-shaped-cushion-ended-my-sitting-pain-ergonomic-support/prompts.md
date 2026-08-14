@@ -33,12 +33,12 @@ Ratio goes in the generation tool's own aspect-ratio parameter, never in the pro
 
 | slot | role | asset | recommended | ratio | gif |
 |---|---|---|---|---|---|
-| `hero.image` | hero | `01-hero-relief-hero-ugc.jpg` | **A** — 06-relief-hero 1.12 `--ugc, inset --recall (FORM 1)` | 16:9 | inset |
-| `story.0.image` | problem-agitation | `02-story0-pain-scene.jpg` | **A** — 01-pain-scene 1.14 `--candid --marked` | 4:3 | whole-frame |
+| `hero.image` | hero | `01-hero-relief-hero-ugc.jpg` | **A** — 06-relief-hero 1.12 `--ugc, inset --recall (FORM 1)` | 16:9 | inset · pain |
+| `story.0.image` | problem-agitation | `02-story0-pain-scene.jpg` | **A** — 01-pain-scene 1.14 `--candid --marked` | 4:3 | whole-frame · pain |
 | `story.1.image` | comparison | `03-story1-rivals.jpg` | **A** — 04-proof-lockedframe 1.13 `--rivals` | 4:3 | none |
-| `story.2.image` | cause | `04-story2-cause-anatomy.jpg` | **B** — 02-cause-anatomy 1.15 `--diagnostic` | 4:3 | whole-frame |
+| `story.2.image` | cause | `04-story2-cause-anatomy.jpg` | **B** — 02-cause-anatomy 1.15 `--diagnostic` | 4:3 | whole-frame · cause |
 | `story.3.image` | mechanism | `05-story3-ghostbody.jpg` | **A** — 03-mechanism-ghostbody 2.2 | 4:3 | none |
-| `story.4.image` | outcome | `06-story4-relief-scene.jpg` | **A** — 06-relief-scene 1.0 | 4:3 | whole-frame |
+| `story.4.image` | outcome | `06-story4-relief-scene.jpg` | **A** — 06-relief-scene 1.0 | 4:3 | whole-frame · relief |
 | `story.5.image` | cta | `(supplied)` | — out of scope | — | none |
 | `reviews.gallery.0.image` | social-proof | `07-review-grid-kitchen-chair.jpg` | **A** — 05-social-snapshot 1.0 | 1:1 | none |
 | `reviews.gallery.1.image` | social-proof | `08-review-grid-car-seat.jpg` | **A** — 05-social-snapshot 1.0 | 1:1 | none |
@@ -83,7 +83,7 @@ Ratio goes in the generation tool's own aspect-ratio parameter, never in the pro
 
 **Recommended: option A.** C1 and C4 together. The type's own --ugc block names 'advertorial header' as a channel, and A is the only one of the three that puts the product in the header at all — B carries none by definition and C is the same argument in a duller room. C2 also bites: picking B spends 01-pain-scene, which story.0 needs for its exact beat and which 06-relief-scene depends on for its pair. C3 backs it — the recall inset's `past` mark is 2 of 2 rendered.
 
-**GIF · 3s · ping-pong · form `inset`** — The type's SKELETON already legislates the recall panel, so motion replaces a layer that exists rather than adding one. And it is the right half to move: the hero is a held state with nothing to show changing, while the panel holds the transition the whole page is about.
+**GIF · 3s · ping-pong · form `inset` · argues `pain`** — The loop lives in the recall panel, which holds the PAST — so it argues `pain` inside a type whose job is relief, and that is the point of putting it there. The type's SKELETON already legislates that panel, so motion replaces a layer that exists rather than adding one. And it is the right half to move: the hero is a held state with nothing to show changing, while the panel holds the transition the whole page is about.
 
 ```
 SHOT     Locked frame; only the corner panel moves
@@ -255,7 +255,7 @@ it matches the main picture in sharpness and light quality.
 
 **Recommended: option A.** C1 and C3. The copy's scene is the desk at three in the afternoon and A is that scene verbatim — C moves it to the front door, which the copy reaches two sentences later and which the hero already covers. On C3 the mark is safe here: `glow` has 7 renders, the fault has a place a viewer could put a finger on, and red glow on a BODY is confirmed to read as pain. B is the control to run if the glow comes back reading as a tint rather than a mark.
 
-**GIF · 2s · ping-pong · form `whole-frame`** — The slot's declared reason to exist is the act of standing up out of the chair — a transition, so it is temporal. The type bans insets and panels, so there is no layer to animate instead.
+**GIF · 2s · ping-pong · form `whole-frame` · argues `pain`** — No layer, so the kind is the type's own job. The slot's declared reason to exist is the act of standing up out of the chair — a transition, so it is temporal. The type bans insets and panels, so there is no layer to animate instead.
 
 ```
 SHOT     Locked frame, medium, no camera move
@@ -558,7 +558,7 @@ No people, no hands, no brand marks.
 
 **Recommended: option B.** C3, against the baseline. `measure` is the mark that carries this type's whole argument, and the type file says flat-vector is the style that HOLDS its dash pattern — that outranks A's advantage on the third mark, where `force` has 6 renders against `pressure`'s 3 of 6. A third mark is decoration next to the pair that makes the claim. C1 is a tie: all three are the same beat. C is the driver's version and stays available if the page leans that way, but its `aura` mark adds nothing the measure pair does not already say.
 
-**GIF · 3s · ping-pong · form `whole-frame`** — The declared argument is a pelvis rolling backward into a void — a state changing, which is temporal. The two panels are the whole argument rather than a layer inside it, so there is no inset to replace and the loop takes the frame.
+**GIF · 3s · ping-pong · form `whole-frame` · argues `cause`** — No layer, so the kind is the type's own job — this loop indicts the chair, it does not explain the product. The declared argument is a pelvis rolling backward into a void — a state changing, which is temporal. The two panels are the whole argument rather than a layer inside it, so there is no inset to replace and the loop takes the frame.
 
 ```
 SHOT     Static illustration, no camera move
@@ -906,7 +906,7 @@ cushion is the only object with a real material finish.
 
 **Recommended: option A.** C1 and C2. The copy closes on a state of living — 'I finally joined Sarah for our evening walks' — which is this type's use_when word for word, and the reflection is the only mechanism that proves a change without a product in frame. C2 kills B outright: it is 06-relief-hero, which hero option A already uses, and one type appears once per page. C is A in a car park and works, but a shopping parade reads as the walk the copy actually names.
 
-**GIF · 3s · seamless · form `whole-frame`** — The slot's reason to exist is a stride that no longer stalls — walking is a sequence, so it is temporal, and the reflection moves with him. The type forbids overlays, so there is no layer to animate instead.
+**GIF · 3s · seamless · form `whole-frame` · argues `relief`** — No layer, so the kind is the type's own job. The slot's reason to exist is a stride that no longer stalls — walking is a sequence, so it is temporal, and the reflection moves with him. The type forbids overlays, so there is no layer to animate instead.
 
 ```
 SHOT     Locked frame, medium wide, no camera move

@@ -196,6 +196,19 @@ A slot earns motion when its declared reason to exist is **temporal** — a tran
 sequence, a state changing, an output flowing. A slot that exists to reveal an angle, a
 place or a colorway does not, and gets `eligible: false` with that reason.
 
+**Then say what the loop ARGUES: `gif.kind`, from the `jobs` vocabulary.** It is the job of
+the LAYER the loop lives in, and that is often **not** the type's own job — an inset is not
+a pain slot. `06-relief-hero --recall` holds the past, so a loop there does `pain` work
+inside a type whose job is `relief`. `--context` holds the product where it lives, so its
+loop does `use`. `--detail` holds one magnified feature, so its loop does `mechanism`, or
+`output`-driven `mechanism` where G8 applies. `--vsinset` holds two states, so `proof`.
+For `whole-frame` there is no layer and the kind is the type's own job.
+
+Where a layer admits more than one kind, take the one **the section's copy is already
+arguing**, and say which and why in `reason` — this is the same judgement as choosing a
+type, made one level down. The kind sets what `SHOT`, `ACTION` and `RESULT` name; nothing
+else about the plate changes with it.
+
 Every GIF carries the same five-field brief, each line ≤ 7 words:
 
 ```

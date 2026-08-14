@@ -877,8 +877,8 @@ SLOTS = [
             },
         ],
         "gif": {
-            "eligible": True, "form": "inset",
-            "reason": "The type's SKELETON already legislates the recall panel, so motion replaces a layer that exists rather than adding one. And it is the right half to move: the hero is a held state with nothing to show changing, while the panel holds the transition the whole page is about.",
+            "eligible": True, "form": "inset", "kind": "pain",
+            "reason": "The loop lives in the recall panel, which holds the PAST — so it argues `pain` inside a type whose job is relief, and that is the point of putting it there. The type's SKELETON already legislates that panel, so motion replaces a layer that exists rather than adding one. And it is the right half to move: the hero is a held state with nothing to show changing, while the panel holds the transition the whole page is about.",
             "asset": "01-hero-relief-hero-ugc.mp4",
             "duration_s": 3, "loop": "ping-pong",
             "shot": "Locked frame; only the corner panel moves",
@@ -932,8 +932,8 @@ SLOTS = [
             },
         ],
         "gif": {
-            "eligible": True, "form": "whole-frame",
-            "reason": "The slot's declared reason to exist is the act of standing up out of the chair — a transition, so it is temporal. The type bans insets and panels, so there is no layer to animate instead.",
+            "eligible": True, "form": "whole-frame", "kind": "pain",
+            "reason": "No layer, so the kind is the type's own job. The slot's declared reason to exist is the act of standing up out of the chair — a transition, so it is temporal. The type bans insets and panels, so there is no layer to animate instead.",
             "asset": "02-story0-pain-scene.mp4",
             "duration_s": 2, "loop": "ping-pong",
             "shot": "Locked frame, medium, no camera move",
@@ -1034,8 +1034,8 @@ SLOTS = [
             },
         ],
         "gif": {
-            "eligible": True, "form": "whole-frame",
-            "reason": "The declared argument is a pelvis rolling backward into a void — a state changing, which is temporal. The two panels are the whole argument rather than a layer inside it, so there is no inset to replace and the loop takes the frame.",
+            "eligible": True, "form": "whole-frame", "kind": "cause",
+            "reason": "No layer, so the kind is the type's own job — this loop indicts the chair, it does not explain the product. The declared argument is a pelvis rolling backward into a void — a state changing, which is temporal. The two panels are the whole argument rather than a layer inside it, so there is no inset to replace and the loop takes the frame.",
             "asset": "04-story2-cause-anatomy.mp4",
             "duration_s": 3, "loop": "ping-pong",
             "shot": "Static illustration, no camera move",
@@ -1131,8 +1131,8 @@ SLOTS = [
             },
         ],
         "gif": {
-            "eligible": True, "form": "whole-frame",
-            "reason": "The slot's reason to exist is a stride that no longer stalls — walking is a sequence, so it is temporal, and the reflection moves with him. The type forbids overlays, so there is no layer to animate instead.",
+            "eligible": True, "form": "whole-frame", "kind": "relief",
+            "reason": "No layer, so the kind is the type's own job. The slot's reason to exist is a stride that no longer stalls — walking is a sequence, so it is temporal, and the reflection moves with him. The type forbids overlays, so there is no layer to animate instead.",
             "asset": "06-story4-relief-scene.mp4",
             "duration_s": 3, "loop": "seamless",
             "shot": "Locked frame, medium wide, no camera move",
@@ -1462,8 +1462,9 @@ def md(d):
             rec = "— out of scope"
             ratio = "—"
         g = s.get("gif", {})
+        gk = f"{g.get('form')} · {g.get('kind')}" if g.get("eligible") else g.get("form", "—")
         A(f"| `{s['slot_id']}` | {s['section_role']} | `{s['asset']}` | {rec} | "
-          f"{ratio} | {g.get('form', '—')} |")
+          f"{ratio} | {gk} |")
     A("")
 
     A("## Coverage")
@@ -1498,8 +1499,8 @@ def md(d):
         A("")
         g = s.get("gif", {})
         if g.get("eligible"):
-            A(f"**GIF · {g.get('duration_s')}s · {g.get('loop')} · form `{g.get('form')}`** "
-              f"— {g['reason']}")
+            A(f"**GIF · {g.get('duration_s')}s · {g.get('loop')} · form `{g.get('form')}` · "
+              f"argues `{g.get('kind')}`** — {g['reason']}")
             A("")
             A("```")
             A(f"SHOT     {g.get('shot','')}")
@@ -1575,6 +1576,8 @@ for s in SLOTS:
     g = s.get("gif", {})
     if g.get("eligible") and not g.get("prompt"):
         problems.append(f"{s['slot_id']}: gif eligible with no runnable prompt")
+    if g.get("eligible") and not g.get("kind"):
+        problems.append(f"{s['slot_id']}: gif eligible with no kind")
     if g.get("form") == "inset" and not g.get("eligible"):
         problems.append(f"{s['slot_id']}: inset form on an ineligible gif")
 

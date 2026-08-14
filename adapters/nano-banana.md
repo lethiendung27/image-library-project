@@ -161,6 +161,13 @@ was never doing the work the old rule claimed. Ratio remains a real slot require
 it lives in slot metadata and in the render parameter, and the page layout depends on
 it. It simply stops being prompt text.
 
+**The returned pixel size is not evidence of anything, so stop measuring it.** Owner
+statement, 2026-08-14: he picks the frame at the generation tool from the template's own
+slot ratio, and the tool adjusts. A batch coming back at one size therefore says nothing
+about whether a ratio was honoured — four renders that day returned 1200x896 against
+notional 16:9 and 1:1 and it meant only that no parameter had been set for them. Written
+here because the measurement is easy to take and easy to misread as a defect twice.
+
 **A two-panel comparison in a square canvas may duplicate into a 2×2 grid** — 3 observations
 across 2 types. The earlier reading, that this followed from asking a WIDE ratio on
 wide-and-short content, is superseded: the third case asked 1:1, received 1:1, and still
