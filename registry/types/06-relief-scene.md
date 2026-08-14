@@ -333,7 +333,7 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
   ONE tapering shape starting on the product. `locate` retires 0/2: A11 was applied to the wrong
   property, emitted light being just what a photographic register produces. The product left the
   frame in 4/8, all conforming or enclosed, so that class now enters as its PACKAGE. The no-text
-  rule splits — the only nameable product in eight carried its name. KIND-not-LOOK holds 4/4.
+  rule splits — the only nameable product in eight carried its name. KIND-not-LOOK holds 4/4. `615317a`
 - 3.6 (2026-08-14): a third route for a covered product, and the cutaway stops having a fixed
   look. `locate` — a soft bloom through the garment saying where the product is — borrowed from
   `01-pain-scene`'s `glow` with its two measured limits: a glow cannot be held to a boundary
