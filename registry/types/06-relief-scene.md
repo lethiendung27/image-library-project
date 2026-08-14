@@ -300,7 +300,7 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
   it DOES: a `cutaway` window into the body at its place, with `reach` as flat hard-edged bands
   stepping inward. Device and form law borrowed from `03-mechanism-ghostbody`, which measured
   0/3 for a mark drawn as a tint of anatomy and 3/3 as a band laid on top. This also closes the
-  causal link the type never had. `--none` is unchanged and still carries no marks.
+  causal link the type never had. `--none` is unchanged and still carries no marks. `9de2479`
 - 3.4 (2026-08-14): the admission test splits into three classes. "Inside or under something"
   was too blunt — a compression sock is worn-external and works once the wardrobe exposes the
   limb, where an insole is enclosed and never can. Conforming products like an adhesive patch
