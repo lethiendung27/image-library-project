@@ -300,7 +300,7 @@ person reduced to a shoulder.
 - 1.10 (2026-08-14): SLOT CONSTRAINTS gains adapter Rule 1b — the zone names never reach the
   model. The 1.8 skeleton shipped `[ZONE A: HERO]` and `LEFT:` / `RIGHT:` as headings, which is
   the shape measured printing `ZONE A/B/C` into a frame on 02-symptom-rail; whole-image headings
-  are unaffected and stay. Found by gating the 1.9 prompt set, which had reproduced it 10 times.
+  are unaffected and stay. Found by gating the 1.9 prompt set, which had reproduced it 10 times. `42b2dea`
 - 1.9 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   3398 → 1229. First MARKS library, counted off the 37 observations rather than off the
   skeleton: `step` 7, `output` 6, `past` 5, `path` 4-for-4-against, `vs` and `hotspot` 1 each —
