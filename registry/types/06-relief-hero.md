@@ -319,7 +319,7 @@ person reduced to a shoulder.
   by its endpoints settles it, 2/2; anchoring hotspots to named places cures the over-count but
   not a zero, 1/2. Three new rules, each 2/2: a recall pair changes only the product and never
   the activity, `pose` must say where the person stands relative to the work, and no object in
-  `setting` may carry printed text. `output` is 4/4 and has never needed a rule.
+  `setting` may carry printed text. `output` is 4/4 and has never needed a rule. `639e338`
 - 1.11 (2026-08-14): first four renders, 0 pass. A drawn mark's stated COUNT does not survive
   (2/2 runs that named one), a badge returns empty unless its glyph is named, and `path` needs a
   named physical feature to follow. `pose` gains the constraint that it must leave the contact
