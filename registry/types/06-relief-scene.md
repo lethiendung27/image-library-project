@@ -209,7 +209,7 @@ No text, no logo, no watermark, no product, no arrows, no badges.
   renders with no product could not say what relieved anyone; `requires_product_photo` is now
   true and G1 binds. And relief is neither a smile nor a blank face — 3.0 banned the smile and
   got blankness, which is worse. It is the second of letting go: eyes closing, shoulders
-  rolling down, a held part stretched out, with the product visibly the reason.
+  rolling down, a held part stretched out, with the product visibly the reason. `c31e2c1`
 - 3.0 (2026-08-14): the marks and the inset are cut. Owner: the inset is obscure, and with it
   covered the main photograph shows no relief — true in 15 of 16 renders across four rounds.
   MARKS is replaced by THE RELIEF, the thing the type actually needs and never had: a body that
