@@ -246,7 +246,7 @@ No text, no logo, no watermark, no inset, no arrows, no badges.
   frame as its own object, near the camera, turned so it can be read — the one legible render
   was a bottle upright on a desk with its label toward the lens. `present, not presented` had
   conflated not-presented with not-prominent. Admission test gains a second clause: a product
-  that only lives inside or under something cannot be argued here at all.
+  that only lives inside or under something cannot be argued here at all. `0e82a81`
 - 3.2 (2026-08-14): release alone is collapse. 3.1's letting-go produced bodies that had given
   out — thrown back, limbs flung, eyes shut — which says the opposite of the argument. Relief is
   release PLUS something coming back, and the discriminator is a table now in the file: eyes
