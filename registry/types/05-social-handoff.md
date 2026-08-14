@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.4"
+version: "2.5"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.4 [--marked]
+TYPE: 05-social-handoff v2.5 [--marked]
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
@@ -172,10 +172,97 @@ direct eye contact with camera, studio lighting, empty background, unrelated loc
 ```
 Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
 
+## WORKED EXAMPLES
+Both rendered at 2.3 and kept in FULL text, because that text is the only record of what
+actually rendered — the ledger stores verdicts, not prompts (SPEC §3.3). Both predate 2.4, so
+neither carries the hue-first wording, the tone-not-texture rule or the after-the-stroke
+posture. **They are records, not templates. Current law is in PARTS; fill from there.**
+
+### example: carpet-spot-cleaner — skeleton@2.3, run: partial
+The closest this type has come. `advocate` satisfied in full — he is kneeling back from the
+machine with both hands still on it and his eyes on her, because the posture is at rest. The
+only saturated object in a beige room. Failure: the spill read as intact rather than half
+lifted, so only one side of the boundary carried evidence.
+```
+TYPE: 05-social-handoff v2.3
+REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the carpet spot cleaner. Preserve its
+shape, proportions, material, finish and colour exactly.
+
+[MOMENT]
+One carpet, half of a dark spill lifted. A patch of the pile has come back to its own colour
+and the rest of the mark is still there, and the edge between them sits on one continuous
+stretch of carpet where the head stopped. Both people are dealing with that edge.
+
+[ADVOCATE]
+Man in his 30s in a dark t-shirt, kneeling on the floor with both hands still on the
+reference cleaner where he has just stopped pulling. Mid-sentence, relieved and slightly
+smug, his eyes on the woman and never on the camera.
+
+[LISTENER]
+Woman in her 30s in a deep green jumper crouching beside him, between him and the camera
+with her back to us, FACE NOT VISIBLE, head down to the lifted patch.
+
+[PRODUCT]
+The reference cleaner is the only thing in sharp focus, everything behind it softer. It
+carries the strongest light in the frame, nothing overlaps or crowds it, and it differs in
+hue or value from everything else in frame. Nothing of similar size or finish stands near it.
+
+[ENVIRONMENT]
+An ordinary living room in the afternoon, an armchair pushed back against the wall and a dog
+lead dropped by the door. Directional daylight raking in low from a window off to one side,
+nothing styled.
+```
+
+### example: ice-scraper — skeleton@2.3, run: partial
+The crispest boundary the type has produced, and the proof that dominance is not size: the
+smallest product in any set is found first, because blue against white frost and dark glass
+separates by hue and value at once. Failure: written as *at the end of a stroke*, which the
+model read as mid-stroke, so her eyes stayed on the work instead of reaching the listener.
+```
+TYPE: 05-social-handoff v2.3
+REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the ice scraper. Preserve its shape,
+proportions, material, finish and colour exactly.
+
+[MOMENT]
+One windscreen, half done. A wide swathe has been scraped down to clear dark glass and the
+rest is still under thick white frost, and the edge between the two runs across one
+continuous pane where the blade stopped. Both people are dealing with that edge.
+
+[ADVOCATE]
+Woman in her 40s in a padded coat and gloves, leaning over the bonnet with the reference
+scraper still flat against the glass at the end of a stroke. Mid-sentence, breath showing in
+the cold, pleased with herself, her eyes on the man and never on the camera.
+
+[LISTENER]
+Man in his 30s in a dark overcoat holding a travel mug, standing between her and the camera
+with his back to us, FACE NOT VISIBLE, head down to the cleared glass.
+
+[PRODUCT]
+The reference scraper is the only thing in sharp focus, everything behind it softer. It
+carries the strongest light in the frame, nothing overlaps or crowds it, and it differs in
+hue or value from everything else in frame. Nothing of similar size or finish stands near it.
+
+[ENVIRONMENT]
+A suburban driveway just after dawn in hard frost: a wheelie bin, a whitened hedge, another
+car further down the road. Flat cold daylight from a low overcast sky, nothing styled.
+```
+
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.5 (2026-08-14): **type passed by the owner; file finalised.** Two `WORKED EXAMPLES` added,
+  both at skeleton@2.3 and both `run: partial`, kept in full text as the only record of what
+  actually rendered (SPEC §3.3) and labelled records rather than templates. The type arrived
+  here from 1.0 with zero renders and one founding exemplar; 15 renders across 5 versions
+  retired the pointing mechanism, moved the spine to a visible result, and taught the product to
+  separate from the whole frame. `--marked` ships untested and is a choice, never a default.
 - 2.4 (2026-08-14): **`--marked` added, marking the boundary rather than the product.** The 2.3
   dominance fix worked — 3 of 4 find the product at a glance with nothing drawn on it — so the
   gap left is the RESULT. One neutral white line along the boundary, landing-page and advertorial

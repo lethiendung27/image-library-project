@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "2.2"
+version: "2.3"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -21,9 +21,9 @@ never_with: []
 # 06-relief-scene
 
 ## PURPOSE
-The closing bookend of a pain→relief arc: the same person out in the world, living the
-resolved state, with the problem carried in a small desaturated inset so the change is
-visible inside one frame. No product.
+The closing bookend of a pain→relief arc: **a relief scene with a suffering scene inset.** The
+same person, twice — living without the problem in the main photograph, enduring it in a small
+one — so the change is a change in a life rather than on a surface. No product.
 
 ## TRIGGER
 use_when: >
@@ -41,7 +41,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v2.2
+TYPE: 06-relief-scene v2.3
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -91,8 +91,8 @@ is a photograph, not an overlay, so it sits on the reliable side.
 
 | name | made of | where | evidence |
 |---|---|---|---|
-| `past` | a photograph of the problem state, drained to grey — **only if the problem reads tonally** | a small inset, 15-25% of the frame, one corner | 2/2 on tonal problems, 0/1 on a colour one |
-| `evidence` | the same thing resolved, as a physical difference you can point at | in the hero, framed comparably and **never smaller than in the inset** | 2/4 with `past`; both misses were size or drain |
+| `past` | a photograph of the same person in the pain moment — a SCENE, in full colour | a small inset, 15-25% of the frame, one corner | 0/12 as a drained detail; scene form untested |
+| `evidence` | what the person is visibly enduring in one cell and visibly free of in the other — a situation, not a surface | both cells, described absolutely | 4/4 crop match once described absolutely |
 | `carry-over` | one thing identical in both cells — the jacket, the doorway, the bag | both cells | **none** — proposal |
 | `reflection` | the subject's own image in real glass, at a second angle | optional, one surface | 5/5 rendered; proves nothing alone, and sits quietly beside `past` |
 
@@ -104,12 +104,15 @@ is. Check the hero shows the same named thing before anything else.
 change needs two moments, so the problem has to be physically in the frame. An unmarked past
 cell reads as a result, so the drain is load-bearing rather than stylistic.
 
-**But the drain has an admission test: only a problem that reads TONALLY survives it.** Scuffing
-is grey-against-white and damp is dark-against-pale, and both came through the drain intact.
-Swelling and raw skin are signalled by redness as much as by shape, and grey destroys them — a
-drained swollen ankle simply looks like an ankle. 2/2 tonal, 0/1 colour, 1 mixed half-surviving.
-**If the problem's signal is a hue, this type cannot carry it**: route to `06-relief-hero
---vsinset`, where both halves stay in colour and a badge does the marking.
+**The inset is NOT drained, and dropping the drain dissolves the admission test that went with
+it.** A drained cell was inherited from `06-relief-hero`, where the past cell is a mundane
+moment that could be read either way and needs marking. **A suffering scene marks itself** —
+nobody reads a person enduring the problem as the after state. Draining it only makes the
+problem harder to see, and it cost this type a whole class of problems: redness, inflammation
+and staining by hue are all legible again now that the cell keeps its colour.
+
+Keep the drain only where a past cell's content is genuinely ambiguous. That is the condition
+`06-relief-hero`'s 5 observations actually support, and it is not this type's case.
 
 **`evidence` must be nameable rather than inferred.** "A visibly rested face" renders as an
 ordinary person; a collar clean where it was marked is a fact a stranger could point at.
@@ -122,11 +125,12 @@ opposite of the intent and destroys the evidence. Give the inset its own absolut
 give the hero the same body part at its own absolute closeness, and let the match be a
 consequence.
 
-**The inset holds the evidence and almost nothing else.** Eight renders split cleanly on this
-and on nothing else: the ones that read are inset crops that are nearly all evidence, and the
-ones that fail have context filling the inset — a whole car in a car park, an arm and a mug and
-a table — with the evidence a few pixels somewhere inside. No background, no second object, no
-room. Crop to the thing that changed.
+**The inset is a SCENE, so it needs enough room to be one.** An earlier version of this rule
+said the opposite — crop to the evidence and nothing else — and it was right for the macro
+comparison this type had accidentally become and wrong for what it is. Twelve renders of
+surfaces argued nothing, however well matched. The inset shows the person, what they are doing,
+and enough of where they are to read as a moment: the same framing discipline as the hero, at a
+smaller size.
 
 **`carry-over` is what stops the pair changing two things at once.** Hold one thing identical
 between inset and hero — the same jacket, the same doorway, the same bag — so the change reads
@@ -164,9 +168,10 @@ reflection out of focus, product in frame, saturated colors, stock photo look
 ## WORKED EXAMPLES
 ### example: skatepark-trainers — skeleton@2.0, run: pass
 Product: none in frame (G1-exempt) · axes: gaze=candid · frame delivered 1200x896
-The first frame this type has produced that reads as before-and-after. Scuffing is a tonal
-fault so it survives the drain, and the hero shows the trainers larger than the inset does —
-the two conditions 2.1 added, both satisfied here by accident before they were written.
+**Superseded content model — kept as a record, not as a template.** This was the first frame
+that read as before-and-after, and 2.3 retired the model it belongs to: both cells are surfaces,
+and the type argues with scenes. The drain and the tonal test it depends on are also gone. What
+still holds from it is the discipline of two cells showing the same thing at the same closeness.
 
 ```
 TYPE: 06-relief-scene v2.0
@@ -201,24 +206,29 @@ field, desaturated, never warm-boosted. Only the small photograph is drained.
 No text, no logo, no watermark, no product, no arrows, no badges.
 ```
 
-### example: bus-queue-ankle — skeleton@2.0, run: fail
-Product: none in frame (G1-exempt) · axes: gaze=reflect · frame delivered 1200x896
-- EVIDENCE — the ankle bone visible as a distinct shape, the line from calf to shoe running in
-  and out again, the strap flat rather than pressing a groove
-- PAST — the same ankle above the same shoe, drained to grey, swollen smooth so the bone has
-  disappeared
-- CARRY-OVER — the same buckled shoe on the same foot in both cells
-- REFLECTION — the shelter's glass panel, a second angle behind and to the side
-Kept diff-only as the record of both conditions failing at once. Swelling is signalled by
-redness as much as by shape, so the drained inset states nothing; and the hero puts the ankle
-small, distant and in shadow — smaller than the inset's own copy of it. Neither cell carries
-the evidence. `reflection` rendered cleanly beside the inset without fighting it, which is the
-one thing this frame does settle.
+### example: car-park-windscreen — skeleton@2.2, run: fail
+Product: none in frame (G1-exempt) · axes: gaze=candid · frame delivered 1200x896
+- HERO — a woman in her fifties at the wheel of a parked car in a supermarket car park, both
+  hands on the wheel, about to set off, looking ahead through clear glass
+- INSET — the same windscreen from the same seat, drained to grey, a milky film across the
+  middle and a greasy arc where the wipers stop
+- CARRY-OVER — the same air freshener on the same mirror stem in both
+Kept because it shows the fix rather than only the fault. The crop match is exact — the two
+cells are the same view of the same glass, which is what 2.2's absolute descriptions bought
+after eight renders that never managed it. And the hero is a real moment: a woman about to
+drive somewhere. Then the inset repeats her windscreen as a study of glass and the comparison
+drops out of the scene onto a surface. **Keep this hero and make the inset another moment.**
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.3 (2026-08-14): both cells are SCENES. Absolute description fixed the crop 4/4 after eight
+  failures, and with the crops finally matched the images were plainly macro surface studies —
+  a spec device, not a relief scene. Owner's correction: relief scene, suffering scene inset.
+  The drain goes with it, because a suffering scene marks itself and draining it only hid the
+  problem; the tonal admission test dissolves with the drain, so hue-signalled problems return.
+  The crop-to-the-evidence rule is reversed: a scene needs room to be one.
 - 2.2 (2026-08-14): the crop is the whole problem. Eight renders never once matched crop
   between the cells, because both rules asking for it were RELATIVE — "framed the same way",
   "smaller in the inset" — and `smaller` was read as `wider shot`. Each cell now gets its own
