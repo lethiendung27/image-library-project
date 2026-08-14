@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "2.0"
+version: "2.1"
 status: active
 replaced_by: null
 ratios: ["16:9", "4:3", "3:4"]
@@ -41,7 +41,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v2.0
+TYPE: 06-relief-scene v2.1
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -91,24 +91,29 @@ is a photograph, not an overlay, so it sits on the reliable side.
 
 | name | made of | where | evidence |
 |---|---|---|---|
-| `past` | a photograph of the problem state, drained to grey | a small inset, 15-25% of the frame, one corner | 5 obs and 2/2 rendered as `past` on `06-relief-hero` |
-| `evidence` | the same thing resolved, as a physical difference you can point at | in the hero, framed comparably to the inset | 0/4 without `past`; untested with it |
+| `past` | a photograph of the problem state, drained to grey — **only if the problem reads tonally** | a small inset, 15-25% of the frame, one corner | 2/2 on tonal problems, 0/1 on a colour one |
+| `evidence` | the same thing resolved, as a physical difference you can point at | in the hero, framed comparably and **never smaller than in the inset** | 2/4 with `past`; both misses were size or drain |
 | `carry-over` | one thing identical in both cells — the jacket, the doorway, the bag | both cells | **none** — proposal |
-| `reflection` | the subject's own image in real glass, at a second angle | optional, one surface | 4/4 rendered, and it proved nothing |
+| `reflection` | the subject's own image in real glass, at a second angle | optional, one surface | 5/5 rendered; proves nothing alone, and sits quietly beside `past` |
 
-**`past` is now the mechanism and it is REQUIRED.** The type's founding premise was that a
-subject seen from two angles in one frame proves a change. It does not, and four renders said
-so unanimously: every reflection came back geometrically clean and sharp, and not one image
-argued anything. **Two angles are two viewpoints of one moment; a change needs two moments.**
-The problem state has to be physically present in the frame, and the cheapest way to put it
-there is a small photograph of it, drained to grey. An unmarked past cell reads as a result, so
-the drain is load-bearing rather than stylistic.
+**`past` is the mechanism and it is REQUIRED.** Two angles are two viewpoints of one moment; a
+change needs two moments, so the problem has to be physically in the frame. An unmarked past
+cell reads as a result, so the drain is load-bearing rather than stylistic.
 
-**`evidence` is what the two cells differ by, and it must be nameable rather than inferred.**
-"A visibly rested face" renders as an ordinary person. Hair that lies flat where it stood out, a
-heel smooth where it was cracked, a collar clean where it was marked — facts a stranger could
-point at. **Frame the inset comparably to the hero** so the eye lands on the same thing twice:
-a close crop of a heel against a wide street shot compares nothing.
+**But the drain has an admission test: only a problem that reads TONALLY survives it.** Scuffing
+is grey-against-white and damp is dark-against-pale, and both came through the drain intact.
+Swelling and raw skin are signalled by redness as much as by shape, and grey destroys them — a
+drained swollen ankle simply looks like an ankle. 2/2 tonal, 0/1 colour, 1 mixed half-surviving.
+**If the problem's signal is a hue, this type cannot carry it**: route to `06-relief-hero
+--vsinset`, where both halves stay in colour and a badge does the marking.
+
+**`evidence` must be nameable rather than inferred, and legible at the size it is rendered.**
+"A visibly rested face" renders as an ordinary person; a collar clean where it was marked is a
+fact a stranger could point at. Nameable is not enough on its own. **The hero's copy of the
+evidence is never smaller than the inset's copy of it** — the four renders sort exactly on this:
+the two that read show it larger in the hero, the one that failed worst put a distant ankle in
+shadow beneath an inset that showed the same ankle bigger. Frame the two comparably and let the
+hero win on size.
 
 **`carry-over` is what stops the pair changing two things at once.** Hold one thing identical
 between inset and hero — the same jacket, the same doorway, the same bag — so the change reads
@@ -144,25 +149,68 @@ reflection out of focus, product in frame, saturated colors, stock photo look
 ```
 
 ## WORKED EXAMPLES
-### example: shop-window-hair — skeleton@1.1, run: fail
+### example: skatepark-trainers — skeleton@2.0, run: pass
+Product: none in frame (G1-exempt) · axes: gaze=candid · frame delivered 1200x896
+The first frame this type has produced that reads as before-and-after. Scuffing is a tonal
+fault so it survives the drain, and the hero shows the trainers larger than the inset does —
+the two conditions 2.1 added, both satisfied here by accident before they were written.
+
+```
+TYPE: 06-relief-scene v2.0
+REGISTER: a candid documentary photograph a passer-by could have taken. Single
+frame, natural, unposed, sharp. Nobody aware of a camera.
+
+A young man in dark jeans is sitting on a low concrete step at the edge of a
+skatepark, forearms on his knees, looking out at the ramps. Not at the camera.
+His white trainers are square on in the lower third of the picture.
+
+The change is in the trainers and it must be a fact anyone could point at: the
+toe caps and the midsole are one clean white the whole way round, the rubber
+edge unbroken and bright, with no grey scuffing across the toe and no dark
+grained line along the midsole.
+
+In the upper right corner sits a small photograph, drained to grey, about a
+fifth of the picture wide, with a thin white border. It shows the same trainers
+on the same step from the same angle, framed the same way as the trainers in the
+main photograph — but the toe caps are grey and abraded and a dark grained line
+runs the length of the midsole.
+
+The frayed hem of the same dark jeans falls across the ankle the same way in both
+the small photograph and the main one. Nothing else is shared.
+
+An ordinary skatepark on a flat afternoon: a scarred concrete ramp, a chained
+bin, a bag dumped on the step behind him, one blurred skater on the far side.
+
+LIGHT: even daylight, bright, soft shadows, no rim light.
+GRADE: muted concrete grey and denim blue, light film grain, shallow depth of
+field, desaturated, never warm-boosted. Only the small photograph is drained.
+
+No text, no logo, no watermark, no product, no arrows, no badges.
+```
+
+### example: bus-queue-ankle — skeleton@2.0, run: fail
 Product: none in frame (G1-exempt) · axes: gaze=reflect · frame delivered 1200x896
-- SUBJECT — woman in her thirties in a plain wool coat, stopped at a shop window on an ordinary
-  high street, shifting her bag strap, small closed-mouth smile, gaze on her reflection
-- EVIDENCE — hair lying flat and close to her head, one continuous outline, no frizz halo;
-  named as a physical fact and rendered as one
-- REFLECTION — shop window filling the left third, her other side and the back of her head,
-  sharp and geometrically consistent with where she stands
-- ENVIRONMENT — litter bin, bollard, two blurred passers-by, damp pavement, flat overcast
-Kept as the record of why 2.0 exists. The reflection is flawless and the image argues nothing:
-a woman with ordinary hair looks at a window. Three siblings in the same batch — a clean collar,
-a smooth dog's coat, an even tan bag — failed identically, so it is not the evidence class and
-not the scale. **Two angles are two viewpoints of one moment.** Its own 1.0 worked example had
-predicted this before the type was ever rendered.
+- EVIDENCE — the ankle bone visible as a distinct shape, the line from calf to shoe running in
+  and out again, the strap flat rather than pressing a groove
+- PAST — the same ankle above the same shoe, drained to grey, swollen smooth so the bone has
+  disappeared
+- CARRY-OVER — the same buckled shoe on the same foot in both cells
+- REFLECTION — the shelter's glass panel, a second angle behind and to the side
+Kept diff-only as the record of both conditions failing at once. Swelling is signalled by
+redness as much as by shape, so the drained inset states nothing; and the hero puts the ankle
+small, distant and in shadow — smaller than the inset's own copy of it. Neither cell carries
+the evidence. `reflection` rendered cleanly beside the inset without fighting it, which is the
+one thing this frame does settle.
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.1 (2026-08-14): the inset mechanism works, with two conditions the first four renders
+  bought. `past` gains an admission test — the drain preserves a TONAL problem and destroys a
+  COLOUR one, 2/2 against 0/1, so a hue-signalled problem routes to `06-relief-hero --vsinset`
+  instead. `evidence` gains a size floor: the hero's copy is never smaller than the inset's,
+  which is exactly how the four renders sort. 2 pass, 1 partial, 1 fail.
 - 2.0 (2026-08-14): the argument moves from two angles to two moments. Four first renders
   returned flawless reflections and no argument, so the founding premise is withdrawn: two
   angles are one moment. `past`, a desaturated inset of the problem, becomes the required

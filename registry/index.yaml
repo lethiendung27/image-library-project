@@ -433,7 +433,7 @@ types:
     step: 6
     job: relief
     device: scene
-    version: "2.0"
+    version: "2.1"
     status: active
     channels: [paid-social, advertorial]
     ratios: ["16:9", "4:3", "3:4"]
