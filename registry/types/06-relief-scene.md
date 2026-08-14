@@ -3,34 +3,33 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "1.1"
+version: "2.0"
 status: active
 replaced_by: null
-ratios: ["16:9", "3:4"]
+ratios: ["16:9", "4:3", "3:4"]
 channels: [paid-social, advertorial]
 requires_product_photo: false
 generation_mode: single-pass
 axes:
-  gaze: [reflect]
+  gaze: [candid, reflect]
 variants: []
 exempt_from: [G1, G3, G4]
 pairs_with: [01-pain-scene]
 never_with: []
-requires_pair: 01-pain-scene
 ---
 
 # 06-relief-scene
 
 ## PURPOSE
-The closing bookend of a pain→relief arc: the same person, out in the world, catching
-their own reflection — the resolved state as a lived moment. No product, no graphics.
-Carries no argument alone; only works beside its pain counterpart.
+The closing bookend of a pain→relief arc: the same person out in the world, living the
+resolved state, with the problem carried in a small desaturated inset so the change is
+visible inside one frame. No product.
 
 ## TRIGGER
 use_when: >
   Closing image of an advertorial or final frame of an ads creative, when the
-  product's promise is a state of living rather than a feature. MUST run beside
-  a 01-pain-scene of the same person, same palette (requires_pair).
+  product's promise is a state of living rather than a feature. Pairs naturally
+  with a 01-pain-scene of the same person, and no longer depends on one.
 avoid_when: >
   Marketplace galleries, main images, or anywhere the image must stand alone.
   Not when the result is invisible on the body or an object — for invisible
@@ -42,20 +41,20 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v1.1
+TYPE: 06-relief-scene v2.0
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
-[SUBJECT] the same person as the paired pain image, mid-errand. -> PARTS/subject
-[GAZE] on their own reflection, never on the camera.          -> PARTS/gaze
+[SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
+[GAZE] candid, or on a reflection. Never on the lens.         -> PARTS/gaze
 [ENVIRONMENT] an ordinary public place they would pass through. -> PARTS/environment
-[LIGHT] the same time-of-day character as the pain image.     -> PARTS/light
-[GRADE] the pain image's palette, muted.                      -> PARTS/grade
-[PAIRING] carries no argument alone.                          -> PARTS/pairing
+[LIGHT] plain daylight, no glamour.                           -> PARTS/light
+[GRADE] muted, desaturated, never warm-boosted.               -> PARTS/grade
 
-[MARKS] all three made of the scene; nothing is drawn.        -> MARKS
-  evidence    the physical change, readable in both views
-  reflection  the second angle, in real glass
-  carry-over  one object held identical from the pain image
+[MARKS]                                                       -> MARKS
+  past        the problem, a desaturated inset. REQUIRED
+  evidence    the same thing resolved, in the hero
+  carry-over  one thing identical in both cells
+  reflection  optional second angle, in real glass
 ```
 
 ## PARTS
@@ -67,63 +66,61 @@ unposed, sharp. Not styled, not lit, not aware of a camera.
 put-together but ordinary clothes from the same palette family, doing an everyday thing in
 public and pausing briefly.
 
-**`gaze`** — on their own reflection. **Never at the camera**: looking at the lens reads as
-showing off and the barrier goes up. This is the only value the `gaze` axis takes here.
+**`gaze`** — `candid`, absorbed in their own business, or `reflect`, on their own image in
+glass. Both are existing values of the shared axis. **Never at the camera**: looking at the lens
+reads as showing off and the barrier goes up. `reflect` is no longer compulsory, which is what
+2.0 changed — `candid` is now the default and the ordinary case.
 
 **`environment`** — a public everyday place the subject would actually pass through, with two
 or three incidental blurred passers-by or street details, ordinary weather. Nothing
 aspirational, no travel-brochure location, no empty clean street. **The problem started in the
 bathroom; the promise ends in the world**, which is why this type is never set at home.
 
-**`light`** — even natural daylight, bright, soft shadows. Slightly kinder than the paired pain
-image but the SAME time-of-day character. No golden hour, no rim light, no glamour lighting.
+**`light`** — even natural daylight, bright, soft shadows. No golden hour, no rim light, no
+glamour lighting. Where a pain counterpart exists, keep the same time-of-day character.
 
-**`grade`** — the paired image's muted palette, light film grain, shallow depth of field.
-Desaturated, never warm-boosted.
-
-**`pairing`** — this image only works beside its pain counterpart: same person, same palette,
-same lens character, same grade family (`requires_pair`). Best generated multi-pass from the
-pain image so the face is the same; single-pass only if the pair is generated fresh in the same
-run.
+**`grade`** — a muted palette, light film grain, shallow depth of field. Desaturated, never
+warm-boosted. The hero is full colour; only `past` is drained.
 
 ## MARKS
 
-**Every entry here is made of the scene. Nothing is drawn over the photograph** — and for this
-type that is not a sacrifice. Measured across three sibling types, a mark made of real
-substance in the frame renders reliably (`emission` 7/7 on `03-use-sequence`, `output` 4/4 on
-`06-relief-hero`) while a drawn mark at small scale does not (`fit` cut at 0/8, `hotspot` 1/3).
-A type whose PURPOSE already forbids graphics loses nothing by having no drawn entry.
-
-**All three are proposals with no evidence behind them.** This type has **0 classified
-observations and 0 render records** — it was written from one conversation exemplar and has
-never been rendered or seen in the market. Its paired type `01-pain-scene` has 10 observations
-and 19 renders. Under ADR-012 a proposal's first render is its founding evidence, and until
-that render exists nothing below is law.
+**Every entry is made of the scene; nothing is drawn over the photograph.** Measured across
+three sibling types, a mark of real substance renders reliably (`emission` 7/7, `output` 4/4)
+and a drawn mark at small scale does not (`fit` cut at 0/8, `hotspot` 1/3). A desaturated inset
+is a photograph, not an overlay, so it sits on the reliable side.
 
 | name | made of | where | evidence |
 |---|---|---|---|
-| `evidence` | the resolved symptom as a physical difference you can point at | on the body or object, readable in BOTH views | **none** — proposal |
-| `reflection` | the subject's own image in real glass, at a second angle | one surface, 25-35% of the frame | **none** — proposal |
-| `carry-over` | one object held identical from the paired pain image | anywhere in frame | **none** — proposal |
+| `past` | a photograph of the problem state, drained to grey | a small inset, 15-25% of the frame, one corner | 5 obs and 2/2 rendered as `past` on `06-relief-hero` |
+| `evidence` | the same thing resolved, as a physical difference you can point at | in the hero, framed comparably to the inset | 0/4 without `past`; untested with it |
+| `carry-over` | one thing identical in both cells — the jacket, the doorway, the bag | both cells | **none** — proposal |
+| `reflection` | the subject's own image in real glass, at a second angle | optional, one surface | 4/4 rendered, and it proved nothing |
 
-**`evidence` must be a difference you can name, not a state you infer** (G9). "A visibly rested
-face" is an inference and will render as an ordinary man; hair that lies flat where it stood up,
-a heel smooth where it was cracked, a shirt collar sitting clean where it was marked — those are
-facts a stranger could point at. **This is the type's admission test**: if the result cannot be
-named as a physical difference, the closing image is `06-relief-hero` with the product in frame,
-not this type. The type's own worked example predicted exactly this failure before it was ever
-rendered.
+**`past` is now the mechanism and it is REQUIRED.** The type's founding premise was that a
+subject seen from two angles in one frame proves a change. It does not, and four renders said
+so unanimously: every reflection came back geometrically clean and sharp, and not one image
+argued anything. **Two angles are two viewpoints of one moment; a change needs two moments.**
+The problem state has to be physically present in the frame, and the cheapest way to put it
+there is a small photograph of it, drained to grey. An unmarked past cell reads as a result, so
+the drain is load-bearing rather than stylistic.
 
-**`reflection` is the mechanism, not decoration.** A productless image proves a change by
-showing the subject twice in one frame, from two angles, in the same instant. Without the glass
-this is a stock photograph of a person on a street. It must be geometrically consistent with
-where the subject stands and sharp enough to read `evidence` in.
+**`evidence` is what the two cells differ by, and it must be nameable rather than inferred.**
+"A visibly rested face" renders as an ordinary person. Hair that lies flat where it stood out, a
+heel smooth where it was cracked, a collar clean where it was marked — facts a stranger could
+point at. **Frame the inset comparably to the hero** so the eye lands on the same thing twice:
+a close crop of a heel against a wide street shot compares nothing.
 
-**`carry-over` is what makes the difference legible.** Hold one object identical across the pair
-— the same jacket, the same bag, the same bus-stop sign — so the change in the body reads
-against something that demonstrably did not change. A pair that changes everything at once
-isolates nothing; that fault cost `06-relief-hero` two renders when a recall inset changed the
-activity as well as the product.
+**`carry-over` is what stops the pair changing two things at once.** Hold one thing identical
+between inset and hero — the same jacket, the same doorway, the same bag — so the change reads
+against something that demonstrably did not change. Changing everything at once isolates
+nothing; that cost `06-relief-hero` two renders when a recall inset changed the activity as well
+as the product.
+
+**`reflection` is demoted to optional and kept only because it renders.** 4 of 4 came back
+plausible, sharp and geometrically consistent, including one holding two subjects in a car door
+— the best-executed mechanism this library has had on a first attempt, and it carried no
+argument at all. Use it where the evidence genuinely needs a second angle, such as the back of a
+head. Never as the thing that makes the case.
 
 ## SLOT CONSTRAINTS
 - **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
@@ -138,7 +135,8 @@ activity as well as the product.
 
 ## NEGATIVE
 ```
-[G6] + badges, arrows, overlays, looking at camera, posing, laughing,
+[G6] + badges, arrows, drawn overlays, looking at camera, posing, laughing,
+undrained past cell, past cell larger than the hero subject,
 arms raised, celebration gesture, golden hour, warm flattering light,
 glamour lighting, beauty retouching, plastic skin, aspirational travel location,
 empty clean street, styled outfit, geometrically wrong reflection,
@@ -146,24 +144,31 @@ reflection out of focus, product in frame, saturated colors, stock photo look
 ```
 
 ## WORKED EXAMPLES
-### example: mouth-tape-morning-commute — skeleton@1.0, run: untested
-Product: none in frame (G1-exempt) · ratio 5:3 · axes: gaze=reflect · requires_pair 01-pain-scene
-- SUBJECT — man late 30s in a plain shirt and open jacket, walking to work in the early morning, pausing on the pavement, looking at his own reflection in a shop window while adjusting his collar; small closed-mouth smile, private and understated, not performing
-- EVIDENCE OF CHANGE — his face is visibly rested: skin even rather than sallow, eyes fully open and clear, no shadowing or puffiness beneath, jaw relaxed, lips closed and not dry; readable in BOTH the direct view and the reflection
-- REFLECTION — a shop window filling roughly 30% of the frame on the left, showing him from a different angle, sharp enough to read his face, geometrically consistent with his position
-- ENVIRONMENT — ordinary city street early morning, bare trees, a bus stop sign, two blurred commuters passing behind, overcast; nothing aspirational
-- LIGHT — even natural daylight, bright, soft shadows, slightly kinder than a night scene but the same plain documentary character
-- GRADE — muted blue-grey and neutral, light grain, shallow depth of field, desaturated, never warm-boosted
-Predicted failure — and the type's boundary: "a visibly rested face" is inference, not
-physical evidence; the render will likely show an ordinary man and say nothing. If
-confirmed, the avoid_when hardens into: this type ONLY for results visible on body or
-object (hair, skin, posture, a repaired thing); invisible-result products close with
-06-relief-hero instead.
+### example: shop-window-hair — skeleton@1.1, run: fail
+Product: none in frame (G1-exempt) · axes: gaze=reflect · frame delivered 1200x896
+- SUBJECT — woman in her thirties in a plain wool coat, stopped at a shop window on an ordinary
+  high street, shifting her bag strap, small closed-mouth smile, gaze on her reflection
+- EVIDENCE — hair lying flat and close to her head, one continuous outline, no frizz halo;
+  named as a physical fact and rendered as one
+- REFLECTION — shop window filling the left third, her other side and the back of her head,
+  sharp and geometrically consistent with where she stands
+- ENVIRONMENT — litter bin, bollard, two blurred passers-by, damp pavement, flat overcast
+Kept as the record of why 2.0 exists. The reflection is flawless and the image argues nothing:
+a woman with ordinary hair looks at a window. Three siblings in the same batch — a clean collar,
+a smooth dog's coat, an even tan bag — failed identically, so it is not the evidence class and
+not the scale. **Two angles are two viewpoints of one moment.** Its own 1.0 worked example had
+predicted this before the type was ever rendered.
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.0 (2026-08-14): the argument moves from two angles to two moments. Four first renders
+  returned flawless reflections and no argument, so the founding premise is withdrawn: two
+  angles are one moment. `past`, a desaturated inset of the problem, becomes the required
+  mechanism — 5 obs and 2/2 on `06-relief-hero`. `reflection` demoted to optional. MAJOR:
+  layer structure changes and `requires_pair` is dropped, the before now being in-frame.
+  `gaze` gains `candid`; `4:3` added.
 - 1.1 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012); skeleton
   cut. First MARKS library, and all three entries are proposals: this type has 0 observations
   and 0 renders, so there is nothing to count. Every entry is made of the scene, because the
