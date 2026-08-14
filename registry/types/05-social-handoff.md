@@ -148,6 +148,7 @@ Canonical and model-agnostic. Since ADR-014 it is not rendered into the prompt.
   since 1.0, so `PARTS/advocate` and the skeleton were contradicting the same file. The law is
   geometric: the listener stands between the advocate and the camera. Both KNOWN-FLAKY entries
   deleted — the geometry one resolved by the pram render, the other now the required behaviour.
+  `ca86229`
 - 2.1 (2026-08-14): `PARTS/product`'s dominance law was **unachievable as written**. "The largest
   man-made object in frame" cannot be met by a handheld tool in a room, and a model asked for it
   either ignores the clause or distorts the product's scale — the reference photo governs scale
