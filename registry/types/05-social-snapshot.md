@@ -179,7 +179,7 @@ existence. Shared register, different argument.
   alone. Fixed on contact: header read `v0.1` against a 1.0 file; `RATIO:` and the rendered avoid
   line both dropped; `ratios` corrected to ADR-016's set, `3:4` being the phone shape this
   register actually has; G6's screen law referenced, not restated. **MARKS barred permanently**:
-  a drawn mark refutes this register rather than weakening it (A11).
+  a drawn mark refutes this register rather than weakening it (A11). `3a09d03`
 - 1.0 (2026-08-11): PROMOTED staging → active on all four SPEC §6.3 criteria — 12 exemplars
   across five source families and five verticals (batches 2026-08-11-D and -E), router-confusion
   PASS against a purpose-built `eval/golden/fixture-002` at 8/8 slots, the socket-tester worked
