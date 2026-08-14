@@ -516,3 +516,40 @@ reason. `scripts/validate.py` encodes neither wording, so nothing enforces or br
 `registry_version` is unchanged because no data or structure moves.
 
 Consequences: `adapters/nano-banana.md` Rules 1b and 6, and `SPEC.md` §3.3, edited in this diff.
+
+## ADR-018 · 2026-08-14 · A GIF is a reserved cell in an existing layer, not a new mark
+
+The owner composites the loop into the still by hand, and asked for the GIF to become a
+mark on the types that already carry a layer. Owner's call taken; the shape it is given
+here is narrower than "a mark", for two reasons the evidence forced.
+
+**A mark is the wrong unit.** A MARKS entry would repeat one definition across the four
+types that host a layer — `06-relief-hero`, `02-symptom-rail`, `03-spec-split`,
+`05-social-handoff` — take a slot in each one's mark budget, and need a G3 colour that
+motion does not have. What the loop actually occupies is a layer those types already
+legislate, so it costs one axis token, `inset_motion: still | loop`, and one rule. The
+argument-level reading stays intact: the cell is bounded, anchored and counted, and A11
+holds — a photograph does not contain a bounded macro of itself.
+
+**Six renders on 2026-08-14 settled the FORM before any law was written.** Four wrote the
+brief into the frame as a text card and all four faulted; one of them rendered its
+markdown asterisks literally, which is G6's own argument made in the plainest possible
+way. Two drew a cell instead and both read as a hole. G12 is written from that split and
+from nothing else — it governs the reservation, not the motion.
+
+**What is still unknown.** No loop exists in `eval/render-tests.jsonl`, so `--loop` ships
+with `06-relief-hero` alone and its first render is founding evidence. The other three
+hosts inherit G12 by reference when a page needs them; none is edited here.
+
+**A capability claim four type files are currently guessing at.** `05-social-handoff`
+gates its inset off as "unavailable without compositing", `01-pain-split` and
+`03-spec-split` each reason from "a renderer who does not composite", and
+`04-proof-lockedframe` drops its `strict` camera for the same stated reason. The owner
+composites. The capability is narrower than full compositing — an overlay dropped into a
+reserved area — but it is not absent, and four files inferring it separately is how one of
+them ends up wrong. Flagged here rather than fixed: two of those files belong to a
+concurrent session, and the claim should be measured once and recorded once.
+
+Consequences: `registry/rules.md` gains G12; `registry/types/06-relief-hero.md` goes to
+1.13; `query/runbook.md` Step 5c states where the reservation clause is emitted.
+`registry_version` is unchanged — an axis value moves, no structure does.

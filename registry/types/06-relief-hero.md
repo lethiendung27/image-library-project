@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.12"
+version: "1.13"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -13,6 +13,7 @@ generation_mode: single-pass
 axes:
   register: [commercial, ugc]
   inset_mode: [vsinset, recall, context, detail, none]
+  inset_motion: [still, loop]
 variants: []
 exempt_from: []
 pairs_with: [01-pain-split, 01-pain-scene]
@@ -22,9 +23,9 @@ never_with: []
 # 06-relief-hero
 
 ## PURPOSE
-Sell the state after buying, with the product in frame. Configured on two independent
-axes — `register` (commercial | ugc) and `inset_mode` (vsinset | recall | context |
-detail | none) — named `06-relief-hero--{register}--{inset_mode}`.
+Sell the state after buying, with the product in frame. Configured on three independent
+axes — `register` (commercial | ugc), `inset_mode` (vsinset | recall | context | detail |
+none) and `inset_motion` (still | loop) — named `06-relief-hero--{register}--{inset_mode}`.
 
 ## TRIGGER
 use_when: >
@@ -45,7 +46,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 06-relief-hero v1.12
+TYPE: 06-relief-hero v1.13
 REGISTER: commercial | ugc                                    -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference,
@@ -56,7 +57,7 @@ REGISTER: commercial | ugc                                    -> PARTS/register
 [LIGHT] set by whether an output has to carry.                -> PARTS/light
 [OFFSET] subject to one side; a layer occupies that space.    -> PARTS/offset
 [PRODUCT VIEW] only if the hero cannot show the product.      -> PARTS/product-view
-[INSET] content set by inset_mode.                            -> VARIANTS-BY-AXIS
+[INSET] content by inset_mode, state by inset_motion.         -> VARIANTS-BY-AXIS
 
 [MARKS]                                                       -> MARKS
   output   the hero, required if the product emits (G8)
@@ -266,10 +267,8 @@ G7-X binds: installed in the inset while handheld in the hero contradicts itself
 ONE magnified product detail the hero cannot show at scene scale.
 Linked to the in-scene product by proximity: no arrows, no glow borders.
 ```
-Use when the argument depends on a feature too small to read in scene. A screen or UI is
-**never model-drawn** — composite the real interface in post; model-drawn digits come back
-gibberish, and screen digits are diegetic product UI rather than overlay copy (G6 scope note).
-An internal mechanism stays in a clean technical register inside the inset: internals bleeding
+A screen or UI is never model-drawn (G12,
+G6 scope note). An internal mechanism stays in a clean technical register inside the inset: internals bleeding
 into the photographic hero break G5.
 
 Use when the buying argument depends on a feature too small to read in scene
@@ -277,6 +276,18 @@ Use when the buying argument depends on a feature too small to read in scene
 
 ### inset_mode: --none
 No Zone C. Use when the scene carries the whole argument.
+
+### inset_motion: --still (default)
+The layer is the finished picture; nothing is reserved.
+
+### inset_motion: --loop
+```
+[INSET MOTION] the inset is a reserved cell.                  -> G12
+```
+A short video replaces the cell in post. Legal on every `inset_mode` except `--none`,
+which has no layer to reserve, and only where the layer's content is TEMPORAL — a state
+changing, an output flowing, a mechanism travelling. The brief and the loop prompt travel
+in the query output, never in the frame. Untested: no `--loop` render exists. ADR-018.
 
 ## WORKED EXAMPLES
 ### example: shower-filter-commercial-vsinset — skeleton@1.1, run: untested
@@ -315,6 +326,10 @@ person reduced to a shoulder.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.13 (2026-08-14): new axis `inset_motion: still | loop`, from six renders of how to hand a
+  loop to post. Four put the brief in the frame and all four faulted; two drew a cell and both
+  read as a hole. `--loop` reserves the layer and calls G12. Not a MARKS entry — it occupies a
+  layer the skeleton already legislates, and motion has no G3 colour. ADR-018. Untested.
 - 1.12 (2026-08-14): eight renders. Naming a badge's glyph settles it, 2/2; describing an arrow
   by its endpoints settles it, 2/2; anchoring hotspots to named places cures the over-count but
   not a zero, 1/2. Three new rules, each 2/2: a recall pair changes only the product and never

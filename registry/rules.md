@@ -223,3 +223,41 @@ import them, exactly as it declines the VS-badge dialect (nine observations, rec
 `01-pain-split`'s CHANGELOG). No practising type's skeleton is weakened by this rule.
 G11 exists because the library's own practice is not inherited from the market — which is
 precisely what made leaving it unwritten expensive.
+
+## G12 — Motion reservation
+
+**Scope:** a layer a type's own SKELETON already legislates — an inset, a recall cell, a
+rail vignette. G12 never creates a layer. A type with no layer has nothing to reserve, so
+a slot of that type earning motion is whole-frame or nothing.
+
+```
+The [named layer] is a RESERVED CELL: a short video replaces it in post, so what
+the render owes is the shape of the hole, not the detail inside it.
+Draw it with a hard clean edge and a thin white border. No drop shadow, glow or
+blur crosses that edge; any shadow it casts falls on the scene OUTSIDE it.
+Fill it with the FIRST frame of that motion — the same surface, the same light
+and the same grade as the rest of the picture.
+No text, no digits and no glyph inside the cell or beside it.
+```
+
+Geometry is INHERITED, never invented: corner, footprint and shape come from the host
+layer, and G10 binds them as it binds every layer. Where the host offers a choice the
+reserved cell takes the rounded rectangle — a rectangular video dropped into a circular
+hole costs a mask — and where the host mandates a circle it stays a circle. The cell's
+aspect IS the loop's aspect; a hole and a loop that disagree get cropped by hand.
+
+Two properties carry the rule. **The first frame, not a sample frame**: the still then
+stands alone if the loop never ships, and the composite lands with no jump. **No text,
+ever** — a readout that changes is a real screen capture composited in post, which
+`06-relief-hero --detail` already required before this rule existed, never model-drawn.
+
+**Evidence,** six renders on 2026-08-14. Four wrote the loop's brief into the frame as a
+text card and all four faulted: one specified a shot absent from the frame, one claimed a
+result absent from the frame, one rendered its markdown asterisks literally, and the clean
+one took 55% of the frame width and came within 3% of two edges. The two that drew a CELL
+instead — a macro readout and a split vsinset — both read as a bounded hole; the fault in
+the weaker of them was an inset showing white square tile against a hero showing beige
+stone, which is why the surface clause above is not optional.
+
+Motion itself is untested. No loop exists in `eval/render-tests.jsonl`, so this rule
+governs the RESERVATION only, and the first `--loop` render is its founding evidence.

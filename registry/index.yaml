@@ -399,7 +399,7 @@ types:
     step: 6
     job: relief
     device: hero
-    version: "1.12"
+    version: "1.13"
     status: active
     channels: [landing-page, marketplace, paid-social, advertorial]
     ratios: ["16:9", "1:1"]
@@ -407,6 +407,7 @@ types:
     generation_mode: single-pass
     axes:
       inset_mode: [vsinset, recall, context, detail, none]
+      inset_motion: [still, loop]
       register: [commercial, ugc]
     variants: []
     exempt_from: []

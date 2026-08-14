@@ -54,6 +54,9 @@ axes:
   gaze: [candid, confront, reflect]
   context_mode: [natural-use, declared-test]
   inset_mode: [vsinset, recall, context, detail, none]
+  # Whether a legislated layer is the finished picture or a cell reserved for a
+  # loop composited in post. G12, ADR-018. Never creates a layer.
+  inset_motion: [still, loop]
 
 generation_modes: [single-pass, multi-pass]
 

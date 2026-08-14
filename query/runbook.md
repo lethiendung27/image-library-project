@@ -185,6 +185,10 @@ to act on than a stated "no". Two forms:
   routing without one and that is normal, since most types ban layers outright, but
   where a legislated layer DOES exist and the still is a held state, the layer is
   usually the half that should move. Say in `reason` which of the two applied.
+  When the form IS `inset`, the option's own STILL prompt must set that layer to
+  `--loop` and carry G12's reservation clause — the hole has to exist in the render
+  before anything can be composited into it (ADR-018). A `form: inset` verdict beside
+  a still prompt that reserves nothing is the one inconsistency to check for.
 
 A slot earns motion when its declared reason to exist is **temporal** — a transition, a
 sequence, a state changing, an output flowing. A slot that exists to reveal an angle, a
