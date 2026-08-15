@@ -1,0 +1,95 @@
+{
+  "_note": "Assembled from the Shopify advertorial export by hand (query/runbook.md Step 1). The export is not a content.json: it carries page.content, page.htmlCompiled and brief, but no product.attributes block and no reference_photos. Every attribute below is DERIVED from brief.specification and brief.personaCorePain and is marked as such — none was supplied by the source.",
+  "source": {
+    "file": "landing-page-how-i-rescued-trapped-family-dvds-without-clunky-dongles-or-costly-transfer-fees.json",
+    "page_id": 58,
+    "lp_type_id": "advertorial",
+    "template": "TPL-ADV08",
+    "shopify_product_gid": null,
+    "image_briefs": null
+  },
+  "product": {
+    "name": "7-in-1 External USB DVD / Blu-ray Drive",
+    "category": "electronics",
+    "type": "External optical drive with built-in USB hub and SD card reader",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "none",
+      "mounting": "portable",
+      "colorways": ["as supplied"],
+      "body_contact": false,
+      "symptom_visibility": "visible-on-object",
+      "result_visibility": "visible",
+      "multi_step_usage": false
+    },
+    "attribute_derivation": {
+      "operation": "A disc is inserted and plays; the user does something else while it runs. Sets the POSE branch to relaxed, gaze away.",
+      "visible_output": "The drive emits nothing outward. The LED indicator is an indicator, not an output, and G8 forbids inventing an emission so a render looks alive — so no `output` mark is used anywhere on this page.",
+      "mounting": "Not fixed-installed, so the G7-X installed mode and the ugc low-angle reframe do not bind.",
+      "colorways": "One. Zone B of any 06-relief-hero shows a single unit; a second colorway would violate G2.",
+      "body_contact": "FALSE, and this is the page's most consequential gate: it drops 03-mechanism-ghostbody outright and sends every mechanism slot to 03-mechanism-xray.",
+      "symptom_visibility": "The symptom lives on objects — a jammed tray, a dongle knot, a scratched disc — not on a body.",
+      "result_visibility": "Visible: a video playing and a desk with one cable. 06-relief-scene is therefore not dropped by the invisible-result gate.",
+      "multi_step_usage": "Two steps at most. 03-use-sequence would still be admissible under its `buyers may assume it is complicated` clause — the copy leads on driver pain — but the type declares only 3:4 and 1:1 and every candidate slot here is 16:9, so it is unusable on this page."
+    }
+  },
+  "problems_solved": [
+    "A new laptop has no disc slot, so a box of wedding DVDs and home video is unreadable",
+    "Cheap external drives rattle, throw read errors on clean discs and run hot",
+    "One port means a nest of dongles and nothing left for the mouse or charging",
+    "Per-disc digitisation costs a lot and means posting away irreplaceable originals",
+    "Cloud-only storage feels one lockout away from losing the archive"
+  ],
+  "personas": [
+    "Parents with boxes of family DVDs and a port-limited laptop",
+    "Film collectors with physical disc libraries",
+    "Photographers moving RAW files off SD cards",
+    "Students and office workers who still need discs for software or archives"
+  ],
+  "page": {
+    "channel": "advertorial",
+    "awareness_stage": "problem-aware",
+    "awareness_basis": "Read from the copy, not declared. The hero spends its whole opening re-establishing that a new laptop has no disc drive, two full problem sections run before any solution is named, and copyFramework is PAS. brief.awarenessStage says `problem`, which agrees.",
+    "sections": [
+      {"role": "hero", "slot": "hero.image", "ratio": "16:9",
+       "copy_summary": "First-person: unboxed a new laptop and realised the family archive was locked away."},
+      {"role": "problem-agitation", "slot": "problems.items.0.image", "ratio": "16:9",
+       "copy_summary": "A cheap drive that rattled and threw read errors, three dongles, and digitisation shops that wanted steep fees."},
+      {"role": "cause", "slot": "problems.items.1.image", "ratio": "16:9",
+       "copy_summary": "Budget drives lack vibration damping, so the laser loses tracking; thin laptops also cut power delivery when a drive shares bandwidth."},
+      {"role": "mechanism", "slot": "features.items.0.image", "ratio": "16:9",
+       "copy_summary": "An anti-shock groove damps motor vibration so the laser stays centred; driverless on Windows and macOS."},
+      {"role": "spec", "slot": "features.items.1.image", "ratio": "16:9",
+       "copy_summary": "One cable in, two USB-A plus USB-C and an SD slot out; the mouse and card reader stay plugged in."},
+      {"role": "spec", "slot": "features.items.2.image", "ratio": "16:9",
+       "copy_summary": "Slim enough for a laptop sleeve, stays cool across long sessions, burns 50GB discs."},
+      {"role": "outcome", "slot": "features.items.3.image", "ratio": "16:9",
+       "copy_summary": "The wedding DVD played end to end on movie night; the archive is backed up and the desk is tidy."},
+      {"role": "comparison", "slot": "features.items.4.image", "ratio": "16:9",
+       "copy_summary": "Replaces a separate drive, a powered hub and a card reader, and avoids per-disc transfer fees."},
+      {"role": "social-proof", "slot": "reviews.shots.0.image", "ratio": "1:1",
+       "copy_summary": "Verified-purchase quotes about silent playback, cleared dongles and SD transfers."},
+      {"role": "social-proof", "slot": "reviews.shots.1.image", "ratio": "1:1", "copy_summary": "As above."},
+      {"role": "social-proof", "slot": "reviews.shots.2.image", "ratio": "1:1", "copy_summary": "As above."},
+      {"role": "social-proof", "slot": "reviews.shots.3.image", "ratio": "1:1", "copy_summary": "As above."},
+      {"role": "cta", "slot": "product.image", "ratio": "4:3",
+       "copy_summary": "Mid-page product card, 'Our top pick for disc recovery'."},
+      {"role": "cta", "slot": "product_end.image", "ratio": "16:9",
+       "copy_summary": "Closing product card, 'The compact drive that restored our archive'."},
+      {"role": "author", "slot": "hero.author_avatar", "ratio": "1:1", "copy_summary": "Byline portrait, 'By Warren Hayes'."},
+      {"role": "author", "slot": "guide.avatar", "ratio": "1:1", "copy_summary": "'About the author' portrait."},
+      {"role": "social-proof", "slot": "comments.items.0.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 1 of 6."},
+      {"role": "social-proof", "slot": "comments.items.1.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 2 of 6."},
+      {"role": "social-proof", "slot": "comments.items.2.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 3 of 6."},
+      {"role": "social-proof", "slot": "comments.items.3.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 4 of 6."},
+      {"role": "social-proof", "slot": "comments.items.4.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 5 of 6."},
+      {"role": "social-proof", "slot": "comments.items.5.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 6 of 6."}
+    ]
+  },
+  "known_gaps": [
+    "reference_photos is EMPTY. imageBriefs and shopifyProductGid are both null in the export, so there is no product photograph to hash (SPEC 6.4). Ten of the twelve routed slots declare requires_product_photo: true. No attachment was fabricated; every option omits the field instead.",
+    "The template's placeholder image labels are from a different product entirely — a weighted blanket. TPL-ADV08 was reused without restamping them. Every brief in prompts.json is derived from page.content and brief, never from those labels.",
+    "The reviews section places reviews.shots.0-3 inside the same section element as three named, verified-purchase quotes. 05-social-snapshot's authenticity fence bars a generated snapshot from sitting beside a name, avatar, star row or verified label."
+  ]
+}

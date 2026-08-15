@@ -1,0 +1,938 @@
+{
+  "page_id": "58",
+  "registry_version": "2.0.0",
+  "channel": "advertorial",
+  "awareness_stage": "problem-aware",
+  "slots": [
+    {
+      "slot_id": "hero.image",
+      "section_role": "hero",
+      "asset": "58-01-hero-pain-scene.png",
+      "placement": "Advertorial header, directly under the headline and byline.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to make a cold reader recognise themselves in a held state. Nothing about it is temporal - no transition, no sequence, no output flowing - so it does not earn motion."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decides it. 01-pain-scene's use_when names this beat in its own words - 'advertorial header image, cold traffic that does not know the product yet' - and --candid is the branch for 'physical limitation and moments nobody would choose to be seen in', which is a man checking a disc he cannot play. PAGE LEGALITY: the type is G1-exempt, so A is one of only two prompts on this page that runs without the missing product photo. EVIDENCE: --candid carries this type's owner-passed worked example and the type passed at 1.14. PRODUCT PRESENCE: none required and none allowed here. PROMPT RISK: 1,5k characters against a type whose measured history runs 1669-1880, and every clause in it is one the type's own PARTS require. B is legal and would win if the beat were self-image rather than physical limitation; C moves the same argument onto degradation, which the copy raises but does not lead on.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nMan in his forties, work shirt with the collar open, sitting forward on the edge\nof a living-room sofa late in the evening, mid-way through turning a DVD disc\nover in both hands to check its underside against the light. Under that force:\nboth elbows on his knees, shoulders rolled forward over the disc, the wrists\nangling it back and forth.\nFace: brow drawn in, jaw set, eyes down on the disc.\n\n[EVIDENCE]\nA slim closed laptop sits on the coffee table in front of him with an unbroken\nedge and no slot anywhere along it, and a shoebox of loose DVD cases stands open\nbeside it with the discs half out of their sleeves, one case lying face down on\nthe carpet where it slid off the pile.\n\n[ENVIRONMENT]\nAn ordinary front room, evening. Lived-in clutter belonging to that place: two\nmugs on the coffee table, a folded throw pushed to one end of the sofa, a\nchild's cardigan over the arm, the curtains already drawn. Nothing arranged,\nnothing removed to tidy the frame.\n\n[GAZE] unaware of the camera, gaze down on the disc in his hands.\n\n[LIGHT] low-key. Key: a single table lamp beside the sofa, warm and close. Fill:\ncold spill from a hallway doorway behind him. Rim light along the shoulder and\nthe edge of the disc. Deep shadow across most of the frame.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "The disc-in-hands force is diagnostic: nobody turns a disc to the light unless they cannot play it. Evidence is rank 1 - the laptop's unbroken edge with no slot, and the box of cases - so the symptom is a physical fact rather than an expression.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "G1-exempt: runs today without the missing product photo.",
+          "avoid": "badges, arrows, drawn overlays, insets of any kind, red glow, pain hotspots, graphic overlay, split panel, white background, studio lighting, stock photo look, posed model, fake grimace, smiling, clean staged interior, saturated colors, advertising composition, product placement",
+          "asset_candidate": "58-01-hero-pain-scene.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "axis: gaze candid -> confront",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "confront",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --confront\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nMan in his forties, work shirt with the collar open, sitting at a kitchen table\nturned square to camera, mid-way through pushing a DVD disc into the closed side\nedge of a slim laptop where a slot would be, the disc stopped flat against the\ncasing and his thumb still pressing it there. Under that force: the forearm\nlocked, the shoulder dropped behind the push, the other hand flat on the table\ntaking the laptop's weight.\nFace: mouth pressed flat, brow drawn in, chin tucked.\n\n[EVIDENCE]\nThe disc stands proud of the laptop's unbroken edge with nowhere to go, and a\nstack of DVD cases sits at his elbow with the top one open and empty, its\ninner sleeve still holding the leaflet.\n\n[ENVIRONMENT]\nAn ordinary kitchen table, early evening. Lived-in clutter belonging to that\nplace: a cold mug, a school bag slumped against a chair leg, a fruit bowl, a\ntea towel over the radiator. Nothing arranged, nothing removed to tidy the\nframe.\n\n[GAZE] looking directly into the lens, holding the viewer's eye.\n\n[LIGHT] even ambient daylight from a window behind the camera, minimal shadow,\nflat and unflattering.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated neutral, muted greys and greens, fine film grain, moderate\ndepth of field, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "The same beat played as daily frustration rather than physical limitation, with the disc stopped dead against a closed edge. --confront is legible at thumbnail size, which suits a header that may run as a paid-social crop.",
+          "axes": {
+            "gaze": "confront"
+          },
+          "composition_notes": "No second type survives the hero cell on advertorial, so B varies on the axis per runbook Step 4. Also G1-exempt.",
+          "avoid": "badges, arrows, drawn overlays, insets of any kind, red glow, pain hotspots, graphic overlay, split panel, white background, studio lighting, stock photo look, posed model, fake grimace, smiling, clean staged interior, saturated colors, advertising composition, product placement",
+          "asset_candidate": "58-01-hero-pain-scene-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: subject, place and evidence rank",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nWoman in her fifties in a cardigan, kneeling on the floor of a spare room beside\nan open storage crate, mid-way through lifting a stack of unlabelled home-video\ndiscs out of it with both hands, the stack sagging apart as it comes up. Under\nthat force: the back rounded over the crate, both elbows out, one knee taking\nher weight on the bare boards.\nFace: brow drawn in, lips parted, eyes down on the stack.\n\n[EVIDENCE]\nThe disc on top of the stack has a dulled milky bloom across its playing side\nand a fine scatter of surface scratches catching the light, and two more discs\nhave slipped from the stack and lie face down on the floorboards beside a crate\nlid furred with dust.\n\n[ENVIRONMENT]\nAn ordinary spare room used for storage, afternoon. Lived-in clutter belonging\nto that place: a stripped single bed pushed against the wall, a clothes airer\nfolded behind the door, two more crates stacked unopened, a roll of wrapping\npaper on its side. Nothing arranged, nothing removed to tidy the frame.\n\n[GAZE] unaware of the camera, gaze down on the discs in her hands.\n\n[LIGHT] low-key. Key: thin daylight from one small window high on the wall,\nraking across the floor. Fill: none to speak of. Rim light along the forearm and\nthe edge of the top disc. Deep shadow across most of the frame.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "Same type and axes as A, different execution: an older subject, a storage room, and the evidence moved to the discs themselves degrading. It argues the clock the copy mentions - 'the discs are slowly degrading while nothing is done' - which A leaves untouched.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "G1-exempt. Pairs less tightly with the first-person male byline than A or B.",
+          "avoid": "badges, arrows, drawn overlays, insets of any kind, red glow, pain hotspots, graphic overlay, split panel, white background, studio lighting, stock photo look, posed model, fake grimace, smiling, clean staged interior, saturated colors, advertising composition, product placement",
+          "asset_candidate": "58-01-hero-pain-scene-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "problems.items.0.image",
+      "section_role": "problem-agitation",
+      "asset": "58-02-problems0-pain-scene-object.png",
+      "placement": "Beside 'The painful loop of cheap drives and missing ports'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A still life of what was already tried. It is a state the reader inspects, not a process, so nothing in it changes over time."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "PAGE LEGALITY decides it over FIT. B is the better literal fit - 04-proof-lockedframe's use_when names 'the I tried three things beat' outright, and the copy's own note label is 'What I tried first'. But that type appears once per page and features.items.4 needs it more: its use_when also requires a buyer who 'already understands the problem and mechanism', which is false this early and true by the time the cost comparison runs. So A takes rung 4 of the runbook's ladder - another execution of a type already on the page, differing on a named dimension, here subject class - which is the precedent the runbook records for object-only pain scenes. EVIDENCE: object-only execution is recorded twice in the ledger. PRODUCT PRESENCE: none, correctly - the product has not been revealed yet. PROMPT RISK: A is G1-exempt and runnable today; B is too, but costs the page its proof image.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "execution: subject class person -> object-only",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nNo person. The subject is a home desk in the state its owner left it, shot low\nand close across the desktop so the tangle fills the frame.\n\n[EVIDENCE]\nA cheap grey plastic external drive sits skewed on the desk with its tray jammed\nhalf open and a disc still resting in it, its single cable stretched taut across\nthe desktop to the one free port on a closed slim laptop. Three separate adapter\ndongles hang off that same side in a knot, their cables crossing and looping back\non themselves, one of them unplugged entirely and lying on the desk with its\nconnector face up. A wireless mouse sits at the edge of the desk with its own\nreceiver stub loose beside it, plugged into nothing.\n\n[ENVIRONMENT]\nAn ordinary home desk in a corner of a room, evening. Lived-in clutter belonging\nto that place: a cold mug ringing the wood, a phone face down, a pair of glasses\nfolded on a notebook, a charger brick that has nowhere to go. Nothing arranged,\nnothing removed to tidy the frame.\n\n[GAZE] no person in the frame.\n\n[LIGHT] low-key. Key: a desk lamp low and to one side, hard and close across the\ncables. Fill: cold spill from a screen out of frame. Rim light along the drive's\ntop edge and the taut cable. Deep shadow across most of the frame.\n\n[FORBIDDEN] No reference product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "The dongle nest IS the symptom the copy describes, and it is an object fault, so the frame drops the person entirely. Evidence is rank 3, the failed tool in the state that shows it failed: a tray jammed half open with the disc still in it.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "Rung 4 of the runbook ladder. Named dimension vs hero.image: subject class. G1-exempt.",
+          "avoid": "badges, arrows, drawn overlays, insets of any kind, red glow, pain hotspots, graphic overlay, split panel, white background, studio lighting, stock photo look, posed model, fake grimace, smiling, clean staged interior, saturated colors, advertising composition, product placement",
+          "asset_candidate": "58-02-problems0-pain-scene-object.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 01-pain-scene -> 04-proof-lockedframe",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "variant": "rivals",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --rivals, camera handheld\nREGISTER: documentary photography. No overlays, badges, arrows or text.\nLAYOUT: 3 equal vertical panels, thin white gutters, no outer border.\n\n[PRODUCT REFERENCE]\nNot applicable. No product appears in this image.\n\n[SCENE — the same in all three]\nThe same corner of a home desk, the same dark wood desktop, a closed slim laptop\npushed to the back and a cold mug beside it. Flat overcast light from a window off to the left, no strong\nshadows, no styling.\n\n[FRAMING]\nOne person photographed this three times across a fortnight from where they\nalways sit, phone level with the desktop, the bare wood filling the middle\nthird and the laptop across the upper third. It reads as one shot taken three\ntimes, never as three different shots. Light differs only in exposure, never warmth.\n\n[THE VARIABLE]\nThree ways people already try to read a disc on a laptop with no drive, each\nphotographed mid-attempt, each with the same unbranded silver disc present.\n1 — a thin unbranded plastic external drive, its tray half open with the disc in\nit, its cable running to the laptop's only port; the mug at the back, handle out.\n2 — three adapter dongles chained one into another, the disc propped against them\nunread, the last connector hanging free; the mug turned, a pen beside it.\n3 — a padded post bag lying open with the disc and a folded blank slip inside it,\nready to be sent away; the mug gone, a roll of tape in its place.\n\n[GRADE — the same in all three]\nMuted and cool, low saturation, no warm tone anywhere, from the overcast window\nand the drab desktop rather than a filter. Still colour, never black and white.\n\nNo panel is favoured and no panel is brighter. None of the three wins and the\nimage makes no claim.",
+          "rationale": "Three panels, three things the reader has already tried, none of them winning - which is exactly the copy's three notes. --rivals carries no product, so it needs no reference photo either.",
+          "axes": {
+            "camera_lock": "handheld",
+            "context_mode": "natural-use"
+          },
+          "composition_notes": "PICKING B FORCES features.items.4 TO CHANGE - one type once per page, and variants do not lift it. features.4 would fall to a second 06-relief-hero execution. Type note at 1.13: --rivals is never sent for the library's own render tests because there is no product to judge; that is a testing rule, not a page rule.",
+          "avoid": "badges, arrows, glows, checkmarks, one panel brighter, inconsistent lighting between panels, studio background, clean styled set, staged perfection, saturated colors, red or green cues, motion blur, people, hands, brand logos, recognizable trademarks, identical framing between panels, pixel-perfect alignment, tripod shot, CGI, last panel brighter or cleaner than the others, alternatives made to look broken",
+          "asset_candidate": "58-02-problems0-lockedframe-rivals.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: place, light and evidence rank",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nNo person. The subject is a kitchen worktop where the overflow of a desk has\nended up, shot square on from worktop height.\n\n[EVIDENCE]\nA cheap grey plastic external drive lies on its side on the worktop with its\ntray sprung open and empty, a hairline crack running from one corner of the\ncasing, and a silver disc face down beside it with a fan of fine scratches\nacross the playing side. Two adapter dongles sit coiled in a shallow bowl that\nnormally holds keys, their connectors tarnished, and a bundled cable has been\nwound and tucked under the bowl's rim to keep it from unravelling.\n\n[ENVIRONMENT]\nAn ordinary kitchen worktop by a wall socket, morning. Lived-in clutter\nbelonging to that place: a bread bin with crumbs at its foot, a jar of wooden\nspoons, a tea towel hooked on the oven rail, a charger already occupying the\nsocket. Nothing arranged, nothing removed to tidy the frame.\n\n[GAZE] no person in the frame.\n\n[LIGHT] low-key. Key: hard morning sun through a window to the right, throwing a\nsharp-edged shadow of the drive across the worktop. Fill: weak bounce off the\nwall tiles. Rim light along the cracked casing edge. Deep shadow across the left\nof the frame.\n\n[FORBIDDEN] No reference product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "Same type and object-only execution as A, moved off the desk onto a worktop and lit hard rather than low, with the evidence shifted to the cracked casing and the scratched disc - the failure the copy calls 'ran hot and failed to read our irreplaceable recordings'.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "G1-exempt. Shares its named dimension with A, so it is a true execution variant rather than a second route.",
+          "avoid": "badges, arrows, drawn overlays, insets of any kind, red glow, pain hotspots, graphic overlay, split panel, white background, studio lighting, stock photo look, posed model, fake grimace, smiling, clean staged interior, saturated colors, advertising composition, product placement",
+          "asset_candidate": "58-02-problems0-pain-scene-object-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "problems.items.1.image",
+      "section_role": "cause",
+      "asset": "58-03-problems1-cause-anatomy.png",
+      "placement": "Beside 'Why standard external drives constantly fail'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "cause",
+        "duration_s": 3,
+        "loop": "seamless loop",
+        "asset": "58-03-problems1-cause-anatomy.gif",
+        "shot": "the two panels, held as drawn",
+        "action": "left lens shakes off the track",
+        "result": "right lens never leaves it",
+        "match": "flat vector, same two grounds",
+        "delivery": "mp4/webm, under 2 MB",
+        "reason": "The cause this slot exists to indict IS temporal - a motor spins, the sled shakes, the beam drifts off the track. The still can only show the endpoint of that. 02-cause-anatomy legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job, cause.",
+        "prompt": "Animate the supplied two-panel illustration as a seamless 3-second loop. Everything stays exactly as drawn - both grounds, the ivory structures, the two dashed measure lines, both verdict badges, the flat-vector style, every edge and fill. In the LEFT panel only, the lens and its sled tremble rapidly side to side under the spindle and the beam slides off the ridged track band and back, and the red dashed line's span widens and narrows with it. In the RIGHT panel only, the same lens sits in its damping carriage and does not move at all, the beam staying on the band and the blue dashed line holding its length exactly. Nothing else moves. No camera move, no zoom, no new element, no text."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT and PAGE LEGALITY agree. The copy names one mechanism - 'unbalanced internal motors shake the optical core, the laser drifts off track' - and 02-cause-anatomy exists to indict exactly that with a measured pair. It passes the removal test outright: take the unbalanced spindle out of the left panel and the read error goes with it, so this is a switchable state and not accumulated damage. --diagnostic is the variant for the advertorial middle where the culprit is named before the product is revealed, and features.items.0 downstream carries the product, which is the condition the variant sets. EVIDENCE: 30 renders behind measure, 18 behind verdict, and the two-mark budget is the type's proven configuration. PRODUCT PRESENCE: correctly absent, and that makes A G1-exempt and runnable today. PROMPT RISK: the offset difference is far past the 2:1 admission floor. B indicts the second cause the copy names and is the one to run if A's subject class struggles; C stays on vibration but moves the landmark to the platter.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "02-cause-anatomy",
+          "type_version": "1.15",
+          "variant": "diagnostic",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.15 --diagnostic\nMEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.\n\nFRAME: the whole optical assembly of a disc drive in shot, seen in cross-section\nfrom the side, the reading lens small within it.\nGROUND: deep desaturated slate blue, the right half one step lighter than the\nleft.\nBODY: a disc lying flat with its data track layer drawn as a fine ridged band on\nits underside, and below it the reading lens carried on its sled, cut as flat\nlayers in warm ivory over a translucent drive-body outline. NOT a skeleton, NOT a\nhuman figure. Exactly one assembly in EACH panel, same scale and same side view.\n\nPANELS. LEFT: the assembly mounted on a bare unbalanced spindle motor drawn\nrealistically and unbranded, the motor's rotation shaking the sled so the lens\nsits off to one side of the track and its beam lands on blank disc between two\nridges. RIGHT: the same assembly on the same interface, the sled seated in a\ndamping groove carriage of the same size, the lens held under the track and its\nbeam landing on the ridged band itself. The disc and its track layer appear in\nboth panels and neither the motor nor the carriage covers them.\n\nMARKS, two, nothing else marked:\n- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE\n  UNDERSIDE OF THE DISC, running from the centre of the track band down to the\n  centre of the lens and STOPPING at both. Both begin at the same point on the\n  track band, at the same place in their panel. Identical thickness and dash. One\n  property differs: the sideways offset - wide on the left, closed to almost\n  nothing on the right. Red left, blue right. Straight lines, not boxes.\n- verdict: filled solid discs, red with a white X in the left panel's TOP corner,\n  green with a white check in the right panel's. Same diameter, not rings.\n\nG3: red wrong, blue correct, green badge, nothing else.",
+          "rationale": "The measured pair is beam-to-track offset: wide on the bare spindle, closed to nothing in the damping carriage. Both lines anchor to the same two landmarks and only the offset differs, which is the type's one-property rule.",
+          "composition_notes": "FIRST NON-BIOLOGICAL body on this type - every rendered subject class so far has been anatomical (tooth, hair shaft, muscle, kneecap). The device is a 2D cross-section and the avoid_when only requires internal structure to draw, which a disc, track and lens have. Untested; watch the first render for the structures reading as a recognisable assembly. G1-exempt.",
+          "avoid": "photographic elements, 3D render, photorealistic skin, human face, gore, correct side on the left, both dashed lines identical, missing badge on either panel, different figure scale between panels, extra signal colours, saturated ground, background pattern, reference product in frame, branded remedy object",
+          "asset_candidate": "58-03-problems1-cause-anatomy.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: which cause is indicted",
+          "type": "02-cause-anatomy",
+          "type_version": "1.15",
+          "variant": "diagnostic",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.15 --diagnostic\nMEDIUM: 2D illustration, airbrushed. NOT photography, NOT 3D.\n\nFRAME: the whole side wall of a slim laptop in shot with its single port, the\nport opening small within it.\nGROUND: deep desaturated plum, the right half one step lighter than the left.\nBODY: the port opening and the power rail running back from it into the machine,\ndrawn as soft modelled layers in warm ivory over a translucent laptop-wall\noutline, with the rail's width shown along its length. NOT a skeleton, NOT a\nhuman figure. Exactly one port and rail in EACH panel, same scale and same side\nview.\n\nPANELS. LEFT: a chain of three separate adapter dongles drawn realistically and\nunbranded, plugged one into another and all into that single port, the rail\nbehind the port drawn pinched narrow where the load meets it. RIGHT: one\ncombined hub unit of the same size seated at the same port, its own supply lead\nrunning away to the side, the rail behind the port drawn at its full width. The\nport and the rail appear in both panels and neither the dongle chain nor the hub\ncovers them.\n\nMARKS, two, nothing else marked:\n- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE\n  OUTER FACE OF THE PORT, running across the rail from one wall of it to the\n  other and STOPPING at both. Both sit at the same distance behind the port, at\n  the same place in their panel. Identical thickness and dash. One property\n  differs: the rail width - narrow on the left, wide on the right. Red left, blue\n  right. Straight lines, not boxes.\n- verdict: filled solid discs, red with a white X in the left panel's TOP corner,\n  green with a white check in the right panel's. Same diameter, not rings.\n\nG3: red wrong, blue correct, green badge, nothing else.",
+          "rationale": "The copy names two causes and this is the second: 'thin laptops cut off power delivery when a drive shares bandwidth'. The measured pair becomes rail width at the port, pinched under a dongle chain and full under one powered hub.",
+          "composition_notes": "Also non-biological, and airbrushed rather than flat-vector so the two are not one look. Removal test passes: unplug the chain and the starvation goes. G1-exempt.",
+          "avoid": "photographic elements, 3D render, photorealistic skin, human face, gore, correct side on the left, both dashed lines identical, missing badge on either panel, different figure scale between panels, extra signal colours, saturated ground, background pattern, reference product in frame, branded remedy object",
+          "asset_candidate": "58-03-problems1-cause-anatomy-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: landmark pair and style",
+          "type": "02-cause-anatomy",
+          "type_version": "1.15",
+          "variant": "diagnostic",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.15 --diagnostic\nMEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.\n\nFRAME: the whole spindle motor and disc platter in shot, seen straight on from\nthe front, the bearing small within it.\nGROUND: deep desaturated teal, the right half one step lighter than the left.\nBODY: the spindle shaft, its bearing collar and the disc platter seated on it,\ncut as flat layers in warm ivory over a translucent chassis outline. NOT a\nskeleton, NOT a human figure. Exactly one spindle and platter in EACH panel, same\nscale and same front view.\n\nPANELS. LEFT: the shaft running in a bare loose-fitting collar drawn realistically\nand unbranded, the platter tilted off level on it and its rim standing high on one\nside. RIGHT: the same shaft in a counterweighted collar of the same size at the\nsame interface, the platter sitting level and its rim at the same height all the\nway round. The platter and the collar appear in both panels and neither covers\nthe other.\n\nMARKS, two, nothing else marked:\n- measure: two dashed straight lines, one per panel, each PARALLEL TO THE FACE OF\n  THE PLATTER, running from the top of the collar up to the underside of the\n  platter rim on the raised side and STOPPING at both. Both begin at the same\n  point on the collar, at the same place in their panel. Identical thickness and\n  dash. One property differs: the gap - wide on the left, closed to almost\n  nothing on the right. Red left, blue right. Straight lines, not boxes.\n- verdict: filled solid discs, red with a white X in the left panel's TOP corner,\n  green with a white check in the right panel's. Same diameter, not rings.\n\nG3: red wrong, blue correct, green badge, nothing else.",
+          "rationale": "Same cause as A, but the measurement moves off the beam onto the platter's tilt over its collar - a landmark pair that is easier to draw unambiguously than a beam, if A's optical section reads muddy.",
+          "composition_notes": "Front view rather than side, so it does not repeat A's composition. G1-exempt.",
+          "avoid": "photographic elements, 3D render, photorealistic skin, human face, gore, correct side on the left, both dashed lines identical, missing badge on either panel, different figure scale between panels, extra signal colours, saturated ground, background pattern, reference product in frame, branded remedy object",
+          "asset_candidate": "58-03-problems1-cause-anatomy-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.0.image",
+      "section_role": "mechanism",
+      "asset": "58-04-features0-xray.png",
+      "placement": "Beside 'Anti-shock optical core stops laser vibration'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "mechanism",
+        "duration_s": 3,
+        "loop": "seamless loop",
+        "asset": "58-04-features0-xray.gif",
+        "shot": "the render, held exactly as built",
+        "action": "sled tracks, beam stays centred",
+        "result": "the beam never leaves the disc",
+        "match": "same ground, same cyan, no new light",
+        "delivery": "mp4/webm, under 2 MB",
+        "reason": "The mechanism is a travelling one - the sled runs its carriage while the disc turns - and a still can only assert that. 03-mechanism-xray legislates no motion layer, so the form is whole-frame and the kind is the type's own job, mechanism.",
+        "prompt": "Animate the supplied see-through render as a seamless 3-second loop. The product, its translucent shell, the ground and the framing all stay exactly as rendered - no camera move, no zoom, no change of light. Two things move and nothing else. The disc on the spindle turns steadily and evenly in place. The optical pickup lens travels smoothly along its damping carriage from the spindle outward and back, and its cyan beam stays exactly perpendicular to the disc above it the whole way, never wavering sideways and never dimming. The cyan stays the brightest thing in the frame throughout. No new element, no arrow, no text, no spec label."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is decisive and the gate makes it the only mechanism type available. body_contact is false for an external drive, which drops 03-mechanism-ghostbody by the slot-rules attribute gate, and 03-spec-split and 03-spec-explode are not advertorial types. That leaves xray, which is also exactly right: the section argues from an internal component the buyer cannot see, and xray exists to show real internals through a translucent shell. A is the top-down view because the carriage's length is the argument and it reads longest from above. EVIDENCE: type passed at 1.3 on two owner-passed worked examples; working carries 1 render. PRODUCT PRESENCE: the product IS the frame. PROMPT RISK: G1 binds the silhouette hard here and there is no reference photo yet, so this option cannot run until one is supplied. One mark only - the type's own rule is not to invent an emission, and this drive emits nothing outward, so output and caught are both absent.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the external\nDVD drive. The outer shell becomes translucent, but its silhouette, proportions\nand every visible external part must match the reference exactly. Do not redesign\nor add features.\n\nCANVAS: a plain deep charcoal ground, and nothing else in the frame behind the\nproduct.\n\nSHELL: the drive lying flat and seen from above and slightly to one side, its\ntop casing translucent and glass-like, filling about 75 percent of the frame\nwidth.\n\nINTERNALS, solid and detailed inside the shell, each at its true location: the\noptical pickup lens on its sled, carried on a damping groove carriage that runs\nthe length of the bay; a flat spindle motor at the centre of the bay with a disc\nseated on it; a control board along the back edge in its own real board colour;\na ribbon cable folding from the board to the sled.\n\nMARKS, one, nothing else in the frame is marked:\n- working: the optical pickup lens shown ACTIVE, throwing a narrow cool cyan\n  beam straight up onto the underside of the disc above it, the brightest thing\n  in the frame and clearly brighter than the ground. No arrow anywhere - the\n  carriage's own line carries the direction of travel.\n\nNo text, numbers or spec labels anywhere in the image.\nThe marks are the only added colour; the product and its parts keep their own.",
+          "rationale": "Top-down through the lid: the damping carriage runs the length of the bay so its travel is legible, and the beam standing up onto the disc is the one thing the section exists to show.",
+          "composition_notes": "Needs the product photo. Only working is used - the drive emits nothing visible outward, and G8 forbids inventing an effect so a render looks alive.",
+          "avoid": "photographic background, environment, people, hands, spec labels, capacity text, callout lines with text, opaque shell, internals floating outside the product, invented components, exploded parts view, rainbow palette, bright white background, cartoon style",
+          "asset_candidate": "58-04-features0-xray.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: viewpoint and internals named",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the external\nDVD drive. The outer shell becomes translucent, but its silhouette, proportions\nand every visible external part must match the reference exactly. Do not redesign\nor add features.\n\nCANVAS: a plain pale warm grey ground, and nothing else in the frame behind the\nproduct.\n\nSHELL: the drive seen end-on from its front edge and slightly above, the tray\nseam facing the camera, its casing translucent and glass-like, filling about 70\npercent of the frame width.\n\nINTERNALS, solid and detailed inside the shell, each at its true location: the\noptical pickup lens on its sled directly behind the tray seam, seated in a\ndamping groove carriage; a flat spindle motor behind it; a control board beneath\nin its own real board colour; the port bank moulded into the rear wall with its\ntwo rectangular openings, one oval opening and one card slot.\n\nMARKS, one, nothing else in the frame is marked:\n- working: the optical pickup lens shown ACTIVE, throwing a narrow cool cyan\n  beam upward from the lens face, the brightest thing in the frame and clearly\n  brighter than the ground. No arrow anywhere.\n\nNo text, numbers or spec labels anywhere in the image.\nThe marks are the only added colour; the product and its parts keep their own.",
+          "rationale": "End-on from the front edge, which brings the rear port bank into the same section as the optical core. It answers this section and sets up the next one in a single frame.",
+          "composition_notes": "Needs the product photo. Ground moves to pale warm grey so it is not one look with A.",
+          "avoid": "photographic background, environment, people, hands, spec labels, capacity text, callout lines with text, opaque shell, internals floating outside the product, invented components, exploded parts view, rainbow palette, bright white background, cartoon style",
+          "asset_candidate": "58-04-features0-xray-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: orientation and ground",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the external\nDVD drive. The outer shell becomes translucent, but its silhouette, proportions\nand every visible external part must match the reference exactly. Do not redesign\nor add features.\n\nCANVAS: a plain deep olive ground, and nothing else in the frame behind the\nproduct.\n\nSHELL: the drive standing on its long edge and seen from a low front\nthree-quarter angle, its casing translucent and glass-like, filling about 65\npercent of the frame height.\n\nINTERNALS, solid and detailed inside the shell, each at its true location: the\noptical pickup lens on its sled part-way along its damping groove carriage; a\nflat spindle motor with a disc seated on it above the sled; a control board down\nthe lower edge in its own real board colour; a bridge chip on that board beside\nthe port bank.\n\nMARKS, one, nothing else in the frame is marked:\n- working: the optical pickup lens shown ACTIVE, throwing a narrow cool cyan beam\n  across the short gap onto the disc surface facing it, the brightest thing in the\n  frame and clearly brighter than the ground. No arrow anywhere - the carriage's\n  own line carries the direction of travel.\n\nNo text, numbers or spec labels anywhere in the image.\nThe marks are the only added colour; the product and its parts keep their own.",
+          "rationale": "Standing on edge at a low three-quarter, which shows the drive's thinness at the same time as its internals - useful if the page wants the slim claim carried twice.",
+          "composition_notes": "Needs the product photo. A vertical subject in a 16:9 frame leaves side space; the plain ground absorbs it.",
+          "avoid": "photographic background, environment, people, hands, spec labels, capacity text, callout lines with text, opaque shell, internals floating outside the product, invented components, exploded parts view, rainbow palette, bright white background, cartoon style",
+          "asset_candidate": "58-04-features0-xray-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.1.image",
+      "section_role": "spec",
+      "asset": "58-05-features1-relief-hero-detail.png",
+      "placement": "Beside 'Built-in hub restores laptop connectivity'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The argument is a count of ports with things in them - a held state a reader inspects. Nothing flows and nothing changes, so the inset layer that --detail legislates has no temporal content to host a loop."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "This slot has no cell of its own and the ladder decides it. The mechanism cell is spent at features.items.0, 03-spec-explode and 03-spec-split are not advertorial, and 03-use-sequence - which the copy would otherwise suit - declares only 3:4 and 1:1, so it cannot serve a 16:9 slot at all. Rung 2 of the ladder moves to an adjacent step and 06-relief-hero carries it: the section's real argument is the after state of a desk, and --detail is the sanctioned way to magnify a feature too small to read at scene scale, which a port bank is. FIT: use_when names gallery images 2-3 and landing-page banners. EVIDENCE: the type is at 1.15 with 12 renders behind its marks, though --detail as a still inset is thinner than --recall. PRODUCT PRESENCE: the product is the desk's centre and every port is occupied, which is the claim. PROMPT RISK: needs the reference photo, and G1 binds it identically in both layers.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15 --commercial, inset --detail\nREGISTER: clean commercial photograph, controlled light, sharp.\n\n[PRODUCT REFERENCE]\nUse the attached photo as the exact reference for the external DVD drive,\nidentical in every layer. Preserve shape, proportions, material, finish and\ncolour exactly.\n\n[SUBJECT]\nMan in his forties in a soft grey shirt, sitting back at a home desk with one\nhand resting on a wireless mouse and the other loose in his lap, watching the\nlaptop screen rather than the drive. Relaxed, gaze away from the product.\n\n[PRODUCT]\nThe drive on the desk between him and the laptop, front three-quarter angle,\nwhole and unobstructed, close enough to the camera to read. A single cable runs\nfrom it to the laptop's one port. Into the drive's own rear ports run a mouse\nreceiver, a short cable to a phone lying beside it, and a memory card seated in\nits card slot with its edge standing proud.\n\n[SETTING]\nA real home desk filled to the edges: a cold mug, a folded pair of glasses, a\nnotebook with a pen across it, a small plant, a coaster, a drawer unit under the\ndesk. None of them carries printed words. Background soft, never blank.\n\n[LIGHT]\nSoft even window light from the left, background blurred, high-key.\n\n[LAYOUT]\nHe sits to the right of the frame; the left side carries the desk running away\nfrom the camera.\n\nIn the upper left corner sits a rounded rectangular panel about a fifth of the\npicture's width, held well clear of both frame edges, with a thin white border.\nInside it, one magnified straight-on view of the drive's rear port bank alone,\nlit cleanly, close enough that the two rectangular ports, the single oval port\nand the card slot are each separately readable, with a connector seated in one\nof them. Nothing else is in the panel. It sits near the drive in the picture and\nis joined to it by nothing - no arrow, no line, no glow.\n\nNo text on any object in either layer.",
+          "rationale": "Every port on the drive is occupied while the laptop keeps one lead and nothing else - the copy's claim made visible as a count rather than asserted. The inset magnifies the port bank, which is the one thing a desk-scale shot cannot resolve.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "detail",
+            "inset_motion": "still"
+          },
+          "composition_notes": "Needs the product photo, in both layers identically. The inset occupies the space the subject is offset from, per the type's offset rule - no second reservation mid-frame.",
+          "avoid": "cluttered background, dark moody lighting, pain cues in main scene, blurry product, inconsistent product between layers, same angle repeated, fabricated colorways, mixed illustration and photo inside one inset half, invented spray or mist, fake steam",
+          "asset_candidate": "58-05-features1-relief-hero-detail.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "axis: register commercial -> ugc",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15 --ugc, inset --detail\nREGISTER: shot on a phone by an ordinary person. Slightly off exposure, mild\noverexposure at the window, no rim light, framing casual and a little too close.\nThe room is left exactly as it is.\n\n[PRODUCT REFERENCE]\nUse the attached photo as the exact reference for the external DVD drive,\nidentical in every layer. Preserve shape, proportions, material, finish and\ncolour exactly.\n\n[SUBJECT]\nMan in his forties in a T-shirt, leaning back in a desk chair with a mug in one\nhand, looking at the laptop screen rather than at the drive. Relaxed.\n\n[PRODUCT]\nThe drive on the desk beside the laptop, front three-quarter angle, whole and\nunobstructed, close to the camera. One cable runs from it to the laptop's single\nport. A mouse receiver, a phone lead and a memory card are each seated in the\ndrive's own rear ports and card slot.\n\n[SETTING]\nA real home desk left as it is: a charger brick, a bowl of coins, a crumpled\nreceipt-sized slip of blank paper, a plant that needs watering, a jumper over\nthe chair back, a bin under the desk. None of them carries printed words.\nBackground soft, never blank.\n\n[LIGHT]\nFlat daylight through a window behind the desk, slightly blown at the glass. No\nstudio light.\n\n[LAYOUT]\nHe sits to the right of the frame; the left side carries the desk and the window.\n\nIn the upper left corner sits a rounded rectangular panel about a fifth of the\npicture's width, held well clear of both frame edges, with a thin white border.\nInside it, one magnified straight-on view of the drive's rear port bank alone,\nlit cleanly, close enough that the two rectangular ports, the single oval port\nand the card slot are each separately readable, with a connector seated in one\nof them. Nothing else is in the panel. It sits near the drive in the picture and\nis joined to it by nothing - no arrow, no line, no glow.\n\nNo text on any object in either layer.",
+          "rationale": "The same argument shot as a phone photo. An advertorial header register carries into the body well, and ugc buys trust where a clean desk can read as an advert.",
+          "axes": {
+            "register": "ugc",
+            "inset_mode": "detail",
+            "inset_motion": "still"
+          },
+          "composition_notes": "Needs the product photo. A crisp inset does not break the ugc register - that is settled on this type at 1.15.",
+          "avoid": "cluttered background, dark moody lighting, pain cues in main scene, blurry product, inconsistent product between layers, same angle repeated, fabricated colorways, mixed illustration and photo inside one inset half, invented spray or mist, fake steam, professional lighting, studio setup, clean composition, styled interior, negative space, retouched skin, magazine look, glossy",
+          "asset_candidate": "58-05-features1-relief-hero-detail-ugc.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: subject full person -> reduced",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15 --commercial, inset --detail\nREGISTER: clean commercial photograph, controlled light, sharp.\n\n[PRODUCT REFERENCE]\nUse the attached photo as the exact reference for the external DVD drive,\nidentical in every layer. Preserve shape, proportions, material, finish and\ncolour exactly.\n\n[SUBJECT]\nPresent only as working hands and forearms: two hands at a kitchen table, one\nseating a memory card into the drive's card slot, the other steadying the drive\nby its far corner. No face in the frame.\n\n[PRODUCT]\nThe drive flat on the table, seen from above and slightly to one side, whole and\nunobstructed, filling the middle of the picture. A single cable runs from it off\nto a laptop at the edge of frame. A mouse receiver and a phone lead are already\nseated in its rear ports.\n\n[EVIDENCE IN FRAME]\nEvery one of the drive's own ports has something in it and the card sits proud in\nits slot, while the laptop at the edge of frame has one lead going to the drive\nand no other cable touching it anywhere along its side.\n\n[SETTING]\nA real kitchen table filled to the edges: a fruit bowl, a folded newspaper-sized\nsheet of blank paper, a set of keys, a plant, a cloth over a chair back, a bag on\nthe floor beyond. None of them carries printed words. Background soft, never\nblank.\n\n[LIGHT]\nSoft even window light from the right, background blurred, high-key.\n\n[LAYOUT]\nThe hands and the drive sit to the left of the frame; the right side carries the\ntable running away from the camera.\n\nIn the lower right corner sits a rounded rectangular panel about a fifth of the\npicture's width, held well clear of both frame edges, with a thin white border.\nInside it, one magnified straight-on view of the drive's rear port bank alone,\nlit cleanly, close enough that the two rectangular ports, the single oval port\nand the card slot are each separately readable, with a connector seated in one of\nthem. Nothing else is in the panel. It sits near the drive in the picture and is\njoined to it by nothing - no arrow, no line, no glow.\n\nNo text on any object in either layer.",
+          "rationale": "Hands only, with the card going into the slot. reduced is chosen when the result is more legible than the user, and here the result is a row of occupied ports.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "detail",
+            "inset_motion": "still"
+          },
+          "composition_notes": "Needs the product photo. reduced requires naming what makes finished look different from unfinished, which this prompt does in its own block.",
+          "avoid": "cluttered background, dark moody lighting, pain cues in main scene, blurry product, inconsistent product between layers, same angle repeated, fabricated colorways, mixed illustration and photo inside one inset half, invented spray or mist, fake steam",
+          "asset_candidate": "58-05-features1-relief-hero-detail-reduced.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.2.image",
+      "section_role": "spec",
+      "asset": "58-06-features2-relief-hero-context.png",
+      "placement": "Beside 'Rugged slim design built for cool operation'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "Portability is a property, not an event. The section's other claim, staying cool across a weekend, is invisible in any register - a loop of a drive not overheating shows nothing - so motion would add duration without argument."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "Rung 4: a second execution of a type already on the page, differing on named dimensions - inset_mode, subject, place and pose all change from features.items.1. Nothing else is available. FIT: --context is defined as the mode for when the hero shows the product in hand and the buyer still needs to see where it lives, which is precisely a slim drive going into a sleeve. HONEST LIMIT, and it is the reason this basis is hedged: the section's headline claim is thermal, and no photograph can show a casing staying cool. A argues the half that is photographable - the slim body against a closed laptop's edge - and the thermal claim is left to the copy. PRODUCT PRESENCE: the drive is held at the mouth of the sleeve, its thickness the subject. PROMPT RISK: needs the reference photo in both layers; G7-X binds one mode of use across hero and inset, which both A and C hold.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "execution: inset_mode detail -> context, and subject",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15 --commercial, inset --context\nREGISTER: clean commercial photograph, controlled light, sharp.\n\n[PRODUCT REFERENCE]\nUse the attached photo as the exact reference for the external DVD drive,\nidentical in every layer. Preserve shape, proportions, material, finish and\ncolour exactly.\n\n[SUBJECT]\nWoman in her thirties in a knitted jumper, standing at a hallway table with an\nopen laptop sleeve in one hand, sliding the drive down into it alongside a\nclosed laptop already inside, looking at the sleeve. Mid-action, hands engaged.\n\n[PRODUCT]\nThe drive held upright in her hand at the mouth of the sleeve, side-on to the\ncamera, whole and unobstructed, its full thickness against the closed laptop's\nedge behind it so the two read at the same scale.\n\n[SETTING]\nA real hallway filled to the edges: a bowl of keys on the table, a folded scarf,\na pair of shoes below, a coat on a hook, an umbrella leaning in the corner, a\nradiator along the wall. None of them carries printed words. Background soft,\nnever blank.\n\n[LIGHT]\nSoft even daylight from a door glass to the left, background blurred, high-key.\n\n[LAYOUT]\nShe stands to the right of the frame; the left side carries the hallway running\nback to the door.\n\nIn the upper left corner sits a rectangular panel about a fifth of the picture's\nwidth, held well clear of both frame edges, with a thin white border. Inside it,\na plainer closer shot of the same drive in the same place it lives: zipped inside\nthe same sleeve on the same hallway table, the sleeve's zip closed over it and\nits outline just readable through the fabric, shot from a step back so the whole\nsleeve is in the panel. Same light and same grade as the picture around it.\n\nNo text on any object in either layer.",
+          "rationale": "The drive measured against a closed laptop's edge is the slim claim made checkable, and the inset shows the same drive zipped in the same sleeve - the place it actually lives.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "context",
+            "inset_motion": "still"
+          },
+          "composition_notes": "Needs the product photo. Named dimension vs features.items.1: inset_mode, plus subject, place and pose. G7-X holds - handheld in both layers.",
+          "avoid": "cluttered background, dark moody lighting, pain cues in main scene, blurry product, inconsistent product between layers, same angle repeated, fabricated colorways, mixed illustration and photo inside one inset half, invented spray or mist, fake steam",
+          "asset_candidate": "58-06-features2-relief-hero-context.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "axis: inset_mode context -> none",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15 --commercial, inset --none\nREGISTER: clean commercial photograph, controlled light, sharp.\n\n[PRODUCT REFERENCE]\nUse the attached photo as the exact reference for the external DVD drive.\nPreserve shape, proportions, material, finish and colour exactly.\n\n[SUBJECT]\nMan in his fifties in a work shirt with the sleeves turned back, sitting at a\ndining table late in a long session, one hand resting flat on the table beside\nthe drive and the other on the back of his neck mid-stretch, looking out of the\nwindow rather than at the machine. Relaxed, gaze away from the product.\n\n[PRODUCT]\nThe drive flat on the table in front of him, front three-quarter angle, close to\nthe camera and whole and unobstructed, a disc seated in its open tray and a\nshort stack of three more discs beside it. One cable runs from it to a laptop\nturned away at his elbow.\n\n[SETTING]\nA real dining table filled to the edges: a mug on a coaster, a pair of glasses\nfolded on a cloth, a bowl of apples, a jumper over the chair back, a lamp at the\ntable's end, curtains drawn back at the window. None of them carries printed\nwords. Background soft, never blank.\n\n[LIGHT]\nSoft even window light from the left, background blurred, high-key.\n\n[LAYOUT]\nHe sits to the right of the frame; the left side carries the table running away\nto the window.\n\nNo inset layer of any kind.\n\nNo text on any object in the picture.",
+          "rationale": "No layer at all, and the argument moves to the long session the copy describes: a man mid-stretch at the end of it, a stack of burned discs beside the drive. It is the closest a photograph gets to the thermal claim without faking it.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "none",
+            "inset_motion": "still"
+          },
+          "composition_notes": "Needs the product photo. Simplest option on the page and the one to pick if the two-layer builds come back with the inset cut by a frame edge, which is this type's open geometry fault.",
+          "avoid": "cluttered background, dark moody lighting, pain cues in main scene, blurry product, inconsistent product between layers, same angle repeated, fabricated colorways, mixed illustration and photo inside one inset half, invented spray or mist, fake steam",
+          "asset_candidate": "58-06-features2-relief-hero-none.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: subject reduced, place and inset content",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15 --commercial, inset --context\nREGISTER: clean commercial photograph, controlled light, sharp.\n\n[PRODUCT REFERENCE]\nUse the attached photo as the exact reference for the external DVD drive,\nidentical in every layer. Preserve shape, proportions, material, finish and\ncolour exactly.\n\n[SUBJECT]\nPresent only as working hands and forearms: two hands at a study desk, one\nlifting the drive clear of a rucksack's open front pocket, the other holding the\npocket's edge back. No face in the frame.\n\n[PRODUCT]\nThe drive held flat in one hand just above the pocket, seen from above and\nslightly to one side, whole and unobstructed, close to the camera.\n\n[EVIDENCE IN FRAME]\nThe pocket it has come out of still holds a folded cable and a slim notebook and\nlies open and slack, while the drive in the hand is clear of everything with\nnothing wrapped round it.\n\n[SETTING]\nA real study desk filled to the edges: a desk lamp pushed back, a pot of pens, a\nwater glass, a pair of headphones coiled, a chair arm at the frame edge, a bag\nstrap trailing off the desk. None of them carries printed words. Background\nsoft, never blank.\n\n[LIGHT]\nSoft even window light from the right, background blurred, high-key.\n\n[LAYOUT]\nThe hands and the drive sit to the left of the frame; the right side carries the\ndesk running away from the camera.\n\nIn the lower right corner sits a rectangular panel about a fifth of the picture's\nwidth, held well clear of both frame edges, with a thin white border. Inside it,\na plainer closer shot of the same drive in the same place it lives: lying in that\nsame rucksack front pocket beside the same folded cable, shot from a step back so\nthe whole pocket is in the panel. Same light and same grade as the picture around\nit.\n\nNo text on any object in either layer.",
+          "rationale": "Hands lifting the drive clear of a rucksack pocket, with the inset showing it stowed in that same pocket. Portability argued by where it has just come from rather than by a size comparison.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "context",
+            "inset_motion": "still"
+          },
+          "composition_notes": "Needs the product photo. Shares inset_mode with A, so it is an execution variant; keep only one of A and C on the page.",
+          "avoid": "cluttered background, dark moody lighting, pain cues in main scene, blurry product, inconsistent product between layers, same angle repeated, fabricated colorways, mixed illustration and photo inside one inset half, invented spray or mist, fake steam",
+          "asset_candidate": "58-06-features2-relief-hero-context-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.3.image",
+      "section_role": "outcome",
+      "asset": "58-07-features3-relief-scene.png",
+      "placement": "Beside 'Our family memories restored in one evening'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot's reason to exist is an after-state - a family who can watch the disc - and a held state is what it has to prove. 06-relief-scene also bans every layer except the --detail inset, so there is no legislated layer a loop could occupy without breaking the register."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is unusually literal. 06-relief-scene's use_when asks for a closing image where the promise is a state of living rather than a feature, and the section is titled 'Our family memories restored in one evening'. PAGE LEGALITY: the type requires 01-pain-scene on the same page and it is there twice, so requires_pair is satisfied; the arc holds because every pain image sits above this one. The result_visibility gate does not drop it - the restored state is visible as a family watching a screen. EVIDENCE is where this recommendation is weak and the basis says so: the type is at 3.7 with 32 render records and zero passes at any 3.x version, and 3.7's product law - the label carrying the name and nothing else - was written yesterday and has never rendered. B is the safer type by evidence and the worse fit by argument. PRODUCT PRESENCE: 3.7 requires the drive to stand in frame as its own object with its face readable, which A does on the low table. PROMPT RISK: highest on the page.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "06-relief-scene",
+          "type_version": "3.7",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-scene v3.7 --none\nREGISTER: a candid documentary photograph a passer-by could have taken. Single\nframe, natural, unposed, sharp. Nobody aware of a camera.\n\nPRODUCT REFERENCE: use the attached photo as the exact reference. Preserve\nshape, proportions, material, finish and colour exactly. Do not redesign or add\nfeatures.\n\nA man in his forties is on a sofa between his wife and their daughter, all three\nturned toward a television across the room, the daughter half out of her seat\npointing at the screen at something she has just recognised. Not at the camera.\nHe is upright and leaning in.\n\nHis eyes are open and creased at the corners and a small smile has arrived on its\nown. His chest is open, his shoulders are rolled back and down, his chin is up.\nNothing is braced and neither hand has gone to the remote.\n\nThe drive stands on the low table directly in front of them, close to the camera\nin the near part of the frame, a disc seated in its open tray and its face turned\ntoward the lens so its name can be read. The label carries only the product name\n- no other printed text, no back-of-pack panel, no barcode. It is not centred and\nnot lit for the camera. He is not looking at it and not touching it.\n\nNothing is drawn onto this photograph. There is no diagram, no inset, no panel\nand no glow of any kind.\n\nAn ordinary front room: an open DVD case on the table, a throw over the sofa arm,\na lamp on, a plant by the window, curtains drawn back on an evening street.\n\nLIGHT: lamp light and the last of the daylight, kind and even, no rim light, no\nglamour lighting.\nGRADE: natural colour, light film grain, shallow depth of field. Honest, not\nglossy, and not drained.\n\nNo printed text on any object in the scene except the product name on the drive.\nNo logo, no watermark, no arrows, no badges.",
+          "rationale": "The situation costs something - three people gathered for something that could not be played before - and the product stands in frame as its own object with its face to the lens, which is 3.7's product law.",
+          "axes": {
+            "gaze": "candid",
+            "inset_mode": "none"
+          },
+          "composition_notes": "Needs the product photo. The type has 0 passes at any 3.x, and this prompt is the first test of 3.7's name-only label clause. Expect to iterate.",
+          "avoid": "badges, arrows, drawn overlays, insets of any kind, looking at camera, posing, a situation that costs nothing, a guarded body, golden hour, warm flattering light, glamour lighting, aspirational travel location, product presented to camera, product turned away so its face cannot be read, back-of-pack label, barcode, bar chart, arrowheads, translucent marks, blank expression, collapsed posture, drained joyless grade, stock photo look",
+          "asset_candidate": "58-07-features3-relief-scene.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 06-relief-scene -> 06-relief-hero",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15 --commercial, inset --recall\nREGISTER: clean commercial photograph, controlled light, sharp.\n\n[PRODUCT REFERENCE]\nUse the attached photo as the exact reference for the external DVD drive,\nidentical in every layer. Preserve shape, proportions, material, finish and\ncolour exactly.\n\n[SUBJECT]\nMan in his forties on a sofa with a girl of about eight leaning against his\nshoulder, both turned toward a television across the room, his free arm along the\nsofa back. Relaxed, gaze away from the product.\n\n[PRODUCT]\nThe drive on the low table in front of the sofa, front three-quarter angle, close\nto the camera and whole and unobstructed, a disc seated in its open tray, one\ncable running to a laptop beside it.\n\n[SETTING]\nA real front room filled to the edges: an open disc case on the table, a mug, a\nthrow over the sofa arm, a cushion pushed down the back, a lamp lit in the\ncorner, a plant on the sill. None of them carries printed words. Background soft,\nnever blank.\n\n[LIGHT]\nSoft even window light with the lamp lit behind, background blurred, high-key.\n\n[LAYOUT]\nThe sofa sits to the right of the frame; the left side carries the room back to\nthe window.\n\nIn the upper left corner sit two small square cells side by side, together about\na fifth of the picture's width, held well clear of both frame edges, each with a\nthin white border. The same man on the same sofa in the same room in both cells,\nand the only thing that differs between them is the machine on the table. In the\nfirst cell a thin unbranded plastic drive sits there with its tray half open and\na disc stuck in it, and that whole cell is desaturated to grey while everything\nelse in the picture keeps its colour. In the second cell the reference drive sits\nin the same spot with the disc seated and the television lit. One plain arrow\nruns from the first cell to the second and joins those two cells only. Both cells\nmatch the picture around them in resolution, grade and light quality.\n\nNo text on any object in any layer.",
+          "rationale": "The same outcome on the better-evidenced type. --recall holds one reminder of the problem beside the resolved state, and the pair changes only the machine on the table - which is the type's own 2/2 rule for a recall pair.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "recall",
+            "inset_motion": "still"
+          },
+          "composition_notes": "Needs the product photo. PICKING B FORCES features.items.1 AND features.items.2 TO CHANGE - three 06-relief-hero executions on one linear funnel is past what rung 4 permits. Also puts a pain cue below the page's first relief image, which the arc rule allows only because it is inside an inset.",
+          "avoid": "cluttered background, dark moody lighting, pain cues in main scene, blurry product, inconsistent product between layers, same angle repeated, fabricated colorways, mixed illustration and photo inside one inset half, invented spray or mist, fake steam, unlabelled before-state inset, low resolution inset, inset darker than hero, more than one arrow, arrow pointing from now to past",
+          "asset_candidate": "58-07-features3-relief-hero-recall.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: subject, generation and place",
+          "type": "06-relief-scene",
+          "type_version": "3.7",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-scene v3.7 --none\nREGISTER: a candid documentary photograph a passer-by could have taken. Single\nframe, natural, unposed, sharp. Nobody aware of a camera.\n\nPRODUCT REFERENCE: use the attached photo as the exact reference. Preserve\nshape, proportions, material, finish and colour exactly. Do not redesign or add\nfeatures.\n\nA woman in her sixties is at a kitchen table with a laptop open in front of her\nand a teenage grandson standing at her shoulder, both watching the screen, the\nboy laughing at something on it. Not at the camera. She is upright and leaning\ntoward the screen.\n\nHer eyes are open and creased at the corners and a small smile has arrived on its\nown. Her chest is open, her shoulders are rolled back and down, her chin is up.\nNothing is braced and neither hand has gone to the screen.\n\nThe drive stands on the table beside the laptop, close to the camera in the near\npart of the frame, a disc seated in its open tray and its face turned toward the\nlens so its name can be read. The label carries only the product name - no other\nprinted text, no back-of-pack panel, no barcode. It is not centred and not lit\nfor the camera. She is not looking at it and not touching it.\n\nNothing is drawn onto this photograph. There is no diagram, no inset, no panel\nand no glow of any kind.\n\nAn ordinary kitchen: a shoebox of loose discs open at the table's end, two mugs,\na tea towel on the oven rail, a window with a garden beyond it.\n\nLIGHT: afternoon daylight from the window, kind and even, no rim light, no\nglamour lighting.\nGRADE: natural colour, light film grain, shallow depth of field. Honest, not\nglossy, and not drained.\n\nNo printed text on any object in the scene except the product name on the drive.\nNo logo, no watermark, no arrows, no badges.",
+          "rationale": "The same argument one generation up - a grandmother and a teenager at a kitchen table - which widens the persona the brief describes beyond the byline's own family.",
+          "axes": {
+            "gaze": "candid",
+            "inset_mode": "none"
+          },
+          "composition_notes": "Needs the product photo. Same type risk as A.",
+          "avoid": "badges, arrows, drawn overlays, insets of any kind, looking at camera, posing, a situation that costs nothing, a guarded body, golden hour, warm flattering light, glamour lighting, aspirational travel location, product presented to camera, product turned away so its face cannot be read, back-of-pack label, barcode, bar chart, arrowheads, translucent marks, blank expression, collapsed posture, drained joyless grade, stock photo look",
+          "asset_candidate": "58-07-features3-relief-scene-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "features.items.4.image",
+      "section_role": "comparison",
+      "asset": "58-08-features4-lockedframe-verdict.png",
+      "placement": "Beside 'Replaces three separate purchases for less'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A locked-frame comparison is inspected, not watched - the reader's eye does the travelling between panels. Motion here would also break the judgement rule by drawing the eye to one panel."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT and EVIDENCE agree, and this is where the page's one 04-proof-lockedframe is best spent. use_when wants a buyer who already understands the problem and the mechanism and now wants to see for themselves - true here and false at problems.items.0, which is why the type lands in this slot and not that one. --verdict is the variant with the product in the last panel, and the copy's claim is a straight count of bodies and cables. The variant-selection rule permits it: this difference IS visible in a static frame, unlike the section's cost claim, which no image can carry. EVIDENCE: 1.13, owner-passed, two rendered worked examples. PRODUCT PRESENCE: last panel only, which is the order rule. PROMPT RISK: needs the reference photo; runs handheld rather than strict because the capability gate says strict needs compositing and this pipeline renders one frame by hand.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "variant": "verdict",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld\nREGISTER: documentary photography. No overlays, badges, arrows or text.\nLAYOUT: 3 equal vertical panels, thin white gutters, no outer border.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the drive in the LAST panel.\nPreserve shape, proportions, material, finish and colour exactly.\n\n[SCENE — the same in all three]\nThe same corner of a home desk, the same dark wood desktop, a closed laptop and\na cold mug pushed to the back. Flat overcast light from a window off to the\nleft, no strong shadows, no styling.\n\n[FRAMING]\nOne person photographed this three times from where they always sit, phone level\nwith the desktop, the bare wood filling the middle third and the laptop\nacross the upper third. It reads as one shot taken three times, never as three\ndifferent shots. Light differs only in exposure, never warmth.\n\n[THE VARIABLE]\nWhat has to sit on a desk to read a disc, move files off a card and keep a mouse\nplugged in. Every panel at the same moment: connected, nothing in hand, the same\nunbranded silver disc and memory card in all three.\n1 — a plain unbranded optical drive alone, one cable, the card beside it\nunread; the mug at the back, handle out.\n2 — that same drive plus a separate powered hub and a separate card reader,\nthree bodies and four cables; the mug turned, a pen beside it.\n3 — the reference drive alone, one cable, the card in its own slot; the mug gone,\na coaster in its place.\n\n[GRADE — the same in all three]\nNeutral, from the overcast window and the drab desktop rather than a filter.\nStill colour, never black and white.\n\nPanels one and two get the same exposure, tidiness and framing as panel three;\nthe alternatives are ordinary products someone would buy, never made to look\nworse.",
+          "rationale": "Three panels on one desk: one plain drive, then three bodies and four cables, then the reference drive alone. The fairness rule is stated in the prompt because the alternatives here are products the reader may already own.",
+          "axes": {
+            "camera_lock": "handheld",
+            "context_mode": "natural-use"
+          },
+          "composition_notes": "Needs the product photo. generation_mode is multi-pass at type level, but 1.8's capability gate runs --verdict handheld in one pass where the renderer cannot composite, which is the case here.",
+          "avoid": "badges, arrows, glows, checkmarks, one panel brighter, inconsistent lighting between panels, studio background, clean styled set, staged perfection, saturated colors, red or green cues, motion blur, people, hands, brand logos, recognizable trademarks, identical framing between panels, pixel-perfect alignment, tripod shot, CGI, last panel brighter or cleaner than the others, alternatives made to look broken",
+          "asset_candidate": "58-08-features4-lockedframe-verdict.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "execution: scene, framing and the moment compared",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "variant": "verdict",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld\nREGISTER: documentary photography. No overlays, badges, arrows or text.\nLAYOUT: 3 equal vertical panels, thin white gutters, no outer border.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the drive in the LAST panel.\nPreserve shape, proportions, material, finish and colour exactly.\n\n[SCENE — the same in all three]\nThe same kitchen table, the same pale scrubbed wood, a chair back at the frame\nedge and a folded cloth pushed to the far side. Flat daylight from a window off\nto the right, no strong shadows, no styling.\n\n[FRAMING]\nOne person photographed this three times from where they always sit, phone above\nthe table looking down, the bare wood filling the middle third and the\nchair back across the upper third. It reads as one shot taken three times, never\nas three different shots. Light differs only in exposure, never warmth.\n\n[THE VARIABLE]\nWhat has to go into a bag to take disc reading and card transfer elsewhere.\nEvery panel at the same moment: laid out beside the same open laptop sleeve,\nnothing packed yet, the same unbranded silver disc in all three.\n1 — a plain unbranded optical drive, cable coiled beside it; the cloth folded\nsquare.\n2 — that same drive, a separate powered hub with its own mains lead and a\nseparate card reader, each cable coiled; the cloth rucked at one corner.\n3 — the reference drive, its one cable coiled; the cloth closer, a spoon beside\nit.\n\n[GRADE — the same in all three]\nNeutral, from the window and the pale table rather than a filter. Still colour,\nnever black and white.\n\nPanels one and two get the same exposure, tidiness and framing as panel three;\nthe alternatives are ordinary products someone would buy, never made to look\nworse.",
+          "rationale": "The same count argued as what has to go in a bag rather than what sits on a desk, shot down onto a kitchen table. Coiled cables read as volume more plainly than connected ones.",
+          "axes": {
+            "camera_lock": "handheld",
+            "context_mode": "natural-use"
+          },
+          "composition_notes": "Needs the product photo. Every panel sits at the same moment - nothing packed yet - which is the type's moment rule.",
+          "avoid": "badges, arrows, glows, checkmarks, one panel brighter, inconsistent lighting between panels, studio background, clean styled set, staged perfection, saturated colors, red or green cues, motion blur, people, hands, brand logos, recognizable trademarks, identical framing between panels, pixel-perfect alignment, tripod shot, CGI, last panel brighter or cleaner than the others, alternatives made to look broken",
+          "asset_candidate": "58-08-features4-lockedframe-verdict-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: place and what carries the argument",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "variant": "verdict",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld\nREGISTER: documentary photography. No overlays, badges, arrows or text.\nLAYOUT: 3 equal vertical panels, thin white gutters, no outer border.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the drive in the LAST panel.\nPreserve shape, proportions, material, finish and colour exactly.\n\n[SCENE — the same in all three]\nThe same living-room shelf, the same veneered board, a row of unmarked disc\nspines and a small plant at one end. Flat room light from a window off to the\nleft, no strong shadows, no styling.\n\n[FRAMING]\nOne person photographed this three times from where they always stand, phone\nlevel with the shelf, the board filling the middle third and the spines across\nthe upper third. It reads as one shot taken three times, never as\nthree different shots. Light differs only in exposure, never warmth.\n\n[THE VARIABLE]\nWhat has to live beside a television to play discs and read a camera card. Every\npanel at the same moment: in place and connected, nothing handled, the same\nunbranded silver disc and memory card in all three.\n1 — a plain unbranded optical drive, one cable off the shelf, the card propped\nagainst it; the plant at the left end, leaves upright.\n2 — that same drive, a separate powered hub and a card reader, three bodies\nwith four cables; the plant turned, a leaf over the board.\n3 — the reference drive alone, one cable, the card in its slot; the plant gone,\na coaster in its place.\n\n[GRADE — the same in all three]\nNeutral, from the room light and the veneered board rather than a filter. Still\ncolour, never black and white.\n\nPanels one and two get the same exposure, tidiness and framing as panel three;\nthe alternatives are ordinary products someone would buy, never made to look\nworse.",
+          "rationale": "A living-room shelf rather than a work surface, arguing the count as what has to live permanently in a room. Cables running off the shelf edge are the visible difference.",
+          "axes": {
+            "camera_lock": "handheld",
+            "context_mode": "natural-use"
+          },
+          "composition_notes": "Needs the product photo. The disc spines behind must stay unbranded and unreadable - the type bars recognisable trademarks outright.",
+          "avoid": "badges, arrows, glows, checkmarks, one panel brighter, inconsistent lighting between panels, studio background, clean styled set, staged perfection, saturated colors, red or green cues, motion blur, people, hands, brand logos, recognizable trademarks, identical framing between panels, pixel-perfect alignment, tripod shot, CGI, last panel brighter or cleaner than the others, alternatives made to look broken",
+          "asset_candidate": "58-08-features4-lockedframe-verdict-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.0.image",
+      "section_role": "social-proof",
+      "asset": "58-09-reviews-shot-0.png",
+      "placement": "First of four customer-photo tiles above the review quotes.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "MODE and light decide it. A is the default in-use mode and the only one of the four A options that shows the drive actually reading, which anchors the set. Its warm dim lamp light is the furthest from tile 1's flat kitchen overhead, tile 2's mixed floor light and tile 3's cool shelf daylight, so the set diversity law holds at the A level. EVIDENCE: the type passed at 1.2 on 2 of 2 renders, both with empty failure lists, and in-use is the mode its owner-passed socket-tester example used.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the desk, seen from above and slightly to one side, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, in-use: the drive is mid-read on a desk, its tray closed on a disc and its status light lit, one forearm resting on the desk beside it in a rolled shirt cuff and no face in the frame.\n\nANCHOR: a coiled phone charger pushed to one side.\n\nSCENE: a home-office desk photographed as found - a coffee ring dried on the wood, a cable snaking off the back edge, a radiator half in shot at the frame edge. Warm dim light from a single desk lamp, the room behind it going dark.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus adequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "in-use at a warm-lit home-office desk, the drive mid-read with a forearm incidentally in frame. The default mode, and the one that shows the product doing something.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-09-reviews-shot-0-a.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode: in-use -> at-rest",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the desk, seen from above and slightly to one side, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, at-rest: the drive simply sitting where it now lives on the desk, its tray closed and nothing plugged into it, a factory protective film still part-peeled from one corner of the lid.\n\nANCHOR: a coiled phone charger pushed to one side.\n\nSCENE: a home-office desk photographed as found - a coffee ring dried on the wood, a cable snaking off the back edge, a radiator half in shot at the frame edge. Warm dim light from a single desk lamp, the room behind it going dark.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus adequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same desk with the drive simply living there, part-peeled factory film still on the lid. at-rest is the mode that best carries 'this exists and someone owns it'.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-09-reviews-shot-0-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: room class, light temperature and distance",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the sill, seen almost straight on from the side, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, in-use: the drive is mid-read on a desk, its tray closed on a disc and its status light lit, one forearm resting on the desk beside it in a rolled shirt cuff and no face in the frame.\n\nANCHOR: a pair of earphones tangled at the sill's edge.\n\nSCENE: a bedroom windowsill desk photographed as found - a dusty sill, a mug ring, a curtain hem hanging into the frame. Cold blue-grey daylight from an overcast window right beside it.\n\nCAMERA TRUTH: framing off-centre and a little far back, focus adequate, mild motion softness, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "in-use again but on a bedroom windowsill under cold overcast daylight, shot further back. Use it if the desk scene collides with another tile.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-09-reviews-shot-0-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.1.image",
+      "section_role": "social-proof",
+      "asset": "58-10-reviews-shot-1.png",
+      "placement": "Second of four customer-photo tiles above the review quotes.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "MODE carries this tile. kit-flatlay is the one mode that shows what actually arrives in the box, which answers the 'both adapter cables came included' line in the copy without the image claiming anything. Its flat overhead kitchen light and top-down distance are distinct from all three other tiles. PROMPT RISK: the leaflet must stay illegible at size - the type allows generated print only where it cannot be read, and a readable one would be an invented claim.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It lies flat among the other contents, seen from above, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, kit-flatlay: the opened box contents as the owner keeps them, slightly disordered - the drive, its two cables loosely coiled, and a small folded leaflet, laid out on the table with the empty box lid pushed to one side.\n\nANCHOR: a mug of cold tea at the corner of the table.\n\nSCENE: a kitchen table photographed as found - crumbs at one edge, a faint water mark on the wood, a chair back blurred at the frame edge. Flat overhead kitchen light, slightly green.\n\nCAMERA TRUTH: framing off-centre and shot from directly above at arm's length, focus adequate, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "kit-flatlay on a kitchen table under flat green-tinged overhead light - the opened box as an owner actually keeps it, cables loosely coiled and the lid shoved aside.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-10-reviews-shot-1-a.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode: kit-flatlay -> at-rest",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the table, seen from above, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, at-rest: the drive sitting on the table where it was set down after unboxing, its tray closed, a factory sticker still on the underside edge with its print too small to read.\n\nANCHOR: a mug of cold tea at the corner of the table.\n\nSCENE: a kitchen table photographed as found - crumbs at one edge, a faint water mark on the wood, a chair back blurred at the frame edge. Flat overhead kitchen light, slightly green.\n\nCAMERA TRUTH: framing off-centre and shot from directly above at arm's length, focus adequate, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same table with just the drive set down after unboxing, a factory sticker still on it whose print stays too small to read.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-10-reviews-shot-1-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: room class, light temperature and surface",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It lies flat among the other contents, seen from above and at an angle, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, kit-flatlay: the opened box contents as the owner keeps them, slightly disordered - the drive, its two cables loosely coiled, and a small folded leaflet, laid out on a carpet with the empty box lid pushed to one side.\n\nANCHOR: a television remote lying beside the pile.\n\nSCENE: a living-room carpet photographed as found - a flattened patch of pile, a stray thread, the foot of an armchair at the frame edge. Warm yellow light from a standard lamp overhead.\n\nCAMERA TRUTH: framing tilted and shot from standing height looking down, focus adequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same flatlay moved onto a living-room carpet under a warm standard lamp and shot from standing height.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-10-reviews-shot-1-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.2.image",
+      "section_role": "social-proof",
+      "asset": "58-11-reviews-shot-2.png",
+      "placement": "Third of four customer-photo tiles above the review quotes.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT to the copy decides it. This is the only tile that shows the SD slot in use, and the reviews lead names 'transferred raw camera photos from the SD slot' as one of the three things buyers mention. Its mixed warm-and-cold floor light and kneeling-height distance keep it apart from the other three. COMPLIANCE: fingers only and no face - a face turns a snapshot into a testimonial portrait, which is a different type's job and a risk here.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the rug, seen from a low angle almost level with the floor, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, in-use: the drive is connected on a living-room floor beside a laptop, a memory card seated in its slot and its status light lit, two fingers just leaving the card and no face in the frame.\n\nANCHOR: an open disc case lying face down on the rug.\n\nSCENE: a living-room floor photographed as found - a rug edge rucked up, a scatter of toy pieces pushed aside, a sofa foot at the frame edge. Mixed light, warm lamp on one side and cold daylight from a window on the other.\n\nCAMERA TRUTH: framing tilted and very close, kneeling height, focus adequate, mild motion softness, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "in-use on a living-room floor in mixed lamp-and-window light, a memory card going into the slot with two fingers just leaving it, shot from kneeling height.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-11-reviews-shot-2-a.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode: in-use -> at-rest",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the rug, seen from a low angle almost level with the floor, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, at-rest: the drive sitting on the rug where it was left after use, its tray shut and one cable still trailing from it toward a laptop out of frame.\n\nANCHOR: an open disc case lying face down on the rug.\n\nSCENE: a living-room floor photographed as found - a rug edge rucked up, a scatter of toy pieces pushed aside, a sofa foot at the frame edge. Mixed light, warm lamp on one side and cold daylight from a window on the other.\n\nCAMERA TRUTH: framing tilted and very close, kneeling height, focus adequate, mild motion softness, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same rug with the drive left where it was used, one cable still trailing off toward a laptop out of frame.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-11-reviews-shot-2-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: room class and light temperature",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the bench, seen from above and slightly to one side, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, in-use: the drive is connected on a garage workbench beside a laptop, a memory card seated in its slot and its status light lit, two fingers just leaving the card and no face in the frame.\n\nANCHOR: a screwdriver lying across the bench behind it.\n\nSCENE: a garage workbench photographed as found - sawdust in the grain, a paint mark, a vice bolted at the frame edge. Cold strip light from a fluorescent tube overhead.\n\nCAMERA TRUTH: framing off-centre and close, standing height looking down, focus adequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The card-reader action moved to a garage workbench under cold fluorescent strip light, which is the furthest room class from the other three tiles.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-11-reviews-shot-2-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.shots.3.image",
+      "section_role": "social-proof",
+      "asset": "58-12-reviews-shot-3.png",
+      "placement": "Fourth of four customer-photo tiles above the review quotes.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "MODE and set balance decide it. Three tiles already show the drive being handled or unboxed, so the fourth earns its place by showing where it ends up living, which is the at-rest mode's whole argument. The disc spines behind it must stay unbranded and unreadable. Its cool falling-off daylight and longer distance complete the four-way separation the set diversity law requires.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It stands on the shelf, seen almost straight on from the front, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, at-rest: the drive sitting on a shelf where it now lives beside a short row of disc spines, its tray shut, one cable dropping away behind the shelf board.\n\nANCHOR: a set of keys dropped on the board beside it.\n\nSCENE: a living-room shelf photographed as found - a dust line along the board, a photo frame turned slightly out of square, wallpaper seam visible behind. Cool daylight from a window across the room, falling off toward the shelf's far end.\n\nCAMERA TRUTH: framing a little far back and slightly low, focus adequate, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "at-rest on a living-room shelf beside a row of disc spines under cool falling-off daylight, shot a little far back and slightly low.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-12-reviews-shot-3-a.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode: at-rest -> in-use",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It stands on the shelf, seen almost straight on from the front, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, in-use: the drive is mid-read on the shelf, its tray closed on a disc and its status light lit, one hand just withdrawing from it at the frame edge and no face in the frame.\n\nANCHOR: a set of keys dropped on the board beside it.\n\nSCENE: a living-room shelf photographed as found - a dust line along the board, a photo frame turned slightly out of square, wallpaper seam visible behind. Cool daylight from a window across the room, falling off toward the shelf's far end.\n\nCAMERA TRUTH: framing a little far back and slightly low, focus adequate, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same shelf with the drive mid-read and a hand withdrawing at the frame edge.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-12-reviews-shot-3-b.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "execution: room class, light and distance",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the external DVD\ndrive. Preserve shape, proportions, material, finish and colour exactly. It sits flat on the table, seen from above and at an angle, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, at-rest: the drive sitting on a hallway table where it now lives beside a folded laptop sleeve, its tray shut and nothing plugged into it.\n\nANCHOR: an unopened envelope-shaped blank card propped against the wall behind it.\n\nSCENE: a hallway table photographed as found - a scuff on the paintwork behind, a shoe half in frame on the floor below, a coat sleeve hanging into the top of the picture. Dim warm light from a single hallway bulb.\n\nCAMERA TRUTH: framing tilted and shot quickly from above at arm's length, focus adequate, mild motion softness, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "at-rest on a hallway table beside a folded laptop sleeve under a single dim warm bulb, shot quickly from above.",
+          "axes": {
+            "register": "ugc"
+          },
+          "composition_notes": "Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.",
+          "avoid": "studio lighting, softbox reflections, seamless background, negative space, color grading, professional composition, styled props, badges, borders, star ratings, reviewer names, avatars, text overlays, product render look, perfect symmetry, magazine polish, influencer aesthetic",
+          "asset_candidate": "58-12-reviews-shot-3-c.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "product.image",
+      "section_role": "cta",
+      "asset": "—",
+      "placement": "Product card in the mid-page 'Our top pick for disc recovery' block.",
+      "out_of_scope_reason": "The cta row of mapping/slot-rules.md is empty by design across all four channels: a product card's image is a standard product shot, which the library does not cover. This is a deliberately empty cell, not an exhausted one, so the widening ladder does not apply. Shoot or supply the pack shot.",
+      "options": []
+    },
+    {
+      "slot_id": "product_end.image",
+      "section_role": "cta",
+      "asset": "—",
+      "placement": "Product card in the closing 'The compact drive that restored our archive' block.",
+      "out_of_scope_reason": "Same as product.image - a closing CTA product card. Standard product shot, out of library scope.",
+      "options": []
+    },
+    {
+      "slot_id": "hero.author_avatar",
+      "section_role": "author",
+      "asset": "—",
+      "placement": "Byline portrait beside 'By Warren Hayes'.",
+      "out_of_scope_reason": "A portrait of a named author. No library type produces portraits, and generating a face to sit under a real-sounding byline manufactures a person. Use a real photograph of the actual author or drop the avatar.",
+      "options": []
+    },
+    {
+      "slot_id": "guide.avatar",
+      "section_role": "author",
+      "asset": "—",
+      "placement": "Portrait in the 'About the author' block.",
+      "out_of_scope_reason": "Same as hero.author_avatar - a named person's portrait. Out of library scope and a disclosure question rather than an imaging one.",
+      "options": []
+    },
+    {
+      "slot_id": "comments.items.0.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "Commenter portrait, comment 1 of 6.",
+      "out_of_scope_reason": "A portrait attached to a named commenter. Out of library scope, and generating one would put an invented face beside an invented name in a block that reads as real user comments. 05-social-snapshot's fence names avatars specifically as what a generated image must never sit beside. Supply real avatars or render the block without them.",
+      "options": []
+    },
+    {
+      "slot_id": "comments.items.1.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "Commenter portrait, comment 2 of 6.",
+      "out_of_scope_reason": "A portrait attached to a named commenter. Out of library scope, and generating one would put an invented face beside an invented name in a block that reads as real user comments. 05-social-snapshot's fence names avatars specifically as what a generated image must never sit beside. Supply real avatars or render the block without them.",
+      "options": []
+    },
+    {
+      "slot_id": "comments.items.2.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "Commenter portrait, comment 3 of 6.",
+      "out_of_scope_reason": "A portrait attached to a named commenter. Out of library scope, and generating one would put an invented face beside an invented name in a block that reads as real user comments. 05-social-snapshot's fence names avatars specifically as what a generated image must never sit beside. Supply real avatars or render the block without them.",
+      "options": []
+    },
+    {
+      "slot_id": "comments.items.3.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "Commenter portrait, comment 4 of 6.",
+      "out_of_scope_reason": "A portrait attached to a named commenter. Out of library scope, and generating one would put an invented face beside an invented name in a block that reads as real user comments. 05-social-snapshot's fence names avatars specifically as what a generated image must never sit beside. Supply real avatars or render the block without them.",
+      "options": []
+    },
+    {
+      "slot_id": "comments.items.4.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "Commenter portrait, comment 5 of 6.",
+      "out_of_scope_reason": "A portrait attached to a named commenter. Out of library scope, and generating one would put an invented face beside an invented name in a block that reads as real user comments. 05-social-snapshot's fence names avatars specifically as what a generated image must never sit beside. Supply real avatars or render the block without them.",
+      "options": []
+    },
+    {
+      "slot_id": "comments.items.5.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "Commenter portrait, comment 6 of 6.",
+      "out_of_scope_reason": "A portrait attached to a named commenter. Out of library scope, and generating one would put an invented face beside an invented name in a block that reads as real user comments. 05-social-snapshot's fence names avatars specifically as what a generated image must never sit beside. Supply real avatars or render the block without them.",
+      "options": []
+    }
+  ],
+  "coverage": {
+    "covered": [
+      "step 1 pain — 01-pain-scene twice, a person at the hero and the object-only dongle nest at problems.items.0",
+      "step 2 cause — 02-cause-anatomy --diagnostic at problems.items.1",
+      "step 3 mechanism — 03-mechanism-xray at features.items.0",
+      "step 4 proof — 04-proof-lockedframe --verdict at features.items.4",
+      "step 5 social — 05-social-snapshot across all four review tiles",
+      "step 6 relief — 06-relief-hero twice in the features block and 06-relief-scene at the outcome beat"
+    ],
+    "absent": [
+      "step 2 symptom — 02-symptom-rail was trimmed off advertorial on 2026-08-11 and is not a candidate at any rung",
+      "step 3 use — 03-use-sequence declares only 3:4 and 1:1, so it cannot serve any 16:9 slot on this page. The copy would have suited it.",
+      "step 5 personas — 05-persona-grid is marketplace and landing-page only"
+    ],
+    "absent_but_correct": [
+      "No symptom rung, and that is right for a problem-aware reader who already feels the problem: the copy spends its first two sections re-establishing it in prose and needs the cause and the mechanism next, which both run.",
+      "No 03-mechanism-ghostbody, correctly — body_contact is false for an external drive and the slot-rules attribute gate drops it outright."
+    ],
+    "gaps": [
+      "The page makes a NOISE claim in four separate places — rattled, whisper-quiet, no motor buzzing, silent — and no image on this page can carry it. Silence is not photographable and no library type argues it. It stays a copy claim, and the honest place to prove it is video.",
+      "features.items.2's headline claim is thermal — a casing staying cool over a weekend — which is equally invisible. The recommended option argues the slim half of that section and leaves the thermal half to the copy; it is not proof and is not presented as any."
+    ]
+  },
+  "recommended": [],
+  "page_composition_notes": [
+    "GAP, and it blocks 10 of the 12 routed slots. The export carries imageBriefs: null and sourceRefs.shopifyProductGid: null, so there is no product photograph anywhere in it and nothing to hash. Every type on this page except 01-pain-scene and 02-cause-anatomy --diagnostic declares requires_product_photo: true, and each of those prompts says 'the attached photo'. Nothing was fabricated: attachments is omitted from every option rather than filled with an invented sha256 (SPEC 6.4). Supply the drive's reference photograph, hash it, and these prompts are runnable as written.",
+    "Awareness read as problem-aware, and the basis is the copy rather than the brief's own field. The hero spends its whole opening re-establishing that a new laptop has no disc drive, two full sections run before any solution is named, and the framework is PAS. A problem-aware reader is moved by the cause and the mechanism, which is why 02-cause-anatomy and 03-mechanism-xray carry the middle of this routing rather than more proof.",
+    "THE TEMPLATE'S PLACEHOLDER TEXT IS FROM A DIFFERENT PRODUCT. Every placehold.co URL in htmlCompiled is labelled for a weighted blanket - 'Quilted pockets', 'Glass bead fill', 'Halden blanket', 'Folded on bed', 'Wash day', 'Six months on three beds'. TPL-ADV08 was reused without restamping them. Every brief below is derived from the content dict and the product brief, never from those labels; ignore them when placing assets.",
+    "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.",
+    "Six comment avatars, two author portraits and two product-card shots are reported out of library scope rather than forced into a type. Ten of the twenty-two image fields in this export are therefore unrouted by design, which is the cta row of slot-rules being empty and the portrait question being a disclosure decision, not an imaging one.",
+    "One type appears once per page and two slots hit that wall. 04-proof-lockedframe was wanted at both problems.items.0 and features.items.4 and went to the second, because its use_when requires a reader who already understands the mechanism. 06-relief-hero runs twice, at features.items.1 and features.items.2, under rung 4 of the widening ladder with inset_mode, subject, place and pose all named as the differing dimensions. A third relief-hero would be past what that rung permits, which is why option B at features.items.3 is flagged as forcing two other slots to change.",
+    "Page arc holds: every pain image sits above the first relief image. The one pain cue below it is inside features.items.3 option B's recall inset, which the type permits because pain exists only inside the inset there.",
+    "02-cause-anatomy is being asked for its first NON-BIOLOGICAL body. Every subject class it has rendered is anatomical. Its device is a 2D cross-section and its avoid_when asks only for internal structure to draw, which a disc, a track and a lens have - but this is untested and the first render of problems.items.1 is the test.",
+    "No pick prior was available. feedback/picks.jsonl is empty, so the >=20-pick tie-breaker in SPEC 7.7 never fired and every recommendation here rests on fit, legality, render evidence, product presence and prompt risk alone. These recommendations make the page argument-complete; they are not conversion-optimised and nothing here is performance-backed.",
+    "Ratio is set in the generation tool's aspect-ratio parameter, never in the prompt text (adapters/nano-banana.md Rule 4). The Strictly avoid line is not rendered into any prompt (ADR-014); the exclusion list is kept in each option's avoid field for a model with a real negative channel."
+  ]
+}
