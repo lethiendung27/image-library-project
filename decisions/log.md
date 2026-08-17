@@ -635,3 +635,45 @@ Consequences: `query/output.schema.json` `gif.prompt` and `gif.asset` descriptio
 rewritten; `query/runbook.md` Step 5c rewritten and its template line corrected;
 `query/sessions/58-how-i-rescued-trapped-family-dvds/` rebuilt. `registry/rules.md` G12 is
 unchanged — it was already right, and that is the point. `registry_version` unchanged.
+
+## ADR-021 · 2026-08-17 · The render capability is declared once, and multi-pass is never emitted
+
+ADR-019 flagged it and did not fix it: "four type files still each guess separately at
+whether this pipeline composites". They guess because nothing in the repo answers. Four
+type files carry a clause of the form "where the renderer cannot composite", and a session
+routing a page has no way to evaluate it, so it evaluates it by feel.
+
+Owner instruction, 2026-08-17: **this pipeline is paste-and-run — one prompt, one
+generation call, at most one reference photo attached. No compositing, no edit chains, no
+post assembly.** `adapters/nano-banana.md` records that the model supports conversational
+editing and that multi-pass is "officially viable"; that is a fact about the MODEL. The
+constraint is the operator, and the two were never distinguished.
+
+**Declared in `query/runbook.md` Step 3**, beside the other gates, because Step 3 is the
+pass that evaluates them. Not a new file: a capability nothing reads goes stale, and the
+routing pass is the only reader there is.
+
+**No type becomes unavailable.** Each affected execution takes the single-pass route its
+own file already records, which is the useful finding here — the library had already
+solved this three times and no one had collected it. `04-proof-lockedframe`: `strict`
+needs compositing, so the panels run `handheld`, `--verdict` included. `01-pain-split
+--mirror`: the invariants block, which that file calls "the only route available to a
+renderer who does not composite" and which passed 1 of 1 against multi-pass's 1 of 1.
+`05-social-handoff`: the `inset` is dropped, not the type, and the file calls the
+inset-free route "the safer route" on its own grounds.
+
+**The consequence worth naming.** Single-pass handheld does not hold identity on its own —
+`04-proof-lockedframe` says so at its own line 111. What replaces the edit step is words:
+an invariants block naming the object before the panels. So this declaration moves a
+guarantee from the pipeline into the prompt, and identity drift across panels becomes the
+thing to watch in the ledger rather than a thing that cannot happen.
+
+Where a type offers no single-pass route at all, it is unavailable and the slot takes its
+next candidate, said out loud in `page_composition_notes`. An option whose `pipeline` is
+not `single-pass` is now a routing defect.
+
+Consequences: `query/runbook.md` Step 3 gains the declaration and the gate;
+`registry/vocabulary.yaml` `generation_modes` gains a pointer to it, and its stale
+`inset_motion` comment is corrected from ADR-018 to ADR-019 in the same pass;
+`query/sessions/58-.../` reports run-state per option. No type file is edited — every
+fallback cited above was already written. `registry_version` unchanged.

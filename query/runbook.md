@@ -39,6 +39,29 @@ With the index + shortlist + `product.attributes` + ALL sections visible at once
    cell ONLY if that cell's `shown` ≥ 20. Soft prior only — it never overrides an
    `avoid_when` or a cross-slot rule.
 
+**RENDER CAPABILITY, declared once here so no type has to guess it.** Several type
+files gate on "where the renderer cannot composite", and until now nothing in the repo
+said whether it can. It cannot. Owner instruction, 2026-08-17: **this pipeline is
+paste-and-run — one prompt, one generation call, at most one reference photo attached.
+No compositing, no edit chains, no post assembly.** The adapter's note that the model
+supports conversational editing is about the MODEL; this is about the operator, and it
+is the operator who is the constraint.
+
+So `generation_mode: multi-pass` is never emitted. Every affected execution takes the
+single-pass route its own type already records, and no type becomes unavailable:
+
+- `04-proof-lockedframe` — `strict` needs compositing, so the panels run `handheld`,
+  `--verdict` included. Its capability gate already says this.
+- `01-pain-split --mirror` — the invariants block, named face, hair, clothes, camera
+  height and framing BEFORE either panel is described. The type calls it "the only
+  route available to a renderer who does not composite" and it passed 1 of 1.
+- `05-social-handoff` — the `inset` is omitted, not the type. The type calls the
+  inset-free route "the safer route" on its own grounds.
+
+Where a type offers NO single-pass route, it is unavailable and the slot takes its next
+candidate — say so in `page_composition_notes` rather than emitting a prompt the owner
+cannot run. **An option whose `pipeline` is not `single-pass` is a routing defect.**
+
 ## Step 4 — Build 3 options per slot (G5 decision)
 
 Each option differs from A on a NAMED dimension, recorded in `varies_on`:

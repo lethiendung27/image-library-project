@@ -54,10 +54,13 @@ axes:
   gaze: [candid, confront, reflect]
   context_mode: [natural-use, declared-test]
   inset_mode: [vsinset, recall, context, detail, none]
-  # Whether a legislated layer is the finished picture or a cell reserved for a
-  # loop composited in post. G12, ADR-018. Never creates a layer.
+  # Whether a legislated layer is the finished picture or carries the motion brief
+  # plate an editor works from. G12, ADR-019. Never creates a layer.
   inset_motion: [still, loop]
 
+# A type declares what its picture NEEDS. What the pipeline can actually DO is
+# declared once in query/runbook.md Step 3 — paste-and-run, no compositing — and
+# multi-pass is never emitted into a prompt set. ADR-021.
 generation_modes: [single-pass, multi-pass]
 
 channels: [marketplace, landing-page, paid-social, advertorial]
