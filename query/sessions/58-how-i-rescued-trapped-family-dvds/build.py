@@ -8,9 +8,31 @@ Run from anywhere:  python3 query/sessions/58-.../build.py
 """
 import json
 import os
+import re
 
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
+
+# What each type NEEDS in order to run, read from the generated index rather than
+# retyped here. requires_product_photo is the fact that decides whether a prompt
+# is paste-and-run today, and it moves when a type file moves.
+def _index_types():
+    out, tid = {}, None
+    with open(os.path.join(ROOT, "registry", "index.yaml"), encoding="utf-8") as f:
+        for raw in f:
+            line = raw.rstrip("\n")
+            m = re.match(r"^  - id: (\S+)", line)
+            if m:
+                tid = m.group(1)
+                out[tid] = {}
+            elif tid and re.match(r"^    \w+:", line):
+                k, _, v = line.strip().partition(": ")
+                out[tid][k] = {"true": True, "false": False}.get(v, v)
+    return out
+
+
+TYPES = _index_types()
 
 # Per-type prompt ceilings, each taken from that type's own SLOT CONSTRAINTS.
 CEIL = {"01-pain-scene": 2500, "02-cause-anatomy": 2050, "03-mechanism-xray": 1900,
@@ -1957,6 +1979,31 @@ for _s in OUT["slots"]:
     _g["asset"] = f"{_root}--brief{_ext}"
 
 
+ATTACH_RE = re.compile(r"\battached\b", re.I)
+
+
+def binds_a_photo(o):
+    """Whether THIS prompt asks for an attachment. Read off the prompt, not off
+    the type's index flag: that flag is type-level and two variants on this page
+    override it — `02-cause-anatomy --diagnostic` drops [PRODUCT REFERENCE] and
+    reads false for the variant, and `04-proof-lockedframe --rivals` is the
+    exception Step 5 names. A type-level read calls four runnable prompts
+    blocked. The disagreements are reported below, never resolved silently."""
+    return bool(ATTACH_RE.search(o["prompt"]))
+
+
+def run_state(o):
+    """Paste-and-run today, or blocked and by what. ADR-021: the pipeline is
+    one prompt, one call, at most one reference photo — so the two things that
+    can block a prompt are a missing photo and a mode that needs compositing."""
+    if o["pipeline"] != "single-pass":
+        return "BLOCKED", "needs compositing, which this pipeline does not do"
+    if binds_a_photo(o) and not o.get("attachments"):
+        return "NEEDS PHOTO", "the prompt binds G1 to an attached reference "\
+                              "and the export supplied none"
+    return "RUNS TODAY", ""
+
+
 def md(d):
     L = []
     A = L.append
@@ -1982,6 +2029,29 @@ def md(d):
       "prompt text (adapters/nano-banana.md Rule 4). The `Strictly avoid:` line is "
       "not rendered into any prompt (ADR-014); the exclusion list is kept in the "
       "JSON's `avoid` field for a model with a real negative channel.")
+    A("")
+
+    A("## Paste and run today")
+    A("")
+    now = [(s, o) for s in d["slots"] for o in s["options"]
+           if run_state(o)[0] == "RUNS TODAY"]
+    plates = [s for s in d["slots"] if s.get("gif", {}).get("eligible")]
+    blocked = [(s, o) for s in d["slots"] for o in s["options"]
+               if run_state(o)[0] != "RUNS TODAY"]
+    A(f"**{len(now) + len(plates)} of {n_opts + len(plates)} prompts need nothing "
+      f"but the prompt and the ratio parameter.** Every option below carries a "
+      f"`runs:` line saying which it is.")
+    A("")
+    for s, o in now:
+        v = f" `{o['variant']}`" if o.get("variant") else ""
+        A(f"- `{s['slot_id']}` option {o['opt']} — {o['type']}{v} · {o['ratio']}")
+    for s in plates:
+        A(f"- `{s['slot_id']}` option D — the G12 brief plate · "
+          f"{next(x['ratio'] for x in s['options'] if x['opt'] == s['recommended_opt'])}")
+    A("")
+    reasons = sorted({run_state(o)[1] for _, o in blocked})
+    A(f"The other {len(blocked)} are held by one thing only: "
+      + "; ".join(reasons) + ".")
     A("")
 
     A("## Read this first")
@@ -2048,6 +2118,8 @@ def md(d):
             A(f"#### Option {o['opt']} — {o['type']} {o['type_version']}{v}{star}")
             A("")
             A(f"- varies on: {o['varies_on']}")
+            state, why = run_state(o)
+            A(f"- runs: **{state}**" + (f" — {why}" if why else ""))
             A(f"- ratio parameter: **{o['ratio']}** · {o['pipeline']} · "
               f"{len(o['prompt'])} characters")
             A(f"- why: {o['rationale']}")
@@ -2071,6 +2143,8 @@ def md(d):
             A("")
             A(f"- varies on: deliverable, not execution — the loop's work order, "
               f"rendered alongside option {runs_on} rather than instead of it")
+            A("- runs: **RUNS TODAY** — a text card, so it binds no reference "
+              "photo even where the still does")
             A(f"- ratio parameter: **{ratio}** · single-pass · "
               f"{len(g['prompt'])} characters")
             A(f"- argues: **{g['kind']}** · why: {g['reason']}")
@@ -2137,6 +2211,27 @@ print("gif pointing at no option:", orphan or "none")
 motion = [s["slot_id"] for s in gifs
           if "animate the supplied" in s["gif"]["prompt"].lower()]
 print("gif prompts that animate a still:", motion or "none")
+# ADR-021: the pipeline is paste-and-run, so an option that needs compositing is
+# a routing defect, not a note.
+composited = [(s["slot_id"], o["opt"], o["type"], o["pipeline"])
+              for s in routed for o in s["options"]
+              if o["pipeline"] != "single-pass"]
+print("options needing compositing:", composited or "none")
+import collections as _c
+_st = _c.Counter(run_state(o)[0] for s in routed for o in s["options"])
+print("run state across %d options: %s  (+%d brief plates, all RUNS TODAY)"
+      % (sum(_st.values()), dict(_st), len(gifs)))
+# Where the prompt and the type-level flag disagree, print it. Each one should be
+# a variant that declares its own exemption; a new one appearing here is either a
+# missing G1 block or an undeclared exemption, and both need a person.
+split = [(s["slot_id"], o["opt"], o["type"], o.get("variant"))
+         for s in routed for o in s["options"]
+         if bool(TYPES.get(o["type"], {}).get("requires_product_photo"))
+         != binds_a_photo(o)]
+print("prompts exempt from their type's photo flag (each must be a declared "
+      "variant exemption):")
+for row in split:
+    print("   ", row)
 extra = sorted({k for s in OUT["slots"] for k in (s.get("gif") or {})}
                - {"eligible", "form", "kind", "duration_s", "loop", "asset",
                   "shot", "action", "result", "match", "delivery", "reason",
