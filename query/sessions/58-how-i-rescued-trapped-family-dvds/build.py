@@ -8,6 +8,7 @@ Run from anywhere:  python3 query/sessions/58-.../build.py
 """
 import json
 import os
+import textwrap
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -1932,6 +1933,24 @@ OUT = {
 }
 
 
+# ---- wrap the loop prompt --------------------------------------------------
+# The loop prompt is written as one flowing paragraph, which is right for the
+# model and wrong for the reader: it renders as a single 639-character line and
+# scrolls sideways. Wrapping is presentation only - fill() breaks on spaces, so
+# it swaps a space for a newline and the character count does not move. The
+# still prompts are already wrapped this way; the loop prompt was the outlier.
+#
+# Nothing else is stored on the gif object. output.schema.json closes it with
+# additionalProperties: false, and the three facts the block wants - which
+# option the loop runs on, that option's ratio, the prompt's length - are all
+# derivable from the slot at render time. Storing them would need a schema
+# change for data the file already holds.
+for _s in OUT["slots"]:
+    _g = _s.get("gif") or {}
+    if _g.get("eligible"):
+        _g["prompt"] = textwrap.fill(_g["prompt"], width=78)
+
+
 def md(d):
     L = []
     A = L.append
@@ -2015,27 +2034,6 @@ def md(d):
         A(f"**Recommended: option {s['recommended_opt']}.** "
           f"{s['recommendation_basis']}")
         A("")
-        g = s.get("gif", {})
-        if g.get("eligible"):
-            A(f"**GIF · {g.get('duration_s')}s · {g.get('loop')} · form "
-              f"`{g.get('form')}` · argues `{g.get('kind')}`** — {g['reason']}")
-            A("")
-            A("```")
-            A(f"SHOT     {g.get('shot','')}")
-            A(f"ACTION   {g.get('action','')}")
-            A(f"RESULT   {g.get('result','')}")
-            A(f"MATCH    {g.get('match','')}")
-            A("```")
-            A("")
-            A(f"Loop prompt — run it on the still option {s['recommended_opt']} "
-              f"produces. Delivery: {g.get('delivery','')}.")
-            A("")
-            A("```prompt")
-            A(g["prompt"])
-            A("```")
-        elif g:
-            A(f"**No GIF.** {g['reason']}")
-        A("")
         for o in s["options"]:
             star = "  ← RECOMMENDED" if o["opt"] == s["recommended_opt"] else ""
             v = f" `{o['variant']}`" if o.get("variant") else ""
@@ -2051,6 +2049,41 @@ def md(d):
             A("```prompt")
             A(o["prompt"])
             A("```")
+            A("")
+        # The loop runs on the still the recommended option produces, so it is
+        # read after that option exists, not before it.
+        g = s.get("gif", {})
+        if g.get("eligible"):
+            runs_on = s["recommended_opt"]
+            ratio = next(o["ratio"] for o in s["options"]
+                         if o["opt"] == runs_on)
+            A(f"#### GIF — motion pass on option {runs_on}")
+            A("")
+            A(f"- runs on: the still option {runs_on} produces — "
+              f"render that first")
+            A(f"- form: **{g['form']}** · argues **{g['kind']}** · {ratio}")
+            A(f"- output: {g['duration_s']}s {g['loop']} · {g['delivery']} · "
+              f"{len(g['prompt'])} characters")
+            A(f"- why: {g['reason']}")
+            A("")
+            A("Brief the editor reads off the plate:")
+            A("")
+            A("```")
+            A(f"GIF · {g['duration_s']}s · {g['loop']}")
+            A(f"SHOT     {g['shot']}")
+            A(f"ACTION   {g['action']}")
+            A(f"RESULT   {g['result']}")
+            A(f"MATCH    {g['match']}")
+            A("```")
+            A("")
+            A("```prompt")
+            A(g["prompt"])
+            A("```")
+            A("")
+        elif g:
+            A("#### GIF — none")
+            A("")
+            A(f"- why: {g['reason']}")
             A("")
     return "\n".join(L) + "\n"
 
@@ -2075,3 +2108,27 @@ print("ADR-016 illegal ratios:", bad_ratio or "none")
 leak = [(s["slot_id"], o["opt"]) for s in routed for o in s["options"]
         if "attachments" in o]
 print("options carrying a fabricated attachment:", leak or "none")
+
+# The loop prompt's widest line, printed rather than asserted, so the wrap is a
+# measured fact. The still prompts are printed beside it as the reference the
+# GIF block is being brought level with.
+def widest(p):
+    return max(len(x) for x in p.split("\n"))
+
+
+gifs = [s for s in routed if s.get("gif", {}).get("eligible")]
+print("gif loop prompt widest line:",
+      [(s["slot_id"], widest(s["gif"]["prompt"])) for s in gifs] or "none")
+print("still prompts widest line: min %d, median-ish 80-82, max %d"
+      % (min(widest(o["prompt"]) for s in routed for o in s["options"]),
+         max(widest(o["prompt"]) for s in routed for o in s["options"])))
+# The block sends the editor to the still the recommended option produces, so
+# that option has to exist, or they are sent to a render nobody made.
+orphan = [(s["slot_id"], s["recommended_opt"]) for s in gifs
+          if s["recommended_opt"] not in [o["opt"] for o in s["options"]]]
+print("gif pointing at no option:", orphan or "none")
+extra = sorted({k for s in OUT["slots"] for k in (s.get("gif") or {})}
+               - {"eligible", "form", "kind", "duration_s", "loop", "asset",
+                  "shot", "action", "result", "match", "delivery", "reason",
+                  "prompt"})
+print("gif fields outside output.schema.json:", extra or "none")

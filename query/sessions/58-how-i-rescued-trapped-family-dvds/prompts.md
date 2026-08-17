@@ -86,8 +86,6 @@ Ratio goes in the generation tool's own aspect-ratio parameter, never in the pro
 
 **Recommended: option A.** FIT decides it. 01-pain-scene's use_when names this beat in its own words - 'advertorial header image, cold traffic that does not know the product yet' - and --candid is the branch for 'physical limitation and moments nobody would choose to be seen in', which is a man checking a disc he cannot play. PAGE LEGALITY: the type is G1-exempt, so A is one of only two prompts on this page that runs without the missing product photo. EVIDENCE: --candid carries this type's owner-passed worked example and the type passed at 1.14. PRODUCT PRESENCE: none required and none allowed here. PROMPT RISK: 1,5k characters against a type whose measured history runs 1669-1880, and every clause in it is one the type's own PARTS require. B is legal and would win if the beat were self-image rather than physical limitation; C moves the same argument onto degradation, which the copy raises but does not lead on.
 
-**No GIF.** The slot exists to make a cold reader recognise themselves in a held state. Nothing about it is temporal - no transition, no sequence, no output flowing - so it does not earn motion.
-
 #### Option A — 01-pain-scene 1.14 `candid`  ← RECOMMENDED
 
 - varies on: baseline
@@ -222,13 +220,15 @@ field, 35mm.
 STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 ```
 
+#### GIF — none
+
+- why: The slot exists to make a cold reader recognise themselves in a held state. Nothing about it is temporal - no transition, no sequence, no output flowing - so it does not earn motion.
+
 ### `problems.items.0.image` — problem-agitation
 
 *Beside 'The painful loop of cheap drives and missing ports'.* · asset `58-02-problems0-pain-scene-object.png`
 
 **Recommended: option A.** PAGE LEGALITY decides it over FIT. B is the better literal fit - 04-proof-lockedframe's use_when names 'the I tried three things beat' outright, and the copy's own note label is 'What I tried first'. But that type appears once per page and features.items.4 needs it more: its use_when also requires a buyer who 'already understands the problem and mechanism', which is false this early and true by the time the cost comparison runs. So A takes rung 4 of the runbook's ladder - another execution of a type already on the page, differing on a named dimension, here subject class - which is the precedent the runbook records for object-only pain scenes. EVIDENCE: object-only execution is recorded twice in the ledger. PRODUCT PRESENCE: none, correctly - the product has not been revealed yet. PROMPT RISK: A is G1-exempt and runnable today; B is too, but costs the page its proof image.
-
-**No GIF.** A still life of what was already tried. It is a state the reader inspects, not a process, so nothing in it changes over time.
 
 #### Option A — 01-pain-scene 1.14 `candid`  ← RECOMMENDED
 
@@ -362,26 +362,15 @@ field, 35mm.
 STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 ```
 
+#### GIF — none
+
+- why: A still life of what was already tried. It is a state the reader inspects, not a process, so nothing in it changes over time.
+
 ### `problems.items.1.image` — cause
 
 *Beside 'Why standard external drives constantly fail'.* · asset `58-03-problems1-cause-anatomy.png`
 
 **Recommended: option A.** FIT and PAGE LEGALITY agree. The copy names one mechanism - 'unbalanced internal motors shake the optical core, the laser drifts off track' - and 02-cause-anatomy exists to indict exactly that with a measured pair. It passes the removal test outright: take the unbalanced spindle out of the left panel and the read error goes with it, so this is a switchable state and not accumulated damage. --diagnostic is the variant for the advertorial middle where the culprit is named before the product is revealed, and features.items.0 downstream carries the product, which is the condition the variant sets. EVIDENCE: 30 renders behind measure, 18 behind verdict, and the two-mark budget is the type's proven configuration. PRODUCT PRESENCE: correctly absent, and that makes A G1-exempt and runnable today. PROMPT RISK: the offset difference is far past the 2:1 admission floor. B indicts the second cause the copy names and is the one to run if A's subject class struggles; C stays on vibration but moves the landmark to the platter.
-
-**GIF · 3s · seamless loop · form `whole-frame` · argues `cause`** — The cause this slot exists to indict IS temporal - a motor spins, the sled shakes, the beam drifts off the track. The still can only show the endpoint of that. 02-cause-anatomy legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job, cause.
-
-```
-SHOT     the two panels, held as drawn
-ACTION   left lens shakes off the track
-RESULT   right lens never leaves it
-MATCH    flat vector, same two grounds
-```
-
-Loop prompt — run it on the still option A produces. Delivery: mp4/webm, under 2 MB.
-
-```prompt
-Animate the supplied two-panel illustration as a seamless 3-second loop. Everything stays exactly as drawn - both grounds, the ivory structures, the two dashed measure lines, both verdict badges, the flat-vector style, every edge and fill. In the LEFT panel only, the lens and its sled tremble rapidly side to side under the spindle and the beam slides off the ridged track band and back, and the red dashed line's span widens and narrows with it. In the RIGHT panel only, the same lens sits in its damping carriage and does not move at all, the beam staying on the band and the blue dashed line holding its length exactly. Nothing else moves. No camera move, no zoom, no new element, no text.
-```
 
 #### Option A — 02-cause-anatomy 1.15 `diagnostic`  ← RECOMMENDED
 
@@ -504,26 +493,41 @@ MARKS, two, nothing else marked:
 G3: red wrong, blue correct, green badge, nothing else.
 ```
 
+#### GIF — motion pass on option A
+
+- runs on: the still option A produces — render that first
+- form: **whole-frame** · argues **cause** · 16:9
+- output: 3s seamless loop · mp4/webm, under 2 MB · 693 characters
+- why: The cause this slot exists to indict IS temporal - a motor spins, the sled shakes, the beam drifts off the track. The still can only show the endpoint of that. 02-cause-anatomy legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job, cause.
+
+Brief the editor reads off the plate:
+
+```
+GIF · 3s · seamless loop
+SHOT     the two panels, held as drawn
+ACTION   left lens shakes off the track
+RESULT   right lens never leaves it
+MATCH    flat vector, same two grounds
+```
+
+```prompt
+Animate the supplied two-panel illustration as a seamless 3-second loop.
+Everything stays exactly as drawn - both grounds, the ivory structures, the
+two dashed measure lines, both verdict badges, the flat-vector style, every
+edge and fill. In the LEFT panel only, the lens and its sled tremble rapidly
+side to side under the spindle and the beam slides off the ridged track band
+and back, and the red dashed line's span widens and narrows with it. In the
+RIGHT panel only, the same lens sits in its damping carriage and does not move
+at all, the beam staying on the band and the blue dashed line holding its
+length exactly. Nothing else moves. No camera move, no zoom, no new element,
+no text.
+```
+
 ### `features.items.0.image` — mechanism
 
 *Beside 'Anti-shock optical core stops laser vibration'.* · asset `58-04-features0-xray.png`
 
 **Recommended: option A.** FIT is decisive and the gate makes it the only mechanism type available. body_contact is false for an external drive, which drops 03-mechanism-ghostbody by the slot-rules attribute gate, and 03-spec-split and 03-spec-explode are not advertorial types. That leaves xray, which is also exactly right: the section argues from an internal component the buyer cannot see, and xray exists to show real internals through a translucent shell. A is the top-down view because the carriage's length is the argument and it reads longest from above. EVIDENCE: type passed at 1.3 on two owner-passed worked examples; working carries 1 render. PRODUCT PRESENCE: the product IS the frame. PROMPT RISK: G1 binds the silhouette hard here and there is no reference photo yet, so this option cannot run until one is supplied. One mark only - the type's own rule is not to invent an emission, and this drive emits nothing outward, so output and caught are both absent.
-
-**GIF · 3s · seamless loop · form `whole-frame` · argues `mechanism`** — The mechanism is a travelling one - the sled runs its carriage while the disc turns - and a still can only assert that. 03-mechanism-xray legislates no motion layer, so the form is whole-frame and the kind is the type's own job, mechanism.
-
-```
-SHOT     the render, held exactly as built
-ACTION   sled tracks, beam stays centred
-RESULT   the beam never leaves the disc
-MATCH    same ground, same cyan, no new light
-```
-
-Loop prompt — run it on the still option A produces. Delivery: mp4/webm, under 2 MB.
-
-```prompt
-Animate the supplied see-through render as a seamless 3-second loop. The product, its translucent shell, the ground and the framing all stay exactly as rendered - no camera move, no zoom, no change of light. Two things move and nothing else. The disc on the spindle turns steadily and evenly in place. The optical pickup lens travels smoothly along its damping carriage from the spindle outward and back, and its cyan beam stays exactly perpendicular to the disc above it the whole way, never wavering sideways and never dimming. The cyan stays the brightest thing in the frame throughout. No new element, no arrow, no text, no spec label.
-```
 
 #### Option A — 03-mechanism-xray 1.3  ← RECOMMENDED
 
@@ -641,13 +645,40 @@ No text, numbers or spec labels anywhere in the image.
 The marks are the only added colour; the product and its parts keep their own.
 ```
 
+#### GIF — motion pass on option A
+
+- runs on: the still option A produces — render that first
+- form: **whole-frame** · argues **mechanism** · 16:9
+- output: 3s seamless loop · mp4/webm, under 2 MB · 639 characters
+- why: The mechanism is a travelling one - the sled runs its carriage while the disc turns - and a still can only assert that. 03-mechanism-xray legislates no motion layer, so the form is whole-frame and the kind is the type's own job, mechanism.
+
+Brief the editor reads off the plate:
+
+```
+GIF · 3s · seamless loop
+SHOT     the render, held exactly as built
+ACTION   sled tracks, beam stays centred
+RESULT   the beam never leaves the disc
+MATCH    same ground, same cyan, no new light
+```
+
+```prompt
+Animate the supplied see-through render as a seamless 3-second loop. The
+product, its translucent shell, the ground and the framing all stay exactly as
+rendered - no camera move, no zoom, no change of light. Two things move and
+nothing else. The disc on the spindle turns steadily and evenly in place. The
+optical pickup lens travels smoothly along its damping carriage from the
+spindle outward and back, and its cyan beam stays exactly perpendicular to the
+disc above it the whole way, never wavering sideways and never dimming. The
+cyan stays the brightest thing in the frame throughout. No new element, no
+arrow, no text, no spec label.
+```
+
 ### `features.items.1.image` — spec
 
 *Beside 'Built-in hub restores laptop connectivity'.* · asset `58-05-features1-relief-hero-detail.png`
 
 **Recommended: option A.** This slot has no cell of its own and the ladder decides it. The mechanism cell is spent at features.items.0, 03-spec-explode and 03-spec-split are not advertorial, and 03-use-sequence - which the copy would otherwise suit - declares only 3:4 and 1:1, so it cannot serve a 16:9 slot at all. Rung 2 of the ladder moves to an adjacent step and 06-relief-hero carries it: the section's real argument is the after state of a desk, and --detail is the sanctioned way to magnify a feature too small to read at scene scale, which a port bank is. FIT: use_when names gallery images 2-3 and landing-page banners. EVIDENCE: the type is at 1.15 with 12 renders behind its marks, though --detail as a still inset is thinner than --recall. PRODUCT PRESENCE: the product is the desk's centre and every port is occupied, which is the claim. PROMPT RISK: needs the reference photo, and G1 binds it identically in both layers.
-
-**No GIF.** The argument is a count of ports with things in them - a held state a reader inspects. Nothing flows and nothing changes, so the inset layer that --detail legislates has no temporal content to host a loop.
 
 #### Option A — 06-relief-hero 1.15  ← RECOMMENDED
 
@@ -808,13 +839,15 @@ joined to it by nothing - no arrow, no line, no glow.
 No text on any object in either layer.
 ```
 
+#### GIF — none
+
+- why: The argument is a count of ports with things in them - a held state a reader inspects. Nothing flows and nothing changes, so the inset layer that --detail legislates has no temporal content to host a loop.
+
 ### `features.items.2.image` — spec
 
 *Beside 'Rugged slim design built for cool operation'.* · asset `58-06-features2-relief-hero-context.png`
 
 **Recommended: option A.** Rung 4: a second execution of a type already on the page, differing on named dimensions - inset_mode, subject, place and pose all change from features.items.1. Nothing else is available. FIT: --context is defined as the mode for when the hero shows the product in hand and the buyer still needs to see where it lives, which is precisely a slim drive going into a sleeve. HONEST LIMIT, and it is the reason this basis is hedged: the section's headline claim is thermal, and no photograph can show a casing staying cool. A argues the half that is photographable - the slim body against a closed laptop's edge - and the thermal claim is left to the copy. PRODUCT PRESENCE: the drive is held at the mouth of the sleeve, its thickness the subject. PROMPT RISK: needs the reference photo in both layers; G7-X binds one mode of use across hero and inset, which both A and C hold.
-
-**No GIF.** Portability is a property, not an event. The section's other claim, staying cool across a weekend, is invisible in any register - a loop of a drive not overheating shows nothing - so motion would add duration without argument.
 
 #### Option A — 06-relief-hero 1.15  ← RECOMMENDED
 
@@ -963,13 +996,15 @@ it.
 No text on any object in either layer.
 ```
 
+#### GIF — none
+
+- why: Portability is a property, not an event. The section's other claim, staying cool across a weekend, is invisible in any register - a loop of a drive not overheating shows nothing - so motion would add duration without argument.
+
 ### `features.items.3.image` — outcome
 
 *Beside 'Our family memories restored in one evening'.* · asset `58-07-features3-relief-scene.png`
 
 **Recommended: option A.** FIT is unusually literal. 06-relief-scene's use_when asks for a closing image where the promise is a state of living rather than a feature, and the section is titled 'Our family memories restored in one evening'. PAGE LEGALITY: the type requires 01-pain-scene on the same page and it is there twice, so requires_pair is satisfied; the arc holds because every pain image sits above this one. The result_visibility gate does not drop it - the restored state is visible as a family watching a screen. EVIDENCE is where this recommendation is weak and the basis says so: the type is at 3.7 with 32 render records and zero passes at any 3.x version, and 3.7's product law - the label carrying the name and nothing else - was written yesterday and has never rendered. B is the safer type by evidence and the worse fit by argument. PRODUCT PRESENCE: 3.7 requires the drive to stand in frame as its own object with its face readable, which A does on the low table. PROMPT RISK: highest on the page.
-
-**No GIF.** The slot's reason to exist is an after-state - a family who can watch the disc - and a held state is what it has to prove. 06-relief-scene also bans every layer except the --detail inset, so there is no legislated layer a loop could occupy without breaking the register.
 
 #### Option A — 06-relief-scene 3.7  ← RECOMMENDED
 
@@ -1116,13 +1151,15 @@ No printed text on any object in the scene except the product name on the drive.
 No logo, no watermark, no arrows, no badges.
 ```
 
+#### GIF — none
+
+- why: The slot's reason to exist is an after-state - a family who can watch the disc - and a held state is what it has to prove. 06-relief-scene also bans every layer except the --detail inset, so there is no legislated layer a loop could occupy without breaking the register.
+
 ### `features.items.4.image` — comparison
 
 *Beside 'Replaces three separate purchases for less'.* · asset `58-08-features4-lockedframe-verdict.png`
 
 **Recommended: option A.** FIT and EVIDENCE agree, and this is where the page's one 04-proof-lockedframe is best spent. use_when wants a buyer who already understands the problem and the mechanism and now wants to see for themselves - true here and false at problems.items.0, which is why the type lands in this slot and not that one. --verdict is the variant with the product in the last panel, and the copy's claim is a straight count of bodies and cables. The variant-selection rule permits it: this difference IS visible in a static frame, unlike the section's cost claim, which no image can carry. EVIDENCE: 1.13, owner-passed, two rendered worked examples. PRODUCT PRESENCE: last panel only, which is the order rule. PROMPT RISK: needs the reference photo; runs handheld rather than strict because the capability gate says strict needs compositing and this pipeline renders one frame by hand.
-
-**No GIF.** A locked-frame comparison is inspected, not watched - the reader's eye does the travelling between panels. Motion here would also break the judgement rule by drawing the eye to one panel.
 
 #### Option A — 04-proof-lockedframe 1.13 `verdict`  ← RECOMMENDED
 
@@ -1265,13 +1302,15 @@ the alternatives are ordinary products someone would buy, never made to look
 worse.
 ```
 
+#### GIF — none
+
+- why: A locked-frame comparison is inspected, not watched - the reader's eye does the travelling between panels. Motion here would also break the judgement rule by drawing the eye to one panel.
+
 ### `reviews.shots.0.image` — social-proof
 
 *First of four customer-photo tiles above the review quotes.* · asset `58-09-reviews-shot-0.png`
 
 **Recommended: option A.** MODE and light decide it. A is the default in-use mode and the only one of the four A options that shows the drive actually reading, which anchors the set. Its warm dim lamp light is the furthest from tile 1's flat kitchen overhead, tile 2's mixed floor light and tile 3's cool shelf daylight, so the set diversity law holds at the A level. EVIDENCE: the type passed at 1.2 on 2 of 2 renders, both with empty failure lists, and in-use is the mode its owner-passed socket-tester example used.
-
-**No GIF.** A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
@@ -1348,13 +1387,15 @@ REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
 
+#### GIF — none
+
+- why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
+
 ### `reviews.shots.1.image` — social-proof
 
 *Second of four customer-photo tiles above the review quotes.* · asset `58-10-reviews-shot-1.png`
 
 **Recommended: option A.** MODE carries this tile. kit-flatlay is the one mode that shows what actually arrives in the box, which answers the 'both adapter cables came included' line in the copy without the image claiming anything. Its flat overhead kitchen light and top-down distance are distinct from all three other tiles. PROMPT RISK: the leaflet must stay illegible at size - the type allows generated print only where it cannot be read, and a readable one would be an invented claim.
-
-**No GIF.** A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
@@ -1431,13 +1472,15 @@ REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
 
+#### GIF — none
+
+- why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
+
 ### `reviews.shots.2.image` — social-proof
 
 *Third of four customer-photo tiles above the review quotes.* · asset `58-11-reviews-shot-2.png`
 
 **Recommended: option A.** FIT to the copy decides it. This is the only tile that shows the SD slot in use, and the reviews lead names 'transferred raw camera photos from the SD slot' as one of the three things buyers mention. Its mixed warm-and-cold floor light and kneeling-height distance keep it apart from the other three. COMPLIANCE: fingers only and no face - a face turns a snapshot into a testimonial portrait, which is a different type's job and a risk here.
-
-**No GIF.** A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
@@ -1514,13 +1557,15 @@ REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
 
+#### GIF — none
+
+- why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
+
 ### `reviews.shots.3.image` — social-proof
 
 *Fourth of four customer-photo tiles above the review quotes.* · asset `58-12-reviews-shot-3.png`
 
 **Recommended: option A.** MODE and set balance decide it. Three tiles already show the drive being handled or unboxed, so the fourth earns its place by showing where it ends up living, which is the at-rest mode's whole argument. The disc spines behind it must stay unbranded and unreadable. Its cool falling-off daylight and longer distance complete the four-way separation the set diversity law requires.
-
-**No GIF.** A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
@@ -1596,6 +1641,10 @@ CAMERA TRUTH: framing tilted and shot quickly from above at arm's length, focus 
 REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
+
+#### GIF — none
+
+- why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
 
 ### `product.image` — cta
 
