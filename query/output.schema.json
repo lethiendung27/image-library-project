@@ -200,7 +200,8 @@
                 "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
               },
               "asset": {
-                "type": "string"
+                "type": "string",
+                "description": "Filename of the PLATE render. It carries the --brief suffix and is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
               },
               "duration_s": {
                 "type": "number"
@@ -228,7 +229,7 @@
               },
               "prompt": {
                 "type": "string",
-                "description": "A runnable motion prompt for this loop, written against the STILL the slot's recommended option produces — animate that frame, never regenerate it. The five-field brief stays as the human summary; this is the thing you paste into the tool. For form 'inset' it must name the layer that moves and freeze everything outside it."
+                "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
               }
             }
           },
@@ -349,7 +350,8 @@
                 "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
               },
               "asset": {
-                "type": "string"
+                "type": "string",
+                "description": "Filename of the PLATE render. It carries the --brief suffix and is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
               },
               "duration_s": {
                 "type": "number"
@@ -377,7 +379,7 @@
               },
               "prompt": {
                 "type": "string",
-                "description": "A runnable motion prompt for this loop, written against the STILL the slot's recommended option produces — animate that frame, never regenerate it. The five-field brief stays as the human summary; this is the thing you paste into the tool. For form 'inset' it must name the layer that moves and freeze everything outside it."
+                "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
               }
             }
           },

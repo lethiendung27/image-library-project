@@ -212,7 +212,7 @@ else about the plate changes with it.
 Every GIF carries the same five-field brief, each line ≤ 7 words:
 
 ```
-GIF · <duration> · <loop behaviour>
+GIF SLOT · <duration> · <loop behaviour>
 SHOT     <camera and framing>
 ACTION   <what moves, in order>
 RESULT   <what the viewer is left holding>
@@ -223,12 +223,24 @@ MATCH    <the register law it must obey>
 in. Delivery is mp4/webm with a size ceiling — a 20 MB `.gif` costs more conversion
 than the motion buys.
 
-**The brief is what the editor reads off the plate; `prompt` is the same brief written
-out.** It names what moves, freezes everything else by name, and restates the grade, so
-the loop cannot drift from the frame it lands in. For `form: inset` it describes only the
-plate's own content; for `whole-frame` it describes the whole picture. Every line of it
-must be satisfiable by the still it accompanies (G12) — a brief promising something the
-frame does not contain sends the editor to build the wrong loop.
+**The brief is what the editor reads off the plate, and `prompt` is what RENDERS that
+plate.** It is never a prompt that animates a supplied still: ADR-019 settled that an
+editor builds the loop, so the pipeline's job is to hand them a legible work order drawn
+into a frame. Two shapes, and only these two. For `form: whole-frame` the plate IS the
+delivered image — a flat card carrying the five lines and nothing else, no scene and no
+product; it passed 1 of 1 and is the case that proved the model writes the brief
+reliably. For `form: inset` the host type's own prompt sets its legislated layer to
+`--loop` and draws the plate there, geometry inherited from that layer.
+
+Every line must be satisfiable by the still the plate accompanies (G12) — a brief
+promising something the frame does not contain sends the editor to build the wrong loop,
+and that is the dominant fault at 2 of 4. The plate never ships: its render takes the
+`--brief` suffix and never the slot's own asset filename.
+
+**In `prompts.md` the gif is a fourth option below C**, carrying the same anatomy the
+options carry. It is not an alternative to A–C — it is rendered alongside the recommended
+still, because a card that says what moves is useless to an editor who has no frame to
+move.
 
 ## Step 7 — Emit and log
 

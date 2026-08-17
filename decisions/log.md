@@ -596,3 +596,42 @@ standing so the correction is legible rather than silent.
 
 Consequences: `registry/rules.md` G12 rewritten; `registry/types/06-relief-hero.md` at
 1.14; `query/runbook.md` Step 5c. `registry_version` unchanged.
+
+## ADR-020 · 2026-08-17 · A gif slot emits a plate render, never a motion prompt, and it sits as a fourth option
+
+ADR-019 settled that an editor builds the loop and the work order is drawn INTO the
+render. Two files kept the superseded premise anyway, and neither was caught because both
+read as law. `query/output.schema.json` told every session that `gif.prompt` is "a
+runnable motion prompt ... written against the STILL the slot's recommended option
+produces — animate that frame, never regenerate it". `query/runbook.md` Step 5c described
+the same field as the brief "written out", naming what moves "so the loop cannot drift
+from the frame it lands in". Both describe a pipeline that composites, which ADR-019
+records the owner correcting within the hour of ADR-018.
+
+Page 58 was built from those two descriptions and shipped two prompts beginning "Animate
+the supplied render". The owner corrected it today. A session that reads the schema and
+the runbook and follows both faithfully still gets this wrong, so the fix belongs in the
+files rather than in a session's care.
+
+**A positive `gif` verdict emits exactly one prompt, and that prompt renders the plate.**
+Two shapes and only these two, both already in G12. `whole-frame`: the plate IS the
+delivered image, a flat card of text with no scene and no product — the form that passed
+1 of 1 in `eval/render-tests.jsonl` record 209, the case that proved the model writes the
+brief reliably. `inset`: the host type's own prompt sets the layer its SKELETON already
+legislates to `--loop` and draws the plate there, geometry inherited. No motion prompt is
+emitted anywhere in the pipeline.
+
+**The gif renders alongside the recommended still, not instead of it.** Step 5c's "emit
+the brief, not three photographic options for a frame that gets replaced" is about the
+plate, which gets one brief rather than three executions of itself. A card reading "left
+sled shakes, its beam wanders" hands an editor nothing to move; record 209 flagged
+exactly that as the highest-risk case in its set. So in `prompts.md` the gif is a fourth
+option below C with the options' own anatomy, which is where the owner put it.
+
+**The brief's header line is `GIF SLOT`, not `GIF`.** G12 writes `GIF SLOT` and 4 of 4
+passing renders drew it; Step 5c's template had dropped the word.
+
+Consequences: `query/output.schema.json` `gif.prompt` and `gif.asset` descriptions
+rewritten; `query/runbook.md` Step 5c rewritten and its template line corrected;
+`query/sessions/58-how-i-rescued-trapped-family-dvds/` rebuilt. `registry/rules.md` G12 is
+unchanged — it was already right, and that is the point. `registry_version` unchanged.
