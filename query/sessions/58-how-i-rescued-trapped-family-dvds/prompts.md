@@ -5,7 +5,7 @@ GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit 
 - page_id `58` · channel `advertorial` · awareness `problem-aware` · registry `2.0.0`
 - 22 image slots: 12 routed, 10 out of library scope
 - 36 prompts, three per routed slot, one recommended each
-- 2 slots earn motion, each with its own runnable loop prompt
+- 2 slots earn motion, each carrying a G12 brief plate as a fourth option below C — a work order the editor renders alongside the still, never a prompt that animates one (ADR-020)
 
 Ratio goes in the generation tool's own aspect-ratio parameter, never in the prompt text (adapters/nano-banana.md Rule 4). The `Strictly avoid:` line is not rendered into any prompt (ADR-014); the exclusion list is kept in the JSON's `avoid` field for a model with a real negative channel.
 
@@ -493,34 +493,36 @@ MARKS, two, nothing else marked:
 G3: red wrong, blue correct, green badge, nothing else.
 ```
 
-#### GIF — motion pass on option A
+#### Option D — GIF brief plate · G12 whole-frame  ← ADDITIONAL, not an alternative
 
-- runs on: the still option A produces — render that first
-- form: **whole-frame** · argues **cause** · 16:9
-- output: 3s seamless loop · mp4/webm, under 2 MB · 693 characters
-- why: The cause this slot exists to indict IS temporal - a motor spins, the sled shakes, the beam drifts off the track. The still can only show the endpoint of that. 02-cause-anatomy legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job, cause.
-
-Brief the editor reads off the plate:
-
-```
-GIF · 3s · seamless loop
-SHOT     the two panels, held as drawn
-ACTION   left lens shakes off the track
-RESULT   right lens never leaves it
-MATCH    flat vector, same two grounds
-```
+- varies on: deliverable, not execution — the loop's work order, rendered alongside option A rather than instead of it
+- ratio parameter: **16:9** · single-pass · 995 characters
+- argues: **cause** · why: The cause this slot exists to indict IS temporal - a motor spins, the sled shakes, the beam drifts off the track. The still can only show the endpoint of that. 02-cause-anatomy legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job, cause.
+- note: the plate never ships. Render it as `58-03-problems1-cause-anatomy--brief.png`, never the slot's own asset name (G12). The editor builds the 3s seamless loop from option A's still, replaces the plate, and delivers mp4/webm, under 2 MB.
 
 ```prompt
-Animate the supplied two-panel illustration as a seamless 3-second loop.
-Everything stays exactly as drawn - both grounds, the ivory structures, the
-two dashed measure lines, both verdict badges, the flat-vector style, every
-edge and fill. In the LEFT panel only, the lens and its sled tremble rapidly
-side to side under the spindle and the beam slides off the ridged track band
-and back, and the red dashed line's span widens and narrows with it. In the
-RIGHT panel only, the same lens sits in its damping carriage and does not move
-at all, the beam staying on the band and the blue dashed line holding its
-length exactly. Nothing else moves. No camera move, no zoom, no new element,
-no text.
+TYPE: G12 motion brief plate, whole-frame card
+MEDIUM: a flat card carrying text and nothing else. NOT a photograph, NOT an
+illustration, NOT a scene. Nothing is depicted.
+
+The whole picture is flat dark grey, one even tone, no gradient and no texture.
+One thin white rule runs inside it as a closed rectangle, its outer edge
+finishing a clear margin short of the picture on all four sides, so no part of
+it touches or leaves an edge.
+
+Inside that rule, in clean white sans-serif, five short lines, each on one line,
+left aligned, the block filling about half the picture's width:
+GIF SLOT · 3s · seamless loop
+SHOT both panels, held as drawn
+ACTION left lens drifts off track
+RESULT right lens holds the track
+MATCH flat vector, same two grounds
+
+Set those five lines exactly as written, as plain words. No asterisks, no
+backticks, no bullets, no markdown of any kind, and no line wrapping.
+
+This is the only text in the picture. No logo, no icon, no border decoration,
+no product and no scene.
 ```
 
 ### `features.items.0.image` — mechanism
@@ -645,33 +647,36 @@ No text, numbers or spec labels anywhere in the image.
 The marks are the only added colour; the product and its parts keep their own.
 ```
 
-#### GIF — motion pass on option A
+#### Option D — GIF brief plate · G12 whole-frame  ← ADDITIONAL, not an alternative
 
-- runs on: the still option A produces — render that first
-- form: **whole-frame** · argues **mechanism** · 16:9
-- output: 3s seamless loop · mp4/webm, under 2 MB · 639 characters
-- why: The mechanism is a travelling one - the sled runs its carriage while the disc turns - and a still can only assert that. 03-mechanism-xray legislates no motion layer, so the form is whole-frame and the kind is the type's own job, mechanism.
-
-Brief the editor reads off the plate:
-
-```
-GIF · 3s · seamless loop
-SHOT     the render, held exactly as built
-ACTION   sled tracks, beam stays centred
-RESULT   the beam never leaves the disc
-MATCH    same ground, same cyan, no new light
-```
+- varies on: deliverable, not execution — the loop's work order, rendered alongside option A rather than instead of it
+- ratio parameter: **16:9** · single-pass · 1001 characters
+- argues: **mechanism** · why: The mechanism is a travelling one - the sled runs its carriage while the disc turns - and a still can only assert that. 03-mechanism-xray legislates no motion layer, so the form is whole-frame and the kind is the type's own job, mechanism.
+- note: the plate never ships. Render it as `58-04-features0-xray--brief.png`, never the slot's own asset name (G12). The editor builds the 3s seamless loop from option A's still, replaces the plate, and delivers mp4/webm, under 2 MB.
 
 ```prompt
-Animate the supplied see-through render as a seamless 3-second loop. The
-product, its translucent shell, the ground and the framing all stay exactly as
-rendered - no camera move, no zoom, no change of light. Two things move and
-nothing else. The disc on the spindle turns steadily and evenly in place. The
-optical pickup lens travels smoothly along its damping carriage from the
-spindle outward and back, and its cyan beam stays exactly perpendicular to the
-disc above it the whole way, never wavering sideways and never dimming. The
-cyan stays the brightest thing in the frame throughout. No new element, no
-arrow, no text, no spec label.
+TYPE: G12 motion brief plate, whole-frame card
+MEDIUM: a flat card carrying text and nothing else. NOT a photograph, NOT an
+illustration, NOT a scene. Nothing is depicted.
+
+The whole picture is flat dark grey, one even tone, no gradient and no texture.
+One thin white rule runs inside it as a closed rectangle, its outer edge
+finishing a clear margin short of the picture on all four sides, so no part of
+it touches or leaves an edge.
+
+Inside that rule, in clean white sans-serif, five short lines, each on one line,
+left aligned, the block filling about half the picture's width:
+GIF SLOT · 3s · seamless loop
+SHOT the render, held as built
+ACTION sled tracks, beam stays centred
+RESULT beam never leaves the disc
+MATCH same charcoal ground, same cyan
+
+Set those five lines exactly as written, as plain words. No asterisks, no
+backticks, no bullets, no markdown of any kind, and no line wrapping.
+
+This is the only text in the picture. No logo, no icon, no border decoration,
+no product and no scene.
 ```
 
 ### `features.items.1.image` — spec

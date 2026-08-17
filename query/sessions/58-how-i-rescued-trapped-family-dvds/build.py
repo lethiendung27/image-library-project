@@ -8,7 +8,7 @@ Run from anywhere:  python3 query/sessions/58-.../build.py
 """
 import json
 import os
-import textwrap
+
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -1291,10 +1291,9 @@ SLOTS = [
         "placement": "Beside 'Why standard external drives constantly fail'.",
         "gif": {"eligible": True, "form": "whole-frame", "kind": "cause",
                 "duration_s": 3, "loop": "seamless loop",
-                "asset": "58-03-problems1-cause-anatomy.gif",
-                "shot": "the two panels, held as drawn",
-                "action": "left lens shakes off the track",
-                "result": "right lens never leaves it",
+                "shot": "both panels, held as drawn",
+                "action": "left lens drifts off track",
+                "result": "right lens holds the track",
                 "match": "flat vector, same two grounds",
                 "delivery": "mp4/webm, under 2 MB",
                 "reason":
@@ -1302,20 +1301,7 @@ SLOTS = [
                     "spins, the sled shakes, the beam drifts off the track. The "
                     "still can only show the endpoint of that. 02-cause-anatomy "
                     "legislates no motion layer of its own, so the form is "
-                    "whole-frame and the kind is the type's own job, cause.",
-                "prompt":
-                    "Animate the supplied two-panel illustration as a seamless "
-                    "3-second loop. Everything stays exactly as drawn - both "
-                    "grounds, the ivory structures, the two dashed measure lines, "
-                    "both verdict badges, the flat-vector style, every edge and "
-                    "fill. In the LEFT panel only, the lens and its sled tremble "
-                    "rapidly side to side under the spindle and the beam slides off "
-                    "the ridged track band and back, and the red dashed line's span "
-                    "widens and narrows with it. In the RIGHT panel only, the same "
-                    "lens sits in its damping carriage and does not move at all, "
-                    "the beam staying on the band and the blue dashed line holding "
-                    "its length exactly. Nothing else moves. No camera move, no "
-                    "zoom, no new element, no text."},
+                    "whole-frame and the kind is the type's own job, cause."},
         "recommended_opt": "A",
         "recommendation_basis":
             "FIT and PAGE LEGALITY agree. The copy names one mechanism - 'unbalanced "
@@ -1376,29 +1362,16 @@ SLOTS = [
         "placement": "Beside 'Anti-shock optical core stops laser vibration'.",
         "gif": {"eligible": True, "form": "whole-frame", "kind": "mechanism",
                 "duration_s": 3, "loop": "seamless loop",
-                "asset": "58-04-features0-xray.gif",
-                "shot": "the render, held exactly as built",
+                "shot": "the render, held as built",
                 "action": "sled tracks, beam stays centred",
-                "result": "the beam never leaves the disc",
-                "match": "same ground, same cyan, no new light",
+                "result": "beam never leaves the disc",
+                "match": "same charcoal ground, same cyan",
                 "delivery": "mp4/webm, under 2 MB",
                 "reason":
                     "The mechanism is a travelling one - the sled runs its carriage "
                     "while the disc turns - and a still can only assert that. "
                     "03-mechanism-xray legislates no motion layer, so the form is "
-                    "whole-frame and the kind is the type's own job, mechanism.",
-                "prompt":
-                    "Animate the supplied see-through render as a seamless 3-second "
-                    "loop. The product, its translucent shell, the ground and the "
-                    "framing all stay exactly as rendered - no camera move, no zoom, "
-                    "no change of light. Two things move and nothing else. The disc "
-                    "on the spindle turns steadily and evenly in place. The optical "
-                    "pickup lens travels smoothly along its damping carriage from "
-                    "the spindle outward and back, and its cyan beam stays exactly "
-                    "perpendicular to the disc above it the whole way, never "
-                    "wavering sideways and never dimming. The cyan stays the "
-                    "brightest thing in the frame throughout. No new element, no "
-                    "arrow, no text, no spec label."},
+                    "whole-frame and the kind is the type's own job, mechanism."},
         "recommended_opt": "A",
         "recommendation_basis":
             "FIT is decisive and the gate makes it the only mechanism type "
@@ -1933,22 +1906,55 @@ OUT = {
 }
 
 
-# ---- wrap the loop prompt --------------------------------------------------
-# The loop prompt is written as one flowing paragraph, which is right for the
-# model and wrong for the reader: it renders as a single 639-character line and
-# scrolls sideways. Wrapping is presentation only - fill() breaks on spaces, so
-# it swaps a space for a newline and the character count does not move. The
-# still prompts are already wrapped this way; the loop prompt was the outlier.
+# ---- build the plate prompt (G12, ADR-020) ----------------------------------
+# The gif prompt RENDERS the work order; it never animates a supplied still.
+# On whole-frame the plate IS the delivered image, so the card carries the five
+# lines and nothing else.
 #
-# Nothing else is stored on the gif object. output.schema.json closes it with
-# additionalProperties: false, and the three facts the block wants - which
-# option the loop runs on, that option's ratio, the prompt's length - are all
-# derivable from the slot at render time. Storing them would need a schema
-# change for data the file already holds.
+# One template, and the five lines are generated from the stored brief fields
+# rather than retyped, so the words the model draws cannot drift from the words
+# prompts.json records. The wording of the card itself follows G12's template
+# and the one whole-frame render that passed, eval/render-tests.jsonl record
+# 209: a single white rule inset from the edges, no bleed, no decoration, no
+# scene.
+PLATE = """TYPE: G12 motion brief plate, whole-frame card
+MEDIUM: a flat card carrying text and nothing else. NOT a photograph, NOT an
+illustration, NOT a scene. Nothing is depicted.
+
+The whole picture is flat dark grey, one even tone, no gradient and no texture.
+One thin white rule runs inside it as a closed rectangle, its outer edge
+finishing a clear margin short of the picture on all four sides, so no part of
+it touches or leaves an edge.
+
+Inside that rule, in clean white sans-serif, five short lines, each on one line,
+left aligned, the block filling about half the picture's width:
+{lines}
+
+Set those five lines exactly as written, as plain words. No asterisks, no
+backticks, no bullets, no markdown of any kind, and no line wrapping.
+
+This is the only text in the picture. No logo, no icon, no border decoration,
+no product and no scene."""
+
 for _s in OUT["slots"]:
     _g = _s.get("gif") or {}
-    if _g.get("eligible"):
-        _g["prompt"] = textwrap.fill(_g["prompt"], width=78)
+    if not _g.get("eligible"):
+        continue
+    if _g["form"] != "whole-frame":
+        raise SystemExit(f"{_s['slot_id']}: only the whole-frame plate is built "
+                         f"here; an inset plate is drawn by the host type's own "
+                         f"prompt, not by this block")
+    _g["prompt"] = PLATE.format(lines="\n".join([
+        f"GIF SLOT · {_g['duration_s']}s · {_g['loop']}",
+        f"SHOT {_g['shot']}",
+        f"ACTION {_g['action']}",
+        f"RESULT {_g['result']}",
+        f"MATCH {_g['match']}",
+    ]))
+    # The plate is production-only and a page asset carrying one is a defect, so
+    # it takes the --brief suffix and never the slot's own filename (G12).
+    _root, _ext = os.path.splitext(_s["asset"])
+    _g["asset"] = f"{_root}--brief{_ext}"
 
 
 def md(d):
@@ -1968,7 +1974,9 @@ def md(d):
     A(f"- {len(d['slots'])} image slots: {len(routed)} routed, "
       f"{len(oos)} out of library scope")
     A(f"- {n_opts} prompts, three per routed slot, one recommended each")
-    A(f"- {len(gifs)} slots earn motion, each with its own runnable loop prompt")
+    A(f"- {len(gifs)} slots earn motion, each carrying a G12 brief plate as a "
+      f"fourth option below C — a work order the editor renders alongside the "
+      f"still, never a prompt that animates one (ADR-020)")
     A("")
     A("Ratio goes in the generation tool's own aspect-ratio parameter, never in the "
       "prompt text (adapters/nano-banana.md Rule 4). The `Strictly avoid:` line is "
@@ -2050,31 +2058,26 @@ def md(d):
             A(o["prompt"])
             A("```")
             A("")
-        # The loop runs on the still the recommended option produces, so it is
-        # read after that option exists, not before it.
+        # The gif is a fourth option below C (ADR-020). It is not an alternative
+        # to A-C: the plate is a work order and the editor needs a frame to
+        # move, so it renders alongside the recommended still.
         g = s.get("gif", {})
         if g.get("eligible"):
             runs_on = s["recommended_opt"]
             ratio = next(o["ratio"] for o in s["options"]
                          if o["opt"] == runs_on)
-            A(f"#### GIF — motion pass on option {runs_on}")
+            A(f"#### Option D — GIF brief plate · G12 {g['form']}"
+              f"  ← ADDITIONAL, not an alternative")
             A("")
-            A(f"- runs on: the still option {runs_on} produces — "
-              f"render that first")
-            A(f"- form: **{g['form']}** · argues **{g['kind']}** · {ratio}")
-            A(f"- output: {g['duration_s']}s {g['loop']} · {g['delivery']} · "
+            A(f"- varies on: deliverable, not execution — the loop's work order, "
+              f"rendered alongside option {runs_on} rather than instead of it")
+            A(f"- ratio parameter: **{ratio}** · single-pass · "
               f"{len(g['prompt'])} characters")
-            A(f"- why: {g['reason']}")
-            A("")
-            A("Brief the editor reads off the plate:")
-            A("")
-            A("```")
-            A(f"GIF · {g['duration_s']}s · {g['loop']}")
-            A(f"SHOT     {g['shot']}")
-            A(f"ACTION   {g['action']}")
-            A(f"RESULT   {g['result']}")
-            A(f"MATCH    {g['match']}")
-            A("```")
+            A(f"- argues: **{g['kind']}** · why: {g['reason']}")
+            A(f"- note: the plate never ships. Render it as `{g['asset']}`, "
+              f"never the slot's own asset name (G12). The editor builds the "
+              f"{g['duration_s']}s {g['loop']} from option {runs_on}'s still, "
+              f"replaces the plate, and delivers {g['delivery']}.")
             A("")
             A("```prompt")
             A(g["prompt"])
@@ -2109,24 +2112,31 @@ leak = [(s["slot_id"], o["opt"]) for s in routed for o in s["options"]
         if "attachments" in o]
 print("options carrying a fabricated attachment:", leak or "none")
 
-# The loop prompt's widest line, printed rather than asserted, so the wrap is a
-# measured fact. The still prompts are printed beside it as the reference the
-# GIF block is being brought level with.
-def widest(p):
-    return max(len(x) for x in p.split("\n"))
-
-
 gifs = [s for s in routed if s.get("gif", {}).get("eligible")]
-print("gif loop prompt widest line:",
-      [(s["slot_id"], widest(s["gif"]["prompt"])) for s in gifs] or "none")
-print("still prompts widest line: min %d, median-ish 80-82, max %d"
-      % (min(widest(o["prompt"]) for s in routed for o in s["options"]),
-         max(widest(o["prompt"]) for s in routed for o in s["options"])))
-# The block sends the editor to the still the recommended option produces, so
-# that option has to exist, or they are sent to a render nobody made.
+# G12: keep each drawn line inside seven words, because a wrapped line broke the
+# block's alignment in a real render. Counted on the words the model will draw,
+# label included, which is how the four passing plates were counted.
+long_lines = [(s["slot_id"], ln, len(ln.split()))
+              for s in gifs
+              for ln in s["gif"]["prompt"].split("\n")
+              if ln.startswith(("GIF SLOT", "SHOT ", "ACTION ", "RESULT ",
+                                "MATCH "))
+              and len(ln.replace(" · ", " ").split()) > 7]
+print("plate lines over G12's seven words:", long_lines or "none")
+# A page asset carrying a plate is a defect, so the plate render must not be
+# named as the slot's own asset.
+clash = [(s["slot_id"], s["asset"]) for s in gifs
+         if s["gif"]["asset"] == s["asset"] or "--brief" not in s["gif"]["asset"]]
+print("plate render named as a page asset:", clash or "none")
+# The plate is a claim about the still it accompanies, so that still has to
+# exist: the recommended option must be one of the options actually emitted.
 orphan = [(s["slot_id"], s["recommended_opt"]) for s in gifs
           if s["recommended_opt"] not in [o["opt"] for o in s["options"]]]
 print("gif pointing at no option:", orphan or "none")
+# ADR-020: no motion prompt survives anywhere in the artifact.
+motion = [s["slot_id"] for s in gifs
+          if "animate the supplied" in s["gif"]["prompt"].lower()]
+print("gif prompts that animate a still:", motion or "none")
 extra = sorted({k for s in OUT["slots"] for k in (s.get("gif") or {})}
                - {"eligible", "form", "kind", "duration_s", "loop", "asset",
                   "shot", "action", "result", "match", "delivery", "reason",
