@@ -9,27 +9,30 @@ GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit 
 
 Ratio goes in the generation tool's own aspect-ratio parameter, never in the prompt text (adapters/nano-banana.md Rule 4). The `Strictly avoid:` line is not rendered into any prompt (ADR-014); the exclusion list is kept in the JSON's `avoid` field for a model with a real negative channel.
 
-## Paste and run today
+## What each prompt needs
 
-**11 of 38 prompts need nothing but the prompt and the ratio parameter.** Every option below carries a `runs:` line saying which it is.
+**All 38 prompts are paste-and-run.** One prompt, one generation call, no compositing and no edit chain (ADR-021). 0 are blocked.
 
-- `hero.image` option A — 01-pain-scene `candid` · 16:9
-- `hero.image` option B — 01-pain-scene `confront` · 16:9
-- `hero.image` option C — 01-pain-scene `candid` · 16:9
-- `problems.items.0.image` option A — 01-pain-scene `candid` · 16:9
-- `problems.items.0.image` option B — 04-proof-lockedframe `rivals` · 16:9
-- `problems.items.0.image` option C — 01-pain-scene `candid` · 16:9
-- `problems.items.1.image` option A — 02-cause-anatomy `diagnostic` · 16:9
-- `problems.items.1.image` option B — 02-cause-anatomy `diagnostic` · 16:9
-- `problems.items.1.image` option C — 02-cause-anatomy `diagnostic` · 16:9
-- `problems.items.1.image` option D — the G12 brief plate · 16:9
-- `features.items.0.image` option D — the G12 brief plate · 16:9
+- **27 want the product photo** — paste the prompt, upload the drive photo, set the ratio. They carry a G1 reference block, so the render is bound to the real product rather than an invented one. The `attachments` field is empty because the source export supplied no photograph and none was invented; the upload is yours to make.
+- **11 take no attachment at all** — paste and set the ratio. 9 options plus both G12 brief plates, which are text cards and bind nothing.
 
-The other 27 are held by one thing only: the prompt binds G1 to an attached reference and the export supplied none.
+  - `hero.image` option A — 01-pain-scene `candid` · 16:9
+  - `hero.image` option B — 01-pain-scene `confront` · 16:9
+  - `hero.image` option C — 01-pain-scene `candid` · 16:9
+  - `problems.items.0.image` option A — 01-pain-scene `candid` · 16:9
+  - `problems.items.0.image` option B — 04-proof-lockedframe `rivals` · 16:9
+  - `problems.items.0.image` option C — 01-pain-scene `candid` · 16:9
+  - `problems.items.1.image` option A — 02-cause-anatomy `diagnostic` · 16:9
+  - `problems.items.1.image` option B — 02-cause-anatomy `diagnostic` · 16:9
+  - `problems.items.1.image` option C — 02-cause-anatomy `diagnostic` · 16:9
+  - `problems.items.1.image` option D — the G12 brief plate · 16:9
+  - `features.items.0.image` option D — the G12 brief plate · 16:9
+
+Every option below carries a `runs:` line saying which of the two it is.
 
 ## Read this first
 
-- **GAP, and it blocks 10 of the 12 routed slots.** The export carries imageBriefs: null and sourceRefs.shopifyProductGid: null, so there is no product photograph anywhere in it and nothing to hash. Every type on this page except 01-pain-scene and 02-cause-anatomy --diagnostic declares requires_product_photo: true, and each of those prompts says 'the attached photo'. Nothing was fabricated: attachments is omitted from every option rather than filled with an invented sha256 (SPEC 6.4). Supply the drive's reference photograph, hash it, and these prompts are runnable as written.
+- **The reference photo is yours to upload, and 27 prompts want it.** The export carries imageBriefs: null and sourceRefs.shopifyProductGid: null, so there is no product photograph in it and nothing to hash - attachments is omitted from every option rather than filled with an invented sha256 (SPEC 6.4). That is a gap in the EXPORT, not a blocked prompt: each of those 27 keeps its G1 reference block and reads 'the attached photo', so pasting the prompt and uploading the drive photo in the generation tool runs it as written. The remaining 9 options and both brief plates bind nothing at all. Read the requirement off the EXECUTION rather than the type: 02-cause-anatomy --diagnostic drops [PRODUCT REFERENCE] and 04-proof-lockedframe --rivals is Step 5's named exception, so four prompts here need no photo despite their type flag reading true.
 - **Awareness read as problem-aware, and the basis is the copy rather than the brief's own field.** The hero spends its whole opening re-establishing that a new laptop has no disc drive, two full sections run before any solution is named, and the framework is PAS. A problem-aware reader is moved by the cause and the mechanism, which is why 02-cause-anatomy and 03-mechanism-xray carry the middle of this routing rather than more proof.
 - **THE TEMPLATE'S PLACEHOLDER TEXT IS FROM A DIFFERENT PRODUCT.** Every placehold.co URL in htmlCompiled is labelled for a weighted blanket - 'Quilted pockets', 'Glass bead fill', 'Halden blanket', 'Folded on bed', 'Wash day', 'Six months on three beds'. TPL-ADV08 was reused without restamping them. Every brief below is derived from the content dict and the product brief, never from those labels; ignore them when placing assets.
 - **BLOCKED AS THE PAGE IS BUILT.** 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.
@@ -107,7 +110,7 @@ The other 27 are held by one thing only: the prompt binds G1 to an attached refe
 #### Option A — 01-pain-scene 1.14 `candid`  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1587 characters
 - why: The disc-in-hands force is diagnostic: nobody turns a disc to the light unless they cannot play it. Evidence is rank 1 - the laptop's unbroken edge with no slot, and the box of cases - so the symptom is a physical fact rather than an expression.
 - note: G1-exempt: runs today without the missing product photo.
@@ -153,7 +156,7 @@ STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 #### Option B — 01-pain-scene 1.14 `confront`
 
 - varies on: axis: gaze candid -> confront
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1443 characters
 - why: The same beat played as daily frustration rather than physical limitation, with the disc stopped dead against a closed edge. --confront is legible at thumbnail size, which suits a header that may run as a paid-social crop.
 - note: No second type survives the hero cell on advertorial, so B varies on the axis per runbook Step 4. Also G1-exempt.
@@ -198,7 +201,7 @@ STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 #### Option C — 01-pain-scene 1.14 `candid`
 
 - varies on: execution: subject, place and evidence rank
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1622 characters
 - why: Same type and axes as A, different execution: an older subject, a storage room, and the evidence moved to the discs themselves degrading. It argues the clock the copy mentions - 'the discs are slowly degrading while nothing is done' - which A leaves untouched.
 - note: G1-exempt. Pairs less tightly with the first-person male byline than A or B.
@@ -254,7 +257,7 @@ STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 #### Option A — 01-pain-scene 1.14 `candid`  ← RECOMMENDED
 
 - varies on: execution: subject class person -> object-only
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1581 characters
 - why: The dongle nest IS the symptom the copy describes, and it is an object fault, so the frame drops the person entirely. Evidence is rank 3, the failed tool in the state that shows it failed: a tray jammed half open with the disc still in it.
 - note: Rung 4 of the runbook ladder. Named dimension vs hero.image: subject class. G1-exempt.
@@ -299,7 +302,7 @@ STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 #### Option B — 04-proof-lockedframe 1.13 `rivals`
 
 - varies on: type: 01-pain-scene -> 04-proof-lockedframe
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1767 characters
 - why: Three panels, three things the reader has already tried, none of them winning - which is exactly the copy's three notes. --rivals carries no product, so it needs no reference photo either.
 - note: PICKING B FORCES features.items.4 TO CHANGE - one type once per page, and variants do not lift it. features.4 would fall to a second 06-relief-hero execution. Type note at 1.13: --rivals is never sent for the library's own render tests because there is no product to judge; that is a testing rule, not a page rule.
@@ -344,7 +347,7 @@ image makes no claim.
 #### Option C — 01-pain-scene 1.14 `candid`
 
 - varies on: execution: place, light and evidence rank
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1520 characters
 - why: Same type and object-only execution as A, moved off the desk onto a worktop and lit hard rather than low, with the evidence shifted to the cracked casing and the scratched disc - the failure the copy calls 'ran hot and failed to read our irreplaceable recordings'.
 - note: G1-exempt. Shares its named dimension with A, so it is a true execution variant rather than a second route.
@@ -399,7 +402,7 @@ STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 #### Option A — 02-cause-anatomy 1.15 `diagnostic`  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1893 characters
 - why: The measured pair is beam-to-track offset: wide on the bare spindle, closed to nothing in the damping carriage. Both lines anchor to the same two landmarks and only the offset differs, which is the type's one-property rule.
 - note: FIRST NON-BIOLOGICAL body on this type - every rendered subject class so far has been anatomical (tooth, hair shaft, muscle, kneecap). The device is a 2D cross-section and the avoid_when only requires internal structure to draw, which a disc, track and lens have. Untested; watch the first render for the structures reading as a recognisable assembly. G1-exempt.
@@ -441,7 +444,7 @@ G3: red wrong, blue correct, green badge, nothing else.
 #### Option B — 02-cause-anatomy 1.15 `diagnostic`
 
 - varies on: execution: which cause is indicted
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1771 characters
 - why: The copy names two causes and this is the second: 'thin laptops cut off power delivery when a drive shares bandwidth'. The measured pair becomes rail width at the port, pinched under a dongle chain and full under one powered hub.
 - note: Also non-biological, and airbrushed rather than flat-vector so the two are not one look. Removal test passes: unplug the chain and the starvation goes. G1-exempt.
@@ -483,7 +486,7 @@ G3: red wrong, blue correct, green badge, nothing else.
 #### Option C — 02-cause-anatomy 1.15 `diagnostic`
 
 - varies on: execution: landmark pair and style
-- runs: **RUNS TODAY**
+- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
 - ratio parameter: **16:9** · single-pass · 1697 characters
 - why: Same cause as A, but the measurement moves off the beam onto the platter's tilt over its collar - a landmark pair that is easier to draw unambiguously than a beam, if A's optical section reads muddy.
 - note: Front view rather than side, so it does not repeat A's composition. G1-exempt.
@@ -523,7 +526,7 @@ G3: red wrong, blue correct, green badge, nothing else.
 #### Option D — GIF brief plate · G12 whole-frame  ← ADDITIONAL, not an alternative
 
 - varies on: deliverable, not execution — the loop's work order, rendered alongside option A rather than instead of it
-- runs: **RUNS TODAY** — a text card, so it binds no reference photo even where the still does
+- runs: **PASTE AS IS** — a text card, so it binds no reference photo even where the still does
 - ratio parameter: **16:9** · single-pass · 995 characters
 - argues: **cause** · why: The cause this slot exists to indict IS temporal - a motor spins, the sled shakes, the beam drifts off the track. The still can only show the endpoint of that. 02-cause-anatomy legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job, cause.
 - note: the plate never ships. Render it as `58-03-problems1-cause-anatomy--brief.png`, never the slot's own asset name (G12). The editor builds the 3s seamless loop from option A's still, replaces the plate, and delivers mp4/webm, under 2 MB.
@@ -562,7 +565,7 @@ no product and no scene.
 #### Option A — 03-mechanism-xray 1.3  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1444 characters
 - why: Top-down through the lid: the damping carriage runs the length of the bay so its travel is legible, and the beam standing up onto the disc is the one thing the section exists to show.
 - note: Needs the product photo. Only working is used - the drive emits nothing visible outward, and G8 forbids inventing an effect so a render looks alive.
@@ -602,7 +605,7 @@ The marks are the only added colour; the product and its parts keep their own.
 #### Option B — 03-mechanism-xray 1.3
 
 - varies on: execution: viewpoint and internals named
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1389 characters
 - why: End-on from the front edge, which brings the rear port bank into the same section as the optical core. It answers this section and sets up the next one in a single frame.
 - note: Needs the product photo. Ground moves to pale warm grey so it is not one look with A.
@@ -641,7 +644,7 @@ The marks are the only added colour; the product and its parts keep their own.
 #### Option C — 03-mechanism-xray 1.3
 
 - varies on: execution: orientation and ground
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1417 characters
 - why: Standing on edge at a low three-quarter, which shows the drive's thinness at the same time as its internals - useful if the page wants the slim claim carried twice.
 - note: Needs the product photo. A vertical subject in a 16:9 frame leaves side space; the plain ground absorbs it.
@@ -681,7 +684,7 @@ The marks are the only added colour; the product and its parts keep their own.
 #### Option D — GIF brief plate · G12 whole-frame  ← ADDITIONAL, not an alternative
 
 - varies on: deliverable, not execution — the loop's work order, rendered alongside option A rather than instead of it
-- runs: **RUNS TODAY** — a text card, so it binds no reference photo even where the still does
+- runs: **PASTE AS IS** — a text card, so it binds no reference photo even where the still does
 - ratio parameter: **16:9** · single-pass · 1001 characters
 - argues: **mechanism** · why: The mechanism is a travelling one - the sled runs its carriage while the disc turns - and a still can only assert that. 03-mechanism-xray legislates no motion layer, so the form is whole-frame and the kind is the type's own job, mechanism.
 - note: the plate never ships. Render it as `58-04-features0-xray--brief.png`, never the slot's own asset name (G12). The editor builds the 3s seamless loop from option A's still, replaces the plate, and delivers mp4/webm, under 2 MB.
@@ -720,7 +723,7 @@ no product and no scene.
 #### Option A — 06-relief-hero 1.15  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1917 characters
 - why: Every port on the drive is occupied while the laptop keeps one lead and nothing else - the copy's claim made visible as a count rather than asserted. The inset magnifies the port bank, which is the one thing a desk-scale shot cannot resolve.
 - note: Needs the product photo, in both layers identically. The inset occupies the space the subject is offset from, per the type's offset rule - no second reservation mid-frame.
@@ -772,7 +775,7 @@ No text on any object in either layer.
 #### Option B — 06-relief-hero 1.15
 
 - varies on: axis: register commercial -> ugc
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1915 characters
 - why: The same argument shot as a phone photo. An advertorial header register carries into the body well, and ugc buys trust where a clean desk can read as an advert.
 - note: Needs the product photo. A crisp inset does not break the ugc register - that is settled on this type at 1.15.
@@ -825,7 +828,7 @@ No text on any object in either layer.
 #### Option C — 06-relief-hero 1.15
 
 - varies on: execution: subject full person -> reduced
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 2073 characters
 - why: Hands only, with the card going into the slot. reduced is chosen when the result is more legible than the user, and here the result is a row of occupied ports.
 - note: Needs the product photo. reduced requires naming what makes finished look different from unfinished, which this prompt does in its own block.
@@ -892,7 +895,7 @@ No text on any object in either layer.
 #### Option A — 06-relief-hero 1.15  ← RECOMMENDED
 
 - varies on: execution: inset_mode detail -> context, and subject
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1749 characters
 - why: The drive measured against a closed laptop's edge is the slim claim made checkable, and the inset shows the same drive zipped in the same sleeve - the place it actually lives.
 - note: Needs the product photo. Named dimension vs features.items.1: inset_mode, plus subject, place and pose. G7-X holds - handheld in both layers.
@@ -942,7 +945,7 @@ No text on any object in either layer.
 #### Option B — 06-relief-hero 1.15
 
 - varies on: axis: inset_mode context -> none
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1405 characters
 - why: No layer at all, and the argument moves to the long session the copy describes: a man mid-stretch at the end of it, a stack of burned discs beside the drive. It is the closest a photograph gets to the thermal claim without faking it.
 - note: Needs the product photo. Simplest option on the page and the one to pick if the two-layer builds come back with the inset cut by a frame edge, which is this type's open geometry fault.
@@ -988,7 +991,7 @@ No text on any object in the picture.
 #### Option C — 06-relief-hero 1.15
 
 - varies on: execution: subject reduced, place and inset content
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1798 characters
 - why: Hands lifting the drive clear of a rucksack pocket, with the inset showing it stowed in that same pocket. Portability argued by where it has just come from rather than by a size comparison.
 - note: Needs the product photo. Shares inset_mode with A, so it is an execution variant; keep only one of A and C on the page.
@@ -1052,7 +1055,7 @@ No text on any object in either layer.
 #### Option A — 06-relief-scene 3.7  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1816 characters
 - why: The situation costs something - three people gathered for something that could not be played before - and the product stands in frame as its own object with its face to the lens, which is 3.7's product law.
 - note: Needs the product photo. The type has 0 passes at any 3.x, and this prompt is the first test of 3.7's name-only label clause. Expect to iterate.
@@ -1099,7 +1102,7 @@ No logo, no watermark, no arrows, no badges.
 #### Option B — 06-relief-hero 1.15
 
 - varies on: type: 06-relief-scene -> 06-relief-hero
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 2017 characters
 - why: The same outcome on the better-evidenced type. --recall holds one reminder of the problem beside the resolved state, and the pair changes only the machine on the table - which is the type's own 2/2 rule for a recall pair.
 - note: Needs the product photo. PICKING B FORCES features.items.1 AND features.items.2 TO CHANGE - three 06-relief-hero executions on one linear funnel is past what rung 4 permits. Also puts a pain cue below the page's first relief image, which the arc rule allows only because it is inside an inset.
@@ -1153,7 +1156,7 @@ No text on any object in any layer.
 #### Option C — 06-relief-scene 3.7
 
 - varies on: execution: subject, generation and place
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1775 characters
 - why: The same argument one generation up - a grandmother and a teenager at a kitchen table - which widens the persona the brief describes beyond the byline's own family.
 - note: Needs the product photo. Same type risk as A.
@@ -1210,7 +1213,7 @@ No logo, no watermark, no arrows, no badges.
 #### Option A — 04-proof-lockedframe 1.13 `verdict`  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1795 characters
 - why: Three panels on one desk: one plain drive, then three bodies and four cables, then the reference drive alone. The fairness rule is stated in the prompt because the alternatives here are products the reader may already own.
 - note: Needs the product photo. generation_mode is multi-pass at type level, but 1.8's capability gate runs --verdict handheld in one pass where the renderer cannot composite, which is the case here.
@@ -1258,7 +1261,7 @@ worse.
 #### Option B — 04-proof-lockedframe 1.13 `verdict`
 
 - varies on: execution: scene, framing and the moment compared
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1767 characters
 - why: The same count argued as what has to go in a bag rather than what sits on a desk, shot down onto a kitchen table. Coiled cables read as volume more plainly than connected ones.
 - note: Needs the product photo. Every panel sits at the same moment - nothing packed yet - which is the type's moment rule.
@@ -1306,7 +1309,7 @@ worse.
 #### Option C — 04-proof-lockedframe 1.13 `verdict`
 
 - varies on: execution: place and what carries the argument
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **16:9** · single-pass · 1795 characters
 - why: A living-room shelf rather than a work surface, arguing the count as what has to live permanently in a room. Cables running off the shelf edge are the visible difference.
 - note: Needs the product photo. The disc spines behind must stay unbranded and unreadable - the type bars recognisable trademarks outright.
@@ -1364,7 +1367,7 @@ worse.
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1068 characters
 - why: in-use at a warm-lit home-office desk, the drive mid-read with a forearm incidentally in frame. The default mode, and the one that shows the product doing something.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.
@@ -1390,7 +1393,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option B — 05-social-snapshot 1.2
 
 - varies on: mode: in-use -> at-rest
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1067 characters
 - why: The same desk with the drive simply living there, part-peeled factory film still on the lid. at-rest is the mode that best carries 'this exists and someone owns it'.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.
@@ -1416,7 +1419,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option C — 05-social-snapshot 1.2
 
 - varies on: execution: room class, light temperature and distance
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1023 characters
 - why: in-use again but on a bedroom windowsill under cold overcast daylight, shot further back. Use it if the desk scene collides with another tile.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.
@@ -1452,7 +1455,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1046 characters
 - why: kit-flatlay on a kitchen table under flat green-tinged overhead light - the opened box as an owner actually keeps it, cables loosely coiled and the lid shoved aside.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.
@@ -1478,7 +1481,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option B — 05-social-snapshot 1.2
 
 - varies on: mode: kit-flatlay -> at-rest
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 990 characters
 - why: The same table with just the drive set down after unboxing, a factory sticker still on it whose print stays too small to read.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.
@@ -1504,7 +1507,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option C — 05-social-snapshot 1.2
 
 - varies on: execution: room class, light temperature and surface
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1067 characters
 - why: The same flatlay moved onto a living-room carpet under a warm standard lamp and shot from standing height.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.
@@ -1540,7 +1543,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1081 characters
 - why: in-use on a living-room floor in mixed lamp-and-window light, a memory card going into the slot with two fingers just leaving it, shot from kneeling height.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.
@@ -1566,7 +1569,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option B — 05-social-snapshot 1.2
 
 - varies on: mode: in-use -> at-rest
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1039 characters
 - why: The same rug with the drive left where it was used, one cable still trailing off toward a laptop out of frame.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.
@@ -1592,7 +1595,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option C — 05-social-snapshot 1.2
 
 - varies on: execution: room class and light temperature
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1024 characters
 - why: The card-reader action moved to a garage workbench under cold fluorescent strip light, which is the furthest room class from the other three tiles.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.
@@ -1628,7 +1631,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
 - varies on: baseline
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1026 characters
 - why: at-rest on a living-room shelf beside a row of disc spines under cool falling-off daylight, shot a little far back and slightly low.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.shots.0-3 sit inside the same section element as reviews.quotes.0-2, which carry names (Martin K., Gillian R., Derek S.) and a 'Verified Purchase' label each. Rendering these four beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the shots out of the attributed block, or drop the names and verified labels from that block, or use real customer photographs - which always win over generated ones.
@@ -1654,7 +1657,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option B — 05-social-snapshot 1.2
 
 - varies on: mode: at-rest -> in-use
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1045 characters
 - why: The same shelf with the drive mid-read and a hand withdrawing at the frame edge.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.
@@ -1680,7 +1683,7 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 #### Option C — 05-social-snapshot 1.2
 
 - varies on: execution: room class, light and distance
-- runs: **NEEDS PHOTO** — the prompt binds G1 to an attached reference and the export supplied none
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1047 characters
 - why: at-rest on a hallway table beside a folded laptop sleeve under a single dim warm bulb, shot quickly from above.
 - note: Needs the product photo. SET DIVERSITY LAW: the four A options are deliberately four different rooms, surfaces, light temperatures, camera distances and content modes. Generate them as independent prompts, never as a batch with shared seeds or shared scene text.

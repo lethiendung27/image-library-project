@@ -136,7 +136,19 @@ Load the selected type files now. For each option:
    and they passed or encode known failure modes — read their annotations).
 4. Compose NEGATIVE = `[G6 expansion] + type NEGATIVE + variant additions`.
 5. Set `attachments` to `product.reference_photos` whenever the type has
-   `requires_product_photo: true` (and note the `--rivals` exception).
+   `requires_product_photo: true` (and note the `--rivals` exception). Read the
+   flag off the EXECUTION, not the type: `02-cause-anatomy --diagnostic` and
+   `04-proof-lockedframe --rivals` both override it, and a type-level read calls
+   runnable prompts blocked.
+
+**An empty `attachments` is not a blocked prompt.** Owner instruction,
+2026-08-17: the reference photo is uploaded by hand in the generation tool.
+`attachments` records a sha256 only when the source export supplied one, and
+where it did not the field is omitted rather than invented — but the prompt still
+keeps its G1 reference block and is still paste-and-run. Say "attach the product
+photo", never "cannot run". The one case that IS blocked is a prompt with no
+reference block where the type demands one, because then nothing binds the
+render to the real product.
 
 ## Step 6 — Render through the adapter
 

@@ -26,6 +26,11 @@ tasks to entry points and must stay logic-free.
 4. `registry/types/_staging/` is never routable; promotion criteria are in `SPEC.md` §6.3.
 5. All artifact content is **English**. Conversation with the user is Vietnamese.
 6. Never commit source images; reference them by sha256 (SPEC §6.4).
+6b. **Every delivered prompt is paste-and-run**: one prompt, one generation call, at
+   most one reference photo the owner attaches in the tool. Never emit a `multi-pass`
+   option, an edit chain or a post-assembly step — take the type's own single-pass
+   route, and where it has none, route to the next candidate and say so. ADR-021,
+   declared in `query/runbook.md` Step 3 and enforced by `scripts/validate.py`.
 7. ADR-007 autopilot: after any COMPLETED operation (classify batch, curation pass,
    promotion, render-test logging), run `python3 scripts/validate.py --write-index`;
    on 0 errors, `git commit` that operation immediately — one commit per operation,

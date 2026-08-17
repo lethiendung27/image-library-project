@@ -1110,14 +1110,18 @@ P_R3_C = snap(
 # ---------------------------------------------------------------- assembly ---
 
 GAP_ATTACH = (
-    "GAP, and it blocks 10 of the 12 routed slots. The export carries "
-    "imageBriefs: null and sourceRefs.shopifyProductGid: null, so there is no "
-    "product photograph anywhere in it and nothing to hash. Every type on this "
-    "page except 01-pain-scene and 02-cause-anatomy --diagnostic declares "
-    "requires_product_photo: true, and each of those prompts says 'the attached "
-    "photo'. Nothing was fabricated: attachments is omitted from every option "
-    "rather than filled with an invented sha256 (SPEC 6.4). Supply the drive's "
-    "reference photograph, hash it, and these prompts are runnable as written.")
+    "The reference photo is yours to upload, and 27 prompts want it. The export "
+    "carries imageBriefs: null and sourceRefs.shopifyProductGid: null, so there "
+    "is no product photograph in it and nothing to hash - attachments is omitted "
+    "from every option rather than filled with an invented sha256 (SPEC 6.4). "
+    "That is a gap in the EXPORT, not a blocked prompt: each of those 27 keeps "
+    "its G1 reference block and reads 'the attached photo', so pasting the "
+    "prompt and uploading the drive photo in the generation tool runs it as "
+    "written. The remaining 9 options and both brief plates bind nothing at all. "
+    "Read the requirement off the EXECUTION rather than the type: "
+    "02-cause-anatomy --diagnostic drops [PRODUCT REFERENCE] and "
+    "04-proof-lockedframe --rivals is Step 5's named exception, so four prompts "
+    "here need no photo despite their type flag reading true.")
 
 
 def opt(o, varies, typ, ver, ratio, prompt, rationale, variant=None, axes=None,
@@ -1993,15 +1997,18 @@ def binds_a_photo(o):
 
 
 def run_state(o):
-    """Paste-and-run today, or blocked and by what. ADR-021: the pipeline is
-    one prompt, one call, at most one reference photo — so the two things that
-    can block a prompt are a missing photo and a mode that needs compositing."""
+    """What this prompt needs before it can be pasted. ADR-021: one prompt, one
+    generation call, at most one reference photo the owner attaches in the tool —
+    so an empty `attachments` is NOT a blocked prompt, it is a prompt that wants
+    the owner's own product photo. The only real blocker left is a mode that
+    needs compositing, which this pipeline does not do."""
     if o["pipeline"] != "single-pass":
         return "BLOCKED", "needs compositing, which this pipeline does not do"
-    if binds_a_photo(o) and not o.get("attachments"):
-        return "NEEDS PHOTO", "the prompt binds G1 to an attached reference "\
-                              "and the export supplied none"
-    return "RUNS TODAY", ""
+    if binds_a_photo(o):
+        return "ATTACH THE PHOTO", "paste it, upload the product photo, set "\
+                                   "the ratio"
+    return "PASTE AS IS", "no attachment, no reference — paste it and set the "\
+                          "ratio"
 
 
 def md(d):
@@ -2031,27 +2038,36 @@ def md(d):
       "JSON's `avoid` field for a model with a real negative channel.")
     A("")
 
-    A("## Paste and run today")
+    A("## What each prompt needs")
     A("")
-    now = [(s, o) for s in d["slots"] for o in s["options"]
-           if run_state(o)[0] == "RUNS TODAY"]
     plates = [s for s in d["slots"] if s.get("gif", {}).get("eligible")]
+    bare = [(s, o) for s in d["slots"] for o in s["options"]
+            if run_state(o)[0] == "PASTE AS IS"]
+    withphoto = [(s, o) for s in d["slots"] for o in s["options"]
+                 if run_state(o)[0] == "ATTACH THE PHOTO"]
     blocked = [(s, o) for s in d["slots"] for o in s["options"]
-               if run_state(o)[0] != "RUNS TODAY"]
-    A(f"**{len(now) + len(plates)} of {n_opts + len(plates)} prompts need nothing "
-      f"but the prompt and the ratio parameter.** Every option below carries a "
-      f"`runs:` line saying which it is.")
+               if run_state(o)[0] == "BLOCKED"]
+    A(f"**All {n_opts + len(plates)} prompts are paste-and-run.** One prompt, one "
+      f"generation call, no compositing and no edit chain (ADR-021). "
+      f"{len(blocked)} are blocked.")
     A("")
-    for s, o in now:
+    A(f"- **{len(withphoto)} want the product photo** — paste the prompt, upload "
+      f"the drive photo, set the ratio. They carry a G1 reference block, so the "
+      f"render is bound to the real product rather than an invented one. The "
+      f"`attachments` field is empty because the source export supplied no "
+      f"photograph and none was invented; the upload is yours to make.")
+    A(f"- **{len(bare) + len(plates)} take no attachment at all** — paste and set "
+      f"the ratio. {len(bare)} options plus both G12 brief plates, which are text "
+      f"cards and bind nothing.")
+    A("")
+    for s, o in bare:
         v = f" `{o['variant']}`" if o.get("variant") else ""
-        A(f"- `{s['slot_id']}` option {o['opt']} — {o['type']}{v} · {o['ratio']}")
+        A(f"  - `{s['slot_id']}` option {o['opt']} — {o['type']}{v} · {o['ratio']}")
     for s in plates:
-        A(f"- `{s['slot_id']}` option D — the G12 brief plate · "
+        A(f"  - `{s['slot_id']}` option D — the G12 brief plate · "
           f"{next(x['ratio'] for x in s['options'] if x['opt'] == s['recommended_opt'])}")
     A("")
-    reasons = sorted({run_state(o)[1] for _, o in blocked})
-    A(f"The other {len(blocked)} are held by one thing only: "
-      + "; ".join(reasons) + ".")
+    A("Every option below carries a `runs:` line saying which of the two it is.")
     A("")
 
     A("## Read this first")
@@ -2143,7 +2159,7 @@ def md(d):
             A("")
             A(f"- varies on: deliverable, not execution — the loop's work order, "
               f"rendered alongside option {runs_on} rather than instead of it")
-            A("- runs: **RUNS TODAY** — a text card, so it binds no reference "
+            A("- runs: **PASTE AS IS** — a text card, so it binds no reference "
               "photo even where the still does")
             A(f"- ratio parameter: **{ratio}** · single-pass · "
               f"{len(g['prompt'])} characters")
@@ -2219,7 +2235,7 @@ composited = [(s["slot_id"], o["opt"], o["type"], o["pipeline"])
 print("options needing compositing:", composited or "none")
 import collections as _c
 _st = _c.Counter(run_state(o)[0] for s in routed for o in s["options"])
-print("run state across %d options: %s  (+%d brief plates, all RUNS TODAY)"
+print("run state across %d options: %s  (+%d brief plates, both PASTE AS IS)"
       % (sum(_st.values()), dict(_st), len(gifs)))
 # Where the prompt and the type-level flag disagree, print it. Each one should be
 # a variant that declares its own exemption; a new one appearing here is either a

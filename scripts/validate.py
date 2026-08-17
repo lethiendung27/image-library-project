@@ -536,6 +536,49 @@ def check_json_files():
                         err(rel, f"invalid JSON: {e}")
 
 
+# ------------------------------------------------------------------ prompt sets
+
+# Sessions emitted before ADR-021 declared the render capability. They are left
+# standing because they were correct under the law of their time, and they are
+# warned about on every run so the multi-pass prompts in them stay visible rather
+# than quietly shipping to an owner who cannot composite. Nothing is added here.
+GRANDFATHERED_MULTIPASS = {
+    "37-how-one-l-shaped-cushion-ended-my-sitting-pain-ergonomic-support",
+}
+
+
+def check_prompt_sets():
+    """ADR-021: this pipeline is paste-and-run, so a delivered prompt is
+    single-pass or it is not deliverable. Enforced here rather than left to a
+    runbook paragraph, because a rule nothing runs is a rule nobody keeps."""
+    sessions_dir = os.path.join(ROOT, "query", "sessions")
+    if not os.path.isdir(sessions_dir):
+        return
+    for session in sorted(os.listdir(sessions_dir)):
+        path = os.path.join(sessions_dir, session, "prompts.json")
+        if not os.path.exists(path):
+            continue
+        rel = os.path.relpath(path, ROOT)
+        try:
+            with open(path, encoding="utf-8") as f:
+                doc = json.load(f)
+        except json.JSONDecodeError as e:
+            err(rel, f"invalid JSON: {e}")
+            continue
+        for slot in doc.get("slots", []):
+            for opt in slot.get("options", []):
+                mode = opt.get("pipeline", "single-pass")
+                if mode == "single-pass":
+                    continue
+                msg = (f"slot `{slot.get('slot_id')}` option {opt.get('opt')} "
+                       f"({opt.get('type')}) is `{mode}` — ADR-021 emits only "
+                       f"single-pass; take the type's own single-pass route")
+                if session in GRANDFATHERED_MULTIPASS:
+                    warn(rel, msg + " (predates ADR-021, grandfathered)")
+                else:
+                    err(rel, msg)
+
+
 # ---------------------------------------------------------------- routing table
 
 CHANNEL_COLS = ["marketplace", "landing-page", "paid-social", "advertorial"]
@@ -648,6 +691,7 @@ def main(argv):
     stats = pick_stats(picks, types)
 
     check_json_files()
+    check_prompt_sets()
     check_slot_rules(types)
 
     index_text = render_index(vocab, types, evidence, stats)
