@@ -998,6 +998,289 @@ No text, numbers or spec labels anywhere in the image.
 The marks are the only added colour; the product and its parts keep their own."""
 
 
+# ---------------------------------------------------------------------------
+# Option B, one per slot, carrying a DIFFERENT TYPE.
+#
+# one-type-once binds the recommended SET, not the option pool: runbook Step 4
+# says options "are individually legal but not necessarily legal in COMBINATION -
+# where picking one option forces another slot to change, say so in that option's
+# composition_notes". Applying it to the pool instead is what left every B a
+# second execution of A. Each B below states its own knock-on.
+# ---------------------------------------------------------------------------
+
+HERO_B2 = """TYPE: 01-pain-scene v1.14 --confront
+REGISTER: cinematic film still. Single frame.
+
+[SUBJECT]
+Woman early 40s in a creased sleep t-shirt, sitting on the edge of an unmade bed
+first thing in the morning, turned square to the camera, mid-way through
+dragging the loose skin under one eye downward with two fingers to look at what
+is there. Under that force: that shoulder lifted and rolled forward, the other
+hand flat on the mattress taking her weight, chin pushed out toward the lens.
+Face: one eye pulled open under the fingers, the other narrowed, mouth open to
+breathe through.
+
+[EVIDENCE]
+Both eyelids are swollen and pink-rimmed with the lashes stuck wet together, the
+skin from the inner corners down across the cheekbones raw and shiny where it has
+been rubbed, and the nostrils and upper lip are chapped red. A wad of used
+tissues is pushed into the sheet beside her hip.
+
+[ENVIRONMENT]
+An ordinary bedroom, just after waking, curtains half open. Lived-in clutter
+belonging to that place: a water glass and a blister strip of tablets on the
+nightstand, yesterday's clothes over a chair back, a phone face down on the
+duvet, one slipper under the bed. Nothing arranged, nothing removed to tidy the
+frame.
+
+[GAZE] looking directly into the lens, holding the viewer's eye.
+
+[LIGHT] even ambient daylight from the gap in the curtains, minimal shadow, flat
+and unflattering.
+
+[FORBIDDEN] No product, no panels, no insets. No mark of any kind.
+
+[GRADE] Desaturated blue-grey, fine film grain, shallow depth of field, 35mm.
+
+STYLE: editorial photojournalism, cinematic film still, natural and unstaged."""
+
+CAUSE_B2 = """TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld
+REGISTER: documentary photography. No overlays, badges, arrows or text.
+LAYOUT: 2 equal vertical panels, thin white gutter, no outer border.
+
+[PRODUCT REFERENCE]
+The attached photo is the exact reference for the handheld unit in the RIGHT
+panel. Preserve shape, proportions, finish and colour exactly.
+
+[SCENE - the same in both]
+The same bare double mattress in the same bedroom, the same fitted sheet folded
+back off the same corner, the same nightstand with a lamp on it, the same hard
+morning light raking low across the ticking from the same window.
+
+[FRAMING]
+One person photographed this twice from where they were kneeling, phone close
+and level with the mattress surface, the ticking filling the frame and the room
+falling away behind. It reads as one shot taken twice, never two.
+
+[THE VARIABLE]
+What has just been run over that patch of ticking, and what the raking light
+finds still in the weave. Both panels at the same moment: the machine lifted
+clear, the worked patch square to the lens.
+LEFT - an ordinary upright vacuum's floor head resting at the edge of the patch;
+the weave in the raking light still carries a fine dark grit down in the pile and
+a dulled grey film across it.
+RIGHT - the reference handheld unit resting at the same edge of the same patch;
+the same weave reads open and even in the same light, the pile standing up and
+the dark grit gone from between the fibres.
+
+[GRADE - the same in both]
+Neutral, from the window and the pale ticking rather than a filter. Still colour,
+never black and white.
+
+Both panels get the same exposure, tidiness and framing; the ordinary vacuum is
+an object someone would own, never made to look worse."""
+
+SHEETS_B2 = """TYPE: 02-cause-anatomy v1.15
+MEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.
+
+[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld
+unit in the RIGHT panel.
+
+[FRAME] a woman lying asleep on her side on a made bed, the whole bed and the
+whole figure in shot, and the bedding cut open in section beneath her.
+[GROUND] deep desaturated indigo, the right half one step lighter than the left.
+[BODY] the bedding in section - a sheet layer over woven ticking over batting -
+cut as flat layers in warm ivory on a translucent outline. NOT a skeleton, NOT a
+human figure. Exactly one bed and one figure per panel, same scale and view.
+
+[PANELS]
+LEFT: the sheet crisp and clean, and beneath it the ticking and batting carrying
+a dense field of dark grains the sheet does not touch; fine grains drift up
+through its weave toward the sleeping face.
+RIGHT: the same bed after the reference unit has been worked over the bare
+ticking, the unit resting on the mattress edge; the same sheet above and the
+batting beneath it nearly clear, no drift rising. All three layers appear in both
+panels and nothing covers them.
+
+[MARKS], two, nothing else marked:
+- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE
+  SHEET, running from the top of the sheet down to the deepest grain still in the
+  batting and STOPPING at both. Both begin at the same point in their panel.
+  Identical thickness and dash. One property differs: the length - long left,
+  closed to almost nothing right. Red left, blue right. Straight lines, not boxes.
+- verdict: filled solid discs, red with a white X in the left panel's TOP corner,
+  green with a white check in the right panel's. Same diameter, not rings.
+
+G3: red wrong, blue correct, green badge, nothing else."""
+
+AIR_B2 = """TYPE: 03-mechanism-xray v1.3
+REGISTER: 3D technical see-through render. NOT photography.
+
+[PRODUCT REFERENCE]
+The attached photo is the exact reference for the handheld unit. The outer shell
+becomes translucent, but its silhouette, proportions and every visible external
+part must match the reference exactly. Do not redesign or add features.
+
+[CANVAS] a plain deep charcoal ground, and nothing else in the frame behind the
+product.
+
+[SHELL] the unit seen square from the side as it sits on a plain pale fabric
+surface, its casing translucent and glass-like, filling about 75 percent of the
+frame width, so the whole sealed route from intake to outlet runs left to right.
+
+[INTERNALS], solid and detailed inside the shell, each at its true location: the
+intake slot in the base opening into a throat; the transparent dust chamber above
+it with its multi-cup separator drawn as a ring of small cones, the cones packed
+with fine grey material; a stack of three filter elements sitting across the top
+of the chamber, each a visibly different density; the impeller and motor last, at
+the back, and behind them a clear outlet grille with nothing but air beyond it.
+
+[MARKS], one, nothing else in the frame is marked:
+- working: the sealed route itself shown ACTIVE as a cool cyan flow, dense and
+  particle-laden where it enters the throat, thinning through the cone ring, and
+  reaching the outlet grille clear and empty. It is the brightest thing in the
+  frame and clearly brighter than the ground, and it stops at the grille. No
+  arrow anywhere - the route's own line carries the direction.
+
+No text, numbers or spec labels anywhere in the image.
+The marks are the only added colour; the product and its parts keep their own."""
+
+CONTACT_B2 = """TYPE: 02-cause-anatomy v1.15
+MEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.
+
+[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld
+unit in the RIGHT panel.
+
+[FRAME] a woman kneeling on a bed with a cleaning head on the mattress, the whole
+bed and figure in shot, the mattress cut open in section beneath.
+[GROUND] deep desaturated indigo, the right half one step lighter than the left.
+[BODY] the mattress in section - woven ticking over a batting layer - cut as flat
+layers in warm ivory on a translucent outline. NOT a skeleton, NOT a human
+figure. Exactly one bed and one figure in EACH panel, same scale and view.
+
+[PANELS]
+LEFT: no machine on the ticking, her hand flat on it; the batting saturated and
+heavy with trapped damp, fibres clumped and dark, a dense field of mite forms
+bedded among them.
+RIGHT: the reference handheld unit worked across the same ticking, and beneath it
+the same batting drawn dry and open, the fibres separated and pale and the mite
+forms gone from between them. The batting appears in both panels and neither hand
+nor head covers it.
+
+[MARKS], two, nothing else marked:
+- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE
+  TICKING, running from the top of the ticking down to the bottom of the damp
+  band in the batting and STOPPING at both. Both begin at the same point in their
+  panel. Identical thickness and dash. One property differs: the length - long
+  left, closed to almost nothing right. Red left, blue right. Straight lines, not
+  boxes.
+- verdict: filled solid discs, red with a white X in the left panel's TOP corner,
+  green with a white check in the right panel's. Same diameter, not rings.
+
+G3: red wrong, blue correct, green badge, nothing else."""
+
+INDICATOR_B2 = """TYPE: 06-relief-hero v1.15
+REGISTER: commercial. Professional camera, controlled light, deliberate negative
+space on one side.
+
+[PRODUCT REFERENCE]
+The attached photo is the exact reference for the handheld unit, identical in
+every layer. Preserve shape, proportions, material, finish and colour exactly.
+
+[SUBJECT] reduced: present only as one forearm in a pushed-up sleeve and the hand
+closed round the handle of the unit. No face and no shoulders in frame.
+[POSE] mid-action: the unit pushed away along a bare mattress, the hand loose on
+the handle. What makes a finished patch different from an unfinished one is in
+the frame beside it - behind the head the ticking is even and matt, ahead of it
+the weave still carries a dulled grey film, and the boundary runs straight across
+the bed where the head has reached.
+[SETTING] one real bedroom filled to the edges: a nightstand with a lamp, a chair
+with clothes over the back, a laundry basket, a radiator under the window, a rug
+half under the bed. Background blurred but never blank. None of these objects
+carries printed text.
+[LIGHT] soft even window light from the left, raking low across the ticking so
+the worked and unworked halves separate. Background blurred, high-key.
+[OFFSET] the hand and the unit sit to the right of frame; the inset occupies the
+space on the left, taking about three quarters of it.
+
+In the upper left corner sits a rounded rectangle about 20 percent of the frame
+width, its outline finishing a clear margin short of the picture on both sides.
+Inside it, one magnified view the scene cannot show: the indicator window on the
+top of the same handle, lit a clear even blue, with the transparent chamber below
+it dense with grey powder. Same photographic register as the hero, same light
+quality, same resolution. It sits near the unit in the scene, linked by proximity
+alone - no arrow, no glow, no border light.
+
+No text anywhere in the image. No badge, no arrow, no percentage."""
+
+LIGHT_B2 = """TYPE: 05-social-handoff v2.5
+
+[PRODUCT REFERENCE]
+The attached photo is the exact reference for the handheld unit. Preserve shape,
+proportions, material, finish and colour exactly.
+
+[MOMENT] the unit has just this moment come off a run through the house and is
+held out at waist height in one hand, offered across to the other person. Its
+transparent chamber is packed with grey powder and matted fibre. On the landing
+floor behind them both bedroom doors stand open, a stack of stripped pillows sits
+outside one and a bare mattress edge shows through the other - three jobs done in
+one carry, and an ordinary upright vacuum standing unused at the top of the
+stairs.
+
+[ADVOCATE] a woman in her forties in a long-sleeved top, standing on the landing
+holding the unit out one-handed, her wrist straight and her arm relaxed, her eyes
+up on the other person rather than on the unit.
+
+[LISTENER] a man of similar age at the top of the stairs, seen from behind and to
+the side so his face is not visible, reaching to take the handle.
+
+[PRODUCT] the unit is the largest and clearest object in the frame and nothing
+beside it competes for the first glance; the landing is plain and the upright
+vacuum sits well back and out of focus.
+
+[ENVIRONMENT] an ordinary upstairs landing on a weekend morning with a real
+reason both people are there - bedding is piled by one door and a laundry basket
+sits against the bannister. Ambient household light only, from a landing window.
+
+REGISTER: candid documentary photograph, natural, unposed, sharp. No text, no
+badge, no arrow anywhere in the image."""
+
+UV_B2 = """TYPE: 06-relief-hero v1.15
+REGISTER: commercial. Professional camera, controlled light, deliberate negative
+space on one side.
+
+[PRODUCT REFERENCE]
+The attached photo is the exact reference for the handheld unit, identical in
+every layer. Preserve shape, proportions, material, finish and colour exactly.
+
+[SUBJECT] a woman in her forties in a plain long-sleeved top, kneeling on the
+floor beside a low double bed, both hands on the handle of the unit.
+[POSE] mid-action: the unit pressed down flat on the bare mattress and pushed
+away from her along the ticking, hands engaged, gaze on the head where it meets
+the fabric, focused rather than smiling. She kneels beside the bed with the whole
+unit between her and the mattress surface, so the base is never hidden by her own
+body.
+[SETTING] one real bedroom filled to the edges: a nightstand with a lamp and a
+water glass, a chair with clothes over the back, a laundry basket, a radiator
+under the window, a rug half under the bed. Background blurred but never blank.
+None of these objects carries printed text.
+[LIGHT] soft even window light from the left, background blurred, high-key, with
+the violet-blue cast under the base of the unit reading clearly against the pale
+ticking.
+[OFFSET] she kneels to the right of frame; the inset occupies the space on the
+left that she is offset from, taking about three quarters of it.
+
+In the upper left corner sits a rounded rectangle about 20 percent of the frame
+width, its outline finishing a clear margin short of the picture on both sides.
+Inside it, one magnified view the scene cannot show: the open base aperture of
+the same unit tipped just clear of the fabric, its tubular lamp lit and laying a
+narrow violet-blue wash across the woven ticking directly beneath it, the wash
+ending where the aperture ends. Same photographic register as the hero, same
+light quality, same resolution. Linked by proximity alone - no arrow, no glow.
+
+No text anywhere in the image. No badge, no arrow, no percentage."""
+
+
 def snap(mode, scene, anchor, camera, moment):
     """05-social-snapshot expands the same five slots every time; only the
     filled content differs, so one wording carries across all eighteen prompts
@@ -1298,16 +1581,18 @@ SLOTS = [
                       "appears. hero.image carries NO aspect class in the "
                       "template, so 16:9 lands uncropped.",
                 asset=f"{PAGE}-01-hero-pain-scene--A.png"),
-            opt("B", "persona - the parent rather than the sufferer",
-                "01-pain-scene", "1.14", "16:9", HERO_B,
-                "brief.persona names parents of children with eczema as a "
-                "distinct group, and the pain reads differently on someone "
-                "holding another person's arm than on their own face. Same "
-                "evidence rank, different body.",
-                variant="candid", axes={"gaze": "candid"},
-                notes="Two bodies in one frame is the risk; the type's own law "
-                      "is that a face cannot carry effort the body is not "
-                      "making, and here the effort is his, not hers.",
+            opt("B", "axis - gaze: confront rather than candid. This slot is "
+                "the one on the page whose cell holds exactly ONE type, so no "
+                "second type is legal here and the axis is the honest variation",
+                "01-pain-scene", "1.14", "16:9", HERO_B2,
+                "The type's other gaze value, and the copy supports it: the "
+                "hero's opening is written in the second person and a reader "
+                "held by the eye is being addressed rather than observed. Same "
+                "evidence, same rank, the look reversed.",
+                variant="confront", axes={"gaze": "confront"},
+                notes="Needs no photo. --confront pairs with flat-ambient light "
+                      "by law, so the frame loses the low-key grade A carries; "
+                      "that is the trade, not an oversight.",
                 asset=f"{PAGE}-01-hero-pain-scene--B.png"),
             opt("C", "evidence rank - residue rather than symptom",
                 "01-pain-scene", "1.14", "16:9", HERO_C,
@@ -1362,15 +1647,12 @@ SLOTS = [
                 "its `whole` frame and its measurable landmark in one.",
                 notes="Needs the product photo. " + CROP_H,
                 asset=f"{PAGE}-02-reason0-cause-anatomy--A.png"),
-            opt("B", "style - airbrushed rather than flat-vector",
-                "02-cause-anatomy", "1.15", "1:1", CAUSE_B,
-                "Airbrushed gives modelled volume, which suits batting and "
-                "fibre better than flat fills do. The type offers it and the "
-                "trade is legibility of the dash against believability of the "
-                "material.",
-                notes="Needs the product photo. The measure dash is the risk - "
-                      "flat-vector is the style recorded as holding it. "
-                      + CROP_H,
+            opt("B", "type - 04-proof-lockedframe rather than 02-cause-anatomy",
+                "04-proof-lockedframe", "1.13", "1:1", CAUSE_B2,
+                'The same claim argued photographically instead of drawn: two identical patches of ticking in raking light, one worked by an ordinary floor head and one by the reference unit. It gives up the measure mark and the section depth, and buys a register a sceptical reader trusts more than an illustration.',
+                variant="verdict",
+                axes={'camera_lock': 'handheld'},
+                notes="Needs the product photo. " + 'PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 04-proof-lockedframe is also the recommendation at reasons.items.2, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4).' + " " + CROP_H,
                 asset=f"{PAGE}-02-reason0-cause-anatomy--B.png"),
             opt("C", "subject class - the pillow rather than the mattress",
                 "02-cause-anatomy", "1.15", "1:1", CAUSE_C,
@@ -1414,15 +1696,10 @@ SLOTS = [
                 variant="candid", axes={"gaze": "candid"},
                 notes="Needs no photo - G1-exempt, no product. " + CROP_W,
                 asset=f"{PAGE}-03-reason1-pain-scene-object--A.png"),
-            opt("B", "subject - a person mid-action rather than object-only",
-                "01-pain-scene", "1.14", "16:9", SHEETS_B,
-                "The type's default form: a force being applied. Fitting a "
-                "clean sheet over a stained mattress is the exact act the "
-                "section calls futile, and the stain is still in frame beside "
-                "the hand doing it.",
-                variant="candid", axes={"gaze": "candid"},
-                notes="Needs no photo. Repeats the hero's form as well as its "
-                      "type, so the two beats read more alike. " + CROP_W,
+            opt("B", "type - 02-cause-anatomy rather than 01-pain-scene",
+                "02-cause-anatomy", "1.15", "1:1", SHEETS_B2,
+                "Draws what a photograph cannot: the sheet layer intact above and the grain field below it, with fines drifting up through the weave toward a sleeping face. The section's sentence is a cross-section claim, and this is the type that cuts sections.",
+                notes="Needs the product photo. " + 'PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 02-cause-anatomy is also the recommendation at reasons.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4).' + " " + CROP_H,
                 asset=f"{PAGE}-03-reason1-pain-scene-object--B.png"),
             opt("C", "subject class - pillows rather than the bed",
                 "01-pain-scene", "1.14", "16:9", SHEETS_C,
@@ -1474,17 +1751,10 @@ SLOTS = [
                       "handheld in one pass where the renderer cannot "
                       "composite, which is this pipeline (ADR-021). " + CROP_H,
                 asset=f"{PAGE}-04-reason2-proof-lockedframe--A.png"),
-            opt("B", "panel count - three rather than two",
-                "04-proof-lockedframe", "1.13", "1:1", AIR_B,
-                "brief.competitorContext names three alternatives, and a basic "
-                "handheld cleaner is the one a reader may already have tried. "
-                "The middle panel is the honest half-measure between the two "
-                "ends.",
-                variant="verdict", axes={"camera_lock": "handheld"},
-                notes="Needs the product photo. Three panels in a 1:1 frame "
-                      "give each a tall narrow strip; the type's own ratio "
-                      "evidence is that stacked and split layouts degrade as "
-                      "panels get thinner. " + CROP_H,
+            opt("B", "type - 03-mechanism-xray rather than 04-proof-lockedframe",
+                "03-mechanism-xray", "1.3", "16:9", AIR_B2,
+                'Argues the same claim from inside the machine instead of from the room: the sealed route drawn end to end, dense and particle-laden at the throat and clear at the outlet grille. It proves the mechanism rather than the outcome.',
+                notes="Needs the product photo. " + 'PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 03-mechanism-xray is also the recommendation at reasons_b.items.1, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4).' + " " + CROP_W,
                 asset=f"{PAGE}-04-reason2-proof-lockedframe--B.png"),
             opt("C", "surface - a sofa rather than a mattress",
                 "04-proof-lockedframe", "1.13", "1:1", AIR_C,
@@ -1537,15 +1807,10 @@ SLOTS = [
                       "the section only; the thermal claim is left to the copy "
                       "and is not proved here. " + CROP_INSET,
                 asset=f"{PAGE}-05-reason3-relief-hero-detail--A.png"),
-            opt("B", "inset content - the filled chamber rather than the "
-                "contact", "06-relief-hero", "1.15", "1:1", CONTACT_B,
-                "Moves the magnified evidence from cause to result. A packed "
-                "chamber is the most legible proof this product produces and "
-                "the reviews quote it twice.",
-                variant="commercial",
-                axes={"register": "commercial", "inset_mode": "detail"},
-                notes="Needs the product photo. Overlaps reasons.items.4, which "
-                      "already carries the chamber as its moment. " + CROP_INSET,
+            opt("B", "type - 02-cause-anatomy rather than 06-relief-hero",
+                "02-cause-anatomy", "1.15", "1:1", CONTACT_B2,
+                'The only route on this page that argues the HEAT claim at all. A camera cannot photograph 149F, but an illustration can draw the state it changes: batting saturated and clumped with mites bedded in it, against batting dried open with them gone. It changes register rather than inventing an emission.',
+                notes="Needs the product photo. " + 'PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 02-cause-anatomy is also the recommendation at reasons.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4).' + " " + CROP_H,
                 asset=f"{PAGE}-05-reason3-relief-hero-detail--B.png"),
             opt("C", "subject - reduced to hands, with a worked boundary",
                 "06-relief-hero", "1.15", "1:1", CONTACT_C,
@@ -1597,14 +1862,12 @@ SLOTS = [
                       "type is an advocate still mid-stroke, so the pass is "
                       "over before the look happens. " + CROP_H,
                 asset=f"{PAGE}-06-reason4-social-handoff--A.png"),
-            opt("B", "moment - the chamber held up rather than the light",
-                "05-social-handoff", "2.5", "1:1", INDICATOR_B,
-                "A held-up chamber of grey powder is the most quoted moment in "
-                "the page's own reviews. It is louder evidence than a coloured "
-                "light and needs no explanation.",
-                notes="Needs the product photo. Argues capture rather than the "
-                      "section's own subject, which is knowing when to stop. "
-                      + CROP_H,
+            opt("B", "type - 06-relief-hero rather than 05-social-handoff",
+                "06-relief-hero", "1.15", "1:1", INDICATOR_B2,
+                'Drops the second person and magnifies the indicator itself, lit blue above a chamber full of grey powder. It argues the feature rather than the conversation about the feature, which is the safer read while the reviews block stays as built.',
+                variant="commercial",
+                axes={'register': 'commercial', 'inset_mode': 'detail'},
+                notes="Needs the product photo. " + 'PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 06-relief-hero is also the recommendation at reasons.items.3 and reasons_b.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4).' + " " + CROP_INSET,
                 asset=f"{PAGE}-06-reason4-social-handoff--B.png"),
             opt("C", "environment - a sofa and a pet household",
                 "05-social-handoff", "2.5", "1:1", INDICATOR_C,
@@ -1652,15 +1915,10 @@ SLOTS = [
                 axes={"register": "commercial", "inset_mode": "recall"},
                 notes="Needs the product photo. " + CROP_INSET,
                 asset=f"{PAGE}-07-reasonb0-relief-hero-recall--A.png"),
-            opt("B", "inset form - one cell rather than two", "06-relief-hero",
-                "1.15", "1:1", LIGHT_B,
-                "FORM 1: the problem state alone, smaller and simpler. The hero "
-                "already shows the resolved state at full size, so a second "
-                "resolved cell repeats it.",
-                variant="commercial",
-                axes={"register": "commercial", "inset_mode": "recall"},
-                notes="Needs the product photo. A smaller inset survives the "
-                      "crop better than two cells do. " + CROP_INSET,
+            opt("B", "type - 05-social-handoff rather than 06-relief-hero",
+                "05-social-handoff", "2.5", "1:1", LIGHT_B2,
+                'Proves lightness by handing the thing over rather than by showing it held: one carry, three rooms done behind them, and the upright vacuum standing unused at the top of the stairs. Weight is a claim about effort, and effort reads on people.',
+                notes="Needs the product photo. " + 'PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 05-social-handoff is also the recommendation at reasons.items.4, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4).' + " " + CROP_H,
                 asset=f"{PAGE}-07-reasonb0-relief-hero-recall--B.png"),
             opt("C", "subject - reduced, with the heavy machine in the scene",
                 "06-relief-hero", "1.15", "1:1", LIGHT_C,
@@ -1719,14 +1977,12 @@ SLOTS = [
                       "single real emission this product makes, and G8 forbids "
                       "inventing one for the heat or the suction. " + CROP_W,
                 asset=f"{PAGE}-08-reasonb1-mechanism-xray--A.png"),
-            opt("B", "viewpoint - side cutaway, the airflow path legible",
-                "03-mechanism-xray", "1.3", "16:9", UV_B,
-                "Square from the side the internals lay out as a path: intake, "
-                "chamber, separator, filters, impeller. That is the section's "
-                "other half - the sealed route the particles take.",
-                notes="Needs the product photo. A side view hides the lamp's "
-                      "width, which is the mark the section is actually about. "
-                      + CROP_W,
+            opt("B", "type - 06-relief-hero rather than 03-mechanism-xray",
+                "06-relief-hero", "1.15", "1:1", UV_B2,
+                'Puts the lamp where a buyer would meet it: lit under the base against real ticking, magnified in the inset, in a photographic register rather than a technical one. The xray proves the lamp exists; this shows what it does to a surface.',
+                variant="commercial",
+                axes={'register': 'commercial', 'inset_mode': 'detail'},
+                notes="Needs the product photo. " + 'PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 06-relief-hero is also the recommendation at reasons.items.3 and reasons_b.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4).' + " " + CROP_INSET,
                 asset=f"{PAGE}-08-reasonb1-mechanism-xray--B.png"),
             opt("C", "viewpoint - the base tipped toward the camera",
                 "03-mechanism-xray", "1.3", "16:9", UV_C,
@@ -1933,6 +2189,19 @@ OUT = {
         "Its inset is defined as the product in its real installed position and "
         "G7-X binds it; a handheld corded appliance has no installed position, "
         "so the mode contradicts itself here. --recall took the slot instead.",
+        "OPTION B NOW CARRIES A DIFFERENT TYPE ON SEVEN OF THE EIGHT LINEAR "
+        "SLOTS, and the earlier version of this page carried none. The cause "
+        "was a misreading of one-type-once: it binds the recommended SET, not "
+        "the option pool. Step 4 says so in its own words - options \"are "
+        "individually legal but not necessarily legal in COMBINATION - where "
+        "picking one option forces another slot to change, say so in that "
+        "option's composition_notes\" - a sentence that only means anything if "
+        "an option MAY carry a type used elsewhere. Every type-different B "
+        "below states which slot it would displace. hero.image is the "
+        "exception and stays single-type: its cell holds exactly one type, the "
+        "attribute gates killed two more, and the honest variation there is the "
+        "gaze axis rather than a type borrowed from a role it does not belong "
+        "to.",
         "THE SIX REVIEW TILES GET ONE OPTION EACH, NOT THREE (ADR-022). "
         "05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of "
         "variation rather than the tile: every image must differ completely in "
@@ -2272,6 +2541,30 @@ print("prompts exempt from their type's photo flag (each must be a declared "
       "variant exemption or a G1-exempt type):")
 for row in split:
     print("   ", row)
+# ---- does option B actually carry a different TYPE? -------------------------
+# one-type-once binds the recommended SET, not the option pool (runbook Step 4:
+# options "are individually legal but not necessarily legal in COMBINATION").
+# Applying it to the pool is what once left every B a second execution of A, so
+# the ratio is printed rather than assumed.
+_lin = [s for s in routed if not s["slot_id"].startswith("reviews.photos")]
+_typeB = [s for s in _lin if len(s["options"]) > 1
+          and s["options"][1]["type"] != s["options"][0]["type"]]
+print()
+print("OPTION B TYPE SPREAD (linear slots only; repeating sections emit one)")
+print(f"  slots whose B carries a different type: {len(_typeB)} of {len(_lin)}")
+for s in _lin:
+    if len(s["options"]) < 2:
+        continue
+    a, b = s["options"][0], s["options"][1]
+    same = "same type" if a["type"] == b["type"] else ""
+    print(f"    {s['slot_id']:26} A {a['type']:22} B {b['type']:22} {same}")
+print("  distinct types offered across the page:",
+      len({o["type"] for s in routed for o in s["options"]}))
+_knock = [s["slot_id"] for s in _lin if len(s["options"]) > 1
+          and s["options"][1]["type"] != s["options"][0]["type"]
+          and "FORCES ANOTHER SLOT" not in (s["options"][1].get("composition_notes") or "")]
+print("  type-different B options missing their knock-on note:", _knock or "none")
+
 # ---- 05-social-snapshot SET DIVERSITY LAW, across the tiles not inside one --
 # "When a page requests more than one snapshot, every image must differ
 # COMPLETELY - different room class, surface, light temperature, camera distance,

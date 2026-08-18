@@ -13,14 +13,13 @@ Ratio goes in the generation tool's own aspect-ratio parameter, never in the pro
 
 **All 32 prompts are paste-and-run.** One prompt, one generation call, no compositing and no edit chain (ADR-021). 0 are blocked on that count.
 
-- **24 want the product photo** — paste the prompt, upload the vacuum photo, set the ratio. They carry a G1 reference block, so the render is bound to the real product rather than an invented one. The `attachments` field is empty because the source export supplied no photograph and none was invented; the upload is yours to make.
-- **8 take no attachment at all** — paste and set the ratio. 6 options plus both G12 brief plates, which are text cards and bind nothing.
+- **25 want the product photo** — paste the prompt, upload the vacuum photo, set the ratio. They carry a G1 reference block, so the render is bound to the real product rather than an invented one. The `attachments` field is empty because the source export supplied no photograph and none was invented; the upload is yours to make.
+- **7 take no attachment at all** — paste and set the ratio. 5 options plus both G12 brief plates, which are text cards and bind nothing.
 
   - `hero.image` option A — 01-pain-scene `candid` · 16:9
-  - `hero.image` option B — 01-pain-scene `candid` · 16:9
+  - `hero.image` option B — 01-pain-scene `confront` · 16:9
   - `hero.image` option C — 01-pain-scene `candid` · 16:9
   - `reasons.items.1.image` option A — 01-pain-scene `candid` · 16:9
-  - `reasons.items.1.image` option B — 01-pain-scene `candid` · 16:9
   - `reasons.items.1.image` option C — 01-pain-scene `candid` · 16:9
   - `reasons.items.0.image` option D — the G12 brief plate · 1:1
   - `reasons_b.items.1.image` option D — the G12 brief plate · 16:9
@@ -39,6 +38,7 @@ Ratio goes in the generation tool's own aspect-ratio parameter, never in the pro
 - **The page argument does not run in library order and the copy is why.** reasons_b sits after the comparison table, so the arc lands as cause, pain, proof, mechanism, social, outcome, mechanism - with a mechanism beat last. Reordering the sections is a copy decision, not an image one, and the routing follows the page as written rather than quietly arguing with it. Pain still precedes relief, which is the cross-slot rule that binds.
 - **One-type-once was the binding constraint and rung 4 carried it twice.** Seven body slots needed seven distinct executions from an advertorial column that offers eight types, two of which are dropped by attribute gates. 01-pain-scene repeats at reasons.items.1 differing on subject class, and 06-relief-hero repeats at reasons_b.items.0 differing on inset_mode — both are the runbook's rung 4, another execution of a type already on the page differing on a named dimension, and both are recorded here rather than left to look like an oversight.
 - **06-relief-hero --context was considered and dropped by its own law.** Its inset is defined as the product in its real installed position and G7-X binds it; a handheld corded appliance has no installed position, so the mode contradicts itself here. --recall took the slot instead.
+- **OPTION B NOW CARRIES A DIFFERENT TYPE ON SEVEN OF THE EIGHT LINEAR SLOTS, and the earlier version of this page carried none.** The cause was a misreading of one-type-once: it binds the recommended SET, not the option pool. Step 4 says so in its own words - options "are individually legal but not necessarily legal in COMBINATION - where picking one option forces another slot to change, say so in that option's composition_notes" - a sentence that only means anything if an option MAY carry a type used elsewhere. Every type-different B below states which slot it would displace. hero.image is the exception and stays single-type: its cell holds exactly one type, the attribute gates killed two more, and the honest variation there is the gaze axis rather than a type borrowed from a role it does not belong to.
 - **THE SIX REVIEW TILES GET ONE OPTION EACH, NOT THREE (ADR-022).** 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation rather than the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile spend that budget where it buys nothing and open a door the checks cannot close - pick one register on three tiles and another on three, both legal individually, and the wall reads as two shoots, which reads as fake. Dropping to one is also what made a real defect visible: the six first-drafted variants gave two bedrooms AND two kitchens with four at-rest modes. The set now runs bedroom, bedroom, landing, bathroom, living room, kitchen across three content modes, and build.py checks it on every run.
 - **The two bedroom tiles are a deliberate repeat and the SET law's own words allow it.** It asks for a different room class 'where possible', and both of those quotes are about a mattress - moving one into a kitchen would break FIT to buy a diversity axis. They differ on the four axes that remain: at rest against in use, a bare surface against a lit shaft of air, flat grey against window daylight, arm's length against standing height at the foot of the bed.
 - **FOUR PROMPTS SIT OVER THEIR TYPE'S MEASURED REFERENCE SIZE AND ARE SHIPPED THAT WAY, which is said here rather than left for the reader to find.** 02-cause-anatomy gives ~1800 characters at two marks and the three options here run 1878 to 1887, 4 to 5 percent over; 04-proof-lockedframe gives 1800 and its three-panel option B runs 1839. Seven passes of trimming removed duplicated law - the long G1 preserve clause where the skeleton carries its own one-line form, 'drawn realistically and' where the register line already said it, repeated scene nouns across panels. What is left is earned: the measure mark IS the argument, the verdict mark is required by the skeleton, and the three-ways-the-comparison-is-lost clauses are the type's own recorded faults. Cutting further would cut law rather than fat. Adapter Rule 6 asks for a re-read past 2500 and nothing here comes near it.
@@ -165,47 +165,48 @@ field, 35mm.
 STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 ```
 
-#### Option B — 01-pain-scene 1.14 `candid`
+#### Option B — 01-pain-scene 1.14 `confront`
 
-- varies on: persona - the parent rather than the sufferer
+- varies on: axis - gaze: confront rather than candid. This slot is the one on the page whose cell holds exactly ONE type, so no second type is legal here and the axis is the honest variation
 - runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
-- ratio parameter: **16:9** · single-pass · 1586 characters
-- why: brief.persona names parents of children with eczema as a distinct group, and the pain reads differently on someone holding another person's arm than on their own face. Same evidence rank, different body.
-- note: Two bodies in one frame is the risk; the type's own law is that a face cannot carry effort the body is not making, and here the effort is his, not hers.
+- ratio parameter: **16:9** · single-pass · 1603 characters
+- why: The type's other gaze value, and the copy supports it: the hero's opening is written in the second person and a reader held by the eye is being addressed rather than observed. Same evidence, same rank, the look reversed.
+- note: Needs no photo. --confront pairs with flat-ambient light by law, so the frame loses the low-key grade A carries; that is the trade, not an oversight.
 
 ```prompt
-TYPE: 01-pain-scene v1.14 --candid
+TYPE: 01-pain-scene v1.14 --confront
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT]
-Man late 30s in a stretched t-shirt and pyjama bottoms, kneeling on the carpet
-beside a child's low bed in the small hours, mid-way through catching his young
-daughter's wrist to stop her nails going back into the crook of her own elbow.
-Under that force: his weight forward on one knee, both hands closed round her
-forearm, her arm pulling against him.
-Face: jaw set, brows drawn together, eyes down on her arm.
+Woman early 40s in a creased sleep t-shirt, sitting on the edge of an unmade bed
+first thing in the morning, turned square to the camera, mid-way through
+dragging the loose skin under one eye downward with two fingers to look at what
+is there. Under that force: that shoulder lifted and rolled forward, the other
+hand flat on the mattress taking her weight, chin pushed out toward the lens.
+Face: one eye pulled open under the fingers, the other narrowed, mouth open to
+breathe through.
 
 [EVIDENCE]
-The inside of her elbow is broken out in raw scratched patches, the skin lifted
-and weeping in two places with dried flakes caught on the pyjama cuff, and
-short parallel scratch lines run down the forearm below it.
+Both eyelids are swollen and pink-rimmed with the lashes stuck wet together, the
+skin from the inner corners down across the cheekbones raw and shiny where it has
+been rubbed, and the nostrils and upper lip are chapped red. A wad of used
+tissues is pushed into the sheet beside her hip.
 
 [ENVIRONMENT]
-A small child's bedroom in the middle of the night. Lived-in clutter belonging
-to that place: a tub of emollient cream open on the floor with its lid beside
-it, a soft toy fallen half out of the bed, a nightlight low on the skirting, a
-laundry pile by the door. Nothing arranged, nothing removed to tidy the frame.
+An ordinary bedroom, just after waking, curtains half open. Lived-in clutter
+belonging to that place: a water glass and a blister strip of tablets on the
+nightstand, yesterday's clothes over a chair back, a phone face down on the
+duvet, one slipper under the bed. Nothing arranged, nothing removed to tidy the
+frame.
 
-[GAZE] unaware of the camera, gaze down on the child's arm.
+[GAZE] looking directly into the lens, holding the viewer's eye.
 
-[LIGHT] low-key. Key: the nightlight low and to one side, warm and weak. Fill:
-landing light through the part-open door behind him. Rim light along his
-shoulder and the child's hair. Deep shadow across most of the frame.
+[LIGHT] even ambient daylight from the gap in the curtains, minimal shadow, flat
+and unflattering.
 
 [FORBIDDEN] No product, no panels, no insets. No mark of any kind.
 
-[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of
-field, 35mm.
+[GRADE] Desaturated blue-grey, fine film grain, shallow depth of field, 35mm.
 
 STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 ```
@@ -314,52 +315,50 @@ panels and neither head covers them.
 G3: red wrong, blue correct, green badge, nothing else.
 ```
 
-#### Option B — 02-cause-anatomy 1.15
+#### Option B — 04-proof-lockedframe 1.13 `verdict`
 
-- varies on: style - airbrushed rather than flat-vector
+- varies on: type - 04-proof-lockedframe rather than 02-cause-anatomy
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 1887 characters
-- why: Airbrushed gives modelled volume, which suits batting and fibre better than flat fills do. The type offers it and the trade is legibility of the dash against believability of the material.
-- note: Needs the product photo. The measure dash is the risk - flat-vector is the style recorded as holding it. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.
+- ratio parameter: **1:1** · single-pass · 1728 characters
+- why: The same claim argued photographically instead of drawn: two identical patches of ticking in raking light, one worked by an ordinary floor head and one by the reference unit. It gives up the measure mark and the section depth, and buys a register a sceptical reader trusts more than an illustration.
+- note: Needs the product photo. PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 04-proof-lockedframe is also the recommendation at reasons.items.2, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4). The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.
 
 ```prompt
-TYPE: 02-cause-anatomy v1.15
-MEDIUM: 2D illustration, airbrushed. NOT photography, NOT 3D.
+TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld
+REGISTER: documentary photography. No overlays, badges, arrows or text.
+LAYOUT: 2 equal vertical panels, thin white gutter, no outer border.
 
-[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld
-unit in the RIGHT panel.
+[PRODUCT REFERENCE]
+The attached photo is the exact reference for the handheld unit in the RIGHT
+panel. Preserve shape, proportions, finish and colour exactly.
 
-[FRAME] a woman kneeling on a bed working a cleaning head across the mattress,
-the whole bed and figure in shot, the head small within it and the mattress cut
-open in section beneath.
-[GROUND] deep desaturated indigo, the right half one step lighter than the left.
-[BODY] the mattress in section - woven ticking over a batting layer - modelled
-in warm ivory with soft gradients on a translucent outline. NOT a skeleton, NOT
-a human figure. Exactly one bed and one figure in EACH panel,
-same scale and view.
+[SCENE - the same in both]
+The same bare double mattress in the same bedroom, the same fitted sheet folded
+back off the same corner, the same nightstand with a lamp on it, the same hard
+morning light raking low across the ticking from the same window.
 
-[PANELS]
-LEFT: an ordinary upright vacuum's wide floor head, drawn realistically and
-unbranded, pressed flat on the ticking; only the loose debris lying on top of
-the weave is gone, and the dark grains bound down in the batting stay where
-they are.
-RIGHT: the reference handheld unit at the same place on the same mattress, its
-head tapping the ticking so the weave lifts, and the same dark grains rising out
-of the batting into the intake. The batting layer and its grains appear in both
-panels and neither head covers them.
+[FRAMING]
+One person photographed this twice from where they were kneeling, phone close
+and level with the mattress surface, the ticking filling the frame and the room
+falling away behind. It reads as one shot taken twice, never two.
 
-[MARKS], two, nothing else marked:
-- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE
-  TICKING, running from the top of the ticking down to the deepest grain still
-  in the batting and STOPPING at both. Both begin at the same point in
-  their panel. Identical thickness and dash. One property differs: the length -
-  long left, closed to almost nothing right. Red left, blue right. Straight
-  lines, not boxes.
-- verdict: filled solid discs, red with a white X in the left panel's TOP
-  corner, green with a white check in the right panel's. Same diameter, not
-  rings.
+[THE VARIABLE]
+What has just been run over that patch of ticking, and what the raking light
+finds still in the weave. Both panels at the same moment: the machine lifted
+clear, the worked patch square to the lens.
+LEFT - an ordinary upright vacuum's floor head resting at the edge of the patch;
+the weave in the raking light still carries a fine dark grit down in the pile and
+a dulled grey film across it.
+RIGHT - the reference handheld unit resting at the same edge of the same patch;
+the same weave reads open and even in the same light, the pile standing up and
+the dark grit gone from between the fibres.
 
-G3: red wrong, blue correct, green badge, nothing else.
+[GRADE - the same in both]
+Neutral, from the window and the pale ticking rather than a filter. Still colour,
+never black and white.
+
+Both panels get the same exposure, tidiness and framing; the ordinary vacuum is
+an object someone would own, never made to look worse.
 ```
 
 #### Option C — 02-cause-anatomy 1.15
@@ -495,49 +494,47 @@ field, 35mm.
 STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
 ```
 
-#### Option B — 01-pain-scene 1.14 `candid`
+#### Option B — 02-cause-anatomy 1.15
 
-- varies on: subject - a person mid-action rather than object-only
-- runs: **PASTE AS IS** — no attachment, no reference — paste it and set the ratio
-- ratio parameter: **16:9** · single-pass · 1623 characters
-- why: The type's default form: a force being applied. Fitting a clean sheet over a stained mattress is the exact act the section calls futile, and the stain is still in frame beside the hand doing it.
-- note: Needs no photo. Repeats the hero's form as well as its type, so the two beats read more alike. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.
+- varies on: type - 02-cause-anatomy rather than 01-pain-scene
+- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
+- ratio parameter: **1:1** · single-pass · 1791 characters
+- why: Draws what a photograph cannot: the sheet layer intact above and the grain field below it, with fines drifting up through the weave toward a sleeping face. The section's sentence is a cross-section claim, and this is the type that cuts sections.
+- note: Needs the product photo. PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 02-cause-anatomy is also the recommendation at reasons.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4). The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.
 
 ```prompt
-TYPE: 01-pain-scene v1.14 --candid
-REGISTER: cinematic film still. Single frame.
+TYPE: 02-cause-anatomy v1.15
+MEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.
 
-[SUBJECT]
-Woman early 40s in a t-shirt and leggings, leaning across a bed mid-way through
-dragging a laundered fitted sheet down over the near corner of the mattress,
-both hands stretching the elastic under the edge. Under that force: her weight
-on one knee on the mattress, both arms extended, the sheet pulled taut and
-lifting off the ticking along its length.
-Face: eyes down on the corner she is fitting, mouth shut, cheek slack.
+[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld
+unit in the RIGHT panel.
 
-[EVIDENCE]
-Where the clean sheet has not yet reached, the bare ticking shows a body-shaped
-stain of grey-yellow discolouration deepest at the hips and shoulders, with
-loose fibre and grit gathered along the piped seam beside her knee.
+[FRAME] a woman lying asleep on her side on a made bed, the whole bed and the
+whole figure in shot, and the bedding cut open in section beneath her.
+[GROUND] deep desaturated indigo, the right half one step lighter than the left.
+[BODY] the bedding in section - a sheet layer over woven ticking over batting -
+cut as flat layers in warm ivory on a translucent outline. NOT a skeleton, NOT a
+human figure. Exactly one bed and one figure per panel, same scale and view.
 
-[ENVIRONMENT]
-An ordinary bedroom in the middle of a weekday morning. Lived-in clutter
-belonging to that place: the stripped duvet bundled on the floor, a laundry
-basket on its side by the door, a mug left on the nightstand, a pillow without
-its case on the chair. Nothing arranged, nothing removed to tidy the frame.
+[PANELS]
+LEFT: the sheet crisp and clean, and beneath it the ticking and batting carrying
+a dense field of dark grains the sheet does not touch; fine grains drift up
+through its weave toward the sleeping face.
+RIGHT: the same bed after the reference unit has been worked over the bare
+ticking, the unit resting on the mattress edge; the same sheet above and the
+batting beneath it nearly clear, no drift rising. All three layers appear in both
+panels and nothing covers them.
 
-[GAZE] unaware of the camera, gaze down on the corner of the mattress.
+[MARKS], two, nothing else marked:
+- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE
+  SHEET, running from the top of the sheet down to the deepest grain still in the
+  batting and STOPPING at both. Both begin at the same point in their panel.
+  Identical thickness and dash. One property differs: the length - long left,
+  closed to almost nothing right. Red left, blue right. Straight lines, not boxes.
+- verdict: filled solid discs, red with a white X in the left panel's TOP corner,
+  green with a white check in the right panel's. Same diameter, not rings.
 
-[LIGHT] low-key. Key: flat overcast daylight from the window along one side of
-the bed, cold and even. Fill: the dim of the room. Rim light along her forearm
-and the pulled edge of the sheet. Deep shadow across the far half of the frame.
-
-[FORBIDDEN] No product, no panels, no insets. No mark of any kind.
-
-[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of
-field, 35mm.
-
-STYLE: editorial photojournalism, cinematic film still, natural and unstaged.
+G3: red wrong, blue correct, green badge, nothing else.
 ```
 
 #### Option C — 01-pain-scene 1.14 `candid`
@@ -640,51 +637,46 @@ Both panels get the same exposure, tidiness and framing; the ordinary vacuum is
 an object someone would own, never made to look worse.
 ```
 
-#### Option B — 04-proof-lockedframe 1.13 `verdict`
+#### Option B — 03-mechanism-xray 1.3
 
-- varies on: panel count - three rather than two
+- varies on: type - 03-mechanism-xray rather than 04-proof-lockedframe
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 1839 characters
-- why: brief.competitorContext names three alternatives, and a basic handheld cleaner is the one a reader may already have tried. The middle panel is the honest half-measure between the two ends.
-- note: Needs the product photo. Three panels in a 1:1 frame give each a tall narrow strip; the type's own ratio evidence is that stacked and split layouts degrade as panels get thinner. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.
+- ratio parameter: **16:9** · single-pass · 1725 characters
+- why: Argues the same claim from inside the machine instead of from the room: the sealed route drawn end to end, dense and particle-laden at the throat and clear at the outlet grille. It proves the mechanism rather than the outcome.
+- note: Needs the product photo. PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 03-mechanism-xray is also the recommendation at reasons_b.items.1, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4). The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.
 
 ```prompt
-TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld
-REGISTER: documentary photography. No overlays, badges, arrows or text.
-LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
+TYPE: 03-mechanism-xray v1.3
+REGISTER: 3D technical see-through render. NOT photography.
 
 [PRODUCT REFERENCE]
-The attached photo is the exact reference for the handheld unit in the LAST
-panel. Preserve shape, proportions, material, finish and colour exactly.
+The attached photo is the exact reference for the handheld unit. The outer shell
+becomes translucent, but its silhouette, proportions and every visible external
+part must match the reference exactly. Do not redesign or add features.
 
-[SCENE - the same in all three]
-The same corner of the same bedroom, the same double bed stripped to bare ticking,
-the same curtain pulled back on the same window, a nightstand with a lamp on it.
-One hard shaft of morning daylight crosses the room above the bed in every one.
+[CANVAS] a plain deep charcoal ground, and nothing else in the frame behind the
+product.
 
-[FRAMING]
-One person photographed this three times from where they were standing, phone
-level with the top of the mattress, the bed filling the lower two thirds and the lit
-shaft of air across the upper third. It reads as one shot taken three times,
-never three. Light differs only in exposure, never in warmth.
+[SHELL] the unit seen square from the side as it sits on a plain pale fabric
+surface, its casing translucent and glass-like, filling about 75 percent of the
+frame width, so the whole sealed route from intake to outlet runs left to right.
 
-[THE VARIABLE]
-What is being run over the mattress, and what the shaft of light shows above it.
-Every panel at the same moment: the machine mid-pass, halfway down the bed.
-1 - an ordinary upright vacuum, unbranded, its wide head on the ticking; the
-shaft above the bed thick with fine motes turning in it.
-2 - a small basic handheld cleaner, unbranded, on the same spot; the shaft
-thinner but still drifting with motes.
-3 - the reference handheld unit at the same place, one cable to the wall; the
-same shaft empty, its beam edge sharp against the dark of the room.
+[INTERNALS], solid and detailed inside the shell, each at its true location: the
+intake slot in the base opening into a throat; the transparent dust chamber above
+it with its multi-cup separator drawn as a ring of small cones, the cones packed
+with fine grey material; a stack of three filter elements sitting across the top
+of the chamber, each a visibly different density; the impeller and motor last, at
+the back, and behind them a clear outlet grille with nothing but air beyond it.
 
-[GRADE - the same in all three]
-Neutral, from the overcast window and the pale ticking rather than a filter.
-Still colour, never black and white.
+[MARKS], one, nothing else in the frame is marked:
+- working: the sealed route itself shown ACTIVE as a cool cyan flow, dense and
+  particle-laden where it enters the throat, thinning through the cone ring, and
+  reaching the outlet grille clear and empty. It is the brightest thing in the
+  frame and clearly brighter than the ground, and it stops at the grille. No
+  arrow anywhere - the route's own line carries the direction.
 
-Panels one and two get the same exposure, tidiness and framing as panel three;
-the alternatives are ordinary products someone would buy, never made to look
-worse.
+No text, numbers or spec labels anywhere in the image.
+The marks are the only added colour; the product and its parts keep their own.
 ```
 
 #### Option C — 04-proof-lockedframe 1.13 `verdict`
@@ -788,47 +780,48 @@ arrow, no glow, no border light.
 No text anywhere in the image. No badge, no arrow, no percentage.
 ```
 
-#### Option B — 06-relief-hero 1.15 `commercial`
+#### Option B — 02-cause-anatomy 1.15
 
-- varies on: inset content - the filled chamber rather than the contact
+- varies on: type - 02-cause-anatomy rather than 06-relief-hero
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 1938 characters
-- why: Moves the magnified evidence from cause to result. A packed chamber is the most legible proof this product produces and the reviews quote it twice.
-- note: Needs the product photo. Overlaps reasons.items.4, which already carries the chamber as its moment. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.
+- ratio parameter: **1:1** · single-pass · 1768 characters
+- why: The only route on this page that argues the HEAT claim at all. A camera cannot photograph 149F, but an illustration can draw the state it changes: batting saturated and clumped with mites bedded in it, against batting dried open with them gone. It changes register rather than inventing an emission.
+- note: Needs the product photo. PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 02-cause-anatomy is also the recommendation at reasons.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4). The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.
 
 ```prompt
-TYPE: 06-relief-hero v1.15
-REGISTER: commercial. Professional camera, controlled light, deliberate negative
-space on one side.
+TYPE: 02-cause-anatomy v1.15
+MEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.
 
-[PRODUCT REFERENCE]
-The attached photo is the exact reference for the handheld unit, identical in
-every layer. Preserve shape, proportions, material, finish and colour exactly.
+[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld
+unit in the RIGHT panel.
 
-[SUBJECT] a woman in her forties in a plain long-sleeved top, kneeling on the
-floor beside a low double bed, both hands on the handle of the unit.
-[POSE] mid-action: the unit pressed down flat on the bare mattress and pushed
-away from her along the ticking, hands engaged, gaze on the head where it meets
-the fabric, focused rather than smiling. She kneels beside the bed with the
-whole unit between her and the mattress surface, so the contact is never hidden
-by her own body.
-[SETTING] one real bedroom filled to the edges: a nightstand with a lamp and a
-water glass, a chair with clothes over the back, a laundry basket, a radiator
-under the window, a rug half under the bed, a door standing open onto a landing.
-Background blurred but never blank. None of these objects carries printed text.
-[LIGHT] soft even window light from the left, background blurred, high-key.
-[OFFSET] she kneels to the right of frame; the inset occupies the space on the
-left that she is offset from, taking about three quarters of it.
+[FRAME] a woman kneeling on a bed with a cleaning head on the mattress, the whole
+bed and figure in shot, the mattress cut open in section beneath.
+[GROUND] deep desaturated indigo, the right half one step lighter than the left.
+[BODY] the mattress in section - woven ticking over a batting layer - cut as flat
+layers in warm ivory on a translucent outline. NOT a skeleton, NOT a human
+figure. Exactly one bed and one figure in EACH panel, same scale and view.
 
-In the upper left corner sits a rounded rectangle about 20 percent of the frame
-width, its outline finishing a clear margin short of the picture on both sides.
-Inside it, one magnified view the scene cannot show: the same unit's
-transparent dust chamber seen from the side, a deep bed of fine grey powder and
-matted fibre packed against the clear wall from the bottom up. Same photographic
-register as the hero, same light quality, same resolution. It sits near the unit
-in the scene, linked by proximity alone - no arrow, no glow, no border light.
+[PANELS]
+LEFT: no machine on the ticking, her hand flat on it; the batting saturated and
+heavy with trapped damp, fibres clumped and dark, a dense field of mite forms
+bedded among them.
+RIGHT: the reference handheld unit worked across the same ticking, and beneath it
+the same batting drawn dry and open, the fibres separated and pale and the mite
+forms gone from between them. The batting appears in both panels and neither hand
+nor head covers it.
 
-No text anywhere in the image. No badge, no arrow, no percentage.
+[MARKS], two, nothing else marked:
+- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE
+  TICKING, running from the top of the ticking down to the bottom of the damp
+  band in the batting and STOPPING at both. Both begin at the same point in their
+  panel. Identical thickness and dash. One property differs: the length - long
+  left, closed to almost nothing right. Red left, blue right. Straight lines, not
+  boxes.
+- verdict: filled solid discs, red with a white X in the left panel's TOP corner,
+  green with a white check in the right panel's. Same diameter, not rings.
+
+G3: red wrong, blue correct, green badge, nothing else.
 ```
 
 #### Option C — 06-relief-hero 1.15 `commercial`
@@ -928,45 +921,48 @@ REGISTER: candid documentary photograph, natural, unposed, sharp. No text, no
 badge, no arrow anywhere in the image.
 ```
 
-#### Option B — 05-social-handoff 2.5
+#### Option B — 06-relief-hero 1.15 `commercial`
 
-- varies on: moment - the chamber held up rather than the light
+- varies on: type - 06-relief-hero rather than 05-social-handoff
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 1463 characters
-- why: A held-up chamber of grey powder is the most quoted moment in the page's own reviews. It is louder evidence than a coloured light and needs no explanation.
-- note: Needs the product photo. Argues capture rather than the section's own subject, which is knowing when to stop. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.
+- ratio parameter: **1:1** · single-pass · 1960 characters
+- why: Drops the second person and magnifies the indicator itself, lit blue above a chamber full of grey powder. It argues the feature rather than the conversation about the feature, which is the safer read while the reviews block stays as built.
+- note: Needs the product photo. PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 06-relief-hero is also the recommendation at reasons.items.3 and reasons_b.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4). The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.
 
 ```prompt
-TYPE: 05-social-handoff v2.5
+TYPE: 06-relief-hero v1.15
+REGISTER: commercial. Professional camera, controlled light, deliberate negative
+space on one side.
 
 [PRODUCT REFERENCE]
-The attached photo is the exact reference for the handheld unit. Preserve shape,
-proportions, material, finish and colour exactly.
+The attached photo is the exact reference for the handheld unit, identical in
+every layer. Preserve shape, proportions, material, finish and colour exactly.
 
-[MOMENT] the unit's transparent dust chamber has just been lifted off the body
-and is being held up level between the two people, packed to the brim with fine
-grey powder and matted grey fibre, the powder settled in a dense flat bed. The
-unit itself sits on the bare mattress below with its indicator window lit blue.
+[SUBJECT] reduced: present only as one forearm in a pushed-up sleeve and the hand
+closed round the handle of the unit. No face and no shoulders in frame.
+[POSE] mid-action: the unit pushed away along a bare mattress, the hand loose on
+the handle. What makes a finished patch different from an unfinished one is in
+the frame beside it - behind the head the ticking is even and matt, ahead of it
+the weave still carries a dulled grey film, and the boundary runs straight across
+the bed where the head has reached.
+[SETTING] one real bedroom filled to the edges: a nightstand with a lamp, a chair
+with clothes over the back, a laundry basket, a radiator under the window, a rug
+half under the bed. Background blurred but never blank. None of these objects
+carries printed text.
+[LIGHT] soft even window light from the left, raking low across the ticking so
+the worked and unworked halves separate. Background blurred, high-key.
+[OFFSET] the hand and the unit sit to the right of frame; the inset occupies the
+space on the left, taking about three quarters of it.
 
-[ADVOCATE] a woman in her forties in a long-sleeved top, kneeling at the side of
-the bed holding the chamber up in one hand, her arm at rest and her eyes up on
-the other person rather than on the chamber.
+In the upper left corner sits a rounded rectangle about 20 percent of the frame
+width, its outline finishing a clear margin short of the picture on both sides.
+Inside it, one magnified view the scene cannot show: the indicator window on the
+top of the same handle, lit a clear even blue, with the transparent chamber below
+it dense with grey powder. Same photographic register as the hero, same light
+quality, same resolution. It sits near the unit in the scene, linked by proximity
+alone - no arrow, no glow, no border light.
 
-[LISTENER] a man of similar age crouched beside her, seen from behind and to the
-side so his face is not visible, leaning in with his attention on the powder
-inside the chamber.
-
-[PRODUCT] the unit and its chamber are the largest and clearest objects in the
-frame and nothing beside them competes for the first glance; the bedding is pale
-and plain, and no other appliance is in shot.
-
-[ENVIRONMENT] an ordinary bedroom on a weekend morning with a real reason both
-people are there - the bed is stripped, the duvet is bundled on the floor and a
-laundry basket stands by the door. Ambient household light only, from the window
-behind them.
-
-REGISTER: candid documentary photograph, natural, unposed, sharp. No text, no
-badge, no arrow anywhere in the image.
+No text anywhere in the image. No badge, no arrow, no percentage.
 ```
 
 #### Option C — 05-social-handoff 2.5
@@ -1066,46 +1062,46 @@ resolution, grade and light quality.
 No text anywhere in the image. No badge, no percentage.
 ```
 
-#### Option B — 06-relief-hero 1.15 `commercial`
+#### Option B — 05-social-handoff 2.5
 
-- varies on: inset form - one cell rather than two
+- varies on: type - 05-social-handoff rather than 06-relief-hero
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 1796 characters
-- why: FORM 1: the problem state alone, smaller and simpler. The hero already shows the resolved state at full size, so a second resolved cell repeats it.
-- note: Needs the product photo. A smaller inset survives the crop better than two cells do. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.
+- ratio parameter: **1:1** · single-pass · 1582 characters
+- why: Proves lightness by handing the thing over rather than by showing it held: one carry, three rooms done behind them, and the upright vacuum standing unused at the top of the stairs. Weight is a claim about effort, and effort reads on people.
+- note: Needs the product photo. PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 05-social-handoff is also the recommendation at reasons.items.4, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4). The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.
 
 ```prompt
-TYPE: 06-relief-hero v1.15
-REGISTER: commercial. Professional camera, controlled light, deliberate negative
-space on one side.
+TYPE: 05-social-handoff v2.5
 
 [PRODUCT REFERENCE]
-The attached photo is the exact reference for the handheld unit, identical in
-every layer. Preserve shape, proportions, material, finish and colour exactly.
+The attached photo is the exact reference for the handheld unit. Preserve shape,
+proportions, material, finish and colour exactly.
 
-[SUBJECT] a woman in her forties in a plain long-sleeved top, standing at the
-arm of a sofa, the unit carried easily in one hand at her side.
-[POSE] mid-action: she has just lifted the unit off the sofa arm and is turning
-with it toward the doorway, that hand loose and low, gaze ahead of her on where
-she is going next. She stands clear of the sofa so the whole unit is visible
-against the room rather than against her own body.
-[SETTING] one real living room filled to the edges: a sofa with cushions, a
-coffee table with a mug on it, a floor lamp, a bookshelf, a rug, a doorway open
-onto a hall. Background blurred but never blank. None of these objects carries
-printed text.
-[LIGHT] soft even window light from the left, background blurred, high-key.
-[OFFSET] she stands to the right of frame; the inset occupies the space on the
-left that she is offset from, taking about three quarters of it.
+[MOMENT] the unit has just this moment come off a run through the house and is
+held out at waist height in one hand, offered across to the other person. Its
+transparent chamber is packed with grey powder and matted fibre. On the landing
+floor behind them both bedroom doors stand open, a stack of stripped pillows sits
+outside one and a bare mattress edge shows through the other - three jobs done in
+one carry, and an ordinary upright vacuum standing unused at the top of the
+stairs.
 
-In the upper left corner sits one small panel about 15 percent of the frame
-width, with a thin white border, finishing a clear margin short of the picture
-edge. The same woman, the same room and the same sofa; the only thing that
-changes is the machine. In that panel she has an ordinary upright vacuum hauled
-up bodily onto the sofa seat, both her hands on it, its hose dragging over the
-arm and its body tipped, her shoulders pulled up under the weight. It matches
-the main picture in resolution, grade and light quality.
+[ADVOCATE] a woman in her forties in a long-sleeved top, standing on the landing
+holding the unit out one-handed, her wrist straight and her arm relaxed, her eyes
+up on the other person rather than on the unit.
 
-No text anywhere in the image. No badge, no arrow, no percentage.
+[LISTENER] a man of similar age at the top of the stairs, seen from behind and to
+the side so his face is not visible, reaching to take the handle.
+
+[PRODUCT] the unit is the largest and clearest object in the frame and nothing
+beside it competes for the first glance; the landing is plain and the upright
+vacuum sits well back and out of focus.
+
+[ENVIRONMENT] an ordinary upstairs landing on a weekend morning with a real
+reason both people are there - bedding is piled by one door and a laundry basket
+sits against the bannister. Ambient household light only, from a landing window.
+
+REGISTER: candid documentary photograph, natural, unposed, sharp. No text, no
+badge, no arrow anywhere in the image.
 ```
 
 #### Option C — 06-relief-hero 1.15 `commercial`
@@ -1204,48 +1200,49 @@ No text, numbers or spec labels anywhere in the image.
 The marks are the only added colour; the product and its parts keep their own.
 ```
 
-#### Option B — 03-mechanism-xray 1.3
+#### Option B — 06-relief-hero 1.15 `commercial`
 
-- varies on: viewpoint - side cutaway, the airflow path legible
+- varies on: type - 06-relief-hero rather than 03-mechanism-xray
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **16:9** · single-pass · 1727 characters
-- why: Square from the side the internals lay out as a path: intake, chamber, separator, filters, impeller. That is the section's other half - the sealed route the particles take.
-- note: Needs the product photo. A side view hides the lamp's width, which is the mark the section is actually about. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.
+- ratio parameter: **1:1** · single-pass · 1999 characters
+- why: Puts the lamp where a buyer would meet it: lit under the base against real ticking, magnified in the inset, in a photographic register rather than a technical one. The xray proves the lamp exists; this shows what it does to a surface.
+- note: Needs the product photo. PICKING THIS FORCES ANOTHER SLOT TO CHANGE: 06-relief-hero is also the recommendation at reasons.items.3 and reasons_b.items.0, so one-type-once would be broken. Take B here and that slot moves to its own option B (runbook Step 4). The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.
 
 ```prompt
-TYPE: 03-mechanism-xray v1.3
-REGISTER: 3D technical see-through render. NOT photography.
+TYPE: 06-relief-hero v1.15
+REGISTER: commercial. Professional camera, controlled light, deliberate negative
+space on one side.
 
 [PRODUCT REFERENCE]
-The attached photo is the exact reference for the handheld unit. The outer shell
-becomes translucent, but its silhouette, proportions and every visible external
-part must match the reference exactly. Do not redesign or add features.
+The attached photo is the exact reference for the handheld unit, identical in
+every layer. Preserve shape, proportions, material, finish and colour exactly.
 
-[CANVAS] a plain deep charcoal ground, and nothing else in the frame behind the
-product.
+[SUBJECT] a woman in her forties in a plain long-sleeved top, kneeling on the
+floor beside a low double bed, both hands on the handle of the unit.
+[POSE] mid-action: the unit pressed down flat on the bare mattress and pushed
+away from her along the ticking, hands engaged, gaze on the head where it meets
+the fabric, focused rather than smiling. She kneels beside the bed with the whole
+unit between her and the mattress surface, so the base is never hidden by her own
+body.
+[SETTING] one real bedroom filled to the edges: a nightstand with a lamp and a
+water glass, a chair with clothes over the back, a laundry basket, a radiator
+under the window, a rug half under the bed. Background blurred but never blank.
+None of these objects carries printed text.
+[LIGHT] soft even window light from the left, background blurred, high-key, with
+the violet-blue cast under the base of the unit reading clearly against the pale
+ticking.
+[OFFSET] she kneels to the right of frame; the inset occupies the space on the
+left that she is offset from, taking about three quarters of it.
 
-[SHELL] the unit seen square from the side as it sits on a plain pale fabric
-surface, its casing translucent and glass-like, filling about 75 percent of the
-frame width, so the whole path from base to dust chamber runs left to right
-across the frame.
+In the upper left corner sits a rounded rectangle about 20 percent of the frame
+width, its outline finishing a clear margin short of the picture on both sides.
+Inside it, one magnified view the scene cannot show: the open base aperture of
+the same unit tipped just clear of the fabric, its tubular lamp lit and laying a
+narrow violet-blue wash across the woven ticking directly beneath it, the wash
+ending where the aperture ends. Same photographic register as the hero, same
+light quality, same resolution. Linked by proximity alone - no arrow, no glow.
 
-[INTERNALS], solid and detailed inside the shell, each at its true location: a
-tubular ultraviolet lamp lying across the base aperture at the front, its
-housing open to the fabric below; a flat tapping plate beside it driven by a
-vibration motor and its eccentric weight; behind them the intake throat rising
-into the transparent dust chamber, the chamber's multi-cup separator drawn as a
-ring of small cones; a stack of three filter elements above the chamber; the
-impeller and motor last, at the back of the body.
-
-[MARKS], one, nothing else in the frame is marked:
-- working: the ultraviolet lamp shown ACTIVE, throwing a narrow violet-blue wash
-  straight down onto the fabric directly beneath the base aperture, the
-  brightest thing in the frame and clearly brighter than the ground, its edge
-  ending where the aperture ends. No arrow anywhere - the internal path's own
-  line carries the direction.
-
-No text, numbers or spec labels anywhere in the image.
-The marks are the only added colour; the product and its parts keep their own.
+No text anywhere in the image. No badge, no arrow, no percentage.
 ```
 
 #### Option C — 03-mechanism-xray 1.3
