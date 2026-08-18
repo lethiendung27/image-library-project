@@ -68,7 +68,7 @@ channels: [marketplace, landing-page, paid-social, advertorial]
 statuses: [active, reserved, deprecated]
 
 # Section roles a content.json may declare. Routing table: mapping/slot-rules.md.
-section_roles: [hero, problem-agitation, cause, mechanism, proof, social-proof, personas, how-to-use, comparison, outcome, cta]
+section_roles: [hero, problem-agitation, cause, mechanism, proof, social-proof, personas, how-to-use, comparison, outcome, cta, author]
 
 observation_verdicts: [match, variant-candidate, new-candidate, duplicate, reject]
 

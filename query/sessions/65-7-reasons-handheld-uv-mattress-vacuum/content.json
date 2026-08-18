@@ -1,103 +1,345 @@
 {
-  "_note": "Assembled by hand from the Shopify listicle export (query/runbook.md Step 1). The export is not a content.json: it carries page.content, page.htmlCompiled and brief, but no product.attributes block and no reference_photos. Every attribute below is DERIVED from brief.specification, brief.rawFeatures and brief.personaCorePain and is marked as such — none was supplied by the source.",
-  "source": {
-    "file": "landing-page-7-reasons-this-handheld-uv-mattress-vacuum-helps-tackle-hidden-dust-mites.json",
-    "page_id": 65,
-    "lp_type_id": "listicle",
-    "template": "TPL-ADV06",
-    "shopify_product_gid": null,
-    "image_briefs": null
-  },
   "product": {
     "name": "Household Dust Mite Remover",
     "category": "home",
-    "type": "Handheld UV mattress vacuum with vibration, heat and three-stage filtration",
     "reference_photos": [],
     "attributes": {
       "operation": "active",
       "visible_output": "UV lamp light and a red/blue dust-level indicator",
       "mounting": "handheld",
-      "colorways": ["as supplied"],
+      "colorways": [
+        "as supplied"
+      ],
       "body_contact": false,
       "symptom_visibility": "visible",
       "result_visibility": "on-object",
       "multi_step_usage": false
     },
-    "attribute_derivation": {
-      "operation": "The user pushes the unit over a mattress and works it in passes. Sets the POSE branch to mid-action, hands engaged, gaze on the point of use.",
-      "visible_output": "TWO real emissions, both named in brief.specification: a UV sterilisation lamp, and a dust-level indicator that runs red to blue. G8 is satisfied without inventing anything — but the HEAT at 149F is NOT an emission any register can show, and no option argues it.",
-      "mounting": "Handheld and corded. G7-X's installed mode never binds, and 06-relief-hero --context is unavailable because its inset is defined as the product in its real installed position, which a handheld does not have.",
-      "colorways": "One. A second colorway in any layer would violate G2.",
-      "body_contact": "FALSE, and it is this page's most consequential gate: the product acts on a mattress, not on a body, so 03-mechanism-ghostbody is dropped by its own avoid_when and every mechanism slot goes to 03-mechanism-xray.",
-      "symptom_visibility": "Visible. The persona's symptoms are photographable on a body — waking congested, rubbing eyes, a child scratching eczema — and the residue is photographable on an object, as grey powder in the dust cup.",
-      "result_visibility": "On-object: a filled dust cup and an indicator turned blue. NOT on-body — nobody can photograph waking up un-congested, which is why 06-relief-scene is dropped by its own avoid_when and the closing image is 06-relief-hero with the product in frame.",
-      "multi_step_usage": "One pass, one action. 03-use-sequence is dropped by its avoid_when 'the product has one obvious action', and its declared ratios (3:4, 1:1) would not have served the 4:3 body slots either."
-    }
-  },
-  "problems_solved": [
-    "Waking congested or itchy every morning with no obvious cause, in a house that is otherwise clean",
-    "The mattress is the one surface never cleaned — sheets are washed weekly, the mattress has never been touched",
-    "An ordinary vacuum only lifts what is on the surface; mite waste is bound into the weave below",
-    "An ordinary vacuum's exhaust blows the finest particles back into the air of the room the family sleeps in",
-    "No way to tell whether an area has actually been cleaned or still needs another pass"
-  ],
-  "personas": [
-    "Allergy and asthma sufferers aged 30-60 whose symptoms are worst on waking",
-    "Parents of children with eczema",
-    "Pet owners with animals sleeping on beds and sofas",
-    "Households that already wash bedding weekly and want the layer underneath addressed"
-  ],
-  "page": {
-    "channel": "advertorial",
-    "channel_basis": "lpTypeId is `listicle`, which is NOT in registry/vocabulary.yaml's channels and has no column in mapping/slot-rules.md. Routed as `advertorial` on the page's own evidence: a bylined author with a credential line, an About-the-author bio block, a seven-item comment thread with names, a disclosure line, and editorial footer navigation. A listicle is an advertorial format, not a fifth channel. Recorded rather than assumed — see page_composition_notes.",
-    "awareness_stage": "problem-aware",
-    "awareness_basis": "brief.awarenessStage says `problem` and the copy agrees. The hero spends its whole opening re-establishing the symptom before naming anything, copyFramework is PAS, and reasons 0 to 2 are all failures of the tool the reader already owns rather than features of the one being sold.",
-    "sections": [
-      {"role": "hero", "slot": "hero.image", "ratio": "16:9",
-       "copy_summary": "First person, problem-first: waking congested, skin irritated, and the mattress is the suspect."},
-      {"role": "cause", "slot": "reasons.items.0.image", "ratio": "4:3",
-       "copy_summary": "Ordinary suction lifts only what sits on the weave; mite waste stays bound in deeper batting. 36,000 taps a minute agitate it loose into the suction stream."},
-      {"role": "problem-agitation", "slot": "reasons.items.1.image", "ratio": "4:3",
-       "copy_summary": "Clean sheets on an unwashed mattress feel fresh and leave the irritants in place millimetres beneath the pillowcase."},
-      {"role": "proof", "slot": "reasons.items.2.image", "ratio": "4:3",
-       "copy_summary": "A basic exhaust filter scatters microscopic particles back into bedroom air; three-stage filtration with multi-cup separation keeps them in the chamber."},
-      {"role": "mechanism", "slot": "reasons.items.3.image", "ratio": "4:3",
-       "copy_summary": "Mattresses hold body humidity and warmth; heat at about 149F dries the fabric while 16 kPa suction runs."},
-      {"role": "social-proof", "slot": "reasons.items.4.image", "ratio": "4:3",
-       "copy_summary": "The dust-level indicator glows red during heavy pickup and turns blue when the area is clean, so nobody has to guess."},
-      {"role": "outcome", "slot": "reasons_b.items.0.image", "ratio": "4:3",
-       "copy_summary": "At 4.19 lbs it goes over mattresses, pillows, curtains, car seats and pet beds without straining wrists, where a floor vacuum has to be heaved onto the bed."},
-      {"role": "mechanism", "slot": "reasons_b.items.1.image", "ratio": "4:3",
-       "copy_summary": "An integrated UV sterilisation lamp treats surface fabric on every pass, alongside vibration, heat and sealed suction."},
-      {"role": "social-proof", "slot": "reviews.photos.0.image", "ratio": "1:1",
-       "copy_summary": "Verified-buyer quotes about a full dust cup, no dust blown back, light weight, grey sediment, pet hair and a washable filter."},
-      {"role": "social-proof", "slot": "reviews.photos.1.image", "ratio": "1:1", "copy_summary": "As above."},
-      {"role": "social-proof", "slot": "reviews.photos.2.image", "ratio": "1:1", "copy_summary": "As above."},
-      {"role": "social-proof", "slot": "reviews.photos.3.image", "ratio": "1:1", "copy_summary": "As above."},
-      {"role": "social-proof", "slot": "reviews.photos.4.image", "ratio": "1:1", "copy_summary": "As above."},
-      {"role": "social-proof", "slot": "reviews.photos.5.image", "ratio": "1:1", "copy_summary": "As above."},
-      {"role": "cta", "slot": "scarcity.image", "ratio": "1:1",
-       "copy_summary": "Scarcity block product card, 'warehouse allocations are running low'."},
-      {"role": "cta", "slot": "rail.image", "ratio": "1:1",
-       "copy_summary": "Offer rail product card, 'Deep mattress cleaning with 16 kPa sealed suction'."},
-      {"role": "author", "slot": "hero.author_avatar", "ratio": "1:1", "copy_summary": "Byline portrait, 'By Philip Dawson'."},
-      {"role": "author", "slot": "closing.bio_image", "ratio": "1:1", "copy_summary": "About-the-author portrait."},
-      {"role": "social-proof", "slot": "comments.items.0.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 1 of 7."},
-      {"role": "social-proof", "slot": "comments.items.1.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 2 of 7."},
-      {"role": "social-proof", "slot": "comments.items.2.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 3 of 7."},
-      {"role": "social-proof", "slot": "comments.items.3.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 4 of 7."},
-      {"role": "social-proof", "slot": "comments.items.4.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 5 of 7."},
-      {"role": "social-proof", "slot": "comments.items.5.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 6 of 7."},
-      {"role": "social-proof", "slot": "comments.items.6.avatar", "ratio": "1:1", "copy_summary": "Commenter portrait, 7 of 7."},
-      {"role": "cta", "slot": "header.logo", "ratio": "1:1", "copy_summary": "Brand logo, already supplied."},
-      {"role": "cta", "slot": "footer.logo", "ratio": "1:1", "copy_summary": "Brand logo, already supplied."},
-      {"role": "cta", "slot": "guarantee.badge_image", "ratio": "1:1", "copy_summary": "Money-back guarantee badge, already supplied."}
+    "personas": [
+      "Allergy and asthma sufferers aged 30-60 whose symptoms are worst on waking",
+      "Parents of children with eczema",
+      "Pet owners with animals sleeping on beds and sofas",
+      "Households that already wash bedding weekly and want the layer underneath addressed"
+    ],
+    "problems_solved": [
+      "Waking congested or itchy every morning with no obvious cause, in a house that is otherwise clean",
+      "The mattress is the one surface never cleaned — sheets are washed weekly, the mattress has never been touched",
+      "An ordinary vacuum only lifts what is on the surface; mite waste is bound into the weave below",
+      "An ordinary vacuum's exhaust blows the finest particles back into the air of the room the family sleeps in",
+      "No way to tell whether an area has actually been cleaned or still needs another pass"
     ]
   },
-  "known_gaps": [
-    "SEVEN BODY SLOTS DECLARE aspect-[4/3] WITH object-cover, AND ONLY TWO TYPES IN THE LIBRARY DECLARE 4:3. 05-social-snapshot and 06-relief-scene are the whole set; every other type legally declares 16:9 and 1:1 only. So seven slots are served at a ratio the layout then centre-crops. ADR-016's standing RATIO sweep is the real fix and it is a type-file edit, not a query session's work.",
-    "reference_photos is EMPTY. imageBriefs and shopifyProductGid are both null, so there is no product photograph to hash (SPEC 6.4) and attachments is omitted from every option rather than invented. Per ADR-021 this is a gap in the EXPORT, not a blocked prompt: the owner uploads the reference in the generation tool.",
-    "The reviews section places reviews.photos.0-5 inside the same section element as six named quotes, each carrying a five-star row and a green Verified label. 05-social-snapshot's authenticity fence bars a generated snapshot from sitting beside a name, star row or verified badge.",
-    "brief.rawFeatures itself warns that the page's claims outrun the evidence: mattress vacuuming has limited effect on total allergen load on its own, the 99.9 percent figure needs the manufacturer's test data, and UV-C is harmful to eyes and skin with the lift-off cut-out unconfirmed. No image on this page asserts a kill rate, a percentage or a sterilisation claim."
-  ]
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "First person, problem-first: waking congested, skin irritated, and the mattress is the suspect.",
+        "image_slots": [
+          {
+            "slot_id": "hero.image",
+            "ratio": "16:9"
+          }
+        ]
+      },
+      {
+        "id": "reasons.items.0",
+        "role": "cause",
+        "copy_summary": "Ordinary suction lifts only what sits on the weave; mite waste stays bound in deeper batting. 36,000 taps a minute agitate it loose into the suction stream.",
+        "image_slots": [
+          {
+            "slot_id": "reasons.items.0.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "reasons.items.1",
+        "role": "problem-agitation",
+        "copy_summary": "Clean sheets on an unwashed mattress feel fresh and leave the irritants in place millimetres beneath the pillowcase.",
+        "image_slots": [
+          {
+            "slot_id": "reasons.items.1.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "reasons.items.2",
+        "role": "proof",
+        "copy_summary": "A basic exhaust filter scatters microscopic particles back into bedroom air; three-stage filtration with multi-cup separation keeps them in the chamber.",
+        "image_slots": [
+          {
+            "slot_id": "reasons.items.2.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "reasons.items.3",
+        "role": "mechanism",
+        "copy_summary": "Mattresses hold body humidity and warmth; heat at about 149F dries the fabric while 16 kPa suction runs.",
+        "image_slots": [
+          {
+            "slot_id": "reasons.items.3.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "reasons.items.4",
+        "role": "social-proof",
+        "copy_summary": "The dust-level indicator glows red during heavy pickup and turns blue when the area is clean, so nobody has to guess.",
+        "image_slots": [
+          {
+            "slot_id": "reasons.items.4.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "reasons_b.items.0",
+        "role": "outcome",
+        "copy_summary": "At 4.19 lbs it goes over mattresses, pillows, curtains, car seats and pet beds without straining wrists, where a floor vacuum has to be heaved onto the bed.",
+        "image_slots": [
+          {
+            "slot_id": "reasons_b.items.0.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "reasons_b.items.1",
+        "role": "mechanism",
+        "copy_summary": "An integrated UV sterilisation lamp treats surface fabric on every pass, alongside vibration, heat and sealed suction.",
+        "image_slots": [
+          {
+            "slot_id": "reasons_b.items.1.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "reviews.photos.0",
+        "role": "social-proof",
+        "copy_summary": "Verified-buyer quotes about a full dust cup, no dust blown back, light weight, grey sediment, pet hair and a washable filter.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.photos.0.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "reviews.photos.1",
+        "role": "social-proof",
+        "copy_summary": "As above.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.photos.1.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "reviews.photos.2",
+        "role": "social-proof",
+        "copy_summary": "As above.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.photos.2.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "reviews.photos.3",
+        "role": "social-proof",
+        "copy_summary": "As above.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.photos.3.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "reviews.photos.4",
+        "role": "social-proof",
+        "copy_summary": "As above.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.photos.4.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "reviews.photos.5",
+        "role": "social-proof",
+        "copy_summary": "As above.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.photos.5.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "scarcity",
+        "role": "cta",
+        "copy_summary": "Scarcity block product card, 'warehouse allocations are running low'.",
+        "image_slots": [
+          {
+            "slot_id": "scarcity.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "rail",
+        "role": "cta",
+        "copy_summary": "Offer rail product card, 'Deep mattress cleaning with 16 kPa sealed suction'.",
+        "image_slots": [
+          {
+            "slot_id": "rail.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "hero.author_avatar",
+        "role": "author",
+        "copy_summary": "Byline portrait, 'By Philip Dawson'.",
+        "image_slots": [
+          {
+            "slot_id": "hero.author_avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "closing.bio_image",
+        "role": "author",
+        "copy_summary": "About-the-author portrait.",
+        "image_slots": [
+          {
+            "slot_id": "closing.bio_image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "comments.items.0",
+        "role": "social-proof",
+        "copy_summary": "Commenter portrait, 1 of 7.",
+        "image_slots": [
+          {
+            "slot_id": "comments.items.0.avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "comments.items.1",
+        "role": "social-proof",
+        "copy_summary": "Commenter portrait, 2 of 7.",
+        "image_slots": [
+          {
+            "slot_id": "comments.items.1.avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "comments.items.2",
+        "role": "social-proof",
+        "copy_summary": "Commenter portrait, 3 of 7.",
+        "image_slots": [
+          {
+            "slot_id": "comments.items.2.avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "comments.items.3",
+        "role": "social-proof",
+        "copy_summary": "Commenter portrait, 4 of 7.",
+        "image_slots": [
+          {
+            "slot_id": "comments.items.3.avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "comments.items.4",
+        "role": "social-proof",
+        "copy_summary": "Commenter portrait, 5 of 7.",
+        "image_slots": [
+          {
+            "slot_id": "comments.items.4.avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "comments.items.5",
+        "role": "social-proof",
+        "copy_summary": "Commenter portrait, 6 of 7.",
+        "image_slots": [
+          {
+            "slot_id": "comments.items.5.avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "comments.items.6",
+        "role": "social-proof",
+        "copy_summary": "Commenter portrait, 7 of 7.",
+        "image_slots": [
+          {
+            "slot_id": "comments.items.6.avatar",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "header.logo",
+        "role": "cta",
+        "copy_summary": "Brand logo, already supplied.",
+        "image_slots": [
+          {
+            "slot_id": "header.logo",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "footer.logo",
+        "role": "cta",
+        "copy_summary": "Brand logo, already supplied.",
+        "image_slots": [
+          {
+            "slot_id": "footer.logo",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "guarantee.badge_image",
+        "role": "cta",
+        "copy_summary": "Money-back guarantee badge, already supplied.",
+        "image_slots": [
+          {
+            "slot_id": "guarantee.badge_image",
+            "ratio": "1:1"
+          }
+        ]
+      }
+    ]
+  }
 }

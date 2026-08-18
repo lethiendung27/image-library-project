@@ -35,6 +35,31 @@ def _index_types():
 
 TYPES = _index_types()
 
+# The contract this page was routed against. Until now content.json was a
+# document nobody read: the routing lived in this script's head and the two
+# could drift with nothing to notice. Everything below is checked against it.
+CONTRACT = json.load(open(os.path.join(HERE, "content.json"), encoding="utf-8"))
+ATTRS = CONTRACT["product"]["attributes"]
+DECLARED = {sl["slot_id"]: {"ratio": sl["ratio"], "role": sec["role"]}
+            for sec in CONTRACT["page"]["sections"]
+            for sl in sec["image_slots"]}
+
+# mapping/slot-rules.md, "Attribute gates (deterministic kill-rules)". Written
+# as data so the emitted routing can be checked against them rather than
+# trusted. Each entry: (condition on ATTRS, type it kills, the rule's own words).
+ATTRIBUTE_GATES = [
+    (lambda a: a["symptom_visibility"] == "invisible", "01-pain-split",
+     "symptom_visibility: invisible drops 01-pain-split"),
+    (lambda a: a["body_contact"] is False, "03-mechanism-ghostbody",
+     "body_contact: false drops 03-mechanism-ghostbody; mechanism falls to xray"),
+    (lambda a: a["result_visibility"] == "invisible", "06-relief-scene",
+     "result_visibility: invisible drops 06-relief-scene, close with relief-hero"),
+    (lambda a: a["multi_step_usage"] is False, "03-use-sequence",
+     "multi_step_usage: false drops 03-use-sequence unless buyers assume "
+     "complexity"),
+]
+KILLED = {tid: why for cond, tid, why in ATTRIBUTE_GATES if cond(ATTRS)}
+
 # Per-type prompt ceilings, each taken from that type's own SLOT CONSTRAINTS.
 CEIL = {"01-pain-scene": 2500, "02-cause-anatomy": 1800, "03-mechanism-xray": 1900,
         "04-proof-lockedframe": 1800, "05-social-snapshot": 1800,
@@ -2197,6 +2222,45 @@ print("prompts exempt from their type's photo flag (each must be a declared "
       "variant exemption or a G1-exempt type):")
 for row in split:
     print("   ", row)
+# ---- checked against content.json, not against this script's memory ---------
+print()
+print("CONTRACT CHECKS (mapping/content.schema.json)")
+print("  channel:", CONTRACT["page"]["channel"], "== emitted", OUT["channel"],
+      "->", CONTRACT["page"]["channel"] == OUT["channel"])
+emitted = {s["slot_id"] for s in OUT["slots"]}
+print("  slots in the contract but not emitted:",
+      sorted(set(DECLARED) - emitted) or "none")
+print("  slots emitted but not in the contract:",
+      sorted(emitted - set(DECLARED)) or "none")
+role_drift = [(s["slot_id"], s["section_role"], DECLARED[s["slot_id"]]["role"])
+              for s in OUT["slots"]
+              if s["slot_id"] in DECLARED
+              and s["section_role"] != DECLARED[s["slot_id"]]["role"]]
+print("  roles that disagree with the contract:", role_drift or "none")
+# A type the attribute gates killed must not appear in any option. This is the
+# check that makes the gates real rather than remembered.
+gate_leak = [(s["slot_id"], o["opt"], o["type"], KILLED[o["type"]])
+             for s in routed for o in s["options"] if o["type"] in KILLED]
+print("  gates fired:", sorted(KILLED) or "none")
+print("  options using a gated-out type:", gate_leak or "none")
+# The ratio the layout asks for against the ratio the type can render. Where they
+# differ the layout crops, and that is a finding rather than an error - but it is
+# now counted rather than described in prose.
+crop = [(s["slot_id"], DECLARED[s["slot_id"]]["ratio"], o["opt"], o["ratio"])
+        for s in routed for o in s["options"]
+        if s["slot_id"] in DECLARED and o["ratio"] != DECLARED[s["slot_id"]]["ratio"]]
+print(f"  options rendered at a ratio the slot does not declare: {len(crop)} "
+      f"of {sum(len(s['options']) for s in routed)}")
+for row in sorted({(a, b, d) for a, b, _c, d in crop}):
+    print("     slot declares", row[1], "-> rendered", row[2], "  ", row[0])
+# ADR-016: five legal ratios, and the slot's own declaration is checked too.
+illegal_declared = sorted({r["ratio"] for r in DECLARED.values()
+                           if r["ratio"] not in ("16:9", "4:3", "1:1", "3:4",
+                                                 "9:16")})
+print("  slot ratios the contract declares outside ADR-016:",
+      illegal_declared or "none")
+print()
+
 # One-type-once: a repeat is legal only as the runbook's rung 4, another
 # execution differing on a named dimension. Printed so a repeat is never silent.
 seen = _c.defaultdict(list)

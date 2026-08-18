@@ -19,6 +19,7 @@ Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
 | comparison | `04-proof-lockedframe--verdict`, `03-spec-split`, `01-pain-split` | `04-proof-lockedframe--verdict` | — | `04-proof-lockedframe--verdict` |
 | outcome | `06-relief-hero` | `06-relief-hero` | `06-relief-hero` (ugc), `06-relief-scene`* | `06-relief-scene`*, `06-relief-hero` |
 | cta | — (standard product shot, out of library scope) | — | — | — |
+| author | — (a portrait of a named person, out of library scope) | — | — | — |
 
 Two cells were TRIMMED rather than widened on 2026-08-11, because the type argued
 against itself being there: `02-symptom-rail` off advertorial (03-spec-split's
@@ -30,6 +31,16 @@ type's CHANGELOG for the evidence.
 
 `*` `06-relief-scene` only when its `requires_pair` (`01-pain-scene`, same person) is
 also on the page.
+
+`author` was added on 2026-08-18 with every cell empty, which is the point of adding it.
+Bylined advertorials carry portrait slots — a byline avatar, an About-the-author image,
+a comment thread of faces — and two routed pages carried nine of them between them. No
+library type produces a portrait of a named person, and generating a face to sit under a
+real byline is a disclosure decision rather than an image one. Before this row a session
+had to re-derive that every time, and `content.json` had no legal role to declare those
+slots under at all, so they were either mislabelled `cta` or left out of the contract
+entirely. An empty row records the decision once; a missing row makes it a judgement call
+forever.
 
 ## Attribute gates (deterministic kill-rules, applied in Stage 2)
 
