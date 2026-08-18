@@ -1,0 +1,988 @@
+{
+  "page_id": "65",
+  "registry_version": "2.0.0",
+  "channel": "advertorial",
+  "awareness_stage": "problem-aware",
+  "slots": [
+    {
+      "slot_id": "hero.image",
+      "section_role": "hero",
+      "asset": "65-01-hero-pain-scene.png",
+      "placement": "Directly under the byline, above hero.intro_1.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to make a cold reader recognise themselves in a held state. Nothing about it is temporal - no transition, no sequence, no output flowing - so it does not earn motion."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decides it. The hero cell for advertorial is 01-pain-scene and the copy hands it the exact moment the type wants: waking congested, before any product exists. A takes the symptom itself on the body, which is evidence rank 1 and the rank that has carried this type's passing renders. PAGE LEGALITY: no product in frame is correct here and G1 does not bind. EVIDENCE: the type is at 1.14 with a passing worked example in exactly this shape. PRODUCT PRESENCE: none, and that is the type's law. PROMPT RISK: lowest of the three - B needs a child and a parent's hands in one frame, which is two bodies to get right, and C is the only one whose evidence is airborne, which is the hardest thing here to render convincingly.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nWoman early 40s, in a creased cotton sleep t-shirt, sitting on the edge of an\nunmade bed first thing in the morning, mid-way through pressing the heels of\nboth hands up into her eye sockets and dragging them outward across the\ncheekbones. Under that force: shoulders hunched forward over her knees, elbows\nbraced on her thighs, head tipped down into her hands.\nFace: eyes screwed shut under the heels of her hands, mouth open to breathe,\nnostrils drawn.\n\n[EVIDENCE]\nBoth eyelids are swollen and pink-rimmed with the lashes stuck wet together,\nthe skin from the inner corners down across the cheekbones raw and shiny where\nit has been rubbed, and the nostrils and upper lip are chapped red. A wad of\nused tissues is pushed into the sheet beside her hip.\n\n[ENVIRONMENT]\nAn ordinary bedroom, just after waking, curtains half open. Lived-in clutter\nbelonging to that place: a water glass and a blister strip of tablets on the\nnightstand, yesterday's clothes over a chair back, a phone face down on the\nduvet, one slipper under the bed. Nothing arranged, nothing removed to tidy the\nframe.\n\n[GAZE] unaware of the camera, eyes shut behind her own hands.\n\n[LIGHT] low-key. Key: thin grey daylight through the gap in the curtains, hard\nand cold across her face. Fill: the dim of the unlit room. Rim light along the\nshoulder and the top of the forearms. Deep shadow across most of the frame.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "The waking moment itself, with the symptom on the body: swollen lids, raw skin, chapped nostrils. Evidence rank 1, the rank this type's passing renders have used.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "Needs no photo - the type is G1-exempt and no product appears. hero.image carries NO aspect class in the template, so 16:9 lands uncropped.",
+          "asset_candidate": "65-01-hero-pain-scene--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "persona - the parent rather than the sufferer",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nMan late 30s in a stretched t-shirt and pyjama bottoms, kneeling on the carpet\nbeside a child's low bed in the small hours, mid-way through catching his young\ndaughter's wrist to stop her nails going back into the crook of her own elbow.\nUnder that force: his weight forward on one knee, both hands closed round her\nforearm, her arm pulling against him.\nFace: jaw set, brows drawn together, eyes down on her arm.\n\n[EVIDENCE]\nThe inside of her elbow is broken out in raw scratched patches, the skin lifted\nand weeping in two places with dried flakes caught on the pyjama cuff, and\nshort parallel scratch lines run down the forearm below it.\n\n[ENVIRONMENT]\nA small child's bedroom in the middle of the night. Lived-in clutter belonging\nto that place: a tub of emollient cream open on the floor with its lid beside\nit, a soft toy fallen half out of the bed, a nightlight low on the skirting, a\nlaundry pile by the door. Nothing arranged, nothing removed to tidy the frame.\n\n[GAZE] unaware of the camera, gaze down on the child's arm.\n\n[LIGHT] low-key. Key: the nightlight low and to one side, warm and weak. Fill:\nlanding light through the part-open door behind him. Rim light along his\nshoulder and the child's hair. Deep shadow across most of the frame.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "brief.persona names parents of children with eczema as a distinct group, and the pain reads differently on someone holding another person's arm than on their own face. Same evidence rank, different body.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "Two bodies in one frame is the risk; the type's own law is that a face cannot carry effort the body is not making, and here the effort is his, not hers.",
+          "asset_candidate": "65-01-hero-pain-scene--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "evidence rank - residue rather than symptom",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nWoman early 40s in a creased sleep t-shirt, standing at the foot of a stripped\nbed early in the morning, mid-way through shaking a folded sheet out flat over\nthe bare mattress, both arms thrown wide and the fabric still lifting.\nUnder that force: weight on the balls of the feet, shoulders pulled up and\nback, the sheet snapping away from her hands.\nFace: turned aside away from the bed, eyes narrowed, mouth pressed shut.\n\n[EVIDENCE]\nA dense cloud of fine dust has burst up out of the mattress into the shaft of\ndaylight and hangs there, thick enough to read against the dark of the room,\nwith a haze of it settling back onto the bare ticking below.\n\n[ENVIRONMENT]\nAn ordinary bedroom, early morning, one curtain pulled back. Lived-in clutter\nbelonging to that place: a laundry basket of bedding on the floor, a radiator\nwith a towel over it, a water glass on the nightstand, a bin under the window.\nNothing arranged, nothing removed to tidy the frame.\n\n[GAZE] unaware of the camera, face turned away from the dust.\n\n[LIGHT] low-key. Key: one hard shaft of morning daylight through the open\ncurtain, raking across the bed and lighting the airborne dust. Fill: the dim of\nthe unlit room. Rim light along her forearms. Deep shadow across most of the\nframe.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "Rank 2: the physical residue the problem produces. The dust burst out of the mattress into a light shaft is the page's own thesis made visible, and it names the mattress as the source before a single word of copy does.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "Rank 2 has never been the ONLY evidence in a render of this type. Airborne dust against a dark room is the whole argument, so if it renders thin the option fails outright rather than partly.",
+          "asset_candidate": "65-01-hero-pain-scene--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reasons.items.0.image",
+      "section_role": "cause",
+      "asset": "65-02-reason0-cause-anatomy.png",
+      "placement": "Beside 'Standard vacuums only touch the surface'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "cause",
+        "duration_s": 3,
+        "loop": "seamless loop",
+        "shot": "both panels, held as drawn",
+        "action": "left grains hold, right grains rise",
+        "result": "only the right weave clears",
+        "match": "flat vector, same two grounds",
+        "delivery": "mp4/webm, under 2 MB",
+        "reason": "The cause this slot indicts IS temporal: the head taps, the weave lifts, the grains come out or they do not. A still can only show the endpoint. 02-cause-anatomy legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job, cause.",
+        "prompt": "TYPE: G12 motion brief plate, whole-frame card\nMEDIUM: a flat card carrying text and nothing else. NOT a photograph, NOT an\nillustration, NOT a scene. Nothing is depicted.\n\nThe whole picture is flat dark grey, one even tone, no gradient and no texture.\nOne thin white rule runs inside it as a closed rectangle, its outer edge\nfinishing a clear margin short of the picture on all four sides, so no part of\nit touches or leaves an edge.\n\nInside that rule, in clean white sans-serif, five short lines, each on one line,\nleft aligned, the block filling about half the picture's width:\nGIF SLOT · 3s · seamless loop\nSHOT both panels, held as drawn\nACTION left grains hold, right grains rise\nRESULT only the right weave clears\nMATCH flat vector, same two grounds\n\nSet those five lines exactly as written, as plain words. No asterisks, no\nbackticks, no bullets, no markdown of any kind, and no line wrapping.\n\nThis is the only text in the picture. No logo, no icon, no border decoration,\nno product and no scene.",
+        "asset": "65-02-reason0-cause-anatomy--brief.png"
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is decisive. The section's whole argument is a depth comparison - surface versus weave - and this type exists to draw a measurable landmark twice and change one property. The measure mark IS the argument here, not decoration. PAGE LEGALITY: cause sits second on the page, which is where this type belongs. EVIDENCE: flat-vector is the style that holds the measure dash pattern, and the type's strongest renders are the ones that left the anatomical skeleton behind, which a mattress section does. PRODUCT PRESENCE: the product is the right panel and a person is visible using it, which the type requires and four of six renders once failed. PROMPT RISK: B trades a proven style for a softer one, and C moves to a pillow, which is a smaller and less recognisable object than the thing the page is about.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "02-cause-anatomy",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.15\nMEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.\n\n[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld\nunit in the RIGHT panel.\n\n[FRAME] a woman kneeling on a bed working a cleaning head across the mattress,\nthe whole bed and figure in shot, the head small within it and the mattress cut\nopen in section beneath.\n[GROUND] deep desaturated indigo, the right half one step lighter than the left.\n[BODY] the mattress in section - woven ticking over a batting layer - cut as\nflat layers in warm ivory on a translucent outline. NOT a skeleton, NOT a human\nfigure. Exactly one bed and one figure in EACH panel,\nsame scale and view.\n\n[PANELS]\nLEFT: an ordinary upright vacuum's wide floor head, drawn realistically and\nunbranded, pressed flat on the ticking; only the loose debris lying on top of\nthe weave is gone, and the dark grains bound down in the batting stay where\nthey are.\nRIGHT: the reference handheld unit at the same place on the same mattress, its\nhead tapping the ticking so the weave lifts, and the same dark grains rising out\nof the batting into the intake. The batting layer and its grains appear in both\npanels and neither head covers them.\n\n[MARKS], two, nothing else marked:\n- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE\n  TICKING, running from the top of the ticking down to the deepest grain still\n  in the batting and STOPPING at both. Both begin at the same point in\n  their panel. Identical thickness and dash. One property differs: the length -\n  long left, closed to almost nothing right. Red left, blue right. Straight\n  lines, not boxes.\n- verdict: filled solid discs, red with a white X in the left panel's TOP\n  corner, green with a white check in the right panel's. Same diameter, not\n  rings.\n\nG3: red wrong, blue correct, green badge, nothing else.",
+          "rationale": "Flat-vector, the style that holds the dash pattern. The mattress cut in section under a kneeling figure gives the type its `whole` frame and its measurable landmark in one.",
+          "composition_notes": "Needs the product photo. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-02-reason0-cause-anatomy--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "style - airbrushed rather than flat-vector",
+          "type": "02-cause-anatomy",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.15\nMEDIUM: 2D illustration, airbrushed. NOT photography, NOT 3D.\n\n[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld\nunit in the RIGHT panel.\n\n[FRAME] a woman kneeling on a bed working a cleaning head across the mattress,\nthe whole bed and figure in shot, the head small within it and the mattress cut\nopen in section beneath.\n[GROUND] deep desaturated indigo, the right half one step lighter than the left.\n[BODY] the mattress in section - woven ticking over a batting layer - modelled\nin warm ivory with soft gradients on a translucent outline. NOT a skeleton, NOT\na human figure. Exactly one bed and one figure in EACH panel,\nsame scale and view.\n\n[PANELS]\nLEFT: an ordinary upright vacuum's wide floor head, drawn realistically and\nunbranded, pressed flat on the ticking; only the loose debris lying on top of\nthe weave is gone, and the dark grains bound down in the batting stay where\nthey are.\nRIGHT: the reference handheld unit at the same place on the same mattress, its\nhead tapping the ticking so the weave lifts, and the same dark grains rising out\nof the batting into the intake. The batting layer and its grains appear in both\npanels and neither head covers them.\n\n[MARKS], two, nothing else marked:\n- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE\n  TICKING, running from the top of the ticking down to the deepest grain still\n  in the batting and STOPPING at both. Both begin at the same point in\n  their panel. Identical thickness and dash. One property differs: the length -\n  long left, closed to almost nothing right. Red left, blue right. Straight\n  lines, not boxes.\n- verdict: filled solid discs, red with a white X in the left panel's TOP\n  corner, green with a white check in the right panel's. Same diameter, not\n  rings.\n\nG3: red wrong, blue correct, green badge, nothing else.",
+          "rationale": "Airbrushed gives modelled volume, which suits batting and fibre better than flat fills do. The type offers it and the trade is legibility of the dash against believability of the material.",
+          "composition_notes": "Needs the product photo. The measure dash is the risk - flat-vector is the style recorded as holding it. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-02-reason0-cause-anatomy--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "subject class - the pillow rather than the mattress",
+          "type": "02-cause-anatomy",
+          "type_version": "1.15",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.15\nMEDIUM: 2D illustration, flat-vector. NOT photography, NOT 3D.\n\n[PRODUCT REFERENCE] the attached photo is the exact reference for the handheld\nunit in the RIGHT panel.\n\n[FRAME] a woman sitting on the edge of a bed working a cleaning head over a\npillow held flat on her lap, the whole figure and pillow in shot, the head small\nwithin it and the pillow cut open in section beneath.\n[GROUND] deep desaturated indigo, the right half one step lighter than the left.\n[BODY] the pillow in section - woven cover over a fibre core - cut as flat\nlayers in warm ivory on a translucent outline. NOT a skeleton, NOT a human\nfigure. Exactly one pillow and one figure per panel, same scale\nand view.\n\n[PANELS]\nLEFT: an ordinary upright vacuum's wide floor head, drawn realistically and\nunbranded, pressed flat on the cover; the loose debris on top of the weave is gone and the\ndark grains bound down in the fibre core stay where they are.\nRIGHT: the reference handheld unit at the same place on the same pillow, its\nhead tapping the cover so the weave lifts, and the same dark grains rising out\nof the core into the intake. The fibre core and its grains appear in both panels\nand neither head covers them.\n\n[MARKS], two, nothing else marked:\n- measure: two dashed straight lines, one per panel, each PERPENDICULAR TO THE\n  COVER, running from the top of the cover down to the deepest grain still in\n  the core and STOPPING at both. Both begin at the same point in\n  their panel. Identical thickness and dash. One\n  property differs: the length - long on the left, closed to almost nothing on\n  the right. Red left, blue right. Straight lines, not boxes.\n- verdict: filled solid discs, red with a white X in the left panel's TOP\n  corner, green with a white check in the right panel's. Same diameter, not\n  rings.\n\nG3: red wrong, blue correct, green badge, nothing else.",
+          "rationale": "Subject class is this type's widest diversity lever. A pillow on a lap is closer to the reader's face than a mattress is, and the copy's next section is about what sits millimetres beneath a pillowcase.",
+          "composition_notes": "Needs the product photo. Argues the pillow while the section's own words argue the mattress. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-02-reason0-cause-anatomy--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reasons.items.1.image",
+      "section_role": "problem-agitation",
+      "asset": "65-03-reason1-pain-scene-object.png",
+      "placement": "Beside 'Washing sheets alone leaves the core untouched'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A still life of a bed already stripped. It is a state the reader inspects, not a process, and nothing in it changes over time."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "PAGE LEGALITY decides it over FIT. This is a second pain beat and 01-pain-scene is already the hero, so the runbook's rung 4 applies - another execution of a type on the page, differing on a named dimension, here subject class: object-only rather than a person. That is the precedent recorded twice in the ledger for this type. FIT: the section's argument is that the clean thing sits on the dirty thing, which is a still life and not an action. EVIDENCE: object-only executions are recorded twice. PRODUCT PRESENCE: none, correctly - the product is still four sections away. PROMPT RISK: A is G1-exempt and runnable with no upload at all; B puts a person back in and competes with the hero for the same beat.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - object-only",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nNo person in frame. The force is the weight of the bedding itself: a folded\nstack of laundered sheets set down on the corner of a bed that has just been\nstripped, the top sheet still creased from the airer, the pile leaning where it\nwas put down one-handed and not straightened.\n\n[EVIDENCE]\nThe bare mattress is uncovered across the whole bed, and the ticking carries a\nbody-shaped stain of grey-yellow discolouration deepest where the hips and\nshoulders lie, its edge soft and unmistakable. Loose fibre and grit have\ngathered along the piped seam and in the buttoned dimples, and one seam is\nfrayed open where the dust sits thickest.\n\n[ENVIRONMENT]\nAn ordinary bedroom in the middle of a weekday morning, the window open behind\nit. Lived-in clutter belonging to that place: the stripped duvet bundled on the\nfloor, a laundry basket on its side by the door, a mug left on the nightstand,\nthe mattress protector balled at the foot of the bed. Nothing arranged, nothing\nremoved to tidy the frame.\n\n[GAZE] no subject, so no gaze. The frame looks down the length of the bed from\nstanding height, the way the person who stripped it is looking at it.\n\n[LIGHT] low-key. Key: flat overcast daylight from the window along one side of\nthe bed, cold and even. Fill: the dim of the room. Rim light along the folded\nedge of the clean sheets. Deep shadow across the far half of the frame.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "The clean stack set down on the stained bare ticking is the section's sentence as one picture. Evidence rank 1 on an object: the discolouration itself, not a gesture at it.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "Needs no photo - G1-exempt, no product. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.",
+          "asset_candidate": "65-03-reason1-pain-scene-object--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "subject - a person mid-action rather than object-only",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nWoman early 40s in a t-shirt and leggings, leaning across a bed mid-way through\ndragging a laundered fitted sheet down over the near corner of the mattress,\nboth hands stretching the elastic under the edge. Under that force: her weight\non one knee on the mattress, both arms extended, the sheet pulled taut and\nlifting off the ticking along its length.\nFace: eyes down on the corner she is fitting, mouth shut, cheek slack.\n\n[EVIDENCE]\nWhere the clean sheet has not yet reached, the bare ticking shows a body-shaped\nstain of grey-yellow discolouration deepest at the hips and shoulders, with\nloose fibre and grit gathered along the piped seam beside her knee.\n\n[ENVIRONMENT]\nAn ordinary bedroom in the middle of a weekday morning. Lived-in clutter\nbelonging to that place: the stripped duvet bundled on the floor, a laundry\nbasket on its side by the door, a mug left on the nightstand, a pillow without\nits case on the chair. Nothing arranged, nothing removed to tidy the frame.\n\n[GAZE] unaware of the camera, gaze down on the corner of the mattress.\n\n[LIGHT] low-key. Key: flat overcast daylight from the window along one side of\nthe bed, cold and even. Fill: the dim of the room. Rim light along her forearm\nand the pulled edge of the sheet. Deep shadow across the far half of the frame.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "The type's default form: a force being applied. Fitting a clean sheet over a stained mattress is the exact act the section calls futile, and the stain is still in frame beside the hand doing it.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "Needs no photo. Repeats the hero's form as well as its type, so the two beats read more alike. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.",
+          "asset_candidate": "65-03-reason1-pain-scene-object--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "subject class - pillows rather than the bed",
+          "type": "01-pain-scene",
+          "type_version": "1.14",
+          "variant": "candid",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.14 --candid\nREGISTER: cinematic film still. Single frame.\n\n[SUBJECT]\nNo person in frame. The force is a night's weight already spent: two pillows\nstripped of their cases and left where they were pulled, one folded over on\nitself against the headboard and the other flat and dented in the middle, both\nstill holding the shape of a head.\n\n[EVIDENCE]\nThe bare pillow ticking is discoloured in a wide grey-yellow ring around the\ndent where the head lies, the fabric there thinned and slightly shiny, with\nloose fibre and fine grit caught along the piped seam and a scatter of it on\nthe sheet below.\n\n[ENVIRONMENT]\nAn ordinary bedroom, mid-morning, curtains open. Lived-in clutter belonging to\nthat place: the pillowcases dropped on the floor beside the bed, a book face\ndown on the nightstand, a phone charger trailing over the headboard, a glass\nhalf full of water. Nothing arranged, nothing removed to tidy the frame.\n\n[GAZE] no subject, so no gaze. The frame looks down at the pillows from\nstanding height at the side of the bed.\n\n[LIGHT] low-key. Key: flat overcast daylight from the window across the head of\nthe bed, cold and even. Fill: the dim of the room. Rim light along the folded\nedge of the near pillow. Deep shadow across the foot of the frame.\n\n[FORBIDDEN] No product, no panels, no insets. No mark of any kind.\n\n[GRADE] Desaturated blue-grey, crushed blacks, fine film grain, shallow depth of\nfield, 35mm.\n\nSTYLE: editorial photojournalism, cinematic film still, natural and unstaged.",
+          "rationale": "The copy's own line is that mite matter sits just millimetres beneath the pillowcase. Two stripped pillows still holding the shape of a head put the evidence where the reader's face goes.",
+          "axes": {
+            "gaze": "candid"
+          },
+          "composition_notes": "Needs no photo. The tightest frame of the three, so the 4:3 crop costs least here. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.",
+          "asset_candidate": "65-03-reason1-pain-scene-object--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reasons.items.2.image",
+      "section_role": "proof",
+      "asset": "65-04-reason2-proof-lockedframe.png",
+      "placement": "Beside 'Ordinary vacuums blow fine particles into the room'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A locked-frame comparison is inspected, not watched - the reader's eye does the travelling between panels. Motion here would also break the fairness rule by drawing the eye to one panel."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT and EVIDENCE agree. The section's claim is that one machine puts particles into the air and the other does not, and that difference is visible to the naked eye inside a static frame - motes in a light shaft - which is the exact condition this type's use_when sets. Two panels rather than three because the section names one alternative, not two. PAGE LEGALITY: the type's use_when also wants a reader who already understands the problem, and by reason 2 they have had the cause and the pain. CAPABILITY: generation_mode is multi-pass at type level, but its own gate sends --verdict to handheld in one pass where the renderer does not composite, which ADR-021 settles for this pipeline. PROMPT RISK: B adds a third panel and a second unbranded machine to keep identical; C moves to a sofa, which is not the section's subject.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - two panels",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "variant": "verdict",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld\nREGISTER: documentary photography. No overlays, badges, arrows or text.\nLAYOUT: 2 equal vertical panels, thin white gutter, no outer border.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit in the RIGHT\npanel. Preserve shape, proportions, material, finish and colour exactly.\n\n[SCENE - the same in both]\nThe same corner of the same bedroom, the same double bed stripped to bare ticking,\nthe same curtain pulled back on the same window, a nightstand with a lamp on it.\nOne hard shaft of morning daylight crosses the room above the bed in both.\n\n[FRAMING]\nOne person photographed this twice from where they were standing, phone level\nwith the top of the mattress, the bed filling the lower two thirds and the lit shaft\nof air across the upper third. It reads as one shot taken twice, never two. Light differs only in exposure, never in warmth.\n\n[THE VARIABLE]\nWhat is being run over the mattress, and what the shaft of light shows above it.\nBoth panels at the same moment: the machine mid-pass, halfway down the bed.\nLEFT - an ordinary upright vacuum, unbranded, its wide head on the ticking and\nits body on the floor; the shaft of light above\nthe bed is thick with fine motes turning in it.\nRIGHT - the reference handheld unit at the same place on the same mattress, one\ncable to the wall; the same shaft of light is empty and clean, the beam edge\nsharp against the dark of the room.\n\n[GRADE - the same in both]\nNeutral, from the overcast window and the pale ticking rather than a filter.\nStill colour, never black and white.\n\nBoth panels get the same exposure, tidiness and framing; the ordinary vacuum is\nan object someone would own, never made to look worse.",
+          "rationale": "Two panels, one variable: what is on the mattress and what the light shaft shows above it. The room, the bed, the window and the beam are named as constant before either panel is described.",
+          "axes": {
+            "camera_lock": "handheld"
+          },
+          "composition_notes": "Needs the product photo. generation_mode is multi-pass at type level; the capability gate runs --verdict handheld in one pass where the renderer cannot composite, which is this pipeline (ADR-021). The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-04-reason2-proof-lockedframe--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "panel count - three rather than two",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "variant": "verdict",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld\nREGISTER: documentary photography. No overlays, badges, arrows or text.\nLAYOUT: 3 equal vertical panels, thin white gutters, no outer border.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit in the LAST\npanel. Preserve shape, proportions, material, finish and colour exactly.\n\n[SCENE - the same in all three]\nThe same corner of the same bedroom, the same double bed stripped to bare ticking,\nthe same curtain pulled back on the same window, a nightstand with a lamp on it.\nOne hard shaft of morning daylight crosses the room above the bed in every one.\n\n[FRAMING]\nOne person photographed this three times from where they were standing, phone\nlevel with the top of the mattress, the bed filling the lower two thirds and the lit\nshaft of air across the upper third. It reads as one shot taken three times,\nnever three. Light differs only in exposure, never in warmth.\n\n[THE VARIABLE]\nWhat is being run over the mattress, and what the shaft of light shows above it.\nEvery panel at the same moment: the machine mid-pass, halfway down the bed.\n1 - an ordinary upright vacuum, unbranded, its wide head on the ticking; the\nshaft above the bed thick with fine motes turning in it.\n2 - a small basic handheld cleaner, unbranded, on the same spot; the shaft\nthinner but still drifting with motes.\n3 - the reference handheld unit at the same place, one cable to the wall; the\nsame shaft empty, its beam edge sharp against the dark of the room.\n\n[GRADE - the same in all three]\nNeutral, from the overcast window and the pale ticking rather than a filter.\nStill colour, never black and white.\n\nPanels one and two get the same exposure, tidiness and framing as panel three;\nthe alternatives are ordinary products someone would buy, never made to look\nworse.",
+          "rationale": "brief.competitorContext names three alternatives, and a basic handheld cleaner is the one a reader may already have tried. The middle panel is the honest half-measure between the two ends.",
+          "axes": {
+            "camera_lock": "handheld"
+          },
+          "composition_notes": "Needs the product photo. Three panels in a 1:1 frame give each a tall narrow strip; the type's own ratio evidence is that stacked and split layouts degrade as panels get thinner. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-04-reason2-proof-lockedframe--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "surface - a sofa rather than a mattress",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "variant": "verdict",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld\nREGISTER: documentary photography. No overlays, badges, arrows or text.\nLAYOUT: 2 equal vertical panels, thin white gutter, no outer border.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit in the RIGHT\npanel. Preserve shape, proportions, material, finish and colour exactly.\n\n[SCENE - the same in both]\nThe same corner of the same living room, the same dark grey fabric sofa with its\ncushions in place, the same lamp lit behind it, the same window with the blind\nhalf down. One shaft of low afternoon daylight crosses the room above the sofa\narm in both.\n\n[FRAMING]\nOne person photographed this twice from where they were standing, phone level\nwith the top of the sofa back, the seat filling the lower two thirds and the lit shaft\nof air across the upper third. It reads as one shot taken twice, never two. Light differs only in exposure, never in warmth.\n\n[THE VARIABLE]\nWhat is being run over the sofa seat, and what the shaft of light shows above\nit. Both panels at the same moment: the machine mid-pass across the near\ncushion.\nLEFT - an ordinary upright vacuum, unbranded, its crevice tool dragged across the\nfabric and its body on the floor; the shaft of light\nabove the sofa thick with fine motes turning in it.\nRIGHT - the reference handheld unit at the same place on the same cushion, one\ncable to the wall; the same shaft of light empty and clean, the beam edge sharp\nagainst the dark of the room.\n\n[GRADE - the same in both]\nNeutral, from the window and the grey fabric rather than a filter. Still colour,\nnever black and white.\n\nBoth panels get the same exposure, tidiness and framing; the ordinary vacuum is\nan object someone would own, never made to look worse.",
+          "rationale": "The exhaust argument is not specific to beds, and the rawFeatures list names sofas, curtains and car seats. A living room also breaks a page that is otherwise entirely bedroom.",
+          "axes": {
+            "camera_lock": "handheld"
+          },
+          "composition_notes": "Needs the product photo. Argues in a room the section's own words never mention. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-04-reason2-proof-lockedframe--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reasons.items.3.image",
+      "section_role": "mechanism",
+      "asset": "65-05-reason3-relief-hero-detail.png",
+      "placement": "Beside 'Integrated heat creates a hostile environment'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The section's claim is thermal and thermal is invisible in every register this library has. A loop of a head moving over fabric adds duration without adding argument, and the --detail inset it would occupy holds a contact, which is a held state."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "This is the page's weakest slot and the recommendation says so. FIT: the section argues heat, and no type can photograph 149F - G8 forbids inventing an emission to make a render look alive. So the slot is served by the half of the claim a camera can hold, the sealed contact and the debris leaving the weave, and 06-relief-hero --detail is the type whose inset exists for a feature too small to read at scene scale. PAGE LEGALITY: the product appears here for the first time, which is the right beat for it. EVIDENCE: --detail is the type's best-evidenced inset after --recall. PRODUCT PRESENCE: dominant, in hand, and magnified. PROMPT RISK: the inset is at a corner and this slot is 4:3-cropped, so the crop is the thing to check. B moves the inset to the dust chamber, which argues capture rather than contact and duplicates what reasons.items.4 already shows.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the inset on the contact",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": "commercial",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15\nREGISTER: commercial. Professional camera, controlled light, deliberate negative\nspace on one side.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit, identical in\nevery layer. Preserve shape, proportions, material, finish and colour exactly.\n\n[SUBJECT] a woman in her forties in a plain long-sleeved top, kneeling on the\nfloor beside a low double bed, both hands on the handle of the unit.\n[POSE] mid-action: the unit pressed down flat on the bare mattress and pushed\naway from her along the ticking, hands engaged, gaze on the head where it meets\nthe fabric, focused rather than smiling. She kneels beside the bed with the\nwhole unit between her and the mattress surface, so the contact is never hidden\nby her own body.\n[SETTING] one real bedroom filled to the edges: a nightstand with a lamp and a\nwater glass, a chair with clothes over the back, a laundry basket, a radiator\nunder the window, a rug half under the bed, a door standing open onto a landing.\nBackground blurred but never blank. None of these objects carries printed text.\n[LIGHT] soft even window light from the left, background blurred, high-key.\n[OFFSET] she kneels to the right of frame; the inset occupies the space on the\nleft that she is offset from, taking about three quarters of it.\n\nIn the upper left corner sits a rounded rectangle about 20 percent of the frame\nwidth, its outline finishing a clear margin short of the picture on both sides.\nInside it, one magnified view the scene cannot show: the underside edge\nof the same unit sealed flat against the woven ticking, the fabric drawn up\nslightly into the intake slot and a fine grey debris rising off the weave into\nit. Same photographic register as the hero, same light quality, same\nresolution. It sits near the unit in the scene, linked by proximity alone - no\narrow, no glow, no border light.\n\nNo text anywhere in the image. No badge, no arrow, no percentage.",
+          "rationale": "The magnified seal between head and ticking is the one thing the scene cannot show and the one thing that makes the section true: the fabric lifts into the intake rather than the head riding over it.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "detail"
+          },
+          "composition_notes": "Needs the product photo. Argues the mechanical half of the section only; the thermal claim is left to the copy and is not proved here. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.",
+          "asset_candidate": "65-05-reason3-relief-hero-detail--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "inset content - the filled chamber rather than the contact",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": "commercial",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15\nREGISTER: commercial. Professional camera, controlled light, deliberate negative\nspace on one side.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit, identical in\nevery layer. Preserve shape, proportions, material, finish and colour exactly.\n\n[SUBJECT] a woman in her forties in a plain long-sleeved top, kneeling on the\nfloor beside a low double bed, both hands on the handle of the unit.\n[POSE] mid-action: the unit pressed down flat on the bare mattress and pushed\naway from her along the ticking, hands engaged, gaze on the head where it meets\nthe fabric, focused rather than smiling. She kneels beside the bed with the\nwhole unit between her and the mattress surface, so the contact is never hidden\nby her own body.\n[SETTING] one real bedroom filled to the edges: a nightstand with a lamp and a\nwater glass, a chair with clothes over the back, a laundry basket, a radiator\nunder the window, a rug half under the bed, a door standing open onto a landing.\nBackground blurred but never blank. None of these objects carries printed text.\n[LIGHT] soft even window light from the left, background blurred, high-key.\n[OFFSET] she kneels to the right of frame; the inset occupies the space on the\nleft that she is offset from, taking about three quarters of it.\n\nIn the upper left corner sits a rounded rectangle about 20 percent of the frame\nwidth, its outline finishing a clear margin short of the picture on both sides.\nInside it, one magnified view the scene cannot show: the same unit's\ntransparent dust chamber seen from the side, a deep bed of fine grey powder and\nmatted fibre packed against the clear wall from the bottom up. Same photographic\nregister as the hero, same light quality, same resolution. It sits near the unit\nin the scene, linked by proximity alone - no arrow, no glow, no border light.\n\nNo text anywhere in the image. No badge, no arrow, no percentage.",
+          "rationale": "Moves the magnified evidence from cause to result. A packed chamber is the most legible proof this product produces and the reviews quote it twice.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "detail"
+          },
+          "composition_notes": "Needs the product photo. Overlaps reasons.items.4, which already carries the chamber as its moment. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.",
+          "asset_candidate": "65-05-reason3-relief-hero-detail--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "subject - reduced to hands, with a worked boundary",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": "commercial",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15\nREGISTER: commercial. Professional camera, controlled light, deliberate negative\nspace on one side.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit, identical in\nevery layer. Preserve shape, proportions, material, finish and colour exactly.\n\n[SUBJECT] reduced: present only as two forearms in pushed-up sleeves and the\nhands closed round the handle of the unit. No face and no shoulders in frame.\n[POSE] mid-action: the unit pressed down flat on the bare mattress and pushed\naway along the ticking. What makes worked fabric different from unworked fabric\nis visible in the same frame - behind the head the ticking is even and matt,\nahead of it the weave still carries a dulled grey film and loose fibre caught in\nthe seam, and the boundary between the two runs straight across the bed where\nthe head has reached.\n[SETTING] one real bedroom filled to the edges: a nightstand with a lamp and a\nwater glass, a chair with clothes over the back, a laundry basket, a radiator\nunder the window, a rug half under the bed. Background blurred but never blank.\nNone of these objects carries printed text.\n[LIGHT] soft even window light from the left, raking low across the ticking so\nthe worked and unworked halves separate. Background blurred, high-key.\n[OFFSET] the hands and the unit sit to the right of frame; the inset occupies\nthe space on the left, taking about three quarters of it.\n\nIn the upper left corner sits a rounded rectangle about 20 percent of the frame\nwidth, its outline finishing a clear margin short of the picture on both sides.\nInside it, one magnified view the scene cannot show: the underside edge\nof the same unit sealed flat against the woven ticking, the fabric drawn up\nslightly into the intake slot. Same photographic register as the hero, same\nlight quality, same resolution. Linked by proximity alone - no arrow, no glow.\n\nNo text anywhere in the image. No badge, no arrow, no percentage.",
+          "rationale": "The type's reduced form, chosen where the result is more legible than the user. It names what finished looks like against unfinished on one continuous surface, which is the clause that makes a reduced subject argue anything.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "detail"
+          },
+          "composition_notes": "Needs the product photo. No face means no expression to carry relief, so the boundary on the ticking has to do all of it. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.",
+          "asset_candidate": "65-05-reason3-relief-hero-detail--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reasons.items.4.image",
+      "section_role": "social-proof",
+      "asset": "65-06-reason4-social-handoff.png",
+      "placement": "Beside 'Visual dust sensor eliminates all guesswork'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The indicator's argument is a state, not a transition - blue means this area is done. A loop showing red turning blue would be a second state in one frame, which G11 bars, and this type legislates no layer a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT, once the section is read as what it actually is. The dust indicator is not a spec, it is the thing that ends an argument between two people about whether the bed is clean - and 05-social-handoff exists for exactly the beat where one person shows another what the product just did. Its use_when asks for a product whose effect is visible in the room afterwards; here the effect is a blue light and a full chamber, both visible. PAGE LEGALITY: it is the page's only social image outside the reviews block, and the reviews block is blocked, so this is the only social proof that can ship. EVIDENCE: the type is at 2.5 with the dominance fix landing 3 of 4. PRODUCT PRESENCE: dominant by law. PROMPT RISK: the type's recorded fault is the advocate's eyes drifting to the work; A puts the unit down first so the posture is at rest before the look is asked for.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the indicator as the moment",
+          "type": "05-social-handoff",
+          "type_version": "2.5",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-handoff v2.5\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit. Preserve shape,\nproportions, material, finish and colour exactly.\n\n[MOMENT] the unit has just this moment finished a pass and is set down flat on\nthe bare mattress, still held. Its indicator window on the top of the handle is\nlit a clear blue, and its transparent dust chamber is packed with fine grey\npowder and matted fibre. Behind the head the ticking reads even and matt; ahead\nof it the weave still carries a dulled film, and the boundary runs straight\nacross the bed.\n\n[ADVOCATE] a woman in her forties in a long-sleeved top, kneeling at the side of\nthe bed with one hand still resting on the handle, her body at rest and her eyes\nup on the other person rather than on the unit.\n\n[LISTENER] a man of similar age standing at the foot of the bed, seen from\nbehind and to the side so his face is not visible, leaning in with his attention\non the dust chamber.\n\n[PRODUCT] the unit is the largest and clearest object in the frame and nothing\nbeside it competes for the first glance; the bedding is pale and plain, and no\nother appliance is in shot.\n\n[ENVIRONMENT] an ordinary bedroom on a weekend morning with a real reason both\npeople are there - the bed is stripped, the duvet is bundled on the floor and a\nlaundry basket stands by the door. Ambient household light only, from the window\nbehind them.\n\nREGISTER: candid documentary photograph, natural, unposed, sharp. No text, no\nbadge, no arrow anywhere in the image.",
+          "rationale": "The unit set down, the light blue, the worked and unworked halves of the ticking meeting in a straight line. The advocate has finished, which is what lets her eyes leave the work.",
+          "composition_notes": "Needs the product photo. The recorded fault for this type is an advocate still mid-stroke, so the pass is over before the look happens. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-06-reason4-social-handoff--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "moment - the chamber held up rather than the light",
+          "type": "05-social-handoff",
+          "type_version": "2.5",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-handoff v2.5\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit. Preserve shape,\nproportions, material, finish and colour exactly.\n\n[MOMENT] the unit's transparent dust chamber has just been lifted off the body\nand is being held up level between the two people, packed to the brim with fine\ngrey powder and matted grey fibre, the powder settled in a dense flat bed. The\nunit itself sits on the bare mattress below with its indicator window lit blue.\n\n[ADVOCATE] a woman in her forties in a long-sleeved top, kneeling at the side of\nthe bed holding the chamber up in one hand, her arm at rest and her eyes up on\nthe other person rather than on the chamber.\n\n[LISTENER] a man of similar age crouched beside her, seen from behind and to the\nside so his face is not visible, leaning in with his attention on the powder\ninside the chamber.\n\n[PRODUCT] the unit and its chamber are the largest and clearest objects in the\nframe and nothing beside them competes for the first glance; the bedding is pale\nand plain, and no other appliance is in shot.\n\n[ENVIRONMENT] an ordinary bedroom on a weekend morning with a real reason both\npeople are there - the bed is stripped, the duvet is bundled on the floor and a\nlaundry basket stands by the door. Ambient household light only, from the window\nbehind them.\n\nREGISTER: candid documentary photograph, natural, unposed, sharp. No text, no\nbadge, no arrow anywhere in the image.",
+          "rationale": "A held-up chamber of grey powder is the most quoted moment in the page's own reviews. It is louder evidence than a coloured light and needs no explanation.",
+          "composition_notes": "Needs the product photo. Argues capture rather than the section's own subject, which is knowing when to stop. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-06-reason4-social-handoff--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "environment - a sofa and a pet household",
+          "type": "05-social-handoff",
+          "type_version": "2.5",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-handoff v2.5\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit. Preserve shape,\nproportions, material, finish and colour exactly.\n\n[MOMENT] the unit has just this moment finished a pass along the seat of a dark\nfabric sofa and is set down flat on the cushion, still held. Its indicator\nwindow on the top of the handle is lit a clear blue, and its transparent dust\nchamber holds a thick mat of grey fibre and pet hair. Behind the head the\ncushion nap lies even and dark; ahead of it the fabric is still greyed with\nsettled hair, and the boundary runs straight across the cushion.\n\n[ADVOCATE] a man in his fifties in a work shirt with the sleeves rolled, sitting\nback on his heels beside the sofa with one hand still on the handle, his body at\nrest and his eyes up on the other person rather than on the unit.\n\n[LISTENER] a woman of similar age standing beside the sofa arm, seen from behind\nand to the side so her face is not visible, leaning down with her attention on\nthe cleared half of the cushion.\n\n[PRODUCT] the unit is the largest and clearest object in the frame and nothing\nbeside it competes for the first glance; the sofa is plain and dark, and no\nother appliance is in shot.\n\n[ENVIRONMENT] an ordinary living room in the afternoon with a real reason both\npeople are there - the sofa cushions are pulled out of place and a dog basket\nsits against the wall. Ambient household light only, from the window opposite.\n\nREGISTER: candid documentary photograph, natural, unposed, sharp. No text, no\nbadge, no arrow anywhere in the image.",
+          "rationale": "brief.persona names pet owners as a distinct group and the page is otherwise all bedroom. Pet hair on dark fabric is the clearest worked boundary this product makes.",
+          "composition_notes": "Needs the product photo. Moves the section's argument off the mattress the copy is discussing. The layout crops this to 4:3, taking about 25 percent off the HEIGHT of a 1:1 render. The composition runs left to right, so every panel loses the same band rather than the outer ones being amputated.",
+          "asset_candidate": "65-06-reason4-social-handoff--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reasons_b.items.0.image",
+      "section_role": "outcome",
+      "asset": "65-07-reasonb0-relief-hero-recall.png",
+      "placement": "Beside 'Lightweight design allows effortless whole-home use'.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A recall inset holds two states side by side for the reader to compare. That is inspected, not watched, and animating one cell would make the pair argue at two speeds."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT and the runbook's rung 4 together. The section's claim is comparative - light against heavy - and --recall is the inset mode whose two cells change ONE thing while holding the activity, the place and the person constant. That is this argument exactly. 06-relief-hero is already at reasons.items.3, so this is rung 4, differing on a named axis: inset_mode, detail against recall. --context was considered and dropped by its own law - its inset is the product in its real installed position, and a handheld has none. EVIDENCE: `step` has 7 observations and `past` 5, the best-evidenced inset modes the type owns. PROMPT RISK: two cells must match the hero in resolution and grade or they read as pasted in, which is the recorded failure; B drops to one cell and loses the comparison the section is making.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - two cells, past then resolved",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": "commercial",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15\nREGISTER: commercial. Professional camera, controlled light, deliberate negative\nspace on one side.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit, identical in\nevery layer. Preserve shape, proportions, material, finish and colour exactly.\n\n[SUBJECT] a woman in her forties in a plain long-sleeved top, standing at the\narm of a sofa, the unit carried easily in one hand at her side.\n[POSE] mid-action: she has just lifted the unit off the sofa arm and is turning\nwith it toward the doorway, that hand loose and low, gaze ahead of her on where\nshe is going next. She stands clear of the sofa so the whole unit is visible\nagainst the room rather than against her own body.\n[SETTING] one real living room filled to the edges: a sofa with cushions, a\ncoffee table with a mug on it, a floor lamp, a bookshelf, a rug, a doorway open\nonto a hall. Background blurred but never blank. None of these objects carries\nprinted text.\n[LIGHT] soft even window light from the left, background blurred, high-key.\n[OFFSET] she stands to the right of frame; the inset occupies the space on the\nleft that she is offset from, taking about three quarters of it.\n\nIn the upper left corner sit two small panels side by side, together about 20\npercent of the frame width, each with a thin white border and both finishing a\nclear margin short of the picture edge. Same room, same woman, same sofa in\nboth; the only thing that changes is the machine. The outer panel shows an\nordinary upright vacuum hauled up bodily onto the sofa seat, both her hands on\nit, its hose dragging over the arm and its body tipped. The inner panel shows\nthe reference handheld unit in one hand at the same place on the same sofa, her\nother hand free. A single arrow runs from the vacuum panel to the handheld\npanel and there is no other marking. Both panels match the main picture in\nresolution, grade and light quality.\n\nNo text anywhere in the image. No badge, no percentage.",
+          "rationale": "The upright hauled onto the sofa, then the handheld in one hand at the same place. Same woman, same room, same sofa: only the machine changes, which is the clause that makes a recall pair isolate anything.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "recall"
+          },
+          "composition_notes": "Needs the product photo. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.",
+          "asset_candidate": "65-07-reasonb0-relief-hero-recall--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "inset form - one cell rather than two",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": "commercial",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15\nREGISTER: commercial. Professional camera, controlled light, deliberate negative\nspace on one side.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit, identical in\nevery layer. Preserve shape, proportions, material, finish and colour exactly.\n\n[SUBJECT] a woman in her forties in a plain long-sleeved top, standing at the\narm of a sofa, the unit carried easily in one hand at her side.\n[POSE] mid-action: she has just lifted the unit off the sofa arm and is turning\nwith it toward the doorway, that hand loose and low, gaze ahead of her on where\nshe is going next. She stands clear of the sofa so the whole unit is visible\nagainst the room rather than against her own body.\n[SETTING] one real living room filled to the edges: a sofa with cushions, a\ncoffee table with a mug on it, a floor lamp, a bookshelf, a rug, a doorway open\nonto a hall. Background blurred but never blank. None of these objects carries\nprinted text.\n[LIGHT] soft even window light from the left, background blurred, high-key.\n[OFFSET] she stands to the right of frame; the inset occupies the space on the\nleft that she is offset from, taking about three quarters of it.\n\nIn the upper left corner sits one small panel about 15 percent of the frame\nwidth, with a thin white border, finishing a clear margin short of the picture\nedge. The same woman, the same room and the same sofa; the only thing that\nchanges is the machine. In that panel she has an ordinary upright vacuum hauled\nup bodily onto the sofa seat, both her hands on it, its hose dragging over the\narm and its body tipped, her shoulders pulled up under the weight. It matches\nthe main picture in resolution, grade and light quality.\n\nNo text anywhere in the image. No badge, no arrow, no percentage.",
+          "rationale": "FORM 1: the problem state alone, smaller and simpler. The hero already shows the resolved state at full size, so a second resolved cell repeats it.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "recall"
+          },
+          "composition_notes": "Needs the product photo. A smaller inset survives the crop better than two cells do. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.",
+          "asset_candidate": "65-07-reasonb0-relief-hero-recall--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "subject - reduced, with the heavy machine in the scene",
+          "type": "06-relief-hero",
+          "type_version": "1.15",
+          "variant": "commercial",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.15\nREGISTER: commercial. Professional camera, controlled light, deliberate negative\nspace on one side.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit, identical in\nevery layer. Preserve shape, proportions, material, finish and colour exactly.\n\n[SUBJECT] reduced: present only as one forearm in a pushed-up sleeve and the\nhand closed round the handle of the unit, carrying it at waist height. No face\nand no shoulders in frame.\n[POSE] mid-action: the unit lifted clear of a stack of pillows on a bed and\ncarried away toward the door, the hand loose and the wrist straight, nothing\nbraced. What makes carried-easily different from hauled is in the frame beside\nit - an ordinary upright vacuum stands abandoned on the floor at the foot of the\nbed with its hose coiled on the carpet, too big to lift onto it.\n[SETTING] one real bedroom filled to the edges: a bed with a stack of stripped\npillows, a nightstand with a lamp, a chair with clothes over the back, a laundry\nbasket, a rug, a door open onto a landing. Background blurred but never blank.\nNone of these objects carries printed text.\n[LIGHT] soft even window light from the left, background blurred, high-key.\n[OFFSET] the hand and the unit sit to the right of frame; the inset occupies the\nspace on the left, taking about three quarters of it.\n\nIn the upper left corner sits one small panel about 15 percent of the frame\nwidth, with a thin white border, finishing a clear margin short of the picture\nedge. The same room and the same bed; the only thing that changes is the\nmachine. In that panel the same upright vacuum is hauled up bodily onto the\nmattress, two hands on it, its hose dragging. It matches the main picture in\nresolution, grade and light quality.\n\nNo text anywhere in the image. No badge, no arrow, no percentage.",
+          "rationale": "Puts the comparison in the hero itself: the handheld carried in one hand while the upright stands abandoned on the floor because it cannot be lifted onto the bed. The inset then only confirms it.",
+          "axes": {
+            "register": "commercial",
+            "inset_mode": "recall"
+          },
+          "composition_notes": "Needs the product photo. Two machines in the hero risks the wrong one taking the first glance. The layout crops this to 4:3, taking about 12.5 percent off the top and bottom of a 1:1 render - and the inset sits at a top corner by law. Check it survives the crop before the asset ships, or set this slot to aspect-square.",
+          "asset_candidate": "65-07-reasonb0-relief-hero-recall--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reasons_b.items.1.image",
+      "section_role": "mechanism",
+      "asset": "65-08-reasonb1-mechanism-xray.png",
+      "placement": "Beside 'Surface UV lamp adds targeted surface care'.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "mechanism",
+        "duration_s": 3,
+        "loop": "seamless loop",
+        "shot": "the see-through render, held as built",
+        "action": "impeller turns, plate taps",
+        "result": "the lamp never dims",
+        "match": "same charcoal ground, same violet",
+        "delivery": "mp4/webm, under 2 MB",
+        "reason": "Three of the four functions this section lists are movements - the plate taps, the impeller turns, air runs the filter stack - and a still can only assert them. 03-mechanism-xray legislates no motion layer, so the form is whole-frame and the kind is the type's own job, mechanism.",
+        "prompt": "TYPE: G12 motion brief plate, whole-frame card\nMEDIUM: a flat card carrying text and nothing else. NOT a photograph, NOT an\nillustration, NOT a scene. Nothing is depicted.\n\nThe whole picture is flat dark grey, one even tone, no gradient and no texture.\nOne thin white rule runs inside it as a closed rectangle, its outer edge\nfinishing a clear margin short of the picture on all four sides, so no part of\nit touches or leaves an edge.\n\nInside that rule, in clean white sans-serif, five short lines, each on one line,\nleft aligned, the block filling about half the picture's width:\nGIF SLOT · 3s · seamless loop\nSHOT the see-through render, held as built\nACTION impeller turns, plate taps\nRESULT the lamp never dims\nMATCH same charcoal ground, same violet\n\nSet those five lines exactly as written, as plain words. No asterisks, no\nbackticks, no bullets, no markdown of any kind, and no line wrapping.\n\nThis is the only text in the picture. No logo, no icon, no border decoration,\nno product and no scene.",
+        "asset": "65-08-reasonb1-mechanism-xray--brief.png"
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT, and the attribute gate makes it the only mechanism type available. body_contact is false for a fabric appliance, which drops 03-mechanism-ghostbody by its own avoid_when, and 03-spec-split and 03-spec-explode are not advertorial types. That leaves xray, which is also exactly right: the section argues from a component the buyer cannot see, and xray exists to show real internals through a translucent shell. A is the top-down view because it puts the lamp, the tapping plate and the filter stack in one read. EVIDENCE: the type passed at 1.3 on two owner-passed worked examples. PRODUCT PRESENCE: the product IS the frame. PROMPT RISK: the `working` mark is the UV lamp, which is a real emission and needs no invention - G8 is satisfied without stretching. The heat and the suction have no visible form and are correctly left unmarked.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - top-down through the lid",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit. The outer shell\nbecomes translucent, but its silhouette, proportions and every visible external\npart must match the reference exactly. Do not redesign or add features.\n\n[CANVAS] a plain deep charcoal ground, and nothing else in the frame behind the\nproduct.\n\n[SHELL] the unit seen from above and slightly to one side as it sits on a plain\npale fabric surface, its casing translucent and glass-like, filling about 75\npercent of the frame width.\n\n[INTERNALS], solid and detailed inside the shell, each at its true location: a\ntubular ultraviolet lamp lying across the full width of the base aperture, its\nhousing open to the fabric below; a vibration motor with its eccentric weight\ndriving a flat tapping plate at the front of the base; an impeller and motor in\nthe body behind them; a stack of three filter elements above the transparent\ndust chamber, the chamber's multi-cup separator visible as a ring of small\ncones.\n\n[MARKS], one, nothing else in the frame is marked:\n- working: the ultraviolet lamp shown ACTIVE, throwing a narrow violet-blue wash\n  straight down onto the fabric directly beneath the base aperture, the\n  brightest thing in the frame and clearly brighter than the ground, its edge\n  ending where the aperture ends. No arrow anywhere - the lamp's own line\n  carries the direction.\n\nNo text, numbers or spec labels anywhere in the image.\nThe marks are the only added colour; the product and its parts keep their own.",
+          "rationale": "From above, the lamp runs the full width of the base aperture and the filter stack sits behind it, so the whole four-in-one head reads in one look.",
+          "composition_notes": "Needs the product photo. One mark only: the lamp is the single real emission this product makes, and G8 forbids inventing one for the heat or the suction. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.",
+          "asset_candidate": "65-08-reasonb1-mechanism-xray--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "viewpoint - side cutaway, the airflow path legible",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit. The outer shell\nbecomes translucent, but its silhouette, proportions and every visible external\npart must match the reference exactly. Do not redesign or add features.\n\n[CANVAS] a plain deep charcoal ground, and nothing else in the frame behind the\nproduct.\n\n[SHELL] the unit seen square from the side as it sits on a plain pale fabric\nsurface, its casing translucent and glass-like, filling about 75 percent of the\nframe width, so the whole path from base to dust chamber runs left to right\nacross the frame.\n\n[INTERNALS], solid and detailed inside the shell, each at its true location: a\ntubular ultraviolet lamp lying across the base aperture at the front, its\nhousing open to the fabric below; a flat tapping plate beside it driven by a\nvibration motor and its eccentric weight; behind them the intake throat rising\ninto the transparent dust chamber, the chamber's multi-cup separator drawn as a\nring of small cones; a stack of three filter elements above the chamber; the\nimpeller and motor last, at the back of the body.\n\n[MARKS], one, nothing else in the frame is marked:\n- working: the ultraviolet lamp shown ACTIVE, throwing a narrow violet-blue wash\n  straight down onto the fabric directly beneath the base aperture, the\n  brightest thing in the frame and clearly brighter than the ground, its edge\n  ending where the aperture ends. No arrow anywhere - the internal path's own\n  line carries the direction.\n\nNo text, numbers or spec labels anywhere in the image.\nThe marks are the only added colour; the product and its parts keep their own.",
+          "rationale": "Square from the side the internals lay out as a path: intake, chamber, separator, filters, impeller. That is the section's other half - the sealed route the particles take.",
+          "composition_notes": "Needs the product photo. A side view hides the lamp's width, which is the mark the section is actually about. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.",
+          "asset_candidate": "65-08-reasonb1-mechanism-xray--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "viewpoint - the base tipped toward the camera",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "variant": null,
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\n[PRODUCT REFERENCE]\nThe attached photo is the exact reference for the handheld unit. The outer shell\nbecomes translucent, but its silhouette, proportions and every visible external\npart must match the reference exactly. Do not redesign or add features.\n\n[CANVAS] a plain deep charcoal ground, and nothing else in the frame behind the\nproduct.\n\n[SHELL] the unit tipped up so its base faces the camera at a shallow angle, its\ncasing translucent and glass-like, filling about 75 percent of the frame width,\nthe whole base aperture open to view.\n\n[INTERNALS], solid and detailed inside the shell, each at its true location: a\ntubular ultraviolet lamp lying across the full width of the base aperture in its\nopen housing; a flat tapping plate set into the base ahead of it, driven by a\nvibration motor with its eccentric weight directly above; the intake slot\nbetween them running back into the body; the transparent dust chamber with its\nmulti-cup separator drawn as a ring of small cones deeper in.\n\n[MARKS], one, nothing else in the frame is marked:\n- working: the ultraviolet lamp shown ACTIVE, its violet-blue light filling the\n  open base aperture and falling as a narrow wash onto the pale fabric just\n  beyond the unit, the brightest thing in the frame and clearly brighter than\n  the ground, its edge ending where the aperture ends. No arrow anywhere.\n\nNo text, numbers or spec labels anywhere in the image.\nThe marks are the only added colour; the product and its parts keep their own.",
+          "rationale": "The underside is where the lamp, the tapping plate and the intake all live, and it is the face a buyer never sees because it is against the mattress whenever the machine is on.",
+          "composition_notes": "Needs the product photo. The dust chamber and filters sit deep and small from this angle, so the capture argument weakens. The layout crops this to 4:3, taking about 25 percent off the WIDTH of a 16:9 render. The subject is centred and the margin is what goes.",
+          "asset_candidate": "65-08-reasonb1-mechanism-xray--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.photos.0.image",
+      "section_role": "social-proof",
+      "asset": "65-09-review0-social-snapshot.png",
+      "placement": "Review photo tile 1 of 6, in the same section as the quote: The dust cup filled up after just one mattress pass. Easy to push and the red to blue light is brilliant.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the tile's own quote",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. It sits on the ticking, seen from above and slightly to one side, cropped the way a casual one-handed photo crops.\n\nCONTENT MODE, at-rest: the unit set down on the bare mattress it has just been run over, its transparent chamber packed to the brim with dense grey powder, its indicator window lit blue, cable trailing off the side of the bed\n\nANCHOR: a stripped duvet bundled at the foot of the bed\n\nSCENE: a main bedroom stripped for changing, photographed as found - the duvet half off the end of the bed, a chair with clothes over it, curtains open on a grey afternoon. Ambient household light only, from the window.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The moment this tile's quote describes, photographed as found.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review0-social-snapshot--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode - the product working rather than resting",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from standing height at the side of the bed, tilted a few degrees.\n\nCONTENT MODE, in-use: the unit mid-pass down the middle of a bare mattress, one forearm in a pushed-up sleeve on the handle and no face in the frame, its chamber already half grey and its indicator lit blue behind the head\n\nANCHOR: a pillow without its case dropped beside the bed\n\nSCENE: a main bedroom mid-job, photographed as found - a laundry basket by the door, a phone charger trailing over the nightstand, the wardrobe door left open. Mixed warm-dim household light.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review0-social-snapshot--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "scene - a different room in the same house",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Close in and slightly too low, the way a photo taken quickly crops.\n\nCONTENT MODE, at-rest: the unit stood on a nightstand beside the bed it has just been used on, its transparent chamber full of grey powder held up against the lamp so the fill line reads clearly\n\nANCHOR: a water glass with a ring dried into the wood beside it\n\nSCENE: a bedside corner photographed as found - a lamp on, a book face down, a ring dried into the wood of the nightstand, the bed unmade behind. Warm lamplight only, the rest of the room dim.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "Same claim, different room, so six tiles do not read as six photographs of one corner of one house.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review0-social-snapshot--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.photos.1.image",
+      "section_role": "social-proof",
+      "asset": "65-09-review1-social-snapshot.png",
+      "placement": "Review photo tile 2 of 6, in the same section as the quote: No dust blown back into the bedroom air. The heat leaves the sheets and mattress feeling completely fresh.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the tile's own quote",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from the foot of the bed at standing height, tilted.\n\nCONTENT MODE, in-use: the unit mid-pass across a bare mattress in a shaft of afternoon window light, the lit air above the bed clean and empty with no drift of motes in it, one forearm on the handle and no face in the frame\n\nANCHOR: a folded stack of laundered sheets on the corner of the bed\n\nSCENE: a main bedroom in the afternoon, photographed as found - a chair with clothes over the back, a radiator with a towel on it, the window open a crack. Ambient daylight only, no lamp on.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The moment this tile's quote describes, photographed as found.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review1-social-snapshot--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode - the product working rather than resting",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from the side of the bed, a little too close.\n\nCONTENT MODE, at-rest: the unit set down on a bare mattress halfway through a job, the worked half of the ticking behind it even and matt and the unworked half ahead still dulled and greyed, the boundary running straight across the bed\n\nANCHOR: a radiator with a towel folded over it against the wall\n\nSCENE: a main bedroom mid-job, photographed as found - the duvet bundled on the floor, a mug on the nightstand, a laundry basket half full by the door. Flat window daylight only.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review1-social-snapshot--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "scene - a different room in the same house",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from above at arm's length, tilted a few degrees.\n\nCONTENT MODE, in-use: the unit mid-pass along a pillow laid flat on the bed, one hand on the handle and no face in the frame, the window behind it open and the air in the room clear\n\nANCHOR: an open window with the curtain lifted off the sill\n\nSCENE: a bedroom with the window wide open, photographed as found - a curtain lifted off the sill, a hairbrush and a glass on the nightstand, a jumper over the end of the bed. Bright flat daylight.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "Same claim, different room, so six tiles do not read as six photographs of one corner of one house.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review1-social-snapshot--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.photos.2.image",
+      "section_role": "social-proof",
+      "asset": "65-09-review2-social-snapshot.png",
+      "placement": "Review photo tile 3 of 6, in the same section as the quote: Lightweight enough to do every mattress and pet cushion in one run without wrist fatigue.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the tile's own quote",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from standing height looking down, cropped a little too close.\n\nCONTENT MODE, at-rest: the unit standing on top of a stack of four stripped pillows piled on a landing floor, all of them just done, the cable looped once over the pile\n\nANCHOR: a dog basket pushed against the wall behind them\n\nSCENE: a landing between two bedrooms, photographed as found - a stack of towels on the floor at the top of the stairs, a bannister with a coat over it, both doors open. Mixed warm-dim household light.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The moment this tile's quote describes, photographed as found.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review2-social-snapshot--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode - the product working rather than resting",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from behind at walking height, framing tilted and casual.\n\nCONTENT MODE, in-use: the unit carried in one hand at waist height along a landing between two bedrooms, the arm loose and the wrist straight, no face in the frame, a doorway open on each side\n\nANCHOR: a laundry basket set down in the doorway\n\nSCENE: a landing photographed as found - the carpet worn in a line down the middle, a bag left against the wall, a light on in one bedroom and not the other. Ambient household light only.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review2-social-snapshot--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "scene - a different room in the same house",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from a seat on the opposite side of the room, off-centre.\n\nCONTENT MODE, at-rest: the unit set down on the arm of a fabric sofa beside a pet cushion it has just been over, with a bare mattress visible through the open door behind it, so both jobs are in one frame\n\nANCHOR: a mug left on the coffee table in front of the sofa\n\nSCENE: a living room in the afternoon, photographed as found - a throw pulled half off the sofa, a coffee table with a mug and a remote on it, a rug rucked at one corner. Window daylight, no lamp on.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "Same claim, different room, so six tiles do not read as six photographs of one corner of one house.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review2-social-snapshot--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.photos.3.image",
+      "section_role": "social-proof",
+      "asset": "65-09-review3-social-snapshot.png",
+      "placement": "Review photo tile 4 of 6, in the same section as the quote: The tapping vibration pulled out fine grey sediment that my normal vacuum never touched.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the tile's own quote",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from above at arm's length, cropped a little too close.\n\nCONTENT MODE, at-rest: the unit's transparent chamber lifted off and tipped out onto a sheet of white kitchen paper on a worktop, a mound of fine grey sediment and matted fibre sitting on the paper beside the empty chamber and the body of the unit\n\nANCHOR: a folded tea towel pushed to the side of the worktop\n\nSCENE: a kitchen worktop photographed as found - crumbs at the edge of the board, a kettle and a jar of utensils pushed back, a tea towel over the oven rail. Kitchen overhead light only.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The moment this tile's quote describes, photographed as found.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review3-social-snapshot--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode - the product working rather than resting",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from the side of the bed, tilted a few degrees.\n\nCONTENT MODE, at-rest: the unit lying on its side on a bare mattress with its chamber still attached and packed with dense grey sediment, the fill visible through the clear wall against the pale ticking\n\nANCHOR: a pillow without its case beside it on the bed\n\nSCENE: a main bedroom stripped for changing, photographed as found - the duvet half off the end of the bed, a laundry basket by the door, curtains open on a grey afternoon. Ambient daylight only.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review3-social-snapshot--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "scene - a different room in the same house",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from standing height looking straight down, off-centre.\n\nCONTENT MODE, kit-flatlay: the unit, its detached transparent chamber full of grey sediment and its washable filter stack laid out beside each other on a bathroom floor, slightly out of line and not arranged\n\nANCHOR: a bath mat rucked up at the edge of the frame\n\nSCENE: a small bathroom floor photographed as found - a bath mat rucked up, a towel over the radiator, a bin beside the basin pedestal. Overhead bathroom light, slightly cold.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "Same claim, different room, so six tiles do not read as six photographs of one corner of one house.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review3-social-snapshot--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.photos.4.image",
+      "section_role": "social-proof",
+      "asset": "65-09-review4-social-snapshot.png",
+      "placement": "Review photo tile 5 of 6, in the same section as the quote: Essential gear for pet owners. It pulls deep hair and fine dust out of the velvet sofa effortlessly.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the tile's own quote",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from a seat at the other end of the sofa, framing a little too close.\n\nCONTENT MODE, in-use: the unit mid-pass along the seat of a dark velvet sofa, one hand on the handle and no face in the frame, the nap behind the head lying dark and even and the fabric ahead of it still greyed with settled hair\n\nANCHOR: a dog lead coiled on the sofa arm\n\nSCENE: a living room in the afternoon, photographed as found - a throw pulled half off the sofa back, a coffee table with a mug on it, a rug rucked at one corner. Window daylight, no lamp on.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The moment this tile's quote describes, photographed as found.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review4-social-snapshot--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode - the product working rather than resting",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from standing height beside the sofa, tilted.\n\nCONTENT MODE, at-rest: the unit set down on a velvet sofa cushion with its chamber packed with a thick mat of pet hair and grey dust, one cleared strip of dark nap running away from it across the seat\n\nANCHOR: a chewed toy pushed down between the cushions\n\nSCENE: a living room photographed as found - cushions pulled out of place, a newspaper-free side table with a glass on it, curtains half drawn. Mixed warm-dim household light.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review4-social-snapshot--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "scene - a different room in the same house",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from a crouch at close range, off-centre and slightly low.\n\nCONTENT MODE, in-use: the unit mid-pass over a pet cushion on the floor beside the sofa, one forearm on the handle and no face in the frame, loose hair lifting off the cover into the head\n\nANCHOR: a food bowl on a mat against the skirting\n\nSCENE: the floor beside a sofa photographed as found - a pet cushion flattened in the middle, a chewed rope toy against the skirting, the edge of a rug turned up. Ambient household light only.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "Same claim, different room, so six tiles do not read as six photographs of one corner of one house.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review4-social-snapshot--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "reviews.photos.5.image",
+      "section_role": "social-proof",
+      "asset": "65-09-review5-social-snapshot.png",
+      "placement": "Review photo tile 6 of 6, in the same section as the quote: The washable filter is simple to rinse clean and the corded power never fades during use.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy."
+      },
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline - the tile's own quote",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from above at the sink, cropped a little too close.\n\nCONTENT MODE, at-rest: the unit's filter stack held under a running kitchen tap, grey water carrying loose dust off it into the sink, the body of the unit standing on the worktop behind with its chamber already empty and open\n\nANCHOR: a washing-up brush standing in the sink corner\n\nSCENE: a kitchen sink photographed as found - washing-up stacked on the draining board, a bottle of liquid on the sill, a cloth over the tap. Kitchen overhead light only.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The moment this tile's quote describes, photographed as found.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review5-social-snapshot--A.png"
+        },
+        {
+          "opt": "B",
+          "varies_on": "mode - the product working rather than resting",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from standing height looking down, framing tilted.\n\nCONTENT MODE, kit-flatlay: the unit, its opened transparent chamber and its two rinsed filter elements laid out on a draining board to dry, still beaded with water and not lined up straight\n\nANCHOR: a folded dishcloth at the edge of the board\n\nSCENE: a kitchen draining board photographed as found - a mug and two glasses already drying, a folded dishcloth at the edge, the window above the sink showing a grey garden. Flat daylight from the window.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review5-social-snapshot--B.png"
+        },
+        {
+          "opt": "C",
+          "varies_on": "scene - a different room in the same house",
+          "type": "05-social-snapshot",
+          "type_version": "1.2",
+          "variant": null,
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-snapshot v1.2\n\nUse the attached product photo as the exact reference for the handheld unit.\nPreserve shape, proportions, material, finish and colour exactly. Seen from a crouch along the landing floor, off-centre.\n\nCONTENT MODE, at-rest: the unit plugged into a wall socket on a landing with its cable running along the skirting, set down beside two bedroom doors both standing open, mid-way through working through the house\n\nANCHOR: a phone left on the floor beside the socket\n\nSCENE: a landing photographed as found - a socket at skirting height with two plugs in it, the carpet worn in a line, both bedroom doors standing open. Mixed warm-dim household light.\n\nCAMERA TRUTH: framing tilted a few degrees and a little too close, focus\nadequate, mild noise, honest exposure. No styling of any kind.\n\nREGISTER: a real customer's phone photo. One frame, no layout, no layers.\nSTYLE: honest phone photography, unedited look, natural, slightly imperfect.",
+          "rationale": "Same claim, different room, so six tiles do not read as six photographs of one corner of one house.",
+          "composition_notes": "BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.",
+          "asset_candidate": "65-09-review5-social-snapshot--C.png"
+        }
+      ]
+    },
+    {
+      "slot_id": "scarcity.image",
+      "section_role": "cta",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "A product card inside the scarcity block. mapping/slot-rules.md leaves the cta row empty in all four channels: this is a standard product shot, which is out of library scope by design."
+    },
+    {
+      "slot_id": "rail.image",
+      "section_role": "cta",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "A product card inside the offer rail, same as scarcity.image. The cta row is empty in all four channels."
+    },
+    {
+      "slot_id": "hero.author_avatar",
+      "section_role": "author",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "A byline portrait. No type in this library produces a portrait of a named person, and generating a face to sit under a real byline is a disclosure decision rather than an image one."
+    },
+    {
+      "slot_id": "closing.bio_image",
+      "section_role": "author",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "The About-the-author portrait, same as hero.author_avatar."
+    },
+    {
+      "slot_id": "comments.items.0.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "A commenter portrait, 1 of 7. No library type produces portraits, and a generated face under a named comment is a fabricated person."
+    },
+    {
+      "slot_id": "comments.items.1.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "Commenter portrait, 2 of 7."
+    },
+    {
+      "slot_id": "comments.items.2.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "Commenter portrait, 3 of 7."
+    },
+    {
+      "slot_id": "comments.items.3.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "Commenter portrait, 4 of 7."
+    },
+    {
+      "slot_id": "comments.items.4.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "Commenter portrait, 5 of 7."
+    },
+    {
+      "slot_id": "comments.items.5.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "Commenter portrait, 6 of 7."
+    },
+    {
+      "slot_id": "comments.items.6.avatar",
+      "section_role": "social-proof",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "Commenter portrait, 7 of 7."
+    },
+    {
+      "slot_id": "header.logo",
+      "section_role": "cta",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "The brand logo, already supplied in the export."
+    },
+    {
+      "slot_id": "footer.logo",
+      "section_role": "cta",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "The brand logo, already supplied in the export."
+    },
+    {
+      "slot_id": "guarantee.badge_image",
+      "section_role": "cta",
+      "asset": "—",
+      "placement": "—",
+      "options": [],
+      "out_of_scope_reason": "A money-back guarantee badge, already supplied in the export."
+    }
+  ],
+  "coverage": {
+    "covered": [
+      "step 1 pain — 01-pain-scene twice, a person at the hero and the object-only stripped bed at reasons.items.1",
+      "step 2 cause — 02-cause-anatomy at reasons.items.0",
+      "step 3 mechanism — 03-mechanism-xray at reasons_b.items.1",
+      "step 4 proof — 04-proof-lockedframe --verdict at reasons.items.2",
+      "step 5 social — 05-social-handoff at reasons.items.4 and 05-social-snapshot across all six review tiles",
+      "step 6 relief — 06-relief-hero twice, --detail at reasons.items.3 and --recall at reasons_b.items.0"
+    ],
+    "absent": [
+      "step 2 symptom — 02-symptom-rail was trimmed off advertorial on 2026-08-11 and is not a candidate at any rung",
+      "step 3 use — 03-use-sequence is dropped by its own avoid_when, 'the product has one obvious action'. It declares 3:4 and 1:1 and would not have served a 4:3 slot either.",
+      "step 6 relief-scene — 06-relief-scene is dropped by its own avoid_when: the result here is invisible on the body, and for an invisible result that file sends the closing image to 06-relief-hero with the product in frame. It is also one of only two types that declare 4:3, so losing it costs this page the ratio as well as the beat.",
+      "step 5 personas — 05-persona-grid is marketplace and landing-page only"
+    ],
+    "absent_but_correct": [
+      "No 03-mechanism-ghostbody, correctly — body_contact is false for a fabric appliance and the type's own avoid_when drops it when the product does not act on a body structure.",
+      "No symptom rung, and that is right for a problem-aware reader who already wakes up with the symptom: the copy spends its hero re-establishing it in prose and needs the cause next, which runs."
+    ],
+    "gaps": [
+      "The HEAT claim at 149F is invisible in every register and reasons.items.3 is built on it. The recommended option argues the sealed contact and the debris leaving the weave, and leaves the thermal half to the copy. It is not proof of heat.",
+      "The UV STERILISATION claim is argued only by presence. An image can show the lamp lit; it cannot show a germ killed, and brief.rawFeatures says the 99.9 percent figure needs the manufacturer's test data because dose depends on dwell time. No option asserts a rate.",
+      "SILENCE and SMELL are claimed in the reviews copy — 'no musty smell', 'no dust cloud' — and neither is photographable. The dust cloud half is carried by reasons.items.2; the smell is not carried by anything and stays a copy claim."
+    ]
+  },
+  "recommended": [],
+  "page_composition_notes": [
+    "THE TEMPLATE ASKS FOR A RATIO THE LIBRARY BARELY HAS. Seven body slots - reasons.items.0 to 4 and reasons_b.items.0 to 1 - carry class `aspect-[4/3] object-cover`, and only TWO types in the whole registry declare 4:3: 05-social-snapshot and 06-relief-scene. Every other type legally declares 16:9 and 1:1 (ADR-016 rules out the 5:3, 4:5 and 3:2 several of them still carry). Routing those seven slots by ratio would have left five of them empty, so they are routed by ARGUMENT and rendered at the chosen type's own declared ratio, and the layout centre-crops. Which declared ratio is picked follows the geometry: 16:9 cropped to 4:3 removes 25% of the WIDTH, 1:1 cropped to 4:3 removes 25% of the HEIGHT, so a composition that runs left to right takes 1:1 (every panel loses the same band) and a centred subject takes 16:9 (the crop eats margin). Each option's note says what its own crop costs. The real fix is ADR-016's standing RATIO sweep, which is a type-file edit and not a query session's work - or one line of template CSS, since hero.image already carries no aspect class at all.",
+    "THE REVIEWS BLOCK BREAKS 05-social-snapshot's AUTHENTICITY FENCE AS THE PAGE IS BUILT. All six photo slots sit inside the same <section data-block-key=\"reviews\"> as six quotes, each carrying a five-star row, a named attribution and a green Verified label. The type's avoid_when is explicit: NEVER pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload - that is a fabricated endorsement. Eighteen prompts are written and every one of them carries the same precondition. Three ways out, in the owner's order of preference: use real customer photographs, which always win over generated ones; or move the photo grid out of the attributed block; or drop the names, stars and verified labels from that block.",
+    "A CORNER LAYER CANNOT SURVIVE A CENTRE-CROP, and two recommended options carry one. 06-relief-hero's --detail and --recall insets sit at a corner by law, and reasons.items.3 and reasons_b.items.0 are both 4:3-cropped slots, so roughly 12.5% off the top and bottom of a 1:1 render goes. G10 already requires a layer held clear of the frame edge and the prompts say so, but clear of the RENDERED edge is not clear of the CROPPED edge. Setting those two slots to `aspect-square`, which reviews.photos already uses, removes the problem outright. Until then, check the inset survives before the asset ships.",
+    "lpTypeId is `listicle`, which does not exist in this library. registry/vocabulary.yaml declares four channels and mapping/slot-rules.md has four columns; listicle is none of them. Routed as `advertorial` on the page's own evidence rather than by guess: a bylined author with a credential line, an About-the-author bio, a seven-comment thread with names, a disclosure line and editorial footer navigation. A listicle is an advertorial format, not a fifth channel. If listicles keep arriving, the decision to record is whether the vocabulary gains an alias or a column - that is a shared-file change and it is not made here.",
+    "The reference photo is yours to upload, and 39 prompts want it. The export carries imageBriefs: null and sourceRefs.shopifyProductGid: null, so there is no product photograph in it and nothing to hash - attachments is omitted from every option rather than filled with an invented sha256 (SPEC 6.4). That is a gap in the EXPORT, not a blocked prompt (ADR-021): each of those prompts keeps its G1 reference block, so pasting it and uploading the photo runs it as written.",
+    "The heat claim cannot be photographed and reasons.items.3 is built on it. 149F is invisible in every register this library has, and G8 forbids inventing an emission so a render looks alive. The recommended option argues the half of that section a camera can hold - the head sealed against the fabric and the debris leaving it - and leaves the thermal half to the copy. It is not proof of heat and is not presented as any. Same shape as the noise claim on page 58.",
+    "brief.rawFeatures warns that the page outruns its own evidence, and no image here follows it there. The brief states plainly that mattress vacuuming has limited effect on total allergen load on its own, that the 99.9 percent figure needs the manufacturer's test data because UV dose depends on dwell time, and that UV-C is harmful to eyes and skin with the lift-off cut-out unconfirmed. So no option asserts a kill rate, a percentage, a sterilisation claim or a health outcome. What the images argue is mechanical and visible: debris leaves the weave, particles stay in the chamber, the indicator reads the surface.",
+    "The page argument does not run in library order and the copy is why. reasons_b sits after the comparison table, so the arc lands as cause, pain, proof, mechanism, social, outcome, mechanism - with a mechanism beat last. Reordering the sections is a copy decision, not an image one, and the routing follows the page as written rather than quietly arguing with it. Pain still precedes relief, which is the cross-slot rule that binds.",
+    "One-type-once was the binding constraint and rung 4 carried it twice. Seven body slots needed seven distinct executions from an advertorial column that offers eight types, two of which are dropped by attribute gates. 01-pain-scene repeats at reasons.items.1 differing on subject class, and 06-relief-hero repeats at reasons_b.items.0 differing on inset_mode — both are the runbook's rung 4, another execution of a type already on the page differing on a named dimension, and both are recorded here rather than left to look like an oversight.",
+    "06-relief-hero --context was considered and dropped by its own law. Its inset is defined as the product in its real installed position and G7-X binds it; a handheld corded appliance has no installed position, so the mode contradicts itself here. --recall took the slot instead.",
+    "FOUR PROMPTS SIT OVER THEIR TYPE'S MEASURED REFERENCE SIZE AND ARE SHIPPED THAT WAY, which is said here rather than left for the reader to find. 02-cause-anatomy gives ~1800 characters at two marks and the three options here run 1878 to 1887, 4 to 5 percent over; 04-proof-lockedframe gives 1800 and its three-panel option B runs 1839. Seven passes of trimming removed duplicated law - the long G1 preserve clause where the skeleton carries its own one-line form, 'drawn realistically and' where the register line already said it, repeated scene nouns across panels. What is left is earned: the measure mark IS the argument, the verdict mark is required by the skeleton, and the three-ways-the-comparison-is-lost clauses are the type's own recorded faults. Cutting further would cut law rather than fat. Adapter Rule 6 asks for a re-read past 2500 and nothing here comes near it.",
+    "No pick prior was available. feedback/picks.jsonl is empty, so the >=20-pick tie-breaker in SPEC 7.7 never fired and every recommendation here rests on fit, legality, render evidence, product presence and prompt risk alone. These recommendations make the page argument-complete; they are not conversion-optimised and nothing here is performance-backed.",
+    "Ratio is set in the generation tool's aspect-ratio parameter, never in the prompt text (adapters/nano-banana.md Rule 4). The Strictly avoid line is not rendered into any prompt (ADR-014); the exclusion list is kept in each option's avoid field for a model with a real negative channel."
+  ]
+}
