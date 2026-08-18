@@ -4,16 +4,16 @@ GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit 
 
 - page_id `65` · channel `advertorial` · awareness `problem-aware` · registry `2.0.0`
 - 28 image slots: 14 routed, 14 out of library scope
-- 42 prompts, three per routed slot, one recommended each
+- 30 prompts, three per routed slot, one recommended each
 - 2 slots earn motion, each carrying a G12 brief plate as a fourth option below C — a work order the editor renders alongside the still, never a prompt that animates one (ADR-020)
 
 Ratio goes in the generation tool's own aspect-ratio parameter, never in the prompt text (adapters/nano-banana.md Rule 4). The `Strictly avoid:` line is not rendered into any prompt (ADR-014); the exclusion list is kept in the JSON's `avoid` field for a model with a real negative channel.
 
 ## What each prompt needs
 
-**All 44 prompts are paste-and-run.** One prompt, one generation call, no compositing and no edit chain (ADR-021). 0 are blocked on that count.
+**All 32 prompts are paste-and-run.** One prompt, one generation call, no compositing and no edit chain (ADR-021). 0 are blocked on that count.
 
-- **36 want the product photo** — paste the prompt, upload the vacuum photo, set the ratio. They carry a G1 reference block, so the render is bound to the real product rather than an invented one. The `attachments` field is empty because the source export supplied no photograph and none was invented; the upload is yours to make.
+- **24 want the product photo** — paste the prompt, upload the vacuum photo, set the ratio. They carry a G1 reference block, so the render is bound to the real product rather than an invented one. The `attachments` field is empty because the source export supplied no photograph and none was invented; the upload is yours to make.
 - **8 take no attachment at all** — paste and set the ratio. 6 options plus both G12 brief plates, which are text cards and bind nothing.
 
   - `hero.image` option A — 01-pain-scene `candid` · 16:9
@@ -25,7 +25,7 @@ Ratio goes in the generation tool's own aspect-ratio parameter, never in the pro
   - `reasons.items.0.image` option D — the G12 brief plate · 1:1
   - `reasons_b.items.1.image` option D — the G12 brief plate · 16:9
 
-**Eighteen of them are blocked on a different count** — every `reviews.photos` option carries an authenticity precondition that has nothing to do with attachments. Read the reviews warning below before rendering any of them.
+**6 of them are blocked on a different count** — every `reviews.photos` prompt carries an authenticity precondition that has nothing to do with attachments. Read the reviews warning below before rendering any of them.
 
 ## Read this first
 
@@ -39,6 +39,8 @@ Ratio goes in the generation tool's own aspect-ratio parameter, never in the pro
 - **The page argument does not run in library order and the copy is why.** reasons_b sits after the comparison table, so the arc lands as cause, pain, proof, mechanism, social, outcome, mechanism - with a mechanism beat last. Reordering the sections is a copy decision, not an image one, and the routing follows the page as written rather than quietly arguing with it. Pain still precedes relief, which is the cross-slot rule that binds.
 - **One-type-once was the binding constraint and rung 4 carried it twice.** Seven body slots needed seven distinct executions from an advertorial column that offers eight types, two of which are dropped by attribute gates. 01-pain-scene repeats at reasons.items.1 differing on subject class, and 06-relief-hero repeats at reasons_b.items.0 differing on inset_mode — both are the runbook's rung 4, another execution of a type already on the page differing on a named dimension, and both are recorded here rather than left to look like an oversight.
 - **06-relief-hero --context was considered and dropped by its own law.** Its inset is defined as the product in its real installed position and G7-X binds it; a handheld corded appliance has no installed position, so the mode contradicts itself here. --recall took the slot instead.
+- **THE SIX REVIEW TILES GET ONE OPTION EACH, NOT THREE (ADR-022).** 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation rather than the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile spend that budget where it buys nothing and open a door the checks cannot close - pick one register on three tiles and another on three, both legal individually, and the wall reads as two shoots, which reads as fake. Dropping to one is also what made a real defect visible: the six first-drafted variants gave two bedrooms AND two kitchens with four at-rest modes. The set now runs bedroom, bedroom, landing, bathroom, living room, kitchen across three content modes, and build.py checks it on every run.
+- **The two bedroom tiles are a deliberate repeat and the SET law's own words allow it.** It asks for a different room class 'where possible', and both of those quotes are about a mattress - moving one into a kitchen would break FIT to buy a diversity axis. They differ on the four axes that remain: at rest against in use, a bare surface against a lit shaft of air, flat grey against window daylight, arm's length against standing height at the foot of the bed.
 - **FOUR PROMPTS SIT OVER THEIR TYPE'S MEASURED REFERENCE SIZE AND ARE SHIPPED THAT WAY, which is said here rather than left for the reader to find.** 02-cause-anatomy gives ~1800 characters at two marks and the three options here run 1878 to 1887, 4 to 5 percent over; 04-proof-lockedframe gives 1800 and its three-panel option B runs 1839. Seven passes of trimming removed duplicated law - the long G1 preserve clause where the skeleton carries its own one-line form, 'drawn realistically and' where the register line already said it, repeated scene nouns across panels. What is left is earned: the measure mark IS the argument, the verdict mark is required by the skeleton, and the three-ways-the-comparison-is-lost clauses are the type's own recorded faults. Cutting further would cut law rather than fat. Adapter Rule 6 asks for a re-read past 2500 and nothing here comes near it.
 - **No pick prior was available.** feedback/picks.jsonl is empty, so the >=20-pick tie-breaker in SPEC 7.7 never fired and every recommendation here rests on fit, legality, render evidence, product presence and prompt risk alone. These recommendations make the page argument-complete; they are not conversion-optimised and nothing here is performance-backed.
 - **Ratio is set in the generation tool's aspect-ratio parameter, never in the prompt text (adapters/nano-banana.md Rule 4).** The Strictly avoid line is not rendered into any prompt (ADR-014); the exclusion list is kept in each option's avoid field for a model with a real negative channel.
@@ -1324,14 +1326,14 @@ no product and no scene.
 
 *Review photo tile 1 of 6, in the same section as the quote: The dust cup filled up after just one mattress pass. Easy to push and the red to blue light is brilliant.* · asset `65-09-review0-social-snapshot.png`
 
-**Recommended: option A.** FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.
+**Recommended: option A.** ONE OPTION, NOT THREE, because this is a repeating section (ADR-022). 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation, not the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile would have spent that budget inside a cell where it buys nothing, and would have let a mixed set through - three tiles of one register beside three of another reads as two shoots, and two shoots read as fake. FIT is fixed by the cell anyway: 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap it names - does this actually exist and work in a normal home - is this block's exactly. PAGE LEGALITY: BLOCKED, and this outranks everything else; nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so it keeps to incidental limbs.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
-- varies on: baseline - the tile's own quote
+- varies on: set position 1 of 6 - bedroom, at rest, the filled chamber on bare ticking, seen from above at arm's length in grey afternoon daylight
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1082 characters
-- why: The moment this tile's quote describes, photographed as found.
+- why: The moment this tile's quote describes, photographed as found, in the room class and content mode the SET law leaves for this position.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
 
 ```prompt
@@ -1353,60 +1355,6 @@ REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
 
-#### Option B — 05-social-snapshot 1.2
-
-- varies on: mode - the product working rather than resting
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 1009 characters
-- why: The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from standing height at the side of the bed, tilted a few degrees.
-
-CONTENT MODE, in-use: the unit mid-pass down the middle of a bare mattress, one forearm in a pushed-up sleeve on the handle and no face in the frame, its chamber already half grey and its indicator lit blue behind the head
-
-ANCHOR: a pillow without its case dropped beside the bed
-
-SCENE: a main bedroom mid-job, photographed as found - a laundry basket by the door, a phone charger trailing over the nightstand, the wardrobe door left open. Mixed warm-dim household light.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option C — 05-social-snapshot 1.2
-
-- varies on: scene - a different room in the same house
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 985 characters
-- why: Same claim, different room, so six tiles do not read as six photographs of one corner of one house.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Close in and slightly too low, the way a photo taken quickly crops.
-
-CONTENT MODE, at-rest: the unit stood on a nightstand beside the bed it has just been used on, its transparent chamber full of grey powder held up against the lamp so the fill line reads clearly
-
-ANCHOR: a water glass with a ring dried into the wood beside it
-
-SCENE: a bedside corner photographed as found - a lamp on, a book face down, a ring dried into the wood of the nightstand, the bed unmade behind. Warm lamplight only, the rest of the room dim.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
 #### GIF — none
 
 - why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
@@ -1415,14 +1363,14 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 
 *Review photo tile 2 of 6, in the same section as the quote: No dust blown back into the bedroom air. The heat leaves the sheets and mattress feeling completely fresh.* · asset `65-09-review1-social-snapshot.png`
 
-**Recommended: option A.** FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.
+**Recommended: option A.** ONE OPTION, NOT THREE, because this is a repeating section (ADR-022). 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation, not the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile would have spent that budget inside a cell where it buys nothing, and would have let a mixed set through - three tiles of one register beside three of another reads as two shoots, and two shoots read as fake. FIT is fixed by the cell anyway: 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap it names - does this actually exist and work in a normal home - is this block's exactly. PAGE LEGALITY: BLOCKED, and this outranks everything else; nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so it keeps to incidental limbs.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
-- varies on: baseline - the tile's own quote
+- varies on: set position 2 of 6 - bedroom again because both quotes are about a mattress, but differing on all four other axes the SET law names: in use rather than at rest, a lit shaft of air rather than a surface, window daylight rather than flat grey, standing height at the foot of the bed rather than arm's length
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1006 characters
-- why: The moment this tile's quote describes, photographed as found.
+- why: The moment this tile's quote describes, photographed as found, in the room class and content mode the SET law leaves for this position.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
 
 ```prompt
@@ -1444,60 +1392,6 @@ REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
 
-#### Option B — 05-social-snapshot 1.2
-
-- varies on: mode - the product working rather than resting
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 995 characters
-- why: The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from the side of the bed, a little too close.
-
-CONTENT MODE, at-rest: the unit set down on a bare mattress halfway through a job, the worked half of the ticking behind it even and matt and the unworked half ahead still dulled and greyed, the boundary running straight across the bed
-
-ANCHOR: a radiator with a towel folded over it against the wall
-
-SCENE: a main bedroom mid-job, photographed as found - the duvet bundled on the floor, a mug on the nightstand, a laundry basket half full by the door. Flat window daylight only.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option C — 05-social-snapshot 1.2
-
-- varies on: scene - a different room in the same house
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 960 characters
-- why: Same claim, different room, so six tiles do not read as six photographs of one corner of one house.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from above at arm's length, tilted a few degrees.
-
-CONTENT MODE, in-use: the unit mid-pass along a pillow laid flat on the bed, one hand on the handle and no face in the frame, the window behind it open and the air in the room clear
-
-ANCHOR: an open window with the curtain lifted off the sill
-
-SCENE: a bedroom with the window wide open, photographed as found - a curtain lifted off the sill, a hairbrush and a glass on the nightstand, a jumper over the end of the bed. Bright flat daylight.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
 #### GIF — none
 
 - why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
@@ -1506,14 +1400,14 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 
 *Review photo tile 3 of 6, in the same section as the quote: Lightweight enough to do every mattress and pet cushion in one run without wrist fatigue.* · asset `65-09-review2-social-snapshot.png`
 
-**Recommended: option A.** FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.
+**Recommended: option A.** ONE OPTION, NOT THREE, because this is a repeating section (ADR-022). 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation, not the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile would have spent that budget inside a cell where it buys nothing, and would have let a mixed set through - three tiles of one register beside three of another reads as two shoots, and two shoots read as fake. FIT is fixed by the cell anyway: 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap it names - does this actually exist and work in a normal home - is this block's exactly. PAGE LEGALITY: BLOCKED, and this outranks everything else; nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so it keeps to incidental limbs.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
-- varies on: baseline - the tile's own quote
+- varies on: set position 3 of 6 - landing, at rest, a stack of stripped pillows, mixed warm-dim household light, looking down from standing height
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 961 characters
-- why: The moment this tile's quote describes, photographed as found.
+- why: The moment this tile's quote describes, photographed as found, in the room class and content mode the SET law leaves for this position.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
 
 ```prompt
@@ -1535,60 +1429,6 @@ REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
 
-#### Option B — 05-social-snapshot 1.2
-
-- varies on: mode - the product working rather than resting
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 958 characters
-- why: The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from behind at walking height, framing tilted and casual.
-
-CONTENT MODE, in-use: the unit carried in one hand at waist height along a landing between two bedrooms, the arm loose and the wrist straight, no face in the frame, a doorway open on each side
-
-ANCHOR: a laundry basket set down in the doorway
-
-SCENE: a landing photographed as found - the carpet worn in a line down the middle, a bag left against the wall, a light on in one bedroom and not the other. Ambient household light only.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option C — 05-social-snapshot 1.2
-
-- varies on: scene - a different room in the same house
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 993 characters
-- why: Same claim, different room, so six tiles do not read as six photographs of one corner of one house.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from a seat on the opposite side of the room, off-centre.
-
-CONTENT MODE, at-rest: the unit set down on the arm of a fabric sofa beside a pet cushion it has just been over, with a bare mattress visible through the open door behind it, so both jobs are in one frame
-
-ANCHOR: a mug left on the coffee table in front of the sofa
-
-SCENE: a living room in the afternoon, photographed as found - a throw pulled half off the sofa, a coffee table with a mug and a remote on it, a rug rucked at one corner. Window daylight, no lamp on.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
 #### GIF — none
 
 - why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
@@ -1597,68 +1437,14 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 
 *Review photo tile 4 of 6, in the same section as the quote: The tapping vibration pulled out fine grey sediment that my normal vacuum never touched.* · asset `65-09-review3-social-snapshot.png`
 
-**Recommended: option A.** FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.
+**Recommended: option A.** ONE OPTION, NOT THREE, because this is a repeating section (ADR-022). 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation, not the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile would have spent that budget inside a cell where it buys nothing, and would have let a mixed set through - three tiles of one register beside three of another reads as two shoots, and two shoots read as fake. FIT is fixed by the cell anyway: 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap it names - does this actually exist and work in a normal home - is this block's exactly. PAGE LEGALITY: BLOCKED, and this outranks everything else; nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so it keeps to incidental limbs.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
-- varies on: baseline - the tile's own quote
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 1022 characters
-- why: The moment this tile's quote describes, photographed as found.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from above at arm's length, cropped a little too close.
-
-CONTENT MODE, at-rest: the unit's transparent chamber lifted off and tipped out onto a sheet of white kitchen paper on a worktop, a mound of fine grey sediment and matted fibre sitting on the paper beside the empty chamber and the body of the unit
-
-ANCHOR: a folded tea towel pushed to the side of the worktop
-
-SCENE: a kitchen worktop photographed as found - crumbs at the edge of the board, a kettle and a jar of utensils pushed back, a tea towel over the oven rail. Kitchen overhead light only.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option B — 05-social-snapshot 1.2
-
-- varies on: mode - the product working rather than resting
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 972 characters
-- why: The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from the side of the bed, tilted a few degrees.
-
-CONTENT MODE, at-rest: the unit lying on its side on a bare mattress with its chamber still attached and packed with dense grey sediment, the fill visible through the clear wall against the pale ticking
-
-ANCHOR: a pillow without its case beside it on the bed
-
-SCENE: a main bedroom stripped for changing, photographed as found - the duvet half off the end of the bed, a laundry basket by the door, curtains open on a grey afternoon. Ambient daylight only.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option C — 05-social-snapshot 1.2
-
-- varies on: scene - a different room in the same house
+- varies on: set position 4 of 6 - bathroom floor, kit-flatlay, the tipped-out sediment and the filter stack, cold overhead light, straight down and off-centre
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 964 characters
-- why: Same claim, different room, so six tiles do not read as six photographs of one corner of one house.
+- why: The moment this tile's quote describes, photographed as found, in the room class and content mode the SET law leaves for this position.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
 
 ```prompt
@@ -1688,14 +1474,14 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 
 *Review photo tile 5 of 6, in the same section as the quote: Essential gear for pet owners. It pulls deep hair and fine dust out of the velvet sofa effortlessly.* · asset `65-09-review4-social-snapshot.png`
 
-**Recommended: option A.** FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.
+**Recommended: option A.** ONE OPTION, NOT THREE, because this is a repeating section (ADR-022). 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation, not the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile would have spent that budget inside a cell where it buys nothing, and would have let a mixed set through - three tiles of one register beside three of another reads as two shoots, and two shoots read as fake. FIT is fixed by the cell anyway: 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap it names - does this actually exist and work in a normal home - is this block's exactly. PAGE LEGALITY: BLOCKED, and this outranks everything else; nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so it keeps to incidental limbs.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
-- varies on: baseline - the tile's own quote
+- varies on: set position 5 of 6 - living room, in use, dark velvet sofa nap, window daylight, from a seat at the other end of the sofa
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 1003 characters
-- why: The moment this tile's quote describes, photographed as found.
+- why: The moment this tile's quote describes, photographed as found, in the room class and content mode the SET law leaves for this position.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
 
 ```prompt
@@ -1717,60 +1503,6 @@ REGISTER: a real customer's phone photo. One frame, no layout, no layers.
 STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 ```
 
-#### Option B — 05-social-snapshot 1.2
-
-- varies on: mode - the product working rather than resting
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 947 characters
-- why: The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from standing height beside the sofa, tilted.
-
-CONTENT MODE, at-rest: the unit set down on a velvet sofa cushion with its chamber packed with a thick mat of pet hair and grey dust, one cleared strip of dark nap running away from it across the seat
-
-ANCHOR: a chewed toy pushed down between the cushions
-
-SCENE: a living room photographed as found - cushions pulled out of place, a newspaper-free side table with a glass on it, curtains half drawn. Mixed warm-dim household light.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option C — 05-social-snapshot 1.2
-
-- varies on: scene - a different room in the same house
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 960 characters
-- why: Same claim, different room, so six tiles do not read as six photographs of one corner of one house.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from a crouch at close range, off-centre and slightly low.
-
-CONTENT MODE, in-use: the unit mid-pass over a pet cushion on the floor beside the sofa, one forearm on the handle and no face in the frame, loose hair lifting off the cover into the head
-
-ANCHOR: a food bowl on a mat against the skirting
-
-SCENE: the floor beside a sofa photographed as found - a pet cushion flattened in the middle, a chewed rope toy against the skirting, the edge of a rug turned up. Ambient household light only.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
 #### GIF — none
 
 - why: A customer snapshot argues that the thing exists in a real home. That is a held state, and this type bans every added layer, so there is nothing a loop could occupy.
@@ -1779,14 +1511,14 @@ STYLE: honest phone photography, unedited look, natural, slightly imperfect.
 
 *Review photo tile 6 of 6, in the same section as the quote: The washable filter is simple to rinse clean and the corded power never fades during use.* · asset `65-09-review5-social-snapshot.png`
 
-**Recommended: option A.** FIT is fixed by the cell - 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap here is exactly the one it names: does this actually exist and work in a normal home. All three options are the same type, so the choice is mode and scene, and A is the one whose content matches this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and this outranks everything else - see the note below and the page warnings. Nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so every option keeps to incidental limbs.
+**Recommended: option A.** ONE OPTION, NOT THREE, because this is a repeating section (ADR-022). 05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of variation, not the tile: every image must differ completely in room class, surface, light temperature, camera distance and content mode. Three options per tile would have spent that budget inside a cell where it buys nothing, and would have let a mixed set through - three tiles of one register beside three of another reads as two shoots, and two shoots read as fake. FIT is fixed by the cell anyway: 05-social-snapshot is the advertorial social-proof type for a review block, and the trust gap it names - does this actually exist and work in a normal home - is this block's exactly. PAGE LEGALITY: BLOCKED, and this outranks everything else; nothing here ships until the layout changes. EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this register - casual framing may crop the product, but what is visible must match the reference. PROMPT RISK: a face turns the image into a testimonial portrait, which is a different type's job and a compliance risk here, so it keeps to incidental limbs.
 
 #### Option A — 05-social-snapshot 1.2  ← RECOMMENDED
 
-- varies on: baseline - the tile's own quote
+- varies on: set position 6 of 6 - kitchen sink, at rest, running water over the filter, kitchen overhead light, from above at the sink
 - runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
 - ratio parameter: **1:1** · single-pass · 974 characters
-- why: The moment this tile's quote describes, photographed as found.
+- why: The moment this tile's quote describes, photographed as found, in the room class and content mode the SET law leaves for this position.
 - note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
 
 ```prompt
@@ -1800,60 +1532,6 @@ CONTENT MODE, at-rest: the unit's filter stack held under a running kitchen tap,
 ANCHOR: a washing-up brush standing in the sink corner
 
 SCENE: a kitchen sink photographed as found - washing-up stacked on the draining board, a bottle of liquid on the sill, a cloth over the tap. Kitchen overhead light only.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option B — 05-social-snapshot 1.2
-
-- varies on: mode - the product working rather than resting
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 969 characters
-- why: The same claim with the machine in operation rather than set down, so the evidence is being made rather than displayed.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from standing height looking down, framing tilted.
-
-CONTENT MODE, kit-flatlay: the unit, its opened transparent chamber and its two rinsed filter elements laid out on a draining board to dry, still beaded with water and not lined up straight
-
-ANCHOR: a folded dishcloth at the edge of the board
-
-SCENE: a kitchen draining board photographed as found - a mug and two glasses already drying, a folded dishcloth at the edge, the window above the sink showing a grey garden. Flat daylight from the window.
-
-CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
-adequate, mild noise, honest exposure. No styling of any kind.
-
-REGISTER: a real customer's phone photo. One frame, no layout, no layers.
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
-```
-
-#### Option C — 05-social-snapshot 1.2
-
-- varies on: scene - a different room in the same house
-- runs: **ATTACH THE PHOTO** — paste it, upload the product photo, set the ratio
-- ratio parameter: **1:1** · single-pass · 968 characters
-- why: Same claim, different room, so six tiles do not read as six photographs of one corner of one house.
-- note: BLOCKED AS THE PAGE IS BUILT. 05-social-snapshot's authenticity fence is hard and non-negotiable: no reviewer name, avatar, star row or verified label anywhere near the image in the layout. reviews.photos.0-5 sit inside the same section element as reviews.quotes.0-5, which carry names, five-star rows and a green Verified label each. Rendering these beside that copy presents generated pictures as customer uploads, which is a fabricated endorsement. Either move the photo grid out of the attributed block, or drop the names, stars and verified labels from it, or use real customer photographs - which always win over generated ones.
-
-```prompt
-TYPE: 05-social-snapshot v1.2
-
-Use the attached product photo as the exact reference for the handheld unit.
-Preserve shape, proportions, material, finish and colour exactly. Seen from a crouch along the landing floor, off-centre.
-
-CONTENT MODE, at-rest: the unit plugged into a wall socket on a landing with its cable running along the skirting, set down beside two bedroom doors both standing open, mid-way through working through the house
-
-ANCHOR: a phone left on the floor beside the socket
-
-SCENE: a landing photographed as found - a socket at skirting height with two plugs in it, the carpet worn in a line, both bedroom doors standing open. Mixed warm-dim household light.
 
 CAMERA TRUTH: framing tilted a few degrees and a little too close, focus
 adequate, mild noise, honest exposure. No styling of any kind.

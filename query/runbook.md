@@ -78,6 +78,20 @@ an option. Fewer than 3 legal possibilities → emit fewer, never pad with rerol
 **C is always available** — it is a different execution of A, so a slot falls below
 three only when its own law forbids one.
 
+**A REPEATING SECTION EMITS ONE OPTION PER SLOT** (ADR-022). Where cross-slot rule 2
+applies — a review wall, a roundup, a gallery of equivalent cells — the SET is the
+unit of variation, not the cell. Three options inside one tile spend the variation
+budget in the dimension that buys nothing, and they open a door no check can close:
+each option is legal alone, and a reader picking one register on some tiles and
+another on the rest gets a wall that reads as two shoots, which reads as fake. So
+emit A only, and let `varies_on` carry the tile's place in the SET — how it differs
+from its siblings, not from a B and C that do not exist. Where the type legislates
+its own set law, that law decides which execution each tile keeps:
+`05-social-snapshot`'s SET DIVERSITY LAW asks for a different room class, surface,
+light temperature, camera distance and content mode across the set, and its "where
+possible" is a real qualifier — a repeat is allowed when moving the tile would break
+FIT, and then the option says which of the other axes carry the difference instead.
+
 **Name one of them.** Every slot with options sets `recommended_opt` and explains it
 in `recommendation_basis`, against these five criteria in this order:
 

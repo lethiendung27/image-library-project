@@ -677,3 +677,45 @@ Consequences: `query/runbook.md` Step 3 gains the declaration and the gate;
 `inset_motion` comment is corrected from ADR-018 to ADR-019 in the same pass;
 `query/sessions/58-.../` reports run-state per option. No type file is edited — every
 fallback cited above was already written. `registry_version` unchanged.
+
+## ADR-022 · 2026-08-18 · A repeating section emits one option per slot, and the SET is the unit of variation
+
+G5 has said "3 options per slot" since ADR-000 and it is right for a linear funnel,
+where a slot is a decision and three options are three ways to make it. A repeating
+section is not that. Its slots are siblings, and what varies is the SET.
+
+Owner instruction, 2026-08-18, on page 65's six-tile review wall: **one option per
+slot for a repeating section.** The grounds were already in the library and nobody
+had connected them. Cross-slot rule 2 exempts repeating sections from one-type-once
+"provided the instances differ on a named dimension". `05-social-snapshot`'s own SLOT
+CONSTRAINTS legislate a SET DIVERSITY LAW: "when a page requests more than one
+snapshot, every image must differ COMPLETELY — different room class, surface, light
+temperature, camera distance, and content mode where possible." Both rules put the
+variation between tiles. Three options inside one tile spend it in the dimension
+where it buys nothing.
+
+**The harm is not waste, it is a door no check can close.** Options are individually
+legal but not necessarily legal in COMBINATION, and the runbook says so. On a six-tile
+wall with three options each, a reader picking one register on three tiles and another
+on three gets a set that is legal option-by-option and broken as a wall: some tiles
+anonymous phone snapshots, others two-person documentary scenes. That reads as two
+shoots, and the type's own words are that one shoot reads as fake. Nothing in the
+checks caught it, because every check ran per option.
+
+**Dropping to one option exposed a defect three options had been masking.** Page 65's
+six first-drafted A-variants gave two bedrooms AND two kitchens across four at-rest
+modes — a straight breach of the SET law that nobody would have seen while B and C
+sat beside them. Tile 4 now keeps what was drafted as C, and the set runs bedroom,
+bedroom, landing, bathroom, living room, kitchen across three content modes. Which
+execution a tile keeps is decided by the set law, not by the letter A.
+
+**"Where possible" is a real qualifier, not a hedge.** Two of the six quotes are
+intrinsically about a mattress; moving one into a kitchen would buy a diversity axis
+by breaking FIT. The repeat stands and the option states which of the four remaining
+axes carry the difference instead.
+
+Consequences: `query/runbook.md` Step 4 gains the rule; `query/sessions/65-.../`
+emits 30 prompts rather than 42 and checks its own set diversity on every run, with
+the room classifier picking by earliest occurrence rather than vocabulary order —
+"a landing between two bedrooms" is a landing, and order-scanning called it a
+bedroom. G5 is unchanged for linear slots. `registry_version` unchanged.

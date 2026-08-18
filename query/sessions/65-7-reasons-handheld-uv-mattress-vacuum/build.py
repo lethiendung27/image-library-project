@@ -1741,7 +1741,44 @@ SLOTS = [
     },
 ]
 
+# A REPEATING SECTION GETS ONE OPTION PER SLOT, NOT THREE. Owner decision,
+# 2026-08-18, ADR-022. 05-social-snapshot's own SET DIVERSITY LAW puts the
+# variation budget BETWEEN tiles - "when a page requests more than one snapshot,
+# every image must differ COMPLETELY" - so three options inside one tile spend it
+# in the dimension where it buys nothing, and create a choice that can break the
+# set: pick snapshot on three tiles and handoff on three and the review wall
+# stops reading as one group of customers.
+#
+# WHICH option each tile keeps is decided by the SET law, not by the letter A.
+# The six A-variants as first written gave two bedrooms AND two kitchens and four
+# at-rest modes, which the law forbids. Tile 3 therefore keeps what was drafted as
+# C - the bathroom kit-flatlay - and the set comes out at five room classes and
+# three content modes. Dropping to one option is what made that visible; three
+# options had been masking it.
+KEEP = [0, 0, 0, 2, 0, 0]
+
+# How each tile differs from the other five. With no B or C to vary from, this is
+# what `varies_on` has to carry: the tile's place in the set.
+SET_VARIES = [
+    "set position 1 of 6 - bedroom, at rest, the filled chamber on bare ticking, "
+    "seen from above at arm's length in grey afternoon daylight",
+    "set position 2 of 6 - bedroom again because both quotes are about a "
+    "mattress, but differing on all four other axes the SET law names: in use "
+    "rather than at rest, a lit shaft of air rather than a surface, window "
+    "daylight rather than flat grey, standing height at the foot of the bed "
+    "rather than arm's length",
+    "set position 3 of 6 - landing, at rest, a stack of stripped pillows, mixed "
+    "warm-dim household light, looking down from standing height",
+    "set position 4 of 6 - bathroom floor, kit-flatlay, the tipped-out sediment "
+    "and the filter stack, cold overhead light, straight down and off-centre",
+    "set position 5 of 6 - living room, in use, dark velvet sofa nap, window "
+    "daylight, from a seat at the other end of the sofa",
+    "set position 6 of 6 - kitchen sink, at rest, running water over the filter, "
+    "kitchen overhead light, from above at the sink",
+]
+
 for i, rev in enumerate(REVIEWS):
+    mode, moment, anchor, camera = rev["opts"][KEEP[i]]
     SLOTS.append({
         "slot_id": f"reviews.photos.{i}.image", "section_role": "social-proof",
         "asset": f"{PAGE}-09-review{i}-social-snapshot.png",
@@ -1754,40 +1791,32 @@ for i, rev in enumerate(REVIEWS):
                     "layer, so there is nothing a loop could occupy."},
         "recommended_opt": "A",
         "recommendation_basis":
-            "FIT is fixed by the cell - 05-social-snapshot is the "
-            "advertorial social-proof type for a review block, and the trust "
-            "gap here is exactly the one it names: does this actually exist and "
-            "work in a normal home. All three options are the same type, so the "
-            "choice is mode and scene, and A is the one whose content matches "
-            "this tile's own quote most directly. PAGE LEGALITY: BLOCKED, and "
-            "this outranks everything else - see the note below and the page "
-            "warnings. Nothing here ships until the layout changes. EVIDENCE: "
-            "the type is at 1.2. PRODUCT PRESENCE: G1 binds even in this "
-            "register - casual framing may crop the product, but what is "
+            "ONE OPTION, NOT THREE, because this is a repeating section "
+            "(ADR-022). 05-social-snapshot's SET DIVERSITY LAW makes the six "
+            "tiles the unit of variation, not the tile: every image must differ "
+            "completely in room class, surface, light temperature, camera "
+            "distance and content mode. Three options per tile would have spent "
+            "that budget inside a cell where it buys nothing, and would have let "
+            "a mixed set through - three tiles of one register beside three of "
+            "another reads as two shoots, and two shoots read as fake. FIT is "
+            "fixed by the cell anyway: 05-social-snapshot is the advertorial "
+            "social-proof type for a review block, and the trust gap it names - "
+            "does this actually exist and work in a normal home - is this "
+            "block's exactly. PAGE LEGALITY: BLOCKED, and this outranks "
+            "everything else; nothing here ships until the layout changes. "
+            "EVIDENCE: the type is at 1.2. PRODUCT PRESENCE: G1 binds even in "
+            "this register - casual framing may crop the product, but what is "
             "visible must match the reference. PROMPT RISK: a face turns the "
             "image into a testimonial portrait, which is a different type's job "
-            "and a compliance risk here, so every option keeps to incidental "
-            "limbs.",
+            "and a compliance risk here, so it keeps to incidental limbs.",
         "options": [
-            opt(letter, varies, "05-social-snapshot", "1.2", "1:1",
-                snap(mode, scene, anchor, camera, moment),
-                rationale, notes=REVIEW_BLOCK,
-                asset=f"{PAGE}-09-review{i}-social-snapshot--{letter}.png")
-            for letter, varies, (mode, moment, anchor, camera), scene, rationale
-            in zip(
-                ("A", "B", "C"),
-                ("baseline - the tile's own quote",
-                 "mode - the product working rather than resting",
-                 "scene - a different room in the same house"),
-                rev["opts"],
-                SCENES[i],
-                (f"The moment this tile's quote describes, photographed as "
-                 f"found.",
-                 "The same claim with the machine in operation rather than set "
-                 "down, so the evidence is being made rather than displayed.",
-                 "Same claim, different room, so six tiles do not read as six "
-                 "photographs of one corner of one house."),
-            )
+            opt("A", SET_VARIES[i], "05-social-snapshot", "1.2", "1:1",
+                snap(mode, SCENES[i][KEEP[i]], anchor, camera, moment),
+                "The moment this tile's quote describes, photographed as found, "
+                "in the room class and content mode the SET law leaves for this "
+                "position.",
+                notes=REVIEW_BLOCK,
+                asset=f"{PAGE}-09-review{i}-social-snapshot--A.png"),
         ],
     })
 
@@ -1904,6 +1933,25 @@ OUT = {
         "Its inset is defined as the product in its real installed position and "
         "G7-X binds it; a handheld corded appliance has no installed position, "
         "so the mode contradicts itself here. --recall took the slot instead.",
+        "THE SIX REVIEW TILES GET ONE OPTION EACH, NOT THREE (ADR-022). "
+        "05-social-snapshot's SET DIVERSITY LAW makes the six tiles the unit of "
+        "variation rather than the tile: every image must differ completely in "
+        "room class, surface, light temperature, camera distance and content "
+        "mode. Three options per tile spend that budget where it buys nothing "
+        "and open a door the checks cannot close - pick one register on three "
+        "tiles and another on three, both legal individually, and the wall "
+        "reads as two shoots, which reads as fake. Dropping to one is also what "
+        "made a real defect visible: the six first-drafted variants gave two "
+        "bedrooms AND two kitchens with four at-rest modes. The set now runs "
+        "bedroom, bedroom, landing, bathroom, living room, kitchen across three "
+        "content modes, and build.py checks it on every run.",
+        "The two bedroom tiles are a deliberate repeat and the SET law's own "
+        "words allow it. It asks for a different room class 'where possible', "
+        "and both of those quotes are about a mattress - moving one into a "
+        "kitchen would break FIT to buy a diversity axis. They differ on the "
+        "four axes that remain: at rest against in use, a bare surface against "
+        "a lit shaft of air, flat grey against window daylight, arm's length "
+        "against standing height at the foot of the bed.",
         "FOUR PROMPTS SIT OVER THEIR TYPE'S MEASURED REFERENCE SIZE AND ARE "
         "SHIPPED THAT WAY, which is said here rather than left for the reader to "
         "find. 02-cause-anatomy gives ~1800 characters at two marks and the "
@@ -2057,10 +2105,12 @@ def md(d):
         A(f"  - `{s['slot_id']}` option D — the G12 brief plate · "
           f"{next(x['ratio'] for x in s['options'] if x['opt'] == s['recommended_opt'])}")
     A("")
-    A("**Eighteen of them are blocked on a different count** — every "
-      "`reviews.photos` option carries an authenticity precondition that has "
-      "nothing to do with attachments. Read the reviews warning below before "
-      "rendering any of them.")
+    n_rev = sum(len(s["options"]) for s in d["slots"]
+                if s["slot_id"].startswith("reviews.photos"))
+    A(f"**{n_rev} of them are blocked on a different count** — every "
+      f"`reviews.photos` prompt carries an authenticity precondition that has "
+      f"nothing to do with attachments. Read the reviews warning below before "
+      f"rendering any of them.")
     A("")
 
     A("## Read this first")
@@ -2222,6 +2272,50 @@ print("prompts exempt from their type's photo flag (each must be a declared "
       "variant exemption or a G1-exempt type):")
 for row in split:
     print("   ", row)
+# ---- 05-social-snapshot SET DIVERSITY LAW, across the tiles not inside one --
+# "When a page requests more than one snapshot, every image must differ
+# COMPLETELY - different room class, surface, light temperature, camera distance,
+# and content mode where possible." With one option per tile this is checkable,
+# and it caught a real defect: the six first-drafted A-variants gave two bedrooms
+# AND two kitchens with four at-rest modes.
+_snap = [s for s in routed
+         if any(o["type"] == "05-social-snapshot" for o in s["options"])]
+if _snap:
+    # The law says ROOM CLASS, so the raw phrase has to be normalised or the
+    # check reads "main bedroom stripped for changing" and "main bedroom" as two
+    # different rooms and passes a set that repeats. Controlled vocabulary, and
+    # the raw phrase is printed beside its class so a wrong mapping is visible.
+    ROOM_CLASSES = ("bedroom", "bathroom", "kitchen", "living room", "landing",
+                    "hall", "garage", "car")
+
+    def room_class(scene):
+        # Earliest occurrence, not tuple order: "a landing between two bedrooms"
+        # is a landing, and scanning the tuple in order called it a bedroom.
+        low = scene.lower()
+        hits = [(low.index(r), r) for r in ROOM_CLASSES if r in low]
+        return min(hits)[1] if hits else "UNCLASSIFIED: " + scene[:30]
+
+    _rooms, _modes, _anchors, _raw = [], [], [], []
+    for s in _snap:
+        p = s["options"][0]["prompt"]
+        _modes.append(re.search(r"CONTENT MODE, ([\w-]+):", p).group(1))
+        scene = re.search(r"SCENE: (.{0,60})", p).group(1)
+        _raw.append(scene)
+        _rooms.append(room_class(scene))
+        _anchors.append(re.search(r"ANCHOR: (.{0,28})", p).group(1).strip())
+    print()
+    print("SET DIVERSITY (05-social-snapshot, %d tiles)" % len(_snap))
+    for r, raw in zip(_rooms, _raw):
+        print(f"    {r:12} <- {raw[:52]}")
+    print("  repeated room classes:",
+          sorted({r for r in _rooms if _rooms.count(r) > 1}) or "none")
+    print("  content modes:", sorted(set(_modes)),
+          "- distinct:", len(set(_modes)), "of", len(_modes))
+    print("  duplicate anchors:",
+          sorted({a for a in _anchors if _anchors.count(a) > 1}) or "none")
+    print("  options per tile:", sorted({len(s["options"]) for s in _snap}),
+          "- a repeating section emits one (ADR-022)")
+
 # ---- checked against content.json, not against this script's memory ---------
 print()
 print("CONTRACT CHECKS (mapping/content.schema.json)")
