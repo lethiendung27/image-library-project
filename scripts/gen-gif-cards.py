@@ -24,7 +24,8 @@ import validate as V  # noqa: E402  (parser reuse — one YAML subset, one imple
 
 GIF_TYPES_DIR = os.path.join(V.ROOT, "registry", "gif-types")
 LEDGER_PATH = os.path.join(V.ROOT, "ingestion", "gifs.jsonl")
-DEFAULT_ROOT = os.path.join(os.path.expanduser("~"), "Downloads", "gif-library")
+DEFAULT_ROOT = os.path.join(os.path.expanduser("~"), "Downloads",
+                            "image-library-assets", "gifs")
 MEASURE_MIN = 3  # below this the card reports "not enough files", never a figure
 
 

@@ -34,7 +34,7 @@ verdicts are always the user's call.
 
 ```sh
 # manifest of all source image hashes (recursive, common formats)
-find /Users/lethiendung/Downloads/image-library-assets -type f \
+find /Users/lethiendung/Downloads/image-library-assets/stills -type f \
   \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.avif' \) \
   -exec shasum -a 256 {} + | awk '{print "sha256:" $1 "  " $2}' > /tmp/manifest.txt
 # hashes already ledgered
@@ -56,6 +56,18 @@ sips -s format png "<source>.avif" --out "<scratch>/<name>.png"
 Never classify an image you could not actually see; a filename is not evidence. Formats
 outside the manifest list are outside the to-do by definition — `.gif` in particular is
 not a manifest format, so motion assets are not batch input.
+
+**The manifest points at `stills/`, and that is load-bearing (2026-08-19, ADR-025).** The
+asset folder now holds `stills/` (the market corpus), `feedback/` (this library's own
+render outputs) and `gifs/` (the GIF library) side by side. Until today the manifest was
+rooted one level up and recursive, so it swept `feedback/` too: measured on 2026-08-19,
+that produced a to-do list of **324 items, every one of them a render this library
+produced**, while the real corpus was already fully classified — 108 unique hashes at the
+root, all 108 ledgered, 0 outstanding. A session following the runbook literally would
+have spent a batch teaching the library its own output back to itself, and §6.2's evidence
+rule would have counted those as independent observations. Keep the manifest pointed at
+`stills/`. If the to-do list comes back empty, the corpus is genuinely exhausted and the
+answer is new source images, not a wider `find`.
 
 ## 2. Classify
 

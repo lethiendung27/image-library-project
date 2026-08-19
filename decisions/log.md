@@ -882,3 +882,50 @@ and the social-proof paragraph. ADR-023 stands unedited, as this file's header r
 the wrong sentence is left legible rather than silently repaired, the treatment ADR-019
 gave ADR-018. No session is re-routed, no type file changes, no schema field moves.
 `registry_version` unchanged.
+
+## ADR-025 · 2026-08-19 · One asset folder with three siblings, and the manifest reads only one of them
+
+The owner asked for the project's scattered local files to be gathered into one folder.
+Doing it surfaced a latent defect in the INGEST operation that had nothing to do with
+tidiness, and that is the reason this is an ADR rather than a path edit.
+
+**The classification manifest was eating the library's own renders.** `classify-batch.md`
+§1 rooted its `find` at the asset folder and recursed. That folder also held `feedback/`,
+where render outputs land. Measured 2026-08-19: 108 unique image hashes at the root, all
+108 already in `observations.jsonl`, 0 outstanding — the market corpus is **fully
+classified**. The `feedback/` folder held 324 further images, **none** ledgered. So the
+runbook's to-do list was 324 items, every one a picture this library produced, and a
+session following it literally would have spent a batch teaching the library its own
+output back to itself. SPEC §6.2 counts observations toward the ≥2/3 deviation rule, so
+those records would have become self-generated evidence for changing the very types that
+made them. Nothing in the repo would have flagged it: the records would have been
+well-formed, and the verdicts plausible.
+
+It also hid a fact worth stating plainly: **the corpus is exhausted.** The honest to-do
+list is 0, and the answer to that is new source images, not a wider `find`.
+
+**The fix is structural, not a warning.** The asset folder now holds three siblings —
+`stills/` (the market corpus), `feedback/` (this library's renders), `gifs/` (the GIF
+library, §3.6) — and the manifest points at `stills/`. Contamination is then impossible by
+construction rather than avoided by care, which is the same reason `_staging/` is a
+directory rather than a status field.
+
+**Why the GIF library moved in as a sibling and not inside the stills.** Both are source
+media outside the repo, identified by hash, and one folder is one thing to back up. But
+nesting the typed GIF tree inside the flat stills bucket would have put every reference
+still an editor drops beside a loop — a poster frame, a grade reference — straight into the
+image to-do list, which is the defect above with a new door. As siblings they share a
+parent and share nothing else. The two libraries also keep their opposite organising
+principles intact: `stills/` is flat and its classification lives in the ledger, `gifs/` is
+typed and the folder IS the classification (ADR-023).
+
+**The repo did not move.** It is already a single self-contained folder, and relocating it
+mid-session would break this session's working directory and any parallel session on the
+same repo — the owner's normal working pattern is more than one session at a time. If it
+should live under the same parent, that is a deliberate step to take when nothing else is
+running, not a side effect of a tidy-up.
+
+Consequences: `ingestion/runbooks/classify-batch.md` §1 manifest path and a new paragraph
+stating why it is load-bearing; `SPEC.md` §6.4 names the three siblings;
+`scripts/gen-gif-cards.py` default root follows the move. `observations.jsonl` is untouched
+— no record was wrong, the to-do derivation was. `registry_version` unchanged.
