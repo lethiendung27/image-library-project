@@ -333,19 +333,34 @@ slots were examined at rung 2 and why each failed. This is SPEC §7.5's rule —
 is not automatically a gap — applied to motion. Never reach the floor by switching
 ambient on, and never by lowering the temporal test.
 
-**Ceiling and spacing, all three binding:** at most 5 loops on a page; at most one per
-section; never two in adjacent slots. Where the ceiling or the spacing rule kills a
-positive 5c verdict, flip that slot to `eligible: false`, say in its `reason` that the
-budget and not the argument decided it, and record the conflict in `motion.notes`.
+**Ceiling and spacing, both binding:** at most 5 loops on a page, and at most one per
+section — where a repeating list (a reason list, a feature list, a review wall) counts
+as **ONE** section and not one per item. ADR-022's rule that the SET is the unit applies
+to motion exactly as it applies to options: four moving tiles inside one feature list is
+the fairground this rule exists to prevent, and page 31 carries exactly that draft.
+Which item keeps the motion is decided by the section's own set law, not by its position.
 
-**The review wall is static. No exceptions.** Owner instruction, 2026-08-19: no tile in
-a repeating review section carries motion, whatever its quote says. This supersedes the
-`social-viral` verdict in `query/sessions/13-inch-portable-wall-mounted-air-cooler-cool-your-space/`,
-which called a customer's phone clip more authentic than a customer's photo — that page
-is left standing and is not re-routed, so the correction is legible rather than silent.
+There is deliberately **no separate never-adjacent clause**. Inside a section
+one-per-section already covers it; across a section boundary a heading and a block of
+copy sit between the two slots, and enforcing adjacency there dropped page 58 below the
+owner's floor for no reader-visible gain (ADR-024).
+
+Where the ceiling or the spacing rule kills a positive 5c verdict, flip that slot to
+`eligible: false`, say in its `reason` that the budget and not the argument decided it,
+and record the conflict in `motion.notes`.
+
+**No social-proof slot carries motion, and the review wall is the strictest case.**
+Owner instruction, 2026-08-19: no tile in a repeating review section carries motion,
+whatever its quote says. The mechanism is wider than the wall, and stating it plainly is
+what a router actually hits — **the six-type set carries no `social` type**, so a
+social-proof slot has no gif type to file under, wall tile or standalone.
+
 Three of three review walls on the market pages scanned are static, and 14 of 15
 `social`-role slots across the routed sessions already refused motion on the type's own
-grounds; this instruction closes the last one.
+grounds. The fifteenth, page 13's `social-viral`, is a **standalone** slot and not a wall
+tile — page 13 has no repeating review section at all. ADR-023 named the wall rule as
+what supersedes that verdict and was wrong on the point; it is the absent type that does
+(ADR-024). Page 13 stands and is not re-routed.
 
 **Then name the medium.** Every slot carrying options sets `recommended_media`. It is
 `still` unless the slot's argument is carried better by the loop than by any of A/B/C,

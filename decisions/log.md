@@ -824,3 +824,61 @@ gif type pass, a ledger pass and a check that the floor is satisfiable at all;
 `recommended_media`, and `type_id` / `rung` / `refs` / `output` on `gif`; `SPEC.md` §3.6
 and §9. No existing session is re-routed and no image type file is touched.
 `registry_version` unchanged — no image structure moves.
+
+## ADR-024 · 2026-08-19 · Corrects ADR-023: the wall rule never touched page 13, and never-adjacent breaks the floor
+
+Step 5d shipped in ADR-023 without ever having been executed. Running it dry against all
+five routed sessions the same day — no session re-routed, only what the rule WOULD say —
+returned two defects and one finding. This is the case for running a rule before trusting
+it: both defects are invisible to a reading and obvious to an execution.
+
+**Defect 1: ADR-023 credits the wrong rule for page 13.** It says the static-wall
+instruction supersedes that session's `social-viral` verdict. It does not.
+`social-viral` is a STANDALONE social-proof slot with three `05-social-snapshot`
+options; page 13 has no repeating review section at all, and its `comments-thread` slot
+carries no image. The wall rule governs tiles in a repeating review section and this is
+not one, so it never reaches this slot.
+
+The verdict still cannot recur, for a stronger reason that ADR-023 established two
+paragraphs earlier and then failed to connect: **the six-type set carries no `social`
+type.** A social-proof slot has nothing to file a loop under, wall tile or standalone.
+That is the mechanism a router actually hits, and it makes the consequence wider than
+the owner's instruction reads on its face — ALL social-proof motion is out, not only the
+wall. Recorded here so it is a stated consequence rather than a surprise the first time
+a session refuses a UGC clip that looks perfectly good.
+
+**Defect 2: the spacing clause breaks the owner's own floor.** ADR-023 wrote "at most one
+per section; never two in adjacent slots" as if the two were one rule. They are not, and
+the second is wrong. Page 58's two eligible loops sit at consecutive slot indices —
+`problems.items.1.image` then `features.items.0.image` — but across a section boundary,
+with a heading and a block of copy between them. Enforcing never-adjacent drops that page
+to one loop, below the floor of 2, to prevent a collision no reader can see. Measured over
+the five sessions, the clause as written meets the floor on 4 of 5 pages; the revision
+below meets it on 5 of 5.
+
+**Resolution: one spacing rule, and a repeating list is ONE section.** At most one moving
+item per section, with a reason list, a feature list or a review wall counting as a single
+section rather than one per item. This is ADR-022's SET-is-the-unit applied to motion, and
+the dry run shows the same failure ADR-022 found in options: page 31 drafted four moving
+tiles inside one `features` list and page 37 three inside one `story` list — the fairground
+the rule exists to prevent, invisible while each tile was judged alone. Which item keeps
+the motion is decided by the section's own set law, not by position. The never-adjacent
+clause is dropped: inside a section it is redundant, across one it is harmful.
+
+**The finding, which changes no rule but changes where the work is.** The coverage
+preference — one `working` loop and one `result` loop — is met on 2 of 5 pages. Three
+pages are working-only: 58 and 65 carry `cause` + `mechanism`, and 31 carries hero, cause,
+mechanism and use with nothing on the result half. So `result` is systematically
+underserved by rung 1, and rung 2's restaging of a locked multi-panel `proof` is not an
+edge case for thin pages — it is the main route to the second half of the floor on a
+majority of pages. ADR-023 called it a backup. It is closer to a default.
+
+Floor and ceiling themselves need no change: 2 is met by every session before spacing and,
+under the revised rule, after it; 5 is never approached (the busiest page carries 5 before
+spacing and 4 after, once `social-viral` loses its type).
+
+Consequences: `query/runbook.md` Step 5d rewritten in two places — the spacing paragraph
+and the social-proof paragraph. ADR-023 stands unedited, as this file's header requires;
+the wrong sentence is left legible rather than silently repaired, the treatment ADR-019
+gave ADR-018. No session is re-routed, no type file changes, no schema field moves.
+`registry_version` unchanged.
