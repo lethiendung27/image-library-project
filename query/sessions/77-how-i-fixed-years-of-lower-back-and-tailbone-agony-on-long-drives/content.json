@@ -1,0 +1,153 @@
+{
+  "product": {
+    "name": "Ergonomic Memory Foam Seat Cushion",
+    "category": "health",
+    "specification": "One-piece L-shaped cushion · high-density slow-rebound memory foam core · non-slip base · universal fit for office chairs, car and truck seats, wheelchairs, gaming chairs and dining chairs · colour black · package contains 1 cushion. Dimensions, weight, foam density and cover material to be supplied by the manufacturer.",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "none",
+      "mounting": "freestanding",
+      "colorways": ["black"],
+      "body_contact": true,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": false
+    },
+    "problems_solved": [
+      "A car seat's backward safety slope tilts the pelvis back and drops the hips below the knees, dumping body weight onto the tailbone and the lower lumbar curve",
+      "The open gap where a seat base meets the backrest leaves the pelvis unsupported, so it sinks and rolls backward",
+      "A separate seat pad and a separate lumbar roll drift apart under braking and when standing up, leaving the junction between them empty",
+      "Flat foam pads and donut rings only lift the hips and let the pelvis roll back; cheap foam compresses flat within about twenty minutes of sitting",
+      "Lower-back and tailbone ache that builds over a long desk shift or a long drive, and stiffness on standing up afterwards"
+    ],
+    "raw_features": [
+      "One-piece L-shaped design: the seat base and lumbar backrest are a single continuous unit, not a cushion plus a separate lumbar pillow",
+      "Bridges the gap where a seat base meets the backrest, the point where an ordinary flat cushion lets the pelvis sink and roll backward",
+      "Seat section raises the hips to sit level with or slightly above the knees",
+      "Ergonomic spinal-fit contour follows the natural curve of the lumbar spine",
+      "High-density slow-rebound memory foam core holds its supportive shape and dampens road vibration",
+      "Non-slip grip bottom holds on leather, fabric and vegan leather; no straps, buckles or mounting tools",
+      "Because it is one continuous piece it does not slide forward under braking, separate mid-shift, or drop through the chair gap when standing",
+      "Portable between a car seat and a desk chair; raises seating height slightly, so the mirror needs a small adjustment on day one"
+    ],
+    "personas": [
+      "Office workers aged 35-60 who sit through a full working day",
+      "Long-distance drivers, truckers and rideshare drivers",
+      "Commuters whose ache arrives on a schedule, mid-afternoon or on the drive home",
+      "Gamers who sit for long unbroken sessions",
+      "Wheelchair users and pregnant women wanting more support on dining and desk chairs"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "First-person advertorial header. The narrator pulls into his driveway, kills the ignition and grips the steering wheel just to brace himself before standing up; his lower back is locked and every step to the front door sends grinding pressure through the tailbone and hips. Desk afternoons were already miserable and the commute turned stiffness into an ordeal that began costing him weekend outings with his wife.",
+        "image_slots": [
+          {"slot_id": "hero.image", "ratio": "16:9", "position": "advertorial header, under the eyebrow and above the byline"}
+        ]
+      },
+      {
+        "id": "problems.items.0",
+        "role": "problem-agitation",
+        "copy_summary": "Why every ordinary seat fix failed. Flat foam cushions and doughnut rings only lifted the hips while the pelvis rolled backward; standalone lumbar pillows shoved the upper back forward while the tailbone stayed sunk in the seat gap. Under braking the separate pieces shifted, separated and slid out of alignment. Beaded covers and vibrating mats did nothing structural.",
+        "image_slots": [
+          {"slot_id": "problems.items.0.image", "ratio": "16:9", "position": "problem section 1, beside the what-I-already-tried list"}
+        ]
+      },
+      {
+        "id": "problems.items.1",
+        "role": "cause",
+        "copy_summary": "The hidden gap between seat and backrest. Car seats are built with a backward slope for safety, which tilts the pelvis back and dumps body weight onto the tailbone and lower lumbar curve, dropping the hips below the knees. A separate pad on the bottom and a separate roll on the back drift apart, leaving the critical junction completely empty.",
+        "image_slots": [
+          {"slot_id": "problems.items.1.image", "ratio": "16:9", "position": "problem section 2, beside the root-cause list"}
+        ]
+      },
+      {
+        "id": "features.items.0",
+        "role": "mechanism",
+        "copy_summary": "A continuous one-piece L-shaped design that locks posture. Because the seat base and lumbar backrest are a single unbroken contour, it bridges the void where the backrest meets the seat pan and stops the pelvis collapsing backward. The hips lift into even alignment, taking the crushing load off the tailbone, and the lower back is supported along its natural curve without being pushed forward.",
+        "image_slots": [
+          {"slot_id": "features.items.0.image", "ratio": "16:9", "position": "feature section 1, beside the what-makes-it-work list"}
+        ]
+      },
+      {
+        "id": "features.items.1",
+        "role": "proof",
+        "copy_summary": "Never slides forward or drops through the seat crack. Older cushions had to be readjusted every time he got in and out. This one stays firmly in place on leather, fabric and vegan leather thanks to a balanced non-slip base and a connected structure. Through stop-and-go city traffic it never crept forward under sudden braking, and standing up never left the backrest slumped over or fallen down the rear crack. No straps, buckles or mounting tools.",
+        "image_slots": [
+          {"slot_id": "features.items.1.image", "ratio": "16:9", "position": "feature section 2, beside the why-it-stays-put list"}
+        ]
+      },
+      {
+        "id": "features.items.2",
+        "role": "comparison",
+        "copy_summary": "High-density foam that absorbs road bumps and never bottoms out. Cheap foam pads flatten out like paper after twenty minutes of sitting, while this high-density core holds its supportive shape all day and absorbs rough pavement vibration. It carries between vehicle and office chair with no straps. It is not a cure for worn suspension or structural spinal conditions, and it does raise seating height slightly.",
+        "image_slots": [
+          {"slot_id": "features.items.2.image", "ratio": "16:9", "position": "feature section 3, beside the why-it-lasts list"}
+        ]
+      },
+      {
+        "id": "features.items.3",
+        "role": "outcome",
+        "copy_summary": "Getting energy, comfort and weekend road trips back. Within a few days the mid-afternoon ache stopped arriving on schedule; he works a full dispatch shift, drives home in heavy traffic and steps out loose and upright. He and Sandra finally took the coastal drive they had put off for months and he stayed behind the wheel the whole way without a single stop to stretch.",
+        "image_slots": [
+          {"slot_id": "features.items.3.image", "ratio": "16:9", "position": "feature section 4, beside the what-changed list"}
+        ]
+      },
+      {
+        "id": "features.items.4",
+        "role": "cta",
+        "copy_summary": "A fraction of the price of custom seats or endless therapy. High-end ergonomic chairs and vehicle seat re-upholstery run into thousands and neither follows you between desk and car; clinic visits recur. This portable cushion covers every chair for a fraction of that, with a 90-day money-back guarantee and a limited-time discount.",
+        "image_slots": [
+          {"slot_id": "features.items.4.image", "ratio": "16:9", "position": "feature section 5, beside the what-I-would-have-paid list"}
+        ]
+      },
+      {
+        "id": "reviews",
+        "role": "social-proof",
+        "copy_summary": "It's Not Just Me. A four-photo grid sitting in the same block as three attributed quotes, each carrying a reviewer name and a Verified Purchase label: the cushion holds its shape on a daily commute, moves between a computer chair and a car, and stays put on leather while absorbing road vibration.",
+        "image_slots": [
+          {"slot_id": "reviews.shots.0.image", "ratio": "1:1", "position": "review grid tile 1 of 4"},
+          {"slot_id": "reviews.shots.1.image", "ratio": "1:1", "position": "review grid tile 2 of 4"},
+          {"slot_id": "reviews.shots.2.image", "ratio": "1:1", "position": "review grid tile 3 of 4"},
+          {"slot_id": "reviews.shots.3.image", "ratio": "1:1", "position": "review grid tile 4 of 4"}
+        ]
+      },
+      {
+        "id": "product",
+        "role": "cta",
+        "copy_summary": "Official Product Overview card: structure continuous L-shaped, material slow-rebound memory foam, base non-slip grip bottom, use cars, trucks and desk chairs.",
+        "image_slots": [
+          {"slot_id": "product.image", "ratio": "4:3", "position": "mid-page product overview card"}
+        ]
+      },
+      {
+        "id": "product_end",
+        "role": "cta",
+        "copy_summary": "Closing offer card: the one-piece cushion that takes the pressure off, continuous lumbar and seat support in high-density memory foam, for office chairs, car seats and long daily sitting.",
+        "image_slots": [
+          {"slot_id": "product_end.image", "ratio": "16:9", "position": "closing offer card, above the final CTA"}
+        ]
+      },
+      {
+        "id": "author-and-comments",
+        "role": "author",
+        "copy_summary": "Bylined portrait furniture: the hero byline avatar for Leo Thorne, the About-the-author avatar in the guide card, and six commenter avatars in the comment thread.",
+        "image_slots": [
+          {"slot_id": "hero.author_avatar", "ratio": "1:1", "position": "byline avatar beside the author name"},
+          {"slot_id": "guide.avatar", "ratio": "1:1", "position": "About the author card"},
+          {"slot_id": "comments.items.0.avatar", "ratio": "1:1", "position": "comment thread, commenter 1"},
+          {"slot_id": "comments.items.1.avatar", "ratio": "1:1", "position": "comment thread, commenter 2"},
+          {"slot_id": "comments.items.2.avatar", "ratio": "1:1", "position": "comment thread, commenter 3"},
+          {"slot_id": "comments.items.3.avatar", "ratio": "1:1", "position": "comment thread, commenter 4"},
+          {"slot_id": "comments.items.4.avatar", "ratio": "1:1", "position": "comment thread, commenter 5"},
+          {"slot_id": "comments.items.5.avatar", "ratio": "1:1", "position": "comment thread, commenter 6"}
+        ]
+      }
+    ]
+  }
+}
