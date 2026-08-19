@@ -407,3 +407,10 @@ and a `placement` line, so an editor never has to guess which image goes where.
 ```
 
 No pick yet is a valid state — log nothing, never fabricate a record.
+
+**Log every slot, including the ones that offered no choice.** The record stays one
+per slot because it is raw evidence and tier 1 is never thinned; what changes is the
+DERIVATION, which counts a slot toward SPEC §7.7's threshold only where more than one
+distinct type was on offer (ADR-026). So a six-tile review wall is logged in full and
+weighs nothing, and the temptation to skip logging it is the wrong economy: the record
+is also the audit trail of what the owner was shown.

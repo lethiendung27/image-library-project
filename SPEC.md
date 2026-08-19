@@ -283,8 +283,14 @@ image, and competitor brand marks never appear in prompts.
    argument is a real named dimension, unlike a reroll of the same prompt, which stays
    banned.
 7. **Tie-breaker**: pick-rate per (type × section role) from `feedback/picks.jsonl` is a
-   soft prior, consulted **only** when a (type × role) cell has **≥20 picks**. It never
-   overrides `avoid_when` or composition rules.
+   soft prior, consulted **only** when a (type × role) cell has **≥20 contested
+   observations**. A slot counts toward a cell only where it offered **more than one
+   distinct type**, and it counts **once per distinct type on offer**, never once per
+   option: several executions of one type is a real choice but not a choice between
+   types, and a single-option repeating tile is no choice at all. Counting per option
+   let one review wall fill a cell six times from one decision, so the first cell to
+   go live would have been the one where nothing was ever chosen (ADR-026). The prior
+   never overrides `avoid_when` or composition rules.
 8. **Render**: fill skeletons (worked examples serve as few-shot), then apply
    `adapters/<model>.md` at render time. Canonical NEGATIVE lists are model-agnostic;
    adapters translate them (e.g. semantic negatives for nano banana).

@@ -929,3 +929,73 @@ Consequences: `ingestion/runbooks/classify-batch.md` §1 manifest path and a new
 stating why it is load-bearing; `SPEC.md` §6.4 names the three siblings;
 `scripts/gen-gif-cards.py` default root follows the move. `observations.jsonl` is untouched
 — no record was wrong, the to-do derivation was. `registry_version` unchanged.
+
+## ADR-026 · 2026-08-19 · The pick-rate denominator counts options, so one review wall fills a cell six times over
+
+The owner confirmed today that they do compare options A, B and C and choose between
+them, rather than rendering A and ignoring the rest. That answer makes SPEC §7.7 the live
+consumer of `feedback/picks.jsonl` and turns the never-executed logging loop into the next
+piece of work. Before building it, §7.7 was run dry against the six routed sessions — the
+ADR-024 method, no session re-routed, only what the rule WOULD say — and the rule is wrong
+in both directions at once.
+
+**The denominator counts options, and most options are not a choice between types.**
+`pick_stats` increments a cell's `shown` once per entry in `options_shown`. Measured over
+the corpus: 74 slots carry options and 179 options were emitted, but only **20 of those 74
+slots offered more than one distinct type**. Forty-two offered two or three executions of a
+single type, where `varies_on` names an axis or an execution and the type never changes;
+twelve offered one option only, the repeating tiles ADR-022 cut to a single option. So 179
+increments stand in for at most 20 type-level choices, and a rate whose whole job is to
+compare types against each other is computed over a denominator that is mostly not a
+comparison.
+
+**The consequence is not academic — it lands on exactly the wrong cell first.** The only
+cell in the corpus that reaches the threshold of 20 is `05-social-snapshot × social-proof`,
+at 45. Of the 24 social-proof slots across the six pages, **exactly one** offered a choice
+between types. A review wall is four to seven tiles of one type in one role, and since
+ADR-022 each tile carries a single option, so one page-level decision enters the statistic
+four to seven times. The first cell that would ever have started steering the router
+accumulated 45 observations from one real choice, and it would have started steering it
+toward the type that had never once been chosen over another.
+
+**The fix is the derivation, not the record.** A slot counts toward a cell only where more
+than one distinct type was on offer — where the type could have lost — and then once per
+distinct type, never once per option. This needs no schema change: `options_shown` already
+carries `type` per option, so contest is derivable from the record exactly as it was
+already specified, which is the strongest evidence available that the record shape was
+right and only the reading of it was wrong. The record therefore stays **one per slot**,
+walls included: tier 1 is raw evidence and is never thinned, ADR-004 puts derived numbers
+only in the generated index, and the log is also the audit trail of what the owner was
+shown. `query/runbook.md` Step 7.2 now says so, because the obvious economy — stop logging
+the wall, it counts for nothing — is the wrong one.
+
+**The second half of the finding is stated and deliberately not fixed.** Under the
+corrected denominator the busiest contested cells stand at 3 after six pages
+(`02-cause-anatomy × mechanism` and `06-relief-hero × outcome`), which reaches 20 at
+roughly 40 pages against 33 landing-page exports in hand. The threshold as written is
+therefore unreachable on the present corpus, and it is left at 20 anyway: `picks.jsonl`
+holds 0 records, so any replacement number would be chosen on paper, which is the error
+this repo already declined to make when it held back the GIF evidence ledger until a real
+loop comes back. Borrowing `MEASURE_MIN = 3` from `gen-gif-cards.py` would be the same
+error wearing provenance. Revisit the number when the ledger holds real records, and let
+those records decide it.
+
+**Verified against known-bad input before it was written.** A harness exercising
+`pick_stats` directly failed 3 of 5 real cases under the old code — the six-tile wall
+returned `shown: 6, picked: 6`, three executions of one type returned `shown: 3`, and a
+genuinely contested slot double-counted the type that appeared twice — and passes 5 of 5
+under the new code, with a deliberately wrong liveness case that still fails, so a green
+run proves something rather than proving the harness is inert.
+
+Nothing generated moves today. With `picks.jsonl` empty, `render_index` emits `picks: {}`
+for every type under both implementations; the fix changes what the FIRST record will mean,
+not what the index says now. One thing is knowingly left undone: a record whose `picked`
+names a type absent from `options_shown` is malformed and nothing detects it. The first
+real records will show whether that happens, and designing the check before then would
+repeat the mistake this ADR is about.
+
+Consequences: `scripts/validate.py` `pick_stats` gated on contest and documented;
+`SPEC.md` §7.7 restated with what counts toward the threshold; `query/runbook.md` Step 7.2
+gains the log-everything paragraph. `SPEC.md` §7.9 is unchanged — the record shape was
+correct as specified. No session is re-routed, no type file is touched, no ledger record is
+written, `registry_version` unchanged.

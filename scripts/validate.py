@@ -444,13 +444,24 @@ def evidence_counts(observations, vocab, types):
 
 
 def pick_stats(picks, types):
+    """Pick-rate per (type x section_role) for SPEC 7.7's soft prior.
+
+    Only a CONTESTED slot counts: one that offered more than one distinct type,
+    where a type could therefore have lost. A slot offering several executions
+    of a single type, or one option only, records a real decision by the owner
+    but carries no type-level information; counting it inflates the denominator
+    of a rate whose whole job is to compare types against each other (ADR-026).
+    A record is counted once per distinct type on offer, never once per option.
+    """
     stats = {tid: {} for tid in types}
     for rec in picks:
         role = rec.get("section_role")
         if not role:
             continue
-        shown_types = [o.get("type") for o in rec.get("options_shown") or []
-                       if isinstance(o, dict)]
+        shown_types = {o.get("type") for o in rec.get("options_shown") or []
+                       if isinstance(o, dict)}
+        if len(shown_types) < 2:
+            continue
         for tid in shown_types:
             if tid in stats:
                 cell = stats[tid].setdefault(role, {"shown": 0, "picked": 0})
