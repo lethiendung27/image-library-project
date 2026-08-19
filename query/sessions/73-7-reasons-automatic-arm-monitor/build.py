@@ -1068,12 +1068,8 @@ for sid, asset, prompt, varies, rationale in WALL:
         "recommended_media": "still",
         "recommended_opt": "A",
         "recommendation_basis":
-            "One option, not three (ADR-022). The six tiles are the unit of variation and the "
-            "SET DIVERSITY LAW spends it between them: room class, surface, light temperature, "
-            "camera distance and content mode all differ across the six. Three options inside "
-            "one tile would spend that budget where it buys nothing and would let a reader pick "
-            "one register on some tiles and another on the rest, which reads as two shoots and "
-            "so as fake.",
+            "One option by law (ADR-022): the six tiles are the unit of variation, not the "
+            "tile, and this one's place in the set is its varies_on line.",
         "options": [
             opt("A", "05-social-snapshot", varies, "1:1", prompt, rationale,
                 axes={"register": "ugc"},
@@ -1409,51 +1405,31 @@ def checks():
 # ---------------------------------------------------------------- emit
 
 def render_md():
+    """The human view, and it has exactly one reader — nothing in the repo parses this
+    file; scripts/validate.py reads prompts.json alone. So it carries what a person acts
+    on at the place they act on it, and nothing else. Everything omitted here is in
+    prompts.json, which is the contract and stays complete: the twelve negative gif
+    verdicts Step 5c requires, the fifteen out-of-scope reasons, the routing rationale
+    and the page notes."""
     L = []
     routed = [s for s in SLOTS if s.get("options")]
     n_opts = sum(len(s["options"]) for s in routed)
     n_gif = len([s for s in SLOTS if s.get("gif", {}).get("eligible")])
+    n_block = len([s for s in routed for o in s["options"]
+                   if "PRECONDITION" in (o.get("composition_notes") or "")])
     L.append("# Image prompts — page 73, automatic upper arm blood pressure monitor")
     L.append("")
     L.append("GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit "
-             "the script and re-run.")
+             "the script and re-run. Routing rationale, the negative motion verdicts and the "
+             "out-of-scope slots are all in `prompts.json`.")
     L.append("")
-    L.append(f"- page_id `{PAGE}` · channel `advertorial` · awareness `solution-aware` · "
-             f"registry `2.0.0`")
-    L.append(f"- {len(SLOTS)} image slots: {len(routed)} routed, "
-             f"{len(SLOTS) - len(routed)} out of library scope")
-    L.append(f"- {n_opts + n_gif} prompts: {n_opts} options plus {n_gif} G12 brief plates")
-    L.append(f"- {n_gif} slots earn motion, each carrying a brief plate as a fourth option "
-             "below C — a work order the editor renders alongside the still, never a prompt "
-             "that animates one (ADR-020)")
-    L.append("")
-    L.append("## Read this first")
-    L.append("")
-    for n in NOTES:
-        L.append(f"- {n}")
-    L.append("")
-    L.append("## Motion budget (Step 5d)")
-    L.append("")
-    L.append(f"- floor **{MOTION['floor']}** · ceiling **{MOTION['ceiling']}** · delivered "
-             f"**{MOTION['delivered']}** · groups covered "
-             f"**{', '.join(MOTION['groups_covered'])}**")
-    for n in MOTION["notes"]:
-        L.append(f"- {n}")
-    L.append("")
-    L.append("## Coverage")
-    L.append("")
-    L.append("**Covered**")
-    L.append("")
-    for c in COVERAGE["covered"]:
-        L.append(f"- {c}")
-    L.append("")
-    L.append("**Absent**")
-    L.append("")
-    for c in COVERAGE["absent"]:
-        L.append(f"- {c}")
-    L.append("")
-    for c in COVERAGE["notes"]:
-        L.append(f"- {c}")
+    L.append(f"- page `{PAGE}` · advertorial · solution-aware · registry `2.0.0` · "
+             f"{len(routed)} routed slots · {n_opts + n_gif} prompts")
+    L.append(f"- motion: {MOTION['delivered']} of {len(routed)} slots earn a loop "
+             f"(floor {MOTION['floor']}, ceiling {MOTION['ceiling']})")
+    if n_block:
+        L.append(f"- **{n_block} prompts carry a blocking precondition**, stated on each — "
+                 "do not render those until it is resolved")
     L.append("")
     L.append("---")
     L.append("")
@@ -1472,11 +1448,13 @@ def render_md():
             L.append(head)
             L.append("")
             L.append(f"- varies on: {o['varies_on']}")
-            L.append(f"- ratio `{o['ratio']}` · pipeline `{o['pipeline']}` · type version "
-                     f"`{o['type_version']}`")
+            line = (f"- ratio `{o['ratio']}` · type version `{o['type_version']}`")
+            if TYPES[o["type"]].get("requires_product_photo") is True \
+                    and o.get("variant") != "rivals":
+                line += " · upload the product photo"
             if o.get("axes"):
-                L.append("- axes: " + ", ".join(f"`{k}: {v}`" for k, v in o["axes"].items()))
-            L.append(f"- attachment: {'the product photo, uploaded by hand' if TYPES[o['type']].get('requires_product_photo') is True and o.get('variant') != 'rivals' else 'none'}")
+                line += " · " + ", ".join(f"`{k}: {v}`" for k, v in o["axes"].items())
+            L.append(line)
             L.append(f"- {o['rationale']}")
             if o.get("composition_notes"):
                 L.append(f"- **note:** {o['composition_notes']}")
@@ -1489,30 +1467,16 @@ def render_md():
         if g.get("eligible"):
             L.append(f"### {s['slot_id']} · option D — the motion brief plate")
             L.append("")
-            L.append(f"- form `{g['form']}` · kind `{g['kind']}` · gif type `{g['type_id']}` · "
-                     f"rung `{g['rung']}`")
+            L.append(f"- gif type `{g['type_id']}` · form `{g['form']}` · rung `{g['rung']}`")
             L.append(f"- reference folder: {g['refs']}")
-            L.append(f"- **the editor returns** `{g['output']}` · delivery {g['delivery']}")
-            L.append(f"- plate render asset `{g['asset']}` — production only, never a page asset")
-            L.append(f"- {g['reason']}")
+            L.append(f"- **the editor returns** `{g['output']}` · {g['delivery']}")
+            L.append(f"- plate render asset `{g['asset']}` — production only, never a page "
+                     "asset")
             L.append("")
             L.append("```")
             L.append(g["prompt"])
             L.append("```")
             L.append("")
-        else:
-            L.append(f"### {s['slot_id']} · no motion")
-            L.append("")
-            L.append(f"- {g.get('reason', '')}")
-            L.append("")
-    L.append("---")
-    L.append("")
-    L.append("## Out of library scope")
-    L.append("")
-    for s in SLOTS:
-        if s.get("out_of_scope_reason"):
-            L.append(f"- `{s['slot_id']}` ({s['placement']}) — {s['out_of_scope_reason']}")
-    L.append("")
     return "\n".join(L)
 
 

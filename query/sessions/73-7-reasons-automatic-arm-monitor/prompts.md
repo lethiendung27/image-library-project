@@ -1,55 +1,10 @@
 # Image prompts — page 73, automatic upper arm blood pressure monitor
 
-GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit the script and re-run.
+GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit the script and re-run. Routing rationale, the negative motion verdicts and the out-of-scope slots are all in `prompts.json`.
 
-- page_id `73` · channel `advertorial` · awareness `solution-aware` · registry `2.0.0`
-- 29 image slots: 14 routed, 15 out of library scope
-- 32 prompts: 30 options plus 2 G12 brief plates
-- 2 slots earn motion, each carrying a brief plate as a fourth option below C — a work order the editor renders alongside the still, never a prompt that animates one (ADR-020)
-
-## Read this first
-
-- CHANNEL. lpTypeId is `listicle`, which is not one of the four channels in registry/vocabulary.yaml. Routed as `advertorial` on the page's own evidence: a bylined author with a credential line, an About-the-author bio, a seven-comment thread with names, an `Advertorial` disclosure line and editorial footer navigation. A listicle is an advertorial format, not a fifth channel. Same call as page 65.
-- THE PRODUCT'S OUTPUT IS A SCREEN, AND THAT CONSTRAINS EVERY LAYER ON THE PAGE. product.attributes.visible_output is the reading itself — systolic, diastolic and pulse on a backlit display — so G8 binds and the output has to carry. But G6 bans model-drawn text and digits, and ADR-021 says this pipeline cannot composite, so no render here may show a legible reading. Every prompt that includes the device therefore lights the screen and states that it carries no characters, numerals or symbols: the output is the LIT FIELD, not the numbers. Where a real reading matters — the review tiles — the face is turned away or dark instead, which is what 05-social-snapshot's own constraint requires when the renderer cannot composite. This is the single largest constraint on this page and it is worth the owner knowing before the first render.
-- THE REVIEWS BLOCK BREAKS 05-social-snapshot's AUTHENTICITY FENCE AS THE PAGE IS BUILT. All six photo slots sit inside the same reviews section as six quotes, each carrying a five-star row, a named attribution and a green Verified label. The type forbids pairing a generated snapshot with any of those. Every review prompt carries the precondition. Three ways out, in order of preference: real customer photographs; or move the photo grid out of the attributed block; or drop the names, stars and verified labels. Same finding as page 65, unchanged by anything in this export.
-- THE TEMPLATE ASKS FOR 4:3 AND THE LIBRARY BARELY HAS IT. The seven body slots carry a 4:3 placeholder and only 05-social-snapshot and 06-relief-scene declare 4:3. The slots are routed by ARGUMENT and rendered at the chosen type's own declared ratio, and each option says what its crop costs. reasons.items.4 is the one body slot that needs no crop at all. reasons_b.items.1 is the worst case: a vertical three-panel stack at 3:4 cropped to 4:3 loses the top and bottom panels, so that slot should be set to a taller aspect in the template rather than centre-cropped.
-- THE REFERENCE PHOTO IS YOURS TO UPLOAD. imageBriefs and shopifyProductGid are both null in the export, so there is no product photograph in it and nothing to hash. `attachments` is omitted from every option rather than filled with an invented sha256 (SPEC 6.4). That is a gap in the export, not a blocked prompt: 26 of the 29 prompts keep their G1 reference block and run as written once you paste them and upload the photo.
-- ONE-TYPE-ONCE WAS THE BINDING CONSTRAINT AND THE COLUMN ONLY JUST COVERS THE PAGE. Eight linear slots needed eight distinct types from an advertorial column of ten, and 05-social-handoff and 01-pain-split are the only two left unused — the first because no section carries a recommendation beat between two people, the second because it declares no advertorial channel. Option B carries a different type on seven of the eight linear slots and each says which slot it would displace; hero.image is the exception and varies on the gaze axis instead, because its cell holds exactly one type.
-- THE STEP-3 BUDGET IS FULL. Cross-slot rule 4 allows at most two of ghostbody, spec-split and use-sequence, and this page spends both: 03-mechanism-ghostbody at reasons_b.items.0 and 03-use-sequence at reasons_b.items.1. 03-mechanism-xray is outside that set, which is what makes three step-3 images legal here.
-- PERSONAS HAS NO TYPE ON THIS CHANNEL. reasons_b.items.0 reads most naturally as a personas beat — who this fits, what arm size, what table — and 05-persona-grid declares no advertorial channel, so the row is empty by the type's own admission and not merely by the table. The slot is routed as `mechanism` instead and argues the posture the section makes actionable. Recorded because it will recur on every advertorial that carries a fit section.
-- MOTION. Floor 2, ceiling 5, delivered 2, both at rung 1. The coverage pair is not met and cannot be on this page — see the motion block for why. Nothing was restaged to fill the result column, which is Step 5d's own instruction rather than a shortfall.
-- NO PICK PRIOR WAS AVAILABLE. feedback/picks.jsonl is empty, so the 20-pick tie-breaker in SPEC 7.7 never fired and every recommendation here rests on fit, page legality, render evidence, product presence and prompt risk alone. These recommendations make the page argument-complete; they are not conversion-optimised and nothing here is performance-backed.
-- SIX PROMPTS SIT OVER THEIR TYPE'S MEASURED REFERENCE SIZE AND ARE SHIPPED THAT WAY, said here rather than left for the reader to find. 02-cause-anatomy gives ~2050 characters at three mark classes and reasons.items.0 option A runs 2103 with option B at reasons_b at 2114, both about 3% over; 04-proof-lockedframe gives 1800 and its two --verdict options run about 1940, 8% over; 03-mechanism-ghostbody's trimmed prompts run about 2250 at reasons_b.items.0. What is left in each is earned — the measure and verdict marks are required by their skeletons, the fairness clauses are --verdict's own recorded faults, and the ghostbody prompts carry the four ghost negatives and the palette lock that were RESTORED at 2.1 after cutting them broke the next render. 03-use-sequence is the one ceiling that was not allowed to slip: it is measured at 1533 characters holding the layout 4 times in 6 against 2054 holding it once in 8, so both of its options were trimmed back under 1500 before shipping.
-- Ratio goes in the generation tool's own aspect-ratio parameter, never in the prompt text (adapters/nano-banana.md Rule 4). No `Strictly avoid:` line is rendered into any prompt (ADR-014); the exclusion list is kept in each option's `avoid` field for a model with a real negative channel.
-
-## Motion budget (Step 5d)
-
-- floor **2** · ceiling **5** · delivered **2** · groups covered **working**
-- Floor met at exactly 2, both loops earned at rung 1 with no re-execution needed.
-- COVERAGE PAIR NOT MET, and it cannot be met on this page without breaking the spacing rule. Both delivered loops are `working` (mechanism at reasons.items.1, use at reasons_b.items.1). Every result-capable candidate — the backlight resolving at reasons.items.2 — sits inside the `reasons` list, which has already spent its one loop. Step 5d makes coverage a preference and says a page whose natural pair is two working loops keeps it rather than restaging a strong slot to fill a column.
-- Spacing: the `reasons` list counts as ONE section (ADR-024), so reasons.items.0 loses a loop it would otherwise have earned on its own argument. Its verdict says budget, not argument.
-- Review wall: 0 tiles, and not by budget — the six-type set carries no `social` type, so those slots have nothing to file a loop under.
-- Both loops are whole-frame. No type on this page legislates an inset layer that a plate could occupy, so `inset` was never available.
-
-## Coverage
-
-**Covered**
-
-- step 1 pain — 01-pain-scene at hero.image
-- step 2 cause — 02-cause-anatomy at reasons.items.0
-- step 3 mechanism — 03-mechanism-xray at reasons.items.1 and 03-mechanism-ghostbody at reasons_b.items.0, with 03-use-sequence at reasons_b.items.1
-- step 4 proof — 04-proof-lockedframe --verdict at reasons.items.2
-- step 5 social — 05-social-snapshot across all six review tiles
-- step 6 relief — 06-relief-hero at reasons.items.3 and 06-relief-scene at reasons.items.4
-
-**Absent**
-
-- step 2 symptom breadth — 02-symptom-rail is not advertorial-legal and the page makes no breadth claim
-- step 5 persona — 05-persona-grid declares no advertorial channel, so the personas beat has no type on this channel at all
-
-- Every rung of the Trust Ladder is covered, which is unusual and is a property of the page rather than of the routing — a seven-reason listicle with a limits section and a how-to section reaches further down the ladder than most.
-- Awareness stage read from the copy, not from a declared field: SOLUTION-AWARE. The hero assumes the reader already owns or has tried a wrap cuff and is comparing the way it is fitted; the intro names the solution class in its second sentence and never argues that home monitoring is worth doing. brief.awarenessStage says `solution`, and the copy agrees with it.
-- For a solution-aware reader the deciding rungs are mechanism and physical proof, and both are covered twice. Re-amplifying the problem would insult this reader, which is why the pain beat is confined to the hero and reason 1 and never returns.
+- page `73` · advertorial · solution-aware · registry `2.0.0` · 14 routed slots · 32 prompts
+- motion: 2 of 14 slots earn a loop (floor 2, ceiling 5)
+- **6 prompts carry a blocking precondition**, stated on each — do not render those until it is resolved
 
 ---
 
@@ -62,9 +17,7 @@ GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit 
 ### hero.image · option A — `01-pain-scene` `--candid`
 
 - varies on: baseline
-- ratio `16:9` · pipeline `single-pass` · type version `1.14`
-- axes: `gaze: candid`
-- attachment: none
+- ratio `16:9` · type version `1.14` · `gaze: candid`
 - The page's own opening problem, played as one seated action: a woman wrapping her own cuff one-handed. Evidence is the failed tool in the state that shows it failed — the twisted band, the folded flap, the kinked tube.
 
 ```
@@ -86,9 +39,7 @@ No product, no panels and no insets.
 ### hero.image · option B — `01-pain-scene` `--confront`
 
 - varies on: axis: gaze=confront
-- ratio `16:9` · pipeline `single-pass` · type version `1.14`
-- axes: `gaze: confront`
-- attachment: none
+- ratio `16:9` · type version `1.14` · `gaze: confront`
 - The same argument in the type's other gaze. The cell holds one type and the attribute gates leave no second, so the honest variation here is the axis rather than a type borrowed from a role it does not belong to.
 
 ```
@@ -110,9 +61,7 @@ No product, no panels and no insets.
 ### hero.image · option C — `01-pain-scene` `--candid`
 
 - varies on: execution: subject class — the adult child, not the patient
-- ratio `16:9` · pipeline `single-pass` · type version `1.14`
-- axes: `gaze: candid`
-- attachment: none
+- ratio `16:9` · type version `1.14` · `gaze: candid`
 - Same type and same axis, different subject class: the second persona in the brief, the adult daughter doing it for a parent. Two people in frame, and the struggle is hers.
 
 ```
@@ -131,10 +80,6 @@ Desaturated throughout: one unresolved state, no colour lifted anywhere.
 No product, no panels and no insets.
 ```
 
-### hero.image · no motion
-
-- The slot exists to make a cold reader recognise themselves in a held state. The wrap IS an action, so the temporal test is arguable here — but the hero's declared job is recognition, and page 58 and page 65 both refused a hero on the same ground. Refused for consistency with them, not on a fresh reading.
-
 ## `reasons.items.0.image` — cause
 
 - asset `73-02-reason0-cause-anatomy.png` · reason 1, beside the body copy
@@ -144,8 +89,7 @@ No product, no panels and no insets.
 ### reasons.items.0.image · option A — `02-cause-anatomy`
 
 - varies on: baseline
-- ratio `1:1` · pipeline `single-pass` · type version `1.15`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.15` · upload the product photo
 - The culprit indicted where it acts: a twisted fabric band meeting the arm along a narrow strip, against the chamber meeting it evenly. measure spans the contact band, contour puts the difference on the artery, verdict closes both panels.
 - **note:** 1:1 centre-cropped to the slot's 4:3 loses 12.5% off the top and bottom; the panels run left to right so both lose the same band and the divider survives.
 
@@ -171,9 +115,7 @@ Red for the wrong state, blue for the correct one, green for the badge, warm ivo
 ### reasons.items.0.image · option B — `04-proof-lockedframe` `--rivals`
 
 - varies on: type: 04-proof-lockedframe --rivals
-- ratio `3:2` · pipeline `single-pass` · type version `1.13`
-- axes: `camera_lock: handheld`
-- attachment: none
+- ratio `3:2` · type version `1.13` · `camera_lock: handheld`
 - The same beat argued by absence: three ordinary wrap monitors on three mornings, each band come to rest in a different unusable shape, and the product not in frame at all. It is the 'I tried three things' sentence rather than 'this is what harms you'.
 - **note:** Picking this displaces reasons.items.2 option A, which is the same type under one-type-once. --rivals carries no product photo by its own diff, so this option needs no attachment.
 
@@ -196,8 +138,7 @@ One grade across every panel, muted and cool. No panel is favoured — no badge,
 ### reasons.items.0.image · option C — `02-cause-anatomy`
 
 - varies on: execution: transverse section rather than the arm's length
-- ratio `1:1` · pipeline `single-pass` · type version `1.15`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.15` · upload the product photo
 - Same type, same marks, the arm seen end-on. Even contact all the way round is far more legible in section than along the length; what it costs is the elbow and the shoulder, which is why it is not the recommendation.
 - **note:** A9 risk carried deliberately: the section shows no person. Check at thumbnail size before shipping.
 
@@ -220,10 +161,6 @@ A badge in the top corner of each panel, a filled solid disc with the glyph cut 
 Red for the wrong state, blue for the correct one, green for the badge, warm ivory for the structures, and no other colour anywhere.
 ```
 
-### reasons.items.0.image · no motion
-
-- The argument IS temporal — a band twisting out of place as it is pulled — and this slot would earn motion on its own. The page motion budget spends the reasons list's one loop on reasons.items.1, whose mechanism claim is what a solution-aware reader is deciding on. Budget, not argument (Step 5d).
-
 ## `reasons.items.1.image` — how-to-use
 
 - asset `73-03-reason1-mechanism-xray.png` · reason 2, beside the four bullet points
@@ -233,8 +170,7 @@ Red for the wrong state, blue for the correct one, green for the badge, warm ivo
 ### reasons.items.1.image · option A — `03-mechanism-xray`
 
 - varies on: baseline
-- ratio `1:1` · pipeline `single-pass` · type version `1.3`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.3` · upload the product photo
 - The pump, the tube, the sensor board and the battery bay inside a translucent shell, the pump lit as the working part. It answers 'no manual pumping' by showing what pumps instead.
 - **note:** 1:1 centre-cropped to 4:3 loses 12.5% top and bottom; the product is centred so the crop eats ground, not shell.
 
@@ -259,8 +195,7 @@ One product, one shell, no exploded parts, no callout lines, no labels.
 ### reasons.items.1.image · option B — `03-mechanism-ghostbody`
 
 - varies on: type: 03-mechanism-ghostbody
-- ratio `1:1` · pipeline `single-pass` · type version `2.2`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `2.2` · upload the product photo
 - The same section argued on the body instead of inside the device: a twisted band bearing on one narrow length of artery against the chamber carrying the whole upper arm.
 - **note:** Picking this displaces reasons_b.items.0 option A under one-type-once, and it also spends the second of the two step-3 slots the page arc allows.
 
@@ -289,8 +224,7 @@ Every mark is a flat, unshaded, hard-edged overlay laid on top of the render. Ac
 ### reasons.items.1.image · option C — `03-mechanism-xray`
 
 - varies on: execution: the bladder in the chamber wall, seen from above
-- ratio `1:1` · pipeline `single-pass` · type version `1.3`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.3` · upload the product photo
 - Same type, different component and different view. The bladder closing evenly round the chamber is the part a buyer actually feels; the top-down view is the harder silhouette for G1 to hold, which is the trade.
 - **note:** G1 binds the outer silhouette hard in a translucent shell — check the chamber opening against the reference before shipping.
 
@@ -314,11 +248,10 @@ One product, one shell, no exploded parts, no callout lines, no labels.
 
 ### reasons.items.1.image · option D — the motion brief plate
 
-- form `whole-frame` · kind `mechanism` · gif type `mechanism` · rung `natural`
+- gif type `mechanism` · form `whole-frame` · rung `natural`
 - reference folder: gif-library/mechanism/ — no files filed yet; the folder card carries the law
-- **the editor returns** `73-03-reason1-mechanism-xray.mp4` · delivery mp4/webm, muted, under the size ceiling
+- **the editor returns** `73-03-reason1-mechanism-xray.mp4` · mp4/webm, muted, under the size ceiling
 - plate render asset `73-03-reason1-mechanism-xray--brief.png` — production only, never a page asset
-- The declared reason this section exists is a machine acting on its own — the motor inflates and measures without further input. That is a state changing, and a still can only assert it. No legislated layer exists in this type's skeleton, so the form is whole-frame and the plate is the delivered image.
 
 ```
 A flat card and nothing else. The whole image is a flat dark grey field with a thin white border just inside its edge, held clear of every frame edge.
@@ -343,9 +276,7 @@ No scene, no product, no photograph, no other text.
 ### reasons.items.2.image · option A — `04-proof-lockedframe` `--verdict`
 
 - varies on: baseline
-- ratio `3:2` · pipeline `single-pass` · type version `1.13`
-- axes: `camera_lock: handheld`
-- attachment: the product photo, uploaded by hand
+- ratio `3:2` · type version `1.13` · upload the product photo · `camera_lock: handheld`
 - Three monitors on one worktop across three mornings, judged at standing distance. The variable is the size of the lit area; nothing is lit, cropped or graded to favour the last panel.
 - **note:** ADR-021: strict needs compositing, so the panels run handheld with --verdict included, exactly as the type's own capability gate says.
 
@@ -372,8 +303,7 @@ One grade across every panel. No badge, no glow, no colour cue, and no panel bri
 ### reasons.items.2.image · option B — `03-mechanism-xray`
 
 - varies on: type: 03-mechanism-xray
-- ratio `1:1` · pipeline `single-pass` · type version `1.3`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.3` · upload the product photo
 - The screen argued from inside: the backlight panel lit evenly across an area plainly wider than the housing. It states the size without a second product to judge it against, which is why it is not the recommendation on a comparison beat.
 - **note:** Picking this displaces reasons.items.1 option A under one-type-once.
 
@@ -398,9 +328,7 @@ One product, one shell, no exploded parts, no callout lines, no labels.
 ### reasons.items.2.image · option C — `04-proof-lockedframe` `--verdict`
 
 - varies on: execution: bedside table at arm's length, evening
-- ratio `3:2` · pipeline `single-pass` · type version `1.13`
-- axes: `camera_lock: handheld`
-- attachment: the product photo, uploaded by hand
+- ratio `3:2` · type version `1.13` · upload the product photo · `camera_lock: handheld`
 - Same type and variant, a different room and distance. Legibility at arm's length under lamplight is a real reading of the section, but the copy's own distance is across the counter.
 
 ```
@@ -423,10 +351,6 @@ Panels one and two get exactly the same photographic respect as panel three: ide
 One grade across every panel. No badge, no glow, no colour cue, and no panel brighter or cleaner than the others.
 ```
 
-### reasons.items.2.image · no motion
-
-- A locked-frame comparison is inspected, not watched — the reader's eye does the travelling between panels. A rung-2 restaging IS available here and is named rather than hidden: one continuous frame, the backlight coming on and the lit field resolving at counter distance, which would argue legibility as a change and would put a result loop on the page. It is declined on two counts. The reasons list has already spent its one loop, and Step 5d says a page whose natural pair is two working loops keeps it rather than restaging a strong slot to fill a column.
-
 ## `reasons.items.3.image` — outcome
 
 - asset `73-05-reason3-relief-hero.png` · reason 4, beside the body copy
@@ -436,9 +360,7 @@ One grade across every panel. No badge, no glow, no colour cue, and no panel bri
 ### reasons.items.3.image · option A — `06-relief-hero`
 
 - varies on: baseline
-- ratio `1:1` · pipeline `single-pass` · type version `1.15`
-- axes: `register: commercial`, `inset_mode: recall`, `inset_motion: still`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.15` · upload the product photo · `register: commercial`, `inset_mode: recall`, `inset_motion: still`
 - One man mid-reading, the lit face carrying the output, and a greyed recall panel holding the notebook of handwritten figures the device replaces, joined by the one sanctioned arrow.
 - **note:** G10 risk: a corner layer on a 1:1 render centre-cropped to 4:3 loses 12.5% top and bottom. The prompt names a visible margin, but check the panel survives the crop before the asset ships.
 
@@ -463,9 +385,7 @@ The room, the light and the man are the same in the panel as in the main photogr
 ### reasons.items.3.image · option B — `06-relief-hero`
 
 - varies on: axis: register=ugc
-- ratio `1:1` · pipeline `single-pass` · type version `1.15`
-- axes: `register: ugc`, `inset_mode: recall`, `inset_motion: still`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.15` · upload the product photo · `register: ugc`, `inset_mode: recall`, `inset_motion: still`
 - The same structure in the phone-photo register, and the recall panel holds the collapsed fabric cuff instead of the notebook. Trust rather than polish; the past cell repeats reason 1's argument, which is the cost.
 - **note:** Same corner-layer crop risk as A.
 
@@ -490,9 +410,7 @@ The room, the light and the woman are the same in the panel as in the main photo
 ### reasons.items.3.image · option C — `06-relief-hero`
 
 - varies on: execution: reduced subject — two forearms, no face
-- ratio `1:1` · pipeline `single-pass` · type version `1.15`
-- axes: `register: commercial`, `inset_mode: recall`, `inset_motion: still`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.15` · upload the product photo · `register: commercial`, `inset_mode: recall`, `inset_motion: still`
 - Same type and axes, the subject reduced to two forearms of different ages at one table. Two users is the section's actual claim and this is the only option that shows two; what it gives up is the expression that carries the relief.
 - **note:** Same corner-layer crop risk as A.
 
@@ -516,10 +434,6 @@ One neutral arrow inside that panel runs from the notebook to the monitor. It is
 The room and the light are the same in the panel as in the main photograph. No other panel, no badge, no glow and no other mark.
 ```
 
-### reasons.items.3.image · no motion
-
-- The slot's reason to exist is a held state — records that stay separate, a history that is simply there. Nothing transitions. Cycling through four stored profiles on the screen would be a reveal of what exists rather than a change, and revealing does not earn motion.
-
 ## `reasons.items.4.image` — proof
 
 - asset `73-06-reason4-relief-scene.png` · reason 5, beside the body copy
@@ -529,9 +443,7 @@ The room and the light are the same in the panel as in the main photograph. No o
 ### reasons.items.4.image · option A — `06-relief-scene`
 
 - varies on: baseline
-- ratio `4:3` · pipeline `single-pass` · type version `3.7`
-- axes: `gaze: candid`, `inset_mode: none`
-- attachment: the product photo, uploaded by hand
+- ratio `4:3` · type version `3.7` · upload the product photo · `gaze: candid`, `inset_mode: none`
 - The monitor travelling in an open bag out of a health centre, the man's hands free and his shoulders down at a kerb he would once have crossed gripping the card.
 - **note:** requires_pair: 01-pain-scene must stay on the page. If hero.image is ever rerouted away from 01-pain-scene, this option becomes illegal and the slot falls to option B. 4:3 is declared by this type, so no crop.
 
@@ -556,9 +468,7 @@ No panels, no insets, no badges, no arrows and no drawn overlays of any kind.
 ### reasons.items.4.image · option B — `06-relief-hero`
 
 - varies on: type: 06-relief-hero
-- ratio `1:1` · pipeline `single-pass` · type version `1.15`
-- axes: `register: ugc`, `inset_mode: none`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.15` · upload the product photo · `register: ugc`, `inset_mode: none`
 - The completeness claim taken literally: hands setting the device down beside a socket with the adapter uncoiled to its full length and the carton open behind. The reduced subject is chosen because the result is more legible than the user.
 - **note:** Picking this displaces reasons.items.3 option A under one-type-once.
 
@@ -581,9 +491,7 @@ No panel, no inset, no badge, no glow and no mark of any kind anywhere in the im
 ### reasons.items.4.image · option C — `06-relief-scene`
 
 - varies on: execution: a station platform rather than a health centre
-- ratio `4:3` · pipeline `single-pass` · type version `3.7`
-- axes: `gaze: candid`, `inset_mode: none`
-- attachment: the product photo, uploaded by hand
+- ratio `4:3` · type version `3.7` · upload the product photo · `gaze: candid`, `inset_mode: none`
 - Same type and axes, a different public place, and the product travelling in a case pocket rather than a shoulder bag. Portability reads harder at a platform; the health-centre frame ties the relief to the reason for owning it.
 - **note:** Same requires_pair condition as A.
 
@@ -605,10 +513,6 @@ Even natural daylight, bright, soft shadows. No golden hour, no rim light, no gl
 No panels, no insets, no badges, no arrows and no drawn overlays of any kind.
 ```
 
-### reasons.items.4.image · no motion
-
-- A complete box and a neat footprint are held states a reader inspects. Nothing flows and nothing changes; a loop over a device sitting on a counter would be ambient, which Step 5d switches off by default.
-
 ## `reasons_b.items.0.image` — mechanism
 
 - asset `73-07-reasonb0-mechanism-ghostbody.png` · reason 6, beside the body copy
@@ -618,8 +522,7 @@ No panels, no insets, no badges, no arrows and no drawn overlays of any kind.
 ### reasons_b.items.0.image · option A — `03-mechanism-ghostbody`
 
 - varies on: baseline
-- ratio `1:1` · pipeline `single-pass` · type version `2.2`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `2.2` · upload the product photo
 - Two seated mannequins in section, one at a low table with the arm below the heart and one at a standard table with the arm level with it and the device in place. The posture instruction drawn rather than written.
 - **note:** 1:1 centre-cropped to 4:3 loses 12.5% top and bottom; the panels run left to right so both lose the same band. The badges sit in the top corners — check they survive the crop.
 
@@ -648,8 +551,7 @@ Every mark is a flat, unshaded, hard-edged overlay laid on top of the render. Ac
 ### reasons_b.items.0.image · option B — `02-cause-anatomy`
 
 - varies on: type: 02-cause-anatomy
-- ratio `1:1` · pipeline `single-pass` · type version `1.15`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.15` · upload the product photo
 - The same heart-level argument as a flat 2D illustration, with a neutral datum line per panel and the measure lines spanning heart to arm.
 - **note:** Picking this displaces reasons.items.0 option A under one-type-once.
 
@@ -675,8 +577,7 @@ Red for the wrong state, blue for the correct one, green for the badge, warm ivo
 ### reasons_b.items.0.image · option C — `03-mechanism-ghostbody`
 
 - varies on: execution: arm circumference rather than heart level
-- ratio `1:1` · pipeline `single-pass` · type version `2.2`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `2.2` · upload the product photo
 - Same type, the other half of the section: a thick upper arm filling the fixed chamber against a standard one with an even margin. It is the plainest statement of the boundary and the least actionable for a reader who fits.
 - **note:** Same crop note as A. A2 check: this marks what IS, a section pressed flat against the wall — not what would happen.
 
@@ -702,10 +603,6 @@ A circle badge in the top corner of each panel, a filled solid disc with the gly
 Every mark is a flat, unshaded, hard-edged overlay laid on top of the render. Achromatic white and grey everywhere except those marks.
 ```
 
-### reasons_b.items.0.image · no motion
-
-- The argument is a shape holding — an arm level with a heart, an arm that fits or does not. This type's own avoid_when refuses a loop where the section's argument is a shape holding still rather than a part moving.
-
 ## `reasons_b.items.1.image` — how-to-use
 
 - asset `73-08-reasonb1-use-sequence.png` · reason 7, beside the three numbered steps
@@ -715,9 +612,7 @@ Every mark is a flat, unshaded, hard-edged overlay laid on top of the render. Ac
 ### reasons_b.items.1.image · option A — `03-use-sequence`
 
 - varies on: baseline
-- ratio `3:4` · pipeline `single-pass` · type version `1.9`
-- axes: `camera_lock: handheld`
-- attachment: the product photo, uploaded by hand
+- ratio `3:4` · type version `1.9` · upload the product photo · `camera_lock: handheld`
 - Slide the arm in, press the button, let go — one action per panel, one pair of hands, one table, one light, and the adapter left on the table as the closing residue.
 - **note:** 3:4 centre-cropped to the slot's 4:3 loses a lot of height and this type is a vertical stack. Render at 3:4 and set the slot to a taller aspect, or the top and bottom panels will be cut.
 
@@ -742,8 +637,7 @@ The monitor sits near the centre of every panel and is never cropped. One palett
 ### reasons_b.items.1.image · option B — `03-mechanism-xray`
 
 - varies on: type: 03-mechanism-xray
-- ratio `1:1` · pipeline `single-pass` · type version `1.3`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.3` · upload the product photo
 - The three steps compressed into the one thing they add up to: the bladder closed evenly round the chamber. It states the outcome of the sequence, not the sequence.
 - **note:** Picking this displaces reasons.items.1 option A under one-type-once.
 
@@ -768,9 +662,7 @@ One product, one shell, no exploded parts, no callout lines, no labels.
 ### reasons_b.items.1.image · option C — `03-use-sequence`
 
 - varies on: execution: a carer's hands on an older person's arm
-- ratio `3:4` · pipeline `single-pass` · type version `1.9`
-- axes: `camera_lock: handheld`
-- attachment: the product photo, uploaded by hand
+- ratio `3:4` · type version `1.9` · upload the product photo · `camera_lock: handheld`
 - Same type and structure, the second persona doing the steps for a parent. The closing panel resolves on a hand over a wrist rather than on the device.
 - **note:** Two people in frame is at the edge of this type's continuity law — the older forearm is the only part of the second person that ever appears. Same 3:4 crop caution as A.
 
@@ -794,11 +686,10 @@ The monitor sits near the centre of every panel and is never cropped. One palett
 
 ### reasons_b.items.1.image · option D — the motion brief plate
 
-- form `whole-frame` · kind `use` · gif type `use` · rung `natural`
+- gif type `use` · form `whole-frame` · rung `natural`
 - reference folder: gif-library/use/ — no files filed yet; the folder card carries the law
-- **the editor returns** `73-08-reasonb1-use-sequence.mp4` · delivery mp4/webm, muted, under the size ceiling
+- **the editor returns** `73-08-reasonb1-use-sequence.mp4` · mp4/webm, muted, under the size ceiling
 - plate render asset `73-08-reasonb1-use-sequence--brief.png` — production only, never a page asset
-- An ordered sequence is the definition of temporal, and this is the strongest motion candidate on the page — the section is literally three steps. This type's skeleton legislates stacked panels and no inset layer, so the form is whole-frame and the loop replaces the stack.
 
 ```
 A flat card and nothing else. The whole image is a flat dark grey field with a thin white border just inside its edge, held clear of every frame edge.
@@ -818,14 +709,12 @@ No scene, no product, no photograph, no other text.
 
 - asset `73-09-review-1.png` · review wall tile
 - recommended: **option A** · media **still**
-- One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.
+- One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.
 
 ### reviews.photos.0.image · option A — `05-social-snapshot`
 
 - varies on: in-use · kitchen table · cool morning window light · seated half-metre
-- ratio `1:1` · pipeline `single-pass` · type version `1.2`
-- axes: `register: ugc`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.2` · upload the product photo · `register: ugc`
 - Mode in-use on a kitchen table, the mother's own forearm in the chamber. Cool morning daylight, seated distance, mug as the single anchor.
 - **note:** PRECONDITION, and it is not optional: this tile sits inside the same reviews block as six named attributions carrying five-star rows and Verified Buyer labels. 05-social-snapshot's authenticity fence forbids pairing a generated snapshot with a reviewer name, star row or verified badge. Use a real customer photograph, or move the photo grid out of the attributed block, or drop the names, stars and verified labels — before rendering this.
 
@@ -845,22 +734,16 @@ Shot from a seated height at about half a metre, framing slightly tilted and a l
 The device's face is turned away from the camera at an angle, so nothing on the screen can be read.
 ```
 
-### reviews.photos.0.image · no motion
-
-- No social-proof slot carries motion (Step 5d, owner instruction 2026-08-19). The mechanism is the six-type set: it carries no social type, so this slot has no gif type to file a loop under, and the review wall is the strictest case of that rule.
-
 ## `reviews.photos.1.image` — social-proof
 
 - asset `73-10-review-2.png` · review wall tile
 - recommended: **option A** · media **still**
-- One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.
+- One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.
 
 ### reviews.photos.1.image · option A — `05-social-snapshot`
 
 - varies on: at-rest · bedroom nightstand · warm lamplight · standing quarter-metre
-- ratio `1:1` · pipeline `single-pass` · type version `1.2`
-- axes: `register: ugc`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.2` · upload the product photo · `register: ugc`
 - Mode at-rest on a nightstand under warm lamplight, factory sticker still on. Closest camera distance in the set, coiled charging cable as the anchor.
 - **note:** PRECONDITION, and it is not optional: this tile sits inside the same reviews block as six named attributions carrying five-star rows and Verified Buyer labels. 05-social-snapshot's authenticity fence forbids pairing a generated snapshot with a reviewer name, star row or verified badge. Use a real customer photograph, or move the photo grid out of the attributed block, or drop the names, stars and verified labels — before rendering this.
 
@@ -880,22 +763,16 @@ Shot from standing height at about a quarter of a metre, framing off-centre and 
 The device's face is dark and unlit, so nothing on the screen can be read.
 ```
 
-### reviews.photos.1.image · no motion
-
-- No social-proof slot carries motion (Step 5d, owner instruction 2026-08-19). The mechanism is the six-type set: it carries no social type, so this slot has no gif type to file a loop under, and the review wall is the strictest case of that rule.
-
 ## `reviews.photos.2.image` — social-proof
 
 - asset `73-11-review-3.png` · review wall tile
 - recommended: **option A** · media **still**
-- One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.
+- One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.
 
 ### reviews.photos.2.image · option A — `05-social-snapshot`
 
 - varies on: in-use · living room side table · flat neutral overcast · seated third-metre
-- ratio `1:1` · pipeline `single-pass` · type version `1.2`
-- axes: `register: ugc`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.2` · upload the product photo · `register: ugc`
 - Mode in-use on a living room side table under flat overcast light, fingers on the start button. Television remote as the anchor.
 - **note:** PRECONDITION, and it is not optional: this tile sits inside the same reviews block as six named attributions carrying five-star rows and Verified Buyer labels. 05-social-snapshot's authenticity fence forbids pairing a generated snapshot with a reviewer name, star row or verified badge. Use a real customer photograph, or move the photo grid out of the attributed block, or drop the names, stars and verified labels — before rendering this.
 
@@ -915,22 +792,16 @@ Shot from a seated height at about a third of a metre, framing tilted and croppi
 The device's face is turned away from the camera at an angle, so nothing on the screen can be read.
 ```
 
-### reviews.photos.2.image · no motion
-
-- No social-proof slot carries motion (Step 5d, owner instruction 2026-08-19). The mechanism is the six-type set: it carries no social type, so this slot has no gif type to file a loop under, and the review wall is the strictest case of that rule.
-
 ## `reviews.photos.3.image` — social-proof
 
 - asset `73-12-review-4.png` · review wall tile
 - recommended: **option A** · media **still**
-- One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.
+- One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.
 
 ### reviews.photos.3.image · option A — `05-social-snapshot`
 
 - varies on: kit-flatlay · dining table · warm kitchen overhead · standing three-quarter-metre
-- ratio `1:1` · pipeline `single-pass` · type version `1.2`
-- axes: `register: ugc`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.2` · upload the product photo · `register: ugc`
 - The only kit-flatlay in the set: the opened carton, the adapter and the batteries as the owner left them. Manual page as the anchor, its print illegible at size.
 - **note:** PRECONDITION, and it is not optional: this tile sits inside the same reviews block as six named attributions carrying five-star rows and Verified Buyer labels. 05-social-snapshot's authenticity fence forbids pairing a generated snapshot with a reviewer name, star row or verified badge. Use a real customer photograph, or move the photo grid out of the attributed block, or drop the names, stars and verified labels — before rendering this.
 
@@ -950,22 +821,16 @@ Shot from standing height at about three quarters of a metre, framing off-centre
 The device's face is dark and unlit, so nothing on the screen can be read.
 ```
 
-### reviews.photos.3.image · no motion
-
-- No social-proof slot carries motion (Step 5d, owner instruction 2026-08-19). The mechanism is the six-type set: it carries no social type, so this slot has no gif type to file a loop under, and the review wall is the strictest case of that rule.
-
 ## `reviews.photos.4.image` — social-proof
 
 - asset `73-13-review-5.png` · review wall tile
 - recommended: **option A** · media **still**
-- One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.
+- One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.
 
 ### reviews.photos.4.image · option A — `05-social-snapshot`
 
 - varies on: at-rest · hallway console · mixed warm-dim evening · standing half-metre
-- ratio `1:1` · pipeline `single-pass` · type version `1.2`
-- axes: `register: ugc`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.2` · upload the product photo · `register: ugc`
 - Mode at-rest on a hallway console in mixed dim evening light, pushed back against the wall. Keys as the anchor.
 - **note:** PRECONDITION, and it is not optional: this tile sits inside the same reviews block as six named attributions carrying five-star rows and Verified Buyer labels. 05-social-snapshot's authenticity fence forbids pairing a generated snapshot with a reviewer name, star row or verified badge. Use a real customer photograph, or move the photo grid out of the attributed block, or drop the names, stars and verified labels — before rendering this.
 
@@ -985,22 +850,16 @@ Shot from standing height at about half a metre, framing tilted with the table e
 The device's face is dark and unlit, so nothing on the screen can be read.
 ```
 
-### reviews.photos.4.image · no motion
-
-- No social-proof slot carries motion (Step 5d, owner instruction 2026-08-19). The mechanism is the six-type set: it carries no social type, so this slot has no gif type to file a loop under, and the review wall is the strictest case of that rule.
-
 ## `reviews.photos.5.image` — social-proof
 
 - asset `73-14-review-6.png` · review wall tile
 - recommended: **option A** · media **still**
-- One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.
+- One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.
 
 ### reviews.photos.5.image · option A — `05-social-snapshot`
 
 - varies on: in-use · home office desk · cool midday daylight · standing metre, top-down
-- ratio `1:1` · pipeline `single-pass` · type version `1.2`
-- axes: `register: ugc`
-- attachment: the product photo, uploaded by hand
+- ratio `1:1` · type version `1.2` · upload the product photo · `register: ugc`
 - Mode in-use on a desk seen from above at the widest distance in the set. Extension plug as the anchor.
 - **note:** PRECONDITION, and it is not optional: this tile sits inside the same reviews block as six named attributions carrying five-star rows and Verified Buyer labels. 05-social-snapshot's authenticity fence forbids pairing a generated snapshot with a reviewer name, star row or verified badge. Use a real customer photograph, or move the photo grid out of the attributed block, or drop the names, stars and verified labels — before rendering this.
 
@@ -1019,27 +878,3 @@ Shot from standing height at about a metre, framing wider than intended with the
 
 The device's face is angled up away from the camera, so nothing on the screen can be read.
 ```
-
-### reviews.photos.5.image · no motion
-
-- No social-proof slot carries motion (Step 5d, owner instruction 2026-08-19). The mechanism is the six-type set: it carries no social type, so this slot has no gif type to file a loop under, and the review wall is the strictest case of that rule.
-
----
-
-## Out of library scope
-
-- `scarcity.image` (offer band) — A standard product shot or brand furniture; the library covers argument images, not offer and masthead assets.
-- `scarcity.badge_image` (offer badge) — A standard product shot or brand furniture; the library covers argument images, not offer and masthead assets.
-- `rail.image` (sticky proof rail) — A standard product shot or brand furniture; the library covers argument images, not offer and masthead assets.
-- `guarantee.badge_image` (guarantee band) — A standard product shot or brand furniture; the library covers argument images, not offer and masthead assets.
-- `header.logo` (masthead) — A standard product shot or brand furniture; the library covers argument images, not offer and masthead assets.
-- `footer.logo` (footer) — A standard product shot or brand furniture; the library covers argument images, not offer and masthead assets.
-- `hero.author_avatar` (byline) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `closing.bio_image` (closing bio) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `comments.items.0.avatar` (comment 1) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `comments.items.1.avatar` (comment 2) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `comments.items.2.avatar` (comment 3) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `comments.items.3.avatar` (comment 4) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `comments.items.4.avatar` (comment 5) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `comments.items.5.avatar` (comment 6) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).
-- `comments.items.6.avatar` (comment 7) — A portrait of a named person. No library type produces one, and generating a face to sit under a real byline or a named comment is a disclosure decision rather than an image one (slot-rules.md, the author row).

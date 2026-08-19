@@ -925,7 +925,7 @@
       "placement": "review wall tile",
       "recommended_media": "still",
       "recommended_opt": "A",
-      "recommendation_basis": "One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.",
+      "recommendation_basis": "One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.",
       "options": [
         {
           "opt": "A",
@@ -974,7 +974,7 @@
       "placement": "review wall tile",
       "recommended_media": "still",
       "recommended_opt": "A",
-      "recommendation_basis": "One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.",
+      "recommendation_basis": "One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.",
       "options": [
         {
           "opt": "A",
@@ -1023,7 +1023,7 @@
       "placement": "review wall tile",
       "recommended_media": "still",
       "recommended_opt": "A",
-      "recommendation_basis": "One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.",
+      "recommendation_basis": "One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.",
       "options": [
         {
           "opt": "A",
@@ -1072,7 +1072,7 @@
       "placement": "review wall tile",
       "recommended_media": "still",
       "recommended_opt": "A",
-      "recommendation_basis": "One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.",
+      "recommendation_basis": "One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.",
       "options": [
         {
           "opt": "A",
@@ -1121,7 +1121,7 @@
       "placement": "review wall tile",
       "recommended_media": "still",
       "recommended_opt": "A",
-      "recommendation_basis": "One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.",
+      "recommendation_basis": "One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.",
       "options": [
         {
           "opt": "A",
@@ -1170,7 +1170,7 @@
       "placement": "review wall tile",
       "recommended_media": "still",
       "recommended_opt": "A",
-      "recommendation_basis": "One option, not three (ADR-022). The six tiles are the unit of variation and the SET DIVERSITY LAW spends it between them: room class, surface, light temperature, camera distance and content mode all differ across the six. Three options inside one tile would spend that budget where it buys nothing and would let a reader pick one register on some tiles and another on the rest, which reads as two shoots and so as fake.",
+      "recommendation_basis": "One option by law (ADR-022): the six tiles are the unit of variation, not the tile, and this one's place in the set is its varies_on line.",
       "options": [
         {
           "opt": "A",
