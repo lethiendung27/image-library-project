@@ -22,7 +22,9 @@ tasks to entry points and must stay logic-free.
 
 1. Never hand-edit a generated view — regenerate it. `registry/index.yaml`:
    `python3 scripts/validate.py --write-index`. The GIF library's folder cards:
-   `python3 scripts/gen-gif-cards.py`.
+   `python3 scripts/gen-gif-cards.py`. The app bundle:
+   `python3 scripts/build-app-bundle.py` (run it in the same commit as any change
+   under `registry/`, `mapping/`, `adapters/` or the schemas).
 2. After **any** edit under `registry/`, run `python3 scripts/validate.py` and fix
    errors before finishing the turn.
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are append-only.

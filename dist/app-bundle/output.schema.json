@@ -1,0 +1,617 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Image Prompt Library — query output contract",
+  "description": "What the QUERY operation returns (SPEC section 7, query/runbook.md). NEVER-EMPTY RULE: every image slot returns at least one renderable option. Stage 1 derives candidates from registry/index.yaml — channel legality from each type's own channels, then attribute gates, then role affinity from step+job — so a slot cannot run out while any type on the channel can carry the argument. An image slot with zero options is a contract violation, not a valid state.",
+  "type": "object",
+  "required": [
+    "page_id",
+    "registry_version",
+    "channel",
+    "slots",
+    "page_composition_notes"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "page_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "registry_version": {
+      "type": "string"
+    },
+    "channel": {
+      "enum": [
+        "marketplace",
+        "landing-page",
+        "paid-social",
+        "advertorial"
+      ]
+    },
+    "awareness_stage": {
+      "enum": [
+        "unaware",
+        "problem-aware",
+        "solution-aware",
+        "product-aware",
+        "most-aware"
+      ],
+      "description": "INFERRED from the page's own copy — the section structure, what the hero assumes the reader already believes, how much the page spends re-establishing the problem. Not an input field: the content says it, so declaring it separately would add a surface that can go stale against the copy it describes. Record the basis for the inference in page_composition_notes. It is the weight the coverage pass uses; an absent ladder rung is not a gap unless this stage says it is."
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "slot_id",
+          "section_role",
+          "options"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "slot_id": {
+            "type": "string"
+          },
+          "section_role": {
+            "type": "string"
+          },
+          "asset": {
+            "type": "string",
+            "description": "Canonical output filename the page layout references. Option renders are suffixed --A/--B/--C; the picked one is renamed to this."
+          },
+          "placement": {
+            "type": "string",
+            "description": "Where the asset sits on the page, named against the input's own section keys."
+          },
+          "out_of_scope_reason": {
+            "type": "string",
+            "description": "Only legal for slots that carry NO image by definition: the cta cell (standard product shot) and text furniture such as comment threads or pricing tables. An image slot may never use it — Stage 1 derivation always yields candidates."
+          },
+          "options": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": [
+                "opt",
+                "varies_on",
+                "type",
+                "type_version",
+                "ratio",
+                "pipeline",
+                "prompt",
+                "rationale"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "opt": {
+                  "enum": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                },
+                "varies_on": {
+                  "type": "string",
+                  "description": "The named dimension this option varies on: 'baseline', 'type: <id>', 'axis: <axis>=<value>', or 'execution: <what>'. G5 decision — picks are only interpretable if this is honest."
+                },
+                "type": {
+                  "type": "string",
+                  "pattern": "^\\d{2}-[a-z]+-[a-z]+$"
+                },
+                "type_version": {
+                  "type": "string",
+                  "pattern": "^\\d+\\.\\d+$"
+                },
+                "variant": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "axes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "ratio": {
+                  "type": "string",
+                  "pattern": "^\\d+:\\d+$",
+                  "description": "Slot requirement, passed as the generation aspect-ratio PARAMETER. Never written into the prompt text — adapters/nano-banana.md Rule 4, 6/6 renders ignored a written ratio."
+                },
+                "pipeline": {
+                  "enum": [
+                    "single-pass",
+                    "multi-pass"
+                  ]
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Required when pipeline is multi-pass: the ordered generate/edit/composite script from the adapter."
+                },
+                "attachments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^sha256:[0-9a-f]{8,64}$"
+                  }
+                },
+                "asset_candidate": {
+                  "type": "string",
+                  "description": "Filename to render this candidate as, e.g. 'page-01-hero--A.jpg'."
+                },
+                "prompt": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "avoid": {
+                  "type": "string",
+                  "description": "The adapter-rendered exclusion line(s) for models without a negative channel."
+                },
+                "rationale": {
+                  "type": "string"
+                },
+                "composition_notes": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "gif": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "eligible",
+              "form",
+              "reason"
+            ],
+            "properties": {
+              "eligible": {
+                "type": "boolean"
+              },
+              "form": {
+                "enum": [
+                  "whole-frame",
+                  "inset",
+                  "none"
+                ],
+                "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
+              },
+              "kind": {
+                "enum": [
+                  "pain",
+                  "symptom",
+                  "cause",
+                  "mechanism",
+                  "use",
+                  "spec",
+                  "proof",
+                  "persona",
+                  "social",
+                  "relief"
+                ],
+                "description": "What the loop ARGUES, from the `jobs` vocabulary. It is the job of the LAYER the loop lives in, which is often not the type's own job — an inset is not a pain slot. For form 'whole-frame' there is no layer, so it is the type's own job. Sets what SHOT, ACTION and RESULT name; nothing else about the plate changes with it."
+              },
+              "reason": {
+                "type": "string",
+                "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
+              },
+              "asset": {
+                "type": "string",
+                "description": "Filename of the PLATE render. It carries the --brief suffix and is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
+              },
+              "duration_s": {
+                "type": "number"
+              },
+              "loop": {
+                "type": "string"
+              },
+              "shot": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "result": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "match": {
+                "type": "string"
+              },
+              "delivery": {
+                "type": "string"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
+              },
+              "type_id": {
+                "enum": [
+                  "use",
+                  "mechanism",
+                  "cause",
+                  "proof",
+                  "relief"
+                ],
+                "description": "The gif type this loop is filed under, from vocabulary.gif_types and defined in registry/gif-types/<id>.md. It equals `kind` for every routable type — a loop argues one thing and the id IS that argument (ADR-023). `unboxing` is never emitted here: it is ad-channel only."
+              },
+              "rung": {
+                "enum": [
+                  "natural",
+                  "re-execution",
+                  "ambient"
+                ],
+                "description": "How this loop was earned (query/runbook.md Step 5d). 'natural' = the slot passes the temporal test as routed. 're-execution' = the slot's still execution earns no motion but a different staging of the same argument does, most often a locked multi-panel proof restaged as one continuous frame; say which in `reason`. 'ambient' is off by default and appears only when the owner switched it on for this page."
+              },
+              "refs": {
+                "type": "string",
+                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. Not drawn into the plate — the plate keeps its five lines (G12); this travels in prompts.md."
+              },
+              "output": {
+                "type": "string",
+                "description": "The filename the editor returns, for BOTH forms: the slot's own `asset` with the extension changed to .mp4. Distinct from `asset`, which names the production-only plate and carries --brief. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+              }
+            }
+          },
+          "recommended_opt": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ],
+            "description": "Which option this operation recommends. Required whenever the slot has options. The reasoning goes in recommendation_basis — an unexplained pick is not interpretable later, and picks.jsonl records what the human chose, not what was suggested."
+          },
+          "recommendation_basis": {
+            "type": "string",
+            "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
+          },
+          "recommended_media": {
+            "enum": [
+              "still",
+              "gif"
+            ],
+            "description": "Which medium this operation recommends for the slot. Default 'still'. 'gif' says the slot's argument is carried better by the loop than by any of A/B/C — the recommended still is still emitted and still rendered, because the loop is an order to an editor and the page must ship today (ADR-020). Explain it in recommendation_basis."
+          }
+        }
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Evidence for `recommended[]`: which Trust Ladder rungs the routed slots cover, which are absent, and whether the awareness stage makes each absence a gap or a correct omission.",
+      "properties": {
+        "covered": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "absent": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "absent_but_correct": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Rungs missing on purpose for this awareness stage — recorded so a later reader does not 'fix' them."
+        },
+        "gaps": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Absent rungs the awareness stage says DO matter. Each must have a matching entry in recommended[]."
+        }
+      }
+    },
+    "recommended": {
+      "type": "array",
+      "description": "Product-driven proposals the page did not ask for. Same option shape as a slot, plus earns_its_place and suggested_placement. Additive only — never counted as page sections, never silently added to the asset manifest.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "slot_id",
+          "earns_its_place",
+          "suggested_placement",
+          "options"
+        ],
+        "properties": {
+          "slot_id": {
+            "type": "string"
+          },
+          "section_role": {
+            "type": "string"
+          },
+          "earns_its_place": {
+            "type": "string",
+            "description": "Which ladder rung it fills and why the awareness stage makes that rung matter. A proposal that cannot name its rung is decoration and does not ship."
+          },
+          "suggested_placement": {
+            "type": "string"
+          },
+          "asset": {
+            "type": "string"
+          },
+          "gif": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "eligible",
+              "form",
+              "reason"
+            ],
+            "properties": {
+              "eligible": {
+                "type": "boolean"
+              },
+              "form": {
+                "enum": [
+                  "whole-frame",
+                  "inset",
+                  "none"
+                ],
+                "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
+              },
+              "kind": {
+                "enum": [
+                  "pain",
+                  "symptom",
+                  "cause",
+                  "mechanism",
+                  "use",
+                  "spec",
+                  "proof",
+                  "persona",
+                  "social",
+                  "relief"
+                ],
+                "description": "What the loop ARGUES, from the `jobs` vocabulary. It is the job of the LAYER the loop lives in, which is often not the type's own job — an inset is not a pain slot. For form 'whole-frame' there is no layer, so it is the type's own job. Sets what SHOT, ACTION and RESULT name; nothing else about the plate changes with it."
+              },
+              "reason": {
+                "type": "string",
+                "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
+              },
+              "asset": {
+                "type": "string",
+                "description": "Filename of the PLATE render. It carries the --brief suffix and is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
+              },
+              "duration_s": {
+                "type": "number"
+              },
+              "loop": {
+                "type": "string"
+              },
+              "shot": {
+                "type": "string"
+              },
+              "action": {
+                "type": "string"
+              },
+              "result": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "match": {
+                "type": "string"
+              },
+              "delivery": {
+                "type": "string"
+              },
+              "prompt": {
+                "type": "string",
+                "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
+              },
+              "type_id": {
+                "enum": [
+                  "use",
+                  "mechanism",
+                  "cause",
+                  "proof",
+                  "relief"
+                ],
+                "description": "The gif type this loop is filed under, from vocabulary.gif_types and defined in registry/gif-types/<id>.md. It equals `kind` for every routable type — a loop argues one thing and the id IS that argument (ADR-023). `unboxing` is never emitted here: it is ad-channel only."
+              },
+              "rung": {
+                "enum": [
+                  "natural",
+                  "re-execution",
+                  "ambient"
+                ],
+                "description": "How this loop was earned (query/runbook.md Step 5d). 'natural' = the slot passes the temporal test as routed. 're-execution' = the slot's still execution earns no motion but a different staging of the same argument does, most often a locked multi-panel proof restaged as one continuous frame; say which in `reason`. 'ambient' is off by default and appears only when the owner switched it on for this page."
+              },
+              "refs": {
+                "type": "string",
+                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. Not drawn into the plate — the plate keeps its five lines (G12); this travels in prompts.md."
+              },
+              "output": {
+                "type": "string",
+                "description": "The filename the editor returns, for BOTH forms: the slot's own `asset` with the extension changed to .mp4. Distinct from `asset`, which names the production-only plate and carries --brief. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+              }
+            }
+          },
+          "options": {
+            "type": "array",
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": [
+                "opt",
+                "varies_on",
+                "type",
+                "type_version",
+                "ratio",
+                "pipeline",
+                "prompt",
+                "rationale"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "opt": {
+                  "enum": [
+                    "A",
+                    "B",
+                    "C"
+                  ]
+                },
+                "varies_on": {
+                  "type": "string",
+                  "description": "The named dimension this option varies on: 'baseline', 'type: <id>', 'axis: <axis>=<value>', or 'execution: <what>'. G5 decision — picks are only interpretable if this is honest."
+                },
+                "type": {
+                  "type": "string",
+                  "pattern": "^\\d{2}-[a-z]+-[a-z]+$"
+                },
+                "type_version": {
+                  "type": "string",
+                  "pattern": "^\\d+\\.\\d+$"
+                },
+                "variant": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "axes": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  }
+                },
+                "ratio": {
+                  "type": "string",
+                  "pattern": "^\\d+:\\d+$",
+                  "description": "Slot requirement, passed as the generation aspect-ratio PARAMETER. Never written into the prompt text — adapters/nano-banana.md Rule 4, 6/6 renders ignored a written ratio."
+                },
+                "pipeline": {
+                  "enum": [
+                    "single-pass",
+                    "multi-pass"
+                  ]
+                },
+                "steps": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "Required when pipeline is multi-pass: the ordered generate/edit/composite script from the adapter."
+                },
+                "attachments": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^sha256:[0-9a-f]{8,64}$"
+                  }
+                },
+                "asset_candidate": {
+                  "type": "string",
+                  "description": "Filename to render this candidate as, e.g. 'page-01-hero--A.jpg'."
+                },
+                "prompt": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "avoid": {
+                  "type": "string",
+                  "description": "The adapter-rendered exclusion line(s) for models without a negative channel."
+                },
+                "rationale": {
+                  "type": "string"
+                },
+                "composition_notes": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "recommended_opt": {
+            "enum": [
+              "A",
+              "B",
+              "C"
+            ],
+            "description": "Which option this operation recommends. Required whenever the slot has options. The reasoning goes in recommendation_basis — an unexplained pick is not interpretable later, and picks.jsonl records what the human chose, not what was suggested."
+          },
+          "recommendation_basis": {
+            "type": "string",
+            "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
+          },
+          "recommended_media": {
+            "enum": [
+              "still",
+              "gif"
+            ],
+            "description": "Which medium this operation recommends for the slot. Default 'still'. 'gif' says the slot's argument is carried better by the loop than by any of A/B/C — the recommended still is still emitted and still rendered, because the loop is an order to an editor and the page must ship today (ADR-020). Explain it in recommendation_basis."
+          }
+        }
+      }
+    },
+    "page_composition_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The page's motion budget (query/runbook.md Step 5d). Emitted on every routed page, including pages that carry no motion at all — a stated zero is actionable and a missing block is not.",
+      "required": [
+        "floor",
+        "ceiling",
+        "delivered",
+        "groups_covered"
+      ],
+      "properties": {
+        "floor": {
+          "type": "integer",
+          "description": "Minimum loops this page must carry. Owner standing instruction 2026-08-19: 2."
+        },
+        "ceiling": {
+          "type": "integer",
+          "description": "Maximum loops the page may carry: 5, with at most one per section and never two in adjacent slots."
+        },
+        "delivered": {
+          "type": "integer",
+          "description": "Positive gif verdicts actually emitted."
+        },
+        "groups_covered": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "working",
+              "result"
+            ]
+          },
+          "description": "Which halves of the floor the delivered loops cover, read from each type's `group`. One of each is the preference, not a gate — a page whose natural pair is two `working` loops keeps it and says so rather than restaging a strong slot to fill a column."
+        },
+        "shortfall_reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Required non-null when delivered < floor. Names which slots were examined at rung 2 and why none of them earned motion. Never filled by switching ambient on: a page that cannot argue in motion says so (SPEC 7.5's rule that an absence is not automatically a gap, applied to motion)."
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Spacing conflicts resolved, sections that lost a loop to the one-per-section rule, wall verdicts."
+        }
+      }
+    }
+  }
+}

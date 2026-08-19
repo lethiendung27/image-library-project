@@ -9,6 +9,7 @@ Usage:
   python3 scripts/validate.py --write-index # validate + regenerate registry/index.yaml
   python3 scripts/validate.py --check       # validate + fail if index.yaml is stale
 """
+import hashlib
 import json
 import os
 import re
@@ -674,6 +675,47 @@ def parse_attribute_gates():
     return gates
 
 
+# ------------------------------------------------------------------ app bundle
+
+def check_app_bundle(strict):
+    """The vendored bundle is a claim about repo files; verify the claim.
+
+    `scripts/build-app-bundle.py --check` verifies the bundle's COMPOSITION —
+    that every file the repo should ship is present. This verifies its FRESHNESS
+    from the other side: every source path the manifest names is re-hashed and
+    compared. It needs no knowledge of what belongs in the bundle, because the
+    manifest already declares that, so the two checks cannot drift into agreeing
+    with each other while both being wrong.
+    """
+    mpath = os.path.join(ROOT, "dist", "app-bundle", "MANIFEST.json")
+    if not os.path.exists(mpath):
+        return 0
+    rel = "dist/app-bundle/MANIFEST.json"
+    report = err if strict else warn
+    try:
+        with open(mpath, encoding="utf-8") as f:
+            manifest = json.load(f)
+    except json.JSONDecodeError as e:
+        err(rel, f"invalid JSON: {e}")
+        return 0
+    n = 0
+    for dest, meta in (manifest.get("files") or {}).items():
+        src = os.path.join(ROOT, meta.get("from", ""))
+        if not os.path.exists(src):
+            report(rel, f"{dest}: source `{meta.get('from')}` no longer exists — "
+                        "run scripts/build-app-bundle.py")
+            continue
+        h = hashlib.sha256()
+        with open(src, "rb") as f:
+            for chunk in iter(lambda: f.read(65536), b""):
+                h.update(chunk)
+        if h.hexdigest() != meta.get("sha256"):
+            report(rel, f"{dest}: source `{meta.get('from')}` has changed since "
+                        "the bundle was built — run scripts/build-app-bundle.py")
+        n += 1
+    return n
+
+
 # ------------------------------------------------------------------ golden
 
 def _parse_expected_routes(path, rel):
@@ -1007,6 +1049,7 @@ def main(argv):
     shortlist = check_slot_rules(types)
     gates = parse_attribute_gates()
     golden_slots = check_golden(types, vocab, shortlist, gates)
+    bundled = check_app_bundle(check)
 
     index_text = render_index(vocab, types, evidence, stats)
     if write_index:
@@ -1027,7 +1070,7 @@ def main(argv):
         print(f"ERROR {e}")
     print(f"{len(types)} types, {len(staging)} staging, "
           f"{len(gif_types)} gif types, {len(gif_ledger)} gifs, "
-          f"{golden_slots} golden slots, "
+          f"{golden_slots} golden slots, {bundled} bundled files, "
           f"{len(observations)} observations, {len(picks)} picks, "
           f"{len(render_tests)} render tests, "
           f"{len(ERRORS)} errors, {len(WARNINGS)} warnings")

@@ -2,6 +2,20 @@
   "product": {
     "name": "Automatic Upper Arm Blood Pressure Monitor",
     "category": "health",
+    "specification": "Automatic upper arm monitor · no-wrap slide-in arm chamber with elbow guide · one-touch operation with automatic inflation · large backlit display (systolic, diastolic, pulse) · colour-coded range indicator · irregular heart rhythm reminder · 4-user memory with stored reading history · mains adapter and batteries included · compact and portable. Arm circumference range, measurement time, stated accuracy and regulatory certification to be supplied by the manufacturer.",
+    "raw_features": [
+      "No-wrap slide-in design: the arm rests into a fixed measurement chamber with an elbow guide instead of being wrapped in a fabric cuff, so placement is identical every time",
+      "One-touch automatic operation — position the arm, press Start, and the device inflates and measures on its own, with no manual pumping and no menus to navigate",
+      "Guided arm positioning removes the setup guesswork of wrapping, tightening and realigning a cuff before every reading",
+      "Extra-large high-contrast backlit display showing systolic, diastolic and pulse together on one screen",
+      "Colour-coded indicator translates the numbers into an at-a-glance range",
+      "Irregular heart rhythm reminder flagged during measurement",
+      "On-screen posture guidance; designed to be used seated at a table with the upper arm at roughly heart level",
+      "Multi-user profiles for up to 4 people with stored reading history, so a household keeps separate records without a paper notebook",
+      "Stored history positioned as making check-ups with a healthcare professional more organised",
+      "Compact and portable enough to travel with",
+      "Box includes the device, batteries and mains adapter — nothing further to buy"
+    ],
     "reference_photos": [],
     "attributes": {
       "operation": "active",
@@ -38,7 +52,11 @@
         "role": "hero",
         "copy_summary": "Most people find ordinary wrap cuffs frustrating to fit correctly every morning; the real problem is placement guesswork, and this guided chamber replaces wrapping entirely.",
         "image_slots": [
-          {"slot_id": "hero.image", "ratio": "4:3", "position": "header"}
+          {
+            "slot_id": "hero.image",
+            "ratio": "4:3",
+            "position": "header"
+          }
         ]
       },
       {
@@ -46,7 +64,11 @@
         "role": "cause",
         "copy_summary": "Wrapping a limp fabric cuff one-handed is awkward and unreliable; getting it straight and at the right tightness takes multiple tries, and when it slips or twists people skip the measurement altogether.",
         "image_slots": [
-          {"slot_id": "reasons.items.0.image", "ratio": "4:3", "position": "reason 1"}
+          {
+            "slot_id": "reasons.items.0.image",
+            "ratio": "4:3",
+            "position": "reason 1"
+          }
         ]
       },
       {
@@ -54,7 +76,11 @@
         "role": "how-to-use",
         "copy_summary": "One button starts it: the internal motor inflates and measures on its own, with no manual pumping and no menus, plus a guided elbow rest and an irregular heart rhythm reminder.",
         "image_slots": [
-          {"slot_id": "reasons.items.1.image", "ratio": "4:3", "position": "reason 2"}
+          {
+            "slot_id": "reasons.items.1.image",
+            "ratio": "4:3",
+            "position": "reason 2"
+          }
         ]
       },
       {
@@ -62,7 +88,11 @@
         "role": "comparison",
         "copy_summary": "Most household monitors show numbers on small reflective screens that need reading glasses; this one is a bright high-contrast backlit screen showing systolic, diastolic and pulse side by side with a colour-coded range indicator.",
         "image_slots": [
-          {"slot_id": "reasons.items.2.image", "ratio": "4:3", "position": "reason 3"}
+          {
+            "slot_id": "reasons.items.2.image",
+            "ratio": "4:3",
+            "position": "reason 3"
+          }
         ]
       },
       {
@@ -70,7 +100,11 @@
         "role": "outcome",
         "copy_summary": "Two people sharing one monitor get their readings merged; this one keeps independent memory profiles for up to 4 users with stored history, so personal trends stay separate without a paper notebook.",
         "image_slots": [
-          {"slot_id": "reasons.items.3.image", "ratio": "4:3", "position": "reason 4"}
+          {
+            "slot_id": "reasons.items.3.image",
+            "ratio": "4:3",
+            "position": "reason 4"
+          }
         ]
       },
       {
@@ -78,7 +112,11 @@
         "role": "proof",
         "copy_summary": "Many health devices arrive incomplete; this box holds the device, the mains adapter and the batteries, and its compact build leaves a neat footprint on a kitchen counter.",
         "image_slots": [
-          {"slot_id": "reasons.items.4.image", "ratio": "4:3", "position": "reason 5"}
+          {
+            "slot_id": "reasons.items.4.image",
+            "ratio": "4:3",
+            "position": "reason 5"
+          }
         ]
       },
       {
@@ -86,7 +124,11 @@
         "role": "mechanism",
         "copy_summary": "The design boundary stated plainly: a fixed cylindrical chamber rather than an expandable wrap, fitting standard adult upper arms, and it works best seated at a standard table with the upper arm at roughly heart level.",
         "image_slots": [
-          {"slot_id": "reasons_b.items.0.image", "ratio": "4:3", "position": "reason 6"}
+          {
+            "slot_id": "reasons_b.items.0.image",
+            "ratio": "4:3",
+            "position": "reason 6"
+          }
         ]
       },
       {
@@ -94,7 +136,11 @@
         "role": "how-to-use",
         "copy_summary": "Three steps: slide the arm through the chamber until the elbow rests on the guided base, press the single Start button while staying relaxed and still, read systolic, diastolic and pulse on the large backlit screen as the device stores the reading.",
         "image_slots": [
-          {"slot_id": "reasons_b.items.1.image", "ratio": "4:3", "position": "reason 7"}
+          {
+            "slot_id": "reasons_b.items.1.image",
+            "ratio": "4:3",
+            "position": "reason 7"
+          }
         ]
       },
       {
@@ -102,7 +148,11 @@
         "role": "social-proof",
         "copy_summary": "A mother who could never get her old wrap cuff tight enough on her own.",
         "image_slots": [
-          {"slot_id": "reviews.photos.0.image", "ratio": "1:1", "position": "review wall tile 1"}
+          {
+            "slot_id": "reviews.photos.0.image",
+            "ratio": "1:1",
+            "position": "review wall tile 1"
+          }
         ]
       },
       {
@@ -110,7 +160,11 @@
         "role": "social-proof",
         "copy_summary": "The bright display read first thing in the morning without glasses.",
         "image_slots": [
-          {"slot_id": "reviews.photos.1.image", "ratio": "1:1", "position": "review wall tile 2"}
+          {
+            "slot_id": "reviews.photos.1.image",
+            "ratio": "1:1",
+            "position": "review wall tile 2"
+          }
         ]
       },
       {
@@ -118,7 +172,11 @@
         "role": "social-proof",
         "copy_summary": "Separate memory for a husband and wife keeps their numbers organised without notebooks.",
         "image_slots": [
-          {"slot_id": "reviews.photos.2.image", "ratio": "1:1", "position": "review wall tile 3"}
+          {
+            "slot_id": "reviews.photos.2.image",
+            "ratio": "1:1",
+            "position": "review wall tile 3"
+          }
         ]
       },
       {
@@ -126,7 +184,11 @@
         "role": "social-proof",
         "copy_summary": "Setup took two minutes because the power cord and batteries were both in the box.",
         "image_slots": [
-          {"slot_id": "reviews.photos.3.image", "ratio": "1:1", "position": "review wall tile 4"}
+          {
+            "slot_id": "reviews.photos.3.image",
+            "ratio": "1:1",
+            "position": "review wall tile 4"
+          }
         ]
       },
       {
@@ -134,7 +196,11 @@
         "role": "social-proof",
         "copy_summary": "Sliding an arm in against the elbow rest is simpler than struggling with Velcro straps.",
         "image_slots": [
-          {"slot_id": "reviews.photos.4.image", "ratio": "1:1", "position": "review wall tile 5"}
+          {
+            "slot_id": "reviews.photos.4.image",
+            "ratio": "1:1",
+            "position": "review wall tile 5"
+          }
         ]
       },
       {
@@ -142,7 +208,11 @@
         "role": "social-proof",
         "copy_summary": "It sits on a kitchen counter and makes the morning routine quick and organised.",
         "image_slots": [
-          {"slot_id": "reviews.photos.5.image", "ratio": "1:1", "position": "review wall tile 6"}
+          {
+            "slot_id": "reviews.photos.5.image",
+            "ratio": "1:1",
+            "position": "review wall tile 6"
+          }
         ]
       },
       {
@@ -150,8 +220,16 @@
         "role": "cta",
         "copy_summary": "Offer band with countdown; standard product shot, out of library scope.",
         "image_slots": [
-          {"slot_id": "scarcity.image", "ratio": "1:1", "position": "offer band"},
-          {"slot_id": "scarcity.badge_image", "ratio": "1:1", "position": "offer badge"}
+          {
+            "slot_id": "scarcity.image",
+            "ratio": "1:1",
+            "position": "offer band"
+          },
+          {
+            "slot_id": "scarcity.badge_image",
+            "ratio": "1:1",
+            "position": "offer badge"
+          }
         ]
       },
       {
@@ -159,7 +237,11 @@
         "role": "cta",
         "copy_summary": "Sticky proof rail; standard product shot, out of library scope.",
         "image_slots": [
-          {"slot_id": "rail.image", "ratio": "1:1", "position": "sticky rail"}
+          {
+            "slot_id": "rail.image",
+            "ratio": "1:1",
+            "position": "sticky rail"
+          }
         ]
       },
       {
@@ -167,7 +249,11 @@
         "role": "cta",
         "copy_summary": "Money-back guarantee badge; brand furniture, out of library scope.",
         "image_slots": [
-          {"slot_id": "guarantee.badge_image", "ratio": "1:1", "position": "guarantee band"}
+          {
+            "slot_id": "guarantee.badge_image",
+            "ratio": "1:1",
+            "position": "guarantee band"
+          }
         ]
       },
       {
@@ -175,7 +261,11 @@
         "role": "cta",
         "copy_summary": "Publication logo; brand furniture, out of library scope.",
         "image_slots": [
-          {"slot_id": "header.logo", "ratio": "1:1", "position": "masthead"}
+          {
+            "slot_id": "header.logo",
+            "ratio": "1:1",
+            "position": "masthead"
+          }
         ]
       },
       {
@@ -183,7 +273,11 @@
         "role": "cta",
         "copy_summary": "Publication logo; brand furniture, out of library scope.",
         "image_slots": [
-          {"slot_id": "footer.logo", "ratio": "1:1", "position": "footer"}
+          {
+            "slot_id": "footer.logo",
+            "ratio": "1:1",
+            "position": "footer"
+          }
         ]
       },
       {
@@ -191,7 +285,11 @@
         "role": "author",
         "copy_summary": "Byline avatar for a named author; out of library scope.",
         "image_slots": [
-          {"slot_id": "hero.author_avatar", "ratio": "1:1", "position": "byline"}
+          {
+            "slot_id": "hero.author_avatar",
+            "ratio": "1:1",
+            "position": "byline"
+          }
         ]
       },
       {
@@ -199,7 +297,11 @@
         "role": "author",
         "copy_summary": "About-the-author portrait; out of library scope.",
         "image_slots": [
-          {"slot_id": "closing.bio_image", "ratio": "1:1", "position": "closing bio"}
+          {
+            "slot_id": "closing.bio_image",
+            "ratio": "1:1",
+            "position": "closing bio"
+          }
         ]
       },
       {
@@ -207,7 +309,11 @@
         "role": "social-proof",
         "copy_summary": "Commenter avatar; a portrait of a named person, out of library scope.",
         "image_slots": [
-          {"slot_id": "comments.items.0.avatar", "ratio": "1:1", "position": "comment 1"}
+          {
+            "slot_id": "comments.items.0.avatar",
+            "ratio": "1:1",
+            "position": "comment 1"
+          }
         ]
       },
       {
@@ -215,7 +321,11 @@
         "role": "social-proof",
         "copy_summary": "Commenter avatar; a portrait of a named person, out of library scope.",
         "image_slots": [
-          {"slot_id": "comments.items.1.avatar", "ratio": "1:1", "position": "comment 2"}
+          {
+            "slot_id": "comments.items.1.avatar",
+            "ratio": "1:1",
+            "position": "comment 2"
+          }
         ]
       },
       {
@@ -223,7 +333,11 @@
         "role": "social-proof",
         "copy_summary": "Commenter avatar; a portrait of a named person, out of library scope.",
         "image_slots": [
-          {"slot_id": "comments.items.2.avatar", "ratio": "1:1", "position": "comment 3"}
+          {
+            "slot_id": "comments.items.2.avatar",
+            "ratio": "1:1",
+            "position": "comment 3"
+          }
         ]
       },
       {
@@ -231,7 +345,11 @@
         "role": "social-proof",
         "copy_summary": "Commenter avatar; a portrait of a named person, out of library scope.",
         "image_slots": [
-          {"slot_id": "comments.items.3.avatar", "ratio": "1:1", "position": "comment 4"}
+          {
+            "slot_id": "comments.items.3.avatar",
+            "ratio": "1:1",
+            "position": "comment 4"
+          }
         ]
       },
       {
@@ -239,7 +357,11 @@
         "role": "social-proof",
         "copy_summary": "Commenter avatar; a portrait of a named person, out of library scope.",
         "image_slots": [
-          {"slot_id": "comments.items.4.avatar", "ratio": "1:1", "position": "comment 5"}
+          {
+            "slot_id": "comments.items.4.avatar",
+            "ratio": "1:1",
+            "position": "comment 5"
+          }
         ]
       },
       {
@@ -247,7 +369,11 @@
         "role": "social-proof",
         "copy_summary": "Commenter avatar; a portrait of a named person, out of library scope.",
         "image_slots": [
-          {"slot_id": "comments.items.5.avatar", "ratio": "1:1", "position": "comment 6"}
+          {
+            "slot_id": "comments.items.5.avatar",
+            "ratio": "1:1",
+            "position": "comment 6"
+          }
         ]
       },
       {
@@ -255,7 +381,11 @@
         "role": "social-proof",
         "copy_summary": "Commenter avatar; a portrait of a named person, out of library scope.",
         "image_slots": [
-          {"slot_id": "comments.items.6.avatar", "ratio": "1:1", "position": "comment 7"}
+          {
+            "slot_id": "comments.items.6.avatar",
+            "ratio": "1:1",
+            "position": "comment 7"
+          }
         ]
       }
     ]

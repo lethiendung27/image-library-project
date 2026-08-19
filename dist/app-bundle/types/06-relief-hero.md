@@ -1,0 +1,461 @@
+---
+id: 06-relief-hero
+step: 6
+job: relief
+device: hero
+version: "1.15"
+status: active
+replaced_by: null
+ratios: ["16:9", "1:1"]
+channels: [landing-page, marketplace, paid-social, advertorial]
+requires_product_photo: true
+generation_mode: single-pass
+axes:
+  register: [commercial, ugc]
+  inset_mode: [vsinset, recall, context, detail, none]
+  inset_motion: [still, loop]
+variants: []
+exempt_from: []
+pairs_with: [01-pain-split, 01-pain-scene]
+never_with: []
+---
+
+# 06-relief-hero
+
+## PURPOSE
+Sell the state after buying, with the product in frame. Configured on three independent
+axes — `register` (commercial | ugc), `inset_mode` (vsinset | recall | context | detail |
+none) and `inset_motion` (still | loop) — named `06-relief-hero--{register}--{inset_mode}`.
+
+## TRIGGER
+use_when: >
+  The product solves a problem the buyer already feels but has not named. One
+  image must prove wrong/right, show the product, and sell the relief state.
+  Amazon A+ secondary images, landing-page banners, gallery images 2-3.
+  Register: commercial for marketplace/LP polish, ugc for cold paid-social
+  trust. Inset: vsinset when the argument is wrong-vs-right; recall when one
+  reminder of the problem is enough; context when the hero shows the product in
+  hand and the buyer still needs to see where it lives; none when the scene
+  carries everything.
+avoid_when: >
+  The product has no visible "wrong state" (use 03-mechanism-ghostbody for
+  internal mechanisms). ugc register never on marketplace galleries.
+
+## SKELETON
+A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once
+and is never restated here or in a rendered prompt.
+
+```
+TYPE: 06-relief-hero v1.15
+REGISTER: commercial | ugc                                    -> PARTS/register
+
+[PRODUCT REFERENCE] the attached photo is the exact reference,
+  identical in every layer.
+[SUBJECT] one person, full or reduced to hands and forearms.  -> PARTS/subject
+[POSE] operated: mid-action. passive: relaxed, gaze away.     -> PARTS/pose
+[SETTING] one real room, filled to the edges, never blank.    -> PARTS/setting
+[LIGHT] set by whether an output has to carry.                -> PARTS/light
+[OFFSET] subject to one side; a layer occupies that space.    -> PARTS/offset
+[PRODUCT VIEW] only if the hero cannot show the product.      -> PARTS/product-view
+[INSET] content by inset_mode, state by inset_motion.         -> VARIANTS-BY-AXIS
+
+[MARKS]                                                       -> MARKS
+  output   the hero, required if the product emits (G8)
+  past     a recall inset, on the past cell
+  step     a recall inset, one arrow, transition form only
+  vs       a vsinset seam        hotspot  a vsinset left half
+  path     a vsinset right half
+```
+
+## PARTS
+
+**`register`** — `commercial` is a professional camera, controlled light, deliberate negative
+space. `ugc` is a phone in an ordinary person's hand: slightly off exposure, mild overexposure
+on skin and windows, no rim light, no negative space, framing casual and a little too close,
+the room left exactly as it is. **This register buys trust, not beauty; do not clean it up.**
+
+**`subject`** — choose ONE form. `full person`: age, gender, wardrobe toned to the background,
+a pose from `pose`, a warm expression. `reduced`: present only as working hands, forearms or a
+shoulder — no face, and so no expression available to carry the relief.
+
+**`reduced` is a general form on both registers, not a rescue.** Choose it when the RESULT is
+more legible than the user. A reduced subject with nothing finished in frame argues nothing, so
+**name what makes finished look different from unfinished** and **tie what it is compared
+against to the action** — described that way it read; merely listed, one run dropped it. The
+persona, wardrobe and expression slots are then simply not exercised. Distinct from the `--ugc` fixed-installation fallback, whose trigger is distance
+rather than legibility.
+
+**`pose`** — if the user actively operates the product: mid-action, hands engaged, gaze on the
+point of use, focused satisfaction rather than repose. If the product works passively while
+the user does something else: relaxed, gaze away from the product.
+
+**The pose must leave the product's contact point visible, and that constrains the pose before
+anything else does.** Ask for a lower-back product on a body sunk into a sofa and the model
+moves the product somewhere it can be seen. The passive branch is where this bites: relaxed
+positions are the ones that put the body against furniture. Choose the pose from where the
+product has to sit, not the reverse.
+
+**Say where the person stands relative to the work.** A pressure washer given the jet and the
+slabs but no working distance sprayed at its operator's own feet and soaked his trousers; one
+sentence putting the whole jet between the person and the surface fixed it 2 of 2 on a steam
+cleaner. Without it the wet-dry boundary replaces the clean-dirty one the frame exists to prove.
+
+**`setting`** — one real room filled to the edges with 6-8 objects that genuinely belong there.
+Background blurred but **never blank: no bare wall or floor area larger than the product**.
+High-key neutral grade (G11).
+
+**None of those objects may carry printed text.** Newspaper, packaging, letters, labelled boxes:
+model-drawn text arrives as gibberish and this type bans text outright. Sheets of newspaper
+named in a setting filled a large part of both runs with nonsense newsprint. Diegetic text on
+the product itself is a separate question (G6 scope note); incidental props are not.
+
+**`light`** — if `output` is present: backlight or hard side light, strong enough to make the
+output glow against a darker part of the frame. Accept lens flare and blown highlights, they
+read as real. Otherwise: soft even window light, background blurred, high-key.
+
+**`offset`** — the subject sits to one side. **When a layer is present it OCCUPIES that offset
+space.** Do not also reserve empty mid-frame; two reservations for one area render as dead air,
+measured 2 of 2 on 2026-08-11. A layer takes 70-85% of the space the subject is offset from.
+Page copy sits outside the image.
+
+**`product-view`** — an optional bottom-left foreground layer, front z-layer, **included only if
+the hero cannot show the product clearly** and skipped when it is held in hand, centred and
+legible small. It exists to reveal the side the hero hides, so its angle MUST differ; a layer
+repeating information costs space and buys nothing. 20-30% of frame width, studio light, soft
+contact shadow, clean cutout. Real colorways only (G2).
+
+## MARKS
+
+**Six entries, counted off the 37 classified observations** and now carrying render results
+too.
+
+| name | form | colour | count | evidence |
+|---|---|---|---|---|
+| `output` | whatever the product emits — mist, spray, steam, foam, water, particles, light — made of the substance itself | the substance's own real colour | 1, in the hero | 6 obs, 0 against |
+| `step` | one directional arrow joining the past cell to the resolved cell | neutral or a single flat colour | 1, transition form only | 7 obs; **2/2 rendered** when described by its two endpoints |
+| `past` | the marking that flags a recall cell as the past: desaturation to grey, or a small X badge | grey, or red for the badge | 1, on the past cell only | 5 obs, 0 against |
+| `path` | a translucent overlay following **a named physical feature** — a groove, a seam, a duct | blue or cyan | 1 | 4 obs, 4 against; 2/2 rendered on a named curve, but as a tint over the whole part |
+| `vs` | a circular badge at the seam of a split inset, **carrying the letters VS** | red, white glyph | 1 | **2/2 rendered** once the glyph was named; blank disc before that |
+| `hotspot` | glowing points on the wrong state, each on a named place | red | one per named place | 1 obs; **1/2 rendered** — anchoring cured an over-count and produced a zero |
+
+**`output` is required whenever the product emits (G8) and outranks everything in the frame** —
+not the person, not the product. Frame, light and expose for it; at least 15% of the frame,
+readable at thumbnail size. **If the product emits nothing visible, do not invent an effect.**
+It is the only entry here made of real substance rather than drawn, and the only one that has
+never needed a rule: 4/4.
+
+**`past` is what stops a recall inset inverting the message** — an unmarked past cell reads as a
+result. Either form carries it; 2/2 rendered.
+
+**`step` is the only sanctioned arrow in this type** and it exists solely to join a past cell to
+a resolved one inside a recall inset. It never points from now to past, there is never more than
+one, and it never appears in the hero. With 7 observations it is the best-evidenced mark here —
+which is worth noticing, because until 1.9 the skeleton confined it to a sub-form of one variant
+while mandating `vs` and `hotspot`, the two entries with one observation each.
+
+**`vs` and `hotspot` are kept but thin.** One observation apiece is below the SPEC 6.2 bar and
+neither would be promotable on this type's own evidence. `vs` is retained because the same
+badge rendered 2 of 2 on `03-spec-split` without falling back to post-composite, and ADR-012
+says a mark shared by two types is noted in both. `hotspot` is retained because A1 in
+`registry/argument-faults.md` requires the wrong state to have somewhere to live, and the inset
+is that somewhere — a hotspot there cannot read as harm the product causes. **Neither should be
+mandated by a prompt that has not earned it.**
+
+**`path` is contested at 4 for and 4 against** and is the entry most likely to be cut. Ship it
+only where the mechanism genuinely has a path to trace.
+
+**Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.** No mark of any kind
+appears in the hero except `output`.
+
+**A drawn mark's stated COUNT does not survive; an anchored instance mostly does.** Two renders
+that named a number both got it wrong. Anchoring instead — naming the two cells the one arrow
+joins, naming the three places the points sit on — put `step` at 2/2 and `hotspot` at 1/2, the
+miss being a zero rather than an excess. Anchor, and expect a mark still to be droppable.
+
+**A badge returns empty unless its glyph is named** — asked for `a red circular badge` it comes
+back a blank red disc, and 2/2 once the letters were named. Settled.
+
+**A mark that follows something must be told what to follow.** Name the physical feature — this
+groove, this seam, this duct — or the overlay lands as a highlighter stroke across everything.
+
+## SLOT CONSTRAINTS
+- **The prompt budget.** A clause earns its place only if a render has failed without it, and
+  is removed only once a render has done without it and come back correct (ADR-013, ADR-015).
+  Length is a cost paid out of composition: on single-layer `03-use-sequence` a 55% longer
+  prompt took its layout from 4-in-6 to 1-in-4. This type is multi-layer and runs longer, so
+  that is a floor to reason from rather than a ceiling.
+- **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
+  time (ADR-016); a prompt that reasons about frame geometry leaves the model something to
+  reconcile and it fills the leftover with extra small panels.
+- G10 (frame safety) binds every layer — safe area, bleed cap, shrink-never-move. Referenced by
+  ID, never restated in a prompt.
+- G7-X binds hard: one mode of use across hero, inset and product view. The humidifier ugc
+  exemplar failed exactly this — wall-mounted inset, handheld hero.
+- Pain exists ONLY inside the inset. The hero is 100% relief, never mixed.
+- **The zone names never reach the model** — `HERO`, `INSET`, `ZONE A/B/C`, `LEFT`, `RIGHT`,
+  `FIRST`, `SECOND` are this file's vocabulary, not the prompt's. Region labels are the tier
+  that leaks; whole-image and subject labels do not (adapter Rule 1b, tiers set by ADR-017).
+  Describe the region instead: "in the upper left corner sits a small rectangular panel".
+
+## NEGATIVE
+```
+[G6] + cluttered background, dark moody lighting, pain cues in main scene,
+blurry product, inconsistent product between layers, same angle repeated,
+fabricated colorways, mixed illustration and photo inside one inset half,
+invented spray or mist, fake steam
+```
+
+## VARIANTS-BY-AXIS
+### register: --commercial (default)
+Professional camera, controlled light, clean composition, deliberate negative space.
+Channels: marketplace, landing-page, A+ content.
+
+### register: --ugc
+```
+[REGISTER OVERRIDE] shot on a phone by an ordinary person.   -> PARTS/register
+```
+
+Channels: paid-social, advertorial header.
+Negative additions: `professional lighting, studio setup, clean composition,
+styled interior, negative space, color graded, retouched skin, magazine look,
+glossy, symmetrical framing`
+Fixed-installation caveat: at ugc distances an installed product may shrink below
+recognition — reframe low-angle with the product + output as subject, person reduced
+to a shoulder in frame.
+
+### inset_mode: --vsinset
+```
+[INSET] top-left, white 3px border, split 50/50.       -> MARKS/vs at the seam
+LEFT   the wrong state.                                -> MARKS/hotspot
+RIGHT  the correct state, brighter and cleaner.        -> MARKS/path
+Both halves share ONE register: both photographic, or both illustrated.
+```
+`hotspot` is the thin entry here and still unreliable at 1/2; see MARKS.
+
+
+### inset_mode: --recall
+```
+[INSET] choose ONE form.
+FORM 1  one cell, the problem state, 12-18% of frame width.   -> MARKS/past
+FORM 2  the past cell, then the resolved cell, 15-22% total.  -> MARKS/past, step
+Inset photos match the hero in resolution, grade and light quality.
+```
+A darker or lower-resolution inset reads as pasted in. Best-evidenced inset mode here: `step`
+has 7 observations and `past` 5.
+
+**The two cells change ONE thing: the product.** Hold the activity, the place and the person
+constant and let the brace, the tool, the machine be the only difference. A pair that also
+changes what the person is doing isolates nothing — a knee brace shown struggling on stairs and
+then sitting on a sofa argues that the product lets you sit down. 2 of 2, and the fault was in
+the prompt rather than in the render.
+
+Negative additions: `unlabelled before-state inset, low resolution inset,
+inset darker than hero, inset from a different photographic source,
+more than one arrow, arrow pointing from now to past`
+
+### inset_mode: --context
+```
+[INSET] rectangular, thin white border. A plain closer shot of the same product
+in its real installed position, from a step back so the whole fitting is clear.
+```
+G7-X binds: installed in the inset while handheld in the hero contradicts itself.
+
+
+### inset_mode: --detail
+```
+[INSET] rounded rectangle or circle, 15-25% of frame width, at a corner.
+ONE magnified product detail the hero cannot show at scene scale.
+Linked to the in-scene product by proximity: no arrows, no glow borders.
+```
+A screen or UI is never model-drawn (G12,
+G6 scope note). An internal mechanism stays in a clean technical register inside the inset: internals bleeding
+into the photographic hero break G5.
+
+Use when the buying argument depends on a feature too small to read in scene
+(memory log, measurement display, mechanism quality).
+
+### inset_mode: --none
+No inset layer at all. Use when the scene carries the whole argument.
+
+### inset_motion: --still (default)
+The layer is the finished picture; nothing is reserved.
+
+### inset_motion: --loop
+```
+[INSET MOTION] the inset carries the motion brief plate.      -> G12
+```
+An editor builds the loop and replaces the plate, so the render owes a legible work order
+sitting in the layer's own footprint. Legal on every `inset_mode` except `--none`, which
+has no layer to host it, and only where the layer's content is TEMPORAL — a state changing,
+an output flowing, a mechanism travelling. What the plate promises must be visible in the
+frame it sits on. A render carrying one takes the `--brief` suffix and never the slot's
+asset filename. Four founding renders, 1 pass and 3 partial: the plate's lettering is
+settled at 20 of 20 lines exact, its edge is not. ADR-019.
+
+## WORKED EXAMPLES
+### example: pet-fountain-commercial-detail-loop — skeleton@1.14, run: partial
+Product: automatic pet water fountain · axes: register=commercial, inset_mode=detail,
+inset_motion=loop · ledger `sha256:f798e1bf2d119f86…`
+
+```
+TYPE: 06-relief-hero v1.14 --commercial, inset --detail, inset_motion --loop
+REGISTER: clean commercial photograph, controlled light, sharp.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the water fountain. Preserve
+shape, proportions, material, finish and colour exactly.
+
+[SUBJECT]
+Woman in her thirties in a jumper and thick socks, kneeling back on her heels a
+step away from the fountain on the kitchen floor, one hand on her knee, watching
+her cat drink rather than the machine. Relaxed, gaze away from the product.
+
+[PRODUCT]
+The fountain on the floor between her and the cat, low front three-quarter angle,
+whole and unobstructed.
+
+[OUTPUT]
+The stream of water falling from the spout into the bowl, lit so it reads as clear
+moving water against the darker cabinet behind it, at least 15% of the picture.
+
+[SETTING]
+A real kitchen corner filled to the edges: a food bowl, a folded tea towel, a mop
+by the units, a collar on the worktop edge, a door mat, a bin. None of them carries
+printed words. Background soft, never blank.
+
+[LIGHT]
+Hard side light from a window to the left, raking across the falling water.
+
+[LAYOUT]
+She kneels to the left of the frame; the right side carries the depth of the room.
+
+[PLATE]
+In the lower right corner sits a flat dark grey circle with a thin white border,
+about a third of the picture's width, held well clear of both frame edges. Inside
+it, in clean white sans-serif, five short lines, each on one line and centred:
+GIF SLOT · 2s · seamless loop
+SHOT close on the falling stream
+ACTION water falls into the bowl
+RESULT the water is never still
+MATCH hard side light, same grade
+This is the only text in the picture.
+```
+
+Observed: text 5 of 5 lines exact and the truth test passed — the falling stream is in
+frame and the water is in the bowl. The circle was cut by the right frame edge despite
+"held well clear of both frame edges", and at 26% of frame width it was the tightest plate
+of the set to read. Both faults are geometry and both are answered in G12.
+
+### example: window-cleaner-ugc-detail-loop — skeleton@1.14, run: partial
+Product: robot window cleaner · axes: register=ugc, inset_mode=detail, inset_motion=loop ·
+ledger `sha256:83f0e07a052be97d…`
+
+```
+TYPE: 06-relief-hero v1.14 --ugc, inset --detail, inset_motion --loop
+REGISTER: shot on a phone by an ordinary person. Slightly off exposure, mild
+overexposure at the window, no rim light, framing casual and a little too close.
+The room is left exactly as it is.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the robot window cleaner.
+Preserve shape, proportions, material, finish and colour exactly.
+
+[SUBJECT]
+Man in his forties in a T-shirt, sitting back on the arm of a sofa a couple of
+metres from the window with a mug in one hand, watching the machine work rather
+than touching it. Relaxed.
+
+[PRODUCT]
+The cleaner clamped to the middle of the window pane, straight on from inside the
+room, whole and unobstructed, its safety cord hanging down the glass.
+
+[EVIDENCE IN FRAME]
+The pane is clear where the machine has already passed and carries a faint even
+film where it has not, so the boundary between the two is visible.
+
+[SETTING]
+A real living room filled to the edges: a throw pushed to one end of the sofa, a
+bucket and cloth on the floor, a child's shoe, a radiator under the window, a plant
+on the sill. None of them carries printed words. Background soft, never blank.
+
+[LIGHT]
+Flat daylight through the window, slightly blown at the glass. No studio light.
+
+[LAYOUT]
+He sits to the left of the frame; the window fills the right side.
+
+[PLATE]
+In the lower right corner sits a flat dark grey rounded rectangle with a thin white
+border, about a third of the picture's width, held well clear of both frame edges.
+Inside it, in clean white sans-serif, five short lines, each on one line, left
+aligned:
+GIF SLOT · 2s · seamless loop
+SHOT close on the pad edge
+ACTION pad tracks across the glass
+RESULT clear glass behind the pad
+MATCH flat daylight, phone exposure
+This is the only text in the picture.
+```
+
+Observed: this is the render that settled a crisp plate does NOT break the ugc register —
+it reads as an annotation on a phone photo rather than as an advert. Text 5 of 5 exact, and
+at 42% of frame width the most legible plate of the set, costing the picture nothing because
+it sat in the corner the subject was offset from. Two faults: the plate was cut by the right
+frame edge, and the child's trainer named as incidental clutter came back carrying a
+recognisable sportswear swoosh, which SPEC 6.4 bars — name props unbranded.
+
+## KNOWN-FLAKY
+- **`hotspot` is 1 observation and 1 of 2 renders** — anchoring it to named places cured an
+  over-count on one run and produced a zero on the other. It is kept because A1 requires the
+  wrong state to have somewhere to live and the inset is that somewhere. `vs` is no longer
+  flaky: 2/2 once its glyph was named.
+- **`path` is contested, 4 observations for and 4 against.** The entry most likely to be cut.
+- **Subject ABSENT entirely — variant candidate at 2/3, deliberately not in the skeleton.**
+  Two observations show no person at all, the product in its finished situation carrying
+  the hero zone: obs `sha256:61118d…` (batch 10-H, purifier bottle posed on a marble
+  poolside) and `sha256:c28dac…` (batch 11-C, a campsite rigged drum-tight with the
+  product's ropes). The first record proposes it as a `--product` hero decision, so this
+  is a VARIANT cluster, not a slot patch — and at 2 observations it is below both the ≥3
+  bar and curate.md §3's variant bar. `reduced` (v1.8) is a different form and does not
+  cover it: a steadying hand still puts a user in frame. A third distinct observation
+  drafts `### --product`; until then no prompt should ship a person-free hero on this type.
+
+## CHANGELOG
+- 1.15 (2026-08-14): four founding renders of `--loop`, 1 pass 3 partial. Lettering is settled
+  at 20 of 20 lines exact; geometry is not, with 3 of 3 plates cut by a frame edge. A crisp
+  plate does NOT break the ugc register. Both findings are G12's, not this file's. `4ff41d4`
+- 1.14 (2026-08-14): new axis `inset_motion: still | loop`. `--loop` turns the layer into a
+  brief plate carrying the five-field work order as text; what it promises must be visible in
+  the frame it sits on, which was the fault in 2 of 4. Not a MARKS entry — it occupies a layer
+  the skeleton already legislates and motion has no G3 colour. Absorbs 1.13, whose no-text
+  reading lasted one commit. ADR-019. `78ff655`
+- 1.12 (2026-08-14): eight renders. Naming a badge's glyph settles it 2/2, describing an arrow
+  by its endpoints 2/2, anchoring hotspots cures the over-count but not a zero at 1/2. Three
+  new rules each 2/2: a recall pair changes only the product, `pose` says where the person
+  stands relative to the work, no object in `setting` carries printed text. `output` 4/4 and
+  has never needed a rule. `639e338`
+- 1.11 (2026-08-14): first four renders, 0 pass. A drawn mark's stated COUNT does not survive,
+  2/2; a badge returns empty unless its glyph is named; `path` needs a named physical feature
+  to follow. `pose` must leave the contact point visible. `reduced` gains its operational
+  half. `2df3c2f`
+- 1.10 (2026-08-14): the zone names never reach the model, adapter Rule 1b. `42b2dea`
+- 1.9 (2026-08-14): restructured into a call-map plus PARTS and MARKS (ADR-012), skeleton
+  3398 → 1229. First MARKS library, counted off the observations rather than off the skeleton,
+  which had mandated the two thinnest marks and confined the strongest to a sub-form. `ratios`
+  brought inside ADR-016's five. `28b384d`
+- 1.8 (2026-08-12): `subject` gains the `full person` | `reduced` choice, 3 observations. The
+  grade line cites G11 by ID instead of carrying the law. `6682208`
+- 1.7 (2026-08-11): channels gain `advertorial` — 06-relief-scene's own escape hatch names
+  this type, and relief-scene lives there. `973addf`
+- 1.6 (2026-08-11): `setting` rewritten for density, and the headline reservation removed when
+  a layer is present. G10 adopted by reference. 2/2 on both faults. `365370f`
+- 1.5 (2026-08-10): `--recall` gains the transition-pair form, 3 observations. `0fdfb6b`
+- 1.4 (2026-08-10): inset_mode value `detail` added, 3 observations. `145f9f9`
+- 1.3 (2026-08-10): register and inset_mode separated into two axes; visible mechanism
+  promoted to G8; G7-X adopted. seed: conversation.md
+- 1.2 (2026-08-10): the second layer made conditional; visible-mechanism and pose/light
+  conditionals added. seed: conversation.md
+- 1.1 (2026-08-10): the second layer rebuilt as a complementary view; G1 block added.
+  seed: conversation.md
+- 1.0 (2026-08-10): initial as BNR-RELIEF-VSINSET from the S-cushion office exemplar.
+  seed: conversation.md

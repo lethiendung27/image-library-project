@@ -999,3 +999,84 @@ Consequences: `scripts/validate.py` `pick_stats` gated on contest and documented
 gains the log-everything paragraph. `SPEC.md` §7.9 is unchanged — the record shape was
 correct as specified. No session is re-routed, no type file is touched, no ledger record is
 written, `registry_version` unchanged.
+
+## ADR-027 · 2026-08-19 · The repo is the source; an app consumes a generated bundle, and eval/golden is the contract between them
+
+An app routes the same library through three model calls and vendors its own copy
+of the registry under `docs/ai-instructions/image-library/`. Comparing that
+pipeline against this repo found seven divergences, and all seven are one thing:
+**a copy of the law shaped by hand at vendoring time, which nothing compares back
+to the source.** Owner decision: the repo stays the source, the copy becomes a
+generated artifact, and the two harnesses prove they agree rather than assume it.
+
+**The routing surface ships WHOLE, and this is the reversal worth stating.** The
+app's vendored index carried twelve fields against the real index's twenty. The
+four that matter are `status`, `requires_pair`, `avoid_adjacent` and
+`generation_mode` — between them they decide whether a routed SET is legal at
+all, so a Call 1 that cannot see them emits pages that are legal slot by slot and
+broken as a page, which is the exact defect class §7.3's cross-slot rules exist to
+prevent. What the reduction bought was measured before it was removed:
+`registry/index.yaml` is **17,350 characters**. It is already the slim view —
+invariant 2 exists so routing never opens a type file — and slimming the slim view
+saved nothing worth four cross-slot rules.
+
+**Generated, not copied.** `scripts/build-app-bundle.py` writes `dist/app-bundle/`:
+32 files, 474 KB, grouped by the call that reads them, plus `MANIFEST.json`
+carrying the source commit and a sha256 per file. Two checks guard it from
+opposite sides and neither can drift into agreeing with the other while both are
+wrong — the script's own `--check` verifies COMPOSITION (every file the repo
+should ship is present and matches), and `validate.py` verifies FRESHNESS by
+re-hashing every source path the manifest names, warning on a normal run and
+failing under `--check`. The bundle also closes the missing-input gap: the app's
+Call 2 did not carry `registry/argument-faults.md`, which ADR-014 requires be read
+before the first prompt of any new type.
+
+**`eval/golden` becomes the conformance contract, because it finally runs.** SPEC
+§9 has called those fixtures routing regression fixtures since they were written
+and nothing ever read them — `check_json_files` proved the JSON parsed, and
+`expected-routes.yaml` had never been opened by any code. Fourteen slot assertions,
+inert. `check_golden` now runs Stage 1 against them: role × channel from
+`slot-rules.md`, the type's own channel declaration, active status, and the
+deterministic attribute gates. Stage 2 is judgement and is deliberately not
+asserted. Any second harness that derives the same shortlist for those fourteen
+slots is conformant, whatever it stores internally — which is what makes this a
+contract rather than a copy discipline.
+
+**The gates are parsed from the table that documents them.** The effect cell
+already says `` drop `<type>` `` in plain text. Restating four kill-rules in Python
+would have created the same defect the check exists to catch, one level down.
+
+**It found two stale contracts on its first run, both the same event.**
+fixture-001 asserted `06-relief-scene` legal at `outcome-1` on landing-page and
+fixture-002 asserted `02-symptom-rail` at `story-0-problem` on advertorial; both
+types were trimmed off those columns on 2026-08-11 with the reasoning recorded in
+`slot-rules.md`, and the fixtures' own headers require an intended change to update
+them in the SAME commit. Eight days passed. Both are now corrected to what current
+law derives, with the supersession written into the fixture rather than silently
+rewritten — and both turn out to be one-type-once conflicts on a single-type cell,
+resolved at rung 4 of the Step 4 ladder.
+
+**`content.json` gains what it could not carry.** SPEC §1 says the QUERY input IS
+`content.json`, and it was not true: page 73's prompts name an air pump, an
+inflatable bladder, a pressure sensor board and a backlight panel, all read from
+the export's `rawFeatures` and `specification`, neither of which had a home in the
+schema. That page could not reproduce its own prompts from its own contract. The
+schema gains `product.specification` and `product.raw_features`, and page 73 is
+backfilled. Only those two of the app's ten context fields are added: the other
+four that images never use — `offerMechanics`, `brandContext`, `targetLanguage`,
+`productType` — stay copy material and out of the image contract.
+
+**Two divergences are left open on purpose, because they are the app's to answer.**
+The app infers `role` and never emits it, so the single most consequential routing
+input has no auditable value — the fix is for the app to emit `content.json` as an
+intermediate artifact, at which point this repo's validator checks the app's output
+for free. And the app pads galleries with virtual slots "to meet a floor" that
+exists nowhere in SPEC; §7.4's never-empty rule is about options per slot, not slots
+per page. Both are recorded here rather than guessed at.
+
+Consequences: `scripts/build-app-bundle.py` and `dist/app-bundle/` are new;
+`scripts/validate.py` gains `check_golden`, `parse_attribute_gates`,
+`check_app_bundle`, and `check_slot_rules` now returns the shortlist it was already
+parsing; `mapping/content.schema.json` gains two product fields;
+`eval/golden/fixture-001` and `-002` corrected; `SPEC.md` §1 invariant 6 and §9;
+`CLAUDE.md` hard rule 1. `registry_version` unchanged — no type structure moves.
