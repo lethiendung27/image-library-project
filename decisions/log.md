@@ -1080,3 +1080,93 @@ Consequences: `scripts/build-app-bundle.py` and `dist/app-bundle/` are new;
 parsing; `mapping/content.schema.json` gains two product fields;
 `eval/golden/fixture-001` and `-002` corrected; `SPEC.md` §1 invariant 6 and §9;
 `CLAUDE.md` hard rule 1. `registry_version` unchanged — no type structure moves.
+
+## ADR-028 · 2026-08-19 · The motion brief is four fields, and the plate is generated rather than drawn
+
+Owner instruction: the plate carries a filename that includes the gif type, a duration, a
+ratio, and one brief describing what the loop has in it and what moves. Four fields. The
+five-line `GIF SLOT` / `SHOT` / `ACTION` / `RESULT` / `MATCH` card is retired.
+
+**The quartet's real defect was not its length — it had no field for the setting.** Page 73
+shipped a brief whose `MATCH` line read "same room and light as still" over a still that is
+a see-through technical render standing on a plain deep slate ground, explicitly not
+photography. There is no room. Two of its other three lines are also unsatisfiable by that
+frame: `SHOT` says "side on" where the still puts the monitor three-quarters on to the
+camera, and `ACTION` says "hands stay away" in a frame that never had hands in it. One of
+that page's two loops, found by reading each line against its own still after the fact.
+
+The mechanism is worth stating because it explains why a careful writer produced it. With no
+field for WHERE, the setting had nowhere to go but `MATCH`, and `MATCH` then filled with
+boilerplate — "same room and light as still" is the sentence you write when the field is
+asking you a question the image has not made you answer. A prose brief that must name what
+is in frame, where it is, what moves and the register to match cannot be filled in without
+looking at the still. The G12 satisfiability rule did not change; the field list is what
+makes it checkable.
+
+**Cutting `RESULT`, `MATCH` and the negatives loses nothing, because the folder card already
+carries them.** `gifs-library/<type>/README.md` is generated from the type file and holds
+the type's NEGATIVE list, its declared duration and beat band, its channels, which half of
+the motion floor it serves, and the filing convention. An editor browsing the folder meets
+all of it. The plate only ever needed what is specific to THIS slot, which is the same
+principle `registry/gif-instruction.md` already applies to the type files: law stated once,
+never restated.
+
+**The owner's own spec settles the question the plate had been avoiding.** A prose brief
+means wrapped lines, and a wrapped line is the single failure the old G12 had actually
+measured — one render broke the block's alignment, which is where the seven-word ceiling
+came from. So the four fields are not compatible with a plate an image model draws. They are
+compatible with one that is typeset, and `scripts/gen-plate.py` writes it: SVG, stdlib, no
+generation call, drawn at the slot's ratio so the card is the shape of the deliverable.
+
+This is also the more consistent position. `registry/index.yaml` is generated, the GIF
+library's folder cards are generated, and `gif-instruction.md` already says in its own words
+that a card is a view and hand-editing one is the same error as hand-editing the index. The
+plate was the last card in the system still being drawn by a model, and it was being drawn
+by the one tool in the pipeline that is worst at text — the repo has the receipts: a render
+that returned `**GIF SLOT · 2s · seamless loop**` with its asterisks intact, and a seven-word
+cap that existed for no other reason.
+
+**The filename carries the argument.** `{page}-{seq}-{gif-type}-{slot-slug}.mp4`. ADR-023
+gave the page-side name the slot and the page, deliberately, because a page numbers by page
+and an editor tracks by slot; what it did not carry was what the loop ARGUES. An inset loop
+inside `06-relief-hero --recall` does `pain` work and used to arrive called relief-hero,
+which is the wrong word for the one person who has to file it. The library name
+(`{type}_{product-slug}_{seq}`) is still issued separately when the finished loop is filed
+back, and the ledger still maps the two through the sha256.
+
+**The ratio is the SLOT's, not the still type's.** On `whole-frame` the loop IS the delivered
+image, so it owes the page's shape. Where the routed still renders at a different ratio and
+the layout crops it — `03-mechanism-ghostbody` at 1:1 into a 16:9 slot on page 77 — the loop
+still owes 16:9, because nothing crops it on the way in. Until now nothing in the gif block
+said what shape to deliver at all: page 73 carried two loops replacing stills at 1:1 and 3:4
+and named neither.
+
+**Retired with the model-drawn plate, and recorded rather than deleted:** the seven-word line
+cap, the plain-words rule against markup, the corner and footprint inheritance, the
+one-third-to-one-half size band, and the name-where-it-stops clause. Each was earned by a
+render and each is a property of a renderer no longer involved. They are in `git log` for the
+day a model draws reliable lettering.
+
+**`form: inset` changes with it.** The host type's own prompt now reserves its legislated
+layer as a flat empty block carrying no text, and the plate travels beside the still as its
+own file. ADR-019 required the work order to reach the editor rather than sit in a document
+nobody opens; a file named after the slot, in the render folder next to the frame it
+describes, satisfies that without putting model-drawn lettering into a frame G6 bans text
+from. No routed page carries an inset loop, so nothing is regenerated by this clause.
+
+**Earlier sessions stand unmigrated.** Pages 13, 37, 58, 65 and 73 keep their five-line plate
+prompts, the treatment ADR-024 gave page 13 and ADR-019 gave ADR-018: the correction stays
+legible rather than being applied backwards over work that was correct under the law of its
+time. `gen-plate.py` skips them by construction and says so on every run, because the first
+version did not and wrote SVG into filenames claiming to be renders. Page 73's defective
+brief is a separate item and is NOT fixed here — it needs a re-brief against its own still,
+not a format change.
+
+Consequences: `registry/rules.md` G12 rewritten; `query/runbook.md` Step 5c rewritten and
+Step 5d's library-pointers paragraph updated; `query/output.schema.json` gains `ratio` and
+`brief` on the gif block and drops `shot`, `action`, `result`, `match` and `prompt`;
+`registry/gif-instruction.md` gains the page-side naming rule; all six files in
+`registry/gif-types/` have their BRIEF section rewritten and go to 1.1;
+`scripts/gen-plate.py` is new; `CLAUDE.md` lists it among the generated views. Page 77 is
+rebuilt in the new form and is the only session that moves. `registry_version` unchanged —
+no image structure moves.

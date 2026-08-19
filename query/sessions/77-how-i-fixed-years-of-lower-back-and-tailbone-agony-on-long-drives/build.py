@@ -480,31 +480,11 @@ Framing slightly tilted and taken from standing height about half a metre back a
 
 No studio light, no styling, no negative space, no borders and no text anywhere in the picture."""
 
-# --- G12 brief plates (ADR-020: a gif slot emits a plate render) --------------
+# --- G12 briefs (ADR-028: four fields, and the plate is generated) ------------
 
-PLATE_PROB0 = """A flat card and nothing else. The whole image is a flat dark grey field with a thin white border just inside its edge, held clear of every frame edge.
+BRIEF_PROB0 = """Nobody in frame. The same car driver's seat seen from the open door at standing height, with the ordinary fixes still lying on it — the flat foam pad, the doughnut ring, the cylindrical lumbar roll, the beaded cover. Under braking the pad creeps forward towards the front lip of the base and the roll slides further down into the crack at the seat corner, and the gap behind the pelvis opens wider than it started. The product is absent and not implied; this indicts the objects. Flat overcast daylight through the open door, the same cabin and the same desaturated blue-grey grade as the still."""
 
-Centred on it, in clean white sans-serif, five short lines, each on one line, plain words with no other text anywhere in the picture:
-
-GIF SLOT · 3s · seamless loop
-SHOT     open car door, seat and pads
-ACTION   pads creep forward, gap opens
-RESULT   nothing was holding the pelvis
-MATCH    same overcast daylight and cabin
-
-No scene, no product, no photograph, no other text."""
-
-PLATE_FEAT2 = """A flat card and nothing else. The whole image is a flat dark grey field with a thin white border just inside its edge, held clear of every frame edge.
-
-Centred on it, in clean white sans-serif, five short lines, each on one line, plain words with no other text anywhere in the picture:
-
-GIF SLOT · 3s · seamless loop
-SHOT     one seat, cushion filling frame
-ACTION   weight lifts, the contour returns
-RESULT   it did not stay squashed
-MATCH    same seat and daylight as still
-
-No scene, no product, no photograph, no other text."""
+BRIEF_FEAT2 = """One continuous frame and no panels: the same car driver's seat through the same open door, but close in so the reference cushion fills the frame. The weight that has been sitting on it lifts away out of shot, and the slow-rebound contour rises unhurried back to its full depth at the seat corner before the weight returns and presses it down again. Nobody in frame. The same overcast daylight through the open door and the same neutral grade as the still, which drops its three panels for this one frame — that restaging is the whole move."""
 
 
 # ---------------------------------------------------------------- slot table
@@ -640,16 +620,13 @@ SLOTS.append({
                   "a body — and the product is correctly absent from the frame. No legislated "
                   "layer exists in this type's skeleton, so the form is whole-frame and the "
                   "plate is the delivered image.",
-        "asset": "77-02-problem0-pain-scene--brief.png",
-        "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
-        "output": "77-02-problem0-pain-scene.mp4",
+        "output": "77-02-cause-problem0.mp4",
+        "ratio": "16:9",
         "duration_s": 3, "loop": "seamless loop",
-        "shot": "open car door, seat and pads",
-        "action": "pads creep forward, gap opens",
-        "result": "nothing was holding the pelvis",
-        "match": "same overcast daylight and cabin",
+        "brief": BRIEF_PROB0.strip(),
         "delivery": "mp4/webm, muted, under the size ceiling",
-        "prompt": PLATE_PROB0.strip(),
+        "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
+        "asset": "77-02-problem0-pain-scene--brief.svg",
     },
 })
 
@@ -859,16 +836,13 @@ SLOTS.append({
                   "is the one Step 5d names as rung 2 — drop the panels and put one continuous "
                   "frame in which one variable changes, the same claim restaged. The job does "
                   "not change: it is still proof, and the viewer still judges the change.",
-        "asset": "77-06-feature2-proof-lockedframe--brief.png",
-        "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "output": "77-06-feature2-proof-lockedframe.mp4",
+        "output": "77-06-proof-feature2.mp4",
+        "ratio": "16:9",
         "duration_s": 3, "loop": "seamless loop",
-        "shot": "one seat, cushion filling frame",
-        "action": "weight lifts, the contour returns",
-        "result": "it did not stay squashed",
-        "match": "same seat and daylight as still",
+        "brief": BRIEF_FEAT2.strip(),
         "delivery": "mp4/webm, muted, under the size ceiling",
-        "prompt": PLATE_FEAT2.strip(),
+        "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
+        "asset": "77-06-feature2-proof-lockedframe--brief.svg",
     },
 })
 
@@ -1092,11 +1066,12 @@ PAGE_NOTES = [
     "ADR-021 capability: every option is single-pass. 04-proof-lockedframe runs `handheld` "
     "rather than `strict` at both slots that use it, because `strict` needs compositing, which "
     "this pipeline does not do.",
-    "PENDING, and it affects both plate prompts: the owner asked on 2026-08-19 for the motion "
-    "brief plate to be cut to four fields — a filename carrying the gif type, duration, ratio "
-    "and one prose brief. That change is not law yet; G12 still legislates the five-line card, "
-    "so both plates here are emitted in the current form and will need regenerating if the "
-    "change lands.",
+    "MOTION FORMAT: both briefs are emitted in the four-field form the owner asked for on "
+    "2026-08-19 and ADR-028 made law — a filename carrying the gif type, duration, the "
+    "slot's ratio, and one prose brief. The plates are GENERATED by scripts/gen-plate.py "
+    "into plates/ and are not prompts; there is no fourth prompt to paste on this page. "
+    "Pages 65 and 73 predate the change and stand unmigrated, the treatment ADR-024 "
+    "gave page 13.",
 ]
 
 OUT = {
@@ -1225,23 +1200,33 @@ def checks():
         warns.append(f"coverage pair not met (groups: {got}) — allowed, and stated in "
                      "motion.notes")
 
+    GIF_FIELDS = ("output", "ratio", "duration_s", "loop", "brief", "delivery",
+                  "refs", "asset")
     for s in elig:
         g = s["gif"]
-        if g["form"] == "whole-frame" and "flat" not in g["prompt"].lower():
-            errs.append(f"{s['slot_id']}: whole-frame plate prompt is not a flat card")
-        if not g["asset"].endswith("--brief.png"):
-            errs.append(f"{s['slot_id']}: plate asset must carry the --brief suffix (G12)")
+        for f in GIF_FIELDS:
+            if not g.get(f):
+                errs.append(f"{s['slot_id']}: gif is missing `{f}` (G12, ADR-028)")
+        for dead in ("shot", "action", "result", "match", "prompt"):
+            if dead in g:
+                errs.append(f"{s['slot_id']}: gif still carries `{dead}`, retired at ADR-028")
+        if not g["asset"].endswith("--brief.svg"):
+            errs.append(f"{s['slot_id']}: the plate is generated, so its asset carries the "
+                        "--brief suffix and a .svg extension (G12)")
         if g["asset"] == s["asset"]:
             errs.append(f"{s['slot_id']}: plate asset must not be the slot's own asset")
-        if g["output"] != s["asset"].replace(".png", ".mp4"):
-            errs.append(f"{s['slot_id']}: gif.output must be the slot asset with an mp4 "
-                        f"extension (got {g['output']})")
-        for line in ("shot", "action", "result", "match"):
-            if len(g[line].split()) > 7:
-                errs.append(f"{s['slot_id']}: brief line `{line}` is over seven words (G12)")
-        for line in ("shot", "action", "result", "match"):
-            if g[line] not in g["prompt"]:
-                errs.append(f"{s['slot_id']}: brief line `{line}` is not drawn into the plate")
+        want = f"{PAGE}-{s['asset'].split('-')[1]}-{g['type_id']}-"
+        if not g["output"].startswith(want) or not g["output"].endswith(".mp4"):
+            errs.append(f"{s['slot_id']}: gif.output must be "
+                        f"{{page}}-{{seq}}-{{gif-type}}-{{slot-slug}}.mp4, got {g['output']}")
+        if g["ratio"] != DECLARED[s["slot_id"]]["ratio"]:
+            errs.append(f"{s['slot_id']}: gif.ratio {g['ratio']} is not the slot's declared "
+                        f"{DECLARED[s['slot_id']]['ratio']} — a whole-frame loop IS the "
+                        "delivered image and owes the page's shape")
+        if len(g["brief"].split()) < 25:
+            errs.append(f"{s['slot_id']}: the brief is {len(g['brief'].split())} words; it "
+                        "has to name what is in frame, where it is, what moves and the "
+                        "register to match")
 
     # every slot carries a gif verdict, positive or negative (Step 5c)
     for s in SLOTS:
@@ -1317,7 +1302,7 @@ def render_md():
              "out-of-scope slots are all in `prompts.json`.")
     L.append("")
     L.append(f"- page `{PAGE}` · advertorial · solution-aware · registry `2.0.0` · "
-             f"{len(routed)} routed slots · {n_opts + n_gif} prompts")
+             f"{len(routed)} routed slots · {n_opts} prompts · {n_gif} motion briefs")
     L.append(f"- motion: {MOTION['delivered']} of {len(routed)} slots earn a loop "
              f"(floor {MOTION['floor']}, ceiling {MOTION['ceiling']}), "
              f"groups {', '.join(MOTION['groups_covered'])}")
@@ -1359,16 +1344,18 @@ def render_md():
             L.append("")
         g = s.get("gif") or {}
         if g.get("eligible"):
-            L.append(f"### {s['slot_id']} · option D — the motion brief plate")
+            L.append(f"### {s['slot_id']} · the motion brief — `{g['type_id']}`")
             L.append("")
-            L.append(f"- gif type `{g['type_id']}` · form `{g['form']}` · rung `{g['rung']}`")
-            L.append(f"- reference folder: {g['refs']}")
-            L.append(f"- **the editor returns** `{g['output']}` · {g['delivery']}")
-            L.append(f"- plate render asset `{g['asset']}` — production only, never a page "
-                     "asset")
+            L.append(f"- form `{g['form']}` · rung `{g['rung']}` · reference folder: "
+                     f"{g['refs']}")
+            L.append(f"- plate `plates/{g['asset']}` — generated by "
+                     "`scripts/gen-plate.py`, production only, never a page asset")
             L.append("")
             L.append("```")
-            L.append(g["prompt"])
+            L.append(g["output"])
+            L.append(f"{g['duration_s']}s · {g['ratio']} · {g['loop']} · {g['delivery']}")
+            L.append("")
+            L.append(g["brief"])
             L.append("```")
             L.append("")
     return "\n".join(L)
@@ -1382,14 +1369,14 @@ def main():
     with open(os.path.join(HERE, "prompts.md"), "w", encoding="utf-8") as f:
         f.write(render_md())
     routed = [s for s in SLOTS if s.get("options")]
-    n = sum(len(s["options"]) for s in routed) + \
-        len([s for s in SLOTS if s.get("gif", {}).get("eligible")])
+    n = sum(len(s["options"]) for s in routed)
+    nb = len([s for s in SLOTS if s.get("gif", {}).get("eligible")])
     for w in warns:
         print(f"WARN  {w}")
     for e in errs:
         print(f"ERROR {e}")
     print(f"page {PAGE}: {len(SLOTS)} slots, {len(routed)} routed, {n} prompts, "
-          f"{len(errs)} errors, {len(warns)} warnings")
+          f"{nb} motion briefs, {len(errs)} errors, {len(warns)} warnings")
     return 1 if errs else 0
 
 

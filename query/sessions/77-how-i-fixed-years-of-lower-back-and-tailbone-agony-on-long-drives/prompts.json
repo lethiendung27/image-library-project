@@ -254,17 +254,14 @@
         "type_id": "cause",
         "rung": "natural",
         "reason": "The declared reason this section exists is that the separate pieces shift, separate and slide out of alignment every time he brakes. That is a state changing, and a still can only assert it. The gif library's `cause` type names this exact case in its own PURPOSE line — a pad creeping forward under a body — and the product is correctly absent from the frame. No legislated layer exists in this type's skeleton, so the form is whole-frame and the plate is the delivered image.",
-        "asset": "77-02-problem0-pain-scene--brief.png",
-        "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
-        "output": "77-02-problem0-pain-scene.mp4",
+        "output": "77-02-cause-problem0.mp4",
+        "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
-        "shot": "open car door, seat and pads",
-        "action": "pads creep forward, gap opens",
-        "result": "nothing was holding the pelvis",
-        "match": "same overcast daylight and cabin",
+        "brief": "Nobody in frame. The same car driver's seat seen from the open door at standing height, with the ordinary fixes still lying on it — the flat foam pad, the doughnut ring, the cylindrical lumbar roll, the beaded cover. Under braking the pad creeps forward towards the front lip of the base and the roll slides further down into the crack at the seat corner, and the gap behind the pelvis opens wider than it started. The product is absent and not implied; this indicts the objects. Flat overcast daylight through the open door, the same cabin and the same desaturated blue-grey grade as the still.",
         "delivery": "mp4/webm, muted, under the size ceiling",
-        "prompt": "A flat card and nothing else. The whole image is a flat dark grey field with a thin white border just inside its edge, held clear of every frame edge.\n\nCentred on it, in clean white sans-serif, five short lines, each on one line, plain words with no other text anywhere in the picture:\n\nGIF SLOT · 3s · seamless loop\nSHOT     open car door, seat and pads\nACTION   pads creep forward, gap opens\nRESULT   nothing was holding the pelvis\nMATCH    same overcast daylight and cabin\n\nNo scene, no product, no photograph, no other text."
+        "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
+        "asset": "77-02-problem0-pain-scene--brief.svg"
       }
     },
     {
@@ -735,17 +732,14 @@
         "type_id": "proof",
         "rung": "re-execution",
         "reason": "The still is a locked multi-panel comparison, and panels are inspected rather than watched — as a three-panel frame this slot earns no motion. The claim itself is temporal, though: slow-rebound foam recovering after the weight comes off is a state changing that no static frame can show. The move is the one Step 5d names as rung 2 — drop the panels and put one continuous frame in which one variable changes, the same claim restaged. The job does not change: it is still proof, and the viewer still judges the change.",
-        "asset": "77-06-feature2-proof-lockedframe--brief.png",
-        "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "output": "77-06-feature2-proof-lockedframe.mp4",
+        "output": "77-06-proof-feature2.mp4",
+        "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
-        "shot": "one seat, cushion filling frame",
-        "action": "weight lifts, the contour returns",
-        "result": "it did not stay squashed",
-        "match": "same seat and daylight as still",
+        "brief": "One continuous frame and no panels: the same car driver's seat through the same open door, but close in so the reference cushion fills the frame. The weight that has been sitting on it lifts away out of shot, and the slow-rebound contour rises unhurried back to its full depth at the seat corner before the weight returns and presses it down again. Nobody in frame. The same overcast daylight through the open door and the same neutral grade as the still, which drops its three panels for this one frame — that restaging is the whole move.",
         "delivery": "mp4/webm, muted, under the size ceiling",
-        "prompt": "A flat card and nothing else. The whole image is a flat dark grey field with a thin white border just inside its edge, held clear of every frame edge.\n\nCentred on it, in clean white sans-serif, five short lines, each on one line, plain words with no other text anywhere in the picture:\n\nGIF SLOT · 3s · seamless loop\nSHOT     one seat, cushion filling frame\nACTION   weight lifts, the contour returns\nRESULT   it did not stay squashed\nMATCH    same seat and daylight as still\n\nNo scene, no product, no photograph, no other text."
+        "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
+        "asset": "77-06-feature2-proof-lockedframe--brief.svg"
       }
     },
     {
@@ -1287,6 +1281,6 @@
     "03-mechanism-xray was not offered at any slot. Its avoid_when bars a trivial interior — a shell with nothing meaningful inside — and a block of moulded foam is exactly that. Refusing a wrong type is not the same as emitting an empty slot.",
     "03-use-sequence is gated out by multi_step_usage: false. Nobody assumes a seat cushion is complicated to fit, so the gate's own escape clause does not apply.",
     "ADR-021 capability: every option is single-pass. 04-proof-lockedframe runs `handheld` rather than `strict` at both slots that use it, because `strict` needs compositing, which this pipeline does not do.",
-    "PENDING, and it affects both plate prompts: the owner asked on 2026-08-19 for the motion brief plate to be cut to four fields — a filename carrying the gif type, duration, ratio and one prose brief. That change is not law yet; G12 still legislates the five-line card, so both plates here are emitted in the current form and will need regenerating if the change lands."
+    "MOTION FORMAT: both briefs are emitted in the four-field form the owner asked for on 2026-08-19 and ADR-028 made law — a filename carrying the gif type, duration, the slot's ratio, and one prose brief. The plates are GENERATED by scripts/gen-plate.py into plates/ and are not prompts; there is no fourth prompt to paste on this page. Pages 65 and 73 predate the change and stand unmigrated, the treatment ADR-024 gave page 13."
   ]
 }

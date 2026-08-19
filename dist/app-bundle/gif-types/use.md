@@ -3,7 +3,7 @@ id: use
 kind: use
 group: working
 rung: 1
-version: "1.0"
+version: "1.1"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -41,11 +41,11 @@ sequence make the same argument at different lengths; splitting them would put t
 folders behind one message (ADR-023).
 
 ## BRIEF
-`SHOT` names the hand and the whole product, and the distance.
-`ACTION` names the act in the order it happens, one clause per beat, at most four.
-`RESULT` names the state the act leaves the product in — not its effect on the world.
-`MATCH` names the register and light of the still it accompanies.
-
+One paragraph. Name the hand and the whole product and the distance between them, and name
+WHERE it is — this type sells the ease of an act, and an act is only ordinary somewhere. Name
+the act in the order it happens, one clause per beat, at most four. Name the state the act
+leaves the PRODUCT in, not its effect on the world. Close on the register and light of the
+still it accompanies.
 ## NEGATIVE
 No text, digits, arrows, cursors or callouts anywhere in frame (G6). No cut to another
 place or time — a cut turns a demonstration into an edit. No speed ramp and no reverse:
@@ -54,6 +54,8 @@ outside the frame at the loop seam.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting,
+  ADR-028. An act is only ordinary somewhere, and ordinariness is what this type sells.
 - 1.0 (2026-08-19): founding entry, ADR-023. Strongest motion carrier measured: 2 of 2
   `use`-role slots earned a positive gif verdict across the five routed sessions, and
   motion lands here on 3 of 3 market pages that carry any (FIXD "What is It?", NeckFan

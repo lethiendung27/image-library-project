@@ -199,38 +199,6 @@
                 "type": "string",
                 "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
               },
-              "asset": {
-                "type": "string",
-                "description": "Filename of the PLATE render. It carries the --brief suffix and is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
-              },
-              "duration_s": {
-                "type": "number"
-              },
-              "loop": {
-                "type": "string"
-              },
-              "shot": {
-                "type": "string"
-              },
-              "action": {
-                "type": "string"
-              },
-              "result": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "match": {
-                "type": "string"
-              },
-              "delivery": {
-                "type": "string"
-              },
-              "prompt": {
-                "type": "string",
-                "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
-              },
               "type_id": {
                 "enum": [
                   "use",
@@ -249,13 +217,35 @@
                 ],
                 "description": "How this loop was earned (query/runbook.md Step 5d). 'natural' = the slot passes the temporal test as routed. 're-execution' = the slot's still execution earns no motion but a different staging of the same argument does, most often a locked multi-panel proof restaged as one continuous frame; say which in `reason`. 'ambient' is off by default and appears only when the owner switched it on for this page."
               },
-              "refs": {
-                "type": "string",
-                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. Not drawn into the plate — the plate keeps its five lines (G12); this travels in prompts.md."
-              },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns, for BOTH forms: the slot's own `asset` with the extension changed to .mp4. Distinct from `asset`, which names the production-only plate and carries --brief. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+                "description": "The filename the editor returns: {page}-{seq}-{gif-type}-{slot-slug}.mp4, so the name carries the ARGUMENT and not the still type it replaced (ADR-028). The page still numbers by page and an editor still tracks by slot; what changed is that `06-relief-hero --recall` hosting a `pain` loop no longer produces a file called relief-hero. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+              },
+              "ratio": {
+                "type": "string",
+                "pattern": "^\\d+:\\d+$",
+                "description": "The aspect the editor delivers, taken from the SLOT's declared ratio in content.json rather than from the still type's own declared list — for whole-frame the loop IS the delivered image, so it owes the page's shape, not the shape the still was rendered at. The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
+              },
+              "duration_s": {
+                "type": "number"
+              },
+              "loop": {
+                "type": "string"
+              },
+              "brief": {
+                "type": "string",
+                "description": "What the loop IS, in prose, for the editor who builds it: what is in frame, where it is, what moves and in what order, and what register and light it must match. One paragraph, plain sentences, no field labels. Every claim in it must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop, which is the fault this field was reshaped to stop (ADR-028). It replaces the shot/action/result/match quartet, which split one description into four labelled lines so a model could draw them and left no field for the setting at all."
+              },
+              "delivery": {
+                "type": "string"
+              },
+              "refs": {
+                "type": "string",
+                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. It is printed on the generated plate along with everything else the editor needs — nothing about a gif slot now lives only in a file they will not open."
+              },
+              "asset": {
+                "type": "string",
+                "description": "Filename of the plate, which is GENERATED by scripts/gen-plate.py and never rendered by an image model (ADR-028). It carries the --brief suffix and a .svg extension, and it is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
               }
             }
           },
@@ -382,38 +372,6 @@
                 "type": "string",
                 "description": "Why this slot does or does not earn motion — the temporal test applied to the slot's declared purpose."
               },
-              "asset": {
-                "type": "string",
-                "description": "Filename of the PLATE render. It carries the --brief suffix and is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
-              },
-              "duration_s": {
-                "type": "number"
-              },
-              "loop": {
-                "type": "string"
-              },
-              "shot": {
-                "type": "string"
-              },
-              "action": {
-                "type": "string"
-              },
-              "result": {
-                "type": [
-                  "string",
-                  "null"
-                ]
-              },
-              "match": {
-                "type": "string"
-              },
-              "delivery": {
-                "type": "string"
-              },
-              "prompt": {
-                "type": "string",
-                "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
-              },
               "type_id": {
                 "enum": [
                   "use",
@@ -432,13 +390,35 @@
                 ],
                 "description": "How this loop was earned (query/runbook.md Step 5d). 'natural' = the slot passes the temporal test as routed. 're-execution' = the slot's still execution earns no motion but a different staging of the same argument does, most often a locked multi-panel proof restaged as one continuous frame; say which in `reason`. 'ambient' is off by default and appears only when the owner switched it on for this page."
               },
-              "refs": {
-                "type": "string",
-                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. Not drawn into the plate — the plate keeps its five lines (G12); this travels in prompts.md."
-              },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns, for BOTH forms: the slot's own `asset` with the extension changed to .mp4. Distinct from `asset`, which names the production-only plate and carries --brief. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+                "description": "The filename the editor returns: {page}-{seq}-{gif-type}-{slot-slug}.mp4, so the name carries the ARGUMENT and not the still type it replaced (ADR-028). The page still numbers by page and an editor still tracks by slot; what changed is that `06-relief-hero --recall` hosting a `pain` loop no longer produces a file called relief-hero. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+              },
+              "ratio": {
+                "type": "string",
+                "pattern": "^\\d+:\\d+$",
+                "description": "The aspect the editor delivers, taken from the SLOT's declared ratio in content.json rather than from the still type's own declared list — for whole-frame the loop IS the delivered image, so it owes the page's shape, not the shape the still was rendered at. The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
+              },
+              "duration_s": {
+                "type": "number"
+              },
+              "loop": {
+                "type": "string"
+              },
+              "brief": {
+                "type": "string",
+                "description": "What the loop IS, in prose, for the editor who builds it: what is in frame, where it is, what moves and in what order, and what register and light it must match. One paragraph, plain sentences, no field labels. Every claim in it must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop, which is the fault this field was reshaped to stop (ADR-028). It replaces the shot/action/result/match quartet, which split one description into four labelled lines so a model could draw them and left no field for the setting at all."
+              },
+              "delivery": {
+                "type": "string"
+              },
+              "refs": {
+                "type": "string",
+                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. It is printed on the generated plate along with everything else the editor needs — nothing about a gif slot now lives only in a file they will not open."
+              },
+              "asset": {
+                "type": "string",
+                "description": "Filename of the plate, which is GENERATED by scripts/gen-plate.py and never rendered by an image model (ADR-028). It carries the --brief suffix and a .svg extension, and it is never the slot's own asset filename: the plate is a production-only work order and a page asset carrying one is a defect (G12)."
               }
             }
           },

@@ -3,7 +3,7 @@ id: mechanism
 kind: mechanism
 group: working
 rung: 1
-version: "1.0"
+version: "1.1"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -36,11 +36,17 @@ leaving the mattress is `proof`. A loop that shows both is `proof`, because the 
 judges the outcome, not the reason.
 
 ## BRIEF
-`SHOT` names the magnification or the cutaway, and which part is in focus.
-`ACTION` names the internal movement and its direction.
-`RESULT` names what the movement produces at the part — the output, not the room.
-`MATCH` names the register: a cutaway loop keeps the still's drawing convention.
+One paragraph. Name the magnification or the cutaway and which part is in focus, then the
+internal movement and its direction, then what that movement produces AT THE PART — the
+output, not the room. Close on the register: a cutaway loop keeps the still's drawing
+convention.
 
+**Where a cutaway or a technical render has no room, say so rather than borrowing one.**
+This is the type that found the fault. A page 73 brief closed on "same room and light as
+still" over a see-through render standing on a plain slate ground, and there was no room to
+match. Under the old four-line format the setting had no field of its own and arrived as
+boilerplate inside `MATCH`; the prose brief has room for it, which means it also has room to
+be wrong, so check it against the still (G12, ADR-028).
 ## NEGATIVE
 No text, digits, arrows or flow lines (G6) — a labelled diagram is a graphic, and this
 library does not draw graphics into a loop. No person as subject. No exploded view
@@ -48,6 +54,10 @@ rotating: that reveals parts rather than moving one, and revealing does not earn
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.1 (2026-08-19): the brief becomes one prose paragraph, ADR-028, and this type
+  carries the clause the change was found by: where a cutaway has no room, say so rather
+  than closing on `same room and light as still`. Page 73 shipped exactly that over a
+  see-through render on a plain slate ground.
 - 1.0 (2026-08-19): founding entry, ADR-023. 4 of 7 `mechanism`-role slots earned a
   positive gif verdict across the five routed sessions; the three that failed did so on
   the same ground, an invisible claim (thermal, portability, a shape that holds), which

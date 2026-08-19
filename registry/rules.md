@@ -226,61 +226,66 @@ precisely what made leaving it unwritten expensive.
 
 ## G12 — The motion brief plate
 
-**Scope:** a slot whose `gif` verdict is positive. On `inset` the plate occupies a layer
-the type's own SKELETON already legislates; on `whole-frame` the plate IS the delivered
-image and no photograph is made. G12 never creates a layer.
-
-**The plate never ships.** It is a work order for the editor who builds the loop, and the
-editor replaces it. A page asset carrying a plate is a defect — so a render that carries
-one takes the `--brief` suffix and never the slot's own asset filename.
+**Scope:** a slot whose `gif` verdict is positive. The plate is the work order the editor
+who builds the loop reads, and it carries **four fields and nothing else**:
 
 ```
-In the [named corner] sits a [square / circle / rounded rectangle] plate, flat
-dark grey with a thin white border, held clear of every frame edge. Inside it, in
-clean white sans-serif, five short lines, each on one line:
-  GIF SLOT · [duration] · [loop behaviour]
-  SHOT     [camera and framing]
-  ACTION   [what moves, in order]
-  RESULT   [what the viewer is left holding]
-  MATCH    [the register law the loop must obey]
-No other text anywhere in the picture.
+{page}-{seq}-{gif-type}-{slot-slug}.mp4        the file the editor returns
+{duration} · {ratio} · {loop behaviour}        what shape and how long
+                                               a rule across the two
+<the brief>                                    what is in frame, where it is,
+                                               what moves and in what order,
+                                               and the register it must match
 ```
 
-**Write those lines as plain words.** Asterisks, backticks and any other markup are drawn
-literally — one render returned `**GIF SLOT · 2s · seamless loop**` with its asterisks
-intact. Keep each line inside seven words so it cannot wrap; a wrapped line broke the
-block's alignment in the same render. White on dark grey stayed legible in 4 of 4.
+**The filename carries the ARGUMENT, not the still type it replaced.** `06-relief-hero
+--recall` hosting a `pain` loop used to produce a file called relief-hero, which named the
+wrong thing to the one person who has to file it. The page still numbers by page and an
+editor still tracks by slot; the gif type sits between them.
+
+**The ratio is the SLOT's, not the still type's.** On `whole-frame` the loop IS the
+delivered image, so it owes the page's shape rather than the shape the still happened to be
+rendered at. The plate is drawn at that ratio, so the card is the shape of the deliverable
+and the editor reads the aspect off the paper as well as out of it.
+
+**The plate is GENERATED, never drawn by an image model** — `python3 scripts/gen-plate.py`,
+and like `registry/index.yaml` and the GIF library's folder cards it is a view that is never
+hand-edited. This is the rule's largest change and the evidence for it is the rule's own
+history: the five-line format existed because a model draws text badly, and every constraint
+below the fields was a workaround for that. A generated card cannot misspell a filename,
+cannot return `**GIF SLOT**` with its asterisks intact, cannot wrap a line into the next
+one, and costs no generation call. The brief is prose because a prose brief is what a person
+actually needs; prose means wrapped lines, and a wrapped line is the one failure the old
+format had actually measured.
+
+**The plate never ships.** A page asset carrying one is a defect, so it takes the `--brief`
+suffix and a `.svg` extension and is never the slot's own asset filename. On `inset` the
+host type's own prompt reserves the legislated layer as a flat empty block carrying no text
+at all, and the plate travels beside the still as its own file: ADR-019 required the work
+order to reach the editor rather than sit in a document nobody opens, and a file named after
+the slot, sitting in the render folder next to the frame it describes, satisfies that without
+putting model-drawn lettering into a frame G6 bans text from.
 
 **The plate is a claim about THIS frame, and G7 binds it exactly as it binds the picture.**
-What `ACTION` and `RESULT` name has to be present and possible in the still: a plate
-promising a grime strip turning clean needs a grime strip in frame, and one specifying a
-macro of a display needs that display legible. Two of four failed here, and it is the
-dominant fault — a picture cannot be checked against a caption describing a different
-picture.
+What the brief names has to be present and possible in the still: a brief promising a grime
+strip turning clean needs a grime strip in frame, and one promising the same room and light
+as the still needs the still to have a room. Two of four failed here and it was the dominant
+fault; a third was found on page 73 after shipping, where a brief said "same room and light
+as still" over a see-through render standing on a plain slate ground. **This is the clause
+that survives the change intact, and the field list is what makes it checkable** — the old
+quartet had no field for the setting, so the setting was smuggled into `MATCH`, and a
+boilerplate `MATCH` line is exactly what nobody re-reads against the frame.
 
-**Geometry is INHERITED where a host layer exists**: corner, footprint and shape come from
-that layer, and G10 binds them as it binds every layer — five of six renders bled to an
-edge. Shape is otherwise free; circle and rounded rectangle have both rendered clean. Put
-the plate in the corner the subject is offset FROM: three renders put it over the scene and
-destroyed the setting the type had just spent its words building, two put it in dead space
-and cost nothing.
+**Retired with the model-drawn plate, and recorded rather than deleted:** the seven-word
+line cap, the plain-words rule against markup, the corner and footprint inheritance, the
+one-third-to-one-half size band, and the name-where-it-stops clause. Every one of them was
+earned by a render and every one of them is a property of a renderer that is no longer
+involved. They are in `git log` for the day a model draws reliable lettering and the
+question reopens.
 
-**Size it for the reader; the dead corner sets the ceiling.** Legibility is the plate's only
-job, so it takes as much of that corner as it can without covering anything the argument
-needs. **A third to a half of the frame width is the working band.** Measured across four
-renders: 26% was legible but tight, 32% comfortable, 42% clearly the best and it cost the
-picture nothing. What made two earlier plates at 55% a failure was not their size but their
-PLACE — both sat on top of the scene. In the corner the subject is offset from a large plate
-costs nothing; over the subject a small one still costs everything.
-
-**Say where the plate STOPS, not only that it is clear.** Three of three plated renders were
-cut by a frame edge under the instruction "held well clear of both frame edges" — a
-corner-anchored shape bleeds by default. Name the stop positively: its outer edge finishes a
-visible margin short of the picture on both sides. Beyond G10, the practical reason is that
-a plate running off the edge loses characters the moment the asset is dropped into a
-container of a different shape.
-
-**Evidence:** ten renders on 2026-08-14, eight carrying a plate. The four run against this
-rule returned every line exact — 20 of 20, including one carrying nothing but text — so the
-lettering is settled and the geometry is not. Motion itself is still untested: no loop exists
-in `eval/render-tests.jsonl`.
+**Evidence:** ten renders on 2026-08-14, eight carrying a plate. The four run against the
+old rule returned every line exact — 20 of 20, including one carrying nothing but text — so
+model-drawn lettering was settled and the geometry never was. That is the measurement that
+retires the rule rather than contradicting it: the format was working and it was working at
+the cost of a constraint list no field could grow past. Motion itself is still untested: no
+loop exists in `eval/render-tests.jsonl`, and `ingestion/gifs.jsonl` holds no record.

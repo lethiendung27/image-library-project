@@ -265,41 +265,67 @@ For `whole-frame` there is no layer and the kind is the type's own job.
 
 Where a layer admits more than one kind, take the one **the section's copy is already
 arguing**, and say which and why in `reason` — this is the same judgement as choosing a
-type, made one level down. The kind sets what `SHOT`, `ACTION` and `RESULT` name; nothing
-else about the plate changes with it.
+type, made one level down. The kind sets what the brief describes and what the loop has to
+leave the viewer holding; nothing else about the plate changes with it.
 
-Every GIF carries the same five-field brief, each line ≤ 7 words:
+Every GIF carries the same **four fields**, and the plate that shows them is GENERATED
+rather than rendered (G12, ADR-028):
 
 ```
-GIF SLOT · <duration> · <loop behaviour>
-SHOT     <camera and framing>
-ACTION   <what moves, in order>
-RESULT   <what the viewer is left holding>
-MATCH    <the register law it must obey>
+77-06-proof-feature2.mp4          gif.output — the file the editor returns,
+                                  and its name carries the gif TYPE
+3s · 16:9 · seamless loop         gif.duration_s, gif.ratio, gif.loop
+<the brief>                       gif.brief — one paragraph of prose
 ```
 
-`MATCH` is not filler: a loop that ignores the still's grade and light reads as pasted
-in. Delivery is mp4/webm with a size ceiling — a 20 MB `.gif` costs more conversion
-than the motion buys.
+**`gif.output` names the argument, not the still type it replaced.** The pattern is
+`{page}-{seq}-{gif-type}-{slot-slug}.mp4`. An inset loop inside `06-relief-hero --recall`
+does `pain` work, and under the old rule it produced a file called relief-hero — the wrong
+word for the one person who has to file it.
 
-**The brief is what the editor reads off the plate, and `prompt` is what RENDERS that
-plate.** It is never a prompt that animates a supplied still: ADR-019 settled that an
-editor builds the loop, so the pipeline's job is to hand them a legible work order drawn
-into a frame. Two shapes, and only these two. For `form: whole-frame` the plate IS the
-delivered image — a flat card carrying the five lines and nothing else, no scene and no
-product; it passed 1 of 1 and is the case that proved the model writes the brief
-reliably. For `form: inset` the host type's own prompt sets its legislated layer to
-`--loop` and draws the plate there, geometry inherited from that layer.
+**`gif.ratio` is the SLOT's declared ratio from `content.json`, never the still type's.**
+On `whole-frame` the loop IS the delivered image, so it owes the page's shape. Where the
+routed still renders at a different ratio and the layout crops it — `03-mechanism-ghostbody`
+at 1:1 into a 16:9 slot, for instance — the loop still owes 16:9, because nothing crops it
+on the way in.
 
-Every line must be satisfiable by the still the plate accompanies (G12) — a brief
-promising something the frame does not contain sends the editor to build the wrong loop,
-and that is the dominant fault at 2 of 4. The plate never ships: its render takes the
-`--brief` suffix and never the slot's own asset filename.
+**`gif.brief` is prose, and it names four things in one paragraph:** what is in frame, WHERE
+it is, what moves and in what order, and the register and light it must match. No field
+labels, plain sentences. It replaced a `SHOT`/`ACTION`/`RESULT`/`MATCH` quartet whose real
+defect was not its length — it had no field for the setting at all, so the setting was
+smuggled into `MATCH`, and a boilerplate `MATCH` line is exactly what nobody re-reads
+against the frame. Page 73 shipped "same room and light as still" over a see-through render
+standing on a plain slate ground.
 
-**In `prompts.md` the gif is a fourth option below C**, carrying the same anatomy the
-options carry. It is not an alternative to A–C — it is rendered alongside the recommended
-still, because a card that says what moves is useless to an editor who has no frame to
-move.
+**Every claim in the brief must be satisfiable by the still the slot routed (G12).** A brief
+promising something the frame does not contain sends the editor to build the wrong loop, and
+that is the dominant fault at 2 of 4 plus the page 73 case found after shipping. Write the
+brief against the recommended option's own prompt, and check it line by line against that
+prompt before it ships — the setting field exists so that check has something to catch.
+
+**The plate is a file, not a prompt.** `python3 scripts/gen-plate.py <session-dir>` writes
+one SVG per positive verdict, drawn at `gif.ratio`, carrying the four fields plus the
+library folder from `gif.refs`. It is a generated view like `registry/index.yaml` and the
+GIF library's folder cards, and it is never hand-edited. There is no `gif.prompt`: a plate
+is text, and generating text through an image model is the least reliable way to produce it
+— the seven-word line cap, the ban on markup and the whole geometry block of the old G12
+were all workarounds for a renderer that is no longer involved.
+
+**The plate never ships.** It takes the `--brief` suffix and a `.svg` extension and never
+the slot's own asset filename; a page asset carrying one is a defect. On `form: inset` the
+host type's own prompt reserves its legislated layer as a flat empty block carrying no text,
+and the plate travels beside the still as its own file. That satisfies ADR-019 — the work
+order reaches the editor rather than sitting in a document nobody opens — without putting
+model-drawn lettering into a frame G6 bans text from.
+
+Delivery is mp4/webm with a size ceiling — a 20 MB `.gif` costs more conversion than the
+motion buys.
+
+**In `prompts.md` the gif sits below option C**, carrying the four fields and naming its
+plate file. It is not an alternative to A–C — the recommended still is still rendered,
+because a loop is an order to an editor with a lead time and the page has to ship today
+(ADR-020). What changed at ADR-028 is that there is no fourth PROMPT to paste: the still
+options are prompts, and the gif is a work order.
 
 ## Step 5d — MOTION BUDGET (page-level, runs once every slot has a 5c verdict)
 
@@ -381,9 +407,10 @@ lead time and the page has to ship today (ADR-020). Explain the call in
 
 **Each positive verdict also carries its library pointers**, so an editor never has to
 be told where to look: `gif.type_id` (the folder), `gif.refs` (that folder plus one or
-two filenames from it) and `gif.output` (the slot's own `asset` with the extension
-changed to `.mp4`). None of the three is drawn into the plate — the plate keeps its five
-lines under G12 — they travel in `prompts.md` and `prompts.json` beside it.
+two filenames from it) and `gif.output` (the returned filename, which now carries the gif
+type). Since ADR-028 the plate is generated rather than drawn, so `refs` and `output` are
+PRINTED ON IT along with the brief — nothing about a gif slot lives only in a file the
+editor will not open.
 
 ## Step 7 — Emit and log
 

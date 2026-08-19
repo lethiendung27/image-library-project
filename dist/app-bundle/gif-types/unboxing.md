@@ -3,7 +3,7 @@ id: unboxing
 kind: null
 group: none
 rung: 1
-version: "1.0"
+version: "1.1"
 status: active
 channels: [paid-social]
 duration_s: [3, 6]
@@ -37,18 +37,20 @@ It carries `group: none` and `kind: null`: it counts toward no page floor and ne
 appears as a `gif.kind` in a routed prompt set.
 
 ## BRIEF
-`SHOT` names the surface, the box and the camera position.
-`ACTION` names the items in the order they leave the box.
-`RESULT` names the finished layout — everything in view at once.
-`MATCH` names the register; a kit reveal shot as a customer's phone clip and one shot as a
-studio flat-lay are two different arguments and must not be mixed inside one set.
-
+One paragraph. Name the surface, the box and the camera position, and name WHERE it is —
+a kit reveal on a kitchen worktop and one on a studio sweep are two different arguments.
+Name the items in the order they leave the box, then the finished layout with everything in
+view at once. Close on the register, and hold it across a set: a kit reveal shot as a
+customer's phone clip and one shot as a studio flat-lay must not be mixed inside one set.
 ## NEGATIVE
 No text, digits or price flashes (G6). No item entering from off-frame that was never in
 the box. No cut that could hide an item being added.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting,
+  ADR-028. A kit reveal on a worktop and one on a studio sweep are two different
+  arguments.
 - 1.0 (2026-08-19): founding entry, ADR-023. Kept from the owner's original type list, but
   scoped to `paid-social` alone once the temporal test was applied to it: no unboxing beat
   exists in any of the 60 image slots across the five routed sessions, and none of the 8
