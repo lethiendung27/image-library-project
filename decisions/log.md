@@ -719,3 +719,108 @@ emits 30 prompts rather than 42 and checks its own set diversity on every run, w
 the room classifier picking by earliest occurrence rather than vocabulary order —
 "a landing between two bedrooms" is a landing, and order-scanning called it a
 bedroom. G5 is unchanged for linear slots. `registry_version` unchanged.
+
+## ADR-023 · 2026-08-19 · The GIF library: six types, a page motion floor, and a static review wall
+
+The owner asked for a classified GIF library: folders by gif type, a human filing each
+file, AI proposing the type, and a mapping the harness can call. Three things were
+already true and none of them had been connected. ADR-019 had settled that an editor
+builds every loop, ADR-020 that a positive `gif` verdict emits a plate and sits as a
+fourth option, and Step 5c had been asking `gif.kind` from the `jobs` vocabulary since
+then — so a consumer of a GIF library existed, with no library behind it.
+
+**The taxonomy is the one already in the repo.** A first pass proposed nine gif types
+with a new device word each (`use-howto`, `use-interaction`, `spec-transform`,
+`spec-unboxing`, `pain-failure`, …), which would have needed nine vocabulary additions
+and a second name for every idea `jobs` already names. The owner pushed back on whether
+`howto` and `transform` earn separate folders. They do not, and applying SPEC §3.2's
+absorption ladder to motion is what collapses them:
+
+- **Beat count is a PARAMETER.** In a still, one frame against three stacked panels is
+  structural and names two devices. In a loop it is duration. One continuous act and a
+  three-step sequence argue the same thing — you can operate this — so `use-howto` and
+  `use-interaction` are one type with a beat band.
+- **`spec-transform` was an act wearing a spec label.** Take the hands out of a folding
+  umbrella and the argument collapses; the act is `use` and the "packs to a third" claim
+  is `proof`.
+- **Enumeration is not change.** Laying a kit out reveals what exists, and Step 5c has
+  always refused motion to a slot that reveals rather than changes. That removes `spec`
+  from the page entirely and leaves `unboxing` alive only where a reveal is a legitimate
+  hook, which is the ad channel — enforced by `channels: [paid-social]`, not by prose.
+- **`pain-failure` is an execution of `cause`.** A hand slipping and a weave shedding
+  grains make one argument; subject class is what `varies_on` is for, and page 65's
+  rung-2 route already ran `01-pain-scene` object-only on exactly that reasoning.
+
+What survives is **`use`, `mechanism`, `cause`, `proof`, `relief`** for pages plus
+**`unboxing`** for ads. Five of the six ids are `jobs` values, so `gif.kind` needs no new
+enum member and the page side of this ADR costs zero vocabulary — the leaner list is also
+the cheaper one, which is the signal the merge was right rather than merely tidy.
+
+**Five boundaries do the work the names cannot.** `use` against `mechanism` is decided by
+framing, not subject — hand plus whole product against the working part magnified with no
+person. `mechanism` against `proof` is cause against effect. `cause` against `proof` is
+the product's absence, and that absence is the whole test. `proof` against `relief` is
+measured against lived. And `relief` earns motion only where the motion IS the thing the
+problem used to block — the tightest rule in the set, written to stop `relief` becoming
+the bucket every unearned loop falls into, and explicitly untested against any render.
+
+**The floor is the owner's number, and the evidence says it is not a stretch.** Standing
+instruction: at least 2 loops per page, ceiling 5, at most one per section, never two
+adjacent. Measured across the five routed sessions — 60 image slots, 19 positive verdicts
+— every page already clears 2 on rung 1 alone (5, 6, 4, 2, 2). Against the market the
+number is deliberately one notch high: of eight live pages scanned on 2026-08-18, the
+advertorial and listicle formats carry 0–2 argued motion elements and only brand product
+pages run 4–8. So the floor asks these pages to be slightly richer in motion than their
+format's norm, which is the owner's call to make and is recorded here as such: the
+premise that GIF converts best is the owner's commercial experience, `feedback/picks.jsonl`
+is still empty, and nothing in this repo verifies it. The `motion` block exists so the
+claim can be checked later instead of assumed.
+
+**The backup ladder fills a shortfall without lowering the bar.** Rung 1 is the 5c verdict
+as it stands. Rung 2 re-executes: a `proof` slot routed to a locked multi-panel still is
+correctly refused motion — "inspected, not watched", 0 of 13 such slots earned a verdict —
+but that is a fact about the panels, not the argument, and one continuous frame in which
+one variable changes earns motion on the same claim. Page 65's own copy carries the case
+the session passed over: an indicator turning red to blue as the head passes, filed as "a
+state, not a transition". Rung 3, ambient, is **off**, and may never be used to reach the
+floor; a page that cannot argue in motion reports a shortfall instead. Grounds: every
+ambient element found across the eight market pages was a theme's own CSS, not a produced
+asset.
+
+**The review wall is static, and this supersedes a shipped verdict.** Owner instruction.
+Session 13 called a customer's phone clip more authentic than a customer's photo and gave
+`social-viral` a positive verdict; sessions 37, 58 and 65 refused all 14 of their
+`social`-role tiles on the opposite reasoning, and nothing in the repo adjudicated the
+split. It is adjudicated now in favour of static. Page 13 is left standing and is not
+re-routed, so the correction is legible rather than silent — the same treatment ADR-019
+gave ADR-018. Three of three review walls among the market pages scanned are static.
+
+**Why the library lives half outside the repo.** SPEC §6.4 keeps source images out and
+references them by sha256; motion assets are larger and the rule binds harder. So
+`registry/gif-types/` holds the law, `ingestion/gifs.jsonl` holds the index, and the files
+sit in a folder tree outside the repo whose cards are GENERATED from the type files by
+`scripts/gen-gif-cards.py` — a card is a view, like `registry/index.yaml`, and hand-editing
+one is the same error as hand-editing the index. Naming is
+`{gif-type}_{product-slug}_{seq}.mp4`, with the sequence issued by the ledger so two people
+cannot collide, and no provenance field: the owner audits the library himself and declined
+to carry a ref/made split. The consequence is stated rather than hidden — nothing in a
+filename now separates a collected reference from an owned asset, and that boundary lives
+in the owner's own review. Revisit it the day a second person files into the library.
+
+**The asset a slot returns is named twice, on purpose.** `gif.output` is the slot's own
+`asset` with the extension changed to `.mp4`, because a page numbers its assets by page and
+an editor tracks by slot. The library name is issued separately when the finished loop is
+filed back, because the library numbers by type. The ledger maps the two through the
+sha256, and one asset therefore serves every clone of a product — the catalogue the owner
+supplied runs 179 landing pages over 70 products, 2.6 per product and up to 7, across
+English, German and UK domains. That reuse is also the operational reason G6's ban on text
+in frame binds a loop exactly as it binds a still: one English word destroys it.
+
+Consequences: `registry/vocabulary.yaml` gains `gif_types` and `gif_groups`;
+`registry/gif-types/` and `registry/gif-instruction.md` are new; `ingestion/gifs.jsonl` is
+a new append-only ledger; `scripts/gen-gif-cards.py` is new; `scripts/validate.py` gains a
+gif type pass, a ledger pass and a check that the floor is satisfiable at all;
+`query/runbook.md` gains Step 5d; `query/output.schema.json` gains `motion`,
+`recommended_media`, and `type_id` / `rung` / `refs` / `output` on `gif`; `SPEC.md` §3.6
+and §9. No existing session is re-routed and no image type file is touched.
+`registry_version` unchanged — no image structure moves.

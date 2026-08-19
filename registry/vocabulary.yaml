@@ -72,5 +72,17 @@ section_roles: [hero, problem-agitation, cause, mechanism, proof, social-proof, 
 
 observation_verdicts: [match, variant-candidate, new-candidate, duplicate, reject]
 
+# GIF types (ADR-023). One type = one message, and the id IS the argument.
+# The first five deliberately reuse a `jobs` value: a loop argues the same thing a
+# picture argues, so no second word for the same idea. `unboxing` is the exception —
+# it enumerates rather than changes, fails the temporal test a page slot applies, and
+# exists for the ad channel alone. Files: registry/gif-types/<id>.md.
+gif_types: [use, mechanism, cause, proof, relief, unboxing]
+
+# Which half of the motion floor a gif type serves (query/runbook.md Step 5d).
+# `working` = the product in action; `result` = what it leaves behind. A page's
+# floor prefers one of each. `none` = counts toward nothing; ad channel only.
+gif_groups: [working, result, none]
+
 # Informative: things that are runtime parameters and must NEVER become identity.
 parameters: [ratio, panel_count, colorway, persona_cast, environment]

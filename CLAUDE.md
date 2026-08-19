@@ -15,11 +15,14 @@ tasks to entry points and must stay logic-free.
 | Generate prompts for a landing page | `query/runbook.md` |
 | Render-test a skeleton on a real product | `eval/render-test.md` |
 | Add / edit an image type | `SPEC.md` §3, then a file in `registry/types/` |
+| File new GIFs into the library | `registry/gif-instruction.md` |
+| Add / edit a GIF type | `SPEC.md` §3.6, then a file in `registry/gif-types/` |
 
 ## Hard rules for any session
 
-1. Never hand-edit `registry/index.yaml` — regenerate it:
-   `python3 scripts/validate.py --write-index`
+1. Never hand-edit a generated view — regenerate it. `registry/index.yaml`:
+   `python3 scripts/validate.py --write-index`. The GIF library's folder cards:
+   `python3 scripts/gen-gif-cards.py`.
 2. After **any** edit under `registry/`, run `python3 scripts/validate.py` and fix
    errors before finishing the turn.
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are append-only.

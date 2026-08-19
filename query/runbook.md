@@ -291,6 +291,75 @@ options carry. It is not an alternative to A–C — it is rendered alongside th
 still, because a card that says what moves is useless to an editor who has no frame to
 move.
 
+## Step 5d — MOTION BUDGET (page-level, runs once every slot has a 5c verdict)
+
+Step 5c asks whether a slot earns motion. This pass asks how many loops the PAGE
+carries, and it is the only place a shortfall may be filled. Its output is the
+`motion` block, emitted on every routed page including pages that carry no motion —
+a stated zero is actionable and a missing block is not.
+
+**Owner standing instruction, 2026-08-19: floor 2, ceiling 5.** The floor is a real
+floor: a page below it is not finished, it is reported. All five routed sessions
+already clear it on rung 1 alone (5, 6, 4, 2, 2 positive verdicts), so the ladder
+below exists for the thin pages that have not been routed yet, not for the ones that
+have.
+
+**Coverage is a preference, not a gate.** Aim for one loop from a `working` type
+(`use`, `mechanism`, `cause`) and one from a `result` type (`proof`, `relief`), read
+off each type's `group`. Where a page's natural pair is two `working` loops, keep it
+and say so in `motion.notes`: restaging a strong slot to fill a column buys a tidy
+table and loses the better argument.
+
+**The ladder. Work down it only until the floor is met, and never past rung 2.**
+
+1. **Natural** — the 5c verdict as it stands. Nothing is re-argued.
+2. **Re-execution** — a slot whose STILL execution earns no motion, where a different
+   staging of the same argument does. The library's main case is a `proof` slot routed
+   to a locked multi-panel comparison: the panels are inspected rather than watched and
+   correctly get `eligible: false`, while one continuous frame in which one variable
+   changes earns motion on the same claim. Page 65 carries the unrouted example — an
+   indicator that turns red to blue as the head passes, filed by that session as "a
+   state, not a transition". The job never changes; name the move in `varies_on` and in
+   `gif.reason`, and set `gif.rung: "re-execution"`.
+3. **Ambient** — pleasant movement that argues nothing: steam curling, a curtain
+   breathing, dust in a sunbeam. **Off by default and never used to reach the floor.**
+   It ships only when the owner switches it on for a named page. Grounds: of the eight
+   market pages scanned on 2026-08-18, every ambient element found was a theme's own CSS
+   (a marquee, a wave, an animated badge border) and none was a produced asset — nobody
+   pays an editor for motion that carries no argument.
+
+**Below the floor after rung 2, report it.** Set `motion.shortfall_reason` naming which
+slots were examined at rung 2 and why each failed. This is SPEC §7.5's rule — an absence
+is not automatically a gap — applied to motion. Never reach the floor by switching
+ambient on, and never by lowering the temporal test.
+
+**Ceiling and spacing, all three binding:** at most 5 loops on a page; at most one per
+section; never two in adjacent slots. Where the ceiling or the spacing rule kills a
+positive 5c verdict, flip that slot to `eligible: false`, say in its `reason` that the
+budget and not the argument decided it, and record the conflict in `motion.notes`.
+
+**The review wall is static. No exceptions.** Owner instruction, 2026-08-19: no tile in
+a repeating review section carries motion, whatever its quote says. This supersedes the
+`social-viral` verdict in `query/sessions/13-inch-portable-wall-mounted-air-cooler-cool-your-space/`,
+which called a customer's phone clip more authentic than a customer's photo — that page
+is left standing and is not re-routed, so the correction is legible rather than silent.
+Three of three review walls on the market pages scanned are static, and 14 of 15
+`social`-role slots across the routed sessions already refused motion on the type's own
+grounds; this instruction closes the last one.
+
+**Then name the medium.** Every slot carrying options sets `recommended_media`. It is
+`still` unless the slot's argument is carried better by the loop than by any of A/B/C,
+and `gif` says exactly that — it does NOT withdraw the still. The recommended still is
+emitted and rendered as always, because the loop is an order to an editor with a
+lead time and the page has to ship today (ADR-020). Explain the call in
+`recommendation_basis` like any other.
+
+**Each positive verdict also carries its library pointers**, so an editor never has to
+be told where to look: `gif.type_id` (the folder), `gif.refs` (that folder plus one or
+two filenames from it) and `gif.output` (the slot's own `asset` with the extension
+changed to `.mp4`). None of the three is drawn into the plate — the plate keeps its five
+lines under G12 — they travel in `prompts.md` and `prompts.json` beside it.
+
 ## Step 7 — Emit and log
 
 Where the session lives: `query/sessions/<page_id>/` holds `content.json` (the

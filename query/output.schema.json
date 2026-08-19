@@ -230,6 +230,32 @@
               "prompt": {
                 "type": "string",
                 "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
+              },
+              "type_id": {
+                "enum": [
+                  "use",
+                  "mechanism",
+                  "cause",
+                  "proof",
+                  "relief"
+                ],
+                "description": "The gif type this loop is filed under, from vocabulary.gif_types and defined in registry/gif-types/<id>.md. It equals `kind` for every routable type — a loop argues one thing and the id IS that argument (ADR-023). `unboxing` is never emitted here: it is ad-channel only."
+              },
+              "rung": {
+                "enum": [
+                  "natural",
+                  "re-execution",
+                  "ambient"
+                ],
+                "description": "How this loop was earned (query/runbook.md Step 5d). 'natural' = the slot passes the temporal test as routed. 're-execution' = the slot's still execution earns no motion but a different staging of the same argument does, most often a locked multi-panel proof restaged as one continuous frame; say which in `reason`. 'ambient' is off by default and appears only when the owner switched it on for this page."
+              },
+              "refs": {
+                "type": "string",
+                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. Not drawn into the plate — the plate keeps its five lines (G12); this travels in prompts.md."
+              },
+              "output": {
+                "type": "string",
+                "description": "The filename the editor returns, for BOTH forms: the slot's own `asset` with the extension changed to .mp4. Distinct from `asset`, which names the production-only plate and carries --brief. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
               }
             }
           },
@@ -244,6 +270,13 @@
           "recommendation_basis": {
             "type": "string",
             "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
+          },
+          "recommended_media": {
+            "enum": [
+              "still",
+              "gif"
+            ],
+            "description": "Which medium this operation recommends for the slot. Default 'still'. 'gif' says the slot's argument is carried better by the loop than by any of A/B/C — the recommended still is still emitted and still rendered, because the loop is an order to an editor and the page must ship today (ADR-020). Explain it in recommendation_basis."
           }
         }
       }
@@ -380,6 +413,32 @@
               "prompt": {
                 "type": "string",
                 "description": "The prompt that RENDERS the motion brief plate — the five-field work order drawn into a frame, so the editor who builds the loop reads it off the render (G12, ADR-019). Never a prompt that animates a supplied still: this pipeline does not composite, an editor does. Two shapes only. For form 'whole-frame' the plate IS the delivered image, a flat card carrying the five lines and nothing else — no scene, no product. For form 'inset' the host type's own prompt sets its legislated layer to --loop and draws the plate there, geometry inherited from that layer."
+              },
+              "type_id": {
+                "enum": [
+                  "use",
+                  "mechanism",
+                  "cause",
+                  "proof",
+                  "relief"
+                ],
+                "description": "The gif type this loop is filed under, from vocabulary.gif_types and defined in registry/gif-types/<id>.md. It equals `kind` for every routable type — a loop argues one thing and the id IS that argument (ADR-023). `unboxing` is never emitted here: it is ad-channel only."
+              },
+              "rung": {
+                "enum": [
+                  "natural",
+                  "re-execution",
+                  "ambient"
+                ],
+                "description": "How this loop was earned (query/runbook.md Step 5d). 'natural' = the slot passes the temporal test as routed. 're-execution' = the slot's still execution earns no motion but a different staging of the same argument does, most often a locked multi-panel proof restaged as one continuous frame; say which in `reason`. 'ambient' is off by default and appears only when the owner switched it on for this page."
+              },
+              "refs": {
+                "type": "string",
+                "description": "Where the editor looks for precedent: the library folder for this type, plus one or two filenames from it. Not drawn into the plate — the plate keeps its five lines (G12); this travels in prompts.md."
+              },
+              "output": {
+                "type": "string",
+                "description": "The filename the editor returns, for BOTH forms: the slot's own `asset` with the extension changed to .mp4. Distinct from `asset`, which names the production-only plate and carries --brief. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
               }
             }
           },
@@ -488,6 +547,13 @@
           "recommendation_basis": {
             "type": "string",
             "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
+          },
+          "recommended_media": {
+            "enum": [
+              "still",
+              "gif"
+            ],
+            "description": "Which medium this operation recommends for the slot. Default 'still'. 'gif' says the slot's argument is carried better by the loop than by any of A/B/C — the recommended still is still emitted and still rendered, because the loop is an order to an editor and the page must ship today (ADR-020). Explain it in recommendation_basis."
           }
         }
       }
@@ -496,6 +562,55 @@
       "type": "array",
       "items": {
         "type": "string"
+      }
+    },
+    "motion": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The page's motion budget (query/runbook.md Step 5d). Emitted on every routed page, including pages that carry no motion at all — a stated zero is actionable and a missing block is not.",
+      "required": [
+        "floor",
+        "ceiling",
+        "delivered",
+        "groups_covered"
+      ],
+      "properties": {
+        "floor": {
+          "type": "integer",
+          "description": "Minimum loops this page must carry. Owner standing instruction 2026-08-19: 2."
+        },
+        "ceiling": {
+          "type": "integer",
+          "description": "Maximum loops the page may carry: 5, with at most one per section and never two in adjacent slots."
+        },
+        "delivered": {
+          "type": "integer",
+          "description": "Positive gif verdicts actually emitted."
+        },
+        "groups_covered": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "working",
+              "result"
+            ]
+          },
+          "description": "Which halves of the floor the delivered loops cover, read from each type's `group`. One of each is the preference, not a gate — a page whose natural pair is two `working` loops keeps it and says so rather than restaging a strong slot to fill a column."
+        },
+        "shortfall_reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Required non-null when delivered < floor. Names which slots were examined at rung 2 and why none of them earned motion. Never filled by switching ambient on: a page that cannot argue in motion says so (SPEC 7.5's rule that an absence is not automatically a gap, applied to motion)."
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Spacing conflicts resolved, sections that lost a loop to the one-per-section rule, wall verdicts."
+        }
       }
     }
   }

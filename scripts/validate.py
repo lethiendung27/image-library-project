@@ -23,6 +23,8 @@ INDEX_PATH = os.path.join(ROOT, "registry", "index.yaml")
 OBS_PATH = os.path.join(ROOT, "ingestion", "observations.jsonl")
 PICKS_PATH = os.path.join(ROOT, "feedback", "picks.jsonl")
 RENDER_PATH = os.path.join(ROOT, "eval", "render-tests.jsonl")
+GIF_TYPES_DIR = os.path.join(ROOT, "registry", "gif-types")
+GIF_LEDGER_PATH = os.path.join(ROOT, "ingestion", "gifs.jsonl")
 
 ERRORS = []
 WARNINGS = []
@@ -627,6 +629,118 @@ def check_slot_rules(types):
                             f"table and the type disagree")
 
 
+# ------------------------------------------------------------------ gif types
+
+GIF_REQUIRED_KEYS = ["id", "kind", "group", "rung", "version", "status",
+                     "channels", "duration_s", "beats"]
+GIF_OPTIONAL_KEYS = ["replaced_by", "notes"]
+GIF_REQUIRED_SECTIONS = ["PURPOSE", "TRIGGER", "BOUNDARY", "BRIEF", "NEGATIVE",
+                         "CHANGELOG"]
+GIF_FILE_RE = re.compile(r"^([a-z]+)_([a-z0-9-]+)_(\d{3})\.(mp4|webm)$")
+
+
+def validate_gif_type_file(path, vocab):
+    fname = os.path.basename(path)
+    where = f"registry/gif-types/{fname}"
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    fm_lines, body = split_frontmatter(text, where)
+    if fm_lines is None:
+        return None
+    fm = parse_block(fm_lines, where)
+
+    for k in GIF_REQUIRED_KEYS:
+        if k not in fm:
+            err(where, f"missing required frontmatter key `{k}`")
+    for k in fm:
+        if k not in GIF_REQUIRED_KEYS + GIF_OPTIONAL_KEYS:
+            err(where, f"unknown frontmatter key `{k}`")
+
+    tid = fm.get("id")
+    if tid != os.path.splitext(fname)[0]:
+        err(where, f"id `{tid}` != filename")
+    if tid is not None and tid not in (vocab.get("gif_types") or []):
+        err(where, f"id `{tid}` not in vocabulary.gif_types")
+
+    # `kind` is the jobs value the loop argues, and null where the type never
+    # reaches a routed slot. A non-null kind that is not a job would emit a
+    # gif.kind the output schema rejects, so it is an error and not a warning.
+    kind = fm.get("kind")
+    if kind is not None and kind not in (vocab.get("jobs") or {}):
+        err(where, f"kind `{kind}` not in vocabulary.jobs")
+
+    group = fm.get("group")
+    if group not in (vocab.get("gif_groups") or []):
+        err(where, f"group `{group}` not in vocabulary.gif_groups")
+    if group == "none" and kind is not None:
+        err(where, "group `none` must carry kind: null — it never reaches a slot")
+
+    rung = fm.get("rung")
+    if rung not in (1, 2):
+        err(where, f"rung must be 1 or 2, got {rung!r}")
+
+    ver = fm.get("version")
+    if not (isinstance(ver, str) and re.fullmatch(r"\d+\.\d+", ver)):
+        err(where, f"version must be a quoted MAJOR.MINOR string, got {ver!r}")
+
+    status = fm.get("status")
+    if status not in (vocab.get("statuses") or []):
+        err(where, f"status `{status}` not in vocabulary.statuses")
+
+    chans = fm.get("channels")
+    if not isinstance(chans, list) or not chans:
+        err(where, "channels must be a non-empty list")
+    else:
+        for c in chans:
+            if c not in (vocab.get("channels") or []):
+                err(where, f"channel `{c}` not in vocabulary.channels")
+
+    for key in ("duration_s", "beats"):
+        band = fm.get(key)
+        if (not isinstance(band, list) or len(band) != 2
+                or not all(isinstance(x, int) for x in band)):
+            err(where, f"{key} must be a two-integer band [min, max], got {band!r}")
+        elif band[0] > band[1]:
+            err(where, f"{key} band is inverted: {band!r}")
+
+    sections = split_sections(body)
+    for s in GIF_REQUIRED_SECTIONS:
+        if s not in sections:
+            err(where, f"missing required section `## {s}`")
+    trig = sections.get("TRIGGER", "")
+    for key in ("use_when:", "avoid_when:"):
+        if key not in trig:
+            err(where, f"TRIGGER is missing `{key}`")
+
+    return {"fm": fm, "sections": sections}
+
+
+def check_gif_ledger(gif_types):
+    """ingestion/gifs.jsonl — append-only asset index for the GIF library."""
+    recs = load_jsonl(GIF_LEDGER_PATH,
+                      ["ts", "sha256", "type", "file"], "ingestion/gifs.jsonl")
+    seen = {}
+    for n, rec in enumerate(recs, 1):
+        w = "ingestion/gifs.jsonl"
+        tid = rec.get("type")
+        if tid not in gif_types:
+            err(w, f"record {n}: unknown gif type `{tid}`")
+        fname = rec.get("file") or ""
+        m = GIF_FILE_RE.match(fname)
+        if not m:
+            err(w, f"record {n}: file `{fname}` does not match "
+                   "{type}_{product-slug}_{seq}.mp4|webm")
+        elif m.group(1) != tid:
+            err(w, f"record {n}: file `{fname}` is filed under type `{tid}`")
+        h = rec.get("sha256")
+        if h in seen:
+            warn(w, f"record {n}: sha256 already filed at record {seen[h]} — "
+                    "a correction is a new record, but a duplicate asset is not")
+        elif h:
+            seen[h] = n
+    return recs
+
+
 # ---------------------------------------------------------------- main
 
 def main(argv):
@@ -671,6 +785,37 @@ def main(argv):
                         "staging files must have status: reserved")
     cross_validate(staging, set(types) | set(staging), "registry/types/_staging")
 
+    # GIF types (ADR-023). A separate namespace from image types: its ids are
+    # arguments, not {step}-{job}-{device}, and it is never written into index.yaml
+    # because routing reads a gif type by id off the slot verdict, not by shortlist.
+    gif_types = {}
+    if os.path.isdir(GIF_TYPES_DIR):
+        for fn in sorted(os.listdir(GIF_TYPES_DIR)):
+            if not fn.endswith(".md") or fn == "README.md" or fn.startswith("_"):
+                continue
+            parsed = validate_gif_type_file(os.path.join(GIF_TYPES_DIR, fn), vocab)
+            if parsed and parsed["fm"].get("id"):
+                gid = parsed["fm"]["id"]
+                if gid in gif_types:
+                    err(f"registry/gif-types/{fn}", f"duplicate id `{gid}`")
+                gif_types[gid] = parsed
+    for declared in vocab.get("gif_types") or []:
+        if declared not in gif_types:
+            err("registry/vocabulary.yaml",
+                f"gif_types declares `{declared}` with no registry/gif-types/"
+                f"{declared}.md")
+    # The motion floor asks for one `working` and one `result` loop per page
+    # (query/runbook.md Step 5d). If the registry cannot offer both, the floor is
+    # unsatisfiable by construction and every page would report a shortfall.
+    active_groups = {t["fm"].get("group") for t in gif_types.values()
+                     if t["fm"].get("status") == "active"}
+    for needed in ("working", "result"):
+        if gif_types and needed not in active_groups:
+            err("registry/gif-types",
+                f"no active gif type in group `{needed}` — the Step 5d floor "
+                "cannot be met by any page")
+    gif_ledger = check_gif_ledger(set(gif_types))
+
     observations = load_jsonl(
         OBS_PATH, ["hash", "ts", "template_version", "verdict"],
         "ingestion/observations.jsonl")
@@ -712,6 +857,7 @@ def main(argv):
     for e in ERRORS:
         print(f"ERROR {e}")
     print(f"{len(types)} types, {len(staging)} staging, "
+          f"{len(gif_types)} gif types, {len(gif_ledger)} gifs, "
           f"{len(observations)} observations, {len(picks)} picks, "
           f"{len(render_tests)} render tests, "
           f"{len(ERRORS)} errors, {len(WARNINGS)} warnings")

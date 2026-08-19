@@ -143,6 +143,34 @@ used for `axes:`). No anchors, no multi-line scalars in frontmatter, no deeper n
 - Registry-wide `registry_version` lives in the generated index and in `vocabulary.yaml`.
 - Deprecated types stay in the registry with `replaced_by`; nothing is ever deleted.
 
+### 3.6 GIF types
+
+A second, smaller registry governs motion (ADR-023). It is a **separate namespace** from
+image types: ids are arguments rather than `{step}-{job}-{device}`, and it is never
+written into `index.yaml` because routing reaches a gif type by id off a slot's own `gif`
+verdict, not through a shortlist.
+
+- Files live in `registry/gif-types/<id>.md`; ids are the closed list `vocabulary.gif_types`.
+- Required sections, in order: `PURPOSE`, `TRIGGER`, `BOUNDARY`, `BRIEF`, `NEGATIVE`,
+  `CHANGELOG`. `BOUNDARY` is the anti-overlap section: it states how this type is told
+  apart from each adjacent one, and a type without it cannot be filed against.
+- Frontmatter: `id`, `kind` (a `jobs` value, or `null` where the type never reaches a
+  routed slot), `group` (`working | result | none`, which half of the motion floor it
+  serves), `rung`, `version`, `status`, `channels`, `duration_s`, `beats`.
+- **One type, one message.** A GIF with several beats is filed by its dominant argument.
+  The absorption ladder of §3.2 applies with one substitution: in motion, beat count is a
+  PARAMETER, so a single act and a multi-step sequence are one type.
+- Law shared by every type is stated once in `registry/gif-instruction.md` and never
+  restated in a type file, exactly as §5 treats global rules.
+- Assets live **outside the repo** and are indexed by `ingestion/gifs.jsonl`, append-only,
+  one record per file: `ts`, `sha256`, `type`, `file`, and the description line. Filenames
+  are `{gif-type}_{product-slug}_{seq}.mp4|webm`, the sequence issued by the ledger, and a
+  filed file is never renamed. Delivery is mp4/webm; `.gif` never ships.
+- The folder cards an editor browses are **generated** from the type files by
+  `scripts/gen-gif-cards.py`. Like `index.yaml`, a card is a view and is never hand-edited.
+- How many loops a page may carry, and how a shortfall is handled, is `query/runbook.md`
+  Step 5d. Whether a given slot earns one is Step 5c.
+
 ## 4. Vocabulary governance
 
 `registry/vocabulary.yaml` holds **closed lists**: steps, jobs, devices, axes, channels,
@@ -287,7 +315,11 @@ SPEC.md                  this contract
 CLAUDE.md                thin Claude Code adapter
 registry/                tier 2 + generated tier 3 (index.yaml)
 registry/argument-faults.md  cross-type catalogue of argument faults (ADR-014)
+registry/gif-types/      motion registry — one file per gif type (SPEC 3.6, ADR-023)
+registry/gif-instruction.md  law shared by every gif type; never restated in one
 ingestion/               classify template, runbooks, observations ledger
+ingestion/gifs.jsonl     append-only index of the external GIF library
+scripts/gen-gif-cards.py generates the library's folder cards from the gif type files
 mapping/                 content.json schema + role→type routing table
 query/                   query runbook + output schema
 adapters/                per-model rendering transforms
