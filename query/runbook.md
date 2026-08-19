@@ -10,6 +10,16 @@ Load into context: `registry/index.yaml` + `mapping/slot-rules.md` + the input
 type files (typically 2–4) plus `adapters/<model>.md`. The full library never enters
 context.
 
+**And load only the SECTIONS you fill from.** A seven-reason listicle forces eight
+distinct types under one-type-once, so "typically 2–4" understates the worst case and
+the cost lands here. Measured across the nine type files page 73 needed: `SKELETON`,
+`PARTS` and `SLOT CONSTRAINTS` are the fill surface and total about 51k characters;
+`WORKED EXAMPLES` and `CHANGELOG` add 71k and are read only when a type's diction is
+unfamiliar. Two are pure waste and were read anyway on that page — `NEGATIVE`, because
+no avoid line has been rendered into a prompt since ADR-014 and the canonical list is
+already in the type file for the `avoid` field, and `MARKS`, which is worth loading only
+for a type whose prompt will actually carry a mark.
+
 ## Step 1 — Validate input
 
 Check `content.json` against `mapping/content.schema.json`. Reject with a precise
