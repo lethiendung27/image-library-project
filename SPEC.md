@@ -230,8 +230,8 @@ for 6 months is flagged `review-for-merge` (in curation, not automated).
 Images live **outside the repo** (local folder / drive / bucket), identified by
 `sha256`. One asset folder holds three siblings that must not be conflated:
 `stills/` is the market corpus and the ONLY thing the classification manifest reads,
-`feedback/` is this library's own render output, and `gifs/` is the GIF library
-(§3.6). Classifying the library's own renders as market observations would corrupt
+`feedback/` is this library's own render output, and `gifs-library/` is the GIF
+library (§3.6). Classifying the library's own renders as market observations would corrupt
 §6.2's evidence rule — ADR-025. Observation records reference the hash; an optional `source_ref` field is
 machine-specific and non-authoritative. Never commit source images. Policy: the library
 learns **structure, not pixels** — no prompt may aim to reproduce a specific source
