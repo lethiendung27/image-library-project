@@ -65,12 +65,21 @@ slots:
   outcome-1:
     section_role: outcome
     expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: context}}
-    legal_alternatives_must_include:
-      - {type: 06-relief-scene, conditional: "ONLY if the page set picked 01-pain-scene at problem-1 (requires_pair, same person); result_visibility=on-body keeps it legal"}
+    only_legal_type: 06-relief-hero
     composition_note_required: >
-      06-relief-hero already serves hero-1: one-type-once rule applies to the FINAL
-      page set — if hero-1 picks relief-hero, outcome-1 must resolve to
-      06-relief-scene (with its pair) or flag the conflict for the human.
+      06-relief-hero already serves hero-1 and it is the ONLY type in the
+      landing-page outcome cell, so one-type-once cannot be satisfied here by
+      taking a different type. It is satisfied by rung 4 of the Step 4 ladder
+      instead — another execution of a type already on the page, differing on a
+      named dimension: hero-1 runs inset_mode vsinset and this slot runs context,
+      and varies_on has to say so.
+    superseded_2026_08_19: >
+      Until today this slot listed 06-relief-scene as a conditional alternative.
+      That line was written on 2026-08-10, one day before mapping/slot-rules.md
+      trimmed 06-relief-scene off the landing-page column on the type's own
+      use_when, which names only "an advertorial or final frame of an ads
+      creative". The fixture was never re-run because nothing read it; check_golden
+      now does, and it caught this on its first run.
 
 page_level:
   coverage_limit: >

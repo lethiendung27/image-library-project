@@ -23,10 +23,20 @@ slots:
 
   story-0-problem:
     section_role: problem-agitation
-    expected_option_A: {type: 02-symptom-rail, note: "four problems_solved -> breadth argument; vignette mode visible-symptom"}
+    expected_option_A: {type: 01-pain-scene, note: "rung 4 — another execution of the type already at hero-header, differing on subject class; varies_on must name the move"}
+    only_legal_type: 01-pain-scene
     forbidden:
       - reason: "never_with 01-pain-scene, which serves the header of this same page"
         config: {type: 01-pain-split}
+    superseded_2026_08_19: >
+      expected_option_A was 02-symptom-rail until today. That was written on
+      2026-08-11, in the same window as the slot-rules trim that took
+      02-symptom-rail off the advertorial column — 03-spec-split's avoid_when
+      calls the infographic-tile aesthetic a marketplace signal and the rail shares
+      that register. The advertorial problem-agitation cell holds 01-pain-scene
+      alone, and that type already serves hero-header, so this slot is a
+      one-type-once conflict resolved at rung 4 — the same resolution page 65 used
+      at reasons.items.1 with an object-only execution.
 
   story-1-recommendation:
     section_role: social-proof

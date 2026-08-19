@@ -612,6 +612,7 @@ def check_slot_rules(types):
         return
     with open(path, encoding="utf-8") as f:
         lines = f.read().splitlines()
+    shortlist = {}
     in_table = False
     for line in lines:
         if line.startswith("| Role "):
@@ -629,6 +630,7 @@ def check_slot_rules(types):
             for chan, cell in zip(CHANNEL_COLS, cols):
                 for tid in re.findall(r"`([^`]+)`", cell):
                     tid = re.sub(r"--\w+$", "", tid).strip()
+                    shortlist.setdefault((role, chan), []).append(tid)
                     if tid not in types:
                         err(rel, f"role `{role}` / {chan}: unknown type `{tid}`")
                         continue
@@ -638,6 +640,160 @@ def check_slot_rules(types):
                             f"role `{role}` / {chan}: `{tid}` is listed here but "
                             f"its frontmatter declares channels {declared} — the "
                             f"table and the type disagree")
+    return shortlist
+
+
+def parse_attribute_gates():
+    """The deterministic kill-rules, read from the table that documents them.
+
+    Encoding them a second time in code is how a rule and its documentation
+    drift; the effect cell already says `drop \\`<type>\\`` in plain text, so the
+    gates are derived from `mapping/slot-rules.md` rather than restated here.
+    """
+    gates = []
+    path = os.path.join(ROOT, "mapping", "slot-rules.md")
+    if not os.path.exists(path):
+        return gates
+    with open(path, encoding="utf-8") as f:
+        in_table = False
+        for line in f:
+            if line.startswith("| Attribute condition "):
+                in_table = True
+                continue
+            if not in_table:
+                continue
+            if not line.startswith("|"):
+                break
+            cells = [c.strip() for c in line.strip().strip("|").split("|")]
+            if len(cells) < 2:
+                continue
+            cond = re.match(r"^`([a-z_]+): ([a-z-]+)`$", cells[0])
+            dropped = re.findall(r"drop `([^`]+)`", cells[1])
+            if cond and dropped:
+                gates.append((cond.group(1), cond.group(2), dropped))
+    return gates
+
+
+# ------------------------------------------------------------------ golden
+
+def _parse_expected_routes(path, rel):
+    """A deliberately small reader for eval/golden/*/expected-routes.yaml.
+
+    That file is prose plus assertions and sits outside the SPEC 3.4 YAML subset
+    (flow maps nested two deep), so it is read for the four assertion keys the
+    routing derivation can actually be checked against and nothing else.
+    """
+    doc = {"registry_version": None, "slots": {}}
+    slot = sub = None
+    with open(path, encoding="utf-8") as f:
+        for raw in f:
+            line = raw.rstrip("\n")
+            if line.startswith("#") or not line.strip():
+                continue
+            m = re.match(r'^registry_version:\s*"?([\d.]+)"?', line)
+            if m:
+                doc["registry_version"] = m.group(1)
+                continue
+            m = re.match(r"^  ([\w-]+):\s*$", line)
+            if m:
+                slot = m.group(1)
+                doc["slots"][slot] = {"role": None, "expect": [], "only": None,
+                                      "alts": []}
+                sub = None
+                continue
+            if not slot:
+                continue
+            m = re.match(r"^    (\w+):(.*)$", line)
+            if m:
+                key, rest = m.group(1), m.group(2)
+                sub = key
+                if key == "section_role":
+                    doc["slots"][slot]["role"] = rest.strip()
+                elif key == "only_legal_type":
+                    doc["slots"][slot]["only"] = rest.strip()
+                elif key == "expected_option_A":
+                    t = re.search(r"type:\s*([\w-]+)", rest)
+                    if t:
+                        doc["slots"][slot]["expect"].append(t.group(1))
+                continue
+            if sub == "legal_alternatives_must_include":
+                t = re.search(r"type:\s*([\w-]+)", line)
+                if t:
+                    doc["slots"][slot]["alts"].append(
+                        (t.group(1), "conditional:" in line))
+    return doc
+
+
+def check_golden(types, vocab, shortlist, gates):
+    """Run the golden fixtures as the routing regression they are named for.
+
+    SPEC 9 calls these 'routing regression fixtures' and until now nothing read
+    them — `check_json_files` only proved the content.json parsed. What is
+    checked here is Stage 1 of SPEC 7: the role x channel derivation plus the
+    deterministic attribute gates. Stage 2 is judgement and is deliberately not
+    asserted; the fixtures carry its expectations as prose for a human.
+    """
+    golden_dir = os.path.join(ROOT, "eval", "golden")
+    if not os.path.isdir(golden_dir):
+        return 0
+    checked = 0
+    for name in sorted(os.listdir(golden_dir)):
+        fdir = os.path.join(golden_dir, name)
+        cpath = os.path.join(fdir, "content.json")
+        epath = os.path.join(fdir, "expected-routes.yaml")
+        if not (os.path.isfile(cpath) and os.path.isfile(epath)):
+            continue
+        rel = f"eval/golden/{name}"
+        with open(cpath, encoding="utf-8") as f:
+            content = json.load(f)
+        doc = _parse_expected_routes(epath, rel)
+        chan = content["page"]["channel"]
+        attrs = content["product"]["attributes"]
+
+        rv = vocab.get("registry_version")
+        if doc["registry_version"] and rv and doc["registry_version"] != rv:
+            err(rel, f"expects registry_version {doc['registry_version']}, "
+                     f"vocabulary says {rv} — re-run the fixture or update it")
+
+        killed = {t for attr, val, drop in gates
+                  if str(attrs.get(attr)).lower() == val for t in drop}
+
+        roles = {s["role"]: s["role"] for s in content["page"]["sections"]}
+        for slot, exp in doc["slots"].items():
+            role = exp["role"]
+            if not role:
+                continue
+            if role not in roles:
+                err(rel, f"slot `{slot}`: role `{role}` is asserted but no "
+                         "section in content.json declares it")
+            cell = shortlist.get((role, chan), [])
+            legal = [t for t in cell if t not in killed
+                     and types.get(t, {}).get("fm", {}).get("status") == "active"]
+            asserted = [(t, False) for t in exp["expect"]] + exp["alts"]
+            if exp["only"]:
+                asserted.append((exp["only"], False))
+                if sorted(set(legal)) != [exp["only"]]:
+                    err(rel, f"slot `{slot}` ({role}/{chan}): "
+                             f"only_legal_type says `{exp['only']}` but the "
+                             f"derivation yields {sorted(set(legal))}")
+            for tid, conditional in asserted:
+                if tid not in types:
+                    err(rel, f"slot `{slot}`: unknown type `{tid}`")
+                    continue
+                declared = types[tid]["fm"].get("channels") or []
+                if chan not in declared:
+                    err(rel, f"slot `{slot}`: `{tid}` is asserted legal but its "
+                             f"frontmatter declares channels {declared}, and "
+                             f"this fixture is {chan}")
+                elif tid not in cell:
+                    msg = (f"slot `{slot}` ({role}/{chan}): `{tid}` is asserted "
+                           f"legal but the slot-rules cell holds {cell}")
+                    (warn if conditional else err)(rel, msg)
+                elif tid in killed:
+                    err(rel, f"slot `{slot}`: `{tid}` is asserted legal but an "
+                             "attribute gate drops it on this product")
+            checked += 1
+    return checked
 
 
 # ------------------------------------------------------------------ gif types
@@ -848,7 +1004,9 @@ def main(argv):
 
     check_json_files()
     check_prompt_sets()
-    check_slot_rules(types)
+    shortlist = check_slot_rules(types)
+    gates = parse_attribute_gates()
+    golden_slots = check_golden(types, vocab, shortlist, gates)
 
     index_text = render_index(vocab, types, evidence, stats)
     if write_index:
@@ -869,6 +1027,7 @@ def main(argv):
         print(f"ERROR {e}")
     print(f"{len(types)} types, {len(staging)} staging, "
           f"{len(gif_types)} gif types, {len(gif_ledger)} gifs, "
+          f"{golden_slots} golden slots, "
           f"{len(observations)} observations, {len(picks)} picks, "
           f"{len(render_tests)} render tests, "
           f"{len(ERRORS)} errors, {len(WARNINGS)} warnings")
