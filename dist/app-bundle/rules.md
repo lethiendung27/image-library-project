@@ -233,28 +233,37 @@ who builds the loop reads, and it carries **four fields and nothing else**:
 {page}-{seq}-{gif-type}-{slot-slug}.mp4        the file the editor returns
 {duration} · {ratio} · {loop behaviour}        what shape and how long
                                                a rule across the two
-<sentence 1>  who or what is in frame, and where
-<sentence 2>  what they are doing, in order
+<the brief>   who or what is in the shot and where, what happens in
+              order, and what it leaves the viewer with
 ```
 
-**The brief is TWO SENTENCES and no more** (owner's call, ADR-029). The first names who or
-what is in the frame and where it is. The second names what they are doing, in the order it
-happens. Measured band **25 to 55 words**; past that it stops being read, which is the fault
-that retired the paragraph form after one page.
+**The brief is a shot description in plain words**, of the kind you would say out loud to
+the person holding the camera. Three movements and no labels: who or what is in the shot and
+where; what happens, in the order it happens; what that leaves the viewer with. Measured band
+**25 to 55 words** (ADR-029, ADR-031).
 
-**Nothing about light, grade or register** (owner's call, ADR-030). The still the loop
-accompanies carries all of it and the editor has that still in the same folder; restating it
-is what produced the page 73 fault, where a boilerplate register line claimed a room the
-frame did not have. Removing the field removes the fault.
+**Everyday words, not craft words.** "The gap behind his lower back" and "springs back to its
+full thickness" are briefs. "The front lip of the base" and "the slow-rebound contour returns
+to full depth" are a type file talking to itself. The editor is the reader.
 
-**A multi-beat loop needs no second format.** The beats run inside the second sentence, in
-order, separated by commas with a final `then`. Four is the ceiling any routed slot can
-reach — `use` declares [1, 4] and every other routable type declares less. `unboxing` goes to
-six and is `kind: null`, ad channel only, so it never writes a page brief. Written out at one,
-two, three and four beats, the two sentences stay inside the band.
+**Nothing about light, grade or register** (ADR-030). The still the loop accompanies carries
+all of it and sits in the same folder; restating it is what produced the page 73 fault, where
+a boilerplate register line claimed a room the frame did not have. Removing the field removes
+the fault.
 
-**What does NOT belong in either sentence is the routing argument** — why this slot earned a
-loop is `gif.reason`, and an editor never has to read it.
+**The upshot belongs; the routing argument does not.** "Sitting in that gap day after day is
+what starts the ache" is the point of the shot and an editor frames for it. "The declared
+reason this section exists is temporal, so the slot earns a loop" is why the pipeline chose
+the slot — that is `gif.reason`, and the editor never opens it.
+
+**Name the force.** An object does not move on its own: a pad creeps forward because a body
+is on it and the car brakes. Where the loop needs a person the still does not have, the
+verdict is a re-execution and `gif.reason` says so.
+
+**A multi-beat loop needs no second format.** The beats run in order inside the description,
+separated by commas with a final `then`. Four is the ceiling any routed slot can reach —
+`use` declares [1, 4] and every other routable type declares less. `unboxing` goes to six and
+is `kind: null`, ad channel only, so it never writes a page brief.
 
 **The filename carries the ARGUMENT, not the still type it replaced.** `06-relief-hero
 --recall` hosting a `pain` loop used to produce a file called relief-hero, which named the

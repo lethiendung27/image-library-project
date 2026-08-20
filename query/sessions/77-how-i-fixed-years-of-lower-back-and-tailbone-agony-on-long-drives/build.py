@@ -482,9 +482,9 @@ No studio light, no styling, no negative space, no borders and no text anywhere 
 
 # --- G12 briefs (ADR-028: four fields, and the plate is generated) ------------
 
-BRIEF_PROB0 = """The driver's seat from the open door at standing height, the old fixes still lying on it and no product anywhere in frame. Under braking the pad creeps forward to the front lip and the lumbar roll drops into the seat-corner crack, opening the gap behind the pelvis wider."""
+BRIEF_PROB0 = """A shot of a driver sitting on an old flat cushion on the car seat, or on the bare seat itself. When the car brakes the cushion slides forward under him and a gap opens behind his lower back, and sitting in that gap day after day is what starts the ache."""
 
-BRIEF_FEAT2 = """One continuous frame and no panels, the reference cushion filling the same driver's seat seen through the same open door. The weight lifts away out of shot, the slow-rebound contour rises back to full depth at the seat corner, then presses down again."""
+BRIEF_FEAT2 = """A shot of someone sitting on the cushion on the driver's seat, one unbroken frame that never cuts. When they get out the cushion slowly springs back to its full thickness, and when they sit down again it presses down and hugs their lower back and pelvis."""
 
 
 # ---------------------------------------------------------------- slot table
@@ -612,14 +612,17 @@ SLOTS.append({
     ],
     "gif": {
         "eligible": True, "form": "whole-frame", "kind": "cause", "type_id": "cause",
-        "rung": "natural",
+        "rung": "re-execution",
         "reason": "The declared reason this section exists is that the separate pieces shift, "
                   "separate and slide out of alignment every time he brakes. That is a state "
-                  "changing, and a still can only assert it. The gif library's `cause` type "
-                  "names this exact case in its own PURPOSE line — a pad creeping forward under "
-                  "a body — and the product is correctly absent from the frame. No legislated "
-                  "layer exists in this type's skeleton, so the form is whole-frame and the "
-                  "plate is the delivered image.",
+                  "changing and a still can only assert it, so the slot earns motion. The "
+                  "STAGING has to change to build it, which is what makes this rung 2 rather "
+                  "than rung 1: the routed still is 01-pain-scene in its object-only "
+                  "execution, and a pad does not creep forward across an empty seat. A body "
+                  "and a braking car are the force, and the gif library's `cause` type names "
+                  "exactly that in its own PURPOSE line — a pad creeping forward under a "
+                  "body. The product stays absent either way. No legislated layer exists in "
+                  "this type's skeleton, so the form is whole-frame.",
         "output": "77-02-cause-problem0.mp4",
         "ratio": "16:9",
         "duration_s": 3, "loop": "seamless loop",
@@ -992,10 +995,14 @@ MOTION = {
         "the pair as met on only 2 of 5 earlier pages, so this is the exception rather than "
         "the rule, and it is met because the page argues the culprit and the recovery in two "
         "different sections.",
-        "The `result` loop is a rung-2 re-execution, not a rung-1 verdict — exactly the case "
-        "ADR-024 said is closer to a default than to a backup. Its still is a three-panel "
-        "locked comparison that correctly earns no motion; one continuous frame of the foam "
-        "recovering earns it on the same claim.",
+        "BOTH loops are rung-2 re-executions and rung 1 delivers nothing on this page, which "
+        "is worth stating because ADR-024 already found rung 2 closer to a default than to a "
+        "backup and this page is the strongest case yet. Both slots earn motion on the "
+        "argument; neither can be BUILT from the still as routed. features.items.2's still is "
+        "a three-panel locked comparison, and panels are inspected rather than watched. "
+        "problems.items.0's still is 01-pain-scene object-only, and a pad does not creep "
+        "forward across an empty seat — the loop needs the body and the braking car that make "
+        "it move (ADR-031). In both cases the job is unchanged and only the staging moves.",
         "SPACING COST, stated rather than hidden: the `features` list counts as ONE section "
         "(ADR-024), so features.items.1 loses a loop it would otherwise have earned at rung 1 "
         "on its own argument — a pad that creeps forward against one that does not. Its "
@@ -1231,10 +1238,6 @@ def checks():
         if not 25 <= words <= 55:
             errs.append(f"{s['slot_id']}: the brief is {words} words, outside the 25-55 "
                         "band (ADR-029)")
-        sentences = [x for x in b.rstrip().rstrip(".").split(". ") if x.strip()]
-        if len(sentences) != 2:
-            errs.append(f"{s['slot_id']}: the brief is {len(sentences)} sentence(s); the "
-                        "format is two — the frame, then the motion (ADR-029)")
         # ADR-030: the still carries light, grade and register; the brief never restates
         # them, and the page 73 fault was exactly such a restatement.
         REGISTER = ("light", "lighting", "daylight", "lit", "backlit", "grade", "graded",

@@ -3,7 +3,7 @@ id: unboxing
 kind: null
 group: none
 rung: 1
-version: "1.3"
+version: "1.4"
 status: active
 channels: [paid-social]
 duration_s: [3, 6]
@@ -37,19 +37,19 @@ It carries `group: none` and `kind: null`: it counts toward no page floor and ne
 appears as a `gif.kind` in a routed prompt set.
 
 ## BRIEF
-**Two sentences.** The first names the surface, the box and the camera position. The second
-names the items in the order they leave the box, ending on the finished layout with
-everything in view at once.
+A shot description in plain words. Name the surface, the box and where the camera sits, then
+the items in the order they come out, then the finished layout with everything in view.
 
 **This is the only type that can exceed four beats**, at 3-6. It is also `kind: null` and
 `paid-social` only, so it never reaches a routed page slot and never writes a page brief —
-which is why the two-sentence band was set from the routable types and not from this one.
+which is why the word band was set from the routable types and not from this one.
 ## NEGATIVE
 No text, digits or price flashes (G6). No item entering from off-frame that was never in
 the box. No cut that could hide an item being added.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.4 (2026-08-20): the brief becomes a plain-words shot description, ADR-031.
 - 1.3 (2026-08-20): the light leaves the brief, ADR-030, and the beat ceiling is
   recorded here: this is the only type above four, and it never reaches a routed page
   slot.

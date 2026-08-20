@@ -3,7 +3,7 @@ id: mechanism
 kind: mechanism
 group: working
 rung: 1
-version: "1.3"
+version: "1.4"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -36,14 +36,13 @@ leaving the mattress is `proof`. A loop that shows both is `proof`, because the 
 judges the outcome, not the reason.
 
 ## BRIEF
-**Two sentences.** The first names the magnification or the cutaway and which part is in
-focus. The second names the internal movement and its direction, ending on what that
-movement produces AT THE PART — the output, not the room.
+A shot description in plain words. Name what is cut open or magnified and what else is in the
+frame, then what the working part does, then what that produces at the part — the output, not
+the room.
 
 **Name only what the still actually contains.** This is the type that found the fault: a
 page 73 brief closed on "same room and light as still" over a see-through render standing on
-a plain slate ground, and there was no room to match. A technical cutaway often has no room
-and no person, and the first sentence says so rather than borrowing one (G12, ADR-028).
+a plain slate ground, and there was no room to match (G12, ADR-028).
 ## NEGATIVE
 No text, digits, arrows or flow lines (G6) — a labelled diagram is a graphic, and this
 library does not draw graphics into a loop. No person as subject. No exploded view
@@ -51,6 +50,7 @@ rotating: that reveals parts rather than moving one, and revealing does not earn
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.4 (2026-08-20): the brief becomes a plain-words shot description, ADR-031.
 - 1.3 (2026-08-20): the light leaves the brief, ADR-030, and the no-room clause becomes
   a rule about naming only what the still contains — which is what it always was.
 - 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029, and the no-room clause

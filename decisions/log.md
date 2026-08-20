@@ -1271,3 +1271,60 @@ Step 5c; `query/output.schema.json` `gif.brief` description; all six `registry/g
 BRIEF sections, each to 1.3, with the multi-beat rule landing in `use` and the beat ceiling
 recorded in `unboxing`; page 77's two briefs and their plates; the build gains a register-word
 check. `registry_version` unchanged.
+
+## ADR-031 · 2026-08-20 · The brief is a shot description in plain words, and an object does not move on its own
+
+The owner asked for something more practical and, instead of a rule, wrote two briefs. That
+was the clearer instruction, and three things separate them from what ADR-030 had shipped.
+
+**There is a person in the shot.** Both examples open on someone — a driver using an old
+cushion, a person sitting on the new one. The briefs they replaced opened on "the driver's
+seat from the open door" and "one continuous frame and no panels": an object study and a
+layout note.
+
+**Everyday words.** "Khe hở lưng" and "đàn hồi lại độ dày ban đầu" — the gap behind the back,
+springs back to its original thickness. What shipped said "the front lip of the base", "the
+seat-corner crack", "the slow-rebound contour rises back to full depth". Those are this
+repo's own vocabulary, correct and unreadable, a type file talking to itself. The editor is
+the reader and the test is whether you could say it out loud to someone about to shoot it.
+
+**The upshot is back**, and it is not the thing ADR-029 banned. "Lâu dài sẽ gây đau lưng" —
+sitting in that gap day after day is what starts the ache — is the point of the shot, and an
+editor frames for it. What ADR-029 threw out was the ROUTING argument: "the declared reason
+this section exists is temporal, so the slot earns a loop", or page 77's own draft closing on
+"this indicts the objects". That is why the pipeline picked the slot, it lives in
+`gif.reason`, and no editor opens it. The line is thin and it is now drawn in G12, in Step 5c
+and in the schema rather than left to judgement.
+
+**Putting the person in surfaced a defect in a verdict I wrote two days ago.** Page 77's
+`cause` loop was filed `rung: natural` — the still is `01-pain-scene` in its object-only
+execution, so the loop was briefed as objects on an empty seat. **A pad does not creep forward
+across an empty seat.** It creeps because a body is on it and the car brakes. The rung-1
+staging was not merely thin, it was not buildable, and nothing in the pipeline noticed because
+every check asked whether the brief matched the still and none asked whether the loop could
+exist. The gif library's own `cause` type says it in its PURPOSE line — "a pad creeping
+forward under a body" — and the brief had dropped the body.
+
+So the verdict moves to `rung: re-execution` and `gif.reason` names the move. **Name the
+force** is now a rule in G12: an object does not move on its own, and where the loop needs a
+person the routed still does not have, that is rung 2 and it is declared.
+
+**Both of page 77's loops are now rung-2 re-executions and rung 1 delivers nothing on that
+page.** ADR-024 found rung 2 "closer to a default than a backup" from the coverage side; this
+is the same finding from the buildability side, and it is the strongest case so far. Both
+slots earn motion on the argument. Neither can be built from the still as routed —
+`features.items.2`'s still is a three-panel locked comparison and panels are inspected rather
+than watched; `problems.items.0`'s still has nobody in it.
+
+**ADR-029's two-sentence count is dropped.** The owner's examples are single flowing
+descriptions and the count was never the thing that made them readable. The 25-55 word band
+stays, the ban on light and register (ADR-030) stays with its eighteen-word check, and the
+multi-beat rule (ADR-030) is unchanged: beats in order inside the description, at most four,
+which is the ceiling any routed slot can reach.
+
+Consequences: `registry/rules.md` G12's field block and five paragraphs; `query/runbook.md`
+Step 5c; `query/output.schema.json` `gif.brief` description; all six `registry/gif-types/`
+BRIEF sections to 1.4, with **Name the force** landing in `cause`; page 77's two briefs, its
+`cause` rung and reason, its `proof` reason and its motion notes; the build drops the
+sentence-count check. `registry_version` unchanged. Earlier sessions still stand unmigrated,
+and page 73's defective brief is still a separate item.

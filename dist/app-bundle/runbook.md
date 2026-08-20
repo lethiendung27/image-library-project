@@ -289,30 +289,32 @@ routed still renders at a different ratio and the layout crops it — `03-mechan
 at 1:1 into a 16:9 slot, for instance — the loop still owes 16:9, because nothing crops it
 on the way in.
 
-**`gif.brief` is TWO SENTENCES** (owner's call, ADR-029). Sentence one names who or what is
-in frame and where it is. Sentence two names what they are doing, in the order it happens.
-Band **25 to 55 words**.
+**`gif.brief` is a shot description in plain words**, of the kind you would say out loud to
+the person holding the camera. Three movements, no labels: who or what is in the shot and
+where, what happens in the order it happens, and what it leaves the viewer with. Band **25 to
+55 words** (ADR-029, ADR-031).
 
-**No light, no grade, no register** (owner's call, ADR-030). The still is in the same folder
-and carries all of it. Restating it is what produced the page 73 fault — a boilerplate
-register line claiming a room the frame did not have — so the field is gone and the fault
-with it.
+**Everyday words, not craft words.** "The gap behind his lower back" is a brief; "the front
+lip of the seat base" is a type file talking to itself. Write it the way you would say it to
+someone about to shoot it.
 
-**A multi-beat loop stays in the same two sentences.** The beats run inside sentence two, in
-order, commas with a final `then`. Four is the ceiling a routed slot can reach: `use`
-declares [1, 4] and every other routable type declares less, while `unboxing` at [3, 6] is
-`kind: null` and never reaches a page. Written out at one, two, three and four beats the
-form holds inside the band, so there is no long variant to choose between.
+**No light, no grade, no register** (ADR-030). The still is in the same folder and carries all
+of it. Restating it is what produced the page 73 fault — a boilerplate register line claiming
+a room the frame did not have.
 
-It replaced a `SHOT`/`ACTION`/`RESULT`/`MATCH` quartet whose real defect was that it had no
-field for the setting at all, so the setting was smuggled into `MATCH`. The single prose
-paragraph that replaced the quartet fixed that and read as a wall; two sentences carry what
-an editor acts on and stop.
+**The upshot belongs; the routing argument does not.** "Sitting in that gap day after day is
+what starts the ache" is the point of the shot and an editor frames for it. Why the SLOT
+earned a loop is `gif.reason` and the editor never opens it — the paragraph form drifted there
+first, when page 77's draft closed on "this indicts the objects".
 
-**Keep the routing argument OUT of it.** Why this slot earned a loop is `gif.reason` and the
-editor never opens it. The paragraph form drifted here first — page 77's own first draft
-closed on "this indicts the objects", which is a sentence for the router and not for anyone
-holding a camera.
+**Name the force.** An object does not move on its own. A pad creeps forward because a body is
+on it and the car brakes; a weave sheds grains because someone walks on it. Where the loop
+needs a person the routed still does not have, that is a rung-2 re-execution and `gif.reason`
+names the move — not a licence to promise what the frame cannot show.
+
+**A multi-beat loop stays in the same description.** The beats run in order, commas with a
+final `then`, at most four: `use` declares [1, 4] and every other routable type declares less,
+while `unboxing` at [3, 6] is `kind: null` and never reaches a page.
 
 **Every claim in the brief must be satisfiable by the still the slot routed (G12).** A brief
 promising something the frame does not contain sends the editor to build the wrong loop, and

@@ -3,7 +3,7 @@ id: cause
 kind: cause
 group: working
 rung: 1
-version: "1.3"
+version: "1.4"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 3]
@@ -39,10 +39,14 @@ never as a second type. Precedent: page 65's rung-2 route ran `01-pain-scene` ob
 and said so.
 
 ## BRIEF
-**Two sentences.** The first names what is in frame and where it is, and says plainly that
-the product is absent and not implied — a culprit only convinces in the place it actually
-does its work. The second names the failure as it unfolds, in the order it unfolds, ending
-on the state it leaves: the mess, the slip, the tangle.
+A shot description in plain words. Name who is using the culprit and where, then what the
+culprit does at the moment it does it, then what that leaves them with. The product is
+absent and not implied.
+
+**Name the force.** A loop of an object moving on its own is not buildable — a pad creeps
+forward because a body is on it and the car brakes, and a weave sheds grains because someone
+walks on it. This type's PURPOSE says "under a body" for that reason, so the body belongs in
+the shot even where the still it accompanies is object-only.
 ## NEGATIVE
 No text or digits (G6). No product, no branded object, no packaging edge. No comic
 exaggeration: a cause loop that overplays reads as an advertisement for the problem and
@@ -51,6 +55,9 @@ argues the opposite of the point.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.4 (2026-08-20): the brief becomes a plain-words shot description with the force
+  named, ADR-031. Owner's own example put the driver in the shot, and a pad cannot creep
+  forward on an empty seat.
 - 1.3 (2026-08-20): the light leaves the brief, ADR-030. Owner's call: sentence one
   names who or what is in frame and where, and nothing about grade or register.
 - 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029 — what is in frame, where
