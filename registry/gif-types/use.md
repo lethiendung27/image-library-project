@@ -3,7 +3,7 @@ id: use
 kind: use
 group: working
 rung: 1
-version: "1.2"
+version: "1.3"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -41,10 +41,14 @@ sequence make the same argument at different lengths; splitting them would put t
 folders behind one message (ADR-023).
 
 ## BRIEF
-**Two sentences.** The first names the hand and the whole product, the distance between them,
-where it is and the light — this type sells the ease of an act, and an act is only ordinary
-somewhere. The second names the act in the order it happens, at most four beats, ending on
-the state it leaves the PRODUCT in rather than its effect on the world.
+**Two sentences.** The first names the hand and the whole product and the distance between
+them. The second names the act in the order it happens, at most four beats, ending on the
+state it leaves the PRODUCT in rather than its effect on the world.
+
+**The beats run inside the second sentence, in order, separated by commas with a final
+`then`.** Measured at every beat count a routed slot can carry — one, two, three and four —
+the two sentences stay inside the 25-55 word band, so a multi-beat loop needs no second
+format (ADR-030).
 ## NEGATIVE
 No text, digits, arrows, cursors or callouts anywhere in frame (G6). No cut to another
 place or time — a cut turns a demonstration into an edit. No speed ramp and no reverse:
@@ -53,6 +57,9 @@ outside the frame at the loop seam.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.3 (2026-08-20): the light leaves the brief, ADR-030, and the multi-beat rule lands
+  here because this is the type that carries them — up to four, in order, inside the
+  second sentence.
 - 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029.
 - 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting,
   ADR-028. An act is only ordinary somewhere, and ordinariness is what this type sells.

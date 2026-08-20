@@ -289,16 +289,25 @@ routed still renders at a different ratio and the layout crops it — `03-mechan
 at 1:1 into a 16:9 slot, for instance — the loop still owes 16:9, because nothing crops it
 on the way in.
 
-**`gif.brief` is TWO SENTENCES** (owner's call, ADR-029). Sentence one is the frame: what
-is in it, where that is, and the light and register it owes the still. Sentence two is the
-motion: what moves, in the order it moves. Band **25 to 55 words**.
+**`gif.brief` is TWO SENTENCES** (owner's call, ADR-029). Sentence one names who or what is
+in frame and where it is. Sentence two names what they are doing, in the order it happens.
+Band **25 to 55 words**.
+
+**No light, no grade, no register** (owner's call, ADR-030). The still is in the same folder
+and carries all of it. Restating it is what produced the page 73 fault — a boilerplate
+register line claiming a room the frame did not have — so the field is gone and the fault
+with it.
+
+**A multi-beat loop stays in the same two sentences.** The beats run inside sentence two, in
+order, commas with a final `then`. Four is the ceiling a routed slot can reach: `use`
+declares [1, 4] and every other routable type declares less, while `unboxing` at [3, 6] is
+`kind: null` and never reaches a page. Written out at one, two, three and four beats the
+form holds inside the band, so there is no long variant to choose between.
 
 It replaced a `SHOT`/`ACTION`/`RESULT`/`MATCH` quartet whose real defect was that it had no
-field for the setting at all, so the setting was smuggled into `MATCH`, and a boilerplate
-`MATCH` line is exactly what nobody re-reads against the frame — page 73 shipped "same room
-and light as still" over a see-through render standing on a plain slate ground. The single
-prose paragraph that replaced the quartet fixed that and read as a wall; two sentences carry
-the same four things and stop.
+field for the setting at all, so the setting was smuggled into `MATCH`. The single prose
+paragraph that replaced the quartet fixed that and read as a wall; two sentences carry what
+an editor acts on and stop.
 
 **Keep the routing argument OUT of it.** Why this slot earned a loop is `gif.reason` and the
 editor never opens it. The paragraph form drifted here first — page 77's own first draft

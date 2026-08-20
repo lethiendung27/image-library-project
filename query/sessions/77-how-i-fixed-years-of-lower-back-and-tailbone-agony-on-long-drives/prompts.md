@@ -164,7 +164,7 @@ No product, no panels and no insets. No mark of any kind.
 77-02-cause-problem0.mp4
 3s · 16:9 · seamless loop · mp4/webm, muted, under the size ceiling
 
-The driver's seat from the open door at standing height, the old fixes still on it and no product in frame, in the still's flat overcast daylight. Under braking the pad creeps to the front lip and the lumbar roll drops into the seat-corner crack, opening the gap behind the pelvis wider.
+The driver's seat from the open door at standing height, the old fixes still lying on it and no product anywhere in frame. Under braking the pad creeps forward to the front lip and the lumbar roll drops into the seat-corner crack, opening the gap behind the pelvis wider.
 ```
 
 ## `problems.items.1.image` — cause
@@ -482,7 +482,7 @@ No badges, no arrows, no text of any kind.
 77-06-proof-feature2.mp4
 3s · 16:9 · seamless loop · mp4/webm, muted, under the size ceiling
 
-One continuous frame and no panels: the reference cushion filling the same driver's seat through the same open door, in the still's overcast daylight and neutral grade. The weight lifts away out of shot, the slow-rebound contour rises back to full depth at the seat corner, then presses down again.
+One continuous frame and no panels, the reference cushion filling the same driver's seat seen through the same open door. The weight lifts away out of shot, the slow-rebound contour rises back to full depth at the seat corner, then presses down again.
 ```
 
 ## `features.items.3.image` — outcome

@@ -1223,3 +1223,51 @@ Step 5c; `query/output.schema.json` `gif.brief` description; all six `registry/g
 BRIEF sections rewritten to say what each of the two sentences must name, and each type to
 1.2; page 77's two briefs rewritten and its plates regenerated; the build gains a sentence
 count and a word band. `registry_version` unchanged.
+
+## ADR-030 · 2026-08-20 · The brief names who, what and what they are doing — and nothing about light
+
+Owner instruction, on reading the two-sentence briefs ADR-029 shipped: drop the light, the
+brief describes who or what is in frame and what they are doing. Also: show it working on a
+loop with several scenes.
+
+**This supersedes a judgement call I made inside the owner's own choice.** ADR-029 offered
+two sentences with its cost stated — no room for the register — and then paid four words to
+keep the light in sentence one anyway, on the grounds that a loop ignoring the still's grade
+reads as pasted in. The owner has reversed that, and the reversal is better than the reason
+I gave for it: the still the loop accompanies sits in the same render folder and carries the
+light, the grade and the register in full. Restating them in the brief buys nothing and it
+is exactly what produced the page 73 fault — a boilerplate "same room and light as still"
+line over a see-through render standing on a plain slate ground. **Removing the field removes
+that fault class by construction**, which is the same move `_staging/` makes as a directory
+rather than a status field.
+
+So the shape is now: **sentence one names who or what is in frame and where it is; sentence
+two names what they are doing, in the order it happens.** Band unchanged at 25 to 55 words.
+Enforced rather than trusted — the build fails a brief containing any of eighteen register
+words, and the check was mutation-tested by putting the old daylight clause and a grade
+clause back.
+
+**A multi-scene loop needs no second format, and that is measured rather than assumed.** The
+question is real: `use` declares beats [1, 4] and a three-step sequence was already routed on
+page 73. Written out at one, two, three and four beats, the beats run inside sentence two in
+order, separated by commas with a final `then`, and the two sentences came to 43, 37, 42 and
+40 words in English — every one inside the band, with the four-beat case the shortest but one.
+
+**Four is the ceiling any routed slot can reach.** `use` is [1, 4]; `proof` is [2, 3]; `cause`,
+`mechanism` and `relief` are all [1, 2]. `unboxing` alone goes to [3, 6] and it is
+`kind: null` and `paid-social` only, so it never reaches a routed page slot and never writes
+a page brief at all. The band was therefore set from the routable types, and that is now
+recorded in `unboxing`'s own BRIEF section so nobody re-derives it from the wider number.
+
+**Effect on page 77:** 52 words to 49 and 50 to 43. Small, because ADR-029 had already done
+the large cut; the value here is not length but that a whole class of unsatisfiable claim can
+no longer be written.
+
+Earlier sessions still stand unmigrated. Page 73's defective brief is still a separate item —
+and worth noting that under this rule the sentence that made it defective is now unwritable.
+
+Consequences: `registry/rules.md` G12's field block and two paragraphs; `query/runbook.md`
+Step 5c; `query/output.schema.json` `gif.brief` description; all six `registry/gif-types/`
+BRIEF sections, each to 1.3, with the multi-beat rule landing in `use` and the beat ceiling
+recorded in `unboxing`; page 77's two briefs and their plates; the build gains a register-word
+check. `registry_version` unchanged.

@@ -3,7 +3,7 @@ id: mechanism
 kind: mechanism
 group: working
 rung: 1
-version: "1.2"
+version: "1.3"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -36,15 +36,14 @@ leaving the mattress is `proof`. A loop that shows both is `proof`, because the 
 judges the outcome, not the reason.
 
 ## BRIEF
-**Two sentences.** The first names the magnification or the cutaway, which part is in focus,
-and the register it keeps. The second names the internal movement and its direction, ending
-on what that movement produces AT THE PART — the output, not the room.
+**Two sentences.** The first names the magnification or the cutaway and which part is in
+focus. The second names the internal movement and its direction, ending on what that
+movement produces AT THE PART — the output, not the room.
 
-**Where a cutaway or a technical render has no room, say so rather than borrowing one.**
-This is the type that found the fault: a page 73 brief closed on "same room and light as
-still" over a see-through render standing on a plain slate ground, and there was no room to
-match. The first sentence is where that goes wrong or goes right, so check it against the
-still (G12, ADR-028).
+**Name only what the still actually contains.** This is the type that found the fault: a
+page 73 brief closed on "same room and light as still" over a see-through render standing on
+a plain slate ground, and there was no room to match. A technical cutaway often has no room
+and no person, and the first sentence says so rather than borrowing one (G12, ADR-028).
 ## NEGATIVE
 No text, digits, arrows or flow lines (G6) — a labelled diagram is a graphic, and this
 library does not draw graphics into a loop. No person as subject. No exploded view
@@ -52,6 +51,8 @@ rotating: that reveals parts rather than moving one, and revealing does not earn
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.3 (2026-08-20): the light leaves the brief, ADR-030, and the no-room clause becomes
+  a rule about naming only what the still contains — which is what it always was.
 - 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029, and the no-room clause
   moves onto the first of them, which is where the page 73 fault was written.
 - 1.1 (2026-08-19): the brief becomes one prose paragraph, ADR-028, and this type

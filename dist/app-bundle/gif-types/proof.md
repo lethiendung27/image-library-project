@@ -3,7 +3,7 @@ id: proof
 kind: proof
 group: result
 rung: 2
-version: "1.2"
+version: "1.3"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -42,10 +42,9 @@ The motion execution is a different staging of the same argument: one continuous
 one variable changing. Say so in `varies_on`.
 
 ## BRIEF
-**Two sentences.** The first names the frame, states that it never cuts, names where it is,
-and names the light — which must not change across the change, because a light that shifts
-is a second variable and the proof is gone. The second names the single variable and the
-direction it moves, ending on a state the viewer can check against the still.
+**Two sentences.** The first names the frame, states that it never cuts, and names what is
+in it. The second names the single variable and the direction it moves, ending on a state
+the viewer can check against the still.
 ## NEGATIVE
 No text, digits, arrows or progress bars (G6) — a number burned into the frame is a claim
 the picture no longer has to earn. No cut between the two states: a cut is an editorial
@@ -55,6 +54,9 @@ once. No lighting, angle or distance change between states.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.3 (2026-08-20): the light leaves the brief, ADR-030. An unchanged light is still the
+  type's law; it is enforced by the still the loop accompanies, not restated in the
+  brief.
 - 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029. The light joins the first
   sentence because an unchanged light is part of what makes the proof a proof.
 - 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting,

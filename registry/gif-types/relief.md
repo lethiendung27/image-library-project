@@ -3,7 +3,7 @@ id: relief
 kind: relief
 group: result
 rung: 1
-version: "1.2"
+version: "1.3"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -37,8 +37,8 @@ been tested against a render; it is written to keep this type from becoming the 
 every unearned loop falls into, and it is the first thing to revisit once orders come back.
 
 ## BRIEF
-**Two sentences.** The first names the scene, the person, the product's place in it and the
-light: this type's whole claim is that the motion happens at the exact place the problem used
+**Two sentences.** The first names who is in frame, where they are and where the product
+sits: this type's whole claim is that the motion happens at the exact place the problem used
 to interrupt it, so the place is the argument and not the backdrop. The second names the
 continuing action and, in the same clause, what used to stop it.
 ## NEGATIVE
@@ -49,6 +49,8 @@ evidence over expression.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.3 (2026-08-20): the light leaves the brief, ADR-030. The place stays, because for
+  this type the place IS the argument.
 - 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029. The place stays in the
   first sentence because for this type the place IS the argument.
 - 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting,

@@ -234,7 +234,7 @@
               },
               "brief": {
                 "type": "string",
-                "description": "What the loop IS, for the editor who builds it, in TWO SENTENCES and 25-55 words (ADR-029). Sentence one is the frame: what is in it, where that is, and the light and register it owes the still. Sentence two is the motion: what moves, in the order it moves. Every claim must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop. The routing argument stays out: why the slot earned a loop is `reason`, which the editor never opens."
+                "description": "What the loop IS, for the editor who builds it, in TWO SENTENCES and 25-55 words. Sentence one names who or what is in frame and where it is; sentence two names what they are doing, in the order it happens, with the beats inside that one sentence up to the ceiling of four any routed slot can reach (ADR-029, ADR-030). NOTHING about light, grade or register: the still the loop accompanies carries all of it, and restating it is what produced the page 73 fault. Every claim must be satisfiable by that still (G12). The routing argument stays out — why the slot earned a loop is `reason`, which the editor never opens."
               },
               "delivery": {
                 "type": "string"
@@ -407,7 +407,7 @@
               },
               "brief": {
                 "type": "string",
-                "description": "What the loop IS, for the editor who builds it, in TWO SENTENCES and 25-55 words (ADR-029). Sentence one is the frame: what is in it, where that is, and the light and register it owes the still. Sentence two is the motion: what moves, in the order it moves. Every claim must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop. The routing argument stays out: why the slot earned a loop is `reason`, which the editor never opens."
+                "description": "What the loop IS, for the editor who builds it, in TWO SENTENCES and 25-55 words. Sentence one names who or what is in frame and where it is; sentence two names what they are doing, in the order it happens, with the beats inside that one sentence up to the ceiling of four any routed slot can reach (ADR-029, ADR-030). NOTHING about light, grade or register: the still the loop accompanies carries all of it, and restating it is what produced the page 73 fault. Every claim must be satisfiable by that still (G12). The routing argument stays out — why the slot earned a loop is `reason`, which the editor never opens."
               },
               "delivery": {
                 "type": "string"

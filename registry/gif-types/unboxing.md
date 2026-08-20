@@ -3,7 +3,7 @@ id: unboxing
 kind: null
 group: none
 rung: 1
-version: "1.2"
+version: "1.3"
 status: active
 channels: [paid-social]
 duration_s: [3, 6]
@@ -37,16 +37,22 @@ It carries `group: none` and `kind: null`: it counts toward no page floor and ne
 appears as a `gif.kind` in a routed prompt set.
 
 ## BRIEF
-**Two sentences.** The first names the surface, the box, the camera position and the register
-— a kit reveal shot as a customer's phone clip and one shot as a studio flat-lay are two
-different arguments, and a set must not mix them. The second names the items in the order
-they leave the box, ending on the finished layout with everything in view at once.
+**Two sentences.** The first names the surface, the box and the camera position. The second
+names the items in the order they leave the box, ending on the finished layout with
+everything in view at once.
+
+**This is the only type that can exceed four beats**, at 3-6. It is also `kind: null` and
+`paid-social` only, so it never reaches a routed page slot and never writes a page brief —
+which is why the two-sentence band was set from the routable types and not from this one.
 ## NEGATIVE
 No text, digits or price flashes (G6). No item entering from off-frame that was never in
 the box. No cut that could hide an item being added.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.3 (2026-08-20): the light leaves the brief, ADR-030, and the beat ceiling is
+  recorded here: this is the only type above four, and it never reaches a routed page
+  slot.
 - 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029.
 - 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting,
   ADR-028. A kit reveal on a worktop and one on a studio sweep are two different
