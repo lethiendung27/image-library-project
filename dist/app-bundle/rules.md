@@ -233,10 +233,16 @@ who builds the loop reads, and it carries **four fields and nothing else**:
 {page}-{seq}-{gif-type}-{slot-slug}.mp4        the file the editor returns
 {duration} · {ratio} · {loop behaviour}        what shape and how long
                                                a rule across the two
-<the brief>                                    what is in frame, where it is,
-                                               what moves and in what order,
-                                               and the register it must match
+<sentence 1>  what is in frame, where it is, and the light it matches
+<sentence 2>  what moves, in order
 ```
+
+**The brief is TWO SENTENCES and no more** (owner's call, ADR-029). The first sentence is
+the frame: what is in it, where that is, and the light and register it owes the still. The
+second is the motion: what moves, in the order it moves. Measured band **25 to 55 words**;
+past that it stops being read, which is the fault that retired the paragraph form after one
+page. What does NOT belong in either sentence is the routing argument — why this slot earned
+a loop is `gif.reason`, and an editor never has to read it.
 
 **The filename carries the ARGUMENT, not the still type it replaced.** `06-relief-hero
 --recall` hosting a `pain` loop used to produce a file called relief-hero, which named the

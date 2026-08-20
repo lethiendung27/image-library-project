@@ -3,7 +3,7 @@ id: relief
 kind: relief
 group: result
 rung: 1
-version: "1.1"
+version: "1.2"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 4]
@@ -37,11 +37,10 @@ been tested against a render; it is written to keep this type from becoming the 
 every unearned loop falls into, and it is the first thing to revisit once orders come back.
 
 ## BRIEF
-One paragraph. Name the scene, the person and the product's place in it, and name WHERE it
-is: this type's whole claim is that the motion happens at the exact place the problem used
-to interrupt it, so the place is the argument and not the backdrop. Name the continuing
-action and, in the same clause, what used to stop it. Name the state the viewer is left
-holding. Close on the register and light of the still it accompanies.
+**Two sentences.** The first names the scene, the person, the product's place in it and the
+light: this type's whole claim is that the motion happens at the exact place the problem used
+to interrupt it, so the place is the argument and not the backdrop. The second names the
+continuing action and, in the same clause, what used to stop it.
 ## NEGATIVE
 No text or digits (G6). No product hero moment — the moment the camera favours the product
 this stops being relief. No montage of unrelated happy scenes: one place, one action. No
@@ -50,6 +49,8 @@ evidence over expression.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029. The place stays in the
+  first sentence because for this type the place IS the argument.
 - 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting,
   ADR-028. This type's whole claim is that the motion happens where the problem used to
   interrupt it, so the place is the argument rather than the backdrop.

@@ -164,7 +164,7 @@ No product, no panels and no insets. No mark of any kind.
 77-02-cause-problem0.mp4
 3s · 16:9 · seamless loop · mp4/webm, muted, under the size ceiling
 
-Nobody in frame. The same car driver's seat seen from the open door at standing height, with the ordinary fixes still lying on it — the flat foam pad, the doughnut ring, the cylindrical lumbar roll, the beaded cover. Under braking the pad creeps forward towards the front lip of the base and the roll slides further down into the crack at the seat corner, and the gap behind the pelvis opens wider than it started. The product is absent and not implied; this indicts the objects. Flat overcast daylight through the open door, the same cabin and the same desaturated blue-grey grade as the still.
+The driver's seat from the open door at standing height, the old fixes still on it and no product in frame, in the still's flat overcast daylight. Under braking the pad creeps to the front lip and the lumbar roll drops into the seat-corner crack, opening the gap behind the pelvis wider.
 ```
 
 ## `problems.items.1.image` — cause
@@ -482,7 +482,7 @@ No badges, no arrows, no text of any kind.
 77-06-proof-feature2.mp4
 3s · 16:9 · seamless loop · mp4/webm, muted, under the size ceiling
 
-One continuous frame and no panels: the same car driver's seat through the same open door, but close in so the reference cushion fills the frame. The weight that has been sitting on it lifts away out of shot, and the slow-rebound contour rises unhurried back to its full depth at the seat corner before the weight returns and presses it down again. Nobody in frame. The same overcast daylight through the open door and the same neutral grade as the still, which drops its three panels for this one frame — that restaging is the whole move.
+One continuous frame and no panels: the reference cushion filling the same driver's seat through the same open door, in the still's overcast daylight and neutral grade. The weight lifts away out of shot, the slow-rebound contour rises back to full depth at the seat corner, then presses down again.
 ```
 
 ## `features.items.3.image` — outcome

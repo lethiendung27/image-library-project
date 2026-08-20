@@ -3,7 +3,7 @@ id: cause
 kind: cause
 group: working
 rung: 1
-version: "1.1"
+version: "1.2"
 status: active
 channels: [landing-page, advertorial, paid-social]
 duration_s: [2, 3]
@@ -39,11 +39,11 @@ never as a second type. Precedent: page 65's rung-2 route ran `01-pain-scene` ob
 and said so.
 
 ## BRIEF
-One paragraph. Name the scene and the camera distance, and say plainly that the product is
-absent and not implied. Name WHERE it is — the room, the surface, the light — because the
-culprit is only convincing in the place it actually does its work. Name the failure as it
-unfolds, in order, then the state it leaves: the mess, the slip, the tangle. Close on the
-register and light of the still it accompanies.
+**Two sentences.** The first names the scene and the camera distance, says plainly that the
+product is absent and not implied, and names the light — a culprit only convinces in the
+place it actually does its work, and under the light the still was shot in. The second names
+the failure as it unfolds, in order, ending on the state it leaves: the mess, the slip, the
+tangle.
 ## NEGATIVE
 No text or digits (G6). No product, no branded object, no packaging edge. No comic
 exaggeration: a cause loop that overplays reads as an advertisement for the problem and
@@ -52,6 +52,9 @@ argues the opposite of the point.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.2 (2026-08-20): the brief becomes TWO SENTENCES, ADR-029 — what is in frame, where
+  and under what light, then what moves. Owner's call on length; the prose paragraph of
+  1.1 read as a wall.
 - 1.1 (2026-08-19): the brief becomes one prose paragraph and gains the setting as a
   thing it must name, ADR-028. A culprit only convinces in the place it does its work,
   and the old four-line format had no field for that place.

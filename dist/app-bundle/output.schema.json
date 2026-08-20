@@ -234,7 +234,7 @@
               },
               "brief": {
                 "type": "string",
-                "description": "What the loop IS, in prose, for the editor who builds it: what is in frame, where it is, what moves and in what order, and what register and light it must match. One paragraph, plain sentences, no field labels. Every claim in it must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop, which is the fault this field was reshaped to stop (ADR-028). It replaces the shot/action/result/match quartet, which split one description into four labelled lines so a model could draw them and left no field for the setting at all."
+                "description": "What the loop IS, for the editor who builds it, in TWO SENTENCES and 25-55 words (ADR-029). Sentence one is the frame: what is in it, where that is, and the light and register it owes the still. Sentence two is the motion: what moves, in the order it moves. Every claim must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop. The routing argument stays out: why the slot earned a loop is `reason`, which the editor never opens."
               },
               "delivery": {
                 "type": "string"
@@ -407,7 +407,7 @@
               },
               "brief": {
                 "type": "string",
-                "description": "What the loop IS, in prose, for the editor who builds it: what is in frame, where it is, what moves and in what order, and what register and light it must match. One paragraph, plain sentences, no field labels. Every claim in it must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop, which is the fault this field was reshaped to stop (ADR-028). It replaces the shot/action/result/match quartet, which split one description into four labelled lines so a model could draw them and left no field for the setting at all."
+                "description": "What the loop IS, for the editor who builds it, in TWO SENTENCES and 25-55 words (ADR-029). Sentence one is the frame: what is in it, where that is, and the light and register it owes the still. Sentence two is the motion: what moves, in the order it moves. Every claim must be satisfiable by the still the slot routed (G12) — a brief promising a room the still does not contain sends the editor to build the wrong loop. The routing argument stays out: why the slot earned a loop is `reason`, which the editor never opens."
               },
               "delivery": {
                 "type": "string"

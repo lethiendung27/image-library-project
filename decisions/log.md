@@ -1170,3 +1170,56 @@ Step 5d's library-pointers paragraph updated; `query/output.schema.json` gains `
 `scripts/gen-plate.py` is new; `CLAUDE.md` lists it among the generated views. Page 77 is
 rebuilt in the new form and is the only session that moves. `registry_version` unchanged —
 no image structure moves.
+
+## ADR-029 · 2026-08-20 · The brief is two sentences, and the routing argument is not one of them
+
+ADR-028 shipped the brief as one prose paragraph the day before. The owner read the first
+two it produced and said they were long and hard to understand. Both halves of that are
+right and they have different causes, which is why the fix is not simply "shorter".
+
+**Four lengths were written out on ONE loop and the owner picked.** Same loop, same content,
+only the writing changed — page 77's `cause` verdict, put in Vietnamese so the owner could
+compare them as a reader rather than as a spec. Measured: one sentence at 17 words, two
+sentences at 38, three labelled lines at 52, the shipped paragraph at 113. The English
+paragraph it was translated from ran 106. The owner chose **two sentences**.
+
+**The shape: sentence one is the FRAME, sentence two is the MOTION.** What is in it, where
+that is, and the light and register it owes the still; then what moves, in the order it
+moves. Band 25 to 55 words, checked by the build.
+
+**One adjustment inside the owner's choice, made rather than asked about.** The two-sentence
+option was offered with its cost stated — it had no room for the register, so an editor would
+have to infer the light from the still. Putting the light into sentence one costs about four
+words and keeps the sentence count, so the cost is not paid. A brief that ignores the still's
+grade and light reads as pasted in, which ADR-023 recorded before any loop existed, and it
+was not worth losing to save four words.
+
+**The second finding, which no length would have fixed.** Prose invites the writer to explain
+themselves, and page 77's first brief did: it closed on "The product is absent and not
+implied; this indicts the objects." That is a sentence for the router. An editor holding a
+camera cannot act on it, and `gif.reason` already carries it for the reader who wants it.
+The rule now says so in G12, in Step 5c and in the schema, because the paragraph form drifted
+there within one page of shipping and two sentences will drift there just as fast if nothing
+names it.
+
+**Why not the three labelled lines, which measured as the most readable.** They were 52 words
+against 38 and they read faster, because the eye jumps to the label it wants. The owner chose
+otherwise and the choice is theirs to make; recorded here so the option is not re-derived
+from scratch the next time someone finds a brief hard to scan. Its real advantage was
+structural rather than typographic — a missing field in a labelled block is visible, and a
+missing clause in a sentence is not. That check now lives in the build instead: word band,
+sentence count, and the six per-type BRIEF sections saying what each sentence must name.
+
+**Effect, measured on page 77:** 106 words to 52 and 98 to 50, a 50% and a 48% cut, with the
+frame, the place, the light and the motion all still named. Nothing else about the plate
+moves — the four fields, the generated SVG, the filename carrying the gif type and the
+slot's ratio are all ADR-028 and unchanged.
+
+Earlier sessions still stand unmigrated for the reason ADR-028 gave. Page 73's defective
+brief is still a separate item and is still not fixed here.
+
+Consequences: `registry/rules.md` G12's field block and one paragraph; `query/runbook.md`
+Step 5c; `query/output.schema.json` `gif.brief` description; all six `registry/gif-types/`
+BRIEF sections rewritten to say what each of the two sentences must name, and each type to
+1.2; page 77's two briefs rewritten and its plates regenerated; the build gains a sentence
+count and a word band. `registry_version` unchanged.

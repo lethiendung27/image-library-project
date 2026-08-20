@@ -289,13 +289,21 @@ routed still renders at a different ratio and the layout crops it — `03-mechan
 at 1:1 into a 16:9 slot, for instance — the loop still owes 16:9, because nothing crops it
 on the way in.
 
-**`gif.brief` is prose, and it names four things in one paragraph:** what is in frame, WHERE
-it is, what moves and in what order, and the register and light it must match. No field
-labels, plain sentences. It replaced a `SHOT`/`ACTION`/`RESULT`/`MATCH` quartet whose real
-defect was not its length — it had no field for the setting at all, so the setting was
-smuggled into `MATCH`, and a boilerplate `MATCH` line is exactly what nobody re-reads
-against the frame. Page 73 shipped "same room and light as still" over a see-through render
-standing on a plain slate ground.
+**`gif.brief` is TWO SENTENCES** (owner's call, ADR-029). Sentence one is the frame: what
+is in it, where that is, and the light and register it owes the still. Sentence two is the
+motion: what moves, in the order it moves. Band **25 to 55 words**.
+
+It replaced a `SHOT`/`ACTION`/`RESULT`/`MATCH` quartet whose real defect was that it had no
+field for the setting at all, so the setting was smuggled into `MATCH`, and a boilerplate
+`MATCH` line is exactly what nobody re-reads against the frame — page 73 shipped "same room
+and light as still" over a see-through render standing on a plain slate ground. The single
+prose paragraph that replaced the quartet fixed that and read as a wall; two sentences carry
+the same four things and stop.
+
+**Keep the routing argument OUT of it.** Why this slot earned a loop is `gif.reason` and the
+editor never opens it. The paragraph form drifted here first — page 77's own first draft
+closed on "this indicts the objects", which is a sentence for the router and not for anyone
+holding a camera.
 
 **Every claim in the brief must be satisfiable by the still the slot routed (G12).** A brief
 promising something the frame does not contain sends the editor to build the wrong loop, and
