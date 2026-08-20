@@ -39,6 +39,13 @@ DECLARED = {sl["slot_id"]: {"ratio": sl["ratio"], "role": sec["role"]}
             for sec in CONTRACT["page"]["sections"]
             for sl in sec["image_slots"]}
 
+# Items per list-section, for ADR-032's five-item clause. Keyed by the slot_id's
+# first segment, which is the LIST a spacing rule reasons about.
+SECTION_ITEMS = {}
+for _sid in DECLARED:
+    _k = _sid.split(".")[0]
+    SECTION_ITEMS[_k] = SECTION_ITEMS.get(_k, 0) + 1
+
 # mapping/slot-rules.md attribute gates, written as data so the routing is checked
 # against them rather than trusted.
 ATTRIBUTE_GATES = [
@@ -484,7 +491,15 @@ No studio light, no styling, no negative space, no borders and no text anywhere 
 
 BRIEF_PROB0 = """A shot of a driver sitting on an old flat cushion on the car seat, or on the bare seat itself. When the car brakes the cushion slides forward under him and a gap opens behind his lower back, and sitting in that gap day after day is what starts the ache."""
 
-BRIEF_FEAT2 = """A shot of someone sitting on the cushion on the driver's seat, one unbroken frame that never cuts. When they get out the cushion slowly springs back to its full thickness, and when they sit down again it presses down and hugs their lower back and pelvis."""
+ALT_PROB0 = """A shot of the same driver's seat with a hand pushing an old flat cushion forward from behind, no driver and no moving car. The cushion walks to the front lip and the gap opens behind it, the same gap a pelvis drops into on every brake."""
+
+BRIEF_FEAT1 = """A shot of a driver braking in stop-and-go traffic with the cushion under him on the driver's seat. The car lurches, his weight throws forward and settles back, and the cushion stays exactly where he put it, nothing creeping to the front lip."""
+
+ALT_FEAT1 = """A shot of the same seat from the open door with a hand shoving the cushion hard from behind, nobody in the car. It moves a finger's width and settles back, while an ordinary flat pad beside it walks to the front lip and stays there."""
+
+BRIEF_FEAT3 = """A shot of a man getting out of his car at the end of a long drive. He swings his legs out, stands straight up in one movement without grabbing the door frame, and walks off without once reaching back for his lower back."""
+
+ALT_FEAT3 = """A shot of the same man at his desk at the end of a shift with the cushion on the chair behind him. He pushes back, stands up in one go without pressing his hands on the desk, and picks his bag off the floor on the way out."""
 
 
 # ---------------------------------------------------------------- slot table
@@ -627,6 +642,7 @@ SLOTS.append({
         "ratio": "16:9",
         "duration_s": 3, "loop": "seamless loop",
         "brief": BRIEF_PROB0.strip(),
+        "alt": ALT_PROB0.strip(),
         "delivery": "mp4/webm, muted, under the size ceiling",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
         "asset": "77-02-problem0-pain-scene--brief.svg",
@@ -740,7 +756,7 @@ SLOTS.append({
     "slot_id": "features.items.1.image", "section_role": "proof",
     "asset": "77-05-feature1-relief-hero.png",
     "placement": "feature section 2, beside the why-it-stays-put list",
-    "recommended_media": "still",
+    "recommended_media": "gif",
     "recommended_opt": "A",
     "recommendation_basis":
         "FIT against an exhausted cell. The advertorial proof cell holds 04-proof-lockedframe "
@@ -779,13 +795,23 @@ SLOTS.append({
             axes={"register": "commercial", "inset_mode": "vsinset", "inset_motion": "still"}),
     ],
     "gif": {
-        "eligible": False, "form": "none",
-        "reason": "The argument is genuinely temporal — a pad that creeps forward against one "
-                  "that does not — and on its own this slot would earn a loop at rung 1. It is "
-                  "refused by the budget and not by the argument: the `features` list counts as "
-                  "ONE section under ADR-024, and its single permitted loop goes to "
-                  "features.items.2, where the motion carries a claim no still can make at all. "
-                  "Recorded in motion.notes.",
+        "eligible": True, "form": "whole-frame", "kind": "proof", "type_id": "proof",
+        "rung": "re-execution",
+        "reason": "The section's declared claim is that the cushion never crept forward under "
+                  "sudden braking and never dropped down the seat crack. Not creeping is a "
+                  "thing that happens over time under a force, and no static frame can show "
+                  "it — the routed still is a composed hero with a wrong-vs-right inset, "
+                  "which asserts the claim rather than demonstrating it. The staging changes "
+                  "and the argument does not, so this is rung 2. Under ADR-031 the force is "
+                  "named: a body in the seat and a car braking, without which nothing moves.",
+        "asset": "77-05-feature1-relief-hero--brief.svg",
+        "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
+        "output": "77-05-proof-feature1.mp4",
+        "ratio": "16:9",
+        "duration_s": 3, "loop": "seamless loop",
+        "brief": BRIEF_FEAT1.strip(),
+        "alt": ALT_FEAT1.strip(),
+        "delivery": "mp4/webm, muted, under the size ceiling",
     },
 })
 
@@ -793,7 +819,7 @@ SLOTS.append({
     "slot_id": "features.items.2.image", "section_role": "comparison",
     "asset": "77-06-feature2-proof-lockedframe.png",
     "placement": "feature section 3, beside the why-it-lasts list",
-    "recommended_media": "gif",
+    "recommended_media": "still",
     "recommended_opt": "A",
     "recommendation_basis":
         "FIT decides on the type's own core condition. 04-proof-lockedframe may only be used "
@@ -830,22 +856,16 @@ SLOTS.append({
             variant="verdict"),
     ],
     "gif": {
-        "eligible": True, "form": "whole-frame", "kind": "proof", "type_id": "proof",
-        "rung": "re-execution",
-        "reason": "The still is a locked multi-panel comparison, and panels are inspected "
-                  "rather than watched — as a three-panel frame this slot earns no motion. The "
-                  "claim itself is temporal, though: slow-rebound foam recovering after the "
-                  "weight comes off is a state changing that no static frame can show. The move "
-                  "is the one Step 5d names as rung 2 — drop the panels and put one continuous "
-                  "frame in which one variable changes, the same claim restaged. The job does "
-                  "not change: it is still proof, and the viewer still judges the change.",
-        "output": "77-06-proof-feature2.mp4",
-        "ratio": "16:9",
-        "duration_s": 3, "loop": "seamless loop",
-        "brief": BRIEF_FEAT2.strip(),
-        "delivery": "mp4/webm, muted, under the size ceiling",
-        "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "asset": "77-06-feature2-proof-lockedframe--brief.svg",
+        "eligible": False, "form": "none",
+        "reason": "The claim is temporal and the loop is real — slow-rebound foam recovering "
+                  "after the weight comes off is a state changing that the three-panel still "
+                  "cannot show, and this slot held the page's `result` loop until ADR-032. It "
+                  "is refused by SPACING, not by argument. The `features` list may now carry "
+                  "two loops because it runs to five items, but the two may not be adjacent, "
+                  "and the only non-adjacent pair available is items.1 with items.3. This slot "
+                  "sits between them, so it is also not a legal reserve for either: promoting "
+                  "it would put two loops side by side. Its cover is gif.alt on the two loops "
+                  "that did land.",
     },
 })
 
@@ -891,15 +911,23 @@ SLOTS.append({
             axes={"gaze": "candid"}),
     ],
     "gif": {
-        "eligible": False, "form": "none",
-        "reason": "The still argues a STATE — a body that has stopped defending itself — and a "
-                  "state is not a transition. A loop of the standing-up would be a different "
-                  "execution of the section and would land on the gif library's `relief` type, "
-                  "whose rule is that motion is earned only where the motion IS the thing the "
-                  "problem used to block; standing up out of a car seat would qualify. It is "
-                  "refused by the budget: the `features` list is ONE section (ADR-024) and its "
-                  "single loop is at features.items.2. Recorded in motion.notes as the strongest "
-                  "candidate this page could not spend.",
+        "eligible": True, "form": "whole-frame", "kind": "relief", "type_id": "relief",
+        "rung": "natural",
+        "reason": "The still catches the second of release; the loop is the movement into it, "
+                  "same person, same place, same staging, nothing re-argued — so this is rung "
+                  "1. It is also the first slot in this library to meet the `relief` type's "
+                  "tightest rule head on: motion is earned only where the motion IS the thing "
+                  "the problem used to block, and standing straight up out of a car seat "
+                  "after a long drive is exactly what the ache took away. That rule has been "
+                  "explicitly untested since ADR-023 and this is its first real case.",
+        "asset": "77-07-feature3-relief-scene--brief.svg",
+        "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
+        "output": "77-07-relief-feature3.mp4",
+        "ratio": "16:9",
+        "duration_s": 4, "loop": "seamless loop",
+        "brief": BRIEF_FEAT3.strip(),
+        "alt": ALT_FEAT3.strip(),
+        "delivery": "mp4/webm, muted, under the size ceiling",
     },
 })
 
@@ -986,35 +1014,42 @@ for sid, place, role in OUT_OF_SCOPE:
 MOTION = {
     "floor": 2,
     "ceiling": 5,
-    "delivered": 2,
+    "delivered": 3,
+    "margin": 1,
     "groups_covered": ["result", "working"],
     "shortfall_reason": None,
+    "reserves": [],
     "notes": [
-        "Floor met at exactly 2, and the coverage pair IS met — one `working` loop (cause at "
-        "problems.items.0) and one `result` loop (proof at features.items.2). ADR-024 measured "
-        "the pair as met on only 2 of 5 earlier pages, so this is the exception rather than "
-        "the rule, and it is met because the page argues the culprit and the recovery in two "
-        "different sections.",
-        "BOTH loops are rung-2 re-executions and rung 1 delivers nothing on this page, which "
-        "is worth stating because ADR-024 already found rung 2 closer to a default than to a "
-        "backup and this page is the strongest case yet. Both slots earn motion on the "
-        "argument; neither can be BUILT from the still as routed. features.items.2's still is "
-        "a three-panel locked comparison, and panels are inspected rather than watched. "
-        "problems.items.0's still is 01-pain-scene object-only, and a pad does not creep "
-        "forward across an empty seat — the loop needs the body and the braking car that make "
-        "it move (ADR-031). In both cases the job is unchanged and only the staging moves.",
-        "SPACING COST, stated rather than hidden: the `features` list counts as ONE section "
-        "(ADR-024), so features.items.1 loses a loop it would otherwise have earned at rung 1 "
-        "on its own argument — a pad that creeps forward against one that does not. Its "
-        "verdict says budget, not argument.",
-        "features.items.3 is the strongest candidate this page could not spend. Standing up "
-        "out of a car seat freely is precisely the gif library's `relief` rule — motion earned "
-        "only where the motion IS the thing the problem used to block — and it would have been "
-        "that rule's first real test. The same one-loop-per-section rule refuses it.",
+        "Three loops against a floor of 2, so margin is 1 — losing any one of them still "
+        "leaves the page at the floor. That is new at ADR-032: measured across every page "
+        "routed under the unamended spacing rule (58, 65, 73 and this page's first routing), "
+        "loop-capable sections came to exactly 2 and delivered loops to exactly 2, so the "
+        "floor equalled the structural ceiling and margin was 0 everywhere.",
+        "The third loop exists because the `features` list runs to five items and ADR-032 "
+        "lets a section that long carry two, provided they are not adjacent. The only "
+        "non-adjacent pair among the loop-capable slots is items.1 with items.3, so the "
+        "arrangement is forced rather than chosen: items.0 is refused on its own grounds and "
+        "items.4 carries no image.",
+        "features.items.2 loses the loop it held in the first routing. Its argument is intact "
+        "— slow-rebound foam recovering is a state changing that its three-panel still cannot "
+        "show — and it is refused by spacing alone. It cannot serve as a reserve either, "
+        "because it sits BETWEEN the two delivered loops and promoting it would put two side "
+        "by side.",
+        "motion.reserves is empty, and that is the honest reading rather than an omission. A "
+        "reserve is a slot that lost to the budget and could legally replace a named primary; "
+        "once both sections are carrying their maximum there is no such slot on this page. "
+        "The cover is gif.alt, which every delivered loop carries.",
+        "COVERAGE PAIR MET: cause (working) at problems.items.0, proof (result) at "
+        "features.items.1, relief (result) at features.items.3.",
+        "features.items.3 is the first slot in this library to meet the `relief` type's "
+        "tightest rule head on — motion earned only where the motion IS the thing the problem "
+        "used to block. Standing straight up out of a car seat after a long drive is exactly "
+        "what the ache took away. ADR-023 recorded that rule as explicitly untested and it has "
+        "stayed untested since; this is its first real case.",
         "Review wall: 0 tiles, and not by budget — the six-type gif set carries no `social` "
         "type, so those slots have nothing to file a loop under.",
-        "Both loops are whole-frame. No type on this page legislates an inset layer that a "
-        "plate could occupy at a slot that earned motion, so `inset` was never available.",
+        "All three loops are whole-frame. No type on this page legislates an inset layer at a "
+        "slot that earned motion, so `inset` was never available.",
     ],
 }
 
@@ -1198,8 +1233,32 @@ def checks():
     for s in elig:
         secs.setdefault(s["slot_id"].split(".")[0], []).append(s["slot_id"])
     for sec, ids in secs.items():
-        if len(ids) > 1:
-            errs.append(f"more than one loop in section `{sec}` (ADR-024): {ids}")
+        if len(ids) == 1:
+            continue
+        if len(ids) > 2:
+            errs.append(f"{len(ids)} loops in section `{sec}`; the cap is two and only in a "
+                        f"five-item section (ADR-032): {ids}")
+            continue
+        if SECTION_ITEMS.get(sec, 0) < 5:
+            errs.append(f"two loops in section `{sec}`, which declares "
+                        f"{SECTION_ITEMS.get(sec, 0)} items; the second needs five or more "
+                        f"(ADR-032): {ids}")
+        idx = sorted(int(i.split(".")[2]) for i in ids if i.count(".") >= 3)
+        if len(idx) == 2 and idx[1] - idx[0] < 2:
+            errs.append(f"the two loops in section `{sec}` are adjacent (items.{idx[0]} and "
+                        f"items.{idx[1]}); ADR-032 needs a static item between them")
+
+    # margin, and the alternate staging every delivered loop owes (ADR-032)
+    if MOTION.get("margin") != len(elig) - MOTION["floor"]:
+        errs.append(f"motion.margin says {MOTION.get('margin')}, computed "
+                    f"{len(elig) - MOTION['floor']}")
+    for r in MOTION.get("reserves", []):
+        if r["substitutes_for"] not in {x["slot_id"] for x in elig}:
+            errs.append(f"reserve {r['slot_id']} substitutes for "
+                        f"{r['substitutes_for']}, which carries no loop")
+        if r["slot_id"].split(".")[0] != r["substitutes_for"].split(".")[0]:
+            errs.append(f"reserve {r['slot_id']} is not in the same section as "
+                        f"{r['substitutes_for']}")
 
     GROUP = {"use": "working", "mechanism": "working", "cause": "working",
              "proof": "result", "relief": "result"}
@@ -1234,20 +1293,28 @@ def checks():
                         f"{DECLARED[s['slot_id']]['ratio']} — a whole-frame loop IS the "
                         "delivered image and owes the page's shape")
         b = g["brief"]
-        words = len(b.split())
-        if not 25 <= words <= 55:
-            errs.append(f"{s['slot_id']}: the brief is {words} words, outside the 25-55 "
-                        "band (ADR-029)")
         # ADR-030: the still carries light, grade and register; the brief never restates
         # them, and the page 73 fault was exactly such a restatement.
         REGISTER = ("light", "lighting", "daylight", "lit", "backlit", "grade", "graded",
                     "register", "overcast", "desaturated", "saturated", "palette",
                     "exposure", "colour", "color", "tone", "greyscale", "grayscale")
-        found = sorted({w for w in REGISTER
-                        if re.search(rf"\b{w}\b", b, re.I)})
-        if found:
-            errs.append(f"{s['slot_id']}: the brief names {', '.join(found)} — light, grade "
-                        "and register belong to the still, never to the brief (ADR-030)")
+        alt = g.get("alt")
+        if not alt:
+            errs.append(f"{s['slot_id']}: no gif.alt — every delivered loop owes a second way "
+                        "to shoot the same argument (ADR-032)")
+        for label, text in (("brief", b), ("alt", alt)):
+            if not text:
+                continue
+            n = len(text.split())
+            if not 25 <= n <= 55:
+                errs.append(f"{s['slot_id']}: the {label} is {n} words, outside the 25-55 "
+                            "band (ADR-029)")
+            found = sorted({w for w in REGISTER if re.search(rf"\b{w}\b", text, re.I)})
+            if found:
+                errs.append(f"{s['slot_id']}: the {label} names {', '.join(found)} — light, "
+                            "grade and register belong to the still (ADR-030)")
+            if text == b and alt and b == alt:
+                errs.append(f"{s['slot_id']}: gif.alt repeats the brief")
 
     # every slot carries a gif verdict, positive or negative (Step 5c)
     for s in SLOTS:
@@ -1377,6 +1444,10 @@ def render_md():
             L.append(f"{g['duration_s']}s · {g['ratio']} · {g['loop']} · {g['delivery']}")
             L.append("")
             L.append(g["brief"])
+            if g.get("alt"):
+                L.append("")
+                L.append("IF THAT CANNOT BE SHOT")
+                L.append(g["alt"])
             L.append("```")
             L.append("")
     return "\n".join(L)

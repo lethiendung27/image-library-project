@@ -388,17 +388,42 @@ slots were examined at rung 2 and why each failed. This is SPEC §7.5's rule —
 is not automatically a gap — applied to motion. Never reach the floor by switching
 ambient on, and never by lowering the temporal test.
 
-**Ceiling and spacing, both binding:** at most 5 loops on a page, and at most one per
-section — where a repeating list (a reason list, a feature list, a review wall) counts
-as **ONE** section and not one per item. ADR-022's rule that the SET is the unit applies
-to motion exactly as it applies to options: four moving tiles inside one feature list is
-the fairground this rule exists to prevent, and page 31 carries exactly that draft.
-Which item keeps the motion is decided by the section's own set law, not by its position.
+**Ceiling and spacing, both binding:** at most 5 loops on a page, and **at most one per
+section — plus ONE more where the section carries five items or more and the two are not
+adjacent** (ADR-032 amending ADR-024). A repeating list still counts as one section, not one
+per item, and which items keep the motion is decided by the section's own set law rather than
+by position.
 
-There is deliberately **no separate never-adjacent clause**. Inside a section
-one-per-section already covers it; across a section boundary a heading and a block of
-copy sit between the two slots, and enforcing adjacency there dropped page 58 below the
-owner's floor for no reader-visible gain (ADR-024).
+The relaxation exists because the floor had no margin. Measured across every page routed
+under the unamended rule — 58, 65, 73 and 77 — loop-capable sections came to exactly 2 and
+delivered loops came to exactly 2. The floor equalled the structural ceiling on all four, so
+a single loop that could not be built put the page below the owner's standing floor. ADR-024
+set one-per-section against a measured fairground (page 31 drafted four moving tiles inside
+one feature list); two loops with a static item between them in a list of five is not that
+image, and the not-adjacent clause is what keeps it from becoming it.
+
+**Every delivered loop carries `gif.alt`**, a second way to shoot the same argument in the
+same slot. It drops whatever the primary is most likely to be blocked on — an actor, a moving
+car, an interior — and keeps the claim. It is printed on the plate under the primary, so the
+editor holds both.
+
+**`motion.reserves` lists the slots that lost.** A slot that earned motion on the argument and
+was refused by the budget or the spacing rule is a reserve for a named primary in the same
+section, provided promoting it would leave the spacing rule satisfied. A reserve REPLACES its
+primary; it never adds to one. A section already carrying its maximum has no legal reserve and
+says so — that is the case `gif.alt` covers, and on a maximised page it is the only cover
+there is.
+
+**`motion.margin` is delivered minus floor, emitted on every page.** Zero margin is the state
+every page routed before ADR-032 was in, and it is a number rather than something a reader has
+to derive.
+
+**Adjacency binds inside a section and nowhere else.** ADR-024 dropped the general
+never-adjacent clause because across a section boundary a heading and a block of copy sit
+between the two slots, and enforcing adjacency there dropped page 58 below the owner's floor
+for no reader-visible gain. That still holds: two loops in consecutive sections are fine.
+What ADR-032 added is narrower — the SECOND loop inside one long section may not sit next to
+the first, because there the two really are in the same eyeful with nothing between them.
 
 Where the ceiling or the spacing rule kills a positive 5c verdict, flip that slot to
 `eligible: false`, say in its `reason` that the budget and not the argument decided it,

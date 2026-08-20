@@ -113,6 +113,13 @@ def plate_svg(gif):
     runs.append((None, None, 0, None, round(name_fs * 0.72)))   # the rule
     for text in wrap(gif.get("brief", ""), tw, body_fs):
         runs.append((text, INK, body_fs, "400", body_lh))
+    alt = gif.get("alt")
+    if alt:
+        runs[-1] = runs[-1][:4] + (round(name_fs * 1.05),)
+        runs.append(("IF THAT CANNOT BE SHOT", DIM, refs_fs, "700",
+                     round(refs_fs * 1.75)))
+        for text in wrap(alt, tw, body_fs):
+            runs.append((text, DIM, body_fs, "400", body_lh))
     runs[-1] = runs[-1][:4] + (round(name_fs * 0.95),)
     for text in wrap(gif.get("refs", ""), tw, refs_fs):
         runs.append((text, DIM, refs_fs, "400", refs_lh))

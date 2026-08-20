@@ -236,6 +236,10 @@
                 "type": "string",
                 "description": "A shot description in plain words for the editor who builds the loop, 25-55 words, of the kind you would say out loud to the person holding the camera. Three movements and no labels: who or what is in the shot and where, what happens in the order it happens, and what it leaves the viewer with (ADR-029, ADR-031). Everyday words, not craft words. NOTHING about light, grade or register — the still carries all of it (ADR-030). The upshot of the shot belongs; the routing argument does not, and lives in `reason`. Every claim must be satisfiable by the still the slot routed (G12); where the loop needs a person the still does not have, the verdict is `rung: re-execution` and `reason` says so."
               },
+              "alt": {
+                "type": "string",
+                "description": "A SECOND way to shoot the same argument in the same slot, same format and band as `brief` (ADR-032). It exists because the motion floor has no margin by construction: every page routed under the one-loop-per-section rule sits at its own structural ceiling, so one loop that cannot be built puts the page below the owner's floor. The alternate drops whatever the primary is most likely to be blocked on — an actor, a moving car, an interior — and keeps the claim. It is printed on the plate under the primary, so the editor holds both without opening a file."
+              },
               "delivery": {
                 "type": "string"
               },
@@ -408,6 +412,10 @@
               "brief": {
                 "type": "string",
                 "description": "A shot description in plain words for the editor who builds the loop, 25-55 words, of the kind you would say out loud to the person holding the camera. Three movements and no labels: who or what is in the shot and where, what happens in the order it happens, and what it leaves the viewer with (ADR-029, ADR-031). Everyday words, not craft words. NOTHING about light, grade or register — the still carries all of it (ADR-030). The upshot of the shot belongs; the routing argument does not, and lives in `reason`. Every claim must be satisfiable by the still the slot routed (G12); where the loop needs a person the still does not have, the verdict is `rung: re-execution` and `reason` says so."
+              },
+              "alt": {
+                "type": "string",
+                "description": "A SECOND way to shoot the same argument in the same slot, same format and band as `brief` (ADR-032). It exists because the motion floor has no margin by construction: every page routed under the one-loop-per-section rule sits at its own structural ceiling, so one loop that cannot be built puts the page below the owner's floor. The alternate drops whatever the primary is most likely to be blocked on — an actor, a moving car, an interior — and keeps the claim. It is printed on the plate under the primary, so the editor holds both without opening a file."
               },
               "delivery": {
                 "type": "string"
@@ -590,6 +598,51 @@
             "type": "string"
           },
           "description": "Spacing conflicts resolved, sections that lost a loop to the one-per-section rule, wall verdicts."
+        },
+        "margin": {
+          "type": "integer",
+          "description": "delivered minus floor. Zero means one loop that cannot be built drops the page below the owner's standing floor, which is the state every page routed before ADR-032 was in. It is emitted on every page so a thin motion budget is a number rather than something a reader has to work out."
+        },
+        "reserves": {
+          "type": "array",
+          "description": "Slots that earned motion on the argument and were refused by the budget or the spacing rule, ranked, each a legal substitute for a named primary in the same section (ADR-032). A reserve REPLACES a primary rather than adding to one, so promoting it leaves the spacing rule satisfied. A section that is already carrying its maximum has no reserves and says so; that is what `gif.alt` covers instead.",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "slot_id",
+              "substitutes_for",
+              "type_id",
+              "brief"
+            ],
+            "properties": {
+              "slot_id": {
+                "type": "string"
+              },
+              "substitutes_for": {
+                "type": "string"
+              },
+              "type_id": {
+                "type": "string"
+              },
+              "group": {
+                "enum": [
+                  "working",
+                  "result",
+                  "none"
+                ]
+              },
+              "rung": {
+                "type": "string"
+              },
+              "brief": {
+                "type": "string"
+              },
+              "why_held_back": {
+                "type": "string"
+              }
+            }
+          }
         }
       }
     }

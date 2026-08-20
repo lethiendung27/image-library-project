@@ -1328,3 +1328,82 @@ BRIEF sections to 1.4, with **Name the force** landing in `cause`; page 77's two
 `cause` rung and reason, its `proof` reason and its motion notes; the build drops the
 sentence-count check. `registry_version` unchanged. Earlier sessions still stand unmigrated,
 and page 73's defective brief is still a separate item.
+
+## ADR-032 · 2026-08-20 · The motion floor had no margin, and three mechanisms give it one
+
+Owner's brief: a landing page carries at least two GIFs, and the suggested spots need backup
+options for when a given loop cannot be made. Page 77 carried exactly two, so the question
+was what happens when one of them fails.
+
+**The finding is worse than the question.** Measured across every page routed under the
+unamended spacing rule — 58, 65, 73 and page 77's first routing — loop-capable sections came
+to exactly **2** and delivered loops came to exactly **2**, on all four. The floor is not a
+target these pages aim at, it is their structural ceiling. An advertorial of hero + problems
++ features + reviews has its hero refused (recognition, a held state, consistent across four
+pages) and its review wall barred (the six-type set carries no `social` type), which leaves
+two sections, and one loop per section leaves two loops. **Margin was zero everywhere, and
+nothing said so.** Pages 13, 31 and 37 show 5, 5 and 4 delivered against 8, 2 and 1
+loop-capable sections — they predate ADR-024 and are the fairground it was written against.
+
+So "route a backup loop" was not available: there was nowhere to put it. Three mechanisms
+were proposed and the owner took all three. They interact, and the interaction is the part
+worth recording.
+
+**1. The spacing rule is relaxed, and this amends ADR-024.** At most one loop per section,
+plus ONE more where the section carries five items or more and the two are not adjacent.
+ADR-024 set one-per-section against a measured case — page 31 drafted four moving tiles
+inside one feature list — and two loops with a static item between them in a list of five is
+not that image. The not-adjacent clause is what stops it becoming one. Note the direction of
+travel: ADR-024 also DROPPED a never-adjacent clause, but that one governed slots across a
+section boundary, where a heading and a block of copy sit between them. Inside one list there
+is nothing between them, so adjacency binds here and only here.
+
+**2. Every delivered loop carries `gif.alt`**, a second way to shoot the same argument in the
+same slot, in the same format and band as the brief. It drops whatever the primary is most
+likely to be blocked on — an actor, a moving car, an interior — and keeps the claim. It is
+printed on the plate under the primary beneath an `IF THAT CANNOT BE SHOT` rule, so the
+editor holds both without opening a file, which is the same reasoning ADR-019 applied to the
+work order itself.
+
+**3. `motion.reserves` lists the slots that lost to the budget.** A reserve is a slot that
+earned motion on the argument, was refused by spacing or ceiling, and could legally replace a
+named primary in its own section. It REPLACES; it never adds, so promoting one leaves the
+spacing rule satisfied.
+
+**Mechanisms 1 and 3 compete for the same slots, and on a maximised page 3 wins.** Once a
+section is carrying the two loops the relaxed rule allows, there is no slot left that could
+legally substitute — which is why page 77 emits `reserves: []` and says so in
+`motion.notes` rather than leaving an empty field to be read as an oversight. The reserve
+list is for pages that do not maximise; `gif.alt` is the cover that always exists.
+
+**Page 77 re-routed from two loops to three, and the arrangement is forced rather than
+chosen.** Among the `features` list's loop-capable slots — items.1, items.2 and items.3 —
+the only non-adjacent pair is items.1 with items.3. items.0 is refused on its own grounds (two
+technical panels are inspected, not watched) and items.4 carries no image. So items.1 takes a
+`proof` loop and items.3 takes a `relief` one, and **items.2 loses the loop it held in the
+first routing** with its argument entirely intact: slow-rebound foam recovering is a state
+changing that its three-panel still cannot show. It cannot even serve as a reserve, because it
+sits BETWEEN the two delivered loops and promoting it would put two side by side.
+
+**features.items.3 is the first slot in this library to meet the `relief` type's tightest rule
+head on** — motion earned only where the motion IS the thing the problem used to block.
+Standing straight up out of a car seat after a long drive is exactly what the ache took away.
+ADR-023 recorded that rule as explicitly untested and it has stayed untested since; this is
+its first real case, and the first `relief` loop the library has ever routed.
+
+Margin is now a field: `motion.margin`, delivered minus floor, emitted on every page. Page 77
+reads 1 — losing any one loop still leaves it at the floor.
+
+Six checks, all mutation-tested: two loops adjacent inside a section, a second loop in a
+section shorter than five items, a delivered loop with no alternate, an alternate that repeats
+the brief, an alternate carrying a register word, and `motion.margin` disagreeing with the
+count. The first two had to be tested in-process, because the obvious source mutation changed
+a filename rather than a position and passed while proving nothing.
+
+Consequences: `query/runbook.md` Step 5d's spacing, reserve, alternate and margin rules, and
+the adjacency paragraph reconciled with ADR-024; `query/output.schema.json` gains `gif.alt`,
+`motion.margin` and `motion.reserves`; `scripts/gen-plate.py` draws the alternate under the
+primary; page 77 re-routed to three loops with three alternates, its plates regenerated and
+its motion notes rewritten. Earlier sessions still stand unmigrated and are all at margin 0,
+which is now a stated fact about them rather than an invisible one. `registry_version`
+unchanged.
