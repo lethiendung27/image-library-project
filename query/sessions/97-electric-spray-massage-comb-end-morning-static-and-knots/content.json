@@ -1,0 +1,134 @@
+{
+  "product": {
+    "name": "Electric Spray Air Cushion Massage Comb",
+    "category": "beauty",
+    "specification": "138g · built-in water/essence reservoir · ultrasonic high-frequency nano-mist atomiser · 6-LED red light · high-frequency micro-vibration · soft elastic air cushion base with rounded bristles · one-click retractable teeth · 300mAh battery, Type-C charging, weeks of use per full charge · cordless, no heat",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "active",
+      "visible_output": "an ultra-fine dry-touch nano-mist from the ultrasonic atomiser, and 6 red LEDs under the bristle bed",
+      "mounting": "handheld",
+      "colorways": ["as supplied"],
+      "body_contact": true,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": true
+    },
+    "problems_solved": [
+      "Brushing dry hair with synthetic bristles generates an electrostatic charge that lifts cuticles, repels strands into a flyaway halo and snaps fragile hair",
+      "Static-charged bedhead arrives every morning and gets worse the more it is brushed, before video calls and meetings",
+      "Detangling a child's fine or curly hair is a painful, tearful battle that runs the morning late",
+      "Oils and serums coat the strand in occlusive film, leaving hair flat and greasy without addressing the dryness underneath",
+      "A trigger spray bottle throws heavy droplets that soak patches and leave others dry, collapsing the style and wetting collars",
+      "Fixed bristle beds trap shed hair, sebum and product residue and transfer them back onto clean hair"
+    ],
+    "raw_features": [
+      "High-frequency ultrasonic atomiser releases microscopic water particles that conduct and neutralise static while brushing, claimed 97% static reduction in a single pass",
+      "Dry-touch nano-mist hydrates the shaft without soaking, flattening or greasing, and leaves no residue to wash out",
+      "Soft air cushion base with rounded massage bristles stimulates blood flow and relieves scalp tension",
+      "6-LED red light to stimulate the scalp during brushing",
+      "High-frequency micro-vibration distributes moisture evenly and doubles as a scalp massage",
+      "One-click retractable teeth release trapped hair for cleaning, hygiene and snag-free storage",
+      "Painless detangling gentle enough for children's fine or curly hair and for sensitive scalps",
+      "Cordless and heat-free: it is not a straightener and produces no heat and no steam",
+      "Tank accepts plain water or any water-based essence"
+    ],
+    "personas": [
+      "Working women 25-45 with frizz-prone or static-prone hair, before video calls and meetings",
+      "Mothers who detangle a child's fine or curly hair every morning",
+      "People with baby-fine hair that tangles after washing and breaks when combed",
+      "People with sensitive scalps who find rigid bristles scratchy",
+      "Travellers who want a brush that stores in a bag without snagging"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "Listicle header, problem-aware. Static-charged morning frizz before urgent meetings, and painful morning tears detangling a child's knots; dry plastic brushing is quietly making the underlying tension worse.",
+        "image_slots": [
+          {"slot_id": "hero.image", "ratio": "16:9", "position": "listicle header, under the title and above the byline"}
+        ]
+      },
+      {
+        "id": "reason.0",
+        "role": "mechanism",
+        "copy_summary": "Reason 1, Editor's Pick, and the only entry that is the product itself. Morning static friction turns quick styling into a chaotic delay; dry hair against synthetic bristles generates a charge that lifts cuticles and snaps strands. The comb counters it by releasing a microscopic dry-touch hydration mist as you brush, from an ultrasonic high-frequency atomiser producing ultra-fine particles.",
+        "image_slots": [
+          {"slot_id": "reason.0.image", "ratio": "1:1", "position": "reason 1 card, the Editor's Pick"}
+        ]
+      },
+      {
+        "id": "reason.1",
+        "role": "comparison",
+        "copy_summary": "Reason 2, indicting standard plastic bristle brushes. Rigid moulded teeth drag through dry snarls, worsening electrostatic buildup so hair shafts repel one another and fly out into unruly halos. Without moisture delivered at the point of contact, hard bristles keep charging the hair.",
+        "image_slots": [
+          {"slot_id": "reason.1.image", "ratio": "1:1", "position": "reason 2 card"}
+        ]
+      },
+      {
+        "id": "reason.2",
+        "role": "comparison",
+        "copy_summary": "Reason 3, indicting heavy silicone hair oils. Thick formulas mask surface roughness with occlusive silicones, creating an artificial shine that turns limp. They weigh hair down under a greasy barrier rather than neutralising the charge, and the film attracts airborne dust.",
+        "image_slots": [
+          {"slot_id": "reason.2.image", "ratio": "1:1", "position": "reason 3 card"}
+        ]
+      },
+      {
+        "id": "reason.3",
+        "role": "comparison",
+        "copy_summary": "Reason 4, indicting manual spray bottles. Trigger sprayers eject large heavy droplets that soak some patches and leave others dry. The uneven saturation collapses morning styling, adds blow-drying time, and swells the shaft unevenly.",
+        "image_slots": [
+          {"slot_id": "reason.3.image", "ratio": "1:1", "position": "reason 4 card"}
+        ]
+      },
+      {
+        "id": "reason.4",
+        "role": "comparison",
+        "copy_summary": "Reason 5, indicting thermal straightening brushes. Heated ceramic combs expose hair to temperatures over three hundred degrees, stripping moisture from the cortex, burning keratin and causing permanent brittleness. The page states plainly that this device is not a straightener and makes no heat.",
+        "image_slots": [
+          {"slot_id": "reason.4.image", "ratio": "1:1", "position": "reason 5 card"}
+        ]
+      },
+      {
+        "id": "reason.5",
+        "role": "comparison",
+        "copy_summary": "Reason 6, indicting fixed bristle beds. Traditional brushes become dust traps of shed hair, sebum and product residue; cleaning them means picking with toothpicks or wire rakes, which punctures the cushion, and brushing clean hair with a dirty brush puts stale oils back on the scalp. The comb's one-click retractable teeth release everything at once.",
+        "image_slots": [
+          {"slot_id": "reason.5.image", "ratio": "1:1", "position": "reason 6 card, with the feature list and a buyer quote"}
+        ]
+      },
+      {
+        "id": "howto",
+        "role": "how-to-use",
+        "copy_summary": "Reason 7, how to use in three steps: fill the built-in tank with clean water or a water-based essence; press the power switch to start the ultrasonic atomiser and the red light; glide from the tips upward through dry hair to eliminate static and knots.",
+        "image_slots": [
+          {"slot_id": "howto.image", "ratio": "1:1", "position": "the how-to card, beside the three numbered steps"}
+        ]
+      },
+      {
+        "id": "social",
+        "role": "social-proof",
+        "copy_summary": "It's Going Viral on Social Media. Six photo tiles in the same block as six named comments carrying Verified labels and timestamps: a daughter brushing her own hair without tears, static bedhead gone in thirty seconds without greasy roots, retractable bristles that clean fast, nano-mist calming flyaways without soaking a collar, scalp massage after a long shift, and fine hair detangled without ripping.",
+        "image_slots": [
+          {"slot_id": "social.photos.0.image", "ratio": "1:1", "position": "social grid tile 1 of 6"},
+          {"slot_id": "social.photos.1.image", "ratio": "1:1", "position": "social grid tile 2 of 6"},
+          {"slot_id": "social.photos.2.image", "ratio": "1:1", "position": "social grid tile 3 of 6"},
+          {"slot_id": "social.photos.3.image", "ratio": "1:1", "position": "social grid tile 4 of 6"},
+          {"slot_id": "social.photos.4.image", "ratio": "1:1", "position": "social grid tile 5 of 6"},
+          {"slot_id": "social.photos.5.image", "ratio": "1:1", "position": "social grid tile 6 of 6"}
+        ]
+      },
+      {
+        "id": "offer",
+        "role": "cta",
+        "copy_summary": "Closing offer card: up to 50% off, limited time, 90-day money-back guarantee, scarcity framing around a production batch selling out.",
+        "image_slots": [
+          {"slot_id": "offer.image", "ratio": "1:1", "position": "closing offer card, above the final CTA"}
+        ]
+      }
+    ]
+  }
+}
