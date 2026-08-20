@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.15"
+version: "1.16"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -282,15 +282,28 @@ The layer is the finished picture; nothing is reserved.
 
 ### inset_motion: --loop
 ```
-[INSET MOTION] the inset carries the motion brief plate.      -> G12
+[INSET MOTION] the legislated layer is RESERVED for the loop.  -> G12
 ```
-An editor builds the loop and replaces the plate, so the render owes a legible work order
-sitting in the layer's own footprint. Legal on every `inset_mode` except `--none`, which
-has no layer to host it, and only where the layer's content is TEMPORAL — a state changing,
-an output flowing, a mechanism travelling. What the plate promises must be visible in the
-frame it sits on. A render carrying one takes the `--brief` suffix and never the slot's
-asset filename. Four founding renders, 1 pass and 3 partial: the plate's lettering is
-settled at 20 of 20 lines exact, its edge is not. ADR-019.
+An editor builds the loop and drops it into that layer, so the render owes them the
+FOOTPRINT and nothing else: the layer is drawn as a flat empty block of one flat tone,
+carrying no text, no lettering and no plate. Since ADR-028 the work order is a generated
+file — `scripts/gen-plate.py` writes it beside the still — so none of it is drawn into the
+frame, and G6's ban on text in frame stops needing an exception here.
+
+Legal on every `inset_mode` except `--none`, which has no layer to host it, and only where
+the layer's content is TEMPORAL — a state changing, an output flowing, a mechanism
+travelling. What the brief promises must be visible in the frame the layer sits on.
+
+**The render keeps the slot's own asset filename and is NOT shippable until the loop is in
+it.** That is a change of risk rather than a removal of one, and it is stated here because
+nothing else catches it: the old rule pushed the render to a `--brief` suffix because it
+carried a plate covered in lettering, which no page could use by accident. A flat empty
+block can ship unnoticed as a design element. So the option that emits one says on its own
+face that the frame is unfinished, and `gif.output` names the file that finishes it
+(ADR-033).
+
+Four founding renders under the old plate rule, 1 pass and 3 partial; the geometry findings
+in G12 carry over and the lettering findings do not, because nothing is lettered any more.
 
 ## WORKED EXAMPLES
 ### example: pet-fountain-commercial-detail-loop — skeleton@1.14, run: partial
@@ -421,6 +434,11 @@ recognisable sportswear swoosh, which SPEC 6.4 bars — name props unbranded.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.16 (2026-08-20): `inset_motion: --loop` corrected to ADR-028's mechanism, ADR-033.
+  The layer is reserved as a flat empty block and the plate is a generated file beside
+  the still; the block said the render carried model-drawn lettering, which stopped
+  being true two days earlier. Adds the consequence: the render keeps the slot's asset
+  name and is not shippable until the loop is in it.
 - 1.15 (2026-08-14): four founding renders of `--loop`, 1 pass 3 partial. Lettering is settled
   at 20 of 20 lines exact; geometry is not, with 3 of 3 plates cut by a frame edge. A crisp
   plate does NOT break the ugc register. Both findings are G12's, not this file's. `4ff41d4`

@@ -1,0 +1,161 @@
+{
+  "product": {
+    "name": "Ergonomic Memory Foam Seat Cushion",
+    "category": "home",
+    "specification": "One-piece continuous L-shaped cushion · high-density slow-rebound memory foam core · textured non-slip base backing · moves between car seat, office chair and wheelchair · colour black. Dimensions, weight, foam density and cover material to be supplied by the manufacturer.",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "none",
+      "mounting": "freestanding",
+      "colorways": ["black"],
+      "body_contact": true,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": false
+    },
+    "problems_solved": [
+      "Pelvic-hinge collapse: almost all car and office chairs tilt backward, dropping the hips below the knees and opening a void right where the lumbar curve needs support",
+      "Flat foam pads and hard donut rings raise the hips but leave the lumbar gap wide open",
+      "Separate strap-on back pillows push the mid-back forward while the tailbone stays sunk",
+      "Loose cushions slide forward under everyday braking and have to be pulled back into place",
+      "Nine-hour sitting days that end in a locked, throbbing lower back and no leverage to stand",
+      "Weekends given up: family games in bleachers and long road trips skipped because sitting through them is not possible"
+    ],
+    "raw_features": [
+      "One-piece continuous L-shaped mould: the seat base and lumbar backrest are a single unit rather than a cushion plus a separate pillow",
+      "A support system that makes three mechanical moves at once — elevates the hips level with or slightly above the knees, bridges the gap at the seat corner, and holds the lumbar curve",
+      "High-density slow-rebound memory foam core that contours as body heat warms it",
+      "Textured non-slip base backing that holds on smooth leather and vinyl under braking",
+      "Moves between a car seat, a desk chair and a wheelchair with no straps or tools",
+      "Raises seating height slightly, which is a real limit in very low sports car cockpits"
+    ],
+    "personas": [
+      "Office workers aged 35-60 sitting eight or more hours a day",
+      "Long-distance drivers, truckers, delivery drivers and rideshare drivers",
+      "Commuters whose back locks up by the end of the drive home",
+      "Gamers and wheelchair users wanting continuous lumbar support",
+      "Pregnant women needing tolerable desk sitting through a third trimester"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "First-person advertorial header. He pulls into the driveway at six, cuts the engine and braces his arms against the steering wheel just to find the leverage to stand; his lower back is locked into a solid throbbing spasm. Nine-hour sitting days are dismantling life outside work, and his daughter has stopped asking him to her Saturday games because she knows he cannot survive the bleachers.",
+        "image_slots": [
+          {"slot_id": "hero.image", "ratio": "16:9", "position": "advertorial header, under the eyebrow and above the byline"}
+        ]
+      },
+      {
+        "id": "problems.items.0",
+        "role": "problem-agitation",
+        "copy_summary": "The endless cycle of failed cushions and wasted money. Standard flat foam cushions and hard donut pads promised instant tailbone relief and only pushed his head toward the roof while the pelvis rolled back. Beaded wooden mats and vibrating massage covers gave zero structural support and buzzed against a spine that was already misaligned.",
+        "image_slots": [
+          {"slot_id": "problems.items.0.image", "ratio": "16:9", "position": "problem section 1, beside the what-I-tried list"}
+        ]
+      },
+      {
+        "id": "problems.items.1",
+        "role": "cause",
+        "copy_summary": "The hidden cause behind sitting pain, named in the copy as pelvic-hinge collapse. Almost all car and office chairs tilt slightly backward, which drops the hips below the knees and opens a void right where the lumbar curve needs to be carried. A veteran driver showed him a unified continuous L-shaped seat system he had been testing in his truck cab.",
+        "image_slots": [
+          {"slot_id": "problems.items.1.image", "ratio": "16:9", "position": "problem section 2, beside the mechanism list"}
+        ]
+      },
+      {
+        "id": "features.items.0",
+        "role": "mechanism",
+        "copy_summary": "Why standard solutions fail and how the L-shape fixes it. A support system has to execute three mechanical moves at once: elevate the base of the hips level with or slightly above the knees, bridge the gap at the seat corner, and hold the lumbar curve. Flat donut pads never held because they only raised the hips and left the lumbar gap open; separate strap-on pillows pushed the mid-back forward instead.",
+        "image_slots": [
+          {"slot_id": "features.items.0.image", "ratio": "16:9", "position": "feature section 1, beside the why-every-fix-missed-it list"}
+        ]
+      },
+      {
+        "id": "features.items.1",
+        "role": "proof",
+        "copy_summary": "Seamless one-piece design that never shifts. He put it on the driver seat the next morning before a shift; because the seat base and lumbar backrest are one continuous unit there is nothing to come apart. When he stepped on the brakes at highway speeds the textured non-slip bottom held its ground firmly against smooth leather, and he never had to reach down and drag a wandering cushion back into place.",
+        "image_slots": [
+          {"slot_id": "features.items.1.image", "ratio": "16:9", "position": "feature section 2, beside the what-makes-it-work list"}
+        ]
+      },
+      {
+        "id": "features.items.2",
+        "role": "proof",
+        "copy_summary": "Daily pressure relief and practical boundaries. A first full week of ten-hour days on the cushion and the usual mid-afternoon burning ache simply failed to arrive; the lower back stayed relaxed. Stated limits: it is not a fit for ultra-low sports car cockpits with an inch of headroom, and the dense supportive base raises seating height.",
+        "image_slots": [
+          {"slot_id": "features.items.2.image", "ratio": "16:9", "position": "feature section 3, beside the what-to-know list"}
+        ]
+      },
+      {
+        "id": "features.items.3",
+        "role": "outcome",
+        "copy_summary": "Getting weekends and road trips back. Three weeks in, he and Sarah rebooked the cancelled trip to the Blue Ridge Mountains and drove six uninterrupted hours on winding roads in clean effortless comfort. The following Saturday he sat through two back-to-back games in metal bleachers and stood up and cheered at full volume without clutching his tailbone.",
+        "image_slots": [
+          {"slot_id": "features.items.3.image", "ratio": "16:9", "position": "feature section 4, beside the what-changed list"}
+        ]
+      },
+      {
+        "id": "features.items.4",
+        "role": "cta",
+        "copy_summary": "An affordable solution backed by a risk-free guarantee. Custom seat re-upholstery runs into thousands and locks you into one vehicle; high-end ergonomic chairs cost hundreds to thousands and do nothing in a car; chiropractic sessions recur. Up to half off during a limited promotional release, with ninety days to test it.",
+        "image_slots": [
+          {"slot_id": "features.items.4.image", "ratio": "16:9", "position": "feature section 5, beside the price comparison list"}
+        ]
+      },
+      {
+        "id": "reviews",
+        "role": "social-proof",
+        "copy_summary": "Thousands of 5-star reviews agree. A four-photo grid sitting in the same block as three attributed quotes with reviewer names: a delivery driver ten hours a day whose back pain vanished in a week, a remote desk worker whose afternoon tailbone ache is gone, and a driver whose cushion stays firmly in place on a leather seat.",
+        "image_slots": [
+          {"slot_id": "reviews.shots.0.image", "ratio": "1:1", "position": "review grid tile 1 of 4"},
+          {"slot_id": "reviews.shots.1.image", "ratio": "1:1", "position": "review grid tile 2 of 4"},
+          {"slot_id": "reviews.shots.2.image", "ratio": "1:1", "position": "review grid tile 3 of 4"},
+          {"slot_id": "reviews.shots.3.image", "ratio": "1:1", "position": "review grid tile 4 of 4"}
+        ]
+      },
+      {
+        "id": "product",
+        "role": "cta",
+        "copy_summary": "Recommended by drivers and desk workers: a product card with a 4.9 rating over 3,480+ reviews, listing the one-piece L-shape, the slow-rebound core, the non-slip base and portability between seats.",
+        "image_slots": [
+          {"slot_id": "product.image", "ratio": "16:9", "position": "mid-page product card"}
+        ]
+      },
+      {
+        "id": "product_end",
+        "role": "cta",
+        "copy_summary": "Closing offer card: experience pain-free sitting wherever you go, one-piece high-density memory foam that bridges the chair gap, relieves tailbone pressure and supports the natural lumbar curve.",
+        "image_slots": [
+          {"slot_id": "product_end.image", "ratio": "16:9", "position": "closing offer card, above the final CTA"}
+        ]
+      },
+      {
+        "id": "brand-furniture",
+        "role": "cta",
+        "copy_summary": "Masthead and footer brand marks.",
+        "image_slots": [
+          {"slot_id": "header.logo", "ratio": "1:1", "position": "masthead"},
+          {"slot_id": "footer.logo", "ratio": "1:1", "position": "footer"}
+        ]
+      },
+      {
+        "id": "author-and-comments",
+        "role": "author",
+        "copy_summary": "Bylined portrait furniture: the hero byline avatar for Marcus Vance, the About-the-author avatar in the guide card, and six commenter avatars in the reader discussion.",
+        "image_slots": [
+          {"slot_id": "hero.author_avatar", "ratio": "1:1", "position": "byline avatar beside the author name"},
+          {"slot_id": "guide.avatar", "ratio": "1:1", "position": "About the author card"},
+          {"slot_id": "comments.items.0.avatar", "ratio": "1:1", "position": "reader discussion, commenter 1"},
+          {"slot_id": "comments.items.1.avatar", "ratio": "1:1", "position": "reader discussion, commenter 2"},
+          {"slot_id": "comments.items.2.avatar", "ratio": "1:1", "position": "reader discussion, commenter 3"},
+          {"slot_id": "comments.items.3.avatar", "ratio": "1:1", "position": "reader discussion, commenter 4"},
+          {"slot_id": "comments.items.4.avatar", "ratio": "1:1", "position": "reader discussion, commenter 5"},
+          {"slot_id": "comments.items.5.avatar", "ratio": "1:1", "position": "reader discussion, commenter 6"}
+        ]
+      }
+    ]
+  }
+}

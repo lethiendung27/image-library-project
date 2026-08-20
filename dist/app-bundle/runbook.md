@@ -283,11 +283,18 @@ rather than rendered (G12, ADR-028):
 does `pain` work, and under the old rule it produced a file called relief-hero — the wrong
 word for the one person who has to file it.
 
-**`gif.ratio` is the SLOT's declared ratio from `content.json`, never the still type's.**
-On `whole-frame` the loop IS the delivered image, so it owes the page's shape. Where the
+**`gif.ratio` on `whole-frame` is the SLOT's declared ratio from `content.json`, never the
+still type's.** The loop IS the delivered image, so it owes the page's shape. Where the
 routed still renders at a different ratio and the layout crops it — `03-mechanism-ghostbody`
 at 1:1 into a 16:9 slot, for instance — the loop still owes 16:9, because nothing crops it
 on the way in.
+
+**`gif.ratio` on `inset` is the LAYER's shape and cannot be the slot's** (ADR-033). An inset
+loop fills a panel inside the frame, not the frame, so the page's aspect is the one thing it
+does not owe. Take it from the host type's own description of that layer — `06-relief-hero`
+draws `--detail` as a rounded rectangle or circle at 15-25% of frame width, which is square,
+so a `--detail` loop delivers 1:1 whatever the slot is. A build that emits an inset loop at
+the slot's own ratio has confused the layer with the frame.
 
 **`gif.brief` is a shot description in plain words**, of the kind you would say out loud to
 the person holding the camera. Three movements, no labels: who or what is in the shot and

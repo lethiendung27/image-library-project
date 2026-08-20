@@ -1407,3 +1407,66 @@ primary; page 77 re-routed to three loops with three alternates, its plates rege
 its motion notes rewritten. Earlier sessions still stand unmigrated and are all at margin 0,
 which is now a stated fact about them rather than an invisible one. `registry_version`
 unchanged.
+
+## ADR-033 · 2026-08-20 · The first inset loop, and the two rules ADR-028 and ADR-032 left behind it
+
+The owner asked for a page whose prompts.md uses a gif INSET. Every loop the library had
+routed until now was `whole-frame`, and pages 77 and 97 both recorded the same reason in
+`motion.notes`: no type at a slot that earned motion legislated a layer a loop could occupy.
+Page 104 is the first where one does, and routing it surfaced two pieces of law that were
+written for whole-frame and quietly wrong for inset.
+
+**Defect 1: `06-relief-hero`'s own `--loop` block still described the pre-ADR-028 plate.** It
+said the render "owes a legible work order sitting in the layer's own footprint" and that
+"the plate's lettering is settled at 20 of 20 lines exact". ADR-028 made the plate a
+generated file two days earlier and took the lettering out of the frame entirely, and this
+block was not updated with it. Nothing caught it because no page had routed `--loop` since,
+which is the honest reason a stale rule survives: it is only load-bearing the day someone
+uses it. Corrected at 1.16 — the layer is reserved as a flat empty block of one flat tone,
+carrying no text, and the plate travels beside the still.
+
+**Defect 2: `gif.ratio` was defined for a form that is not the only form.** ADR-032 wrote it
+flatly — the slot's declared ratio, because on whole-frame the loop IS the delivered image
+and owes the page's shape. An inset loop fills a panel INSIDE the frame, so the page's aspect
+is the one thing it does not owe. `06-relief-hero` draws `--detail` as a rounded rectangle or
+circle at 15-25% of frame width, which is square, so a `--detail` loop delivers 1:1 whatever
+the slot is. The rule now branches on form and the build fails an inset loop that carries the
+slot's own ratio — the specific mistake of confusing the layer with the frame.
+
+**The new risk, named rather than removed.** Under the old plate rule a render carrying one
+took the `--brief` suffix and never the slot's asset filename, because a frame covered in
+lettering is one no page can use by accident. A reserved layer is a flat empty grey block,
+and that CAN ship unnoticed as a design choice. So the host render keeps the slot's own asset
+filename — it is the frame the loop lands in — and the option that emits it says on its own
+face that it is unfinished until the loop is dropped in. The build fails an
+`inset_motion: loop` option whose prompt does not reserve the layer as an empty block, and
+fails one that carries no such note.
+
+**Why this slot, and why it is not a stretch.** `features.items.1` claims the textured base
+held its ground against smooth leather when he braked at highway speeds. Holding against a
+force is temporal and no static frame carries it. `--detail`'s stated trigger is a feature
+too small to read at scene scale, which the grip pattern is; `--loop` is legal on every
+`inset_mode` except `--none` and requires the layer's content to be TEMPORAL, which a
+magnified mechanism under load is. Nothing is restaged, so it is rung 1 — the first rung-1
+loop on a page since page 97's how-to, and the first inset one anywhere.
+
+**Page 104 also routes four slots with a single option each**, which is worth recording
+because it looks like under-delivery and is not. SPEC §7.4 asks for three where three legal
+possibilities exist and bars padding with rerolls where they do not:
+`features.items.0` (the mechanism cell holds one legal type here and it has no axes),
+`features.items.2` (the VARIANT SELECTION RULE fixes the variant, and a second execution of
+the same seat on the same day is a reroll), `features.items.3` (the outcome cell's other type
+is spent and this type's only axis has one legal value, the other being banned outright), and
+the four review tiles (ADR-022). Each says so in its own `recommendation_basis`.
+
+Page 104 is the same product as page 77 on a different template and a different narrator —
+29 of 192 content keys match and all of them are boilerplate. It was routed on its own copy
+rather than cloned, and the pages diverge at four slots. `imageBriefs` is null on this export,
+so `htmlCompiled` was the only slot source, which is the case earlier pages established it can
+carry.
+
+Consequences: `registry/types/06-relief-hero.md` `inset_motion: --loop` rewritten, to 1.16;
+`registry/rules.md` G12 gains the form-dependent ratio rule and the unshippable-host rule;
+`query/runbook.md` Step 5c the same; `query/output.schema.json` `gif.ratio` description;
+`query/sessions/104-…` is new. Five checks mutation-tested in-process, 5 of 5 fired.
+`registry_version` unchanged.

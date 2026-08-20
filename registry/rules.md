@@ -270,10 +270,13 @@ is `kind: null`, ad channel only, so it never writes a page brief.
 wrong thing to the one person who has to file it. The page still numbers by page and an
 editor still tracks by slot; the gif type sits between them.
 
-**The ratio is the SLOT's, not the still type's.** On `whole-frame` the loop IS the
-delivered image, so it owes the page's shape rather than the shape the still happened to be
-rendered at. The plate is drawn at that ratio, so the card is the shape of the deliverable
-and the editor reads the aspect off the paper as well as out of it.
+**The ratio depends on the form.** On `whole-frame` the loop IS the delivered image, so it
+owes the SLOT's shape rather than the shape the still happened to be rendered at. On `inset`
+it fills a layer inside the frame, so it owes the LAYER's shape and never the slot's — the
+host type describes that layer, and a build emitting an inset loop at the slot's own ratio
+has confused the layer with the frame (ADR-033). Either way the plate is drawn at that ratio,
+so the card is the shape of the deliverable and the editor reads the aspect off the paper as
+well as out of it.
 
 **The plate is GENERATED, never drawn by an image model** — `python3 scripts/gen-plate.py`,
 and like `registry/index.yaml` and the GIF library's folder cards it is a view that is never
@@ -292,6 +295,13 @@ at all, and the plate travels beside the still as its own file: ADR-019 required
 order to reach the editor rather than sit in a document nobody opens, and a file named after
 the slot, sitting in the render folder next to the frame it describes, satisfies that without
 putting model-drawn lettering into a frame G6 bans text from.
+
+**The HOST render of an inset loop keeps the slot's own asset filename and is not shippable
+until the loop is in it.** That is a change of risk rather than a removal of one, and it is
+named here because nothing else catches it: the old rule pushed such a render to `--brief`
+because it carried a plate covered in lettering, which no page could use by accident, and a
+flat empty block can ship unnoticed as a design element. The option that emits one says on
+its own face that the frame is unfinished (ADR-033).
 
 **The plate is a claim about THIS frame, and G7 binds it exactly as it binds the picture.**
 What the brief names has to be present and possible in the still: a brief promising a grime

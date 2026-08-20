@@ -224,7 +224,7 @@
               "ratio": {
                 "type": "string",
                 "pattern": "^\\d+:\\d+$",
-                "description": "The aspect the editor delivers, taken from the SLOT's declared ratio in content.json rather than from the still type's own declared list — for whole-frame the loop IS the delivered image, so it owes the page's shape, not the shape the still was rendered at. The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
+                "description": "The aspect the editor delivers. On `whole-frame` it is the SLOT's declared ratio from content.json, never the still type's own — the loop IS the delivered image, so it owes the page's shape. On `inset` it is the LAYER's shape and cannot be the slot's: the loop fills a panel inside the frame, so the page's aspect is the one thing it does not owe, and the host type's description of that layer decides it (ADR-033). The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
               },
               "duration_s": {
                 "type": "number"
@@ -401,7 +401,7 @@
               "ratio": {
                 "type": "string",
                 "pattern": "^\\d+:\\d+$",
-                "description": "The aspect the editor delivers, taken from the SLOT's declared ratio in content.json rather than from the still type's own declared list — for whole-frame the loop IS the delivered image, so it owes the page's shape, not the shape the still was rendered at. The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
+                "description": "The aspect the editor delivers. On `whole-frame` it is the SLOT's declared ratio from content.json, never the still type's own — the loop IS the delivered image, so it owes the page's shape. On `inset` it is the LAYER's shape and cannot be the slot's: the loop fills a panel inside the frame, so the page's aspect is the one thing it does not owe, and the host type's description of that layer decides it (ADR-033). The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
               },
               "duration_s": {
                 "type": "number"
