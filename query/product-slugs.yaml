@@ -1,0 +1,48 @@
+# Product slugs — the closed list a session directory name is built from (ADR-034).
+#
+# A session directory is `{page-type}-{product-slug}-v{NN}`. The slug comes from
+# HERE and is never derived from whatever the brief happens to call the product
+# that day, because the same product arrives under different names: page 73's
+# content.json says "Automatic Upper Arm Blood Pressure Monitor" while its source
+# export says "Hospital Grade Blood Pressure Monitor CE MDR Approved". Deriving a
+# slug from the name would give one product two slugs and break the grouping the
+# convention exists to create.
+#
+# Each entry is `slug:` followed by every product name that means it. Adding a name
+# is cheap; adding a SLUG is a decision, because it claims two pages are not the
+# same product. `scripts/validate.py` fails a session whose directory slug does not
+# match its own content.json product name through this map.
+
+seat-cushion-l-shaped:
+  - Ergonomic Memory Foam Seat Cushion
+
+massage-comb-spray:
+  - Electric Spray Air Cushion Massage Comb
+
+optical-drive-7in1:
+  - 7-in-1 External USB DVD / Blu-ray Drive
+
+bp-monitor-upper-arm:
+  - Hospital Grade Blood Pressure Monitor CE MDR Approved
+  - Automatic Upper Arm Blood Pressure Monitor
+
+air-cooler-wall-mounted:
+  - Portable Wireless Wall-Mounted Air Conditioner
+
+mattress-vacuum-uv:
+  - Household Dust Mite Remover
+
+furniture-lifter:
+  - Furniture Lifting Tool Set
+
+electric-scissors:
+  - Cordless Electric Scissors
+
+translation-earbuds:
+  - HY T26 Pro Wireless Translation Earbuds
+
+juicer-cup-portable:
+  - Portable Wireless Juicer Cup
+
+rodent-repellent-balls:
+  - Natural Rodent Repellent Balls

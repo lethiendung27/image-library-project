@@ -23,6 +23,7 @@ RULES_PATH = os.path.join(ROOT, "registry", "rules.md")
 INDEX_PATH = os.path.join(ROOT, "registry", "index.yaml")
 OBS_PATH = os.path.join(ROOT, "ingestion", "observations.jsonl")
 PICKS_PATH = os.path.join(ROOT, "feedback", "picks.jsonl")
+SLUGS_PATH = os.path.join(ROOT, "query", "product-slugs.yaml")
 RENDER_PATH = os.path.join(ROOT, "eval", "render-tests.jsonl")
 GIF_TYPES_DIR = os.path.join(ROOT, "registry", "gif-types")
 GIF_LEDGER_PATH = os.path.join(ROOT, "ingestion", "gifs.jsonl")
@@ -557,7 +558,7 @@ def check_json_files():
 # warned about on every run so the multi-pass prompts in them stay visible rather
 # than quietly shipping to an owner who cannot composite. Nothing is added here.
 GRANDFATHERED_MULTIPASS = {
-    "37-how-one-l-shaped-cushion-ended-my-sitting-pain-ergonomic-support",
+    "advertorial-seat-cushion-l-shaped-v02",
 }
 
 
@@ -591,6 +592,100 @@ def check_prompt_sets():
                     warn(rel, msg + " (predates ADR-021, grandfathered)")
                 else:
                     err(rel, msg)
+
+
+def check_session_names():
+    """A session directory is {page-type}-{product-slug}-v{NN} (ADR-034).
+
+    The slug is read from query/product-slugs.yaml rather than derived from the
+    product name, because one product arrives under several names and a derived
+    slug would split it. A convention with no checker drifts inside six months,
+    which is what the names this replaced had already done.
+    """
+    sessions_dir = os.path.join(ROOT, "query", "sessions")
+    if not os.path.isdir(sessions_dir):
+        return
+    if not os.path.exists(SLUGS_PATH):
+        err("query/product-slugs.yaml", "missing; session names cannot be checked")
+        return
+    # Its own reader: the repo's YAML subset bars hyphens in a key and every slug
+    # has them. Two levels, `slug:` then `  - name`, and nothing else.
+    slugs, cur = {}, None
+    with open(SLUGS_PATH, encoding="utf-8") as f:
+        for raw in f:
+            line = raw.rstrip("\n")
+            if not line.strip() or line.lstrip().startswith("#"):
+                continue
+            if line.startswith("  - "):
+                if cur is None:
+                    err("query/product-slugs.yaml", f"name before any slug: {line.strip()!r}")
+                    continue
+                slugs[cur].append(line[4:].strip())
+            elif re.fullmatch(r"[a-z0-9-]+:", line.strip()) and not line.startswith(" "):
+                cur = line.strip()[:-1]
+                slugs.setdefault(cur, [])
+            else:
+                err("query/product-slugs.yaml", f"unparseable line: {line.strip()[:50]!r}")
+    name_to_slug = {}
+    for slug, names in slugs.items():
+        for n in (names or []):
+            name_to_slug[str(n).strip()] = slug
+
+    seen = {}
+    for session in sorted(os.listdir(sessions_dir)):
+        sdir = os.path.join(sessions_dir, session)
+        if not os.path.isdir(sdir):
+            continue
+        rel = f"query/sessions/{session}"
+        m = re.fullmatch(r"([a-z0-9-]+?)-([a-z0-9-]+)-v(\d{2})", session)
+        if not m:
+            err(rel, "directory name is not {page-type}-{product-slug}-v{NN} (ADR-034)")
+            continue
+        page_type, slug, ver = m.group(1), m.group(2), m.group(3)
+        if slug not in slugs:
+            # the split is ambiguous until a slug matches; try the longest one that does
+            cand = [s2 for s2 in slugs if session.endswith(f"-{s2}-v{ver}")]
+            if not cand:
+                err(rel, f"product slug `{slug}` is not in query/product-slugs.yaml")
+                continue
+            slug = max(cand, key=len)
+            page_type = session[:-(len(slug) + len(ver) + 3)].rstrip("-")
+        if not page_type:
+            err(rel, "no page type in front of the product slug")
+        key = (slug, ver)
+        if key in seen:
+            err(rel, f"version v{ver} of `{slug}` is already taken by {seen[key]}")
+        seen[key] = session
+
+        cpath = os.path.join(sdir, "content.json")
+        if not os.path.exists(cpath):
+            continue
+        try:
+            with open(cpath, encoding="utf-8") as f:
+                pname = (json.load(f).get("product") or {}).get("name")
+        except (json.JSONDecodeError, OSError):
+            continue
+        if pname is None:
+            warn(rel, "content.json carries no product.name, so the directory slug "
+                      "cannot be checked against it")
+        elif name_to_slug.get(str(pname).strip()) != slug:
+            err(rel, f"directory says `{slug}` but content.json product is "
+                     f"`{pname}` ({name_to_slug.get(str(pname).strip()) or 'unmapped'})")
+
+    # a page_id that is not a number is a handle that got written into the id field
+    for session in sorted(os.listdir(sessions_dir)):
+        p = os.path.join(sessions_dir, session, "prompts.json")
+        if not os.path.exists(p):
+            continue
+        try:
+            with open(p, encoding="utf-8") as f:
+                pid = json.load(f).get("page_id")
+        except (json.JSONDecodeError, OSError):
+            continue
+        if pid is not None and not str(pid).isdigit():
+            warn(f"query/sessions/{session}/prompts.json",
+                 f"page_id `{str(pid)[:40]}` is not a number — the source handle was "
+                 "written into the id field, and the real id is unrecovered")
 
 
 # ---------------------------------------------------------------- routing table
@@ -1046,6 +1141,7 @@ def main(argv):
 
     check_json_files()
     check_prompt_sets()
+    check_session_names()
     shortlist = check_slot_rules(types)
     gates = parse_attribute_gates()
     golden_slots = check_golden(types, vocab, shortlist, gates)

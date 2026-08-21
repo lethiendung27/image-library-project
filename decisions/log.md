@@ -1470,3 +1470,83 @@ Consequences: `registry/types/06-relief-hero.md` `inset_motion: --loop` rewritte
 `query/runbook.md` Step 5c the same; `query/output.schema.json` `gif.ratio` description;
 `query/sessions/104-…` is new. Five checks mutation-tested in-process, 5 of 5 fired.
 `registry_version` unchanged.
+
+## ADR-034 · 2026-08-21 · Session directories are {page-type}-{product-slug}-v{NN}, and the slug comes from a closed list
+
+Session directory names had no format. The owner asked for one that makes the product clear,
+carries a number, and names the page type, and said explicitly not to bother with the page
+title. Auditing the nine existing names first turned up four things, one of which is a data
+defect rather than a naming one.
+
+**The page 13 session has no page id.** Its `prompts.json` records
+`"page_id": "13-inch-portable-wall-mounted-air-cooler-cool-your-space"` — the source HANDLE
+written into the id field. The `13` at the front of the directory was never an id either; it
+is the `13-inch` of the product name, which happens to look like one. No handle among the 62
+source exports matches it, so the real id is unrecovered. This is why the directory could not
+simply be renamed from its own data.
+
+**Sorting was already broken.** `104` sorts before `13`, and with ids running to three digits
+it only gets worse. **The product was invisible in four of nine names** —
+`58-how-i-rescued-trapped-family-dvds` never says it is a USB optical drive. And **four of the
+nine sessions were the same product** with nothing grouping them.
+
+**The scale is what decided the field order.** Measured across the source exports: 62 files,
+11 products, and the ergonomic seat cushion alone has **27 pages**. The massage comb has 10
+and the optical drive 9. A name whose first sort key is anything but the product scatters 27
+siblings across the directory, and seeing a product's pages together is the reuse question
+ADR-023 built the library around — one asset serves every clone of a product.
+
+**Two corrections from the owner, both taken.** First, I argued against putting page type
+first partly because it holds two values across the catalogue; the owner corrected that — the
+source system has more page types and the library simply has not met them yet, so the field
+carries real information and my cardinality argument was about a snapshot rather than the
+system. Second, the number: I recommended the source `pageId` because it is the join key back
+to the export; the owner chose a **self-assigned version**, and that choice solves something
+`pageId` could not — page 13 has no id and still gets a name. The `pageId` is not lost; it
+stays in `prompts.json.page_id`, which is where a join key belongs.
+
+**The version is placed at the END rather than the middle, and that is my call rather than the
+owner's.** Their sketch read `[page-type]-[version]-[product]`; with the version in the middle,
+every product's `v01` sorts together and the 27 cushion pages break into 27 version groups —
+the exact scatter the convention exists to stop. At the end it groups, and it matches the
+owner's own first sketch, which put the product before the variant. It is one command to swap
+back.
+
+**Version semantics, stated because an unstated one is ambiguous the first time two pages
+compete for it:** the Nth page routed for that PRODUCT, counted across all page types,
+assigned once and never reused. If a page is retired its version is retired with it. Within a
+product group the sequence is then readable from the listing without anyone maintaining it.
+
+**The slug comes from `query/product-slugs.yaml`, a closed list, and not from the product
+name.** The evidence is already in the repo: page 73's `content.json` calls the product
+"Automatic Upper Arm Blood Pressure Monitor" while its source export calls it "Hospital Grade
+Blood Pressure Monitor CE MDR Approved". A derived slug gives one product two slugs and breaks
+the grouping the whole convention exists to create, so the file maps one slug to every name
+that means it. Adding a name is cheap; adding a SLUG is a decision, because it claims two
+pages are not the same product.
+
+**Renaming had one consequence nothing would have caught.** `scripts/validate.py` hardcoded
+`"37-how-one-l-shaped-cushion-ended-my-sitting-pain-ergonomic-support"` in
+`GRANDFATHERED_MULTIPASS`. Renaming that session without updating the constant would have
+silently un-grandfathered it and turned three warnings into three errors. `decisions/log.md`
+also names a session path, and it is left alone: the log is append-only and that reference is
+historical.
+
+`check_session_names` enforces the format, the closed slug list, the uniqueness of
+(product, version), and the match between a directory's slug and its own `content.json`
+product name. It also warns where a `page_id` is not a number, which is how the page 13 defect
+stays visible instead of being buried by a tidy new name. Four checks, mutation-tested against
+throwaway directories, 4 of 4 fired.
+
+**Written while another session was editing the same file.** `scripts/validate.py` in the
+working tree carried both lanes' work — this ADR's `check_session_names` and another lane's
+in-progress content-contract checker, which was surfacing 23 pre-existing defects in the older
+sessions. Only this lane's hunks are in this commit; the other lane's functions,
+`mapping/content.schema.json` and the app bundle are left untouched and unstaged. That is the
+parallel-session discipline the repo already assumes, applied to a file rather than a
+directory.
+
+Consequences: nine directories renamed under `query/sessions/`; `query/product-slugs.yaml` is
+new; `scripts/validate.py` gains `check_session_names` and has its grandfather key corrected.
+No session content changes, no prompt moves, `registry_version` unchanged. Page 13 keeps its
+handle-shaped `page_id` until the owner supplies the real one.
