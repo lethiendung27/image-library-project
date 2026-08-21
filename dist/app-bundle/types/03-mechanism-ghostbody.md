@@ -351,7 +351,7 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
   scalp-LED comb renders. `structure`'s count read "as much as the cutaway shows" while
   `cutaway` declared no extent — each bounded by the other. Depth now derives from a closed
   layer list, the silhouette survives the cut, `section` and `window` are the two geometries,
-  and `structure` gains soft tissue. ADR-038. · this commit
+  and `structure` gains soft tissue. ADR-038. · 7534756
 - 2.2 (2026-08-13): type passed by the owner; file finalised with two rendered worked examples
   in full text per SPEC §3.3. Closing state: five live marks, `structure` `stress` `support`
   `verdict` proven and `heat` still unrendered; `dims` withdrawn at 1.6 on 0 of 3. `3e32167`
