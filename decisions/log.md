@@ -1764,3 +1764,80 @@ Consequences: `registry/rules.md` G12 trades the slot paragraph for the one-per-
 `registry/gif-instruction.md` §4 rewritten around a single name and no ledger sequence;
 `scripts/validate.py` `GIF_FILE_RE` and the ledger's error message; three `build.py` files drop
 `slot_slug()` and gain the duplicate-type check. `registry_version` unchanged.
+
+## ADR-038 · 2026-08-21 · The cutaway gains a bound, a second geometry, and a word for soft tissue
+
+Owner verdict on two `03-mechanism-ghostbody` renders of a scalp-LED comb: *sai logic, sai khoa
+học* — the cutaway is cutting into the head when the product only reaches the scalp and the hair
+roots. Reading the type file afterwards shows the renders obeyed it exactly.
+
+**The bound was circular, so there was no bound.** `cutaway` said the structure is
+`Anatomically accurate` and declared no extent. The `structure` mark's count read **"as much as
+the cutaway shows"**. So the cutaway's extent was set by the structure and the structure's
+extent was set by the cutaway, and the only thing left standing was an adjective. G10 already
+recorded what happens next in its own words — a rule without a sanctioned resolution "is
+resolved by the model in whichever direction it likes" — and here the direction is whatever
+reads as a medical illustration: deeper and larger. Measured by eye against the renders, the
+opened slab is about a quarter of the head's height where a scalp is about three percent of it,
+and in both the crown of the skull is removed to make room.
+
+**Depth is derived, never chosen.** Name the layers as a closed list from the surface, ending
+one below the deepest structure the product reaches, and draw nothing past it. Scalp LEDs: hair
+shaft, epidermis, dermis with the follicle bulbs, stop — the skull never appears. Seat cushion:
+skin, subcutaneous, then pelvis, sacrum and lumbar spine, stop. This is the move the repo makes
+everywhere else and had not made here: a closed list instead of an open adjective, the same
+shape as `vocabulary.yaml`, the six gif types and ADR-016's five ratios.
+
+**The silhouette clause read as permission.** `cutaway` already said the structure is `rendered
+INSIDE the body silhouette and never floating on top of it`, and that sentence was written at
+1.x to stop the anatomy floating ON TOP of the body. It says nothing about the body's own
+outline, and both renders removed the crown of a head while satisfying it. Now stated
+separately: the outline stays unbroken and the cutaway is a WINDOW within it, never a bite out
+of it.
+
+**Two cut geometries, as a PARAMETER rather than a variant.** SPEC §3.2's ladder decides this:
+the argument does not change — the sentence is still "this shape exists for a reason" — only
+where the body is opened, which is a runtime value. So it is level 1, it lives in the type file,
+and it costs no vocabulary entry, no frontmatter field and no validator change.
+
+- `section` — a plane through the body's volume. For a structure living inside it: spine,
+  joint, pelvis, cervical vertebrae. This is what the type did at 2.2 and every render behind
+  it.
+- `window` — a shallow opening in the surface layers only, no deeper than the last named layer,
+  the part's outline intact. For a structure at or just beneath the surface: scalp and follicle,
+  skin, nail bed, gum margin.
+
+**And the choice is already made by the time you make it.** Write the layer list first and the
+geometry falls out: a stack ending in the dermis cannot be drawn as a plane through a skull.
+That is why this is one rule in two halves rather than two rules that can disagree.
+
+**`structure` had no word for soft tissue, and that is why the model invented one.** The mark
+is defined as `bone, cartilage, the body's own framework`; `support` is specified as a band
+`beside a bone`, and it `sits ON the bone`; every proven render behind this type is skeletal —
+cervical vertebrae, metatarsals under a shoe, an insole. A hair follicle in the dermis is none
+of those. **The comb is the first product ever routed to this type whose target is not a
+skeleton**, so the model had to improvise both the tissue and its depth, and it improvised
+toward illustration. `structure` now names soft tissue explicitly, and its count is the closed
+layer list rather than the circular clause.
+
+**What this does NOT fix, and it is the larger half.** The same two renders put RED on the
+CORRECT panel, because the product's real specification is `6-LED Red Light Therapy`: G8 makes a
+visible emission the primary subject and names `light` in its own list, G3 locks red to problem
+areas, and this type's `stress` mark is red and left-panel-only. That collision is untouched
+here and no legal render of this product exists on this type until it is resolved. It is a
+change to a GLOBAL rule and it is left for its own decision rather than folded into a type
+patch.
+
+**Evidence, stated with its own limit.** 2 of 16 records for this type, 12% of runs and 2
+distinct observations, so SPEC §6.2's ≥2/3-of-runs and ≥3-observations arms are BOTH unmet and
+this is not a patch the ledger licensed. The authorisation is the owner's own verdict, which
+ADR-007 names as part of the human gate — "render verdicts where the owner gives them". Recorded
+this way round so nobody later reads the ledger as having cleared it.
+
+Consequences: `registry/types/03-mechanism-ghostbody.md` `cutaway` gains the depth rule, the
+silhouette rule, the two geometries and the continuity rule, `ghost` stops saying `cross-
+sectioned at a named plane`, the SKELETON `[CUTAWAY]` line names the layer list and the cut, and
+`structure` gains soft tissue and a real count — to 2.3. `registry/argument-faults.md` gains
+**A13**, because an extent nobody bounded becoming a claim nobody made is not about anatomy and
+recurs wherever a prompt names a thing to reveal without naming where the revealing stops. No
+page is re-routed, no other type is touched, `registry_version` unchanged.

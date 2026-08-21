@@ -167,3 +167,38 @@ that happen to argue nothing.
 
 Corollary, same set, 1 render: **a person asked to SHOW the product holds it up for the lens**
 and breaks G7's placement test. A person asked to POINT AT it leaves it in the world.
+
+## A13 · How deep the cut goes is a claim about how far the product reaches
+
+A cutaway is read as a statement of reach. Open the body to the depth the product actually
+works at and the image argues what the product does; open it deeper and the image argues a
+reach the product does not have — with every slot correct, the right structure named, the
+right marks in the right panels and the right product in frame.
+
+- `03-mechanism-ghostbody`: a scalp comb whose real mechanism is six surface LEDs and an
+  atomiser, drawn twice with a slab about a quarter of the head deep. A scalp is roughly
+  three percent of a head's height, so the cut over-states the depth by close to an order of
+  magnitude, and in both renders the crown of the skull is removed to make room for it. The
+  product treats hair roots; the image says it reaches into the cranium. 2 of 2 renders for
+  that product, owner-verdicted.
+
+**The mechanism is an unbounded instruction, not a wrong one.** Neither render disobeyed
+anything. The type asked for the structure to be `anatomically accurate` and gave no extent,
+and its `structure` mark was counted as `as much as the cutaway shows` while the cutaway
+declared no extent of its own — each bounded by the other and therefore by nothing. An
+adjective is not a bound, and a model resolving an unbounded depth resolves it toward
+whatever reads as a medical illustration, which is deeper and larger. The fix at 2.3 is a
+closed layer list that ENDS: name the layers from the surface down to one below the deepest
+the product reaches, and draw nothing past it.
+
+**Why it belongs here and not only in that type.** Any type that opens a body or a product to
+show a mechanism has the same exposure — `03-mechanism-xray` cuts a product open on the same
+terms — and the fault is not about anatomy. It is that an extent nobody bounded becomes a
+claim nobody made. The same shape appears wherever a prompt names a thing to reveal without
+naming where the revealing stops.
+
+**Corollary, same renders, and it travels with the depth:** what is revealed must CONTINUE
+what is visible. Both renders drew giant follicles with the bulbs near the surface and the
+tails curling down, connected to none of the hair on the head above them — two unrelated
+systems in one frame. A cutaway is a window into the same body, not a diagram pasted into a
+hole cut in it.

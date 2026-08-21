@@ -3,7 +3,7 @@ id: 03-mechanism-ghostbody
 step: 3
 job: mechanism
 device: ghostbody
-version: "2.2"
+version: "2.3"
 status: active
 replaced_by: null
 ratios: ["1:1", "4:5"]
@@ -37,13 +37,13 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 and is never restated here or in a rendered prompt.
 
 ```
-TYPE: 03-mechanism-ghostbody v2.2
+TYPE: 03-mechanism-ghostbody v2.3
 REGISTER: 3D technical render.                                -> PARTS/register
 
 [PRODUCT REFERENCE] the attached photo is the exact reference.
 [PANELS] two equal panels. LEFT wrong, RIGHT correct.         -> PARTS/panels
 [GHOST] one pose, named once, identical in both panels.       -> PARTS/ghost
-[CUTAWAY] name the structure the product acts on.             -> PARTS/cutaway
+[CUTAWAY] the structure, its layer list, and which cut.       -> PARTS/cutaway
 [PRODUCT] RIGHT panel only. Placement and angle.              -> PARTS/product
 [MARKS] name each one used, with its count and its panel:     -> MARKS
   required: structure, verdict
@@ -63,13 +63,28 @@ signature and the thing a viewer reads first.
 
 **`ghost`** — a featureless matte white mannequin, **no face, no hair, no clothing, no skin
 tone** — restored at 2.1 after a defined face appeared in 2 of 3 renders without it: no face, no hair, no clothing, no skin
-tone. Named pose, named interaction with the product, and the body cross-sectioned at a named
-plane to reveal the interior. The anonymity is the argument, not a shortcut: nobody is being
+tone. Named pose, named interaction with the product, and the body opened at a named place to
+reveal the interior — `section` or `window`, per `cutaway`. The anonymity is the argument, not a shortcut: nobody is being
 empathised with, so nobody is excluded.
 
 **`cutaway`** — the anatomical structure the product acts on, rendered INSIDE the body
-silhouette and never floating on top of it. Anatomically accurate, and its contour follows
-the product's contour, because the alignment between the two is the whole claim.
+silhouette and never floating on top of it. Its contour follows the product's contour,
+because the alignment between the two is the whole claim.
+
+**Depth is DERIVED, never chosen.** Name the layers as a closed list from the surface, ending
+at the first layer BELOW the deepest structure the product reaches; nothing deeper is drawn.
+Scalp LEDs: hair shaft, epidermis, dermis with the bulbs — stop; no skull.
+
+**The silhouette survives the cut.** The outline stays unbroken and the cutaway is a WINDOW
+within it, never a bite out of it.
+
+**Two cut geometries, and the layer list picks one** — a parameter, not a variant (SPEC §3.2).
+`section`: a plane through the body's volume, for a structure living inside it. `window`: a
+shallow opening in the surface layers only, no deeper than the last named layer, outline
+intact. A stack ending in the dermis cannot be drawn as a plane through a skull.
+
+**What is revealed CONTINUES the body:** the follicles in the window are the roots of the hair
+above them, same direction and density, bulbs deep.
 
 **`product`** — the reference product at a named position and a named angle, G2-clean: place
 it, never describe it. Its contour must visibly align with the structure named in `cutaway`.
@@ -104,7 +119,7 @@ the colour G3 already assigns it.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `structure` | the neutral anatomy the argument sits in — bone, cartilage, the body's own framework | yellow / off-white ivory | as much as the cutaway shows | 2 renders · drew cleanly |
+| `structure` | the neutral anatomy the argument sits in — bone and cartilage, and the soft tissue a surface product acts in: dermis, follicle, nail bed | yellow / off-white ivory | every layer the closed list names, no more | 2 renders · drew cleanly, both skeletal |
 | `stress` | a flat hard-edged red overlay on the loaded or deformed element — **LEFT panel only** | red | as many as are loaded, left only | 3 renders in an inset · reads there |
 | `support` | a flat hard-edged blue band drawn BESIDE the structure the product carries, following its line and running ONLY the length the product reaches — never a fill of the anatomy — **RIGHT panel only** | blue | 1 per supported structure | 3 renders as an overlay · reads · 0 of 3 as a fill |
 | `heat` | a flat hard-edged orange overlay, wrong pressure or wrong heat — LEFT panel only | orange | 1, left only | **none** |
@@ -332,6 +347,11 @@ run in one gallery (02 then 03) but must share one palette or they read as two s
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 2.3 (2026-08-21): **the cutaway had no bound, and depth is a claim.** Owner verdict on two
+  scalp-LED comb renders. `structure`'s count read "as much as the cutaway shows" while
+  `cutaway` declared no extent — each bounded by the other. Depth now derives from a closed
+  layer list, the silhouette survives the cut, `section` and `window` are the two geometries,
+  and `structure` gains soft tissue. ADR-038. · this commit
 - 2.2 (2026-08-13): type passed by the owner; file finalised with two rendered worked examples
   in full text per SPEC §3.3. Closing state: five live marks, `structure` `stress` `support`
   `verdict` proven and `heat` still unrendered; `dims` withdrawn at 1.6 on 0 of 3. `3e32167`
