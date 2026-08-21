@@ -303,10 +303,20 @@ rather than rendered (G12, ADR-028):
 <the brief>                       gif.brief — one paragraph of prose
 ```
 
-**`gif.output` names the argument, not the still type it replaced.** The pattern is
-`{page}-{seq}-{gif-type}-{slot-slug}.mp4`. An inset loop inside `06-relief-hero --recall`
-does `pain` work, and under the old rule it produced a file called relief-hero — the wrong
-word for the one person who has to file it.
+**`gif.output` is the session's own name with two fields added** (ADR-036):
+`{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp`. Take the session directory,
+`{page-type}-{product-slug}-v{NN}`, insert the gif type after the page type, append the slot.
+Nothing else goes in it: the page id lives in `page_id`, the still's type is not what the loop
+argues, and a sequence number separates nothing the slot does not.
+
+**The slot is derived, never typed.** Drop `.image` from the `slot_id`, drop the container
+segments `items`, `shots` and `photos`, join what is left — `features.items.1.image` becomes
+`features1`. It is required because two loops on one page may share a gif type and would
+otherwise share a filename.
+
+**Delivery is animated WebP**, which has no audio track by format and sits in an `<img>` where
+a still already sits. A loop and a still are therefore interchangeable in the template, which
+is what lets a gif verdict occupy an image slot at all.
 
 **`gif.ratio` on `whole-frame` is the SLOT's declared ratio from `content.json`, never the
 still type's.** The loop IS the delivered image, so it owes the page's shape. Where the
@@ -369,8 +379,9 @@ and the plate travels beside the still as its own file. That satisfies ADR-019 �
 order reaches the editor rather than sitting in a document nobody opens — without putting
 model-drawn lettering into a frame G6 bans text from.
 
-Delivery is mp4/webm with a size ceiling — a 20 MB `.gif` costs more conversion than the
-motion buys.
+Delivery is animated WebP with a size ceiling. WebP runs larger than mp4 at the same
+quality, so the ceiling binds harder than it did under mp4/webm; that is the trade taken to
+keep a loop and a still interchangeable in an image slot.
 
 **In `prompts.md` the gif sits below option C**, carrying the four fields and naming its
 plate file. It is not an alternative to A–C — the recommended still is still rendered,

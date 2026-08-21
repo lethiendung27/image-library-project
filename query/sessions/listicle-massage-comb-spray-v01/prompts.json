@@ -166,7 +166,7 @@
           "opt": "B",
           "varies_on": "type: the mechanism argued photographically",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "1:1",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA woman in her mid-thirties in a plain jumper, standing at a bedroom window in the morning drawing the reference comb slowly down through the length of her own hair, her gaze on the hair rather than on the comb. She stands to the right of the frame.\n\nThe mist is the subject of the photograph. An ultra-fine white cloud leaves the bristle bed and hangs in the air through the hair, backlit hard by the window so it glows against the darker side of the room, filling a wide band of the frame. Accept lens flare and blown highlights where the window edge cuts in.\n\nOne real bedroom filled to the edges with things that genuinely belong there: an unmade bed behind her, a chair with clothes over it, a mug on the sill, a plant, a mirror leaning against the wall, a basket of laundry. Background blurred, but no bare wall area larger than the product. None of those objects carries printed text.\n\nIn the upper left of the frame, occupying the space she is offset from, sits a small rounded-rectangle panel with a thin white border showing one magnified detail the scene cannot carry at this distance: the comb's water tank window, half full, with the fine bubble trail rising from the atomiser plate below it. The panel is a clean technical render and does not bleed into the photograph. It is linked to the comb in the scene by proximity alone, with no arrow and no glow border.\n\nNo other mark anywhere in the frame.",
@@ -282,13 +282,13 @@
         "reason": "The page's headline claim is 97% static reduction in a single pass, and a pass is a thing that happens over time. The routed still is a three-panel locked comparison, and panels are inspected rather than watched — 0 of 13 such slots have ever earned a verdict. Drop the panels for one continuous frame in which the halo falls as the comb goes through, and the same claim is demonstrated rather than asserted. That is the rung-2 move Step 5d names. The force is a hand drawing the comb; nothing here moves on its own.",
         "asset": "97-03-reason1-proof-brushes--brief.svg",
         "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "output": "97-03-proof-reason1.mp4",
+        "output": "listicle-proof-massage-comb-spray-v01-reason1.webp",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of one length of hair lying on a bathroom shelf, standing up in a halo of separated strands after a plastic brush. The reference comb passes down it once and the halo drops, strand by strand, until the whole length is lying settled and flat along the shelf.",
         "alt": "A shot of a woman's own hair at the side of her head, fine strands standing out from the crown. The comb passes down through them once and they fall back against the rest of the hair and stay there, with no hand smoothing them down afterwards.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {
@@ -514,13 +514,13 @@
         "reason": "One click and the teeth retract flush into the cushion, releasing three weeks of trapped hair in one piece. That is a working part doing the single thing this card is sold on, which is the `mechanism` type's own PURPOSE line, and it cannot be shown in a static frame at all — the still can only put a clogged bed beside a clean one. The staging changes from three panels to one continuous frame, so rung 2. The force is a thumb on the button.",
         "asset": "97-07-reason5-proof-hygiene--brief.svg",
         "refs": "gifs-library/mechanism/ — no files filed yet; the folder card carries the law",
-        "output": "97-07-mechanism-reason5.mp4",
+        "output": "listicle-mechanism-massage-comb-spray-v01-reason5.webp",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of the comb's bristle bed close up on a bathroom shelf, three weeks of shed hair and dust packed down between the teeth. A thumb presses the button on the handle, the teeth retract flush into the cushion, and the whole mat lifts clear in one piece.",
         "alt": "A shot of the same bristle bed held over an open bin. The teeth retract flush into the cushion, the packed mat of hair and dust comes away as one, and it drops into the bin leaving a clean cushion behind.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {
@@ -566,7 +566,7 @@
           "opt": "B",
           "varies_on": "type: one scene with a detail panel instead of a sequence",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "1:1",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA woman in her mid-thirties in a plain top, standing at a bathroom basin in the morning drawing the reference comb down through her hair in one unhurried pass, her gaze on the hair. She stands to the right of the frame.\n\nThe mist is the subject of the photograph. An ultra-fine white cloud leaves the bristle bed and hangs through the hair, side-lit hard from the window so it glows against the darker tiled wall behind her, filling a wide band of the frame.\n\nOne real family bathroom filled to the edges with things that genuinely belong there: a child's toothbrush in a beaker, an open cosmetics bag, a towel over the rail, a plant on the cistern, a basket of flannels. Background blurred, but no bare wall area larger than the product. None of those objects carries printed text.\n\nIn the upper left of the frame, occupying the space she is offset from, sits a small rounded-rectangle panel with a thin white border showing one magnified detail the scene cannot carry at this distance: the comb's filler port open with a jug tipping clear water into it, and the tank window below reading half full. The panel is a clean technical render and does not bleed into the photograph, linked to the comb in the scene by proximity alone with no arrow and no glow border.\n\nNo other mark anywhere in the frame.",
@@ -630,13 +630,13 @@
         "reason": "An ordered sequence is the definition of temporal, and this section is literally three steps in the page's own words. The still stacks them as three panels because a still has no other way; the loop runs them as one act, which is what the section is describing. Nothing is re-argued and no staging moves, so this is rung 1. The force is named under ADR-031: hands fill the tank, a thumb presses the switch, the comb is drawn through hair.",
         "asset": "97-08-howto-use-sequence--brief.svg",
         "refs": "gifs-library/use/ — one file filed, w1000.gif, unledgered; the folder card carries the law",
-        "output": "97-08-use-howto.mp4",
+        "output": "listicle-use-massage-comb-spray-v01-howto.webp",
         "ratio": "1:1",
         "duration_s": 4,
         "loop": "seamless loop",
         "brief": "A shot of two hands at a bathroom shelf with the comb, its tank window empty. Water goes into the filler port until the window reads half full, a thumb presses the switch, and the comb draws down through the length of her hair with the mist leaving the bristle bed.",
         "alt": "A shot of the same hands and the same shelf, the comb already filled and running. It draws down through her hair three times over, and behind each pass the hair lies smooth and settled while it still stands lifted ahead of the teeth.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {
@@ -981,7 +981,7 @@
           "opt": "A",
           "varies_on": "baseline",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "1:1",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA woman in her mid-thirties in a plain jumper, standing at a bedroom window in the morning drawing the reference comb slowly down through the length of her own hair, her gaze on the hair rather than on the comb. She stands to the right of the frame.\n\nThe mist is the subject of the photograph. An ultra-fine white cloud leaves the bristle bed and hangs in the air through the hair, backlit hard by the window so it glows against the darker side of the room, filling a wide band of the frame. Accept lens flare and blown highlights where the window edge cuts in.\n\nOne real bedroom filled to the edges with things that genuinely belong there: an unmade bed behind her, a chair with clothes over it, a mug on the sill, a plant, a mirror leaning against the wall, a basket of laundry. Background blurred, but no bare wall area larger than the product. None of those objects carries printed text.\n\nIn the upper left of the frame, occupying the space she is offset from, sits a small rounded-rectangle panel with a thin white border showing one magnified detail the scene cannot carry at this distance: the comb's water tank window, half full, with the fine bubble trail rising from the atomiser plate below it. The panel is a clean technical render and does not bleed into the photograph. It is linked to the comb in the scene by proximity alone, with no arrow and no glow border.\n\nNo other mark anywhere in the frame.",

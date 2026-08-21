@@ -219,7 +219,7 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns: {page}-{seq}-{gif-type}-{slot-slug}.mp4, so the name carries the ARGUMENT and not the still type it replaced (ADR-028). The page still numbers by page and an editor still tracks by slot; what changed is that `06-relief-hero --recall` hosting a `pain` loop no longer produces a file called relief-hero. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+                "description": "The filename the editor returns: {page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp — the session directory with the gif type inserted after the page type and the slot appended (ADR-036). The slot is derived from slot_id (drop `.image`, drop `items`/`shots`/`photos`, join the rest) and is required, because two loops on one page may share a gif type and would otherwise share a filename. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
               },
               "ratio": {
                 "type": "string",
@@ -241,7 +241,8 @@
                 "description": "A SECOND way to shoot the same argument in the same slot, same format and band as `brief` (ADR-032). It exists because the motion floor has no margin by construction: every page routed under the one-loop-per-section rule sits at its own structural ceiling, so one loop that cannot be built puts the page below the owner's floor. The alternate drops whatever the primary is most likely to be blocked on — an actor, a moving car, an interior — and keeps the claim. It is printed on the plate under the primary, so the editor holds both without opening a file."
               },
               "delivery": {
-                "type": "string"
+                "type": "string",
+                "description": "How the finished loop ships: animated WebP, loop-safe, under the size ceiling. WebP carries no audio track by format and sits in an <img> where a still already sits, which is what makes a loop and a still interchangeable in a page template (ADR-036)."
               },
               "refs": {
                 "type": "string",
@@ -396,7 +397,7 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns: {page}-{seq}-{gif-type}-{slot-slug}.mp4, so the name carries the ARGUMENT and not the still type it replaced (ADR-028). The page still numbers by page and an editor still tracks by slot; what changed is that `06-relief-hero --recall` hosting a `pain` loop no longer produces a file called relief-hero. The library name ({type}_{product-slug}_{seq}) is issued separately by ingestion/gifs.jsonl when the finished loop is filed back."
+                "description": "The filename the editor returns: {page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp — the session directory with the gif type inserted after the page type and the slot appended (ADR-036). The slot is derived from slot_id (drop `.image`, drop `items`/`shots`/`photos`, join the rest) and is required, because two loops on one page may share a gif type and would otherwise share a filename. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
               },
               "ratio": {
                 "type": "string",
@@ -418,7 +419,8 @@
                 "description": "A SECOND way to shoot the same argument in the same slot, same format and band as `brief` (ADR-032). It exists because the motion floor has no margin by construction: every page routed under the one-loop-per-section rule sits at its own structural ceiling, so one loop that cannot be built puts the page below the owner's floor. The alternate drops whatever the primary is most likely to be blocked on — an actor, a moving car, an interior — and keeps the claim. It is printed on the plate under the primary, so the editor holds both without opening a file."
               },
               "delivery": {
-                "type": "string"
+                "type": "string",
+                "description": "How the finished loop ships: animated WebP, loop-safe, under the size ceiling. WebP carries no audio track by format and sits in an <img> where a still already sits, which is what makes a loop and a still interchangeable in a page template (ADR-036)."
               },
               "refs": {
                 "type": "string",

@@ -230,7 +230,7 @@ precisely what made leaving it unwritten expensive.
 who builds the loop reads, and it carries **four fields and nothing else**:
 
 ```
-{page}-{seq}-{gif-type}-{slot-slug}.mp4        the file the editor returns
+{page-type}-{gif-type}-{product}-v{NN}-{slot}.webp   the file the editor returns
 {duration} · {ratio} · {loop behaviour}        what shape and how long
                                                a rule across the two
 <the brief>   who or what is in the shot and where, what happens in
@@ -265,10 +265,36 @@ separated by commas with a final `then`. Four is the ceiling any routed slot can
 `use` declares [1, 4] and every other routable type declares less. `unboxing` goes to six and
 is `kind: null`, ad channel only, so it never writes a page brief.
 
-**The filename carries the ARGUMENT, not the still type it replaced.** `06-relief-hero
---recall` hosting a `pain` loop used to produce a file called relief-hero, which named the
-wrong thing to the one person who has to file it. The page still numbers by page and an
-editor still tracks by slot; the gif type sits between them.
+**The filename is the session's own name with two fields added, and it is read without a
+lookup.** `{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp`. Take the session
+directory — `{page-type}-{product-slug}-v{NN}` (ADR-034) — insert the gif type after the page
+type and append the slot, and that is the loop's name. A reader gets what it argues, for
+which product, on which page of that product, and which slot it fills, from the name alone.
+
+Three things that are NOT in it and the reason each is out. The page id: it identifies the
+source export, not the loop, and it lives in `prompts.json.page_id` where a join key belongs
+— page 13 has none at all and still gets a name. The still's type: an inset loop inside
+`06-relief-hero --recall` does `pain` work and used to arrive called relief-hero, which is the
+wrong word for the one person who has to file it. A sequence number: the slot already
+separates two loops on one page, and a number would separate nothing the slot does not.
+
+**The slot field is load-bearing, not decoration.** Two loops on one page may carry the same
+gif type — ADR-032 allows five loops against five routable types — and without the slot those
+two produce the same filename. It is derived, never typed: take the `slot_id`, drop `.image`,
+drop the container segments `items`, `shots` and `photos`, and join what is left.
+
+**Version sits at the END, beside the product it counts.** A version is the Nth page for that
+PRODUCT (ADR-034), so `v04` of one product and `v04` of another are unrelated numbers that
+happen to match. A field meaningless without its parent belongs next to its parent; put it
+earlier and a library folder sorts unrelated pages together while a product's own loops
+scatter (ADR-036).
+
+**Delivery is animated WebP.** It carries no audio track by format, so nothing has to be
+muted, and it drops into an `<img>` where a still already sits rather than needing a `<video>`
+element the page template does not have — which is the whole reason a loop can occupy an image
+slot at all. It is larger than mp4 at the same quality, so the size ceiling binds harder here
+than it did; that is the trade this library accepts to keep a loop and a still
+interchangeable.
 
 **The ratio depends on the form.** On `whole-frame` the loop IS the delivered image, so it
 owes the SLOT's shape rather than the shape the still happened to be rendered at. On `inset`

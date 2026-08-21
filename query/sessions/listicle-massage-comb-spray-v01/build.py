@@ -46,6 +46,26 @@ for _sid in DECLARED:
     _k = _sid.split(".")[0]
     SECTION_ITEMS[_k] = SECTION_ITEMS.get(_k, 0) + 1
 
+
+# ADR-036: a loop's filename is this session's own directory name with the gif type
+# inserted and the slot appended. Derived, never typed — the assert below is what
+# stops the two drifting apart.
+PAGE_TYPE, PRODUCT_SLUG, VERSION = 'listicle', 'massage-comb-spray', 'v01'
+assert os.path.basename(HERE) == f"{PAGE_TYPE}-{PRODUCT_SLUG}-{VERSION}", \
+    "session directory does not match the parts the gif names are built from"
+
+
+def slot_slug(slot_id):
+    """features.items.1.image -> features1"""
+    parts = [p for p in slot_id.replace(".image", "").split(".")
+             if p not in ("items", "shots", "photos")]
+    return "".join(parts)
+
+
+def gif_name(slot_id, gif_type):
+    return (f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}"
+            f"-{slot_slug(slot_id)}.webp")
+
 ATTRIBUTE_GATES = [
     (lambda a: a["symptom_visibility"] == "invisible", "01-pain-split",
      "symptom_visibility: invisible drops 01-pain-split"),
@@ -618,12 +638,12 @@ SLOTS.append({
         "asset": "97-08-howto-use-sequence--brief.svg",
         "refs": "gifs-library/use/ — one file filed, w1000.gif, unledgered; the folder card "
                 "carries the law",
-        "output": "97-08-use-howto.mp4",
+        "output": None,  # set below
         "ratio": "1:1",
         "duration_s": 4, "loop": "seamless loop",
         "brief": BRIEF_HOWTO.strip(),
         "alt": ALT_HOWTO.strip(),
-        "delivery": "mp4/webm, muted, under the size ceiling",
+        "delivery": "animated webp, loop-safe, under the size ceiling",
     },
 })
 
@@ -678,12 +698,12 @@ _by["reason.1.image"]["gif"] = {
               "hand drawing the comb; nothing here moves on its own.",
     "asset": "97-03-reason1-proof-brushes--brief.svg",
     "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-    "output": "97-03-proof-reason1.mp4",
+    "output": None,  # set below
     "ratio": "1:1",
     "duration_s": 3, "loop": "seamless loop",
     "brief": BRIEF_R1.strip(),
     "alt": ALT_R1.strip(),
-    "delivery": "mp4/webm, muted, under the size ceiling",
+    "delivery": "animated webp, loop-safe, under the size ceiling",
 }
 _by["reason.5.image"]["recommended_media"] = "gif"
 _by["reason.5.image"]["gif"] = {
@@ -697,12 +717,12 @@ _by["reason.5.image"]["gif"] = {
               "frame, so rung 2. The force is a thumb on the button.",
     "asset": "97-07-reason5-proof-hygiene--brief.svg",
     "refs": "gifs-library/mechanism/ — no files filed yet; the folder card carries the law",
-    "output": "97-07-mechanism-reason5.mp4",
+    "output": None,  # set below
     "ratio": "1:1",
     "duration_s": 3, "loop": "seamless loop",
     "brief": BRIEF_R5.strip(),
     "alt": ALT_R5.strip(),
-    "delivery": "mp4/webm, muted, under the size ceiling",
+    "delivery": "animated webp, loop-safe, under the size ceiling",
 }
 for sid, why in (
     ("reason.2.image",
@@ -741,6 +761,13 @@ for _s in SLOTS:
     _rec = next(o for o in _s["options"] if o["opt"] == _s["recommended_opt"])
     _s["recommendation_basis"] = _s["recommendation_basis"].replace(
         "{chars}", str(len(_rec["prompt"])))
+
+
+# gif.output is computed from the session name, so it cannot drift from the directory.
+for _s in SLOTS:
+    _g = _s.get("gif") or {}
+    if _g.get("eligible"):
+        _g["output"] = gif_name(_s["slot_id"], _g["type_id"])
 
 # ---------------------------------------------------------------- page blocks
 
@@ -1096,10 +1123,10 @@ def checks():
                         "--brief suffix and a .svg extension (G12)")
         if g["asset"] == s["asset"]:
             errs.append(f"{s['slot_id']}: plate asset must not be the slot's own asset")
-        want = f"{PAGE}-{s['asset'].split('-')[1]}-{g['type_id']}-"
-        if not g["output"].startswith(want) or not g["output"].endswith(".mp4"):
-            errs.append(f"{s['slot_id']}: gif.output must be "
-                        f"{{page}}-{{seq}}-{{gif-type}}-{{slot-slug}}.mp4, got {g['output']}")
+        want = gif_name(s["slot_id"], g["type_id"])
+        if g["output"] != want:
+            errs.append(f"{s['slot_id']}: gif.output must be `{want}` (ADR-036), got "
+                        f"`{g['output']}`")
         if g["ratio"] != DECLARED[s["slot_id"]]["ratio"]:
             errs.append(f"{s['slot_id']}: gif.ratio {g['ratio']} is not the slot's declared "
                         f"{DECLARED[s['slot_id']]['ratio']}")

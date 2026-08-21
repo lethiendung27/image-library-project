@@ -46,10 +46,10 @@ Two folders behind one message is the failure this rule exists to prevent.
 ## 4. Naming
 
 ```
-{gif-type}_{product-slug}_{seq}.mp4
+{gif-type}_{product-slug}_{seq}.webp
 ```
 
-`use_hinge-tool_003.mp4`, `proof_dust-mite-remover_001.mp4`. Hyphens inside a field,
+`use_hinge-tool_003.webp`, `proof_dust-mite-remover_001.webp`. Hyphens inside a field,
 underscores between fields, `seq` three digits **issued by the ledger** at classify time
 so two people cannot collide. A file is never renamed after it enters the library:
 briefs and the ledger both reference it by name.
@@ -59,18 +59,26 @@ is the LIBRARY name, issued by the ledger when a finished loop is filed. The PAG
 issued earlier, by the routing that commissioned it, and it is what the editor hands back:
 
 ```
-{page}-{seq}-{gif-type}-{slot-slug}.mp4
+{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp
 ```
 
-`77-06-proof-feature2.mp4`. A page numbers its assets by page and an editor tracks by slot,
-so those two stay; what ADR-028 added is the middle field. Before it the page name inherited
-the STILL's type, so an inset loop doing `pain` work inside `06-relief-hero --recall` arrived
-called relief-hero — the wrong word for the one person who has to file it. The ledger maps
-the two names through the sha256.
+`advertorial-mechanism-seat-cushion-l-shaped-v04-features1.webp`. It is the session
+directory — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the gif type inserted after
+the page type and the slot appended, so a reader gets the argument, the product, the page and
+the slot without opening anything. The slot is derived from the `slot_id` and is required:
+two loops on one page may share a gif type, and without it they share a filename (ADR-036).
 
-Delivery is **mp4 or webm**, muted, loop-safe, under the size ceiling — a 20 MB `.gif`
-costs more conversion than the motion buys. The `.gif` extension names the format the
-owner asks for in conversation, never the file that ships.
+The page id is deliberately absent. It identifies the source export rather than the loop, it
+lives in `prompts.json.page_id`, and one routed session has none at all — a name that depended
+on it could not have been written.
+
+Delivery is **animated WebP**, loop-safe, under the size ceiling. It carries no audio track
+by format, so there is nothing to mute, and it sits in an `<img>` where a still already sits
+rather than needing a `<video>` element the page template does not have — which is what lets a
+loop occupy an image slot at all and keeps a loop and a still interchangeable. WebP runs
+larger than mp4 at the same quality, so the ceiling binds harder than it did; that is the
+trade taken knowingly (ADR-036). The `.gif` extension names the format the owner asks for in
+conversation, never the file that ships.
 
 ## 5. The one-line description
 

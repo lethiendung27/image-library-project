@@ -254,13 +254,13 @@
         "type_id": "cause",
         "rung": "re-execution",
         "reason": "The declared reason this section exists is that the separate pieces shift, separate and slide out of alignment every time he brakes. That is a state changing and a still can only assert it, so the slot earns motion. The STAGING has to change to build it, which is what makes this rung 2 rather than rung 1: the routed still is 01-pain-scene in its object-only execution, and a pad does not creep forward across an empty seat. A body and a braking car are the force, and the gif library's `cause` type names exactly that in its own PURPOSE line — a pad creeping forward under a body. The product stays absent either way. No legislated layer exists in this type's skeleton, so the form is whole-frame.",
-        "output": "77-02-cause-problem0.mp4",
+        "output": "advertorial-cause-seat-cushion-l-shaped-v03-problems0.webp",
         "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of a driver sitting on an old flat cushion on the car seat, or on the bare seat itself. When the car brakes the cushion slides forward under him and a gap opens behind his lower back, and sitting in that gap day after day is what starts the ache.",
         "alt": "A shot of the same driver's seat with a hand pushing an old flat cushion forward from behind, no driver and no moving car. The cushion walks to the front lip and the gap opens behind it, the same gap a pelvis drops into on every brake.",
-        "delivery": "mp4/webm, muted, under the size ceiling",
+        "delivery": "animated webp, loop-safe, under the size ceiling",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
         "asset": "77-02-problem0-pain-scene--brief.svg"
       }
@@ -415,7 +415,7 @@
           "opt": "B",
           "varies_on": "type: the same claim as a scene with a wrong-vs-right inset",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA man in his late forties in an ordinary open-collar shirt, seated at a home office desk with his weight settled evenly and his gaze on the paperwork in front of him rather than on the product, sitting well back so the whole back of the chair and the product on it are clear to the camera. He sits to the right of the frame.\n\nThe reference product is on the chair behind him, its seat section under him and its lumbar section up against his lower back, identical to the attached photo in shape, colour and proportion.\n\nOne real room filled to the edges with objects that genuinely belong there: a full bookshelf, a wall calendar turned to the wall, a mug on a coaster, a router with its cable looped, a coat over the door, a houseplant on the sill. Background blurred, but no bare wall or floor area larger than the product. None of those objects carries printed text. Soft even window light, high-key neutral grade.\n\nIn the upper left of the frame, occupying the space he is offset from, sits a small rectangular panel with a thin white border, split into two equal halves that share one photographic register. The left half shows the same chair with an ordinary flat foam pad and a separate lumbar roll on it, the pad slid forward and the roll dropped into the gap, with glowing red points on the exposed seat corner and on the fallen roll. The right half shows the same chair with the reference product in place, brighter and cleaner, with a translucent blue overlay following the single continuous seam that runs from the seat section up into the lumbar section. A circular red badge carrying the white letters VS sits at the seam between the two halves.\n\nNo mark of any kind appears anywhere outside that panel.",
@@ -493,7 +493,7 @@
           "opt": "A",
           "varies_on": "baseline",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA man in his late forties in a work polo, sitting relaxed in the driver's seat of a parked car with the door open, one hand loose on his thigh and his gaze out through the windscreen rather than at the product. He is settled back against the seat with his weight even through both hips, and he sits to the right of the frame so the whole seat back and the product against it stay clear to the camera.\n\nThe reference product is on the seat beneath and behind him, its seat section under him and its lumbar section standing up against the small of his back, identical to the attached photo in shape, colour and proportion.\n\nOne real car interior filled to the edges with things that genuinely belong there: a travel mug in the holder, a lanyard hung from the indicator stalk, a phone cable coiled at the dash, a folded jacket on the back seat, a parking permit clipped to the visor, floor mats with real wear on them. Background blurred, but no bare area larger than the product. None of those objects carries printed text. Soft even daylight through the open door, high-key neutral grade.\n\nIn the upper left of the frame, occupying the space he is offset from, sits a small rectangular panel with a thin white border, split into two equal halves that share one photographic register. The left half shows the same empty driver's seat with an ordinary flat foam pad slid forward to the front lip and a separate lumbar roll fallen into the crack behind it, with glowing red points on the open seat corner, on the front lip where the pad has crept to, and on the end of the fallen roll. The right half shows the same empty seat with the reference product in place and unmoved, brighter and cleaner, with a translucent blue overlay following the single continuous seam that runs from the seat section up into the lumbar section. A circular red badge carrying the white letters VS sits at the seam between the two halves.\n\nNo mark of any kind appears anywhere outside that panel.",
@@ -564,7 +564,7 @@
           "opt": "C",
           "varies_on": "execution: the desk chair, not the car seat",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA woman in her early fifties in a plain jumper, sitting relaxed in a home office swivel chair with both feet flat on the floor, one hand resting loose on the desk and her gaze on the window rather than at the product. Her weight is even through both hips and she is settled back into the chair, sitting to the right of the frame so the whole chair back and the product against it stay clear to the camera.\n\nThe reference product is on the chair beneath and behind her, its seat section under her and its lumbar section standing up against the small of her back, identical to the attached photo in shape, colour and proportion.\n\nOne real home office filled to the edges with things that genuinely belong there: a full bookshelf, a mug on a coaster, a desk lamp turned away, a router with its cable looped, a cardigan over the chair arm, a houseplant on the sill. Background blurred, but no bare wall or floor area larger than the product. None of those objects carries printed text. Soft even window light, high-key neutral grade.\n\nIn the upper left of the frame, occupying the space she is offset from, sits a small rectangular panel with a thin white border, split into two equal halves that share one photographic register. The left half shows the same empty swivel chair with an ordinary flat foam pad slid forward to the front lip and a separate lumbar roll strapped to the backrest and sagged down below the small of the back, with glowing red points on the open seat corner, on the front lip where the pad has crept to, and on the slack strap. The right half shows the same empty chair with the reference product in place and unmoved, brighter and cleaner, with a translucent blue overlay following the single continuous seam that runs from the seat section up into the lumbar section. A circular red badge carrying the white letters VS sits at the seam between the two halves.\n\nNo mark of any kind appears anywhere outside that panel.",
@@ -601,13 +601,13 @@
         "reason": "The section's declared claim is that the cushion never crept forward under sudden braking and never dropped down the seat crack. Not creeping is a thing that happens over time under a force, and no static frame can show it — the routed still is a composed hero with a wrong-vs-right inset, which asserts the claim rather than demonstrating it. The staging changes and the argument does not, so this is rung 2. Under ADR-031 the force is named: a body in the seat and a car braking, without which nothing moves.",
         "asset": "77-05-feature1-relief-hero--brief.svg",
         "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "output": "77-05-proof-feature1.mp4",
+        "output": "advertorial-proof-seat-cushion-l-shaped-v03-features1.webp",
         "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of a driver braking in stop-and-go traffic with the cushion under him on the driver's seat. The car lurches, his weight throws forward and settles back, and the cushion stays exactly where he put it, nothing creeping to the front lip.",
         "alt": "A shot of the same seat from the open door with a hand shoving the cushion hard from behind, nobody in the car. It moves a finger's width and settles back, while an ordinary flat pad beside it walks to the front lip and stays there.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {
@@ -811,7 +811,7 @@
           "opt": "B",
           "varies_on": "type: the composed close instead of the candid one",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA man in his late forties in an open-collar shirt, sitting relaxed in the driver's seat of a parked car with the door open and one arm resting easily along the sill, his gaze out through the windscreen rather than at the product. His weight is even through both hips, he is settled back against the seat with nothing braced, and he sits to the right of the frame so the whole seat back and the product against it stay clear to the camera.\n\nThe reference product is on the seat beneath and behind him, its seat section under him and its lumbar section standing up against the small of his back, identical to the attached photo in shape, colour and proportion.\n\nOne real car interior filled to the edges with things that genuinely belong there: a travel mug in the holder, a lanyard hung from the indicator stalk, a phone cable coiled at the dash, a folded jacket on the back seat, a parking permit clipped to the visor, floor mats with real wear on them. Background blurred, but no bare area larger than the product. None of those objects carries printed text.\n\nSoft even daylight through the open door, background blurred, high-key neutral grade.\n\nThe whole frame is the resolved state. No inset, no panel, no badge, no arrow and no mark of any kind anywhere in the picture.",
@@ -901,13 +901,13 @@
         "reason": "The still catches the second of release; the loop is the movement into it, same person, same place, same staging, nothing re-argued — so this is rung 1. It is also the first slot in this library to meet the `relief` type's tightest rule head on: motion is earned only where the motion IS the thing the problem used to block, and standing straight up out of a car seat after a long drive is exactly what the ache took away. That rule has been explicitly untested since ADR-023 and this is its first real case.",
         "asset": "77-07-feature3-relief-scene--brief.svg",
         "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
-        "output": "77-07-relief-feature3.mp4",
+        "output": "advertorial-relief-seat-cushion-l-shaped-v03-features3.webp",
         "ratio": "16:9",
         "duration_s": 4,
         "loop": "seamless loop",
         "brief": "A shot of a man getting out of his car at the end of a long drive. He swings his legs out, stands straight up in one movement without grabbing the door frame, and walks off without once reaching back for his lower back.",
         "alt": "A shot of the same man at his desk at the end of a shift with the cushion on the chair behind him. He pushes back, stands up in one go without pressing his hands on the desk, and picks his bag off the floor on the way out.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {

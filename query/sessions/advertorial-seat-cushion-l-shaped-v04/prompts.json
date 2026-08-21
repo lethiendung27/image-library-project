@@ -256,13 +256,13 @@
         "reason": "The copy's claim is that the pads rolled forward and the pelvis dropped back every time he braked, which is a state changing that a still can only assert. The STAGING has to change to build it: the routed still is 01-pain-scene object-only and a donut pad does not roll across an empty seat. Under ADR-031 the force is named — a body on it and a car braking — and the gif library's `cause` type names exactly this in its PURPOSE line. The product stays absent either way.",
         "asset": "104-02-problem0-pain-scene--brief.svg",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
-        "output": "104-02-cause-problem0.mp4",
+        "output": "advertorial-cause-seat-cushion-l-shaped-v04-problems0.webp",
         "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of a driver sitting on a hard donut pad on the car seat, or on the bare seat itself. When the car brakes the pad rolls forward under him and his pelvis drops back into the gap behind it, and sitting like that nine hours a day is what locks the back.",
         "alt": "A shot of the same seat with a hand pushing an old donut pad forward from behind, no driver and no moving car. The pad rolls to the front lip and the gap opens behind it, the same gap a pelvis hinges back into on every brake.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {
@@ -431,7 +431,7 @@
           "opt": "A",
           "varies_on": "baseline — the inset layer reserved for the loop",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA man in his mid-forties in an open-collar shirt, sitting relaxed in the driver's seat of a parked car with the door open, one hand loose on his thigh and his gaze out through the windscreen rather than at the product. He is settled back with his weight even through both hips and nothing braced, and he sits to the right of the frame so the whole seat back and the product against it stay clear to the camera.\n\nThe reference product is on the seat beneath and behind him, its seat section under him and its lumbar section standing up against the small of his back, identical to the attached photo in shape, colour and proportion.\n\nOne real car interior filled to the edges with things that genuinely belong there: a lanyard on the indicator stalk, a coffee cup in the holder, a phone cable coiled at the dash, a folded jacket on the back seat, a parking permit on the visor, floor mats with real wear on them. Background blurred, but no bare area larger than the product. None of those objects carries printed text. Soft even daylight through the open door, high-key neutral grade.\n\nIn the upper left of the frame, held clear of both frame edges, sits a rounded-rectangle panel about a fifth of the frame wide with a thin white border. It is filled with one flat neutral grey tone and nothing else: no photograph, no drawing, no lettering, no texture and no detail of any kind inside it. It is an empty reserved block.\n\nNo mark of any kind appears anywhere in the frame.",
@@ -460,7 +460,7 @@
           "opt": "B",
           "varies_on": "axis: inset_motion=still — the detail as a photograph",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA man in his mid-forties in an open-collar shirt, sitting relaxed in the driver's seat of a parked car with the door open, one hand loose on his thigh and his gaze out through the windscreen rather than at the product. He is settled back with his weight even through both hips, and he sits to the right of the frame so the whole seat back and the product against it stay clear to the camera.\n\nThe reference product is on the seat beneath and behind him, its seat section under him and its lumbar section standing up against the small of his back, identical to the attached photo in shape, colour and proportion.\n\nOne real car interior filled to the edges with things that genuinely belong there: a lanyard on the indicator stalk, a coffee cup in the holder, a phone cable coiled at the dash, a folded jacket on the back seat, a parking permit on the visor, floor mats with real wear on them. Background blurred, but no bare area larger than the product. None of those objects carries printed text. Soft even daylight through the open door, high-key neutral grade.\n\nIn the upper left of the frame, held clear of both frame edges, sits a rounded-rectangle panel about a fifth of the frame wide with a thin white border, showing one magnified detail the scene cannot carry at this distance: the textured underside of the product pressed against the smooth leather of the seat base, close enough that the grip pattern and the leather grain are both readable. It is a photograph in the same register as the scene and does not bleed into it, linked to the product by proximity alone with no arrow and no glow border.\n\nNo mark of any kind appears anywhere in the frame.",
@@ -488,7 +488,7 @@
           "opt": "C",
           "varies_on": "execution: the desk chair, not the car seat",
           "type": "06-relief-hero",
-          "type_version": "1.15",
+          "type_version": "1.16",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A professional photograph, natural and sharp, on a real camera.\n\nThe attached photo is the exact reference for the product.\n\nA woman in her early fifties in a plain jumper, sitting relaxed in a home office swivel chair with both feet flat on the floor, one hand resting loose on the desk and her gaze on the window rather than at the product. Her weight is even through both hips and she is settled back into the chair, sitting to the right of the frame so the whole chair back and the product against it stay clear to the camera.\n\nThe reference product is on the chair beneath and behind her, its seat section under her and its lumbar section standing up against the small of her back, identical to the attached photo in shape, colour and proportion.\n\nOne real home office filled to the edges with things that genuinely belong there: a full bookshelf, a mug on a coaster, a desk lamp turned away, a router with its cable looped, a cardigan over the chair arm, a plant on the sill. Background blurred, but no bare wall or floor area larger than the product. None of those objects carries printed text. Soft even window light, high-key neutral grade.\n\nIn the upper left of the frame, held clear of both frame edges, sits a rounded-rectangle panel about a fifth of the frame wide with a thin white border. It is filled with one flat neutral grey tone and nothing else: no photograph, no drawing, no lettering, no texture and no detail of any kind inside it. It is an empty reserved block.\n\nNo mark of any kind appears anywhere in the frame.",
@@ -523,13 +523,13 @@
         "reason": "The section's claim is that the textured base held its ground against smooth leather when he braked at highway speeds. Holding against a force is temporal and no static frame carries it. This is the library's first inset verdict: 06-relief-hero legislates a --detail layer already, that layer's content is a magnified mechanism under load, and inset_motion --loop is legal on every inset_mode except --none. Nothing is restaged, so rung 1. Under ADR-031 the force is named — a car braking with a body in the seat.",
         "asset": "104-05-feature1-relief-hero--brief.svg",
         "refs": "gifs-library/mechanism/ — no files filed yet; the folder card carries the law",
-        "output": "104-05-mechanism-feature1.mp4",
+        "output": "advertorial-mechanism-seat-cushion-l-shaped-v04-features1.webp",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A close shot of the textured underside of the cushion pressed against smooth leather, filling the frame. The car brakes hard, the seat leather flexes and the whole cabin jolts, and the grip pattern does not travel a millimetre across it.",
         "alt": "A close shot of the same underside on the same leather with a hand shoving the cushion hard from behind, nobody in the car. It gives a finger's width and settles back, while an ordinary flat pad beside it walks forward and stays there.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {
@@ -660,13 +660,13 @@
         "reason": "The still catches the second of release; the loop is the movement into it — same person, same place, same staging, nothing re-argued, so rung 1. It meets the `relief` type's tightest rule head on: motion is earned only where the motion IS the thing the problem used to block, and standing up off a metal bleacher bench is precisely what the copy says he could not do. Page 77 was the first page to route this rule; this is the second, and the first where the page's own copy names the blocked movement.",
         "asset": "104-07-feature3-relief-scene--brief.svg",
         "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
-        "output": "104-07-relief-feature3.mp4",
+        "output": "advertorial-relief-seat-cushion-l-shaped-v04-features3.webp",
         "ratio": "16:9",
         "duration_s": 4,
         "loop": "seamless loop",
         "brief": "A shot of a man standing up off a metal bleacher bench at the end of a match. He comes to his full height in one movement without pushing off the rail or the bench, turns, and walks down the steps without once reaching back for his lower back.",
         "alt": "A shot of the same man getting out of his car at the end of a long drive. He swings his legs out, stands straight up in one go without grabbing the door frame, and walks off with the cushion still on the seat behind him.",
-        "delivery": "mp4/webm, muted, under the size ceiling"
+        "delivery": "animated webp, loop-safe, under the size ceiling"
       }
     },
     {

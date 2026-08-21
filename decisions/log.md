@@ -1636,3 +1636,82 @@ enforcement note and the empty-`reference_photos` rule. `dist/app-bundle/` is re
 Errors stay at 0; warnings go 12 → 15, all three additions being the pre-contract sessions now
 saying so on every run. No session is re-routed, no type file is touched, `registry_version`
 unchanged.
+
+## ADR-036 · 2026-08-21 · A loop's filename is its session's name plus two fields, and it ships as animated WebP
+
+Two questions were open after ADR-034 named the session directories. The owner settled both:
+the version goes at the END, and a loop ships as `.webp`.
+
+```
+{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp
+advertorial-mechanism-seat-cushion-l-shaped-v04-features1.webp
+```
+
+**It is the session directory with two fields added, and that is the point.** ADR-034 made a
+session `{page-type}-{product-slug}-v{NN}`. Insert the gif type after the page type, append
+the slot, and the loop's name falls out. A reader gets what it argues, for which product, on
+which page of that product, and which slot it fills, without opening anything — and the build
+does not type it. `gif_name()` composes it from constants that are asserted against
+`os.path.basename(HERE)`, so the filename and the directory cannot drift apart.
+
+**Version last, because a version is not a number that stands alone.** Under ADR-034 it counts
+pages of one PRODUCT, so `v04` of the cushion and `v04` of the comb are unrelated numbers that
+happen to match. A field meaningless without its parent belongs beside its parent. Written out
+as a library folder listing — where `gif-type` is constant because the folder IS the type —
+version-early split one product's three loops across three separate groups and sat two
+unrelated `v01`s next to each other; version-last put the product's loops in one block running
+v01, v03, v04 in order. The same reasoning applies to the session directory, which already
+carries the version last.
+
+**Page type stays, on the owner's call.** I proposed dropping it: under ADR-034's semantics
+`product + version` already identifies a page uniquely, so the page type is derivable and was
+costing characters. The owner keeps it, and the standing reason is the one they gave for the
+directory name — the source system has more page types than the two the library has met, so
+the field will discriminate even where it does not yet.
+
+**The slot is what makes the name unique, and it is derived.** Two loops on one page may carry
+the same gif type: ADR-032 allows five loops and there are five routable types, so a collision
+is legal rather than hypothetical. Without the slot those two produce the same filename. It
+comes from the `slot_id` — drop `.image`, drop the container segments `items`, `shots`,
+`photos`, join what is left — so `features.items.1.image` becomes `features1` and nobody
+invents a label.
+
+**The page id is deliberately absent.** It identifies the source export rather than the loop,
+it lives in `prompts.json.page_id` where a join key belongs, and one routed session has none
+at all — a naming rule that depended on it could not have named that session. ADR-034 made
+the same call for the directory and this follows it.
+
+**Delivery becomes animated WebP, and this completes ADR-023's reasoning rather than
+contradicting it.** That ADR ruled `.gif` out with a specific complaint — "a 20 MB `.gif`
+costs more conversion than the motion buys" — and settled on mp4/webm. WebP is the modern
+answer to exactly that complaint, and it buys the thing this library actually needs: it sits
+in an `<img>` where a still already sits. Every gif verdict in this system occupies an IMAGE
+slot in a page template. An mp4 needs a `<video>` element with autoplay, muted, playsinline
+and loop attributes that the template does not have; a WebP is a src swap. That is what makes
+a loop and a still interchangeable, which is the assumption Step 5c has been running on since
+ADR-020 without anything guaranteeing it.
+
+It carries no audio track by format, so nothing has to be muted and the `delivery` string
+stops saying so. The cost is real and is taken knowingly: WebP runs larger than mp4 at the
+same quality, so the size ceiling binds harder than it did. That is the trade for keeping the
+slot interchangeable.
+
+**Both names still stand.** ADR-023's library name becomes `{gif-type}_{product-slug}_{seq}
+.webp` and the page name is the one above. The new page name happens to be unique across the
+whole library, so collapsing the two into one is now possible where it was not before — but
+that would retire the ledger's sequence issuance and it is not what was asked, so it stays a
+separate decision.
+
+Migrated: the three sessions routed under ADR-028 or later —
+`advertorial-seat-cushion-l-shaped-v03`, `-v04` and `listicle-massage-comb-spray-v01`, nine
+loops between them, plates regenerated. The pre-ADR-028 sessions keep their old five-line
+plates and their old `.mp4` names, the treatment ADR-024 gave page 13.
+
+Four checks mutation-tested in-process, 4 of 4 fired: a stray `.mp4`, a missing slot field, the
+version put back in the middle, and a gif type in the name that does not match `type_id`.
+
+Consequences: `registry/rules.md` G12; `query/runbook.md` Step 5c and the delivery paragraph;
+`query/output.schema.json` `gif.output` and `gif.delivery`; `registry/gif-instruction.md` §4
+naming and delivery; three `build.py` files gain `PAGE_TYPE`/`PRODUCT_SLUG`/`VERSION`,
+`slot_slug()` and `gif_name()` with the directory assert, and their nine `gif.output` values
+are now computed rather than written. `registry_version` unchanged.

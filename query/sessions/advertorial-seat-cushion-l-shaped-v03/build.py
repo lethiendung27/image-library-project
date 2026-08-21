@@ -48,6 +48,26 @@ for _sid in DECLARED:
 
 # mapping/slot-rules.md attribute gates, written as data so the routing is checked
 # against them rather than trusted.
+
+# ADR-036: a loop's filename is this session's own directory name with the gif type
+# inserted and the slot appended. Derived, never typed — the assert below is what
+# stops the two drifting apart.
+PAGE_TYPE, PRODUCT_SLUG, VERSION = 'advertorial', 'seat-cushion-l-shaped', 'v03'
+assert os.path.basename(HERE) == f"{PAGE_TYPE}-{PRODUCT_SLUG}-{VERSION}", \
+    "session directory does not match the parts the gif names are built from"
+
+
+def slot_slug(slot_id):
+    """features.items.1.image -> features1"""
+    parts = [p for p in slot_id.replace(".image", "").split(".")
+             if p not in ("items", "shots", "photos")]
+    return "".join(parts)
+
+
+def gif_name(slot_id, gif_type):
+    return (f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}"
+            f"-{slot_slug(slot_id)}.webp")
+
 ATTRIBUTE_GATES = [
     (lambda a: a["symptom_visibility"] == "invisible", "01-pain-split",
      "symptom_visibility: invisible drops 01-pain-split"),
@@ -638,12 +658,12 @@ SLOTS.append({
                   "exactly that in its own PURPOSE line — a pad creeping forward under a "
                   "body. The product stays absent either way. No legislated layer exists in "
                   "this type's skeleton, so the form is whole-frame.",
-        "output": "77-02-cause-problem0.mp4",
+        "output": None,  # set below
         "ratio": "16:9",
         "duration_s": 3, "loop": "seamless loop",
         "brief": BRIEF_PROB0.strip(),
         "alt": ALT_PROB0.strip(),
-        "delivery": "mp4/webm, muted, under the size ceiling",
+        "delivery": "animated webp, loop-safe, under the size ceiling",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
         "asset": "77-02-problem0-pain-scene--brief.svg",
     },
@@ -806,12 +826,12 @@ SLOTS.append({
                   "named: a body in the seat and a car braking, without which nothing moves.",
         "asset": "77-05-feature1-relief-hero--brief.svg",
         "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "output": "77-05-proof-feature1.mp4",
+        "output": None,  # set below
         "ratio": "16:9",
         "duration_s": 3, "loop": "seamless loop",
         "brief": BRIEF_FEAT1.strip(),
         "alt": ALT_FEAT1.strip(),
-        "delivery": "mp4/webm, muted, under the size ceiling",
+        "delivery": "animated webp, loop-safe, under the size ceiling",
     },
 })
 
@@ -922,12 +942,12 @@ SLOTS.append({
                   "explicitly untested since ADR-023 and this is its first real case.",
         "asset": "77-07-feature3-relief-scene--brief.svg",
         "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
-        "output": "77-07-relief-feature3.mp4",
+        "output": None,  # set below
         "ratio": "16:9",
         "duration_s": 4, "loop": "seamless loop",
         "brief": BRIEF_FEAT3.strip(),
         "alt": ALT_FEAT3.strip(),
-        "delivery": "mp4/webm, muted, under the size ceiling",
+        "delivery": "animated webp, loop-safe, under the size ceiling",
     },
 })
 
@@ -1008,6 +1028,13 @@ for sid, place, role in OUT_OF_SCOPE:
         "gif": {"eligible": False, "form": "none",
                 "reason": "No generated image in this slot to animate."},
     })
+
+
+# gif.output is computed from the session name, so it cannot drift from the directory.
+for _s in SLOTS:
+    _g = _s.get("gif") or {}
+    if _g.get("eligible"):
+        _g["output"] = gif_name(_s["slot_id"], _g["type_id"])
 
 # ---------------------------------------------------------------- page blocks
 
@@ -1284,10 +1311,10 @@ def checks():
                         "--brief suffix and a .svg extension (G12)")
         if g["asset"] == s["asset"]:
             errs.append(f"{s['slot_id']}: plate asset must not be the slot's own asset")
-        want = f"{PAGE}-{s['asset'].split('-')[1]}-{g['type_id']}-"
-        if not g["output"].startswith(want) or not g["output"].endswith(".mp4"):
-            errs.append(f"{s['slot_id']}: gif.output must be "
-                        f"{{page}}-{{seq}}-{{gif-type}}-{{slot-slug}}.mp4, got {g['output']}")
+        want = gif_name(s["slot_id"], g["type_id"])
+        if g["output"] != want:
+            errs.append(f"{s['slot_id']}: gif.output must be `{want}` (ADR-036), got "
+                        f"`{g['output']}`")
         if g["ratio"] != DECLARED[s["slot_id"]]["ratio"]:
             errs.append(f"{s['slot_id']}: gif.ratio {g['ratio']} is not the slot's declared "
                         f"{DECLARED[s['slot_id']]['ratio']} — a whole-frame loop IS the "
