@@ -379,7 +379,7 @@ Current law is above; the reasoning behind each entry is in the commit it cites 
 - 1.15 (2026-08-21): **a minor in the subject slot is a renderability constraint, not a
   taste one.** Owner reported nano banana REFUSING a pain frame built on a child. New global
   rule **G13** carries the three writer's rules; SKELETON and SLOT CONSTRAINTS reference it
-  by ID. Mechanism and measurement are in this commit. · this commit
+  by ID. Mechanism and measurement are in the commit. · 0104619
 - 1.14 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES returns
   with the two renders that earned it — the mark-free laundry frame and the blister ring — in
   full text per SPEC §3.3, closing the gap opened at 1.7. ADR-014 adopted: the canonical
