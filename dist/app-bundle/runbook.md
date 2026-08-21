@@ -27,6 +27,19 @@ message on: missing `product.attributes` fields, fabricated-looking colorways, r
 outside the vocabulary, missing `image_slots`. Do not infer missing attributes —
 ask; inference here is the G7-X failure path.
 
+**`scripts/validate.py` now enforces this on every run** (ADR-035), over each session's
+`content.json` and each golden fixture's, so a contract that drifts from the schema is
+caught in the repo rather than in a prompt. Writing the session's `content.json` is
+therefore part of routing the page and not a courtesy: a session whose directory holds a
+`prompts.json` and no `content.json` is an error, and SPEC §1's claim that the page can
+reproduce its own prompts is false without it.
+
+**`product.reference_photos` may be an empty array, and that is a statement.** The export
+carried no product photograph, there is nothing to hash, and SPEC §6.4 forbids inventing
+one. The prompts still carry their G1 reference block and stay paste-and-run — the owner
+attaches the photo by hand in the generation tool, which is Step 5's rule read one level
+up. Say "attach the product photo", never "cannot run".
+
 ## Step 2 — Stage 1 shortlist (mechanical)
 
 For each `image_slot`, read the `role × page.channel` cell of the slot-rules table.

@@ -551,6 +551,165 @@ def check_json_files():
                         err(rel, f"invalid JSON: {e}")
 
 
+# ----------------------------------------------------------- content contracts
+
+# Sessions routed before content.json was the contract SPEC 1 says it is. The
+# air cooler session carries none at all; the L-shaped cushion v01 file is the
+# raw Shopify export saved under that name; the optical drive v01 file is an
+# earlier hand-rolled shape. They are warned rather than failed, the treatment
+# ADR-024 gave page 13 and ADR-028 gave the five pre-plate sessions: a correction
+# stays legible rather than being applied backwards over work that was correct
+# under the law of its time. Nothing is added here — a session routed from today
+# forward is an error or it is nothing.
+PRE_CONTRACT_SESSIONS = {
+    "listicle-air-cooler-wall-mounted-v01",
+    "advertorial-seat-cushion-l-shaped-v01",
+    "advertorial-optical-drive-7in1-v01",
+}
+
+# The keyword set `mapping/content.schema.json` actually uses, measured from the
+# file rather than assumed. An unknown keyword is an ERROR and not a skip: a
+# validator that silently ignores what it does not implement is one that passes
+# by catching nothing, which is the state `expected-routes.yaml` sat in for eight
+# days before ADR-027 — parsed, inert, and reported as green.
+_SCHEMA_ANNOTATIONS = {"$schema", "title", "description"}
+_SCHEMA_KEYWORDS = {"type", "properties", "required", "additionalProperties",
+                    "items", "enum", "minItems", "minLength", "pattern"}
+_JSON_TYPES = {"object": dict, "array": list, "string": str, "boolean": bool,
+               "integer": int, "number": (int, float), "null": type(None)}
+
+
+def schema_errors(doc, schema, path="$"):
+    """Validate `doc` against the JSON Schema subset above. stdlib only — the
+    `jsonschema` package is not a dependency this repo carries, and the subset
+    is small enough that implementing it is cheaper than adding one.
+
+    Returns a list of messages; an empty list means valid.
+    """
+    unknown = set(schema) - _SCHEMA_KEYWORDS - _SCHEMA_ANNOTATIONS
+    if unknown:
+        return [f"{path}: schema uses {sorted(unknown)}, which this validator "
+                "does not implement — extend it rather than trusting it"]
+
+    t = schema.get("type")
+    if t:
+        want = _JSON_TYPES.get(t)
+        if want is None:
+            return [f"{path}: schema declares unknown type `{t}`"]
+        # bool is a subclass of int in Python; in JSON they are distinct types,
+        # so `true` must not satisfy `type: integer`.
+        if isinstance(doc, bool) and t != "boolean":
+            return [f"{path}: expected {t}, got boolean"]
+        if not isinstance(doc, want):
+            return [f"{path}: expected {t}, got {type(doc).__name__}"]
+
+    out = []
+    if "enum" in schema and doc not in schema["enum"]:
+        out.append(f"{path}: `{doc}` is not one of {schema['enum']}")
+
+    if isinstance(doc, str):
+        min_len = schema.get("minLength")
+        if min_len is not None and len(doc) < min_len:
+            out.append(f"{path}: {len(doc)} characters, minLength is {min_len}")
+        pat = schema.get("pattern")
+        if pat and not re.search(pat, doc):
+            out.append(f"{path}: `{doc}` does not match {pat}")
+
+    if isinstance(doc, list):
+        min_items = schema.get("minItems")
+        if min_items is not None and len(doc) < min_items:
+            out.append(f"{path}: {len(doc)} items, minItems is {min_items}")
+        item_schema = schema.get("items")
+        if item_schema:
+            for i, v in enumerate(doc):
+                out += schema_errors(v, item_schema, f"{path}[{i}]")
+
+    if isinstance(doc, dict):
+        props = schema.get("properties", {})
+        for key in schema.get("required", []):
+            if key not in doc:
+                out.append(f"{path}: missing required `{key}`")
+        if schema.get("additionalProperties") is False:
+            for key in doc:
+                if key not in props:
+                    out.append(f"{path}: `{key}` is not in the contract")
+        for key, val in doc.items():
+            if key in props:
+                out += schema_errors(val, props[key], f"{path}.{key}")
+
+    return out
+
+
+def check_content_contracts():
+    """SPEC 1 states that the QUERY operation's input IS a content.json valid
+    against `mapping/content.schema.json`. Nothing checked that any real one was.
+
+    `check_golden` reads the two golden fixtures' content.json, but only to drive
+    the Stage 1 derivation off `page.channel` and `product.attributes` — a
+    malformed fixture would have raised a KeyError rather than produced an error
+    message, and a session's contract was never opened by any code at all.
+
+    Returns the number of contracts checked.
+    """
+    spath = os.path.join(ROOT, "mapping", "content.schema.json")
+    if not os.path.exists(spath):
+        return 0
+    try:
+        with open(spath, encoding="utf-8") as f:
+            schema = json.load(f)
+    except json.JSONDecodeError:
+        return 0            # check_json_files already reported it
+
+    targets = []
+    sessions_dir = os.path.join(ROOT, "query", "sessions")
+    if os.path.isdir(sessions_dir):
+        for session in sorted(os.listdir(sessions_dir)):
+            sdir = os.path.join(sessions_dir, session)
+            if not os.path.isdir(sdir):
+                continue
+            cpath = os.path.join(sdir, "content.json")
+            if os.path.exists(cpath):
+                targets.append((cpath, session in PRE_CONTRACT_SESSIONS))
+            elif os.path.exists(os.path.join(sdir, "prompts.json")):
+                msg = ("routed with no content.json — SPEC 1 makes it the QUERY "
+                       "input, so this page cannot reproduce its own prompts")
+                if session in PRE_CONTRACT_SESSIONS:
+                    warn(f"query/sessions/{session}", msg + " (pre-contract)")
+                else:
+                    err(f"query/sessions/{session}", msg)
+    golden_dir = os.path.join(ROOT, "eval", "golden")
+    if os.path.isdir(golden_dir):
+        for name in sorted(os.listdir(golden_dir)):
+            cpath = os.path.join(golden_dir, name, "content.json")
+            if os.path.isfile(cpath):
+                targets.append((cpath, False))
+
+    checked = 0
+    for path, grandfathered in targets:
+        rel = os.path.relpath(path, ROOT)
+        try:
+            with open(path, encoding="utf-8") as f:
+                doc = json.load(f)
+        except json.JSONDecodeError as e:
+            err(rel, f"invalid JSON: {e}")
+            continue
+        checked += 1
+        problems = schema_errors(doc, schema)
+        if not problems:
+            continue
+        if grandfathered:
+            # One line, not one per problem: page 58 alone returns over a
+            # hundred, and a legacy shape reported in full drowns the live ones.
+            warn(rel, f"{len(problems)} contract violations, first is "
+                      f"`{problems[0]}` — pre-contract session, grandfathered")
+            continue
+        for p in problems[:10]:
+            err(rel, f"does not satisfy mapping/content.schema.json — {p}")
+        if len(problems) > 10:
+            err(rel, f"... and {len(problems) - 10} further contract violations")
+    return checked
+
+
 # ------------------------------------------------------------------ prompt sets
 
 # Sessions emitted before ADR-021 declared the render capability. They are left
@@ -592,6 +751,35 @@ def check_prompt_sets():
                     warn(rel, msg + " (predates ADR-021, grandfathered)")
                 else:
                     err(rel, msg)
+
+
+def check_grandfather_sets():
+    """An exemption keyed on a directory name goes stale the moment that
+    directory is renamed, and it fails SILENTLY: the name stops matching, the
+    exemption protects nothing, and the session it covered starts erroring for a
+    reason that has nothing to do with the session.
+
+    Not hypothetical. ADR-034 renamed all nine session directories while this
+    check's own ADR was being written in a parallel session. ADR-034 spotted the
+    hazard and updated `GRANDFATHERED_MULTIPASS` by hand — but `PRE_CONTRACT_
+    SESSIONS` was uncommitted in the same working tree, so it was invisible to
+    that audit and the tree went to 23 errors in the seconds between the two.
+    Naming a session that does not exist is now an error rather than a silence:
+    a set that protects nothing is as wrong as one that protects too much, and
+    only one of the two announces itself.
+    """
+    sessions_dir = os.path.join(ROOT, "query", "sessions")
+    if not os.path.isdir(sessions_dir):
+        return
+    live = {d for d in os.listdir(sessions_dir)
+            if os.path.isdir(os.path.join(sessions_dir, d))}
+    for label, names in (("PRE_CONTRACT_SESSIONS", PRE_CONTRACT_SESSIONS),
+                         ("GRANDFATHERED_MULTIPASS", GRANDFATHERED_MULTIPASS)):
+        for name in sorted(set(names) - live):
+            err("scripts/validate.py",
+                f"{label} names `{name}`, which is not a session directory. It "
+                "was renamed or removed, so the exemption now protects nothing "
+                "(ADR-035)")
 
 
 def check_session_names():
@@ -1140,7 +1328,9 @@ def main(argv):
     stats = pick_stats(picks, types)
 
     check_json_files()
+    contracts = check_content_contracts()
     check_prompt_sets()
+    check_grandfather_sets()
     check_session_names()
     shortlist = check_slot_rules(types)
     gates = parse_attribute_gates()
@@ -1166,7 +1356,8 @@ def main(argv):
         print(f"ERROR {e}")
     print(f"{len(types)} types, {len(staging)} staging, "
           f"{len(gif_types)} gif types, {len(gif_ledger)} gifs, "
-          f"{golden_slots} golden slots, {bundled} bundled files, "
+          f"{golden_slots} golden slots, {contracts} content contracts, "
+          f"{bundled} bundled files, "
           f"{len(observations)} observations, {len(picks)} picks, "
           f"{len(render_tests)} render tests, "
           f"{len(ERRORS)} errors, {len(WARNINGS)} warnings")

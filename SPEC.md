@@ -318,7 +318,9 @@ Checks: frontmatter schema + YAML subset; id/filename/step/job/device coherence;
 vocabulary closure; referential integrity (`pairs_with`, `never_with`, `replaced_by`,
 `requires_pair`, `avoid_adjacent`, `exempt_from`); required sections; trigger
 extraction; worked-example count and staleness; ledger line validity; JSON schema files
-parse; index freshness.
+parse; **every `content.json` against `mapping/content.schema.json`** — each session's and
+each golden fixture's, the contract §1 says the QUERY input satisfies (ADR-035); index
+freshness.
 
 Run it after **every** edit under `registry/`.
 

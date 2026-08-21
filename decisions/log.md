@@ -1550,3 +1550,89 @@ Consequences: nine directories renamed under `query/sessions/`; `query/product-s
 new; `scripts/validate.py` gains `check_session_names` and has its grandfather key corrected.
 No session content changes, no prompt moves, `registry_version` unchanged. Page 13 keeps its
 handle-shaped `page_id` until the owner supplies the real one.
+
+## ADR-035 · 2026-08-21 · The QUERY input contract is enforced, and enforcing it found the contract wrong
+
+SPEC §1 says the QUERY operation's input IS a `content.json` valid against
+`mapping/content.schema.json`, and `query/runbook.md` Step 1 opens by telling a session to
+check it. Nothing ever did. `check_json_files` proved the schema file itself parsed;
+`check_golden` opened the two fixtures' `content.json` but only to read `page.channel` and
+`product.attributes` off them, so a malformed fixture would have raised a `KeyError` rather
+than produced an error message. A routed session's own contract had never been opened by any
+code at all. That is the state `expected-routes.yaml` sat in for eight days before ADR-027 —
+named as a contract, inert in fact, and reported as green.
+
+**Run once, it failed six of the eight sessions that have a `content.json`, every one on the
+same line, and the line is the contract's fault.** All six carry
+`product.reference_photos: []` and the schema declared `minItems: 1`. The empty array is not a
+lapse — it is what ADR-021 and Step 5 require. An export carrying `imageBriefs: null` supplies
+no product photograph, there is nothing to hash, and SPEC §6.4 forbids inventing one; the
+prompts keep their G1 reference block and the owner attaches the photo by hand in the
+generation tool. So the schema was demanding the one thing the rest of the repo forbids, and
+the only two documents that satisfied it were the golden fixtures, which pass because they
+carry a placeholder hash of sixteen zeros.
+
+`minItems` moves to `0`, with the reason written into the field's own description so the next
+reader meets it there rather than deriving it from a log entry. The item pattern is untouched
+and still binds — `["not-a-hash"]` is caught, `[]` is not — and both were tested, because
+relaxing a bound is the easiest way to disable the rule underneath it by accident.
+
+**Three sessions predate the contract and are warned rather than failed.**
+`listicle-air-cooler-wall-mounted-v01` carries no `content.json` at all;
+`advertorial-seat-cushion-l-shaped-v01`'s file is the raw Shopify export saved under that
+name (22 violations, no `product` key); `advertorial-optical-drive-7in1-v01`'s is an earlier
+hand-rolled shape (103 violations). Failing them would hold the repo at non-zero errors for
+every parallel lane, to punish work that was correct under the law of its time — the treatment
+ADR-024 gave page 13 and ADR-028 gave the five pre-plate sessions. A legacy session reports one
+summary line rather than its full list: 103 violations out of one file would drown the live
+ones.
+
+**An unknown schema keyword is an error, not a skip.** The validator implements the nine
+keywords the schema actually uses, measured from the file rather than assumed: `type`,
+`properties`, `required`, `additionalProperties`, `items`, `enum`, `minItems`, `minLength`,
+`pattern`. A schema that grows a tenth — a `oneOf`, an `anyOf`, a `$ref` — makes the checker
+say so and stop, rather than validate the parts it recognises and report green. `jsonschema`
+is not a dependency this repo carries, and the subset is small enough that implementing it
+costs less than adding one. The bool case earns its own line: `True` is an `int` in Python, so
+a naive `isinstance` admits `true` for `type: integer`. JSON keeps them apart and so does this.
+
+**Mutation-tested before it was trusted: 15 known-bad documents against a hand-built valid
+baseline**, built rather than copied from a session so that it inherits no session's own
+defects. Caught 15 of 15 — a missing key at the top level and one three levels down, an
+undeclared key at both levels, a channel and a role outside their enums, a reference photo that
+is not a sha256, a ratio that is not `W:H`, a string where a boolean belongs and a boolean
+where a string belongs, an empty string against `minLength`, two empty arrays against
+`minItems`, an object where an array belongs, and an image slot missing its `ratio`. A liveness
+case asserting the valid baseline is invalid FAILED, as it must: a board on which every line is
+green proves nothing until one line is green for a reason.
+
+**The parallel-lane collision, recorded because it produced a rule.** ADR-034 landed in another
+session while this one was being written, renaming all nine session directories. This ADR's
+`PRE_CONTRACT_SESSIONS` was keyed on the old names and uncommitted in the same working tree, so
+it was invisible to ADR-034's audit — which had caught the identical hazard in
+`GRANDFATHERED_MULTIPASS` and fixed it by hand. The tree went from 0 errors to 23 in the
+seconds between the rename and the next validator run, and the three sessions the set exists to
+protect began erroring for a reason that had nothing to do with them.
+
+So `check_grandfather_sets` makes it loud: a name in either set that is not a live session
+directory is an error. **A set that protects nothing is as wrong as one that protects too much,
+and only one of the two announces itself.** Mutation-tested 6 of 6, including today's exact
+failure (the pre-contract set left on pre-ADR-034 names, 3 errors), the hazard ADR-034 caught
+by hand (1 error), one stale name hidden among live ones, and a name matching a file rather
+than a directory — plus a liveness case that failed as required.
+
+**What this does not check, deliberately.** Whether a session's `content.json` agrees with its
+own `prompts.json` — the slot ids, the ratios and the roles could differ between the two and
+both would pass. Page 65's `build.py` checks that for itself, one session at a time. Lifting it
+into the validator is real work, and inventing it today against one page's implementation would
+repeat the error ADR-026 declined to make.
+
+Consequences: `scripts/validate.py` gains `schema_errors`, `check_content_contracts`,
+`check_grandfather_sets`, `PRE_CONTRACT_SESSIONS` and a `content contracts` count in the
+summary line; `mapping/content.schema.json` `reference_photos.minItems` 1 → 0 with its
+description rewritten; `SPEC.md` §8's check list; `query/runbook.md` Step 1 gains the
+enforcement note and the empty-`reference_photos` rule. `dist/app-bundle/` is rebuilt, because
+`SPEC.md`, `query/runbook.md` and the schema are all vendored in it (CLAUDE.md hard rule 1).
+Errors stay at 0; warnings go 12 → 15, all three additions being the pre-contract sessions now
+saying so on every run. No session is re-routed, no type file is touched, `registry_version`
+unchanged.

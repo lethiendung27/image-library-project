@@ -30,12 +30,12 @@
         },
         "reference_photos": {
           "type": "array",
-          "minItems": 1,
+          "minItems": 0,
           "items": {
             "type": "string",
             "pattern": "^sha256:[0-9a-f]{8,64}$"
           },
-          "description": "Content hashes of product reference photos (files live outside the repo, SPEC 6.4)."
+          "description": "Content hashes of product reference photos (files live outside the repo, SPEC 6.4). MAY BE EMPTY, and an empty array is a statement rather than a gap: the export carried no product photograph, so there is nothing to hash and nothing is invented. The prompts still carry their G1 reference block and stay paste-and-run — the owner attaches the photo by hand in the generation tool (ADR-021, query/runbook.md Step 5). minItems was 1 until ADR-035, which is why six of eight routed sessions failed the contract SPEC 1 says they satisfy."
         },
         "attributes": {
           "type": "object",
