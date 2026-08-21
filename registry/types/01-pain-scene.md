@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.14"
+version: "1.15"
 status: active
 replaced_by: null
 ratios: ["16:9", "5:3", "4:5"]
@@ -43,10 +43,11 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.14 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.15 [--candid | --confront] [+ --marked]
 REGISTER: cinematic film still. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
+          Where that body is a minor, G13 binds.
 [EVIDENCE] the symptom as physical fact. Required, G9.           -> PARTS/evidence
 [ENVIRONMENT] one specific place, and the clutter of the routine
               it disrupts.                                       -> PARTS/environment
@@ -205,6 +206,11 @@ and the reason the two are `never_with`.
   `--marked` is the sanctioned exception and narrows the rule to "red appears only in the
   mark": natural skin, food and household colour were never the target of this ban, and
   writing around them cost a render (see CHANGELOG 1.3).
+- **A minor in the subject slot is where this type gets REFUSED, not merely criticised.**
+  **G13** binds and carries the rules; they reduce the flagged bundle without removing it,
+  because the force inventory and the covert gaze ARE this type. Where a frame is still
+  refused, take the object-only execution — the failed tool and its residue, nobody in
+  frame — which the ledger records twice.
 - **The prompt budget.** A clause earns its place in a rendered prompt only if a render has
   failed without it. Everything else is a rule for the writer and stays in this file.
   Reference sizes, measured rather than guessed: the one proven `--marked` render at
@@ -370,6 +376,10 @@ extent exactly where a glow blooms.
 ## CHANGELOG
 Current law is above; the reasoning behind each entry is in the commit it cites (ADR-013).
 
+- 1.15 (2026-08-21): **a minor in the subject slot is a renderability constraint, not a
+  taste one.** Owner reported nano banana REFUSING a pain frame built on a child. New global
+  rule **G13** carries the three writer's rules; SKELETON and SLOT CONSTRAINTS reference it
+  by ID. Mechanism and measurement are in this commit. · this commit
 - 1.14 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES returns
   with the two renders that earned it — the mark-free laundry frame and the blister ring — in
   full text per SPEC §3.3, closing the gap opened at 1.7. ADR-014 adopted: the canonical

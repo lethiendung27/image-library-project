@@ -355,3 +355,58 @@ model-drawn lettering was settled and the geometry never was. That is the measur
 retires the rule rather than contradicting it: the format was working and it was working at
 the cost of a constraint list no field could grow past. Motion itself is still untested: no
 loop exists in `eval/render-tests.jsonl`, and `ingestion/gifs.jsonl` holds no record.
+
+## G13 — A minor in frame
+
+**Scope:** every frame of every type that can contain a recognisable person — scene
+registers, ugc registers, insets and panels alike. **No exemptions.** This is not a style
+rule. It is the difference between a prompt that runs and one the renderer refuses to
+run at all.
+
+A refusal is a different failure class from the weaknesses the adapter's Rule 5 collects,
+and until now nothing in this repo had a place for it. A weak render can be re-rolled and a
+wrong one can be patched; a refused prompt produces no image at all, so the constraint has
+to sit before the writing rather than after the failure.
+
+**Three rules for the writer. None of them is rendered into the prompt.**
+
+1. **No private-room setting.** A frame containing a minor is never set in a bathroom, a
+   bath, a shower or a bedroom. A kitchen, hallway, living room, garden, car, classroom or
+   street has been available in every case the library has met, and none of them costs the
+   argument anything.
+
+2. **No age in years.** Never `seven years old`, never `a girl of about six`. Where the
+   frame has to read young, `a school-age child` does it and the wardrobe and the scene
+   carry the rest. A stated age is a signal in its own right, independently of whatever
+   surrounds it.
+
+3. **A minor's `Face:` block stays neutral.** Where a skeleton requires a face inventory, a
+   minor's is limited to attention, effort or ordinary discomfort. Never `eyes screwed
+   shut`, `eyes squeezed shut`, `mouth open`, `tearful`, `whimper`, `crying` or `grimace`.
+   This is G9 arriving where it matters most rather than a new constraint fighting it: G9
+   already ranks the symptom itself above gesture and says in its own words that emotion on
+   a face is not evidence.
+
+**Why three rules and not one clause.** No single clause is what gets refused.
+`01-pain-scene`'s skeleton REQUIRES a force inventory, a face inventory, a private domestic
+place, a covert gaze and a dark grade. Each is innocent, and making them co-occur in one
+frame is the skeleton's whole job — that is what makes it editorial photojournalism rather
+than a stock photo. Put a minor in the subject slot and those same mandatory blocks
+assemble the exact feature bundle a child-safety classifier is built to catch. The three
+rules above take the setting, the stated age and the distress out of that bundle.
+
+**What they do not do, stated rather than implied.** They do not remove a minor from the
+subject slot of a pain type. That was proposed on 2026-08-21 and the owner declined it, so
+the residual stays: a force inventory and a covert gaze on a child subject. A frame can
+therefore still be refused. When one is, the sanctioned move is the **object-only
+execution** the type already legislates — the failed tool and its residue with nobody in
+frame — rather than a softer adjective. Softening the face is what rule 3 already does; if
+that was not enough, the subject is the problem and the object-only route is the answer.
+
+**Evidence:** owner report, 2026-08-21, carrying the refused prompt — a girl of about seven
+in school uniform on the edge of a bathtub, pulling away from a brush, `eyes squeezed shut`
+and `lips parted in a tearful whimper`. Measured across the nine routed sessions the same
+day: **96 prompts name a child, 91 name only a child's OBJECT** as background clutter and
+carry no risk whatever, **4 place a young person in a relief scene** with no force and no
+covert gaze and are fine, and **exactly 1 carries the full bundle**. So the rule is narrow
+by measurement rather than by hope, and it costs the library's domestic texture nothing.
