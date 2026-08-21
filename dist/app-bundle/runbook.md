@@ -121,6 +121,18 @@ chose, never what was suggested, or the loop starts learning from itself. Option
 are individually legal but not necessarily legal in COMBINATION — where picking one
 option forces another slot to change, say so in that option's `composition_notes`.
 
+**So `one-type-once` binds the recommended SET, never the option pool.** The sentence
+above is meaningless otherwise: an option can only force another slot to change if it
+is allowed to carry a type recommended elsewhere on the page. Read the other way — and
+it was, through page 65 — every second type on a seven-slot body looks spent, B falls
+back to an axis or an execution every time, and a page ships with no type variation at
+all. Measured across the first four routed pages before the correction: 83 of 101
+non-A options varied on execution, 11 on axis, and 7 on type. When B does carry a type
+recommended elsewhere, name the displaced slot in `composition_notes` and move on. The
+only slots that legitimately stay single-type are the ones whose role cell holds one
+type after the attribute gates — say that in `varies_on` so the reason is on the record
+rather than inferred. `e7dfe8c`
+
 **The table cell is exhausted → widen the derivation, never empty the slot.** An image
 slot with no options is a contract violation (SPEC §7.4). Work down this ladder and
 stop at the first rung that yields a legal type:
