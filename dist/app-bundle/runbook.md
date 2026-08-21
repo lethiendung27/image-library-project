@@ -304,15 +304,15 @@ rather than rendered (G12, ADR-028):
 ```
 
 **`gif.output` is the session's own name with two fields added** (ADR-036):
-`{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp`. Take the session directory,
-`{page-type}-{product-slug}-v{NN}`, insert the gif type after the page type, append the slot.
-Nothing else goes in it: the page id lives in `page_id`, the still's type is not what the loop
-argues, and a sequence number separates nothing the slot does not.
+`{page-type}-{gif-type}-{product-slug}-v{NN}.webp`. Take the session directory,
+`{page-type}-{product-slug}-v{NN}`, and insert the gif type after the page type. Nothing else
+goes in it: the page id lives in `page_id`, and the still's type is not what the loop argues.
+It is the ONLY name a loop has — the same one the library files it under (ADR-037).
 
-**The slot is derived, never typed.** Drop `.image` from the `slot_id`, drop the container
-segments `items`, `shots` and `photos`, join what is left — `features.items.1.image` becomes
-`features1`. It is required because two loops on one page may share a gif type and would
-otherwise share a filename.
+**One loop per gif type per page.** With no slot and no sequence in the name, two loops that
+argue the same thing on one page would collide, so a page carries at most one of each type.
+Every routed page already satisfies it, and it says something true anyway: a page making the
+same kind of motion argument twice is repeating itself (ADR-037).
 
 **Delivery is animated WebP**, which has no audio track by format and sits in an `<img>` where
 a still already sits. A loop and a still are therefore interchangeable in the template, which

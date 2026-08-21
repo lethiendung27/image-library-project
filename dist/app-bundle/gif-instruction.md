@@ -46,36 +46,35 @@ Two folders behind one message is the failure this rule exists to prevent.
 ## 4. Naming
 
 ```
-{gif-type}_{product-slug}_{seq}.webp
+{page-type}-{gif-type}-{product-slug}-v{NN}.webp
 ```
 
-`use_hinge-tool_003.webp`, `proof_dust-mite-remover_001.webp`. Hyphens inside a field,
-underscores between fields, `seq` three digits **issued by the ledger** at classify time
-so two people cannot collide. A file is never renamed after it enters the library:
-briefs and the ledger both reference it by name.
+`advertorial-mechanism-seat-cushion-l-shaped-v04.webp`. It is the routing session's own
+directory name — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the gif type inserted
+after the page type, so a reader gets the argument, the product and the page from the name
+without opening anything.
 
-**A loop is named twice, and since ADR-028 both names carry the gif type.** The line above
-is the LIBRARY name, issued by the ledger when a finished loop is filed. The PAGE name is
-issued earlier, by the routing that commissioned it, and it is what the editor hands back:
+**A loop has ONE name** (ADR-037). ADR-023 gave it two, a page-side name and a library name,
+because the page numbered by slot and the library numbered by type through a sequence the
+ledger issued. Neither field survives: no slot, no sequence. What is left is unique on both
+sides at once, so the second name and the sequence issuance go with them, and
+`ingestion/gifs.jsonl` records the same string the routing commissioned. Nothing has to be
+mapped through the sha256 to know that two references are the same file.
 
-```
-{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp
-```
-
-`advertorial-mechanism-seat-cushion-l-shaped-v04-features1.webp`. It is the session
-directory — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the gif type inserted after
-the page type and the slot appended, so a reader gets the argument, the product, the page and
-the slot without opening anything. The slot is derived from the `slot_id` and is required:
-two loops on one page may share a gif type, and without it they share a filename (ADR-036).
+**What makes it unique is a rule rather than a field: one loop per gif type per page.** A page
+carries at most one `cause`, one `proof`, one `mechanism`, one `relief`, one `use`. Every
+routed page already satisfied it before it was written down, and it says something true
+anyway — a page making the same kind of motion argument twice is repeating itself.
 
 The page id is deliberately absent. It identifies the source export rather than the loop, it
 lives in `prompts.json.page_id`, and one routed session has none at all — a name that depended
-on it could not have been written.
+on it could not have been written. A file is never renamed after it enters the library:
+briefs and the ledger both reference it by name.
 
 Delivery is **animated WebP**, loop-safe, under the size ceiling. It carries no audio track
 by format, so there is nothing to mute, and it sits in an `<img>` where a still already sits
-rather than needing a `<video>` element the page template does not have — which is what lets a
-loop occupy an image slot at all and keeps a loop and a still interchangeable. WebP runs
+rather than needing a `<video>` element the page template does not have — which is what lets
+a loop occupy an image slot at all and keeps a loop and a still interchangeable. WebP runs
 larger than mp4 at the same quality, so the ceiling binds harder than it did; that is the
 trade taken knowingly (ADR-036). The `.gif` extension names the format the owner asks for in
 conversation, never the file that ships.

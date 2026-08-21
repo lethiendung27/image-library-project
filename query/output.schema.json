@@ -219,7 +219,7 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns: {page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp — the session directory with the gif type inserted after the page type and the slot appended (ADR-036). The slot is derived from slot_id (drop `.image`, drop `items`/`shots`/`photos`, join the rest) and is required, because two loops on one page may share a gif type and would otherwise share a filename. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
+                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.webp: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
               },
               "ratio": {
                 "type": "string",
@@ -397,7 +397,7 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns: {page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp — the session directory with the gif type inserted after the page type and the slot appended (ADR-036). The slot is derived from slot_id (drop `.image`, drop `items`/`shots`/`photos`, join the rest) and is required, because two loops on one page may share a gif type and would otherwise share a filename. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
+                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.webp: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
               },
               "ratio": {
                 "type": "string",

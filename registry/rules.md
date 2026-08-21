@@ -230,7 +230,7 @@ precisely what made leaving it unwritten expensive.
 who builds the loop reads, and it carries **four fields and nothing else**:
 
 ```
-{page-type}-{gif-type}-{product}-v{NN}-{slot}.webp   the file the editor returns
+{page-type}-{gif-type}-{product}-v{NN}.webp   the file the editor returns
 {duration} · {ratio} · {loop behaviour}        what shape and how long
                                                a rule across the two
 <the brief>   who or what is in the shot and where, what happens in
@@ -278,10 +278,13 @@ source export, not the loop, and it lives in `prompts.json.page_id` where a join
 wrong word for the one person who has to file it. A sequence number: the slot already
 separates two loops on one page, and a number would separate nothing the slot does not.
 
-**The slot field is load-bearing, not decoration.** Two loops on one page may carry the same
-gif type — ADR-032 allows five loops against five routable types — and without the slot those
-two produce the same filename. It is derived, never typed: take the `slot_id`, drop `.image`,
-drop the container segments `items`, `shots` and `photos`, and join what is left.
+**One loop per gif type per page, and the filename is why.** There is no slot field and no
+sequence number, so two loops that argue the same thing on one page would produce the same
+file. That is now a rule rather than a hazard: a page carries at most one `cause`, one
+`proof`, one `mechanism`, one `relief`, one `use`. It costs nothing that was being used —
+every routed page already satisfies it — and it says something true anyway, that a page making
+the same kind of motion argument twice is repeating itself. The build fails a page that
+breaks it (ADR-037).
 
 **Version sits at the END, beside the product it counts.** A version is the Nth page for that
 PRODUCT (ADR-034), so `v04` of one product and `v04` of another are unrelated numbers that

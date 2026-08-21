@@ -1715,3 +1715,52 @@ Consequences: `registry/rules.md` G12; `query/runbook.md` Step 5c and the delive
 naming and delivery; three `build.py` files gain `PAGE_TYPE`/`PRODUCT_SLUG`/`VERSION`,
 `slot_slug()` and `gif_name()` with the directory assert, and their nine `gif.output` values
 are now computed rather than written. `registry_version` unchanged.
+
+## ADR-037 · 2026-08-21 · A loop has one name, and one loop per gif type per page is what keeps it unique
+
+Owner instruction: no `{seq}` and no `{slot}` in a gif name. Both fields go, and removing them
+settles something ADR-036 had left open.
+
+```
+{page-type}-{gif-type}-{product-slug}-v{NN}.webp
+advertorial-mechanism-seat-cushion-l-shaped-v04.webp
+```
+
+**A loop now has ONE name.** ADR-023 gave it two — a page-side name numbered by slot and a
+library name numbered by a sequence the ledger issued — because the page tracked by slot and
+the library tracked by type. This instruction removes both numbering fields at once, and what
+is left is unique on both sides simultaneously. So the second name goes with them, the
+sequence issuance goes with it, and `ingestion/gifs.jsonl` records the same string the routing
+commissioned. Nothing is mapped through a sha256 any more to know that two references mean one
+file. ADR-036 noted the collapse had become possible and left it as a separate decision; this
+is that decision, forced by the field removal rather than chosen for tidiness.
+
+**What makes the name unique is now a rule instead of a field: one loop per gif type per
+page.** With no slot and no sequence, two loops arguing the same thing on one page would be the
+same file. So a page carries at most one `cause`, one `proof`, one `mechanism`, one `relief`,
+one `use`. This costs nothing that was in use — all four pages with routed loops already
+satisfied it before it was written down — and it states something true anyway: a page making
+the same kind of motion argument twice is repeating itself. The build fails a page that breaks
+it, and the failure names the collision rather than the rule.
+
+**A latent defect from ADR-036, found while doing this.** That ADR moved delivery to WebP
+everywhere it was written in prose, but `scripts/validate.py`'s `GIF_FILE_RE` still read
+`{type}_{product-slug}_{seq}\\.(mp4|webm)` — the ledger would have rejected every filename the
+new law produces. It fired on nothing because the ledger holds zero records, which is exactly
+how a rule that nothing runs stays wrong. The regex is now the single name, and its split is
+unambiguous because the gif type is a closed list sitting between two free fields. Tested
+against six filenames, 6 of 6 as expected: the two live names accepted with the right type
+extracted, and the old library name, a stray `.mp4`, a leftover slot field and an invented gif
+type all rejected.
+
+Nine loops renamed across the three sessions routed under ADR-028 or later. Plates
+regenerated. The pre-ADR-028 sessions keep their old names, the treatment ADR-024 gave page 13.
+
+Two checks mutation-tested in-process, 2 of 2 fired: two loops sharing a gif type on one page,
+and a slot field left in the filename.
+
+Consequences: `registry/rules.md` G12 trades the slot paragraph for the one-per-type rule;
+`query/runbook.md` Step 5c the same; `query/output.schema.json` `gif.output`;
+`registry/gif-instruction.md` §4 rewritten around a single name and no ledger sequence;
+`scripts/validate.py` `GIF_FILE_RE` and the ledger's error message; three `build.py` files drop
+`slot_slug()` and gain the duplicate-type check. `registry_version` unchanged.

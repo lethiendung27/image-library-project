@@ -57,16 +57,13 @@ assert os.path.basename(HERE) == f"{PAGE_TYPE}-{PRODUCT_SLUG}-{VERSION}", \
     "session directory does not match the parts the gif names are built from"
 
 
-def slot_slug(slot_id):
-    """features.items.1.image -> features1"""
-    parts = [p for p in slot_id.replace(".image", "").split(".")
-             if p not in ("items", "shots", "photos")]
-    return "".join(parts)
+def gif_name(gif_type):
+    """The only name a loop has, page-side and library-side alike (ADR-037).
 
-
-def gif_name(slot_id, gif_type):
-    return (f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}"
-            f"-{slot_slug(slot_id)}.webp")
+    No slot and no sequence, which is why a page carries at most one loop of each
+    gif type — the check below is what keeps that true rather than hoped for.
+    """
+    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.webp"
 
 ATTRIBUTE_GATES = [
     (lambda a: a["symptom_visibility"] == "invisible", "01-pain-split",
@@ -1034,7 +1031,7 @@ for sid, place, role in OUT_OF_SCOPE:
 for _s in SLOTS:
     _g = _s.get("gif") or {}
     if _g.get("eligible"):
-        _g["output"] = gif_name(_s["slot_id"], _g["type_id"])
+        _g["output"] = gif_name(_g["type_id"])
 
 # ---------------------------------------------------------------- page blocks
 
@@ -1287,6 +1284,13 @@ def checks():
             errs.append(f"reserve {r['slot_id']} is not in the same section as "
                         f"{r['substitutes_for']}")
 
+    # ADR-037: with no slot and no sequence in the filename, two loops of one gif
+    # type on a page collide. One per type, enforced rather than hoped for.
+    kinds = [x["gif"]["type_id"] for x in elig]
+    for k in sorted({k for k in kinds if kinds.count(k) > 1}):
+        errs.append(f"two loops on this page are gif type `{k}`; with no slot in the "
+                    "filename they would be the same file (ADR-037)")
+
     GROUP = {"use": "working", "mechanism": "working", "cause": "working",
              "proof": "result", "relief": "result"}
     got = sorted({GROUP[s["gif"]["type_id"]] for s in elig})
@@ -1311,7 +1315,7 @@ def checks():
                         "--brief suffix and a .svg extension (G12)")
         if g["asset"] == s["asset"]:
             errs.append(f"{s['slot_id']}: plate asset must not be the slot's own asset")
-        want = gif_name(s["slot_id"], g["type_id"])
+        want = gif_name(g["type_id"])
         if g["output"] != want:
             errs.append(f"{s['slot_id']}: gif.output must be `{want}` (ADR-036), got "
                         f"`{g['output']}`")

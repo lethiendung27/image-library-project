@@ -1128,7 +1128,10 @@ GIF_REQUIRED_KEYS = ["id", "kind", "group", "rung", "version", "status",
 GIF_OPTIONAL_KEYS = ["replaced_by", "notes"]
 GIF_REQUIRED_SECTIONS = ["PURPOSE", "TRIGGER", "BOUNDARY", "BRIEF", "NEGATIVE",
                          "CHANGELOG"]
-GIF_FILE_RE = re.compile(r"^([a-z]+)_([a-z0-9-]+)_(\d{3})\.(mp4|webm)$")
+# ADR-037: one name for a loop, page-side and library-side alike. The gif type is
+# a closed list, which is what makes the split unambiguous either side of it.
+GIF_FILE_RE = re.compile(
+    r"^([a-z-]+?)-(use|mechanism|cause|proof|relief|unboxing)-([a-z0-9-]+)-v(\d{2})\.webp$")
 
 
 def validate_gif_type_file(path, vocab):
@@ -1221,8 +1224,8 @@ def check_gif_ledger(gif_types):
         m = GIF_FILE_RE.match(fname)
         if not m:
             err(w, f"record {n}: file `{fname}` does not match "
-                   "{type}_{product-slug}_{seq}.mp4|webm")
-        elif m.group(1) != tid:
+                   "{page-type}-{gif-type}-{product-slug}-v{NN}.webp")
+        elif m.group(2) != tid:
             err(w, f"record {n}: file `{fname}` is filed under type `{tid}`")
         h = rec.get("sha256")
         if h in seen:
