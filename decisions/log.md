@@ -1841,3 +1841,63 @@ sectioned at a named plane`, the SKELETON `[CUTAWAY]` line names the layer list 
 **A13**, because an extent nobody bounded becoming a claim nobody made is not about anatomy and
 recurs wherever a prompt names a thing to reveal without naming where the revealing stops. No
 page is re-routed, no other type is touched, `registry_version` unchanged.
+
+## ADR-039 · 2026-08-24 · The multi-pass ban reaches the three files ADR-021 left teaching it
+
+The owner tested the system and it still returned multi-pass. It does not EMIT it — every
+page routed after ADR-021 carries zero, and `check_prompt_sets` errors on any that would.
+What it still did was TEACH it, in three places ADR-021's own Consequences list never named.
+
+**`query/runbook.md` contradicted itself four steps apart.** Step 3 carries the ban:
+"So `generation_mode: multi-pass` is never emitted." Step 6 ended: "and — for
+`generation_mode: multi-pass` — expand `steps[]` with the adapter's edit-script template." A
+session that read Step 3 and then followed Step 6 was instructed to do both, in one file.
+
+**`adapters/nano-banana.md` Rule 3 was live instruction for the banned thing**, titled
+"Multi-pass expansion" and carrying three generate/edit/composite templates. Step 6 pointed
+here for them. Rule 6 reinforced it twice more — "do not fight it in one pass, that is exactly
+what Rule 3 exists for" for multi-region consistency, and "add layers via edit steps one at a
+time" for layered composites. The adapter is the file Step 6 applies at render time, so this
+was the closest of the three to a delivered prompt.
+
+**`query/output.schema.json` still declared it legal**, with `pipeline` enumerating
+`multi-pass` and `steps` described as "Required when pipeline is multi-pass".
+
+**And the app bundle carried all of it.** `dist/app-bundle` shipped the ban in
+`vocabulary.yaml` and `runbook.md` alongside the instruction in `nano-banana.md` and
+`output.schema.json` — internally contradictory law, which is what an app consuming the
+bundle reads.
+
+**This is ADR-020's failure repeating, and it is worth naming as a pattern rather than as an
+incident.** ADR-020 was written because a superseded premise survived in a schema description
+and a runbook paragraph after the ADR that killed it. ADR-021 then made the same shape of
+mistake: it listed its consequences as Step 3, `vocabulary.yaml` and one session, and never
+swept for the other readers. **An ADR's Consequences list is a claim about blast radius, and
+nothing checks it.** A grep for the banned term at the time of writing would have found all
+three in one command.
+
+**What is fixed.** Step 6 stops expanding anything and says why the line was there. Rule 3 is
+retired in place — kept, because one pre-ADR-021 page's `steps[]` are read against its
+templates, and marked so nothing new is written against it. Rule 6's two clauses are rewritten
+to the single-pass answers the library already records: name the invariants before the regions
+for multi-region consistency, which is `01-pain-split`'s own 1-of-1 route, and fix a dropped
+layer in the prompt rather than in a second pass. `pipeline` narrows to `single-pass`.
+
+**Stated so it is not over-trusted: narrowing the enum enforces nothing.** No code validates a
+`prompts.json` against `output.schema.json` — `check_json_files` only proves the schema itself
+parses. The rule is enforced by `check_prompt_sets`, which already errors. The enum change
+stops the contract declaring something the pipeline will not do; it does not catch a future
+breach.
+
+**Deliberately not touched.** The three type files that declare `generation_mode: multi-pass`
+— `04-proof-lockedframe`, `05-social-handoff`, `01-pain-split --mirror` — keep it: it is a true
+statement about what the PICTURE needs, `registry/vocabulary.yaml` already carries the pointer
+to this ban at the point the field is defined, and those files belong to render-refinement
+lanes. The pre-ADR-021 page keeps its three multi-pass options and its grandfathered warning;
+the owner's instruction was to fix forward against the newest page and not to edit old sessions
+to suit a new rule. `eval/render-tests.jsonl` and this log keep their historical mentions.
+
+Consequences: `query/runbook.md` Step 6; `adapters/nano-banana.md` Rules 3 and 6;
+`query/output.schema.json` `pipeline` and `steps` in both `slots` and `recommended`;
+`dist/app-bundle` regenerated. No prompt, no session artifact and no script behaviour changes.
+`registry_version` unchanged.

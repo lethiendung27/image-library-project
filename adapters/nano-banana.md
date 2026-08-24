@@ -116,7 +116,30 @@ block verbatim as the FIRST paragraph of the prompt. With multiple layers showin
 product, keep the "identical in every layer" sentence. Never describe the product's
 appearance in text (G2) — the reference image carries it.
 
-## Rule 3 — Multi-pass expansion
+## Rule 3 — Multi-pass expansion — RETIRED, kept as the record only
+
+**This rule is not applied. Nothing is expanded into `steps[]`.** ADR-021 declared
+the render capability once: this pipeline is paste-and-run — one prompt, one
+generation call, at most one reference photo the owner attaches in the tool — and
+`query/runbook.md` Step 3 carries the ban. This rule survived that ADR untouched and
+went on teaching the banned thing for three days, while `runbook.md` Step 6 pointed
+here for it. Retired at ADR-039.
+
+It is left standing rather than deleted because one delivered page predates the ban
+and its `steps[]` are read against these templates:
+`query/sessions/advertorial-seat-cushion-l-shaped-v02` (page 37), three options on
+`story.1.image`, grandfathered by name in `scripts/validate.py` and warned on every
+run. Nothing new is written against it.
+
+Where a type declares `generation_mode: multi-pass` — `04-proof-lockedframe`,
+`05-social-handoff`, and `01-pain-split --mirror` as a variant override — that
+declaration is a true statement about what the PICTURE needs and it stays. Each of
+those files also records its own single-pass route, and that route is what ships:
+`strict` falls to `handheld`, the `inset` is dropped rather than the type, and
+`--mirror` takes the invariants block.
+
+The templates below are the historical record of what a multi-pass run WOULD have
+been. Do not emit them.
 
 For `generation_mode: multi-pass` (or a variant override), emit `steps[]`:
 
@@ -223,9 +246,15 @@ a compressed prompt as new evidence, not as a settled failure.
   remains the fallback whenever a render misses). Long text and dense UI digits
   stay composited (screens, memory logs — see G6 scope note).
 - **Multi-region consistency** (same face, same colorway across regions of one image):
-  do not fight it in one pass — that is exactly what Rule 3 exists for.
-- **Layered composites** (hero + inset + product view): if a layer drops out, generate
-  the base scene first, then add layers via edit steps one at a time.
+  this is the hardest thing to hold in one pass, and one pass is what there is
+  (ADR-021). Name the invariants BEFORE the regions are described — face, hair,
+  clothes, camera height, distance, framing — which is the route `01-pain-split`
+  records at 1 of 1 against its own multi-pass declaration. Rule 3 is retired and is
+  not the answer here.
+- **Layered composites** (hero + inset + product view): a dropped layer is fixed in
+  the prompt, not in a second pass. Give the layer its own named footprint and a
+  reason to be there; where a type's layer genuinely cannot survive one pass, the
+  slot takes a type whose skeleton legislates no layer.
 
 ## Rule 7 — Marks are model-drawn (ADR-008)
 
