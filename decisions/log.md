@@ -2078,3 +2078,58 @@ MARKS line 108 and CHANGELOG 1.3 still record the old exclusion and are LEFT STA
 owner's audit of that file — they own the type files in this pass, and a supersede recorded here
 is what reaches the other lanes. `dist/app-bundle` regenerated. No other type is touched; no
 session is re-routed. `registry_version` unchanged.
+
+## ADR-043 · 2026-08-24 · The verdict badge becomes a library of five forms, not one
+
+ADR-042 recorded the emoji badge and stopped there, which left the record narrower than the
+owner's actual decision. They approved **four** alternatives to the X/check pair — thumbs,
+warning triangle, no badge at all, and emoji — and all five have now rendered. This records the
+set so the badge is a choice with a menu rather than a constant with an exception.
+
+**`01-pain-split` MARKS legislates exactly one form:** *"`verdict` | flat solid disc with the
+glyph cut out of it, in a TOP corner, both the same diameter | red X left, green check right |
+exactly 2"*. Shipping five forms against a file that names one is the gap this closes.
+
+**All five rendered clean in round 3 of the audit, one product each:**
+
+| form | result |
+|---|---|
+| `verdict-glyph` — red X disc → green check disc | clean. ~32 renders behind it across four types |
+| `verdict-thumb` — thumbs-down disc → thumbs-up disc | clean: solid silhouette, no lumpy fist, no separate fingers |
+| `verdict-hazard` — red warning triangle → green check disc | clean, and the fastest read of the six |
+| `verdict-emoji` — angry face → smiling face | clean, with and without a human face in the frame |
+| `verdict-none` — no badge | the grade split plus the red/blue mark pair still carried the verdict |
+
+**Two findings the set produced that no single form would have.**
+
+The thumb survived **because of how it was written**, not because hands became easier. G6 bans
+`deformed hands, extra fingers` in every prompt. Writing it as *a flat pictogram cut out of the
+disc, a solid silhouette, never a photographed or three-dimensional hand* is what kept it
+geometry. That sentence is part of the form, not decoration on it.
+
+The emoji form is **not consistent between renders**, and this is its one real limit. Across
+round 5 the angry face came back flat red, then orange-red with a gradient, then rounder with
+heavier brows; the smiling face varied between a closed grin and an open one with teeth. Same
+idiom every time, different artwork every time — because a diffusion model has no font, so a
+glyph that is identical everywhere in a typeface cannot be identical here. **`verdict-emoji`
+therefore suits a single page and not a product family across many pages**, where
+`verdict-glyph` holds its look and it does not. That is a scoping note, not a demotion.
+
+**Why the pairing test mattered.** `verdict-emoji` ran twice in round 3, once with a human face
+in frame and once with the subject cropped to hands, because a drawn face beside a real one
+looked like it would compete. It did not: the badge sits in a corner, the face sits centre
+frame, and the eye takes them in sequence. Without the pair the clean result would have been
+one product's luck.
+
+**The forms are interchangeable by construction.** Each is written as a drop-in `[BADGES]`
+block of the same shape, so any form can be swapped into any prompt without touching another
+line. `verdict-none` is the exception that proves it: it is a block that says no badge, rather
+than an absent block, because a missing block reads as an oversight and a stated one reads as a
+decision.
+
+Consequences: this ADR is the record; **`registry/types/01-pain-split.md` MARKS still names one
+form and is LEFT STANDING for the owner's audit of that file**, along with the multi-pass,
+dropped-marks, blue-mark and ratio findings the five rounds produced. No rule file changes —
+G3's carve-out from ADR-042 already covers the only colour question, and the other four forms
+use red and green exactly as G3 assigns them. No other type is touched. `registry_version`
+unchanged.
