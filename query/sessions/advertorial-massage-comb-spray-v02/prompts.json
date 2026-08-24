@@ -377,13 +377,13 @@
         "reason": "The section's claim is a snag happening — bristles catching a knot and the hair pulling tight into it — which is a transition rather than a state. The routed still already contains the force and the body it acts on, so nothing is restaged: this is rung 1. The gif library's `cause` type names exactly this shape, a tool failing on the thing it is used on.",
         "asset": "125-03-content1-pain-scene--brief.svg",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-cause-massage-comb-spray-v02.webp",
+        "output": "advertorial-cause-massage-comb-spray-v02.mp4",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of a rigid brush being drawn down into a knot at the back of a child's head. The teeth catch, the hair around the knot pulls tight and lifts with the brush, and her shoulders come up as it holds.",
         "alt": "A shot of the same brush pulled slowly through a hank of fine hair held in one hand, no child in the frame. The teeth reach a knot, the strands bunch and tighten into it, and the whole hank travels with the brush.",
-        "delivery": "animated webp, loop-safe, under the size ceiling"
+        "delivery": "mp4, muted, loop-safe, under the size ceiling"
       }
     },
     {
@@ -852,13 +852,13 @@
         "reason": "The `relief` type earns motion only where the motion IS the thing the problem used to block, and this page opens on a child who could not be brushed without tears. One unbroken pass through her hair is that movement returned. Nothing is restaged — the routed still already contains the pass — so this is rung 1.",
         "asset": "125-07-content5-relief-hero--brief.svg",
         "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-relief-massage-comb-spray-v02.webp",
+        "output": "advertorial-relief-massage-comb-spray-v02.mp4",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of a woman drawing the comb down through a seated child's hair in one unbroken pass. The comb runs from crown to ends without catching, the child's shoulders stay down, and the hair falls and settles behind it.",
         "alt": "A shot of the child drawing the comb through her own hair at a counter. She runs it from the ends upward, the comb passes without snagging, and she lifts it away and starts a second pass on her own.",
-        "delivery": "animated webp, loop-safe, under the size ceiling"
+        "delivery": "mp4, muted, loop-safe, under the size ceiling"
       }
     },
     {
@@ -970,13 +970,13 @@
         "reason": "Three steps in order is the definition of a sequence, and the routed still already stages all three. Nothing is restaged, so this is rung 1. It is also the FIRST `use` loop this library has routed: the type was gated out on every earlier page of this product family by `multi_step_usage: false`, and this product has three named steps in its own copy. `howto` is its own section with one slot, so it carries this loop without touching the spacing rule in `content`.",
         "asset": "125-08-howto-use-sequence--brief.svg",
         "refs": "gifs-library/use/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-use-massage-comb-spray-v02.webp",
+        "output": "advertorial-use-massage-comb-spray-v02.mp4",
         "ratio": "1:1",
         "duration_s": 4,
         "loop": "seamless loop",
         "brief": "A shot of the comb on a shelf. Water fills the port at the top of the handle, then it lifts to a section of hair and the mist starts, then a thumb presses the button and the teeth retract, pushing a clump of shed hair clear.",
         "alt": "A shot of the comb held in one hand over a bin. A thumb presses the button, the teeth rise off the bed and a clump of trapped hair is pushed clear and drops away, then the teeth seat back down.",
-        "delivery": "animated webp, loop-safe, under the size ceiling"
+        "delivery": "mp4, muted, loop-safe, under the size ceiling"
       }
     },
     {

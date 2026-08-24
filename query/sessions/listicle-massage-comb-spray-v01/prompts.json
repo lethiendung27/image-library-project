@@ -17,7 +17,7 @@
           "opt": "A",
           "varies_on": "baseline",
           "type": "01-pain-scene",
-          "type_version": "1.14",
+          "type_version": "1.15",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A cinematic film still, editorial photojournalism, natural and unstaged.\n\nA woman in her mid-thirties in a work blouse with the cuffs still unbuttoned, standing at the basin of a small family bathroom early on a weekday, mid-way through dragging a dry plastic paddle brush down through the length of her own hair with one hand while the other presses the crown flat. Under that force: her brush arm pulled hard down past her shoulder, her head tipped away from the pull, the pressing elbow lifted high across her chest. Face: brow drawn in, mouth pressed shut, eyes down on the hair in her hand.\n\nThe hair is the evidence. Fine strands stand straight out from her head in a halo, several cling flat to her cheek and jaw, more lift off the brush and follow it as it leaves the hair, and the crown springs back up the instant her hand comes away.\n\nOne specific place: a small family bathroom on a weekday morning, and the lived-in clutter of the routine it disrupts — a child's toothbrush in a beaker, a dropped hair tie on the basin edge, an open cosmetics bag, a towel half off its rail.\n\nShe is unaware of the camera. Key light: thin cold daylight through a frosted window. Fill: the room's own weak ambient. A rim of light along her lifted forearm. Deep shadow across the lower third of the frame.\n\nDesaturated blue-grey, crushed blacks, fine film grain, shallow depth of field, 35mm.\n\nNo product, no panels and no insets. No mark of any kind.",
@@ -52,7 +52,7 @@
           "opt": "B",
           "varies_on": "axis: gaze=confront",
           "type": "01-pain-scene",
-          "type_version": "1.14",
+          "type_version": "1.15",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A cinematic film still, editorial photojournalism, natural and unstaged.\n\nA woman in her mid-thirties in a work blouse, sitting at a kitchen table in front of an open laptop a few minutes before a call, turned away from the screen towards the camera with both hands still raised at the sides of her head where she has been trying to smooth her hair down. Under that force: both elbows up and out, fingers spread flat against the hair, shoulders lifted. Face: brow raised and tight, mouth slightly open, looking directly into the lens and holding it.\n\nFine strands stand out from her head in a halo through and above her fingers, several cling flat across her forehead, and the hair she has just pressed down is already lifting again.\n\nOne specific place: a kitchen table set up as a workspace on a weekday morning, and the lived-in clutter of the routine it disrupts — a cold mug beside the laptop, a cereal bowl not cleared, a child's school bag on the next chair, a phone face down on a notebook.\n\nKey light: even flat daylight from the kitchen window, bright and unflattering, minimal shadow. Fill: the room's own ambient.\n\nDesaturated throughout, fine film grain, shallow depth of field, 35mm.\n\nNo product, no panels and no insets. No mark of any kind.",
@@ -88,7 +88,7 @@
           "opt": "C",
           "varies_on": "execution: the second persona — the child's hair, not her own",
           "type": "01-pain-scene",
-          "type_version": "1.14",
+          "type_version": "1.15",
           "ratio": "16:9",
           "pipeline": "single-pass",
           "prompt": "A cinematic film still, editorial photojournalism, natural and unstaged.\n\nA woman in her mid-thirties in a dressing gown, crouched on a hallway floor behind a seated girl of about six, mid-way through working a dry plastic brush down through a knot in the child's fine hair with one hand while the other holds the hair above the knot to take the pull. Under that force: the mother's holding hand clenched close to the scalp, her brush arm braced and moving in short strokes, the child's head pulled back against the tension and her shoulders hunched up. Face: the mother's jaw set and eyes fixed on the knot; the child's eyes screwed shut, mouth open.\n\nThe knot is the evidence: a dense matted clump held tight in the brush's bristles halfway down, loose broken strands caught across the brush face, and more fine hairs standing out from the child's crown in a halo.\n\nOne specific place: a narrow hallway by the front door on a school morning, and the lived-in clutter of the routine it disrupts — a school bag half packed, one shoe on its side, a lunch box on the floor, coats overloading a hook.\n\nNeither is aware of the camera. Key light: thin cold daylight through the glass of the front door. Fill: the dim of the hallway. A rim of light along the child's crown. Deep shadow across the near side of the frame.\n\nDesaturated blue-grey, crushed blacks, fine film grain, shallow depth of field, 35mm.\n\nNo product, no panels and no insets. No mark of any kind.",
@@ -282,13 +282,13 @@
         "reason": "The page's headline claim is 97% static reduction in a single pass, and a pass is a thing that happens over time. The routed still is a three-panel locked comparison, and panels are inspected rather than watched — 0 of 13 such slots have ever earned a verdict. Drop the panels for one continuous frame in which the halo falls as the comb goes through, and the same claim is demonstrated rather than asserted. That is the rung-2 move Step 5d names. The force is a hand drawing the comb; nothing here moves on its own.",
         "asset": "97-03-reason1-proof-brushes--brief.svg",
         "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "output": "listicle-proof-massage-comb-spray-v01.webp",
+        "output": "listicle-proof-massage-comb-spray-v01.mp4",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of one length of hair lying on a bathroom shelf, standing up in a halo of separated strands after a plastic brush. The reference comb passes down it once and the halo drops, strand by strand, until the whole length is lying settled and flat along the shelf.",
         "alt": "A shot of a woman's own hair at the side of her head, fine strands standing out from the crown. The comb passes down through them once and they fall back against the rest of the hair and stay there, with no hand smoothing them down afterwards.",
-        "delivery": "animated webp, loop-safe, under the size ceiling"
+        "delivery": "mp4, muted, loop-safe, under the size ceiling"
       }
     },
     {
@@ -514,13 +514,13 @@
         "reason": "One click and the teeth retract flush into the cushion, releasing three weeks of trapped hair in one piece. That is a working part doing the single thing this card is sold on, which is the `mechanism` type's own PURPOSE line, and it cannot be shown in a static frame at all — the still can only put a clogged bed beside a clean one. The staging changes from three panels to one continuous frame, so rung 2. The force is a thumb on the button.",
         "asset": "97-07-reason5-proof-hygiene--brief.svg",
         "refs": "gifs-library/mechanism/ — no files filed yet; the folder card carries the law",
-        "output": "listicle-mechanism-massage-comb-spray-v01.webp",
+        "output": "listicle-mechanism-massage-comb-spray-v01.mp4",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": "A shot of the comb's bristle bed close up on a bathroom shelf, three weeks of shed hair and dust packed down between the teeth. A thumb presses the button on the handle, the teeth retract flush into the cushion, and the whole mat lifts clear in one piece.",
         "alt": "A shot of the same bristle bed held over an open bin. The teeth retract flush into the cushion, the packed mat of hair and dust comes away as one, and it drops into the bin leaving a clean cushion behind.",
-        "delivery": "animated webp, loop-safe, under the size ceiling"
+        "delivery": "mp4, muted, loop-safe, under the size ceiling"
       }
     },
     {
@@ -630,13 +630,13 @@
         "reason": "An ordered sequence is the definition of temporal, and this section is literally three steps in the page's own words. The still stacks them as three panels because a still has no other way; the loop runs them as one act, which is what the section is describing. Nothing is re-argued and no staging moves, so this is rung 1. The force is named under ADR-031: hands fill the tank, a thumb presses the switch, the comb is drawn through hair.",
         "asset": "97-08-howto-use-sequence--brief.svg",
         "refs": "gifs-library/use/ — one file filed, w1000.gif, unledgered; the folder card carries the law",
-        "output": "listicle-use-massage-comb-spray-v01.webp",
+        "output": "listicle-use-massage-comb-spray-v01.mp4",
         "ratio": "1:1",
         "duration_s": 4,
         "loop": "seamless loop",
         "brief": "A shot of two hands at a bathroom shelf with the comb, its tank window empty. Water goes into the filler port until the window reads half full, a thumb presses the switch, and the comb draws down through the length of her hair with the mist leaving the bristle bed.",
         "alt": "A shot of the same hands and the same shelf, the comb already filled and running. It draws down through her hair three times over, and behind each pass the hair lies smooth and settled while it still stands lifted ahead of the teeth.",
-        "delivery": "animated webp, loop-safe, under the size ceiling"
+        "delivery": "mp4, muted, loop-safe, under the size ceiling"
       }
     },
     {

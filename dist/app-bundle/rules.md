@@ -245,7 +245,7 @@ precisely what made leaving it unwritten expensive.
 who builds the loop reads, and it carries **four fields and nothing else**:
 
 ```
-{page-type}-{gif-type}-{product}-v{NN}.webp   the file the editor returns
+{page-type}-{gif-type}-{product}-v{NN}.mp4    the file the editor returns
 {duration} · {ratio} · {loop behaviour}        what shape and how long
                                                a rule across the two
 <the brief>   who or what is in the shot and where, what happens in
@@ -280,18 +280,18 @@ separated by commas with a final `then`. Four is the ceiling any routed slot can
 `use` declares [1, 4] and every other routable type declares less. `unboxing` goes to six and
 is `kind: null`, ad channel only, so it never writes a page brief.
 
-**The filename is the session's own name with two fields added, and it is read without a
-lookup.** `{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}.webp`. Take the session
-directory — `{page-type}-{product-slug}-v{NN}` (ADR-034) — insert the gif type after the page
-type and append the slot, and that is the loop's name. A reader gets what it argues, for
-which product, on which page of that product, and which slot it fills, from the name alone.
+**The filename is the session's own name with the gif type inserted, and it is read without
+a lookup.** `{page-type}-{gif-type}-{product-slug}-v{NN}.mp4`. Take the session directory —
+`{page-type}-{product-slug}-v{NN}` (ADR-034) — and put the gif type after the page type. A
+reader gets what it argues, for which product, and on which page of that product, from the
+name alone.
 
 Three things that are NOT in it and the reason each is out. The page id: it identifies the
 source export, not the loop, and it lives in `prompts.json.page_id` where a join key belongs
-— page 13 has none at all and still gets a name. The still's type: an inset loop inside
-`06-relief-hero --recall` does `pain` work and used to arrive called relief-hero, which is the
-wrong word for the one person who has to file it. A sequence number: the slot already
-separates two loops on one page, and a number would separate nothing the slot does not.
+— one routed session has none at all and still gets a name. The still's type: an inset loop
+inside `06-relief-hero --recall` does `pain` work and used to arrive called relief-hero, which
+is the wrong word for the one person who has to file it. A slot or a sequence: both were
+removed at ADR-037, and what replaced them is the rule below.
 
 **One loop per gif type per page, and the filename is why.** There is no slot field and no
 sequence number, so two loops that argue the same thing on one page would produce the same
@@ -307,20 +307,16 @@ happen to match. A field meaningless without its parent belongs next to its pare
 earlier and a library folder sorts unrelated pages together while a product's own loops
 scatter (ADR-036).
 
-**Delivery is animated WebP.** It carries no audio track by format, so nothing has to be
-muted, and it drops into an `<img>` where a still already sits rather than needing a `<video>`
-element the page template does not have — which is the whole reason a loop can occupy an image
-slot at all. It is larger than mp4 at the same quality, so the size ceiling binds harder here
-than it did; that is the trade this library accepts to keep a loop and a still
-interchangeable.
+**Delivery is mp4** (ADR-047). It is what the editors actually produce, and a naming law
+that disagrees with the files arriving is a law that gets ignored rather than followed.
 
-**The ratio depends on the form.** On `whole-frame` the loop IS the delivered image, so it
-owes the SLOT's shape rather than the shape the still happened to be rendered at. On `inset`
-it fills a layer inside the frame, so it owes the LAYER's shape and never the slot's — the
-host type describes that layer, and a build emitting an inset loop at the slot's own ratio
-has confused the layer with the frame (ADR-033). Either way the plate is drawn at that ratio,
-so the card is the shape of the deliverable and the editor reads the aspect off the paper as
-well as out of it.
+Two consequences follow and neither is hidden. **Muted is a requirement again**: mp4 carries
+an audio track and WebP could not, so what was moot by format is now a rule the brief states.
+And an mp4 needs a `<video>` element with `autoplay`, `muted`, `playsinline` and `loop` where
+a still sits in an `<img>`; ADR-036 chose WebP precisely so a loop and a still stayed
+interchangeable in a page template. That interchangeability is now a **template dependency
+outside this repo** rather than a property of the file, and a slot that earns motion needs its
+template to carry a `<video>`.
 
 **The plate is GENERATED, never drawn by an image model** — `python3 scripts/gen-plate.py`,
 and like `registry/index.yaml` and the GIF library's folder cards it is a view that is never

@@ -59,7 +59,7 @@ def gif_name(gif_type):
     No slot and no sequence, which is why a page carries at most one loop of each
     gif type — the check below is what keeps that true rather than hoped for.
     """
-    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.webp"
+    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.mp4"
 
 ATTRIBUTE_GATES = [
     (lambda a: a["symptom_visibility"] == "invisible", "01-pain-split",
@@ -767,13 +767,13 @@ SLOTS.append({
                   "exactly this shape, a tool failing on the thing it is used on.",
         "asset": "125-03-content1-pain-scene--brief.svg",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-cause-massage-comb-spray-v02.webp",
+        "output": "advertorial-cause-massage-comb-spray-v02.mp4",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": BRIEF_C1,
         "alt": ALT_C1,
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 
@@ -974,13 +974,13 @@ SLOTS.append({
                   "the pass — so this is rung 1.",
         "asset": "125-07-content5-relief-hero--brief.svg",
         "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-relief-massage-comb-spray-v02.webp",
+        "output": "advertorial-relief-massage-comb-spray-v02.mp4",
         "ratio": "1:1",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": BRIEF_C5,
         "alt": ALT_C5,
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 
@@ -1035,13 +1035,13 @@ SLOTS.append({
                   "spacing rule in `content`.",
         "asset": "125-08-howto-use-sequence--brief.svg",
         "refs": "gifs-library/use/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-use-massage-comb-spray-v02.webp",
+        "output": "advertorial-use-massage-comb-spray-v02.mp4",
         "ratio": "1:1",
         "duration_s": 4,
         "loop": "seamless loop",
         "brief": BRIEF_HT,
         "alt": ALT_HT,
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 

@@ -49,10 +49,10 @@ Two folders behind one message is the failure this rule exists to prevent.
 ## 4. Naming
 
 ```
-{page-type}-{gif-type}-{product-slug}-v{NN}.webp
+{page-type}-{gif-type}-{product-slug}-v{NN}.mp4
 ```
 
-`advertorial-mechanism-seat-cushion-l-shaped-v04.webp`. It is the routing session's own
+`advertorial-mechanism-seat-cushion-l-shaped-v04.mp4`. It is the routing session's own
 directory name — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the gif type inserted
 after the page type, so a reader gets the argument, the product and the page from the name
 without opening anything.
@@ -74,13 +74,14 @@ lives in `prompts.json.page_id`, and one routed session has none at all — a na
 on it could not have been written. A file is never renamed after it enters the library:
 briefs and the ledger both reference it by name.
 
-Delivery is **animated WebP**, loop-safe, under the size ceiling. It carries no audio track
-by format, so there is nothing to mute, and it sits in an `<img>` where a still already sits
-rather than needing a `<video>` element the page template does not have — which is what lets
-a loop occupy an image slot at all and keeps a loop and a still interchangeable. WebP runs
-larger than mp4 at the same quality, so the ceiling binds harder than it did; that is the
-trade taken knowingly (ADR-036). The `.gif` extension names the format the owner asks for in
-conversation, never the file that ships.
+Delivery is **mp4**, muted, loop-safe, under the size ceiling (ADR-047). It is what the
+editors produce, and a naming law that disagrees with the files arriving is one that gets
+ignored rather than followed. Two things follow. Muted is a stated requirement again, because
+mp4 carries an audio track where WebP could not. And a slot that earns motion needs its page
+template to carry a `<video>` with `autoplay`, `muted`, `playsinline` and `loop`, since a
+still sits in an `<img>` and an mp4 does not — the interchangeability ADR-036 bought is now a
+template dependency outside this repo. The `.gif` extension names the format the owner asks
+for in conversation, never the file that ships.
 
 ## 5. The one-line description
 

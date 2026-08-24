@@ -219,7 +219,7 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.webp: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
+                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.mp4: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
               },
               "ratio": {
                 "type": "string",
@@ -242,7 +242,7 @@
               },
               "delivery": {
                 "type": "string",
-                "description": "How the finished loop ships: animated WebP, loop-safe, under the size ceiling. WebP carries no audio track by format and sits in an <img> where a still already sits, which is what makes a loop and a still interchangeable in a page template (ADR-036)."
+                "description": "How the finished loop ships: mp4, muted, loop-safe, under the size ceiling (ADR-047). mp4 carries an audio track where WebP could not, so muted is a stated requirement rather than a property of the format, and a slot that earns motion needs a <video> element in the page template where a still sits in an <img>."
               },
               "refs": {
                 "type": "string",
@@ -397,7 +397,7 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.webp: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
+                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.mp4: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
               },
               "ratio": {
                 "type": "string",
@@ -420,7 +420,7 @@
               },
               "delivery": {
                 "type": "string",
-                "description": "How the finished loop ships: animated WebP, loop-safe, under the size ceiling. WebP carries no audio track by format and sits in an <img> where a still already sits, which is what makes a loop and a still interchangeable in a page template (ADR-036)."
+                "description": "How the finished loop ships: mp4, muted, loop-safe, under the size ceiling (ADR-047). mp4 carries an audio track where WebP could not, so muted is a stated requirement rather than a property of the format, and a slot that earns motion needs a <video> element in the page template where a still sits in an <img>."
               },
               "refs": {
                 "type": "string",

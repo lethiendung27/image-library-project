@@ -2292,3 +2292,49 @@ bổ" for cutaway, "khung hình" for frame — so the Vietnamese card and the En
 described the same shot in two vocabularies. Rule 3 now names the craft terms (frame,
 close-up, cutaway, loop, motion, rotor) and the ten translated occurrences are swapped in
 place. Four cards regenerated.
+
+## ADR-047 · 2026-08-24 · Delivery goes back to mp4, and G12 stops contradicting itself
+
+Owner instruction: every gif file is mp4 now. This reverses the delivery half of ADR-036 and
+leaves its naming half standing.
+
+**The reason ADR-036 gave for WebP was real, and reversing it does not make it false — it
+relocates it.** WebP sits in an `<img>`, exactly where a still already sits, and that is what
+made a loop and a still interchangeable in a page template. mp4 needs a `<video>` with
+`autoplay`, `muted`, `playsinline` and `loop`. So the interchangeability is now a **template
+dependency outside this repo** rather than a property of the file: a slot that earns motion
+needs its template to carry a `<video>`. That is recorded in G12, in Step 5c, in
+`gif-instruction.md` and in the schema rather than left for someone to discover on the day a
+loop is dropped into an `<img>` and does not play. It is the owner's call to make — the files
+the editors actually produce are mp4, and a naming law that disagrees with what arrives is a
+law that gets worked around rather than followed.
+
+**Muted becomes a stated requirement again.** ADR-036 removed it from the `delivery` string
+because WebP carries no audio track by format, so there was nothing to mute. mp4 does, so the
+rule comes back rather than being assumed.
+
+**The rule 6c sweep found G12 contradicting itself, which is the finding this ADR would not
+otherwise have produced.** Two paragraphs of G12 gave two different filename patterns: the
+field block and the one-per-type rule had been updated at ADR-037 when the slot was removed,
+but the paragraph in between still read `{page-type}-{gif-type}-{product-slug}-v{NN}-{slot}
+.webp` and still instructed a reader to "append the slot". A rule that states its own pattern
+twice will drift at one of them, and this one had — for ten days, in the file that is supposed
+to be the single statement of the law. Rewritten to one pattern.
+
+The sweep's only other surviving `webp` in a teaching file is
+`ingestion/runbooks/classify-batch.md`, whose `find` includes `*.webp` among the image
+extensions of the market corpus. That is a still-image format for `stills/` and has nothing to
+do with the GIF library; it stands.
+
+Seventeen loops across six sessions renamed, plates and folder cards regenerated. The
+seventh session, `listicle-bp-monitor-upper-arm-v01`, keeps its pre-ADR-028 names and is
+untouched. `GIF_FILE_RE` tested against five filenames, 5 of 5 as expected — both live forms
+accepted with the right type extracted, and a leftover `.webp`, the retired library name and a
+leftover slot field all rejected. Two build checks mutation-tested, 2 of 2 fired.
+
+Consequences: `registry/rules.md` G12 loses the stale slot paragraph and moves to mp4;
+`query/runbook.md` Step 5c and the delivery paragraph; `SPEC.md` §3.6; `query/output.schema.json`
+`gif.output` and `gif.delivery`; `registry/gif-instruction.md` §4;
+`scripts/validate.py` `GIF_FILE_RE` and its error message; `scripts/gen-gif-cards.py` in both
+the English and Vietnamese filing lines; six `build.py` files and their emitted
+`gif.output` and `gif.delivery`. `registry_version` unchanged.

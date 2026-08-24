@@ -312,7 +312,7 @@ rather than rendered (G12, ADR-028):
 ```
 
 **`gif.output` is the session's own name with two fields added** (ADR-036):
-`{page-type}-{gif-type}-{product-slug}-v{NN}.webp`. Take the session directory,
+`{page-type}-{gif-type}-{product-slug}-v{NN}.mp4`. Take the session directory,
 `{page-type}-{product-slug}-v{NN}`, and insert the gif type after the page type. Nothing else
 goes in it: the page id lives in `page_id`, and the still's type is not what the loop argues.
 It is the ONLY name a loop has — the same one the library files it under (ADR-037).
@@ -322,49 +322,11 @@ argue the same thing on one page would collide, so a page carries at most one of
 Every routed page already satisfies it, and it says something true anyway: a page making the
 same kind of motion argument twice is repeating itself (ADR-037).
 
-**Delivery is animated WebP**, which has no audio track by format and sits in an `<img>` where
-a still already sits. A loop and a still are therefore interchangeable in the template, which
-is what lets a gif verdict occupy an image slot at all.
-
-**`gif.ratio` on `whole-frame` is the SLOT's declared ratio from `content.json`, never the
-still type's.** The loop IS the delivered image, so it owes the page's shape. Where the
-routed still renders at a different ratio and the layout crops it — `03-mechanism-ghostbody`
-at 1:1 into a 16:9 slot, for instance — the loop still owes 16:9, because nothing crops it
-on the way in.
-
-**`gif.ratio` on `inset` is the LAYER's shape and cannot be the slot's** (ADR-033). An inset
-loop fills a panel inside the frame, not the frame, so the page's aspect is the one thing it
-does not owe. Take it from the host type's own description of that layer — `06-relief-hero`
-draws `--detail` as a rounded rectangle or circle at 15-25% of frame width, which is square,
-so a `--detail` loop delivers 1:1 whatever the slot is. A build that emits an inset loop at
-the slot's own ratio has confused the layer with the frame.
-
-**`gif.brief` is a shot description in plain words**, of the kind you would say out loud to
-the person holding the camera. Three movements, no labels: who or what is in the shot and
-where, what happens in the order it happens, and what it leaves the viewer with. Band **25 to
-55 words** (ADR-029, ADR-031).
-
-**Everyday words, not craft words.** "The gap behind his lower back" is a brief; "the front
-lip of the seat base" is a type file talking to itself. Write it the way you would say it to
-someone about to shoot it.
-
-**No light, no grade, no register** (ADR-030). The still is in the same folder and carries all
-of it. Restating it is what produced the page 73 fault — a boilerplate register line claiming
-a room the frame did not have.
-
-**The upshot belongs; the routing argument does not.** "Sitting in that gap day after day is
-what starts the ache" is the point of the shot and an editor frames for it. Why the SLOT
-earned a loop is `gif.reason` and the editor never opens it — the paragraph form drifted there
-first, when page 77's draft closed on "this indicts the objects".
-
-**Name the force.** An object does not move on its own. A pad creeps forward because a body is
-on it and the car brakes; a weave sheds grains because someone walks on it. Where the loop
-needs a person the routed still does not have, that is a rung-2 re-execution and `gif.reason`
-names the move — not a licence to promise what the frame cannot show.
-
-**A multi-beat loop stays in the same description.** The beats run in order, commas with a
-final `then`, at most four: `use` declares [1, 4] and every other routable type declares less,
-while `unboxing` at [3, 6] is `kind: null` and never reaches a page.
+**Delivery is mp4** (ADR-047), muted. mp4 carries an audio track where WebP could not, so
+muted is a stated requirement again rather than a property of the format. And where a slot
+earns motion the page template needs a `<video>` element with `autoplay`, `muted`,
+`playsinline` and `loop` — a still sits in an `<img>` and an mp4 does not, so the
+interchangeability ADR-036 bought is now a template dependency outside this repo.
 
 **Every claim in the brief must be satisfiable by the still the slot routed (G12).** A brief
 promising something the frame does not contain sends the editor to build the wrong loop, and
@@ -387,9 +349,8 @@ and the plate travels beside the still as its own file. That satisfies ADR-019 �
 order reaches the editor rather than sitting in a document nobody opens — without putting
 model-drawn lettering into a frame G6 bans text from.
 
-Delivery is animated WebP with a size ceiling. WebP runs larger than mp4 at the same
-quality, so the ceiling binds harder than it did under mp4/webm; that is the trade taken to
-keep a loop and a still interchangeable in an image slot.
+Delivery is mp4, muted, with a size ceiling — a 20 MB `.gif` costs more conversion than
+the motion buys, and that was the complaint ADR-023 settled on mp4 for in the first place.
 
 **In `prompts.md` the gif sits below option C**, carrying the four fields and naming its
 plate file. It is not an alternative to A–C — the recommended still is still rendered,

@@ -17,7 +17,7 @@ GENERATED from `prompts.json` by `build.py`. Never hand-edit this file — edit 
 ### hero.image · option A — `01-pain-scene` `--candid`
 
 - varies on: baseline
-- ratio `16:9` · type version `1.14` · `gaze: candid`
+- ratio `16:9` · type version `1.15` · `gaze: candid`
 - The page's own opening problem, played as one seated action: a woman wrapping her own cuff one-handed. Evidence is the failed tool in the state that shows it failed — the twisted band, the folded flap, the kinked tube.
 
 ```
@@ -39,7 +39,7 @@ No product, no panels and no insets.
 ### hero.image · option B — `01-pain-scene` `--confront`
 
 - varies on: axis: gaze=confront
-- ratio `16:9` · type version `1.14` · `gaze: confront`
+- ratio `16:9` · type version `1.15` · `gaze: confront`
 - The same argument in the type's other gaze. The cell holds one type and the attribute gates leave no second, so the honest variation here is the axis rather than a type borrowed from a role it does not belong to.
 
 ```
@@ -61,7 +61,7 @@ No product, no panels and no insets.
 ### hero.image · option C — `01-pain-scene` `--candid`
 
 - varies on: execution: subject class — the adult child, not the patient
-- ratio `16:9` · type version `1.14` · `gaze: candid`
+- ratio `16:9` · type version `1.15` · `gaze: candid`
 - Same type and same axis, different subject class: the second persona in the brief, the adult daughter doing it for a parent. Two people in frame, and the struggle is hers.
 
 ```
@@ -195,7 +195,7 @@ One product, one shell, no exploded parts, no callout lines, no labels.
 ### reasons.items.1.image · option B — `03-mechanism-ghostbody`
 
 - varies on: type: 03-mechanism-ghostbody
-- ratio `1:1` · type version `2.2` · upload the product photo
+- ratio `1:1` · type version `2.3` · upload the product photo
 - The same section argued on the body instead of inside the device: a twisted band bearing on one narrow length of artery against the chamber carrying the whole upper arm.
 - **note:** Picking this displaces reasons_b.items.0 option A under one-type-once, and it also spends the second of the two step-3 slots the page arc allows.
 
@@ -360,7 +360,7 @@ One grade across every panel. No badge, no glow, no colour cue, and no panel bri
 ### reasons.items.3.image · option A — `06-relief-hero`
 
 - varies on: baseline
-- ratio `1:1` · type version `1.15` · upload the product photo · `register: commercial`, `inset_mode: recall`, `inset_motion: still`
+- ratio `1:1` · type version `1.16` · upload the product photo · `register: commercial`, `inset_mode: recall`, `inset_motion: still`
 - One man mid-reading, the lit face carrying the output, and a greyed recall panel holding the notebook of handwritten figures the device replaces, joined by the one sanctioned arrow.
 - **note:** G10 risk: a corner layer on a 1:1 render centre-cropped to 4:3 loses 12.5% top and bottom. The prompt names a visible margin, but check the panel survives the crop before the asset ships.
 
@@ -385,7 +385,7 @@ The room, the light and the man are the same in the panel as in the main photogr
 ### reasons.items.3.image · option B — `06-relief-hero`
 
 - varies on: axis: register=ugc
-- ratio `1:1` · type version `1.15` · upload the product photo · `register: ugc`, `inset_mode: recall`, `inset_motion: still`
+- ratio `1:1` · type version `1.16` · upload the product photo · `register: ugc`, `inset_mode: recall`, `inset_motion: still`
 - The same structure in the phone-photo register, and the recall panel holds the collapsed fabric cuff instead of the notebook. Trust rather than polish; the past cell repeats reason 1's argument, which is the cost.
 - **note:** Same corner-layer crop risk as A.
 
@@ -410,7 +410,7 @@ The room, the light and the woman are the same in the panel as in the main photo
 ### reasons.items.3.image · option C — `06-relief-hero`
 
 - varies on: execution: reduced subject — two forearms, no face
-- ratio `1:1` · type version `1.15` · upload the product photo · `register: commercial`, `inset_mode: recall`, `inset_motion: still`
+- ratio `1:1` · type version `1.16` · upload the product photo · `register: commercial`, `inset_mode: recall`, `inset_motion: still`
 - Same type and axes, the subject reduced to two forearms of different ages at one table. Two users is the section's actual claim and this is the only option that shows two; what it gives up is the expression that carries the relief.
 - **note:** Same corner-layer crop risk as A.
 
@@ -468,7 +468,7 @@ No panels, no insets, no badges, no arrows and no drawn overlays of any kind.
 ### reasons.items.4.image · option B — `06-relief-hero`
 
 - varies on: type: 06-relief-hero
-- ratio `1:1` · type version `1.15` · upload the product photo · `register: ugc`, `inset_mode: none`
+- ratio `1:1` · type version `1.16` · upload the product photo · `register: ugc`, `inset_mode: none`
 - The completeness claim taken literally: hands setting the device down beside a socket with the adapter uncoiled to its full length and the carton open behind. The reduced subject is chosen because the result is more legible than the user.
 - **note:** Picking this displaces reasons.items.3 option A under one-type-once.
 
@@ -522,7 +522,7 @@ No panels, no insets, no badges, no arrows and no drawn overlays of any kind.
 ### reasons_b.items.0.image · option A — `03-mechanism-ghostbody`
 
 - varies on: baseline
-- ratio `1:1` · type version `2.2` · upload the product photo
+- ratio `1:1` · type version `2.3` · upload the product photo
 - Two seated mannequins in section, one at a low table with the arm below the heart and one at a standard table with the arm level with it and the device in place. The posture instruction drawn rather than written.
 - **note:** 1:1 centre-cropped to 4:3 loses 12.5% top and bottom; the panels run left to right so both lose the same band. The badges sit in the top corners — check they survive the crop.
 
@@ -577,7 +577,7 @@ Red for the wrong state, blue for the correct one, green for the badge, warm ivo
 ### reasons_b.items.0.image · option C — `03-mechanism-ghostbody`
 
 - varies on: execution: arm circumference rather than heart level
-- ratio `1:1` · type version `2.2` · upload the product photo
+- ratio `1:1` · type version `2.3` · upload the product photo
 - Same type, the other half of the section: a thick upper arm filling the fixed chamber against a standard one with an even margin. It is the plainest statement of the boundary and the least actionable for a reader who fits.
 - **note:** Same crop note as A. A2 check: this marks what IS, a section pressed flat against the wall — not what would happen.
 

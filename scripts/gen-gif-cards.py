@@ -188,8 +188,7 @@ def card(tid, t, recs):
          + ("" if lp else " · **not routable to a landing-page slot**")
          + f" · counts toward the motion floor as **{fm.get('group')}**",
          f"**Filed here** {filed}", "",
-         "**Name it** `{page-type}-" + tid + "-{product-slug}-v{NN}.webp` · animated WebP, "
-         "no audio track · append one record to `ingestion/gifs.jsonl` · never rename a "
+         "**Name it** `{page-type}-" + tid + "-{product-slug}-v{NN}.mp4` · mp4, muted · append one record to `ingestion/gifs.jsonl` · never rename a "
          "filed file · full law `registry/gif-instruction.md`", ""]
     return "\n".join(o)
 
@@ -207,8 +206,8 @@ def card_vi(tid, vi):
          "## Không phải ở đây khi", "", v.get("no", "—"), "",
          "## Phân biệt với các type kề", "", v.get("vs", "—"), "",
          "## Nộp một tệp mới vào đây", "",
-         "Đặt tên `{page-type}-" + tid + "-{product-slug}-v{NN}.webp`. Giao dưới dạng "
-         "**WebP động**, không có kênh tiếng. Thêm một dòng vào `ingestion/gifs.jsonl`. "
+         "Đặt tên `{page-type}-" + tid + "-{product-slug}-v{NN}.mp4`. Giao dưới dạng **mp4**, "
+         "đã tắt tiếng. Thêm một dòng vào `ingestion/gifs.jsonl`. "
          "Đã nộp rồi thì không đổi tên nữa. Luật đầy đủ dùng chung cho mọi type: "
          "`registry/gif-instruction.md`.", ""]
     return "\n".join(o)

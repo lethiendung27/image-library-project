@@ -741,7 +741,7 @@ SLOTS = [
                     "kind is the type's own job.",
                 "asset": f"{PAGE}-04-content2-cause-anatomy--brief.svg",
                 "refs": "gifs-library/cause/ — the folder card carries the law",
-                "output": f"advertorial-cause-seat-cushion-l-shaped-v06.webp",
+                "output": f"advertorial-cause-seat-cushion-l-shaped-v06.mp4",
                 "ratio": "16:9", "duration_s": 3, "loop": "seamless loop",
                 "brief":
                     "A side-on view of a man lowering himself into a van seat "
@@ -950,7 +950,7 @@ SLOTS = [
                     "type's own job.",
                 "asset": f"{PAGE}-07-content5-relief-scene--brief.svg",
                 "refs": "gifs-library/relief/ — the folder card carries the law",
-                "output": f"advertorial-relief-seat-cushion-l-shaped-v06.webp",
+                "output": f"advertorial-relief-seat-cushion-l-shaped-v06.mp4",
                 "ratio": "16:9", "duration_s": 3, "loop": "seamless loop",
                 "brief":
                     "A man gets out of a car in a hotel car park at the end of a "
@@ -1477,7 +1477,7 @@ gifs = [s for s in routed if s.get("gif", {}).get("eligible")
 tids = [s["gif"]["type_id"] for s in gifs]
 print("gif types delivered:", tids, "| duplicated:",
       sorted({t for t in tids if tids.count(t) > 1}) or "none")
-expected = {f"advertorial-{t}-seat-cushion-l-shaped-v06.webp" for t in tids}
+expected = {f"advertorial-{t}-seat-cushion-l-shaped-v06.mp4" for t in tids}
 actual = {s["gif"]["output"] for s in gifs}
 print("gif output names match ADR-036:", actual == expected, sorted(actual))
 print("motion delivered vs floor:", MOTION["delivered"], "/", MOTION["floor"],

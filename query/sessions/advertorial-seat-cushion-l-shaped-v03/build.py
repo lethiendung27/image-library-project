@@ -63,7 +63,7 @@ def gif_name(gif_type):
     No slot and no sequence, which is why a page carries at most one loop of each
     gif type — the check below is what keeps that true rather than hoped for.
     """
-    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.webp"
+    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.mp4"
 
 ATTRIBUTE_GATES = [
     (lambda a: a["symptom_visibility"] == "invisible", "01-pain-split",
@@ -660,7 +660,7 @@ SLOTS.append({
         "duration_s": 3, "loop": "seamless loop",
         "brief": BRIEF_PROB0.strip(),
         "alt": ALT_PROB0.strip(),
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
         "asset": "77-02-problem0-pain-scene--brief.svg",
     },
@@ -828,7 +828,7 @@ SLOTS.append({
         "duration_s": 3, "loop": "seamless loop",
         "brief": BRIEF_FEAT1.strip(),
         "alt": ALT_FEAT1.strip(),
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 
@@ -944,7 +944,7 @@ SLOTS.append({
         "duration_s": 4, "loop": "seamless loop",
         "brief": BRIEF_FEAT3.strip(),
         "alt": ALT_FEAT3.strip(),
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 

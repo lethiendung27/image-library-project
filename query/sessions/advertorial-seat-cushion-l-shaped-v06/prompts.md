@@ -318,7 +318,7 @@ Colour follows the signal system exactly: red wrong, blue correct, green badge, 
 
 ### `content.items.2.image` · motion brief — gif type `cause`
 
-- output `advertorial-cause-seat-cushion-l-shaped-v06.webp` · 3s · 16:9 · seamless loop · form `whole-frame` · rung `natural`
+- output `advertorial-cause-seat-cushion-l-shaped-v06.mp4` · 3s · 16:9 · seamless loop · form `whole-frame` · rung `natural`
 - plate `122-04-content2-cause-anatomy--brief.svg` · library `gifs-library/cause/ — the folder card carries the law`
 - The section's claim is a state changing under load: weight settles, the hips slide below the knees, the pelvis rolls back into the crevice and the lumbar curve reverses. A still can only show the endpoint. The gif library's `cause` type names this exactly - the culprit at work right now, a pad creeping forward under a body - and the type legislates no motion layer of its own, so the form is whole-frame and the kind is the type's own job.
 
@@ -573,7 +573,7 @@ No badges, no arrows, no overlays and no insets of any kind. No object in the sc
 
 ### `content.items.5.image` · motion brief — gif type `relief`
 
-- output `advertorial-relief-seat-cushion-l-shaped-v06.webp` · 3s · 16:9 · seamless loop · form `whole-frame` · rung `natural`
+- output `advertorial-relief-seat-cushion-l-shaped-v06.mp4` · 3s · 16:9 · seamless loop · form `whole-frame` · rung `natural`
 - plate `122-07-content5-relief-scene--brief.svg` · library `gifs-library/relief/ — the folder card carries the law`
 - The section's claim is a stride that no longer stalls, which is the `relief` type's own PURPOSE line. The still can hold the moment of straightening but not the thing that makes it an argument - that he keeps going without the pause, the brace or the hand on the back. 06-relief-scene legislates no motion layer, so the form is whole-frame and the kind is the type's own job.
 

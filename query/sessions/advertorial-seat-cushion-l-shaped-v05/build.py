@@ -59,7 +59,7 @@ def gif_name(gif_type):
     No slot and no sequence, which is why a page carries at most one loop of each
     gif type — the check below is what keeps that true rather than hoped for.
     """
-    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.webp"
+    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.mp4"
 
 ATTRIBUTE_GATES = [
     (lambda a: a["symptom_visibility"] == "invisible", "01-pain-split",
@@ -644,13 +644,13 @@ SLOTS.append({
                   "absent either way, which is what keeps the argument this section's own.",
         "asset": "120-02-problem0-pain-scene--brief.svg",
         "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-cause-seat-cushion-l-shaped-v05.webp",
+        "output": "advertorial-cause-seat-cushion-l-shaped-v05.mp4",
         "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": BRIEF_PROB0,
         "alt": ALT_PROB0,
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 
@@ -806,13 +806,13 @@ SLOTS.append({
                   "it is closer to a default than a backup on the result half of the floor.",
         "asset": "120-05-content1-proof-lockedframe--brief.svg",
         "refs": "gifs-library/proof/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-proof-seat-cushion-l-shaped-v05.webp",
+        "output": "advertorial-proof-seat-cushion-l-shaped-v05.mp4",
         "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": BRIEF_CONT1,
         "alt": ALT_CONT1,
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 
@@ -923,13 +923,13 @@ SLOTS.append({
                   "third `relief` loop the library has routed.",
         "asset": "120-07-content3-relief-scene--brief.svg",
         "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
-        "output": "advertorial-relief-seat-cushion-l-shaped-v05.webp",
+        "output": "advertorial-relief-seat-cushion-l-shaped-v05.mp4",
         "ratio": "16:9",
         "duration_s": 3,
         "loop": "seamless loop",
         "brief": BRIEF_CONT3,
         "alt": ALT_CONT3,
-        "delivery": "animated webp, loop-safe, under the size ceiling",
+        "delivery": "mp4, muted, loop-safe, under the size ceiling",
     },
 })
 
