@@ -1,0 +1,157 @@
+{
+  "product": {
+    "name": "Ergonomic Memory Foam Seat Cushion",
+    "category": "home",
+    "specification": "One-piece continuous L-shaped structure whose seat base and lumbar backrest are a single moulded unit · high-density slow-rebound memory foam core · textured non-slip grip base requiring no straps or buckles · spinal contour shaped to the lower back curve · moves between car seat, office chair, gaming seat, wheelchair and hard dining chair. Seats the user measurably higher, and feels firm for the first days before contouring. Not designed for deep bucket racing seats with aggressive side bolsters. Dimensions, weight, foam density and cover material to be supplied by the manufacturer.",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "none",
+      "mounting": "freestanding",
+      "colorways": ["black"],
+      "body_contact": true,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": false
+    },
+    "problems_solved": [
+      "Lower back and hip pain that arrives on a schedule — mid-afternoon at the desk, or on the drive home",
+      "Hips locking solid after a drive, so standing up needs another person or a door frame to lean on",
+      "Car and desk seats angle backward, dropping the hips below the knees so the pelvis rolls back and the lumbar curve collapses",
+      "A separated seat base and backrest leave a gap at the pelvis that no single-piece fix has bridged",
+      "Flat and doughnut cushions only raise the hips and slide forward under braking",
+      "Strap-on lumbar pillows push the shoulders forward while the hips stay sunken",
+      "Money already spent on foam pads, lumbar rolls, beaded covers and expensive chairs that did not hold"
+    ],
+    "personas": [
+      "Long-distance and delivery drivers, 35-60, sitting eight or more hours a day",
+      "Office and desk workers whose pain arrives mid-afternoon",
+      "Rideshare drivers and commuters who dread the drive home",
+      "Wheelchair users sitting for long unbroken hours",
+      "Gamers in fixed seating, and pregnant women wanting more support"
+    ],
+    "raw_features": [
+      "One-piece continuous L-shaped structure: the seat base and the lumbar backrest are a single moulded unit, so the pelvic gap is bridged rather than packed",
+      "High-density slow-rebound memory foam core that does not flatten out the way cheap foam does within weeks",
+      "Textured non-slip grip base that holds against leather upholstery with no straps, buckles or tools",
+      "Spinal contour shaped to the lower back curve, holding the lumbar arch instead of pushing the shoulders forward",
+      "The seat section elevates the hips toward knee level so the pelvis stops rolling backward",
+      "Stays in place under sudden braking and does not separate mid-drive",
+      "Moves between car seat, office chair, gaming seat, wheelchair and hard dining chair",
+      "Slow-rebound core dampens harsh road vibration on long drives",
+      "Honest limitation stated in the copy: it seats the driver noticeably higher, which may not suit minimal-headroom vehicles",
+      "Honest limitation stated in the copy: it feels firm for the first few days rather than soft, before contouring",
+      "Positioned against custom seat re-upholstery, recurring physiotherapy sessions and premium ergonomic chairs on cost"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "First-person advertorial header bylined to Marcus Vance: how he fixed severe lower back pain behind the wheel without surgery. The reader meets a driver whose pain is worst getting out of the vehicle.",
+        "image_slots": [{"slot_id": "hero.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "content.items.0",
+        "role": "problem-agitation",
+        "copy_summary": "The breaking point, in the kitchen after a forty-minute drive home from the depot: his hips locked solid, he gasped trying to stand from the kitchen table, and his wife had to physically help him up in front of the family.",
+        "image_slots": [{"slot_id": "content.items.0.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "content.items.1",
+        "role": "proof",
+        "copy_summary": "Every traditional fix failed: a flat doughnut cushion that only raised his hips and slid forward on braking, a strap-on lumbar pillow that pushed his shoulders forward, and expensive ergonomic chairs. The I-tried-three-things beat.",
+        "image_slots": [{"slot_id": "content.items.1.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "content.items.2",
+        "role": "cause",
+        "copy_summary": "The hidden pelvic drop: car and desk seats angle backward, dropping the hips below the knees, so the pelvis rolls back and the lumbar curve collapses. Separated base and backrest leave a gap nothing bridges.",
+        "image_slots": [{"slot_id": "content.items.2.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "content.items.3",
+        "role": "mechanism",
+        "copy_summary": "One continuous L-shaped piece: because the seat base and lumbar backrest are a single moulded unit it bridges the chair gap, the firm seat section lifts the hips toward knee level, and the textured base locks against the upholstery without straps.",
+        "image_slots": [{"slot_id": "content.items.3.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "content.items.4",
+        "role": "how-to-use",
+        "copy_summary": "Everyday versatility and the honest caveats: carried between car and desk each morning, works on office chairs, gaming seats, wheelchairs and dining chairs, dampens road vibration — and it seats you higher and feels firm for the first few days.",
+        "image_slots": [{"slot_id": "content.items.4.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "content.items.5",
+        "role": "outcome",
+        "copy_summary": "Reclaimed life: post-drive stiffness gone within two weeks, walking straight to the front door without bracing, kicking a ball back to his daughter, and a rebooked three-hour coastal road trip with the bags carried in himself.",
+        "image_slots": [{"slot_id": "content.items.5.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "content.items.6",
+        "role": "comparison",
+        "copy_summary": "A fraction of the cost of custom ergonomics: thousands for custom seat re-upholstery, recurring per-session physiotherapy, hundreds to thousands for premium chairs that stay at one desk — against a cushion at up to half off with a 90-day money-back guarantee.",
+        "image_slots": [{"slot_id": "content.items.6.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "reviews",
+        "role": "social-proof",
+        "copy_summary": "Four customer photo tiles sitting in the same section element as three named quotes, each carrying a Verified Purchase label: a delivery van driver who used to limp to his door, a sceptic who had wasted money on separate lumbar rolls, and a wheelchair user who sits long hours.",
+        "image_slots": [
+          {"slot_id": "reviews.shots.0.image", "ratio": "1:1"},
+          {"slot_id": "reviews.shots.1.image", "ratio": "1:1"},
+          {"slot_id": "reviews.shots.2.image", "ratio": "1:1"},
+          {"slot_id": "reviews.shots.3.image", "ratio": "1:1"}
+        ]
+      },
+      {
+        "id": "product",
+        "role": "cta",
+        "copy_summary": "Mid-page product card in the offer block.",
+        "image_slots": [{"slot_id": "product.image", "ratio": "1:1"}]
+      },
+      {
+        "id": "product_end",
+        "role": "cta",
+        "copy_summary": "Closing product card above the final call to action.",
+        "image_slots": [{"slot_id": "product_end.image", "ratio": "16:9"}]
+      },
+      {
+        "id": "hero.author",
+        "role": "author",
+        "copy_summary": "Byline portrait, 'By Marcus Vance'.",
+        "image_slots": [{"slot_id": "hero.author_avatar", "ratio": "1:1"}]
+      },
+      {
+        "id": "guide",
+        "role": "author",
+        "copy_summary": "About-the-author portrait in the guide block.",
+        "image_slots": [{"slot_id": "guide.avatar", "ratio": "1:1"}]
+      },
+      {
+        "id": "comments",
+        "role": "social-proof",
+        "copy_summary": "Six commenter portraits under the article's comment thread.",
+        "image_slots": [
+          {"slot_id": "comments.items.0.avatar", "ratio": "1:1"},
+          {"slot_id": "comments.items.1.avatar", "ratio": "1:1"},
+          {"slot_id": "comments.items.2.avatar", "ratio": "1:1"},
+          {"slot_id": "comments.items.3.avatar", "ratio": "1:1"},
+          {"slot_id": "comments.items.4.avatar", "ratio": "1:1"},
+          {"slot_id": "comments.items.5.avatar", "ratio": "1:1"}
+        ]
+      },
+      {
+        "id": "brand",
+        "role": "cta",
+        "copy_summary": "Header and footer brand logos, both already supplied in the export as inline SVG.",
+        "image_slots": [
+          {"slot_id": "header.logo", "ratio": "1:1"},
+          {"slot_id": "footer.logo", "ratio": "1:1"}
+        ]
+      }
+    ]
+  }
+}
