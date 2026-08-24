@@ -61,6 +61,19 @@ axes:
 # A type declares what its picture NEEDS. What the pipeline can actually DO is
 # declared once in query/runbook.md Step 3 — paste-and-run, no compositing — and
 # multi-pass is never emitted into a prompt set. ADR-021.
+#
+# `multi-pass` is DEPRECATED and on its way out (ADR-041). No code has ever
+# branched on it: validate.py requires the key, checks it against this list and
+# writes it into index.yaml, and nothing else reads the value. The name is the
+# problem — `generation_mode` sounds like a statement about the PIPELINE and is
+# actually a statement about what the PICTURE needs, which is why reading it back
+# looked like the system returning multi-pass.
+#
+# It stays in this list only until the owner's audit clears the type files that
+# still declare it. scripts/validate.py warns one line per remaining declaration
+# and names the count; when that count is 0, delete `multi-pass` from this line
+# and the value is gone. Removing it first would error those type files and turn
+# the tree red for every lane.
 generation_modes: [single-pass, multi-pass]
 
 channels: [marketplace, landing-page, paid-social, advertorial]

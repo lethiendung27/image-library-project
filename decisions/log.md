@@ -1957,3 +1957,70 @@ Consequences: `scripts/validate.py` gains `LEGAL_RATIOS`, `GRANDFATHERED_RATIOS`
 is new; `CLAUDE.md` gains rule 6c; `adapters/nano-banana.md` line 18 gains the pointer;
 `dist/app-bundle` regenerated. No type file is edited, no session is re-routed, no prompt
 moves. `registry_version` unchanged.
+
+## ADR-041 · 2026-08-24 · multi-pass is deprecated, and the field was never describing the pipeline
+
+Owner instruction: clean multi-pass out of the system, and hand back the type files for
+their own audit. This closes the system side and produces that worklist.
+
+**The measured fact that decides the shape: no code has ever branched on the value.**
+`scripts/validate.py` requires the key (REQUIRED_KEYS), checks it against
+`registry/vocabulary.yaml` and writes it into `registry/index.yaml`. Nothing else reads it.
+Since ADR-021 the pipeline has not acted on it at all, and since ADR-039 nothing teaches it.
+It is a required, validated, indexed field that changes nothing.
+
+**The name is the actual defect.** `generation_mode` reads as a statement about the
+PIPELINE and is a statement about what the PICTURE needs — whether the image requires
+compositing. ADR-021 separated those two ideas in prose and left the field carrying both.
+That is why the owner tested the system, read `generation_mode: multi-pass` back, and
+correctly reported that it still returned multi-pass. The report was right; the field was
+lying about its own subject.
+
+**Deprecated rather than deleted, and the sequencing is the point.** `multi-pass` stays in
+`generation_modes` until the type files that declare it are cleared. Deleting it from the
+vocabulary first makes `validate.py` line 310 error on those files immediately, turning the
+tree red for every lane over a rule none of them broke today — the same reasoning ADR-040
+used to warn rather than error the ratio declarations. `check_multipass_declarations` warns
+one line per remaining declaration plus a countdown line on the vocabulary; when the count
+reaches 0 the value comes out of the list in a one-line change and this is finished.
+
+**Frontmatter only, and refusing to guess at the prose is deliberate.** A type that discusses
+multi-pass in its body — a variant override, a recorded fallback, a CHANGELOG entry — is not
+mechanically separable from one that merely records history, and no regex distinguishes an
+instruction from a record. That is the false comfort ADR-040 declined to build.
+`scripts/adr-sweep.py multi-pass` is the tool, and its TEACHES bucket is the list below.
+
+**THE OWNER'S AUDIT LIST — five type files, and what is in each.**
+
+- `registry/types/04-proof-lockedframe.md` line 12 — frontmatter `generation_mode:
+  multi-pass`. Its capability gate already routes `strict` to `handheld` where the renderer
+  cannot composite, so the working route does not depend on the declaration.
+- `registry/types/05-social-handoff.md` line 12 — frontmatter `generation_mode: multi-pass`.
+  Its `inset` is the part that needs compositing and the file already drops the inset rather
+  than the type.
+- `registry/types/01-pain-split.md` lines 151, 155, 278, 297, 324 — frontmatter is
+  `single-pass`; the declaration is a `--mirror` variant override in prose, and the ledger
+  records 1 of 1 each way: one single pass returned two different people (2026-08-12, hair
+  mismatch between panels), one held identity using an explicit invariants block naming face,
+  hair, beard, clothes, camera height, distance and framing before either panel (2026-08-13,
+  pass). Whatever replaces the declaration has to keep that evidence.
+- `registry/types/03-mechanism-xray.md` line 235 — "If it recurs, the fallback is multi-pass
+  — generate the opaque product, then edit". This is a LIVE INSTRUCTION for the banned thing,
+  the one ADR-040's sweep surfaced and left standing. It is the sharpest item on this list.
+- `registry/types/_staging/03-use-grid.md` line 118 — "switch to multi-pass edit chains".
+  Staging, never routable, lowest priority.
+
+**Not touched here, on purpose:** no type file is edited. The owner takes them, and the
+one-type-one-session rule is what makes that the right split — five files could belong to
+five render-refinement lanes.
+
+**The rename this points at is NOT done here.** Renaming `generation_mode` to something that
+says what it means — `needs_compositing`, or similar — touches all 15 type frontmatters,
+`vocabulary.yaml`, three lines of `validate.py`, `SPEC.md` §3.4, `index.yaml` and the bundle.
+It is the only change in this repo that needs every other lane stopped first, so it is
+recorded as available rather than taken.
+
+Consequences: `registry/vocabulary.yaml` marks the value deprecated with the exit condition;
+`SPEC.md` §3.4's field comment says so; `scripts/validate.py` gains
+`check_multipass_declarations`, wired into `main`; `dist/app-bundle` regenerated. Warnings
+28 → 33. No type file edited, no session re-routed, no prompt moved, 0 errors.

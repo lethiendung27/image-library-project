@@ -835,6 +835,39 @@ def check_ratios(types):
             err(rel, head)
 
 
+def check_multipass_declarations(types, staging):
+    """ADR-041: `generation_mode: multi-pass` is deprecated and being retired.
+
+    It is warned rather than errored because the value is still legal in
+    `registry/vocabulary.yaml` — removing it there first would error these files
+    and turn the tree red for every lane, for a rule none of them broke today.
+    The owner audits the type files; this is the worklist, and it counts down.
+
+    Frontmatter only. A type that discusses multi-pass in its PROSE — a variant
+    override, a recorded fallback — is not mechanically separable from one that
+    merely records the history, and pretending a regex can tell those apart is
+    the false comfort ADR-040 refused to build. `scripts/adr-sweep.py multi-pass`
+    is the tool for the prose, and its TEACHES bucket is the real list.
+    """
+    remaining = []
+    for label, group in (("registry/types", types),
+                         ("registry/types/_staging", staging)):
+        for tid in sorted(group):
+            if group[tid]["fm"].get("generation_mode") == "multi-pass":
+                remaining.append(f"{label}/{tid}.md")
+    for rel in remaining:
+        warn(rel, "declares `generation_mode: multi-pass`, deprecated at "
+                  "ADR-041. No code branches on the value; the field states what "
+                  "the PICTURE needs, not what the pipeline does. Awaiting the "
+                  "owner's audit")
+    if remaining:
+        warn("registry/vocabulary.yaml",
+             f"{len(remaining)} type file(s) still declare "
+             f"`generation_mode: multi-pass`. When that count reaches 0, delete "
+             f"`multi-pass` from `generation_modes` and the value is gone "
+             f"(ADR-041)")
+
+
 def check_grandfather_sets():
     """An exemption keyed on a directory name goes stale the moment that
     directory is renamed, and it fails SILENTLY: the name stops matching, the
@@ -1417,6 +1450,7 @@ def main(argv):
     contracts = check_content_contracts()
     check_prompt_sets()
     check_ratios(types)
+    check_multipass_declarations(types, staging)
     check_grandfather_sets()
     check_session_names()
     shortlist = check_slot_rules(types)
