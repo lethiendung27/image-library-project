@@ -45,8 +45,23 @@ signal color at all.
 - **Orange** = wrong pressure, wrong heat.
 - **Blue / cyan** = correct support, correct flow, working mechanism.
 - **Green** = confirmation badge only.
-- **Yellow** = neutral structure (bone, frame).
+- **Yellow** = neutral structure (bone, frame) — and, inside an emoji badge only, the
+  confirming half of the pair. See the emoji-badge carve-out below.
 - No other color may act as a signal.
+
+**Emoji-badge carve-out (ADR-042, owner decision).** A type may declare a verdict badge drawn
+in the emoji idiom — a full-colour cartoon face rather than a glyph cut out of a signal-coloured
+disc. Inside such a badge the palette above does not bind, for one measured reason: **emoji
+carry their own colour vocabulary and it contradicts this one.** The angry face is red, which
+agrees with G3. The smiling face is yellow, and there is no green smiling emoji to reach for —
+a green face in that vocabulary reads as NAUSEATED. Honouring "green = confirmation" would
+therefore invert the meaning of the confirming half. So the carve-out is not a preference, it
+is the only way the two systems can both be obeyed.
+
+It is scoped as narrowly as it can be: it applies only inside a badge a type has declared as
+emoji-form, only to that badge's own fill, and it changes nothing about marks, structures or
+any other colour in the frame. Yellow outside such a badge still means neutral structure, which
+is what `02-cause-anatomy` and `03-mechanism-ghostbody` draw their anatomy in.
 
 ## G4 — The correct side is always brighter
 
