@@ -27,6 +27,7 @@ SLUGS_PATH = os.path.join(ROOT, "query", "product-slugs.yaml")
 RENDER_PATH = os.path.join(ROOT, "eval", "render-tests.jsonl")
 GIF_TYPES_DIR = os.path.join(ROOT, "registry", "gif-types")
 GIF_LEDGER_PATH = os.path.join(ROOT, "ingestion", "gifs.jsonl")
+GIF_VI_PATH = os.path.join(ROOT, "registry", "gif-cards-vi.md")
 
 ERRORS = []
 WARNINGS = []
@@ -1326,6 +1327,45 @@ def validate_gif_type_file(path, vocab):
     return {"fm": fm, "sections": sections}
 
 
+GIF_VI_FIELDS = ("message", "yes", "no", "vs", "never")
+
+
+def check_gif_cards_vi(gif_types):
+    """Every gif type owes Vietnamese card copy (ADR-044).
+
+    The Vietnamese folder card is the one artifact in this repo that is not in
+    English, and it is a VIEW: the law it summarises stays in the type file. What
+    makes the exception safe is that the two cards cannot drift apart by omission —
+    a type with no entry, or an entry missing a field, silently ships a card with a
+    dash where a rule should be.
+    """
+    if not os.path.exists(GIF_VI_PATH):
+        err("registry/gif-cards-vi.md", "missing; every gif type owes Vietnamese card copy")
+        return
+    entries, cur = {}, None
+    with open(GIF_VI_PATH, encoding="utf-8") as f:
+        for raw in f:
+            line = raw.rstrip("\n")
+            if line.startswith("## "):
+                cur = line[3:].strip()
+                entries[cur] = {}
+            elif cur and ":" in line and not line.startswith(("#", " ")):
+                k, _, v = line.partition(":")
+                if k.strip() in GIF_VI_FIELDS and v.strip():
+                    entries[cur][k.strip()] = v.strip()
+    where = "registry/gif-cards-vi.md"
+    for tid in sorted(gif_types):
+        if tid not in entries:
+            err(where, f"no `## {tid}` section — that folder would ship an English card only")
+            continue
+        for field in GIF_VI_FIELDS:
+            if field not in entries[tid]:
+                err(where, f"`{tid}` is missing `{field}:` — the card would print a dash "
+                           "where a rule belongs")
+    for extra in sorted(set(entries) - set(gif_types)):
+        err(where, f"`## {extra}` is not a gif type in registry/gif-types/")
+
+
 def check_gif_ledger(gif_types):
     """ingestion/gifs.jsonl — append-only asset index for the GIF library."""
     recs = load_jsonl(GIF_LEDGER_PATH,
@@ -1425,6 +1465,7 @@ def main(argv):
             err("registry/gif-types",
                 f"no active gif type in group `{needed}` — the Step 5d floor "
                 "cannot be met by any page")
+    check_gif_cards_vi(set(gif_types))
     gif_ledger = check_gif_ledger(set(gif_types))
 
     observations = load_jsonl(

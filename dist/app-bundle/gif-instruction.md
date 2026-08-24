@@ -7,7 +7,10 @@ than copying rule text (SPEC §5).
 
 The folder cards an editor reads are GENERATED from the type files by
 `python3 scripts/gen-gif-cards.py`. A card inside the library folder is never edited by
-hand — it is a view, exactly as `registry/index.yaml` is a view.
+hand — it is a view, exactly as `registry/index.yaml` is a view. Each folder carries two:
+`README.md` in English, built from the first sentence of each section of the type file so it
+cannot drift from the law, and `README.vi.md` in Vietnamese, whose copy is authored in
+`registry/gif-cards-vi.md` (ADR-044).
 
 ## 1. One folder, one message
 

@@ -172,11 +172,18 @@ verdict, not through a shortlist.
 - Law shared by every type is stated once in `registry/gif-instruction.md` and never
   restated in a type file, exactly as §5 treats global rules.
 - Assets live **outside the repo** and are indexed by `ingestion/gifs.jsonl`, append-only,
-  one record per file: `ts`, `sha256`, `type`, `file`, and the description line. Filenames
-  are `{gif-type}_{product-slug}_{seq}.mp4|webm`, the sequence issued by the ledger, and a
-  filed file is never renamed. Delivery is mp4/webm; `.gif` never ships.
+  one record per file: `ts`, `sha256`, `type`, `file`, and the description line. A loop has
+  ONE name, page-side and library-side alike —
+  `{page-type}-{gif-type}-{product-slug}-v{NN}.webp` (ADR-037) — and a filed file is never
+  renamed. What keeps it unique is a rule rather than a field: **one loop per gif type per
+  page**. Delivery is animated WebP; `.gif` never ships and neither does mp4.
 - The folder cards an editor browses are **generated** from the type files by
   `scripts/gen-gif-cards.py`. Like `index.yaml`, a card is a view and is never hand-edited.
+  Each folder carries two: `README.md` in English and `README.vi.md` in Vietnamese. The
+  Vietnamese card is the one **named exception** to the English-artifact rule, because its
+  reader is an editor filing files rather than a harness reading law; its copy lives in
+  `registry/gif-cards-vi.md` and the validator fails a gif type that has no entry there
+  (ADR-044).
 - How many loops a page may carry, and how a shortfall is handled, is `query/runbook.md`
   Step 5d. Whether a given slot earns one is Step 5c.
 

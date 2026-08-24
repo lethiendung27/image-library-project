@@ -31,6 +31,11 @@ tasks to entry points and must stay logic-free.
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are append-only.
 4. `registry/types/_staging/` is never routable; promotion criteria are in `SPEC.md` §6.3.
 5. All artifact content is **English**. Conversation with the user is Vietnamese.
+   ONE named exception: the GIF library's Vietnamese folder cards, whose copy lives in
+   `registry/gif-cards-vi.md` and which `scripts/gen-gif-cards.py` writes as
+   `README.vi.md`. Their reader is an editor filing files, not a harness reading law,
+   and everything that BINDS is still English in `registry/gif-types/`. SPEC §3.6,
+   ADR-044; `scripts/validate.py` fails a gif type with no entry there.
 6. Never commit source images; reference them by sha256 (SPEC §6.4).
 6b. **Every delivered prompt is paste-and-run**: one prompt, one generation call, at
    most one reference photo the owner attaches in the tool. Never emit a `multi-pass`

@@ -2133,3 +2133,53 @@ dropped-marks, blue-mark and ratio findings the five rounds produced. No rule fi
 G3's carve-out from ADR-042 already covers the only colour question, and the other four forms
 use red and green exactly as G3 assigns them. No other type is touched. `registry_version`
 unchanged.
+
+## ADR-044 · 2026-08-24 · The folder cards get short, get current, and get a Vietnamese twin
+
+Owner asked for the folder cards to be cleaned up, kept as short as possible, and given a
+Vietnamese version beside the English one. Opening them found they were not merely long.
+
+**They were teaching three retired rules.** The cards still carried
+`SHOT`/`ACTION`/`RESULT`/`MATCH` as what a brief must name — retired at ADR-031 — and told an
+editor to file `proof_<product-slug>_<seq>.mp4` and "deliver mp4/webm and muted", both retired
+at ADR-036 and ADR-037. Two different failures produced that. The type files' BRIEF sections
+were rewritten and nobody re-ran the generator, so a generated view sat stale through six
+ADRs. And the filing line was never read from anything: it was a hardcoded f-string inside
+`card()`, so the generator itself was the thing teaching the old law. A sweep at ADR-036 would
+have found the second; CLAUDE.md rule 6c exists because of exactly this shape of miss, and
+this one is mine.
+
+**`SPEC.md` §3.6 was teaching it too**, found by the rule 6c sweep rather than by reading:
+"Filenames are `{gif-type}_{product-slug}_{seq}.mp4|webm`, the sequence issued by the ledger
+… Delivery is mp4/webm". That is the two-name system ADR-037 collapsed and the extension
+ADR-036 replaced, sitting in the specification eight days after both. Corrected here.
+
+**The English card is now built from first sentences, and that is what keeps it honest.**
+Every line is one sentence lifted mechanically from the type file — `PURPOSE`, `use_when`,
+`avoid_when`, `NEGATIVE` — plus the `Against …` lines of `BOUNDARY` and the frontmatter band.
+Nothing is authored twice, so the card cannot say something the law does not. The type files
+were written with the whole point in the opening sentence of each section, which is why this
+works at all rather than truncating mid-argument. 50 lines became 16.
+
+**The Vietnamese card is authored, not translated at build time**, in
+`registry/gif-cards-vi.md`. A machine translation of a rule is a rule nobody can check, and
+the alternative — deriving Vietnamese from English at generation time — would put an
+unreviewable sentence in front of the one person whose job depends on reading it correctly.
+The numbers are the exception and are generated: a band and a file count need no translator.
+
+**This is the one place in the repo where artifact content is not English**, and it is named
+as such in CLAUDE.md rule 5 and SPEC §3.6 rather than left as an anomaly a later session
+"fixes" by deleting. What makes it safe is that the Vietnamese card is a VIEW: everything that
+binds stays in English in `registry/gif-types/`. What keeps it from drifting is
+`check_gif_cards_vi`, which fails a gif type with no entry, an entry missing any of the five
+fields, or an entry for a type that does not exist — because the failure mode is silent, a
+card shipping a dash where a rule belongs. Three checks mutation-tested, 3 of 3 fired.
+
+Consequences: `scripts/gen-gif-cards.py` rewritten around `lede()`, `against()`, `card()`,
+`card_vi()` and `measured_vi()`, and now writes two files per folder; `registry/gif-cards-vi.md`
+is new; `scripts/validate.py` gains `check_gif_cards_vi`; `SPEC.md` §3.6's filename and
+delivery sentence corrected and the two cards declared; `CLAUDE.md` rule 5 names the
+exception; `registry/gif-instruction.md` describes both cards. Twelve cards regenerated
+outside the repo. The rule 6c sweep ran on `gen-gif-cards`, `product-slug}_`, `SHOT`, `muted`
+and `artifact content is`; the `SHOT` and `muted` hits are legitimate — type files describing
+photographic grade and a relief-hero worked example — and stand.
