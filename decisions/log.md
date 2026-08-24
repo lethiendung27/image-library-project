@@ -2024,3 +2024,57 @@ Consequences: `registry/vocabulary.yaml` marks the value deprecated with the exi
 `SPEC.md` §3.4's field comment says so; `scripts/validate.py` gains
 `check_multipass_declarations`, wired into `main`; `dist/app-bundle` regenerated. Warnings
 28 → 33. No type file edited, no session re-routed, no prompt moved, 0 errors.
+
+## ADR-042 · 2026-08-24 · The emoji badge, and why green could not be honoured
+
+Owner decision, 2026-08-24, taken with the conflicts on the table: `01-pain-split` may draw its
+verdict badges as **font emoji** — a full-colour cartoon face — rather than as a glyph cut out
+of a signal-coloured disc. Four pieces of standing law had to be weighed and the owner chose
+this against all four.
+
+**What it supersedes, and it is a decision rather than an omission.** `01-pain-split` MARKS
+records *"Source exemplars used VS badges and emoji; market habits, deliberately not
+imported"*, and its CHANGELOG 1.3 records *"Market badge habits (VS, emoji, money props)
+observed and explicitly excluded"* with four observation hashes behind it — `sha256:0b0260…`,
+`3b4499…`, `f53928…`, `9ae982…`. That exclusion stood from 1.3 to 1.8. It is now overruled by
+the owner, and it is written here rather than quietly edited so the reversal is legible.
+
+**G6 gets an exception, narrowly.** G6 bans `text, letters, numbers` in every prompt, and its
+scope note aims at overlay text — which a corner badge is. The X and the check survive that ban
+because they are described as SHAPES, not as characters. An emoji is a character. The exception
+is therefore explicit rather than implied, and it is bounded to the badge: nothing else in the
+frame may carry a glyph.
+
+**The finding that made a G3 amendment unavoidable, and it is not the one I expected.** Going
+in, the objection to emoji looked like "they are yellow and G3 says yellow is neutral
+structure". The real collision is narrower and sharper. **The angry face is RED, which agrees
+with G3 exactly.** Only the confirming half conflicts — and it cannot be fixed by asking for a
+green one, because **a green face in emoji vocabulary reads as NAUSEATED**. Honouring
+"green = confirmation badge only" would invert the meaning of the half that confirms.
+
+So the two symbol systems cannot both be obeyed by choosing colours more carefully. One has to
+yield inside the badge, and the carve-out in `registry/rules.md` is written as narrowly as the
+collision is: it binds only inside a badge a type has declared as emoji-form, only to that
+badge's own fill, and it changes nothing about marks, structures or any other colour in the
+frame. Yellow outside such a badge still means neutral structure, which is what
+`02-cause-anatomy` and `03-mechanism-ghostbody` draw their anatomy in.
+
+**The post-composite escape hatch does not exist here and that is worth stating.**
+`01-pain-scene` records that *"a glyph is text, which G6 routes out of the render and into
+post"*. ADR-021 removed post: this pipeline is paste-and-run. So the sanctioned route for a
+glyph is closed, and the badge is model-drawn or it does not exist. That is a real added risk,
+not a technicality.
+
+**What the evidence says about whether it will render.** `06-relief-hero`'s `vs` badge rendered
+**2 of 2 once the glyph was named**, and came back a blank disc before that — so naming the
+glyph is what works. Round 3 of the `01-pain-split` audit rendered geometric faces clean 2 of 2,
+with and without a human face in the frame, which settles the competition question the pairing
+was built to test. Neither is evidence about a FONT emoji: a diffusion model has no font, so what
+it returns is its own rendering of the idiom and it will vary between runs. Consistency across a
+set is the thing to watch.
+
+Consequences: `registry/rules.md` G3 gains the scoped carve-out. `registry/types/01-pain-split.md`
+MARKS line 108 and CHANGELOG 1.3 still record the old exclusion and are LEFT STANDING for the
+owner's audit of that file — they own the type files in this pass, and a supersede recorded here
+is what reaches the other lanes. `dist/app-bundle` regenerated. No other type is touched; no
+session is re-routed. `registry_version` unchanged.
