@@ -6,57 +6,202 @@ editor who works in Vietnamese should not have to parse English to know which fo
 belongs in. Everything that BINDS still lives in English in `registry/gif-types/<id>.md`;
 this file is copy for a view.
 
-`scripts/gen-gif-cards.py` reads it and writes `README.vi.md` beside each folder's
-`README.md`. `scripts/validate.py` fails a gif type with no entry here, or an entry missing
-a field, so the two cards cannot drift into saying different things by omission.
+**Write it as explanation, not as law** (ADR-045). The English card is already the terse
+form — one sentence lifted per section — and a Vietnamese card that just translates those
+sentences reads like a specification and teaches nobody. Give the situation, give an example,
+say why the rule exists. Keep every English keyword as it stands: type ids, channel names,
+field names, file paths. Only the prose around them is Vietnamese.
 
-One `## <gif-type>` section per type. Each field is one line, and short is the point — the
-English card is already the long form.
+`scripts/gen-gif-cards.py` reads this file and writes `README.vi.md` beside each folder's
+`README.md`. `scripts/validate.py` fails a gif type with no entry here, or an entry missing a
+field, so the two cards cannot drift apart by omission.
+
+Format: one `## <gif-type>` section per type. Inside it a field is `<key>:` alone on a line,
+and everything after it belongs to that field until the next key or the next type. Blank
+lines inside a field are kept.
 
 ## cause
 
-message: Thủ phạm đang gây hại ngay lúc này, và sản phẩm không có trong khung.
-yes: Mục nói điều gì gây ra vấn đề, và nguyên nhân là một sự việc đang diễn ra chứ không phải một trạng thái đứng yên.
-no: Vấn đề là trạng thái tĩnh để người xem soi — giường đã lột, đống đồ đã thử, căn phòng đơn giản là nóng.
-vs: So với `proof`, ở đây sản phẩm vắng mặt và chính sự vắng mặt đó là phép thử.
-never: Không chữ, không số, không mũi tên. Không có sản phẩm trong khung, kể cả gợi ý.
+message:
+`cause` là loop quay đúng lúc thủ phạm đang gây hại. Bụi bay lên khỏi thớ vải, tấm đệm trượt
+tới trước dưới thân người, sợi dây siết lại thành nút, cái đầu máy đi lệch khỏi đường ray của
+nó. Sản phẩm không có trong khung và cũng không được ám chỉ — loop này đi buộc tội thế giới,
+chứ không giới thiệu giải pháp.
+
+yes:
+Nộp vào đây khi mục trên trang đang nói **cái gì gây ra vấn đề**, và cái đó là một sự việc
+đang diễn ra chứ không phải một tình trạng nằm im. Nói cách khác: có thứ gì đó thật sự động
+đậy để mà quay — trượt, rơi, bay lên, siết lại.
+
+no:
+Đừng nộp vào đây khi vấn đề chỉ là một trạng thái để người xem nhìn rồi tự hiểu: cái giường
+đã lột sạch ga, đống đồ đã thử rồi bỏ xó, căn phòng đơn giản là nóng. Không có gì chuyển động
+thì không có loop, và ép quay sẽ ra một đoạn phim đẹp mà rỗng.
+
+vs:
+Ranh giới với `proof` rất gọn: **chỉ cần sản phẩm bước vào khung là hết `cause`**. Sự vắng mặt
+của sản phẩm chính là phép thử — có nó trong hình thì loop chuyển sang nói về kết quả, và phải
+nộp vào `proof`.
+
+Còn chuyện quay một người đang chịu đựng hay quay riêng đồ vật thì vẫn là `cause` cả hai. Bàn
+tay trượt và tấm thảm rụng vụn đang nói cùng một điều — chuyện tệ này vẫn đang xảy ra — nên đó
+chỉ là hai cách dựng, không phải hai type.
+
+never:
+Không chữ, không số, không mũi tên. Và tuyệt đối không có sản phẩm trong khung, kể cả nằm mờ
+ở hậu cảnh — chỉ cần nó lọt vào là lập luận đổ.
 
 ## mechanism
 
-message: Nó đáng tiền vì thứ xảy ra bên trong.
-yes: Mục giải thích vì sao sản phẩm chạy được, và lời giải thích là một chuyển động — cánh quạt quay, luồng khí đi một đường, mút nở lại.
-no: Tuyên bố vô hình với mọi register thư viện có: nhiệt, mùi, chất lượng không khí, hoá học pin.
-vs: So với `use`, khác ở khung hình chứ không ở chủ thể — không ai là chủ thể ở đây. So với `proof`, đây là nguyên nhân chứ không phải kết quả.
-never: Không chữ, không số, không mũi tên, không đường dẫn dòng. Không lấy người làm chủ thể.
+message:
+`mechanism` là loop cho xem **bên trong nó làm gì mà đáng tiền**. Bộ phận làm việc — cánh
+quạt, lưỡi dao, tấm rung, lớp mút, đường đi của dòng điện — được phóng to hoặc cắt bổ ra, và
+đang làm đúng một việc mà sản phẩm được bán vì nó.
+
+yes:
+Nộp vào đây khi mục đang giải thích **vì sao sản phẩm chạy được**, và lời giải thích đó là một
+chuyển động nhìn thấy được: rotor quay, luồng khí đi hết một đường, lớp mút nở lại sau khi bị
+ép, con trượt chạy trên rãnh của nó.
+
+no:
+Đừng nộp vào đây khi điều cần chứng minh vô hình với mọi cách quay mà thư viện này có — nhiệt
+độ, mùi, chất lượng không khí, phản ứng hoá học trong pin. Không quay ra được thì không dựng
+được, và không nên cố.
+
+vs:
+Khác `use` ở **khung hình, không phải ở chủ thể**. Vẫn cái kéo điện đó: quay cả bàn tay lẫn cả
+sản phẩm là `use`; quay cận lưỡi kéo, không lấy người làm chủ thể, là `mechanism`.
+
+Khác `proof` ở chỗ đây là nguyên nhân còn kia là kết quả. Rotor đang quay là `mechanism`; bụi
+rời khỏi tấm nệm là `proof`. Loop nào cho xem cả hai thì tính là `proof`, vì người xem sẽ chấm
+theo kết quả chứ không theo lý do.
+
+never:
+Không chữ, không số, không mũi tên, không đường vẽ chỉ dòng chảy — vẽ thêm là thành sơ đồ, mà
+thư viện này không vẽ sơ đồ vào loop. Không lấy người làm chủ thể: bàn tay chỉ được giữ, không
+được thao tác.
 
 ## proof
 
-message: Trước và sau, trong một khung liền không cắt.
-yes: Lập luận của mục là bằng chứng vật lý, và bằng chứng là một thay đổi đo được do sản phẩm gây ra.
-no: Bằng chứng là những trạng thái đặt cạnh nhau để soi — bảng nhiều ô khoá cứng, ba mốc thời gian trong một khung.
-vs: So với `mechanism` là kết quả chứ không phải nguyên nhân; so với `cause` thì ở đây sản phẩm có mặt; so với `relief` là đo được chứ không phải sống được.
-never: Không chữ, không số, không thanh tiến trình. Không cắt cảnh giữa hai trạng thái, và không lặp ngược.
+message:
+`proof` là loop để người xem **tự nhìn thấy sự thay đổi và tự kết luận**. Một vệt vải từ xám
+chuyển sang sạch, một chỉ báo từ đỏ sang xanh, một chỉ số leo lên, chồng túi xẹp xuống còn một
+phần ba chiều cao. Quay liền một mạch, không cắt — vì cắt cảnh là bạn đang khẳng định hộ người
+xem thay vì để họ tự thấy.
+
+yes:
+Nộp vào đây khi mục đang đưa **bằng chứng vật lý**, và bằng chứng đó là một thay đổi đo được
+do sản phẩm gây ra. Thường rơi vào những chỗ mà người đang hoài nghi muốn tận mắt xem nó xảy
+ra, chứ không muốn nghe kể lại.
+
+no:
+Đừng nộp vào đây khi bằng chứng là **nhiều trạng thái đặt cạnh nhau để so** — ảnh chia ô khoá
+cứng, ba mốc thời gian trong cùng một khung. Ở dạng đó chính mắt người xem đi so, và cho nó
+chuyển động sẽ xoá mất phép so ấy chứ không làm rõ thêm.
+
+vs:
+Khác `mechanism` ở chỗ đây là kết quả, kia là nguyên nhân.
+
+Khác `cause` ở chỗ **sản phẩm có mặt**, và chính sự có mặt đó mới khiến thay đổi quy được về
+nó.
+
+Khác `relief` ở chỗ `proof` là thứ đếm được hoặc so được, còn `relief` là một cuộc sống đang
+trôi trơn tru.
+
+Một lưu ý thực dụng: đây là đường bậc-2 chính của cả thư viện. Slot `proof` thường được định
+tuyến sang một ảnh tĩnh chia ô, và ảnh đó đúng là không được cấp chuyển động. Bản loop là cách
+dựng khác cho cùng lập luận — một khung liền, một biến đổi thay.
+
+never:
+Không chữ, không số, không thanh tiến trình — một con số cháy vào khung hình là lời khẳng định
+mà bức hình không còn phải tự chứng minh nữa.
+
+Không cắt cảnh giữa hai trạng thái, vì một nhát cắt là một lời quả quyết, mà type này sinh ra
+để tránh đúng chuyện đó.
+
+Và không lặp ngược: sạch quay trở về bẩn là đang nói tác dụng sẽ hết.
 
 ## relief
 
-message: Đời sống sau khi mua, quay đúng chỗ mà vấn đề từng chặn lại.
-yes: Mục bán trạng thái sau, và trạng thái đó chứa một hành động TIẾP DIỄN mà vấn đề trước đây từng chặn.
-no: Trạng thái sau là một khoảnh khắc đứng yên — ai đó đang nghỉ, căn phòng gọn gàng, cả nhà ngồi xem.
-vs: So với `proof`, đây là sống được chứ không phải đo được.
-never: Không chữ, không mũi tên, không overlay. Sản phẩm không được giơ ra khoe hay đặt vào giữa khung.
+message:
+`relief` là loop về **cuộc sống sau khi mua**, quay đúng tại chỗ mà vấn đề từng chặn lại. Một
+bước chân không còn khựng, một đêm ngủ trôi hết, một buổi làm việc không kết thúc bằng việc
+phải đứng dậy đi lại. Sản phẩm có mặt và đang chạy, nhưng nó không phải nhân vật chính.
+
+yes:
+Nộp vào đây khi mục đang bán **trạng thái sau**, và trạng thái đó chứa một hành động **đang
+tiếp diễn** mà trước kia vấn đề vẫn hay làm gián đoạn.
+
+no:
+Đừng nộp vào đây khi trạng thái sau chỉ là một khoảnh khắc đứng yên — ai đó đang nghỉ, căn
+phòng gọn gàng, cả nhà ngồi xem phim. Đẹp thì đẹp, nhưng không có gì đang diễn ra để mà quay.
+
+vs:
+Khác `proof` ở chỗ đây là sống được, kia là đo được. Nếu người xem có thể đếm nó hoặc đem nó
+ra so, thì đó là `proof`.
+
+Và đây là chỗ có **luật chặt nhất trong cả sáu type**: `relief` chỉ được cấp loop khi **chính
+chuyển động đó là thứ mà vấn đề từng chặn**. Rèm bay, hơi nước cuộn, cây lay — dễ chịu thật,
+nhưng chúng chỉ tình cờ có mặt trong một cảnh hậu-mua và không chứng minh gì; loại đó mặc định
+bị tắt. Luật này viết ra để `relief` không thành cái thùng chứa mọi loop không đủ tiêu chuẩn.
+
+never:
+Không chữ, không mũi tên, không lớp vẽ chồng lên hình. Sản phẩm không được giơ lên khoe, không
+được đặt chính giữa khung, và không được lấy sáng riêng cho nó.
 
 ## use
 
-message: Bạn dùng được nó mà không phải nghĩ.
-yes: Việc của mục là thao tác — một beat hướng dẫn, một tính năng vốn LÀ hành động, hoặc dụng cụ mà cả tuyên bố nằm ở chỗ thao tác dễ.
-no: Điều cần nói chỉ nói được bằng cách phóng to bộ phận làm việc, đó là `mechanism`; hoặc mục đang nói về thay đổi mà hành động tạo ra chứ không phải hành động, đó là `proof`.
-vs: So với `mechanism`, khác ở khung hình — có bàn tay và cả sản phẩm. So với `proof`, đây là hành động chứ không phải kết quả.
-never: Không chữ, không số bước, không mũi tên chỉ thứ tự đọc.
+message:
+`use` là loop nói **dùng nó chẳng phải nghĩ**. Một bàn tay tác động lên sản phẩm và sản phẩm
+đáp lại — cầm, bấm, lướt, rót, gấp, lắp. Loop bán sự dễ dàng của chính thao tác, chứ không bán
+cái mà thao tác để lại phía sau.
+
+yes:
+Nộp vào đây khi việc của mục là **thao tác**: một đoạn hướng dẫn dùng, một tính năng mà bản
+thân nó đã là một hành động, hoặc một dụng cụ mà toàn bộ điểm bán nằm ở chỗ làm nó dễ.
+
+no:
+Đừng nộp vào đây khi điều cần nói chỉ nói được bằng cách phóng to bộ phận làm việc — đó là
+`mechanism`. Cũng đừng, khi mục đang nói về **thay đổi mà thao tác tạo ra** chứ không phải bản
+thân thao tác — đó là `proof`.
+
+vs:
+Khác `mechanism` ở khung hình: cả sản phẩm cộng một bàn tay là `use`; cận bộ phận làm việc,
+không có người, là `mechanism`.
+
+Khác `proof` ở chỗ `use` cho xem hành động, còn `proof` cho xem thay đổi mà hành động gây ra.
+Loop nào mang cả hai thì tính là `proof`, và thao tác chỉ là nhịp mở đầu của nó.
+
+Số nhịp là **tham số, không phải một type khác**: một thao tác liền mạch và một chuỗi ba bước
+đang nói cùng một điều ở hai độ dài, tách ra sẽ thành hai thư mục cho một thông điệp.
+
+never:
+Không chữ, không đánh số bước, không mũi tên chỉ thứ tự đọc. Thứ tự phải đọc ra được từ chính
+các hành động — đó là toàn bộ kỷ luật của type này.
 
 ## unboxing
 
-message: Bạn thực sự nhận được gì, từng món một.
-yes: Brief cho kênh quảng cáo, sản phẩm bán theo bộ hoặc nhiều món, và câu hỏi bỏ ngỏ của người mua là "có đủ không".
-no: Bất cứ chỗ nào trên landing page — type này chỉ chạy kênh quảng cáo.
-vs: So với `use`, đây là bày ra chứ không phải thao tác.
-never: Không chữ, không số. Không dựng cảnh gọn gàng quá mức thật.
+message:
+`unboxing` là loop cho thấy **bạn thực sự nhận được những gì**, từng món một. Hộp mở ra, các
+món lần lượt được lấy ra cho tới khi cả bộ nằm hết trong khung.
+
+yes:
+Nộp vào đây khi đây là brief cho **kênh quảng cáo**, sản phẩm bán theo bộ hoặc nhiều món, và
+câu hỏi còn treo trong đầu người mua là "có đủ không".
+
+no:
+Đừng dùng ở bất cứ chỗ nào trên `landing-page`, và `channels` của type này là thứ chặn điều
+đó. Nó **bày ra chứ không làm gì thay đổi**, nên nó trượt phép thử mà một slot trên trang áp
+dụng: lấy đồ ra khỏi hộp là để lộ cái vốn đã có, mà để lộ thì không được cấp chuyển động. Nó
+vẫn tồn tại vì bên quảng cáo thật sự dùng màn mở hộp làm cú mở đầu — đó là một việc khác.
+
+vs:
+Khác `use` ở một mốc rất rõ: ngay khi một bàn tay bắt đầu **thao tác** với món đồ thay vì trình
+bày nó, loop đó thành `use`.
+
+Type này mang `group: none` và `kind: null` — nó không tính vào sàn motion của trang nào, và
+không bao giờ xuất hiện như một `gif.kind` trong bộ prompt đã định tuyến.
+
+never:
+Không chữ, không số. Và đừng dựng cảnh gọn gàng hơn thực tế — hộp mở ra phải giống lúc người
+mua thật mở nó.

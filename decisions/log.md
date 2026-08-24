@@ -2183,3 +2183,55 @@ exception; `registry/gif-instruction.md` describes both cards. Twelve cards rege
 outside the repo. The rule 6c sweep ran on `gen-gif-cards`, `product-slug}_`, `SHOT`, `muted`
 and `artifact content is`; the `SHOT` and `muted` hits are legitimate — type files describing
 photographic grade and a relief-hero worked example — and stand.
+
+## ADR-045 · 2026-08-24 · The Vietnamese card is explanation, not translated law
+
+ADR-044 shipped the Vietnamese folder cards a day earlier. The owner read them and said the
+language was stiff and hard to follow, and asked for description with context — English
+keywords left standing, only the prose in Vietnamese.
+
+**The fault was structural, not stylistic.** ADR-044 built the English card by lifting the
+first sentence of each section from the type file, which is right for English: those sentences
+are the law's own opening clauses and the card cannot drift from what it summarises. Then the
+Vietnamese file was authored to mirror them line for line. Mirroring a terse legal sentence
+produces a terse legal sentence, so the Vietnamese card became a second copy of the
+specification for a reader who does not need a specification — an editor deciding which folder
+a file goes in. "Bằng chứng là những trạng thái đặt cạnh nhau để soi — bảng nhiều ô khoá cứng"
+is accurate and teaches nothing to someone who has never seen a locked multi-panel still.
+
+**So the two cards now do different jobs, and that is the point rather than a compromise.**
+The English card stays the terse summary, mechanically derived, uncheatable. The Vietnamese
+card is the working explanation: the situation first, then an example, then why the rule
+exists. `proof` no longer says "physical evidence is a measurable change" — it says the loop
+exists so the viewer sees the change and concludes for themselves, that a fabric lane goes
+from grey to clean and an indicator from red to blue, and that the frame never cuts because a
+cut is you asserting it on their behalf.
+
+**Every English keyword stays as it stands** — type ids, `channels` values, `group`, `kind`,
+field names, file paths. Translating `landing-page` would sever the card from every other
+surface the editor touches, and translating `proof` would make the folder name and the card
+disagree with each other.
+
+**The field format changes from one line to a block**, because explanation with an example
+does not fit a line and the previous format silently truncated at the newline. A field is now
+`<key>:` alone on a line and everything after it belongs to that field until the next key or
+the next type, blank lines kept. Both readers — `scripts/gen-gif-cards.py` and
+`scripts/validate.py` — parse it the same way, from the same shape of loop, because two
+parsers for one file is how a file starts meaning two things.
+
+The card layout follows: `## ` headings rather than bold run-ins, since the values are now
+paragraphs. It is longer than ADR-044's sixteen lines and that is the trade taken knowingly —
+the owner asked for shortest first and, having read the result, asked for readable instead.
+Short was never the goal; a card an editor can act on was.
+
+Four checks mutation-tested after the parser change, 4 of 4 fired: a missing type, a missing
+field, a field left empty, and an entry for a type that does not exist. The empty-field case
+needed a second attempt — the first mutation inserted a key the parser does not recognise, so
+the text simply joined the previous block and nothing was empty. A mutation that does not
+create the state it names proves nothing about the check.
+
+Consequences: `registry/gif-cards-vi.md` rewritten in full and its header now states the
+writing rule rather than only the mechanics; `scripts/gen-gif-cards.py` gains
+`_parse_vi_blocks()` and `card_vi()` is rebuilt around headings; `scripts/validate.py` parses
+the same block form. Twelve cards regenerated outside the repo; the English six are byte
+identical, which is the check that this changed only what it claimed to.

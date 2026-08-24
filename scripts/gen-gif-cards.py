@@ -128,22 +128,37 @@ def lede(text):
     return (m.group(1) if m else t) or "—"
 
 
-def load_vi():
-    """`## <id>` sections of one-line `key: value` fields (ADR-044)."""
-    out, cur = {}, None
-    if not os.path.exists(VI_PATH):
-        return out
-    with open(VI_PATH, encoding="utf-8") as f:
+def _parse_vi_blocks(path, fields):
+    """`## <id>` sections whose fields are `<key>:` alone on a line, the value being
+    everything until the next key or the next type (ADR-045). Block form because the
+    Vietnamese card is explanation with examples, and explanation does not fit a line."""
+    out, cur, key, buf = {}, None, None, []
+
+    def flush():
+        if cur and key:
+            text = "\n".join(buf).strip("\n")
+            if text.strip():
+                out[cur][key] = text.rstrip()
+
+    with open(path, encoding="utf-8") as f:
         for raw in f:
             line = raw.rstrip("\n")
             if line.startswith("## "):
-                cur = line[3:].strip()
+                flush()
+                cur, key, buf = line[3:].strip(), None, []
                 out[cur] = {}
-            elif cur and ":" in line and not line.startswith(("#", " ")):
-                k, _, v = line.partition(":")
-                if k.strip() in VI_FIELDS:
-                    out[cur][k.strip()] = v.strip()
+            elif cur is not None and line.rstrip().endswith(":") \
+                    and line.rstrip()[:-1].strip() in fields and not line.startswith(" "):
+                flush()
+                key, buf = line.rstrip()[:-1].strip(), []
+            elif key is not None:
+                buf.append(line)
+    flush()
     return out
+
+
+def load_vi():
+    return _parse_vi_blocks(VI_PATH, VI_FIELDS) if os.path.exists(VI_PATH) else {}
 
 
 def against(boundary):
@@ -209,18 +224,21 @@ def card_vi(tid, t, recs, vi):
     o = [f"# {tid}", "",
          "TỆP SINH TỰ ĐỘNG — đừng sửa tay. Nguồn `registry/gif-cards-vi.md`. "
          "Sinh lại: `python3 scripts/gen-gif-cards.py`. Bản tiếng Anh: `README.md`.", "",
-         f"**Nói gì** {v.get('message', '—')}", "",
-         f"**Nộp vào đây khi** {v.get('yes', '—')}",
-         f"**Không phải ở đây khi** {v.get('no', '—')}",
-         f"**Phân biệt với type kề** {v.get('vs', '—')}", "",
-         f"**Cấm xuất hiện trong khung** {v.get('never', '—')}", "",
-         f"**Chuẩn** {band.replace(' beats', ' nhịp')} · {chans}"
-         + ("" if lp else " · **không dùng cho slot landing-page**")
-         + f" · tính vào nửa **{fm.get('group')}** của sàn motion",
-         f"**Đã nộp** {filed}", "",
-         "**Đặt tên** `{page-type}-" + tid + "-{product-slug}-v{NN}.webp` · WebP động, "
-         "không có kênh tiếng · thêm một dòng vào `ingestion/gifs.jsonl` · không đổi tên "
-         "tệp đã nộp · luật đầy đủ ở `registry/gif-instruction.md`", ""]
+         "## Loop này nói gì", "", v.get("message", "—"), "",
+         "## Nộp vào đây khi", "", v.get("yes", "—"), "",
+         "## Không phải ở đây khi", "", v.get("no", "—"), "",
+         "## Phân biệt với các type kề", "", v.get("vs", "—"), "",
+         "## Cấm xuất hiện trong khung", "", v.get("never", "—"), "",
+         "## Chuẩn nhà", "",
+         f"- Dải khai báo: **{band.replace(' beats', ' nhịp')}**.",
+         f"- Kênh: {chans}." + ("" if lp else " **Không dùng cho slot `landing-page`.**"),
+         f"- Tính vào sàn motion của trang ở nửa: **{fm.get('group')}**.",
+         f"- Đã nộp: {filed}", "",
+         "## Nộp một tệp mới vào đây", "",
+         "Đặt tên `{page-type}-" + tid + "-{product-slug}-v{NN}.webp`. Giao dưới dạng "
+         "**WebP động**, không có kênh tiếng. Thêm một dòng vào `ingestion/gifs.jsonl`. "
+         "Đã nộp rồi thì không đổi tên nữa. Luật đầy đủ dùng chung cho mọi type: "
+         "`registry/gif-instruction.md`.", ""]
     return "\n".join(o)
 
 

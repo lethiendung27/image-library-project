@@ -1342,17 +1342,27 @@ def check_gif_cards_vi(gif_types):
     if not os.path.exists(GIF_VI_PATH):
         err("registry/gif-cards-vi.md", "missing; every gif type owes Vietnamese card copy")
         return
-    entries, cur = {}, None
+    entries, cur, key, buf = {}, None, None, []
+
+    def flush():
+        if cur and key and "\n".join(buf).strip():
+            entries[cur][key] = "\n".join(buf).strip()
+
     with open(GIF_VI_PATH, encoding="utf-8") as f:
         for raw in f:
             line = raw.rstrip("\n")
             if line.startswith("## "):
-                cur = line[3:].strip()
+                flush()
+                cur, key, buf = line[3:].strip(), None, []
                 entries[cur] = {}
-            elif cur and ":" in line and not line.startswith(("#", " ")):
-                k, _, v = line.partition(":")
-                if k.strip() in GIF_VI_FIELDS and v.strip():
-                    entries[cur][k.strip()] = v.strip()
+            elif cur is not None and line.rstrip().endswith(":") \
+                    and line.rstrip()[:-1].strip() in GIF_VI_FIELDS \
+                    and not line.startswith(" "):
+                flush()
+                key, buf = line.rstrip()[:-1].strip(), []
+            elif key is not None:
+                buf.append(line)
+    flush()
     where = "registry/gif-cards-vi.md"
     for tid in sorted(gif_types):
         if tid not in entries:
