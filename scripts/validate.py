@@ -1327,7 +1327,7 @@ def validate_gif_type_file(path, vocab):
     return {"fm": fm, "sections": sections}
 
 
-GIF_VI_FIELDS = ("message", "yes", "no", "vs", "never")
+GIF_VI_FIELDS = ("message", "yes", "no", "vs")
 
 
 def check_gif_cards_vi(gif_types):

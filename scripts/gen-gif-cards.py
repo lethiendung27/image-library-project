@@ -28,7 +28,7 @@ VI_PATH = os.path.join(V.ROOT, "registry", "gif-cards-vi.md")
 LEDGER_PATH = os.path.join(V.ROOT, "ingestion", "gifs.jsonl")
 DEFAULT_ROOT = os.path.join(os.path.expanduser("~"), "Downloads",
                             "image-library-assets", "gifs-library")
-VI_FIELDS = ("message", "yes", "no", "vs", "never")
+VI_FIELDS = ("message", "yes", "no", "vs")
 MEASURE_MIN = 3  # below this the card reports "not enough files", never a figure
 
 
@@ -100,25 +100,6 @@ def measured(recs, tid):
         bits.append(f"median {statistics.median(beats):.0f} beats "
                     f"(range {min(beats)}–{max(beats)})")
     return "Measured from the ledger: " + ", ".join(bits) + "."
-
-
-def measured_vi(recs, tid):
-    """The Vietnamese half of the house-standard line. It is generated rather than
-    authored because it is numbers, and numbers do not need a translator."""
-    mine = [r for r in recs if r.get("type") == tid]
-    if len(mine) < MEASURE_MIN:
-        return (f"{len(mine)} tệp — chưa đủ để đo chuẩn nhà (cần {MEASURE_MIN}). "
-                "Trong lúc chờ, dải khai báo ở trên chính là brief.")
-    durs = [r["duration_s"] for r in mine if isinstance(r.get("duration_s"), (int, float))]
-    beats = [r["beats"] for r in mine if isinstance(r.get("beats"), int)]
-    bits = [f"{len(mine)} tệp đã nộp"]
-    if durs:
-        bits.append(f"trung vị {statistics.median(durs):.1f}s "
-                    f"(khoảng {min(durs):.1f}–{max(durs):.1f}s)")
-    if beats:
-        bits.append(f"trung vị {statistics.median(beats):.0f} nhịp "
-                    f"(khoảng {min(beats)}–{max(beats)})")
-    return "Đo từ sổ cái: " + ", ".join(bits) + "."
 
 
 def lede(text):
@@ -213,13 +194,10 @@ def card(tid, t, recs):
     return "\n".join(o)
 
 
-def card_vi(tid, t, recs, vi):
+def card_vi(tid, vi):
     """The Vietnamese card. Its copy is authored, not translated at build time —
     `registry/gif-cards-vi.md` — because a machine translation of law is a rule
     nobody can check (ADR-044)."""
-    fm = t["fm"]
-    band, chans, lp, _ = _standing(tid, fm, recs)
-    filed = measured_vi(recs, tid)
     v = vi.get(tid, {})
     o = [f"# {tid}", "",
          "TỆP SINH TỰ ĐỘNG — đừng sửa tay. Nguồn `registry/gif-cards-vi.md`. "
@@ -228,12 +206,6 @@ def card_vi(tid, t, recs, vi):
          "## Nộp vào đây khi", "", v.get("yes", "—"), "",
          "## Không phải ở đây khi", "", v.get("no", "—"), "",
          "## Phân biệt với các type kề", "", v.get("vs", "—"), "",
-         "## Cấm xuất hiện trong khung", "", v.get("never", "—"), "",
-         "## Chuẩn nhà", "",
-         f"- Dải khai báo: **{band.replace(' beats', ' nhịp')}**.",
-         f"- Kênh: {chans}." + ("" if lp else " **Không dùng cho slot `landing-page`.**"),
-         f"- Tính vào sàn motion của trang ở nửa: **{fm.get('group')}**.",
-         f"- Đã nộp: {filed}", "",
          "## Nộp một tệp mới vào đây", "",
          "Đặt tên `{page-type}-" + tid + "-{product-slug}-v{NN}.webp`. Giao dưới dạng "
          "**WebP động**, không có kênh tiếng. Thêm một dòng vào `ingestion/gifs.jsonl`. "
@@ -269,7 +241,7 @@ def main(argv):
         folder = os.path.join(root, tid)
         pages = [("README.md", card(tid, t, recs))]
         if tid in vi:
-            pages.append(("README.vi.md", card_vi(tid, t, recs, vi)))
+            pages.append(("README.vi.md", card_vi(tid, vi)))
         for fname, text in pages:
             target = os.path.join(folder, fname)
             old = None

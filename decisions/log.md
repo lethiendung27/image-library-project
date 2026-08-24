@@ -2235,3 +2235,53 @@ writing rule rather than only the mechanics; `scripts/gen-gif-cards.py` gains
 `_parse_vi_blocks()` and `card_vi()` is rebuilt around headings; `scripts/validate.py` parses
 the same block form. Twelve cards regenerated outside the repo; the English six are byte
 identical, which is the check that this changed only what it claimed to.
+
+## ADR-046 · 2026-08-24 · An example names its product and its page, or it explains nothing
+
+ADR-045 made the Vietnamese card explanation rather than translated law. The owner read the
+result and found the examples still unusable: no context, no clear meaning. They also asked
+for the example to come AFTER the definition, and for two sections to go.
+
+**The examples were borrowed, and a borrowed example carries its context with it — somewhere
+else.** ADR-045 kept the illustrations from the English type files: a lane of fabric going
+grey to clean, a stack of bags collapsing to a third, an indicator turning red to blue. Those
+sentences work inside `registry/gif-types/proof.md`, where the reader has the whole type file
+around them. Lifted onto a folder card they name no product, no page and no situation, so an
+editor holding a file learns nothing from them. The failure is the same one ADR-045 diagnosed
+one level down: the card was still assembled from material written for a different reader.
+
+**Every example is now a real loop this library has commissioned, named with its product.**
+The `cause` card describes the seat cushion page's loop — a driver on an old flat pad, the car
+brakes, the pad slides forward under him and the gap opens behind his lower back, and the
+cushion being sold is nowhere in frame. `proof`, `mechanism` and `use` all draw from the
+massage comb page, which is the strongest teaching accident available: **one product, three
+loops, three folders.** The `use` card says so outright — hands combing through is `use`, the
+teeth retracting to release the hair mat is `mechanism`, the static halo collapsing after one
+pass is `proof` — because an editor who sees those three side by side has learned the
+distinction in a way no definition delivers.
+
+**Definition first, then the example.** ADR-045 ran them together in one paragraph, so the
+illustration read as part of the definition and the definition never landed. Each `message`
+now closes its thought, breaks, and opens with "Ví dụ, trang bán…".
+
+**`no` gains an example too, and that is where it was weakest.** Telling an editor not to file
+a held state here is abstract; showing them that a stripped mattress lying there is a still
+while dust lifting out of the weave under someone sitting down is a loop is not. The
+mechanism card now uses the comb's six red LEDs: the lamp is filmable, its effect on a scalp
+is not, which is the invisible-claim rule in one concrete pair.
+
+**Two sections cut on the owner's instruction:** "Cấm xuất hiện trong khung" and "Chuẩn nhà".
+The negatives and the band still bind and still sit on the English card and in the type file;
+what they were doing on the Vietnamese card was turning an explanation back into a
+specification. The `never` field goes from the source file and from both parsers with them,
+and `measured_vi()` — written at ADR-044 to translate a file count — is deleted as dead code
+rather than left for someone to wonder about.
+
+Four checks mutation-tested against the four-field form, 4 of 4 fired. The English cards
+regenerate byte-identical, which is the evidence this changed only the half it claimed to.
+
+Consequences: `registry/gif-cards-vi.md` rewritten, its header now carrying the three writing
+rules rather than one; `scripts/gen-gif-cards.py` drops `never` from `VI_FIELDS`, drops the two
+sections, and `card_vi()` no longer takes the ledger or the frontmatter because it no longer
+prints a number; `scripts/validate.py` follows on the field list. Twelve cards regenerated
+outside the repo.
