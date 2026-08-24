@@ -37,6 +37,17 @@ tasks to entry points and must stay logic-free.
    option, an edit chain or a post-assembly step — take the type's own single-pass
    route, and where it has none, route to the next candidate and say so. ADR-021,
    declared in `query/runbook.md` Step 3 and enforced by `scripts/validate.py`.
+6c. **Before writing an ADR's Consequences list, sweep for what it bans**:
+   `python3 scripts/adr-sweep.py "<term>"`. That list is a claim about blast radius
+   and nothing verifies it, so account for every file the sweep puts in TEACHES or
+   say why it stands. Twice a decision landed and the files teaching the opposite
+   were left: ADR-020 found it in a schema description and a runbook paragraph,
+   ADR-039 found the multi-pass ban still taught by `runbook.md` Step 6, the
+   adapter's Rule 3 and `output.schema.json` — three days and eleven ADRs late. No
+   gate can catch this: the banned term legitimately lives in the decision log, the
+   render ledger and every type that truthfully declares it, and no regular
+   expression separates "emit steps[]" from "steps[] is retired". A person reading
+   a short classified list is the check.
 7. ADR-007 autopilot: after any COMPLETED operation (classify batch, curation pass,
    promotion, render-test logging), run `python3 scripts/validate.py --write-index`;
    on 0 errors, `git commit` that operation immediately — one commit per operation,

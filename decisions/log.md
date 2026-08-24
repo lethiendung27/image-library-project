@@ -1901,3 +1901,59 @@ Consequences: `query/runbook.md` Step 6; `adapters/nano-banana.md` Rules 3 and 6
 `query/output.schema.json` `pipeline` and `steps` in both `slots` and `recommended`;
 `dist/app-bundle` regenerated. No prompt, no session artifact and no script behaviour changes.
 `registry_version` unchanged.
+
+## ADR-040 · 2026-08-24 · ADR-016 gets its checker, and the drift that outran two ADRs gets a sweep
+
+Two enforcement gaps, closed together because they are the same shape: a decision was
+made, written down, and then nothing read it.
+
+**ADR-016 deferred its own checker and the deferral cost eleven days.** It declared five
+legal ratios on 2026-08-13, named the types that were already wrong, and closed with
+"adding one would make this enforceable rather than remembered, and it is proposed rather
+than done here because the validator is shared and a second session is live." Measured
+today: **10 of 15 type entries still declare `4:5`, `5:3` or `3:2`**, and **three delivered
+pages emitted an illegal ratio** — one of them page 73, routed six days AFTER the ADR.
+
+`check_ratios` splits the two surfaces on purpose. A **delivered prompt** is the
+deliverable, so an illegal ratio there is an ERROR for anything routed from now on; the
+three existing offenders are named in `GRANDFATHERED_RATIOS` **with their reasons**, because
+a bare name in an exemption set is a decision nobody can audit later. A **type file** only
+warns: ADR-016 itself said those are "corrected when it is next opened", the files belong to
+render-refinement lanes, and erroring ten types nobody is editing today would block every
+lane's ADR-007 autopilot for a rule none of them broke. The new set is registered with
+`check_grandfather_sets`, so it cannot rot silently the way ADR-035 records
+`PRE_CONTRACT_SESSIONS` doing.
+
+Result: 0 errors, warnings 15 → 28, all thirteen new ones naming ADR-016. Proved against
+known-bad before being believed — emptying the grandfather set returns 3 errors on the same
+files, and a synthetic type declaring `4:5` warns while one declaring `16:9, 1:1` does not.
+
+**The second gap has no gate, and saying so is the point.** ADR-020 and ADR-039 are the same
+failure twice: a decision landed and the files TEACHING the opposite were left standing —
+a schema description and a runbook paragraph the first time, `runbook.md` Step 6, the
+adapter's Rule 3 and `output.schema.json` the second, three days and eleven ADRs late. An
+ADR's Consequences list is a claim about blast radius and nothing verifies it.
+
+A lexical gate would be false comfort. `multi-pass` legitimately appears in 42 tracked files:
+this log records it, the render ledger carries historical verdicts, three types declare it as
+a true statement about what a PICTURE needs, and `CLAUDE.md` states the ban itself. No regular
+expression separates "emit `steps[]`" from "`steps[]` is retired". So the answer is a
+checklist generator, not a check: `scripts/adr-sweep.py <term>` groups every hit into
+TEACHES, RECORDS, GENERATED and UNCLASSIFIED, and `CLAUDE.md` rule 6c requires it before an
+ADR's Consequences list is written.
+
+**It earned itself on first run.** Swept against `multi-pass` it surfaced two teaching hits
+ADR-039 had missed one commit earlier: `adapters/nano-banana.md` line 18, "multi-pass
+pipelines are officially viable", stated with no pointer to the ban — now corrected to say
+that is a fact about the MODEL and this pipeline does not use it — and
+`registry/types/03-mechanism-xray.md` line 235, "If it recurs, the fallback is multi-pass",
+which is a live instruction for the banned thing inside a type file. That one is LEFT
+STANDING and named here instead: the file belongs to a render-refinement lane, and the
+owner's standing instruction is to fix forward rather than edit another lane's work. It is
+the first item for whoever next opens that type.
+
+Consequences: `scripts/validate.py` gains `LEGAL_RATIOS`, `GRANDFATHERED_RATIOS` and
+`check_ratios`, wired into `main` and into `check_grandfather_sets`; `scripts/adr-sweep.py`
+is new; `CLAUDE.md` gains rule 6c; `adapters/nano-banana.md` line 18 gains the pointer;
+`dist/app-bundle` regenerated. No type file is edited, no session is re-routed, no prompt
+moves. `registry_version` unchanged.

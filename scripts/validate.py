@@ -720,6 +720,29 @@ GRANDFATHERED_MULTIPASS = {
     "advertorial-seat-cushion-l-shaped-v02",
 }
 
+# ADR-016, 2026-08-13: only these five ratios, system-wide. It proposed a
+# validator check and deferred it ("the validator is shared and a second session
+# is live"), and eleven days later 10 of 15 type entries still declared 4:5, 5:3
+# or 3:2 and three delivered pages had emitted one. A reading rule with nothing
+# reading it is what that deferral bought.
+LEGAL_RATIOS = ("16:9", "4:3", "1:1", "3:4", "9:16")
+
+# Sessions that emitted an illegal ratio before this check existed. Each entry
+# carries WHY, because a bare name in an exemption set is a decision nobody can
+# audit later. These warn; anything not listed errors.
+GRANDFATHERED_RATIOS = {
+    "advertorial-seat-cushion-l-shaped-v01":
+        "page 31, routed before ADR-016 — 2:1 and 5:3 at the hero and the "
+        "problems block",
+    "listicle-air-cooler-wall-mounted-v01":
+        "page 13, the oldest session and the one whose page id was never "
+        "recovered (ADR-034) — 5:3 across the reason cards",
+    "listicle-bp-monitor-upper-arm-v01":
+        "page 73, and this one POSTDATES ADR-016 by six days — a real breach "
+        "listed here only so the validator stays green for the lanes that did "
+        "not cause it. Fix the 3:2 options when that page is next opened",
+}
+
 
 def check_prompt_sets():
     """ADR-021: this pipeline is paste-and-run, so a delivered prompt is
@@ -753,6 +776,65 @@ def check_prompt_sets():
                     err(rel, msg)
 
 
+def check_ratios(types):
+    """ADR-016: only 16:9, 4:3, 1:1, 3:4 and 9:16, system-wide.
+
+    Two surfaces, and they get different treatment on purpose.
+
+    A DELIVERED prompt is the deliverable, so an illegal ratio there is an error
+    for anything routed from now on. Three sessions predate this check and are
+    named in GRANDFATHERED_RATIOS with their reasons; they warn.
+
+    A TYPE FILE only warns, because ADR-016 said those are "corrected when it is
+    next opened" and the files belong to render-refinement lanes. Erroring them
+    would turn the tree red for ten types nobody is currently editing and block
+    every lane's ADR-007 autopilot for a rule none of them broke today.
+    """
+    for tid in sorted(types):
+        declared = types[tid]["fm"].get("ratios") or []
+        illegal = [r for r in declared if r not in LEGAL_RATIOS]
+        if illegal:
+            warn(f"registry/types/{tid}.md",
+                 f"declares {illegal} — ADR-016 allows only "
+                 f"{list(LEGAL_RATIOS)}. Correct it when this file is next "
+                 f"opened; the declared set is what a router is allowed to ask "
+                 f"the renderer for")
+
+    sessions_dir = os.path.join(ROOT, "query", "sessions")
+    if not os.path.isdir(sessions_dir):
+        return
+    for session in sorted(os.listdir(sessions_dir)):
+        path = os.path.join(sessions_dir, session, "prompts.json")
+        if not os.path.exists(path):
+            continue
+        rel = os.path.relpath(path, ROOT)
+        try:
+            with open(path, encoding="utf-8") as f:
+                doc = json.load(f)
+        except json.JSONDecodeError:
+            continue            # check_prompt_sets already reported it
+        seen = []
+        for slot in doc.get("slots", []):
+            for opt in slot.get("options", []):
+                r = opt.get("ratio")
+                if r and r not in LEGAL_RATIOS:
+                    seen.append(f"slot `{slot.get('slot_id')}` option "
+                                f"{opt.get('opt')} asks for `{r}`")
+            gif = slot.get("gif") or {}
+            gr = gif.get("ratio")
+            if gif.get("eligible") and gr and gr not in LEGAL_RATIOS:
+                seen.append(f"slot `{slot.get('slot_id')}` gif asks for `{gr}`")
+        if not seen:
+            continue
+        head = (f"{len(seen)} ratio(s) outside ADR-016's five: " +
+                "; ".join(seen[:3]) +
+                (f"; and {len(seen) - 3} more" if len(seen) > 3 else ""))
+        if session in GRANDFATHERED_RATIOS:
+            warn(rel, head + f" — grandfathered: {GRANDFATHERED_RATIOS[session]}")
+        else:
+            err(rel, head)
+
+
 def check_grandfather_sets():
     """An exemption keyed on a directory name goes stale the moment that
     directory is renamed, and it fails SILENTLY: the name stops matching, the
@@ -774,7 +856,8 @@ def check_grandfather_sets():
     live = {d for d in os.listdir(sessions_dir)
             if os.path.isdir(os.path.join(sessions_dir, d))}
     for label, names in (("PRE_CONTRACT_SESSIONS", PRE_CONTRACT_SESSIONS),
-                         ("GRANDFATHERED_MULTIPASS", GRANDFATHERED_MULTIPASS)):
+                         ("GRANDFATHERED_MULTIPASS", GRANDFATHERED_MULTIPASS),
+                         ("GRANDFATHERED_RATIOS", GRANDFATHERED_RATIOS)):
         for name in sorted(set(names) - live):
             err("scripts/validate.py",
                 f"{label} names `{name}`, which is not a session directory. It "
@@ -1333,6 +1416,7 @@ def main(argv):
     check_json_files()
     contracts = check_content_contracts()
     check_prompt_sets()
+    check_ratios(types)
     check_grandfather_sets()
     check_session_names()
     shortlist = check_slot_rules(types)

@@ -15,7 +15,11 @@ Verified facts this adapter is built on (Google Developers Blog, "How to prompt 
   composition and style transfer; the model analyzes the original's style, lighting
   and perspective.
 - **Conversational editing** is supported ("Keep everything the same, but…") —
-  multi-pass pipelines are officially viable.
+  multi-pass pipelines are officially viable. **That is a fact about the MODEL and
+  this pipeline does not use it** (ADR-021, ADR-039): the constraint is the
+  operator, who renders by hand and does not composite. Rule 3 is retired.
+  Recorded here rather than deleted because the capability is real and a future
+  operator decision could reach for it.
 
 ## Rule 1 — Negative translation
 
