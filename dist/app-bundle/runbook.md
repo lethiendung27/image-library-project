@@ -202,10 +202,18 @@ render to the real product.
 ## Step 6 — Render through the adapter
 
 Apply `adapters/nano-banana.md` (or the target model's adapter): negative
-translation, reference-image phrasing, ratio parameter, and — for
+translation, reference-image phrasing, ratio parameter. The canonical prompt stays
+model-agnostic in the type file; only the rendered output is model-specific.
+
+**Nothing is expanded into `steps[]`, ever.** This step used to end "and — for
 `generation_mode: multi-pass` — expand `steps[]` with the adapter's edit-script
-template. The canonical prompt stays model-agnostic in the type file; only the
-rendered output is model-specific.
+template", which is the exact thing Step 3 forbids, in the same file, four steps
+apart. ADR-021 declared the capability and corrected Step 3 and
+`registry/vocabulary.yaml`; it never came back for this line or for the adapter's
+Rule 3, so a session that read Step 3 and then followed Step 6 was told to do both.
+A type's `generation_mode: multi-pass` is a fact about what the PICTURE needs, and
+it stays true in the type file — what it never does is reach a delivered option.
+Take the type's own single-pass route (ADR-021, ADR-039).
 
 ## Step 5b — COVERAGE PASS (product-driven, runs after the sections are routed)
 
