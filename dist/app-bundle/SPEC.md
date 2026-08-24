@@ -130,7 +130,7 @@ replaced_by: null            # required non-null when status: deprecated
 ratios: ["1:1", "4:5"]       # required; runtime parameters, never identity
 channels: [marketplace]      # required; subset of vocabulary.channels
 requires_product_photo: true # required
-generation_mode: single-pass # required; single-pass | multi-pass (variant overrides in text)
+generation_mode: single-pass # required; multi-pass is DEPRECATED, ADR-041
 axes: {}                     # optional; map axis → supported values (subset of vocabulary.axes)
 variants: []                 # optional; list of --slug names defined in VARIANTS section
 exempt_from: []              # optional; rule IDs from registry/rules.md
