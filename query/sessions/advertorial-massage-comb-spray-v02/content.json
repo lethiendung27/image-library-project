@@ -1,0 +1,282 @@
+{
+  "product": {
+    "name": "Electric Spray Air Cushion Massage Comb",
+    "category": "beauty",
+    "specification": "Ultrasonic dry-touch nano-mist atomiser fed from a compact built-in reservoir that takes clean water or a liquid essence · soft elastic air cushion base with rounded massage bristles · six integrated red LEDs under the bristle bed · high-frequency micro-vibrations that distribute the mist from roots to tips · one-click retractable teeth that release trapped loose hair for cleaning · Type-C charging · cordless, no heat.",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "active",
+      "visible_output": "an ultra-fine dry-touch nano-mist from the ultrasonic atomiser, and 6 red LEDs under the bristle bed",
+      "mounting": "handheld",
+      "colorways": [
+        "as supplied"
+      ],
+      "body_contact": true,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": true
+    },
+    "problems_solved": [
+      "Dry brushing with rigid plastic teeth creates surface friction that charges fine strands with static, so every stroke lifts more hair into a flyaway halo instead of settling it",
+      "Rigid teeth scrape the scalp and drag through fragile fibres rather than yielding to a knot, which is what turns detangling into pain",
+      "Overnight bedhead arrives charged and gets worse the more it is brushed, immediately before video calls and the school run",
+      "Detangling a child's fine hair is a tearful battle that makes the morning late",
+      "Leave-in oils and silicone serums leave fine roots flat and greasy by midday without touching the dryness underneath",
+      "A standard trigger spray bottle throws heavy droplets that soak patches and leave others dry, creating frizz instead of an even refresh",
+      "Loose shed hair stays trapped in a fixed-bristle brush and cannot be cleaned out"
+    ],
+    "raw_features": [
+      "Ultrasonic dry-touch nano-mist atomisation that neutralises static without wetting the hair",
+      "Compact built-in reservoir taking clean water or a liquid essence",
+      "Soft elastic air cushion base with rounded massage tips that yield to a knot instead of dragging through it",
+      "Six integrated red LEDs that illuminate the scalp during use",
+      "High-frequency micro-vibrations that distribute the mist evenly from roots to tips",
+      "One-click retractable teeth that release trapped loose hair for hygienic cleaning",
+      "Type-C charging, cordless, and no heat anywhere in the device"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "First-person advertorial header, bylined to Sarah Jenkins, an accountant and mother. Standing at the bathroom sink at 6:45 in the morning, every stroke of her plastic brush turns fine morning frizz into an unmanageable cloud of static. The headline calls it the morning static trap that turned brushing into a battle every single day.",
+        "image_slots": [
+          {
+            "slot_id": "hero.image",
+            "ratio": "16:9",
+            "position": "header image under the headline"
+          }
+        ]
+      },
+      {
+        "id": "content.items.0",
+        "role": "problem-agitation",
+        "copy_summary": "The morning routine was falling apart. At the mirror before an early check-in she watches her hair flare into an electric halo with every brush stroke. Her manager notices her messy webcam angle during the Monday quarterly presentation while she keeps smoothing down runaway flyaways. The cost here is appearance and self-image at work, not physical pain.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.0.image",
+            "ratio": "1:1",
+            "position": "body item 1"
+          }
+        ]
+      },
+      {
+        "id": "content.items.1",
+        "role": "problem-agitation",
+        "copy_summary": "When morning tears became routine. Last month her daughter burst into tears as rigid bristles snagged on a stubborn crown knot and they missed the primary school bus entirely; her husband had to take the brush from her trembling hand while the child sat on the hallway floor. This is the child pain beat and the one G13 governs.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.1.image",
+            "ratio": "1:1",
+            "position": "body item 2"
+          }
+        ]
+      },
+      {
+        "id": "content.items.2",
+        "role": "comparison",
+        "copy_summary": "Every quick solution only made it worse. Expensive leave-in oils and heavy silicone serums left fine roots flat and greasy by midday. A standard spray bottle left dripping wet spots that caused frizz patches instead of an even refresh. Three named alternatives that were bought and abandoned.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.2.image",
+            "ratio": "1:1",
+            "position": "body item 3"
+          }
+        ]
+      },
+      {
+        "id": "content.items.3",
+        "role": "cause",
+        "copy_summary": "Why friction traps dry strands. Standard dry brushing creates severe surface friction that charges dry strands with static. Rigid plastic teeth scrape delicate scalp tissue and drag through fragile fibres rather than yielding to natural knots. The named mechanism is friction to charge to repulsion.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.3.image",
+            "ratio": "1:1",
+            "position": "body item 4"
+          }
+        ]
+      },
+      {
+        "id": "content.items.4",
+        "role": "mechanism",
+        "copy_summary": "The gentle morning refresh. The comb combines an ultrasonic dry-touch nano-mist atomiser with a soft elastic cushion base and rounded massage bristles. Six integrated red LEDs illuminate the scalp while micro-vibrations distribute the fine mist evenly from roots to tips. A component list rather than a body-structure claim.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.4.image",
+            "ratio": "1:1",
+            "position": "body item 5"
+          }
+        ]
+      },
+      {
+        "id": "content.items.5",
+        "role": "outcome",
+        "copy_summary": "Peaceful mornings are back. Every school morning the daughter sits happily in her chair while the mist and the soft cushion work through overnight bedhead without a single whimper. The narrator's own routine takes barely two minutes before team video calls, leaving her hair smooth and static-free without a wash.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.5.image",
+            "ratio": "1:1",
+            "position": "body item 6"
+          }
+        ]
+      },
+      {
+        "id": "howto",
+        "role": "how-to-use",
+        "copy_summary": "Three simple steps every morning. One, fill the compact built-in tank with clean water or a liquid essence. Two, turn on the mist and glide from the tips first, upward along the scalp. Three, press the one-click retractable button to release trapped loose hair.",
+        "image_slots": [
+          {
+            "slot_id": "howto.image",
+            "ratio": "1:1",
+            "position": "how-to card, beside the three numbered steps"
+          }
+        ]
+      },
+      {
+        "id": "social",
+        "role": "social-proof",
+        "copy_summary": "A six-photo grid sitting inside the SAME section element as six attributed quotes, each carrying a reviewer name, a five-star row and a Verified label — measured on this export: zero closing section tags between the grid and the quotes, twelve Verified labels and sixty star icons on the page. The quotes span a mother whose daughter now brushes her own hair, a sceptic with fine frizzy texture, a sensitive scalp, the retractable teeth for cleaning, a quick no-wash-day routine, and a whole family sharing one.",
+        "image_slots": [
+          {
+            "slot_id": "social.photos.0.image",
+            "ratio": "1:1",
+            "position": "photo grid, tile 1 of 6"
+          },
+          {
+            "slot_id": "social.photos.1.image",
+            "ratio": "1:1",
+            "position": "photo grid, tile 2 of 6"
+          },
+          {
+            "slot_id": "social.photos.2.image",
+            "ratio": "1:1",
+            "position": "photo grid, tile 3 of 6"
+          },
+          {
+            "slot_id": "social.photos.3.image",
+            "ratio": "1:1",
+            "position": "photo grid, tile 4 of 6"
+          },
+          {
+            "slot_id": "social.photos.4.image",
+            "ratio": "1:1",
+            "position": "photo grid, tile 5 of 6"
+          },
+          {
+            "slot_id": "social.photos.5.image",
+            "ratio": "1:1",
+            "position": "photo grid, tile 6 of 6"
+          }
+        ]
+      },
+      {
+        "id": "offer",
+        "role": "cta",
+        "copy_summary": "Closing offer card with the buy control.",
+        "image_slots": [
+          {
+            "slot_id": "offer.image",
+            "ratio": "1:1",
+            "position": "offer card image"
+          }
+        ]
+      },
+      {
+        "id": "brand-furniture",
+        "role": "cta",
+        "copy_summary": "Masthead and footer brand marks.",
+        "image_slots": [
+          {
+            "slot_id": "header.logo",
+            "ratio": "1:1",
+            "position": "masthead"
+          },
+          {
+            "slot_id": "footer.logo",
+            "ratio": "1:1",
+            "position": "footer"
+          }
+        ]
+      },
+      {
+        "id": "author-and-commenters",
+        "role": "author",
+        "copy_summary": "Bylined portrait furniture: the hero byline avatar for Sarah Jenkins, six reviewer avatars beside the quotes, five commenter avatars and two reply avatars in the comment thread.",
+        "image_slots": [
+          {
+            "slot_id": "hero.author_avatar",
+            "ratio": "1:1",
+            "position": "hero byline"
+          },
+          {
+            "slot_id": "social.items.0.avatar",
+            "ratio": "1:1",
+            "position": "review quote 1"
+          },
+          {
+            "slot_id": "social.items.1.avatar",
+            "ratio": "1:1",
+            "position": "review quote 2"
+          },
+          {
+            "slot_id": "social.items.2.avatar",
+            "ratio": "1:1",
+            "position": "review quote 3"
+          },
+          {
+            "slot_id": "social.items.3.avatar",
+            "ratio": "1:1",
+            "position": "review quote 4"
+          },
+          {
+            "slot_id": "social.items.4.avatar",
+            "ratio": "1:1",
+            "position": "review quote 5"
+          },
+          {
+            "slot_id": "social.items.5.avatar",
+            "ratio": "1:1",
+            "position": "review quote 6"
+          },
+          {
+            "slot_id": "comments.items.0.avatar",
+            "ratio": "1:1",
+            "position": "comment 1"
+          },
+          {
+            "slot_id": "comments.items.0.reply_avatar",
+            "ratio": "1:1",
+            "position": "comment 1 reply"
+          },
+          {
+            "slot_id": "comments.items.1.avatar",
+            "ratio": "1:1",
+            "position": "comment 2"
+          },
+          {
+            "slot_id": "comments.items.2.avatar",
+            "ratio": "1:1",
+            "position": "comment 3"
+          },
+          {
+            "slot_id": "comments.items.2.reply_avatar",
+            "ratio": "1:1",
+            "position": "comment 3 reply"
+          },
+          {
+            "slot_id": "comments.items.3.avatar",
+            "ratio": "1:1",
+            "position": "comment 4"
+          },
+          {
+            "slot_id": "comments.items.4.avatar",
+            "ratio": "1:1",
+            "position": "comment 5"
+          }
+        ]
+      }
+    ]
+  }
+}
