@@ -2285,3 +2285,10 @@ rules rather than one; `scripts/gen-gif-cards.py` drops `never` from `VI_FIELDS`
 sections, and `card_vi()` no longer takes the ledger or the frontmatter because it no longer
 prints a number; `scripts/validate.py` follows on the field list. Twelve cards regenerated
 outside the repo.
+
+Addendum, same day: rule 3's keyword list was scoped to ids, channels, fields and paths, and
+the prose it protected still translated the craft vocabulary — "quay cận" for close-up, "cắt
+bổ" for cutaway, "khung hình" for frame — so the Vietnamese card and the English law beside it
+described the same shot in two vocabularies. Rule 3 now names the craft terms (frame,
+close-up, cutaway, loop, motion, rotor) and the ten translated occurrences are swapped in
+place. Four cards regenerated.

@@ -14,9 +14,11 @@ view.
    grey to clean" — which carry their meaning only for someone who already knows the library.
    An editor holding a file does not. "The seat cushion page has a `cause` loop where…" does.
 3. **Keep every English keyword as it stands**: type ids, `channels` values, `group`, `kind`,
-   field names, file paths. Translating `landing-page` severs the card from every other
-   surface the editor touches; translating `proof` makes the folder name and the card
-   disagree.
+   field names, file paths — and the craft vocabulary the loops are briefed in: frame,
+   close-up, cutaway, loop, motion, rotor. Translating `landing-page` severs the card from
+   every other surface the editor touches; translating `proof` makes the folder name and the
+   card disagree; and translating close-up into "quay cận" makes this card and the English
+   law beside it describe the same shot in two vocabularies.
 
 `scripts/gen-gif-cards.py` reads this file and writes `README.vi.md` beside each folder's
 `README.md`. `scripts/validate.py` fails a gif type with no entry here, or an entry missing a
@@ -30,12 +32,12 @@ inside a field are kept. Four fields: `message`, `yes`, `no`, `vs`.
 
 message:
 `cause` quay đúng lúc thủ phạm đang gây hại — cái thứ làm người mua khổ, đang diễn ra ngay
-trước ống kính. Sản phẩm không có trong khung và cũng không được ám chỉ: loop này đi buộc tội,
+trước ống kính. Sản phẩm không có trong frame và cũng không được ám chỉ: loop này đi buộc tội,
 chưa giới thiệu giải pháp.
 
 Ví dụ, trang bán đệm ngồi ergonomic có một loop `cause` như sau. Người lái đang ngồi trên tấm
 đệm phẳng cũ trên ghế xe. Xe phanh, tấm đệm trượt tới trước dưới người anh ta, và khe hở sau
-lưng dưới hở toác ra. Chiếc đệm đang bán không xuất hiện ở đâu trong khung cả.
+lưng dưới hở toác ra. Chiếc đệm đang bán không xuất hiện ở đâu trong frame cả.
 
 yes:
 Nộp vào đây khi mục trên trang đang nói **cái gì gây ra vấn đề**, và cái đó là một sự việc đang
@@ -50,7 +52,7 @@ lột hết ga nằm đó thì không có gì chuyển động — đó là ản
 quay được bụi đang bốc lên khỏi thớ vải lúc có người ngồi xuống thì mới thành loop.
 
 vs:
-Ranh giới với `proof` rất gọn: **chỉ cần sản phẩm bước vào khung là hết `cause`**. Sự vắng mặt
+Ranh giới với `proof` rất gọn: **chỉ cần sản phẩm bước vào frame là hết `cause`**. Sự vắng mặt
 của sản phẩm chính là phép thử — có nó trong hình thì loop chuyển sang nói về kết quả, và phải
 nộp vào `proof`.
 
@@ -61,10 +63,10 @@ là hai cách dựng, không phải hai type.
 ## mechanism
 
 message:
-`mechanism` mở sản phẩm ra cho xem **bên trong nó làm gì mà đáng tiền**. Bộ phận làm việc được
-phóng to hoặc cắt bổ ra, và đang làm đúng một việc mà sản phẩm được bán vì nó.
+`mechanism` mở sản phẩm ra cho xem **bên trong nó làm gì mà đáng tiền**. Bộ phận làm việc được quay
+close-up hoặc cutaway, và đang làm đúng một việc mà sản phẩm được bán vì nó.
 
-Ví dụ, trang bán lược xịt điện có một loop `mechanism` như sau. Quay cận giường răng lược, sau
+Ví dụ, trang bán lược xịt điện có một loop `mechanism` như sau. Close-up giường răng lược, sau
 ba tuần dùng đã bám đầy tóc rụng và bụi. Một ngón tay bấm nút trên cán, cả hàng răng thụt hẳn
 vào lớp đệm, và búi tóc bong ra nguyên mảng.
 
@@ -81,8 +83,8 @@ quay được, nhưng **tác dụng** của nó lên da đầu thì không — k
 xem. Nhiệt độ, mùi, chất lượng không khí, phản ứng hoá học trong pin đều rơi vào nhóm này.
 
 vs:
-Khác `use` ở **khung hình, không phải ở chủ thể**. Vẫn cái kéo điện đó: quay cả bàn tay lẫn cả
-sản phẩm là `use`; quay cận lưỡi kéo, không lấy người làm chủ thể, là `mechanism`.
+Khác `use` ở **framing, không phải ở chủ thể**. Vẫn cái kéo điện đó: quay cả bàn tay lẫn cả
+sản phẩm là `use`; close-up lưỡi kéo, không lấy người làm chủ thể, là `mechanism`.
 
 Khác `proof` ở chỗ đây là nguyên nhân còn kia là kết quả. Rotor đang quay là `mechanism`; bụi
 rời khỏi tấm nệm là `proof`. Loop nào cho xem cả hai thì tính là `proof`, vì người xem sẽ chấm
@@ -174,15 +176,15 @@ Nộp vào đây khi việc của mục là **thao tác**: một đoạn hướn
 thân nó đã là một hành động, hoặc một dụng cụ mà toàn bộ điểm bán nằm ở chỗ làm nó dễ.
 
 no:
-Đừng nộp vào đây khi điều cần nói chỉ nói được bằng cách phóng to bộ phận làm việc, hoặc khi
+Đừng nộp vào đây khi điều cần nói chỉ nói được bằng close-up bộ phận làm việc, hoặc khi
 mục đang nói về **thay đổi mà thao tác tạo ra** chứ không phải bản thân thao tác.
 
-Ví dụ, vẫn chiếc lược đó: quay hai bàn tay chải xuôi một lượt là `use`; quay cận hàng răng thụt
+Ví dụ, vẫn chiếc lược đó: quay hai bàn tay chải xuôi một lượt là `use`; close-up hàng răng thụt
 vào nhả búi tóc là `mechanism`; quay quầng tóc tĩnh điện xẹp xuống sau một lượt chải là `proof`.
 Cùng một sản phẩm, ba loop, ba folder khác nhau.
 
 vs:
-Khác `mechanism` ở khung hình: cả sản phẩm cộng một bàn tay là `use`; cận bộ phận làm việc,
+Khác `mechanism` ở framing: cả sản phẩm cộng một bàn tay là `use`; close-up bộ phận làm việc,
 không có người, là `mechanism`.
 
 Khác `proof` ở chỗ `use` cho xem hành động, còn `proof` cho xem thay đổi mà hành động gây ra.
@@ -195,7 +197,7 @@ Số nhịp là **tham số, không phải một type khác**: một thao tác l
 
 message:
 `unboxing` cho thấy **bạn thực sự nhận được những gì**, từng món một. Hộp mở ra, các món lần
-lượt được lấy ra cho tới khi cả bộ nằm hết trong khung.
+lượt được lấy ra cho tới khi cả bộ nằm hết trong frame.
 
 Ví dụ, một bộ dụng cụ nâng đồ nội thất bán qua kênh quảng cáo. Hộp mở trên sàn gỗ, lấy ra bốn
 con lăn, rồi thanh đòn bẩy, rồi tờ hướng dẫn, xếp thành hàng cho tới khi nhìn thấy đủ bộ. Câu
