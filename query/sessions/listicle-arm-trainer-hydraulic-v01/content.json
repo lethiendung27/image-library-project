@@ -1,0 +1,263 @@
+{
+  "product": {
+    "name": "Adjustable Hydraulic Arm Strength Trainer with LED Counter",
+    "category": "Home fitness equipment — adjustable-resistance upper-body trainer",
+    "specification": "Hydraulic upper-body twister/press trainer. Resistance set by a single dial across a wide range, changeable in about two seconds mid-workout. Hydraulic cylinder gives smooth controlled resistance in both directions with no stored energy and therefore no snap-back. Built-in LCD counter credits a full stroke. Steel arms fold flat for storage.",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "active",
+      "visible_output": "none",
+      "mounting": "handheld",
+      "colorways": [
+        "as supplied"
+      ],
+      "body_contact": true,
+      "symptom_visibility": "invisible",
+      "result_visibility": "invisible",
+      "multi_step_usage": true
+    },
+    "problems_solved": [
+      "Bodyweight training has plateaued and there is no way to add load without buying heavier weights again and again",
+      "A dumbbell rack costs money on repeat and eats floor space a small flat does not have",
+      "Spring-based twister bars store energy and can snap back hard enough to injure",
+      "Changing plates mid-workout cools the muscle and breaks the session",
+      "Two people of very different strength cannot share one fixed-load device",
+      "Reps get lost mid-set, so progress at home is a feeling rather than a recorded fact"
+    ],
+    "raw_features": [
+      "Single-dial hydraulic resistance spanning light toning to heavy pressing",
+      "Resistance changes in about two seconds, mid-set if needed",
+      "Hydraulic cylinder resists in both directions with no stored energy and no recoil",
+      "Built-in LCD counter tracks reps automatically and credits only a full stroke",
+      "Steel arms fold flat; the frame stores under a couch or in a drawer",
+      "Pivot screws want retightening after heavy weeks of daily use"
+    ],
+    "personas": [
+      "Home fitness users aged 25-50 training in a flat or small house with no room for a weight rack",
+      "People whose bodyweight routine has plateaued and who pay for a gym they rarely visit",
+      "Couples sharing one device across very different strength levels"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "opener",
+        "role": "hero",
+        "copy_summary": "Listicle header, solution-aware. Push-ups stopped building anything months ago; the next dumbbell up restarts the same problem in six weeks, a rack of mismatched iron already crowds a flat with no room for it, and a gym membership renews for a place visited twice.",
+        "image_slots": [
+          {
+            "slot_id": "content.0.image",
+            "ratio": "16:9",
+            "position": "listicle header, under the title and dek, above the intro paragraphs"
+          }
+        ]
+      },
+      {
+        "id": "reason-1",
+        "role": "mechanism",
+        "copy_summary": "Reason 1 — Breaks Through Persistent Bodyweight Plateaus. Reps keep climbing while strength stays flat, because muscle grows against added resistance and bodyweight has no dial. The trainer puts that scale on one dial, so the chest meets a load that finally pushes back.",
+        "image_slots": [
+          {
+            "slot_id": "content.1.items.0.image",
+            "ratio": "1:1",
+            "position": "reason card 1, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-2",
+        "role": "cause",
+        "copy_summary": "Reason 2 — Eliminates Violent Spring Recoil and Noise. A coiled twister bar stores energy and chooses its own moment to release it; when grip tires on the last rep it can snap back hard enough to bruise a forearm. The coils also fade and creak. The hydraulic stroke stores nothing.",
+        "image_slots": [
+          {
+            "slot_id": "content.1.items.1.image",
+            "ratio": "1:1",
+            "position": "reason card 2, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-3",
+        "role": "comparison",
+        "copy_summary": "Reason 3 — Replaces Space-Consuming Weight Racks. A dumbbell rack is a subscription paid in iron: every gain sends you back for a heavier pair, the old ones keep their floor space, and a one-bedroom flat turns into a storage problem. One dial spans the same range and the frame folds flat under the couch.",
+        "image_slots": [
+          {
+            "slot_id": "content.1.items.2.image",
+            "ratio": "1:1",
+            "position": "reason card 3, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-4",
+        "role": "mechanism",
+        "copy_summary": "Reason 4 — Adapts Resistance Instantly with a Single Dial. Unscrewing collars between sets cools the working muscle and breaks the count, so most people settle on the wrong load. Here the change is a wrist turn of about two seconds, mid-set if the plan calls for it, so drop sets run straight through.",
+        "image_slots": [
+          {
+            "slot_id": "content.1.items.3.image",
+            "ratio": "1:1",
+            "position": "reason card 4, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-5",
+        "role": "social-proof",
+        "copy_summary": "Reason 5 — Accommodates Multiple Users Across Different Strength Levels. Shared weights fail one of the two people sharing them. Because the dial covers the whole range, one person runs high-rep toning on a low setting, hands it across the couch, and the other dials up for pressing work in the same minute.",
+        "image_slots": [
+          {
+            "slot_id": "content.1.items.4.image",
+            "ratio": "1:1",
+            "position": "reason card 5, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-6",
+        "role": "how-to-use",
+        "copy_summary": "Reason 6 — Requires Basic Form Familiarity Without Wall Charts. There is no exercise chart in the box and most buyers notice that first; you find your own grip angles. The pivot screws want retightening after heavy weeks, and the counter only credits a full stroke.",
+        "image_slots": [
+          {
+            "slot_id": "content.3.items.0.image",
+            "ratio": "1:1",
+            "position": "reason card 6, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-7",
+        "role": "outcome",
+        "copy_summary": "Reason 7 — Tracks Every Rep Automatically via Integrated LCD Counter. Without a number, progress at home is a feeling and feelings drift; reps get lost mid-set and nothing says whether this month beat the last. The counter makes a short session count as a real one, logged instead of guessed.",
+        "image_slots": [
+          {
+            "slot_id": "content.3.items.1.image",
+            "ratio": "1:1",
+            "position": "reason card 7, the closing card of the list"
+          }
+        ]
+      },
+      {
+        "id": "reviews",
+        "role": "social-proof",
+        "copy_summary": "Review wall titled \"It is Going Viral on Social Media\". Six quotes, each carrying a full name and a Verified Buyer label: replaced three sets of dumbbells in a studio flat, no terrifying snap back from the old coil bar, three quick sets between remote meetings, folds under the bed, the dial lets a couple train together, a deep burn push-ups stopped giving.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.photos.0.image",
+            "ratio": "1:1",
+            "position": "review wall tile 1 of 6, above the quote and its attribution"
+          },
+          {
+            "slot_id": "reviews.photos.1.image",
+            "ratio": "1:1",
+            "position": "review wall tile 2 of 6, above the quote and its attribution"
+          },
+          {
+            "slot_id": "reviews.photos.2.image",
+            "ratio": "1:1",
+            "position": "review wall tile 3 of 6, above the quote and its attribution"
+          },
+          {
+            "slot_id": "reviews.photos.3.image",
+            "ratio": "1:1",
+            "position": "review wall tile 4 of 6, above the quote and its attribution"
+          },
+          {
+            "slot_id": "reviews.photos.4.image",
+            "ratio": "1:1",
+            "position": "review wall tile 5 of 6, above the quote and its attribution"
+          },
+          {
+            "slot_id": "reviews.photos.5.image",
+            "ratio": "1:1",
+            "position": "review wall tile 6 of 6, above the quote and its attribution"
+          }
+        ]
+      },
+      {
+        "id": "offer",
+        "role": "cta",
+        "copy_summary": "Offer furniture: a sticky deal rail, a scarcity block claiming up to half off with a live low-stock counter, and a 90-day money-back guarantee band. None of these slots carries a library image — they are badges, a product cut-out and brand marks.",
+        "image_slots": [
+          {
+            "slot_id": "rail.image",
+            "ratio": "1:1",
+            "position": "sticky deal rail thumbnail"
+          },
+          {
+            "slot_id": "scarcity.image",
+            "ratio": "16:9",
+            "position": "scarcity block, beside the countdown"
+          },
+          {
+            "slot_id": "scarcity.badge_image",
+            "ratio": "1:1",
+            "position": "scarcity block badge"
+          },
+          {
+            "slot_id": "guarantee.badge_image",
+            "ratio": "1:1",
+            "position": "guarantee band badge"
+          },
+          {
+            "slot_id": "header.logo",
+            "ratio": "1:1",
+            "position": "site header brand mark"
+          },
+          {
+            "slot_id": "footer.logo",
+            "ratio": "1:1",
+            "position": "site footer brand mark"
+          }
+        ]
+      },
+      {
+        "id": "author",
+        "role": "author",
+        "copy_summary": "About-the-author card for Aaron Ross, who covers home fitness gear and resistance training equipment, plus a simulated seven-entry comment thread whose entries each carry an avatar.",
+        "image_slots": [
+          {
+            "slot_id": "closing.bio_image",
+            "ratio": "1:1",
+            "position": "About the Author card portrait"
+          },
+          {
+            "slot_id": "comments.items.0.avatar",
+            "ratio": "1:1",
+            "position": "comment thread avatar 1 of 7"
+          },
+          {
+            "slot_id": "comments.items.1.avatar",
+            "ratio": "1:1",
+            "position": "comment thread avatar 2 of 7"
+          },
+          {
+            "slot_id": "comments.items.2.avatar",
+            "ratio": "1:1",
+            "position": "comment thread avatar 3 of 7"
+          },
+          {
+            "slot_id": "comments.items.3.avatar",
+            "ratio": "1:1",
+            "position": "comment thread avatar 4 of 7"
+          },
+          {
+            "slot_id": "comments.items.4.avatar",
+            "ratio": "1:1",
+            "position": "comment thread avatar 5 of 7"
+          },
+          {
+            "slot_id": "comments.items.5.avatar",
+            "ratio": "1:1",
+            "position": "comment thread avatar 6 of 7"
+          },
+          {
+            "slot_id": "comments.items.6.avatar",
+            "ratio": "1:1",
+            "position": "comment thread avatar 7 of 7"
+          }
+        ]
+      }
+    ]
+  }
+}
