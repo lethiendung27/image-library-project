@@ -265,6 +265,10 @@
             "type": "string",
             "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
           },
+          "single_type_basis": {
+            "type": "string",
+            "description": "Names the exhausted cell when a multi-option slot legitimately carries ONE type across its options: which role\u00d7channel cell it was, and what the attribute gates left. One-type-once binds the recommended SET, never the option pool (runbook Step 4, e7dfe8c), so a single-type pool is an error unless this field says why \u2014 scripts/validate.py enforces it for sessions routed after 2026-08-25 (ADR-052). The declared cases the rule itself names: the role cell holds one type after the gates, or a repeating section's set law makes the tile the unit of variation."
+          },
           "recommended_media": {
             "enum": [
               "still",

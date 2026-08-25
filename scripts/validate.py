@@ -745,6 +745,77 @@ GRANDFATHERED_RATIOS = {
 }
 
 
+
+# The 12 sessions routed before ADR-052 landed. Their 57 single-type pools were
+# legal output under the practice of their day and are records of completed
+# routings; the gate binds every session routed after 2026-08-25. One aggregate
+# warning keeps the debt visible without drowning the live signal.
+GRANDFATHERED_SINGLE_TYPE = {
+    "advertorial-massage-comb-spray-v02",
+    "advertorial-optical-drive-7in1-v01",
+    "advertorial-seat-cushion-l-shaped-v01",
+    "advertorial-seat-cushion-l-shaped-v02",
+    "advertorial-seat-cushion-l-shaped-v03",
+    "advertorial-seat-cushion-l-shaped-v04",
+    "advertorial-seat-cushion-l-shaped-v05",
+    "advertorial-seat-cushion-l-shaped-v06",
+    "listicle-air-cooler-wall-mounted-v01",
+    "listicle-bp-monitor-upper-arm-v01",
+    "listicle-massage-comb-spray-v01",
+    "listicle-mattress-vacuum-uv-v01",
+}
+
+
+def check_option_pools():
+    """ADR-052: one-type-once binds the recommended SET, never the option pool
+    (runbook Step 4, `e7dfe8c`). Read the other way, every second type looks
+    spent, B falls back to an axis or an execution every time, and a page ships
+    with no type variation at all — measured at 83 of 101 non-A options before
+    the correction, and again at 8 of 8 slots on page 193 with the corrected
+    paragraph already in force. A rule nothing runs is a rule nobody keeps, so
+    it runs here: a multi-option slot whose options all carry one type must
+    declare the exhausted cell in `single_type_basis`, or the session errors.
+    """
+    sessions_dir = os.path.join(ROOT, "query", "sessions")
+    if not os.path.isdir(sessions_dir):
+        return
+    inherited = 0
+    for session in sorted(os.listdir(sessions_dir)):
+        path = os.path.join(sessions_dir, session, "prompts.json")
+        if not os.path.exists(path):
+            continue
+        try:
+            with open(path, encoding="utf-8") as f:
+                doc = json.load(f)
+        except json.JSONDecodeError:
+            continue            # check_prompt_sets already reported it
+        offending = []
+        for slot in doc.get("slots", []):
+            opts = slot.get("options") or []
+            if len(opts) < 2 or slot.get("single_type_basis"):
+                continue
+            if len({o.get("type") for o in opts}) < 2:
+                offending.append(str(slot.get("slot_id")))
+        if not offending:
+            continue
+        if session in GRANDFATHERED_SINGLE_TYPE:
+            inherited += len(offending)
+            continue
+        rel = f"query/sessions/{session}/prompts.json"
+        shown = "; ".join(offending[:3])
+        more = f"; and {len(offending) - 3} more" if len(offending) > 3 else ""
+        err(rel, f"{len(offending)} multi-option slot(s) carry one type across "
+                 f"their options with no `single_type_basis`: {shown}{more} — "
+                 "one-type-once binds the recommended SET, never the option "
+                 "pool (runbook Step 4, ADR-052)")
+    if inherited:
+        warn("query/sessions",
+             f"{len(GRANDFATHERED_SINGLE_TYPE)} session(s) predate ADR-052 and "
+             f"carry {inherited} single-type option pool(s) between them — "
+             "grandfathered records of completed routings; the gate binds "
+             "sessions routed after 2026-08-25")
+
+
 def check_prompt_sets():
     """ADR-021: this pipeline is paste-and-run, so a delivered prompt is
     single-pass or it is not deliverable. Enforced here rather than left to a
@@ -891,7 +962,8 @@ def check_grandfather_sets():
             if os.path.isdir(os.path.join(sessions_dir, d))}
     for label, names in (("PRE_CONTRACT_SESSIONS", PRE_CONTRACT_SESSIONS),
                          ("GRANDFATHERED_MULTIPASS", GRANDFATHERED_MULTIPASS),
-                         ("GRANDFATHERED_RATIOS", GRANDFATHERED_RATIOS)):
+                         ("GRANDFATHERED_RATIOS", GRANDFATHERED_RATIOS),
+                         ("GRANDFATHERED_SINGLE_TYPE", GRANDFATHERED_SINGLE_TYPE)):
         for name in sorted(set(names) - live):
             err("scripts/validate.py",
                 f"{label} names `{name}`, which is not a session directory. It "
@@ -1500,6 +1572,7 @@ def main(argv):
     check_json_files()
     contracts = check_content_contracts()
     check_prompt_sets()
+    check_option_pools()
     check_ratios(types)
     check_multipass_declarations(types, staging)
     check_grandfather_sets()

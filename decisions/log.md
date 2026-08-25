@@ -2648,3 +2648,74 @@ as a loop, the type file carries four founding renders against it with ledger sh
 retiring an axis is a taxonomy change of a different weight than this instruction. It is named
 here so it is not rediscovered as drift: the axis is vestigial by decision, not by oversight.
 `motion.floor` and `motion.ceiling` are untouched for the reason ADR-050 gave.
+## ADR-052 · 2026-08-25 · The pool-diversity rule becomes a gate, because it was breached with itself already in force
+
+Owner instruction, 2026-08-25: every slot's A/B/C must span at least two image types, so the
+pictures offered for a slot stop repeating one type. The instruction is not new law. Runbook
+Step 4 has said exactly this since `e7dfe8c` — "one-type-once binds the recommended SET, never
+the option pool" — and recorded the measurement that motivated it: read the other way, 83 of
+101 non-A options across the first four routed pages varied on execution, 11 on axis, and 7 on
+type, so pages shipped with no type variation at all.
+
+**What makes this entry necessary is HOW the rule failed.** Page 193's first routing shipped
+8 of 8 multi-option slots single-type. The session that routed it had read Step 4's paragraph
+during preparation — the grep that surveyed the section is in the transcript — and applied
+one-type-once to the pool anyway. That is the strongest possible evidence that prose alone
+cannot hold this rule: it failed not through ignorance but through the exact misreading it was
+written to correct, in a session that had the correction in front of it. The repo's own
+maxim, written into the ADR-021 gate: a rule nothing runs is a rule nobody keeps.
+
+**The gate.** A multi-option slot whose options all carry one type is an ERROR unless the slot
+declares `single_type_basis` — a new string field at the schema's slots site naming the
+exhausted cell: which role×channel cell it was and what the attribute gates left, or which
+set law makes the tile the unit of variation. The two legitimate cases are the ones Step 4
+already names: the cell genuinely holds one type after the gates, and a repeating section
+whose type legislates a SET (each review tile emits one option; the variation lives across
+tiles). The declaration is the statement Step 4 asked `varies_on` to carry, made
+machine-readable, because a string marker inside a per-option field is exactly the kind of
+prose that drifted the first time.
+
+**Where it runs.** `scripts/validate.py` (`check_option_pools`), binding every session routed
+after 2026-08-25; and page 193's `build.py` carries the same check plus one the validator
+cannot run — check 19 fails the build when a B repeats a type recommended elsewhere without
+naming the displaced slot, which needs the recommended set and is per-session knowledge.
+
+**Grandfathering.** The 12 sessions routed before this gate carry 57 single-type pools between
+them; they are records of completed routings, legal output under the practice of their day,
+and are not migrated — the treatment ADR-024 gave page 13. They stand in
+`GRANDFATHERED_SINGLE_TYPE`, registered with `check_grandfather_sets` so a renamed session
+directory errors instead of silently shedding its exemption (the ADR-035 mechanism), and
+surface as ONE aggregate warning rather than twelve — the vocabulary.yaml pattern, chosen
+because twelve standing warnings would drown the live signal the warning list exists to carry.
+
+**Verified against known-bad input before the exemption was wired.** The gate was first
+installed with an EMPTY grandfather set and run against the repo: it flagged exactly the 12
+known-bad sessions and passed the re-routed page 193, then the set was populated and the tree
+returned to 0 errors with the one warning. The ADR-035 registration was mutation-tested by
+naming a nonexistent session in the set and watching the error fire. In the build, checks 18
+and 19 were proved live the same way, each mutation printing the state it created.
+
+**Rule 6c sweep.** `"binds the recommended SET"`: 1 TEACHES — `query/runbook.md:137`, the rule
+itself, which gains the enforcement paragraph rather than losing anything. `"no second type
+survives"`: 1 TEACHES — `query/runbook.md:94`, the B-option definition, LEFT STANDING as
+written: it stays true that B falls to an axis when no second type survives the gates, and
+what changes is that the slot must now also declare that fact in `single_type_basis`, which
+the enforcement paragraph states. `"single_type_basis"`: 0 TEACHES outside the surfaces this
+ADR edits (the term existed only in page 193's re-route, committed one commit earlier).
+
+**Consequences.**
+
+1. `scripts/validate.py`: `check_option_pools`, `GRANDFATHERED_SINGLE_TYPE`, and the set's
+   registration in `check_grandfather_sets`.
+2. `query/output.schema.json`: `single_type_basis` added at the SLOTS site only. There is no
+   duplicate-definition trap this time, and that is stated so nobody hunts for it: the
+   `recommended[]` item shape differs (additive proposals, `earns_its_place`) and the gate
+   does not bind it, so no second site exists to miss.
+3. `query/runbook.md` Step 4: the enforcement paragraph, immediately after the `e7dfe8c`
+   citation it enforces. Line 94's axis-B definition is left standing (see sweep).
+4. Session `build.py` files before page 193's are NOT retrofitted with check 18 — they are
+   records, and the validator now covers their outputs' future siblings.
+5. What the gate deliberately does NOT demand: three distinct types, or any minimum on
+   single-option slots. A repeating-section tile emits one option by set law, and two types
+   across three options is what the owner asked for and what Step 4's B-slot provides.
+   Raising the bar further is a separate decision with its own costs in prompt-writing time.

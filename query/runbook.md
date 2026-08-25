@@ -146,6 +146,18 @@ only slots that legitimately stay single-type are the ones whose role cell holds
 type after the attribute gates — say that in `varies_on` so the reason is on the record
 rather than inferred. `e7dfe8c`
 
+**Enforced since ADR-052, because this paragraph was breached with itself already in
+force.** Page 193's first routing shipped 8 of 8 multi-option slots single-type — the
+routing session had read the paragraph above during preparation and applied one-type-once
+to the pool anyway, which is the page-65 failure recurring with the correction on the
+books. So the rule now runs: `scripts/validate.py` fails a session routed after
+2026-08-25 whose multi-option slot carries one type across its options, and a session's
+own build carries the same check. The legitimate single-type case declares itself in
+`single_type_basis` on the slot — the statement this paragraph asked `varies_on` to
+carry, made machine-readable: which cell was exhausted, or which set law makes the tile
+the unit of variation. Twelve sessions predate the gate and stand as grandfathered
+records under one aggregate warning.
+
 **The table cell is exhausted → widen the derivation, never empty the slot.** An image
 slot with no options is a contract violation (SPEC §7.4). Work down this ladder and
 stop at the first rung that yields a legal type:
