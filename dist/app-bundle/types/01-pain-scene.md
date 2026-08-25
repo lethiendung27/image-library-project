@@ -425,7 +425,7 @@ Current law is above; the reasoning behind each entry is in the commit it cites 
   `does not agitate` on the same six products; new fault **A14**. `environment` becomes `place`,
   one phrase, no clutter inventory. `glow` NOT withdrawn — its extent binds at 4 of 4, which
   corrects 1.13, and marks rank by meaning over craft. Mark-free is conditional on a diagnostic
-  force. Ratios corrected to ADR-016's legal set.
+  force. Ratios corrected to ADR-016's legal set. · 60d5714
 - 1.15 (2026-08-21): **a minor in the subject slot is a renderability constraint, not a
   taste one.** Owner reported nano banana REFUSING a pain frame built on a child. New global
   rule **G13** carries the three writer's rules; SKELETON and SLOT CONSTRAINTS reference it
