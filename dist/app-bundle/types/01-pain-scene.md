@@ -181,10 +181,8 @@ rather than withdrawn — a boundary record is not grounds to retire a mark.
 the photographed scene could not have produced — emitted light, or drawn geometry. A filled
 region that follows an object's own surface is exactly what paint, dye, tape and fabric look
 like, so the eye reads it as material: a red tint made a glass into a pink glass, an orange
-contact band made a sock look like it had an orange cuff. Both forms were borrowed from
-`02-cause-anatomy` and both work there, because that type is a 2D ILLUSTRATION where
-everything in frame is already drawn. This type is photographic, and a fill has no way to
-announce itself. Wrong pressure is therefore an ORANGE GLOW on the contact, not a band.
+contact band made a sock look like it had an orange cuff. Both forms work in `02-cause-anatomy`,
+which is drawn throughout; this type is photographic and a fill has no way to announce itself. Wrong pressure is therefore an ORANGE GLOW on the contact, not a band.
 
 **Three admission gates. Check them before choosing a class.**
 
@@ -213,10 +211,11 @@ announce itself. Wrong pressure is therefore an ORANGE GLOW on the contact, not 
    also sat against a dark ground — and under test with an in-set control in round 4. Not law
    yet.
 
-**Two form limits.** `glow` BLOOMS — a radial falloff cannot be stopped at an outline, so
-where a hard boundary matters the class is `ring` or `fill`. And `fill` needs an OPAQUE object
-whose colour is far from the tint; on transparent pale glass the tint becomes the material and
-no mark is visible at all.
+**One form limit, and it belongs to `fill`.** `fill` needs an OPAQUE object whose colour is far
+from the tint; on transparent pale glass the tint becomes the material and no mark is visible at
+all. `glow`'s old limit — a radial falloff cannot be stopped at an outline, so route a hard
+boundary to `ring` or `fill` — is RETIRED at 1.16. Its extent binds (gate 3), and the routing
+was never legal anyway in a register that admits no filled form.
 
 **A mark can POINT or it can CLASSIFY.** A form only points; the colour classifies. On a BODY
 pointing suffices because the viewer supplies the meaning. On an OBJECT it does not, and the
@@ -400,13 +399,12 @@ extent exactly where a glow blooms.
 ## KNOWN-FLAKY
 - **Unrequested four-pointed sparkle glyph, bottom-right, 16 of 16 renders, last
   counted 2026-08-25.** Same corner and same form throughout, and it takes the tone of whatever
-  is beneath it — wood on a tabletop, white on envelopes, dark on a bath panel, pale on a navy
-  shirt — which is a composite overlay's signature rather than a drawn element. Not this type's defect: it is the
-  platform artefact `adapters/nano-banana.md` Rule 7 tracks, and the blend behaviour is
-  new evidence for the watermark reading there. Intermittent — this type's mark-free
-  control of 2026-08-12 recorded none. The v1.5 prompt set runs Rule 7's own untried test:
-  one prompt names that corner as bare, two omit the clause. **It has still never run** — no
-  set since has named the corner.
+  is beneath it — wood, envelopes, a bath panel, a navy shirt — which is a composite overlay's
+  signature rather than a drawn element. Not this type's defect: it is the platform artefact
+  `adapters/nano-banana.md` Rule 7 tracks, and the blend behaviour is evidence for the watermark
+  reading there. Intermittent — this type's mark-free control of 2026-08-12 recorded none.
+  Rule 7's own test, proposed here at v1.5, **has still never run**: no set since has named that
+  corner as bare.
 - **Filled marks, WITHDRAWN at 1.13 on 0 of 2.** `fill` on a drinking glass and an orange
   `pressure` band on a sock elastic. Both rendered exactly as specified and both stopped being
   marks: the glass read as a pink glass, the band as an orange cuff. Not withdrawn for being
