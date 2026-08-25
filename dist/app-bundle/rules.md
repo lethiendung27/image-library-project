@@ -280,26 +280,26 @@ separated by commas with a final `then`. Four is the ceiling any routed slot can
 `use` declares [1, 4] and every other routable type declares less. `unboxing` goes to six and
 is `kind: null`, ad channel only, so it never writes a page brief.
 
-**The filename is the session's own name with the gif type inserted, and it is read without
-a lookup.** `{page-type}-{gif-type}-{product-slug}-v{NN}.mp4`. Take the session directory —
-`{page-type}-{product-slug}-v{NN}` (ADR-034) — and put the gif type after the page type. A
-reader gets what it argues, for which product, and on which page of that product, from the
-name alone.
+**The filename is the session's own name with the SLOT appended, and it is read without a
+lookup.** `{page-type}-{product-slug}-v{NN}-{slot-id}.mp4`, the slot id with its dots turned to
+dashes (ADR-051). Take the session directory — `{page-type}-{product-slug}-v{NN}` (ADR-034) —
+and add the slot. A reader gets the product, the page of that product, and the exact slot the
+loop fills, from the name alone.
 
-Three things that are NOT in it and the reason each is out. The page id: it identifies the
-source export, not the loop, and it lives in `prompts.json.page_id` where a join key belongs
-— one routed session has none at all and still gets a name. The still's type: an inset loop
-inside `06-relief-hero --recall` does `pain` work and used to arrive called relief-hero, which
-is the wrong word for the one person who has to file it. A slot or a sequence: both were
-removed at ADR-037, and what replaced them is the rule below.
+Two things that are NOT in it and the reason each is out. The page id: it identifies the source
+export, not the loop, and it lives in `prompts.json.page_id` where a join key belongs — one
+routed session has none at all and still gets a name. The gif TYPE: it came out at ADR-051 when
+the slot went in, because the slot already makes the name unique and the type is carried by
+`gif.type_id`, which is the field that decides the library folder and always was.
 
-**One loop per gif type per page, and the filename is why.** There is no slot field and no
-sequence number, so two loops that argue the same thing on one page would produce the same
-file. That is now a rule rather than a hazard: a page carries at most one `cause`, one
-`proof`, one `mechanism`, one `relief`, one `use`. It costs nothing that was being used —
-every routed page already satisfies it — and it says something true anyway, that a page making
-the same kind of motion argument twice is repeating itself. The build fails a page that
-breaks it (ADR-037).
+**At most one loop per gif type is a PREFERENCE, not a rule** (ADR-051 demoting ADR-037). It
+was a rule because the filename had no slot and no sequence, so two loops arguing the same
+thing produced the same file — the hazard was the whole justification, and it says so in its
+own sentence. The slot id makes the file unique by construction, so the hazard is gone. What
+survives is the second thing ADR-037 noticed, that a page making the same kind of motion
+argument twice is usually repeating itself: prefer two different arguments where the copy
+offers them, keep the repeat where it does not, and record the call in `motion.notes`. The
+build no longer fails a page for it.
 
 **Version sits at the END, beside the product it counts.** A version is the Nth page for that
 PRODUCT (ADR-034), so `v04` of one product and `v04` of another are unrelated numbers that
@@ -329,19 +329,21 @@ actually needs; prose means wrapped lines, and a wrapped line is the one failure
 format had actually measured.
 
 **The plate never ships.** A page asset carrying one is a defect, so it takes the `--brief`
-suffix and a `.svg` extension and is never the slot's own asset filename. On `inset` the
-host type's own prompt reserves the legislated layer as a flat empty block carrying no text
-at all, and the plate travels beside the still as its own file: ADR-019 required the work
-order to reach the editor rather than sit in a document nobody opens, and a file named after
-the slot, sitting in the render folder next to the frame it describes, satisfies that without
-putting model-drawn lettering into a frame G6 bans text from.
+suffix and a `.svg` extension and is never the slot's own asset filename. It travels beside the
+still as its own file: ADR-019 required the work order to reach the editor rather than sit in a
+document nobody opens, and a file named after the slot, sitting in the render folder next to the
+frame it describes, satisfies that without putting model-drawn lettering into a frame G6 bans
+text from. Since ADR-051 it is a second view of the spec block `prompts.md` carries rather than
+the only carrier of it, and no render reserves anything for a loop to land in.
 
-**The HOST render of an inset loop keeps the slot's own asset filename and is not shippable
-until the loop is in it.** That is a change of risk rather than a removal of one, and it is
-named here because nothing else catches it: the old rule pushed such a render to `--brief`
-because it carried a plate covered in lettering, which no page could use by accident, and a
-flat empty block can ship unnoticed as a design element. The option that emits one says on
-its own face that the frame is unfinished (ADR-033).
+**Every still is a complete picture and ships on its own** (ADR-051, reversing ADR-033). No
+render reserves, blanks or leaves empty any part of a frame for a loop to land in; insets are
+drawn in full like every other layer the type legislates. A loop replaces the WHOLE slot asset
+and is an upgrade to a slot that already works, so no render is ever unfinished waiting for
+one. ADR-033 reserved the host layer as a flat empty block and recorded the consequence
+honestly — such a render could not ship, and a flat empty block passes unnoticed as a design
+element where the old lettering-covered plate could not. That risk is removed at the source
+here rather than managed.
 
 **The plate is a claim about THIS frame, and G7 binds it exactly as it binds the picture.**
 What the brief names has to be present and possible in the still: a brief promising a grime

@@ -2545,3 +2545,106 @@ after ADR-020's and ADR-039's — by which a teaching file stays invisible to it
 5. `motion.floor` and `motion.ceiling` are untouched. The measurement says pages hold 4 to 5
    loop-worthy slots and the binding constraint was never the ceiling, so changing either would be
    moving the wrong number.
+## ADR-051 · 2026-08-25 · The loop replaces the slot, not a layer — the empty block is retired and the filename carries the slot
+
+Owner instruction, 2026-08-25, in three parts. **One:** the option prompts may span several
+image types or stay on one across A/B/C, and an inset that belongs in the picture is rendered
+NORMALLY. **Two:** where a slot carries a loop the editor learns it from the app, which already
+marks that slot; the editor builds the loop and drops it in, and **the still is not to be drawn
+with an empty block**. **Three:** the delivered gif spec takes a stated shape, and its filename
+carries the SLOT rather than the gif type.
+
+**What this reverses, named so the reversal is legible.** ADR-033 made a `form: inset` loop
+reserve its host type's legislated layer as a flat empty block of one tone, and accepted the
+consequence that the host render keeps the slot's asset filename and **is not shippable until the
+loop is in it**. That consequence was recorded at the time as "a change of risk rather than a
+removal of one", and rules.md says plainly why: a flat empty block ships unnoticed as a design
+element, where the old plate covered in lettering could not. The owner has removed the risk at
+the source. A still now renders complete, ships on its own, and the loop is an upgrade to it
+rather than a component of it.
+
+**So `inset` leaves the gif verdict and stays everywhere else.** The `form` enum keeps
+`whole-frame` and `none`. A loop replaces the whole slot asset, which is what "the editor drops
+the gif into the slot" means, and its `ratio` is therefore always the SLOT's declared ratio from
+`content.json` — the layer-shape branch ADR-033 wrote into the schema has nothing left to
+describe. This touches the gif verdict ONLY. An inset is a compositional device in 79 tracked
+files and every one of them is untouched: insets in pictures are wanted, and the owner asked for
+them explicitly.
+
+**The filename.** `{page-type}-{product-slug}-v{NN}-{slot-id}.mp4`, where the slot id is its dots
+turned to dashes — the session directory (ADR-034) with the slot appended:
+
+    advertorial-seat-cushion-l-shaped-v04-content-items-3-image.mp4
+
+The gif type comes out and the slot goes in. What each choice buys: a slot id is unique on a page
+by construction, so the file is unique without a rule protecting it, and a reader can join the
+file back to the exact slot it fills without opening anything. What it costs: the argument the
+loop makes is no longer readable from the name, and it moves to `gif.type_id`, which is what
+decides the library folder and was always the field that did.
+
+**Therefore one-loop-per-gif-type stops being a rule (ADR-037) and becomes a preference.** That
+rule existed because the filename had no slot and no sequence, so two loops arguing the same
+thing would collide — it says so in its own sentence, in `rules.md`, in `SPEC.md` and in
+`gif-instruction.md`. The collision is gone, and with ADR-050 splitting numbered blocks into
+separate sections a page can now legitimately carry a `mechanism` loop on `content.1` and another
+on `content.3`, which the rule would have refused for a reason that no longer exists. The second
+justification ADR-037 offered — that a page arguing the same thing twice is repeating itself —
+survives as a preference recorded in `motion.notes`, on the same footing as the working/result
+coverage pair, which SPEC §7 already treats as a preference and not a gate.
+
+**Delivery becomes `mp4/webm`.** ADR-047 settled on mp4 against WebP and the reasoning is
+untouched: both sit in a `<video>`, so the template dependency that ADR-047 named — `autoplay`,
+`muted`, `playsinline`, `loop` — is unchanged, and adding webm changes nothing about it. Muted
+stays a stated requirement for the reason ADR-047 gave: these containers carry an audio track
+where WebP could not.
+
+**Rule 6c sweep, five terms, run before this list was written.**
+
+| term | hits / files | TEACHES |
+|---|---|---|
+| `flat empty block` | 12 / 7 | 3 — runbook, rules.md, 06-relief-hero |
+| `one loop per gif type` | 14 / 10 | 2 — SPEC.md, gif-instruction.md |
+| `gif-type}-{product-slug` | 16 / 12 | 5 — SPEC.md, schema (×2 sites), runbook, gif-instruction, rules.md |
+| `not shippable` | 8 / 8 | 2 — rules.md, 06-relief-hero |
+| `whole-frame` | 221 / 45 | 4 — schema, runbook, gif-instruction, 02-cause-anatomy |
+
+**Consequences — every teaching file above, accounted for.**
+
+1. `query/runbook.md` Step 5c: the two-forms block loses `inset`; the four-field display becomes
+   the owner's stated spec block; the naming paragraph, the one-per-type paragraph and the
+   delivery paragraph are rewritten; the sentence reserving the layer as an empty block is cut.
+2. `registry/rules.md` G12: the naming block is rewritten, the one-per-type rule is demoted to a
+   preference, and the paragraph declaring the host render unshippable is removed with ADR-033
+   named as what it reverses.
+3. `SPEC.md` §3.6: the naming line and the one-loop-per-gif-type sentence; delivery becomes
+   mp4/webm.
+4. `registry/gif-instruction.md` §4: the same three, plus §7's pointer, which named the form pair
+   `whole-frame` / `inset`.
+5. `query/output.schema.json`: `form` drops `inset` at BOTH sites — `slots.items.gif` and
+   `recommended.items.gif` carry duplicate definitions and the sweep caught the second, which is
+   the failure mode ADR-039 recorded. `output` and `ratio` descriptions are rewritten at both.
+6. `registry/types/06-relief-hero.md`: the `[INSET MOTION] --loop` block stops reserving an empty
+   block; the layer renders normally and the still ships on its own. CHANGELOG 1.17.
+7. `registry/types/02-cause-anatomy.md:361` is **left standing**. Its hit is a CHANGELOG line
+   about a "whole-frame formula" holding across 6 renders — the compositional sense of the words,
+   not the gif verdict's `form`. Nothing there instructs anything this decision changes.
+8. The three routed sessions carrying `form: inset` — `advertorial-seat-cushion-l-shaped-v02`,
+   `-v04` and `listicle-air-cooler-wall-mounted-v01` — are NOT migrated. They are records of
+   completed routings, `prompts.json` is not validated against `output.schema.json` (only
+   `content.json` is, and only against `mapping/content.schema.json`), so nothing reports an
+   error and nothing needs one. This is the treatment ADR-024 gave page 13.
+9. `scripts/gen-plate.py` is NOT changed and keeps working: it reads `output`, `duration_s`,
+   `ratio`, `loop`, `brief`, `alt` and `refs`, all of which survive. It is now a second view of
+   the same fields the spec block carries, and with the app marking gif slots its original
+   justification (ADR-019, the work order must reach the editor rather than sit in a document
+   nobody opens) is weaker than it was. Retiring it is recorded as AVAILABLE and not taken —
+   nothing the owner said requires deleting a generator, and 17 plates across the routed sessions
+   are correct output.
+
+**What is deliberately NOT done.** `06-relief-hero`'s `inset_motion: [still, loop]` axis is kept
+rather than retired. Under this decision `--loop` no longer renders differently from `--still`,
+which makes the axis vestigial at render time, but it still records that a slot was commissioned
+as a loop, the type file carries four founding renders against it with ledger sha256s (1.15), and
+retiring an axis is a taxonomy change of a different weight than this instruction. It is named
+here so it is not rediscovered as drift: the axis is vestigial by decision, not by oversight.
+`motion.floor` and `motion.ceiling` are untouched for the reason ADR-050 gave.

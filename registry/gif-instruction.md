@@ -49,39 +49,44 @@ Two folders behind one message is the failure this rule exists to prevent.
 ## 4. Naming
 
 ```
-{page-type}-{gif-type}-{product-slug}-v{NN}.mp4
+{page-type}-{product-slug}-v{NN}-{slot-id}.mp4
 ```
 
-`advertorial-mechanism-seat-cushion-l-shaped-v04.mp4`. It is the routing session's own
-directory name — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the gif type inserted
-after the page type, so a reader gets the argument, the product and the page from the name
-without opening anything.
+`advertorial-seat-cushion-l-shaped-v04-content-items-3-image.mp4`. It is the routing session's
+own directory name — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the SLOT appended, its
+dots turned to dashes, so a reader gets the product, the page of that product and the exact slot
+the loop fills without opening anything (ADR-051).
 
-**A loop has ONE name** (ADR-037). ADR-023 gave it two, a page-side name and a library name,
-because the page numbered by slot and the library numbered by type through a sequence the
-ledger issued. Neither field survives: no slot, no sequence. What is left is unique on both
-sides at once, so the second name and the sequence issuance go with them, and
-`ingestion/gifs.jsonl` records the same string the routing commissioned. Nothing has to be
-mapped through the sha256 to know that two references are the same file.
+The gif TYPE is not in the name. It lives in `gif.type_id`, which decides the library folder and
+always did. Between ADR-037 and ADR-051 the name carried the type instead of the slot, and what
+that bought — the argument readable from the filename — is paid for now by the folder the file
+sits in.
 
-**What makes it unique is a rule rather than a field: one loop per gif type per page.** A page
-carries at most one `cause`, one `proof`, one `mechanism`, one `relief`, one `use`. Every
-routed page already satisfied it before it was written down, and it says something true
-anyway — a page making the same kind of motion argument twice is repeating itself.
+**A loop has ONE name.** ADR-023 gave it two, a page-side name and a library name, because the
+page numbered by slot and the library numbered by type through a sequence the ledger issued. The
+sequence is gone for good and has not come back; the slot has, and one name is unique on both
+sides at once, so `ingestion/gifs.jsonl` records the same string the routing commissioned.
+Nothing has to be mapped through the sha256 to know that two references are the same file.
+
+**What makes it unique is the slot, which is a field again** (ADR-051). A slot id is unique on a
+page by construction, so no rule has to protect the filename. At most one loop per gif type per
+page survives as a PREFERENCE rather than a rule: a page making the same kind of motion argument
+twice is usually repeating itself, so prefer two different arguments where the copy offers them,
+and record the call in `motion.notes` where it does not.
 
 The page id is deliberately absent. It identifies the source export rather than the loop, it
 lives in `prompts.json.page_id`, and one routed session has none at all — a name that depended
 on it could not have been written. A file is never renamed after it enters the library:
 briefs and the ledger both reference it by name.
 
-Delivery is **mp4**, muted, loop-safe, under the size ceiling (ADR-047). It is what the
-editors produce, and a naming law that disagrees with the files arriving is one that gets
-ignored rather than followed. Two things follow. Muted is a stated requirement again, because
-mp4 carries an audio track where WebP could not. And a slot that earns motion needs its page
-template to carry a `<video>` with `autoplay`, `muted`, `playsinline` and `loop`, since a
-still sits in an `<img>` and an mp4 does not — the interchangeability ADR-036 bought is now a
-template dependency outside this repo. The `.gif` extension names the format the owner asks
-for in conversation, never the file that ships.
+Delivery is **mp4 or webm**, muted, loop-safe, under the size ceiling (ADR-047, ADR-051). It is
+what the editors produce, and a naming law that disagrees with the files arriving is one that
+gets ignored rather than followed. Two things follow. Muted is a stated requirement again,
+because both containers carry an audio track where WebP could not. And a slot that earns motion
+needs its page template to carry a `<video>` with `autoplay`, `muted`, `playsinline` and `loop`,
+since a still sits in an `<img>` and neither of these does — the interchangeability ADR-036
+bought is a template dependency outside this repo, and adding webm changes nothing about it. The
+`.gif` extension names the format the owner asks for in conversation, never the file that ships.
 
 ## 5. The one-line description
 
@@ -124,8 +129,9 @@ and this rule no longer has to be argued against the one artefact that broke it.
 
 ## 7. Where the rest of the law lives
 
-- Per-slot verdict, form (`whole-frame` / `inset`) and the four-field generated plate:
-  `query/runbook.md` Step 5c and `registry/rules.md` G12.
+- Per-slot verdict, the single `whole-frame` form and the generated plate:
+  `query/runbook.md` Step 5c and `registry/rules.md` G12. A loop replaces the WHOLE slot asset;
+  no still reserves a layer for one, and every still ships on its own (ADR-051).
 - How many loops a page may carry, and how a shortfall is filled:
   `query/runbook.md` Step 5d.
 - The ledger's record shape: `ingestion/gifs.jsonl`, append-only (SPEC §2).

@@ -266,67 +266,82 @@ recommendations are performance-backed.
 ## Step 5c — GIF suggestion (per slot)
 
 Every image slot carries a `gif` verdict, including a negative one — silence is harder
-to act on than a stated "no". Two forms:
+to act on than a stated "no". One form:
 
-- **whole-frame** — the entire image becomes a short silent loop. Available to ANY
-  type, because it adds no layer to the frame. This is the default suggestion.
-- **inset** — the motion replaces a layer the type's own SKELETON already legislates
-  (a Zone B/C inset, a rail vignette). Only offered where that layer already exists;
-  proposing a new layer is a graphic-overlay decision this runbook does not make.
-  **Check for the layer before defaulting to whole-frame** — a page can go a whole
-  routing without one and that is normal, since most types ban layers outright, but
-  where a legislated layer DOES exist and the still is a held state, the layer is
-  usually the half that should move. Say in `reason` which of the two applied.
-  When the form IS `inset`, the option's own prompt must set that layer to `--loop`
-  and carry G12's plate — the editor's work order has to be IN the render, not in a
-  file they will not open (ADR-019). A `form: inset` verdict beside a prompt that
-  draws no plate is the one inconsistency to check for. When the form is
-  `whole-frame`, the plate is the whole delivered image and no photograph is made:
-  emit the brief, not three photographic options for a frame that gets replaced.
+- **whole-frame** — the loop replaces the WHOLE slot asset and takes the slot's own
+  declared ratio. Available to any type, because it adds no layer to any frame. `none`
+  is the only other value and it is what a negative verdict carries.
+
+**The still is always a complete picture, and it ships on its own** (ADR-051). It renders
+everything the type legislates, insets included, and nothing in it is reserved, blanked or
+left empty for a loop to land in. A loop is an UPGRADE to that slot, never a component the
+render is missing: the editor learns which slots carry one from the app, which marks them
+already, and builds the loop to drop in. ADR-033 did the opposite — it reserved the host
+type's legislated layer as a flat empty block — and its own recorded consequence was that
+the render could not ship until the loop arrived. That risk is removed at the source here
+rather than managed, and the three options a slot carries are photographs in every case.
 
 A slot earns motion when its declared reason to exist is **temporal** — a transition, a
 sequence, a state changing, an output flowing. A slot that exists to reveal an angle, a
 place or a colorway does not, and gets `eligible: false` with that reason.
 
-**Then say what the loop ARGUES: `gif.kind`, from the `jobs` vocabulary.** It is the job of
-the LAYER the loop lives in, and that is often **not** the type's own job — an inset is not
-a pain slot. `06-relief-hero --recall` holds the past, so a loop there does `pain` work
-inside a type whose job is `relief`. `--context` holds the product where it lives, so its
-loop does `use`. `--detail` holds one magnified feature, so its loop does `mechanism`, or
-`output`-driven `mechanism` where G8 applies. `--vsinset` holds two states, so `proof`.
-For `whole-frame` there is no layer and the kind is the type's own job.
-
-Where a layer admits more than one kind, take the one **the section's copy is already
-arguing**, and say which and why in `reason` — this is the same judgement as choosing a
+**Then say what the loop ARGUES: `gif.kind`, from the `jobs` vocabulary.** The loop replaces
+the whole slot, so its kind is the SLOT's own job — the job the routed type was chosen to do
+there. Where the section's copy argues more than one of them, take the one **the copy is
+already making**, and say which and why in `reason`: this is the same judgement as choosing a
 type, made one level down. The kind sets what the brief describes and what the loop has to
-leave the viewer holding; nothing else about the plate changes with it.
+leave the viewer holding, and nothing else changes with it.
 
-Every GIF carries the same **four fields**, and the plate that shows them is GENERATED
-rather than rendered (G12, ADR-028):
+Before ADR-051 this field read the job of the LAYER a loop lived in, which could differ from
+the type's own job — an inset inside `06-relief-hero --recall` did `pain` work. There are no
+layer-bound loops now, so that split is gone and `kind` equals `type_id` for every routable
+type, which is what ADR-023 said it would in the first place.
+
+Every GIF is delivered as this spec block, and `scripts/gen-plate.py` draws the same fields
+as an SVG beside the still (G12, ADR-028, ADR-051):
 
 ```
-77-06-proof-feature2.mp4          gif.output — the file the editor returns,
-                                  and its name carries the gif TYPE
-3s · 16:9 · seamless loop         gif.duration_s, gif.ratio, gif.loop
-<the brief>                       gif.brief — one paragraph of prose
+output: advertorial-seat-cushion-l-shaped-v04-content-items-3-image.mp4
+ratio: 16:9
+duration_s: 2.5
+loop: seamless loop
+
+brief: Inside a car during a sharp turn, a generic cushion slides several inches across
+the slick leather seat, then the reference cushion stays completely locked to the seat
+leather without shifting an inch.
+
+alt: Camera locked onto a tilted car seat base while a hand pulls a generic pad that
+slides freely, contrasted with the reference cushion resisting lateral pull completely.
+
+delivery: mp4/webm
 ```
 
-**`gif.output` is the session's own name with two fields added** (ADR-036):
-`{page-type}-{gif-type}-{product-slug}-v{NN}.mp4`. Take the session directory,
-`{page-type}-{product-slug}-v{NN}`, and insert the gif type after the page type. Nothing else
-goes in it: the page id lives in `page_id`, and the still's type is not what the loop argues.
-It is the ONLY name a loop has — the same one the library files it under (ADR-037).
+`duration_s` is a number and fractional values are legal — 2.5 is a real answer where the
+beats need it, and the type's declared band is a band rather than a set of integers.
 
-**One loop per gif type per page.** With no slot and no sequence in the name, two loops that
-argue the same thing on one page would collide, so a page carries at most one of each type.
-Every routed page already satisfies it, and it says something true anyway: a page making the
-same kind of motion argument twice is repeating itself (ADR-037).
+**`gif.output` is the session's own name with the SLOT appended** (ADR-051):
+`{page-type}-{product-slug}-v{NN}-{slot-id}.mp4`, the slot id with its dots turned to dashes.
+Take the session directory, `{page-type}-{product-slug}-v{NN}` (ADR-034), and add the slot.
+The page id stays out — it identifies the source export rather than the loop and lives in
+`page_id`, and one routed session has none at all. It is the ONLY name a loop has, and the
+library files it under the same string.
 
-**Delivery is mp4** (ADR-047), muted. mp4 carries an audio track where WebP could not, so
-muted is a stated requirement again rather than a property of the format. And where a slot
-earns motion the page template needs a `<video>` element with `autoplay`, `muted`,
-`playsinline` and `loop` — a still sits in an `<img>` and an mp4 does not, so the
-interchangeability ADR-036 bought is now a template dependency outside this repo.
+The gif TYPE is no longer in the name. It moved to `gif.type_id`, which is the field that
+decides the library folder and always was; what the name buys instead is a join back to the
+exact slot the loop fills, without opening anything.
+
+**At most one loop per gif type is a PREFERENCE, not a rule** (ADR-051 demoting ADR-037). It
+was a rule because the old filename had no slot and no sequence, so two loops arguing the
+same thing collided; the slot id is unique on a page by construction and the collision is
+gone. A page carrying two `mechanism` loops in two different blocks is legal — say so in
+`motion.notes`, on the same footing as the working/result coverage pair, and prefer two
+different arguments where the copy offers them.
+
+**Delivery is `mp4/webm`** (ADR-051 amending ADR-047), muted. Both containers carry an audio
+track where WebP could not, so muted stays a stated requirement rather than a property of the
+format. Where a slot earns motion the page template needs a `<video>` element with
+`autoplay`, `muted`, `playsinline` and `loop` — a still sits in an `<img>` and neither of
+these does — so the template dependency ADR-047 named is unchanged by adding webm.
 
 **Every claim in the brief must be satisfiable by the still the slot routed (G12).** A brief
 promising something the frame does not contain sends the editor to build the wrong loop, and
@@ -342,15 +357,15 @@ is text, and generating text through an image model is the least reliable way to
 — the seven-word line cap, the ban on markup and the whole geometry block of the old G12
 were all workarounds for a renderer that is no longer involved.
 
-**The plate never ships.** It takes the `--brief` suffix and a `.svg` extension and never
-the slot's own asset filename; a page asset carrying one is a defect. On `form: inset` the
-host type's own prompt reserves its legislated layer as a flat empty block carrying no text,
-and the plate travels beside the still as its own file. That satisfies ADR-019 — the work
-order reaches the editor rather than sitting in a document nobody opens — without putting
-model-drawn lettering into a frame G6 bans text from.
+**The plate never ships.** It takes the `--brief` suffix and a `.svg` extension and never the
+slot's own asset filename; a page asset carrying one is a defect. It travels beside the still
+as its own file, which satisfies ADR-019 — the work order reaches the editor rather than
+sitting in a document nobody opens — without putting model-drawn lettering into a frame G6
+bans text from. Since ADR-051 it is a second view of the spec block above rather than the only
+carrier of it.
 
-Delivery is mp4, muted, with a size ceiling — a 20 MB `.gif` costs more conversion than
-the motion buys, and that was the complaint ADR-023 settled on mp4 for in the first place.
+Delivery is mp4 or webm, muted, with a size ceiling — a 20 MB `.gif` costs more conversion
+than the motion buys, and that was the complaint ADR-023 settled on mp4 for in the first place.
 
 **In `prompts.md` the gif sits below option C**, carrying the four fields and naming its
 plate file. It is not an alternative to A–C — the recommended still is still rendered,

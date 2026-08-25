@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.16"
+version: "1.17"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -282,13 +282,14 @@ The layer is the finished picture; nothing is reserved.
 
 ### inset_motion: --loop
 ```
-[INSET MOTION] the legislated layer is RESERVED for the loop.  -> G12
+[INSET MOTION] the layer renders IN FULL; the loop replaces the slot.  -> G12
 ```
-An editor builds the loop and drops it into that layer, so the render owes them the
-FOOTPRINT and nothing else: the layer is drawn as a flat empty block of one flat tone,
-carrying no text, no lettering and no plate. Since ADR-028 the work order is a generated
-file — `scripts/gen-plate.py` writes it beside the still — so none of it is drawn into the
-frame, and G6's ban on text in frame stops needing an exception here.
+The render owes the layer a finished picture exactly as `--still` does: nothing is reserved or
+left empty for a loop to land in, and the still ships on its own (ADR-051). What `--loop`
+records is that the slot is ALSO commissioned as a motion asset — the editor is told which
+slots those are by the app, and returns a loop replacing the whole slot at its own ratio. The
+work order is the spec block in `prompts.md` plus the generated plate beside the still, so no
+lettering enters the frame and G6 needs no exception here.
 
 Legal on every `inset_mode` except `--none`, which has no layer to host it, and only where
 the layer's content is TEMPORAL — a state changing, an output flowing, a mechanism
@@ -434,6 +435,9 @@ recognisable sportswear swoosh, which SPEC 6.4 bars — name props unbranded.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.17 (2026-08-25): ADR-051 reverses 1.16. `--loop` renders its layer IN FULL like `--still`
+  and the still ships on its own; 1.16's consequence, that the render is not shippable until
+  the loop is in it, is withdrawn with it. The axis is kept and is vestigial at render time.
 - 1.16 (2026-08-20): `inset_motion: --loop` corrected to ADR-028's mechanism, ADR-033.
   The layer is reserved as a flat empty block and the plate is a generated file beside
   the still; the block said the render carried model-drawn lettering, which stopped

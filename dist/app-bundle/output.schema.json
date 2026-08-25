@@ -175,10 +175,9 @@
               "form": {
                 "enum": [
                   "whole-frame",
-                  "inset",
                   "none"
                 ],
-                "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
+                "description": "whole-frame = the loop replaces the WHOLE slot asset and takes the slot's declared ratio; it adds no layer to any frame and is available to any type. none = the verdict is negative. The `inset` form was retired at ADR-051: a still is always a complete picture that ships on its own, nothing in a frame is reserved or blanked for a loop to land in, and the editor learns which slots carry a loop from the app rather than from a hole in the render."
               },
               "kind": {
                 "enum": [
@@ -219,12 +218,12 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.mp4: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
+                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string. {page-type}-{product-slug}-v{NN}-{slot-id}.mp4: the session directory (ADR-034) with the SLOT appended, its dots turned to dashes, e.g. advertorial-seat-cushion-l-shaped-v04-content-items-3-image.mp4 (ADR-051). The slot makes the name unique by construction, so at most one loop per gif type per page is now a preference rather than the rule that protected it (ADR-051 demoting ADR-037). The gif type is not in the name: it lives in type_id, which decides the library folder. The page id is deliberately absent — it identifies the source export rather than the loop and lives in page_id."
               },
               "ratio": {
                 "type": "string",
                 "pattern": "^\\d+:\\d+$",
-                "description": "The aspect the editor delivers. On `whole-frame` it is the SLOT's declared ratio from content.json, never the still type's own — the loop IS the delivered image, so it owes the page's shape. On `inset` it is the LAYER's shape and cannot be the slot's: the loop fills a panel inside the frame, so the page's aspect is the one thing it does not owe, and the host type's description of that layer decides it (ADR-033). The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
+                "description": "The aspect the editor delivers. It is always the SLOT's declared ratio from content.json, never the still type's own — the loop replaces the whole slot asset, so it owes the page's shape. The layer-shape branch this field used to carry was retired with the `inset` form at ADR-051. The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
               },
               "duration_s": {
                 "type": "number"
@@ -353,10 +352,9 @@
               "form": {
                 "enum": [
                   "whole-frame",
-                  "inset",
                   "none"
                 ],
-                "description": "whole-frame = the whole image becomes a short loop, available to any type because it adds no layer. inset = the motion replaces a layer the type's SKELETON already legislates; never proposes a NEW layer."
+                "description": "whole-frame = the loop replaces the WHOLE slot asset and takes the slot's declared ratio; it adds no layer to any frame and is available to any type. none = the verdict is negative. The `inset` form was retired at ADR-051: a still is always a complete picture that ships on its own, nothing in a frame is reserved or blanked for a loop to land in, and the editor learns which slots carry a loop from the app rather than from a hole in the render."
               },
               "kind": {
                 "enum": [
@@ -397,12 +395,12 @@
               },
               "output": {
                 "type": "string",
-                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string (ADR-037). {page-type}-{gif-type}-{product-slug}-v{NN}.mp4: the session directory with the gif type inserted after the page type. No slot and no sequence, which is why a page carries at most one loop of each gif type — with neither field, two loops arguing the same thing on one page would collide. The page id is deliberately absent: it identifies the source export rather than the loop and lives in page_id. Version sits last because it counts pages of that PRODUCT and belongs beside it."
+                "description": "The filename the editor returns, and the ONLY name the loop has — the library files it under the same string. {page-type}-{product-slug}-v{NN}-{slot-id}.mp4: the session directory (ADR-034) with the SLOT appended, its dots turned to dashes, e.g. advertorial-seat-cushion-l-shaped-v04-content-items-3-image.mp4 (ADR-051). The slot makes the name unique by construction, so at most one loop per gif type per page is now a preference rather than the rule that protected it (ADR-051 demoting ADR-037). The gif type is not in the name: it lives in type_id, which decides the library folder. The page id is deliberately absent — it identifies the source export rather than the loop and lives in page_id."
               },
               "ratio": {
                 "type": "string",
                 "pattern": "^\\d+:\\d+$",
-                "description": "The aspect the editor delivers. On `whole-frame` it is the SLOT's declared ratio from content.json, never the still type's own — the loop IS the delivered image, so it owes the page's shape. On `inset` it is the LAYER's shape and cannot be the slot's: the loop fills a panel inside the frame, so the page's aspect is the one thing it does not owe, and the host type's description of that layer decides it (ADR-033). The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
+                "description": "The aspect the editor delivers. It is always the SLOT's declared ratio from content.json, never the still type's own — the loop replaces the whole slot asset, so it owes the page's shape. The layer-shape branch this field used to carry was retired with the `inset` form at ADR-051. The generated plate is drawn at this ratio, so the card is the shape of the deliverable."
               },
               "duration_s": {
                 "type": "number"
