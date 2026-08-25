@@ -571,7 +571,7 @@
         },
         "ceiling": {
           "type": "integer",
-          "description": "Maximum loops the page may carry: 5, with at most one per section and never two in adjacent slots."
+          "description": "Maximum loops the page may carry: 5, with at most one per section \u2014 plus ONE more where that section carries five items or more and the two are not adjacent (ADR-032 amending ADR-024). Adjacency binds INSIDE a section and nowhere else: two loops in consecutive sections are fine, which is the general never-adjacent clause ADR-024 dropped and this description outlived. A section is the slot id's top-level prefix plus its next segment when that segment is a number, so `content.1` and `content.3` are two sections while `features.items.0` through `features.items.4` are one (ADR-050)."
         },
         "delivered": {
           "type": "integer",

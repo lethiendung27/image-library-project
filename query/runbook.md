@@ -406,6 +406,26 @@ adjacent** (ADR-032 amending ADR-024). A repeating list still counts as one sect
 per item, and which items keep the motion is decided by the section's own set law rather than
 by position.
 
+**What a section IS, because the rule is arithmetic on the slot id** (ADR-050). A section is the
+slot id's top-level prefix, plus its next segment when that segment is a NUMBER. A number sitting
+directly after the prefix is a BLOCK index and each block is its own section; a number sitting
+after a container word — `items`, `photos`, `shots`, `quotes` — is an ITEM index and the list
+stays one section.
+
+```python
+def section(slot_id):
+    p = slot_id.split(".")
+    return f"{p[0]}.{p[1]}" if len(p) > 1 and p[1].isdigit() else p[0]
+```
+
+So `content.1.items.3.image` and `content.3.items.0.image` are two sections, `reason.0.image` and
+`reason.4.image` are two sections, and `features.items.0.image` through `features.items.4.image`
+remain one — the case ADR-024 was written against, untouched. The rule used to read the prefix
+alone, which merged every editorial block a template numbers under one name: on the exports now
+arriving, an opener at `content.0`, a five-card list at `content.1` and a two-card list at
+`content.3` were one section between them and the page body was allowed 2 loops for all three. It
+is allowed 4.
+
 The relaxation exists because the floor had no margin. Measured across every page routed
 under the unamended rule — 58, 65, 73 and 77 — loop-capable sections came to exactly 2 and
 delivered loops came to exactly 2. The floor equalled the structural ceiling on all four, so

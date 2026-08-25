@@ -2466,3 +2466,82 @@ Consequences: `registry/types/01-pain-scene.md` → **1.17**, sixteen edits — 
 `registry/types/`. The owner instructed the commit directly, which is the human gate ADR-007
 names, and the type file had already been taken to 1.16 by another lane whose work is preserved
 intact — 1.17 edits it forward and reverts none of it.
+## ADR-050 · 2026-08-25 · A section is a block, not a prefix — the spacing rule stops merging editorial blocks
+
+Owner instruction, 2026-08-25: **the `content.x.image` blocks are different sections, the same
+way `reason.0`, `reason.1`, `reason.2` are.** It is a template change with no effect on what any
+picture contains, and its purpose is that generated content stops being bound to the shape of a
+reason list. The reading mechanism is corrected here to match.
+
+**The defect, stated as arithmetic rather than as a policy disagreement.** Step 5d has said "at
+most one loop per section" since ADR-024, and every routing computes that section as
+`slot_id.split(".")[0]` — the top-level prefix and nothing else. On the export shape the owner is
+moving to, one page numbers three separate editorial blocks under one prefix: `content.0.image`
+is the article opener, `content.1.items.0` through `content.1.items.4` are five cards, and
+`content.3.items.0` and `content.3.items.1` are two more. All three collapse to a single section
+named `content` carrying 8 image slots, and the whole body of the page is therefore allowed
+**2 loops** — one, plus the ADR-032 relaxation for a section of five items or more. The rule was
+written about editorial sections and is being applied to a string prefix; nowhere did anyone
+decide that an opener, a five-card list and a two-card list are one section.
+
+**The definition, because the rule is arithmetic on the slot id and should be readable as such.**
+A section is the slot id's top-level prefix, plus its next segment when that segment is a NUMBER.
+A number sitting directly after the prefix is a BLOCK index, and each block is its own section; a
+number sitting after a container word — `items`, `photos`, `shots`, `quotes` — is an ITEM index,
+and the list stays one section.
+
+    def section(slot_id):
+        p = slot_id.split(".")
+        return f"{p[0]}.{p[1]}" if len(p) > 1 and p[1].isdigit() else p[0]
+
+So `content.1.items.3.image` and `content.3.items.0.image` are two sections; `reason.0.image` and
+`reason.4.image` are two sections; `features.items.0.image` through `features.items.4.image`
+remain one, which is the case ADR-024 was actually written against and which this does not touch.
+
+**Measured before it was written, dry, across all twelve routed sessions.** Section counts change
+on exactly two: `advertorial-seat-cushion-l-shaped-v02` goes 4 to 9 (`story.N`) and
+`listicle-massage-comb-spray-v01` goes 5 to 10 (`reason.N`). No session that is legal today
+becomes illegal. One session carries 4 loops in one section under the new reading —
+`advertorial-seat-cushion-l-shaped-v01`, page 31 — and it is the page ADR-024 was written against,
+routed before the rule existed and already grandfathered.
+
+**The honest size of the gain, because the tempting number is the wrong one.** Of the 11 slots
+across the twelve sessions that earned motion on the temporal test and were refused by the
+spacing rule, this frees **2** — both in `listicle-massage-comb-spray-v01`, whose cards are
+numbered `reason.N`. The other 9 sit in `X.items.N` lists that stay one section, correctly. The
+gain is not on the pages already routed; it is on the shape being routed next. On
+`landing-page-listicle-7-in-1-external-usb-dvd-v03`, the page body goes from **2 loops to 4**
+against a ceiling of 5.
+
+**Rule 6c sweep, run before this list was written.** `scripts/adr-sweep.py "one per section"`
+returns 3 hits across 3 files: **1 TEACHES** — `query/output.schema.json:574` — plus the
+generated bundle copy and the decision log. `scripts/adr-sweep.py 'split(".")[0]'` returns 15
+hits, **0 TEACHES**: six session `build.py` files, which are RECORDS of completed routings, and
+one hit in `scripts/validate.py` that parses a version string and is unrelated.
+
+**The sweep missed one teaching file and it is worth recording why.** `query/runbook.md` states
+the rule as "at most one per / section" across a line break, and the sweep matches line by line,
+so the file the rule actually lives in did not appear in any bucket. It was found by reading Step
+5d directly. A sweep is a checklist generator and not a proof; this is the second mechanism —
+after ADR-020's and ADR-039's — by which a teaching file stays invisible to it.
+
+**Consequences.**
+
+1. `query/runbook.md` Step 5d carries the definition and the function above. This is the file the
+   rule lives in and the one the sweep could not see.
+2. `query/output.schema.json`'s `motion.ceiling` description is rewritten. It was stale on two
+   counts independent of this decision: it still taught the pre-ADR-032 rule with no five-item
+   relaxation, and it still carried ADR-024's general never-adjacent clause, which ADR-024 itself
+   dropped. Both are corrected in the same edit, and the drift is named here so it is not
+   rediscovered as new.
+3. The six session `build.py` files keep `split(".")[0]` and are NOT migrated. They are records of
+   completed routings whose outputs were correct under the rule in force, and rewriting them would
+   change delivered artefacts to no reader's benefit — the treatment ADR-024 gave page 13 and
+   ADR-034 gave the pre-ADR-028 gif blocks. The next routing writes the new function.
+4. No validator gate is added. A full check needs each section's ITEM COUNT to test the five-item
+   relaxation, and `prompts.json` records only the slots that were routed rather than every item
+   in a list, so the denominator is not on disk. A partial gate that checks the ceiling but not
+   the relaxation would report a green it has not earned.
+5. `motion.floor` and `motion.ceiling` are untouched. The measurement says pages hold 4 to 5
+   loop-worthy slots and the binding constraint was never the ceiling, so changing either would be
+   moving the wrong number.
