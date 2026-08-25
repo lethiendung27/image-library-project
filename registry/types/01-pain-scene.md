@@ -3,7 +3,7 @@ id: 01-pain-scene
 step: 1
 job: pain
 device: scene
-version: "1.17"
+version: "1.18"
 status: active
 replaced_by: null
 ratios: ["16:9", "3:4"]
@@ -44,7 +44,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.17 [--candid | --confront] [+ --marked]
+TYPE: 01-pain-scene v1.18 [--candid | --confront] [+ --marked]
 REGISTER: editorial photojournalism, natural and unstaged. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject
@@ -70,238 +70,181 @@ the weight goes], and `Face:` [the involuntary signs, named by muscle].
 
 Four laws, each paid for by a render (see the CHANGELOG entry's commit):
 
-- **State the force, never the meaning.** The slot names a force being applied or a movement
-  in progress — never a pause, never an intention.
+- **State the force, never the meaning.** A force being applied or a movement in progress —
+  never a pause, never an intention.
 - **The action must be DIAGNOSTIC** — a force only someone with this problem would apply.
-  Both hands wrapped round a calf mid-press; a lid being forced that has not moved. Wiggling
-  a plug reads as charging a phone.
-- **A face cannot carry effort the body is not making**, and a face is never described by
-  ABSENCE. Where the body genuinely strains the involuntary signs arrive unasked. Restraint
-  governs EMOTION, not effort.
-- **The moment must be mundane** — something anyone lives daily, never a demonstration of
-  wrong behaviour. It has no picture of its own, so it never becomes a prompt slot.
+  Wiggling a plug reads as charging a phone.
+- **A face cannot carry effort the body is not making**, and is never described by ABSENCE.
+  Restraint governs EMOTION, not effort.
+- **The moment must be mundane** — never a demonstration of wrong behaviour. It has no picture
+  of its own, so it never becomes a prompt slot.
 
 **`evidence`** — the symptom as physical fact. Mandatory in every variant (G9): expression
 alone carries nothing. Pick the strongest rank present and write **only that one** into the
-prompt; ranking is the writer's job and the model needs the choice, not the ladder.
+prompt; the model needs the choice, not the ladder.
 
 1. the symptom itself on the body or object;
 2. physical residue or debris it produces — what it leaves behind, and where;
-3. the failed tool, in the state that shows it failed — "the jar key lying where it slipped
-   off, its jaws still spread", because "already tried" is a meaning and has no picture;
+3. the failed tool in the state that shows it failed, because "already tried" has no picture;
 4. gesture alone — weakest, only when 1-3 are impossible, and then at least one object in
    frame must imply the problem independently.
 
-Status: rank 1 has carried the passing renders and rank 3 held in the jar frames; rank 2 has
-carried the passing renders, rank 3 held in the jar frames, **rank 2 has now carried two
-frames as the ONLY evidence** (2 of 2), and rank 4 has never been rendered. Rank 2 is the safe
-rung for a mark-free frame: debris is an OBJECT and a renderer never refuses an object, where it
-may refuse a symptom.
+Status: rank 1 carries most passing renders, rank 3 held in the jar frames, **rank 2 has
+carried two frames as the ONLY evidence** (2 of 2), rank 4 has never been rendered.
 
-**A SYMPTOM DESCRIBED AS A COMPARISON DOES NOT RENDER.** "Half again the size of the other arm"
-and "fingers drifting sideways away from the thumb" both returned an ordinary body. State the
-abnormality without reference to anything else — cords standing out, ankles over shoe edges,
-callus pads on a sole. Write the thing, never the difference.
-
-**Evidence may be SMALL, and an inset is not available.** A calf, a crown: small in frame and
-instantly readable, because the action names the problem and the evidence confirms it. So a
-weak image is not repaired by enlarging the evidence, and it cannot be repaired by an inset —
-`vocabulary.yaml` defines `scene` as a single cinematic frame with **no panels and no
-insets**, which is the device and not this type's preference. A pain argument that genuinely
-needs a magnified inset is a `hero`- or `macro`-device image in another slot.
+- **Rank 2 is the safe rung for a mark-free frame.** Debris is an OBJECT and a renderer never
+  refuses an object, where it may refuse a symptom.
+- **A SYMPTOM DESCRIBED AS A COMPARISON DOES NOT RENDER.** "Half again the size of the other
+  arm" and "fingers drifting sideways away from the thumb" both returned an ordinary body.
+  State the abnormality without reference to anything else. Write the thing, never the
+  difference.
+- **Evidence may be SMALL, and an inset is not available.** `vocabulary.yaml` defines `scene`
+  as a single frame with no panels and no insets. An argument that genuinely needs a magnified
+  inset is a `hero`- or `macro`-device image in another slot.
 
 **`cost`** — [what the pain is taking away], in the same frame and subordinate to the body it
-is being taken from. Required in every variant.
-
-`subject`, `evidence` and any mark all answer WHERE IT HURTS; nothing here answered WHAT IT
-TAKES AWAY, which is fault **A14** and the reason a set correct in every slot agitated in none
-of them. Adding this block and moving nothing else reversed it on the same six products: the
-block rendered as written in 6 of 6 and stayed subordinate in 6 of 6, and no failure in that
-set was a failure of this block.
+is being taken from. Required in every variant. Nothing else in the skeleton answers WHAT IT
+TAKES AWAY, which is fault **A14**.
 
 Five forms have rendered, and choosing between them IS the argument: the activity happening
-without them · the abandoned object of it, left as they left it · the thing they cannot finish ·
-the person waiting, or the one they cannot turn to · someone doing it instead.
+without them · the abandoned object of it · the thing they cannot finish · the person waiting,
+or the one they cannot turn to · someone doing it instead.
 
+- **LOCK THE COST TO THE PART THAT HURTS.** Not "someone is waiting" — the one thing this exact
+  body part is FOR, refused. Costs merely present rendered 6 of 6 and agitated in none.
+- **THE FAILURE HAS ALREADY HAPPENED.** A still frame cannot show that a movement STOPPED: a
+  stalled reach and an arrested turn both came back as the action succeeding.
+- **ITS RESIDUE IS A DISPLACED OBJECT, NOT A STATE.** A car "pulled over with hazards on" came
+  back driving. A mug on its side, a case burst open, oranges in a gutter: 11 of 12.
 - **Say the subordination in the prompt**: `sharp enough to read and never larger, nearer or
   brighter than the body it is being taken from`. Held 6 of 6.
-- **A cost is not clutter.** Clutter says where the frame is, a cost says what the pain
-  prevents. Papers and a mug said `office`; a bare worktop read as a demonstration until a
-  younger pair of hands reached in to take the jar.
-- **An OBJECT cost argues as strongly as a person cost** (1 of 1) and carries no G13 exposure,
-  so it is first choice wherever a minor would otherwise enter the frame. G1 survives it.
+- **A cost is not clutter.** Clutter says where the frame is; a cost says what the pain prevents.
+- **An OBJECT cost argues as strongly as a person cost** and carries no G13 exposure, so it is
+  first choice wherever a minor would otherwise enter the frame.
 - **Where the cost is a minor, G13 binds this block too** — neutral face, distress signs as
   explicit negations, which did not bleed in 3 of 3.
-- **LOCK THE COST TO THE PART THAT HURTS.** Not "someone is waiting" — the one thing this exact
-  body part is FOR, refused. Costs that were merely present rendered 6 of 6 and agitated in none.
-- **THE FAILURE HAS ALREADY HAPPENED.** A still frame cannot show that a movement STOPPED: a
-  stalled reach and an arrested turn both came back as the action succeeding. Name a finished
-  failure.
-- **ITS RESIDUE IS A DISPLACED OBJECT, NOT A STATE.** A car "pulled over with hazards on" came
-  back driving; a mug on its side, a case burst open, keys on a doormat, oranges in a gutter and
-  shopping left at the foot of a flight all rendered. 11 of 12.
 
 **`place`** — [one ordinary place, tied to where the problem gets noticed], [time of day]. One
-phrase, nothing else in it. The clutter inventory is WITHDRAWN at 1.16: the owner's instruction
-is that this type attends to the pain and not the surroundings, and a four-word phrase returned
-the richest environment of the round-2 set unasked. Where a routine object matters to the
+phrase, nothing else in it. The clutter inventory is WITHDRAWN at 1.16: a four-word phrase
+returned the richest environment of a set unasked. Where a routine object matters to the
 argument it is not clutter — it is the COST.
 
-**`gaze`** — two values, each carrying its own problem class. The variant that names the gaze
-also names the light; the two are bound together today.
+**`gaze`** — two values, each carrying its own problem class.
 
-- `candid` (default) — unaware of the camera, gaze on the task or the ground. Physical pain
-  and physical limitation; moments nobody would choose to be seen in.
-- `confront` — looking directly into the lens, holding the viewer's eye. A half-turned glance
-  reads as a model waiting for direction. Appearance, self-image, daily frustration.
+- `candid` (default) — unaware of the camera, gaze on the task or the ground. Physical pain and
+  physical limitation; moments nobody would choose to be seen in.
+- `confront` — looking directly into the lens. A half-turned glance reads as a model waiting
+  for direction. Appearance, self-image, daily frustration.
 
-**`light`** — **the real light of the place and nothing added.** Name the source actually
-there — a window over a sink, sodium street lamps, supermarket strips, an overcast sky, rain —
-and let the surroundings be as bright, dark or wet as that place is.
+**`light`** — **the real light of the place and nothing added.** Name the source actually there
+— a window over a sink, sodium street lamps, supermarket strips, an overcast sky, rain — and let
+the surroundings be as bright, dark or wet as that place is.
 
-`low-key` with its key, fill, rim and "deep shadow across [X%] of frame", and its `--confront`
-twin `flat-ambient`, are **withdrawn at 1.17** on the owner's rejection and on measurement: the
-midtone share of a frame went 28.4% → 61.0% when this block replaced them, across 18 renders.
-The old grade also ate the mark, taking one glow to peak R−G 45 against 111-203 elsewhere.
+`low-key` with its key, fill, rim and deep shadow, and its `--confront` twin `flat-ambient`, are
+**withdrawn at 1.17** on the owner's rejection and on measurement: midtone share 28.4% → 61.0%
+across 18 renders. The old grade also ate the mark, taking one glow to peak R−G 45 against
+111-203 elsewhere. **A dark PLACE is not a dark PICTURE** — a car at night and a dim stairwell
+both came back readable. Name the place's own light and the exposure follows.
 
-**A dark PLACE is not a dark PICTURE.** A car at night and a dim stairwell both came back
-readable. Name the place's own light and the exposure follows.
+**`mirror`** — optional, `--confront` only. A mirror showing the subject from another angle, the
+reflection consistent with their actual position. It gives the confrontation a natural reason and
+doubles the symptom evidence without a second person. Composes with `--marked`, 2 of 2 — the
+single mark appears in the reflection alone and the count survives a doubled subject.
 
-**`mirror`** — optional, `--confront` only. A mirror behind or beside the subject showing them
-from another angle, the reflection consistent with their actual position. It earns its space
-twice: it gives the confrontation a natural reason, and it doubles the symptom evidence
-without a second person. Composes with `--marked`, confirmed 2 of 2 — the single mark appears
-in the reflection alone and the count survives a doubled subject.
+**`grade`** — **an ordinary photograph in ordinary light.** Normal exposure, detail held in both
+the shadows and the highlights, midtones open across most of the frame. Colour true to life and
+muted rather than vivid, every surface keeping its own real colour.
 
-**`grade`** — **an ordinary photograph in ordinary light.** Normal exposure, detail held in
-both the shadows and the highlights, the midtones open across most of the frame. Colour true to
-life and muted rather than vivid, every surface keeping its own real colour.
-
-**`exempt_from: [G11]` as of 1.17, narrowly.** G11's instrument is "reduced saturation ... cool or
-neutral, never warm"; the muted half is kept and the rest is not, because **G11 never asks for
+**`exempt_from: [G11]` as of 1.17, narrowly.** G11's instrument is "reduced saturation ... cool
+or neutral, never warm"; the muted half is kept and the rest is not, because **G11 never asks for
 darkness** and darkness is what the withdrawn wording produced. Taken by ID on
-`04-proof-lockedframe`'s precedent, which G11's own text names. Reasoning and the prior "never
-warm" breach are in ADR-049. What carries the unresolved state instead is the argument: the
-`cost` block, and the mark where one is used.
+`04-proof-lockedframe`'s precedent, which G11's own text names. Reasoning and the prior
+"never warm" breach are in ADR-049. What carries the unresolved state instead is the argument:
+the `cost` block, and the mark where one is used.
 
 ## MARKS
 
 This type's own mark library, called by name from the skeleton and used by `--marked` alone.
-Every mark obeys G3 and carries a count. `also in` notes keep a same-looking mark in another
-type visible from here.
+Every mark obeys G3 and carries a count.
 
 | form | how it is drawn | count | evidence |
 |---|---|---|---|
 | `glow` | a soft radial bloom sitting ON the target, brightest at its centre and fading outward | exactly 1 | 26 renders · lands where a HAND already is · a POINT landmark binds it, a span does not · also in `01-pain-split` (hotspots), `02-symptom-rail` (vignettes) |
 | `ring` | a clean open circle of even line weight drawn around the target, touching nothing else | exactly 1 | 6 renders · holds its extent exactly · the class for a small target |
 
-**Two forms, and colour supplies the meaning.** The form only makes the thing read AS a mark;
-G3 says what it means — red for pain and wrong, orange for wrong heat and wrong pressure.
-Confirmed: red glow on a body reads as pain, orange glow on an object reads as too hot to
-touch, red ring on a small target reads as look-here.
+**Colour supplies the meaning.** The form only makes the thing read AS a mark; G3 says what it
+means. Red glow on a body reads as pain, orange glow on an object as too hot to touch, red ring
+on a small target as look-here.
 
 **Rank the forms by what they MEAN here, not by how cleanly they draw.** `ring` came back
-textbook 3 of 3 in round 2 and the owner's ruling was that it is the less effective of the two:
-a ring says LOOK HERE where this type needs the frame to say IT HURTS. So `glow` gets contained
-rather than withdrawn — a boundary record is not grounds to retire a mark.
+textbook 3 of 3 and the owner ruled it the less effective of the two: a ring says LOOK HERE where
+this type needs the frame to say IT HURTS. A boundary record is not grounds to retire a mark.
 
-**No FILLED form, ever, in this register.** A mark reads as a mark only when its form is one
-the photographed scene could not have produced — emitted light, or drawn geometry. A filled
-region that follows an object's own surface is exactly what paint, dye, tape and fabric look
-like, so the eye reads it as material: a red tint made a glass into a pink glass, an orange
-contact band made a sock look like it had an orange cuff. Both forms work in `02-cause-anatomy`,
-which is drawn throughout; this type is photographic and a fill has no way to announce itself. Wrong pressure is therefore an ORANGE GLOW on the contact, not a band.
+**No FILLED form, ever, in this register.** A mark reads as a mark only when its form is one the
+photographed scene could not have produced. A fill follows an object's own surface, which is what
+paint, dye and tape look like: a red tint made a glass into a pink glass, an orange band made a
+sock look like it had an orange cuff. Wrong pressure is therefore an ORANGE GLOW on the contact,
+not a band. `fill` also needs an OPAQUE object far in colour from the tint.
 
 **Four admission gates. Check them before choosing a class.**
 
-1. **The fault must have a PLACE** — a knuckle, a kneecap, a neck muscle, a plug, a crusted
-   collar: somewhere a viewer could put a finger. A mark LOCATES a fault; it cannot ADJUDICATE
-   one. Where the fault is a quality spread over a whole object (dirty, cloudy, blunt, worn)
-   there is nothing to point at, and `--marked` is ILLEGAL.
-2. **A mark competes with the evidence it points at.** Over a surface condition it covers the
-   very thing the viewer must see. So `--marked` is a CHOICE, not a default: on object
-   subjects weigh the base variant first and let light and scale carry the evidence. A set of
-   prompts should carry mark-free cases deliberately. **Mark-free is conditional on the
-   force**: two such frames in one set, same macro, same absent face, same rank-1 evidence —
-   the jar passed because forcing a lid that has not moved IS diagnostic, the mouse failed
-   because a hand resting on a mouse is not, and with nothing pointed at the pain left its own
-   frame. That mouse frame had read fine a round earlier WITH a `ring`. So a mark can carry a
-   force that is not diagnostic, and dropping it is safe only where `subject`'s diagnostic law
-   is genuinely met. **Mark-free has two safe routes and no others**: rank-2 residue as sole
-   evidence (2 of 2), and GROSS swelling stated absolutely (2 of 2). Not fine deformity, which
-   the renderer twice declined to draw; not where the pose can cover the evidence.
-3. **Name a BOUNDED STRUCTURE as the target, never a size.** "Sized to it and no larger" does
-   not bind. Name a structure and the mark takes its extent; name a patch, a scatter or a
-   split and the model substitutes the nearest bounded object or spreads the mark across the
-   area. Same finding as `02-cause-anatomy`. **But a size bound says how big, not where to
-   start**: landmark plus size bound bound the EXTENT 4 of 4 (largest connected component
-   8.1-9.6% x 12.5-14.1% of frame, against synthetic tight and wide controls), and in 2 of
-   those 4 the bloom still formed on the soft mass beside the landmark. The 2 that landed each
-   named what the mark must NOT reach. **That sentence is REFUTED and must not be written** —
-   carried twice and breached twice, omitted twice and landed twice, with the omitting pair the
-   most concentrated marks this type has made.
-
-   **Placement is bound by the STRUCTURE'S SHAPE.** Name a POINT — a kneecap, an ankle bone, the
-   ball of a thumb. A SPAN slides along itself, and a landmark the camera cannot see cannot be
-   marked at all. **The size bound stays**: it has no measurable effect on extent, and it is kept
-   only because SLOT CONSTRAINTS removes a clause once a render has done without it and come back
-   CORRECT — one of three unbounded frames produced no mark at all.
-
+1. **The fault must have a PLACE** — somewhere a viewer could put a finger. A mark LOCATES a
+   fault; it cannot ADJUDICATE one. Where the fault is a quality spread over a whole object
+   (dirty, cloudy, blunt, worn) there is nothing to point at and `--marked` is ILLEGAL.
+2. **A mark competes with the evidence it points at**, so `--marked` is a CHOICE, not a default,
+   and a set should carry mark-free cases deliberately. **Mark-free has two safe routes and no
+   others**: rank-2 residue as sole evidence (2 of 2), and GROSS swelling stated absolutely
+   (2 of 2). Not fine deformity, which the renderer twice declined to draw; not where the pose
+   can cover the evidence; and not where `subject`'s diagnostic law is unmet — a hand resting on
+   a mouse failed where forcing an unmoving lid passed.
+3. **Name a BOUNDED STRUCTURE as the target, never a size.** Name a patch, a scatter or a split
+   and the model substitutes the nearest bounded object. **Placement is bound by the STRUCTURE'S
+   SHAPE**: name a POINT — a kneecap, an ankle bone, the ball of a thumb. A SPAN slides along
+   itself, and a landmark the camera cannot see cannot be marked at all. **A sentence naming what
+   the mark must NOT reach is REFUTED and must not be written** — carried twice and breached
+   twice, omitted twice and landed twice, the omitting pair the most concentrated marks this type
+   has made. **The size bound stays** despite having no measurable effect on extent, because
+   SLOT CONSTRAINTS removes a clause only once a render has done without it and come back
+   CORRECT, and one of three unbounded frames produced no mark at all.
 4. **A HAND ON THE BODY IS ALREADY A POINTER, SO PUT THE MARK WHERE THE HAND IS.** Every marked
    frame that read has them coincident; the one that put the hand at a nose and the bloom on a
    cheek named two places and confirmed neither. **Never pose a hand where the model has a
    stronger idiom** — the pose moves and the mark is left stranded.
 
-**One form limit, and it belongs to `fill`.** `fill` needs an OPAQUE object whose colour is far
-from the tint; on transparent pale glass the tint becomes the material and no mark is visible at
-all. `glow`'s old limit — a radial falloff cannot be stopped at an outline, so route a hard
-boundary to `ring` or `fill` — is RETIRED at 1.16. Its extent binds (gate 3), and the routing
-was never legal anyway in a register that admits no filled form.
-
 **A mark can POINT or it can CLASSIFY.** A form only points; the colour classifies. On a BODY
-pointing suffices because the viewer supplies the meaning. On an OBJECT it does not, and the
-colour has to do the work — which is what orange did on the plug where red could not.
+pointing suffices because the viewer supplies the meaning. On an OBJECT the colour has to do the
+work — which is what orange did on the plug where red could not.
 
-**The mark POINTS AT evidence. It never delivers a verdict.** No X, no check, no VS, no
-thumbs, no exclamation glyph — that is `01-pain-split`'s language, and a glyph is text, which
-G6 routes out of the render and into post. This is why "warning" resolves to G3's orange
-rather than to a triangle.
+**The mark POINTS AT evidence. It never delivers a verdict.** No X, no check, no VS, no thumbs,
+no exclamation glyph — that is `01-pain-split`'s language, and a glyph is text. This is why
+"warning" resolves to G3's orange rather than to a triangle.
 
 The mark owns a named slot and closes its own count inside that slot ("the only mark in this
-image"), because a mark buried in prose is the one that vanishes (adapter Rule 7).
-Deliberately NOT in the negative list: any phrasing like `second mark` — it qualifies a noun
-the variant requires, which is Rule 1a's bleed shape.
+image"), because a mark buried in prose is the one that vanishes (adapter Rule 7). Deliberately
+NOT in the negative list: any phrasing like `second mark` — it qualifies a noun the variant
+requires, which is Rule 1a's bleed shape.
 
-Signal colour appears ONLY in the mark, and the desaturated grade stays exactly as `grade`
-sets it. G3 note: the base type is `exempt_from: [G3]` because it uses no signal colour at
-all — this variant uses one, so its mark obeys G3 while the exemption stands for the rest of
-the frame.
+**Signal colour appears ONLY in the mark**, and the rest of the frame keeps the true-to-life
+colour `grade` sets. G3 note: the base type is `exempt_from: [G3]` because it uses no signal
+colour at all — this variant uses one, so its mark obeys G3 while the exemption stands for the
+rest of the frame.
 
 **Budget: exactly ONE mark, and never two classes in one frame.** This type's argument is
-recognition, not diagnosis. A second mark makes it a diagram, which is `01-pain-split`'s job
-and the reason the two are `never_with`.
+recognition, not diagnosis. A second mark makes it a diagram, which is `01-pain-split`'s job and
+the reason the two are `never_with`.
 
 ## SLOT CONSTRAINTS
-- **No red pixel anywhere, on `--candid` and `--confront`.** Those variants replace the red
-  pain signal with acting, and a red glow there makes the image confess it is an ad.
-  `--marked` is the sanctioned exception and narrows the rule to "red appears only in the
-  mark": natural skin, food and household colour were never the target of this ban, and
-  writing around them cost a render (see CHANGELOG 1.3).
-- **A minor in the subject slot is where this type gets REFUSED, not merely criticised.**
-  **G13** binds and carries the rules; they reduce the flagged bundle without removing it,
-  because the force inventory and the covert gaze ARE this type. Where a frame is still
-  refused, take the object-only execution — the failed tool and its residue, nobody in
-  frame — which the ledger records twice.
+- **No red pixel anywhere, on `--candid` and `--confront`.** Those variants replace the red pain
+  signal with acting. `--marked` is the sanctioned exception and narrows the rule to "red appears
+  only in the mark": natural skin, food and household colour were never the target of this ban.
+- **A minor in the subject slot is where this type gets REFUSED, not merely criticised.** **G13**
+  binds and carries the rules. Where a frame is still refused, take the object-only execution —
+  the failed tool and its residue, nobody in frame — which the ledger records twice.
 - **The prompt budget.** A clause earns its place in a rendered prompt only if a render has
-  failed without it. Everything else is a rule for the writer and stays in this file.
-  Reference sizes, measured rather than guessed: the one proven `--marked` render at
-  1669 characters, and the v1.5 set at 1760/1770/1880. Adapter Rule 6 asks for a re-read
-  past 2500 and nothing this type has shipped has come near it. The measured history runs
-  the opposite way from drift — forcing exertion out of prose alone took the jar prompt from
-  1379 to 2153 characters, and the marked rewrite of the same image did three more jobs
-  at 1669. Measured at 1.16: `cost` costs 300-447 characters, mean 372, and
-  took the same six products from 1412-1583 to 1306-1999 — 3 of 6 over the 1800
-  ceiling four other types declare, and none near Rule 6's 2500.
+  failed without it, and is removed only once a render has done without it and come back correct.
+  Everything else is a rule for the writer and stays in this file. Measured history: shipped
+  prompts run 1300-2300 characters, `cost` costs 300-450 of them, and adapter Rule 6 asks for a
+  re-read past 2500, which nothing here has reached.
 
 ## NEGATIVE
 ```
@@ -310,13 +253,10 @@ white background, studio lighting, stock photo look, posed model, fake grimace,
 smiling, clean staged interior, saturated colors, advertising composition,
 product placement
 ```
-This list is canonical and model-agnostic. Since ADR-014 it is **not rendered into the
-prompt at all** — the owner removed the `Strictly avoid:` sentence by hand, re-rendered, and
-the output did not change. The list stays here and in the query output's `avoid` field for a
-future model with a real negative channel. Seven of its tokens were Rule 1a bleeds when it
-WAS rendered (`red glow`, `pain hotspots`, `graphic overlay` under `--marked`; `studio
-lighting` plus the three lighting tokens in the variant blocks, all qualifying *light*), and
-that is why the bounds they carried are asserted positively in the body instead.
+Canonical and model-agnostic. Since ADR-014 it is **not rendered into the prompt at all** —
+removing it changed no output. It stays here and in the query output's `avoid` field for a
+future model with a real negative channel. Seven of its tokens were Rule 1a bleeds when it WAS
+rendered, which is why the bounds they carried are asserted positively in the body instead.
 
 ## VARIANTS
 Diffs only. Each variant names the PARTS values it takes; the definitions stay in PARTS.
@@ -440,27 +380,27 @@ The `ring` case. A small target is the one job a ring does better than a glow: i
 extent exactly where a glow blooms.
 
 ## KNOWN-FLAKY
-- **Unrequested four-pointed sparkle glyph, bottom-right, 16 of 16 renders, last
-  counted 2026-08-25.** Same corner and same form throughout, and it takes the tone of whatever
-  is beneath it — wood, envelopes, a bath panel, a navy shirt — which is a composite overlay's
-  signature rather than a drawn element. Not this type's defect: it is the platform artefact
-  `adapters/nano-banana.md` Rule 7 tracks, and the blend behaviour is evidence for the watermark
-  reading there. Intermittent — this type's mark-free control of 2026-08-12 recorded none.
-  Rule 7's own test, proposed here at v1.5, **has still never run**: no set since has named that
-  corner as bare.
-- **Filled marks, WITHDRAWN at 1.13 on 0 of 2.** `fill` on a drinking glass and an orange
-  `pressure` band on a sock elastic. Both rendered exactly as specified and both stopped being
-  marks: the glass read as a pink glass, the band as an orange cuff. Not withdrawn for being
-  ugly, but for being unable to announce themselves inside a photograph. Retest only if this
-  type ever gains a non-photographic register.
-- **Over-acted faces on the `--marked` renders, 2 observations, 2026-08-13.** A pushed-out
-  lower lip on the posture frame, acute physical pain on the cable frame where the problem is
-  a cable. Below the bar, and both prompts named the signs by muscle as the slot asks. Watch
-  whether the mark itself invites the model to overplay the face.
+- **Unrequested four-pointed sparkle glyph, bottom-right, 16 of 16 renders, last counted
+  2026-08-25.** Same corner and same form throughout, taking the tone of whatever is beneath it,
+  which is a composite overlay's signature rather than a drawn element. Not this type's defect:
+  it is the platform artefact `adapters/nano-banana.md` Rule 7 tracks. Intermittent — a mark-free
+  control of 2026-08-12 recorded none. Rule 7's own test, proposed here at v1.5, **has still
+  never run**: no set since has named that corner as bare.
+- **Filled marks, WITHDRAWN at 1.13 on 0 of 2.** Both rendered exactly as specified and both
+  stopped being marks. Retest only if this type ever gains a non-photographic register.
+- **Over-acted faces on `--marked` renders, 2 observations.** Below the bar, and both prompts
+  named the signs by muscle as the slot asks. Watch whether the mark itself invites the model to
+  overplay the face.
 
 ## CHANGELOG
 Current law is above; the reasoning behind each entry is in the commit it cites (ADR-013).
 
+- 1.18 (2026-08-25): **compression pass, and three corrections to 1.17.** Case histories and
+  measurement narratives move out of PARTS, MARKS, SLOT CONSTRAINTS and KNOWN-FLAKY into the
+  commits that cite them (ADR-013); CHANGELOG entries at and below 1.12 collapse to one line.
+  No law removed. Corrected: `evidence` Status was left duplicated by a half-matched edit,
+  gate 3 contradicted itself on whether a size bound binds extent, and MARKS still referred to
+  "the desaturated grade" that 1.17 withdrew. · this commit
 - 1.17 (2026-08-25): **the type asks for a photograph, not a film still.** `light` takes the
   real light of the place, `grade` an ordinary exposure, `REGISTER` drops `cinematic film still`;
   midtone share 28.4% → 61.0%. `exempt_from` gains **G11** narrowly (ADR-049). Also: the cost is
@@ -468,66 +408,33 @@ Current law is above; the reasoning behind each entry is in the commit it cites 
   the mark goes where the HAND is; a POINT landmark binds placement; the exclusion sentence is
   REFUTED; rank 2 carries a mark-free frame alone; a COMPARISON does not render. · this commit
 - 1.16 (2026-08-25): **a pain frame must say what the pain TAKES AWAY, not only where it
-  hurts.** New required PART `cost`, earned 6 of 6 where adding it alone reversed the owner's
-  `does not agitate` on the same six products; new fault **A14**. `environment` becomes `place`,
-  one phrase, no clutter inventory. `glow` NOT withdrawn — its extent binds at 4 of 4, which
-  corrects 1.13, and marks rank by meaning over craft. Mark-free is conditional on a diagnostic
-  force. Ratios corrected to ADR-016's legal set. · 60d5714
-- 1.15 (2026-08-21): **a minor in the subject slot is a renderability constraint, not a
-  taste one.** Owner reported nano banana REFUSING a pain frame built on a child. New global
-  rule **G13** carries the three writer's rules; SKELETON and SLOT CONSTRAINTS reference it
-  by ID. Mechanism and measurement are in the commit. · 0104619
-- 1.14 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES returns
-  with the two renders that earned it — the mark-free laundry frame and the blister ring — in
-  full text per SPEC §3.3, closing the gap opened at 1.7. ADR-014 adopted: the canonical
-  NEGATIVE list is no longer rendered into a prompt. Contributed to `argument-faults.md`: the
-  glassware failure joins A3, and **A11 is new** — a mark must have a form the register could
-  not have produced. · this commit
+  hurts.** New required PART `cost`, earned 6 of 6; new fault **A14**. `environment` becomes
+  `place`, one phrase. `glow` NOT withdrawn — marks rank by meaning over craft, correcting 1.13.
+  Ratios corrected to ADR-016's set. · 60d5714
+- 1.15 (2026-08-21): **a minor in the subject slot is a renderability constraint, not a taste
+  one** — the renderer refused such a frame outright. New global rule **G13**, referenced by ID
+  from SKELETON and SLOT CONSTRAINTS. · 0104619
+- 1.14 (2026-08-13): **type PASSED by the owner.** WORKED EXAMPLES returns in full text per
+  SPEC §3.3. ADR-014 adopted: the NEGATIVE list is no longer rendered into a prompt. **A11 is
+  new** in `argument-faults.md`. · this commit
 - 1.13 (2026-08-13): **a mark reads as a mark only when its form is one the photographed scene
-  could not produce.** Filled forms withdrawn at 0 of 2 — a red `fill` turned a glass pink, an
-  orange `pressure` band turned into a sock cuff. MARKS reorganised around the two proven
-  forms, `glow` and `ring`, with G3 colour supplying the meaning; wrong pressure is an orange
-  glow, not a band. Also settled: `glow` cannot be held to a boundary at 3 of 3, so extent
-  belongs to `ring`; and the mark-free control read at a glance with nothing pointed at. · this commit
-- 1.12 (2026-08-13): **`--marked` is a choice, not a default** — a mark laid over a surface
-  condition covers the evidence it points at. On object subjects the base variant is weighed
-  first, and prompt sets carry mark-free cases deliberately. Owner judgement on the glassware
-  and limescale frames. Compressed to ADR-013 in the same pass: CHANGELOG rewritten to
-  decisions plus commit pointers, case histories moved out of PARTS and MARKS. · this commit
-- 1.11 (2026-08-13): **the fault must have a PLACE** — a mark locates, it cannot adjudicate,
-  so `--marked` is illegal where the fault is a property of a whole object. With it: `glow`
-  blooms and cannot be stopped at an outline; `fill` needs an opaque object far in colour
-  from the tint; `heat` CONFIRMED on its founding render. · c876815
-- 1.10 (2026-08-13): **`heat`, `pressure` and `fill` added**, owner decision, after the
-  renders showed `glow` and `ring` only POINT — enough on a body, not on an object. Orange is
-  G3's value for wrong heat and is what "warning" resolves to, a glyph being text. Also: a
-  face cannot carry effort the body is not making. · ac0309b
-- 1.9 (2026-08-13): **a mark binds to a bounded structure, not to a size instruction.** Name
-  a structure and the mark takes its extent; name a patch or a split and it does not. · 4f26e39,
-  count corrected in f85f8b8
-- 1.8 (2026-08-13): **the action must be DIAGNOSTIC** — a force only someone with this problem
-  would apply. Naming a force is not enough. Evidence may be small and still read, so an inset
-  is not the fix; `scene` has none by definition. · 9089b65
-- 1.7 (2026-08-13): compression pass — CHANGELOG preamble added, the two Rule 1a notes in
-  NEGATIVE merged, WORKED EXAMPLES removed entirely (owner's call: both were untested and
-  named slots that no longer exist). · fc8612c
-- 1.6 (2026-08-13): **restructured into a call-map plus two libraries** (ADR-012), on the
-  owner's instruction to repeat the `02-cause-anatomy` shape. `PARTS` owns the non-mark blocks,
-  `MARKS` the mark library. Not copied: that type's removal and 2:1 tests, which gate a
-  two-panel comparison this type has none of. · 7b9e59d
-- 1.5 (2026-08-13): four more Rule 1a bleeds found in NEGATIVE, all qualifying *light*, which
-  every prompt here requires. KNOWN-FLAKY opened with the unrequested corner sparkle. · 1c1c8c6
-- 1.4 (2026-08-12): skeleton compressed 2144 → 1314 characters, no change to what renders.
-  `RATIO:` dropped per adapter Rule 4; the moment rule and the evidence ladder moved out as
-  instruments for the writer; `[SUBJECT]` lost its "or pausing at" branch. · e7f5556
-- 1.3 (2026-08-12): **`--marked` variant added** — one graphic mark, on the evidence, never a
-  verdict. Owner decision. `vocabulary.yaml` dropped "zero graphic layers" from the `scene`
-  device in the same change. Also here: the state-the-force rule, and `--confront`'s restraint
-  scoped to emotion rather than effort. · 2b0f333
-- 1.2 (2026-08-11): channels gain `landing-page`. The type contradicted ITSELF: `--confront`
-  already declared it while the frontmatter excluded it. Found by the slot-rules/frontmatter
-  drift check in scripts/validate.py. · 973addf
-- 1.1 (2026-08-10): SYMPTOM EVIDENCE made required (→G9); GAZE and LIGHT split into
-  per-variant conditionals; [MIRROR] slot added; environment clutter law tightened.
-  Evidence: seed conversation.md.
+  could not produce.** Filled forms withdrawn at 0 of 2. MARKS reorganised around `glow` and
+  `ring`, with G3 colour supplying the meaning. Its boundary finding is corrected at 1.16. · this commit
+- 1.12 (2026-08-13): `--marked` is a CHOICE, not a default — a mark laid over a surface
+  condition covers the evidence it points at. · this commit
+- 1.11 (2026-08-13): the fault must have a PLACE; `--marked` illegal where the fault is a
+  property of a whole object. · c876815
+- 1.10 (2026-08-13): `heat`, `pressure` and `fill` added, owner decision; a face cannot carry
+  effort the body is not making. · ac0309b
+- 1.9 (2026-08-13): a mark binds to a bounded structure, not to a size instruction. · 4f26e39
+- 1.8 (2026-08-13): the action must be DIAGNOSTIC; evidence may be small, so an inset is not
+  the fix. · 9089b65
+- 1.7 (2026-08-13): compression pass — WORKED EXAMPLES removed, CHANGELOG preamble added. · fc8612c
+- 1.6 (2026-08-13): restructured into a call-map plus two libraries (ADR-012). · 7b9e59d
+- 1.5 (2026-08-13): four more Rule 1a bleeds found in NEGATIVE; KNOWN-FLAKY opened. · 1c1c8c6
+- 1.4 (2026-08-12): skeleton compressed 2144 → 1314 characters; `RATIO:` dropped per adapter
+  Rule 4. · e7f5556
+- 1.3 (2026-08-12): `--marked` variant added — one mark, on the evidence, never a verdict. · 2b0f333
+- 1.2 (2026-08-11): channels gain `landing-page`; the type had contradicted itself. · 973addf
+- 1.1 (2026-08-10): symptom evidence made required (→G9); GAZE and LIGHT split per variant.
 - 1.0 (2026-08-10): initial from the garage car-exit exemplar. seed: conversation.md.
