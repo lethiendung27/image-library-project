@@ -202,3 +202,27 @@ what is visible. Both renders drew giant follicles with the bulbs near the surfa
 tails curling down, connected to none of the hair on the head above them — two unrelated
 systems in one frame. A cutaway is a window into the same body, not a diagram pasted into a
 hole cut in it.
+
+---
+
+## A14 · Where it hurts is not what it costs
+
+A pain frame names a force, a body under it and a symptom, and every one of those answers the
+same question: WHERE. Nothing in that inventory says what the pain PREVENTS, so the image
+depicts a condition and argues nothing — correct in every slot and flat.
+
+- `01-pain-scene`: six frames, six products, six use positions, three carrying a textbook mark.
+  No cost in 6 of 6, and the owner's reading was that the problem reads as monotonous and does
+  not agitate. The same six products in the same six positions with one block added — what the
+  pain is taking away, in frame and subordinate to the body it is taken from — rendered the cost
+  as written in 6 of 6 and took the set from 0 pass to 3 pass, 3 partial, 0 fail.
+
+**A mark cannot supply it.** A mark POINTS, and a point is another answer to WHERE: the round-2
+set's three cleanest frames were the three carrying the cleanest marks. Nor does clutter supply
+it — papers and a mug say `office`. The cost has to be a specific thing that is not happening:
+the activity going on without them, the object abandoned mid-use, the person waiting.
+
+**One type, so this is a warning and not yet a general law.** It is here rather than only in
+that type because the exposure is structural: any type whose slots are all descriptions of a
+problem's location — `01-pain-split`, `02-symptom-rail` — can be complete and still say nothing
+about what the problem costs.

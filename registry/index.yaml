@@ -6,10 +6,10 @@ types:
     step: 1
     job: pain
     device: scene
-    version: "1.15"
+    version: "1.16"
     status: active
     channels: [paid-social, advertorial, landing-page]
-    ratios: ["16:9", "5:3", "4:5"]
+    ratios: ["16:9", "3:4"]
     requires_product_photo: false
     generation_mode: single-pass
     axes:
