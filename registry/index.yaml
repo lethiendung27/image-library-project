@@ -6,7 +6,7 @@ types:
     step: 1
     job: pain
     device: scene
-    version: "1.16"
+    version: "1.17"
     status: active
     channels: [paid-social, advertorial, landing-page]
     ratios: ["16:9", "3:4"]
@@ -15,7 +15,7 @@ types:
     axes:
       gaze: [candid, confront]
     variants: [candid, confront, marked]
-    exempt_from: [G1, G3, G4]
+    exempt_from: [G1, G3, G4, G11]
     pairs_with: [06-relief-hero, 06-relief-scene, 04-proof-lockedframe]
     never_with: [01-pain-split]
     avoid_adjacent: []

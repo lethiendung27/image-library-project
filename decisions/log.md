@@ -2390,3 +2390,79 @@ file, so `dist/app-bundle` does not move. No rule file, no type file, no schema,
 no session is touched; `registry/types/01-pain-split.md` MARKS still names one badge form and
 remains on the owner's audit list where ADR-042 and ADR-043 put it. `registry_version`
 unchanged. 0 errors.
+
+## ADR-049 · 2026-08-25 · `01-pain-scene` stops asking for a film still, and takes a narrow G11 exemption
+
+Owner instruction across three turns: the frames look like film stills rather than photographs,
+the colour is not true, and this type should attend to the pain and not to the surroundings —
+which may be bright, dark or any weather. He rejected the look twice and then asked for the type
+to be committed. This records the law change that reaching his instruction required.
+
+**The complaint was about TONE, and the measurement is what separates that from hue.** The set he
+rejected returned a mean midtone share of **28.4% of frame** with **70.1% crushed to near-black**.
+The same formula with `low-key`, crushed blacks and deep-shadow replaced by "the real light of the
+place" plus an ordinary-exposure clause returned **61.0% midtones** across three rounds and
+eighteen renders, against a reference set at 65.5%. Colour CAST was never the difference — midtone
+|b−r| measured 25.4 against 23.9, and a synthetic teal push on a reference frame moved that metric
+from −18.6 to +41.8, so the instrument would have found a grade had one been there. **The frames
+read false because there was almost no midtone left for any colour to live in.**
+
+**The old grade also ate the mark, which is the part no style argument would have caught.** The
+darkest frame of the rejected set, mean luminance 29.2, returned its red glow at peak R−G **45** —
+the weakest signal any marked frame of this type has produced, against 111 to 203 elsewhere in the
+same set. A grade that desaturates the frame desaturates the mark inside the frame.
+
+**`REGISTER` had a clean A/B sitting inside the type's own vocabulary.** Line 48 said `cinematic
+film still`; the STYLE line said `editorial photojournalism, cinematic film still, natural and
+unstaged`. Sets using the photojournalism half alone came back looking like photographs; the set
+using `cinematic film still` came back looking like film stills. The type now uses its own other
+half, so nothing foreign was imported to fix this.
+
+**THE G11 EXEMPTION, AND WHY IT IS NARROW.** G11 is titled *Saturation carries the state* and its
+instrument is "reduced saturation or grayscale, cool or neutral, never warm". The muted half is
+kept in the new `grade`: colour is true to life and **muted rather than vivid**. What is dropped
+is everything G11 never asked for — G11 does not require DARKNESS, and darkness is what the
+withdrawn wording actually produced. The exemption is taken by ID rather than by quiet divergence,
+following `04-proof-lockedframe`, which G11's own text names as the precedent for a type whose
+`[GRADE]` slot legislates saturation differently and on purpose.
+
+**Recorded with it, because it should not be found later: G11's "never warm" was already breached
+by every render this type has ever produced.** Measured midtone b−r ran warm in 6 of 6 of one set
+and 4 of 6 of another. The exemption regularises a divergence that predates it rather than
+creating one. Whether G11's "never warm" clause is right for the library at all is a question for
+whoever next opens `registry/rules.md`; it is not answered here and no other type's relationship
+to G11 changes.
+
+**What carries the unresolved state instead of the palette.** The `cost` block, which says what
+the pain is taking away, and the mark where one is used. Both were measured working across the
+same rounds, and both are stronger instruments for this type's job than a desaturation the owner
+rejects on sight.
+
+**Six other rules landed in 1.17 in the same pass, each paid for by a render** and each recorded
+in the type file with its evidence: the cost is LOCKED to the body part being refused; a failure
+must be FINISHED and its residue a DISPLACED OBJECT, never a state and never an interruption; the
+mark goes where the subject's HAND already is; a POINT landmark binds placement and a span does
+not; the exclusion sentence is REFUTED and must not be written; rank-2 residue carries a mark-free
+frame alone, 2 of 2; and a symptom described as a COMPARISON does not render.
+
+**Rule 6c sweep, run before this list.** `adr-sweep.py G11` returns 43 hits across 15 files, four
+of them TEACHING: `registry/rules.md` (the rule and its exemption mechanism — **used as designed,
+not edited**), `registry/types/01-pain-scene.md` (this ADR's subject), `registry/types/
+04-proof-lockedframe.md` (the precedent, **left standing**) and `registry/types/06-relief-hero.md`
+(a high-key neutral grade citing G11 by ID — a different type, not exempt, **left standing**).
+`adr-sweep.py "crushed blacks"` returns one teaching file, this type, at three lines: two are
+rewritten and **the third is inside a WORKED EXAMPLE and is deliberately left verbatim** — SPEC
+§3.3 keeps those as the record of what actually rendered, and the note above them now says their
+`REGISTER`, `[LIGHT]` and `[GRADE]` lines are superseded and must not be copied.
+
+Consequences: `registry/types/01-pain-scene.md` → **1.17**, sixteen edits — frontmatter version and
+`exempt_from`, the SKELETON's `REGISTER`, `[GRADE]` and `STYLE` lines, `PARTS/light`, `PARTS/grade`,
+`PARTS/cost`, `PARTS/evidence`, the `glow` evidence row, admission gates 2 and 3, a new gate 4, the
+`--candid` diff, the WORKED EXAMPLES note and a CHANGELOG entry. `registry/index.yaml` regenerated;
+`dist/app-bundle` rebuilt. No rule file, no other type, no schema and no session is touched.
+`registry_version` unchanged. 0 errors.
+
+**Lane note, stated rather than assumed:** this session's standing scope excluded
+`registry/types/`. The owner instructed the commit directly, which is the human gate ADR-007
+names, and the type file had already been taken to 1.16 by another lane whose work is preserved
+intact — 1.17 edits it forward and reverts none of it.
