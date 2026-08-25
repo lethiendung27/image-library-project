@@ -1,10 +1,20 @@
 #!/usr/bin/env python3
-"""Build prompts.json + prompts.md for page 193.
+"""Build prompts.json + prompts.md for page 193. Second routing.
 
-The JSON is the source of truth; the Markdown is generated from it (runbook Step 7).
-Nothing here is hand-edited downstream. Every routing claim this file makes is
-recomputed at the bottom and FAILS the build rather than warning: a routing that is
-not checked is a routing that is trusted.
+The first routing shipped every slot single-type across A/B/C — the exact failure
+runbook Step 4 corrected at `e7dfe8c` ("one-type-once binds the recommended SET,
+never the option pool"). This routing gives every multi-option slot at least two
+distinct types, names each B's displaced slot, and adds the pool-diversity
+self-check so the breach cannot ship silently again (ADR-052). It also corrects
+three defects of the first routing: the cause options declared `--diagnostic`
+(which drops the product from the frame — these prompts carry it, so they are the
+base type), the out-of-scope field is named `out_of_scope_reason` as the schema
+declares, and the review-wall fence lives in `composition_notes` as every prior
+session records it.
+
+The JSON is the source of truth; the Markdown is generated from it (Step 7).
+Every routing claim is recomputed at the bottom and FAILS the build rather than
+warning: a routing that is not checked is a routing that is trusted.
 """
 import json
 import os
@@ -22,12 +32,7 @@ assert SESSION == f"{PAGE_TYPE}-{PRODUCT_SLUG}-{VERSION}", \
 
 
 def gif_name(slot_id):
-    """ADR-051: the session's own name with the SLOT appended, dots to dashes.
-
-    The gif type is NOT in it — it lives in gif.type_id and decides the library
-    folder. The slot makes the name unique on the page by construction, which is
-    why one-loop-per-gif-type is a preference here and no longer a rule.
-    """
+    """ADR-051: the session's own name with the SLOT appended, dots to dashes."""
     return f"{PAGE_TYPE}-{PRODUCT_SLUG}-{VERSION}-{slot_id.replace('.', '-')}.mp4"
 
 
@@ -48,7 +53,6 @@ GATES = [
 ]
 KILLED = sorted({t for c, t in GATES if c(ATTRS)})
 
-# Ratios each type declares, intersected with ADR-016's five at check time.
 TYPE_RATIOS = {
     "01-pain-scene": ["16:9", "3:4"],
     "02-cause-anatomy": ["5:3", "16:9", "1:1"],
@@ -68,8 +72,18 @@ TYPE_VERSION = {
     "05-social-handoff": "2.5", "05-social-snapshot": "1.2",
     "06-relief-hero": "1.17",
 }
-# Types whose EXECUTION here needs the owner's reference photo attached.
-NO_PHOTO = {"01-pain-scene", "04-proof-lockedframe--rivals"}
+
+
+def needs_photo(o):
+    """Read the flag off the EXECUTION, not the type (runbook Step 5):
+    `01-pain-scene` carries no product by design, and `--rivals` has no
+    product in frame, so neither takes the owner's reference photo."""
+    if o["type"] == "01-pain-scene":
+        return False
+    if o["type"] == "04-proof-lockedframe" and o.get("variant") == "rivals":
+        return False
+    return True
+
 
 CEIL = {"01-pain-scene": 2500, "02-cause-anatomy": 2050, "03-mechanism-ghostbody": 2400,
         "03-mechanism-xray": 2000, "03-use-sequence": 2200, "04-proof-lockedframe": 2600,
@@ -81,9 +95,11 @@ REF = ("Use the attached photo as the exact reference for the arm trainer. Prese
 AVOID = ("text, letters, numbers, watermark, logo, deformed hands, extra fingers, "
          "redesigned product, altered product shape, invented product details, "
          "different product than reference")
+COUNTER_DARK = ("No text, numbers, digits or readouts anywhere in the image. The "
+                "counter screen is dark and carries nothing.")
 
 # ---------------------------------------------------------------------------
-# 1 — content.0.image · hero · 01-pain-scene
+# 1 — content.0.image · hero · A/C 01-pain-scene, B 06-relief-hero
 # ---------------------------------------------------------------------------
 OPEN_A = """TYPE: 01-pain-scene v1.18 --candid
 REGISTER: editorial photojournalism, natural and unstaged. Single frame.
@@ -109,29 +125,30 @@ A gym holdall by the door, zip half open, a folded towel still inside it and dus
 
 STYLE: editorial photojournalism, natural and unstaged."""
 
-OPEN_B = """TYPE: 01-pain-scene v1.18 --confront
-REGISTER: editorial photojournalism, natural and unstaged. Single frame.
+OPEN_B = """TYPE: 06-relief-hero v1.17 --commercial
+REGISTER: clean commercial photograph, controlled light, sharp.
+
+[PRODUCT REFERENCE]
+""" + REF + """
 
 [SUBJECT]
-Man in his late thirties in a washed-out t-shirt and jogging bottoms, sitting back on his heels on a living room rug between sets, both forearms hanging over his knees. Under that force: the shoulders dropped and rolled forward, both hands open and slack, his chest still working for breath. Face: mouth open on the breath, brows drawn in, colour high across the cheeks.
+Man in his late thirties in a t-shirt and jogging bottoms, sitting forward on the edge of his couch mid-set, both hands on the grips of the trainer and the two arms of it pressed toward each other at chest height, elbows out, wrists straight, his gaze down on the point where the arms meet. Focused satisfaction rather than repose, mid-action.
 
-[EVIDENCE]
-A row of mismatched dumbbells along the skirting board an arm's length from him: four different sizes in three different finishes, the smallest pair furred with dust, the heaviest pair still sitting in the open box it came in with the packing sunk in the middle.
+[PRODUCT]
+The reference trainer between both hands at chest height, whole and unobstructed, both grips and the dial collar visible, the counter housing on its body turned toward the camera and its screen dark and unlit.
 
-[COST]
-A gym holdall by the door, zip half open, a folded towel still inside it and dust settled along the shoulder strap. Sharp enough to read and never larger, nearer or brighter than the body it is being taken from.
+[SETTING]
+A real living room filled to the edges: a rug with a corner turned up, a water bottle by the couch foot, a folded towel on the arm, a floor lamp on behind him, a bookshelf half in frame, a mug on the coffee table. None of them carries printed words. Background soft, never blank.
 
-[PLACE] A small first-floor living room, late evening.
+[LIGHT]
+Soft even window light from the left, background blurred, high-key neutral grade.
 
-[GAZE] Looking directly into the lens.
+[LAYOUT]
+He sits to the left of the frame; the right side carries the depth of the room.
 
-[LIGHT] The real light of the place and nothing added: one ceiling pendant on, and the last grey daylight through an uncurtained window behind him.
+""" + COUNTER_DARK + """
 
-[FORBIDDEN] No product, no panels, no insets. No mark of any kind.
-
-[GRADE] An ordinary photograph in ordinary light. Normal exposure, detail held in both the shadows and the highlights, midtones open across most of the frame, colour true to life and muted rather than vivid.
-
-STYLE: editorial photojournalism, natural and unstaged."""
+STYLE: clean commercial photograph, controlled light, sharp."""
 
 OPEN_C = """TYPE: 01-pain-scene v1.18 --candid
 REGISTER: editorial photojournalism, natural and unstaged. Single frame.
@@ -158,7 +175,7 @@ A gym holdall shoved under the end of the bed, zip half open with a folded towel
 STYLE: editorial photojournalism, natural and unstaged."""
 
 # ---------------------------------------------------------------------------
-# 2 — content.1.items.0.image · mechanism · 03-mechanism-ghostbody
+# 2 — content.1.items.0.image · mechanism · A/C ghostbody, B xray
 # ---------------------------------------------------------------------------
 PLAT_A = """TYPE: 03-mechanism-ghostbody v2.3
 REGISTER: 3D technical render on seamless white. NOT photography.
@@ -180,25 +197,22 @@ MARKS, three, nothing else in either panel is marked. Every one is a flat unshad
 G3: red wrong, blue correct, green badge, nothing else.
 Seamless white ground, soft even studio light, no shadow beyond a faint contact shadow."""
 
-PLAT_B = """TYPE: 03-mechanism-ghostbody v2.3
-REGISTER: 2D airbrushed medical illustration with soft gradients and modelled volume. NOT photography, NOT a 3D render.
+PLAT_B = """TYPE: 03-mechanism-xray v1.3
+REGISTER: 3D technical see-through render. NOT photography.
 
-PRODUCT REFERENCE: """ + REF + """ It keeps its own reference colours and carries no mark of any kind.
+PRODUCT REFERENCE: """ + REF + """ The outer shell becomes translucent, but its silhouette, proportions and every visible external part must match the reference exactly.
 
-PANELS: two equal panels side by side, divided by one thin vertical line. Both show the SAME anonymous male torso and both arms in the SAME pose from the SAME angle: seen from the front, both arms out in front of the chest at shoulder height and pressing inward, the skin drawn translucent so the chest and upper arm muscles read through it. The only difference between the panels is what the arms press against and what the chest muscle does.
+CANVAS: a plain pale cool grey ground, and nothing else in the frame behind the product.
 
-LEFT: the palms press flat against each other with nothing between them. The chest muscle lies long and slack, its fibres drawn evenly spaced from breastbone to shoulder.
-RIGHT: the reference arm trainer held between both hands at the same height, its grips taken by each hand and its arms compressed toward each other. The same chest muscle is drawn shortened and thickened, its fibres crowded together toward the breastbone.
+SHELL: the trainer lying horizontally across the frame, grips to left and right, its body translucent and glass-like, filling about 75 percent of the frame width.
 
-CUTAWAY: the pectoral muscle and the front of the shoulder, inside the body outline, in both panels.
+INTERNALS, solid and detailed inside the shell, each at its true location: the hydraulic cylinder as a sealed metal tube through the centre of the body; a piston partway along that tube with clear fluid either side of it; a narrow adjustable port through the piston, its opening wound down near closed; the dial collar around the outside of the tube, turned to the top of its range.
 
-MARKS, three, nothing else in either panel is marked:
-- structure: the pectoral muscle and the front of the shoulder in warm ivory, both panels.
-- stress: RIGHT panel only. A flat blue band laid along the belly of the pectoral muscle where the load pulls it, drawn on top of the illustration and following the muscle's own line.
-- verdict: filled solid discs, red with a white cross in the LEFT panel's top corner, green with a white check in the RIGHT panel's. Same diameter, not rings.
+MARKS, one, nothing else in the frame is marked:
+- working: the fluid forcing through the near-closed port shown ACTIVE and glowing warm amber in its own moving form, the brightest thing in the frame and clearly brighter than the ground — the resistance itself, made visible at the heavy end of the dial. No arrow anywhere.
 
-G3: red wrong, blue correct, green badge, nothing else.
-Deep desaturated slate ground, the right half one step lighter than the left."""
+No text, numbers or spec labels anywhere in the image.
+The mark is the only added colour; the product and its parts keep their own."""
 
 PLAT_C = """TYPE: 03-mechanism-ghostbody v2.3
 REGISTER: 3D technical render on seamless white. NOT photography.
@@ -221,9 +235,9 @@ G3: red wrong, blue correct, green badge, nothing else.
 Seamless white ground, soft even studio light, faint contact shadow only."""
 
 # ---------------------------------------------------------------------------
-# 3 — content.1.items.1.image · cause · 02-cause-anatomy
+# 3 — content.1.items.1.image · cause · A/C cause-anatomy (base), B rivals
 # ---------------------------------------------------------------------------
-COIL_A = """TYPE: 02-cause-anatomy v1.15 --diagnostic
+COIL_A = """TYPE: 02-cause-anatomy v1.15
 MEDIUM: 2D illustration, paper-cut. NOT photography, NOT 3D.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the arm trainer in the RIGHT panel.
@@ -240,24 +254,34 @@ MARKS, two, nothing else marked:
 
 G3: red wrong, blue correct, green badge, nothing else."""
 
-COIL_B = """TYPE: 02-cause-anatomy v1.15 --diagnostic
-MEDIUM: 2D illustration, flat-vector with flat fills and hard edges, no gradients. NOT photography, NOT 3D.
+COIL_B = """TYPE: 04-proof-lockedframe v1.13 --rivals, camera handheld
+REGISTER: documentary phone photography. No overlays, badges, arrows or text.
+LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
 
-PRODUCT REFERENCE: the attached photo is the exact reference for the arm trainer in the RIGHT panel.
+[PRODUCT REFERENCE]
+Not applicable. No product appears in this image.
 
-FRAME: one resistance bar seen end-on to the stroke, from grip to grip, the bar filling most of the width.
-GROUND: deep desaturated olive, the right half one step lighter than the left.
-BODY: the resistance element inside the bar, drawn as a flat cut layer over a translucent bar outline, seen from the side. NOT a skeleton, NOT a machine drawing. Exactly one bar in EACH panel, same scale and view.
+[SCENE — the same in all three]
+The same stretch of living room floor against the same skirting board: the same oak boards, the same rug edge entering at the bottom, the same radiator pipe in the corner. Flat overcast light from a window off to the left, no strong shadows, no styling.
 
-PANELS. LEFT: a generic unbranded coil spring bar at the end of its stroke, the coil wound down to almost no gap between turns, the two grips forced close together. RIGHT: the reference arm trainer at the end of the same stroke, its hydraulic cylinder drawn as a sealed tube with the piston at the far end and fluid passing through a narrow port around it, the tube wall the same width along its whole length.
+[FRAMING]
+One person photographed this spot three times from where they always stand, phone held at knee height and level with the boards, the skirting running across the upper third of each panel. It reads as one shot taken three times, never as three different shots. Light differs only in exposure, never in warmth.
 
-MARKS, two, nothing else marked:
-- measure: two dashed straight lines, one per panel, each drawn along the resistance element end to end and STOPPING at both ends. Same height in their panel, identical thickness and dash. One property differs: crowded and bunched on the left where the coil has closed, evenly spaced on the right. Red left, blue right.
-- verdict: filled solid discs, red with a white cross in the LEFT panel's TOP corner, green with a white check in the RIGHT panel's. Same diameter, not rings.
+[THE VARIABLE]
+Three spring-loaded trainers people already own, each photographed where it was last put down.
+1 — a coil spring twister bar, its centre coil dulled and the plastic grips worn shiny.
+2 — a spring chest expander, its five parallel springs slack and its handles lying crossed.
+3 — a pair of spring hand grippers, one on its side, the knurling on the handles rubbed pale.
 
-G3: red wrong, blue correct, green badge, nothing else."""
+[JUDGEMENT]
+All three are ordinary, intact and the kind someone would genuinely buy. None of them wins, and the image makes no claim — the copy beside it does.
 
-COIL_C = """TYPE: 02-cause-anatomy v1.15 --diagnostic
+[GRADE]
+One grade across all three panels, muted and cool for the whole image.
+
+STYLE: honest documentary product test photography, unstyled, natural, sharp."""
+
+COIL_C = """TYPE: 02-cause-anatomy v1.15
 MEDIUM: 2D illustration, paper-cut. NOT photography, NOT 3D.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the arm trainer in the RIGHT panel.
@@ -275,7 +299,7 @@ MARKS, two, nothing else marked:
 G3: red wrong, blue correct, green badge, nothing else."""
 
 # ---------------------------------------------------------------------------
-# 4 — content.1.items.2.image · comparison · 04-proof-lockedframe --verdict
+# 4 — content.1.items.2.image · comparison · A/C lockedframe, B use-sequence
 # ---------------------------------------------------------------------------
 SPACE_A = """TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld
 REGISTER: documentary photography. No overlays, badges, arrows or text.
@@ -304,32 +328,26 @@ One grade across all three panels: flat, neutral, true to the room's own colour.
 
 STYLE: honest documentary product test photography, unstyled, natural, sharp."""
 
-SPACE_B = """TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld
-REGISTER: documentary photography. No overlays, badges, arrows or text.
-LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
+SPACE_B = """TYPE: 03-use-sequence v1.9
+REGISTER: warm lifestyle photography, close range, natural and unstyled, soft daylight.
 
-[PRODUCT REFERENCE]
-""" + REF + """ It appears in the THIRD panel only.
+PRODUCT REFERENCE: """ + REF + """ It appears in every panel.
 
-[SCENE — the same in all three]
-The same open drawer under the same divan bed: the same drawer base, the same folded jumper pushed to the back left, the same length of carpet in front of the drawer. Flat daylight from a window off to the right, no strong shadows, no styling.
+LAYOUT: exactly three photographs, one above another, each the full width of the frame and all three the same height, separated by thin white gutters, no outer border.
 
-[FRAMING]
-One person photographed this drawer three times from standing, phone angled down over the open drawer, the drawer filling the middle two thirds of each panel. It reads as one shot taken three times, never as three different shots. Light differs only in exposure, never in warmth.
+CONTINUITY: the SAME pair of hands in all three panels — same skin tone, same nails, same wrists, same cuffs. The same two-seater couch and the same rug throughout. The same warm neutral palette and the same soft daylight from the left in every panel. Camera distance and framing shift naturally between panels.
 
-[THE VARIABLE]
-What has been put into that drawer, each photographed on an ordinary evening.
-1 — a pair of fixed dumbbells laid in the drawer, the drawer unable to close with them in and the front edge standing proud of the bed frame.
-2 — a coil spring twister bar laid diagonally across the drawer, its grips overhanging both sides so the drawer front sits open on them.
-3 — the reference arm trainer folded flat and lying inside the drawer, the folded jumper still in place beside it and the drawer front sitting flush.
+At the top, the trainer is lifted out from the gap under the couch, folded flat, one hand on each steel arm as they swing open away from the body.
 
-[FAIRNESS]
-Panels 1 and 2 get exactly the same exposure, background tidiness and framing generosity as panel 3. The dumbbells and the coil bar are ordinary, undamaged and the kind someone would genuinely own. Nothing is lit, cropped or graded to favour any panel. The difference is whether the drawer closes and nothing else.
+In the middle, both hands are on the grips at chest height and the two arms of the trainer are compressed toward each other, the wrists straight and the elbows out.
 
-[GRADE]
-One grade across all three panels: flat, neutral, true to the room's own colour.
+At the bottom, the arms are folded flat again and both hands slide the trainer back into the gap under the couch, the rug in front of it clear from edge to edge.
 
-STYLE: honest documentary product test photography, unstyled, natural, sharp."""
+The trainer sits at the same distance from the camera in the top and bottom panels and closer in the middle one.
+
+No text, numbers or labels anywhere in any panel.
+
+STYLE: warm lifestyle photography, close range, natural and unstyled."""
 
 SPACE_C = """TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld
 REGISTER: documentary photography. No overlays, badges, arrows or text.
@@ -359,7 +377,7 @@ One grade across all three panels: flat, neutral, true to the room's own colour.
 STYLE: honest documentary product test photography, unstyled, natural, sharp."""
 
 # ---------------------------------------------------------------------------
-# 5 — content.1.items.3.image · mechanism · 03-mechanism-xray
+# 5 — content.1.items.3.image · mechanism · A/C xray, B ghostbody
 # ---------------------------------------------------------------------------
 DIAL_A = """TYPE: 03-mechanism-xray v1.3
 REGISTER: 3D technical see-through render. NOT photography.
@@ -378,22 +396,25 @@ MARKS, one, nothing else in the frame is marked:
 No text, numbers or spec labels anywhere in the image.
 The mark is the only added colour; the product and its parts keep their own."""
 
-DIAL_B = """TYPE: 03-mechanism-xray v1.3
-REGISTER: 3D technical see-through render. NOT photography.
+DIAL_B = """TYPE: 03-mechanism-ghostbody v2.3
+REGISTER: 3D technical render on seamless white. NOT photography.
 
-PRODUCT REFERENCE: """ + REF + """ The outer shell becomes translucent, but its silhouette, proportions and every visible external part must match the reference exactly.
+PRODUCT REFERENCE: """ + REF + """ It keeps its own reference colours and carries no mark of any kind.
 
-CANVAS: a plain deep charcoal ground, and nothing else in the frame behind the product.
+PANELS: two equal panels side by side, divided by one thin vertical line. Both show the SAME featureless matte white mannequin in the SAME pose from the SAME angle: seated upright on a plain block, seen from the side facing left, the near arm bent and driving forward from the shoulder, the upper arm and chest musculature open to view beneath the surface. The only difference between the panels is what the hand drives against and what the muscle does.
 
-SHELL: the trainer seen at a low three-quarter angle with one grip nearer the camera, its body translucent and glass-like, filling about 70 percent of the frame width.
+LEFT: the hand drives forward with a light resistance band looped over it, the band barely bowed and giving no answer. The working muscle is drawn thin and even along its whole length, unchanged from the resting form.
+RIGHT: the reference arm trainer held in that hand at the same height, its grip taken and its arm compressed forward against the hydraulic stroke. The same muscle is drawn thick and raised along the same length, gathered where it pulls.
 
-INTERNALS, solid and detailed inside the shell, each at its true location: the hydraulic cylinder as a sealed metal tube running the length of the body; a piston head partway along it with clear fluid either side; a narrow adjustable port through the piston head; the dial collar on the outside of the tube with its stem reaching in to that port; the pivot joint where the two arms meet the body.
+CUTAWAY: the chest muscle and the front of the shoulder, inside the body silhouette, in both panels.
 
-MARKS, one, nothing else in the frame is marked:
-- working: the fluid crossing the narrow port shown ACTIVE and glowing warm amber in its own moving form, the brightest thing in the frame and clearly brighter than the ground. No arrow anywhere.
+MARKS, three, nothing else in either panel is marked. Every one is a flat unshaded hard-edged overlay laid on top of the render:
+- structure: the chest muscle and the front of the shoulder in warm off-white ivory, both panels.
+- stress: RIGHT panel only. A flat blue band laid along the belly of the working muscle where the load pulls it, following its line and clearly on top of the render.
+- verdict: one badge in the top corner of each panel — red filled disc with a white cross LEFT, green filled disc with a white check RIGHT. Same diameter, filled discs, not rings.
 
-No text, numbers or spec labels anywhere in the image.
-The mark is the only added colour; the product and its parts keep their own."""
+G3: red wrong, blue correct, green badge, nothing else.
+Seamless white ground, soft even studio light, faint contact shadow only."""
 
 DIAL_C = """TYPE: 03-mechanism-xray v1.3
 REGISTER: 3D technical see-through render. NOT photography.
@@ -413,7 +434,7 @@ No text, numbers or spec labels anywhere in the image.
 The mark is the only added colour; the product and its parts keep their own."""
 
 # ---------------------------------------------------------------------------
-# 6 — content.1.items.4.image · social-proof · 05-social-handoff
+# 6 — content.1.items.4.image · social-proof · A/C handoff, B relief-hero
 # ---------------------------------------------------------------------------
 SHARE_A = """TYPE: 05-social-handoff v2.5
 REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
@@ -438,7 +459,32 @@ An ordinary living room in the evening, a couch with a throw pushed to one end, 
 
 STYLE: candid documentary photograph, natural, unposed, sharp."""
 
-SHARE_B = """TYPE: 05-social-handoff v2.5
+SHARE_B = """TYPE: 06-relief-hero v1.17 --commercial
+REGISTER: clean commercial photograph, controlled light, sharp.
+
+[PRODUCT REFERENCE]
+""" + REF + """
+
+[SUBJECT]
+Woman in her thirties in a vest and leggings, sitting back on the couch mid-set, both hands on the grips of the trainer and its two arms drawn a short way toward each other at chest height, her gaze down on the point where they meet. Focused and easy, mid-action — a light setting held with control, not strain.
+
+[PRODUCT]
+The reference trainer between both hands at chest height, whole and unobstructed, the dial collar visible under her thumb, the counter housing on its body turned toward the camera and its screen dark and unlit.
+
+[SETTING]
+A real living room filled to the edges with signs that two people train here: two water bottles on the coffee table, a second pair of trainers by the door, a watch and a hairband side by side on the shelf, a folded towel over the couch arm, a rug pushed slightly off square. None of them carries printed words. Background soft, never blank.
+
+[LIGHT]
+Soft even window light from the right, background blurred, high-key neutral grade.
+
+[LAYOUT]
+She sits to the right of the frame; the left side carries the depth of the room.
+
+""" + COUNTER_DARK + """
+
+STYLE: clean commercial photograph, controlled light, sharp."""
+
+SHARE_C = """TYPE: 05-social-handoff v2.5
 REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
 
 [PRODUCT REFERENCE]
@@ -461,31 +507,8 @@ An ordinary kitchen in the morning, a table pushed back against the units, two c
 
 STYLE: candid documentary photograph, natural, unposed, sharp."""
 
-SHARE_C = """TYPE: 05-social-handoff v2.5
-REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
-
-[PRODUCT REFERENCE]
-""" + REF + """
-
-[MOMENT]
-The trainer is being passed sideways along a hallway: one person holds it out by the near grip at arm's length and the other has closed a hand over the far grip, the dial collar showing between them where it has just been turned down. Both people are dealing with that dial.
-
-[ADVOCATE]
-Man in his late twenties in a training top, standing with the trainer held out to one side, one arm still extended from pressing, chest still working. Mid-sentence, quick and amused, his eyes on her and never on the camera.
-
-[LISTENER]
-Woman in her late twenties in a zip-up top, standing nearer the camera with her back to us, FACE NOT VISIBLE, head down to the far grip her hand has closed on.
-
-[PRODUCT]
-The reference trainer is the only thing in sharp focus, everything behind it softer. It carries the strongest light in the frame, nothing overlaps or crowds it, and it differs in hue and value from everything else in frame. Nothing of similar size or finish stands near it.
-
-[ENVIRONMENT]
-An ordinary flat hallway in the evening, coats on hooks along one wall, shoes paired under them, a hall light on overhead and a doorway open to a lit room behind. None of those objects carries printed words.
-
-STYLE: candid documentary photograph, natural, unposed, sharp."""
-
 # ---------------------------------------------------------------------------
-# 7 — content.3.items.0.image · how-to-use · 03-use-sequence
+# 7 — content.3.items.0.image · how-to-use · A/C use-sequence, B handoff
 # ---------------------------------------------------------------------------
 GRIP_A = """TYPE: 03-use-sequence v1.9
 REGISTER: warm lifestyle photography, close range, natural and unstyled, soft daylight.
@@ -508,26 +531,28 @@ No text, numbers or labels anywhere in any panel.
 
 STYLE: warm lifestyle photography, close range, natural and unstyled."""
 
-GRIP_B = """TYPE: 03-use-sequence v1.9
-REGISTER: warm lifestyle photography, close range, natural and unstyled, soft daylight.
+GRIP_B = """TYPE: 05-social-handoff v2.5
+REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
 
-PRODUCT REFERENCE: """ + REF + """ It appears in every panel.
+[PRODUCT REFERENCE]
+""" + REF + """
 
-LAYOUT: exactly three photographs, one above another, each the full width of the frame and all three the same height, separated by thin white gutters, no outer border.
+[MOMENT]
+The trainer is mid-demonstration: the advocate's hands are set on the grips in the hold he has just worked out, the two arms of it drawn part way together, and he is turning it slightly so the other person can see exactly where his palms sit. The grip is the thing both people are dealing with.
 
-CONTINUITY: the SAME pair of hands in all three panels — same skin tone, same nails, same wrists, same cuffs. The same kitchen table top and the same chair back behind throughout. The same warm neutral palette and the same soft daylight from the right in every panel. Camera distance and framing shift naturally between panels.
+[ADVOCATE]
+Man in his forties in a plain sweatshirt, sitting on the edge of an armchair with the trainer held up at chest height, mid-sentence, unhurried and a little pleased with the grip he has found, his eyes on her and never on the camera.
 
-At the top, the trainer lies flat on the table and one hand turns the dial collar around the body while the other holds the near grip still against the table.
+[LISTENER]
+Woman in her forties in a cardigan, perched on the couch arm between him and the camera with her back to us, FACE NOT VISIBLE, head down to where his hands sit on the grips.
 
-In the middle, the trainer is lifted clear of the table and held vertically, one hand on the upper grip and one on the lower, the two arms compressed toward each other and both wrists straight.
+[PRODUCT]
+The reference trainer is the only thing in sharp focus, everything behind it softer. It carries the strongest light in the frame, nothing overlaps or crowds it, and it differs in hue and value from everything else in frame. Nothing of similar size or finish stands near it.
 
-At the bottom, the trainer lies flat on the table again with both hands off it, its arms returned to their open position and one hand resting on the table edge beside it.
+[ENVIRONMENT]
+An ordinary living room in the late afternoon, a coffee table pushed aside to make floor space, a rolled mat against the couch, two mugs on the shelf. None of those objects carries printed words.
 
-The trainer sits at the same distance from the camera in the top and bottom panels and closer in the middle one.
-
-No text, numbers or labels anywhere in any panel.
-
-STYLE: warm lifestyle photography, close range, natural and unstyled."""
+STYLE: candid documentary photograph, natural, unposed, sharp."""
 
 GRIP_C = """TYPE: 03-use-sequence v1.9
 REGISTER: warm lifestyle photography, close range, natural and unstyled, soft daylight.
@@ -551,7 +576,7 @@ No text, numbers or labels anywhere in any panel.
 STYLE: warm lifestyle photography, close range, natural and unstyled."""
 
 # ---------------------------------------------------------------------------
-# 8 — content.3.items.1.image · outcome · 06-relief-hero
+# 8 — content.3.items.1.image · outcome · A/C relief-hero, B xray
 # ---------------------------------------------------------------------------
 COUNT_A = """TYPE: 06-relief-hero v1.17 --commercial
 REGISTER: clean commercial photograph, controlled light, sharp.
@@ -574,31 +599,26 @@ Soft even window light from the left, background blurred, high-key neutral grade
 [LAYOUT]
 He sits to the left of the frame; the right side carries the depth of the room.
 
-No text, numbers, digits or readouts anywhere in the image. The counter screen is dark and carries nothing.
+""" + COUNTER_DARK + """
 
 STYLE: clean commercial photograph, controlled light, sharp."""
 
-COUNT_B = """TYPE: 06-relief-hero v1.17 --ugc
-REGISTER: a phone in an ordinary person's hand: slightly off exposure, no rim light, no negative space, framing casual and a little too close, the room left exactly as it is.
+COUNT_B = """TYPE: 03-mechanism-xray v1.3
+REGISTER: 3D technical see-through render. NOT photography.
 
-[PRODUCT REFERENCE]
-""" + REF + """
+PRODUCT REFERENCE: """ + REF + """ The outer shell becomes translucent, but its silhouette, proportions and every visible external part must match the reference exactly.
 
-[SUBJECT]
-Present only as working hands and forearms — no face. Both hands are off the grips and resting either side of the trainer where it lies across a rug, one thumb still against the counter housing on its body. What makes finished look different from unfinished: the two arms of the trainer have returned to their open resting position and neither hand is loaded.
+CANVAS: a plain deep slate ground, and nothing else in the frame behind the product.
 
-[PRODUCT]
-The reference trainer lying across the rug between the forearms, seen from above at a slight angle, whole and unobstructed, the counter housing turned up toward the camera and its screen dark and unlit.
+SHELL: the trainer seen at a high three-quarter angle with the counter housing nearest the camera, its body translucent and glass-like, filling about 70 percent of the frame width.
 
-[SETTING]
-An ordinary living room floor left exactly as it is: a water bottle on its side, a balled towel, the corner of a couch, a phone face down on the rug, a sock, a mug on the boards. None of them carries printed words. Nothing tidied, nothing removed.
+INTERNALS, solid and detailed inside the shell, each at its true location: the counter module set into the body behind its display window, its screen a dark glass rectangle showing nothing; a small stroke sensor at the pivot where the two arms meet the body; a thin wire run from that sensor to the counter module; the hydraulic cylinder as a sealed metal tube through the centre.
 
-[LIGHT]
-Ordinary room light, mild overexposure where the window falls on the rug, no rim light.
+MARKS, one, nothing else in the frame is marked:
+- working: the stroke sensor at the pivot shown ACTIVE and glowing warm amber at the instant a full stroke closes, the brightest thing in the frame and clearly brighter than the ground — the pulse the counter counts. No arrow anywhere.
 
-No text, numbers, digits or readouts anywhere in the image. The counter screen is dark and carries nothing.
-
-STYLE: honest phone photography, unedited look, natural, slightly imperfect."""
+No text, numbers or spec labels anywhere in the image. The counter screen is dark glass and carries nothing.
+The mark is the only added colour; the product and its parts keep their own."""
 
 COUNT_C = """TYPE: 06-relief-hero v1.17 --commercial
 REGISTER: clean commercial photograph, controlled light, sharp.
@@ -621,7 +641,7 @@ Soft even window light from the right, background blurred, high-key neutral grad
 [LAYOUT]
 She kneels to the right of the frame; the left side carries the depth of the room.
 
-No text, numbers, digits or readouts anywhere in the image. The counter screen is dark and carries nothing.
+""" + COUNTER_DARK + """
 
 STYLE: clean commercial photograph, controlled light, sharp."""
 
@@ -696,10 +716,10 @@ REVIEWS = [
 
 
 def opt(o, varies, typ, ratio, prompt, rationale, variant=None, axes=None,
-        pipeline="single-pass", notes=None, blocking=None):
+        pipeline="single-pass", notes=None, avoid=AVOID):
     d = {"opt": o, "varies_on": varies, "type": typ,
          "type_version": TYPE_VERSION[typ], "ratio": ratio,
-         "pipeline": pipeline, "prompt": prompt, "avoid": AVOID,
+         "pipeline": pipeline, "prompt": prompt, "avoid": avoid,
          "rationale": rationale}
     if variant:
         d["variant"] = variant
@@ -707,18 +727,16 @@ def opt(o, varies, typ, ratio, prompt, rationale, variant=None, axes=None,
         d["axes"] = axes
     if notes:
         d["composition_notes"] = notes
-    if blocking:
-        d["blocking_precondition"] = blocking
     return d
 
 
-FENCE = ("BLOCKING — DO NOT RENDER UNTIL RESOLVED. This tile sits in a review block "
-         "whose quotes each carry a full name and a `Verified Buyer` label. "
-         "`05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a "
-         "reviewer name, avatar, star row or verified badge, and never present one as an "
-         "actual customer upload — that is a fabricated endorsement (FTC). Resolve by "
-         "de-attributing the block or by using real customer photographs. The prompt is "
-         "emitted so the fix is a template change and not a re-route.")
+FENCE = ("BLOCKED AS THE PAGE IS BUILT. This tile sits in a review block whose quotes "
+         "each carry a full name and a `Verified Buyer` label. `05-social-snapshot` "
+         "SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, "
+         "avatar, star row or verified badge, and never present one as an actual "
+         "customer upload — that is a fabricated endorsement (FTC). Resolve by "
+         "de-attributing the block or by using real customer photographs. The prompt "
+         "is emitted so the fix is a template change and not a re-route.")
 
 SLOTS = [
     {
@@ -737,12 +755,20 @@ SLOTS = [
                 "dumbbell up restarts the problem' as an object. --candid because a stalled "
                 "press-up is physical limitation, not self-image.",
                 variant="candid", axes={"gaze": "candid"}),
-            opt("B", "axis: gaze=confront", "01-pain-scene", "16:9", OPEN_B,
-                "Same evidence and cost, the moment moved to between sets and the gaze into "
-                "the lens. --confront treats the plateau as a daily frustration rather than a "
-                "physical limit, which is the reading the dek takes.",
-                variant="confront", axes={"gaze": "confront"}),
-            opt("C", "execution: persona, room and time of day", "01-pain-scene", "16:9", OPEN_C,
+            opt("B", "type: 06-relief-hero — the solution working as the header",
+                "06-relief-hero", "16:9", OPEN_B,
+                "The format's other honest opening. A solution-aware reader is past "
+                "recognition and comparing classes, so the header can meet them with the "
+                "solution mid-use — product whole, load engaged, counter dark. Rung 2 of the "
+                "widening ladder: the hero cell holds pain-scene alone, and relief-hero "
+                "arrives from the outcome step with its own use_when naming banners.",
+                axes={"register": "commercial"},
+                notes="Picking B forces content.3.items.1 to change: 06-relief-hero is also "
+                      "the recommendation there, and its B (03-mechanism-xray) stands ready. "
+                      "06-relief-hero can ship on only one of this option, "
+                      "content.1.items.4's B and content.3.items.1's A."),
+            opt("C", "execution: persona, room and time of day", "01-pain-scene", "16:9",
+                OPEN_C,
                 "Same type and axes as A, a different person and place. The dumbbell evidence "
                 "becomes a spinlock bar with its collar loose and plates stacked separately — "
                 "the same argument in a household that bought adjustable iron instead.",
@@ -771,14 +797,19 @@ SLOTS = [
                 "what no camera can film. body_contact is true, so the type is not gated out. "
                 "Two panels, the only variable being what the hands press against.",
                 axes={"medium": "3d-render"}),
-            opt("B", "axis: medium = 2D medical illustration", "03-mechanism-ghostbody", "1:1",
-                PLAT_B,
-                "Same two-panel argument in the softer register. An airbrushed medical "
-                "illustration reads as an explanation rather than a product render, which "
-                "suits a card whose subject is the reader's own chest and not the device.",
-                axes={"medium": "2d-airbrush"}),
-            opt("C", "execution: seated side view, single arm", "03-mechanism-ghostbody", "1:1",
-                PLAT_C,
+            opt("B", "type: 03-mechanism-xray — the load source as hardware",
+                "03-mechanism-xray", "1:1", PLAT_B,
+                "The same claim from the device side: the thing that finally pushes back, "
+                "shown as the port wound near closed at the heavy end of the dial. Where A "
+                "draws the muscle meeting the load, B shows the load existing at all.",
+                axes={"canvas": "cool-grey"},
+                notes="Picking B forces content.1.items.3 to change: 03-mechanism-xray is "
+                      "also the recommendation there, and its B (03-mechanism-ghostbody) "
+                      "stands ready — the two swap cleanly. 03-mechanism-xray can ship on "
+                      "only one of this option, content.1.items.3's A and "
+                      "content.3.items.1's B."),
+            opt("C", "execution: seated side view, single arm", "03-mechanism-ghostbody",
+                "1:1", PLAT_C,
                 "Same type and medium as A, the view turned to the side and the argument "
                 "narrowed to one arm driving forward. A side cut shows the muscle shortening "
                 "along its length, which the front view can only show as thickening.",
@@ -807,20 +838,25 @@ SLOTS = [
                 "The card blames one concrete object — a coil spring bar — and names its harm "
                 "mechanism, stored energy released without control. That is this type's whole "
                 "trigger. The harm does not persist once the culprit is gone, which is the "
-                "avoid_when that would otherwise rule it out.",
-                variant="diagnostic"),
-            opt("B", "axis: style = flat vector, stroke at full compression",
-                "02-cause-anatomy", "1:1", COIL_B,
-                "Same argument at the end of the stroke rather than mid-stroke, drawn flat. "
-                "Full compression is where the coil holds the most energy, so the measure mark "
-                "has the widest difference to carry.",
-                variant="diagnostic"),
+                "avoid_when that would otherwise rule it out. Base type, product in the "
+                "RIGHT panel — --diagnostic would drop it from the frame."),
+            opt("B", "type: 04-proof-lockedframe --rivals — the spring class, photographed",
+                "04-proof-lockedframe", "1:1", COIL_B,
+                "The copy indicts a class, and --rivals is the class photographed plainly: "
+                "three spring devices people already own, none winning, the claim left to the "
+                "copy beside it. Rung 2 of the widening ladder — proof borrowed into a cause "
+                "card, and the one variant that needs no product photo.",
+                variant="rivals", axes={"camera_lock": "handheld"},
+                avoid=AVOID + ", damaged or dirty items, exaggerated flaws, one item "
+                              "obviously better",
+                notes="Picking B forces content.1.items.2 to change: 04-proof-lockedframe is "
+                      "also the recommendation there, and its B (03-use-sequence) stands "
+                      "ready. No product photo for this option — no product appears."),
             opt("C", "execution: the forearm and a slipping grip enter the frame",
                 "02-cause-anatomy", "1:1", COIL_C,
                 "Same type and style as A with the hand added, because the copy's failure "
                 "moment is grip tiring on the last rep. The frame then shows the condition "
-                "under which the stored energy is released rather than the energy alone.",
-                variant="diagnostic"),
+                "under which the stored energy is released rather than the energy alone."),
         ],
         "gif": {
             "eligible": True, "form": "whole-frame", "kind": "cause", "type_id": "cause",
@@ -859,13 +895,17 @@ SLOTS = [
                 "product last because left-to-right reading ends on it. Runs handheld, since "
                 "strict camera lock needs compositing this pipeline cannot do.",
                 variant="verdict", axes={"camera_lock": "handheld"}),
-            opt("B", "execution: a bed drawer instead of a floor corner",
-                "04-proof-lockedframe", "1:1", SPACE_B,
-                "Same variant, the test moved to storage rather than footprint. Whether the "
-                "drawer closes is a binary a static frame reads instantly, where floor area "
-                "has to be estimated.",
-                variant="verdict", axes={"camera_lock": "handheld"}),
-            opt("C", "execution: the gap under a couch", "04-proof-lockedframe", "1:1", SPACE_C,
+            opt("B", "type: 03-use-sequence — the fold-away as an action",
+                "03-use-sequence", "1:1", SPACE_B,
+                "The same claim carried as an action instead of a verdict: out from under the "
+                "couch, through a set, and back under, the rug clear at the end. The fold-away "
+                "IS the space argument, told in the three panels the type legislates.",
+                notes="Picking B forces content.3.items.0 to change: 03-use-sequence is also "
+                      "the recommendation there, and its B (05-social-handoff) stands ready. "
+                      "The step-3 budget holds at two through the swap: use-sequence once, "
+                      "ghostbody once."),
+            opt("C", "execution: the gap under a couch", "04-proof-lockedframe", "1:1",
+                SPACE_C,
                 "Same variant again, staged on the copy's own sentence — the frame slides "
                 "under the couch. The rival panels fail by being stopped at the couch base, "
                 "which is a physical outcome and not a treatment.",
@@ -896,12 +936,16 @@ SLOTS = [
                 "puts the whole cylinder across the frame, so the port and the dial stem read "
                 "as one connected thing.",
                 axes={"canvas": "warm-grey"}),
-            opt("B", "axis: canvas = deep charcoal, low three-quarter view",
-                "03-mechanism-xray", "1:1", DIAL_B,
-                "Same internals, darker ground. The working mark has to be the brightest thing "
-                "in frame, and a charcoal canvas buys that margin without brightening the mark "
-                "itself. Adds the pivot joint, which the horizontal view crops.",
-                axes={"canvas": "charcoal"}),
+            opt("B", "type: 03-mechanism-ghostbody — the wrong load and the dialled one",
+                "03-mechanism-ghostbody", "1:1", DIAL_B,
+                "The card's other half made visible: the copy opens on settling for the wrong "
+                "load, so LEFT is a light band giving no answer and RIGHT is the dialled "
+                "stroke the muscle actually meets. Same mannequin, same pose, the load the "
+                "only variable.",
+                axes={"medium": "3d-render"},
+                notes="Picking B forces content.1.items.0 to change: 03-mechanism-ghostbody "
+                      "is also the recommendation there, and its B (03-mechanism-xray) stands "
+                      "ready — the two swap cleanly."),
             opt("C", "execution: upright, port set almost closed", "03-mechanism-xray", "1:1",
                 DIAL_C,
                 "Same type, the dial shown at the heavy end of its range rather than mid-way. "
@@ -947,17 +991,22 @@ SLOTS = [
                 "asserted. The inset is omitted, which is the type's own single-pass route.",
                 notes="Inset omitted, not the type — the inset needs compositing and ADR-021 "
                       "forbids it. The type calls the inset-free route the safer one."),
-            opt("B", "execution: kitchen floor, roles reversed", "05-social-handoff", "1:1",
-                SHARE_B,
+            opt("B", "type: 06-relief-hero — the receiving half on its own",
+                "06-relief-hero", "1:1", SHARE_B,
+                "The moment after the handoff, held by one person: a light setting under "
+                "control, the dial under her thumb, and a room whose objects say two people "
+                "train here. One subject is what the type legislates, so the sharing lives in "
+                "the setting where the law puts it.",
+                axes={"register": "commercial"},
+                notes="Picking B forces content.3.items.1 to change: 06-relief-hero is also "
+                      "the recommendation there, and its B (03-mechanism-xray) stands ready. "
+                      "06-relief-hero can ship on only one of this option, the hero's B and "
+                      "content.3.items.1's A."),
+            opt("C", "execution: kitchen floor, roles reversed", "05-social-handoff", "1:1",
+                SHARE_C,
                 "Same type and moment with the advocate a woman and the listener a man, which "
                 "is the pairing the persona line describes first. A kitchen floor also removes "
                 "the couch, so the frame does not read as a rest scene.",
-                notes="Inset omitted, not the type."),
-            opt("C", "execution: hallway, passed at arm's length", "05-social-handoff", "1:1",
-                SHARE_C,
-                "Same type, the handoff standing rather than seated. Arm's length puts the "
-                "whole device between the two people, which is the clearest reading of one "
-                "frame serving two programs.",
                 notes="Inset omitted, not the type."),
         ],
         "gif": {
@@ -986,11 +1035,15 @@ SLOTS = [
                 notes="Step-3 budget: this is the second of the two permitted members of "
                       "{ghostbody, spec-split, use-sequence} on this page. A third would be a "
                       "lecture."),
-            opt("B", "execution: kitchen table, vertical press", "03-use-sequence", "1:1",
-                GRIP_B,
-                "Same three beats on a table rather than the knees, and a vertical rather than "
-                "a horizontal press. A table gives the panels a constant horizon, which is the "
-                "easiest continuity for a renderer to hold across three frames."),
+            opt("B", "type: 05-social-handoff — the grip, shown by someone who found it",
+                "05-social-handoff", "1:1", GRIP_B,
+                "How the no-manual question actually gets answered at home: someone who "
+                "worked the grip out shows the other person where the palms sit. The 'a "
+                "friend told me' beat aimed at the grip — rung 2, social borrowed into a "
+                "how-to card.",
+                notes="Picking B forces content.1.items.4 to change: 05-social-handoff is "
+                      "also the recommendation there, and its B (06-relief-hero) stands "
+                      "ready."),
             opt("C", "execution: bedroom floor, arms out at shoulder height",
                 "03-use-sequence", "1:1", GRIP_C,
                 "Same three beats with the press taken out in front of the body, and the last "
@@ -1040,14 +1093,18 @@ SLOTS = [
                       "ADR-021 forbids this pipeline. Both are satisfied the only way "
                       "available: the counter is in frame as a physical part and its screen "
                       "is dark. The number is claimed in copy, never rendered."),
-            opt("B", "axis: register = ugc, subject reduced to hands", "06-relief-hero", "1:1",
-                COUNT_B,
-                "Same slot in the trust register, subject reduced to forearms because the "
-                "result here is the finished set and not the person. `reduced` names what "
-                "makes finished look different from unfinished — the arms returned to rest "
-                "and neither hand loaded.",
-                axes={"register": "ugc", "subject": "reduced"},
-                notes="G6 COUNTER RULE as option A: counter present, screen dark, no digits."),
+            opt("B", "type: 03-mechanism-xray — the counter argued from inside",
+                "03-mechanism-xray", "1:1", COUNT_B,
+                "The counter without its number: the stroke sensor at the pivot and the "
+                "dark-glass module it feeds, the pulse the counter counts as the one glowing "
+                "thing in frame. It argues 'only a full stroke is credited' — the copy's own "
+                "sentence — with no digit anywhere, which is the G6 conflict dissolved rather "
+                "than worked around.",
+                axes={"canvas": "deep-slate"},
+                notes="Picking B forces content.1.items.3 to change: 03-mechanism-xray is "
+                      "also the recommendation there, and its B (03-mechanism-ghostbody) "
+                      "stands ready. 03-mechanism-xray can ship on only one of this option, "
+                      "content.1.items.3's A and content.1.items.0's B."),
             opt("C", "execution: bedroom, product standing rather than across the lap",
                 "06-relief-hero", "1:1", COUNT_C,
                 "Same type and register as A, a different person and room, and the device "
@@ -1078,13 +1135,18 @@ for i, prompt in enumerate(REVIEWS):
         "recommended_media": "still",
         "recommended_opt": "A",
         "recommendation_basis": "",
+        "single_type_basis": "A repeating review wall: the social-proof cell offers "
+                             "05-social-snapshot for tile imagery and the type's SET "
+                             "DIVERSITY LAW makes the tile the unit of variation, so each "
+                             "tile emits one option and the set varies across tiles "
+                             "(runbook Step 4, ADR-052).",
         "options": [
             opt("A", f"set member {i + 1} of 6 — room class, surface, anchor and light all "
                      f"differ from every sibling", "05-social-snapshot", "1:1", prompt,
                 "One option only: the type legislates a SET, so the unit of variation is the "
                 "tile and not the cell. Three options inside one tile would spend the "
                 "variation in the wrong place.",
-                blocking=FENCE),
+                notes=FENCE),
         ],
         "gif": {
             "eligible": False, "form": "none",
@@ -1115,62 +1177,74 @@ for sid, role, place in OUT_OF_SCOPE:
            "than an image one.")
     SLOTS.append({
         "slot_id": sid, "section_role": role,
-        "asset": None, "placement": place,
-        "recommended_media": "still",
+        "placement": place,
         "options": [],
-        "out_of_scope": why,
+        "out_of_scope_reason": why,
         "gif": {"eligible": False, "form": "none",
                 "reason": "The slot carries no library image, so there is nothing to animate."},
     })
 
 # ---------------------------------------------------------------------------
-# recommendation_basis — COMPOSED from the prompts, never typed (memory: generate
-# numbers, never type them). A check below fails any figure that disagrees.
+# recommendation_basis — COMPOSED from the prompts, never typed. A check below
+# fails any figure that disagrees.
 # ---------------------------------------------------------------------------
 BASIS = {
     "content.0.image":
         "FIT: the opener has to make a plateaued home lifter recognise themselves before the "
-        "list starts, which is this type's only job. EVIDENCE: rank 3 (the failed tool) is the "
-        "only rung available — a plateau has no photographable symptom — and A carries it with "
-        "four mismatched dumbbells including one still boxed, which is the copy's repeat-"
-        "purchase sentence as an object. B moves to --confront and reads as frustration rather "
-        "than limitation, which is the weaker half of the dek. PROMPT RISK: {A}/{B}/{C} "
-        "characters against this type's 2500 ceiling.",
+        "list starts, and recognition is 01-pain-scene's only job — A carries it with rank-3 "
+        "evidence, four mismatched dumbbells including one still boxed. B is the format's "
+        "other honest opening: a solution-aware reader already comparing classes can be met "
+        "with the solution working, which is 06-relief-hero, counter dark. PROMPT RISK: "
+        "{A}/{B}/{C} characters against ceilings of 2500 (pain-scene) and 2600 (relief-hero).",
     "content.1.items.0.image":
-        "FIT: the card argues a body fact no camera can film, which is the ghostbody trigger, "
-        "and body_contact is true so the type survives its gate. B's medical register suits the "
-        "subject but 3D holds the two-panel discipline more reliably in this library's history. "
-        "PROMPT RISK: {A}/{B}/{C} characters against this type's 2400 ceiling.",
+        "FIT: the card argues a body fact no camera can film — muscle grows against added "
+        "resistance — which is the ghostbody trigger, and body_contact is true so the type "
+        "survives its gate. B answers the same claim from the hardware side: 03-mechanism-"
+        "xray shows the thing that pushes back, the port wound near closed at the heavy end "
+        "of the dial. PROMPT RISK: {A}/{B}/{C} characters against ceilings of 2400 "
+        "(ghostbody) and 2000 (xray).",
     "content.1.items.1.image":
-        "FIT: one named culprit and a measurable harm mechanism is exactly 02-cause-anatomy's "
-        "trigger, and the harm stops when the culprit goes, which clears its avoid_when. A "
-        "takes mid-stroke because the measure mark needs the coil compressed but still legible "
-        "as a coil. PROMPT RISK: {A}/{B}/{C} characters against this type's 2050 ceiling.",
+        "FIT: one named culprit and a measurable harm mechanism is 02-cause-anatomy's "
+        "trigger, and the harm stops when the culprit goes, which clears its avoid_when. B "
+        "indicts the whole spring class the way the copy does — three spring devices people "
+        "already own, photographed plainly, none winning — which is 04-proof-lockedframe "
+        "--rivals, and it needs no product photo. PROMPT RISK: {A}/{B}/{C} characters "
+        "against ceilings of 2050 (cause-anatomy) and 2600 (lockedframe).",
     "content.1.items.2.image":
-        "FIT: floor space is visible to the naked eye inside a static frame, which is the one "
-        "condition 04-proof-lockedframe sets. A stages the copy's own corner-of-the-room "
-        "sentence; B and C are tighter binaries but narrower claims. PROMPT RISK: {A}/{B}/{C} "
-        "characters against this type's 2600 ceiling.",
+        "FIT: floor space is visible to the naked eye inside a static frame, which is the "
+        "one condition 04-proof-lockedframe sets, and A stages the copy's own corner-of-the-"
+        "room sentence. B carries the same claim as an action instead of a verdict: "
+        "03-use-sequence takes it from under the couch, through a set, and back under — the "
+        "fold-away IS the space argument. PROMPT RISK: {A}/{B}/{C} characters against "
+        "ceilings of 2600 (lockedframe) and 2200 (use-sequence).",
     "content.1.items.3.image":
-        "FIT: the dial's value is entirely internal, and this type exists for gadget-class "
-        "interiors that are not trivial — a piston, a port and a dial stem are three real "
-        "connected parts. A's horizontal view keeps all three in one line. PROMPT RISK: "
-        "{A}/{B}/{C} characters against this type's 2000 ceiling.",
+        "FIT: the dial's value is entirely internal and 03-mechanism-xray is the type for a "
+        "non-trivial gadget interior — a piston, a port and a dial stem are three real "
+        "connected parts. B makes the card's other half visible: 03-mechanism-ghostbody "
+        "shows the muscle meeting the wrong load and the dialled one, which is the sentence "
+        "the copy opens on. PROMPT RISK: {A}/{B}/{C} characters against ceilings of 2000 "
+        "(xray) and 2400 (ghostbody).",
     "content.1.items.4.image":
-        "FIT: the copy describes a literal handoff across a couch, and this type is that "
-        "moment. A keeps the dial under the receiving thumb, which is what turns a shared-"
-        "device claim into a shared-RANGE claim. PROMPT RISK: {A}/{B}/{C} characters against "
-        "this type's 2300 ceiling.",
+        "FIT: the copy describes a literal handoff across a couch and 05-social-handoff is "
+        "that moment, with the dial under the receiving thumb turning a shared-device claim "
+        "into a shared-RANGE claim. B is the receiving half on its own: 06-relief-hero with "
+        "one person mid-set at a light setting and a room whose objects say two people train "
+        "here. PROMPT RISK: {A}/{B}/{C} characters against ceilings of 2300 (handoff) and "
+        "2600 (relief-hero).",
     "content.3.items.0.image":
-        "FIT: the card's admission that there is no wall chart makes 'will I manage this' the "
-        "slot's question, which is 03-use-sequence's own. A stages it on the rug the opener "
-        "already established. PROMPT RISK: {A}/{B}/{C} characters against this type's 2200 "
-        "ceiling.",
+        "FIT: the card's admission that there is no wall chart makes 'will I manage this' "
+        "the slot's question, which is 03-use-sequence's own. B answers it the way it "
+        "actually gets answered at home — someone who worked the grip out shows the other "
+        "person, which is 05-social-handoff's 'a friend told me' beat aimed at the grip. "
+        "PROMPT RISK: {A}/{B}/{C} characters against ceilings of 2200 (use-sequence) and "
+        "2300 (handoff).",
     "content.3.items.1.image":
         "FIT: the closing card needs the product whole in a real room, which is 06-relief-"
-        "hero's job, and commercial register suits a landing page's last image. All three "
-        "options carry the same G6 counter rule. PROMPT RISK: {A}/{B}/{C} characters against "
-        "this type's 2600 ceiling.",
+        "hero's job, and the counter rule keeps every screen dark. B argues the counter from "
+        "inside instead: 03-mechanism-xray shows the stroke sensor at the pivot and the "
+        "dark-glass module it feeds — the pulse the counter counts, with no digit anywhere. "
+        "PROMPT RISK: {A}/{B}/{C} characters against ceilings of 2600 (relief-hero) and "
+        "2000 (xray).",
 }
 
 for s in SLOTS:
@@ -1181,12 +1255,13 @@ for s in SLOTS:
     elif s["slot_id"].startswith("reviews."):
         s["recommendation_basis"] = (
             "One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — "
-            "see the blocking precondition on the option.")
+            "see the note on the option.")
     else:
         s.pop("recommendation_basis", None)
 
 # ---------------------------------------------------------------------------
-# Step 5d — motion budget
+# Step 5d — motion budget (unchanged from the first routing: B options change
+# the pool, never the recommended stills the verdicts were argued against)
 # ---------------------------------------------------------------------------
 ELIG = [s for s in SLOTS if s["gif"].get("eligible")]
 
@@ -1230,6 +1305,8 @@ MOTION = {
         "Two of the three are rung `re-execution`. Both are panel layouts — a two-panel cause "
         "illustration and a three-panel use sequence — restaged as one continuous frame, which "
         "is the library's main re-execution case.",
+        "The gif verdicts were argued against the recommended stills and stand unchanged in "
+        "this second routing: a B option changes the pool, and a pool is not a page.",
     ],
 }
 
@@ -1243,7 +1320,7 @@ OUT = {
         "sections_routed": len({DECLARED[s["slot_id"]]["role"] for s in SLOTS
                                 if s.get("options")}),
         "library_slots": len([s for s in SLOTS if s.get("options")]),
-        "out_of_scope_slots": len([s for s in SLOTS if s.get("out_of_scope")]),
+        "out_of_scope_slots": len([s for s in SLOTS if s.get("out_of_scope_reason")]),
     },
     "recommended": [],
     "motion": MOTION,
@@ -1258,15 +1335,22 @@ OUT["page_composition_notes"] = [
     "For that reader, mechanism and physical proof are what decide it and re-amplifying the "
     "problem insults them, which is why exactly one pain image is routed and it sits in the "
     "header where the format demands one.",
-    "PAGE SET: eight library slots, eight distinct types, no repeat. `01-pain-scene` opens; "
-    "`03-mechanism-ghostbody` and `03-mechanism-xray` take the two mechanism cards, one inside "
-    "the body and one inside the device; `02-cause-anatomy` takes the coil bar; "
+    "RECOMMENDED SET: eight library slots, eight distinct types, no repeat. `01-pain-scene` "
+    "opens; `03-mechanism-ghostbody` and `03-mechanism-xray` take the two mechanism cards, "
+    "one inside the body and one inside the device; `02-cause-anatomy` takes the coil bar; "
     "`04-proof-lockedframe --verdict` takes the space claim; `05-social-handoff` takes the "
-    "shared-use card; `03-use-sequence` takes the no-wall-chart card; `06-relief-hero` closes. "
-    "The six review tiles take `05-social-snapshot` under the repeating-section exemption to "
-    "one-type-once.",
-    "STEP-3 BUDGET: two of {03-mechanism-ghostbody, 03-spec-split, 03-use-sequence} are used "
-    "and the cap is two. `03-spec-split` was never available — it is marketplace-only.",
+    "shared-use card; `03-use-sequence` takes the no-wall-chart card; `06-relief-hero` "
+    "closes. The six review tiles take `05-social-snapshot` under the repeating-section "
+    "exemption to one-type-once.",
+    "OPTION POOL: every multi-option slot carries two distinct types across A/B/C, which is "
+    "what Step 4 has required since `e7dfe8c` — one-type-once binds the recommended SET, "
+    "never the option pool. Each B names the slot its type displaces if picked, and the "
+    "first routing of this page shipped 8 of 8 slots single-type, which is why the pool "
+    "check now fails the build (ADR-052). The review tiles are the one legitimate "
+    "single-type case and declare it in `single_type_basis`.",
+    "STEP-3 BUDGET: two of {03-mechanism-ghostbody, 03-spec-split, 03-use-sequence} are in "
+    "the recommended set and the cap is two. `03-spec-split` was never available — it is "
+    "marketplace-only. Every B swap named in a composition note leaves the count at two.",
     "ATTRIBUTE GATES KILLED: " + ", ".join(KILLED) + ". `01-pain-split` falls to "
     "symptom_visibility invisible, `06-relief-scene` to result_visibility invisible. Neither "
     "was needed: pain-split is not on the advertorial shortlist at all, and the closing image "
@@ -1274,27 +1358,35 @@ OUT["page_composition_notes"] = [
     "RATIO: every card is 1:1 and the header is 16:9. 1:1 is the ONLY ratio all seven card "
     "types share once ADR-016's five are intersected with each type's declared list — "
     "`03-mechanism-ghostbody` declares only 1:1 and 4:5, and 4:5 is not one of the five. "
-    "16:9 at the header because `01-pain-scene` does not declare 1:1.",
+    "16:9 at the header because `01-pain-scene` does not declare 1:1; the header's B "
+    "(`06-relief-hero`) declares 16:9 outright.",
     "PIPELINE: every option is single-pass. `04-proof-lockedframe` runs handheld rather than "
     "strict and `05-social-handoff` omits its inset — both are the types' own recorded "
     "single-pass routes, not degradations invented here (ADR-021).",
     "REFERENCE PHOTO: `product.reference_photos` is empty because the export supplied none. "
     "Every prompt that needs one still carries its reference block and is paste-and-run — "
     "attach the product photo in the generation tool. `01-pain-scene` carries no product by "
-    "design and needs nothing attached.",
+    "design, and `04-proof-lockedframe --rivals` has no product in frame; neither takes a "
+    "photo.",
+    "CAUSE OPTIONS CARRY NO VARIANT, corrected from the first routing. `--diagnostic` drops "
+    "the product from the frame and reads requires_product_photo false — these prompts carry "
+    "the product in the RIGHT panel, so they are the base type and the first routing's "
+    "`--diagnostic` label on them was wrong.",
     "AUTHENTICITY FENCE BREACHED, and it is a template defect rather than a routing one. The "
     "review block pairs each quote with a full name and a `Verified Buyer` label. "
     "`05-social-snapshot` forbids pairing a generated snapshot with a name, avatar, star row "
-    "or verified badge — that is a fabricated endorsement. All six tiles ship with a blocking "
-    "precondition on their own option: do not render until the block is de-attributed or real "
+    "or verified badge — that is a fabricated endorsement. All six tiles ship blocked in "
+    "their own composition notes: do not render until the block is de-attributed or real "
     "customer photographs are used. This is the sixth consecutive page carrying this defect.",
     "G6 AND THE LED COUNTER, recorded because the two rules that govern it do not agree. "
-    "Reason 7 sells an LCD rep counter. G6's scope note admits diegetic text — a product's own "
-    "readout is content, not overlay — but its production rule says screens are never "
-    "model-drawn and are composited in post, and ADR-021 forbids compositing in this pipeline. "
-    "Every option for that slot therefore renders the counter as a physical part with a DARK "
-    "screen, and the number lives in the copy. The same conflict is why that slot's loop is "
-    "refused. Worth an owner decision rather than a per-page workaround.",
+    "Reason 7 sells an LCD rep counter. G6's scope note admits diegetic text — a product's "
+    "own readout is content, not overlay — but its production rule says screens are never "
+    "model-drawn and are composited in post, and ADR-021 forbids compositing in this "
+    "pipeline. Every photographic option that shows the product therefore renders the "
+    "counter as a physical part with a DARK screen, and the number lives in the copy; the "
+    "closing card's B argues the counter from inside instead, sensor and dark-glass module, "
+    "no digit anywhere. The same conflict is why that slot's loop is refused. Worth an owner "
+    "decision rather than a per-page workaround.",
     "PICKS: `feedback/picks.jsonl` holds no records, so Step 3's ≥20-pick tie-breaker never "
     "fired and no recommendation on this page is performance-backed. Every `recommended_opt` "
     "is a judgement from FIT, EVIDENCE and PROMPT RISK only.",
@@ -1330,15 +1422,17 @@ def md(d):
     for s in d["slots"]:
         L.append(f"## `{s['slot_id']}` — {s['section_role']}")
         L.append("")
-        if s.get("out_of_scope"):
+        if s.get("out_of_scope_reason"):
             L.append(f"- placement: {s['placement']}")
-            L.append(f"- **out of library scope** — {s['out_of_scope']}")
+            L.append(f"- **out of library scope** — {s['out_of_scope_reason']}")
             L.append("")
             continue
         L.append(f"- asset: `{s['asset']}` · placement: {s['placement']}")
         L.append(f"- recommended: **{s['recommended_opt']}** · media "
                  f"`{s['recommended_media']}`")
         L.append(f"- basis: {s['recommendation_basis']}")
+        if s.get("single_type_basis"):
+            L.append(f"- single type, declared: {s['single_type_basis']}")
         L.append("")
         for o in s["options"]:
             L.append(f"### Option {o['opt']} — `{o['type']}`"
@@ -1347,15 +1441,13 @@ def md(d):
             L.append(f"- varies on: {o['varies_on']}")
             L.append(f"- ratio `{o['ratio']}` · type version `{o['type_version']}` · "
                      f"pipeline `{o['pipeline']}`"
-                     + (f" · attach the product photo"
-                        if o["type"] not in NO_PHOTO else ""))
+                     + (" · attach the product photo" if needs_photo(o) else
+                        " · no product photo — no product appears"))
             if o.get("axes"):
                 L.append(f"- axes: {json.dumps(o['axes'])}")
             L.append(f"- {o['rationale']}")
             if o.get("composition_notes"):
                 L.append(f"- **note:** {o['composition_notes']}")
-            if o.get("blocking_precondition"):
-                L.append(f"- **{o['blocking_precondition']}**")
             L.append("")
             L.append("```")
             L.append(o["prompt"])
@@ -1432,37 +1524,44 @@ for s in SLOTS:
         # 3 — ADR-021: single-pass or it is not deliverable
         if o["pipeline"] != "single-pass":
             errs.append(f"{sid} {o['opt']}: pipeline {o['pipeline']} breaches ADR-021")
-        # 4 — a type that needs the photo carries a reference block
-        needs = o["type"] not in NO_PHOTO
+        # 4 — the reference block follows the EXECUTION's photo requirement
         has = "the exact reference" in o["prompt"]
-        if needs and not has:
+        if needs_photo(o) and not has:
             errs.append(f"{sid} {o['opt']}: {o['type']} needs a reference block and "
                         f"the prompt carries none")
-        if not needs and has:
-            errs.append(f"{sid} {o['opt']}: {o['type']} takes no product photo but the "
-                        f"prompt carries a reference block")
+        if not needs_photo(o) and has:
+            errs.append(f"{sid} {o['opt']}: this execution takes no product photo but "
+                        f"the prompt carries a reference block")
         # 5 — prompt budget
         if len(o["prompt"]) > CEIL[o["type"]]:
             errs.append(f"{sid} {o['opt']}: {len(o['prompt'])} chars over {o['type']}'s "
                         f"{CEIL[o['type']]} ceiling")
         # 6 — ADR-051: no still reserves an empty block for a loop any more
-        if "empty reserved block" in o["prompt"] or "reserved block" in o["prompt"]:
+        if "reserved block" in o["prompt"]:
             errs.append(f"{sid} {o['opt']}: reserves a block for a loop; ADR-051 retired "
                         f"that — the still ships on its own")
+        # 6b — the base cause type carries the product; --diagnostic drops it
+        if o["type"] == "02-cause-anatomy" and o.get("variant") == "diagnostic" \
+                and "the exact reference" in o["prompt"]:
+            errs.append(f"{sid} {o['opt']}: --diagnostic drops the product from the "
+                        f"frame, but the prompt carries a reference block")
 
-# 7 — one-type-once outside repeating sections
+# 7 — one-type-once binds the recommended SET (never the pool)
 linear = [s for s in SLOTS if s.get("options") and not s["slot_id"].startswith("reviews.")]
-picked = [o["type"] for s in linear for o in s["options"] if o["opt"] == "A"]
+picked = []
+for s in linear:
+    rec = [o for o in s["options"] if o["opt"] == s["recommended_opt"]]
+    picked.append(rec[0]["type"])
 for t in sorted({t for t in picked if picked.count(t) > 1}):
-    errs.append(f"one-type-once breached outside a repeating section: {t} x{picked.count(t)}")
+    errs.append(f"one-type-once breached in the recommended set: {t} x{picked.count(t)}")
 
-# 8 — step-3 budget
+# 8 — step-3 budget on the recommended set
 BUDGET3 = {"03-mechanism-ghostbody", "03-spec-split", "03-use-sequence"}
 n3 = len([t for t in picked if t in BUDGET3])
 if n3 > 2:
     errs.append(f"step-3 budget: {n3} of {sorted(BUDGET3)} on one page, cap is 2")
 
-# 9 — never_with
+# 9 — never_with on the recommended set
 NEVER = {"01-pain-scene": ["01-pain-split"], "01-pain-split": ["01-pain-scene"],
          "03-mechanism-xray": ["03-spec-split"], "03-spec-explode": ["03-spec-split"]}
 for t in picked:
@@ -1470,10 +1569,12 @@ for t in picked:
         if other in picked:
             errs.append(f"never_with breached: {t} and {other}")
 
-# 10 — attribute gates actually applied
-for t in KILLED:
-    if t in picked:
-        errs.append(f"{t} is killed by an attribute gate but was routed")
+# 10 — attribute gates actually applied (across the whole pool, not just the set)
+for s in SLOTS:
+    for o in s["options"]:
+        if o["type"] in KILLED:
+            errs.append(f"{s['slot_id']} {o['opt']}: {o['type']} is killed by an "
+                        f"attribute gate but was offered")
 
 # 11 — motion: delivered, margin, ceiling, per-section cap, adjacency
 if MOTION["delivered"] != len(ELIG):
@@ -1548,7 +1649,6 @@ for s in ELIG:
 for s in SLOTS:
     if not s.get("recommendation_basis") or not s.get("options"):
         continue
-    nums = [int(x) for x in re.findall(r"\b(\d{3,4})\b/(?=\d)", s["recommendation_basis"])]
     stated = re.search(r"(\d{3,4})/(\d{3,4})/(\d{3,4}) characters",
                        s["recommendation_basis"])
     if stated:
@@ -1557,13 +1657,13 @@ for s in SLOTS:
         if got != real:
             errs.append(f"{s['slot_id']}: basis says {got}, prompts are {real}")
 
-# 16 — the blocking precondition is on every review tile and nowhere else
+# 16 — the wall fence is in composition_notes on every tile and nowhere else
 for s in SLOTS:
     for o in s["options"]:
-        blocked = bool(o.get("blocking_precondition"))
+        fenced = "BLOCKED AS THE PAGE IS BUILT" in (o.get("composition_notes") or "")
         is_tile = s["slot_id"].startswith("reviews.")
-        if is_tile != blocked:
-            errs.append(f"{s['slot_id']} {o['opt']}: blocking precondition "
+        if is_tile != fenced:
+            errs.append(f"{s['slot_id']} {o['opt']}: wall fence "
                         f"{'missing' if is_tile else 'unexpected'}")
 
 # 17 — reserves name a real primary in the same section
@@ -1575,18 +1675,46 @@ for r in MOTION["reserves"]:
     if section(r["slot_id"]) != section(r["substitutes_for"]):
         errs.append(f"reserve {r['slot_id']} is not in its primary's section")
 
+# 18 — ADR-052: the option pool carries at least two types, or declares why not
+for s in SLOTS:
+    opts = s.get("options") or []
+    if len(opts) < 2:
+        continue
+    n_types = len({o["type"] for o in opts})
+    if n_types < 2 and not s.get("single_type_basis"):
+        errs.append(f"{s['slot_id']}: {len(opts)} options all carry one type and the slot "
+                    f"declares no single_type_basis — one-type-once binds the recommended "
+                    f"SET, never the option pool (Step 4, ADR-052)")
+
+# 19 — every B that repeats a recommended type names its displaced slot
+rec_by_type = {}
+for s in linear:
+    rec = [o for o in s["options"] if o["opt"] == s["recommended_opt"]][0]
+    rec_by_type.setdefault(rec["type"], []).append(s["slot_id"])
+for s in linear:
+    for o in s["options"]:
+        if o["opt"] == s["recommended_opt"]:
+            continue
+        others = [x for x in rec_by_type.get(o["type"], []) if x != s["slot_id"]]
+        if others and "forces" not in (o.get("composition_notes") or ""):
+            errs.append(f"{s['slot_id']} {o['opt']}: carries {o['type']}, recommended at "
+                        f"{others[0]}, but its composition_notes never names the "
+                        f"displacement (Step 4)")
+
 print(f"{SESSION}: {len(SLOTS)} slots "
       f"({len([s for s in SLOTS if s.get('options')])} routed, "
-      f"{len([s for s in SLOTS if s.get('out_of_scope')])} out of scope), "
+      f"{len([s for s in SLOTS if s.get('out_of_scope_reason')])} out of scope), "
       f"{sum(len(s['options']) for s in SLOTS)} options, "
       f"{len(ELIG)} loop(s), margin {MOTION['margin']}")
-print(f"types: {', '.join(sorted(set(picked)))}")
+print(f"recommended set: {', '.join(sorted(set(picked)))}")
+pool_counts = {s["slot_id"]: len({o['type'] for o in s['options']})
+               for s in SLOTS if len(s.get("options") or []) >= 2}
+print(f"pool types per multi-option slot: {sorted(pool_counts.values())}")
 print(f"gates killed: {', '.join(KILLED) or 'none'}")
-print(f"sections carrying loops: "
-      f"{ {k: len(v) for k, v in sorted(secs.items())} }")
+print(f"sections carrying loops: { {k: len(v) for k, v in sorted(secs.items())} }")
 if errs:
     print(f"\nSELF-CHECK FAILED — {len(errs)} error(s):")
     for e in errs:
         print("  -", e)
     sys.exit(1)
-print("self-checks: 17 checks, 0 errors")
+print("self-checks: 19 checks, 0 errors")

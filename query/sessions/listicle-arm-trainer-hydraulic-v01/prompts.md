@@ -9,14 +9,16 @@ Motion: 3 loop(s) delivered against a floor of 2 and a ceiling of 5, margin 1.
 ## Page composition notes
 
 - AWARENESS: solution-aware, read from the copy and not from a field. The opener spends no words establishing that a plateau exists — it assumes the reader is already there — and goes straight to comparing solution CLASSES: fixed dumbbells, coil twister bars, gym memberships and bodyweight. Reasons 2, 3 and 4 each indict one of those classes by name. For that reader, mechanism and physical proof are what decide it and re-amplifying the problem insults them, which is why exactly one pain image is routed and it sits in the header where the format demands one.
-- PAGE SET: eight library slots, eight distinct types, no repeat. `01-pain-scene` opens; `03-mechanism-ghostbody` and `03-mechanism-xray` take the two mechanism cards, one inside the body and one inside the device; `02-cause-anatomy` takes the coil bar; `04-proof-lockedframe --verdict` takes the space claim; `05-social-handoff` takes the shared-use card; `03-use-sequence` takes the no-wall-chart card; `06-relief-hero` closes. The six review tiles take `05-social-snapshot` under the repeating-section exemption to one-type-once.
-- STEP-3 BUDGET: two of {03-mechanism-ghostbody, 03-spec-split, 03-use-sequence} are used and the cap is two. `03-spec-split` was never available — it is marketplace-only.
+- RECOMMENDED SET: eight library slots, eight distinct types, no repeat. `01-pain-scene` opens; `03-mechanism-ghostbody` and `03-mechanism-xray` take the two mechanism cards, one inside the body and one inside the device; `02-cause-anatomy` takes the coil bar; `04-proof-lockedframe --verdict` takes the space claim; `05-social-handoff` takes the shared-use card; `03-use-sequence` takes the no-wall-chart card; `06-relief-hero` closes. The six review tiles take `05-social-snapshot` under the repeating-section exemption to one-type-once.
+- OPTION POOL: every multi-option slot carries two distinct types across A/B/C, which is what Step 4 has required since `e7dfe8c` — one-type-once binds the recommended SET, never the option pool. Each B names the slot its type displaces if picked, and the first routing of this page shipped 8 of 8 slots single-type, which is why the pool check now fails the build (ADR-052). The review tiles are the one legitimate single-type case and declare it in `single_type_basis`.
+- STEP-3 BUDGET: two of {03-mechanism-ghostbody, 03-spec-split, 03-use-sequence} are in the recommended set and the cap is two. `03-spec-split` was never available — it is marketplace-only. Every B swap named in a composition note leaves the count at two.
 - ATTRIBUTE GATES KILLED: 01-pain-split, 06-relief-scene. `01-pain-split` falls to symptom_visibility invisible, `06-relief-scene` to result_visibility invisible. Neither was needed: pain-split is not on the advertorial shortlist at all, and the closing image is `06-relief-hero`, which is the substitution that gate names.
-- RATIO: every card is 1:1 and the header is 16:9. 1:1 is the ONLY ratio all seven card types share once ADR-016's five are intersected with each type's declared list — `03-mechanism-ghostbody` declares only 1:1 and 4:5, and 4:5 is not one of the five. 16:9 at the header because `01-pain-scene` does not declare 1:1.
+- RATIO: every card is 1:1 and the header is 16:9. 1:1 is the ONLY ratio all seven card types share once ADR-016's five are intersected with each type's declared list — `03-mechanism-ghostbody` declares only 1:1 and 4:5, and 4:5 is not one of the five. 16:9 at the header because `01-pain-scene` does not declare 1:1; the header's B (`06-relief-hero`) declares 16:9 outright.
 - PIPELINE: every option is single-pass. `04-proof-lockedframe` runs handheld rather than strict and `05-social-handoff` omits its inset — both are the types' own recorded single-pass routes, not degradations invented here (ADR-021).
-- REFERENCE PHOTO: `product.reference_photos` is empty because the export supplied none. Every prompt that needs one still carries its reference block and is paste-and-run — attach the product photo in the generation tool. `01-pain-scene` carries no product by design and needs nothing attached.
-- AUTHENTICITY FENCE BREACHED, and it is a template defect rather than a routing one. The review block pairs each quote with a full name and a `Verified Buyer` label. `05-social-snapshot` forbids pairing a generated snapshot with a name, avatar, star row or verified badge — that is a fabricated endorsement. All six tiles ship with a blocking precondition on their own option: do not render until the block is de-attributed or real customer photographs are used. This is the sixth consecutive page carrying this defect.
-- G6 AND THE LED COUNTER, recorded because the two rules that govern it do not agree. Reason 7 sells an LCD rep counter. G6's scope note admits diegetic text — a product's own readout is content, not overlay — but its production rule says screens are never model-drawn and are composited in post, and ADR-021 forbids compositing in this pipeline. Every option for that slot therefore renders the counter as a physical part with a DARK screen, and the number lives in the copy. The same conflict is why that slot's loop is refused. Worth an owner decision rather than a per-page workaround.
+- REFERENCE PHOTO: `product.reference_photos` is empty because the export supplied none. Every prompt that needs one still carries its reference block and is paste-and-run — attach the product photo in the generation tool. `01-pain-scene` carries no product by design, and `04-proof-lockedframe --rivals` has no product in frame; neither takes a photo.
+- CAUSE OPTIONS CARRY NO VARIANT, corrected from the first routing. `--diagnostic` drops the product from the frame and reads requires_product_photo false — these prompts carry the product in the RIGHT panel, so they are the base type and the first routing's `--diagnostic` label on them was wrong.
+- AUTHENTICITY FENCE BREACHED, and it is a template defect rather than a routing one. The review block pairs each quote with a full name and a `Verified Buyer` label. `05-social-snapshot` forbids pairing a generated snapshot with a name, avatar, star row or verified badge — that is a fabricated endorsement. All six tiles ship blocked in their own composition notes: do not render until the block is de-attributed or real customer photographs are used. This is the sixth consecutive page carrying this defect.
+- G6 AND THE LED COUNTER, recorded because the two rules that govern it do not agree. Reason 7 sells an LCD rep counter. G6's scope note admits diegetic text — a product's own readout is content, not overlay — but its production rule says screens are never model-drawn and are composited in post, and ADR-021 forbids compositing in this pipeline. Every photographic option that shows the product therefore renders the counter as a physical part with a DARK screen, and the number lives in the copy; the closing card's B argues the counter from inside instead, sensor and dark-glass module, no digit anywhere. The same conflict is why that slot's loop is refused. Worth an owner decision rather than a per-page workaround.
 - PICKS: `feedback/picks.jsonl` holds no records, so Step 3's ≥20-pick tie-breaker never fired and no recommendation on this page is performance-backed. Every `recommended_opt` is a judgement from FIT, EVIDENCE and PROMPT RISK only.
 - COVERAGE PASS (Step 5b): no additive proposals. For a solution-aware reader the rungs that matter are mechanism and physical proof, and the page already carries two mechanism images, a locked-frame comparison and a use sequence. The absent rung is a pain/amplification beat beyond the header, and Step 5b's own rule is that an absent rung is not automatically a gap — re-amplifying the problem to this reader is the thing the awareness ladder says not to do.
 
@@ -24,12 +26,12 @@ Motion: 3 loop(s) delivered against a floor of 2 and a ceiling of 5, margin 1.
 
 - asset: `193-01-opener-pain-scene.jpg` · placement: listicle header, under the title and dek, above the intro paragraphs
 - recommended: **A** · media `still`
-- basis: FIT: the opener has to make a plateaued home lifter recognise themselves before the list starts, which is this type's only job. EVIDENCE: rank 3 (the failed tool) is the only rung available — a plateau has no photographable symptom — and A carries it with four mismatched dumbbells including one still boxed, which is the copy's repeat-purchase sentence as an object. B moves to --confront and reads as frustration rather than limitation, which is the weaker half of the dek. PROMPT RISK: 1615/1565/1599 characters against this type's 2500 ceiling.
+- basis: FIT: the opener has to make a plateaued home lifter recognise themselves before the list starts, and recognition is 01-pain-scene's only job — A carries it with rank-3 evidence, four mismatched dumbbells including one still boxed. B is the format's other honest opening: a solution-aware reader already comparing classes can be met with the solution working, which is 06-relief-hero, counter dark. PROMPT RISK: 1615/1541/1599 characters against ceilings of 2500 (pain-scene) and 2600 (relief-hero).
 
 ### Option A — `01-pain-scene` `--candid`
 
 - varies on: baseline
-- ratio `16:9` · type version `1.18` · pipeline `single-pass`
+- ratio `16:9` · type version `1.18` · pipeline `single-pass` · no product photo — no product appears
 - axes: {"gaze": "candid"}
 - The plateau has no photographable symptom, so evidence takes rank 3 — the failed tool in the state that shows it failed. Four mismatched dumbbells in three finishes, the heaviest still boxed, is the copy's own 'buying the next dumbbell up restarts the problem' as an object. --candid because a stalled press-up is physical limitation, not self-image.
 
@@ -61,37 +63,39 @@ STYLE: editorial photojournalism, natural and unstaged.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `01-pain-scene` `--confront`
+### Option B — `06-relief-hero`
 
-- varies on: axis: gaze=confront
-- ratio `16:9` · type version `1.18` · pipeline `single-pass`
-- axes: {"gaze": "confront"}
-- Same evidence and cost, the moment moved to between sets and the gaze into the lens. --confront treats the plateau as a daily frustration rather than a physical limit, which is the reading the dek takes.
+- varies on: type: 06-relief-hero — the solution working as the header
+- ratio `16:9` · type version `1.17` · pipeline `single-pass` · attach the product photo
+- axes: {"register": "commercial"}
+- The format's other honest opening. A solution-aware reader is past recognition and comparing classes, so the header can meet them with the solution mid-use — product whole, load engaged, counter dark. Rung 2 of the widening ladder: the hero cell holds pain-scene alone, and relief-hero arrives from the outcome step with its own use_when naming banners.
+- **note:** Picking B forces content.3.items.1 to change: 06-relief-hero is also the recommendation there, and its B (03-mechanism-xray) stands ready. 06-relief-hero can ship on only one of this option, content.1.items.4's B and content.3.items.1's A.
 
 ```
-TYPE: 01-pain-scene v1.18 --confront
-REGISTER: editorial photojournalism, natural and unstaged. Single frame.
+TYPE: 06-relief-hero v1.17 --commercial
+REGISTER: clean commercial photograph, controlled light, sharp.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have.
 
 [SUBJECT]
-Man in his late thirties in a washed-out t-shirt and jogging bottoms, sitting back on his heels on a living room rug between sets, both forearms hanging over his knees. Under that force: the shoulders dropped and rolled forward, both hands open and slack, his chest still working for breath. Face: mouth open on the breath, brows drawn in, colour high across the cheeks.
+Man in his late thirties in a t-shirt and jogging bottoms, sitting forward on the edge of his couch mid-set, both hands on the grips of the trainer and the two arms of it pressed toward each other at chest height, elbows out, wrists straight, his gaze down on the point where the arms meet. Focused satisfaction rather than repose, mid-action.
 
-[EVIDENCE]
-A row of mismatched dumbbells along the skirting board an arm's length from him: four different sizes in three different finishes, the smallest pair furred with dust, the heaviest pair still sitting in the open box it came in with the packing sunk in the middle.
+[PRODUCT]
+The reference trainer between both hands at chest height, whole and unobstructed, both grips and the dial collar visible, the counter housing on its body turned toward the camera and its screen dark and unlit.
 
-[COST]
-A gym holdall by the door, zip half open, a folded towel still inside it and dust settled along the shoulder strap. Sharp enough to read and never larger, nearer or brighter than the body it is being taken from.
+[SETTING]
+A real living room filled to the edges: a rug with a corner turned up, a water bottle by the couch foot, a folded towel on the arm, a floor lamp on behind him, a bookshelf half in frame, a mug on the coffee table. None of them carries printed words. Background soft, never blank.
 
-[PLACE] A small first-floor living room, late evening.
+[LIGHT]
+Soft even window light from the left, background blurred, high-key neutral grade.
 
-[GAZE] Looking directly into the lens.
+[LAYOUT]
+He sits to the left of the frame; the right side carries the depth of the room.
 
-[LIGHT] The real light of the place and nothing added: one ceiling pendant on, and the last grey daylight through an uncurtained window behind him.
+No text, numbers, digits or readouts anywhere in the image. The counter screen is dark and carries nothing.
 
-[FORBIDDEN] No product, no panels, no insets. No mark of any kind.
-
-[GRADE] An ordinary photograph in ordinary light. Normal exposure, detail held in both the shadows and the highlights, midtones open across most of the frame, colour true to life and muted rather than vivid.
-
-STYLE: editorial photojournalism, natural and unstaged.
+STYLE: clean commercial photograph, controlled light, sharp.
 
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
@@ -99,7 +103,7 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 ### Option C — `01-pain-scene` `--candid`
 
 - varies on: execution: persona, room and time of day
-- ratio `16:9` · type version `1.18` · pipeline `single-pass`
+- ratio `16:9` · type version `1.18` · pipeline `single-pass` · no product photo — no product appears
 - axes: {"gaze": "candid"}
 - Same type and axes as A, a different person and place. The dumbbell evidence becomes a spinlock bar with its collar loose and plates stacked separately — the same argument in a household that bought adjustable iron instead.
 
@@ -137,7 +141,7 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-02-reason1-mechanism-ghostbody.jpg` · placement: reason card 1, beside the body copy
 - recommended: **A** · media `still`
-- basis: FIT: the card argues a body fact no camera can film, which is the ghostbody trigger, and body_contact is true so the type survives its gate. B's medical register suits the subject but 3D holds the two-panel discipline more reliably in this library's history. PROMPT RISK: 2147/2038/2054 characters against this type's 2400 ceiling.
+- basis: FIT: the card argues a body fact no camera can film — muscle grows against added resistance — which is the ghostbody trigger, and body_contact is true so the type survives its gate. B answers the same claim from the hardware side: 03-mechanism-xray shows the thing that pushes back, the port wound near closed at the heavy end of the dial. PROMPT RISK: 2147/1537/2054 characters against ceilings of 2400 (ghostbody) and 2000 (xray).
 
 ### Option A — `03-mechanism-ghostbody`
 
@@ -170,33 +174,31 @@ Seamless white ground, soft even studio light, no shadow beyond a faint contact 
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `03-mechanism-ghostbody`
+### Option B — `03-mechanism-xray`
 
-- varies on: axis: medium = 2D medical illustration
-- ratio `1:1` · type version `2.3` · pipeline `single-pass` · attach the product photo
-- axes: {"medium": "2d-airbrush"}
-- Same two-panel argument in the softer register. An airbrushed medical illustration reads as an explanation rather than a product render, which suits a card whose subject is the reader's own chest and not the device.
+- varies on: type: 03-mechanism-xray — the load source as hardware
+- ratio `1:1` · type version `1.3` · pipeline `single-pass` · attach the product photo
+- axes: {"canvas": "cool-grey"}
+- The same claim from the device side: the thing that finally pushes back, shown as the port wound near closed at the heavy end of the dial. Where A draws the muscle meeting the load, B shows the load existing at all.
+- **note:** Picking B forces content.1.items.3 to change: 03-mechanism-xray is also the recommendation there, and its B (03-mechanism-ghostbody) stands ready — the two swap cleanly. 03-mechanism-xray can ship on only one of this option, content.1.items.3's A and content.3.items.1's B.
 
 ```
-TYPE: 03-mechanism-ghostbody v2.3
-REGISTER: 2D airbrushed medical illustration with soft gradients and modelled volume. NOT photography, NOT a 3D render.
+TYPE: 03-mechanism-xray v1.3
+REGISTER: 3D technical see-through render. NOT photography.
 
-PRODUCT REFERENCE: Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. It keeps its own reference colours and carries no mark of any kind.
+PRODUCT REFERENCE: Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. The outer shell becomes translucent, but its silhouette, proportions and every visible external part must match the reference exactly.
 
-PANELS: two equal panels side by side, divided by one thin vertical line. Both show the SAME anonymous male torso and both arms in the SAME pose from the SAME angle: seen from the front, both arms out in front of the chest at shoulder height and pressing inward, the skin drawn translucent so the chest and upper arm muscles read through it. The only difference between the panels is what the arms press against and what the chest muscle does.
+CANVAS: a plain pale cool grey ground, and nothing else in the frame behind the product.
 
-LEFT: the palms press flat against each other with nothing between them. The chest muscle lies long and slack, its fibres drawn evenly spaced from breastbone to shoulder.
-RIGHT: the reference arm trainer held between both hands at the same height, its grips taken by each hand and its arms compressed toward each other. The same chest muscle is drawn shortened and thickened, its fibres crowded together toward the breastbone.
+SHELL: the trainer lying horizontally across the frame, grips to left and right, its body translucent and glass-like, filling about 75 percent of the frame width.
 
-CUTAWAY: the pectoral muscle and the front of the shoulder, inside the body outline, in both panels.
+INTERNALS, solid and detailed inside the shell, each at its true location: the hydraulic cylinder as a sealed metal tube through the centre of the body; a piston partway along that tube with clear fluid either side of it; a narrow adjustable port through the piston, its opening wound down near closed; the dial collar around the outside of the tube, turned to the top of its range.
 
-MARKS, three, nothing else in either panel is marked:
-- structure: the pectoral muscle and the front of the shoulder in warm ivory, both panels.
-- stress: RIGHT panel only. A flat blue band laid along the belly of the pectoral muscle where the load pulls it, drawn on top of the illustration and following the muscle's own line.
-- verdict: filled solid discs, red with a white cross in the LEFT panel's top corner, green with a white check in the RIGHT panel's. Same diameter, not rings.
+MARKS, one, nothing else in the frame is marked:
+- working: the fluid forcing through the near-closed port shown ACTIVE and glowing warm amber in its own moving form, the brightest thing in the frame and clearly brighter than the ground — the resistance itself, made visible at the heavy end of the dial. No arrow anywhere.
 
-G3: red wrong, blue correct, green badge, nothing else.
-Deep desaturated slate ground, the right half one step lighter than the left.
+No text, numbers or spec labels anywhere in the image.
+The mark is the only added colour; the product and its parts keep their own.
 
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
@@ -238,16 +240,16 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-03-reason2-cause-anatomy.jpg` · placement: reason card 2, beside the body copy
 - recommended: **A** · media `gif`
-- basis: FIT: one named culprit and a measurable harm mechanism is exactly 02-cause-anatomy's trigger, and the harm stops when the culprit goes, which clears its avoid_when. A takes mid-stroke because the measure mark needs the coil compressed but still legible as a coil. PROMPT RISK: 1753/1633/1657 characters against this type's 2050 ceiling.
+- basis: FIT: one named culprit and a measurable harm mechanism is 02-cause-anatomy's trigger, and the harm stops when the culprit goes, which clears its avoid_when. B indicts the whole spring class the way the copy does — three spring devices people already own, photographed plainly, none winning — which is 04-proof-lockedframe --rivals, and it needs no product photo. PROMPT RISK: 1740/1589/1644 characters against ceilings of 2050 (cause-anatomy) and 2600 (lockedframe).
 
-### Option A — `02-cause-anatomy` `--diagnostic`
+### Option A — `02-cause-anatomy`
 
 - varies on: baseline
 - ratio `1:1` · type version `1.15` · pipeline `single-pass` · attach the product photo
-- The card blames one concrete object — a coil spring bar — and names its harm mechanism, stored energy released without control. That is this type's whole trigger. The harm does not persist once the culprit is gone, which is the avoid_when that would otherwise rule it out.
+- The card blames one concrete object — a coil spring bar — and names its harm mechanism, stored energy released without control. That is this type's whole trigger. The harm does not persist once the culprit is gone, which is the avoid_when that would otherwise rule it out. Base type, product in the RIGHT panel — --diagnostic would drop it from the frame.
 
 ```
-TYPE: 02-cause-anatomy v1.15 --diagnostic
+TYPE: 02-cause-anatomy v1.15
 MEDIUM: 2D illustration, paper-cut. NOT photography, NOT 3D.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the arm trainer in the RIGHT panel.
@@ -267,41 +269,53 @@ G3: red wrong, blue correct, green badge, nothing else.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `02-cause-anatomy` `--diagnostic`
+### Option B — `04-proof-lockedframe` `--rivals`
 
-- varies on: axis: style = flat vector, stroke at full compression
-- ratio `1:1` · type version `1.15` · pipeline `single-pass` · attach the product photo
-- Same argument at the end of the stroke rather than mid-stroke, drawn flat. Full compression is where the coil holds the most energy, so the measure mark has the widest difference to carry.
+- varies on: type: 04-proof-lockedframe --rivals — the spring class, photographed
+- ratio `1:1` · type version `1.13` · pipeline `single-pass` · no product photo — no product appears
+- axes: {"camera_lock": "handheld"}
+- The copy indicts a class, and --rivals is the class photographed plainly: three spring devices people already own, none winning, the claim left to the copy beside it. Rung 2 of the widening ladder — proof borrowed into a cause card, and the one variant that needs no product photo.
+- **note:** Picking B forces content.1.items.2 to change: 04-proof-lockedframe is also the recommendation there, and its B (03-use-sequence) stands ready. No product photo for this option — no product appears.
 
 ```
-TYPE: 02-cause-anatomy v1.15 --diagnostic
-MEDIUM: 2D illustration, flat-vector with flat fills and hard edges, no gradients. NOT photography, NOT 3D.
+TYPE: 04-proof-lockedframe v1.13 --rivals, camera handheld
+REGISTER: documentary phone photography. No overlays, badges, arrows or text.
+LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
 
-PRODUCT REFERENCE: the attached photo is the exact reference for the arm trainer in the RIGHT panel.
+[PRODUCT REFERENCE]
+Not applicable. No product appears in this image.
 
-FRAME: one resistance bar seen end-on to the stroke, from grip to grip, the bar filling most of the width.
-GROUND: deep desaturated olive, the right half one step lighter than the left.
-BODY: the resistance element inside the bar, drawn as a flat cut layer over a translucent bar outline, seen from the side. NOT a skeleton, NOT a machine drawing. Exactly one bar in EACH panel, same scale and view.
+[SCENE — the same in all three]
+The same stretch of living room floor against the same skirting board: the same oak boards, the same rug edge entering at the bottom, the same radiator pipe in the corner. Flat overcast light from a window off to the left, no strong shadows, no styling.
 
-PANELS. LEFT: a generic unbranded coil spring bar at the end of its stroke, the coil wound down to almost no gap between turns, the two grips forced close together. RIGHT: the reference arm trainer at the end of the same stroke, its hydraulic cylinder drawn as a sealed tube with the piston at the far end and fluid passing through a narrow port around it, the tube wall the same width along its whole length.
+[FRAMING]
+One person photographed this spot three times from where they always stand, phone held at knee height and level with the boards, the skirting running across the upper third of each panel. It reads as one shot taken three times, never as three different shots. Light differs only in exposure, never in warmth.
 
-MARKS, two, nothing else marked:
-- measure: two dashed straight lines, one per panel, each drawn along the resistance element end to end and STOPPING at both ends. Same height in their panel, identical thickness and dash. One property differs: crowded and bunched on the left where the coil has closed, evenly spaced on the right. Red left, blue right.
-- verdict: filled solid discs, red with a white cross in the LEFT panel's TOP corner, green with a white check in the RIGHT panel's. Same diameter, not rings.
+[THE VARIABLE]
+Three spring-loaded trainers people already own, each photographed where it was last put down.
+1 — a coil spring twister bar, its centre coil dulled and the plastic grips worn shiny.
+2 — a spring chest expander, its five parallel springs slack and its handles lying crossed.
+3 — a pair of spring hand grippers, one on its side, the knurling on the handles rubbed pale.
 
-G3: red wrong, blue correct, green badge, nothing else.
+[JUDGEMENT]
+All three are ordinary, intact and the kind someone would genuinely buy. None of them wins, and the image makes no claim — the copy beside it does.
 
-Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
+[GRADE]
+One grade across all three panels, muted and cool for the whole image.
+
+STYLE: honest documentary product test photography, unstyled, natural, sharp.
+
+Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference, damaged or dirty items, exaggerated flaws, one item obviously better
 ```
 
-### Option C — `02-cause-anatomy` `--diagnostic`
+### Option C — `02-cause-anatomy`
 
 - varies on: execution: the forearm and a slipping grip enter the frame
 - ratio `1:1` · type version `1.15` · pipeline `single-pass` · attach the product photo
 - Same type and style as A with the hand added, because the copy's failure moment is grip tiring on the last rep. The frame then shows the condition under which the stored energy is released rather than the energy alone.
 
 ```
-TYPE: 02-cause-anatomy v1.15 --diagnostic
+TYPE: 02-cause-anatomy v1.15
 MEDIUM: 2D illustration, paper-cut. NOT photography, NOT 3D.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the arm trainer in the RIGHT panel.
@@ -343,7 +357,7 @@ delivery: mp4/webm, muted, loop-safe, under the size ceiling
 
 - asset: `193-04-reason3-proof-lockedframe.jpg` · placement: reason card 3, beside the body copy
 - recommended: **A** · media `still`
-- basis: FIT: floor space is visible to the naked eye inside a static frame, which is the one condition 04-proof-lockedframe sets. A stages the copy's own corner-of-the-room sentence; B and C are tighter binaries but narrower claims. PROMPT RISK: 2132/2043/2048 characters against this type's 2600 ceiling.
+- basis: FIT: floor space is visible to the naked eye inside a static frame, which is the one condition 04-proof-lockedframe sets, and A stages the copy's own corner-of-the-room sentence. B carries the same claim as an action instead of a verdict: 03-use-sequence takes it from under the couch, through a set, and back under — the fold-away IS the space argument. PROMPT RISK: 2132/1554/2048 characters against ceilings of 2600 (lockedframe) and 2200 (use-sequence).
 
 ### Option A — `04-proof-lockedframe` `--verdict`
 
@@ -383,40 +397,34 @@ STYLE: honest documentary product test photography, unstyled, natural, sharp.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `04-proof-lockedframe` `--verdict`
+### Option B — `03-use-sequence`
 
-- varies on: execution: a bed drawer instead of a floor corner
-- ratio `1:1` · type version `1.13` · pipeline `single-pass` · attach the product photo
-- axes: {"camera_lock": "handheld"}
-- Same variant, the test moved to storage rather than footprint. Whether the drawer closes is a binary a static frame reads instantly, where floor area has to be estimated.
+- varies on: type: 03-use-sequence — the fold-away as an action
+- ratio `1:1` · type version `1.9` · pipeline `single-pass` · attach the product photo
+- The same claim carried as an action instead of a verdict: out from under the couch, through a set, and back under, the rug clear at the end. The fold-away IS the space argument, told in the three panels the type legislates.
+- **note:** Picking B forces content.3.items.0 to change: 03-use-sequence is also the recommendation there, and its B (05-social-handoff) stands ready. The step-3 budget holds at two through the swap: use-sequence once, ghostbody once.
 
 ```
-TYPE: 04-proof-lockedframe v1.13 --verdict, camera handheld
-REGISTER: documentary photography. No overlays, badges, arrows or text.
-LAYOUT: 3 equal vertical panels, thin white gutters, no outer border.
+TYPE: 03-use-sequence v1.9
+REGISTER: warm lifestyle photography, close range, natural and unstyled, soft daylight.
 
-[PRODUCT REFERENCE]
-Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. It appears in the THIRD panel only.
+PRODUCT REFERENCE: Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. It appears in every panel.
 
-[SCENE — the same in all three]
-The same open drawer under the same divan bed: the same drawer base, the same folded jumper pushed to the back left, the same length of carpet in front of the drawer. Flat daylight from a window off to the right, no strong shadows, no styling.
+LAYOUT: exactly three photographs, one above another, each the full width of the frame and all three the same height, separated by thin white gutters, no outer border.
 
-[FRAMING]
-One person photographed this drawer three times from standing, phone angled down over the open drawer, the drawer filling the middle two thirds of each panel. It reads as one shot taken three times, never as three different shots. Light differs only in exposure, never in warmth.
+CONTINUITY: the SAME pair of hands in all three panels — same skin tone, same nails, same wrists, same cuffs. The same two-seater couch and the same rug throughout. The same warm neutral palette and the same soft daylight from the left in every panel. Camera distance and framing shift naturally between panels.
 
-[THE VARIABLE]
-What has been put into that drawer, each photographed on an ordinary evening.
-1 — a pair of fixed dumbbells laid in the drawer, the drawer unable to close with them in and the front edge standing proud of the bed frame.
-2 — a coil spring twister bar laid diagonally across the drawer, its grips overhanging both sides so the drawer front sits open on them.
-3 — the reference arm trainer folded flat and lying inside the drawer, the folded jumper still in place beside it and the drawer front sitting flush.
+At the top, the trainer is lifted out from the gap under the couch, folded flat, one hand on each steel arm as they swing open away from the body.
 
-[FAIRNESS]
-Panels 1 and 2 get exactly the same exposure, background tidiness and framing generosity as panel 3. The dumbbells and the coil bar are ordinary, undamaged and the kind someone would genuinely own. Nothing is lit, cropped or graded to favour any panel. The difference is whether the drawer closes and nothing else.
+In the middle, both hands are on the grips at chest height and the two arms of the trainer are compressed toward each other, the wrists straight and the elbows out.
 
-[GRADE]
-One grade across all three panels: flat, neutral, true to the room's own colour.
+At the bottom, the arms are folded flat again and both hands slide the trainer back into the gap under the couch, the rug in front of it clear from edge to edge.
 
-STYLE: honest documentary product test photography, unstyled, natural, sharp.
+The trainer sits at the same distance from the camera in the top and bottom panels and closer in the middle one.
+
+No text, numbers or labels anywhere in any panel.
+
+STYLE: warm lifestyle photography, close range, natural and unstyled.
 
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
@@ -465,7 +473,7 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-05-reason4-mechanism-xray.jpg` · placement: reason card 4, beside the body copy
 - recommended: **A** · media `gif`
-- basis: FIT: the dial's value is entirely internal, and this type exists for gadget-class interiors that are not trivial — a piston, a port and a dial stem are three real connected parts. A's horizontal view keeps all three in one line. PROMPT RISK: 1539/1476/1452 characters against this type's 2000 ceiling.
+- basis: FIT: the dial's value is entirely internal and 03-mechanism-xray is the type for a non-trivial gadget interior — a piston, a port and a dial stem are three real connected parts. B makes the card's other half visible: 03-mechanism-ghostbody shows the muscle meeting the wrong load and the dialled one, which is the sentence the copy opens on. PROMPT RISK: 1539/2103/1452 characters against ceilings of 2000 (xray) and 2400 (ghostbody).
 
 ### Option A — `03-mechanism-xray`
 
@@ -495,30 +503,34 @@ The mark is the only added colour; the product and its parts keep their own.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `03-mechanism-xray`
+### Option B — `03-mechanism-ghostbody`
 
-- varies on: axis: canvas = deep charcoal, low three-quarter view
-- ratio `1:1` · type version `1.3` · pipeline `single-pass` · attach the product photo
-- axes: {"canvas": "charcoal"}
-- Same internals, darker ground. The working mark has to be the brightest thing in frame, and a charcoal canvas buys that margin without brightening the mark itself. Adds the pivot joint, which the horizontal view crops.
+- varies on: type: 03-mechanism-ghostbody — the wrong load and the dialled one
+- ratio `1:1` · type version `2.3` · pipeline `single-pass` · attach the product photo
+- axes: {"medium": "3d-render"}
+- The card's other half made visible: the copy opens on settling for the wrong load, so LEFT is a light band giving no answer and RIGHT is the dialled stroke the muscle actually meets. Same mannequin, same pose, the load the only variable.
+- **note:** Picking B forces content.1.items.0 to change: 03-mechanism-ghostbody is also the recommendation there, and its B (03-mechanism-xray) stands ready — the two swap cleanly.
 
 ```
-TYPE: 03-mechanism-xray v1.3
-REGISTER: 3D technical see-through render. NOT photography.
+TYPE: 03-mechanism-ghostbody v2.3
+REGISTER: 3D technical render on seamless white. NOT photography.
 
-PRODUCT REFERENCE: Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. The outer shell becomes translucent, but its silhouette, proportions and every visible external part must match the reference exactly.
+PRODUCT REFERENCE: Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. It keeps its own reference colours and carries no mark of any kind.
 
-CANVAS: a plain deep charcoal ground, and nothing else in the frame behind the product.
+PANELS: two equal panels side by side, divided by one thin vertical line. Both show the SAME featureless matte white mannequin in the SAME pose from the SAME angle: seated upright on a plain block, seen from the side facing left, the near arm bent and driving forward from the shoulder, the upper arm and chest musculature open to view beneath the surface. The only difference between the panels is what the hand drives against and what the muscle does.
 
-SHELL: the trainer seen at a low three-quarter angle with one grip nearer the camera, its body translucent and glass-like, filling about 70 percent of the frame width.
+LEFT: the hand drives forward with a light resistance band looped over it, the band barely bowed and giving no answer. The working muscle is drawn thin and even along its whole length, unchanged from the resting form.
+RIGHT: the reference arm trainer held in that hand at the same height, its grip taken and its arm compressed forward against the hydraulic stroke. The same muscle is drawn thick and raised along the same length, gathered where it pulls.
 
-INTERNALS, solid and detailed inside the shell, each at its true location: the hydraulic cylinder as a sealed metal tube running the length of the body; a piston head partway along it with clear fluid either side; a narrow adjustable port through the piston head; the dial collar on the outside of the tube with its stem reaching in to that port; the pivot joint where the two arms meet the body.
+CUTAWAY: the chest muscle and the front of the shoulder, inside the body silhouette, in both panels.
 
-MARKS, one, nothing else in the frame is marked:
-- working: the fluid crossing the narrow port shown ACTIVE and glowing warm amber in its own moving form, the brightest thing in the frame and clearly brighter than the ground. No arrow anywhere.
+MARKS, three, nothing else in either panel is marked. Every one is a flat unshaded hard-edged overlay laid on top of the render:
+- structure: the chest muscle and the front of the shoulder in warm off-white ivory, both panels.
+- stress: RIGHT panel only. A flat blue band laid along the belly of the working muscle where the load pulls it, following its line and clearly on top of the render.
+- verdict: one badge in the top corner of each panel — red filled disc with a white cross LEFT, green filled disc with a white check RIGHT. Same diameter, filled discs, not rings.
 
-No text, numbers or spec labels anywhere in the image.
-The mark is the only added colour; the product and its parts keep their own.
+G3: red wrong, blue correct, green badge, nothing else.
+Seamless white ground, soft even studio light, faint contact shadow only.
 
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
@@ -573,7 +585,7 @@ delivery: mp4/webm, muted, loop-safe, under the size ceiling
 
 - asset: `193-06-reason5-social-handoff.jpg` · placement: reason card 5, beside the body copy
 - recommended: **A** · media `still`
-- basis: FIT: the copy describes a literal handoff across a couch, and this type is that moment. A keeps the dial under the receiving thumb, which is what turns a shared-device claim into a shared-RANGE claim. PROMPT RISK: 1644/1614/1599 characters against this type's 2300 ceiling.
+- basis: FIT: the copy describes a literal handoff across a couch and 05-social-handoff is that moment, with the dial under the receiving thumb turning a shared-device claim into a shared-RANGE claim. B is the receiving half on its own: 06-relief-hero with one person mid-set at a light setting and a room whose objects say two people train here. PROMPT RISK: 1644/1573/1614 characters against ceilings of 2300 (handoff) and 2600 (relief-hero).
 
 ### Option A — `05-social-handoff`
 
@@ -609,7 +621,44 @@ STYLE: candid documentary photograph, natural, unposed, sharp.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `05-social-handoff`
+### Option B — `06-relief-hero`
+
+- varies on: type: 06-relief-hero — the receiving half on its own
+- ratio `1:1` · type version `1.17` · pipeline `single-pass` · attach the product photo
+- axes: {"register": "commercial"}
+- The moment after the handoff, held by one person: a light setting under control, the dial under her thumb, and a room whose objects say two people train here. One subject is what the type legislates, so the sharing lives in the setting where the law puts it.
+- **note:** Picking B forces content.3.items.1 to change: 06-relief-hero is also the recommendation there, and its B (03-mechanism-xray) stands ready. 06-relief-hero can ship on only one of this option, the hero's B and content.3.items.1's A.
+
+```
+TYPE: 06-relief-hero v1.17 --commercial
+REGISTER: clean commercial photograph, controlled light, sharp.
+
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have.
+
+[SUBJECT]
+Woman in her thirties in a vest and leggings, sitting back on the couch mid-set, both hands on the grips of the trainer and its two arms drawn a short way toward each other at chest height, her gaze down on the point where they meet. Focused and easy, mid-action — a light setting held with control, not strain.
+
+[PRODUCT]
+The reference trainer between both hands at chest height, whole and unobstructed, the dial collar visible under her thumb, the counter housing on its body turned toward the camera and its screen dark and unlit.
+
+[SETTING]
+A real living room filled to the edges with signs that two people train here: two water bottles on the coffee table, a second pair of trainers by the door, a watch and a hairband side by side on the shelf, a folded towel over the couch arm, a rug pushed slightly off square. None of them carries printed words. Background soft, never blank.
+
+[LIGHT]
+Soft even window light from the right, background blurred, high-key neutral grade.
+
+[LAYOUT]
+She sits to the right of the frame; the left side carries the depth of the room.
+
+No text, numbers, digits or readouts anywhere in the image. The counter screen is dark and carries nothing.
+
+STYLE: clean commercial photograph, controlled light, sharp.
+
+Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
+```
+
+### Option C — `05-social-handoff`
 
 - varies on: execution: kitchen floor, roles reversed
 - ratio `1:1` · type version `2.5` · pipeline `single-pass` · attach the product photo
@@ -643,47 +692,13 @@ STYLE: candid documentary photograph, natural, unposed, sharp.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option C — `05-social-handoff`
-
-- varies on: execution: hallway, passed at arm's length
-- ratio `1:1` · type version `2.5` · pipeline `single-pass` · attach the product photo
-- Same type, the handoff standing rather than seated. Arm's length puts the whole device between the two people, which is the clearest reading of one frame serving two programs.
-- **note:** Inset omitted, not the type.
-
-```
-TYPE: 05-social-handoff v2.5
-REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
-
-[PRODUCT REFERENCE]
-Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have.
-
-[MOMENT]
-The trainer is being passed sideways along a hallway: one person holds it out by the near grip at arm's length and the other has closed a hand over the far grip, the dial collar showing between them where it has just been turned down. Both people are dealing with that dial.
-
-[ADVOCATE]
-Man in his late twenties in a training top, standing with the trainer held out to one side, one arm still extended from pressing, chest still working. Mid-sentence, quick and amused, his eyes on her and never on the camera.
-
-[LISTENER]
-Woman in her late twenties in a zip-up top, standing nearer the camera with her back to us, FACE NOT VISIBLE, head down to the far grip her hand has closed on.
-
-[PRODUCT]
-The reference trainer is the only thing in sharp focus, everything behind it softer. It carries the strongest light in the frame, nothing overlaps or crowds it, and it differs in hue and value from everything else in frame. Nothing of similar size or finish stands near it.
-
-[ENVIRONMENT]
-An ordinary flat hallway in the evening, coats on hooks along one wall, shoes paired under them, a hall light on overhead and a doorway open to a lit room behind. None of those objects carries printed words.
-
-STYLE: candid documentary photograph, natural, unposed, sharp.
-
-Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
-```
-
 - **no gif** — The argument IS temporal — a device changing hands and a dial turning between two people is a transition, and this slot earns motion on its own grounds. It is refused by the budget: `content.1` may carry two loops and both are taken by items.1 and items.3, which are non-adjacent where a third could not be. Recorded as a reserve.
 
 ## `content.3.items.0.image` — how-to-use
 
 - asset: `193-07-reason6-use-sequence.jpg` · placement: reason card 6, beside the body copy
 - recommended: **A** · media `gif`
-- basis: FIT: the card's admission that there is no wall chart makes 'will I manage this' the slot's question, which is 03-use-sequence's own. A stages it on the rug the opener already established. PROMPT RISK: 1588/1620/1623 characters against this type's 2200 ceiling.
+- basis: FIT: the card's admission that there is no wall chart makes 'will I manage this' the slot's question, which is 03-use-sequence's own. B answers it the way it actually gets answered at home — someone who worked the grip out shows the other person, which is 05-social-handoff's 'a friend told me' beat aimed at the grip. PROMPT RISK: 1588/1630/1623 characters against ceilings of 2200 (use-sequence) and 2300 (handoff).
 
 ### Option A — `03-use-sequence`
 
@@ -717,33 +732,36 @@ STYLE: warm lifestyle photography, close range, natural and unstyled.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `03-use-sequence`
+### Option B — `05-social-handoff`
 
-- varies on: execution: kitchen table, vertical press
-- ratio `1:1` · type version `1.9` · pipeline `single-pass` · attach the product photo
-- Same three beats on a table rather than the knees, and a vertical rather than a horizontal press. A table gives the panels a constant horizon, which is the easiest continuity for a renderer to hold across three frames.
+- varies on: type: 05-social-handoff — the grip, shown by someone who found it
+- ratio `1:1` · type version `2.5` · pipeline `single-pass` · attach the product photo
+- How the no-manual question actually gets answered at home: someone who worked the grip out shows the other person where the palms sit. The 'a friend told me' beat aimed at the grip — rung 2, social borrowed into a how-to card.
+- **note:** Picking B forces content.1.items.4 to change: 05-social-handoff is also the recommendation there, and its B (06-relief-hero) stands ready.
 
 ```
-TYPE: 03-use-sequence v1.9
-REGISTER: warm lifestyle photography, close range, natural and unstyled, soft daylight.
+TYPE: 05-social-handoff v2.5
+REGISTER: candid documentary photograph, natural, unposed, sharp. One scene, no inset.
 
-PRODUCT REFERENCE: Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. It appears in every panel.
+[PRODUCT REFERENCE]
+Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have.
 
-LAYOUT: exactly three photographs, one above another, each the full width of the frame and all three the same height, separated by thin white gutters, no outer border.
+[MOMENT]
+The trainer is mid-demonstration: the advocate's hands are set on the grips in the hold he has just worked out, the two arms of it drawn part way together, and he is turning it slightly so the other person can see exactly where his palms sit. The grip is the thing both people are dealing with.
 
-CONTINUITY: the SAME pair of hands in all three panels — same skin tone, same nails, same wrists, same cuffs. The same kitchen table top and the same chair back behind throughout. The same warm neutral palette and the same soft daylight from the right in every panel. Camera distance and framing shift naturally between panels.
+[ADVOCATE]
+Man in his forties in a plain sweatshirt, sitting on the edge of an armchair with the trainer held up at chest height, mid-sentence, unhurried and a little pleased with the grip he has found, his eyes on her and never on the camera.
 
-At the top, the trainer lies flat on the table and one hand turns the dial collar around the body while the other holds the near grip still against the table.
+[LISTENER]
+Woman in her forties in a cardigan, perched on the couch arm between him and the camera with her back to us, FACE NOT VISIBLE, head down to where his hands sit on the grips.
 
-In the middle, the trainer is lifted clear of the table and held vertically, one hand on the upper grip and one on the lower, the two arms compressed toward each other and both wrists straight.
+[PRODUCT]
+The reference trainer is the only thing in sharp focus, everything behind it softer. It carries the strongest light in the frame, nothing overlaps or crowds it, and it differs in hue and value from everything else in frame. Nothing of similar size or finish stands near it.
 
-At the bottom, the trainer lies flat on the table again with both hands off it, its arms returned to their open position and one hand resting on the table edge beside it.
+[ENVIRONMENT]
+An ordinary living room in the late afternoon, a coffee table pushed aside to make floor space, a rolled mat against the couch, two mugs on the shelf. None of those objects carries printed words.
 
-The trainer sits at the same distance from the camera in the top and bottom panels and closer in the middle one.
-
-No text, numbers or labels anywhere in any panel.
-
-STYLE: warm lifestyle photography, close range, natural and unstyled.
+STYLE: candid documentary photograph, natural, unposed, sharp.
 
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
@@ -801,7 +819,7 @@ delivery: mp4/webm, muted, loop-safe, under the size ceiling
 
 - asset: `193-08-reason7-relief-hero.jpg` · placement: reason card 7, the closing card of the list
 - recommended: **A** · media `still`
-- basis: FIT: the closing card needs the product whole in a real room, which is 06-relief-hero's job, and commercial register suits a landing page's last image. All three options carry the same G6 counter rule. PROMPT RISK: 1500/1554/1517 characters against this type's 2600 ceiling.
+- basis: FIT: the closing card needs the product whole in a real room, which is 06-relief-hero's job, and the counter rule keeps every screen dark. B argues the counter from inside instead: 03-mechanism-xray shows the stroke sensor at the pivot and the dark-glass module it feeds — the pulse the counter counts, with no digit anywhere. PROMPT RISK: 1500/1564/1517 characters against ceilings of 2600 (relief-hero) and 2000 (xray).
 
 ### Option A — `06-relief-hero`
 
@@ -840,36 +858,31 @@ STYLE: clean commercial photograph, controlled light, sharp.
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
 
-### Option B — `06-relief-hero`
+### Option B — `03-mechanism-xray`
 
-- varies on: axis: register = ugc, subject reduced to hands
-- ratio `1:1` · type version `1.17` · pipeline `single-pass` · attach the product photo
-- axes: {"register": "ugc", "subject": "reduced"}
-- Same slot in the trust register, subject reduced to forearms because the result here is the finished set and not the person. `reduced` names what makes finished look different from unfinished — the arms returned to rest and neither hand loaded.
-- **note:** G6 COUNTER RULE as option A: counter present, screen dark, no digits.
+- varies on: type: 03-mechanism-xray — the counter argued from inside
+- ratio `1:1` · type version `1.3` · pipeline `single-pass` · attach the product photo
+- axes: {"canvas": "deep-slate"}
+- The counter without its number: the stroke sensor at the pivot and the dark-glass module it feeds, the pulse the counter counts as the one glowing thing in frame. It argues 'only a full stroke is credited' — the copy's own sentence — with no digit anywhere, which is the G6 conflict dissolved rather than worked around.
+- **note:** Picking B forces content.1.items.3 to change: 03-mechanism-xray is also the recommendation there, and its B (03-mechanism-ghostbody) stands ready. 03-mechanism-xray can ship on only one of this option, content.1.items.3's A and content.1.items.0's B.
 
 ```
-TYPE: 06-relief-hero v1.17 --ugc
-REGISTER: a phone in an ordinary person's hand: slightly off exposure, no rim light, no negative space, framing casual and a little too close, the room left exactly as it is.
+TYPE: 03-mechanism-xray v1.3
+REGISTER: 3D technical see-through render. NOT photography.
 
-[PRODUCT REFERENCE]
-Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have.
+PRODUCT REFERENCE: Use the attached photo as the exact reference for the arm trainer. Preserve shape, proportions, material, finish and colour exactly. Do not redesign it, and add no part the reference does not have. The outer shell becomes translucent, but its silhouette, proportions and every visible external part must match the reference exactly.
 
-[SUBJECT]
-Present only as working hands and forearms — no face. Both hands are off the grips and resting either side of the trainer where it lies across a rug, one thumb still against the counter housing on its body. What makes finished look different from unfinished: the two arms of the trainer have returned to their open resting position and neither hand is loaded.
+CANVAS: a plain deep slate ground, and nothing else in the frame behind the product.
 
-[PRODUCT]
-The reference trainer lying across the rug between the forearms, seen from above at a slight angle, whole and unobstructed, the counter housing turned up toward the camera and its screen dark and unlit.
+SHELL: the trainer seen at a high three-quarter angle with the counter housing nearest the camera, its body translucent and glass-like, filling about 70 percent of the frame width.
 
-[SETTING]
-An ordinary living room floor left exactly as it is: a water bottle on its side, a balled towel, the corner of a couch, a phone face down on the rug, a sock, a mug on the boards. None of them carries printed words. Nothing tidied, nothing removed.
+INTERNALS, solid and detailed inside the shell, each at its true location: the counter module set into the body behind its display window, its screen a dark glass rectangle showing nothing; a small stroke sensor at the pivot where the two arms meet the body; a thin wire run from that sensor to the counter module; the hydraulic cylinder as a sealed metal tube through the centre.
 
-[LIGHT]
-Ordinary room light, mild overexposure where the window falls on the rug, no rim light.
+MARKS, one, nothing else in the frame is marked:
+- working: the stroke sensor at the pivot shown ACTIVE and glowing warm amber at the instant a full stroke closes, the brightest thing in the frame and clearly brighter than the ground — the pulse the counter counts. No arrow anywhere.
 
-No text, numbers, digits or readouts anywhere in the image. The counter screen is dark and carries nothing.
-
-STYLE: honest phone photography, unedited look, natural, slightly imperfect.
+No text, numbers or spec labels anywhere in the image. The counter screen is dark glass and carries nothing.
+The mark is the only added colour; the product and its parts keep their own.
 
 Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra fingers, redesigned product, altered product shape, invented product details, different product than reference
 ```
@@ -917,14 +930,15 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-09-review1-social-snapshot.jpg` · placement: review wall tile 1 of 6, above the quote and its attribution
 - recommended: **A** · media `still`
-- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the blocking precondition on the option.
+- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the note on the option.
+- single type, declared: A repeating review wall: the social-proof cell offers 05-social-snapshot for tile imagery and the type's SET DIVERSITY LAW makes the tile the unit of variation, so each tile emits one option and the set varies across tiles (runbook Step 4, ADR-052).
 
 ### Option A — `05-social-snapshot`
 
 - varies on: set member 1 of 6 — room class, surface, anchor and light all differ from every sibling
 - ratio `1:1` · type version `1.2` · pipeline `single-pass` · attach the product photo
 - One option only: the type legislates a SET, so the unit of variation is the tile and not the cell. Three options inside one tile would spend the variation in the wrong place.
-- **BLOCKING — DO NOT RENDER UNTIL RESOLVED. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.**
+- **note:** BLOCKED AS THE PAGE IS BUILT. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.
 
 ```
 A real customer's phone photo. One frame, no layout.
@@ -951,14 +965,15 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-09-review2-social-snapshot.jpg` · placement: review wall tile 2 of 6, above the quote and its attribution
 - recommended: **A** · media `still`
-- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the blocking precondition on the option.
+- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the note on the option.
+- single type, declared: A repeating review wall: the social-proof cell offers 05-social-snapshot for tile imagery and the type's SET DIVERSITY LAW makes the tile the unit of variation, so each tile emits one option and the set varies across tiles (runbook Step 4, ADR-052).
 
 ### Option A — `05-social-snapshot`
 
 - varies on: set member 2 of 6 — room class, surface, anchor and light all differ from every sibling
 - ratio `1:1` · type version `1.2` · pipeline `single-pass` · attach the product photo
 - One option only: the type legislates a SET, so the unit of variation is the tile and not the cell. Three options inside one tile would spend the variation in the wrong place.
-- **BLOCKING — DO NOT RENDER UNTIL RESOLVED. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.**
+- **note:** BLOCKED AS THE PAGE IS BUILT. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.
 
 ```
 A real customer's phone photo. One frame, no layout.
@@ -985,14 +1000,15 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-09-review3-social-snapshot.jpg` · placement: review wall tile 3 of 6, above the quote and its attribution
 - recommended: **A** · media `still`
-- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the blocking precondition on the option.
+- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the note on the option.
+- single type, declared: A repeating review wall: the social-proof cell offers 05-social-snapshot for tile imagery and the type's SET DIVERSITY LAW makes the tile the unit of variation, so each tile emits one option and the set varies across tiles (runbook Step 4, ADR-052).
 
 ### Option A — `05-social-snapshot`
 
 - varies on: set member 3 of 6 — room class, surface, anchor and light all differ from every sibling
 - ratio `1:1` · type version `1.2` · pipeline `single-pass` · attach the product photo
 - One option only: the type legislates a SET, so the unit of variation is the tile and not the cell. Three options inside one tile would spend the variation in the wrong place.
-- **BLOCKING — DO NOT RENDER UNTIL RESOLVED. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.**
+- **note:** BLOCKED AS THE PAGE IS BUILT. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.
 
 ```
 A real customer's phone photo. One frame, no layout.
@@ -1019,14 +1035,15 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-09-review4-social-snapshot.jpg` · placement: review wall tile 4 of 6, above the quote and its attribution
 - recommended: **A** · media `still`
-- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the blocking precondition on the option.
+- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the note on the option.
+- single type, declared: A repeating review wall: the social-proof cell offers 05-social-snapshot for tile imagery and the type's SET DIVERSITY LAW makes the tile the unit of variation, so each tile emits one option and the set varies across tiles (runbook Step 4, ADR-052).
 
 ### Option A — `05-social-snapshot`
 
 - varies on: set member 4 of 6 — room class, surface, anchor and light all differ from every sibling
 - ratio `1:1` · type version `1.2` · pipeline `single-pass` · attach the product photo
 - One option only: the type legislates a SET, so the unit of variation is the tile and not the cell. Three options inside one tile would spend the variation in the wrong place.
-- **BLOCKING — DO NOT RENDER UNTIL RESOLVED. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.**
+- **note:** BLOCKED AS THE PAGE IS BUILT. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.
 
 ```
 A real customer's phone photo. One frame, no layout.
@@ -1053,14 +1070,15 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-09-review5-social-snapshot.jpg` · placement: review wall tile 5 of 6, above the quote and its attribution
 - recommended: **A** · media `still`
-- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the blocking precondition on the option.
+- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the note on the option.
+- single type, declared: A repeating review wall: the social-proof cell offers 05-social-snapshot for tile imagery and the type's SET DIVERSITY LAW makes the tile the unit of variation, so each tile emits one option and the set varies across tiles (runbook Step 4, ADR-052).
 
 ### Option A — `05-social-snapshot`
 
 - varies on: set member 5 of 6 — room class, surface, anchor and light all differ from every sibling
 - ratio `1:1` · type version `1.2` · pipeline `single-pass` · attach the product photo
 - One option only: the type legislates a SET, so the unit of variation is the tile and not the cell. Three options inside one tile would spend the variation in the wrong place.
-- **BLOCKING — DO NOT RENDER UNTIL RESOLVED. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.**
+- **note:** BLOCKED AS THE PAGE IS BUILT. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.
 
 ```
 A real customer's phone photo. One frame, no layout.
@@ -1087,14 +1105,15 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 
 - asset: `193-09-review6-social-snapshot.jpg` · placement: review wall tile 6 of 6, above the quote and its attribution
 - recommended: **A** · media `still`
-- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the blocking precondition on the option.
+- basis: One option by the type's SET DIVERSITY LAW. Not renderable as the block stands — see the note on the option.
+- single type, declared: A repeating review wall: the social-proof cell offers 05-social-snapshot for tile imagery and the type's SET DIVERSITY LAW makes the tile the unit of variation, so each tile emits one option and the set varies across tiles (runbook Step 4, ADR-052).
 
 ### Option A — `05-social-snapshot`
 
 - varies on: set member 6 of 6 — room class, surface, anchor and light all differ from every sibling
 - ratio `1:1` · type version `1.2` · pipeline `single-pass` · attach the product photo
 - One option only: the type legislates a SET, so the unit of variation is the tile and not the cell. Three options inside one tile would spend the variation in the wrong place.
-- **BLOCKING — DO NOT RENDER UNTIL RESOLVED. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.**
+- **note:** BLOCKED AS THE PAGE IS BUILT. This tile sits in a review block whose quotes each carry a full name and a `Verified Buyer` label. `05-social-snapshot` SLOT CONSTRAINTS: never pair a generated snapshot with a reviewer name, avatar, star row or verified badge, and never present one as an actual customer upload — that is a fabricated endorsement (FTC). Resolve by de-attributing the block or by using real customer photographs. The prompt is emitted so the fix is a template change and not a re-route.
 
 ```
 A real customer's phone photo. One frame, no layout.
