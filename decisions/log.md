@@ -2338,3 +2338,55 @@ Consequences: `registry/rules.md` G12 loses the stale slot paragraph and moves t
 `scripts/validate.py` `GIF_FILE_RE` and its error message; `scripts/gen-gif-cards.py` in both
 the English and Vietnamese filing lines; six `build.py` files and their emitted
 `gif.output` and `gif.delivery`. `registry_version` unchanged.
+
+## ADR-048 · 2026-08-25 · `verdict-emoji` loses its scope note, and the measurement behind it stands
+
+Owner decision, 2026-08-25, taken with ADR-043's finding on the table: **`verdict-emoji` ships
+with no scope limit.** ADR-043 closed with a restriction and this removes it.
+
+**What is overruled, and it is one sentence rather than a finding.** ADR-043 recorded that the
+emoji badge "suits a single page and not a product family across many pages", and called that a
+scoping note rather than a demotion. The owner has now scoped it to nothing: any page, any
+family, decided by whoever routes.
+
+**What is NOT overruled, and separating the two is the whole point of this entry.** The
+measurement that produced the scope note stands exactly as recorded. Across round 5 of the
+`01-pain-split` audit the angry face came back flat red, then orange-red with a gradient, then
+rounder with heavier brows; the smiling face varied between a closed grin and an open one with
+teeth. Same idiom every time, different artwork every time, because a diffusion model has no
+font and a glyph that is identical everywhere in a typeface cannot be identical here. That is a
+fact about the renderer and no decision reaches it. What changed is what the library DOES about
+it: it used to refuse the case, and now it lets the router weigh it.
+
+**So the honest statement of the risk, since nothing in the repo will state it after today.**
+`verdict-glyph` holds its look across a family and `verdict-emoji` does not. With the scope
+note gone there is no gate, no warning and no field that will stop ten pages of one product
+family from carrying ten different angry faces. The mitigation exists and is NOT taken here — a
+per-type declaration bounding which badge forms a type may use — because `01-pain-split`'s MARKS
+still names exactly one form and belongs to the owner's audit pass, and adding a field to a file
+this lane may not edit is not available. It is recorded as available rather than done.
+
+**Rule 6c sweep, run before this list was written.** `scripts/adr-sweep.py verdict-emoji`
+returns 4 hits across 2 tracked files, and **both are RECORDS**: `decisions/log.md` and
+`eval/render-tests.jsonl`. **The TEACHES bucket is empty.** That is the useful result rather
+than a formality — it means the scope note never reached a rule file, a type file, a runbook or
+a schema, so removing it corrects nothing and leaves nothing standing. The three teaching hits
+ADR-040 and ADR-039 each found late do not have an analogue here, and the reason is that
+ADR-043 already declined to write the five forms into any type file.
+
+**Two neighbours checked and left alone, stated so nobody re-opens them.** G3's emoji-badge
+carve-out (ADR-042) governs COLOUR inside a declared emoji badge and says nothing about how many
+pages may carry one, so it is untouched. G6's exception admitting the badge as the one glyph in
+frame is likewise about the frame, not the page. Neither needed a word changed.
+
+**The context worth stating once.** `feedback/picks.jsonl` is still empty at 0 picks, so SPEC
+§7.7's twenty-pick tie-breaker has never fired and no routing recommendation this library has
+made has ever been measured against an outcome. A decision like this one has no data to beat —
+the owner's judgement is the only input available, which is an argument for recording it
+plainly rather than for deferring it.
+
+Consequences: this entry is the whole change. `decisions/log.md` only — and it is not a bundled
+file, so `dist/app-bundle` does not move. No rule file, no type file, no schema, no runbook and
+no session is touched; `registry/types/01-pain-split.md` MARKS still names one badge form and
+remains on the owner's audit list where ADR-042 and ADR-043 put it. `registry_version`
+unchanged. 0 errors.
