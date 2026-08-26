@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.16"
+version: "1.17"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -41,7 +41,7 @@ avoid_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 02-cause-anatomy v1.16 [+ --diagnostic]
+TYPE: 02-cause-anatomy v1.17 [+ --diagnostic]
 MEDIUM: 2D illustration, [style]. NOT photography, NOT 3D.    -> PARTS/style
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
@@ -162,24 +162,22 @@ shape, so any form swaps into any prompt without touching another line. Name ONE
   hand**. That sentence is part of the form: it is what keeps G6's `deformed hands` ban clear.
 - `verdict-hazard` — red warning triangle left, green check disc right. The fastest read.
 - `verdict-emoji` — angry face left, smiling face right. **Suits a single page, not a product
-  family**: a diffusion model has no font, so the artwork drifts between renders while the
-  idiom holds. A scoping note, not a demotion.
-- `verdict-none` — no badge, stated as a block rather than omitted, because a missing block
-  reads as an oversight and a stated one reads as a decision. The ground step plus the red/blue
-  pair carried the verdict without it.
+  family**: a diffusion model has no font, so the artwork drifts between renders while the idiom
+  holds.
+- `verdict-none` — no badge, stated as a block rather than omitted: a missing block reads as an
+  oversight, a stated one as a decision. The ground step plus the red/blue pair carried the
+  verdict without it.
 
 **Provenance, not evidence.** Four of the five rendered clean on `01-pain-split`, a different
-register, and are UNTESTED here: their counts travel as provenance, and this type's own count
-is 0 until it renders them. ADR-043 recorded all five on 2026-08-24 and left every type file
-naming one; this is the first to carry them.
+register, and are UNTESTED here: their counts are provenance, and this type's own count is 0
+until it renders them. ADR-043 left every type file naming one.
 
-**THE MARKS MUST NOT BE THE ONLY DIFFERENCE.** Cover the marks with a thumb: the two panels
-must still read as wrong and right. Three of six renders on 2026-08-26 failed this — a head
-level in BOTH panels with only the dashed line tilted, nostrils whose narrowing was invisible
-at frame scale, and a thigh-to-seat gap the eye could not find. A `measure` pair drawn across
-an unchanged body is a claim the body does not make. This is `measure`'s 2:1 admission rule
-read one level up: admission asks whether the difference is big enough to draw, this asks
-whether it survived being drawn.
+**THE MARKS MUST NOT BE THE ONLY DIFFERENCE.** Cover the marks with a thumb: the panels must
+still read as wrong and right. Three of six on 2026-08-26 failed — a head level in BOTH panels
+with only the dashed line tilted, nostrils whose narrowing was invisible, a thigh-to-seat gap
+the eye could not find. A `measure` pair across an unchanged body is a claim the body does not
+make. `measure`'s 2:1 admission read one level up: admission asks whether the difference is big
+enough to draw, this asks whether it survived being drawn.
 
 **Marks on the same structure compete** — a wedge and a fill on one bone read as one mass.
 Give every mark its own structure, or drop one.
@@ -188,7 +186,7 @@ Give every mark its own structure, or drop one.
 type's argument is one measurement, and six mark classes make it a diagram of everything.
 
 **SET DIVERSITY LAW.** When more than one image of this type is asked for — a test set, a page,
-a product family — they must differ, and this file already owns five levers to differ on:
+a family — they must differ, and this file already owns five levers:
 
 | lever | legal values |
 |---|---|
@@ -199,10 +197,9 @@ a product family — they must differ, and this file already owns five levers to
 | the 1–3 marks beyond the required pair | nine classes |
 
 **No two images in a set share more than TWO of the five.** The set of six on 2026-08-26 held
-ALL FIVE constant — flat-vector, dark navy, bone-and-outline, glyph badge, zero extra marks —
-and came back as one image made six times: peak-colour spread measured red R±17, green R±16
-G±17 B±22. Nothing in this file forbade it. The levers were never missing; the instruction to
-pull them was.
+ALL FIVE constant and came back as one image made six times: peak-colour spread measured red
+R±17, green R±16 G±17 B±22. Nothing in this file forbade it. The levers were never missing; the
+instruction to pull them was.
 
 ## SLOT CONSTRAINTS
 - **The removal test, before anything else is written.** Take the culprit out of the LEFT
@@ -220,7 +217,10 @@ pull them was.
   Never in a prompt because the model cannot act on it: anything about SPENDING the ground
   step, and any rationale clause. Those are the writer's choices of product, pose and palette.
 - Wrong on the LEFT, correct on the RIGHT — locked across the whole library.
-- Both panels carry a `verdict` badge; one unlabelled panel leaves the verdict dangling.
+- Both panels carry a `verdict` badge, or NEITHER does under `verdict-none`. What is
+  forbidden is ONE: an unlabelled panel beside a labelled one leaves the verdict dangling.
+- Under `verdict-none`, `missing badge on either panel` is dropped from the rendered
+  `avoid` line — it is a form-conditional token, and left in it fights the chosen form.
 - The culprit is drawn realistically but unbranded.
 - Strictest G3 compliance in the library; G4 and G5 apply in full.
 - `measure` needs a measurable landmark pair, and a difference of at least 2:1 between them.
@@ -354,11 +354,10 @@ Strictly avoid: text, numbers, letters, watermark, photographic elements, 3D ren
 - **Canvas duplicated into a 2×2 grid, 2 observations.** Both instances asked for a WIDE ratio
   on wide-and-short content while every render returned 1024×1024 square. Compose
   wide-and-short subjects to fill a square frame.
-- **The ground step came back FLAT once in six, 2026-08-26.** Right-minus-left value measured
-  0.5 against 13.5, 21.0, 25.3, 26.0 and 26.1 on the five that obeyed — all six carried the
-  step clause in identical words, so wording was not the variable. That frame is also the one
-  whose product vanished — a dark product on an unstepped dark ground has nothing to separate
-  it. When the product is dark, say so and give it the lighter panel.
+- **The ground step came back FLAT once in six, 2026-08-26.** 0.5 right-minus-left against
+  13.5-26.1 on the five that obeyed, all six carrying the step clause in identical words — so
+  wording was not the variable. That frame is also the one whose product vanished. When the
+  product is dark, say so and give it the lighter panel.
 - **`line-engraving` style, 1/1 failed.** Turned the `measure` pair into dashed BOXES. Held out;
   a retest changes ONLY the style value on a prompt already known to work.
 
@@ -381,12 +380,14 @@ one palette or they read as two sources.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
-- 1.16 (2026-08-26): **`verdict` becomes five badge forms**, ADR-043's decision reaching a type
-  file two days after it was taken and finding four types still naming one. **A SET DIVERSITY
-  LAW** — no two images in a set share more than two of the five levers this file already owned;
-  a six-image set held all five constant and returned one image six times. **A removal gate on
-  the marks**: cover them and the panels must still read wrong and right, which 3 of 6 failed.
-  KNOWN-FLAKY gains the flat ground step, 1 of 6 at 0.5. · this commit
+- 1.17 (2026-08-26): **fixes a contradiction 1.16 introduced.** `verdict-none` legalised a frame
+  with no badge while SLOT CONSTRAINTS still required one on both panels and NEGATIVE still
+  banned a missing badge. Caught before a prompt was written against it. · this commit
+- 1.16 (2026-08-26): **`verdict` becomes five badge forms** (ADR-043, two days late, four type
+  files still naming one). **A SET DIVERSITY LAW** — no two images in a set share more than two
+  of the five levers this file already owned. **A removal gate**: cover the marks and the panels
+  must still read wrong and right, which 3 of 6 failed. KNOWN-FLAKY gains the flat ground step,
+  1 of 6 at 0.5. · `ba4bc33`
 - 1.15 (2026-08-13): type passed by the owner; file finalised. Worked examples become two
   renders that happened, in full text per SPEC §3.3; the untested shower-filter example is
   retired for failing the removal test and survives as a sketch in VARIANTS. `c6e3b77`
