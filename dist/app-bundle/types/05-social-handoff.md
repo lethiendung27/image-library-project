@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.8"
+version: "2.9"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.8 [--marked]
+TYPE: 05-social-handoff v2.9 [--marked]
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
@@ -164,9 +164,10 @@ the product, and never touching a frame edge.**
 **SIZE IS NOT A NUMBER HERE — IT IS G10's MAXIMISATION CLAUSE.** Two fixed bounds failed in
 consecutive versions: 2.6 bound the panel, 2.7 bound the product inside it, and panels then
 rendered between 16.6% and 31.1% of frame width while several still read as too small. Make the
-inset **as large and as clear as it can be**, growing until it would cover the subject, cover a
-face, or breach G10's safe area. **The product must FILL its panel** — a circle whose product
-fills the disc read at 25.4% while a compliant 16.6% rectangle carried a sliver between margins.
+inset **as large and as clear as it can be**, growing until it would cover INFORMATION — the
+moment, or a face — or breach G10's safe area. **The product must FILL its panel and is never
+smaller than a quarter of the frame width**, which is G10's floor: a circle whose product filled
+the disc read at 25.4% while a compliant 16.6% rectangle carried a sliver between margins.
 
 **BOTH placement conditions bind, and each render so far has honoured one.** Quiet ground AND
 beside the moment. One inset found quiet ground and ran off the left edge; another found quiet
@@ -314,6 +315,9 @@ car further down the road. Flat cold daylight from a low overcast sky, nothing s
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.9 (2026-08-26): **G10 gains a floor and the stop condition moves from the subject to
+  INFORMATION**, and this type inherits both. 2.8's maximisation had no lower bound, so a render
+  could obey it and still come back small. Supersedes 2.8 before it was rendered. · this commit
 - 2.8 (2026-08-26): **inset size stops being a number.** Two fixed bounds failed in consecutive
   versions — 2.6 bound the panel, 2.7 the product — so sizing moves to G10's new maximisation
   clause: as large and clear as it can be, stopped only by the subject, a face or the safe area,

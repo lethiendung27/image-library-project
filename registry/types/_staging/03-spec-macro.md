@@ -3,7 +3,7 @@ id: 03-spec-macro
 step: 3
 job: spec
 device: macro
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 ratios: ["1:1"]
@@ -48,7 +48,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-macro v0.3
+TYPE: 03-spec-macro v0.4
 RATIO: [1:1]
 REGISTER: polished commercial studio macro photography. Extreme close range.
 
@@ -58,7 +58,8 @@ must be a TRUE region of the reference product — same geometry, same
 material, same finish. Do not redesign, simplify or add features.
 
 [MACRO SUBJECT — the frame belongs to it]
-The [working surface / structural detail] of the product filling [70-90%]
+The [working surface / structural detail] of the product filling [70-90%,
+or 55-70% when a locator is present]
 of the frame: [the specific machined/engineered feature], every
 [tooth / strand / layer / edge] individually resolved.
 LIGHT BEHAVIOR LAW: describe how light behaves on the real material —
@@ -130,10 +131,22 @@ quality); xray = through the shell (mechanism); explode = apart (census);
 relief-hero --detail = one magnified detail INSIDE a hero's inset (feature
 legibility).
 
-**A LOCATOR THAT CANNOT BE READ IS NOT A LOCATOR.** Its only job is to let a
-reader place the magnified region on the whole product, so it is sized by G10's
-maximisation clause: as large and clear as it can be, stopped only by the macro
-subject, and the whole product FILLS it. Two renders failed on this alone — a
+**A LOCATOR THAT CANNOT BE READ IS NOT A LOCATOR, AND THIS TYPE HAS TO MAKE
+ROOM FOR ONE.** Its only job is to let a reader place the magnified region on the
+whole product. It is sized by G10's maximisation clause with **this type's floor
+raised to ONE THIRD of the frame width**, because a locator must show a WHOLE
+product and a whole product at small scale is a silhouette — which is exactly
+what 21.2% and 2.4%-of-frame locators returned.
+
+**The MACRO SUBJECT's fill band yields when a locator is present: 55-70% of the
+frame rather than 70-90%.** Those two numbers were written a round apart and pull
+against each other — tell the subject to fill 70-90% and then tell the locator to
+grow until it would touch the subject, and the locator has nowhere to go. The
+subject gives up the room, not the locator.
+
+The locator may sit OVER the subject where the subject carries no information
+there — plain material, an out-of-focus flank. What it must never cover is the
+fit, join or texture the frame exists to show. Two renders failed on this alone — a
 21.2% disc carrying a small silhouette, and a 2.4%-of-frame square cramped into a
 corner against two edges. The macro still keeps the frame; a bigger locator does
 not change that.
@@ -148,6 +161,10 @@ observation is superseded (ADR-054); that observation was already counted among
 this type's exemplars, so reversing the ruling adds none.
 
 ## CHANGELOG
+- 0.4 (2026-08-26): **the locator was being squeezed by this type's own fill band.** MACRO
+  SUBJECT drops to 55-70% of frame when a locator is present, the locator's floor is raised to a
+  third of frame width, and it may sit over parts of the subject that carry no information. Two
+  rules written a round apart were pulling against each other and the locator lost. · this commit
 - 0.3 (2026-08-26): **the locator has to be readable to be a locator.** Sizing moves to G10's
   maximisation clause after two renders carried a locator too small to place the magnified region
   — a small silhouette in a 21.2% disc, and a 2.4%-of-frame square cramped against two edges. Also

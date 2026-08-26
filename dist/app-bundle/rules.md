@@ -188,10 +188,26 @@ direction that breaks the frame.
 **An inset is sized by MAXIMISATION, never by a target number.** Owner rule, 2026-08-26:
 
 ```
-Make the inset as large and as clear as it can be. It grows until one of three
-things stops it: it would cover the subject, it would cover a face, or it would
-breach the safe area above. Then it stops. It is never sized to a percentage.
+Make the inset as large and as clear as it can be. It grows until it would cover
+INFORMATION — the part of the subject the frame exists to show, or a face — or
+until it would breach the safe area above. Then it stops.
+
+It is never sized to a target. It has a FLOOR: the product inside it is never
+smaller than a QUARTER of the frame width, and it fills its panel with only a
+thin even margin. A type may raise that floor and may not lower it.
 ```
+
+**Two corrections in that block, both paid for.** The stop condition used to read "cover the
+subject" and that is too strict: what must not be covered is INFORMATION. A locator sitting on
+the plain out-of-focus body of a macro subject reads fine — one did — while the same rule read
+literally leaves nowhere to grow in a type whose own skeleton tells the subject to fill 70-90% of
+the frame. **Two rules in one file were pulling against each other**, written a round apart, and
+the inset lost.
+
+And the floor is not the third target number. The two that failed were RANGES a render could sit
+inside while still reading small, because the product did not fill the panel. A floor cannot be
+satisfied by going small. It is set where the evidence sits: insets whose product filled the panel
+at 25.4% and 31.1% of frame width read at a glance, and those at 21.2% and 16.6% did not.
 
 **Two fixed numbers have already failed at this**, one round apart and in the same type.
 `05-social-handoff` 2.6 bound the PANEL at 15-20% of frame width; 2.7 moved the bound to the
