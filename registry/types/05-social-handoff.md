@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.7"
+version: "2.8"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.7 [--marked]
+TYPE: 05-social-handoff v2.8 [--marked]
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
@@ -161,11 +161,16 @@ the centre, the one region of the picture holding neither. Write it as **the qui
 immediately beside the moment**, and add what it must not cover: **never over a face, never over
 the product, and never touching a frame edge.**
 
-**SIZE THE PRODUCT, NOT THE PANEL.** The old bound was 15-20% of frame width and it bound the
-CUTOUT. On a circle that is the same thing, because the product fills the disc. On a rectangle it
-is not: the product floats inside with white margin on every side, so a panel at 18% can carry a
-product at half that. Bind the thing a reader actually sees — **the PRODUCT occupies 15-20% of
-frame width, and the panel is whatever that requires.**
+**SIZE IS NOT A NUMBER HERE — IT IS G10's MAXIMISATION CLAUSE.** Two fixed bounds failed in
+consecutive versions: 2.6 bound the panel, 2.7 bound the product inside it, and panels then
+rendered between 16.6% and 31.1% of frame width while several still read as too small. Make the
+inset **as large and as clear as it can be**, growing until it would cover the subject, cover a
+face, or breach G10's safe area. **The product must FILL its panel** — a circle whose product
+fills the disc read at 25.4% while a compliant 16.6% rectangle carried a sliver between margins.
+
+**BOTH placement conditions bind, and each render so far has honoured one.** Quiet ground AND
+beside the moment. One inset found quiet ground and ran off the left edge; another found quiet
+ground diagonally opposite its moment. Neither is placed.
 
 **G1 applies TWICE when it is used.** Include it where the scene cannot show the product whole —
 the strongest case rendered so far is a drain snake down a plughole, where only the handle exists
@@ -309,6 +314,12 @@ car further down the road. Flat cold daylight from a low overcast sky, nothing s
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.8 (2026-08-26): **inset size stops being a number.** Two fixed bounds failed in consecutive
+  versions — 2.6 bound the panel, 2.7 the product — so sizing moves to G10's new maximisation
+  clause: as large and clear as it can be, stopped only by the subject, a face or the safe area,
+  and the product must FILL its panel. Placement keeps 2.7's relationship wording, now stating
+  that BOTH conditions bind: the two misses each honoured quiet ground and dropped the other
+  half. 2.7's placement rule itself worked, 2 of 4 clean against 3 of 4 misplaced at 2.6. · this commit
 - 2.7 (2026-08-26): **the inset's placement and size rules were binding the wrong things.**
   Placement is now written by RELATIONSHIP — the quiet ground beside the moment, never over a
   face, the product or a frame edge — because naming a corner misplaced 3 of 4. Size now binds

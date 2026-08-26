@@ -3,7 +3,7 @@ id: 03-spec-macro
 step: 3
 job: spec
 device: macro
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 ratios: ["1:1"]
@@ -48,7 +48,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-macro v0.2
+TYPE: 03-spec-macro v0.3
 RATIO: [1:1]
 REGISTER: polished commercial studio macro photography. Extreme close range.
 
@@ -130,6 +130,14 @@ quality); xray = through the shell (mechanism); explode = apart (census);
 relief-hero --detail = one magnified detail INSIDE a hero's inset (feature
 legibility).
 
+**A LOCATOR THAT CANNOT BE READ IS NOT A LOCATOR.** Its only job is to let a
+reader place the magnified region on the whole product, so it is sized by G10's
+maximisation clause: as large and clear as it can be, stopped only by the macro
+subject, and the whole product FILLS it. Two renders failed on this alone — a
+21.2% disc carrying a small silhouette, and a 2.4%-of-frame square cramped into a
+corner against two edges. The macro still keeps the frame; a bigger locator does
+not change that.
+
 **This type MAY carry an inset as of 0.2, and the boundary with `--detail` is
 DIRECTION, not furniture.** Owner decision with one render behind it: the macro
 keeps the frame and the inset is a small LOCATOR showing the whole product so the
@@ -140,6 +148,12 @@ observation is superseded (ADR-054); that observation was already counted among
 this type's exemplars, so reversing the ruling adds none.
 
 ## CHANGELOG
+- 0.3 (2026-08-26): **the locator has to be readable to be a locator.** Sizing moves to G10's
+  maximisation clause after two renders carried a locator too small to place the magnified region
+  — a small silhouette in a 21.2% disc, and a 2.4%-of-frame square cramped against two edges. Also
+  from that round: 6 of 6 complex products now read as a FIT between materials, including three
+  materials in one frame, and a NO-INSET control read as well as the two with locators — so the
+  inset costs nothing in macro quality and must earn its place by being useful. · this commit
 - 0.2 (2026-08-26): **first three renders ever, and the inset ban is lifted.** All three subjects
   were a FIT between two materials — the assembly test the 0.1 exemplars never carried — and all
   three read as a fit. `insets` leaves the NEGATIVE list and the 0.1 SCOPE RULING is superseded

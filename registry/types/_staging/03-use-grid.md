@@ -3,7 +3,7 @@ id: 03-use-grid
 step: 3
 job: use
 device: grid
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "16:9"]
@@ -50,7 +50,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-use-grid v0.3
+TYPE: 03-use-grid v0.4
 LAYOUT: [2x2 / 3 equal cells] photographic grid, thin white gutters,
 no outer border, no numbers, no arrows, no badges, no text.
 
@@ -60,6 +60,16 @@ proportions, material, finish and color exactly in every cell where it appears.
 Where the product IS A SET, a cell may show the member that cell's job uses —
 but only a member visible in the reference photo, and its material and colour
 are preserved exactly like any other.
+
+[CAMERA — name a DIFFERENT one per cell. Required since 0.4.]
+Distance, angle and context change from cell to cell: near/far, above/level/low,
+and a real place per cell rather than one studio ground for all of them.
+The cell variable says WHAT the product does; without this the renderer holds
+HOW IT IS SEEN constant and the grid reads as one template repeated. Measured:
+a four-cell grid met every other rule — identity 4 of 4, output 4 of 4 — and
+still read as a template, because the product entered from the same side at the
+same angle onto the same pale ground in all four. A three-cell grid in the same
+round, staged in three real places, pulled its own angles apart unasked.
 
 [CELL VARIABLE — choose ONE and name it in the prompt]
 applications: each cell shows the product mid-action on a DIFFERENT JOB
@@ -138,6 +148,11 @@ form deliberately occupies persona-grid geometry with hosts instead of people
 (obs `sha256:9d88fa…` records the head-on collision).
 
 ## CHANGELOG
+- 0.4 (2026-08-26): **the grid had one axis and needed two.** New required `CAMERA` block:
+  distance, angle and context differ per cell. The variable says WHAT the product does; the file
+  said nothing about how it is SEEN, so the renderer held that constant — a four-cell grid met
+  every stated rule and still read as one template, while a three-cell grid in three real places
+  varied its angles unasked. A silent axis is a constant axis. · this commit
 - 0.3 (2026-08-26): **the central-element branch of `compatibility` is WITHDRAWN on a fail.**
   Its first and only render put the product alone in the centre cell and let the two host cells
   furnish themselves — a tripod's own clamp and a dashboard cradle — so the grid argued nothing.

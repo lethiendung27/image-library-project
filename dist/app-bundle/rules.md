@@ -185,6 +185,36 @@ The last clause is the load-bearing one: a prohibition without a sanctioned esca
 route is resolved by the model in whichever direction it likes, and outward is the
 direction that breaks the frame.
 
+**An inset is sized by MAXIMISATION, never by a target number.** Owner rule, 2026-08-26:
+
+```
+Make the inset as large and as clear as it can be. It grows until one of three
+things stops it: it would cover the subject, it would cover a face, or it would
+breach the safe area above. Then it stops. It is never sized to a percentage.
+```
+
+**Two fixed numbers have already failed at this**, one round apart and in the same type.
+`05-social-handoff` 2.6 bound the PANEL at 15-20% of frame width; 2.7 moved the bound to the
+PRODUCT inside the panel, for the correct reason that a panel carries margin. Measured with a
+detector calibrated on planted discs — 10, 20 and 30% read back as 10.0, 20.1 and 30.1 — six
+panels then rendered between 16.6% and 31.1% of frame width, broadly compliant, and the owner
+still read several as too small. **Panel size does not predict legibility.** What does is whether
+the product FILLS its panel: a circle whose product fills the disc read at 25.4%, while a 16.6%
+rectangle carried a sliver between wide margins and a 21.2% disc carried a small silhouette.
+
+A ratio of product-to-panel would be the obvious instrument and it is not available: two attempts
+to measure it failed their own controls. Maximisation needs no measurement, which is why it is
+the rule.
+
+Failures run in one direction. Across ten inset renders every miss was TOO SMALL except one panel
+that was too large **and** misplaced — which this clause forbids anyway, because covering the
+subject stops the growth.
+
+**Where a type states its own inset bound, that bound stands and maximisation happens inside it.**
+`06-relief-hero` line 266 says 15-25% of frame width and `03-spec-explode` line 115 says 30-40%
+for its `inset` FRAMING mode, which is a packshot layout rather than a locator. Neither is edited
+here: this clause tells a writer how to choose within a range, not what the range is.
+
 Evidence: render tests 2026-08-11 (`06-relief-hero`, wet-dry floor washer and travel
 stroller). A bleed specified as "a quarter of the shape" pushed a four-line label off
 the frame; the same session cropped a static product inset by the identical mechanism.

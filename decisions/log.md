@@ -2825,3 +2825,59 @@ list, the NOTES gain the direction rule, the 0.1 SCOPE RULING is marked supersed
 skeleton bumped, CHANGELOG entry. No active type is touched and `06-relief-hero` is not edited:
 its `--detail` mode is unchanged and the distinction is stated from this side only. Nothing is
 promoted — SPEC §6.3(3) still wants the owner's verdict. `registry_version` unchanged.
+
+## ADR-055 · 2026-08-26 · An inset is sized by maximisation, because two fixed numbers failed at it
+
+Owner rule, stated as general: an inset must be size-optimised — as large and as clear as possible
+without covering the subject. It goes into **G10** rather than into the three type files that
+carry insets, because it is medium-independent and type-independent, which is G10's own stated
+reason for existing.
+
+**Two fixed numbers already failed, one round apart, in the same type.** `05-social-handoff` 2.6
+bound the PANEL at 15-20% of frame width. 2.7 moved the bound to the PRODUCT inside the panel, for
+the correct reason that a panel carries margin. Measured with a detector calibrated before any
+live number was believed — planted discs at 10, 20 and 30% of frame width read back as 10.0, 20.1
+and 30.1 — six panels then rendered between 16.6% and 31.1%, broadly compliant with both versions,
+and the owner still read several as too small.
+
+**So panel size does not predict legibility, and the thing that does cannot be measured.** What
+separates a legible inset from a small one is whether the product FILLS its panel: a circle whose
+product filled the disc read at 25.4%, while a compliant 16.6% rectangle carried a sliver between
+wide margins and a 21.2% disc carried a small silhouette. The obvious instrument would be a
+product-to-panel ratio, and it is not available — two attempts to measure it failed their own
+controls in earlier rounds and are recorded there as failures rather than as evidence.
+
+**Maximisation needs no measurement, which is why it is the rule.** It is also directionally
+supported: across ten inset renders every miss was too small except one panel that was too large
+AND misplaced, which this clause forbids anyway because covering the subject stops the growth.
+
+**It composes with G10 rather than contradicting it.** G10 already says that when content does not
+fit the safe area, make it SMALLER — that is what to do when it does not fit. This says what to do
+with the space you have. Grow until the subject, a face or the safe area stops you; if it still
+does not fit, shrink rather than move.
+
+**Type-level bounds are not overridden.** `06-relief-hero` line 266 states 15-25% of frame width
+and `03-spec-explode` line 115 states 30-40% for its `inset` FRAMING mode, which is a packshot
+layout rather than a locator. Neither is edited: this clause tells a writer how to choose within a
+range, not what the range is. `06-relief-hero` belongs to another lane and its insets have their
+own evidence; nothing here asks that lane to change.
+
+**Rule 6c sweep.** `adr-sweep.py inset` returns 1541 hits across 80 files, 15 of them teaching —
+too many to correct and, since this is an ADDITION rather than a withdrawal, none of them made
+wrong by it. The targeted question is which files state a FIXED inset size that this clause would
+contradict, and a scan of every type file, `rules.md`, the adapter and the runbook finds exactly
+the two named above. Both stand.
+
+Two type files change in the same commit for reasons this clause creates.
+`05-social-handoff` → **2.8** drops its own number and points at G10, and states that BOTH
+placement conditions bind: 2.7's relationship wording worked, 2 of 4 clean against 3 of 4
+misplaced at 2.6, and each of the two misses honoured quiet ground while dropping "beside the
+moment". `_staging/03-spec-macro` → **0.3** applies it to the locator, whose only job is to let a
+reader place the magnified region and which failed at that twice while the macro around it was
+correct.
+
+Consequences: `registry/rules.md` G10 gains the sizing clause; `registry/types/05-social-handoff.md`
+→ 2.8; `registry/types/_staging/03-spec-macro.md` → 0.3; `registry/types/_staging/03-use-grid.md`
+→ 0.4 for an unrelated finding in the same round. `registry/index.yaml` regenerated,
+`dist/app-bundle` rebuilt. No other type edited, no session re-routed, `registry_version`
+unchanged, 0 errors.
