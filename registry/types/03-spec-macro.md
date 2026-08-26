@@ -3,8 +3,8 @@ id: 03-spec-macro
 step: 3
 job: spec
 device: macro
-version: "0.4"
-status: reserved
+version: "1.0"
+status: active
 replaced_by: null
 ratios: ["1:1"]
 channels: [marketplace]
@@ -18,14 +18,22 @@ never_with: [03-spec-split]
 avoid_adjacent: []
 ---
 
-# 03-spec-macro — STAGING DRAFT
+# 03-spec-macro
 
-Promotion status (2026-08-11): **3 exemplars ledgered, 2-3 distinct sources**
-(dominant-frame form: obs `sha256:1fe139…` batch 10-F gold carving disc,
-`sha256:ffcabb…` 11-A drill-shear gear head; inset form, scope-contested:
-`sha256:290dd7…` 11-E clip-fan clamp dial). Pending: 2 more dominant-frame
-exemplars, the scope ruling below, router-confusion test, ≥1 rendered worked
-example, human review. Not routable.
+Promoted to active 2026-08-26 **on the owner's explicit override of SPEC §6.3(1)**,
+which asks for ≥5 distinct exemplars. This type has **4**, across 4 distinct
+batches: `sha256:1fe139…` 10-F gold carving disc, `sha256:ffcabb…` 11-A
+drill-shear gear head, `sha256:290dd7…` 11-E clip-fan clamp dial, `sha256:3ca14a…`
+11-F. The owner tested the type and ruled; ADR-057 records what the ruling waives
+and what it does not. Criteria 2, 3 and 4 hold on their own evidence.
+
+**Criterion 2 passed on a technicality worth knowing.** Router-confusion was run
+against every routed slot the library owns — 0 of 14 stolen — but this type is
+`channels: [marketplace]` and both golden fixtures are landing-page and
+advertorial, so it could not have contested a slot even if its trigger overlapped
+one. The test is green because the type was not eligible to play, not because it
+competed and lost. The first marketplace fixture this library grows is where this
+criterion actually gets tested.
 
 ## PURPOSE
 Build quality exhibited at surface scale: an extreme close-up in which the
@@ -48,7 +56,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-macro v0.4
+TYPE: 03-spec-macro v1.0
 RATIO: [1:1]
 REGISTER: polished commercial studio macro photography. Extreme close range.
 
@@ -110,17 +118,34 @@ split frames, dark gothic grading, oil sheen added for drama
 ```
 
 ## WORKED EXAMPLES
-### example: drill-shear-gearhead — skeleton@0.1, run: untested
-Product: drill-mounted metal shear attachment · ratio 1:1
-- MACRO SUBJECT — the gear-cut drive wheel filling about 80% of the frame, every machined tooth individually resolved, bearing race and hex arbor bolt sharp behind it; the magnified region is a true region of the reference
-- LIGHT BEHAVIOUR — one crisp glint per tooth edge along the light side, matte tool-steel grain between teeth, no bloom
-- ACTION ANCHOR — the wheel caught mid-cut through galvanised sheet metal, a clean curl of cut steel sweeping behind, physically plausible, motion minimal
-- SCALE WITNESS — the sheet metal itself at the frame edge
-- SIGNAL SILENCE — no glow, no emblem, no highlight colours; bare machined steel carries the argument
-Predicted failures: (1) generic knurling instead of countable gear teeth (the
-verified carry-over risk — the light-behavior line is the mitigation);
-(2) the cut curl rendering as soft ribbon instead of metal; (3) a cyan rim
-glow imported from market exemplars (the negative must fire).
+Kept in full text per SPEC §3.3, because the ledger stores verdicts and not prompts.
+
+### example: ratchet-screwdriver-pawl-fit — skeleton@0.2, run: pass
+Product: ratcheting screwdriver · ratio 1:1 · the pawl-and-gear fit
+```
+TYPE: 03-spec-macro v0.2
+REGISTER: polished commercial studio macro photography. Extreme close range.
+
+PRODUCT REFERENCE: use the attached product photo as the exact reference. The magnified region must be a TRUE region of the reference product — same geometry, same material, same finish. Do not redesign, simplify or add features.
+
+MACRO SUBJECT: the ratchet mechanism with the collar cut away, filling 80% of the frame: the hardened steel pawl seated into the gear teeth, every tooth resolved separately, and the machined housing the gear sits inside meeting the steel at a visible line.
+
+LIGHT BEHAVIOR LAW: hard raking light puts one bright glint on each gear tooth crown and leaves the roots dark, while the housing beside it is matte and returns none — so two materials read as two materials at the line where they meet, not as one machined mass.
+
+FRAME: nothing but the product. No hand, no background object, no surface pattern.
+
+No text, no letters, no numbers, no logo, no measurement scale, no arrow anywhere in the frame.
+```
+This is the render that closed the type's own gap. The three 0.1 exemplars were single
+homogeneous surfaces where the LIGHT BEHAVIOR LAW alone carries the frame, and PURPOSE claims
+BUILD QUALITY, which is a claim about ASSEMBLY. Here the machined housing meets gear steel along
+a visible continuous line, the housing matte and the tooth crowns each taking a glint — two
+materials reading as two. Six complex products have since read as a fit, 6 of 6.
+
+**No example exists at the 1.0 skeleton.** The 0.4 changes — the locator's one-third floor and
+the subject's 55-70% fill band — have not been rendered. The validator's staleness warning on the
+example above is correct and closes when a 1.0 render lands.
+
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
@@ -161,6 +186,11 @@ observation is superseded (ADR-054); that observation was already counted among
 this type's exemplars, so reversing the ruling adds none.
 
 ## CHANGELOG
+- 1.0 (2026-08-26): **promoted to active on the owner's explicit override.** SPEC §6.3 requires
+  all four criteria and **criterion 1 is NOT met — 4 distinct exemplars of the 5 the spec asks
+  for.** The owner tested the type and decided to promote regardless; ADR-057 records the
+  override, what it waives and what it does not. Criteria 2, 3 and 4 hold. WORKED EXAMPLES
+  replaces an untested 0.1 draft with the rendered ratchet-screwdriver fit. · this commit
 - 0.4 (2026-08-26): **the locator was being squeezed by this type's own fill band.** MACRO
   SUBJECT drops to 55-70% of frame when a locator is present, the locator's floor is raised to a
   third of frame width, and it may sit over parts of the subject that carry no information. Two

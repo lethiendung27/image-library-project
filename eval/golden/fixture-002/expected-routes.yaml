@@ -107,9 +107,12 @@ page_level:
   out_of_scope_roles: []
   known_gap: >
     story-4 (durability, ABS housing) has no slot here because no active type
-    argues build quality; 03-spec-macro is staging at 4/5 exemplars. Add a
-    durability slot to this fixture when it promotes — that is the next
-    assertion this file should grow. NOT closed by 03-spec-explode's promotion
+    argues build quality. 03-spec-macro promoted 2026-08-26 and this gap did
+    NOT close: that type is channels:[marketplace] and this fixture is
+    advertorial, so a durability slot here could not route to it. The note
+    below was written assuming promotion would be enough; it was not. What
+    this gap actually needs is either a marketplace fixture, or an active
+    build-quality type legal on advertorial. ADR-057. NOT closed by 03-spec-explode's promotion
     on 2026-08-12: this gap is about the HOUSING MATERIAL, which is macro's
     argument, while explode argues build quality by component inventory. A
     cooler's interior (fan, tank, grille) is also close to explode's own

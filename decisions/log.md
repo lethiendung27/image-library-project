@@ -2944,3 +2944,68 @@ first-form build.py history) stand as history.
    session in the repo.
 7. `scripts/gen-plate.py` and `scripts/gen-gif-cards.py` are untouched: neither parses the
    filename, both carry it as an opaque string.
+
+---
+
+## ADR-057 · 2026-08-26 · `03-spec-macro` promotes at 4 exemplars, because the owner overrode the count
+
+**Context.** SPEC §6.3 opens with "All four required" and criterion 1 is "≥5 distinct
+exemplars (distinct sources, non-near-duplicate) in the ledger". `03-spec-macro` has 4,
+measured from `ingestion/observations.jsonl` at promotion time: `sha256:1fe139…` (10-F),
+`sha256:ffcabb…` (11-A), `sha256:290dd7…` (11-E), `sha256:3ca14a…` (11-F) — 4 hashes across
+4 distinct batches. Earlier this session I checked whether reversing the type's own SCOPE
+RULING would admit a 5th and it does not: the contested inset-form exemplar `sha256:290dd7…`
+is already inside the four. The count could not be raised by any reading of the evidence.
+
+The owner tested the type and instructed: promote it.
+
+**Decision.** `03-spec-macro` goes to 1.0 active. Criterion 1 is **waived by the human gate,
+not met.** The type file says so in its own header and CHANGELOG, in the words "the owner's
+explicit override", so that a curator reading the file in six months does not infer that five
+exemplars were found.
+
+**What the override does not touch.** SPEC §6.3 is unchanged and still reads "All four
+required" — this is one type's exception, recorded, not a new bar for the library. The next
+staging type at 4 exemplars is still short. Criteria 2, 3 and 4 were not waived and were run:
+
+- **(2) router-confusion** — 0 of 14 routed slots stolen across both golden fixtures. **This
+  is a hollow green and is recorded as one.** `03-spec-macro` is `channels: [marketplace]`;
+  the fixtures are landing-page and advertorial. It could not contest a slot because it was
+  never eligible for one. The criterion is satisfied as written and untested in substance.
+- **(3) ≥1 rendered worked example** — six renders exist. WORKED EXAMPLES now carries the
+  ratcheting-screwdriver pawl-and-gear fit, owner verdict `pass`, replacing a
+  `drill-shear-gearhead` draft that was written but never rendered.
+- **(4) ADR-007 autopilot** — this commit.
+
+**The precedent this is NOT.** `03-spec-explode` promoted 2026-08-12 with criterion 1
+"recorded MET at 5 exemplars by owner ruling over the caveat two of them carry" (ADR-014,
+that file's 0.2 CHANGELOG). There the owner ruled on the QUALITY of two borderline exemplars
+and the count reached five. Here the count stays at four and the criterion itself is set
+aside. A reader comparing the two should not flatten them into one habit: one is a judgement
+about evidence, this is a waiver of a requirement.
+
+**A gap this promotion was expected to close and did not.** `eval/golden/fixture-002/expected-routes.yaml`
+carried `known_gap`: "story-4 (durability, ABS housing) has no slot here because no active type
+argues build quality; 03-spec-macro is staging at 4/5 exemplars. Add a durability slot to this
+fixture when it promotes." That instruction cannot be followed. The fixture is advertorial and
+this type is marketplace-only, so a durability slot added there would route to nothing. The note
+has been rewritten to say what the gap actually needs. **This is the second time a channel field
+has silently voided a routing expectation** and it is worth watching for a third: a fixture note
+that names a type by id, without checking that type's `channels` against the fixture's own, is
+writing a cheque the router cannot cash.
+
+**Consequences** — rule 6c sweep on `"exemplars"`: 84 hits, 32 files, 14 in TEACHES. Accounted:
+
+- `SPEC.md:236` and `ingestion/runbooks/curate.md:35` teach "≥5 exemplars" as the promotion
+  bar. **Both stand unchanged** — this ADR overrides one application, not the rule. Changing
+  SPEC here would convert a one-off owner call into library law, which is exactly what the
+  override was not.
+- `decisions/log.md` ADR-000 records the same "≥5 distinct exemplars" in the founding
+  governance decision. Stands, same reason; append-only besides.
+- `registry/types/03-spec-macro.md` was the one file teaching the opposite: its header read
+  "STAGING DRAFT … 3 exemplars ledgered … Not routable" while the type went active. Rewritten
+  in this commit. This is the miss rule 6c exists to catch and the sweep caught it.
+- `03-spec-explode.md`, `03-mechanism-xray.md`, `05-social-snapshot.md`, `03-use-grid.md`,
+  `01-pain-split.md`, `03-spec-split.md` and the `_staging/` files record their own exemplar
+  counts as history or as their own pending state. Untouched, none made false by this.
+- GENERATED (`registry/index.yaml`, the app bundle) regenerates in this commit.

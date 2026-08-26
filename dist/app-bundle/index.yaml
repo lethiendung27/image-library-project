@@ -215,6 +215,36 @@ types:
       03-mechanism-xray on one page (two dark technical renders read as one
       template; the page takes at most two step-3 answers anyway). Not for
       natural/organic positioning where tech renders break trust.
+  - id: 03-spec-macro
+    step: 3
+    job: spec
+    device: macro
+    version: "1.0"
+    status: active
+    channels: [marketplace]
+    ratios: ["1:1"]
+    requires_product_photo: true
+    generation_mode: single-pass
+    axes: {}
+    variants: []
+    exempt_from: []
+    pairs_with: []
+    never_with: [03-spec-split]
+    avoid_adjacent: []
+    requires_pair: null
+    evidence_count: 0
+    picks: {}
+    use_when: >
+      Categories where buyers finger the merchandise in their head: cutting
+      tools, machined metal, braided cords, engineered surfaces. Step-3
+      gallery image for the "is it solid" doubt. Strongest when a live action
+      (mid-cut, under load) anchors the texture to function.
+    avoid_when: >
+      Products whose surfaces are honestly unremarkable (smooth plastic shells
+      — use explode or xray for what hides inside). Never beside 03-spec-split
+      (never_with: two component-superiority arguments protest too much). Not
+      for soft/lifestyle positioning where machining aesthetics read as
+      industrial coldness.
   - id: 03-spec-split
     step: 3
     job: spec
