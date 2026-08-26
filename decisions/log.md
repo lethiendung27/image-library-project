@@ -2719,3 +2719,68 @@ ADR edits (the term existed only in page 193's re-route, committed one commit ea
    single-option slots. A repeating-section tile emits one option by set law, and two types
    across three options is what the owner asked for and what Step 4's B-slot provides.
    Raising the bar further is a separate decision with its own costs in prompt-writing time.
+
+## ADR-053 · 2026-08-26 · `05-social-handoff` had two gazes and no act, and its inset never needed compositing
+
+Owner feedback on four rendered frames: the image logic is poor, no story is told, and nothing is
+being handed to the other person through expression, gesture or action. Separately: the inset
+should vary in shape and proportion rather than always being a circle. Both are acted on here, and
+the first one turns out to be a gap in the type rather than a weakness in the frames.
+
+**All four renders obeyed the skeleton exactly, and that is the finding.** `[ADVOCATE] just used
+it, eyes on the listener` and `[LISTENER] face NOT visible, attention on the moment` are correct
+in 4 of 4. The type legislates two EYE DIRECTIONS and no ACT: no slot asks the advocate to offer,
+point at, pass, hold out or demonstrate anything. **The word handoff was in the type's name and in
+none of its slots**, so nothing was handed over and the frames read as two people standing near a
+product. This is the shape `01-pain-scene` was in before `cost` — every slot correct, the argument
+absent, because the block carrying the argument did not exist.
+
+`handoff` is therefore a new REQUIRED part with four forms — `offer`, `take`, `point`, `show` —
+and one law borrowed rather than paid for twice: **the act must be a STATE a still frame can hold,
+never a movement in progress.** Two hands on one object reads; one hand reaching toward an object
+does not, because a still cannot say whether it is arriving or leaving. `01-pain-scene` bought
+that finding with two dead frames — a stalled reach that rendered as an ordinary reach, an
+arrested turn that rendered as no turn.
+
+**THE INSET NEVER NEEDED COMPOSITING, AND THE FILE'S OWN RECORD IS WHY.** It said the inset "needs
+compositing, so where the renderer cannot composite it is unavailable", which under ADR-021 made
+it dead. But the founding failure it cites is not a compositing failure: *"the founding exemplar
+failed on that alone, beige in scene and charcoal in inset, which reads as two products."* That is
+a colourway mismatch, and a clause binds it — which `06-relief-hero` already proved by carrying
+five inset modes single-pass with `inset from a different photographic source` among its
+negatives.
+
+Tested with one clause in identical words across four frames, it held **4 of 4, and beyond its own
+terms**: a two-tone spot cleaner reproduced the same brown dirty water at the same level in the
+same two chambers as the unit in the scene — product STATE, not merely colour — and a metallic
+lopper matched on FINISH rather than on hue. So `generation_mode` becomes `single-pass` and this
+type leaves ADR-041's audit list, whose countdown goes 2 to 1 with only `04-proof-lockedframe`
+behind it.
+
+**Shape and proportion are freed; size and position are not.** Circle, square or rectangle at 1:1,
+3:4, 4:5 or wider, on the owner's instruction — four circular renders in one set is a sameness the
+type does not need. What stays fixed is what a render actually cost: 15-20% of frame width, a
+corner or edge near the moment, nothing bridging it to the scene. A disc at 24% over dense foliage
+read as a hole punched in the garden. **An inset's own proportion is not the FRAME's ratio**, which
+ADR-016 continues to govern — 4:5 is legal for an inset shape and remains illegal as a frame.
+
+**Rule 6c sweep, and it earned itself again.** `adr-sweep.py 05-social-handoff` returns 187 hits
+across 36 files, 8 of them TEACHING, and two were still teaching the withdrawn law:
+`adapters/nano-banana.md`'s **Template B**, a generate-then-composite recipe naming this type, and
+`query/runbook.md` line 81, *"the `inset` is omitted, not the type"*. Both are corrected here.
+Template B is **narrowed rather than deleted** — it still covers any other reference-true inset
+with no render behind it — and the standing tension is recorded in it rather than silently fixed:
+ADR-021 removed post from this pipeline, so a `composite` step has no sanctioned route at all, and
+this is one of six teaching files that still describe one. That sweep is a separate decision.
+
+The other six teaching hits are left standing and named: `mapping/slot-rules.md` (routing tables),
+`registry/argument-faults.md` (a recorded fault), `registry/types/05-persona-grid.md`
+(`avoid_adjacent`), and the type's own file, its CHANGELOG and its worked example at v2.3, which
+SPEC §3.3 keeps verbatim as the record of what rendered.
+
+Consequences: `registry/types/05-social-handoff.md` → **2.6** — `version`, `generation_mode`,
+the SKELETON's `[HANDOFF]` and `[INSET]` lines, new `PARTS/handoff`, `PARTS/inset` rewritten, and a
+CHANGELOG entry. `adapters/nano-banana.md` Template B narrowed; `query/runbook.md` Step 3's
+single-pass note corrected. `registry/index.yaml` regenerated, `dist/app-bundle` rebuilt. Warnings
+31 → 30; the vocabulary countdown reads 1. No other type is touched, no session is re-routed,
+`registry_version` unchanged, 0 errors.

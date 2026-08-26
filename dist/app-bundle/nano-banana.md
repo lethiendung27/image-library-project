@@ -156,11 +156,17 @@ For `generation_mode: multi-pass` (or a variant override), emit `steps[]`:
 3. `composite` — assemble panels with the gutters/borders from the skeleton in an
    image editor; do not ask the model to draw the multi-panel frame.
 
-**Template B — reference-true inset (`05-social-handoff`, any inset that must match a
-real product):**
-1. `generate` — the scene WITHOUT the inset.
-2. `composite` — place the inset in post using the actual reference photo (cutout on
-   white), per the skeleton's position/size. The model never repaints the inset.
+**Template B — reference-true inset. NOT NEEDED BY `05-social-handoff` SINCE 2.6, AND
+NARROWED HERE RATHER THAN DELETED.** That type's inset is model-drawn and single-pass,
+confirmed 4 of 4 (ADR-053): a two-tone unit reproduced the same dirty water at the same level
+in the same two chambers, and a metallic unit matched on finish. What binds it is a clause, not
+a compositing step — the same way `06-relief-hero` binds its own five inset modes single-pass.
+
+The template is left standing for any OTHER inset that must match a real product and has no
+render behind it yet. Note the standing tension, not resolved here: ADR-021 removed post from
+this pipeline, so a `composite` step has no sanctioned route at all, and this is one of six
+teaching files that still describe one. That sweep is a separate decision with its own blast
+radius.
 
 **Template C — same-person pair (`01-pain-scene` + `06-relief-scene` bookends):**
 1. `generate` — the pain scene.

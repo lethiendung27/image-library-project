@@ -78,8 +78,9 @@ single-pass route its own type already records, and no type becomes unavailable:
 - `01-pain-split --mirror` — the invariants block, named face, hair, clothes, camera
   height and framing BEFORE either panel is described. The type calls it "the only
   route available to a renderer who does not composite" and it passed 1 of 1.
-- `05-social-handoff` — the `inset` is omitted, not the type. The type calls the
-  inset-free route "the safer route" on its own grounds.
+- `05-social-handoff` — **no longer a single-pass problem since 2.6.** The inset is
+  model-drawn and renders in one pass, 4 of 4 (ADR-053), so neither the inset nor the type is
+  omitted. `generation_mode` is now `single-pass`.
 
 Where a type offers NO single-pass route, it is unavailable and the slot takes its next
 candidate — say so in `page_composition_notes` rather than emitting a prompt the owner

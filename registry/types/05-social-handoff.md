@@ -3,13 +3,13 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.5"
+version: "2.6"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
 channels: [paid-social, advertorial, landing-page]
 requires_product_photo: true
-generation_mode: multi-pass
+generation_mode: single-pass
 variants: [marked]
 exempt_from: [G3, G4]
 pairs_with: [04-proof-lockedframe, 06-relief-hero]
@@ -43,14 +43,15 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.5 [--marked]
+TYPE: 05-social-handoff v2.6 [--marked]
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
 [ADVOCATE] just used it, eyes on the listener.            -> PARTS/advocate
 [LISTENER] face NOT visible, attention on the moment.     -> PARTS/listener
 [PRODUCT] dominant, and nothing beside it competes.       -> PARTS/product
-[INSET] optional, and unavailable without compositing.    -> PARTS/inset
+[HANDOFF] what passes between them. Required.             -> PARTS/handoff
+[INSET] optional. Model-drawn, single-pass.               -> PARTS/inset
 [ENVIRONMENT] a real reason both people are here.         -> PARTS/environment
 
 REGISTER: candid documentary photograph, natural, unposed, sharp.
@@ -110,14 +111,54 @@ which object is being sold. Owner verdict, and the fault the type had no law aga
 *Retired, 3 renders:* a bare floor of ≥8% of frame height — it measured readability, not
 dominance.
 
-**`inset`** — a circular white cutout of the product on plain white, near the moment and at
-15-20% of frame width, clean edge, no border, no connecting arrow.
+**`handoff`** — [what passes between the two people], and it is REQUIRED. Not a gaze: an act.
 
-**Include it ONLY if the scene cannot show the product clearly — and it needs compositing, so
-where the renderer cannot composite it is unavailable.** G1 applies TWICE when it is used and
-the colourway must match exactly; the founding exemplar failed on that alone, beige in scene and
-charcoal in inset, which reads as two products. The safer route is to choose a moment where the
-scene carries the product, and skip the inset entirely.
+`advocate` and `listener` legislate two EYE DIRECTIONS and nothing else, and four renders obeyed
+both exactly while the owner read no story in any of them. The word handoff was in this type's
+name and in none of its slots. Nothing was being handed over because nothing asked for it.
+
+Four forms. Choose one and name it:
+
+- `offer` — the product spans the gap, still in the advocate's hand and already touched by the
+  listener's.
+- `take` — the listener's own hand is on the product, or on the thing the product just changed.
+- `point` — the advocate's free hand rests ON the moment, not near it, and the listener's head
+  is turned to follow it.
+- `show` — the advocate has turned one named part of the product toward the listener and holds
+  it there.
+
+**The act must be a STATE a still frame can hold, never a movement in progress.** Two hands on
+one object reads; one hand reaching toward an object does not, because a still cannot say whether
+it is arriving or leaving. This is `01-pain-scene`'s finding borrowed rather than paid for twice:
+an arm "stalled at the height it will not pass" came back as an ordinary reach, and a turn
+"arrested mid-way" came back as no turn at all.
+
+**`inset`** — a cutout of the product on plain white, near the moment, clean edge, no border, no
+connecting line.
+
+**It is MODEL-DRAWN and single-pass, confirmed 4 of 4 at 2.6.** The compositing requirement is
+withdrawn: it rested on the founding exemplar's failure — *beige in scene and charcoal in inset,
+which reads as two products* — and that is a colourway mismatch a clause binds, exactly as
+`06-relief-hero` binds it. Say it in the prompt, in these words:
+
+> the inset shows THE SAME single product that is in the scene — one object photographed twice in
+> one frame. Identical colourway, identical finish, identical wear, lit by the same light as the
+> scene. Never a second unit, never a different colour or material.
+
+Held 4 of 4, and beyond its own terms: a two-tone unit reproduced the same dirty water at the
+same level in the same two chambers, so it bound product STATE and not only colour, and a
+metallic unit matched on FINISH rather than on hue.
+
+**Shape and proportion are free; size and position are not.** Circle, square or rectangle at
+1:1, 3:4, 4:5 or wider — the shape belongs to the page's design, and four circular renders in one
+set is a sameness this type does not need. What stays fixed: **15-20% of frame width**, a corner
+or an edge near the moment, and nothing bridging it to the scene. A disc at 24% over dense
+foliage read as a hole punched in the garden. The inset's own proportion is not the FRAME's
+ratio, which ADR-016 still governs.
+
+**G1 applies TWICE when it is used.** Include it where the scene cannot show the product whole —
+the strongest case rendered so far is a drain snake down a plughole, where only the handle exists
+in the scene. Where the scene already carries the product, skip it.
 
 **`environment`** — a specific place **directly related to the moment of use**, flat natural
 daylight, nothing styled. **It must give a natural reason for both people to be there** — G7's
@@ -257,6 +298,12 @@ car further down the road. Flat cold daylight from a low overcast sky, nothing s
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.6 (2026-08-26): **the type had two gazes and no ACT, which is why it told no story.** New
+  required PART `handoff` with four forms, and its act must be a state a still can hold. The
+  inset's compositing requirement is WITHDRAWN — model-drawn held 4 of 4, including product state
+  on a two-tone unit and finish on a metallic one — so `generation_mode` becomes `single-pass`
+  and this type leaves ADR-041's list. Inset shape and proportion freed; size and position kept.
+  ADR-053. · this commit
 - 2.5 (2026-08-14): **type passed by the owner; file finalised.** Two `WORKED EXAMPLES` added,
   both at skeleton@2.3 and both `run: partial`, kept in full text as the only record of what
   actually rendered (SPEC §3.3) and labelled records rather than templates. The type arrived
