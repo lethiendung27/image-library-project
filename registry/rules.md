@@ -291,7 +291,7 @@ precisely what made leaving it unwritten expensive.
 who builds the loop reads, and it carries **four fields and nothing else**:
 
 ```
-{page-type}-{gif-type}-{product}-v{NN}.mp4    the file the editor returns
+{page-type}-{gif-type}-{product-slug}-v{NN}.mp4   the file the editor returns
 {duration} · {ratio} · {loop behaviour}        what shape and how long
                                                a rule across the two
 <the brief>   who or what is in the shot and where, what happens in
@@ -326,26 +326,25 @@ separated by commas with a final `then`. Four is the ceiling any routed slot can
 `use` declares [1, 4] and every other routable type declares less. `unboxing` goes to six and
 is `kind: null`, ad channel only, so it never writes a page brief.
 
-**The filename is the session's own name with the SLOT appended, and it is read without a
-lookup.** `{page-type}-{product-slug}-v{NN}-{slot-id}.mp4`, the slot id with its dots turned to
-dashes (ADR-051). Take the session directory — `{page-type}-{product-slug}-v{NN}` (ADR-034) —
-and add the slot. A reader gets the product, the page of that product, and the exact slot the
-loop fills, from the name alone.
+**The filename is the session's own name with the gif type inserted, and it is read without
+a lookup.** `{page-type}-{gif-type}-{product-slug}-v{NN}.mp4` (ADR-056 restoring ADR-037).
+Take the session directory — `{page-type}-{product-slug}-v{NN}` (ADR-034) — and put the gif
+type after the page type. A reader gets what it argues, for which product, and on which page
+of that product, from the name alone — and the type names the library folder the file
+belongs in.
 
-Two things that are NOT in it and the reason each is out. The page id: it identifies the source
-export, not the loop, and it lives in `prompts.json.page_id` where a join key belongs — one
-routed session has none at all and still gets a name. The gif TYPE: it came out at ADR-051 when
-the slot went in, because the slot already makes the name unique and the type is carried by
-`gif.type_id`, which is the field that decides the library folder and always was.
+Two things that are NOT in it and the reason each is out. The page id: it identifies the
+source export, not the loop, and it lives in `prompts.json.page_id` where a join key belongs
+— one routed session has none at all and still gets a name. The SLOT: it went in at ADR-051
+and came out two days later on the owner's instruction; the join back to the frame lives in
+`prompts.json` and on the plate, which the editor holds anyway.
 
-**At most one loop per gif type is a PREFERENCE, not a rule** (ADR-051 demoting ADR-037). It
-was a rule because the filename had no slot and no sequence, so two loops arguing the same
-thing produced the same file — the hazard was the whole justification, and it says so in its
-own sentence. The slot id makes the file unique by construction, so the hazard is gone. What
-survives is the second thing ADR-037 noticed, that a page making the same kind of motion
-argument twice is usually repeating itself: prefer two different arguments where the copy
-offers them, keep the repeat where it does not, and record the call in `motion.notes`. The
-build no longer fails a page for it.
+**One loop per gif type per page, and the filename is why** (ADR-056 restoring ADR-037,
+after a two-day demotion at ADR-051). There is no slot field and no sequence number, so two
+loops that argue the same thing on one page would produce the same file. That is a rule
+rather than a hazard: a page carries at most one `cause`, one `proof`, one `mechanism`, one
+`relief`, one `use` — and it says something true anyway, that a page making the same kind of
+motion argument twice is repeating itself. The build fails a page that breaks it.
 
 **Version sits at the END, beside the product it counts.** A version is the Nth page for that
 PRODUCT (ADR-034), so `v04` of one product and `v04` of another are unrelated numbers that

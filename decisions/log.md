@@ -2881,3 +2881,66 @@ Consequences: `registry/rules.md` G10 gains the sizing clause; `registry/types/0
 → 0.4 for an unrelated finding in the same round. `registry/index.yaml` regenerated,
 `dist/app-bundle` rebuilt. No other type edited, no session re-routed, `registry_version`
 unchanged, 0 errors.
+## ADR-056 · 2026-08-26 · The gif type goes back into the filename, and one-per-type goes back to being a rule
+
+Owner instruction, 2026-08-26: the gif filename is `{page-type}-{gif-type}-{product-slug}-v{NN}.mp4`.
+This reverses the NAMING half of ADR-051 and restores ADR-037's form. Everything else ADR-051
+decided stands untouched: the loop replaces the whole slot asset, no still reserves an empty
+block, `form` is `whole-frame` or `none`, `kind` equals `type_id`, delivery is mp4/webm muted,
+and the spec block is the delivery format.
+
+**What the two names trade, stated once so the next reversal can weigh it.** The type-name
+tells the reader the ARGUMENT and — since the library folders are named by type — tells the
+editor which folder the file belongs in without opening anything; the slot join lives in
+`prompts.json` and on the plate. The slot-name told the reader which slot the file fills and
+made the name unique by construction; the argument lived in `gif.type_id`. The owner has
+chosen the argument and the folder over the slot join. The reversal is cheap today for a
+reason worth recording: `ingestion/gifs.jsonl` holds 0 records and 0 loop files exist, so no
+filed file is renamed — the no-rename law is not touched, because nothing has ever been filed.
+
+**The uniqueness consequence is not optional.** With the slot out of the name, two loops of
+one gif type on one page produce the same file. ADR-037's protection therefore returns with
+ADR-037's name: **one loop per gif type per page is a RULE again**, demoted to a preference
+for two days by ADR-051 and restored here. A page 193 build check enforces it, and the ADR-050
+interaction ADR-051 celebrated — a `mechanism` loop on `content.1` and another on `content.3`
+— is again illegal on one page. Page 193 itself is unaffected: its three loops are three
+distinct types.
+
+**ADR-051 left a teaching contradiction, found by this reversal's sweep.** `registry/rules.md`
+G12's header block still showed `{page-type}-{gif-type}-{product}-v{NN}.mp4` — the old form,
+using `{product}` where every other surface writes `{product-slug}`, which is why ADR-051's
+sweep term `gif-type}-{product-slug` never matched it. For one day rules.md taught the type
+name in its header and the slot name three paragraphs down. The header becomes correct again
+today by accident of direction; the variance that hid it is normalised to `{product-slug}` so
+the next sweep matches. This is the fourth distinct mechanism by which a teaching line has
+survived a sweep (ADR-020 schema description, ADR-039 duplicate definition, ADR-050 line-wrap,
+now placeholder variance), and the lesson is unchanged: the sweep is a checklist generator,
+and reading the section top to bottom is the check.
+
+**Rule 6c sweep.** `slot-id}.mp4`: 5 TEACHES — SPEC.md:177, schema (both `output` sites, which
+carry an identical description; both edited), runbook:336, gif-instruction:52, rules.md:330.
+`SLOT appended`: the same surfaces. `one loop per gif type`: 5 TEACHES — the PREFERENCE
+sentences in SPEC.md:180, runbook:346, rules.md:341, gif-instruction:72, and the schema
+descriptions. Every hit is edited by this ADR; the RECORDS (decisions/log.md, page 193's
+first-form build.py history) stand as history.
+
+**Consequences.**
+
+1. `registry/gif-instruction.md` §4: the name template, the example, the ONE-name paragraph
+   and the uniqueness paragraph — rule restored, slot out, type in.
+2. `SPEC.md` §3.6: the naming sentence and the one-per-type sentence.
+3. `registry/rules.md` G12: the filename paragraph, the two-things-not-in-it paragraph (the
+   slot joins the page id on that list), the one-per-type paragraph, and the header block's
+   `{product}` normalised to `{product-slug}`.
+4. `query/runbook.md` Step 5c: the `gif.output` paragraph, the one-per-type paragraph, and
+   the spec-block example filename.
+5. `query/output.schema.json`: the `output` description at BOTH gif sites (slots and
+   recommended — the ADR-039 duplicate is real here and both are edited).
+6. `query/sessions/listicle-arm-trainer-hydraulic-v01`: `gif_name()` takes the gif type
+   again, the three outputs rename, check 13 follows, and a new check fails two loops of one
+   type on the page. The three plates regenerate with the new names. This session is
+   migrated rather than grandfathered because its names lived under ADR-051 for two days,
+   reference no filed file, and leaving them would teach the retired form from the newest
+   session in the repo.
+7. `scripts/gen-plate.py` and `scripts/gen-gif-cards.py` are untouched: neither parses the
+   filename, both carry it as an opaque string.

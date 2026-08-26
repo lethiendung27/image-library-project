@@ -174,11 +174,11 @@ verdict, not through a shortlist.
 - Assets live **outside the repo** and are indexed by `ingestion/gifs.jsonl`, append-only,
   one record per file: `ts`, `sha256`, `type`, `file`, and the description line. A loop has
   ONE name, page-side and library-side alike —
-  `{page-type}-{product-slug}-v{NN}-{slot-id}.mp4`, the slot id with its dots turned to dashes
-  (ADR-051) — and a filed file is never renamed. The slot makes it unique by construction, so
-  no rule has to protect it; the gif type lives in `gif.type_id` and decides the folder. At
-  most one loop per gif type per page is a PREFERENCE and no longer a rule (ADR-051 demoting
-  ADR-037). Delivery is mp4 or webm, muted; `.gif` never ships.
+  `{page-type}-{gif-type}-{product-slug}-v{NN}.mp4` (ADR-037, restored at ADR-056) — and a
+  filed file is never renamed. What keeps it unique is a rule rather than a field: **one loop
+  per gif type per page**, restored with the name it protects. The type in the name says which
+  library folder the file belongs in; the slot it fills lives in `prompts.json` and on the
+  plate. Delivery is mp4 or webm, muted; `.gif` never ships.
 - The folder cards an editor browses are **generated** from the type files by
   `scripts/gen-gif-cards.py`. Like `index.yaml`, a card is a view and is never hand-edited.
   Each folder carries two: `README.md` in English and `README.vi.md` in Vietnamese. The

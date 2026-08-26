@@ -31,9 +31,11 @@ assert SESSION == f"{PAGE_TYPE}-{PRODUCT_SLUG}-{VERSION}", \
     f"directory {SESSION} does not match the ADR-034 name"
 
 
-def gif_name(slot_id):
-    """ADR-051: the session's own name with the SLOT appended, dots to dashes."""
-    return f"{PAGE_TYPE}-{PRODUCT_SLUG}-{VERSION}-{slot_id.replace('.', '-')}.mp4"
+def gif_name(gif_type):
+    """ADR-056 restoring ADR-037: the session's own name with the gif TYPE
+    inserted after the page type. No slot and no sequence — which is why one
+    loop per gif type per page is a RULE, enforced in the checks below."""
+    return f"{PAGE_TYPE}-{gif_type}-{PRODUCT_SLUG}-{VERSION}.mp4"
 
 
 CONTRACT = json.load(open(os.path.join(HERE, "content.json"), encoding="utf-8"))
@@ -867,7 +869,7 @@ SLOTS = [
                       "the same claim shot as one continuous frame, and the release IS the "
                       "argument. The job never changes — this is still the cause card.",
             "ratio": "1:1", "duration_s": 2.5, "loop": "seamless loop",
-            "output": gif_name("content.1.items.1.image"),
+            "output": gif_name("cause"),
             "delivery": "mp4/webm, muted, loop-safe, under the size ceiling",
             "brief": "Two resistance bars lie side by side on a plain floor, each held "
                      "compressed by a hand. Both hands let go at the same moment, the coil bar "
@@ -961,7 +963,7 @@ SLOTS = [
                       "routed. The see-through render is the one frame where that change is "
                       "visible at all, since from outside only a collar turns.",
             "ratio": "1:1", "duration_s": 2.5, "loop": "seamless loop",
-            "output": gif_name("content.1.items.3.image"),
+            "output": gif_name("mechanism"),
             "delivery": "mp4/webm, muted, loop-safe, under the size ceiling",
             "brief": "A see-through view of the trainer's cylinder fills the frame with the "
                      "piston partway along it. A hand turns the dial collar a short way and "
@@ -1059,7 +1061,7 @@ SLOTS = [
                       "that you work the grip out for yourself — is a thing happening rather "
                       "than a state. Same job, one continuous take instead of three panels.",
             "ratio": "1:1", "duration_s": 4, "loop": "seamless loop",
-            "output": gif_name("content.3.items.0.image"),
+            "output": gif_name("use"),
             "delivery": "mp4/webm, muted, loop-safe, under the size ceiling",
             "brief": "A pair of hands holds the trainer across the knees on a living room rug. "
                      "One hand turns the dial collar a short way, both hands take the grips and "
@@ -1623,7 +1625,7 @@ for s in ELIG:
     if g.get("kind") != g.get("type_id"):
         errs.append(f"{s['slot_id']} gif: kind `{g.get('kind')}` != type_id "
                     f"`{g.get('type_id')}` — ADR-051 leaves no layer-bound loops")
-    want = gif_name(s["slot_id"])
+    want = gif_name(g.get("type_id"))
     if g.get("output") != want:
         errs.append(f"{s['slot_id']} gif: output `{g.get('output')}` != `{want}`")
     if g.get("ratio") != DECLARED[s["slot_id"]]["ratio"]:
@@ -1685,6 +1687,14 @@ for s in SLOTS:
         errs.append(f"{s['slot_id']}: {len(opts)} options all carry one type and the slot "
                     f"declares no single_type_basis — one-type-once binds the recommended "
                     f"SET, never the option pool (Step 4, ADR-052)")
+
+# 19b — ADR-056 restoring ADR-037: one loop per gif type per page. With no slot
+# and no sequence in the filename, two loops of one type produce the same file.
+gif_types_used = [s["gif"]["type_id"] for s in ELIG]
+for t in sorted({t for t in gif_types_used if gif_types_used.count(t) > 1}):
+    errs.append(f"gif type `{t}` carries {gif_types_used.count(t)} loops on one page — "
+                f"one loop per gif type per page (ADR-037, restored at ADR-056), and "
+                f"their filenames would collide")
 
 # 19 — every B that repeats a recommended type names its displaced slot
 rec_by_type = {}

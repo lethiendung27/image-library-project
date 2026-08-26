@@ -314,7 +314,7 @@ Every GIF is delivered as this spec block, and `scripts/gen-plate.py` draws the 
 as an SVG beside the still (G12, ADR-028, ADR-051):
 
 ```
-output: advertorial-seat-cushion-l-shaped-v04-content-items-3-image.mp4
+output: advertorial-mechanism-seat-cushion-l-shaped-v04.mp4
 ratio: 16:9
 duration_s: 2.5
 loop: seamless loop
@@ -332,23 +332,22 @@ delivery: mp4/webm
 `duration_s` is a number and fractional values are legal — 2.5 is a real answer where the
 beats need it, and the type's declared band is a band rather than a set of integers.
 
-**`gif.output` is the session's own name with the SLOT appended** (ADR-051):
-`{page-type}-{product-slug}-v{NN}-{slot-id}.mp4`, the slot id with its dots turned to dashes.
-Take the session directory, `{page-type}-{product-slug}-v{NN}` (ADR-034), and add the slot.
-The page id stays out — it identifies the source export rather than the loop and lives in
-`page_id`, and one routed session has none at all. It is the ONLY name a loop has, and the
-library files it under the same string.
+**`gif.output` is the session's own name with the gif type inserted** (ADR-056 restoring
+ADR-037): `{page-type}-{gif-type}-{product-slug}-v{NN}.mp4`. Take the session directory,
+`{page-type}-{product-slug}-v{NN}` (ADR-034), and put the gif type after the page type. The
+page id stays out — it identifies the source export rather than the loop and lives in
+`page_id`, and one routed session has none at all. The SLOT stays out too: it went in at
+ADR-051 and came out two days later on the owner's instruction, and the join back to the
+frame lives in `prompts.json` and on the plate. It is the ONLY name a loop has, the library
+files it under the same string, and the type in it names the destination folder.
 
-The gif TYPE is no longer in the name. It moved to `gif.type_id`, which is the field that
-decides the library folder and always was; what the name buys instead is a join back to the
-exact slot the loop fills, without opening anything.
-
-**At most one loop per gif type is a PREFERENCE, not a rule** (ADR-051 demoting ADR-037). It
-was a rule because the old filename had no slot and no sequence, so two loops arguing the
-same thing collided; the slot id is unique on a page by construction and the collision is
-gone. A page carrying two `mechanism` loops in two different blocks is legal — say so in
-`motion.notes`, on the same footing as the working/result coverage pair, and prefer two
-different arguments where the copy offers them.
+**One loop per gif type per page** (ADR-056 restoring ADR-037, after a two-day demotion at
+ADR-051). With no slot and no sequence in the name, two loops that argue the same thing on
+one page would produce the same file, so a page carries at most one of each type — and it
+says something true anyway: a page making the same kind of motion argument twice is
+repeating itself. Where ADR-050's block-sections tempt a second loop of one type
+(`mechanism` on `content.1` and again on `content.3`), the second slot takes a different
+argument or no loop, and `motion.notes` records the call.
 
 **Delivery is `mp4/webm`** (ADR-051 amending ADR-047), muted. Both containers carry an audio
 track where WebP could not, so muted stays a stated requirement rather than a property of the

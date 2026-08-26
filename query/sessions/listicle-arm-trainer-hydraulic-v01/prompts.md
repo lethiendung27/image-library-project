@@ -342,7 +342,7 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 - the loop replaces the WHOLE slot asset, so its ratio is the slot's own; the recommended still is complete and ships on its own (ADR-051)
 
 ```
-output: listicle-arm-trainer-hydraulic-v01-content-1-items-1-image.mp4
+output: listicle-cause-arm-trainer-hydraulic-v01.mp4
 ratio: 1:1
 duration_s: 2.5
 loop: seamless loop
@@ -570,7 +570,7 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 - the loop replaces the WHOLE slot asset, so its ratio is the slot's own; the recommended still is complete and ships on its own (ADR-051)
 
 ```
-output: listicle-arm-trainer-hydraulic-v01-content-1-items-3-image.mp4
+output: listicle-mechanism-arm-trainer-hydraulic-v01.mp4
 ratio: 1:1
 duration_s: 2.5
 loop: seamless loop
@@ -804,7 +804,7 @@ Strictly avoid: text, letters, numbers, watermark, logo, deformed hands, extra f
 - the loop replaces the WHOLE slot asset, so its ratio is the slot's own; the recommended still is complete and ships on its own (ADR-051)
 
 ```
-output: listicle-arm-trainer-hydraulic-v01-content-3-items-0-image.mp4
+output: listicle-use-arm-trainer-hydraulic-v01.mp4
 ratio: 1:1
 duration_s: 4
 loop: seamless loop

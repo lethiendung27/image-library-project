@@ -49,37 +49,39 @@ Two folders behind one message is the failure this rule exists to prevent.
 ## 4. Naming
 
 ```
-{page-type}-{product-slug}-v{NN}-{slot-id}.mp4
+{page-type}-{gif-type}-{product-slug}-v{NN}.mp4
 ```
 
-`advertorial-seat-cushion-l-shaped-v04-content-items-3-image.mp4`. It is the routing session's
-own directory name — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the SLOT appended, its
-dots turned to dashes, so a reader gets the product, the page of that product and the exact slot
-the loop fills without opening anything (ADR-051).
+`listicle-cause-arm-trainer-hydraulic-v01.mp4`. It is the routing session's own directory
+name — `{page-type}-{product-slug}-v{NN}` (ADR-034) — with the gif TYPE inserted after the
+page type, so a reader gets the argument, the product and the page from the name without
+opening anything, and the name itself says which library folder the file belongs in
+(ADR-056, restoring ADR-037's form after ADR-051's two-day slot-suffix interlude).
 
-The gif TYPE is not in the name. It lives in `gif.type_id`, which decides the library folder and
-always did. Between ADR-037 and ADR-051 the name carried the type instead of the slot, and what
-that bought — the argument readable from the filename — is paid for now by the folder the file
-sits in.
+The SLOT is not in the name. It lives in `prompts.json` and on the generated plate, which
+between them join every loop back to the frame it fills; what the name buys instead is the
+argument and the filing destination, readable by the one person who has to put the file
+somewhere.
 
 **A loop has ONE name.** ADR-023 gave it two, a page-side name and a library name, because the
-page numbered by slot and the library numbered by type through a sequence the ledger issued. The
-sequence is gone for good and has not come back; the slot has, and one name is unique on both
-sides at once, so `ingestion/gifs.jsonl` records the same string the routing commissioned.
-Nothing has to be mapped through the sha256 to know that two references are the same file.
+page numbered by slot and the library numbered by type through a sequence the ledger issued.
+Neither the sequence nor the slot is in the name now, one name is the same on both sides at
+once, and `ingestion/gifs.jsonl` records the same string the routing commissioned. Nothing has
+to be mapped through the sha256 to know that two references are the same file.
 
-**What makes it unique is the slot, which is a field again** (ADR-051). A slot id is unique on a
-page by construction, so no rule has to protect the filename. At most one loop per gif type per
-page survives as a PREFERENCE rather than a rule: a page making the same kind of motion argument
-twice is usually repeating itself, so prefer two different arguments where the copy offers them,
-and record the call in `motion.notes` where it does not.
+**What makes it unique is a rule rather than a field: one loop per gif type per page**
+(ADR-056 restoring ADR-037, after a two-day demotion to preference at ADR-051). A page carries
+at most one `cause`, one `mechanism`, one `use`, one `proof`, one `relief`. With no slot and
+no sequence in the name, two loops arguing the same thing on one page would produce the same
+file — and the rule says something true anyway: a page making the same kind of motion argument
+twice is repeating itself. The build fails a page that breaks it.
 
 The page id is deliberately absent. It identifies the source export rather than the loop, it
 lives in `prompts.json.page_id`, and one routed session has none at all — a name that depended
 on it could not have been written. A file is never renamed after it enters the library:
 briefs and the ledger both reference it by name.
 
-Delivery is **mp4 or webm**, muted, loop-safe, under the size ceiling (ADR-047, ADR-051). It is
+Delivery is **mp4 or webm**, muted, loop-safe, under the size ceiling (ADR-047, ADR-051 — both untouched by ADR-056, which moved only the name). It is
 what the editors produce, and a naming law that disagrees with the files arriving is one that
 gets ignored rather than followed. Two things follow. Muted is a stated requirement again,
 because both containers carry an audio track where WebP could not. And a slot that earns motion
