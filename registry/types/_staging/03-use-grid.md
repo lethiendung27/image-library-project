@@ -3,10 +3,10 @@ id: 03-use-grid
 step: 3
 job: use
 device: grid
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
-ratios: ["1:1", "2:1"]
+ratios: ["1:1", "16:9"]
 channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass
@@ -50,14 +50,16 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-use-grid v0.1
-RATIO: [1:1 / 2:1]
+TYPE: 03-use-grid v0.2
 LAYOUT: [2x2 / 3 equal cells] photographic grid, thin white gutters,
 no outer border, no numbers, no arrows, no badges, no text.
 
 [PRODUCT REFERENCE]
 Use the attached product photo as the exact reference. Preserve shape,
 proportions, material, finish and color exactly in every cell where it appears.
+Where the product IS A SET, a cell may show the member that cell's job uses —
+but only a member visible in the reference photo, and its material and colour
+are preserved exactly like any other.
 
 [CELL VARIABLE — choose ONE and name it in the prompt]
 applications: each cell shows the product mid-action on a DIFFERENT JOB
@@ -115,7 +117,7 @@ Product: pedal resistance trainer · ratio 1:1 · cell variable: positions · 2x
 - CELL 4 — kneeling overhead pull, arms extended behind the head
 - CELL LAW — each cell a real mid-action moment, product legible at thumbnail size, natural Z reading order from easiest to hardest movement
 Predicted failures: (1) face/outfit drift between cells (the same-person lock is
-the make-or-break — if it recurs, switch to multi-pass edit chains); (2) the
+the make-or-break — if it recurs the cell variable is wrong for the product, not the pipeline); (2) the
 model adding step numbers from instruction-manual priors; (3) rope physics
 rendering slack where tension is claimed.
 
@@ -131,6 +133,10 @@ form deliberately occupies persona-grid geometry with hosts instead of people
 (obs `sha256:9d88fa…` records the head-on collision).
 
 ## CHANGELOG
+- 0.2 (2026-08-26): **two law breaches cleared before any promotion.** `2:1` leaves `ratios` for
+  `16:9` (ADR-016) and the skeleton's `RATIO:` line goes entirely (adapter Rule 4); the surviving
+  `multi-pass` instruction is removed, clearing the last STAGING name on ADR-041's list.
+  `PRODUCT REFERENCE` now answers the SET question the first three renders raised. · this commit
 - 0.1 (2026-08-11): staging draft from five ledgered exemplars in three forms —
   applications (obs `sha256:96f3e9…` batch 10-F; `sha256:14d920…` 11-C, torch
   across four seasons), compatibility (`sha256:9d88fa…` 11-A, four host drills),
