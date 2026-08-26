@@ -2784,3 +2784,44 @@ CHANGELOG entry. `adapters/nano-banana.md` Template B narrowed; `query/runbook.m
 single-pass note corrected. `registry/index.yaml` regenerated, `dist/app-bundle` rebuilt. Warnings
 31 → 30; the vocabulary countdown reads 1. No other type is touched, no session is re-routed,
 `registry_version` unchanged, 0 errors.
+
+## ADR-054 · 2026-08-26 · `03-spec-macro` may carry an inset, and the boundary with `--detail` is direction
+
+Owner instruction, twice: this type may have an inset. Its own file forbade one — `insets` sat in
+the NEGATIVE list and the NOTES carried a 0.1 SCOPE RULING that deliberately EXCLUDED the
+macro-as-inset observation `sha256:290dd7…` as belonging between this type and
+`06-relief-hero --detail`, parked rather than merged. That is a recorded decision, so it is
+reversed here with a render in front of it rather than edited away.
+
+**The render says the two are not the same picture.** A knife-sharpener V-slot at macro scale with
+a circular locator inset in the lower right: the macro keeps roughly three quarters of the frame
+and the inset is a small whole-product view so the magnified region can be placed on it.
+`relief-hero --detail` is the exact opposite — the SCENE keeps the frame and the magnified detail
+lives inside the inset. Same two elements, opposite dominance. **The boundary was never furniture,
+it was DIRECTION**, and the 0.1 ruling parked the observation because it could not name that.
+
+**What the reversal does not do, checked rather than assumed.** It does not supply the fifth
+exemplar promotion criterion 1 needs. `sha256:290dd7…` is already counted inside this type's four,
+so un-excluding it from the scope ruling adds nothing to the count. Criterion 1 stays at 4 of 5 and
+that gap closes only through `ingestion/runbooks/classify-batch.md` over the market corpus, never
+through this library's own output (SPEC §6.4, ADR-025).
+
+**The same round closed the gap that mattered more.** The three 0.1 exemplars were single
+homogeneous surfaces — braided steel, ground steel, diamond grit — where the LIGHT BEHAVIOR LAW
+alone carries the frame. Build quality is a claim about ASSEMBLY and none of them had one. Three
+renders on complex products all read as a fit between materials: a machined housing meeting gear
+steel along a visible line, three distinct finishes on one chain link so it reads as parts rather
+than a stamping, and the carbide-to-polymer join above. That is the type's PURPOSE tested for the
+first time.
+
+**Rule 6c sweep.** `adr-sweep.py 03-spec-macro` returns 21 hits across 6 files, ONE of them
+teaching — this type's own file, which is the subject. One UNCLASSIFIED hit,
+`eval/golden/fixture-002/expected-routes.yaml` line 110, reads "03-spec-macro is staging at 4/5
+exemplars" and **is still true**, so it stands. The rest are records: the ledger, the observation
+corpus and a routed session.
+
+Consequences: `registry/types/_staging/03-spec-macro.md` → **0.2** — `insets` leaves the NEGATIVE
+list, the NOTES gain the direction rule, the 0.1 SCOPE RULING is marked superseded, version and
+skeleton bumped, CHANGELOG entry. No active type is touched and `06-relief-hero` is not edited:
+its `--detail` mode is unchanged and the distinction is stated from this side only. Nothing is
+promoted — SPEC §6.3(3) still wants the owner's verdict. `registry_version` unchanged.

@@ -3,7 +3,7 @@ id: 05-social-handoff
 step: 5
 job: social
 device: handoff
-version: "2.6"
+version: "2.7"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1", "3:4"]
@@ -43,7 +43,7 @@ A call-map. Each arrow names an entry in PARTS; the definition lives there once 
 expanded into the rendered prompt (SPEC §3.3).
 
 ```
-TYPE: 05-social-handoff v2.6 [--marked]
+TYPE: 05-social-handoff v2.7 [--marked]
 
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [MOMENT] what the product just did, visible in frame.     -> PARTS/moment
@@ -149,12 +149,23 @@ Held 4 of 4, and beyond its own terms: a two-tone unit reproduced the same dirty
 same level in the same two chambers, so it bound product STATE and not only colour, and a
 metallic unit matched on FINISH rather than on hue.
 
-**Shape and proportion are free; size and position are not.** Circle, square or rectangle at
-1:1, 3:4, 4:5 or wider — the shape belongs to the page's design, and four circular renders in one
-set is a sameness this type does not need. What stays fixed: **15-20% of frame width**, a corner
-or an edge near the moment, and nothing bridging it to the scene. A disc at 24% over dense
-foliage read as a hole punched in the garden. The inset's own proportion is not the FRAME's
+**Shape and proportion are free.** Circle, square or rectangle at 1:1, 3:4, 4:5 or wider —
+four distinct shapes rendered as asked, 4 of 4. The inset's own proportion is not the FRAME's
 ratio, which ADR-016 still governs.
+
+**PLACE IT BY THE MOMENT, NEVER BY A CORNER.** Naming a corner is what went wrong: a corner is a
+position and the inset needs a RELATIONSHIP. Four renders, and the three that misplaced were all
+placed by corner — one panel landed over the listener's head, one butted two frame edges at once,
+and the worst went to the lower left while its product hung upper right and its moment ran across
+the centre, the one region of the picture holding neither. Write it as **the quiet ground
+immediately beside the moment**, and add what it must not cover: **never over a face, never over
+the product, and never touching a frame edge.**
+
+**SIZE THE PRODUCT, NOT THE PANEL.** The old bound was 15-20% of frame width and it bound the
+CUTOUT. On a circle that is the same thing, because the product fills the disc. On a rectangle it
+is not: the product floats inside with white margin on every side, so a panel at 18% can carry a
+product at half that. Bind the thing a reader actually sees — **the PRODUCT occupies 15-20% of
+frame width, and the panel is whatever that requires.**
 
 **G1 applies TWICE when it is used.** Include it where the scene cannot show the product whole —
 the strongest case rendered so far is a drain snake down a plughole, where only the handle exists
@@ -298,6 +309,12 @@ car further down the road. Flat cold daylight from a low overcast sky, nothing s
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 2.7 (2026-08-26): **the inset's placement and size rules were binding the wrong things.**
+  Placement is now written by RELATIONSHIP — the quiet ground beside the moment, never over a
+  face, the product or a frame edge — because naming a corner misplaced 3 of 4. Size now binds
+  the PRODUCT at 15-20% of frame width rather than the panel, since on a rectangle the product
+  floats inside with margin and a compliant panel can carry a half-size product. Shape stayed
+  free and rendered 4 of 4. `handoff`, added at 2.6, worked first time in all four forms. · this commit
 - 2.6 (2026-08-26): **the type had two gazes and no ACT, which is why it told no story.** New
   required PART `handoff` with four forms, and its act must be a state a still can hold. The
   inset's compositing requirement is WITHDRAWN — model-drawn held 4 of 4, including product state

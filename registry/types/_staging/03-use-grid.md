@@ -3,7 +3,7 @@ id: 03-use-grid
 step: 3
 job: use
 device: grid
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "16:9"]
@@ -50,7 +50,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-use-grid v0.2
+TYPE: 03-use-grid v0.3
 LAYOUT: [2x2 / 3 equal cells] photographic grid, thin white gutters,
 no outer border, no numbers, no arrows, no badges, no text.
 
@@ -66,8 +66,13 @@ applications: each cell shows the product mid-action on a DIFFERENT JOB
   ([job 1], [job 2], [job 3], [job 4]), its working output visible in every
   cell (G8 inside cells: flame, cut, result).
 compatibility: each cell shows a DIFFERENT HOST the product serves, staged in
-  that host's own context; the product appears either in every cell mounted,
-  or once as a central connecting element.
+  that host's own context, with the product visibly FITTED in every cell.
+  The alternative offered until 0.3 — the product once as a central connecting
+  element, the hosts implying it — is WITHDRAWN on its first and only render:
+  the centre cell held the product exactly as asked and the two host cells
+  furnished themselves with their own native hardware, so nothing connected the
+  three. Given a host and no product, a renderer supplies that host's usual
+  fitting.
 positions: THE SAME person, set and light in every cell; only the
   [exercise/usage position] changes — constancy makes the variable legible.
 
@@ -133,6 +138,12 @@ form deliberately occupies persona-grid geometry with hosts instead of people
 (obs `sha256:9d88fa…` records the head-on collision).
 
 ## CHANGELOG
+- 0.3 (2026-08-26): **the central-element branch of `compatibility` is WITHDRAWN on a fail.**
+  Its first and only render put the product alone in the centre cell and let the two host cells
+  furnish themselves — a tripod's own clamp and a dashboard cradle — so the grid argued nothing.
+  The product must be visibly FITTED in every cell. The other two variables passed the same
+  round: the 0.2 SET clause held on a four-bit set, and `positions` held one person across four
+  cells for the second set running. · this commit
 - 0.2 (2026-08-26): **two law breaches cleared before any promotion.** `2:1` leaves `ratios` for
   `16:9` (ADR-016) and the skeleton's `RATIO:` line goes entirely (adapter Rule 4); the surviving
   `multi-pass` instruction is removed, clearing the last STAGING name on ADR-041's list.

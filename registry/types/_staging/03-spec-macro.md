@@ -3,7 +3,7 @@ id: 03-spec-macro
 step: 3
 job: spec
 device: macro
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 ratios: ["1:1"]
@@ -48,7 +48,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-macro v0.1
+TYPE: 03-spec-macro v0.2
 RATIO: [1:1]
 REGISTER: polished commercial studio macro photography. Extreme close range.
 
@@ -105,7 +105,7 @@ NO text, no numbers, no logo, no watermark, no badges.
 [G6] + glow rims, neon edges, etched emblems, badges, check marks,
 color-coded highlights, measurement props, rulers, coins, lab equipment,
 generic knurling, blurred repeating texture, people, faces, panels,
-insets, split frames, dark gothic grading, oil sheen added for drama
+split frames, dark gothic grading, oil sheen added for drama
 ```
 
 ## WORKED EXAMPLES
@@ -128,10 +128,24 @@ glow imported from market exemplars (the negative must fire).
 Step-3 magnification family: macro = the surface at dominant scale (build
 quality); xray = through the shell (mechanism); explode = apart (census);
 relief-hero --detail = one magnified detail INSIDE a hero's inset (feature
-legibility). The macro-as-inset observation sits between this type and
---detail; it is parked, not merged — see SCOPE RULING.
+legibility).
+
+**This type MAY carry an inset as of 0.2, and the boundary with `--detail` is
+DIRECTION, not furniture.** Owner decision with one render behind it: the macro
+keeps the frame and the inset is a small LOCATOR showing the whole product so the
+magnified region can be placed on it. `relief-hero --detail` is the opposite — the
+SCENE keeps the frame and the magnified detail lives in the inset. Same two
+elements, opposite dominance. The 0.1 SCOPE RULING excluding the macro-as-inset
+observation is superseded (ADR-054); that observation was already counted among
+this type's exemplars, so reversing the ruling adds none.
 
 ## CHANGELOG
+- 0.2 (2026-08-26): **first three renders ever, and the inset ban is lifted.** All three subjects
+  were a FIT between two materials — the assembly test the 0.1 exemplars never carried — and all
+  three read as a fit. `insets` leaves the NEGATIVE list and the 0.1 SCOPE RULING is superseded
+  (ADR-054): a render on the owner's instruction kept the macro dominant and the inset a locator,
+  which is the opposite dominance from `relief-hero --detail`. Promotion still needs SPEC
+  §6.3(3), the owner's verdict, and criterion 1 is still one exemplar short. · this commit
 - 0.1 (2026-08-11): staging draft from two dominant-frame exemplars — gold
   carving disc (obs `sha256:1fe139…`, batch 10-F), drill-shear gear head
   mid-cut (`sha256:ffcabb…`, 11-A) — with the countable-feature and
