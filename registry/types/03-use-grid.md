@@ -3,8 +3,8 @@ id: 03-use-grid
 step: 3
 job: use
 device: grid
-version: "0.4"
-status: reserved
+version: "1.0"
+status: active
 replaced_by: null
 ratios: ["1:1", "16:9"]
 channels: [marketplace, landing-page]
@@ -50,7 +50,7 @@ avoid_when: >
 
 ## SKELETON
 ```
-TYPE: 03-use-grid v0.4
+TYPE: 03-use-grid v1.0
 LAYOUT: [2x2 / 3 equal cells] photographic grid, thin white gutters,
 no outer border, no numbers, no arrows, no badges, no text.
 
@@ -123,24 +123,43 @@ step numbers, instruction-manual look
 ```
 
 ## WORKED EXAMPLES
-### example: pedal-trainer-positions-2x2 — skeleton@0.1, run: untested
-Product: pedal resistance trainer · ratio 1:1 · cell variable: positions · 2x2
-- CONSTANCY LOCK — the same woman in the same pale studio in every cell: same braided hair, same outfit, same soft light, same grade; the trainer identical throughout; only the exercise varies
-- CELL 1 — lying leg-raise, feet in the pedals, rope tensioned overhead
-- CELL 2 — seated V-sit row, mid-pull, back straight
-- CELL 3 — seated forward row, rope drawn to the waist
-- CELL 4 — kneeling overhead pull, arms extended behind the head
-- CELL LAW — each cell a real mid-action moment, product legible at thumbnail size, natural Z reading order from easiest to hardest movement
-Predicted failures: (1) face/outfit drift between cells (the same-person lock is
-the make-or-break — if it recurs the cell variable is wrong for the product, not the pipeline); (2) the
-model adding step numbers from instruction-manual priors; (3) rope physics
-rendering slack where tension is claimed.
+Kept in full text per SPEC §3.3, because the ledger stores verdicts and not prompts.
+
+### example: drill-bit-set-applications-2x2 — skeleton@0.3, run: pass
+Product: drill and driver bit set · ratio 1:1 · cell variable: applications · 2x2
+```
+TYPE: 03-use-grid v0.3
+LAYOUT: 2x2 photographic grid, thin white gutters, no outer border, no numbers, no arrows, no badges, no text.
+
+PRODUCT REFERENCE: use the attached product photo as the exact reference. Preserve shape, proportions, material, finish and colour exactly in every cell where it appears. The product IS A SET, so each cell shows the member that cell's job uses — but only a member visible in the reference photo, with its material and colour preserved exactly.
+
+CELL VARIABLE — applications. Each cell shows one bit from the set mid-job in a drill chuck, its working output visible:
+  cell 1 — a twist bit part way into softwood, a curl of shaving rising from the hole;
+  cell 2 — a masonry bit part way into a brick wall, pale dust running down the face;
+  cell 3 — a spade bit part way through a plank, the rim of the hole cut clean;
+  cell 4 — a driver bit seated in a screw head, the screw already half sunk into wood.
+
+Every bit is recognisably from the same set — same shank finish, same colour banding — and the drill and chuck are the same in all four cells. No cell contains a person's face.
+
+No text, no letters, no numbers, no logo, no badge, no arrow, no cell divider other than the plain white gutter.
+```
+It returned four different bits plainly from one set, the same drill and chuck in every cell,
+and a distinct visible output in each — a shaving, brick dust, a clean hole rim, a half-sunk
+screw. It is the render that earned the SET clause in `PRODUCT REFERENCE`: without that clause
+the same image would have breached "preserve exactly in every cell".
+
+**No example exists at the 1.0 skeleton, and that is a real gap rather than an oversight.** The
+`CAMERA` block became required at 0.4 and has not been rendered yet, so the strongest true
+example this type owns is the one above at 0.3. The validator's staleness warning on it is
+correct and closes when a 1.0 render lands.
+
 
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
 ## NOTES
-Argument-sibling of 03-use-rail (capability breadth), different geometry: equal
+Argument-sibling of 03-use-rail (STAGING, not routable) — capability breadth,
+different geometry: equal
 cells vs hero-plus-band. Rule of thumb for the router: rail keeps a primary
 scene and annotates breadth; grid IS the breadth. Boundary with 05-persona-grid
 is the live confusion risk and the reason for avoid_adjacent — the compatibility
@@ -148,6 +167,11 @@ form deliberately occupies persona-grid geometry with hosts instead of people
 (obs `sha256:9d88fa…` records the head-on collision).
 
 ## CHANGELOG
+- 1.0 (2026-08-26): **promoted to active on the owner's direct command**, SPEC §6.3 all four:
+  5 exemplars over 3 batches; router-confusion 0 of 14 routed slots stolen; six renders carrying
+  the owner's verdict; ADR-007 autopilot. WORKED EXAMPLES replaces an untested 0.1 draft with the
+  rendered drill-bit set. Two shortfalls recorded rather than hidden: §6.3(2) asks for 5 fixture
+  briefs and this library owns 2, and no example exists at the 1.0 skeleton. · this commit
 - 0.4 (2026-08-26): **the grid had one axis and needed two.** New required `CAMERA` block:
   distance, angle and context differ per cell. The variable says WHAT the product does; the file
   said nothing about how it is SEEN, so the renderer held that constant — a four-cell grid met
