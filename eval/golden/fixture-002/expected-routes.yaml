@@ -23,8 +23,8 @@ slots:
 
   story-0-problem:
     section_role: problem-agitation
-    expected_option_A: {type: 01-pain-scene, note: "rung 4 — another execution of the type already at hero-header, differing on subject class; varies_on must name the move"}
-    only_legal_type: 01-pain-scene
+    expected_option_A: {type: 01-pain-scene, note: "another execution of the type already at hero-header, differing on subject class; varies_on must name the move. REWRITTEN 2026-08-26: this was 'rung 4' of the old ladder, a rung that no longer fills a pool (ADR-058) — it stays the right choice for option A and is no longer an answer to what B and C are."}
+    only_preferred_type: 01-pain-scene
     forbidden:
       - reason: "never_with 01-pain-scene, which serves the header of this same page"
         config: {type: 01-pain-split}
@@ -61,7 +61,7 @@ slots:
   story-3-howto:
     section_role: how-to-use
     expected_option_A: {type: 03-use-sequence}
-    only_legal_type: 03-use-sequence
+    only_preferred_type: 03-use-sequence
     note: "multi_step_usage=true keeps it"
 
   comparison:

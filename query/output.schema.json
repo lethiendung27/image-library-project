@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Image Prompt Library — query output contract",
-  "description": "What the QUERY operation returns (SPEC section 7, query/runbook.md). NEVER-EMPTY RULE: every image slot returns at least one renderable option. Stage 1 derives candidates from registry/index.yaml — channel legality from each type's own channels, then attribute gates, then role affinity from step+job — so a slot cannot run out while any type on the channel can carry the argument. An image slot with zero options is a contract violation, not a valid state.",
+  "description": "What the QUERY operation returns (SPEC section 7, query/runbook.md). NEVER-EMPTY RULE: every image slot returns at least one renderable option, and since ADR-058 the target is THREE, each a distinct active type ranked by fit \u2014 a shortfall is legal only when the slot's pool_basis names what ran out. Stage 1 derives candidates from registry/index.yaml — channel legality from each type's own channels, then attribute gates, then role affinity from step+job — so a slot cannot run out while any type on the channel can carry the argument. An image slot with zero options is a contract violation, not a valid state.",
   "type": "object",
   "required": [
     "page_id",
@@ -265,9 +265,14 @@
             "type": "string",
             "description": "Why that option won, named against the stated criteria in page_composition_notes. Must cite the criteria that decided it, not restate the option."
           },
+          "pool_basis": {
+            "type": "string",
+            "description": "Why this slot's option pool holds fewer than THREE distinct types. Every image slot carries three options of three distinct types (SPEC \u00a77 item 4, runbook Step 4, ADR-058), ranked best-fit first, so a shortfall is an error unless this field says what ran out: which attribute gates fired, which avoid_when excluded a candidate, and how many active types the page's channel had to begin with. Naming a role\u00d7channel cell is NOT sufficient on its own \u2014 the cell is a preference order and the pool is the whole channel-legal set. scripts/validate.py enforces this for sessions routed after 2026-08-26. Real shortfalls exist: paid-social admits 5 active types against landing-page's 14."
+          },
           "single_type_basis": {
             "type": "string",
-            "description": "Names the exhausted cell when a multi-option slot legitimately carries ONE type across its options: which role\u00d7channel cell it was, and what the attribute gates left. One-type-once binds the recommended SET, never the option pool (runbook Step 4, e7dfe8c), so a single-type pool is an error unless this field says why \u2014 scripts/validate.py enforces it for sessions routed after 2026-08-25 (ADR-052). The declared cases the rule itself names: the role cell holds one type after the gates, or a repeating section's set law makes the tile the unit of variation."
+            "deprecated": true,
+            "description": "RETIRED NAME for pool_basis, still read so the thirteen sessions carrying it keep parsing. It was written when the gate's threshold was ONE type across a multi-option slot (ADR-052); the threshold moved to three at ADR-058 and the field was renamed to match, because 'single type' stopped describing what has to be justified. Do not emit it in new sessions."
           },
           "recommended_media": {
             "enum": [

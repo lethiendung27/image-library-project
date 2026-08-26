@@ -39,8 +39,15 @@ slots:
   cause-1:
     section_role: cause
     expected_option_A: {type: 02-cause-anatomy}
-    only_legal_type: 02-cause-anatomy
-    note: "options B/C must vary on execution (hair-strand vs limescale-in-pipe), not type"
+    only_preferred_type: 02-cause-anatomy
+    note: >
+      REWRITTEN 2026-08-26 (ADR-058). It read "options B/C must vary on execution
+      (hair-strand vs limescale-in-pipe), not type" — the exact instruction the
+      three-distinct-types rule reverses. 02-cause-anatomy is the only type the
+      landing-page cause cell PREFERS; it is not the only one legal here. B and C
+      now come from the channel-legal set ranked by fit, and the hair-strand and
+      limescale-in-pipe executions stay what they always were — two ways to build
+      option A, not two options.
 
   proof-1:
     section_role: proof
@@ -59,20 +66,32 @@ slots:
   howto-1:
     section_role: how-to-use
     expected_option_A: {type: 03-use-sequence}
-    only_legal_type: 03-use-sequence
-    note: "multi_step_usage=true keeps it; options vary on execution"
+    legal_alternatives_must_include:
+      - {type: 03-use-grid}
+    note: >
+      REWRITTEN 2026-08-26 (ADR-058). It read "options vary on execution" and
+      asserted 03-use-sequence alone. 03-use-grid promoted on 2026-08-26 and
+      entered this cell the same day, so the cell now holds two — the assertion
+      moves rather than breaking, which is this fixture doing its job: the
+      slot-rules edit failed here before any prompt was written.
+      multi_step_usage=true still keeps 03-use-sequence at A; 03-use-grid is a
+      genuine B because it argues the same beat by application rather than by
+      order.
 
   outcome-1:
     section_role: outcome
     expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: context}}
-    only_legal_type: 06-relief-hero
+    only_preferred_type: 06-relief-hero
     composition_note_required: >
-      06-relief-hero already serves hero-1 and it is the ONLY type in the
-      landing-page outcome cell, so one-type-once cannot be satisfied here by
-      taking a different type. It is satisfied by rung 4 of the Step 4 ladder
-      instead — another execution of a type already on the page, differing on a
-      named dimension: hero-1 runs inset_mode vsinset and this slot runs context,
-      and varies_on has to say so.
+      REWRITTEN 2026-08-26 (ADR-058). 06-relief-hero is the only type the
+      landing-page outcome cell PREFERS and it already serves hero-1, so
+      one-type-once cannot be satisfied inside the cell. The old ladder answered
+      with rung 4 — another execution of a type already on the page — and that
+      rung no longer fills a pool, because an execution is not a second type.
+      This slot now ranks the channel-legal set: A stays 06-relief-hero in
+      inset_mode context against hero-1's vsinset, and B and C are two other
+      types, so the owner has a real alternative to a type the page has already
+      spent. The inset_mode distinction still has to appear in varies_on.
     superseded_2026_08_19: >
       Until today this slot listed 06-relief-scene as a conditional alternative.
       That line was written on 2026-08-10, one day before mapping/slot-rules.md

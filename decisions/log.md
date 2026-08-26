@@ -3009,3 +3009,112 @@ writing a cheque the router cannot cash.
   `01-pain-split.md`, `03-spec-split.md` and the `_staging/` files record their own exemplar
   counts as history or as their own pending state. Untouched, none made false by this.
 - GENERATED (`registry/index.yaml`, the app bundle) regenerates in this commit.
+
+---
+
+## ADR-058 · 2026-08-26 · Every image slot carries three options of three DISTINCT types
+
+**Owner instruction, 2026-08-26:** "đối với mỗi slot ảnh, cần đúng 3 type ảnh khác nhau,
+phù hợp nhất với content của slot đó" — every image slot carries exactly three different
+image types, the three that fit that slot's content best.
+
+**Context: the old model spent B and C on the same type as A.** Step 4 since ADR-000 read
+A = baseline, B = a different type OR an axis, C = *the same type and axes as A in a
+different execution*. C was defined as a re-execution, and it was the option that made the
+"3 per slot" guarantee cheap to keep. Measured across all 13 routed sessions before this
+decision — **161 image slots: 111 carried one distinct type, 50 carried two, and not one
+slot in the library's history carried three.** Across every option ever emitted,
+`varies_on` was `execution` 103 times, `baseline` 90, `type` 44, `axis` 28. A slot that
+returns one type three ways has answered a different question than the one the owner asks
+when he picks.
+
+**Decision.** A, B and C become a RANKING, not three dimensions of variation. Rank the
+whole channel-legal candidate set by the five Step 4 criteria, FIT first, and take the top
+three DISTINCT types. Each option then chooses its own best variant, axes and execution —
+those are how an option is built, never how the pool is filled. `varies_on` is `baseline`
+for A and `type: <id>` for B and C.
+
+**The pool was never the table cell, and this repo said so in two places at once.**
+SPEC §7.4 has always read "Stage 1 derives from the whole channel-legal set, not from one
+table cell, so exhausting a cell is not exhausting the registry", while `query/runbook.md`
+Step 2 read "That cell is the candidate list." The second sentence is why three types
+looked impossible: **43 of the 48 role×channel cells hold fewer than three types.** The
+cell is now written as what it always was — a PREFERENCE ORDER. Cell members outrank
+non-members at equal fit; a non-member is a candidate, not a violation. This resolves a
+contradiction rather than creating one.
+
+Per-channel ceilings, measured from the index at decision time: landing-page 14 active
+types legal, marketplace 13, advertorial 10, **paid-social 5**. Three of four channels
+carry the rule comfortably. Paid-social will produce real shortfalls.
+
+**A shortfall is a declared state, not a failure.** Fewer than three surviving types →
+emit what exists and set `pool_basis` on the slot, naming which gates fired, which
+`avoid_when` excluded a candidate, and how wide the channel was. Naming a cell is not
+sufficient, because the cell is not the pool. `single_type_basis` is the retired name for
+the same field, still read so the thirteen existing sessions parse.
+
+**The cost, stated now rather than discovered later.** On a slot whose cell holds one type,
+B and C will be types the table never proposed for that beat: legal — the admission test
+never bends, `channels` must contain the channel and `avoid_when` must not exclude the case
+— but a weaker argument for it. That is the trade the instruction buys, and it is the right
+way round: a weaker third type the owner can reject beats a third camera angle on the same
+type he cannot compare.
+
+**ADR-022 is amended by a distinction, not reversed.** A repeating section — a review wall,
+a roundup, a gallery of equivalent cells — emitted ONE option per slot because three options
+per tile opened a door no check can close: each option is legal alone, and a reader picking
+one register on three tiles and another on three gets a wall that reads as two shoots, which
+reads as fake. **That harm is mixing types WITHIN one set, and offering three types FOR the
+whole set does not cause it.** So the SECTION carries the three type options, every tile
+follows whichever the owner picks, and no tile is individually switchable. ADR-022's evidence
+and its reasoning both survive intact.
+
+**The ladder now runs until three types stand, not until one does.** Its old rungs 3 and 4 —
+"a repeating-section repeat" and "another execution of a type already on the page" — yield no
+NEW type, so neither can fill a three-distinct-types pool. They are removed from the pool
+ladder and kept where they belong: the honest way to satisfy `one-type-once` in the recommended
+SET when a page needs the same type twice. Rung 3 is now "the rest of the channel-legal set,
+ranked by fit", which is where the third type will usually come from.
+
+**Two active types had no cell in the table at all.** `03-spec-macro` and `03-use-grid`
+promoted this same day and were never added to `mapping/slot-rules.md`, so under the
+cell-as-pool reading they were **unroutable from the moment they went active** — promoted
+types no slot could propose. Found by counting cell widths for this decision, not by any
+gate; nothing checks that an active type appears in the table. Both are now placed:
+`03-spec-macro` in mechanism/marketplace, `03-use-grid` in how-to-use/marketplace and
+landing-page. **A gate for this is the obvious next thing to build and is not built.**
+
+**Enforcement.** `scripts/validate.py` `check_option_pools` moves its threshold from one
+distinct type to three, reading `pool_basis` or the legacy `single_type_basis` as the
+declaration. It was fed six known-bad and known-good inputs before being believed — 1 type
+no basis, 2 types no basis, **3 options carrying only 2 types** (the case the old gate
+passed), 3 distinct types, 1 type with `pool_basis`, 1 type with the legacy field — and it
+discriminated on all six. All 13 existing sessions are grandfathered: they carry 155 slots
+below three types between them and every one would fail.
+
+**Consequences** — rule 6c sweep on `"varies_on"`: 523 hits, 48 files, 7 in TEACHES, 2
+UNCLASSIFIED. Accounted:
+
+- `SPEC.md:278` taught "3 per slot, each differing on a named dimension — `type`, `axis`,
+  or `execution`". **Rewritten**: three per slot, each a distinct type. The never-empty
+  rule beside it is unchanged and now names three as the target.
+- `query/runbook.md` — Step 2, Step 4, the ADR-022 paragraph, the one-type-once paragraph,
+  the enforcement paragraph and the ladder. **All six rewritten in this commit.**
+- `query/output.schema.json` — `varies_on` guidance, the never-empty description, and the
+  field rename. **Rewritten.**
+- `mapping/slot-rules.md:69` teaches cross-slot rule 2, that a type may repeat across a
+  repeating section's entries. **Stands** — it is about the recommended set, not the pool,
+  and the ADR-022 amendment leans on it.
+- `eval/golden/fixture-001` and `fixture-002` (the sweep's two UNCLASSIFIED hits) asserted
+  the old model in five places, including `cause-1`'s "options B/C must vary on execution …
+  not type" — the exact instruction this ADR reverses. **All five rewritten in this commit
+  per SPEC §9.** The fixtures did their job before any prompt was written: adding
+  `03-use-grid` to the how-to-use cell failed `howto-1`'s `only_legal_type` assertion
+  immediately. That key is renamed `only_preferred_type`, because it checks the CELL and
+  "only legal" is now false of every cell.
+- `registry/gif-instruction.md:42`, `registry/gif-types/cause.md:37`, `gif-types/proof.md:42`
+  use `varies_on` for the GIF layer, where it names how a motion execution differs and
+  argues AGAINST minting a new gif type for a subject-class change. **Untouched and still
+  true** — a gif is a work order sitting below option C, not an option in the pool. The
+  `cause.md` note citing "page 65's rung-2 route" stays valid: rung 2 survives.
+- GENERATED (`dist/app-bundle/`, `registry/index.yaml`) regenerates in this commit.

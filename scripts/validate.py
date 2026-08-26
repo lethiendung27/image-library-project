@@ -746,10 +746,13 @@ GRANDFATHERED_RATIOS = {
 
 
 
-# The 12 sessions routed before ADR-052 landed. Their 57 single-type pools were
-# legal output under the practice of their day and are records of completed
-# routings; the gate binds every session routed after 2026-08-25. One aggregate
-# warning keeps the debt visible without drowning the live signal.
+# Every session routed before ADR-058 moved the threshold from one type to
+# three. All of them fail the new rule -- 161 image slots between them, 111 on a
+# single type, 50 on two, none on three -- so the list is the whole set rather
+# than the twelve ADR-052 named. They are legal output under the practice of
+# their day and records of completed routings; the gate binds every session
+# routed after 2026-08-26. One aggregate warning keeps the debt visible without
+# drowning the live signal.
 GRANDFATHERED_SINGLE_TYPE = {
     "advertorial-massage-comb-spray-v02",
     "advertorial-optical-drive-7in1-v01",
@@ -760,6 +763,7 @@ GRANDFATHERED_SINGLE_TYPE = {
     "advertorial-seat-cushion-l-shaped-v05",
     "advertorial-seat-cushion-l-shaped-v06",
     "listicle-air-cooler-wall-mounted-v01",
+    "listicle-arm-trainer-hydraulic-v01",
     "listicle-bp-monitor-upper-arm-v01",
     "listicle-massage-comb-spray-v01",
     "listicle-mattress-vacuum-uv-v01",
@@ -767,14 +771,18 @@ GRANDFATHERED_SINGLE_TYPE = {
 
 
 def check_option_pools():
-    """ADR-052: one-type-once binds the recommended SET, never the option pool
-    (runbook Step 4, `e7dfe8c`). Read the other way, every second type looks
-    spent, B falls back to an axis or an execution every time, and a page ships
-    with no type variation at all — measured at 83 of 101 non-A options before
-    the correction, and again at 8 of 8 slots on page 193 with the corrected
-    paragraph already in force. A rule nothing runs is a rule nobody keeps, so
-    it runs here: a multi-option slot whose options all carry one type must
-    declare the exhausted cell in `single_type_basis`, or the session errors.
+    """ADR-058: every image slot carries THREE options of three DISTINCT types,
+    the three best fits for that slot's content (SPEC §7 item 4, runbook Step 4).
+    A slot holding fewer must declare what ran out in `pool_basis` — which gates
+    fired, which `avoid_when` excluded a candidate, how wide the channel was —
+    or the session errors.
+
+    This replaces ADR-052's threshold, which failed a multi-option slot only when
+    ALL its options carried ONE type. That caught the worst case and passed the
+    common one: two types across three options looked healthy and was still a
+    slot offering the owner one real alternative. Measured when the threshold
+    moved: 161 image slots shipped, 111 single-type, 50 two-type, none carrying
+    three. `single_type_basis` is read as the retired name for `pool_basis`.
     """
     sessions_dir = os.path.join(ROOT, "query", "sessions")
     if not os.path.isdir(sessions_dir):
@@ -792,9 +800,11 @@ def check_option_pools():
         offending = []
         for slot in doc.get("slots", []):
             opts = slot.get("options") or []
-            if len(opts) < 2 or slot.get("single_type_basis"):
+            if not opts:
+                continue        # the never-empty rule is checked elsewhere
+            if slot.get("pool_basis") or slot.get("single_type_basis"):
                 continue
-            if len({o.get("type") for o in opts}) < 2:
+            if len({o.get("type") for o in opts}) < 3:
                 offending.append(str(slot.get("slot_id")))
         if not offending:
             continue
@@ -804,16 +814,17 @@ def check_option_pools():
         rel = f"query/sessions/{session}/prompts.json"
         shown = "; ".join(offending[:3])
         more = f"; and {len(offending) - 3} more" if len(offending) > 3 else ""
-        err(rel, f"{len(offending)} multi-option slot(s) carry one type across "
-                 f"their options with no `single_type_basis`: {shown}{more} — "
-                 "one-type-once binds the recommended SET, never the option "
-                 "pool (runbook Step 4, ADR-052)")
+        err(rel, f"{len(offending)} image slot(s) carry fewer than three "
+                 f"distinct types with no `pool_basis`: {shown}{more} — every "
+                 "slot carries three options of three distinct types, ranked "
+                 "best-fit first, and a shortfall has to name what ran out "
+                 "(runbook Step 4, ADR-058)")
     if inherited:
         warn("query/sessions",
-             f"{len(GRANDFATHERED_SINGLE_TYPE)} session(s) predate ADR-052 and "
-             f"carry {inherited} single-type option pool(s) between them — "
+             f"{len(GRANDFATHERED_SINGLE_TYPE)} session(s) predate ADR-058 and "
+             f"carry {inherited} slot(s) below three distinct types between them — "
              "grandfathered records of completed routings; the gate binds "
-             "sessions routed after 2026-08-25")
+             "sessions routed after 2026-08-26")
 
 
 def check_prompt_sets():
@@ -1223,7 +1234,11 @@ def _parse_expected_routes(path, rel):
                 sub = key
                 if key == "section_role":
                     doc["slots"][slot]["role"] = rest.strip()
-                elif key == "only_legal_type":
+                elif key in ("only_preferred_type", "only_legal_type"):
+                    # ADR-058 renamed it: the assertion is about the role×channel
+                    # CELL, which is now a preference order rather than the pool.
+                    # "only legal" was never what it checked and is now false —
+                    # every channel-legal type is a candidate at some rank.
                     doc["slots"][slot]["only"] = rest.strip()
                 elif key == "expected_option_A":
                     t = re.search(r"type:\s*([\w-]+)", rest)
@@ -1288,8 +1303,8 @@ def check_golden(types, vocab, shortlist, gates):
                 asserted.append((exp["only"], False))
                 if sorted(set(legal)) != [exp["only"]]:
                     err(rel, f"slot `{slot}` ({role}/{chan}): "
-                             f"only_legal_type says `{exp['only']}` but the "
-                             f"derivation yields {sorted(set(legal))}")
+                             f"only_preferred_type says `{exp['only']}` but the "
+                             f"slot-rules cell yields {sorted(set(legal))}")
             for tid, conditional in asserted:
                 if tid not in types:
                     err(rel, f"slot `{slot}`: unknown type `{tid}`")

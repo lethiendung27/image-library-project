@@ -274,9 +274,12 @@ image, and competitor brand marks never appear in prompts.
    cross-slot constraints (`pairs_with`, `never_with`, `avoid_adjacent`,
    `requires_pair`, pain→relief arc). The page is selected as a **set**, never
    slot-by-slot greedily.
-4. **Options**: 3 per slot, each differing on a **named dimension** — `type`, `axis`,
-   or `execution` — and labeled with `varies_on`. Options carry `composition_notes` so
-   a human picking per-slot cannot silently violate a cross-slot rule.
+4. **Options**: **3 per slot, each a DISTINCT active type** — the three best fits for
+   that slot's content, ranked. `varies_on` labels each: A is `baseline`, B and C are
+   `type: <id>`. Axis and execution are how an option is EXECUTED, never how the pool is
+   filled — a slot that returns one type three ways has answered a different question
+   than the one asked. Options carry `composition_notes` so a human picking per-slot
+   cannot silently violate a cross-slot rule.
    **Never-empty rule**: an image slot ALWAYS returns at least one renderable option,
    and every option is a real active type carrying that type's laws. There is no
    fallback tier and no unrouted image: Stage 1 derives from the whole channel-legal

@@ -43,8 +43,19 @@ up. Say "attach the product photo", never "cannot run".
 ## Step 2 — Stage 1 shortlist (mechanical)
 
 For each `image_slot`, read the `role × page.channel` cell of the slot-rules table.
-That cell is the candidate list. Empty cell → the slot gets no library options;
-report it as out-of-scope rather than forcing a type.
+**That cell is a PREFERENCE ORDER, not the candidate list.** The candidate list is
+every active type whose own `channels` contains this page's channel — SPEC §7.4 has
+said so since it was written ("Stage 1 derives from the whole channel-legal set, not
+from one table cell"), and this step used to contradict it. Cell members outrank
+non-members at equal fit; a non-member is a candidate, not a violation.
+
+The distinction is not cosmetic. 43 of the 48 role×channel cells hold fewer than
+three types, so a cell-as-pool reading caps most slots at one or two options —
+measured across the 13 sessions routed before this rule: **161 image slots, 111 on a
+single type, 50 on two, and not one slot in the library's history carrying three.**
+An empty cell is not an empty slot: it means no type is PREFERRED here, and the
+channel-legal set still decides. Report out-of-scope only where the role itself
+carries no image by definition (`cta`, `author`).
 
 ## Step 3 — Stage 2 portfolio (one judgment pass over the WHOLE page)
 
@@ -86,30 +97,50 @@ Where a type offers NO single-pass route, it is unavailable and the slot takes i
 candidate — say so in `page_composition_notes` rather than emitting a prompt the owner
 cannot run. **An option whose `pipeline` is not `single-pass` is a routing defect.**
 
-## Step 4 — Build 3 options per slot (G5 decision)
+## Step 4 — Build 3 options per slot, one DISTINCT TYPE each
 
-Each option differs from A on a NAMED dimension, recorded in `varies_on`:
+Owner instruction, 2026-08-26: **every image slot carries exactly three different
+image types, the three that fit that slot's content best.** A, B and C are a ranking,
+not three dimensions of variation.
 
-- **A — baseline**: the best-fit type/variant/axes.
-- **B — varies on `type`** (a different shortlisted type) OR on an **`axis`**
-  (e.g. `register: ugc`) when no second type survives the gates.
-- **C — varies on `execution`**: same type+axes as A, different persona /
-  environment / camera execution of the skeleton.
+- **A — `baseline`**: the best-fit type, with its own best variant and axes.
+- **B — `type: <id>`**: the second-best fit. A different type, always.
+- **C — `type: <id>`**: the third-best fit. A different type, always.
 
-Rules: an option that requires a pair or has channel restrictions carries that in
-`composition_notes`. Options must all be legal — never present a gated-out type as
-an option. Fewer than 3 legal possibilities → emit fewer, never pad with rerolls.
-**C is always available** — it is a different execution of A, so a slot falls below
-three only when its own law forbids one.
+Rank the whole channel-legal candidate set by the five criteria below, FIT first, and
+take the top three. Each option then picks its OWN best variant, axes and execution —
+those are how an option is built, never how the pool is filled.
 
-**A REPEATING SECTION EMITS ONE OPTION PER SLOT** (ADR-022). Where cross-slot rule 2
-applies — a review wall, a roundup, a gallery of equivalent cells — the SET is the
-unit of variation, not the cell. Three options inside one tile spend the variation
-budget in the dimension that buys nothing, and they open a door no check can close:
-each option is legal alone, and a reader picking one register on some tiles and
-another on the rest gets a wall that reads as two shoots, which reads as fake. So
-emit A only, and let `varies_on` carry the tile's place in the SET — how it differs
-from its siblings, not from a B and C that do not exist. Where the type legislates
+Rules that do not move: an option requiring a pair or carrying channel restrictions
+says so in `composition_notes`; never present a gated-out type as an option; never pad
+with rerolls. **The type's own admission test never bends** — `channels` must contain
+this channel and `avoid_when` must not exclude this case. A type failing either is not
+a candidate at any rank. That is refusing a *wrong* type, which stays correct.
+
+**What this rule costs, stated rather than discovered later.** B and C are lower-ranked
+by construction, so on a slot whose cell holds one type they will be types the table
+never proposed for this role. They are legal — admission never bends — but they are a
+weaker argument for this beat, and the recommendation exists to say so. The old model
+hid this cost by spending B and C on re-executions of A, which is why the library shipped
+161 slots without ever offering a genuine second choice. A weaker third type the owner
+can reject beats a third camera angle on the same type he cannot compare.
+
+**Fewer than three surviving types is a real state and declares itself.** Emit what
+exists and set `pool_basis` on the slot naming what ran out: which gates fired and how
+many types the channel had to begin with. It is not rare on `paid-social`, where only 5
+active types are legal at all against 14 on `landing-page`. A shortfall stated is a
+record; a shortfall padded is a lie about the library's width.
+
+**A REPEATING SECTION IS ONE SLOT FOR THIS PURPOSE, AND THE SET TAKES THE THREE
+TYPES** (ADR-022, amended 2026-08-26). Where cross-slot rule 2 applies — a review wall,
+a roundup, a gallery of equivalent cells — the SET is the unit of variation, not the
+tile. ADR-022's harm is exact and still stands: each option is legal alone, and a reader
+picking one register on some tiles and another on the rest gets a wall that reads as two
+shoots, which reads as fake. **That harm comes from mixing types WITHIN one set, and it
+is untouched by offering three types FOR the whole set.** So the section carries three
+type options at the SECTION level, every tile follows whichever the owner picks, and no
+tile is individually switchable. Per tile, `varies_on` still carries the tile's place in
+the SET — how it differs from its siblings, not from a B and C that do not exist there. Where the type legislates
 its own set law, that law decides which execution each tile keeps:
 `05-social-snapshot`'s SET DIVERSITY LAW asks for a different room class, surface,
 light temperature, camera distance and content mode across the set, and its "where
@@ -143,35 +174,45 @@ back to an axis or an execution every time, and a page ships with no type variat
 all. Measured across the first four routed pages before the correction: 83 of 101
 non-A options varied on execution, 11 on axis, and 7 on type. When B does carry a type
 recommended elsewhere, name the displaced slot in `composition_notes` and move on. The
-only slots that legitimately stay single-type are the ones whose role cell holds one
-type after the attribute gates — say that in `varies_on` so the reason is on the record
-rather than inferred. `e7dfe8c`
+only slots that legitimately fall short of three types are the ones where the CHANNEL —
+not the role cell — runs out after the attribute gates and `avoid_when`. Say that in
+`pool_basis` so the reason is on the record rather than inferred. `e7dfe8c`
 
 **Enforced since ADR-052, because this paragraph was breached with itself already in
 force.** Page 193's first routing shipped 8 of 8 multi-option slots single-type — the
 routing session had read the paragraph above during preparation and applied one-type-once
 to the pool anyway, which is the page-65 failure recurring with the correction on the
-books. So the rule now runs: `scripts/validate.py` fails a session routed after
-2026-08-25 whose multi-option slot carries one type across its options, and a session's
-own build carries the same check. The legitimate single-type case declares itself in
-`single_type_basis` on the slot — the statement this paragraph asked `varies_on` to
-carry, made machine-readable: which cell was exhausted, or which set law makes the tile
-the unit of variation. Twelve sessions predate the gate and stand as grandfathered
-records under one aggregate warning.
+books. So the rule runs in `scripts/validate.py` rather than on trust.
 
-**The table cell is exhausted → widen the derivation, never empty the slot.** An image
-slot with no options is a contract violation (SPEC §7.4). Work down this ladder and
-stop at the first rung that yields a legal type:
+**Its threshold moved from two to three on 2026-08-26** (ADR-058). The gate used to fail
+a multi-option slot carrying ONE type across its options; it now fails one carrying fewer
+than THREE distinct types. The shortfall declares itself in `pool_basis` on the slot,
+naming which gates fired and how wide the channel was — `single_type_basis` is the
+retired name for the same field and is still read, because thirteen sessions carry it.
+Those thirteen predate the three-type rule and every one of them would fail it: they hold
+161 image slots between them and not one carries three types. They stand as grandfathered
+records of completed routings under one aggregate warning, exactly as the twelve before
+them did.
 
-1. **The role's own cell.** The normal case.
+**Ranking order, and it runs until THREE distinct types stand — not until one does.**
+An image slot with no options is a contract violation (SPEC §7.4); a slot with fewer
+than three is a declared shortfall. Work down and keep collecting:
+
+1. **The role's own cell.** The preferred types for this beat. Usually 1-2 of the three.
 2. **Adjacent steps.** Role affinity is a preference, not a wall: a `comparison` slot
    may take a step-3 or step-4 type; a roundup entry that indicts an object may take a
    step-1 `job: pain` type. Say which step you moved to in `varies_on`.
-3. **A repeating-section repeat.** Cross-slot rule 2 permits one type to serve every
-   entry of a list section, provided the instances differ on a named dimension.
-4. **Another execution of a type already on the page.** Different subject class, same
-   type, named in `varies_on` — this is not one-type-once evasion, it is the honesty
-   the rule asks for.
+3. **The rest of the channel-legal set, ranked by FIT.** Any active type legal on this
+   channel whose `avoid_when` does not exclude the case. This rung is where the third
+   type usually comes from and it is not a fallback tier — SPEC §7.4 always derived from
+   here; only this runbook narrowed it to a cell.
+
+**Rungs 3 and 4 of the old ladder are gone from the POOL and kept for the SET.** They
+were "a repeating-section repeat" and "another execution of a type already on the page",
+and neither yields a NEW type, so neither can fill a three-distinct-types pool. They
+remain what they always were — the honest way to satisfy `one-type-once` in the
+recommended set when a page needs the same type twice. Cross-slot rule 2 and
+`composition_notes` carry them now, not this ladder.
 
 The only test that never bends is the type's own admission: `channels` must contain
 the slot's channel and `avoid_when` must not exclude the case. A type that fails

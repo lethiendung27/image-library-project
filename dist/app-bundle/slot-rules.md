@@ -4,6 +4,14 @@ Stage 1 of routing (SPEC §7): a mechanical lookup producing the per-slot shortl
 Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
 `avoid_when`, and the cross-slot rules below. This table proposes; it never decides.
 
+**Since 2026-08-26 it is a PREFERENCE ORDER, not the candidate pool** (ADR-058). Every
+image slot now carries three options of three DISTINCT types, and 43 of these 48 cells
+hold fewer than three — so a cell-as-pool reading would cap most slots below the rule.
+The pool is the whole channel-legal set, which SPEC §7.4 always said it was. Types named
+in a cell outrank types outside it at equal fit; a type outside the cell is a candidate,
+not a violation. An empty cell means no type is PREFERRED for that beat, never that the
+slot goes unrouted — only `cta` and `author` carry no image by definition.
+
 ## Shortlist table
 
 | Role | marketplace | landing-page | paid-social | advertorial |
@@ -11,11 +19,11 @@ Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
 | hero | `06-relief-hero` (commercial) | `06-relief-hero` (commercial) | `06-relief-hero` (ugc), `01-pain-scene` | `01-pain-scene` (header) |
 | problem-agitation | `01-pain-split`, `02-symptom-rail` | `01-pain-split`, `02-symptom-rail`, `01-pain-scene` (confront) | `01-pain-scene` | `01-pain-scene` |
 | cause | `02-cause-anatomy` | `02-cause-anatomy` | — | `02-cause-anatomy` |
-| mechanism | `03-mechanism-ghostbody`, `03-spec-split`, `03-mechanism-xray`, `03-spec-explode` | `03-mechanism-ghostbody`, `03-mechanism-xray`, `03-spec-explode` | — | `03-mechanism-ghostbody`, `03-mechanism-xray` |
+| mechanism | `03-mechanism-ghostbody`, `03-spec-split`, `03-mechanism-xray`, `03-spec-explode`, `03-spec-macro` | `03-mechanism-ghostbody`, `03-mechanism-xray`, `03-spec-explode` | — | `03-mechanism-ghostbody`, `03-mechanism-xray` |
 | proof | `04-proof-lockedframe` (verdict / timelapse) | `04-proof-lockedframe` (verdict / timelapse / capture) | `04-proof-lockedframe` (rivals / timelapse) | `04-proof-lockedframe` (all variants) |
 | social-proof | `05-persona-grid` | `05-social-handoff`, `05-persona-grid`, `05-social-snapshot` | `05-social-handoff` | `05-social-handoff`, `05-social-snapshot` |
 | personas | `05-persona-grid` | `05-persona-grid` | — | — |
-| how-to-use | `03-use-sequence` | `03-use-sequence` | — | `03-use-sequence` |
+| how-to-use | `03-use-sequence`, `03-use-grid` | `03-use-sequence`, `03-use-grid` | — | `03-use-sequence` |
 | comparison | `04-proof-lockedframe--verdict`, `03-spec-split`, `01-pain-split` | `04-proof-lockedframe--verdict` | — | `04-proof-lockedframe--verdict` |
 | outcome | `06-relief-hero` | `06-relief-hero` | `06-relief-hero` (ugc), `06-relief-scene`* | `06-relief-scene`*, `06-relief-hero` |
 | cta | — (standard product shot, out of library scope) | — | — | — |
@@ -31,6 +39,15 @@ type's CHANGELOG for the evidence.
 
 `*` `06-relief-scene` only when its `requires_pair` (`01-pain-scene`, same person) is
 also on the page.
+
+`03-spec-macro` (marketplace only) and `03-use-grid` (marketplace, landing-page) were
+added on 2026-08-26, the day they promoted. **Both had been active with no cell in this
+table at all**, which under the old cell-as-pool reading made them unroutable the moment
+they went live — promoted types that no slot could ever propose. Found by the three-type
+rule's feasibility count, not by a gate: nothing checks that an active type appears here.
+`03-spec-macro` sits beside `03-spec-split` in the marketplace mechanism cell and their
+`never_with` keeps them off the same page, which is a cross-slot rule doing its job, not
+a conflict in the cell.
 
 `author` was added on 2026-08-18 with every cell empty, which is the point of adding it.
 Bylined advertorials carry portrait slots — a byline avatar, an About-the-author image,
