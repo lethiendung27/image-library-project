@@ -1,0 +1,191 @@
+{
+  "product": {
+    "name": "Cord and Rope Tightening and Cinching Tool",
+    "category": "Sports & outdoors",
+    "specification": "Cam-lock rope tensioner with marine-grade brass roller, spring-loaded stainless steel cam, quick-release lever and reflective guy line cord. 35 lb working load (115 lb max), fits 2mm to 4mm cord.",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "active",
+      "visible_output": "none",
+      "mounting": "handheld",
+      "colorways": [
+        "as supplied"
+      ],
+      "body_contact": false,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-object",
+      "multi_step_usage": true
+    },
+    "problems_solved": [
+      "Adjustable knots seize under load and moisture and cannot be released",
+      "Plastic cord runners crack in cold and lose tension under gusting loads",
+      "Bungee cords stretch, lose elastic memory and snap back off an anchor",
+      "Cold, wet or gloved hands cannot manage fine knot work in the dark"
+    ],
+    "raw_features": [
+      "Mechanical cam tensioner that replaces adjustable knots entirely; only one small loop at the anchor end is ever tied",
+      "Marine-grade brass roller cuts friction as the cord is pulled through, so drum-tight tension is reached by hand",
+      "Spring-loaded stainless steel cam acts as a one-way lock, biting the cord the instant pulling stops",
+      "Quick-release lever drops tension in about a second, even under full load and soaking wet",
+      "Marine-grade brass and stainless steel resist rust and salt air rather than cracking in cold",
+      "Reflective cord included so lines are visible under a headlamp",
+      "Setup takes roughly ten to fifteen seconds per line",
+      "Handles cord from thin guy line to heavier tie-down rope, 2mm to 4mm"
+    ],
+    "personas": [
+      "Campers, overlanders and outdoor DIYers, 30-70, who pitch tents, tarps and awnings and strap loads to roof racks and truck beds, including older users whose hands no longer manage fine knot work in the cold"
+    ]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {
+        "id": "opener",
+        "role": "hero",
+        "copy_summary": "Advertorial header, problem-aware. A midnight gale on a coastal pitch: every knot on the tent has locked solid, fingers are cold and damp, and twenty minutes of fighting the lines achieves nothing while the rainfly starts to flap.",
+        "image_slots": [
+          {
+            "slot_id": "hero.image",
+            "ratio": "16:9",
+            "position": "listicle header, under the title and dek, above the intro paragraphs"
+          }
+        ]
+      },
+      {
+        "id": "reason-0",
+        "role": "problem-agitation",
+        "copy_summary": "The night the camp knot failed in full view of eight campers at Moosehead Lake — a shade tarp rigged over two picnic tables for a joint family dinner, every guy line tensioned by hand, and the whole rig dropping during the meal.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.0.image",
+            "ratio": "16:9",
+            "position": "reason card 1, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-1",
+        "role": "comparison",
+        "copy_summary": "Why plastic runners and bungees always lose tension: three-hole plastic cord runners rely on static friction across sharp plastic corners, and in desert sun or freezing coastal air the plastic turns brittle and flexes under gusting loads.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.1.image",
+            "ratio": "16:9",
+            "position": "reason card 2, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-2",
+        "role": "cause",
+        "copy_summary": "The hidden physics: dynamic friction lock. Tightening a traditional knot forces cord fibres to slide against themselves under friction, and when rain soaks the fibres the lock seizes so hard the knot cannot be adjusted at all.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.2.image",
+            "ratio": "16:9",
+            "position": "reason card 3, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-3",
+        "role": "mechanism",
+        "copy_summary": "Effortless tension in under five seconds: the tool replaces knotting with two precise metal parts — a marine-grade brass roller that guides the cord with near-zero friction, and a spring-loaded stainless cam that bites the instant pulling stops.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.3.image",
+            "ratio": "16:9",
+            "position": "reason card 4, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-4",
+        "role": "how-to-use",
+        "copy_summary": "Where the tool stops: stated mechanical limits. Engineered for holding lines down rather than heavy load-bearing — guy lines, tarps, truck bed items and shade canopies, within a 35 lb working load limit.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.4.image",
+            "ratio": "16:9",
+            "position": "reason card 5, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-5",
+        "role": "outcome",
+        "copy_summary": "What changed: a three-day coastal trip in autumn without a single seized knot. The dusk wind blowing off the ocean at twenty knots, and setting up the vestibule and rainfly is no longer something to dread.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.5.image",
+            "ratio": "16:9",
+            "position": "reason card 6, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "reason-6",
+        "role": "comparison",
+        "copy_summary": "What I would have paid: replacing torn tent grommets, bent poles and cracked plastic runners costs hundreds over a few seasons, and heavy ratchet sets cost fifty dollars a pair and weigh pounds in a pack.",
+        "image_slots": [
+          {
+            "slot_id": "content.items.6.image",
+            "ratio": "16:9",
+            "position": "reason card 7, beside the body copy"
+          }
+        ]
+      },
+      {
+        "id": "product-card",
+        "role": "mechanism",
+        "copy_summary": "Recommended Field Gear: cam-lock guy line tightener with brass roller and stainless steel one-way lock. Build: brass roller, stainless steel cam. Capacity: 35 lb working load. Cord fit: 2mm to 4mm.",
+        "image_slots": [
+          {
+            "slot_id": "product.image",
+            "ratio": "1:1",
+            "position": "product card in the features block, beside the spec table"
+          }
+        ]
+      },
+      {
+        "id": "product-end-card",
+        "role": "how-to-use",
+        "copy_summary": "The Complete Cam-Lock Tensioning Multi-Pack Set, six units: everything needed to secure tents, tarps, truck beds and awnings without tying a single friction hitch. 35 lb working load, 115 lb max, 10ft reflective cord included.",
+        "image_slots": [
+          {
+            "slot_id": "product_end.image",
+            "ratio": "16:9",
+            "position": "closing product card above the final CTA"
+          }
+        ]
+      },
+      {
+        "id": "reviews",
+        "role": "social-proof",
+        "copy_summary": "Review wall: three named Verified Purchase quotes and four customer photo slots under the lead 'Thousands of 5-Star Reviews Agree'.",
+        "image_slots": [
+          {
+            "slot_id": "reviews.shots.0.image",
+            "ratio": "1:1",
+            "position": "customer photo strip under the review quotes"
+          },
+          {
+            "slot_id": "reviews.shots.1.image",
+            "ratio": "1:1",
+            "position": "customer photo strip under the review quotes"
+          },
+          {
+            "slot_id": "reviews.shots.2.image",
+            "ratio": "1:1",
+            "position": "customer photo strip under the review quotes"
+          },
+          {
+            "slot_id": "reviews.shots.3.image",
+            "ratio": "1:1",
+            "position": "customer photo strip under the review quotes"
+          }
+        ]
+      }
+    ]
+  }
+}

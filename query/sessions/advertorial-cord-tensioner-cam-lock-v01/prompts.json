@@ -1,0 +1,558 @@
+{
+  "page_id": "219",
+  "registry_version": "2.0.0",
+  "channel": "advertorial",
+  "awareness_stage": "problem",
+  "slots": [
+    {
+      "slot_id": "hero.image",
+      "section_role": "hero",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "01-pain-scene",
+          "type_version": "1.18",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.18\nREGISTER: editorial photojournalism, natural and unstaged. Single frame.\n\nSUBJECT: a man in his fifties crouched at a tent stake in the dark, both hands clamped on a guy line, pulling against it with his shoulders set and his weight back.\n\nEVIDENCE: the knot at the stake is swollen and dark with rain, the cord flattened where it crosses itself, and his fingertips are white where they press into it.\n\nCOST: the rainfly behind him has lifted off the poles on that corner and stands away from the tent, one edge folded back on itself.\n\nPLACE: a gravel campsite pitch beside water, well past midnight.\n\nGAZE: down at the knot. Never at the lens.\n\nLIGHT: the real light of the place and nothing added — a headlamp beam falling across his hands, the rest of the pitch dark.\n\nGRADE: an ordinary photograph in ordinary light.\n\nNo product, no panels, no insets, no marks.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: use_when names an advertorial header pain beat in the copy's own words — a person under a force, the symptom as physical fact. EVIDENCE: 1.18 is the owner-passed version with 54 rules verified present.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 04-proof-lockedframe",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --timelapse\nREGISTER: documentary photography. No overlays, badges, arrows or text.\n\nLAYOUT: two equal vertical panels, thin white gutter, no outer border.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCAMERA: handheld from the same standing position for both panels, same distance, same height, same lens.\n\nSCENE: constant across both panels — one corner of a tent pitched on gravel, the same guy line running from the same stake to the same fly ring, the same water and treeline behind it.\n\nVARIABLE: the only thing that changes is the line. LEFT panel — the line is slack and bowing, the fly corner lifted away from the pole. RIGHT panel — the same line drum-tight and straight, the fly corner pulled down flat, with the tensioner clipped where the line meets the fly ring.\n\nPRODUCT: the tensioner is the subject of the right panel and is absent from the left, sized so the brass roller and the cam lever are both readable, never made the hero of the frame.\n\nGRADE: one grade across both panels, flat overcast daylight, no warm boost.\n\nJUDGEMENT: neither panel is favoured — same exposure, same framing, no vignette on either.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the headline is literally a state claim — knots seize when wind picks up. PROMPT RISK: two panels double the identity surface on a page whose product is small.",
+          "attachments": [],
+          "variant": "timelapse"
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 06-relief-hero",
+          "type": "06-relief-hero",
+          "type_version": "1.17",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.17\nREGISTER: ugc.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nSUBJECT: one man in his fifties, full figure, crouched at the corner of a pitched tent.\n\nPOSE: operated — mid-action, both hands on the tensioner, drawing the cord through it.\n\nSETTING: one real campsite pitch filled to the edges — gravel underfoot, the tent wall behind him, a folding chair and a stuff sack at the frame edge, water and a treeline beyond. Never a blank ground.\n\nLIGHT: flat early-morning daylight, no output to carry, no rim light and no glamour.\n\nOFFSET: he sits to the left of frame; the taut guy line and the fly corner it holds occupy the right.\n\nMARKS: none.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: weakest of the three for a problem-aware opener — it shows the resolved state before the problem has been made to hurt. Offered because the row holds it and the owner may want a warmer header.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decided it and PAGE LEGALITY confirmed it: 01-pain-scene is the only one of the three whose use_when names this exact beat, and spending it here leaves 06-relief-scene's requires_pair satisfied at item 5.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot's job is recognition — a cold reader seeing themselves in a held state at the top of the page. A man braced against a seized knot is a state, not a transition. Every routed session has refused its hero on this ground and this one follows them."
+      }
+    },
+    {
+      "slot_id": "content.items.0.image",
+      "section_role": "problem-agitation",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --timelapse\nREGISTER: documentary photography. No overlays, badges, arrows or text.\n\nLAYOUT: two equal vertical panels, thin white gutter, no outer border.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCAMERA: handheld from the same standing position for both panels, same distance, height and lens.\n\nSCENE: constant across both panels — a large shade tarp rigged over two picnic tables at a lakeside site, the same four corners, the same tables laid for a meal, the same trees behind.\n\nVARIABLE: the only thing that changes is the tarp. LEFT panel — the tarp drum-tight and level, every guy line straight. RIGHT panel — the same tarp sagging in its middle with one corner dropped to the table top, two lines slack and one stake pulled half out of the ground.\n\nPRODUCT: absent from both panels. This is the failure, before the tool exists.\n\nGRADE: one grade across both panels, dusk light going blue, no warm boost.\n\nJUDGEMENT: neither panel is favoured — same exposure, same framing.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the copy is a before-and-after inside one scene, which is exactly what a locked frame holds. This slot is the page's weak point — see composition_notes.",
+          "attachments": [],
+          "variant": "timelapse"
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 01-pain-scene",
+          "type": "01-pain-scene",
+          "type_version": "1.18",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 01-pain-scene v1.18\nREGISTER: editorial photojournalism, natural and unstaged. Single frame.\n\nSUBJECT: a man standing under a sagging shade tarp with one arm raised holding the fabric off the table, his other hand still gripping a slack guy line.\n\nEVIDENCE: the tarp has dropped into a pocket above him and is holding a pool of rainwater, its edge folded down onto the table below.\n\nCOST: the picnic table under it is laid for a meal — plates, a bowl, a folded cloth — with the tarp edge now lying across one end of it.\n\nPLACE: a lakeside campsite pitch at dusk.\n\nGAZE: up at the sagging fabric. Never at the lens.\n\nLIGHT: the real light of the place and nothing added.\n\nGRADE: an ordinary photograph in ordinary light.\n\nNo product, no panels, no insets, no marks.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the strongest match by use_when, and it is why the recommendation is contested. It is spent at the hero under one-type-once; picking it here forces the hero to its own B.",
+          "attachments": []
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 06-relief-scene",
+          "type": "06-relief-scene",
+          "type_version": "3.7",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-scene v3.7\nREGISTER: candid documentary photograph, single frame.\n\nSUBJECT: a man walking back to his car across a campsite carrying a bundled tarp under one arm, the tarp folded badly and trailing loose cord.\n\nGAZE: candid, off to one side. Never on the lens.\n\nENVIRONMENT: an ordinary campground service road with numbered pitch posts and a bin store, a place anyone would pass through.\n\nLIGHT: plain grey daylight, no glamour.\n\nGRADE: muted, desaturated, never warm-boosted.\n\nPRODUCT: absent. This frame is the state the tool has not yet changed.\n\nRELIEF: none — he is bracing, shoulders up, the loose cord dragging.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: weak. The type is a relief type used here for its unglamorous documentary register, showing the state before the tool exists.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT would have chosen 01-pain-scene and PAGE LEGALITY overruled it: the hero spent that type, 01-pain-split is refused by never_with and 02-symptom-rail by its own editorial avoid_when, so the whole preference row is gone and A came from rung 3.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "cause",
+        "type_id": "cause",
+        "rung": "natural",
+        "reason": "The section's claim IS a transition: a tensioned tarp letting go during a meal. The routed still is a two-panel locked frame of exactly that before and after, so the loop restages nothing — it is rung 1. The gif library's `cause` type names this shape, a fastening failing on the thing it holds.",
+        "output": "advertorial-cause-cord-tensioner-cam-lock-v01.mp4",
+        "ratio": "16:9",
+        "duration_s": 3,
+        "loop": "seamless loop",
+        "refs": "gifs-library/cause/ — no files filed yet; the folder card carries the law",
+        "brief": "A shade tarp rigged over two picnic tables, drum-tight and level. One guy line goes slack at the stake, the corner it held drops onto the table top, and the whole sheet settles into a sag that holds.",
+        "alt": "The same tarp corner and stake with nobody in frame, the line paying out through a cracked plastic runner until the corner drops."
+      }
+    },
+    {
+      "slot_id": "content.items.1.image",
+      "section_role": "comparison",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "02-cause-anatomy",
+          "type_version": "1.17",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.17\nMEDIUM: 2D illustration, flat-vector — flat fills, hard edges, no gradients. NOT photography, NOT 3D.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nFRAME: whole — the whole guy line from stake to fly ring in shot in both panels, the hardware small within it.\n\nGROUND: a deep slate field. The value steps once at the panel divider: the right side is clearly lighter than the left.\n\nBODY: a length of braided cord passing through a three-hole plastic runner, cord and runner in warm ivory over a translucent outline, the same cord and the same runner at the same scale and angle in both panels. Not a knot, not a rope diagram.\n\nPANELS: LEFT — the plastic runner cracked across one hole and splayed open, the cord slipped through and the line gone slack. RIGHT — the same cord held in the cam tensioner instead, the cord bitten flat by the cam and the line straight. Neither the culprit nor the product covers the structure under argument. Both are drawn beside it or behind it, and the structure is fully visible in BOTH panels.\n\nMARKS: THREE.\n`measure` — exactly two dashed straight lines, one per panel, red in the left and blue in the right, identical thickness and dash pattern. Each spans from THE STAKE EYE to THE FLY RING, stopping exactly at those two landmarks and running past neither. Both start at the stake eye. Only the slack between them differs; the left bows and the right is straight.\n`contour` — one curved line tracing the CRACKED EDGE of the plastic runner in the left panel, red; one curved line tracing the CAM'S GRIPPING FACE in the right panel, blue. One line per panel.\n`verdict-hazard` — exactly two badges in the TOP corners: a red warning triangle over the left panel and a green disc with a check cut out of it over the right, the triangle and the disc the same height.\n\nTHE DIFFERENCE MUST SURVIVE THE MARKS BEING COVERED: cover the dashed lines and the badges with a thumb, and the left and right panels must still read as wrong and right from the structure alone.\n\nColour follows G3: red wrong, blue correct, green only in the badge.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the copy indicts a specific object and names how it harms — a culprit with a switchable state, which is this type's admission test. EVIDENCE: 1.17, 385-record ledger, and the removal test passes (take the cracked runner away and the line holds).",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 04-proof-lockedframe",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --rivals\nREGISTER: documentary photography. No overlays, badges, arrows or text.\n\nLAYOUT: three equal vertical panels, thin white gutters, no outer border.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCAMERA: handheld from the same position for all three panels, same distance, height and lens.\n\nSCENE: constant across every panel — the same tent stake in the same gravel, the same guy line running up out of frame, the same treeline behind.\n\nVARIABLE: the only thing that changes is what holds the line. PANEL 1 — a three-hole plastic runner, cracked across one hole, the line slack. PANEL 2 — a bungee cord stretched long and thin, its hook twisted sideways on the stake. PANEL 3 — the cam tensioner, the line above it straight and hard.\n\nPRODUCT: the tensioner is the subject of panel 3 only, at the same size and distance as the rival hardware in panels 1 and 2, never enlarged or lit differently.\n\nGRADE: one grade across all three panels, flat overcast daylight.\n\nJUDGEMENT: no panel is favoured — same exposure, same framing, no vignette, and the rivals are shown as they really fail rather than staged to look worse.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: --rivals is built for exactly this — the alternatives shown as they really fail. Second only because the copy argues MECHANISM of failure, not a side-by-side outcome.",
+          "attachments": [],
+          "variant": "rivals"
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 03-use-grid",
+          "type": "03-use-grid",
+          "type_version": "1.0",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-use-grid v1.0\nLAYOUT: 2x2 photographic grid, thin white gutters, no outer border, no numbers, no arrows, no badges, no text.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly. Preserve it exactly in every cell where it appears.\n\nCELL VARIABLE — compatibility. Each cell shows a DIFFERENT anchor the tensioner serves, staged in that anchor's own context, with the tool visibly FITTED in every cell:\n  cell 1 — a steel tent stake driven into gravel, the tool clipped to the stake eye;\n  cell 2 — a truck bed tie-down cleat, the tool hanging from the cleat under load;\n  cell 3 — an awning arm on a parked van, the tool clipped to the arm ring;\n  cell 4 — a tree trunk with a webbing strap round it, the tool clipped to the strap loop.\n\nCAMERA — different in every cell: cell 1 low at ground level; cell 2 standing, looking down into the bed; cell 3 at arm's length along the van side; cell 4 close and level against the bark. A real outdoor place per cell.\n\nThe tool is the same unit in all four cells, at a size and angle where the brass roller and the cam lever are both clearly visible. No cell contains a person's face.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: weakest — compatibility cells show which anchors the tool serves, which answers a different question than why the rivals fail.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decided it. 02-cause-anatomy is the only one of the three whose use_when names an object being blamed for a measurable harm; the other two argue outcome and breadth.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "Temporal on its own — plastic cracking under a gusting load is a change. Refused on ADR-037: one loop per gif type per page, and `cause` is spent at content.items.0, where the copy's own breaking point sits and the loop is rung 1. Held as a reserve rather than dropped."
+      }
+    },
+    {
+      "slot_id": "content.items.2.image",
+      "section_role": "cause",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCANVAS: a deep blue-grey field, darker than the brass, with no pattern and no horizon.\n\nSHELL: the cam tensioner seen from the side, its stainless steel body shell rendered translucent so the working parts read through it, the outer silhouette exactly as the reference photo — same proportions, same lever profile, same roller position.\n\nINTERNALS, named and placed: the marine-grade brass roller at the cord entry, turning where the cord first bears on it; the spring-loaded stainless steel cam above the cord's exit path, its toothed face bitten down into the braid; the torsion spring behind the cam holding it closed; and the reflective cord itself running through the body from roller to cam.\n\nMARKS: ONE.\n`working` — the cam's toothed face where it grips the cord, lit as the brightest thing in the frame. Nothing else in the frame is marked.\n\nThe marks are the only added colour.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the beat is why one mechanism seizes and the other does not, and the see-through render is the only type on this page that can put the cam and the spring in the same frame as the cord path. PROMPT RISK: the copy is about the KNOT and this answers with the TOOL — a real gap, see composition_notes.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 02-cause-anatomy",
+          "type": "02-cause-anatomy",
+          "type_version": "1.17",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.17\nMEDIUM: 2D illustration, airbrushed — soft gradients, modelled volume. NOT photography, NOT 3D.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nFRAME: whole — the whole hitch and the cord running to it in shot in both panels, the hardware small within it.\n\nGROUND: a deep ochre field. The value steps once at the panel divider: the right side is clearly lighter than the left.\n\nBODY: a magnified cross-section of braided cord where it crosses itself, the individual sheath fibres and the inner core in warm ivory over a translucent outline, the same crossing at the same scale and angle in both panels. Not a rope diagram, not a knot chart.\n\nPANELS: LEFT — the two passes of a wet hitch crushed into each other, the sheath fibres splayed and locked between them. RIGHT — the same cord passing over the brass roller and under the cam instead, the fibres round and undistorted where they run. Neither the culprit nor the product covers the structure under argument. Both are drawn beside it or behind it, and the structure is fully visible in BOTH panels.\n\nMARKS: THREE.\n`measure` — exactly two dashed straight lines, one per panel, red in the left and blue in the right, identical thickness and dash pattern. Each spans from THE OUTER EDGE OF THE UPPER PASS to THE OUTER EDGE OF THE LOWER PASS, stopping exactly at those two landmarks and running past neither. Both start at the upper edge. Only the thickness between them differs; the left is about a third of the right.\n`pressure` — a filled region bounded by the CONTACT SURFACE where the two passes bear on each other, as wide as the contact itself, never a line and never a glow along an edge: red in the left panel; the same region blue in the right where the roller carries the load instead.\n`verdict-glyph` — exactly two badges in the TOP corners, same diameter: a filled red disc with an X cut out of it over the left panel, a filled green disc with a check cut out of it over the right.\n\nTHE DIFFERENCE MUST SURVIVE THE MARKS BEING COVERED: cover the dashed lines and the badges with a thumb, and the left and right panels must still read as wrong and right from the structure alone.\n\nColour follows G3: red wrong, blue correct, green only in the badge.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the closest match by use_when — fibres are the structure, the wet hitch is the culprit. Refused only by one-type-once, which spent it at item 1.",
+          "attachments": []
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 03-spec-explode",
+          "type": "03-spec-explode",
+          "type_version": "1.7",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-spec-explode v1.7\nREGISTER: 3D technical render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCANVAS: a deep neutral field, clearly darker than the brass and steel so the parts separate from it. The motif comes from what the tool DOES — a faint suggestion of taut parallel cord lines in the ground, low contrast.\n\nFRAMING: full-frame. The stack fills the frame with even margins.\n\nSTACK, in assembly order along one axis, separated by clean even gaps: the anchor loop, the stainless steel body shell, the marine-grade brass roller, the spring-loaded stainless steel cam, its torsion spring, the quick-release lever, and the reflective cord threaded through where it runs.\n\nCENSUS: only these seven parts. The tool genuinely contains nothing else — do not invent bearings, gears, ratchets, fasteners or electronics.\n\nFOCUS: the spring-loaded cam, at the optical centre, rendered sharper and larger than the parts around it, its gripping teeth fully resolved.\n\nSTYLE: premium technical product visualization, sharp, high detail.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: weak here. An exploded view answers what the tool contains, not why a knot locks.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "PAGE LEGALITY decided it against FIT: 02-cause-anatomy is the better answer to this copy and is spent at item 1, where its culprit is a physical object rather than a physical effect. The compromise is recorded rather than hidden.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "mechanism",
+        "type_id": "mechanism",
+        "rung": "natural",
+        "reason": "The beat is a mechanism doing its work — a cam closing on a cord the instant pulling stops. That is a state changing, and the routed still is already a see-through render of the same parts, so the loop is the same frame in motion. Rung 1.",
+        "output": "advertorial-mechanism-cord-tensioner-cam-lock-v01.mp4",
+        "ratio": "16:9",
+        "duration_s": 3,
+        "loop": "seamless loop",
+        "refs": "gifs-library/mechanism/ — no files filed yet; the folder card carries the law",
+        "brief": "A see-through view of the tensioner. The cord is drawn through the brass roller and the roller turns; pulling stops and the spring-loaded cam swings down and bites the braid, holding it still.",
+        "alt": "The same view with the quick-release lever lifted at the end, the cam opening and the cord running free again."
+      }
+    },
+    {
+      "slot_id": "content.items.3.image",
+      "section_role": "mechanism",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "06-relief-hero",
+          "type_version": "1.17",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.17\nREGISTER: commercial.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nSUBJECT: one person reduced to hands and forearms, drawing the reflective cord through the tensioner.\n\nPOSE: operated — mid-action, one hand steadying the body of the tool, the other pulling the cord clear of the roller.\n\nSETTING: one real campsite pitch filled to the edges — the tent wall and a guy line behind the hands, gravel below, a stuff sack at the frame edge. Never a blank ground.\n\nLIGHT: flat morning daylight. No output has to carry, so no rim light, no glow, no glamour.\n\nOFFSET: the hands sit to the right of frame; the taut line running away to the stake occupies the left.\n\nPRODUCT VIEW: not needed — the hero shows the roller and the cam clearly at working distance.\n\nMARKS: none.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: moderate. The copy describes the mechanism and this shows it working in a hand at working distance. Chosen because 03-spec-explode, the natural first choice, is barred here — see composition_notes.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 03-mechanism-xray",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCANVAS: a deep charcoal field, darker than the brass, no pattern and no horizon.\n\nSHELL: the cam tensioner seen three-quarter from above, its body shell translucent so the working parts read through it, the outer silhouette exactly as the reference photo.\n\nINTERNALS, named and placed: the brass roller at the cord entry where the cord first bears on it; the spring-loaded stainless steel cam above the exit path, its toothed face closed on the braid; the torsion spring behind the cam; the quick-release lever on the outside of the shell, linked to the cam.\n\nMARKS: ONE.\n`working` — the toothed face of the cam where it bites the cord, the brightest thing in frame. Nothing else is marked.\n\nThe marks are the only added colour.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: high by use_when, but it is spent at item 2 under one-type-once.",
+          "attachments": []
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 02-cause-anatomy",
+          "type": "02-cause-anatomy",
+          "type_version": "1.17",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 02-cause-anatomy v1.17\nMEDIUM: 2D illustration, paper-cut — flat layered shapes with soft drop shadows. NOT photography, NOT 3D.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nFRAME: whole — the whole cord path in shot in both panels, the hardware small within it.\n\nGROUND: a deep teal field. The value steps once at the panel divider: the right side is clearly lighter than the left.\n\nBODY: a length of braided cord and the surface it bears on, both in warm ivory over a translucent outline, the same cord at the same scale and angle in both panels. Not a knot chart.\n\nPANELS: LEFT — the cord dragged across a sharp plastic corner, the braid deformed where it turns. RIGHT — the same cord running over the brass roller, the braid round and the turn smooth. Neither the culprit nor the product covers the structure under argument. Both are drawn beside it or behind it, and the structure is fully visible in BOTH panels.\n\nMARKS: TWO.\n`measure` — exactly two dashed straight lines, one per panel, red in the left and blue in the right, identical thickness and dash pattern. Each spans from THE ENTRY POINT OF THE TURN to THE EXIT POINT OF THE TURN, stopping exactly at those two landmarks and running past neither. Both start at the entry. Only the angle between them differs.\n`verdict-thumb` — exactly two badges in the TOP corners, same diameter: a red disc with a thumbs-down cut out of it over the left panel, a green disc with a thumbs-up cut out of it over the right. Each thumb is a flat pictogram cut out of the disc, a solid silhouette, never a photographed or three-dimensional hand.\n\nTHE DIFFERENCE MUST SURVIVE THE MARKS BEING COVERED: cover the dashed lines and the badges with a thumb, and the left and right panels must still read as wrong and right from the structure alone.\n\nColour follows G3: red wrong, blue correct, green only in the badge.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: it can carry a cord-over-a-corner comparison, but the beat here is the product's own mechanism, not a culprit.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "PAGE LEGALITY decided it. 03-spec-explode is the best fit for 'two precise metal parts', and its own avoid_when forbids it adjacent to 03-mechanism-xray on one page — item 2 holds the xray. It moves to item 6, where the same parts argue durability instead.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "use",
+        "type_id": "use",
+        "rung": "natural",
+        "reason": "The copy is an operation with a stated duration — tension in under five seconds — which is a sequence rather than a state. The routed still is hands mid-pull, so the loop completes the action the frame already began.",
+        "output": "advertorial-use-cord-tensioner-cam-lock-v01.mp4",
+        "ratio": "16:9",
+        "duration_s": 4,
+        "loop": "seamless loop",
+        "refs": "gifs-library/use/ — no files filed yet; the folder card carries the law",
+        "brief": "Two hands at a tent guy line. The cord is pulled steadily through the tensioner, the slack running out of the line above until it comes straight and hard, and the hands let go with the line still taut.",
+        "alt": "The same hands and line seen from the stake end, the cord coming tight and the fly corner above pulling down flat as it does."
+      }
+    },
+    {
+      "slot_id": "content.items.4.image",
+      "section_role": "how-to-use",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "03-use-grid",
+          "type_version": "1.0",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-use-grid v1.0\nLAYOUT: 2x2 photographic grid, thin white gutters, no outer border, no numbers, no arrows, no badges, no text.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly. Preserve it exactly in every cell where it appears.\n\nCELL VARIABLE — applications. Each cell shows the tensioner mid-job on a DIFFERENT task, the tensioned line visibly drum-tight in every cell:\n  cell 1 — tensioning a guy line from a tent stake to the rainfly on a coastal pitch, the fly taut behind it;\n  cell 2 — cinching a shade tarp corner down to a picnic table leg, the tarp edge pulled flat;\n  cell 3 — strapping a load in a truck bed, the cord running over the cargo and locked at the cleat;\n  cell 4 — holding an awning line to a ground anchor beside a parked van, the awning edge steady.\n\nCAMERA — different in every cell: cell 1 low and close at stake height; cell 2 standing, looking down across the table; cell 3 half a metre back over the tailgate; cell 4 at arm's length along the line from the anchor. A real outdoor place per cell, never one studio ground for all four.\n\nThe tool is the same unit in all four cells, at a size and angle where the brass roller and the cam lever are both clearly visible. No cell contains a person's face.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the copy lists four named jobs and a boundary, which is the applications cell variable exactly. EVIDENCE: 1.0, promoted 2026-08-26; the CAMERA block is required since 0.4 and is unrendered, so this is a real test.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "axis: layout=3-cell",
+          "type": "03-use-grid",
+          "type_version": "1.0",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-use-grid v1.0\nLAYOUT: 3 equal cells in one row, thin white gutters, no outer border, no numbers, no arrows, no badges, no text.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly. Preserve it exactly in every cell where it appears.\n\nCELL VARIABLE — applications, held to the three jobs inside the stated load limit:\n  cell 1 — a guy line on a tent rainfly, the line straight from stake to ring;\n  cell 2 — a shade canopy corner pulled down to a leg, the fabric edge flat;\n  cell 3 — a light load in a truck bed, the cord over it and locked.\n\nCAMERA — different in every cell: cell 1 kneeling at stake height; cell 2 standing back at the canopy corner; cell 3 close over the tailgate looking down. A real outdoor place per cell.\n\nThe tool is the same unit in all three cells, the brass roller and cam lever clearly visible in each. No cell contains a person's face. Nothing in any cell is a heavy load-bearing application.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "The same type held to the three jobs strictly inside the load limit, dropping the truck-bed cell that sits closest to the boundary the copy draws.",
+          "attachments": []
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 04-proof-lockedframe",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --capture\nREGISTER: documentary photography. No overlays, badges, arrows or text.\n\nLAYOUT: three equal vertical panels, thin white gutters, no outer border.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCAMERA: handheld from one standing position for all three panels, same distance, height and lens.\n\nSCENE: constant across every panel — the same tensioner on the same line, anchored to the same stake in the same gravel, the same treeline behind.\n\nVARIABLE: the only thing that changes is the load on the line. PANEL 1 — no load, the cord slack through the roller. PANEL 2 — a working load, the cord straight and the cam closed on it. PANEL 3 — the quick-release lever lifted, the cord running free again.\n\nPRODUCT: the tensioner is the subject of every panel, same size and position in each, never made the hero of the frame.\n\nGRADE: one grade across all three panels, flat overcast daylight.\n\nJUDGEMENT: no panel is favoured — same exposure, same framing, no vignette.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: --capture can show the load and release cycle in one locked frame, which argues the limit differently — by demonstrating the release rather than listing the jobs.",
+          "attachments": [],
+          "variant": "capture"
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decided it, and this slot is the only one on the page where the preference row's first entry and the best fit are the same type. NOTE: options A and B share a type, so this slot carries two distinct types and declares it in pool_basis.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot exists to reveal BREADTH — four jobs the tool is rated for. A grid enumerates rather than changes, and revealing does not earn motion. The gif library's own `unboxing` boundary note draws this line."
+      },
+      "pool_basis": "Options A and B are the same type on a different layout axis. After the refusals recorded in page_composition_notes and the 16:9 ratio filter, nine types remain for nine 16:9 slots — an exact fit with no slack, so this slot could not draw a third distinct type without taking one already recommended elsewhere."
+    },
+    {
+      "slot_id": "content.items.5.image",
+      "section_role": "outcome",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "06-relief-scene",
+          "type_version": "3.7",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-scene v3.7\nREGISTER: candid documentary photograph, single frame.\n\nSUBJECT: a woman standing at the open door of a pitched tent with a mug in one hand, weight on one hip, watching the water while the wind moves her jacket.\n\nGAZE: candid, out across the bay. Never on the lens.\n\nENVIRONMENT: an ordinary coastal campground anyone would pass through — numbered pitch post, gravel, a folding chair, other tents further along.\n\nLIGHT: plain grey daylight off the water, no glamour.\n\nGRADE: muted, desaturated, never warm-boosted.\n\nPRODUCT: the tensioner is in the scene as the reason, clipped to the guy line beside her, never presented and never held up.\n\nRELIEF: the moment of letting go in a situation that would have demanded bracing — the wind is visibly up, the fly is drum-tight and still, and she is not looking at it.\n\nMARKS: none.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the copy is a person living the resolved state in an ordinary place, which is this type's use_when verbatim. PAGE LEGALITY: pairs_with is satisfied — 01-pain-scene serves the hero, same person.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 06-relief-hero",
+          "type": "06-relief-hero",
+          "type_version": "1.17",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.17\nREGISTER: ugc.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nSUBJECT: one woman, full figure, sitting in a folding chair outside a pitched tent with a mug held in both hands.\n\nPOSE: passive — relaxed, gaze away from the lens and out across the water.\n\nSETTING: one real coastal pitch filled to the edges — the tent behind her with its fly taut, gravel, a stuff sack and a boot at the frame edge, the bay beyond. Never a blank ground.\n\nLIGHT: flat grey daylight off the water. No output has to carry, so no rim light and no glow.\n\nOFFSET: she sits to the right of frame; the taut guy line and the tensioner holding it occupy the left.\n\nMARKS: none.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: strong, but it presents the product where the copy is about not thinking about it.",
+          "attachments": []
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 05-social-handoff",
+          "type": "05-social-handoff",
+          "type_version": "2.9",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-handoff v2.9\nREGISTER: candid documentary photograph, natural, unposed, sharp.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nMOMENT: what the tool just did is visible in frame — the fly of the tent behind them is drum-tight, the guy line straight from stake to ring with the tensioner closed on it.\n\nADVOCATE: a woman who has just finished pitching, one hand still resting on the taut line, her eyes on the person beside her.\n\nLISTENER: a second camper, face NOT visible, turned away from the lens with their attention on the line and the tensioner.\n\nPRODUCT: the tensioner is dominant in the lower third of the frame, closer to the camera than either face, and nothing beside it competes for attention.\n\nHANDOFF: the advocate is holding a second tensioner out flat on her open palm toward the listener — an OFFER, held still, not a movement in progress.\n\nENVIRONMENT: a real reason both people are here — adjacent pitches on a coastal campground, gravel underfoot, the other tent a few metres away.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: moderate — the brand context names a stranger producing the tool before a storm, but that is the product_end beat, not this one.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decided it and PAGE LEGALITY confirmed the pairs_with. The distinction against B is that relief-scene keeps the product in the scene as the reason rather than presenting it, which is what 'I did not dread' asks for.",
+      "gif": {
+        "eligible": true,
+        "form": "whole-frame",
+        "kind": "relief",
+        "type_id": "relief",
+        "rung": "natural",
+        "reason": "The relief here is defined by something NOT happening while the wind does — the copy's whole point is that she no longer watches the fly. A still cannot show a non-event; a loop can, because the wind moves and nothing gives. This is the one slot on the page where motion carries an argument the still cannot.",
+        "output": "advertorial-relief-cord-tensioner-cam-lock-v01.mp4",
+        "ratio": "16:9",
+        "duration_s": 4,
+        "loop": "seamless loop",
+        "refs": "gifs-library/relief/ — no files filed yet; the folder card carries the law",
+        "brief": "A woman with a mug at the door of a pitched tent, watching the water. The wind moves her jacket and the grass around the pitch; the rainfly behind her stays drum-tight and does not move. She does not look at it.",
+        "alt": "The same pitch with nobody in frame — the wind through the grass and the fly holding still above a taut guy line."
+      }
+    },
+    {
+      "slot_id": "content.items.6.image",
+      "section_role": "comparison",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "03-spec-explode",
+          "type_version": "1.7",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-spec-explode v1.7\nREGISTER: 3D technical render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCANVAS: a deep neutral field, clearly darker than the brass and steel so the parts separate from it. The motif comes from what the tool DOES — a faint suggestion of taut parallel cord lines in the ground, low contrast, never a pattern that competes.\n\nFRAMING: full-frame. The stack fills the frame with even margins.\n\nSTACK, in assembly order along one axis, separated by clean even gaps: the anchor loop, the stainless steel body shell, the marine-grade brass roller, the spring-loaded stainless steel cam, its torsion spring, the quick-release lever, and the reflective cord threaded through where it runs.\n\nCENSUS: only these seven parts. The tool genuinely contains nothing else — do not invent bearings, gears, ratchets, fasteners or electronics.\n\nFOCUS: the marine-grade brass roller. It sits at the optical centre of the stack, rendered sharper and larger than the parts around it, its bearing surface fully resolved — the part that survives seasons where a plastic runner cracks.\n\nSTYLE: premium technical product visualization, sharp, high detail.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the cost argument rests on what the tool is made of — brass and stainless where the rivals are plastic — and the exploded view is the only type that can put the roller at the optical centre. Displaced here from item 3 by an avoid_when adjacency.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 04-proof-lockedframe",
+          "type": "04-proof-lockedframe",
+          "type_version": "1.13",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 04-proof-lockedframe v1.13 --rivals\nREGISTER: documentary photography. No overlays, badges, arrows or text.\n\nLAYOUT: three equal vertical panels, thin white gutters, no outer border.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCAMERA: handheld from the same position for all three panels, same distance, height and lens.\n\nSCENE: constant across every panel — the same square of workbench, the same daylight from the same window, the same plain surface.\n\nVARIABLE: the only thing that changes is what is laid out. PANEL 1 — a heap of cracked plastic runners and a snapped bungee, the season's discards. PANEL 2 — a heavy ratchet strap set, coiled and bulky. PANEL 3 — one cam tensioner with its cord, coiled flat.\n\nPRODUCT: the tensioner is the subject of panel 3 only, at the same distance and lighting as the hardware in the other two, never enlarged.\n\nGRADE: one grade across all three panels, plain window daylight.\n\nJUDGEMENT: no panel is favoured — same exposure, same framing, no vignette, and the rivals are shown as they really are rather than staged to look worse.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: high — a season's discards beside one tool is the cost argument made literal. Second because --rivals is already offered at item 1 and the page would read as two of the same comparison.",
+          "attachments": [],
+          "variant": "rivals"
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 06-relief-hero",
+          "type": "06-relief-hero",
+          "type_version": "1.17",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 06-relief-hero v1.17\nREGISTER: commercial.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nSUBJECT: one person reduced to hands and forearms, coiling the reflective cord around a closed tensioner.\n\nPOSE: operated — mid-action, the cord being wound, the cam closed.\n\nSETTING: one real gear-packing scene filled to the edges — an open pack on a tailgate, a folded tarp, stakes in a pouch, gravel beyond. Never a blank ground.\n\nLIGHT: flat overcast daylight, no output to carry, no rim light.\n\nOFFSET: the hands sit to the left of frame; the open pack with the rest of the kit occupies the right.\n\nPRODUCT VIEW: not needed — the hero shows the roller and the cam at working distance.\n\nMARKS: none.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: weak for a cost beat; it shows the tool in use rather than against what it replaces.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "EVIDENCE and PAGE LEGALITY together. A is here because item 3 could not hold it (03-mechanism-xray sits adjacent there), and the durability reading of the same parts is a legitimate second argument rather than a fallback.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "An exploded technical render reveals STRUCTURE. Separating parts on screen is a camera move, not a state changing, and the cost argument it carries is a comparison rather than an event."
+      }
+    },
+    {
+      "slot_id": "product.image",
+      "section_role": "mechanism",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "03-spec-macro",
+          "type_version": "1.0",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-spec-macro v1.0\nREGISTER: polished commercial studio macro photography. Extreme close range.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly. The magnified region must be a TRUE region of that tool — same geometry, same material, same finish. Do not redesign, simplify or add features.\n\nMACRO SUBJECT: the cam and roller pair filling 80% of the frame — the toothed face of the stainless steel cam bitten down into the braided cord, every tooth individually resolved, and the marine-grade brass roller beneath it with the cord bearing across it.\n\nLIGHT BEHAVIOR LAW: hard raking light puts a warm specular streak along the turned brass of the roller and a hard cold glint on the crown of each cam tooth, while the braided cord between them is matte and returns none — so brass, steel and cord read as three materials at the lines where they meet, not as one machined mass.\n\nACTION ANCHOR: the pair caught under load, the cord pulled hard through the roller and pinched flat under the cam teeth. Motion minimal.\n\nFRAME: nothing but the tool and the cord it holds. No hand, no tent, no background object, no surface pattern.\n\nSIGNAL SILENCE: no glow rims, no emblems, no etched badges, no colour-coded highlights.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the spec table names materials and the card is 1:1 — this is the only slot on the page whose ratio admits this type at all, and build quality at surface scale is its purpose. Its counts elsewhere are provenance; this is its first render on an advertorial.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 03-mechanism-xray",
+          "type": "03-mechanism-xray",
+          "type_version": "1.3",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-mechanism-xray v1.3\nREGISTER: 3D technical see-through render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCANVAS: a deep blue-grey field, darker than the brass, no pattern and no horizon.\n\nSHELL: the cam tensioner square to camera, its body shell translucent so the working parts read through it, the outer silhouette exactly as the reference photo.\n\nINTERNALS, named and placed: the brass roller at the cord entry; the spring-loaded stainless steel cam above the exit path with its toothed face closed on the braid; the torsion spring behind the cam; the quick-release lever on the shell, linked to the cam.\n\nMARKS: ONE.\n`working` — the toothed face of the cam where it grips the cord, the brightest thing in frame. Nothing else is marked.\n\nThe marks are the only added colour.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: strong, but spent at item 2 under one-type-once.",
+          "attachments": []
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 05-persona-grid",
+          "type": "05-persona-grid",
+          "type_version": "1.6",
+          "ratio": "1:1",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-persona-grid v1.6 --2x2\nLAYOUT: 2x2 cells, thin white gutters, no outer border.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCONSTANT across every cell: the same tensioner, the same reflective cord, the same flat overcast daylight, the same distance from the subject.\n\nVARIATION cell by cell: a different person and a different place — cell 1 an older man at a tent stake on gravel; cell 2 a woman at a truck tailgate; cell 3 a young man at an awning arm beside a van; cell 4 a woman at a garden trellis line.\n\nPRODUCT: the tensioner is visible and unobstructed in EVERY cell, held or clipped where it is working, never hidden behind a hand.\n\nCELLS: cell 1 is the hero — the fullest view of the tool in use; the other three support it.\n\nREGISTER: clean lifestyle collage for e-commerce, bright, airy, sharp.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: weak for a spec card, but it is ratio-legal at 1:1 and answers who uses it, which a recommendation card can carry.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decided it, and the ratio settled the field before FIT ran: 03-spec-macro declares 1:1 only, so this is the sole slot on the page it can serve.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "A macro reveals SURFACE. The cam bite it shows is a moment, but `mechanism` is spent at content.items.2 where the same action reads at working scale (ADR-037, one loop per gif type per page)."
+      }
+    },
+    {
+      "slot_id": "product_end.image",
+      "section_role": "how-to-use",
+      "options": [
+        {
+          "opt": "A",
+          "varies_on": "baseline",
+          "type": "05-social-handoff",
+          "type_version": "2.9",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 05-social-handoff v2.9\nREGISTER: candid documentary photograph, natural, unposed, sharp.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nMOMENT: what the tool just did is visible in frame — behind the two people a tarp is drum-tight over a picnic table, its corner line straight and locked, while the sky behind it is already dark with the coming squall.\n\nADVOCATE: a man who has just finished tensioning that line, one hand still on the taut cord, his eyes on the person beside him.\n\nLISTENER: a camper from the next pitch, face NOT visible, turned away from the lens with their attention on the tarp corner and the tool.\n\nPRODUCT: a tensioner is dominant in the lower third of the frame, closer to the camera than either face, and nothing beside it competes for attention.\n\nHANDOFF: the advocate is holding out a spare tensioner from the pack, flat on his open palm toward the listener — an OFFER, held still, not a movement in progress.\n\nENVIRONMENT: a real reason both people are here — neighbouring pitches on a coastal campground with the wind already moving the trees.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: the brand context names this scene outright — a stranger at the next campsite produces the tool right before a storm — and a six-pack is a thing you hand one of to someone. The handoff act is an OFFER, a state a still frame can hold.",
+          "attachments": []
+        },
+        {
+          "opt": "B",
+          "varies_on": "type: 03-use-grid",
+          "type": "03-use-grid",
+          "type_version": "1.0",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-use-grid v1.0\nLAYOUT: 2x2 photographic grid, thin white gutters, no outer border, no numbers, no arrows, no badges, no text.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly. The product IS A SET, so each cell shows one unit from the pack — but only a unit visible in the reference photo, with its material and colour preserved exactly.\n\nCELL VARIABLE — applications. Each cell shows one unit of the set mid-job on a different task, the tensioned line drum-tight in every cell:\n  cell 1 — a tent guy line to a stake, the fly taut behind it;\n  cell 2 — a tarp corner cinched to a picnic table leg;\n  cell 3 — a load strapped in a truck bed, the cord locked at the cleat;\n  cell 4 — an awning line held to a ground anchor beside a van.\n\nCAMERA — different in every cell: cell 1 low at stake height; cell 2 standing over the table; cell 3 half a metre back over the tailgate; cell 4 at arm's length along the line. A real outdoor place per cell.\n\nEvery unit is recognisably from the same pack — same brass roller, same cam, same reflective cord. No cell contains a person's face.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: high — the copy lists four jobs the set covers. Second only because item 4 already carries a use-grid and the page would read as two grids.",
+          "attachments": []
+        },
+        {
+          "opt": "C",
+          "varies_on": "type: 03-spec-explode",
+          "type": "03-spec-explode",
+          "type_version": "1.7",
+          "ratio": "16:9",
+          "pipeline": "single-pass",
+          "prompt": "TYPE: 03-spec-explode v1.7\nREGISTER: 3D technical render. NOT photography.\n\nPRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.\n\nCANVAS: a deep neutral field, clearly darker than the brass and steel so the parts separate from it. The motif comes from what the tool DOES — a faint suggestion of taut parallel cord lines, low contrast.\n\nFRAMING: full-frame. The stack fills the frame with even margins.\n\nSTACK, in assembly order along one axis, separated by clean even gaps: the anchor loop, the stainless steel body shell, the marine-grade brass roller, the spring-loaded stainless steel cam, its torsion spring, the quick-release lever, and the reflective cord threaded through where it runs.\n\nCENSUS: only these seven parts. The tool genuinely contains nothing else — do not invent bearings, gears, ratchets, fasteners or electronics.\n\nFOCUS: the quick-release lever. It sits at the optical centre of the stack, rendered sharper and larger than the parts around it, its pivot and its link to the cam fully resolved — the part that drops a loaded line in one second.\n\nSTYLE: premium technical product visualization, sharp, high detail.\n\nNo text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.",
+          "rationale": "FIT: moderate — it argues what one unit contains, where the copy argues what six units let you do.",
+          "attachments": []
+        }
+      ],
+      "recommended_opt": "A",
+      "recommendation_basis": "FIT decided it against a near-tie with B, and PAGE LEGALITY broke the tie: 03-use-grid serves item 4, and two grids on one page spend the variation budget in the dimension that buys least.",
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The handoff act is legislated as a STATE a still frame can hold — an offer, held, never a movement in progress (05-social-handoff PARTS/handoff). Animating it would break the type's own law."
+      }
+    },
+    {
+      "slot_id": "reviews.shots.0-3.image",
+      "section_role": "social-proof",
+      "options": [],
+      "gif": {
+        "eligible": false,
+        "form": "none",
+        "reason": "The slot carries no still either — G14 bars a generated image in a block that names verified reviewers, and a loop is no less generated."
+      },
+      "out_of_scope_reason": "These four photo slots sit in a block carrying named Verified Purchase reviewers. 05-social-snapshot's avoid_when forbids pairing a generated snapshot with a reviewer name or verified badge — a fabricated endorsement (FTC). They need real customer photographs."
+    }
+  ],
+  "page_composition_notes": "Channel: advertorial, from lpTypeId. Routed under ADR-059 — channel is no longer an\nadmission test, so the candidate pool was every active type and the only mechanical kill-rules\nwere the attribute gates. Ten slots, ten distinct recommended types, one-type-once holds.\n\nREFUSALS, each by a type's own law rather than by a channel label:\n- 03-mechanism-ghostbody — attribute gate, body_contact:false. The tool acts on cord.\n- 02-symptom-rail — its own avoid_when: not on an EDITORIAL page. First live firing of the rule\n  that moved out of `channels` on 2026-08-26.\n- 03-spec-split — its own avoid_when names the channel in its own words (\"Never on paid-social\n  or advertorial\"), so removing the channels gate changed nothing here.\n- 01-pain-split — never_with 01-pain-scene, which serves the hero.\n- 05-social-snapshot — its own avoid_when, on the review wall. See below.\n\nTHE REVIEW WALL IS UNROUTED AND THAT IS THE ANSWER. reviews.shots.0-3.image sit in a block\ncarrying reviews.quotes.N.name (\"Donald K.\"), verified.label \"Verified Purchase\" and the lead\n\"Thousands of 5-Star Reviews Agree\". 05-social-snapshot's avoid_when forbids pairing a generated\nsnapshot with a reviewer name or verified badge — a fabricated endorsement (FTC). Any generated\nimage in that block is presented as a customer upload by the furniture around it. Those four\nslots need real customer photographs and no library type serves them.\n\nRATIO NARROWED THE FIELD BEFORE FIT DID, and nothing in the repo enforces this. Nine of the ten\nslots are 16:9, and only nine active types declare 16:9 once the refusals above are applied — an\nexact fit with zero slack. 03-spec-macro (1:1 only), 03-use-sequence (3:4, 1:1) and\n05-persona-grid (1:1, 4:5) could not serve any 16:9 slot. scripts/validate.py checks a prompt's\nratio against ADR-016's five but never against the TYPE's own declared set, though its docstring\nsays \"the declared set is what a router is allowed to ask the renderer for\".\n\nTWO COMPROMISES, NAMED:\n- content.items.0 is the page's weak slot. 01-pain-scene is the right type for \"in full view of\n  eight campers\" and the hero spent it; the rest of the row is refused. A came from rung 3.\n- content.items.3 wanted 03-spec-explode for \"two precise metal parts\", and that type's own\n  avoid_when bars it adjacent to 03-mechanism-xray, which sits at item 2. It moved to item 6.\n\nTWO ATTRIBUTES ARE ASSUMED, NOT SUPPLIED. mounting is recorded as `handheld` and colorways as\n[\"as supplied\"], the same convention listicle-arm-trainer-hydraulic-v01 used. The source CSV\ncarries neither and the page copy does not settle them. Neither kills a type, so the routing is\nunaffected; mounting drives G7-X mode inside a prompt and colorways caps Zone B units in\n06-relief-hero. Correct them before rendering options that depend on them.",
+  "motion": {
+    "floor": 2,
+    "ceiling": 5,
+    "delivered": 4,
+    "margin": 1,
+    "groups_covered": [
+      "working",
+      "result"
+    ],
+    "shortfall_reason": null,
+    "notes": "Four loops, all rung 1 — every one is the routed still in motion and nothing was restaged to fill the table. Coverage is met without reaching for it: `cause`, `mechanism` and `use` are working, `relief` is result. One loop per gif type per page (ADR-037) is what refuses content.items.1 and product.image, both of which are temporal on their own merits and are held as reserves rather than dropped. content.items.5 is the loop worth arguing for: the copy's claim is that the fly does NOT move while the wind does, and a still cannot show a non-event.",
+    "reserves": [
+      {
+        "slot_id": "content.items.1.image",
+        "substitutes_for": "content.items.0.image",
+        "type_id": "cause",
+        "group": "working",
+        "rung": "natural",
+        "brief": "A three-hole plastic cord runner on a guy line under a gusting load. The plastic flexes, a crack opens across one hole, and the cord slips through until the line above goes slack.",
+        "why_held_back": "Same gif type as content.items.0 and ADR-037 allows one loop per gif type per page. items.0 holds it because the copy's own breaking point is there. Promote this one only if the tarp loop fails to read at thumbnail size."
+      },
+      {
+        "slot_id": "product.image",
+        "substitutes_for": "content.items.2.image",
+        "type_id": "mechanism",
+        "group": "working",
+        "rung": "natural",
+        "brief": "Macro on the cam and roller. The cord is drawn through and the roller turns; pulling stops and the toothed cam drops and pinches the braid flat.",
+        "why_held_back": "Same gif type as content.items.2, which shows the same action with the whole tool legible instead of one detail. Promote only if the see-through render reads as diagrammatic rather than real."
+      }
+    ]
+  }
+}
