@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.9"
+version: "1.10"
 status: active
 replaced_by: null
 ratios: ["3:4", "1:1"]
@@ -61,10 +61,17 @@ times and "soft daylight" 8. The register fixes the KIND of photograph. The home
 the light and the person are chosen per prompt, and **two prompts in one set may not share
 them** — a set that comes back as one look is a fault in the set, not in the model.
 
-**`layout`** — three photographs stacked one above another, filling the whole image, thin white
-gutters, no outer border, and no panel other than those three. **Never describe the frame's
-shape or ratio**: the owner sets the ratio at render time, and a prompt that reasons about frame
-geometry leaves the model space to reconcile, and it fills that space with extra small panels.
+**`layout`** — three photographs filling the whole image, thin white gutters, no outer border,
+and no panel other than those three. Their ARRANGEMENT follows the slot's ratio (G15): stacked
+one above another on a tall or wide ratio, and **at 1:1 one photograph across the top with two
+side by side below it** — PREPARE in the wide one, USE and RESULT beneath, left to right. The
+order is unchanged by the pack.
+
+**Never describe the frame's shape or ratio**: the owner sets the ratio at render time, and a
+prompt that reasons about frame geometry leaves the model space to reconcile, and it fills that
+space with extra small panels. **That bans naming the FRAME, not naming the ARRANGEMENT** — the
+clause above already names one, and "one photograph above two side by side" is the same kind of
+statement. No "square", no "1:1", no "tall image" ever enters a prompt.
 
 **No numbers, no step markers, no text of any kind, and nothing that points from one panel to
 another.** The order is read from the actions themselves, which is this type's entire discipline.
@@ -344,6 +351,10 @@ argues what is better inside, and this type answers "can I operate it". A galler
 more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
+- 1.10 (2026-08-27): **at 1:1 the three photographs pack as one above two** instead of three
+  stacked bands (G15). Owner correction: no type is exempt at 1:1. The geometry ban is
+  clarified rather than weakened — it forbids naming the FRAME, and this part's own first
+  clause always named an ARRANGEMENT, which is a different statement. ADR-063. · this commit
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
 - 1.9 (2026-08-13): type passed by the owner; file finalised. WORKED EXAMPLES replaced with the
   two renders that passed with an empty failures list — the foam soap dispenser and the

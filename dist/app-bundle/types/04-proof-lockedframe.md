@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.14"
+version: "1.15"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -62,7 +62,11 @@ STYLE: honest documentary product test photography, unstyled, natural, sharp.
 frame's LONG axis so they pack it rather than slivering: vertical panels on a wide ratio,
 which is the case every render of this type has run so far. **At 1:1 the orientation turns
 over** — two panels are halves either way, three are horizontal BANDS, four are a 2×2 grid
-(G15). It said "vertical" until 1.14 and that was written when the type only reasoned about
+(G15). **Two is the preferred count at 1:1**: each half of a square carries four times the
+area of a third band, and this type's argument is usually one variable across a before and an
+after — take three only when the argument genuinely needs a third state.
+
+It said "vertical" until 1.14 and that was written when the type only reasoned about
 wide ratios; three vertical panels in a 1024 square are 341px each and nothing this type
 photographs survives that.
 
@@ -333,6 +337,10 @@ mineral rather than as mud or mould.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.15 (2026-08-27): **two panels become the preferred count at 1:1.** Owner correction to G15:
+  no type is exempt at 1:1, and this type's equal-frames constraint is a narrower form of the
+  rule rather than an exemption from it. A half of a square carries four times the area of a
+  third band, so a square frame is where the panel count should drop. ADR-063. · this commit
 - 1.14 (2026-08-27): **`layout` stops hard-coding VERTICAL.** Panels stripe across the long
   axis so they pack the frame, which at 1:1 makes three panels horizontal bands and four a
   2×2. G15 is the new rule; this type is exempt from its 1 + 2 form because a larger frame

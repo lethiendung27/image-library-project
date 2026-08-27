@@ -537,22 +537,31 @@ form, where that lock is untouched.
 with three stacked beside it. Both are packs. G15 names the family and makes it the default at
 1:1 rather than a per-type invention.
 
-### Two types are exempt, and each says why in its own words
+### NO TYPE IS EXEMPT AT 1:1. Two carry a narrower form of the rule
 
-**`04-proof-lockedframe` never takes the 1 + 2 form.** Its own law is "no panel may be
-favoured — no badge, no glow, no colour cue, no brighter exposure", and the file says plainly
-that **the judgement rule IS the type**. Making one panel larger favours it by size, which is
-the same defect in a different currency. So at 1:1 it uses equal frames only: halves at two,
-**three equal horizontal bands** at three, 2×2 at four. Its layout part said "N equal VERTICAL
-panels" and that word is corrected here — it was written when the type only reasoned about
-wide ratios, where vertical is right.
+Owner correction, 2026-08-27: the exemptions belong to 16:9. **At 1:1 every multi-frame type
+changes layout**, because the reason for the rule is that the square starves each frame of
+information and that reason does not care which type is striping.
 
-**`03-use-sequence` describes no geometry at all.** Its layout part says **"Never describe the
-frame's shape or ratio"**, and the reason is a measured failure: "a prompt that reasons about
-frame geometry leaves the model space to reconcile, and it fills that space with extra small
-panels." A rule that tells its prompt to draw a rectangle and two squares would cause the exact
-fault that sentence exists to prevent. Its three photographs stacked one above another already
-pack a square as three wide bands, so it needs nothing from G15 and G15 asks nothing of it.
+**`04-proof-lockedframe` uses the EQUAL forms only.** It is not exempt — it changes layout at
+1:1 like everything else — but it may not take the unequal 1 + 2, because its own law is "no
+panel may be favoured — no badge, no glow, no colour cue, no brighter exposure" and the file
+says plainly that **the judgement rule IS the type**. A larger frame favours its panel by size,
+the same defect in a different currency. So: **two panels are halves and that is the preferred
+count at 1:1**, because two halves of a square give each panel four times the area of a third
+band; three are three equal horizontal BANDS when the argument genuinely needs three; four are
+2×2. Never vertical stripes, which is what its layout part said until 1.14.
+
+**`03-use-sequence` takes the 1 + 2 form at 1:1**: PREPARE in the rectangle across the top,
+USE and RESULT in the two squares below, left to right. The order survives the pack, which is
+this type's entire discipline.
+
+Its layout part says "Never describe the frame's shape or ratio", and that stands untouched —
+but it bans naming the FRAME, not naming the ARRANGEMENT. The part's own first clause already
+names an arrangement, "three photographs stacked one above another", so "one photograph above
+two side by side" is the same kind of statement and not the kind the ban was measured against.
+What still never enters a prompt is the frame itself: no "square", no "1:1", no "tall image".
+That is the sentence's real content and it was read too broadly when G15 was first written.
 
 **The ratio never enters the prompt** either way (adapter Rule 4, ADR-016): it is a generation
 parameter. What the prompt names is the LAYOUT — "2×2 grid", "one rectangle above two squares"

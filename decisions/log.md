@@ -3414,3 +3414,50 @@ carries it five times in the page-219 lockedframe prompts, all at 16:9, all stil
 one ratio, and it does not enter a prompt as a ratio — the ratio stays a generation parameter
 (adapter Rule 4). What a prompt names is the layout: "2×2 grid", "one rectangle above two
 squares".
+
+---
+
+## ADR-063 · 2026-08-27 · No type is exempt from G15 at 1:1; the two carve-outs were 16:9 reasoning
+
+**Owner correction, 2026-08-27:** "hai type được miễn là đối với 16:9, 1:1 thì bắt buộc dùng
+layout khác để ảnh đủ thông tin."
+
+**What ADR-062 got wrong.** It exempted `04-proof-lockedframe` and `03-use-sequence` from G15.
+Both exemptions were reasoning about wide ratios wearing the clothes of a general rule. The
+reason G15 exists is that a square starves each frame of information, and that reason does not
+care which type is doing the striping.
+
+**`04-proof-lockedframe` was never really exempt and the wording overstated it.** ADR-062
+already had it changing layout at 1:1 — halves, three horizontal bands, or 2×2. What it may
+not take is the UNEQUAL 1 + 2, because its own law is "no panel may be favoured" and the file
+says the judgement rule IS the type; a larger frame favours its panel by size. That is a
+NARROWER FORM of G15, not an exemption from it, and it is now written that way.
+
+**1.15 adds what the correction actually asks for**: at 1:1, **two panels are the preferred
+count**. Each half of a square carries four times the area of a third band, and this type's
+argument is usually one variable across a before and an after. Three only when the argument
+needs a third state. That is where "đủ thông tin" is won for this type — in the panel COUNT,
+because the equal-frames constraint leaves no room to win it in the shape.
+
+**`03-use-sequence` was a misreading of its own rule, and mine.** Its layout part says "Never
+describe the frame's shape or ratio", with a measured reason — a prompt reasoning about frame
+geometry "fills that space with extra small panels". I read that as forbidding any layout
+statement. But the same part's FIRST clause names an arrangement: "three photographs stacked
+one above another". Naming an arrangement is what this part has always done. What the ban is
+about is naming the FRAME — "square", "1:1", "a tall image" — which is the thing that leaves
+the model something to reconcile.
+
+**1.10 therefore takes the 1 + 2 pack at 1:1**: PREPARE across the top, USE and RESULT side by
+side below, left to right. The order survives, which is this type's entire discipline. The
+geometry ban is clarified rather than weakened, and the distinction is written into the part so
+the next reader does not repeat the misreading.
+
+**Nothing already routed changes.** The one 1:1 multi-frame option in
+`advertorial-cord-tensioner-cam-lock-v01` is `05-persona-grid --2x2` at `product.image`, which
+is a G15 pack already. Every `04-proof-lockedframe` prompt in that session sits on a 16:9 slot
+where vertical panels are correct. Checked rather than assumed; no re-export.
+
+**Consequences.** `registry/rules.md` G15's exemption section is replaced. Both type files are
+edited and versioned. ADR-062 stands as written — the log is append-only and a later reader
+should be able to see the correction as a correction. `registry/index.yaml` and the bundle
+regenerate.
