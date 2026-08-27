@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.17"
+version: "1.18"
 status: active
 replaced_by: null
 ratios: ["16:9", "1:1"]
@@ -178,9 +178,8 @@ groove, this seam, this duct — or the overlay lands as a highlighter stroke ac
 ## SLOT CONSTRAINTS
 - **The prompt budget.** A clause earns its place only if a render has failed without it, and
   is removed only once a render has done without it and come back correct (ADR-013, ADR-015).
-  Length is a cost paid out of composition: on single-layer `03-use-sequence` a 55% longer
-  prompt took its layout from 4-in-6 to 1-in-4. This type is multi-layer and runs longer, so
-  that is a floor to reason from rather than a ceiling.
+  Length costs composition: on single-layer `03-use-sequence` a 55% longer prompt took its
+  layout from 4-in-6 to 1-in-4. This type is multi-layer, so that is a floor not a ceiling.
 - **Never describe the frame's shape or ratio in a prompt.** The owner sets the ratio at render
   time (ADR-016); a prompt that reasons about frame geometry leaves the model something to
   reconcile and it fills the leftover with extra small panels.
@@ -260,7 +259,7 @@ G7-X binds: installed in the inset while handheld in the hero contradicts itself
 
 ### inset_mode: --detail
 ```
-[INSET] rounded rectangle or circle, 15-25% of frame width, at a corner.
+[INSET] rounded rectangle or circle, 30-40% of frame width, at a corner.
 ONE magnified product detail the hero cannot show at scene scale.
 Linked to the in-scene product by proximity: no arrows, no glow borders.
 ```
@@ -270,6 +269,13 @@ into the photographic hero break G5.
 
 Use when the buying argument depends on a feature too small to read in scene
 (memory log, measurement display, mechanism quality).
+
+**The band was 15-25% until 1.18 and no render obeyed it.** The three `--detail` renders
+measured 26%, 32% and 42% of frame width, and the ledger ranks them tightest-to-read,
+slightly wide, and "by far the most legible … costs the picture nothing". The old ceiling
+sat below the width already noted as tightest. 30-40% is also the only band that clears
+G10's quarter-width floor, which a 15-25% panel cannot — a type may raise that floor and
+may not lower it.
 
 ### inset_mode: --none
 No inset layer at all. Use when the scene carries the whole argument.
@@ -292,16 +298,8 @@ Legal on every `inset_mode` except `--none`, which has no layer to host it, and 
 the layer's content is TEMPORAL — a state changing, an output flowing, a mechanism
 travelling. What the brief promises must be visible in the frame the layer sits on.
 
-**The render keeps the slot's own asset filename and is NOT shippable until the loop is in
-it.** That is a change of risk rather than a removal of one, and it is stated here because
-nothing else catches it: the old rule pushed the render to a `--brief` suffix because it
-carried a plate covered in lettering, which no page could use by accident. A flat empty
-block can ship unnoticed as a design element. So the option that emits one says on its own
-face that the frame is unfinished, and `gif.output` names the file that finishes it
-(ADR-033).
-
-Four founding renders under the old plate rule, 1 pass and 3 partial; the geometry findings
-in G12 carry over and the lettering findings do not, because nothing is lettered any more.
+Four founding renders under the old plate rule, 1 pass and 3 partial; G12's geometry findings
+carry over, the lettering ones do not.
 
 ## WORKED EXAMPLES
 ### example: pet-fountain-commercial-detail-loop — skeleton@1.14, run: partial
@@ -422,16 +420,21 @@ recognisable sportswear swoosh, which SPEC 6.4 bars — name props unbranded.
   flaky: 2/2 once its glyph was named.
 - **`path` is contested, 4 observations for and 4 against.** The entry most likely to be cut.
 - **Subject ABSENT entirely — variant candidate at 2/3, deliberately not in the skeleton.**
-  Two observations show no person at all, the product in its finished situation carrying
-  the hero zone: obs `sha256:61118d…` (batch 10-H, purifier bottle posed on a marble
-  poolside) and `sha256:c28dac…` (batch 11-C, a campsite rigged drum-tight with the
-  product's ropes). The first record proposes it as a `--product` hero decision, so this
-  is a VARIANT cluster, not a slot patch — and at 2 observations it is below both the ≥3
-  bar and curate.md §3's variant bar. `reduced` (v1.8) is a different form and does not
+  Two observations show no person at all, the product carrying the hero zone: obs
+  `sha256:61118d…` (10-H, purifier bottle on a marble poolside) and `sha256:c28dac…`
+  (11-C, a campsite rigged drum-tight with the product's ropes). The first proposes it as
+  a `--product` hero, so this is a VARIANT cluster rather than a slot patch, and at 2 it
+  is below both the ≥3 bar and curate.md §3's variant bar. `reduced` (v1.8) is a different form and does not
   cover it: a steadying hand still puts a user in frame. A third distinct observation
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.18 (2026-08-27): **`--detail` moves 15-25% → 30-40% of frame width.** Three renders
+  measured 26%, 32%, 42% — none inside the old band — and legibility ranks in that order. Also
+  resolves a contradiction with G10's floor. `rules.md` G10 corrected. ADR-061. Also deletes a
+  paragraph 1.17 had withdrawn but left standing: `--loop` still said the render "is NOT
+  shippable until the loop is in it" two paragraphs after saying the still ships on its own.
+  · this commit
 - 1.17 (2026-08-25): ADR-051 reverses 1.16. `--loop` renders its layer IN FULL like `--still`
   and the still ships on its own; 1.16's consequence, that the render is not shippable until
   the loop is in it, is withdrawn with it. The axis is kept and is vestigial at render time.

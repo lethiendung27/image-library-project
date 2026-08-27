@@ -227,9 +227,15 @@ that was too large **and** misplaced — which this clause forbids anyway, becau
 subject stops the growth.
 
 **Where a type states its own inset bound, that bound stands and maximisation happens inside it.**
-`06-relief-hero` line 266 says 15-25% of frame width and `03-spec-explode` line 115 says 30-40%
-for its `inset` FRAMING mode, which is a packshot layout rather than a locator. Neither is edited
-here: this clause tells a writer how to choose within a range, not what the range is.
+`06-relief-hero --detail` and `03-spec-explode`'s `inset` FRAMING mode both say 30-40% of frame
+width. This clause tells a writer how to choose within a range, not what the range is.
+
+`06-relief-hero` said 15-25% when this paragraph was written and was corrected at its 1.18 on
+2026-08-27: a 15-25% panel cannot hold a product at the quarter-width floor above, so the type
+was lowering a floor it may only raise. Its own three `--detail` renders measured 26%, 32% and
+42% — none of them inside the band it declared — and the ledger notes rank legibility in that
+order. **A type bound that no render obeys is not evidence, and this is the paragraph that was
+deferring to one.**
 
 Evidence: render tests 2026-08-11 (`06-relief-hero`, wet-dry floor washer and travel
 stroller). A bleed specified as "a quarter of the shape" pushed a four-line label off

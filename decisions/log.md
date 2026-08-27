@@ -3293,3 +3293,63 @@ The slot decides.
 - `registry/gif-types/*.md` (6 files) — **untouched by design.**
 - Every type CHANGELOG line mentioning `avoid_when` — history, append-only, **stands**.
 - GENERATED (`registry/index.yaml`, `dist/app-bundle/`) regenerates in this commit.
+
+---
+
+## ADR-061 · 2026-08-27 · `06-relief-hero --detail` moves to 30-40%, and a bound no render obeyed stops being deferred to
+
+**Owner instruction, 2026-08-27:** "sửa inset của 06-relief-hero --detail, tăng lên khoảng
+30-40%."
+
+**Context: the band was written, not measured.** `--detail` declared "15-25% of frame width"
+and this type's own ledger contains every `--detail` render it has ever produced — three, all
+2026-08-14, all `partial`. Their measured widths:
+
+| render | width | the record's own words |
+|---|---|---|
+| automatic pet water fountain | 26% | "the smallest of the set and **the tightest to read**" |
+| electric wine opener | 32% | "rendered as a slightly wide rectangle" |
+| robot window cleaner | 42% | "the largest and **by far the most legible** of the three, and it costs the picture nothing because it sits in dead space" |
+
+**Not one of them landed inside the declared band**, the band's ceiling sat below the width
+already recorded as tightest to read, and legibility rose monotonically with size across the
+set. None of the three `partial` verdicts was about inset size — all three failed on `[PLATE]`,
+the reserved empty block ADR-051 has since retired.
+
+**It also had to move for a second reason.** G10 gained a floor on 2026-08-26: the product
+inside an inset is never smaller than a QUARTER of frame width, and "a type may raise that
+floor and may not lower it". A 15-25% panel holding a product with a thin margin puts that
+product under the floor, so the type was lowering a floor it may only raise. This was found
+while routing page 219, where the contradiction forced `--context` and `--recall` to be used
+instead of `--detail` and was recorded in that session's `page_composition_notes` rather than
+quietly worked around.
+
+**Decision.** `06-relief-hero` 1.18: `--detail` is 30-40% of frame width. That is where the
+two readable renders sit, and it clears G10's floor with room for the thin even margin G10
+asks for. It also matches `03-spec-explode`'s `inset` FRAMING band exactly, which was reached
+independently.
+
+**This corrects two places that cited the old number as settled law.**
+
+- `registry/rules.md` G10 said "`06-relief-hero` line 266 says 15-25% … Neither is edited here:
+  this clause tells a writer how to choose within a range, not what the range is." **Rewritten.**
+  The deference was right in principle and wrong in this instance, and the paragraph now says
+  why: a type bound that no render obeys is not evidence, and G10 was deferring to one.
+- **ADR-055 stands as written and is superseded in effect.** It said "Type-level bounds are not
+  overridden … `06-relief-hero` belongs to another lane and its insets have their own evidence;
+  nothing here asks that lane to change." That was true on 2026-08-26 — the lane had not been
+  asked. It has now, by the owner, and the evidence turned out to point the other way. The log
+  is append-only and a later reader should see both.
+
+**Untouched, and checked rather than assumed.** The gif-ratio decision at ADR-045 reasons that
+"`06-relief-hero` draws `--detail` as a rounded rectangle or circle at 15-25% of frame width,
+**which is square**, so a `--detail` loop delivers 1:1 whatever the slot is". The reasoning
+rests on the SHAPE, not the percentage, and 30-40% is square in exactly the same way. That
+decision is unaffected; only its cited number is stale, and it is a record rather than an
+instruction.
+
+**Consequences** — targeted sweep on `"15-25"` across `registry/`, `mapping/`, `query/` and
+`SPEC.md`: after this commit every surviving hit is a RECORD of the band being retired — the
+type's own note and CHANGELOG, and G10's correction. `SPEC.md:210` and `decisions/log.md:22`
+match on "~15–25 images" per batch session and are unrelated. No instruction anywhere still
+teaches the old band. `registry/index.yaml` and the bundle regenerate.
