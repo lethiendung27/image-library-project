@@ -507,3 +507,53 @@ quotes and the lead "Thousands of 5-Star Reviews Agree". Those four slots route 
 and the session records `out_of_scope_reason` rather than a prompt. The listicle template
 TPL-ADV21 carries six photo slots in a review block with **no** name and **no** badge, and
 there the same image is legal — which is the point: the slot decides, not the type.
+
+## G15 — At 1:1 a multi-frame layout PACKS the square; it never stripes it
+
+Owner instruction, 2026-08-27, with a diagram. Any type that lays out more than one frame —
+panels, a split, a sequence, a rail, a grid — takes one of these forms when the slot's ratio
+is **1:1**, and never N equal stripes:
+
+| frames | form at 1:1 |
+|---|---|
+| 2 | **halves** — split down the middle or across it, either orientation |
+| 3 | **1 + 2** — one rectangle and two squares. The rectangle may sit top, bottom, left or right, standing or lying; the two squares fill the remaining band |
+| 4 | **2×2** — four equal frames |
+
+**Why the stripe fails and the pack does not.** Three equal vertical panels in a 1024 square
+are 341px wide each. Nothing this library draws survives that: a person, a product on a
+surface, a hand at a fastening are all wider than they are tall. `02-cause-anatomy`'s
+KNOWN-FLAKY reached the same place from the other direction after two renders duplicated a
+canvas into a 2×2 grid — "compose wide-and-short subjects to fill a square frame".
+
+**Reading order survives the pack.** In the 1 + 2 form the rectangle is read first and the two
+squares left-to-right after it, so a sequence keeps its order and a before/after keeps its
+direction. Where a type locks a side — `02-cause-anatomy` and `01-pain-split` put wrong on the
+LEFT and correct on the RIGHT, locked library-wide — it has two frames and takes the halves
+form, where that lock is untouched.
+
+**This is a vocabulary for something two types already do.** `02-symptom-rail` is a hero at
+72% with three vignettes down the right edge, and `05-persona-grid --1plus3` is one large cell
+with three stacked beside it. Both are packs. G15 names the family and makes it the default at
+1:1 rather than a per-type invention.
+
+### Two types are exempt, and each says why in its own words
+
+**`04-proof-lockedframe` never takes the 1 + 2 form.** Its own law is "no panel may be
+favoured — no badge, no glow, no colour cue, no brighter exposure", and the file says plainly
+that **the judgement rule IS the type**. Making one panel larger favours it by size, which is
+the same defect in a different currency. So at 1:1 it uses equal frames only: halves at two,
+**three equal horizontal bands** at three, 2×2 at four. Its layout part said "N equal VERTICAL
+panels" and that word is corrected here — it was written when the type only reasoned about
+wide ratios, where vertical is right.
+
+**`03-use-sequence` describes no geometry at all.** Its layout part says **"Never describe the
+frame's shape or ratio"**, and the reason is a measured failure: "a prompt that reasons about
+frame geometry leaves the model space to reconcile, and it fills that space with extra small
+panels." A rule that tells its prompt to draw a rectangle and two squares would cause the exact
+fault that sentence exists to prevent. Its three photographs stacked one above another already
+pack a square as three wide bands, so it needs nothing from G15 and G15 asks nothing of it.
+
+**The ratio never enters the prompt** either way (adapter Rule 4, ADR-016): it is a generation
+parameter. What the prompt names is the LAYOUT — "2×2 grid", "one rectangle above two squares"
+— and the writer chooses that form knowing the slot's declared ratio.

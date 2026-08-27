@@ -3353,3 +3353,64 @@ instruction.
 type's own note and CHANGELOG, and G10's correction. `SPEC.md:210` and `decisions/log.md:22`
 match on "~15–25 images" per batch session and are unrelated. No instruction anywhere still
 teaches the old band. `registry/index.yaml` and the bundle regenerate.
+
+---
+
+## ADR-062 · 2026-08-27 · G15 — a multi-frame layout packs a square instead of striping it
+
+**Owner instruction, 2026-08-27, with a diagram:** for any image type with several frames — a
+split, a sequence, a rail, a grid — at ratio 1:1 use a grid, a four-frame grid, or one
+rectangle with two squares, the rectangle free to sit on any side, standing or lying.
+
+**Decision.** G15 in `registry/rules.md`. At 1:1: two frames are HALVES, three are **1 + 2**
+(one rectangle, two squares), four are **2×2**. Never N equal stripes.
+
+**Why it is a real defect and not a preference.** Three equal vertical panels in a 1024 square
+are 341px wide each, and everything this library draws — a person, a product on a surface, a
+hand at a fastening — is wider than it is tall. `02-cause-anatomy` arrived at the same place
+from the opposite direction: its KNOWN-FLAKY records two renders that duplicated a canvas into
+a 2×2 grid when asked for a wide ratio on wide-and-short content, and its conclusion was
+"compose wide-and-short subjects to fill a square frame".
+
+**It names a family two types already belonged to.** `02-symptom-rail` is a hero at 72% with
+three vignettes down the right edge; `05-persona-grid --1plus3` is one large cell with three
+stacked beside it. Both are packs. G15 gives the vocabulary and makes it the default rather
+than a per-type invention.
+
+**Reading order and the side lock both survive.** The 1 + 2 form reads rectangle first, then
+the two squares left to right, so a sequence keeps its order. Types that lock a side —
+`02-cause-anatomy` and `01-pain-split`, wrong on the LEFT and correct on the RIGHT, locked
+library-wide — carry two frames and take the halves form, where the lock is untouched.
+
+### Two exemptions, and neither is a carve-out I invented
+
+**`04-proof-lockedframe` cannot take the 1 + 2 form.** Its law is "no panel may be favoured —
+no badge, no glow, no colour cue, no brighter exposure", stated four times in the file, and
+line 137 says **the judgement rule IS the type**. A larger frame favours its panel by size,
+which is the same defect in a different currency. At 1:1 it uses equal frames only: halves at
+two, three equal HORIZONTAL BANDS at three, 2×2 at four.
+
+**`03-use-sequence` is exempt from describing geometry at all.** Its `layout` part says "Never
+describe the frame's shape or ratio", and gives a measured reason: "a prompt that reasons
+about frame geometry leaves the model space to reconcile, and it fills that space with extra
+small panels." A rule telling its prompt to draw a rectangle and two squares would cause the
+exact fault that sentence exists to prevent. Its three stacked photographs already pack a
+square as three wide bands. G15 asks nothing of it.
+
+**`04-proof-lockedframe` 1.14 in the same commit.** Its `layout` said "N equal VERTICAL
+panels" in the skeleton and in PARTS. That word was written when the type only reasoned about
+wide ratios, where vertical is correct — every render it has ever produced ran wide. It now
+says panels stripe across the frame's LONG axis, and that at 1:1 the orientation turns over.
+
+**Consequences** — rule 6c sweep on `"vertical panels"`: 145 hits, 42 files, and **exactly one
+in TEACHES**, which is the type corrected here. Its 4 hits split two ways: lines 47 and 61 are
+law and are rewritten; lines 232 and 279 are inside worked examples and are **left standing**,
+because those are records of renders that happened at wide ratios where "vertical" was right.
+The 40 RECORDS files keep the term as history. `query/sessions/advertorial-cord-tensioner-cam-lock-v01`
+carries it five times in the page-219 lockedframe prompts, all at 16:9, all still correct.
+`registry/index.yaml` and the bundle regenerate.
+
+**What this does not do.** It does not touch any type's frame COUNT, only the arrangement at
+one ratio, and it does not enter a prompt as a ratio — the ratio stays a generation parameter
+(adapter Rule 4). What a prompt names is the layout: "2×2 grid", "one rectangle above two
+squares".

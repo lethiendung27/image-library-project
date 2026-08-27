@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.13"
+version: "1.14"
 status: active
 replaced_by: null
 ratios: ["5:3", "16:9", "1:1", "3:2"]
@@ -44,7 +44,7 @@ not an omission to fill in later.
 TYPE: 04-proof-lockedframe v1.13 [--rivals | --verdict | --timelapse | --capture]
 REGISTER: documentary photography. No overlays, badges, arrows or text.
 
-[LAYOUT] N equal vertical panels, thin white gutters, no outer border.  -> PARTS/layout
+[LAYOUT] N EQUAL panels, packed to the frame. G15.          -> PARTS/layout
 [PRODUCT REFERENCE] attached photo is the exact reference.
 [CAMERA] strict or handheld.                                            -> PARTS/camera
 [SCENE] constant across every panel.                                    -> PARTS/scene
@@ -58,7 +58,16 @@ STYLE: honest documentary product test photography, unstyled, natural, sharp.
 
 ## PARTS
 
-**`layout`** — [N] equal vertical panels, thin white gutters, no outer border.
+**`layout`** — [N] EQUAL panels, thin white gutters, no outer border, striped across the
+frame's LONG axis so they pack it rather than slivering: vertical panels on a wide ratio,
+which is the case every render of this type has run so far. **At 1:1 the orientation turns
+over** — two panels are halves either way, three are horizontal BANDS, four are a 2×2 grid
+(G15). It said "vertical" until 1.14 and that was written when the type only reasoned about
+wide ratios; three vertical panels in a 1024 square are 341px each and nothing this type
+photographs survives that.
+
+**The 1 + 2 pack G15 offers other types is unavailable here**, and the reason is the type
+itself: a larger frame favours its panel, and no panel may be favoured. Equal, always.
 
 **`camera`** — two values, and the choice is evidence, not taste.
 
@@ -324,6 +333,11 @@ mineral rather than as mud or mould.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.14 (2026-08-27): **`layout` stops hard-coding VERTICAL.** Panels stripe across the long
+  axis so they pack the frame, which at 1:1 makes three panels horizontal bands and four a
+  2×2. G15 is the new rule; this type is exempt from its 1 + 2 form because a larger frame
+  favours its panel and the judgement rule is the type. The two worked examples keep
+  "vertical" — they are records of renders at wide ratios where it was correct. · this commit
 - 1.13 (2026-08-13): **type PASSED by the owner; file finalised.** WORKED EXAMPLES keeps the
   two 1.7 passes — the later frames that would replace them are `partial` after the G7
   corrections, and an example is a record of what rendered. Standing note: `--rivals` is legal
