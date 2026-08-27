@@ -38,6 +38,24 @@ TWO COMPROMISES, NAMED:
 - content.items.3 wanted 03-spec-explode for "two precise metal parts", and that type's own
   avoid_when bars it adjacent to 03-mechanism-xray, which sits at item 2. It moved to item 6.
 
+EVERY SLOT THAT CARRIES A LOOP ALSO OFFERS AN INSET-BEARING OPTION (owner instruction,
+2026-08-27). content.items.0 option C is 06-relief-hero with a `recall` inset holding the
+sagging tarp; content.items.2 option C is 03-spec-explode in `inset` framing, a packshot base
+with the stack in a circular inset; content.items.3 option A is 06-relief-hero with a
+`context` inset; content.items.5 option C is 05-social-handoff with its model-drawn cutout.
+ADR-051 is what makes this safe beside a loop: the inset renders NORMALLY in the still, no
+layer is reserved or blanked, and a loop replaces the whole slot asset rather than landing
+in a hole. All four insets are sized by G10 — maximise, stop at information or the safe area,
+never below a quarter of the frame width.
+
+ONE INSET MODE WAS AVOIDED AND THE REASON IS A LIVE CONTRADICTION. 06-relief-hero's
+`--detail` specifies an inset "15-25% of frame width", and G10's floor — added 2026-08-26 —
+says the product inside an inset is never smaller than a QUARTER of the frame width, and that
+"a type may raise that floor and may not lower it". A 15-25% panel holds a product below the
+floor. `--context` and `--recall` state no percentage and are governed by G10 directly, so
+they were used instead. 03-spec-explode's `inset` framing states 30-40% and clears the floor.
+The 06-relief-hero contradiction needs a decision in that file.
+
 TWO ATTRIBUTES ARE ASSUMED, NOT SUPPLIED. mounting is recorded as `handheld` and colorways as
 ["as supplied"], the same convention listicle-arm-trainer-hydraulic-v01 used. The source CSV
 carries neither and the page copy does not settle them. Neither kills a type, so the routing is
@@ -223,32 +241,36 @@ No text, no letters, no numbers, no logo, no badge, no arrow anywhere in the fra
 
 *855 characters · single-pass · attach the product photo.*
 
-### C · `06-relief-scene` v3.7 · 16:9 · type: 06-relief-scene
+### C · `06-relief-hero` v1.17 · 16:9 · type: 06-relief-hero
 
-FIT: weak. The type is a relief type used here for its unglamorous documentary register, showing the state before the tool exists.
+FIT: moderate, and it is here to carry an INSET. inset_mode `recall` puts the sagging tarp in the corner of a frame showing it taut, so one image holds both states. Owner instruction 2026-08-27: a slot that carries a gif offers at least one inset-bearing type.
 
 ```
-TYPE: 06-relief-scene v3.7
-REGISTER: candid documentary photograph, single frame.
+TYPE: 06-relief-hero v1.17 [inset_mode: recall]
+REGISTER: ugc.
 
-SUBJECT: a man walking back to his car across a campsite carrying a bundled tarp under one arm, the tarp folded badly and trailing loose cord.
+PRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock cord tensioner — brass roller, stainless steel cam, quick-release lever, reflective cord. Preserve its shape, proportions, material and finish exactly.
 
-GAZE: candid, off to one side. Never on the lens.
+SUBJECT: one man, full figure, standing under a shade tarp rigged over two picnic tables, one hand resting on the guy line he has just tensioned.
 
-ENVIRONMENT: an ordinary campground service road with numbered pitch posts and a bin store, a place anyone would pass through.
+POSE: passive — relaxed, gaze away from the lens toward the people at the table.
 
-LIGHT: plain grey daylight, no glamour.
+SETTING: one real lakeside campsite filled to the edges — two picnic tables laid for a meal, folding chairs, trees behind, the tarp drum-tight overhead. Never a blank ground.
 
-GRADE: muted, desaturated, never warm-boosted.
+LIGHT: flat dusk daylight, no output to carry, no rim light.
 
-PRODUCT: absent. This frame is the state the tool has not yet changed.
+OFFSET: he stands to the right of frame; the recall inset occupies the space at the upper left.
 
-RELIEF: none — he is bracing, shoulders up, the loose cord dragging.
+INSET — recall: a rectangular inset with a thin white border in the upper left, matching the hero in resolution, grade and light quality, showing THE SAME TARP CORNER SAGGING onto the table with its guy line slack — the state before this one. Make the inset as large and as clear as it can be: it grows until it would cover the moment or a face, or breach the safe area above, and then it stops. The product inside it is never smaller than a quarter of the frame width and fills its panel with only a thin even margin (G10).
+
+MARKS: none beyond the inset itself.
+
+Negative additions: unlabelled before-state inset, low resolution inset, inset darker than hero, inset from a different photographic source.
 
 No text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.
 ```
 
-*720 characters · single-pass · attach the product photo.*
+*1648 characters · single-pass · attach the product photo.*
 
 ---
 
@@ -430,20 +452,20 @@ PRODUCT REFERENCE: the attached photo is the exact reference for the cam-lock co
 
 CANVAS: a deep neutral field, clearly darker than the brass and steel so the parts separate from it. The motif comes from what the tool DOES — a faint suggestion of taut parallel cord lines in the ground, low contrast.
 
-FRAMING: full-frame. The stack fills the frame with even margins.
+FRAMING: inset. A packshot base — the assembled tensioner whole, square to camera, recognisable at thumbnail size — with ONE circular inset at 35% of the frame width in the upper right holding the exploded stack. The inset has a clean edge and no border.
 
-STACK, in assembly order along one axis, separated by clean even gaps: the anchor loop, the stainless steel body shell, the marine-grade brass roller, the spring-loaded stainless steel cam, its torsion spring, the quick-release lever, and the reflective cord threaded through where it runs.
+STACK, inside the inset, in assembly order along one axis, separated by clean even gaps: the anchor loop, the stainless steel body shell, the marine-grade brass roller, the spring-loaded stainless steel cam, its torsion spring, the quick-release lever, and the reflective cord threaded through where it runs.
 
 CENSUS: only these seven parts. The tool genuinely contains nothing else — do not invent bearings, gears, ratchets, fasteners or electronics.
 
-FOCUS: the spring-loaded cam, at the optical centre, rendered sharper and larger than the parts around it, its gripping teeth fully resolved.
+FOCUS: the spring-loaded cam, at the optical centre of the inset, rendered sharper and larger than the parts around it, its gripping teeth fully resolved.
 
 STYLE: premium technical product visualization, sharp, high detail.
 
 No text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.
 ```
 
-*1324 characters · single-pass · attach the product photo.*
+*1544 characters · single-pass · attach the product photo.*
 
 ---
 
@@ -479,16 +501,16 @@ SETTING: one real campsite pitch filled to the edges — the tent wall and a guy
 
 LIGHT: flat morning daylight. No output has to carry, so no rim light, no glow, no glamour.
 
-OFFSET: the hands sit to the right of frame; the taut line running away to the stake occupies the left.
+OFFSET: the hands sit to the right of frame; the context inset occupies the space at the lower left.
 
-PRODUCT VIEW: not needed — the hero shows the roller and the cam clearly at working distance.
+INSET — context: a rectangular inset with a thin white border, a plain closer shot of the SAME tensioner held in the same hand, matching the hero in resolution, grade and light quality. The tool is handheld in the hero and handheld in the inset — G7-X binds and one mode runs through both. Make the inset as large and as clear as it can be: it grows until it would cover the moment or a face, or breach the safe area above, and then it stops. The product inside it is never smaller than a quarter of the frame width and fills its panel with only a thin even margin (G10).
 
-MARKS: none.
+MARKS: none beyond the inset itself.
 
 No text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.
 ```
 
-*1064 characters · single-pass · attach the product photo.*
+*1563 characters · single-pass · attach the product photo.*
 
 ### B · `03-mechanism-xray` v1.3 · 16:9 · type: 03-mechanism-xray
 
@@ -727,12 +749,14 @@ PRODUCT: the tensioner is dominant in the lower third of the frame, closer to th
 
 HANDOFF: the advocate is holding a second tensioner out flat on her open palm toward the listener — an OFFER, held still, not a movement in progress.
 
+INSET: a cutout of the tensioner on plain white, placed near the moment, clean edge, no border and no connecting line. Model-drawn in the same pass. Make the inset as large and as clear as it can be: it grows until it would cover the moment or a face, or breach the safe area above, and then it stops. The product inside it is never smaller than a quarter of the frame width and fills its panel with only a thin even margin (G10).
+
 ENVIRONMENT: a real reason both people are here — adjacent pitches on a coastal campground, gravel underfoot, the other tent a few metres away.
 
 No text, no letters, no numbers, no logo, no badge, no arrow anywhere in the frame.
 ```
 
-*1286 characters · single-pass · attach the product photo.*
+*1718 characters · single-pass · attach the product photo.*
 
 ---
 
