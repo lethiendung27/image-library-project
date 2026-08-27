@@ -30,12 +30,6 @@ use_when: >
   components, for gadget-class products that do not act on a body structure.
   Step-3 gallery image (image 3-4) or landing-page mechanism section — the
   slot ghostbody cannot serve when body_contact is false.
-avoid_when: >
-  Main image or scroll-stopper. Not when the interior is trivial (a shell
-  with nothing meaningful inside). Not for categories where buyers distrust
-  tech-render aesthetics (natural/organic positioning). Never on the same
-  page as 03-spec-split — two component-tech arguments read as protesting
-  too much.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once

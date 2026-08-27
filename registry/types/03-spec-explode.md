@@ -32,13 +32,6 @@ use_when: >
   empty inside". Step-3 gallery image or landing-page build section. Choose
   explode when the question is WHAT is in there; choose 03-mechanism-xray when
   the question is WHY it works.
-avoid_when: >
-  Products with trivial interiors (a shell and one part reads as emptiness
-  made large). Never beside 03-spec-split (two component-tech arguments read
-  as protesting too much — never_with) and never adjacent to 03-mechanism-xray
-  on one page (two dark technical renders read as one template; the page takes
-  at most two step-3 answers anyway). Not for natural/organic positioning
-  where tech renders break trust.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.

@@ -30,10 +30,6 @@ use_when: >
   Categories where buyers genuinely compare component specs: motors, batteries,
   chips, abrasive materials, filter media, blades. Image 4-6 in a marketplace
   gallery. Use ONLY when the product truly contains the rendered component.
-avoid_when: >
-  Categories sold on emotion, brand or aesthetics. Never on paid-social or
-  advertorial — this aesthetic signals cheap goods off-marketplace. Never as a
-  main image.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.

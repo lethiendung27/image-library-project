@@ -468,3 +468,36 @@ day: **96 prompts name a child, 91 name only a child's OBJECT** as background cl
 carry no risk whatever, **4 place a young person in a relief scene** with no force and no
 covert gaze and are fine, and **exactly 1 carries the full bundle**. So the rule is narrow
 by measurement rather than by hope, and it costs the library's domestic texture nothing.
+
+## G14 — A generated image may never pose as a customer's own
+
+Two type files carried this in `avoid_when` until 2026-08-27, and `avoid_when` is gone
+(ADR-060). It never belonged there: `avoid_when` said which CASES a type should decline,
+and this is not a routing preference at all. It is the one line in this library that the
+files themselves call **illegal**, so it moves where it binds every type at once.
+
+**Never present a generated image as an actual customer upload.** Concretely, and these
+are the two sentences as they were written:
+
+- `05-social-snapshot`: *"NEVER pair a generated snapshot with a reviewer name, avatar,
+  star row or verified badge, and never present one as an actual customer upload — that
+  is a fabricated endorsement (FTC)."*
+- `05-social-card`: *"When no real reviews exist: NEVER fabricate a quote, name, rating
+  or counter — fabricated endorsements are illegal (FTC endorsement rules and
+  equivalents)."*
+
+**It binds the SLOT, not the type.** What makes an image a fabricated endorsement is the
+furniture around it, not which type drew it. A review block carrying reviewer names and
+`Verified Purchase` badges turns ANY generated image dropped into it into a claim that a
+customer took that photograph. So the test is read off the page: if the slot sits beside a
+name, an avatar, a star row, a verified badge or a review count, it takes a real customer
+photograph or it takes nothing.
+
+**When real customer photos exist, they always win over generated ones.**
+
+**Measured on a live page, 2026-08-27.** `advertorial-cord-and-rope-tightening-and-cinching-tool-v01`
+carries four `reviews.shots.*` slots in a block with three named "Verified Purchase"
+quotes and the lead "Thousands of 5-Star Reviews Agree". Those four slots route to nothing
+and the session records `out_of_scope_reason` rather than a prompt. The listicle template
+TPL-ADV21 carries six photo slots in a review block with **no** name and **no** badge, and
+there the same image is legal — which is the point: the slot decides, not the type.

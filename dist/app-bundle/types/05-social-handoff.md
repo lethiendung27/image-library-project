@@ -30,13 +30,6 @@ use_when: >
   me" beat mid-advertorial, cold-ads creative, or a closing image on a landing
   page. Fits products people genuinely recommend to each other out loud, and
   whose effect is visible in the room afterwards.
-avoid_when: >
-  Marketplace galleries and main images. Not for private products nobody
-  recommends in person. Not where the product leaves no visible trace, and not
-  where its only trace is a change of texture — crease, nap, sheen — which
-  cannot be seen quickly. Keep distance from 05-persona-grid on the same page
-  (same question, different mechanism), and send a solo step-by-step
-  demonstration to 03-use-sequence instead.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS; the definition lives there once and is

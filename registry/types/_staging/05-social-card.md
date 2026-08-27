@@ -43,12 +43,6 @@ use_when: >
   direct customer quote earns more trust than staging — established products
   with genuine published reviews and real aggregate numbers. The card carries
   the argument; the scene only makes it human.
-avoid_when: >
-  Marketplace galleries — major marketplaces (Amazon included) prohibit
-  customer review quotes inside product images. When no real reviews exist:
-  NEVER fabricate a quote, name, rating or counter — fabricated endorsements
-  are illegal (FTC endorsement rules and equivalents), not just off-brand.
-  Keep distance from other step-5 social types on the same page.
 
 ## SKELETON
 ```

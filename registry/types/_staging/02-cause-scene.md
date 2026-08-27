@@ -37,11 +37,6 @@ use_when: >
   (illegible labels), or inflicted damage (scratched floors). A
   person-subject would soften the indictment — this type keeps humans out
   of it.
-avoid_when: >
-  Marketplace galleries and main images. Not when the cause is invisible or
-  abstract — draw it with 02-cause-anatomy instead. Never with the product
-  in frame. Not as the page's only pain beat when buyer empathy is needed:
-  pair with 01-pain-scene for the human side.
 
 ## SKELETON
 ```

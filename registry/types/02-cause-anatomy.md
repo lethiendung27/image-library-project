@@ -30,12 +30,6 @@ use_when: >
   measurable harm mechanism. Placed after the pain image and before the product
   mechanism image; fits the middle of an advertorial. The paired dashed
   reference lines are the argument — use only when a measurable landmark exists.
-avoid_when: >
-  The problem has no internal structure to draw, or the cause cannot be pinned
-  to one concrete object, or the harm PERSISTS after the culprit is taken away.
-  Accumulated damage — a receded gum, a lifted hair cuticle — is not a state the
-  product switches, and two panels claiming it is will claim a repair the product
-  cannot make. Never as a main image.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.

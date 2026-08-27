@@ -34,11 +34,6 @@ use_when: >
   pain and moments nobody would choose to be seen in; use --confront for
   appearance, self-image and daily-frustration problems where the mirror moment
   IS the moment.
-avoid_when: >
-  Marketplace galleries, main image, or any position where the product must be
-  visible. Cannot sell alone — must be paired with a relief/proof image. Never
-  in the same set as 01-pain-split: one pain beat per page, and two of them
-  compete for the same job rather than building on each other.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.

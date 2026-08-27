@@ -41,12 +41,6 @@ use_when: >
   landing-page capability section. Choose band content by the buyer's doubt:
   outputs for "what will it make", places for "where can I use it",
   exercises/zones for "what will it work".
-avoid_when: >
-  The product has one output or one place — the band becomes padding. Never a
-  main image. Not on a page already carrying 02-symptom-rail (avoid_adjacent):
-  two railed images in one gallery read as a template, and opposing band
-  polarities (problems vs capabilities) confuse the arc. If no hero moment
-  matters, use 03-use-grid instead.
 
 ## SKELETON
 ```

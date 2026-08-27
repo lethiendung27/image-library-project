@@ -3118,3 +3118,178 @@ UNCLASSIFIED. Accounted:
   true** — a gif is a work order sitting below option C, not an option in the pool. The
   `cause.md` note citing "page 65's rung-2 route" stays valid: rung 2 survives.
 - GENERATED (`dist/app-bundle/`, `registry/index.yaml`) regenerates in this commit.
+
+---
+
+## ADR-059 · 2026-08-26 · Channel stops being an admission test; the copy decides
+
+**Owner instruction, 2026-08-26:** "bỏ các giới hạn của channels, tôi đang xây hệ thống
+library: image types để sử dụng cho tất cả các loại trang, khách có thể dùng template của
+advertorial nhưng viết nội dung cho listicle. chính vì thế nên copy sẽ là thứ quyết định."
+
+**Context.** `channels` was one half of the admission test the runbook said never bends: a
+type whose `channels` did not contain the page's channel was refused at any rank. Two facts
+killed that.
+
+The first is the owner's design: this is a library of image types for ANY page kind, and a
+customer may take an advertorial template and write listicle copy into it. The page's KIND is
+therefore not knowable from its template.
+
+The second was already true and nobody had said it. **The router never read a channel; it
+guessed one.** `content.json` carries `channel`, but the export carries `lpTypeId`, and the
+mapping `listicle → advertorial` is a convention held by five sessions running, not a
+declaration. So the one test that "never bends" was keyed on a derived guess about a surface,
+while `avoid_when` — the other half — is keyed on the CASE, which is what the copy carries.
+
+**Measured cost of the gate, on one real page.** The angle-grinder listicle (TPL-ADV21/19)
+has four slots whose copy names an argument the library owns and the gate refused:
+
+| slot | what the copy argues | type that fits | why it was refused |
+|---|---|---|---|
+| reason #4 | cheap resinoid wheels chip and crack under side load | `03-spec-macro` | `channels: [marketplace]` |
+| reason #3 | flat pads dig rings on a curve; separate profiles exist | `03-use-grid` | not on advertorial |
+| `product_end` | Flat, Bevel, Bow · 100mm and 85mm | `03-use-grid` | not on advertorial |
+| `product` | Solid Wear-Resistant Steel · Tungsten Carbide Teeth | `03-spec-macro` | `channels: [marketplace]` |
+
+Four slots, two types, one ordinary page.
+
+**Decision.** Admission is ONE test: `avoid_when`. The candidate pool is **every active
+type** — all 17, for every slot on every page. `channels` stays in frontmatter as
+PROVENANCE (where a type's register has been proven) and is still validated against the
+vocabulary; nothing reads it to admit or refuse an image type.
+
+**`mapping/slot-rules.md` collapses from 48 cells to 12 rows.** With channel out of the
+admission test the four columns were the same preference written four times. One row per
+role, best type first. This is also what makes the library scale: a new type joins ONE row,
+not four columns.
+
+**The two 2026-08-11 channel trims are preserved, not deleted.** Both were real decisions
+with evidence, and both were statements about the CASE wearing a channel's clothes:
+
+- `02-symptom-rail` off advertorial, because the infographic-tile aesthetic "signals cheap
+  goods off-marketplace". Moved into **that type's own `avoid_when`**, phrased against the
+  page in hand — an EDITORIAL page, prose rather than a product listing — where FIT reads it.
+- `06-relief-scene` off landing-page, because its `use_when` names only "an advertorial or
+  final frame of an ads creative". **No edit needed**: `use_when` IS criterion 1 of the
+  ranking, so that beat scores low on FIT by the type's own words. The wall was redundant.
+
+**GIF types keep their `channels` and are untouched.** There it does a different job:
+`registry/gif-types/unboxing.md` states "This type is not routable to a page slot, and its
+`channels` list is the enforcement." Removing it there would make an unroutable type
+routable. This ADR is about image types only.
+
+**What gets worse, stated rather than discovered.** `channels` was the last cheap mechanical
+filter. Every slot now ranks 17 types by judgement, and judgement does not scale and no regex
+audits it. Two mitigations, both cheap: `use_when` becomes the load-bearing sentence in every
+type file and is worth an audit pass of its own; and every role assignment should cite the
+sentence of copy that decided it, which turns a judgement into a record. `pool_basis` becomes
+nearly dead — with 17 candidates, three distinct types is always available.
+
+**Enforcement, and the check that was missing.** `check_slot_rules` loses the
+channel-vs-frontmatter comparison (a type can no longer contradict its own frontmatter by
+being listed under a role) and gains the opposite check: **every active type must appear in
+at least one row of the preference table.** That table is now the only place a type declares
+which beat it belongs to. The gate was fed known-bad input before being believed — a live
+file (silent), one type removed (fires, names it, count 1), a second removed (count 2),
+restored (silent). An earlier control run reported a false mismatch: it removed
+`04-proof-lockedframe` from `proof`, which left it listed under `comparison` as
+`--verdict`, so the gate was right and the control was wrong.
+
+**Consequences** — rule 6c sweep on `"channels"`: 188 hits, 88 files, 31 in TEACHES, all read:
+
+- `SPEC.md:263` taught "(a) channel legality — the slot's channel appears in the type's own
+  `channels`". **Rewritten.** `SPEC.md:131/168/194` describe the frontmatter field and the
+  closed vocabulary; both **stand** — the field still exists and is still validated.
+- `query/runbook.md:47/116/217` — the pool, the admission rule, and the ladder's admission
+  line. **All three rewritten.**
+- `query/output.schema.json:4` — the NEVER-EMPTY description named "channel legality from
+  each type's own channels". **Rewritten.**
+- `mapping/slot-rules.md` — table collapsed, the trims rehomed, the new gate documented.
+- `registry/gif-types/*.md` (6 files) — **untouched by design**, see above.
+- `registry/types/*.md:10` — every type's `channels:` frontmatter **stands unchanged**. Zero
+  type files edited for the gate itself; `02-symptom-rail` was edited to receive its own
+  register rule, and `03-spec-macro`'s promotion note was updated because it explained
+  criterion 2's green result BY the exclusion this ADR removes.
+- Every `channels gain …` line in a type CHANGELOG — history, append-only, **stands**.
+- `adapters/nano-banana.md:293` — "One base cannot serve two channels" is a RENDER note: a
+  marketplace image without marks and a landing-page image with them are two renders. It is
+  about producing images, not admitting types. **Stands.**
+- `eval/golden/fixture-001` and `fixture-002` — three `only_preferred_type` assertions became
+  false the moment the columns merged, and the fixtures caught all three on the first run.
+  **All three rewritten in this commit per SPEC §9**, each recording where the old exclusion
+  now lives. `story-3-howto` is the first assertion in either fixture that this change turns
+  from a refusal into a choice: `03-use-grid` is now a real alternative to `03-use-sequence`.
+- GENERATED (`registry/index.yaml`, `dist/app-bundle/`) regenerates.
+
+---
+
+## ADR-060 · 2026-08-27 · `avoid_when` is removed from every image type; `use_when` carries the whole trigger
+
+**Owner instruction, 2026-08-27:** "tôi muốn bỏ hết avoid_when của các type do content sẽ
+linh hoạt, ảnh sẽ route/bắt theo content thay vì landing page type."
+
+**Decision.** `avoid_when` is deleted from all 20 image type files — 17 active and 3 staging,
+6534 characters removed. `TRIGGER` now carries `use_when` alone. `scripts/validate.py` no
+longer requires the block and still reads one if a file carries it, so a lane mid-edit does
+not break. **GIF types keep theirs and are untouched**, the same carve-out ADR-059 made for
+`channels`: the gif layer routes by a different mechanism and nothing here was measured
+against it.
+
+**What this means, stated plainly: there is no admission test left.** ADR-059 removed
+`channels` and left `avoid_when` as the last one; a day later that is gone too. Every active
+type is a candidate for every slot on every page, and what a type is FOR is argued entirely
+by `use_when` through FIT. A type is no longer refused — it is out-ranked.
+
+**Four things still remove a candidate, and the routing does not become lawless:**
+
+1. **Attribute gates** — deterministic kill-rules on `product.attributes`. On the first page
+   routed after this, `body_contact: false` dropped `03-mechanism-ghostbody`.
+2. **Ratio** — a type that does not declare the slot's ratio cannot serve it. Nine of ten
+   slots on that page were 16:9 and the field fell from seventeen types to nine. Nothing in
+   the repo enforces this yet, which is now the most valuable gate left unbuilt.
+3. **Cross-slot frontmatter** — `never_with`, `pairs_with`, `avoid_adjacent`, one-type-once.
+   All verified present in frontmatter before the deletion: `03-spec-explode`'s
+   `avoid_adjacent: [03-mechanism-xray]`, `01-pain-scene`'s `never_with: [01-pain-split]` and
+   `06-relief-scene`'s `pairs_with: [01-pain-scene]` are the three the live routing used, and
+   all three were in the frontmatter, not only in the prose being deleted.
+4. **`registry/rules.md`** — the global rules.
+
+**What the deleted prose actually contained, measured before deleting it.** 20 types, and
+most clauses were not about page type at all: `02-cause-anatomy`'s "the harm PERSISTS after
+the culprit is taken away", `04-proof-lockedframe`'s "the difference is invisible or only felt
+in use", `03-use-grid`'s "the product does one thing — the grid becomes padding". Those were
+craft warnings and they go. The library's answer to a badly-fitted type is now a low FIT score
+and an owner who can see all three options, rather than a silent refusal.
+
+**Two clauses did not go, because the files themselves call them illegal.** They are rehomed
+as **G14** in `registry/rules.md`:
+
+- `05-social-snapshot`: "NEVER pair a generated snapshot with a reviewer name, avatar, star
+  row or verified badge … that is a fabricated endorsement (FTC)."
+- `05-social-card`: "NEVER fabricate a quote, name, rating or counter — fabricated
+  endorsements are illegal (FTC endorsement rules and equivalents)."
+
+G14 is written to bind **the slot, not the type**, which is what the evidence says it always
+was: what makes an image a fabricated endorsement is the furniture around it. A review block
+carrying names and `Verified Purchase` badges turns any generated image into a claim a
+customer took it. Measured the same day on `advertorial-cord-and-rope-tightening-and-cinching-tool-v01`:
+four `reviews.shots.*` slots sit beside three named "Verified Purchase" quotes and route to
+nothing, while TPL-ADV21's six review photo slots carry no name and no badge and are legal.
+The slot decides.
+
+**Consequences** — rule 6c sweep on `"avoid_when"`: 241 hits, 100 files, 30 in TEACHES:
+
+- `SPEC.md:100` said TRIGGER contains both folded blocks — **rewritten** to name `use_when`
+  alone. `SPEC.md:281` listed `avoid_when` in Stage 2 and `:322` said the picks prior never
+  overrides it — **both rewritten**.
+- `query/runbook.md` — the Step 4 admission paragraph and the ladder's admission line, the
+  two places that made it a wall. **Both rewritten**, and Step 4 now lists the four things
+  that do still remove a candidate.
+- `mapping/slot-rules.md:5` named it in the Stage 2 sequence — **rewritten**, and the record
+  of the two 2026-08-11 channel trims is corrected: `02-symptom-rail`'s rule lived in
+  `avoid_when` for exactly one day.
+- `scripts/validate.py` — the required-block check is now conditional for image types and
+  unchanged for gif types; the index writer skips an empty field.
+- `registry/gif-types/*.md` (6 files) — **untouched by design.**
+- Every type CHANGELOG line mentioning `avoid_when` — history, append-only, **stands**.
+- GENERATED (`registry/index.yaml`, `dist/app-bundle/`) regenerates in this commit.

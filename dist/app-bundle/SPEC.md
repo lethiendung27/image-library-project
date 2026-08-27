@@ -97,7 +97,7 @@ treatment global rules already get (`adapters/` Rule 6.2): referenced by ID in t
 file, expanded at render time. A type's mark library is its own (ADR-012); a mark that
 looks the same in two types is noted in both rather than owned centrally.
 
-- `TRIGGER` contains `use_when: >` and `avoid_when: >` folded blocks written in **router
+- `TRIGGER` contains a `use_when: >` folded block written in **router
   language** (section roles, buyer state, channel). It is extracted verbatim into the index.
 - `SKELETON` and `SLOT CONSTRAINTS` are written in **filler language** (instructions to the
   image model). Slots use `[brackets]`.
@@ -258,19 +258,27 @@ image, and competitor brand marks never appear in prompts.
 ## 7. Query protocol
 
 1. **Validate** `content.json` against `mapping/content.schema.json`.
-2. **Stage 1 — shortlist** (mechanical, DERIVED): per slot, take every active type in
-   `registry/index.yaml` that satisfies, in order:
-   (a) **channel legality** — the slot's channel appears in the type's own `channels`;
-   (b) **attribute gates** — the deterministic kill-rules in `mapping/slot-rules.md`;
-   then rank by **role affinity**, read from the type's `step` and `job` (both already
-   in the index). `mapping/slot-rules.md`'s shortlist table is a human-readable **view**
-   of the same derivation, and `scripts/validate.py` fails if the two disagree — the
-   table may never claim a channel a type does not declare. Deriving rather than
-   looking up is what makes the shortlist non-empty: on any channel several types are
-   legal, so a slot runs out only if every one of them is gated out on attributes,
+2. **Stage 1 — shortlist** (mechanical, DERIVED): per slot, take **every active type**
+   in `registry/index.yaml` and drop only those the **attribute gates** in
+   `mapping/slot-rules.md` kill, then rank by **role affinity**, read from the type's
+   `step` and `job` (both already in the index). `mapping/slot-rules.md`'s table is a
+   human-readable **view** of the preference order, not the pool.
+
+   **Channel is not an admission test** (ADR-059). It was, until 2026-08-26: a type
+   whose `channels` did not contain the page's channel was killed at any rank. Two
+   things broke that. The library is now a set of image types usable on ANY page kind
+   — a customer may take an advertorial template and write listicle copy into it — so
+   the page's kind is not knowable from the template. And the router only ever learned
+   the channel by GUESSING it from `lpTypeId` (`listicle` → `advertorial`, five
+   sessions running), so the gate was keyed on a derived guess. **What the copy argues
+   decides; the surface it will sit on does not.** `channels` stays in frontmatter as
+   provenance — where a type's register has been proven — and is still validated
+   against the vocabulary, but nothing reads it to admit or refuse an image type.
+   Deriving rather than looking up is what makes the shortlist non-empty: every active
+   type is a candidate, so a slot runs out only if every one of them is gated out,
    which the gates make explicit rather than silent.
 3. **Stage 2 — portfolio** (judgment, one pass over the whole page): apply
-   `product.attributes` against skeleton conditionals and `avoid_when`; enforce
+   `product.attributes` against skeleton conditionals; enforce
    cross-slot constraints (`pairs_with`, `never_with`, `avoid_adjacent`,
    `requires_pair`, pain→relief arc). The page is selected as a **set**, never
    slot-by-slot greedily.
@@ -311,7 +319,7 @@ image, and competitor brand marks never appear in prompts.
    types, and a single-option repeating tile is no choice at all. Counting per option
    let one review wall fill a cell six times from one decision, so the first cell to
    go live would have been the one where nothing was ever chosen (ADR-026). The prior
-   never overrides `avoid_when` or composition rules.
+   never overrides an attribute gate or a composition rule.
 8. **Render**: fill skeletons (worked examples serve as few-shot), then apply
    `adapters/<model>.md` at render time. Canonical NEGATIVE lists are model-agnostic;
    adapters translate them (e.g. semantic negatives for nano banana).

@@ -30,10 +30,6 @@ use_when: >
   the naked eye. Use --object when the product is the obvious answer (small
   frames, thumbnails); use --mirror when the problem is a body state and the
   change must be shown on the person.
-avoid_when: >
-  Main image, or any position that needs goodwill before pain. Not when the
-  problem is invisible or the "wrong" scene cannot be photographed. Never in the
-  same set as 01-pain-scene.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.

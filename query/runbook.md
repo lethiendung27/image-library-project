@@ -42,12 +42,14 @@ up. Say "attach the product photo", never "cannot run".
 
 ## Step 2 — Stage 1 shortlist (mechanical)
 
-For each `image_slot`, read the `role × page.channel` cell of the slot-rules table.
-**That cell is a PREFERENCE ORDER, not the candidate list.** The candidate list is
-every active type whose own `channels` contains this page's channel — SPEC §7.4 has
-said so since it was written ("Stage 1 derives from the whole channel-legal set, not
-from one table cell"), and this step used to contradict it. Cell members outrank
+For each `image_slot`, read the slot-rules row for its `role`.
+**That row is a PREFERENCE ORDER, not the candidate list.** The candidate list is
+**every active type** — 17 of them, for every slot on every page. Row members outrank
 non-members at equal fit; a non-member is a candidate, not a violation.
+
+**The row has one column since ADR-059**, because channel stopped being an admission
+test. A type preferred for `mechanism` is preferred for `mechanism` wherever the beat
+appears, and the four channel columns were the same list written four times.
 
 The distinction is not cosmetic. 43 of the 48 role×channel cells hold fewer than
 three types, so a cell-as-pool reading caps most slots at one or two options —
@@ -113,9 +115,22 @@ those are how an option is built, never how the pool is filled.
 
 Rules that do not move: an option requiring a pair or carrying channel restrictions
 says so in `composition_notes`; never present a gated-out type as an option; never pad
-with rerolls. **The type's own admission test never bends** — `channels` must contain
-this channel and `avoid_when` must not exclude this case. A type failing either is not
-a candidate at any rank. That is refusing a *wrong* type, which stays correct.
+with rerolls. **There is no admission test left, and that is deliberate** (ADR-060).
+`channels` went at ADR-059 and `avoid_when` went the day after: every active type is a
+candidate for every slot, and what a type is FOR is now argued entirely by `use_when`
+through FIT. A type is not refused, it is out-ranked.
+
+Four things still remove a candidate, and none of them is a preference:
+
+1. **The attribute gates** in `mapping/slot-rules.md` — deterministic kill-rules read
+   off `product.attributes`.
+2. **Ratio** — a type that does not declare the slot's ratio cannot serve it. Nine of
+   ten slots on the first page routed this way were 16:9, and that alone cut the field
+   from seventeen types to nine.
+3. **The cross-slot fields** — `never_with`, `pairs_with`, `avoid_adjacent` and
+   one-type-once, all frontmatter, all still binding.
+4. **`registry/rules.md`** — the global rules, G14 among them: a generated image may
+   never pose as a customer's own.
 
 **What this rule costs, stated rather than discovered later.** B and C are lower-ranked
 by construction, so on a slot whose cell holds one type they will be types the table
@@ -214,11 +229,11 @@ remain what they always were — the honest way to satisfy `one-type-once` in th
 recommended set when a page needs the same type twice. Cross-slot rule 2 and
 `composition_notes` carry them now, not this ladder.
 
-The only test that never bends is the type's own admission: `channels` must contain
-the slot's channel and `avoid_when` must not exclude the case. A type that fails
-either is not a candidate at any rung — that is refusing a *wrong* type, which stays
-correct. Every option emitted is a real active type carrying its own laws; there is no
-fallback tier, and no image ships unrouted.
+Nothing on this ladder is an admission test any more (ADR-060). Every rung yields
+candidates and the ranking sorts them; what removes a type is an attribute gate, a
+ratio it does not declare, a cross-slot field, or a global rule. Every option emitted
+is a real active type carrying its own laws; there is no fallback tier, and no image
+ships unrouted.
 
 Worked precedent: a listicle's five ranked entries, each indicting one alternative, had
 no comparison type left after one-type-once spent `04-proof-lockedframe`. Rung 2 plus

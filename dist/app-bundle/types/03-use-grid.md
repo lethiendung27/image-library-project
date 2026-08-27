@@ -41,12 +41,6 @@ use_when: >
   doubt: applications when the product claims many jobs, compatibility when it
   must fit gear the buyer already owns, positions when one device claims a
   whole routine.
-avoid_when: >
-  The product does one thing (the grid becomes padding — same failure as a
-  one-symptom rail). Never as a main image. Not when cells would need text
-  labels to be understood — if a cell cannot explain itself photographically,
-  the breadth argument belongs to page copy. Keep off pages already carrying
-  05-persona-grid (avoid_adjacent): two grids read as one lazy template.
 
 ## SKELETON
 ```

@@ -27,12 +27,6 @@ use_when: >
   The product solves several problems at once and one image must show the
   coverage. Image 2 or 3 in the gallery, right after the scroll-stopper. Fits a
   broad audience where each buyer hurts in a different way.
-avoid_when: >
-  The product solves exactly one problem — the rail becomes padding. Never as a
-  main image. Not when the symptoms cannot be photographed, and **not when the
-  product's effect has no location you can point at** — an air purifier, a
-  humidifier, a diffuser change the medium rather than a body zone, and no mark
-  can show a medium changing. Route those to a mechanism type instead.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once

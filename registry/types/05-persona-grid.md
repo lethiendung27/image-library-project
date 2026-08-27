@@ -28,10 +28,6 @@ use_when: >
   Need to show many different kinds of people using the product. Image 4-5 in
   the gallery or the closing image. Use when the audience is broad in age and
   context.
-avoid_when: >
-  The audience is narrow and specific — a grid dilutes the positioning. Never as
-  a main image. Not when the product is too small to stay visible inside a
-  sub-cell (15% rule).
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS; the definition lives there once.

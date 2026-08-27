@@ -37,9 +37,6 @@ use_when: >
   reminder of the problem is enough; context when the hero shows the product in
   hand and the buyer still needs to see where it lives; none when the scene
   carries everything.
-avoid_when: >
-  The product has no visible "wrong state" (use 03-mechanism-ghostbody for
-  internal mechanisms). ugc register never on marketplace galleries.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once

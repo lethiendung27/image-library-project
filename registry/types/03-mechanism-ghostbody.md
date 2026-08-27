@@ -28,9 +28,6 @@ use_when: >
   Need to explain WHY the product's shape works, through a mechanism inside the
   body that cannot be filmed. Image 3-4 in the gallery, after pain and before or
   after relief. Works for every audience because the body is anonymous.
-avoid_when: >
-  Main image or scroll-stopper positions, or when the product does not act on a
-  body structure. This type is cold — there is nobody to empathize with.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once

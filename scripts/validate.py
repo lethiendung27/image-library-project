@@ -363,7 +363,11 @@ def validate_type_file(path, vocab, rule_ids):
     use_when = avoid_when = ""
     if "TRIGGER" in sections:
         use_when = extract_folded(sections["TRIGGER"], "use_when", where)
-        avoid_when = extract_folded(sections["TRIGGER"], "avoid_when", where)
+        # ADR-060 removed avoid_when from every image type. It is read if a file
+        # still carries one so a lane mid-edit does not break, but it is no longer
+        # required and nothing routes on it. GIF types keep theirs -- see below.
+        if "avoid_when:" in sections["TRIGGER"]:
+            avoid_when = extract_folded(sections["TRIGGER"], "avoid_when", where)
 
     if "NEGATIVE" in sections and "G6" not in (fm.get("exempt_from") or []):
         if "[G6]" not in sections["NEGATIVE"]:
@@ -519,6 +523,8 @@ def render_index(vocab, types, evidence, picks):
         else:
             out.append("    picks: {}")
         for field in ("use_when", "avoid_when"):
+            if not types[tid][field]:
+                continue            # avoid_when is gone since ADR-060
             out.append(f"    {field}: >")
             for line in textwrap.wrap(types[tid][field], width=72) or [""]:
                 out.append(f"      {line}")
@@ -1078,25 +1084,30 @@ def check_session_names():
 
 # ---------------------------------------------------------------- routing table
 
-CHANNEL_COLS = ["marketplace", "landing-page", "paid-social", "advertorial"]
-
-
 def check_slot_rules(types):
-    """The shortlist table is a VIEW of data the type files already own.
+    """The preference table is a VIEW: one row per role, best type first.
 
-    Every type named in a channel column must declare that channel in its own
-    frontmatter. Without this check the two drift silently: eight such
-    contradictions accumulated before it existed, and query runs routed through
-    them, producing prompts that were illegal on their own channel.
+    It collapsed from four channel columns to one at ADR-059, when channel
+    stopped being an admission test — the columns had become the same list
+    written four times. The channel-vs-frontmatter check went with them: a type
+    is now a candidate for every slot, so listing it under a role can no longer
+    contradict its own frontmatter.
+
+    What replaces it is the opposite check, and it is the one that was missing.
+    This table is now the ONLY place a type declares which beat it belongs to,
+    so an active type absent from it is a type no slot will ever prefer.
+    `03-spec-macro` and `03-use-grid` went active on 2026-08-26 with no entry at
+    all and nothing noticed until a feasibility count found them by hand.
     """
     rel = "mapping/slot-rules.md"
     path = os.path.join(ROOT, rel)
     if not os.path.exists(path):
         err(rel, "file not found")
-        return
+        return {}
     with open(path, encoding="utf-8") as f:
         lines = f.read().splitlines()
     shortlist = {}
+    listed = set()
     in_table = False
     for line in lines:
         if line.startswith("| Role "):
@@ -1108,22 +1119,24 @@ def check_slot_rules(types):
             if set(line.replace("|", "").strip()) <= set("- "):
                 continue
             cells = [c.strip() for c in line.strip().strip("|").split("|")]
-            if len(cells) < 5:
+            if len(cells) < 2:
                 continue
-            role, cols = cells[0], cells[1:5]
-            for chan, cell in zip(CHANNEL_COLS, cols):
-                for tid in re.findall(r"`([^`]+)`", cell):
-                    tid = re.sub(r"--\w+$", "", tid).strip()
-                    shortlist.setdefault((role, chan), []).append(tid)
-                    if tid not in types:
-                        err(rel, f"role `{role}` / {chan}: unknown type `{tid}`")
-                        continue
-                    declared = types[tid]["fm"].get("channels") or []
-                    if chan not in declared:
-                        err(rel,
-                            f"role `{role}` / {chan}: `{tid}` is listed here but "
-                            f"its frontmatter declares channels {declared} — the "
-                            f"table and the type disagree")
+            role, cell = cells[0], cells[1]
+            for tid in re.findall(r"`([^`]+)`", cell):
+                tid = re.sub(r"--\w+$", "", tid).strip()
+                shortlist.setdefault(role, []).append(tid)
+                listed.add(tid)
+                if tid not in types:
+                    err(rel, f"role `{role}`: unknown type `{tid}`")
+
+    missing = sorted(
+        tid for tid, d in types.items()
+        if d.get("fm", {}).get("status") == "active" and tid not in listed)
+    if missing:
+        err(rel, f"{len(missing)} active type(s) appear in no row of the "
+                 f"preference table: {', '.join(missing)} — this table is the "
+                 "only place a type declares which beat it belongs to, so a "
+                 "type absent from it is one no slot will ever prefer (ADR-059)")
     return shortlist
 
 
@@ -1295,28 +1308,23 @@ def check_golden(types, vocab, shortlist, gates):
             if role not in roles:
                 err(rel, f"slot `{slot}`: role `{role}` is asserted but no "
                          "section in content.json declares it")
-            cell = shortlist.get((role, chan), [])
+            cell = shortlist.get(role, [])
             legal = [t for t in cell if t not in killed
                      and types.get(t, {}).get("fm", {}).get("status") == "active"]
             asserted = [(t, False) for t in exp["expect"]] + exp["alts"]
             if exp["only"]:
                 asserted.append((exp["only"], False))
                 if sorted(set(legal)) != [exp["only"]]:
-                    err(rel, f"slot `{slot}` ({role}/{chan}): "
+                    err(rel, f"slot `{slot}` ({role}): "
                              f"only_preferred_type says `{exp['only']}` but the "
-                             f"slot-rules cell yields {sorted(set(legal))}")
+                             f"preference row yields {sorted(set(legal))}")
             for tid, conditional in asserted:
                 if tid not in types:
                     err(rel, f"slot `{slot}`: unknown type `{tid}`")
                     continue
-                declared = types[tid]["fm"].get("channels") or []
-                if chan not in declared:
-                    err(rel, f"slot `{slot}`: `{tid}` is asserted legal but its "
-                             f"frontmatter declares channels {declared}, and "
-                             f"this fixture is {chan}")
-                elif tid not in cell:
-                    msg = (f"slot `{slot}` ({role}/{chan}): `{tid}` is asserted "
-                           f"legal but the slot-rules cell holds {cell}")
+                if tid not in cell:
+                    msg = (f"slot `{slot}` ({role}): `{tid}` is asserted "
+                           f"preferred but the slot-rules row holds {cell}")
                     (warn if conditional else err)(rel, msg)
                 elif tid in killed:
                     err(rel, f"slot `{slot}`: `{tid}` is asserted legal but an "

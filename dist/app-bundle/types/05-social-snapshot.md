@@ -32,13 +32,6 @@ use_when: >
   when the trust gap is "does this actually exist and work in a normal home".
   Products bought on skepticism of glossy marketing. Use as SECTION imagery
   with the page's review copy, or beside aggregate ratings.
-avoid_when: >
-  Marketplace galleries (ugc register is barred there). NEVER pair a generated
-  snapshot with a reviewer name, avatar, star row or verified badge, and never
-  present one as an actual customer upload — that is a fabricated endorsement
-  (FTC), the same line 05-social-card draws. When real customer photos exist,
-  they always win over generated ones. Not for polished brand storytelling —
-  that is 06-relief-hero's register.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS; the definition lives there once and is

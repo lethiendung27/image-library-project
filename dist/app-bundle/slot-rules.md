@@ -1,53 +1,63 @@
-# Slot rules — role × channel → candidate types
+# Slot rules — role → preferred types
 
 Stage 1 of routing (SPEC §7): a mechanical lookup producing the per-slot shortlist.
 Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
-`avoid_when`, and the cross-slot rules below. This table proposes; it never decides.
+the cross-slot rules below, and the ratio each type declares. This table proposes; it
+never decides.
 
-**Since 2026-08-26 it is a PREFERENCE ORDER, not the candidate pool** (ADR-058). Every
-image slot now carries three options of three DISTINCT types, and 43 of these 48 cells
-hold fewer than three — so a cell-as-pool reading would cap most slots below the rule.
-The pool is the whole channel-legal set, which SPEC §7.4 always said it was. Types named
-in a cell outrank types outside it at equal fit; a type outside the cell is a candidate,
-not a violation. An empty cell means no type is PREFERRED for that beat, never that the
-slot goes unrouted — only `cta` and `author` carry no image by definition.
+**This is a PREFERENCE ORDER, not the candidate pool** (ADR-058). The pool is every
+active type — all 17, for every slot. Types named in a row outrank types outside it at
+equal fit; a type outside the row is a candidate, not a violation. An empty row means no
+type is PREFERRED for that beat, never that the slot goes unrouted — only `cta` and
+`author` carry no image by definition.
 
-## Shortlist table
+**The four channel columns collapsed into one on 2026-08-26** (ADR-059). Channel stopped
+being an admission test, so the columns were the same preference written four times, and
+48 cells became 12 rows. A type preferred for `mechanism` is preferred for `mechanism`
+wherever that beat appears. The reason channel stopped gating: this library serves image
+types to ANY page kind — a customer may take an advertorial template and write listicle
+copy into it — so the page's kind is not knowable from its template, and the router only
+ever learned the channel by guessing it from `lpTypeId`. What the copy argues decides.
 
-| Role | marketplace | landing-page | paid-social | advertorial |
-|---|---|---|---|---|
-| hero | `06-relief-hero` (commercial) | `06-relief-hero` (commercial) | `06-relief-hero` (ugc), `01-pain-scene` | `01-pain-scene` (header) |
-| problem-agitation | `01-pain-split`, `02-symptom-rail` | `01-pain-split`, `02-symptom-rail`, `01-pain-scene` (confront) | `01-pain-scene` | `01-pain-scene` |
-| cause | `02-cause-anatomy` | `02-cause-anatomy` | — | `02-cause-anatomy` |
-| mechanism | `03-mechanism-ghostbody`, `03-spec-split`, `03-mechanism-xray`, `03-spec-explode`, `03-spec-macro` | `03-mechanism-ghostbody`, `03-mechanism-xray`, `03-spec-explode` | — | `03-mechanism-ghostbody`, `03-mechanism-xray` |
-| proof | `04-proof-lockedframe` (verdict / timelapse) | `04-proof-lockedframe` (verdict / timelapse / capture) | `04-proof-lockedframe` (rivals / timelapse) | `04-proof-lockedframe` (all variants) |
-| social-proof | `05-persona-grid` | `05-social-handoff`, `05-persona-grid`, `05-social-snapshot` | `05-social-handoff` | `05-social-handoff`, `05-social-snapshot` |
-| personas | `05-persona-grid` | `05-persona-grid` | — | — |
-| how-to-use | `03-use-sequence`, `03-use-grid` | `03-use-sequence`, `03-use-grid` | — | `03-use-sequence` |
-| comparison | `04-proof-lockedframe--verdict`, `03-spec-split`, `01-pain-split` | `04-proof-lockedframe--verdict` | — | `04-proof-lockedframe--verdict` |
-| outcome | `06-relief-hero` | `06-relief-hero` | `06-relief-hero` (ugc), `06-relief-scene`* | `06-relief-scene`*, `06-relief-hero` |
-| cta | — (standard product shot, out of library scope) | — | — | — |
-| author | — (a portrait of a named person, out of library scope) | — | — | — |
+## Preference table
 
-Two cells were TRIMMED rather than widened on 2026-08-11, because the type argued
-against itself being there: `02-symptom-rail` off advertorial (03-spec-split's
-avoid_when already rules that this infographic-tile aesthetic "signals cheap goods
-off-marketplace", and the rail shares the register), and `06-relief-scene` off
-landing-page (its use_when names only "an advertorial or final frame of an ads
-creative"). Every other disagreement was resolved by widening the type — see each
-type's CHANGELOG for the evidence.
+| Role | preferred types, best first |
+|---|---|
+| hero | `06-relief-hero`, `01-pain-scene` |
+| problem-agitation | `01-pain-scene`, `01-pain-split`, `02-symptom-rail` |
+| cause | `02-cause-anatomy` |
+| mechanism | `03-mechanism-ghostbody`, `03-mechanism-xray`, `03-spec-explode`, `03-spec-macro`, `03-spec-split` |
+| proof | `04-proof-lockedframe` |
+| social-proof | `05-social-handoff`, `05-social-snapshot`, `05-persona-grid` |
+| personas | `05-persona-grid` |
+| how-to-use | `03-use-sequence`, `03-use-grid` |
+| comparison | `04-proof-lockedframe--verdict`, `03-spec-split`, `01-pain-split` |
+| outcome | `06-relief-hero`, `06-relief-scene`* |
+| cta | — (standard product shot, out of library scope) |
+| author | — (a portrait of a named person, out of library scope) |
+
+Every one of the 17 active types appears in exactly one row or more, and
+`scripts/validate.py` fails if one does not — this table is now the ONLY place a type
+declares which beat it belongs to, so a type missing from it is a type no slot will ever
+prefer. That gate did not exist before ADR-059; `03-spec-macro` and `03-use-grid` went
+active on 2026-08-26 with no entry at all and nothing noticed.
 
 `*` `06-relief-scene` only when its `requires_pair` (`01-pain-scene`, same person) is
 also on the page.
 
-`03-spec-macro` (marketplace only) and `03-use-grid` (marketplace, landing-page) were
-added on 2026-08-26, the day they promoted. **Both had been active with no cell in this
-table at all**, which under the old cell-as-pool reading made them unroutable the moment
-they went live — promoted types that no slot could ever propose. Found by the three-type
-rule's feasibility count, not by a gate: nothing checks that an active type appears here.
-`03-spec-macro` sits beside `03-spec-split` in the marketplace mechanism cell and their
-`never_with` keeps them off the same page, which is a cross-slot rule doing its job, not
-a conflict in the cell.
+**Where the two 2026-08-11 channel trims went.** Two cells were TRIMMED rather than
+widened that day because the type argued against itself being there, and both survive as
+what they always were — statements about the CASE, not walls around a surface:
+
+- `02-symptom-rail` was cut off advertorial because the infographic-tile aesthetic
+  "signals cheap goods off-marketplace". It moved into that type's own `avoid_when` on
+  2026-08-26 and lasted one day: **ADR-060 removed `avoid_when` from every type**, so
+  the rule now has to live in `use_when` or not at all. It is not a refusal any more —
+  a rail on an editorial page is out-ranked by FIT rather than barred.
+- `06-relief-scene` was cut off landing-page because its `use_when` names only "an
+  advertorial or final frame of an ads creative". **That one survives untouched**:
+  `use_when` is criterion 1 of the ranking, so the beat scores low on FIT by the type's
+  own words. It was always the right place for it.
 
 `author` was added on 2026-08-18 with every cell empty, which is the point of adding it.
 Bylined advertorials carry portrait slots — a byline avatar, an About-the-author image,

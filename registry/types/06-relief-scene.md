@@ -33,11 +33,6 @@ use_when: >
   product's promise is a state of living rather than a feature, and the product
   can plausibly be present where the relief happens. Pairs naturally with a
   01-pain-scene of the same person, and does not depend on one.
-avoid_when: >
-  Marketplace galleries, main images, or anywhere the image must stand alone.
-  Not when the result is invisible on the body or an object — for invisible
-  results the closing image must be 06-relief-hero with the product in frame
-  (verified boundary, see the worked example).
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.

@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Image Prompt Library — query output contract",
-  "description": "What the QUERY operation returns (SPEC section 7, query/runbook.md). NEVER-EMPTY RULE: every image slot returns at least one renderable option, and since ADR-058 the target is THREE, each a distinct active type ranked by fit \u2014 a shortfall is legal only when the slot's pool_basis names what ran out. Stage 1 derives candidates from registry/index.yaml — channel legality from each type's own channels, then attribute gates, then role affinity from step+job — so a slot cannot run out while any type on the channel can carry the argument. An image slot with zero options is a contract violation, not a valid state.",
+  "description": "What the QUERY operation returns (SPEC section 7, query/runbook.md). NEVER-EMPTY RULE: every image slot returns at least one renderable option, and since ADR-058 the target is THREE, each a distinct active type ranked by fit \u2014 a shortfall is legal only when the slot's pool_basis names what ran out. Stage 1 derives candidates from registry/index.yaml — every active type, then attribute gates, then role affinity from step+job — so a slot cannot run out while any type in the library can carry the argument. Channel stopped being an admission test at ADR-059. An image slot with zero options is a contract violation, not a valid state.",
   "type": "object",
   "required": [
     "page_id",

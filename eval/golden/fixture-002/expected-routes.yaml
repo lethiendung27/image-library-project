@@ -24,10 +24,19 @@ slots:
   story-0-problem:
     section_role: problem-agitation
     expected_option_A: {type: 01-pain-scene, note: "another execution of the type already at hero-header, differing on subject class; varies_on must name the move. REWRITTEN 2026-08-26: this was 'rung 4' of the old ladder, a rung that no longer fills a pool (ADR-058) — it stays the right choice for option A and is no longer an answer to what B and C are."}
-    only_preferred_type: 01-pain-scene
     forbidden:
       - reason: "never_with 01-pain-scene, which serves the header of this same page"
         config: {type: 01-pain-split}
+      - reason: "02-symptom-rail's own avoid_when excludes an EDITORIAL page — the
+          infographic-tile register reads as cheap goods beside prose. That was a
+          channel wall until ADR-059 and is now the type's own sentence, which is
+          why this assertion still holds with the wall gone."
+        config: {type: 02-symptom-rail}
+    only_preferred_type_removed_2026_08_26: >
+      It said 01-pain-scene. The problem-agitation row now holds three types, and
+      both of the others are refused HERE by their own law rather than by a channel
+      column — 01-pain-split by never_with, 02-symptom-rail by avoid_when. The
+      outcome is unchanged and the reasoning is now visible in the forbidden list.
     superseded_2026_08_19: >
       expected_option_A was 02-symptom-rail until today. That was written on
       2026-08-11, in the same window as the slot-rules trim that took
@@ -61,8 +70,14 @@ slots:
   story-3-howto:
     section_role: how-to-use
     expected_option_A: {type: 03-use-sequence}
-    only_preferred_type: 03-use-sequence
-    note: "multi_step_usage=true keeps it"
+    legal_alternatives_must_include:
+      - {type: 03-use-grid}
+    note: >
+      multi_step_usage=true keeps 03-use-sequence at A. 03-use-grid became a real
+      alternative on 2026-08-26 (ADR-059): it argues the same beat by APPLICATION
+      rather than by ORDER, and it was held off advertorial only by a channel wall.
+      This is the first assertion in either fixture that the wall's removal turns
+      from a refusal into a choice, which is what the change was for.
 
   comparison:
     section_role: comparison

@@ -30,9 +30,6 @@ use_when: >
   The product has more than one operation step, or buyers may assume it is
   complicated. Image 4-5 in the gallery. Answers the question "will I manage to
   use this".
-avoid_when: >
-  The product has one obvious action. Never as a main image, never as a
-  scroll-stopper.
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once

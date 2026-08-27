@@ -33,11 +33,6 @@ use_when: >
   advertorial, or a comparison image in the gallery. Use ONLY when the
   difference is visible to the naked eye inside a static frame — otherwise
   switch variants (see VARIANT SELECTION RULE).
-avoid_when: >
-  The difference is invisible or only felt in use (then the object variants
-  produce pretty-but-empty images — verified failure). Never as a
-  scroll-stopper; this type is slow and needs an already-attentive viewer.
-  --rivals never on marketplace (no product in frame violates gallery rules).
 
 ## SKELETON
 A call-map. Each arrow names an entry in PARTS; the definition lives there once.

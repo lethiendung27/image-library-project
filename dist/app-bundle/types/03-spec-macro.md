@@ -35,6 +35,12 @@ one. The test is green because the type was not eligible to play, not because it
 competed and lost. The first marketplace fixture this library grows is where this
 criterion actually gets tested.
 
+**Superseded the same day by ADR-059**, which removed channel as an admission test
+altogether. This type is now a candidate for every slot on every page, so the reason
+criterion 2 came back green — ineligibility — no longer exists. The criterion has still
+never been tested in substance: it passed because the type could not play, and it has
+not been re-run now that it can. Re-run it when a fixture next changes.
+
 ## PURPOSE
 Build quality exhibited at surface scale: an extreme close-up in which the
 material itself — machined teeth, milled edges, braided strands, layered
@@ -47,12 +53,6 @@ use_when: >
   tools, machined metal, braided cords, engineered surfaces. Step-3 gallery
   image for the "is it solid" doubt. Strongest when a live action (mid-cut,
   under load) anchors the texture to function.
-avoid_when: >
-  Products whose surfaces are honestly unremarkable (smooth plastic shells —
-  use explode or xray for what hides inside). Never beside 03-spec-split
-  (never_with: two component-superiority arguments protest too much). Not for
-  soft/lifestyle positioning where machining aesthetics read as industrial
-  coldness.
 
 ## SKELETON
 ```
