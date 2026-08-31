@@ -32,15 +32,29 @@ verdicts are always the user's call.
 
 ## 1. Build the to-do list (ledger = checkpoint)
 
-```sh
-# manifest of all source image hashes (recursive, common formats)
-find /Users/lethiendung/Downloads/image-library-assets/stills -type f \
-  \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.avif' \) \
-  -exec shasum -a 256 {} + | awk '{print "sha256:" $1 "  " $2}' > /tmp/manifest.txt
-# hashes already ledgered
-grep -o '"hash": *"sha256:[0-9a-f]*"' ingestion/observations.jsonl | grep -o 'sha256:[0-9a-f]*' | sort -u > /tmp/done.txt
-# to-do = manifest − done
+```python
+# manifest + to-do in one pass. Build it in PYTHON, not shell — see the warning below.
+import hashlib, io, json, os
+ROOT = "/Users/lethiendung/Downloads/image-library-assets/stills"
+EXT = {".png", ".jpg", ".jpeg", ".webp", ".avif"}
+rows = []
+for dp, _, fns in os.walk(ROOT):
+    for fn in fns:
+        if os.path.splitext(fn)[1].lower() in EXT:
+            p = os.path.join(dp, fn)
+            rows.append((f"sha256:{hashlib.sha256(io.open(p,'rb').read()).hexdigest()}", p))
+done = {json.loads(l)["hash"] for l in io.open("ingestion/observations.jsonl", encoding="utf-8") if l.strip()}
+todo = [(h, p) for h, p in rows if h not in done]
 ```
+
+**The shell one-liner this replaced was BROKEN and silently so (2026-08-31).** It piped
+`find … -exec shasum` through `awk '{print "sha256:" $1 "  " $2}'`, and `$2` is the first
+whitespace-delimited token of the path — so every file under a folder whose NAME contains a
+space came back truncated at that space. Measured: a folder named `LP3 assets learn` holding
+653 files produced a to-do list saying **0 outstanding**, because all 653 paths collapsed to
+`…/stills/LP3`. Rebuilt in Python the same corpus gave 701 files, 666 unique hashes, 588
+outstanding. A to-do list that comes back suspiciously empty is the symptom; check for spaces
+in directory names before believing it.
 
 Pick the next 15–25 undone images as this batch. Batch id: `YYYY-MM-DD-<letter>`.
 
@@ -56,6 +70,19 @@ sips -s format png "<source>.avif" --out "<scratch>/<name>.png"
 Never classify an image you could not actually see; a filename is not evidence. Formats
 outside the manifest list are outside the to-do by definition — `.gif` in particular is
 not a manifest format, so motion assets are not batch input.
+
+**A filename is not evidence for SCOPING either, and this cost two batches.** Selecting a
+batch by filename pattern — excluding `icon|logo|badge|avatar`, or preferring `benefit-*` —
+let an avatar through twice: `…__gallery-14-vet-quote-dr.jpg` and
+`…__benefit-6-banner-review.png` are both quote-attribution portraits and neither name says
+so. Filename patterns are fine for ORDERING a to-do list and useless for deciding what an
+asset is. Budget for a few rejects per batch rather than trusting the filter.
+
+**Selecting rather than taking the next N is legitimate and must be stated.** A market corpus
+folder is often two-thirds page furniture, and twenty sequential files can be twenty rejects
+that teach nothing. Batches 2026-08-31-A and -B both selected argument-carrying assets
+round-robin across products, and both said so in their commit message. What is not legitimate
+is selecting silently: the reader of the ledger has to know the sample was shaped.
 
 **The manifest points at `stills/`, and that is load-bearing (2026-08-19, ADR-025).** The
 asset folder now holds `stills/` (the market corpus), `feedback/` (this library's own
