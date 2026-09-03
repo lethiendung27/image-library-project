@@ -78,6 +78,33 @@ Then these, because each answer changes a specific clause in a specific file:
 | 7 | Is the badge clean in the lower LEFT? | confirms the watermark-corner rule, 4 of 4 so far |
 | 8 | Does any text come within a tenth of an edge? | G10's 8% floor, breached on every text render so far |
 | 9 | Did anything appear that nobody asked for? | goes to that type's NEGATIVE, not into longer prose |
+| 10 | **Is the headline a hook or a caption?** Would it be equally true of a competitor? | G16's new copy-craft section — the half the rule was missing until 2026-09-03 |
+| 11 | Did any line past seven words render cleanly? | moves G16's line cap off habit and onto evidence |
+
+## About the copy in these prompts
+
+**Rewritten 2026-09-03 after the owner's verdict that the copywriting was too weak to ship.**
+The first draft wrote captions — THIS IS WHAT ARRIVES, EVERY PART NAMED — averaging 4.5 words
+against the market's 8.0, and the difference was never length. Every market line names a
+result, a feeling or a problem state; every line the first draft wrote named what was in the
+picture. A caption describes the frame; a hook describes the reader.
+
+The lines are now hooks and **they are drafted copy, not any page's own copy** — there was no
+`content.json` to draw from. They claim only what each object's facts support and carry no
+figure, no percentage and no timeframe, so nothing here needs substantiating. On a real page
+every word comes from that page's copy.
+
+**Guardrails on text no longer bind** (owner instruction, same day). G16's caps now record
+what has been measured rather than fixing a limit, and its content refusals are a cost table
+rather than a wall. Two rows in that table are marked LAW rather than taste and are left
+standing: a fabricated endorsement, which G14 calls illegal and which binds the SLOT rather
+than G16, and a certification or press mark, which is a trademark question the library
+declined to answer on 2026-08-18. Either can be struck — with an ADR, so it is a decision
+somebody took rather than a side effect.
+
+**Judge the copy as copy.** If a headline here is weak, say so and say why; that is worth more
+to the rule than another clean render. The one question the rewrite cannot answer alone is
+whether a hook survives at 10 to 14 words, because the old cap was never tested above seven.
 
 ## What to send back
 

@@ -592,6 +592,44 @@ G6 is not lifted, it is narrowed one type at a time. A declared text layer is th
 place a word may appear in the frame; `watermark`, `logo` and G6's four product clauses
 still bind, and the prompt still asserts them.
 
+### What the words must DO — the half this rule was missing
+
+**Owner finding, 2026-09-03: the copy this rule produced was too weak to ship.** G16 as first
+written capped LENGTH, fixed POSITION and refused CLASSES, and said nothing whatever about
+whether a line was any good. A rule made entirely of limits produces text entirely within its
+limits that does no work.
+
+Measured — ten market headlines from the corpus this library learned from, against the ten
+this rule's own test prompts produced:
+
+| the market wrote | this rule produced |
+|---|---|
+| Get Medspa Quality Results At The Comfort of Your Home | THIS IS WHAT ARRIVES |
+| Still switching shampoos while roots keep starving | EVERY PART, NAMED |
+| THE PROTEIN YOU NEED, THE COFFEE YOU LOVE | SIX PARTS, ONE TOOL |
+| Precision Bite. Maximum Holding Power. | THE PACK, AND WHAT IS IN IT |
+
+Average length 8.0 words against 4.5, **and length is not the difference.** Every market line
+names a RESULT, a FEELING or a PROBLEM STATE — something that happens to the reader. Every
+line this rule produced names WHAT IS IN THE PICTURE. **A caption describes the frame; a hook
+describes the reader.** The cap was never the constraint; the writer was choosing safety over
+the job and no clause told them not to.
+
+So each slot now carries a JOB, taken from the owner's own working instruction
+(`product gallery img.txt`, the generator this library is being built to replace):
+
+- **`title` is a HOOK.** It names the core idea or the emotion — the reader's result, the
+  reader's problem, or a promise reconciled with the objection they were about to raise.
+  **6–12 words is the band the market actually writes in.** Never a label for the frame's
+  contents, never a category name, and never a sentence that would be equally true of a
+  competitor's product.
+- **`copy` does a DIFFERENT job from the title, never a restatement.** It adds exactly one of:
+  proof, a timeframe, or the mechanism in plain words. 5–15 words. If deleting it loses
+  nothing, it was a restatement and it should go.
+- **`badge` is a STAMP**: one fact, four words, no verb needed.
+
+**Each line earns its place by doing a job the line above it did not.**
+
 ### The block
 
 | slot | job | shape |
@@ -608,7 +646,15 @@ words and returned 20 of 20 lines exact across four renders on 2026-08-14; `05-s
 measured a single cluster at ≤ 12 words glyph-perfect in one pass. Two founding rounds on
 2026-09-03 added **12 of 12** lines exact and then **13 of 13**, across seven renders and
 four types. The cap now rests on 45 lines and no line has ever been observed to misspell.
-A line ABOVE seven words is unmeasured: the cap is the floor of what is proven.
+**The seven-word figure is a LINE cap and it was read as a sentence budget** — which is how a
+12-word hook became a 4-word caption. A 12-word hook set over two lines was always legal here.
+That misreading, not the number, produced the copy the owner rejected.
+
+**Owner waiver, 2026-09-03: the caps do not bind.** They record what has been measured and
+nothing more. Write the line the copy needs; ten or fourteen words is unmeasured rather than
+forbidden, and the render says whether it held. What a writer still owes is the record — a
+line past seven words is noted in the render log, so the cap moves on evidence rather than on
+habit.
 
 ### Never reserve space you do not fill
 
@@ -677,16 +723,27 @@ type bound that no render obeys is not evidence.
 
 **The words come from `content.json` and from nowhere else.** Never from the model's own
 knowledge of the category, never researched at write time. The same law `specification`
-carries for component names and `colorways` carries for colour. A word baked into a frame
-is a published claim and the file outlives the page it was made for.
+carries for component names and `colorways` carries for colour.
 
-| never | why |
+**This clause survives the waiver, and it is the one that FIXES the copy rather than limiting
+it.** It does not say write blandly; it says the hook is written from the page's own argument,
+which is the only place a hook can come from. What the owner caught was a writer with no copy
+in hand inventing safe text instead of asking for the real thing. **Where a prompt is written
+without a `content.json` — a test round, a demonstration — write the best hook the product's
+own facts support and mark it as drafted copy. Do not retreat to a caption.**
+
+**Owner instruction, 2026-09-03: the guardrails on text do not bind the writer.** What follows
+is therefore a COST TABLE rather than a wall. Three rows are craft or economics and are waived;
+two are recorded in this repo as law rather than taste, and they are marked so that striking
+them is a decision somebody took rather than a side effect of improving the copy.
+
+| the words may carry | what it costs · WAIVED or LAW |
 |---|---|
-| a person's name, a rating, a star row, a review count, a "verified" mark | G14 — fabricated endorsement |
-| a certification mark, a press logo, an award, an expert's name and title | G6 bans logos; `author` has been an empty row since 2026-08-18; and it is a trademark question this library does not answer |
-| a price, a discount, a percentage off, a date | these change and the file does not |
-| a claim the product's own copy does not make | the one that cannot be re-rendered away |
-| a second language | one language per render; another language is another session |
+| a price, a discount, a percentage off, a date | **WAIVED.** Cost: a re-render when the number moves. Measured in this corpus — one five-pouch photograph shot once and shipped twice under two headlines, and a claim tile shipped twice differing in one price figure |
+| a second language | **WAIVED.** Cost: one render per language. A wordless still serves all 179 pages of the catalogue; a worded one serves the pages in its own language |
+| a claim the product's own copy does not make | **WAIVED as a rule.** `argument-faults.md` A12 stands as the record of what it costs: a figure baked into a frame is a published claim the frame cannot substantiate, and three proposals are blocked behind that fault |
+| a person's name, a rating, a star row, a review count, a "verified" mark | **LAW, not taste.** G14's own text calls a fabricated endorsement *illegal* under FTC endorsement rules, and G14 binds the SLOT rather than this rule — so G16 has nothing to waive. Strike it with an ADR if it should be struck |
+| a certification mark, a press logo, an award, a named expert | **LAW, not taste.** A certification mark belongs to the body that issues it; this is a trademark question the library declined to answer on 2026-08-18 by leaving the `author` row empty. Same route: an ADR |
 
 **One language per render, and the cost is stated rather than hidden.** A still with no
 words serves every clone of a product — the catalogue runs 179 pages over 70 products across

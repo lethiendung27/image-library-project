@@ -12,11 +12,24 @@ rule that holds on the product it was written from is a coincidence.
 attachments field is not a blocked prompt — the block is written to be paste-and-run with the
 photo you attach in the tool.
 
-**The claim text is a PLACEHOLDER in every prompt.** It names parts and functions that are
-structurally true of the object and asserts no figure, because a number in a frame is a claim
-the frame cannot substantiate (argument-fault A12). Before any of these ships on a real page,
-every word comes from that page's own `content.json`. For THIS round leave the words as they
-are — the round measures whether text renders and where it lands, not what it says.
+**The copy was rewritten on 2026-09-03 and the old version is worth knowing about**, because
+it is why this round exists. The first draft of these prompts wrote lines like THIS IS WHAT
+ARRIVES, EVERY PART NAMED and SIX PARTS ONE TOOL — captions describing the frame, averaging
+4.5 words, written that way deliberately to avoid asserting a claim. The owner's verdict was
+that the copywriting was too weak to ship, and the audit agrees: the market writes at 8.0
+words and every market line names a RESULT, a FEELING or a PROBLEM STATE. **A caption
+describes the frame; a hook describes the reader.**
+
+The lines below are hooks. They are **drafted copy, not the product's own copy** — no page's
+`content.json` was available — so they claim only what the object's own facts support and
+carry no figure, no percentage and no timeframe. On a real page every word comes from that
+page's copy; G16's content clause is the one thing the owner's waiver leaves standing, because
+it is what makes a hook possible rather than what limits it.
+
+**The guardrails on text no longer bind** (owner instruction, 2026-09-03). The seven-word cap
+was a LINE cap read as a sentence budget, which is exactly how a 12-word hook became a 4-word
+caption; it now records what has been measured and nothing more. Lines past seven words below
+are marked so the render log can move the cap on evidence.
 
 Three fixes from the earlier rounds are in all six: **the badge is bottom LEFT** (the
 generation tool's watermark sits at about 90% across, 90% down and struck through 3 of 3
@@ -52,14 +65,15 @@ legible and nothing falls into shadow. No hard side light.
 
 CALLOUTS: four short labels in flat solid dark grey sans-serif, each on the empty ground,
 each joined to the part it names by one thin straight grey line:
-upper left, joined to the outer face of the standing earbud: The touch panel
-lower left, joined to the inner face of the standing earbud: The microphone port
-upper right, joined to the earbud lying in the case: The charging contacts
-lower right, joined to the open lid of the case: The lid that holds the charge
+upper left, joined to the outer face of the standing earbud: Tap it and it listens
+lower left, joined to the inner face of the standing earbud: The mic that hears you first
+upper right, joined to the earbud lying in the case: Drops in, charges, forgets nothing
+lower right, joined to the open lid of the case: Pocket-sized, so it comes with you
 
-TEXT: across the top of the picture, one line of larger bolder dark grey sans-serif,
+TEXT: across the top of the picture, two lines of larger bolder dark grey sans-serif, each
 beginning at the same distance from the left edge as the upper-left label:
-EVERY PART, NAMED
+UNDERSTAND EACH OTHER
+BEFORE THE SENTENCE ENDS
 
 Nothing in the picture comes within a tenth of its width of any edge.
 
@@ -96,13 +110,18 @@ falls into shadow.
 
 CALLOUTS: six short labels in flat solid near-black sans-serif, each on the empty ground,
 each joined to the part it names by one thin straight grey line:
-The cutting blade · The safety guard · The trigger · The speed switch ·
-The charging port · The moulded grip
+Cuts what scissors would fight ·
+The guard your other hand thanks ·
+One finger does the whole job ·
+Slow for card, fast for fabric ·
+Charges where your phone charges ·
+Shaped for hands that ache after ten minutes
 Place them so no two labels touch and no line crosses another.
 
-TEXT: across the top, one line of larger bolder near-black sans-serif, beginning at the same
-distance from the left edge as the leftmost label:
-SIX PARTS, ONE TOOL
+TEXT: across the top, two lines of larger bolder near-black sans-serif, each beginning at the
+same distance from the left edge as the leftmost label:
+YOUR HAND STOPS ACHING
+HALFWAY THROUGH THE ROLL
 
 BADGE: in the lower LEFT of the picture, on the empty ground and well inside the edges, a
 small flat solid near-black rectangle, and inside it in white capitals: CORDLESS
@@ -143,15 +162,16 @@ LAYOUT: the vacuum holds the right third; the left two thirds of the field are e
 TEXT: in the empty field on the left, a headline and beneath it three separate lines each
 with a small simple line-drawn glyph at its left. All of it flat solid white sans-serif.
 Every line, and every glyph, begins at the same distance from the left edge of the picture.
-The headline, larger and bolder than everything under it, reads exactly:
-THE MATTRESS YOU SLEEP ON
+The headline, larger and bolder than everything under it, set over two lines, reads exactly:
+YOU CHANGE THE SHEETS.
+NOTHING UNDER THEM CHANGES.
 Then three lines, each smaller than the headline and each with its own glyph:
-a sun glyph, then the line: Works dry, on any fabric
-a bed glyph, then the line: Reaches into the mattress surface
-a battery glyph, then the line: Cordless, so nothing trails
+a sun glyph, then the line: Works dry, so the bed is yours again by bedtime
+a bed glyph, then the line: Goes into the surface, not just over it
+a battery glyph, then the line: No cord to drag around the bed frame
 
 BADGE: in the lower LEFT, on the empty field and well inside the edges, a small flat solid
-white rectangle, and inside it in slate blue capitals: HANDHELD
+white rectangle, and inside it in slate blue capitals: TEN MINUTES A BED
 
 Nothing in the picture comes within a tenth of its width of any edge.
 
@@ -191,15 +211,16 @@ LAYOUT: he holds the right half; the out-of-focus wall on the left holds the wor
 TEXT: on the out-of-focus wall at the left, a headline and beneath it three separate lines
 each with a small simple line-drawn glyph at its left. All of it flat solid white
 sans-serif, dark enough behind it to read. Every line, and every glyph, begins at the same
-distance from the left edge of the picture. The headline, larger and bolder, reads exactly:
-FIVE MINUTES, SITTING DOWN
+distance from the left edge of the picture. The headline, larger and bolder, set over two lines, reads exactly:
+THE GYM YOU KEEP MEANING
+TO GO BACK TO
 Then three lines, each smaller and each with its own glyph:
-a dial glyph, then the line: Resistance you set by hand
-a counter glyph, then the line: The count is on the display
-a chair glyph, then the line: Works seated, indoors, anywhere
+a dial glyph, then the line: Turn it up the week it starts feeling easy
+a counter glyph, then the line: The display counts, so you do not have to
+a chair glyph, then the line: Done sitting down, in the room you are already in
 
 BADGE: in the lower LEFT, on the out-of-focus floor and well inside the edges, a small flat
-solid white rectangle, and inside it in dark grey capitals: NO WEIGHTS
+solid white rectangle, and inside it in dark grey capitals: NOTHING TO RACK
 
 Nothing in the picture comes within a tenth of its width of any edge.
 
@@ -235,9 +256,10 @@ no surface texture, no second object, no prop.
 LIGHT: broad and even from the front and slightly above, soft enough that the finish reads
 and strong enough that every word printed on the cup stays legible.
 
-TEXT: across the upper part of the empty ground, one line of flat solid dark grey
-sans-serif, beginning a tenth of the picture's width from the left edge:
-THIS IS WHAT ARRIVES
+TEXT: across the upper part of the empty ground, two lines of flat solid dark grey
+sans-serif, each beginning a tenth of the picture's width from the left edge:
+BREAKFAST THAT FITS
+IN THE CUP HOLDER
 
 Nothing in the picture comes within a tenth of its width of any edge.
 
@@ -275,12 +297,13 @@ LIGHT: broad and even from the front and slightly above, soft enough that both t
 finish and the balls' surface read, and strong enough that every word printed on the pack
 stays legible.
 
-TEXT: across the upper part of the empty ground, one line of flat solid dark grey
-sans-serif, beginning a tenth of the picture's width from the left edge:
-THE PACK, AND WHAT IS IN IT
+TEXT: across the upper part of the empty ground, two lines of flat solid dark grey
+sans-serif, each beginning a tenth of the picture's width from the left edge:
+NOTHING SNAPS. NOTHING DIES.
+THEY JUST STOP COMING BACK.
 
 BADGE: in the lower LEFT, on the empty ground and well inside the edges, a small flat solid
-dark grey rectangle, and inside it in white capitals: READY TO PLACE
+dark grey rectangle, and inside it in white capitals: DROP AND WALK AWAY
 
 Nothing in the picture comes within a tenth of its width of any edge.
 
