@@ -325,13 +325,25 @@ different grounds and mark counts of four and five. A drawn element would vary w
 and every one of those prompts closed its mark block with "nothing in the frame is marked
 that is not named here", which did not suppress it.
 
-That reads as a platform watermark rather than a drawn element, and no prompt can remove
-one. It is **not settled**, and the reason is on this page: the four mark-free controls of
-the restraint test below were explicitly clean, so the glyph is not on every render this
-model returns. Two cheap things would settle it — whether the render tool has a watermark
-setting, and whether the glyph survives a prompt that names the bottom-right corner as
-deliberately empty. Until then, treat it as a platform artefact rather than a Rule 7
-failure, and crop it in post on any channel that cannot carry it.
+**SETTLED 2026-09-03, owner verdict: it is the generation tool's watermark.** Not a drawn
+element, not a Rule 7 failure, and no prompt removes it. This paragraph previously said "not
+settled" and named two cheap tests; the owner answered the question directly instead, and
+three further observations that day fixed its geometry.
+
+Those three came from the founding round of a text-carrying type. The glyph appeared on 3 of
+3 renders at the **same frame coordinates — about 90% across and 90% down, roughly 5% of the
+frame wide** — across three different images, three different grounds and three badges of
+different heights. A mark that holds frame coordinates while everything under it changes is
+fixed to the output, not to the picture. It is light and semi-transparent, which is why the
+four mark-free controls below read as clean: on a pale corner it is invisible, and it shows
+only where something dark sits under it.
+
+**The operational rule, and it is the whole consequence: put nothing in the bottom-right
+corner.** Cropping is the old advice and it is not always available — a badge placed there
+cannot be cropped away without losing the badge, which is what happened to three of three
+badges on 2026-09-03. Moving every badge to the bottom LEFT returned 4 of 4 clean the same
+day. Any type that legislates a badge, a stamp or a corner element states the corner, and
+states it as bottom-left.
 
 ### First re-render after both fixes: marks present in 10 of 10 (2026-08-12)
 
