@@ -293,7 +293,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 2
+    evidence_count: 3
     picks: {}
     use_when: >
       The buyer already understands the problem and mechanism, is now
