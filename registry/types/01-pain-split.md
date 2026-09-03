@@ -288,12 +288,10 @@ the job and the grade change.
 
 ## CHANGELOG
 - 1.9 (2026-09-03): `--mirror`'s `generation_mode override: multi-pass` is **removed**
-  (ADR-067, owner instruction). The invariants block was already the recorded alternative,
-  already the only route open to this operator since ADR-021, and already carried a `pass`
-  worked example rendered in one pass. The override contradicted the type's own evidence.
-  KNOWN-FLAKY reworded: the 2026-08-12 identity break is about WHERE the person is described,
-  not about pass count. `ratios` corrected to ADR-016's legal set: `4:5` dropped, unaskable
-  since 2026-08-13, which leaves the one ratio this type has actually rendered at.
+  (ADR-067, owner instruction) — the type's own passing single-pass worked example had
+  contradicted it since 1.8. The invariants block is the declared route. KNOWN-FLAKY
+  reworded: the identity break of 2026-08-12 is about WHERE the person is described, not
+  about pass count. `ratios` corrected to ADR-016's five: `4:5` dropped.
 - 1.8 (2026-08-13): **type PASSED by the owner; file finalised.** Three renders, one per
   variant: `--mirror` and `--oldway` pass, `--object` partial. WORKED EXAMPLES returns with
   the two passes in full text. Two findings patched: naming a structure does not bind the
