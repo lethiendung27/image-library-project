@@ -16,10 +16,11 @@ Verified facts this adapter is built on (Google Developers Blog, "How to prompt 
   and perspective.
 - **Conversational editing** is supported ("Keep everything the same, but…") —
   multi-pass pipelines are officially viable. **That is a fact about the MODEL and
-  this pipeline does not use it** (ADR-021, ADR-039): the constraint is the
-  operator, who renders by hand and does not composite. Rule 3 is retired.
-  Recorded here rather than deleted because the capability is real and a future
-  operator decision could reach for it.
+  this library does not use it.** The constraint is the operator, who renders by
+  hand and does not composite (ADR-021). Rule 3 is retired (ADR-039) and the
+  `multi-pass` value is removed from the vocabulary (ADR-067). The model fact is
+  kept because it is true and because a future operator decision would start by
+  re-reading it; nothing in this repo may be written against it today.
 
 ## Rule 1 — Negative translation
 
@@ -120,58 +121,48 @@ block verbatim as the FIRST paragraph of the prompt. With multiple layers showin
 product, keep the "identical in every layer" sentence. Never describe the product's
 appearance in text (G2) — the reference image carries it.
 
-## Rule 3 — Multi-pass expansion — RETIRED, kept as the record only
+## Rule 3 — Multi-pass expansion — REMOVED
 
-**This rule is not applied. Nothing is expanded into `steps[]`.** ADR-021 declared
-the render capability once: this pipeline is paste-and-run — one prompt, one
-generation call, at most one reference photo the owner attaches in the tool — and
-`query/runbook.md` Step 3 carries the ban. This rule survived that ADR untouched and
-went on teaching the banned thing for three days, while `runbook.md` Step 6 pointed
-here for it. Retired at ADR-039.
+**This rule expanded a `multi-pass` option into an ordered `steps[]` script:
+generate one panel, edit-swap the variable, composite. Nothing is expanded any
+more, and there is nothing left to expand into.** The three-step retirement, so a
+reader who finds a `steps[]` in an old file knows what it was:
 
-It is left standing rather than deleted because one delivered page predates the ban
-and its `steps[]` are read against these templates:
+| | |
+|---|---|
+| ADR-021, 2026-08-14 | the pipeline is paste-and-run; a multi-pass option is never emitted |
+| ADR-039, 2026-08-19 | this rule retired and `steps[]` retired with it — it had gone on teaching the banned thing for three days after ADR-021, while `runbook.md` Step 6 pointed here for it |
+| ADR-067, 2026-09-03 | `multi-pass` removed from `registry/vocabulary.yaml`; the templates below deleted |
+
+**The templates are deleted rather than kept as a record**, which reverses ADR-039's
+choice on the owner's instruction. They were kept for one pre-ADR-021 page whose
+`steps[]` were read against them —
 `query/sessions/advertorial-seat-cushion-l-shaped-v02` (page 37), three options on
 `story.1.image`, grandfathered by name in `scripts/validate.py` and warned on every
-run. Nothing new is written against it.
+run. That page is a delivered record and is not re-rendered; if it ever is, it is
+re-routed under today's law rather than reconstructed under the old one. Keeping a
+worked script for a banned capability is the exact failure CLAUDE.md rule 6c names.
 
-Where a type declares `generation_mode: multi-pass` — `04-proof-lockedframe`,
-`05-social-handoff`, and `01-pain-split --mirror` as a variant override — that
-declaration is a true statement about what the PICTURE needs and it stays. Each of
-those files also records its own single-pass route, and that route is what ships:
-`strict` falls to `handheld`, the `inset` is dropped rather than the type, and
-`--mirror` takes the invariants block.
+**What replaces each case the templates covered.** All three are single-pass, and
+each is a mechanism this repo has measured rather than an assurance:
 
-The templates below are the historical record of what a multi-pass run WOULD have
-been. Do not emit them.
-
-For `generation_mode: multi-pass` (or a variant override), emit `steps[]`:
-
-**Template A — locked-frame panel series (`04-proof-lockedframe` strict, `01-pain-split--mirror`):**
-1. `generate` — one panel only, at the panel's own aspect ratio, from the panel-1
-   portion of the prompt.
-2. `edit` — "Keep everything in this image exactly the same — camera, framing,
-   lighting, background, every fixed object — and change ONLY [the variable]:
-   [panel-2 state]." Repeat per remaining panel.
-3. `composite` — assemble panels with the gutters/borders from the skeleton in an
-   image editor; do not ask the model to draw the multi-panel frame.
-
-**Template B — reference-true inset. NOT NEEDED BY `05-social-handoff` SINCE 2.6, AND
-NARROWED HERE RATHER THAN DELETED.** That type's inset is model-drawn and single-pass,
-confirmed 4 of 4 (ADR-053): a two-tone unit reproduced the same dirty water at the same level
-in the same two chambers, and a metallic unit matched on finish. What binds it is a clause, not
-a compositing step — the same way `06-relief-hero` binds its own five inset modes single-pass.
-
-The template is left standing for any OTHER inset that must match a real product and has no
-render behind it yet. Note the standing tension, not resolved here: ADR-021 removed post from
-this pipeline, so a `composite` step has no sanctioned route at all, and this is one of six
-teaching files that still describe one. That sweep is a separate decision with its own blast
-radius.
-
-**Template C — same-person pair (`01-pain-scene` + `06-relief-scene` bookends):**
-1. `generate` — the pain scene.
-2. `edit` — "Same person, same palette and grain: [relief-scene prompt]" using the
-   pain output as reference input.
+- **Locked-frame panel series** (`04-proof-lockedframe` strict, `01-pain-split
+  --mirror`) — an **invariants block**: state camera position, height, distance,
+  framing, lighting, and the subject's own fixed features ONCE, before any panel is
+  described. Measured on `--mirror`: the person described inside each panel returned
+  two people, the invariants block returned one, 1 of 1 each way, and its `pass`
+  worked example is a single-pass render. Measured against it: `03-spec-lineup`'s
+  founding round broke its one-variable law inside an invariants block. It is the
+  best route available, not a guarantee.
+- **Reference-true inset** — a clause, not a compositing step. `05-social-handoff`'s
+  inset is model-drawn and single-pass, 4 of 4 (ADR-053); `06-relief-hero` binds five
+  inset modes the same way. An inset that cannot be bound by a clause is dropped and
+  the type ships without it.
+- **Same-person pair across two frames** (`01-pain-scene` + `06-relief-scene`
+  bookends) — the same invariants block, written identically into both prompts. Each
+  frame is its own generation call; nothing is fed from one output into the next.
+  **Untested**: no render exists of a bookend pair built this way, and that is the
+  gap this deletion leaves open rather than hides.
 
 ## Rule 4 — Ratio and framing
 

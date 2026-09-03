@@ -70,22 +70,21 @@ axes:
   inset_motion: [still, loop]
 
 # A type declares what its picture NEEDS. What the pipeline can actually DO is
-# declared once in query/runbook.md Step 3 — paste-and-run, no compositing — and
-# multi-pass is never emitted into a prompt set. ADR-021.
+# declared once in query/runbook.md Step 3 — paste-and-run, no compositing.
 #
-# `multi-pass` is DEPRECATED and on its way out (ADR-041). No code has ever
-# branched on it: validate.py requires the key, checks it against this list and
-# writes it into index.yaml, and nothing else reads the value. The name is the
-# problem — `generation_mode` sounds like a statement about the PIPELINE and is
-# actually a statement about what the PICTURE needs, which is why reading it back
-# looked like the system returning multi-pass.
+# `multi-pass` is GONE (ADR-067, owner instruction 2026-09-03). ADR-021 stopped it
+# reaching a prompt, ADR-039 retired the adapter rule that expanded it, ADR-041
+# deprecated the value and set the countdown this line describes, and the count
+# reached 0 on 2026-09-03 when `04-proof-lockedframe` took the invariants-block
+# route. The value is removed rather than left deprecated because a legal value no
+# route can select is the shape CLAUDE.md rule 6c exists to catch.
 #
-# It stays in this list only until the owner's audit clears the type files that
-# still declare it. scripts/validate.py warns one line per remaining declaration
-# and names the count; when that count is 0, delete `multi-pass` from this line
-# and the value is gone. Removing it first would error those type files and turn
-# the tree red for every lane.
-generation_modes: [single-pass, multi-pass]
+# The field keeps its name and its meaning: `generation_mode` reads like a claim
+# about the PIPELINE and is a claim about what the PICTURE needs. With one legal
+# value it now says the same thing every time, which is the honest state — every
+# picture this library describes is reachable in one generation call, and a picture
+# that is not does not get a type until a single-pass route for it exists.
+generation_modes: [single-pass]
 
 channels: [marketplace, landing-page, paid-social, advertorial]
 

@@ -3,13 +3,13 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.15"
+version: "1.16"
 status: active
 replaced_by: null
-ratios: ["5:3", "16:9", "1:1", "3:2"]
+ratios: ["16:9", "1:1"]
 channels: [advertorial, landing-page, marketplace, paid-social]
 requires_product_photo: true
-generation_mode: multi-pass
+generation_mode: single-pass
 axes:
   camera_lock: [strict, handheld]
   context_mode: [natural-use, declared-test]
@@ -77,13 +77,20 @@ itself: a larger frame favours its panel, and no panel may be favoured. Equal, a
 
 - `strict` — identical position, focal length, height and angle in every panel, with 3-4
   named anchor objects that align across all of them, and identical lighting, exposure and
-  white balance. **Multi-pass is mandatory**: generate one panel, edit-swap the variable,
-  composite.
+  white balance.
 
-  **A panel-1 prompt carries NO multi-panel language** — no layout, no gutters, no "every
-  panel", no anchor list. Step 1 is ONE photograph; told about panels, the model draws them.
-  The cross-panel constraints belong to the EDIT step, which enforces them by construction:
-  *keep everything exactly the same and change ONLY [X]*.
+  **The route is an INVARIANTS BLOCK, single-pass** (ADR-067). State the camera position,
+  focal length, height, angle, the named anchor objects, and the lighting, exposure and white
+  balance ONCE, BEFORE any panel is described — then describe the panels, and let the only
+  difference between them be the variable. This is the mechanism `01-pain-split --mirror`
+  measured: describing the invariant inside each panel returned two different subjects,
+  naming it once before them returned one, 1 of 1 each way.
+
+  **Until ADR-067 this value declared multi-pass and was therefore unreachable**, because
+  ADR-021 removed compositing from the pipeline on 2026-08-14. It had been a value no route
+  could select for twenty days while `eval/golden/fixture-002` went on asserting it. The
+  invariants block is what makes it selectable again, and it is a claim with one supporting
+  render in another type and one contradicting render in a third — see KNOWN-FLAKY.
 - `handheld` — shot by one person on a phone on different days. **Describe ONE framing once**
   for every panel — where the subject sits, camera height and distance, what occupies the
   upper and lower thirds — then state the band: it reads as one shot taken [N] times, never
@@ -97,10 +104,13 @@ the variable is an object swapped in and out; `handheld` when the panels are sep
 time. A pixel-locked frame across "six months" is proof of staging, not of process — it
 betrays its own argument.
 
-**Then by CAPABILITY.** `strict` needs compositing, so where the renderer cannot composite it
-is unavailable and the panels run `handheld`, `--verdict` included. The fairness rule governs
-TREATMENT, not pixel lock; what is lost is the alignment that makes a swap self-evident, so the
-variable has to be the more visible for it.
+**The CAPABILITY gate is retired** (ADR-067). It read "`strict` needs compositing, so where
+the renderer cannot composite it is unavailable and the panels run `handheld`" — and since
+ADR-021 that condition was permanently true, so the gate was a permanent refusal wearing a
+conditional's clothes. `strict` now has a single-pass route and the choice above is by TIME
+alone, which is what the type always meant it to be. What a `handheld` fallback costs is
+unchanged and worth keeping in view: the alignment that makes a swap self-evident goes, so
+the variable has to be the more visible for it.
 
 **The wording law for `handheld`.** Never write the drift as a delta — "shifted 10-20cm" — and
 never give each panel its own framing. The first renders one background with the object
@@ -337,6 +347,11 @@ mineral rather than as mud or mould.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.16 (2026-09-03): `generation_mode` **multi-pass → single-pass** — the last declaration in
+  the registry — and `strict` takes the invariants-block route in place of generate/edit/
+  composite (ADR-067, owner instruction). The CAPABILITY gate is retired: it made `strict`
+  unreachable for twenty days after ADR-021 while `eval/golden/fixture-002` asserted it.
+  `ratios` corrected to ADR-016's legal set, `5:3` and `3:2` dropped.
 - 1.15 (2026-08-27): **two panels become the preferred count at 1:1.** Owner correction to G15:
   no type is exempt at 1:1, and this type's equal-frames constraint is a narrower form of the
   rule rather than an exemption from it. A half of a square carries four times the area of a

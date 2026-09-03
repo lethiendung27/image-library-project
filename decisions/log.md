@@ -3736,3 +3736,124 @@ that skips a router-confusion test on the two most contested types in the regist
 the expensive kind of shortcut. It did not write the substantiation rule. And it did not merge
 `02-symptom-callout` into this file, because two jobs are two types and the grammar already
 says so.
+
+---
+
+## ADR-067 · 2026-09-03 · `multi-pass` is removed from the vocabulary, and every case it covered gets a named single-pass mechanism
+
+**Owner instruction, 2026-09-03:** "bỏ multi pass triệt để."
+
+**Three ADRs had already banned it and the value was still there.** ADR-021 stopped a
+multi-pass option reaching a prompt set. ADR-039 retired `adapters/nano-banana.md` Rule 3
+and the `steps[]` field, having found the ban "still taught by `runbook.md` Step 6, the
+adapter's Rule 3 and `output.schema.json` — three days and eleven ADRs late". ADR-041
+deprecated the value and wrote a countdown into `vocabulary.yaml`: when the number of type
+files declaring it reaches 0, delete it. It never reached 0, because clearing the last one
+meant deciding what `04-proof-lockedframe`'s `strict` camera lock does without compositing,
+and that decision kept being deferred as an audit.
+
+**What the deferral actually cost, measured rather than asserted.** `strict` is defined as
+identical camera, framing and light across panels, and its route was "Multi-pass is
+mandatory: generate one panel, edit-swap the variable, composite". A CAPABILITY gate under
+it said `strict` is unavailable "where the renderer cannot composite". After ADR-021 that
+condition was permanently true, so for **twenty days `strict` was a value no route could
+select**, while `eval/golden/fixture-002` went on asserting it as the expected option A for
+a slot. A conditional that is always true is a refusal wearing a condition's clothes.
+
+### The decision
+
+`multi-pass` leaves `registry/vocabulary.yaml`. A type declaring it is a validation ERROR,
+not a warning, and the error names the replacement rather than reporting that a string is
+not in a list. Adapter Rule 3's three templates are DELETED, which reverses ADR-039's choice
+to keep them as a record — on the owner's instruction, and because a worked script for a
+banned capability is the exact thing CLAUDE.md rule 6c exists to catch.
+
+**Every case the templates covered keeps a mechanism, and each is measured or is marked
+untested.** The general form is an **invariants block**: state what must not change ONCE,
+before any panel or frame is described, rather than restating it inside each.
+
+- **Locked-frame panel series.** `01-pain-split --mirror` measured both ways: the person
+  described inside each panel returned two different people; an invariants block naming
+  face, hair, clothes, camera height, distance and framing before either panel returned one.
+  1 of 1 each way, and its `run: pass` worked example is a single-pass render. That is the
+  route `04-proof-lockedframe` `strict` now takes.
+- **Reference-true inset.** A clause, not a compositing step. `05-social-handoff`'s inset is
+  model-drawn single-pass, 4 of 4 (ADR-053). An inset a clause cannot bind is dropped and
+  the type ships without it.
+- **Same-person pair across two frames** (`01-pain-scene` + `06-relief-scene`). The same
+  invariants block written identically into both prompts, two independent generation calls.
+  **Untested** — no bookend pair has been rendered this way, and this ADR says so rather
+  than implying the deletion cost nothing.
+
+**Why `strict` was not deleted instead.** Deleting it would have left `camera_lock` with one
+value, which is not an axis, and would have falsified a golden fixture's assertion. It would
+also have thrown away a picture requirement over a route, when the library already owns a
+measured route for exactly that requirement in another type. The invariants block is not a
+promise: `03-spec-lineup`'s founding round broke its own one-variable law inside one, three
+different hub bores across three units told to share a spec. Both observations are recorded
+in the type file. `strict` is now selectable and carries a stated risk, which is better than
+being permanently unselectable and carrying none.
+
+### Consequences — rule 6c sweep on `"multi-pass"`: 131 hits, 42 files, 10 in TEACHES
+
+All ten read, plus one the tool did not find.
+
+- `registry/vocabulary.yaml` — the value **deleted**, the countdown comment replaced by the
+  reason it ended.
+- `registry/types/04-proof-lockedframe.md` 1.15 → **1.16** — the registry's last
+  declaration. `generation_mode: single-pass`; `strict` takes the invariants block; the
+  CAPABILITY gate is retired. `ratios` corrected to ADR-016's five in the same edit: `5:3`
+  and `3:2` dropped, unaskable since 2026-08-13.
+- `registry/types/01-pain-split.md` 1.8 → **1.9** — `--mirror`'s `generation_mode override:
+  multi-pass` **removed**. It had been contradicted by the type's own passing single-pass
+  worked example since 1.8. KNOWN-FLAKY reworded: the identity break is about WHERE the
+  person is described, not about pass count. `ratios`: `4:5` dropped, leaving `1:1`.
+- `registry/types/03-mechanism-xray.md` 1.3 → **1.4** — a KNOWN-FLAKY prediction whose
+  remedy was "the fallback is multi-pass ... (adapter Rule 3)": a prediction with an illegal
+  remedy attached, pointing at a rule retired eleven days earlier. The remedy becomes SPEC
+  §6.2's ordinary route. `ratios`: `4:5` dropped.
+- `adapters/nano-banana.md` — Rule 3's **templates deleted**, replaced by the three-step
+  retirement and the single-pass mechanism for each case. Its intro note keeps the MODEL
+  fact — conversational editing is real — and drops the invitation to reach for it. It also
+  carried a stale claim that `05-social-handoff` declares multi-pass; that type moved to
+  `single-pass` at 2.6 and the adapter never noticed.
+- `query/runbook.md` — Step 3's affected-executions list and Step 6's `steps[]` paragraph.
+  Both **rewritten**: there is no longer "the type's multi-pass route" to fall back from.
+- `query/output.schema.json` — 4 descriptions **rewritten**. The `pipeline` enum was already
+  narrowed to `single-pass` at ADR-039; the `steps` field **stays**, because one delivered
+  page carries it and must still parse.
+- `SPEC.md:133` — the frontmatter comment said "multi-pass is DEPRECATED, ADR-041".
+  **Rewritten** to name `single-pass` as the only legal value.
+- `eval/golden/fixture-001` — the prose note "strict variants would be multi-pass".
+  **Rewritten.** Not an assertion `check_golden` reads, which is why it survived ADR-039.
+- `CLAUDE.md` — rule 6b bans emitting a multi-pass option and rule 6c cites ADR-039's miss.
+  **Both stand**; they teach the ban, which is now enforced rather than asserted.
+- `registry/types/03-use-grid.md:182` — a CHANGELOG line recording an earlier removal.
+  **History, stands.**
+
+**The sweep missed a file, and that is worth more than the file.** `eval/render-test.md`
+Step 2 said "Multi-pass types follow their `steps[]` script — testing the script is part of
+the test", and `scripts/adr-sweep.py` did not report it: the term was **capitalised**, and
+the tool matches case-sensitively. Rule 6c exists because a banned term keeps being taught
+by files nobody swept, and its own instrument has a blind spot that hides exactly the
+sentence most likely to be an instruction — a step heading. The file is **rewritten**, and
+the finding is written into `check_multipass_declarations`'s docstring where the next person
+running a sweep will read it. Fixing the script is not done here; it is a change to a shared
+tool and belongs in its own diff.
+
+**GENERATED** — `registry/index.yaml` and `dist/app-bundle/` (11 mirrored files) regenerate.
+
+**RECORDS** — 20 files keep the term: `decisions/log.md` (26 hits, this entry included),
+`conversation.md`, `eval/render-tests.jsonl`, and the session directories. Nothing is
+rewritten. `query/sessions/advertorial-seat-cushion-l-shaped-v02` (page 37) still carries
+three `multi-pass` options on `story.1.image` and stays grandfathered by name in
+`scripts/validate.py`, warned on every run. **It is not re-rendered and not reconstructed**:
+if that page is ever rebuilt it is re-routed under today's law.
+
+**Enforcement, fed known-bad input before being believed.** `04-proof-lockedframe` was set
+back to `multi-pass` and the validator returned two errors — vocabulary closure, and the new
+message naming the invariants route — then the file was restored and the tree returned to 0
+errors. A checker that has only ever seen good input is not evidence.
+
+`registry_version` unchanged. No skeleton, no argument and no routing outcome moves: the
+only option pool affected is one whose `strict` value nothing could select.

@@ -3,10 +3,10 @@ id: 01-pain-split
 step: 1
 job: pain
 device: split
-version: "1.8"
+version: "1.9"
 status: active
 replaced_by: null
-ratios: ["1:1", "4:5"]
+ratios: ["1:1"]
 channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass
@@ -144,13 +144,13 @@ Diff vs base: `after` additionally holds the SAME camera angle, distance, wardro
 framing, and only posture, expression, presence of the product and colour grade may differ ·
 `hotspot` and `jag` are DROPPED, posture and expression carry the problem · lighting setup and
 time of day are identical, only the grade differs.
-- generation_mode override: **multi-pass** — generate the left panel, edit into the right,
-  composite the split in post. A single pass has been tried twice with opposite results: it
-  returned two different people when the person was described inside each panel, and ONE
-  person when an explicit invariants block named face, hair, beard, clothes, camera height,
-  distance and framing BEFORE either panel was described. 1 of 1 each way, so multi-pass
-  stays the declared route and the invariants block is the recorded alternative — it is also
-  the only route available to a renderer who does not composite.
+- **The route is an INVARIANTS BLOCK, single-pass** (ADR-067). Name face, hair, beard,
+  clothes, camera height, distance and framing ONCE, BEFORE either panel is described. A
+  single pass has been tried both ways: describing the person inside each panel returned two
+  different people, and the invariants block returned one, 1 of 1 each way. This variant used
+  to declare a `multi-pass` override on top of that finding; it is gone, and the worked
+  example below — `wrist-brace-mirror`, `run: pass` — is a single-pass render where the
+  identity held. The block is not a formality: without it this variant does not work.
 - Negative additions: `different person between panels, different camera angle between panels,
   different wardrobe, different time of day, golden hour on one side only, VS badge, third
   badge, badges at bottom of frame`
@@ -269,10 +269,11 @@ the job and the grade change.
   instinct as the register split below — the model reaches for a catalogue shot the moment
   the right panel holds a product — but here it ADDS one instead of replacing the room.
   `PARTS/product` now says ONE unit, in use.
-- **Identity breaks across panels on a single-pass `--mirror`, 1 of 1, 2026-08-12.** Hair dark
-  and long on the left, lighter and shorter on the right — two people, so no comparison. This
-  is why the variant declares multi-pass. Anyone rendering it in one pass is testing whether
-  naming the invariants explicitly can hold a face, and should say so.
+- **Identity breaks across panels when the person is described INSIDE each panel**, 1 of 1,
+  2026-08-12. Hair dark and long on the left, lighter and shorter on the right — two people,
+  so no comparison. That render is what the invariants block exists to prevent, and the
+  worked example is the positive control at 1 of 1. Two renders, opposite results, one
+  variable: where the identity is stated matters more than how many passes are used.
 - **Register split between panels on `--oldway`, 1/3 renders, 2026-08-12 — addressed at
   v1.6, watch for recurrence.** The garment steamer run put a lived-in room on the left and
   what reads as a studio packshot on the right: an isolated shirt on a plain white wall, no
@@ -286,6 +287,13 @@ the job and the grade change.
   room to be named a second time inside the AFTER slot.
 
 ## CHANGELOG
+- 1.9 (2026-09-03): `--mirror`'s `generation_mode override: multi-pass` is **removed**
+  (ADR-067, owner instruction). The invariants block was already the recorded alternative,
+  already the only route open to this operator since ADR-021, and already carried a `pass`
+  worked example rendered in one pass. The override contradicted the type's own evidence.
+  KNOWN-FLAKY reworded: the 2026-08-12 identity break is about WHERE the person is described,
+  not about pass count. `ratios` corrected to ADR-016's legal set: `4:5` dropped, unaskable
+  since 2026-08-13, which leaves the one ratio this type has actually rendered at.
 - 1.8 (2026-08-13): **type PASSED by the owner; file finalised.** Three renders, one per
   variant: `--mirror` and `--oldway` pass, `--object` partial. WORKED EXAMPLES returns with
   the two passes in full text. Two findings patched: naming a structure does not bind the

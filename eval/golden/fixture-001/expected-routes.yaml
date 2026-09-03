@@ -61,7 +61,7 @@ slots:
         config: {type: 04-proof-lockedframe, variant: verdict}
     gates_that_must_fire:
       - "camera_lock=handheld because timelapse panels are separated by time"
-      - "pipeline note: strict variants would be multi-pass; handheld timelapse may run single-pass"
+      - "pipeline note: every option is single-pass (ADR-021, ADR-067); strict states its cross-panel invariants once, before any panel"
 
   howto-1:
     section_role: how-to-use

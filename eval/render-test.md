@@ -19,8 +19,10 @@ A target = type + variant/axes + a real product (with reference photo when
 ## 2. Fill and render
 
 Fill the prompt exactly as `query/runbook.md` Step 5 prescribes (or reuse the type's
-worked example), then apply `adapters/nano-banana.md`. Multi-pass types follow their
-`steps[]` script — testing the script is part of the test.
+worked example), then apply `adapters/nano-banana.md`. One prompt, one generation call,
+at most one reference photo attached in the tool (ADR-021). There is no script to follow
+and no second pass: `steps[]` was retired at ADR-039 and `multi-pass` removed from the
+vocabulary at ADR-067.
 
 ## 3. Generate 2–3 runs
 

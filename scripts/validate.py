@@ -935,36 +935,33 @@ def check_ratios(types):
 
 
 def check_multipass_declarations(types, staging):
-    """ADR-041: `generation_mode: multi-pass` is deprecated and being retired.
+    """ADR-067: `multi-pass` is removed from the vocabulary, so this is an ERROR.
 
-    It is warned rather than errored because the value is still legal in
-    `registry/vocabulary.yaml` — removing it there first would error these files
-    and turn the tree red for every lane, for a rule none of them broke today.
-    The owner audits the type files; this is the worklist, and it counts down.
+    Vocabulary closure already refuses the value; this check exists for the
+    message. A file that declares it is not making a typo, it is asking for a
+    pipeline this library removed in three steps — ADR-021 stopped it reaching a
+    prompt, ADR-039 retired the adapter rule that expanded it, ADR-067 deleted
+    the value — and the reader needs to be told which single-pass route to take
+    instead, not that a string is not in a list.
 
     Frontmatter only. A type that discusses multi-pass in its PROSE — a variant
     override, a recorded fallback — is not mechanically separable from one that
     merely records the history, and pretending a regex can tell those apart is
     the false comfort ADR-040 refused to build. `scripts/adr-sweep.py multi-pass`
-    is the tool for the prose, and its TEACHES bucket is the real list.
+    is the tool for the prose, and its TEACHES bucket is the real list. Run it
+    case-insensitively: the 2026-09-03 sweep missed `Multi-pass` in
+    `eval/render-test.md` because the term was capitalised.
     """
-    remaining = []
     for label, group in (("registry/types", types),
                          ("registry/types/_staging", staging)):
         for tid in sorted(group):
             if group[tid]["fm"].get("generation_mode") == "multi-pass":
-                remaining.append(f"{label}/{tid}.md")
-    for rel in remaining:
-        warn(rel, "declares `generation_mode: multi-pass`, deprecated at "
-                  "ADR-041. No code branches on the value; the field states what "
-                  "the PICTURE needs, not what the pipeline does. Awaiting the "
-                  "owner's audit")
-    if remaining:
-        warn("registry/vocabulary.yaml",
-             f"{len(remaining)} type file(s) still declare "
-             f"`generation_mode: multi-pass`. When that count reaches 0, delete "
-             f"`multi-pass` from `generation_modes` and the value is gone "
-             f"(ADR-041)")
+                err(f"{label}/{tid}.md",
+                    "declares `generation_mode: multi-pass`, REMOVED from the "
+                    "vocabulary at ADR-067. Take a single-pass route: state the "
+                    "cross-panel invariants once, before any panel is described "
+                    "(`01-pain-split --mirror`, `04-proof-lockedframe` strict). "
+                    "There is no compositing step in this pipeline (ADR-021)")
 
 
 def check_grandfather_sets():

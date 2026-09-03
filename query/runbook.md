@@ -83,11 +83,15 @@ No compositing, no edit chains, no post assembly.** The adapter's note that the 
 supports conversational editing is about the MODEL; this is about the operator, and it
 is the operator who is the constraint.
 
-So `generation_mode: multi-pass` is never emitted. Every affected execution takes the
-single-pass route its own type already records, and no type becomes unavailable:
+So no option is anything but single-pass. **Since ADR-067 the `multi-pass` value does
+not exist**: it is gone from `registry/vocabulary.yaml`, no type declares it, and a file
+that tries to is a validation error. Every execution that used to want it takes the
+single-pass route its own type records, and no type is unavailable:
 
-- `04-proof-lockedframe` — `strict` needs compositing, so the panels run `handheld`,
-  `--verdict` included. Its capability gate already says this.
+- `04-proof-lockedframe` — `strict` states its cross-panel invariants once, before any
+  panel is described. Its CAPABILITY gate is retired: it sent `strict` to `handheld`
+  wherever the renderer could not composite, which after ADR-021 was everywhere, so it
+  was a permanent refusal written as a condition.
 - `01-pain-split --mirror` — the invariants block, named face, hair, clothes, camera
   height and framing BEFORE either panel is described. The type calls it "the only
   route available to a renderer who does not composite" and it passed 1 of 1.
@@ -280,9 +284,11 @@ template", which is the exact thing Step 3 forbids, in the same file, four steps
 apart. ADR-021 declared the capability and corrected Step 3 and
 `registry/vocabulary.yaml`; it never came back for this line or for the adapter's
 Rule 3, so a session that read Step 3 and then followed Step 6 was told to do both.
-A type's `generation_mode: multi-pass` is a fact about what the PICTURE needs, and
-it stays true in the type file — what it never does is reach a delivered option.
-Take the type's own single-pass route (ADR-021, ADR-039).
+**ADR-067 closes it at the source**: `multi-pass` is no longer a value a type can
+declare, adapter Rule 3's templates are deleted, and there is no longer such a thing
+as "the type's multi-pass route" to fall back from. Every type's route is
+single-pass, and where a picture needs the same thing held across two frames the
+mechanism is an invariants block stated once, before either frame.
 
 ## Step 5b — COVERAGE PASS (product-driven, runs after the sections are routed)
 
