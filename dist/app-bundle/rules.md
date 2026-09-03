@@ -772,9 +772,59 @@ ignored 1 of 3. **A drawn instruction survives when it is tied to something the 
 already drawing.**
 
 So the floor is stated against the frame's own contents: *the capitals are as tall as the
-bottle's cap*, *as tall as the pouch is wide*, *the height of one earbud*. **Mobile
-legibility comes from choosing a big anchor**, not from naming a percentage. Where the frame
+bottle's cap*, *as tall as the pouch is wide*, *the height of one earbud*. Where the frame
 holds nothing big enough to anchor to, the answer is fewer words rather than smaller ones.
+
+### Round 3, 2026-09-03 — the anchor sizes an OBJECT and does not size a GLYPH
+
+**Six renders were written with that floor in them, and it did not hold.** Every one carried
+a size clause of the form *each capital is as tall as <a named thing in the frame>*. Measured
+off the six files:
+
+| the thing named | it measured | the capital measured | cap ÷ it |
+|---|---|---|---|
+| one earbud, long axis | 185 px | 44 px | 0.24 |
+| the scissor blade, long axis | 212 px | 48 px | 0.23 |
+| the vacuum body, short axis | 385 px | 50 px | 0.13 |
+| the cup lid, depth | 138 px | 62 px | 0.45 |
+| one repellent ball, diameter | 78 px | 50 px | 0.64 |
+
+**Nothing reached the size it was told to reach, and the ratios run backwards.** The largest
+anchor produced the smallest ratio and the smallest anchor the largest, which is what happens
+when a number is not being read at all: cap heights span 44–62 px, a range of 1.4×, while the
+anchors they were tied to span 78–385 px, a range of 4.9×. **The renderer drew a headline at
+its own habitual size in all six frames and the comparison never entered.** In frame terms
+that is 4.30–6.05% of the picture's height, against the 5.0–6.1% round 2 measured with no
+anchor at all — the floor moved DOWN. On a 390pt phone tile, 16.8–23.6pt: the bottom of the
+band now sits below the 17px platform minimum the floor was written to clear.
+
+**The same instrument worked on the badge in the same six frames**, and this is the finding
+rather than the failure:
+
+| the badge was told to be as wide as | it measured | the badge measured | badge ÷ it |
+|---|---|---|---|
+| the charging case | 412 px | 210 px | 0.51 |
+| the grip, long axis | 599 px | 351 px | 0.59 |
+| the vacuum body, long axis | 636 px | 450 px | 0.71 |
+| his head | 240 px | 230 px | 0.96 |
+| the cup lid | 346 px | 271 px | 0.78 |
+| the pack | 476 px | 329 px | 0.69 |
+
+0.51–0.96 against 0.13–0.64, on the same instruction in the same prompts. **An anchor sizes
+an object against another object. It does not size a glyph**, because a capital is not a
+thing the renderer is placing — it is an outcome of the type block it decided to set, and the
+comparison has nothing to attach to. That is consistent with all four earlier anchor wins:
+an arrow's endpoints, a badge's glyph, a hotspot's place and a line's left edge are every one
+of them a POSITION or an OBJECT, and not one of them is a type size.
+
+**So the mobile floor is not solved and this rule stops claiming it is.** Four instruments
+have now been aimed at text size in this library — a written fraction (ignored, 6 of 6 in
+adapter Rule 4), maximisation (compliant and still too small, G10), a second fraction (G16's
+own first attempt, withdrawn unrendered) and an anchor (0.13–0.64, five measured). What has
+never been tried is the only lever the evidence leaves: **fewer words**. A headline the
+renderer sets at its habitual size is bigger per word the fewer words it is given, and the
+one frame in six that cleared 6% carried the shortest headline of the six. That is one
+observation and it is written here as the next thing to test, not as a rule.
 
 ### Placement
 
@@ -791,7 +841,16 @@ holds nothing big enough to anchor to, the answer is fewer words rather than sma
 5. **Nothing the prompt asks for goes in the bottom-right corner.** That corner carries the
    generation tool's watermark (`adapters/nano-banana.md` Rule 7, settled 2026-09-03). Three
    of three badges placed there were struck through by it; four of four placed bottom-left
-   came back clean.
+   came back clean. **And it is not only a badge rule**: round 3 put a CALLOUT in that corner
+   twice and the watermark abutted the last word both times, 2 of 2. Any element — a label, a
+   claim line, a glyph — is barred from it.
+6. **A line break in the prompt is a suggestion.** A headline written as two lines came back
+   as three, re-wrapped to the width the renderer chose, 1 of 1. Write the words; do not
+   write a shape that has to hold.
+7. **A badge takes its colour against the frame, never from it.** Round 3 asked for a
+   warm-gold badge on a champagne-gold product and got one, and it recedes exactly as the
+   third-pass rule above predicts. The rule is not new; what is new is that a writer with the
+   rule in front of them still read the hue off the product.
 
 **G10's 8% is not reachable by asking, and this rule does not pretend otherwise.** Round 1
 asked for "a clear margin on every side" and eight inked edges measured 5.3–7.4%. Round 2
@@ -803,6 +862,17 @@ the 6.7% floor — and **the breach of G10 is real and stated rather than hidden
 out and neither is taken yet: ask for a sixth and see whether the house margin moves, or
 amend G10 for text blocks on 17 measured edges. This is the shape ADR-061 already named — a
 type bound that no render obeys is not evidence.
+
+**Round 3 splits that breach in two and only one half belongs to the renderer.** Across six
+frames the TEXT BLOCK held 5.37–10.16% of the frame from the nearest edge, in line with the
+house margin. The BADGE held 0.00–6.05%, and every one of the six worst margins in the round
+was a badge. The reason is mechanical: a text block is placed by the renderer inside a region
+the prompt describes, so it inherits the house margin; a badge is placed and SIZED by the
+prompt, so it goes exactly where it is sent. Giving the badge an anchored size and a named
+corner in the same clause is what walks it off the frame. **The extreme case is a corner
+ribbon**, which is defined by reaching two edges — measured at 0.00% on both, with its words
+1.07% from the top and 1.66% from the left. A `flash` badge and G10 cannot both be honoured,
+and a type that wants one has to say which it is giving up.
 
 ### Content — the half a re-render cannot fix
 

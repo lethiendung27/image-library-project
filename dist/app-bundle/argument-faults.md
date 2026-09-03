@@ -268,5 +268,25 @@ frame beside it. Where the brief carries a number and no source, the number does
 picture — the page can print it in HTML where it can be corrected, and where a regulator can
 see what it rests on.
 
-- Observed on: seven frames, five sources, batches 2026-09-03-E through H. Not yet observed
-  in any render this library has produced, because no type that could produce one exists.
+- Observed on: seven frames, five sources, batches 2026-09-03-E through H.
+
+**And now observed in this library's own output, which the entry above said could not yet
+happen.** `07-identity-pack`'s founding render of 2026-09-03 returned a stand-up pouch whose
+printed surface reads `Active Ingredients: Peppermint Oil, Cedarwood Oil` and `NET WT. 8 OZ
+(227g) · Contains 12 Repellent Balls` — a composition claim and two quantity claims, set
+legibly on the object, written by nobody
+(`sha256:124978745b7088e0…`, `eval/render-tests.jsonl` 2026-09-03).
+
+**It arrived through the one door nothing was watching.** A15 was written about a figure a
+type puts in a TEXT LAYER, and G16 governs those. This figure is part of the PRODUCT: a pack
+carries its own printing, that printing is diegetic, and no rule in this repo reaches it. So
+the fault does not need a statistic type to appear — it appears wherever a render draws an
+object that has words on it, and the better the lettering renders the less anything in the
+frame says the number is invented. Gibberish announces itself; a clean `NET WT. 8 OZ` does
+not.
+
+**What this does not change.** The narrow working position above still stands and the three
+blocked proposals stay blocked. What it adds is that the block is not sufficient: a frame
+from any type whose subject carries printed words is publishable only where that printing is
+checked against the reference word by word. `07-identity-pack` carries the constraint;
+whether it belongs in a rule is the same owner decision A15 already names.
