@@ -10,7 +10,7 @@ source list. A rule that holds on a product it has never seen is a rule.
 
 | finding | what was measured | what changed |
 |---|---|---|
-| the prompts are bloated | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | now **1336–1628**, every one inside the reference band. Measured, not asserted: −152 to −594 chars each. The closing negative ran ~40 words in every prompt and is now one line; the safe-area clause is stated once rather than per element |
+| the prompts are bloated | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | now **1431–1708** after the badge rewrite of the third pass — down from 1488–2128, four of six inside the reference band and two just over it. The closing negative ran ~40 words in every prompt and is now one line; the safe-area clause is stated once rather than per element |
 | the badge is monotonous | 6 of 6 said "a small flat solid rectangle… in white capitals" | a badge is a MARK, not a text slot. Each type now owns a form library — tag, seal, pill, roundel, chip, flash — and each prompt names a DIFFERENT form, chosen from what the product's register carries |
 | the background is monotonous | 6 of 6 said "one plain pale grey ground" | six different grounds, each picked from the product's own register |
 | the text is too small | headline bands measured 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor | G16 gains a mobile floor, **anchored rather than numbered**: the capitals are as tall as a named thing in the frame — one earbud, the blade, the lid, a ball. See the second-pass note below; the first attempt stated a fraction and that is the class this renderer ignores |

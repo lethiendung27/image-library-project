@@ -112,7 +112,7 @@ whether a hook survives at 10 to 14 words, because the old cap was never tested 
 
 | finding | measured | fixed by |
 |---|---|---|
-| prompt bloat | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | rewritten to 1336–1628, −152 to −594 chars each |
+| prompt bloat | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | rewritten to **1431–1708**, down from 1488–2128; four of six inside the reference band, two just over after the badges gained size and colour |
 | badge monotonous | 6 of 6 prompts wrote the identical flat rectangle | **a badge is a MARK, not a text slot.** G16 hands the form back to the type; each of the three types now owns a form library, and the six prompts use six forms — chip, tag, pill, seal, roundel, flash |
 | background monotonous | 6 of 6 wrote "one plain pale grey ground" | six grounds, each from the product's own register — charcoal, workbench brown, deep teal, a lit wall, a citrus gradient, slate |
 | text too small for mobile | headline bands 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor on both iOS and Android | G16 gains a mobile floor. **First attempt stated a fraction and was wrong** — see the third pass below; it is now anchored to a named thing in the frame |
