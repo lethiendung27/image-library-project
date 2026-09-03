@@ -80,7 +80,7 @@ REGISTER: commercial editorial photograph on a flat coloured field.
 
 [TITLE]     the promise.                                    -> G16/title
 [COPY]      the reasons, as a stack of short lines.         -> G16/copy + PARTS/stack
-[BADGE]     one short stamp. Bottom LEFT.                   -> G16/badge
+[BADGE]     one short stamp. Bottom LEFT.                  -> MARKS
 ```
 
 ## PARTS
@@ -111,7 +111,10 @@ it** — two reservations for one area render as dead air, measured 2 of 2 on `0
 three is **legibility, not flatness**:
 
 - **flat tone** — one colour, no gradient, no texture, the subject cut out and placed on it.
-  The default and the easiest to keep legible.
+  The easiest to keep legible and **the one to stop defaulting to**: the corpus builds this
+  form on sage, sand, cobalt, cream, pale blue and warm beige, and the tone is chosen from the
+  product's own register rather than reached for. A tone that could belong to any product in
+  the category is a tone that has not been chosen.
 - **a real room** — the subject photographed in place, the words set into the room's own
   out-of-focus area. Three sources build it this way; one puts the words straight onto the
   wall with no panel at all.
@@ -134,6 +137,27 @@ composited photograph.
 beginning at the same distance from the left edge of the picture. Each line may carry one
 simple line-drawn glyph at its left. **How many lines this type may carry is the open question
 and is set by G16, not here** — see KNOWN-FLAKY.
+
+## MARKS
+
+**A badge is a mark and this type owns its forms** (ADR-012, ADR-043, G16's badge note). The
+skeleton calls `badge` by name; the prompt names WHICH form, and the choice is made per
+product from what its register can carry. **Three forms minimum, and none of them is a
+default** — six test prompts written before this section existed produced six identical flat
+rectangles, which is the monotony that put this section here.
+
+| form | shape | the register it belongs to |
+|---|---|---|
+| `tag` | a flat rectangle, one flat fill, capitals cut out of it | anything that reads as engineered or clinical |
+| `seal` | a scalloped rosette or a shield, a short line curved inside it | a guarantee, a standard, a promise about the seller. **Reads as authority, which is exactly why G16 refuses a certification mark in one** |
+| `pill` | a fully rounded capsule, one flat fill, a short line inside | soft categories — supplements, personal care, anything domestic |
+| `chip` | a small line icon in a circle with one short label beneath | a capability where the icon carries half the reading |
+
+**One badge per frame**, and it never repeats a line the stack already carries.
+**The badge sits bottom LEFT**, per `adapters/nano-banana.md` Rule 7 — the tool's watermark
+holds the other corner.
+**Tested only as `tag`**, 2 of 2 clean in the founding round. The other three forms have no
+render and their first is their founding evidence.
 
 ## SLOT CONSTRAINTS
 - **Every word comes from the page's own copy.** G16's content rule binds hardest on this type,

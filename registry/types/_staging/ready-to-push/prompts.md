@@ -1,192 +1,149 @@
 # Test prompts — six renders, three types
 
-Set the ratio at the tool: **1:1** for all six. The ratio never goes in the prompt
-(ADR-016, adapter Rule 4).
+Ratio **1:1**, set at the tool. It never goes in the prompt (ADR-016, adapter Rule 4).
+**Attach the product photo** where a prompt opens with PRODUCT REFERENCE.
 
-**Every product here is one none of these types has ever been built from.** They come from
-`query/product-slugs.yaml` — the repo's own closed list — and not one of them appears in any
-proposal's source list. A rule that holds on a product it has never seen is a real rule; a
-rule that holds on the product it was written from is a coincidence.
+Every product comes from `query/product-slugs.yaml` and none appears in any candidate's
+source list. A rule that holds on a product it has never seen is a rule.
 
-**Attach the product photo** where a prompt opens with a PRODUCT REFERENCE block. An empty
-attachments field is not a blocked prompt — the block is written to be paste-and-run with the
-photo you attach in the tool.
+## Rewritten 2026-09-03, second pass — four owner findings, all measured
 
-**The copy was rewritten on 2026-09-03 and the old version is worth knowing about**, because
-it is why this round exists. The first draft of these prompts wrote lines like THIS IS WHAT
-ARRIVES, EVERY PART NAMED and SIX PARTS ONE TOOL — captions describing the frame, averaging
-4.5 words, written that way deliberately to avoid asserting a claim. The owner's verdict was
-that the copywriting was too weak to ship, and the audit agrees: the market writes at 8.0
-words and every market line names a RESULT, a FEELING or a PROBLEM STATE. **A caption
-describes the frame; a hook describes the reader.**
+| finding | what was measured | what changed |
+|---|---|---|
+| the prompts are bloated | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | now **1336–1628**, every one inside the reference band. Measured, not asserted: −152 to −594 chars each. The closing negative ran ~40 words in every prompt and is now one line; the safe-area clause is stated once rather than per element |
+| the badge is monotonous | 6 of 6 said "a small flat solid rectangle… in white capitals" | a badge is a MARK, not a text slot. Each type now owns a form library — tag, seal, pill, roundel, chip, flash — and each prompt names a DIFFERENT form, chosen from what the product's register carries |
+| the background is monotonous | 6 of 6 said "one plain pale grey ground" | six different grounds, each picked from the product's own register |
+| the text is too small | headline bands measured 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor | G16 gains a mobile FLOOR: the headline's capitals at least a tenth of the picture's height, every other line at least a sixteenth. Each prompt now states it |
 
-The lines below are hooks. They are **drafted copy, not the product's own copy** — no page's
-`content.json` was available — so they claim only what the object's own facts support and
-carry no figure, no percentage and no timeframe. On a real page every word comes from that
-page's copy; G16's content clause is the one thing the owner's waiver leaves standing, because
-it is what makes a hook possible rather than what limits it.
-
-**The guardrails on text no longer bind** (owner instruction, 2026-09-03). The seven-word cap
-was a LINE cap read as a sentence budget, which is exactly how a 12-word hook became a 4-word
-caption; it now records what has been measured and nothing more. Lines past seven words below
-are marked so the render log can move the cap on evidence.
-
-Three fixes from the earlier rounds are in all six: **the badge is bottom LEFT** (the
-generation tool's watermark sits at about 90% across, 90% down and struck through 3 of 3
-badges placed bottom-right); **alignment is written as an observable** rather than as "left
-aligned", which was ignored 1 of 3; and each prompt **asks for a tenth of the picture clear**
-on every side, which moved the measured floor from 5.3% to 6.7% against G10's 8%.
+The copy is **drafted, not any page's own** — no `content.json` was available — so it claims
+only what each object's facts support and carries no figure. G16's caps no longer bind (owner
+waiver, same day); lines past seven words are marked so the render log can move the cap.
 
 ---
 
-## 1 — `03-spec-callout`, five clusters · translation earbuds
-
-The safe end of this type's budget. Five clusters is what G16's founding rounds actually
-measured.
+## 1 — `03-spec-callout` · translation earbuds · badge `chip` · dark technical ground
 
 ```
 TYPE: 03-spec-callout v0.1
-REGISTER: commercial product photograph. One frame, no panels, no insets.
+REGISTER: commercial product photograph, one frame.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the wireless translation
-earbuds and their charging case. Preserve shape, proportions, material, finish and colour
-exactly. Do not redesign, restyle, simplify or add features.
+earbuds and case. Preserve shape, proportions, material, finish and colour exactly.
 
-PRESENTATION: the open charging case sits slightly left of centre with one earbud resting
-in it and the other standing upright beside it, turned so its outer face and its inner
-contacts are both visible. Together they occupy about half the width of the picture.
+SUBJECT: the open case slightly left of centre, one earbud resting in it, the other standing
+beside it turned so its outer face and inner contacts both show. Together about half the
+picture's width.
 
-SETTING: one plain pale grey ground with a soft contact shadow, and clear empty ground
-around the objects on all four sides for the labels to sit on. No room, no surface texture,
-no second object.
+SETTING: a dark charcoal ground with a faint cool sheen, empty on all four sides.
 
-LIGHT: broad and even from the front and slightly above, so every part of both objects is
-legible and nothing falls into shadow. No hard side light.
+LIGHT: broad and frontal, soft enough that no part of either object falls into shadow.
 
-CALLOUTS: four short labels in flat solid dark grey sans-serif, each on the empty ground,
-each joined to the part it names by one thin straight grey line:
-upper left, joined to the outer face of the standing earbud: Tap it and it listens
-lower left, joined to the inner face of the standing earbud: The mic that hears you first
-upper right, joined to the earbud lying in the case: Drops in, charges, forgets nothing
-lower right, joined to the open lid of the case: Pocket-sized, so it comes with you
+CALLOUTS: four labels in flat white sans-serif on the empty ground, each joined to its part by
+one thin white line:
+outer face of the standing earbud — Tap it and it listens
+inner face of the standing earbud — The mic that hears you first
+the earbud in the case — Drops in, charges, forgets nothing
+the open lid — Pocket-sized, so it comes with you
 
-TEXT: across the top of the picture, two lines of larger bolder dark grey sans-serif, each
-beginning at the same distance from the left edge as the upper-left label:
+TEXT: across the top, two lines of white sans-serif, each starting the same distance from the
+left edge as the upper-left label. The capitals stand a tenth of the picture's height, so the
+line reads on a phone:
 UNDERSTAND EACH OTHER
 BEFORE THE SENTENCE ENDS
+Each callout label stands at least a sixteenth of the picture's height.
 
-Nothing in the picture comes within a tenth of its width of any edge.
+BADGE: lower LEFT, a small white line icon of two speech bubbles inside a thin white circle,
+with the words TWO LANGUAGES in white capitals beneath it.
 
-The words named above are the only words in the picture. Nothing else carries a letter or a
-number — no logo, no watermark, no packaging, no second caption. No person, no hand, no
-room, no arrows between the labels.
+Nothing comes within a tenth of the picture's width of any edge. The words above are the only
+words in the picture; no logo, no watermark, no person, no room.
 ```
 
 ---
 
-## 2 — `03-spec-callout`, eight clusters · cordless electric scissors
+## 2 — `03-spec-callout` · cordless electric scissors · badge `tag` · warm workbench ground
 
-**This is the experiment.** The type's own count rule allows six labels plus a title plus a
-badge — eight clusters — and G16 has only ever measured five. Different product from prompt 1
-on purpose, so a failure is not confounded by re-running one object.
+The ceiling test: six labels plus a title plus a badge is eight clusters, and G16 has measured
+five.
 
 ```
 TYPE: 03-spec-callout v0.1 — CLUSTER CEILING TEST
-REGISTER: commercial product photograph. One frame, no panels, no insets.
+REGISTER: commercial product photograph, one frame.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the cordless electric
-scissors. Preserve shape, proportions, material, finish and colour exactly. Do not redesign,
-restyle, simplify or add features.
+scissors. Preserve shape, proportions, material, finish and colour exactly.
 
-PRESENTATION: the scissors lie at a slight diagonal across the centre of the picture, blade
-to the upper right and grip to the lower left, turned so the blade, the trigger, the switch
-and the charging port are all visible at once. They occupy about half the width.
+SUBJECT: the scissors lying at a slight diagonal across the centre, blade upper right, grip
+lower left, turned so blade, guard, trigger, switch and charging port all show. About half
+the picture's width.
 
-SETTING: one plain pale warm grey ground with a soft contact shadow, and clear empty ground
-all around for the labels. No room, no surface texture, no second object.
+SETTING: a warm mid-brown worn workbench surface, softly out of focus, empty around the tool.
 
-LIGHT: broad and even, front and slightly above. Every named part is legible and no part
-falls into shadow.
+LIGHT: broad and even. No part in shadow.
 
-CALLOUTS: six short labels in flat solid near-black sans-serif, each on the empty ground,
-each joined to the part it names by one thin straight grey line:
-Cuts what scissors would fight ·
-The guard your other hand thanks ·
-One finger does the whole job ·
-Slow for card, fast for fabric ·
-Charges where your phone charges ·
-Shaped for hands that ache after ten minutes
-Place them so no two labels touch and no line crosses another.
+CALLOUTS: six labels in flat cream sans-serif on the empty surface, each joined to its part
+by one thin cream line, none touching another:
+Cuts what scissors would fight · The guard your other hand thanks ·
+One finger does the whole job · Slow for card, fast for fabric ·
+Charges where your phone charges · Shaped for hands that ache after ten minutes
 
-TEXT: across the top, two lines of larger bolder near-black sans-serif, each beginning at the
-same distance from the left edge as the leftmost label:
+TEXT: across the top, two lines of cream sans-serif starting the same distance from the left
+edge as the leftmost label, capitals a tenth of the picture's height:
 YOUR HAND STOPS ACHING
 HALFWAY THROUGH THE ROLL
+Each callout label stands at least a sixteenth of the picture's height.
 
-BADGE: in the lower LEFT of the picture, on the empty ground and well inside the edges, a
-small flat solid near-black rectangle, and inside it in white capitals: CORDLESS
+BADGE: lower LEFT, a flat cream rectangle with square corners, CORDLESS cut out of it in the
+brown of the bench.
 
-Nothing in the picture comes within a tenth of its width of any edge.
-
-The words named above are the only words in the picture. Nothing else carries a letter or a
-number — no logo, no watermark, no packaging, no second caption. No person, no hand, no
-room, no arrows between the labels.
+Nothing comes within a tenth of the picture's width of any edge. The words above are the only
+words in the picture; no logo, no watermark, no person, no room.
 ```
 
 ---
 
-## 3 — `06-relief-claimstack`, PRODUCT subject on a flat field · dust mite vacuum
+## 3 — `06-relief-claimstack` · PRODUCT subject, flat field · badge `pill` · deep teal
 
-The type's `PARTS/subject` was widened today to admit the product where it used to demand a
-person. **The field is held at the known-good flat tone**, so this render isolates the subject
-change alone.
+Isolates the subject widening: the field is held at the known-good flat tone.
 
 ```
 TYPE: 06-relief-claimstack v0.2
-REGISTER: commercial editorial photograph on a flat coloured field.
+REGISTER: commercial editorial photograph on a flat field.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the handheld dust mite
 vacuum. Preserve shape, proportions, material, finish and colour exactly.
 
-SUBJECT: the vacuum alone, cut out cleanly and placed on the field at a three-quarter angle
-with its nozzle toward the lower left, occupying the right third of the picture.
+SUBJECT: the vacuum alone, cut out cleanly, three-quarter angle, nozzle to the lower left,
+holding the right third of the picture.
 
-FIELD: one flat pale slate blue filling the whole picture behind it, with no gradient, no
-texture, no room and no shadow under the cut-out.
+FIELD: one flat deep teal filling the picture behind it. No gradient, no texture, no room, no
+shadow under the cut-out.
 
-LIGHT: soft and directional on the vacuum only, from behind and to its right, so its upper
-edge carries a faint rim. The field itself is unlit and stays flat.
+LIGHT: soft and directional on the vacuum only, from behind and right, a faint rim on its
+upper edge. The field is unlit and flat.
 
-LAYOUT: the vacuum holds the right third; the left two thirds of the field are empty.
-
-TEXT: in the empty field on the left, a headline and beneath it three separate lines each
-with a small simple line-drawn glyph at its left. All of it flat solid white sans-serif.
-Every line, and every glyph, begins at the same distance from the left edge of the picture.
-The headline, larger and bolder than everything under it, set over two lines, reads exactly:
+TEXT: in the empty field on the left, all flat white sans-serif, every line and glyph starting
+the same distance from the left edge. The headline's capitals stand a tenth of the picture's
+height; the three lines under it a sixteenth:
 YOU CHANGE THE SHEETS.
 NOTHING UNDER THEM CHANGES.
-Then three lines, each smaller than the headline and each with its own glyph:
-a sun glyph, then the line: Works dry, so the bed is yours again by bedtime
-a bed glyph, then the line: Goes into the surface, not just over it
-a battery glyph, then the line: No cord to drag around the bed frame
+then, each with a small line glyph at its left —
+a sun glyph — Works dry, so the bed is yours again by bedtime
+a bed glyph — Goes into the surface, not just over it
+a battery glyph — No cord to drag around the bed frame
 
-BADGE: in the lower LEFT, on the empty field and well inside the edges, a small flat solid
-white rectangle, and inside it in slate blue capitals: TEN MINUTES A BED
+BADGE: lower LEFT, a fully rounded white capsule with TEN MINUTES A BED in teal capitals
+inside it.
 
-Nothing in the picture comes within a tenth of its width of any edge.
-
-The words named above are the only words in the picture. Nothing else carries a letter or a
-number — no logo, no watermark, no packaging, no disclaimer line, no asterisk. No person, no
-room, no real background, no drop shadow under the cut-out.
+Nothing comes within a tenth of the picture's width of any edge. The words above are the only
+words in the picture; no logo, no watermark, no packaging, no person, no room.
 ```
 
 ---
 
-## 4 — `06-relief-claimstack`, PERSON subject in a REAL ROOM · hydraulic arm trainer
+## 4 — `06-relief-claimstack` · PERSON subject, real room · badge `seal` · lit wall
 
-The second clause widened today: the field may be a real room, with the words set into its
-own out-of-focus area and no panel behind them. **The subject is held at the known-good
-person**, so this render isolates the field change alone.
+Isolates the field widening: the subject is held at the known-good person.
 
 ```
 TYPE: 06-relief-claimstack v0.2
@@ -196,118 +153,99 @@ PRODUCT REFERENCE: the attached photo is the exact reference for the hydraulic a
 trainer. Preserve shape, proportions, material, finish and colour exactly.
 
 SUBJECT: a man in his forties in a plain grey t-shirt, seated on a low bench, working the
-trainer with both hands at chest height, looking down at it with an even unforced
-expression. He occupies the right half of the picture and is cropped at the thigh.
+trainer with both hands at chest height, looking down at it. He holds the right half, cropped
+at the thigh.
 
-FIELD: a real living room continuing behind him — a plain painted wall, a window out of
-frame throwing daylight across it, a rug edge and a chair leg at the picture's foot. The
-wall behind his left is empty and thrown well out of focus, and the words sit directly on
-it with no panel and no box behind them.
+FIELD: a real living room behind him — a plain painted wall, daylight raking across it from a
+window out of frame, a rug edge at the foot. The wall to his left is empty and thrown well out
+of focus, and the words sit directly on it with no panel behind them.
 
 LIGHT: plain daylight from the window side. No rim light, no studio key.
 
-LAYOUT: he holds the right half; the out-of-focus wall on the left holds the words.
-
-TEXT: on the out-of-focus wall at the left, a headline and beneath it three separate lines
-each with a small simple line-drawn glyph at its left. All of it flat solid white
-sans-serif, dark enough behind it to read. Every line, and every glyph, begins at the same
-distance from the left edge of the picture. The headline, larger and bolder, set over two lines, reads exactly:
+TEXT: on the out-of-focus wall at the left, all flat white sans-serif, every line and glyph
+starting the same distance from the left edge. The headline's capitals stand a tenth of the
+picture's height; the three lines under it a sixteenth:
 THE GYM YOU KEEP MEANING
 TO GO BACK TO
-Then three lines, each smaller and each with its own glyph:
-a dial glyph, then the line: Turn it up the week it starts feeling easy
-a counter glyph, then the line: The display counts, so you do not have to
-a chair glyph, then the line: Done sitting down, in the room you are already in
+then, each with a small line glyph at its left —
+a dial glyph — Turn it up the week it starts feeling easy
+a counter glyph — The display counts, so you do not have to
+a chair glyph — Done sitting down, in the room you are already in
 
-BADGE: in the lower LEFT, on the out-of-focus floor and well inside the edges, a small flat
-solid white rectangle, and inside it in dark grey capitals: NOTHING TO RACK
+BADGE: lower LEFT, on the out-of-focus floor, a white scalloped rosette with NOTHING TO RACK
+in dark grey capitals curved inside it.
 
-Nothing in the picture comes within a tenth of its width of any edge.
-
-The words named above are the only words in the picture. Nothing else carries a letter or a
-number — no logo, no watermark, no packaging, no poster or label in the room, no disclaimer.
-No second person.
+Nothing comes within a tenth of the picture's width of any edge. The words above are the only
+words in the picture; no logo, no watermark, no poster or label in the room, no second person.
 ```
 
 ---
 
-## 5 — `07-identity-pack`, CLOSED form on a plain ground · portable juicer cup
-
-The plainest form the type has. Its whole deliverable is a reference-faithful object, so the
-one thing to watch is whether the pack's own printed lettering survives.
+## 5 — `07-identity-pack` · CLOSED form · badge `roundel` · citrus-toned ground
 
 ```
 TYPE: 07-identity-pack v0.1
-REGISTER: commercial product photograph. One frame, no panels, no insets.
+REGISTER: commercial product photograph, one frame.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the portable juicer cup.
 Preserve shape, proportions, material, finish, colour and every word printed on it exactly.
-Do not redesign, restyle, simplify or add features.
 
-FORM: closed. The cup stands upright and complete with its lid on, nothing detached and
-nothing beside it.
+FORM: closed. The cup upright and complete with its lid on, nothing detached, nothing beside it.
 
-PRESENTATION: the face carrying the brand mark meets the lens square on, the cup turned just
-a few degrees so its depth reads. It occupies about half the height of the picture.
+SUBJECT: the face carrying the brand mark meets the lens, the cup turned a few degrees so its
+depth reads. About half the picture's height.
 
-SETTING: one flat pale grey ground with a soft contact shadow directly beneath it. No room,
-no surface texture, no second object, no prop.
+SETTING: a soft pale citrus-yellow ground with a gentle vertical gradient, a soft contact
+shadow beneath the cup. No room, no prop, no second object.
 
-LIGHT: broad and even from the front and slightly above, soft enough that the finish reads
-and strong enough that every word printed on the cup stays legible.
+LIGHT: broad and even from the front and slightly above, strong enough that every word printed
+on the cup stays legible.
 
-TEXT: across the upper part of the empty ground, two lines of flat solid dark grey
-sans-serif, each beginning a tenth of the picture's width from the left edge:
+TEXT: across the upper empty ground, two lines of flat deep grey sans-serif starting a tenth
+of the picture's width from the left edge, capitals a tenth of the picture's height:
 BREAKFAST THAT FITS
 IN THE CUP HOLDER
 
-Nothing in the picture comes within a tenth of its width of any edge.
+BADGE: lower LEFT, a filled deep grey circle with 400ml in white inside it.
 
-The line above is the only added word in the picture. The cup's own printed label is part of
-the object and stays exactly as the reference shows it. Nothing else carries a letter or a
-number — no logo, no watermark, no badge, no second caption. No person, no hand, no room, no
-second product.
+Nothing comes within a tenth of the picture's width of any edge. The two lines and the badge
+are the only added words; the cup's own printed label is part of the object and stays exactly
+as the reference shows it. No logo, no watermark, no person, no hand, no room.
 ```
 
 ---
 
-## 6 — `07-identity-pack`, WITH CONTENTS form · rodent repellent balls
-
-The form that shows what comes out of the pack. Different product from prompt 5 on purpose.
+## 6 — `07-identity-pack` · WITH CONTENTS form · badge `flash` · slate ground
 
 ```
 TYPE: 07-identity-pack v0.1
-REGISTER: commercial product photograph. One frame, no panels, no insets.
+REGISTER: commercial product photograph, one frame.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the rodent repellent balls
 and their pack. Preserve shape, proportions, material, finish, colour and every word printed
-on the pack exactly. Do not redesign, restyle, simplify or add features.
+on the pack exactly.
 
-FORM: with contents. The pack stands upright and closed, and four of the balls lie loose on
-the ground at its lower left, none of them touching the pack.
+FORM: with contents. The pack upright and closed, four of the balls loose on the ground at its
+lower left, none touching it.
 
-PRESENTATION: the face carrying the brand mark meets the lens square on. The pack occupies
-about half the height of the picture; the loose balls sit small in front of it and give it
-its scale.
+SUBJECT: the face carrying the brand mark meets the lens. The pack takes about half the
+picture's height; the loose balls sit small in front and give it its scale.
 
-SETTING: one flat pale warm grey ground with a soft contact shadow under the pack and a
-fainter one under each ball. No room, no surface texture, no prop, no second product.
+SETTING: a dark slate-grey ground with a faint stone texture, a soft contact shadow under the
+pack and a fainter one under each ball. No room, no prop.
 
-LIGHT: broad and even from the front and slightly above, soft enough that both the pack's
-finish and the balls' surface read, and strong enough that every word printed on the pack
-stays legible.
+LIGHT: broad and even from the front and slightly above, strong enough that the pack's printed
+words and the balls' surface both read.
 
-TEXT: across the upper part of the empty ground, two lines of flat solid dark grey
-sans-serif, each beginning a tenth of the picture's width from the left edge:
+TEXT: across the upper empty ground, two lines of flat white sans-serif starting a tenth of the
+picture's width from the left edge, capitals a tenth of the picture's height:
 NOTHING SNAPS. NOTHING DIES.
 THEY JUST STOP COMING BACK.
 
-BADGE: in the lower LEFT, on the empty ground and well inside the edges, a small flat solid
-dark grey rectangle, and inside it in white capitals: DROP AND WALK AWAY
+BADGE: a white ribbon crossing the lower LEFT corner at forty-five degrees, with DROP AND WALK
+AWAY in slate capitals along it.
 
-Nothing in the picture comes within a tenth of its width of any edge.
-
-The words named above are the only added words in the picture. The pack's own printed label
-is part of the object and stays exactly as the reference shows it. Nothing else carries a
-letter or a number — no logo, no watermark, no second caption. No person, no hand, no room.
+Nothing comes within a tenth of the picture's width of any edge. The two lines and the ribbon
+are the only added words; the pack's own printed label is part of the object and stays exactly
+as the reference shows it. No logo, no watermark, no person, no hand, no room.
 ```

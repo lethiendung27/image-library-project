@@ -106,6 +106,25 @@ somebody took rather than a side effect.
 to the rule than another clean render. The one question the rewrite cannot answer alone is
 whether a hook survives at 10 to 14 words, because the old cap was never tested above seven.
 
+## Second pass, 2026-09-03 — four owner findings, all measured
+
+| finding | measured | fixed by |
+|---|---|---|
+| prompt bloat | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | rewritten to 1336–1628, −152 to −594 chars each |
+| badge monotonous | 6 of 6 prompts wrote the identical flat rectangle | **a badge is a MARK, not a text slot.** G16 hands the form back to the type; each of the three types now owns a form library, and the six prompts use six forms — chip, tag, pill, seal, roundel, flash |
+| background monotonous | 6 of 6 wrote "one plain pale grey ground" | six grounds, each from the product's own register — charcoal, workbench brown, deep teal, a lit wall, a citrus gradient, slate |
+| text too small for mobile | headline bands 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor on both iOS and Android | **G16 gains a mobile FLOOR**: the headline's capitals at least a tenth of the picture's height, every other line at least a sixteenth. Maximisation still sets the ceiling; the floor is new |
+
+**The badge change is the structural one.** G16 listed `badge` as a third text slot with one
+shape, and six prompts written under that reading produced six identical rectangles. The repo
+had already settled it twice — ADR-012 gives each type its own MARKS library, and ADR-043
+proved a badge is a library of five interchangeable forms rather than a constant. G16 now
+governs a badge's WORDS and the type governs its FORM.
+
+**Why maximisation alone left the text small.** G16 said the block grows until it would cover
+information. A short block in a large empty field has nothing to grow against, so it stays
+small and stays compliant. The floor is what maximisation was missing.
+
 ## What to send back
 
 The renders and your verdicts. I will write the results into each file's own FOUNDING RENDER

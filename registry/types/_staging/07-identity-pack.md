@@ -72,7 +72,7 @@ REGISTER: commercial product photograph. One frame, no panels, no insets.
 [LIGHT]              broad, and the label stays legible.          -> PARTS/light
 
 [TITLE]              the claim. Optional.                          -> G16/title
-[BADGE]              one short stamp. Bottom LEFT. Optional.       -> G16/badge
+[BADGE]              one short stamp. Bottom LEFT. Optional.      -> MARKS
 ```
 
 ## PARTS
@@ -93,7 +93,10 @@ composited beside it is the shape this ledger has rejected twice.
 **`setting`** — one of three, named in the prompt, and all three are runtime values rather
 than identity (`vocabulary.yaml` `parameters: environment`):
 
-- **plain ground** — one flat tone with a soft contact shadow. The default.
+- **plain ground** — one flat tone with a soft contact shadow. The simplest, and **the one
+  that goes monotonous fastest**: pick the tone from the pack's own palette or from the
+  category's, never a house grey. A pale grey ground under every product in a gallery is a
+  gallery that looks like a spreadsheet.
 - **knockout** — no ground at all, a faint contact shadow, cut to composite onto any page
   colour. **This is the only form that needs no G7 exemption**: G7's scope note already
   reads a product cut-out as a graphic layer.
@@ -106,6 +109,26 @@ is diegetic and permitted under G6's scope note, but a renderer draws printed su
 badly: one observation in batch 2026-09-03-D is a generated frame whose labels are legible
 as shapes and malformed as letters. **A render whose pack lettering is gibberish is a total
 failure of this type**, not a flaw in it, because identity is the whole deliverable.
+
+## MARKS
+
+**A badge is a mark and this type owns its forms** (ADR-012, ADR-043, G16's badge note). The
+skeleton calls `badge` by name; the prompt names WHICH form, and the choice is made per
+product from what its register can carry. **Three forms minimum, and none of them is a
+default** — six test prompts written before this section existed produced six identical flat
+rectangles, which is the monotony that put this section here.
+
+| form | shape | the register it belongs to |
+|---|---|---|
+| `tag` | a flat rectangle, one flat fill, capitals cut out of it | tools, hardware, anything engineered |
+| `seal` | a scalloped rosette or a shield | a guarantee or a standard about the seller. Note G16 refuses a certification mark inside one |
+| `pill` | a rounded capsule, one flat fill | supplements, personal care, food |
+| `roundel` | a filled circle carrying a figure — a count, a size, a quantity | a pack fact the label already carries and the eye should not have to hunt for |
+| `flash` | a corner ribbon | an offer. **Highest going-stale cost of the five** |
+
+**One badge per frame.** A packshot with two stamps has stopped being a packshot.
+**The badge sits bottom LEFT** (`adapters/nano-banana.md` Rule 7).
+**Untested**: no render exists on this type at all.
 
 ## SLOT CONSTRAINTS
 - **G1 is the entire frame rather than a preamble.** A reference-faithful pack IS the

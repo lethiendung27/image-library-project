@@ -77,7 +77,7 @@ REGISTER: commercial product photograph. One frame, no panels, no insets.
 [CALLOUTS]           where each label sits and what joins it.      -> PARTS/callouts
 
 [TITLE]              the claim the whole frame makes. Optional.    -> G16/title
-[BADGE]              one short stamp. Bottom LEFT. Optional.       -> G16/badge
+[BADGE]              one short stamp. Bottom LEFT. Optional.      -> MARKS
 ```
 
 ## PARTS
@@ -87,9 +87,14 @@ turned so every annotated part is visible at once. That band is the whole geomet
 type: below it the parts stop reading, above it there is no ground left for the labels. Choose
 the angle from what has to be labelled, never the reverse.
 
-**`setting`** — one plain ground with room around the object for the labels to sit on. A flat
-tone, a soft gradient, or a heavily blurred surface. Never a real room with objects in it: a
-callout needs empty ground the way a text block does, and a room fills it.
+**`setting`** — a ground with room around the object for the labels to sit on, and **the
+ground is chosen per product rather than defaulted**. A flat tone; a soft gradient; a heavily
+blurred surface; a dark technical ground for a device whose argument is precision; a warm
+material ground for something domestic. What is forbidden is a real room with objects in it —
+a callout needs empty ground the way a text block does, and a room fills it — and what is
+discouraged is reaching for pale grey every time. The corpus builds these on dark circuit
+board, on warm beige, on flat blue and on pale lilac; four products, four grounds, one
+construction.
 
 **`light`** — broad and even. **This type cannot use dramatic light**, because a part in shadow
 is a part whose label points at nothing. Where one annotated part needs separating, lift it
@@ -118,6 +123,28 @@ this type at all.
 showing a part too small to read at product scale. Observed once. `06-relief-hero --detail`
 legislates the same device for a different type at 30–40% of frame width and that band is the
 starting point here, not a separate invention.
+
+## MARKS
+
+**A badge is a mark and this type owns its forms** (ADR-012, ADR-043, G16's badge note). The
+skeleton calls `badge` by name; the prompt names WHICH form, and the choice is made per
+product from what its register can carry. **Three forms minimum, and none of them is a
+default** — six test prompts written before this section existed produced six identical flat
+rectangles, which is the monotony that put this section here.
+
+| form | shape | the register it belongs to |
+|---|---|---|
+| `tag` | a flat rectangle, square or lightly rounded, one flat fill, capitals cut out of it | technical, tools, anything that reads as engineered |
+| `roundel` | a filled circle carrying a short figure or a two-word fact | a number that should feel like a stamp — a count, a rating, a spec |
+| `chip` | a small line icon in a circle with one short label beneath it | a capability, where the icon does half the reading |
+| `flash` | a corner triangle or ribbon crossing one corner of the frame | urgency and offers. **Carries the highest going-stale cost**, since what a flash usually says is a price or a date |
+
+**One badge per frame.** Two stamps compete and neither is read.
+**The badge sits bottom LEFT** — the generation tool's watermark holds the bottom-right corner
+and struck through three of three badges placed there (`adapters/nano-banana.md` Rule 7).
+**Untested on this type**: no render exists, so every form here is a proposal whose first
+render is its founding evidence, the treatment ADR-012 gave a MARKS entry with nothing behind
+it.
 
 ## SLOT CONSTRAINTS
 - **G1 is load-bearing.** Every label is a claim about a real part, so a redesigned or

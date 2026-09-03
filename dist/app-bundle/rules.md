@@ -626,9 +626,33 @@ So each slot now carries a JOB, taken from the owner's own working instruction
 - **`copy` does a DIFFERENT job from the title, never a restatement.** It adds exactly one of:
   proof, a timeframe, or the mechanism in plain words. 5–15 words. If deleting it loses
   nothing, it was a restatement and it should go.
-- **`badge` is a STAMP**: one fact, four words, no verb needed.
-
 **Each line earns its place by doing a job the line above it did not.**
+
+### A badge is a MARK, not a text slot — owner correction, 2026-09-03
+
+`badge` was listed above as a third text slot with one shape: a flat rectangle carrying
+capitals. **Six test prompts written under that reading produced six identical badges**, and
+the owner's verdict was that they are monotonous. The reading was wrong and this repo had
+already settled the point twice:
+
+- **ADR-012**: each type owns its own MARKS library and the skeleton calls entries by name.
+- **ADR-043**: a verdict badge is **a library of five interchangeable forms**, not a
+  constant — glyph, thumb, hazard, emoji and none — each written as a drop-in block of the
+  same shape so any form swaps into any prompt without touching another line. That ADR exists
+  precisely because shipping one form against a file that names one was the gap it closed.
+
+**So a badge belongs in the type's own `MARKS` section, not here.** G16 governs the words a
+badge carries — their length, their content, their contrast — and the type governs the badge's
+FORM. What a type owes is a library: **at least three forms, and the prompt names which one**,
+chosen from what the product's own register can carry. A supplement in a rosette, a tool in a
+hard-edged tag, an offer in a corner flash: same job, three registers, and picking one is a
+decision the writer makes per product rather than a default they inherit.
+
+**Forms observed across the direct-response corpus**, offered as a starting library rather
+than a closed list: a flat rectangle or tag; a scalloped seal or rosette; a shield; a rounded
+pill; a circular roundel carrying a figure; a corner flash or ribbon; an icon in a circle above
+a short label; a speech-bubble pill. Eight forms, all drawn by real pages, none of them harder
+for a renderer than the rectangle six prompts defaulted to.
 
 ### The block
 
@@ -636,7 +660,7 @@ So each slot now carries a JOB, taken from the owner's own working instruction
 |---|---|---|
 | `title` | the claim | 1–3 lines, **≤ 7 words per line** |
 | `copy` | the support | up to **three** separate lines, ≤ 7 words each, each may carry one simple line glyph |
-| `badge` | one short stamp, its own cluster | **≤ 4 words** |
+| ~~`badge`~~ | **moved out of this rule — see below** | — |
 
 Reading order is title, then copy, one alignment, one typeface. The badge sits away from
 the block.
@@ -680,16 +704,38 @@ model fills the vertical space it has by repeating what it already drew". Round 
 same finding in text. **A small block in a large empty field is the dangerous
 configuration, not a large one.**
 
-### Size, by maximisation
+### Size — maximisation for the ceiling, a MOBILE FLOOR underneath it
 
 ```
 The block is as large and as clear as it can be. It grows until it would cover
 the subject the frame exists to show, or until it would breach G10's safe area.
 Then it stops. It is never sized to a target.
+
+It has a FLOOR, and the floor is the phone:
+  the headline's capitals stand at least a TENTH of the picture's height;
+  every other line at least a SIXTEENTH.
+A type may raise that floor and may not lower it.
 ```
 
-G10's own instrument, reused. Two fixed numbers have already failed at sizing an inset in
-this library and a third here would fail the same way.
+Maximisation is G10's own instrument and it sets the ceiling. Two fixed numbers have already
+failed at sizing an inset in this library and a third ceiling here would fail the same way.
+
+**But maximisation alone produced text too small to read on a phone, and that is measured.**
+Owner finding, 2026-09-03. The four round-2 renders were measured off the files: headline
+bands landed at **5.0–6.1% of frame height** and every other line at **3.3–5.5%**. A product
+tile renders about 390pt wide on a phone, so those are **19–24px** for a headline and
+**13–21px** for everything under it. Apple and Google both put **17px** at the floor for body
+text; the owner's own working instruction asks for a 32pt mobile equivalent on the copy line
+and 24pt on a badge. **Half the lines this rule produced sat at or below the platform
+minimum.**
+
+The floor above is why maximisation was not enough: a short block in a large field has nothing
+to grow against, so it stays small and stays compliant. A tenth of the picture's height puts a
+headline near 39px on a phone and a sixteenth puts a support line near 24px — above the
+platform floor with margin, and in the band the instruction asks for.
+
+**Mobile is the default reader and the prompt says so.** Where a frame cannot hold the floor,
+the answer is fewer words, not smaller ones.
 
 ### Placement
 
