@@ -254,7 +254,7 @@ types:
     step: 3
     job: use
     device: sequence
-    version: "1.10"
+    version: "1.11"
     status: active
     channels: [marketplace, landing-page, advertorial]
     ratios: ["3:4", "1:1"]
@@ -262,7 +262,7 @@ types:
     generation_mode: single-pass
     axes:
       camera_lock: [handheld]
-    variants: []
+    variants: [labelled]
     exempt_from: [G3, G4]
     pairs_with: [03-mechanism-ghostbody]
     never_with: []

@@ -226,3 +226,43 @@ the activity going on without them, the object abandoned mid-use, the person wai
 that type because the exposure is structural: any type whose slots are all descriptions of a
 problem's location — `01-pain-split`, `02-symptom-rail` — can be complete and still say nothing
 about what the problem costs.
+
+## A12 · A number in a frame is a claim, and the frame cannot substantiate it
+
+A statistic, a percentage, a duration or a measurement set into an image reads as verified.
+Nothing in the picture verifies it, the reader cannot check it, and the file outlives the page
+that could have. This is not a rendering problem and no wording fixes it — it is a fault in
+what the image is asserting.
+
+**Measured across the direct-response corpus, and the direction is the finding.** Seven frames
+in five batches argue from a figure, and the substantiation attached to them degrades:
+
+| frame | what stood behind the number |
+|---|---|
+| redpine, 89% seeing results after 90 days | a September 2025 survey of subscribers, n=307 |
+| pendulum, 91% and 88% craving reduction | a consumer survey, 274 participants, six weeks |
+| trybello, 73% less shedding within 30 days | an asterisk, and **no footnote anywhere in the frame** |
+| neuaura, 82% / 91% / 89% | **nothing at all** |
+| trybello, 15.33% hair loss reduction in 2 months | nothing, to two decimal places |
+| snif-rect, a 1MHz–10GHz frequency range | nothing |
+| hume-band, a systolic and diastolic range | nothing, and it is a clinical figure |
+
+**One frame in the corpus does it correctly** and is the shape any future rule would have to
+legislate: a women's multivitamin tile that names a third-party consumer perception study,
+31 women aged 18+, two capsules daily for twelve weeks, in the frame, beside the claims it
+supports (`sha256:8e885077254e2…`).
+
+**The consequence for this library is a block, not a style note.** Three proposals — a
+statistic type, an instrument-capture type and an interface-card type — all argue from figures
+and **none of them can be given a skeleton**, because a skeleton has to say where the number
+comes from and no rule in this repo does. `G14` covers a fabricated endorsement. Nothing
+covers a fabricated measurement.
+
+**Until a rule exists, the working position is the narrow one:** a figure may enter a frame
+only where `content.json` carries both the figure and its source, and the source is set in the
+frame beside it. Where the brief carries a number and no source, the number does not go in the
+picture — the page can print it in HTML where it can be corrected, and where a regulator can
+see what it rests on.
+
+- Observed on: seven frames, five sources, batches 2026-09-03-E through H. Not yet observed
+  in any render this library has produced, because no type that could produce one exists.

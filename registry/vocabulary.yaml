@@ -55,6 +55,7 @@ devices:
   claimstack: "a subject to one side, a headline and short claim lines filling the other"
   inhand: "the product held up to the lens; the hand is the scale cue and nothing else is"
   pack: "the product as it arrives — closed, open, or with its own contents at its foot"
+  callout: "a subject at the centre, labelled satellites around it; what joins them — a leader line, a dashed leader, or nothing — is a parameter"
 
 # Cross-cutting presentation dimensions. A type declares which values it supports
 # in its frontmatter `axes:` map. Definitions of the semantics live in rules/runbooks.

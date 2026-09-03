@@ -3,7 +3,7 @@ id: 06-relief-claimstack
 step: 6
 job: relief
 device: claimstack
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "4:3"]
@@ -22,7 +22,20 @@ requires_pair: null
 
 # 06-relief-claimstack — STAGING DRAFT
 
-Promotion status (2026-09-03): **2/5 exemplars** — `sha256:2da3d3182d3dbd8…`, a laughing
+Promotion status (2026-09-03, after batches F, G and H): **9 distinct sources — criterion 1
+is CLEARED and by a wide margin.** mida-fernwell, holloway, redpine, dermadream, lw-womens,
+ezy-talux, quietmex, retro-noxt, snif-rect: supplements, coffee, personal-care devices, audio
+and consumer electronics. **Nine sources makes this the best-evidenced proposal this library
+has ever held, active types included**, and the finding behind the number is worth stating:
+a subject to one side with a headline and short claim lines filling the other is the single
+most common argument image on a direct-response product page.
+
+Criterion 3 MET at `pass` on the five-cluster form. **Criterion 2 (router-confusion) is now
+the binding gap**, and it is a real one — a type this common will compete with
+`06-relief-hero` for every outcome slot on every page, and that test has to be run before
+promotion rather than after.
+
+Superseded status line, kept so the count's history is legible: **2/5 exemplars** — `sha256:2da3d3182d3dbd8…`, a laughing
 woman cut out against a pale green field beside a headline and four icon-and-claim lines;
 and `sha256:4a3fbc492b392e5e4…`, the identical layout with the PRODUCT in the subject
 position and no person at all. The second is why PARTS/subject below is too narrow as
@@ -72,20 +85,46 @@ REGISTER: commercial editorial photograph on a flat coloured field.
 
 ## PARTS
 
-**`subject`** — one person, cut out from their own background and placed on the field. Face
-visible and the expression is the evidence, which makes this the one relief type that leans on
-expression rather than on physical fact. **G9 is in tension here and the tension is real:** G9
-ranks a visible symptom or result above a face and says emotion on a face is not evidence. This
-type has no visible result by definition — that is its trigger — so the face is the only rung
-of G9's ladder available. Where a result IS visible, G9 says take another type, and the trigger
-above says the same thing in different words.
+**`subject`** — choose ONE. A **person** carrying the state, or the **product** itself, or the
+product **in use** — a hand holding it, a glass being made, a device being worn. Whichever it
+is, it occupies one third to one half of the frame at one side and nothing else competes with
+it.
+
+**The subject slot was written around a person and nine sources say it is wider than that.**
+Four of the nine put a product where the draft put a face — capsules, a neck device, a
+mouthpiece, a headset — and the argument does not change: the claims still carry the reasons
+and the subject still carries the promise. This is corrected here rather than left in
+KNOWN-FLAKY because four independent sources is past the evidence rule twice over.
+
+**Where the subject IS a person, G9 is in tension and the tension is real:** G9 ranks a visible
+symptom or result above a face and says emotion on a face is not evidence. This type has no
+visible result by definition — that is its trigger — so the face is the only rung of G9's
+ladder available. Where a result IS visible, G9 says take another type, and the trigger above
+says the same thing in different words. **Where the subject is the product, G9 is not engaged
+at all**, which makes the product form the safer of the two and is worth knowing.
 
 **`offset`** — the subject occupies one third to one half of the frame at one side; the words
 occupy the rest. **The field between them is empty by construction and nothing else may claim
 it** — two reservations for one area render as dead air, measured 2 of 2 on `06-relief-hero`.
 
-**`field`** — one flat tone, no gradient, no texture, no room. The subject is cut out and sits
-on it. The tone is a runtime value (`parameters: environment`).
+**`field`** — what the words sit on. Three forms, all observed, and the clause that binds all
+three is **legibility, not flatness**:
+
+- **flat tone** — one colour, no gradient, no texture, the subject cut out and placed on it.
+  The default and the easiest to keep legible.
+- **a real room** — the subject photographed in place, the words set into the room's own
+  out-of-focus area. Three sources build it this way; one puts the words straight onto the
+  wall with no panel at all.
+- **a band** — the photograph occupying two thirds and the claims a solid band beneath,
+  with the product cut out across the boundary.
+
+**The flat-tone-only clause was wrong and this corrects it.** It existed to keep the words
+legible; a blurred room does that job, and a real room buys context the flat field throws
+away. What still binds is that the area the words occupy carries nothing else — G16's
+never-reserve-space-you-do-not-fill rule applies to all three forms equally, and the flat
+field is the one most able to invite the duplication G16 measured.
+
+The tone or the room is a runtime value (`parameters: environment`).
 
 **`light`** — warm and directional on the subject, usually from behind so hair and shoulder
 carry a rim. The field is flat and unlit; lighting the field turns the cut-out into a badly

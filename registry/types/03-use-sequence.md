@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.10"
+version: "1.11"
 status: active
 replaced_by: null
 ratios: ["3:4", "1:1"]
@@ -12,7 +12,7 @@ requires_product_photo: true
 generation_mode: single-pass
 axes:
   camera_lock: [handheld]
-variants: []
+variants: [labelled]
 exempt_from: [G3, G4]
 pairs_with: [03-mechanism-ghostbody]
 never_with: []
@@ -209,6 +209,41 @@ inconsistent palette, staged perfection
 ```
 Canonical and model-agnostic; the adapter transforms it and no avoid line ships (ADR-014).
 
+## VARIANTS
+### --labelled
+```
+[LAYOUT OVERRIDE] each panel carries ONE label of its own — a number, a step
+  word, or a caption — in a bar or badge that touches the panel it belongs to
+  and no other. Nothing else in the frame carries a word.       -> G16
+[NEGATIVE OVERRIDE] the base list's `step numbers` line is lifted for this
+  variant ONLY. Arrows carrying the reading order stay banned.
+```
+
+**This variant exists because the market builds it and the base type forbade it flatly.**
+The base's whole discipline is that the order is read from the ACTIONS — no numbers, no step
+markers, nothing pointing from one panel to the next — and that discipline is not weakened
+here. What `--labelled` permits is a label that NAMES a panel; what stays banned is a mark
+that CARRIES the reading order between panels. A numeral in a badge on panel two says "this
+is two"; an arrow from panel one to panel two says "read this way", and only the second one
+replaces the work the actions are supposed to do.
+
+**Three distinct observations from three products, which is curate.md §3's bar:**
+`sha256:bc8893e4941bca1d…` (a pet-food page delivering its sequence as separate single-panel
+assets each with a numbered badge), `sha256:d9182fe5815f8dd3…` (a coffee page numbering three
+panels Step 1 to Step 3 with a caption block under each), `sha256:11b15330dfa36c17…` (an
+anti-snoring page captioning four panels in a 2x2 with no numbers at all). The third is why
+the variant is called `--labelled` rather than `--numbered`: a caption breaks the same clause
+a numeral does.
+
+**Panel count moves with it.** The base is three panels; the 2x2 observation is four. Panel
+count is a runtime parameter under SPEC §3.2 and does not change the argument, so four is
+legal here — but at 1:1 G15 binds and four panels pack as a 2x2, which is what the observation
+already does.
+
+**Untested.** No render exists for this variant. Its first render is its founding evidence,
+and the open question is whether a label per panel survives where the base type's own
+prompts have never carried a word.
+
 ## WORKED EXAMPLES
 The two renders that passed with an empty `failures` list, kept in full because that text is
 the only record of what actually rendered — the ledger stores verdicts, not prompts (SPEC 3.3).
@@ -351,6 +386,10 @@ argues what is better inside, and this type answers "can I operate it". A galler
 more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
+- 1.11 (2026-09-03): **`--labelled` added**, this type's first variant. Three distinct
+  observations of one decision — a label per panel where the base forbids all text:
+  `sha256:bc8893e4941bca1d…`, `sha256:d9182fe5815f8dd3…`, `sha256:11b15330dfa36c17…`. The base
+  discipline stands; the boundary is in the variant block. ADR-066. · this commit
 - 1.10 (2026-08-27): **at 1:1 the three photographs pack as one above two** instead of three
   stacked bands (G15). Owner correction: no type is exempt at 1:1. The geometry ban is
   clarified rather than weakened — it forbids naming the FRAME, and this part's own first

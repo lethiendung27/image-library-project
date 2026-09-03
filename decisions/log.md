@@ -3633,3 +3633,106 @@ worth a file. `04-proof-stat` is held back for a second reason worth stating: bo
 observations argue from a survey percentage with a substantiation footnote, and this library
 has no rule about substantiation anywhere. G14 covers a fabricated endorsement; nothing covers
 a fabricated statistic. That rule has to exist before a statistic type can have a skeleton.
+
+## ADR-066 · 2026-09-03 · Curation pass: the claim stack is the corpus's commonest argument, and halo is callout
+
+A curation pass over 269 observations, run after batches E through H added 65 records from
+eight further direct-response product pages. Four changes, each carrying its evidence.
+
+**1. `06-relief-claimstack` reaches NINE distinct sources and two of its clauses were wrong.**
+
+The proposal was drafted from one observation and its own KNOWN-FLAKY named both faults before
+the evidence arrived. Both are now past the rule twice over and are corrected in the file:
+
+- `PARTS/subject` was written around **a person carrying a felt state**, because the single
+  exemplar had one. Four of the nine sources put the PRODUCT there instead — capsules, a neck
+  device, a mouthpiece, a headset — and the argument is unchanged. The slot now takes a person,
+  the product, or the product in use, and states the consequence: **where the subject is the
+  product, G9 is not engaged at all**, which makes the product form the safer of the two.
+- `PARTS/field` demanded **one flat tone, no room**. Three sources in batch H put a real room
+  behind the words and one sets them into the room's own wall with no panel. The clause existed
+  to keep words legible and a blurred room does that; a real room also buys context the flat
+  field throws away. Three forms are legislated and the binding clause becomes legibility.
+
+Nine sources across supplements, coffee, personal care, audio and consumer electronics makes
+this **the best-evidenced proposal this library has ever held, active types included**. The
+finding behind the number is worth stating plainly: a subject to one side with a headline and
+short claim lines filling the other is the single most common argument image on a
+direct-response product page. Criterion 2 becomes the binding gap and it is a real one — a
+type this common will contest every outcome slot with `06-relief-hero`, and the
+router-confusion test has to run before promotion rather than after.
+
+**2. `03-spec-callout` reaches five sources and is drafted. Halo and callout are ONE DEVICE.**
+
+Batch G raised the question and a batch H frame settles it: the feicemat tile places four
+labelled satellites around a central product **with no leader lines at all**. So the leader is
+a parameter of the layout, not its identity, and what makes the construction is a subject at
+the centre with labelled satellites around it. Three joining forms are observed — leader line,
+dashed leader, nothing — and the file legislates them as parameters.
+
+**They are one device and not one type.** `02-symptom-halo`'s job is `symptom`; this one's is
+`spec`. SPEC §3.1 makes two jobs two types however alike the picture, exactly as `split`
+already serves `01-pain-split` and `03-spec-split`. The halo proposal therefore survives,
+renamed **`02-symptom-callout`**, at two sources, sharing the new device. It gets no file until
+it has three, and the rename is recorded here because the ledger carries eight records under
+the old id and a reader has to be able to follow them.
+
+New device `callout` in `vocabulary.yaml`. **The file states its own biggest risk in
+KNOWN-FLAKY**: it asks for up to eight text clusters where G16's founding rounds measured five,
+so its count rule is provisional on a render round it has not had.
+
+**3. `03-use-sequence` gains `--labelled`, its first variant, on three distinct observations.**
+
+The base type forbids numbers, step markers and text outright, because the order is meant to be
+read from the actions. Three products broke exactly that one clause: a pet-food page numbering
+its steps, a coffee page numbering three panels, and an anti-snoring page CAPTIONING four
+panels with no numbers at all. The third is why the variant is `--labelled` rather than
+`--numbered` — a caption breaks the same clause a numeral does.
+
+**The base discipline is not weakened and the boundary is stated in the block**: a label NAMES
+a panel; an arrow CARRIES the reading order between panels; only the second does the job the
+actions are supposed to do, and it stays banned. Panel count moves to four with the 2x2
+observation, which SPEC §3.2 already makes a parameter.
+
+A FOURTH variant-candidate on this type — a four-cell vertical rail from the older corpus,
+`sha256:62797f53c0081926…` — is a DIFFERENT single decision and is deliberately not folded in.
+Folding two decisions into one variant is how a variant stops meaning anything.
+
+**4. `argument-faults.md` gains A12: a number in a frame is a claim the frame cannot
+substantiate.**
+
+Seven frames across five sources argue from a figure and the substantiation attached to them
+**degrades in one direction**: a named survey with n=307, then a survey with 274 participants,
+then a bare asterisk with no footnote, then nothing, then nothing to two decimal places, then a
+clinical blood-pressure range with nothing. One frame in the whole corpus does it correctly and
+is the shape a rule would have to legislate.
+
+**This is filed as an argument fault rather than written as a global rule, and that is a
+deliberate limit on what this pass decides.** A12 names the fault, measures it, and states a
+narrow working position — a figure enters a frame only where `content.json` carries the figure
+AND its source, and the source is set beside it. What A12 does not do is bind the library by
+law, because a rule about what claims may be printed is a commercial and regulatory decision
+rather than a craft one, and it is the owner's. **Three proposals are blocked behind that
+decision** — `04-proof-stat` at 4/5 sources, `04-proof-instrument`, and `04-proof-interface` —
+and none of them can be given a skeleton until it is made, because a skeleton has to say where
+the number comes from.
+
+**Consequences.**
+
+- `registry/types/03-use-sequence.md` 1.10 → **1.11**, the only ACTIVE type touched. Its
+  `use_when` is unchanged, so no trigger moves; the router-confusion test of `curate.md` §4 is
+  satisfied by that and confirmed by 14 golden slots still deriving with 0 errors.
+- `registry/types/_staging/06-relief-claimstack.md` 0.1 → 0.2.
+- `registry/types/_staging/03-spec-callout.md` is new; `_staging` count 8 → 9.
+- `registry/vocabulary.yaml` gains device `callout`.
+- `registry/argument-faults.md` gains A12.
+- `registry/index.yaml` and `dist/app-bundle/` regenerate. The index delta is two lines — the
+  version and the variants list of one type.
+- `registry_version` unchanged: no active structure moves and no vocabulary value is removed.
+
+**What this pass deliberately did NOT do.** It did not promote anything: `06-relief-claimstack`
+and `03-spec-callout` both clear criterion 1 and both fail criteria 2 and 3, and a promotion
+that skips a router-confusion test on the two most contested types in the registry would be
+the expensive kind of shortcut. It did not write the substantiation rule. And it did not merge
+`02-symptom-callout` into this file, because two jobs are two types and the grammar already
+says so.
