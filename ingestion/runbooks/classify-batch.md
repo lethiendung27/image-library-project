@@ -84,6 +84,40 @@ that teach nothing. Batches 2026-08-31-A and -B both selected argument-carrying 
 round-robin across products, and both said so in their commit message. What is not legitimate
 is selecting silently: the reader of the ledger has to know the sample was shaped.
 
+**THE OWNER SELECTS, AND THE DROP POINT IS THE ROOT OF `stills/` (from 2026-09-03).** Five
+batches ran with the session choosing the sample and all five spent a third of the budget on
+page furniture no filename filter could exclude. From batch D onward the owner picks the images
+by eye and copies them to `stills/` root; the session classifies what is there and nothing
+else. The result was immediate: batches D through H returned 0 icons, 0 logos and 0 avatars,
+and batch H returned **zero rejects** — the first in the ledger. Build the to-do list exactly
+as below and then take **the outstanding hashes whose path is the root**, which is the owner's
+signal.
+
+**SELECT BY HASH, NEVER BY PATH (2026-09-03-C).** Batch C deduplicated its to-do list against
+the ledger by hash and then chose FROM it by path, and two pairs came back byte-identical —
+`pendulum-cravings` and `lp3-12northfold-washno1` share assets. Twenty files were eighteen
+images. One record per HASH.
+
+**COUNT SOURCES, NOT OBSERVATIONS — this is the difference between a batch that moves a
+proposal and one that does not.** SPEC 6.3 criterion 1 wants five DISTINCT SOURCES, and the
+ledger has measured the cost of forgetting it twice:
+
+| batch | files | what it moved |
+|---|---|---|
+| D | 14 halden ingredient frames | **nothing** — halden was already a source, and 6 of the 14 were duplicates of each other |
+| E | 8 millbrook botanicals | **nothing** — same reason |
+| F | 7 files, 2 new products | **four proposals** |
+| H | 16 files, 8 new products | **two proposals past criterion 1** |
+
+**One frame per pattern per product, and pick the product that is not already on that
+proposal's source list.** A second frame of a pattern from a page that already supplies it
+raises the observation count and leaves the number SPEC 6.3 reads untouched.
+
+**A filename may carry no product at all.** Two batches arrived as UUIDs and CMS container
+ids, with the product name legible only inside the image. Read it off the picture and write it
+into the record's `notes` as a `product__file` prefix — without it the whole batch counts as
+one unknown source and its value disappears.
+
 **The manifest points at `stills/`, and that is load-bearing (2026-08-19, ADR-025).** The
 asset folder now holds `stills/` (the market corpus), `feedback/` (this library's own
 render outputs) and `gifs/` (the GIF library) side by side. Until today the manifest was
