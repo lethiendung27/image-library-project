@@ -826,6 +826,99 @@ renderer sets at its habitual size is bigger per word the fewer words it is give
 one frame in six that cleared 6% carried the shortest headline of the six. That is one
 observation and it is written here as the next thing to test, not as a rule.
 
+
+### Round 4, 2026-09-03 — the ground is too loud and the badge is too flat, measured against the corpus
+
+**Owner audit of the six founding renders: the prompts choose colour badly, and the
+badges are still not as rich as the corpus's.** Both were checked against the market
+rather than argued, and both are true.
+
+#### The ground
+
+The outer 8% ring of every frame, taken as the ground, across the 119 direct-response
+corpus frames the 2026-09-03 batches classified, against this library's own six renders:
+
+| | corpus, n=119 | the six renders |
+|---|---|---|
+| ground VALUE, median | **0.89** | **0.46** |
+| ground SATURATION, median | **0.06** | **0.38** |
+| grounds darker than 0.70 | 35% | **83%** — 5 of 6 |
+| grounds more saturated than 0.25 | 24% | **67%** — 4 of 6 |
+
+**The market's ordinary ground is light and almost colourless. Ours was dark and six
+times more saturated.** Not one of the six is a bad frame on its own; as a set they sit
+off the distribution of the thing they are copying.
+
+**The cause is a rule this library wrote to cure the opposite fault.** Three type files
+tell the writer to take the ground from the product's own register — *"pick the tone from
+the pack's own palette or from the category's, never a house grey"*, *"chosen from the
+product's own register rather than reached for"*, *"what is discouraged is reaching for
+pale grey every time"*. All three were written on 2026-09-03 to cure six frames of
+identical pale grey. They cured it, and moved the whole set off the corpus, because
+nobody measured the corpus before writing them.
+
+**The distinction, not the opposite.** Going back to pale grey every time is the fault
+those clauses fixed and it is not the answer:
+
+```
+The ground is QUIET by default — light, and close to neutral. That is what the
+market does two times out of three, and it is not a failure of nerve.
+
+A dark or a saturated ground is legitimate and the corpus builds one about a third
+of the time. It is a CHOICE, and the prompt says what the choice buys: dark for a
+product that emits, saturated where the brand owns that colour, a real room where
+context is the argument.
+
+Variety is spent where the corpus spends it — on the marks, the product and the
+chips — and not on the wall behind them. A frame whose only interesting colour is
+its background has put its budget in the one place nobody looks.
+```
+
+#### The badge interior
+
+Value spread inside the badge's own fill, p10 to p90, text ink excluded:
+
+```
+the six renders     0.06  0.09  0.03  0.31  0.02  0.03    5 of 6 DEAD FLAT
+four corpus badges  0.12  0.35  0.16  0.10               3 of 4 carry a tone step
+```
+
+**The one render that is not flat is the only one whose prompt named a second tone** — *"a
+scalloped rosette in deep gold with a darker gold rim"*. So nothing about the renderer
+resists this; the prompt gets exactly what it asks for, and five prompts asked for one
+flat colour.
+
+Two clauses put it there, and both are in this repo. **This rule's own Style paragraph**
+reads *"Flat solid colour. No gradient, outline, drop shadow, ribbon or gradient bar"* —
+correct for the text block, and read as binding the badge. And **the three MARKS tables
+say "one flat fill" five times between them.**
+
+The interiors also differ in structure, measured as distinct ink bands inside the badge:
+corpus badges run **2 to 4 bands and 2 to 4 type sizes**; the six renders ran 1 to 2
+sizes and **3 of 6 carried a single band** — one word, one size, one colour. What the
+corpus builds is a small composition: a figure at one size, a label at another, a
+qualifier smaller still, often a glyph, usually a rim or a concentric ring.
+
+```
+A badge carries AT LEAST ONE INTERNAL TONE STEP — a rim, a concentric ring, an
+outline inset from the edge, or a sheen across the fill — AND AT LEAST TWO TYPE
+SIZES. A stamp with one word at one size in one flat colour is a label, and the eye
+reads it as one.
+```
+
+**Three passes tried to fix the badge from the outside** — eight forms, then size and
+position and colour, then four corners — and the owner's verdict did not move. Every one
+of those is a property of the badge's OUTLINE. The variable that had never been named is
+what is INSIDE it. This is the same shape as round 3's anchor finding: the instrument was
+aimed at the wrong axis, and three rounds of adding rules to the wrong axis changed
+nothing.
+
+**One corpus habit is observed and deliberately NOT legislated.** *One badge per frame*
+is contradicted 1 of 4 — a PetLab benefits tile carries two credential stamps side by
+side, and a Pendulum bottle carries a shield plus three stacked claim chips. Two frames
+out of four still carry one. That is not past the evidence rule, so the rule stands and
+this paragraph is the record of where it will break first.
+
 ### Placement
 
 1. **The block sits on ground the type's own skeleton has already left clear.** Never over
@@ -906,6 +999,10 @@ English, German and UK domains. A still with words serves the pages in its own l
 only.
 
 ### Style
+
+**This paragraph is about the TEXT BLOCK and about nothing else** — scope corrected
+2026-09-03, after it was read as binding the badge and 5 of 6 badges came back dead flat.
+A badge is a MARK, the type owns its form, and the badge interior above says what it owes.
 
 Flat solid colour. No gradient, outline, drop shadow, ribbon or gradient bar. One typeface
 for the whole block. Contrast against the ground is stated in the prompt, not assumed: dark
