@@ -3,7 +3,7 @@ id: 03-spec-callout
 step: 3
 job: spec
 device: callout
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "4:3"]
@@ -68,7 +68,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-callout v0.2
+TYPE: 03-spec-callout v0.3
 REGISTER: commercial product photograph. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -92,10 +92,17 @@ the angle from what has to be labelled, never the reverse.
 ground is chosen per product rather than defaulted**. A flat tone; a soft gradient; a heavily
 blurred surface; a dark technical ground for a device whose argument is precision; a warm
 material ground for something domestic. What is forbidden is a real room with objects in it —
-a callout needs empty ground the way a text block does, and a room fills it — and what is
-discouraged is reaching for pale grey every time. The corpus builds these on dark circuit
-board, on warm beige, on flat blue and on pale lilac; four products, four grounds, one
-construction.
+a callout needs empty ground the way a text block does, and a room fills it. **The ground is
+QUIET by default** — light, and close to neutral.
+
+That last clause is a correction (G16 round 4, 2026-09-03). This part used to say only that
+reaching for pale grey every time was discouraged, and the founding round obeyed it: both
+frames came back on a dark ground, 0.30 and 0.48 in value, against a corpus median of 0.89
+over 119 frames. The four grounds this part cites — dark circuit board, warm beige, flat
+blue, pale lilac — are real and they are a THIRD of the corpus, not its centre. A dark or
+saturated ground stays legal and now needs a reason in the prompt: this type earns one
+honestly when the product emits or when its argument is precision. Otherwise the ground is
+light, and the colour is spent on the callouts, the product and the badge.
 
 **`light`** — broad and even. **This type cannot use dramatic light**, because a part in shadow
 is a part whose label points at nothing. Where one annotated part needs separating, lift it
@@ -135,7 +142,7 @@ rectangles, which is the monotony that put this section here.
 
 | form | shape | the register it belongs to |
 |---|---|---|
-| `tag` | a flat rectangle, square or lightly rounded, one flat fill, capitals cut out of it | technical, tools, anything that reads as engineered |
+| `tag` | a flat rectangle, square or lightly rounded, capitals cut out of the fill | technical, tools, anything that reads as engineered |
 | `roundel` | a filled circle carrying a short figure or a two-word fact | a number that should feel like a stamp — a count, a rating, a spec |
 | `chip` | a small line icon in a circle with one short label beneath it | a capability, where the icon does half the reading |
 | `flash` | a corner triangle or ribbon crossing one corner of the frame | urgency and offers. **Carries the highest going-stale cost**, since what a flash usually says is a price or a date |
@@ -151,6 +158,20 @@ nothing behind it.
 **A badge is sized by the anchor and the anchor WORKS on a badge** — 0.51 and 0.59 of the
 object named, against 0.24 and 0.23 for the headline in the same two frames. See FOUNDING
 RENDER ROUND; the distinction now lives in G16.
+
+**A badge is not FLAT and it is not ONE WORD AT ONE SIZE** (G16, round 4, 2026-09-03). The
+table above describes an OUTLINE; it said nothing about the interior, and five of six
+founding-round badges came back with a value spread of 0.02–0.09 — dead flat — against
+0.10–0.35 on four corpus badges. The only render that was not flat is the only one whose
+prompt named a second tone. What every badge in this type owes:
+
+- **at least one internal tone step** — a rim, a concentric ring, an outline inset from the
+  edge, or a sheen across the fill;
+- **at least two type sizes** — corpus badges run 2 to 4; the six renders ran 1 to 2, and
+  3 of 6 carried a single line of type at a single size.
+
+A figure large, its label smaller, a qualifier smaller still, and often a glyph. That is a
+small composition, and it is what makes a stamp read as a stamp rather than as a label.
 
 ## SLOT CONSTRAINTS
 - **G1 is load-bearing.** Every label is a claim about a real part, so a redesigned or
@@ -329,6 +350,11 @@ subject without attaching them to anything, and that is the real line: **a claim
 about the buyer's life, a callout claim is about a place on the object.**
 
 ## CHANGELOG
+- 0.3 (2026-09-03): owner audit of the founding round — colour. `PARTS/setting`: the ground
+  is quiet by default; a dark or saturated one needs a reason. Measured — corpus ground
+  value median 0.89 over 119 frames against 0.30 and 0.48 here. `MARKS` gains the badge
+  INTERIOR: one internal tone step and two type sizes minimum, on 5 of 6 renders flat at
+  0.02–0.09 against 3 of 4 corpus badges at 0.10–0.35. ADR-068.
 - 0.2 (2026-09-03): founding render round, 2 renders — `sha256:b135d5d6ffb72ba1…`,
   `sha256:afb22a55516bc06b…`. Eight clusters held 8/8, so the three-to-six count rule stops
   being provisional on G16. Leaders cross at six labels, 1/1 → KNOWN-FLAKY. MARKS: the

@@ -1,13 +1,19 @@
 # Ready to push — three types, six renders
 
-**THE ROUND HAS RUN.** All six renders arrived on 2026-09-03 and all six have been examined
-and measured off the files. The results are written into each type's own file, not here:
-`FOUNDING RENDER ROUND` in `03-spec-callout` and `07-identity-pack`, `SECOND RENDER ROUND`
-in `06-relief-claimstack`, a `WORKED EXAMPLES` entry per render carrying the prompt that
-produced it, and six records in `eval/render-tests.jsonl`.
+**ROUND 1 HAS RUN AND ROUND 2 IS IN `prompts.md`.** All six founding renders arrived on
+2026-09-03, were examined and measured, and their results are written into each type's own
+file rather than here: `FOUNDING RENDER ROUND` in `03-spec-callout` and `07-identity-pack`,
+`SECOND RENDER ROUND` in `06-relief-claimstack`, a `WORKED EXAMPLES` entry per render carrying
+the prompt that produced it, and six records in `eval/render-tests.jsonl`.
 
-**What is left is yours and it is short**: three verdicts, and four of the thirteen questions
-below that no measurement can answer.
+**Then the owner audited them: the colour choices are poor and the badges are still not as
+rich as the corpus's.** Both were measured against the market before anything was rewritten —
+119 direct-response corpus frames for the ground, four corpus badges for the interior — and
+both are true. G16 gained a round-4 section, the three type files were corrected, and
+`prompts.md` now holds **six new prompts on six products none of these types has seen**.
+
+**What is left is yours**: three verdicts on round 1, and the judgement questions no
+measurement reaches. Round 2 is ready to render whenever you want it.
 
 Three staging types whose remaining blocker was **a render**, not more evidence.
 

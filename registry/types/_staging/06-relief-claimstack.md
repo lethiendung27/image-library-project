@@ -3,7 +3,7 @@ id: 06-relief-claimstack
 step: 6
 job: relief
 device: claimstack
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "4:3"]
@@ -71,7 +71,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 06-relief-claimstack v0.3
+TYPE: 06-relief-claimstack v0.4
 REGISTER: commercial editorial photograph on a flat coloured field.
 
 [SUBJECT]   one person carrying the state, cut out.        -> PARTS/subject
@@ -118,10 +118,14 @@ it** — two reservations for one area render as dead air, measured 2 of 2 on `0
 three is **legibility, not flatness**:
 
 - **flat tone** — one colour, no gradient, no texture, the subject cut out and placed on it.
-  The easiest to keep legible and **the one to stop defaulting to**: the corpus builds this
-  form on sage, sand, cobalt, cream, pale blue and warm beige, and the tone is chosen from the
-  product's own register rather than reached for. A tone that could belong to any product in
-  the category is a tone that has not been chosen.
+  The easiest to keep legible. The corpus builds this form on sage, sand, cobalt, cream, pale
+  blue and warm beige — **and note what those six have in common: every one is LIGHT and
+  low in saturation.** The instruction here used to be "chosen from the product's own
+  register rather than reached for", and the founding round obeyed it into a fully saturated
+  deep teal, 0.90 saturation against a corpus median of 0.06 across 119 frames. Choosing from
+  the product's register is right about HUE and was read as licence for depth and intensity.
+  The tone is light and quiet; a dark or saturated field is a choice the prompt justifies,
+  and a tone that could belong to any product in the category is still a tone nobody chose.
 - **a real room** — the subject photographed in place, the words set into the room's own
   out-of-focus area. Three sources build it this way; one puts the words straight onto the
   wall with no panel at all. **Rendered, 1 of 1, in its hardest form**: white words straight
@@ -158,9 +162,9 @@ rectangles, which is the monotony that put this section here.
 
 | form | shape | the register it belongs to |
 |---|---|---|
-| `tag` | a flat rectangle, one flat fill, capitals cut out of it | anything that reads as engineered or clinical |
+| `tag` | a flat rectangle, capitals cut out of the fill | anything that reads as engineered or clinical |
 | `seal` | a scalloped rosette or a shield, a short line curved inside it | a guarantee, a standard, a promise about the seller. **Reads as authority, which is exactly why G16 refuses a certification mark in one** |
-| `pill` | a fully rounded capsule, one flat fill, a short line inside | soft categories — supplements, personal care, anything domestic |
+| `pill` | a fully rounded capsule, a short line inside | soft categories — supplements, personal care, anything domestic |
 | `chip` | a small line icon in a circle with one short label beneath | a capability where the icon carries half the reading |
 
 **One badge per frame**, and it never repeats a line the stack already carries.
@@ -177,6 +181,20 @@ on a champagne-gold vacuum and got exactly that — a badge the same hue as the 
 beside. Nothing in the render failed; the PROMPT broke G16's own rule that a badge carries a
 colour the photograph does not, and it broke it because the writer read the colour off the
 product. Choose the badge hue against the frame, never from it.
+
+**A badge is not FLAT and it is not ONE WORD AT ONE SIZE** (G16, round 4, 2026-09-03). The
+table above describes an OUTLINE; it said nothing about the interior, and five of six
+founding-round badges came back with a value spread of 0.02–0.09 — dead flat — against
+0.10–0.35 on four corpus badges. The only render that was not flat is the only one whose
+prompt named a second tone. What every badge in this type owes:
+
+- **at least one internal tone step** — a rim, a concentric ring, an outline inset from the
+  edge, or a sheen across the fill;
+- **at least two type sizes** — corpus badges run 2 to 4; the six renders ran 1 to 2, and
+  3 of 6 carried a single line of type at a single size.
+
+A figure large, its label smaller, a qualifier smaller still, and often a glyph. That is a
+small composition, and it is what makes a stamp read as a stamp rather than as a label.
 
 ## SLOT CONSTRAINTS
 - **Every word comes from the page's own copy.** G16's content rule binds hardest on this type,
@@ -373,6 +391,12 @@ step 6's own definition; the enumeration is how the tile is BUILT, not what it a
 names the mechanism and `claimstack` is the mechanism: a subject beside a stack of claims.
 
 ## CHANGELOG
+- 0.4 (2026-09-03): owner audit of the second round — colour. `PARTS/field`: the flat tone is
+  LIGHT and low-saturation; deriving it from the product's register governs hue, not depth.
+  Measured — this type's own render came back at 0.90 saturation against a corpus median of
+  0.06 over 119 frames. `MARKS` gains the badge INTERIOR: one internal tone step and two type
+  sizes minimum. The `seal` rendered here is the one non-flat badge of six, and the only one
+  whose prompt named a second tone. ADR-068.
 - 0.3 (2026-09-03): second render round, 2 renders — `sha256:9df23c4bfb119485…`,
   `sha256:0d47d3e4d0d6c289…`. Each isolates one clause ADR-066 widened; both hold, 1/1 each.
   MARKS: bottom-left constant becomes three open corners, 2/2 obeyed; `pill` and `seal`

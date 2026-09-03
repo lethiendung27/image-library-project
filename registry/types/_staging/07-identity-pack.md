@@ -3,7 +3,7 @@ id: 07-identity-pack
 step: 7
 job: identity
 device: pack
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "4:3"]
@@ -63,7 +63,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 07-identity-pack v0.2
+TYPE: 07-identity-pack v0.3
 REGISTER: commercial product photograph. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -95,9 +95,14 @@ composited beside it is the shape this ledger has rejected twice.
 than identity (`vocabulary.yaml` `parameters: environment`):
 
 - **plain ground** — one flat tone with a soft contact shadow. The simplest, and **the one
-  that goes monotonous fastest**: pick the tone from the pack's own palette or from the
-  category's, never a house grey. A pale grey ground under every product in a gallery is a
-  gallery that looks like a spreadsheet.
+  that goes monotonous fastest**: pick the HUE from the pack's own palette or from the
+  category's, and keep it **light and low in saturation**. A pale grey ground under every
+  product in a gallery is a gallery that looks like a spreadsheet — but the cure is a chosen
+  hue, not a heavy one. Corrected 2026-09-03 (G16 round 4): "never a house grey" was read as
+  licence for depth, and this type's two founding renders came back at 0.96 and 0.30 in
+  value against a corpus median of 0.89 over 119 frames. The dark slate under the pouch is
+  the one to look at twice; the light citrus under the cup is what the corpus actually
+  does.
 - **knockout** — no ground at all, a faint contact shadow, cut to composite onto any page
   colour. **This is the only form that needs no G7 exemption**: G7's scope note already
   reads a product cut-out as a graphic layer.
@@ -130,9 +135,9 @@ rectangles, which is the monotony that put this section here.
 
 | form | shape | the register it belongs to |
 |---|---|---|
-| `tag` | a flat rectangle, one flat fill, capitals cut out of it | tools, hardware, anything engineered |
+| `tag` | a flat rectangle, capitals cut out of the fill | tools, hardware, anything engineered |
 | `seal` | a scalloped rosette or a shield | a guarantee or a standard about the seller. Note G16 refuses a certification mark inside one |
-| `pill` | a rounded capsule, one flat fill | supplements, personal care, food |
+| `pill` | a rounded capsule | supplements, personal care, food |
 | `roundel` | a filled circle carrying a figure — a count, a size, a quantity | a pack fact the label already carries and the eye should not have to hunt for |
 | `flash` | a corner ribbon | an offer. **Highest going-stale cost of the five** |
 
@@ -147,6 +152,20 @@ complete and nothing was cut, so this is a rule breach rather than a render fail
 is structural rather than incidental. **Until a form of `flash` exists that stops short of
 the corner, this type should not ship one**, and `tag`, `seal`, `pill` and `roundel` all do
 the job without the exposure.
+
+**A badge is not FLAT and it is not ONE WORD AT ONE SIZE** (G16, round 4, 2026-09-03). The
+table above describes an OUTLINE; it said nothing about the interior, and five of six
+founding-round badges came back with a value spread of 0.02–0.09 — dead flat — against
+0.10–0.35 on four corpus badges. The only render that was not flat is the only one whose
+prompt named a second tone. What every badge in this type owes:
+
+- **at least one internal tone step** — a rim, a concentric ring, an outline inset from the
+  edge, or a sheen across the fill;
+- **at least two type sizes** — corpus badges run 2 to 4; the six renders ran 1 to 2, and
+  3 of 6 carried a single line of type at a single size.
+
+A figure large, its label smaller, a qualifier smaller still, and often a glyph. That is a
+small composition, and it is what makes a stamp read as a stamp rather than as a label.
 
 ## SLOT CONSTRAINTS
 - **G1 is the entire frame rather than a preamble.** A reference-faithful pack IS the
@@ -308,6 +327,11 @@ argue composition. `03-spec-macro` magnifies a region of the product to argue ma
 four have a product in frame and only this one argues nothing beyond identity.
 
 ## CHANGELOG
+- 0.3 (2026-09-03): owner audit of the founding round — colour. `PARTS/setting`: the ground's
+  HUE comes from the pack, its VALUE and SATURATION do not — light and quiet by default.
+  Measured against a corpus ground-value median of 0.89 over 119 frames. `MARKS` gains the
+  badge INTERIOR: one internal tone step and two type sizes minimum; both badges here were
+  flat, at 0.02 and 0.03 spread, and both carried a single line of type. ADR-068.
 - 0.2 (2026-09-03): founding render round, 2 renders — `sha256:700ba34a50ba7279…` (fail),
   `sha256:124978745b7088e0…` (partial). Pack lettering 1/2; the failure is total by
   `PARTS/light`'s own words. New SLOT CONSTRAINT: the pack's own printing is an ungoverned

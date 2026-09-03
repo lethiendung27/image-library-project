@@ -3857,3 +3857,123 @@ errors. A checker that has only ever seen good input is not evidence.
 
 `registry_version` unchanged. No skeleton, no argument and no routing outcome moves: the
 only option pool affected is one whose `strict` value nothing could select.
+
+---
+
+## ADR-068 · 2026-09-03 · The ground is quiet and the badge has an interior — both measured against the corpus, not argued
+
+**Owner audit of the six founding renders, 2026-09-03:** "các prompt chưa tốt ở việc chọn
+màu, cũng như badge chưa phong phú như các badge corpus." Both complaints were checked
+against the market before anything was rewritten, because three previous passes had answered
+the badge complaint by adding rules and the verdict had not moved.
+
+### The ground: measured on 119 corpus frames against 6 renders
+
+The outer 8% ring of the frame, taken as the ground, over every direct-response corpus frame
+the 2026-09-03 batches classified:
+
+| | corpus, n=119 | the six renders |
+|---|---|---|
+| ground VALUE, median | 0.89 | 0.46 |
+| ground SATURATION, median | 0.06 | 0.38 |
+| darker than 0.70 value | 35% | 83% — 5 of 6 |
+| more saturated than 0.25 | 24% | 67% — 4 of 6 |
+
+**The market's ordinary ground is light and almost colourless; ours was dark and six times
+more saturated.** No single frame is wrong. The SET sits off the distribution of the thing it
+is copying, which is a fault only a distribution can show.
+
+**The cause is a rule this library wrote the same day, to cure the opposite fault.** Three
+type files tell the writer to take the ground from the product's own register — *"never a
+house grey"*, *"chosen from the product's own register rather than reached for"*, *"what is
+discouraged is reaching for pale grey every time"*. All three were written in the second pass
+of 2026-09-03 to cure six frames of identical pale grey. They cured it. Nobody measured the
+corpus first, so the cure had no idea where it was aiming.
+
+**The fix is a distinction, not the opposite.** Going back to pale grey every time is the
+fault those clauses fixed. The ground is now QUIET BY DEFAULT — light, near-neutral — and a
+dark or saturated ground stays legal as a CHOICE the prompt justifies, because the corpus
+builds one about a third of the time. Deriving the hue from the product's register survives
+and is right; what it never licensed was depth and intensity. Variety is spent where the
+corpus spends it: on the marks, the product and the chips.
+
+### A hypothesis that the corpus REFUTED, recorded because it nearly became a rule
+
+The first measurement taken was product-to-ground separation, and it looked decisive: 5 of 6
+renders under 0.20 in value separation, the scissors frame at 0.02. A rule was half-drafted
+requiring a value step between product and ground.
+
+**Then the same measure was run on the corpus and it came back 2 of 4 under 0.20** — a white
+bottle on light grey at 0.04, a blue pack on white at 0.06. The market does the thing the
+draft rule was about to ban. What those frames have instead is a saturated cap, a hard cast
+shadow or dark label type doing the separating. **The rule was dropped.** It is written here
+because a measured-looking number on six of our own frames, with no corpus baseline beside
+it, is exactly how the ground clauses being corrected in this ADR got written in the first
+place.
+
+### The badge: the three previous passes were all aimed at its OUTSIDE
+
+Pass one gave the badge eight FORMS. Pass two gave it SIZE, POSITION and COLOUR. Pass three
+put six badges in four corners in six colours. The verdict did not move, and the reason is
+that every one of those is a property of the badge's outline.
+
+Value spread inside the badge's own fill, p10 to p90, text ink excluded:
+
+```
+the six renders     0.06  0.09  0.03  0.31  0.02  0.03     5 of 6 DEAD FLAT
+four corpus badges  0.12  0.35  0.16  0.10               3 of 4 carry a tone step
+```
+
+**The one render that is not flat is the only one whose prompt named a second tone** — *"a
+scalloped rosette in deep gold with a darker gold rim"*. Nothing about the renderer resists
+this. Five prompts asked for one flat colour and got one.
+
+Two clauses in this repo put it there, and finding them is the whole of the decision. **G16's
+own Style paragraph** says *"Flat solid colour. No gradient, outline, drop shadow, ribbon or
+gradient bar"* — correct for the text block it was written for, and read as binding the badge.
+And **the three MARKS tables say "one flat fill" five times between them**, which
+`scripts/adr-sweep.py "flat fill"` located exactly.
+
+**A badge carries at least one internal tone step and at least two type sizes.** A rim, a
+concentric ring, an outline inset from the edge, or a sheen; a figure at one size, a label at
+another, often a glyph.
+
+**The type-size half of that is the weaker half and is stated at its measured strength.** By
+eye the corpus badges looked far richer than ours; counted mechanically as distinct ink bands
+they run 2–4 sizes against our 1–2, and **3 of 6 renders carried a single band where 0 of 4
+corpus badges did**. Real, and smaller than it looked. The tone step is the strong finding;
+the type hierarchy is the supporting one.
+
+### Consequences — rule 6c sweep on `"flat fill"`: 39 hits, 28 files, 4 in TEACHES
+
+- `registry/rules.md` — G16 gains **round 4** (the ground table, the badge interior) and its
+  **Style paragraph is scoped**: it says out loud that it governs the text block and not the
+  badge, which is the misreading that produced 5 of 6 flat badges.
+- `registry/types/_staging/03-spec-callout.md` 0.2 → **0.3** — `PARTS/setting` ground clause
+  corrected, `MARKS` gains the interior, `tag` loses "one flat fill".
+- `registry/types/_staging/06-relief-claimstack.md` 0.3 → **0.4** — `PARTS/field` corrected:
+  the product's register governs HUE, not depth. `tag` and `pill` lose "one flat fill".
+- `registry/types/_staging/07-identity-pack.md` 0.2 → **0.3** — `PARTS/setting` corrected the
+  same way. `tag` and `pill` lose "one flat fill".
+- `registry/types/02-cause-anatomy.md:54` — the fourth TEACHES hit, *"`flat-vector`: flat
+  fills, hard edges, no gradients"*. **Stands.** That is a STYLE AXIS describing a whole
+  rendering register, not a badge interior, and it is the one place in the registry where flat
+  fills are the argument.
+- `registry/types/_staging/ready-to-push/prompts.md` — **rewritten, six new prompts on six
+  products none of these three types has seen.** Re-running the same six to A/B a fix would
+  test a clause against a product it already knows, which is the one thing it cannot do.
+- GENERATED — `registry/index.yaml` and `dist/app-bundle/` regenerate.
+
+**One corpus habit observed and deliberately NOT legislated.** *One badge per frame* is
+contradicted 1 of 4 — a benefits tile carrying two credential stamps side by side, and a
+bottle carrying a shield plus three stacked claim chips. Two of four still carry one. Below
+the evidence rule, so the rule stands and G16 now records where it will break first.
+
+**What this ADR does not settle.** Whether the interior was the missing variable is a question
+for the next render round, not for this diff: three passes have now been confident about the
+badge and three have been wrong. The prompts are written so the answer is legible either way,
+and if round 2 comes back monotonous again then the problem is not any property of the badge
+and this library should stop guessing at it and ask the owner to point at a corpus badge and
+say *that one*.
+
+`registry_version` unchanged. No skeleton, no argument and no routing outcome moves.
