@@ -3541,3 +3541,95 @@ slot fired and named it, a legal list was silent, and the borrowed file was rest
 
 `registry_version` unchanged — no type file, no data and no structure moves in this commit.
 G16 binds nothing until a type declares the key, which is the next commit's business.
+
+## ADR-065 · 2026-09-03 · Five product-page candidates enter staging, and step 7 is not a Trust Ladder rung
+
+A curation pass over 204 observations, run after batches C and D added 54 records from the
+direct-response corpus. Five new-type clusters clear `curate.md` §3's bar for a staging
+draft. Nothing here is routable and no active type is touched.
+
+**The five, with the counts generated from the ledger rather than typed:**
+
+| id | obs | distinct sources | renders |
+|---|---|---|---|
+| `07-identity-pack` | 6 | **4** — millbrook, halden, standfast, redpine | 0 |
+| `03-spec-stilllife` | 8 | 3 — millbrook, halden, standfast | 3 |
+| `03-spec-lineup` | 2 | 2 — holloway, hushedsocks | 1 |
+| `06-relief-claimstack` | 2 | 2 — mida-fernwell, redpine | 2 |
+| `07-identity-inhand` | 1 | 1 — supply-se | 1 |
+
+**`07-identity-pack` at four sources is the furthest any proposal in this ledger has
+reached**, and the four cover four pack formats — carton with sachet, amber jar, capsule
+bottle, stand-up pouch — rather than four photographs of one idea. One more source clears
+criterion 1.
+
+**Step 7 is new and it is deliberately NOT a Trust Ladder rung.** `vocabulary.yaml` says the
+step number sorts the gallery and names a beat in the persuasion arc; identity is not a beat,
+it is what the object is. The comment in the vocabulary says so and names the consequence:
+`query/runbook.md` Step 5b's coverage pass counts rungs 1-6, and it must not read an absent
+step 7 as a gap. An advertorial with no packshot is not missing anything.
+
+**Staging defers the routing question rather than answering it, and that is the point.**
+Since ADR-060 there is no admission test left: an active type is a candidate for every slot
+on every page, and `use_when` is the only thing keeping a packshot out of a pain slot. Both
+identity files therefore carry a `use_when` written to refuse rather than to attract — *"NEVER
+for a slot whose copy argues anything"* — and both say in their header that the choice between
+`registry/types/` under a new step and a separate namespace like `registry/gif-types/` belongs
+to the promotion diff. Nothing under `_staging/` routes, so the decision costs nothing today
+and cannot be skipped later.
+
+**Three renaming and re-filing decisions, recorded so a reader of the ledger is not confused
+by two names for one thing:**
+
+- The ledger's `03-spec-ingredient` and this file's `03-spec-stilllife` are ONE proposal. A
+  `device` is the visual MECHANISM, not the subject: "ingredient" names what is photographed,
+  "still life" names how the argument is made. The rename earns the vocabulary entry twice,
+  because batch B also proposed `02-cause-stilllife` — same mechanism, different job, exactly
+  as `split` already serves both `01-pain-split` and `03-spec-split`.
+- `03-spec-range` becomes `03-spec-lineup` on the same reasoning.
+- `07-identity-inhand` is drafted on **one** filed observation. Two further frames read as its
+  argument and the ledger files them elsewhere — one as a `05-social-snapshot` variant, one to
+  `03-spec-lineup`, which cites it too. The file says so and says the first job is re-filing
+  rather than hunting. **A batch summary naming a pattern three times is not a count**, and
+  writing 3/5 on the strength of one would have been the kind of number this repo has learned
+  to distrust.
+
+**What the render rounds already put into these files.** Four of the five carry a FOUNDING
+RENDER ROUND section with measurements rather than intentions: hands held 1 of 1 on
+`07-identity-inhand` against the adapter's warning; `03-spec-lineup`'s one-variable law broke
+in its INVARIANTS block, with three different hub bores across three units that were told to
+share one; `06-relief-claimstack` failed at two clusters and passed at five, which is what
+produced G16's fill rule (ADR-064). A staging draft that already knows how it fails is worth
+more than one that does not.
+
+**One finding is a correction to a file in this very diff.** `06-relief-claimstack` was
+written around a person carrying a felt state because its single exemplar had one. Batch D's
+second source builds the identical layout with the PRODUCT in that position and no person at
+all, so `PARTS/subject` is too narrow as drafted. The file ships with the fault named in its
+own KNOWN-FLAKY rather than silently widened, because widening it now would be a guess and
+the evidence rule wants a third observation.
+
+**Consequences.**
+
+- `registry/types/_staging/` gains five files; `_staging` count 3 → 8.
+- `registry/vocabulary.yaml` gains step `7`, job `identity`, and devices `stilllife`,
+  `lineup`, `claimstack`, `inhand`, `pack`. Seven taxonomy additions, each used by a file in
+  this diff and none speculative.
+- All five declare `text_layer` and are therefore **the first types G16 binds** (ADR-064,
+  `458a544`). Until this commit G16 governed nothing.
+- All five take `exempt_from: [G7]` except where a knockout makes it unnecessary, under the
+  arranged-product exception ADR-064 added to G7's scope.
+- `mapping/slot-rules.md` is **untouched**: its preference table binds ACTIVE types and the
+  validator's every-type-in-a-row gate reads the index, which excludes staging. A row for
+  identity is a promotion-diff problem and naming it now would imply a routing decision this
+  ADR explicitly defers.
+- `registry/index.yaml` and `dist/app-bundle/` regenerate; neither gains a staging type.
+- `registry_version` unchanged — no active structure moves.
+
+**What is NOT drafted, and why.** Six further proposals sit at 2 sources or fewer —
+`02-symptom-halo`, `03-spec-flatlay`, `04-proof-stat`, `07-identity-callout`,
+`02-cause-stilllife`, `05-persona-scene` — and each is one clean observation away from being
+worth a file. `04-proof-stat` is held back for a second reason worth stating: both its
+observations argue from a survey percentage with a substantiation footnote, and this library
+has no rule about substantiation anywhere. G14 covers a fabricated endorsement; nothing covers
+a fabricated statistic. That rule has to exist before a statistic type can have a skeleton.

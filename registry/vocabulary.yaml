@@ -11,6 +11,10 @@ steps:
   4: "physical proof the skeptic can inspect"
   5: "identification and social evidence"
   6: "the state after buying (relief)"
+  # Step 7 is NOT a Trust Ladder rung. It is the identity family (ADR-065): the frame
+  # argues the OBJECT rather than a beat in the persuasion arc. The coverage pass of
+  # query/runbook.md Step 5b counts rungs 1-6 and must not count this one as a gap.
+  7: "identity — what the object is, and what arrives"
 
 # job = what the image sells. Reserved values exist in the grammar but have no active type yet.
 jobs:
@@ -24,6 +28,7 @@ jobs:
   persona: "answer: is this for someone like me"
   social: "someone credible is recommending it to someone like me"
   relief: "sell the state after purchase"
+  identity: "what the object IS: the pack, its format, its size. Argues nothing beyond recognition"
   trust: "reserved — certificates, guarantees, authority"
 
 # device = the signature visual mechanism. Reserved devices are grammar slots awaiting exemplars.
@@ -45,6 +50,11 @@ devices:
   explode: "product separated into its real component groups along one axis, technical render"
   timeline: "reserved — states along a time axis"
   macro: "reserved — extreme close-up of material/texture"
+  stilllife: "one named raw material alone in frame, presented so it is recognisable"
+  lineup: "several units of one product standing together; exactly one thing differs across them"
+  claimstack: "a subject to one side, a headline and short claim lines filling the other"
+  inhand: "the product held up to the lens; the hand is the scale cue and nothing else is"
+  pack: "the product as it arrives — closed, open, or with its own contents at its foot"
 
 # Cross-cutting presentation dimensions. A type declares which values it supports
 # in its frontmatter `axes:` map. Definitions of the semantics live in rules/runbooks.
