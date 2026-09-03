@@ -3461,3 +3461,83 @@ where vertical panels are correct. Checked rather than assumed; no re-export.
 edited and versioned. ADR-062 stands as written — the log is append-only and a later reader
 should be able to see the correction as a correction. `registry/index.yaml` and the bundle
 regenerate.
+
+## ADR-064 · 2026-09-03 · G16: a type may declare a text layer, and G6 narrows for that type alone
+
+**Owner decision Q1b, 2026-09-03:** advertising images for product pages carry their text
+INSIDE the file rather than as page HTML overlaid on a clean render. This ADR is that
+decision landing as law, built on two founding render rounds rather than on the market
+corpus.
+
+**The recommendation was the opposite and it is recorded rather than smoothed over.** The
+advisory case for HTML overlay was the catalogue: 179 pages over 70 products across English,
+German and UK domains, and a still with words serves only the pages in its own language. The
+owner chose baked text with that on the table. G16 carries the cost as a stated clause
+instead of hiding it, the same treatment ADR-008 gave a decision taken against advice.
+
+**What the two rounds measured.** Seven renders, four types, 2026-09-03.
+
+- **Spelling is not the problem.** 12 of 12 lines exact, then 13 of 13. With G12's retired
+  20 of 20 the seven-word line cap now rests on 45 lines and none has ever misspelled.
+- **The old G12 fault does not recur.** Every plate the library produced under model-drawn
+  G12 was cut by a frame edge, 3 of 3. Here 0 of 7 are cut. Naming the empty region the
+  words sit on, rather than telling the model to avoid the edges, is what the old prompts
+  were missing.
+- **The cluster budget was set far too low and the correction inverted the hypothesis.**
+  Round 2 ran one type at two budgets on two products. The FIVE-cluster frame returned all
+  five once each; the TWO-cluster frame drew its whole block a second time, seven ink bands
+  where four were asked for. What binds is not the count, it is whether the reserved area is
+  filled — the mechanism `adapters/nano-banana.md` Rule 4 already records for panels.
+- **"Left aligned" is a term of art the renderer ignores.** 1 of 3 in round 1. Written as an
+  observable — every line begins at the same distance from the left edge — 4 of 4 in round 2.
+- **The bottom-right corner belongs to the tool's watermark** (ADR settled at `4eb327b`).
+  Three of three badges placed there were struck through; four of four bottom-left were clean.
+
+**G10 is breached and G16 says so out loud.** Round 1 asked politely and eight inked edges
+measured 5.3–7.4%. Round 2 asked for a tenth of the picture clear and nine edges measured
+6.7–7.3%. Over-asking moved the floor from 5.3% to 6.7% and moved nothing else; this renderer
+holds a house margin near 7%. Nothing was cut either round. G16 keeps asking for a tenth
+because that is what produced the higher floor, and states the breach rather than quietly
+lowering a global rule a type may only raise. Two ways out are named and neither is taken:
+ask for a sixth, or amend G10 for text blocks on 17 measured edges. This is ADR-061's shape —
+a bound no render obeys is not evidence.
+
+**The content half is the half a re-render cannot fix**, and it is where G16 spends most of
+its words. Text comes from `content.json` and nowhere else, the same law `specification` and
+`colorways` already carry. Five classes are refused by name: an endorsement (G14), a
+certification mark or expert byline (G6's logo ban plus the empty `author` row), a price or
+date, a claim the page's own copy does not make, and a second language.
+
+**Consequences** — rule 6c sweep on `"G6"`: 244 hits, 79 files, **30 in TEACHES, all read**.
+
+The narrowing is conditional on a frontmatter key, and **no type in the registry declares
+`text_layer` today**, so every existing statement of G6 is still true as written:
+
+- `registry/rules.md` — G6 itself. **Rewritten**, with a second scope note bounding the
+  narrowing and naming `watermark`/`logo`/the product clauses as unbendable. G7's scope note
+  is **rewritten** too, to permit `exempt_from: [G7]` for arranged product photography where
+  the arrangement is the argument.
+- `registry/types/*.md` (17 files) and `registry/types/_staging/*.md` (3) — every one states
+  G6 in its own `NEGATIVE` block or in a slot note. **All stand**: none declares a text layer,
+  so none is narrowed. `05-social-card` is the interesting case and it stands too — it is
+  G6-exempt outright for its review card, which predates G16 and is a broader carve-out than
+  G16 grants; converting it is a separate decision on that file's own audit.
+- `registry/gif-types/*.md` (6) and `registry/gif-instruction.md` — **untouched by design**,
+  the same carve-out ADR-059 and ADR-060 made. A loop carries no words and `text_layer` is an
+  image-type key; a motion asset that reaches every clone of a product in every language is
+  exactly where baked text costs most.
+- `adapters/nano-banana.md` — 6 hits. Rules 1, 1a, 5 and 7 describe how the negative list is
+  translated and what this renderer does with characters. **All stand**; the adapter is about
+  production and G16 is about permission. Rule 7's "a mark that needs a word is not a mark, it
+  is a callout, and it leaves the render" is the one line that will need revisiting when a
+  type actually ships a text layer, and it is left standing today because none does.
+- `query/runbook.md` — 3 hits: the tie-breaker's own G6 label (unrelated, a decision id), the
+  NEGATIVE composition line, and the plate note. **All stand.**
+- `dist/app-bundle/` (11 mirrored files) — **generated**, regenerated in this commit.
+
+`scripts/validate.py` gains `text_layer` in `OPTIONAL_KEYS` and checks each slot against
+`title | copy | badge`. The gate was fed known-bad input before being believed: an illegal
+slot fired and named it, a legal list was silent, and the borrowed file was restored.
+
+`registry_version` unchanged — no type file, no data and no structure moves in this commit.
+G16 binds nothing until a type declares the key, which is the next commit's business.

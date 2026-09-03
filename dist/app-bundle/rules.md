@@ -101,12 +101,28 @@ and is permitted. Production rule: screens and readouts are never model-drawn;
 render or photograph the real interface and composite it in post. Evidence: 6+
 ledger observations (BP-monitor displays, dB meters, disc labels), batches D-E.
 
+**Scope note — a declared text layer.** A type that declares `text_layer` in its
+frontmatter draws words IN the frame under **G16**, and for that type alone this list's
+`text, letters, numbers` is narrowed to everything G16 does not permit. Nothing else in
+this list bends: `watermark, logo` and the four product clauses bind on a text-carrying
+type exactly as they bind on every other. **No type in the registry declares a text layer
+today**, so every statement of G6 elsewhere in this repo stands unchanged (ADR-064).
+
 ## G7 — Context integrity
 
 **Scope:** photographic **scene layers** only. Not binding for: product cutouts /
 circular insets / floating product views (read as graphic layers), and technical
 registers (3D render, 2D illustration). `context_mode: declared-test` is a controlled
 exception: staging is allowed but must look amateur, and only off-marketplace.
+
+**Arranged product photography is a second controlled exception, and types opt into it
+with `exempt_from: [G7]`.** A packshot, a lineup of variants, a still life of a material
+and a flat-lay all exist only to be photographed, which is exactly what the Placement and
+Reason tests refuse — so a type whose ARRANGEMENT IS THE ARGUMENT may take the exemption,
+and it covers the arrangement and nothing else. Every other G7 test still binds: the
+product is complete, nothing is cut open or half assembled, no component is missing. A
+product cut-out on no ground needs no exemption at all; it already reads as a graphic
+layer under the line above (ADR-064).
 
 ```
 Every object in frame must appear in a state, position and setting it would
@@ -566,3 +582,126 @@ That is the sentence's real content and it was read too broadly when G15 was fir
 **The ratio never enters the prompt** either way (adapter Rule 4, ADR-016): it is a generation
 parameter. What the prompt names is the LAYOUT — "2×2 grid", "one rectangle above two squares"
 — and the writer chooses that form knowing the slot's declared ratio.
+
+## G16 — The text layer
+
+**Scope:** only a type that declares `text_layer` in its frontmatter. Every other type
+carries no words at all, and for those types G6 binds exactly as it always has.
+
+G6 is not lifted, it is narrowed one type at a time. A declared text layer is the only
+place a word may appear in the frame; `watermark`, `logo` and G6's four product clauses
+still bind, and the prompt still asserts them.
+
+### The block
+
+| slot | job | shape |
+|---|---|---|
+| `title` | the claim | 1–3 lines, **≤ 7 words per line** |
+| `copy` | the support | up to **three** separate lines, ≤ 7 words each, each may carry one simple line glyph |
+| `badge` | one short stamp, its own cluster | **≤ 4 words** |
+
+Reading order is title, then copy, one alignment, one typeface. The badge sits away from
+the block.
+
+**Where the 7-word line comes from.** The retired G12 plate format capped a line at seven
+words and returned 20 of 20 lines exact across four renders on 2026-08-14; `05-social-card`
+measured a single cluster at ≤ 12 words glyph-perfect in one pass. Two founding rounds on
+2026-09-03 added **12 of 12** lines exact and then **13 of 13**, across seven renders and
+four types. The cap now rests on 45 lines and no line has ever been observed to misspell.
+A line ABOVE seven words is unmeasured: the cap is the floor of what is proven.
+
+### Never reserve space you do not fill
+
+Round 2 of 2026-09-03 ran one type at two budgets on two products and inverted the
+expectation. The **five**-cluster frame returned all five, once each, 13 of 13 words exact.
+The **two**-cluster frame drew its whole block a SECOND time, lower and re-wrapped —
+measured as seven ink bands where four were asked for.
+
+So the count is not what binds. The two-cluster frame declared a large area empty and put
+a short block in the top of it; the five-cluster frame declared the same area and filled
+it.
+
+```
+The text area is sized to what the words actually occupy. A block that fills a
+third of the area it was given will be drawn again to fill the rest.
+
+Where the words are short and the field is large, the prompt says how much of the
+picture the block occupies AND that it appears once, in one place, and nowhere else.
+```
+
+This is not a new mechanism: `adapters/nano-banana.md` Rule 4 records it for panels — "the
+model fills the vertical space it has by repeating what it already drew". Round 2 is the
+same finding in text. **A small block in a large empty field is the dangerous
+configuration, not a large one.**
+
+### Size, by maximisation
+
+```
+The block is as large and as clear as it can be. It grows until it would cover
+the subject the frame exists to show, or until it would breach G10's safe area.
+Then it stops. It is never sized to a target.
+```
+
+G10's own instrument, reused. Two fixed numbers have already failed at sizing an inset in
+this library and a third here would fail the same way.
+
+### Placement
+
+1. **The block sits on ground the type's own skeleton has already left clear.** Never over
+   the product, the subject, or anything the frame exists to show.
+2. **One region, one block.** Where a type offsets its subject, the block occupies that
+   offset space and nothing else does — two reservations for one area render as dead air,
+   2 of 2 on `06-relief-hero`.
+3. **Describe the region, never label it.** "In the upper left area of the picture, on the
+   empty stone", never `TOP LEFT:` — adapter Rule 1b, measured on three types.
+4. **Name the alignment as an observable.** "Every line begins at the same distance from
+   the left edge of the picture", never "left aligned": the phrase "left aligned" was
+   ignored 1 of 3 in round 1 and the observable held 4 of 4 in round 2.
+5. **Nothing the prompt asks for goes in the bottom-right corner.** That corner carries the
+   generation tool's watermark (`adapters/nano-banana.md` Rule 7, settled 2026-09-03). Three
+   of three badges placed there were struck through by it; four of four placed bottom-left
+   came back clean.
+
+**G10's 8% is not reachable by asking, and this rule does not pretend otherwise.** Round 1
+asked for "a clear margin on every side" and eight inked edges measured 5.3–7.4%. Round 2
+asked explicitly for a tenth of the picture clear and nine edges measured 6.7–7.3%, one top
+edge at 10.6%. Over-asking moved the FLOOR from 5.3% to 6.7% and moved nothing else: this
+renderer holds a house margin near 7% whatever the prompt says. Nothing was cut in either
+round. A text-carrying prompt therefore keeps asking for a tenth — that is what produced
+the 6.7% floor — and **the breach of G10 is real and stated rather than hidden**. Two ways
+out and neither is taken yet: ask for a sixth and see whether the house margin moves, or
+amend G10 for text blocks on 17 measured edges. This is the shape ADR-061 already named — a
+type bound that no render obeys is not evidence.
+
+### Content — the half a re-render cannot fix
+
+**The words come from `content.json` and from nowhere else.** Never from the model's own
+knowledge of the category, never researched at write time. The same law `specification`
+carries for component names and `colorways` carries for colour. A word baked into a frame
+is a published claim and the file outlives the page it was made for.
+
+| never | why |
+|---|---|
+| a person's name, a rating, a star row, a review count, a "verified" mark | G14 — fabricated endorsement |
+| a certification mark, a press logo, an award, an expert's name and title | G6 bans logos; `author` has been an empty row since 2026-08-18; and it is a trademark question this library does not answer |
+| a price, a discount, a percentage off, a date | these change and the file does not |
+| a claim the product's own copy does not make | the one that cannot be re-rendered away |
+| a second language | one language per render; another language is another session |
+
+**One language per render, and the cost is stated rather than hidden.** A still with no
+words serves every clone of a product — the catalogue runs 179 pages over 70 products across
+English, German and UK domains. A still with words serves the pages in its own language
+only.
+
+### Style
+
+Flat solid colour. No gradient, outline, drop shadow, ribbon or gradient bar. One typeface
+for the whole block. Contrast against the ground is stated in the prompt, not assumed: dark
+words on a white knockout, light words on a dark surface.
+
+### What flips this rule
+
+The standing evidence rule. If a text layer fails on ≥ 2/3 runs or across ≥ 3 observations
+— words misspelled, block cut by an edge, cluster dropped or duplicated — that failure moves
+the layer out of the frame and into the page, and this rule is withdrawn with its evidence
+cited. G16 is a default, not a promise.

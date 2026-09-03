@@ -242,8 +242,9 @@ REQUIRED_KEYS = [
 ]
 OPTIONAL_KEYS = [
     "axes", "variants", "exempt_from", "pairs_with", "never_with",
-    "avoid_adjacent", "requires_pair",
+    "avoid_adjacent", "requires_pair", "text_layer",
 ]
+TEXT_LAYER_SLOTS = ["title", "copy", "badge"]
 REQUIRED_SECTIONS = ["PURPOSE", "TRIGGER", "SKELETON", "NEGATIVE", "CHANGELOG"]
 
 # Soft size limits, warnings only (ADR-013). Derived from the registry as it
@@ -325,6 +326,15 @@ def validate_type_file(path, vocab, rule_ids):
         for v in values if isinstance(values, list) else [values]:
             if v not in vocab_axis:
                 err(where, f"axis value `{axis}:{v}` not in vocabulary")
+
+    tl = fm.get("text_layer")
+    if tl is not None:
+        if not isinstance(tl, list) or not tl:
+            err(where, "text_layer must be a non-empty list of slots")
+        else:
+            for slot in tl:
+                if slot not in TEXT_LAYER_SLOTS:
+                    err(where, f"text_layer slot `{slot}` is not one of {TEXT_LAYER_SLOTS} (G16)")
 
     for g in fm.get("exempt_from") or []:
         if g not in rule_ids:
