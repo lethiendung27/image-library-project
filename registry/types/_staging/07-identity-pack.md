@@ -3,7 +3,7 @@ id: 07-identity-pack
 step: 7
 job: identity
 device: pack
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "4:3"]
@@ -32,8 +32,9 @@ has reached, and the four cover four different pack formats rather than repeatin
 | standfast-heelno1 | amber jar — on a built set, among rendered props, and cut out | `sha256:8f25531536fe6e340…`, `4dd1f5e6b5d780d40…`, `c3f96df477a2dafb9…` |
 | redpine-tileno40 | pouch with its contents spilled at the foot | `sha256:d36212947ae4ebb2f…` |
 
-**Criterion 1 needs one more source; criteria 2 and 3 are UNMET** — no router-confusion
-test and no render. Not routable.
+**Criterion 1 needs one more source and criterion 2 is UNRUN.** Criterion 3 now has two
+renders and **one of them is a `fail` by this type's own definition** — see FOUNDING RENDER
+ROUND. Verdicts by eye under ADR-011; §6.3(3) wants the owner's own. Not routable.
 
 **Step 7 and job `identity` are new vocabulary and ship in this diff.** This is the owner's
 Q2b decision of 2026-09-03 taking form: a family whose argument is the object itself rather
@@ -62,7 +63,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 07-identity-pack v0.1
+TYPE: 07-identity-pack v0.2
 REGISTER: commercial product photograph. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -110,6 +111,15 @@ badly: one observation in batch 2026-09-03-D is a generated frame whose labels a
 as shapes and malformed as letters. **A render whose pack lettering is gibberish is a total
 failure of this type**, not a flaw in it, because identity is the whole deliverable.
 
+**Measured, 2026-09-03: 1 of 2.** A stand-up pouch came back with nine lines of printed copy
+and every word a real word. A juicer cup came back with three invented strings — `batglie`,
+`BRELLING THAT JUICER CUP`, `NONJHUTIVE SUPPORTS` — and is a `fail`. **Two renders is not a
+rule and the difference between them is a HYPOTHESIS**: the pouch carries large flat type on
+an opaque high-contrast panel, the cup carries small type curved around a translucent body
+with juice behind it. If that is the discriminator, this type's `presentation` part should
+prefer the flattest labelled face and its `setting` should refuse anything that puts colour
+behind the lettering. Two more renders decide it; nothing is legislated yet.
+
 ## MARKS
 
 **A badge is a mark and this type owns its forms** (ADR-012, ADR-043, G16's badge note). The
@@ -127,8 +137,16 @@ rectangles, which is the monotony that put this section here.
 | `flash` | a corner ribbon | an offer. **Highest going-stale cost of the five** |
 
 **One badge per frame.** A packshot with two stamps has stopped being a packshot.
-**The badge sits bottom LEFT** (`adapters/nano-banana.md` Rule 7).
-**Untested**: no render exists on this type at all.
+**Three corners are open and the bottom-right is not** (`adapters/nano-banana.md` Rule 7).
+Asked for lower left and upper left, got both, 2 of 2.
+**Tested: `roundel` 1 of 1 clean, `flash` 1 of 1 CUT.** The `flash` is the problem form and
+its geometry is why: a ribbon crossing a corner is *defined* by reaching two edges, so it
+cannot also honour G10's safe area. Measured — the ribbon's own fill reached 0.00% of both
+edges and its words came within 1.07% of the top and 1.66% of the left. The words were
+complete and nothing was cut, so this is a rule breach rather than a render failure, and it
+is structural rather than incidental. **Until a form of `flash` exists that stops short of
+the corner, this type should not ship one**, and `tag`, `seal`, `pill` and `roundel` all do
+the job without the exposure.
 
 ## SLOT CONSTRAINTS
 - **G1 is the entire frame rather than a preamble.** A reference-faithful pack IS the
@@ -145,6 +163,16 @@ rectangles, which is the monotony that put this section here.
   refuses are exactly the ones this corpus stamps onto packshots most often: an accolade, a
   certification seal, a best-seller flag, a discount. An origin claim sits close to the same
   line and is not yet listed there.
+- **The pack's OWN printing is a text surface this type does not govern, and that is the
+  sharpest exposure it has.** `text_layer` declares `[title, badge]`; the words on the object
+  are diegetic and G16 does not reach them. The 2026-09-03 round returned a pouch printed
+  with `Active Ingredients: Peppermint Oil, Cedarwood Oil` and `NET WT. 8 OZ (227g) ·
+  Contains 12 Repellent Balls` — a composition claim and two quantity claims, rendered
+  legibly, none of them written by anybody. **Gibberish lettering is a visible failure; a
+  well-rendered invented net weight is an invisible one**, and it is `argument-faults.md`
+  A15 arriving inside the one type whose whole deliverable is the printed object. A frame
+  from this type is only publishable where its printed surface is checked against the
+  reference word by word.
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
 
 ## NEGATIVE
@@ -155,16 +183,122 @@ a certification seal, a discount flash, a torn or opened pack the product
 does not open, a reflection that breaks the label
 ```
 
+## WORKED EXAMPLES
+### example: repellent-pouch-with-contents — skeleton@0.1, run: partial
+The `with contents` form. Nine lines of the pack's own printing came back with every word a real word — the answer `PARTS/light` was waiting for. Two faults: the `flash` ribbon reaches 0.00% of two edges, and the printing carries an invented net weight, count and ingredient list. `sha256:124978745b7088e0…`
+
+```
+TYPE: 07-identity-pack v0.1
+REGISTER: commercial product photograph, one frame.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the rodent repellent balls
+and their pack. Preserve shape, proportions, material, finish, colour and every word printed
+on the pack exactly.
+
+FORM: with contents. The pack upright and closed, four of the balls loose on the ground at its
+lower left, none touching it.
+
+SUBJECT: the face carrying the brand mark meets the lens. The pack takes about half the
+picture's height; the loose balls sit small in front and give it its scale.
+
+SETTING: a dark slate-grey ground with a faint stone texture, a soft contact shadow under the
+pack and a fainter one under each ball. No room, no prop.
+
+LIGHT: broad and even from the front and slightly above, strong enough that the pack's printed
+words and the balls' surface both read.
+
+TEXT: across the upper empty ground, two lines of flat white sans-serif starting a tenth of the
+picture's width from the left edge. Each capital is as tall as one of the loose balls:
+NOTHING SNAPS. NOTHING DIES.
+THEY JUST STOP COMING BACK.
+
+BADGE: a ribbon in a deep signal green crossing the UPPER LEFT corner at forty-five degrees,
+as wide across as the pack, with DROP AND WALK AWAY in white capitals along it.
+
+Nothing comes within a tenth of the picture's width of any edge. The two lines and the ribbon
+are the only added words; the pack's own printed label is part of the object and stays exactly
+as the reference shows it. No logo, no watermark, no person, no hand, no room.
+```
+
+### example: juicer-cup-closed — skeleton@0.1, run: fail
+Portable juicer cup · `closed` form · 1:1 · badge `roundel` lower left · citrus-toned ground.
+Stored diff-only: SPEC 3.3 keeps full prompt text only for an example that passed or partly
+passed. `sha256:700ba34a50ba7279…`
+
+- `FORM` — closed, lid on, nothing detached, nothing beside it
+- `PRESENTATION` — the brand face to the lens, turned a few degrees, about half the frame's height
+- `SETTING` — pale citrus-yellow ground, gentle vertical gradient, soft contact shadow
+- `LIGHT` — broad and even, front and slightly above, every printed word legible
+- `TITLE` — BREAKFAST THAT FITS / IN THE CUP HOLDER
+- `BADGE` — filled coral circle, lower left, as wide as the lid, `400ml`
+
+**Why it failed, and it is the type's own definition rather than a judgement call.** Three
+strings printed on the object are not words: `batglie` on the grip band, `BRELLING THAT
+JUICER CUP` on the body, `NONJHUTIVE SUPPORTS` beneath it. `PARTS/light` says a render whose
+pack lettering is gibberish is a total failure rather than a flaw, because identity is the
+whole deliverable. Everything else in the frame was clean, which is what makes it worth
+keeping: the two clusters returned once each and the three added lines were exact, so nothing
+about the TEXT LAYER caused this. The object did.
+
 ## KNOWN-FLAKY
-- **No render exists.** Every clause is a proposal.
-- **Pack lettering is the risk and it is not hypothetical.** The corpus already contains a
-  generated packshot with malformed label text. Until a render proves otherwise, treat this
-  type as the one most dependent on the quality of the attached reference.
+- **Pack lettering fails 1 of 2 and the failure is total.** `batglie`, `BRELLING THAT JUICER
+  CUP`, `NONJHUTIVE SUPPORTS` — three invented strings on one object. The other render
+  printed nine lines correctly. This is the clause the type lives or dies on and it now has
+  a denominator instead of a warning.
+- **A CORRECT-looking print can still be invented.** The clean render carries a net weight,
+  a count and an ingredient list that no brief supplied. Worse than gibberish, because
+  nothing in the frame says it is wrong.
+- **The `flash` badge form cannot honour G10** — 1 of 1, ink at 0.00% of two edges. Structural,
+  not incidental: a corner ribbon is defined by reaching the corner.
+- **The round cannot tell a missing reference from an ignored one.** Neither render log
+  records whether a reference photograph was attached, and for a type whose whole frame is
+  G1 that is a hole in the test rather than in the type. Record it next time.
 - **The built-set form has two observations and no rule for how far a set may go.** Arches
   and plinths were observed; nothing says where a set stops being a ground and starts being
   a scene G7 must judge.
 - **The routing question is unanswered by design** — see the header. Promotion cannot happen
   without answering it.
+
+## FOUNDING RENDER ROUND — 2026-09-03
+Two renders, ratio 1:1, prompts 5 and 6 of `_staging/ready-to-push/prompts.md` — the `closed`
+form on a portable juicer cup and the `with contents` form on a rodent-repellent pouch. Both
+products come from `query/product-slugs.yaml` and neither is in this type's source list. Both
+frames carry the minimum text this type allows, a title and a badge, so the round is about the
+OBJECT and not about the text layer.
+
+| | 5 · `closed`, juicer cup | 6 · `with contents`, repellent pouch |
+|---|---|---|
+| verdict by eye | **fail** | **partial** |
+| the pack's own printed words | **3 invented strings** | **9 lines, every word real** |
+| clusters asked / returned | 2 / 2, no duplication | 2 / 2, no duplication |
+| added words exact | 3 of 3 lines | 3 of 3 lines |
+| headline cap | 62 px = 6.05% of frame | 50 px = 4.88% |
+| headline ÷ its anchor | **0.45** | **0.64** |
+| badge form, corner asked / got | `roundel`, lower left / lower left | `flash`, upper left / upper left |
+| badge ÷ its anchor | **0.78** | **0.69** |
+| closest prompted ink to an edge | 8.01% text · 5.37% badge | 10.16% text · **0.00% badge** |
+| output | `sha256:700ba34a50ba7279…` | `sha256:124978745b7088e0…` |
+
+**The type's central question is answered "sometimes", which is the worst available answer
+and the most useful one.** `PARTS/light` said a gibberish pack is a total failure rather than
+a flaw; render 5 is that failure and render 6 is a clean pass on the same clause. One of each
+is not a rule — it is a denominator, and it says this type cannot be promoted on a source
+count alone.
+
+**The clean render is the one that should worry a reader.** It printed a net weight, a unit
+count and an ingredient list, all legible, all invented. Gibberish announces itself; an
+invented `NET WT. 8 OZ (227g)` does not. That is A15 landing inside the type least able to
+absorb it, and it is now a SLOT CONSTRAINT rather than a note.
+
+**Two clusters did not duplicate, in either frame.** G16's round-2 finding was that a
+two-cluster frame drew its whole block a second time. These two did not, and the difference
+is the one G16 already names: both headlines FILL the band they were given — 83.6% and 65.0%
+of the frame's width — where the duplicating frame put a short block in a large reservation.
+Cross-type confirmation of the fill rule, from the opposite direction.
+
+**The `flash` badge is the one form this round rules out.** It went where it was asked and
+reached both edges doing it, because a corner ribbon is defined by reaching the corner. The
+words survived; G10 did not.
 
 ## NOTES
 **Boundary against the four nearest frames.** `07-identity-inhand` puts the pack in a hand
@@ -174,6 +308,12 @@ argue composition. `03-spec-macro` magnifies a region of the product to argue ma
 four have a product in frame and only this one argues nothing beyond identity.
 
 ## CHANGELOG
+- 0.2 (2026-09-03): founding render round, 2 renders — `sha256:700ba34a50ba7279…` (fail),
+  `sha256:124978745b7088e0…` (partial). Pack lettering 1/2; the failure is total by
+  `PARTS/light`'s own words. New SLOT CONSTRAINT: the pack's own printing is an ungoverned
+  text surface and the clean render invented a net weight, a count and an ingredient list —
+  A15 inside this type. MARKS: three open corners, 2/2 obeyed; `roundel` clean; `flash`
+  breaches G10 at 0.00% and should not ship.
 - 0.1 (2026-09-03): drafted from six observations across four distinct sources, gathered in
   batches 2026-09-03-C and 2026-09-03-D. The C observations were recorded against the
   library's older standard, which rejected packshots outright as raw product photos; the

@@ -3,7 +3,7 @@ id: 06-relief-claimstack
 step: 6
 job: relief
 device: claimstack
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 ratios: ["1:1", "4:3"]
@@ -30,10 +30,11 @@ has ever held, active types included**, and the finding behind the number is wor
 a subject to one side with a headline and short claim lines filling the other is the single
 most common argument image on a direct-response product page.
 
-Criterion 3 MET at `pass` on the five-cluster form. **Criterion 2 (router-confusion) is now
-the binding gap**, and it is a real one — a type this common will compete with
-`06-relief-hero` for every outcome slot on every page, and that test has to be run before
-promotion rather than after.
+**Criterion 2 (router-confusion) is the binding gap**, and it is a real one — a type this
+common will compete with `06-relief-hero` for every outcome slot on every page, and that test
+has to be run before promotion rather than after. Criterion 3 now has FOUR renders across two
+rounds, all four examined and graded by eye under ADR-011; §6.3(3) wants the owner's own
+verdict and that is what is outstanding.
 
 Superseded status line, kept so the count's history is legible: **2/5 exemplars** — `sha256:2da3d3182d3dbd8…`, a laughing
 woman cut out against a pale green field beside a headline and four icon-and-claim lines;
@@ -41,11 +42,11 @@ and `sha256:4a3fbc492b392e5e4…`, the identical layout with the PRODUCT in the 
 position and no person at all. The second is why PARTS/subject below is too narrow as
 drafted — see KNOWN-FLAKY.
 
-Criterion 3 MET at `pass` on the five-cluster form — one render, owner-verdict pending.
-Criterion 2 not run. Not routable. Device `claimstack` is new vocabulary.
+Not routable. Device `claimstack` is new vocabulary.
 
-**This draft existed to be TESTED rather than promoted, and the test has run — see FOUNDING
-RENDER ROUND. The paragraph below is left standing as the reason it was written.** One observation is well below the bar. What earns it a place ahead of
+**This draft existed to be TESTED rather than promoted, and the test has run twice — see
+FOUNDING RENDER ROUND and SECOND RENDER ROUND. The paragraph below is left standing as the
+reason it was written.** One observation is well below the bar. What earns it a place ahead of
 better-evidenced proposals is that it is the single most common shape in the benefit slice
 of the corpus — 181 `benefit-*` files across 13 of 13 products — and that rendering it
 answers the one question the owner's Q1b decision turns on: **how many separate text
@@ -70,7 +71,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 06-relief-claimstack v0.1
+TYPE: 06-relief-claimstack v0.3
 REGISTER: commercial editorial photograph on a flat coloured field.
 
 [SUBJECT]   one person carrying the state, cut out.        -> PARTS/subject
@@ -96,6 +97,12 @@ mouthpiece, a headset — and the argument does not change: the claims still car
 and the subject still carries the promise. This is corrected here rather than left in
 KNOWN-FLAKY because four independent sources is past the evidence rule twice over.
 
+**The product form is now RENDERED, 1 of 1, and it is the cleaner of the two.** A cut-out
+vacuum on a flat deep-teal field carried the promise with no face in the frame and nothing
+was lost: five clusters, every word exact, no duplication. Where the subject is the product
+there is no G9 tension, no G13 exposure and no cut-out-person edge to go wrong — three
+failure modes the person form carries and this one does not.
+
 **Where the subject IS a person, G9 is in tension and the tension is real:** G9 ranks a visible
 symptom or result above a face and says emotion on a face is not evidence. This type has no
 visible result by definition — that is its trigger — so the face is the only rung of G9's
@@ -117,7 +124,10 @@ three is **legibility, not flatness**:
   the category is a tone that has not been chosen.
 - **a real room** — the subject photographed in place, the words set into the room's own
   out-of-focus area. Three sources build it this way; one puts the words straight onto the
-  wall with no panel at all.
+  wall with no panel at all. **Rendered, 1 of 1, in its hardest form**: white words straight
+  onto a daylit out-of-focus wall, no panel, no scrim. They read. What made them read is that
+  the wall was thrown far enough out of focus to carry no detail at all — the clause to keep
+  is the DEFOCUS, not the panel.
 - **a band** — the photograph occupying two thirds and the claims a solid band beneath,
   with the product cut out across the boundary.
 
@@ -154,10 +164,19 @@ rectangles, which is the monotony that put this section here.
 | `chip` | a small line icon in a circle with one short label beneath | a capability where the icon carries half the reading |
 
 **One badge per frame**, and it never repeats a line the stack already carries.
-**The badge sits bottom LEFT**, per `adapters/nano-banana.md` Rule 7 — the tool's watermark
-holds the other corner.
-**Tested only as `tag`**, 2 of 2 clean in the founding round. The other three forms have no
-render and their first is their founding evidence.
+**Three corners are open and the bottom-right is not**, per `adapters/nano-banana.md` Rule 7
+— that corner carries the tool's watermark. The second round asked for upper left and upper
+right and got both, 2 of 2.
+**Tested: `tag` 2 of 2, `pill` 1 of 1, `seal` 1 of 1**, all clean. Only `chip` has no render.
+**The badge's size anchor works and the headline's does not** — `pill` came back at 0.71 of
+the object it was told to match and `seal` at 0.96, against 0.13 and 0.24 for the headlines
+in the same frames. G16 carries the general form; here it means the badge clauses can be
+trusted as written.
+**A badge must not take its colour from the product.** Round 2 asked for a warm-gold `pill`
+on a champagne-gold vacuum and got exactly that — a badge the same hue as the thing it sits
+beside. Nothing in the render failed; the PROMPT broke G16's own rule that a badge carries a
+colour the photograph does not, and it broke it because the writer read the colour off the
+product. Choose the badge hue against the frame, never from it.
 
 ## SLOT CONSTRAINTS
 - **Every word comes from the page's own copy.** G16's content rule binds hardest on this type,
@@ -184,6 +203,81 @@ the cut-out, a product, packaging, a disclaimer line, an asterisk,
 a second person, a photographic texture behind the words
 ```
 
+## WORKED EXAMPLES
+### example: dust-mite-vacuum-product-subject — skeleton@0.2, run: pass
+Isolates `PARTS/subject` as ADR-066 widened it: the PRODUCT in the subject slot, field held at the known-good flat tone. Five clusters, 6 of 6 lines exact, no duplication, no face in frame and nothing lost. `sha256:9df23c4bfb119485…`
+
+```
+TYPE: 06-relief-claimstack v0.2
+REGISTER: commercial editorial photograph on a flat field.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the handheld dust mite
+vacuum. Preserve shape, proportions, material, finish and colour exactly.
+
+SUBJECT: the vacuum alone, cut out cleanly, three-quarter angle, nozzle to the lower left,
+holding the right third of the picture.
+
+FIELD: one flat deep teal filling the picture behind it. No gradient, no texture, no room, no
+shadow under the cut-out.
+
+LIGHT: soft and directional on the vacuum only, from behind and right, a faint rim on its
+upper edge. The field is unlit and flat.
+
+TEXT: in the empty field on the left, all flat white sans-serif, every line and glyph starting
+the same distance from the left edge. The headline's capitals are as tall as the vacuum's body
+is wide; the three lines under it are half that height:
+YOU CHANGE THE SHEETS.
+NOTHING UNDER THEM CHANGES.
+then, each with a small line glyph at its left —
+a sun glyph — Works dry, so the bed is yours again by bedtime
+a bed glyph — Goes into the surface, not just over it
+a battery glyph — No cord to drag around the bed frame
+
+BADGE: UPPER LEFT, overlapping the top corner of the headline's field, a fully rounded capsule
+in warm gold, as wide as the vacuum's body is long, with TEN MINUTES A BED in deep teal
+capitals filling it.
+
+Nothing comes within a tenth of the picture's width of any edge. The words above are the only
+words in the picture; no logo, no watermark, no packaging, no person, no room.
+```
+
+### example: arm-trainer-person-in-room — skeleton@0.2, run: partial
+Isolates `PARTS/field` as ADR-066 widened it: words straight onto a daylit out-of-focus wall, no panel, subject held at the known-good person. They read. One claim line gained a word — `The display counts reps` for `The display counts` — and the badge sits 3.71% from an edge. `sha256:0d47d3e4d0d6c289…`
+
+```
+TYPE: 06-relief-claimstack v0.2
+REGISTER: commercial editorial photograph in a real room.
+
+PRODUCT REFERENCE: the attached photo is the exact reference for the hydraulic arm strength
+trainer. Preserve shape, proportions, material, finish and colour exactly.
+
+SUBJECT: a man in his forties in a plain grey t-shirt, seated on a low bench, working the
+trainer with both hands at chest height, looking down at it. He holds the right half, cropped
+at the thigh.
+
+FIELD: a real living room behind him — a plain painted wall, daylight raking across it from a
+window out of frame, a rug edge at the foot. The wall to his left is empty and thrown well out
+of focus, and the words sit directly on it with no panel behind them.
+
+LIGHT: plain daylight from the window side. No rim light, no studio key.
+
+TEXT: on the out-of-focus wall at the left, all flat white sans-serif, every line and glyph
+starting the same distance from the left edge. The headline's capitals are as tall as the
+trainer's handle is long; the three lines under it are half that height:
+THE GYM YOU KEEP MEANING
+TO GO BACK TO
+then, each with a small line glyph at its left —
+a dial glyph — Turn it up the week it starts feeling easy
+a counter glyph — The display counts, so you do not have to
+a chair glyph — Done sitting down, in the room you are already in
+
+BADGE: UPPER RIGHT, overlapping the man's shoulder, a scalloped rosette in deep gold with a
+darker gold rim, as wide as his head, with NOTHING TO RACK in white capitals curved inside it.
+
+Nothing comes within a tenth of the picture's width of any edge. The words above are the only
+words in the picture; no logo, no watermark, no poster or label in the room, no second person.
+```
+
 ## KNOWN-FLAKY
 - **The cluster count is ANSWERED and the answer was the opposite of the question.** Five
   clusters held, 13 of 13 words exact. Two clusters DUPLICATED. What binds is the fill, not the
@@ -192,7 +286,19 @@ a second person, a photographic texture behind the words
 - **The cut-out person is tested and clean, 2 of 2** — no halo, no drop shadow, warm rim on the
   subject with the field left unlit. This was listed as the type's second risk and is now its
   least.
-- **One observation.** Two of the four things above could turn out to be one thing.
+- **A prompted LINE BREAK is not binding**, 1 of 1: a two-line headline was re-wrapped to
+  three. Write the words and let it wrap; a break that has to hold is not something this
+  renderer can be asked for.
+- **A claim line can gain a word**, 1 of 34 lines across the round: `The display counts, so
+  you do not have to` came back as `The display counts reps, …`. Not a misspelling and not a
+  drop — an insertion that reads as an improvement and is still a word the page did not
+  write. G16's content rule is the one this threatens.
+- **The short-stack duplication risk is still this type's own**, and the round did not test
+  it — both frames ran five clusters. Two-cluster frames were rendered on `07-identity-pack`
+  in the same round and did NOT duplicate, because their headline filled the band it was
+  given. That is consistent with G16's fill rule rather than a reprieve for a short stack.
+- Superseded, kept for the record: *"One observation. Two of the four things above could turn
+  out to be one thing."* The count is nine and the two widened clauses each have a render.
 
 ## FOUNDING RENDER ROUND — 2026-09-03
 Two renders, ratio 1:1, two different subjects and two different budgets, so a failure could
@@ -223,6 +329,43 @@ claim stack with a short headline and no claims is exactly the dangerous shape.
 warm rim light on the subject with the field left unlit. That was listed as untested and is now
 the least of this type's problems.
 
+## SECOND RENDER ROUND — 2026-09-03
+Two renders, ratio 1:1, prompts 3 and 4 of `_staging/ready-to-push/prompts.md`. **Each
+isolates ONE clause widened by ADR-066**, with the other held at its known-good value, so a
+failure could attribute. Both products come from `query/product-slugs.yaml` and neither is in
+this type's source list. Verdicts by eye under ADR-011.
+
+| | 3 · PRODUCT subject, flat field | 4 · PERSON subject, real room |
+|---|---|---|
+| the clause under test | `PARTS/subject`, widened on 4 sources | `PARTS/field`, widened on 3 |
+| verdict by eye | **pass** | **partial** |
+| clusters asked / returned | 5 / 5 | 5 / 5 |
+| words exact | 6 of 6 lines | **5 of 6** — one line gained a word |
+| headline cap | 50 px = 4.88% of frame | 52 px = 5.08% |
+| headline ÷ its anchor | **0.13** | not separable |
+| badge form, corner asked / got | `pill`, upper left / upper left | `seal`, upper right / upper right |
+| badge ÷ its anchor | **0.71** | **0.96** |
+| closest prompted ink to an edge | 6.05% text · 6.05% badge | 5.76% text · **3.71% badge** |
+| output | `sha256:9df23c4bfb119485…` | `sha256:0d47d3e4d0d6c289…` |
+
+**Both widened clauses hold.** The product in the subject slot carried the promise with no
+face in the frame; the words on a defocused wall with no panel stayed legible. ADR-066
+widened both on source counts alone and each now has a render behind it.
+
+**Render 3 is the better frame and the reason is structural.** With the product as subject
+there is no G9 tension to manage, no G13 exposure and no cut-out edge to go wrong. The
+person form is not worse-rendered — it is worse-EXPOSED.
+
+**Two faults, and neither is about the widening.**
+
+- **The headline was given two lines and drew three.** A break in the prompt is a suggestion.
+- **One claim line gained a word** — `The display counts` came back as `The display counts
+  reps`. It reads better and the page did not write it, which is exactly the shape G16's
+  content rule exists to catch: an improvement is still an invention.
+
+**The badge is where G10 breaks.** Render 4's `seal` came within 3.71% of an edge while its
+own text block held 5.76%. The badge goes precisely where the prompt puts it, and a corner
+plus an anchored size is a combination that walks off the frame.
 
 ## NOTES
 **Why this is `relief` and not a new job.** The argument is the state after buying, which is
@@ -230,6 +373,16 @@ step 6's own definition; the enumeration is how the tile is BUILT, not what it a
 names the mechanism and `claimstack` is the mechanism: a subject beside a stack of claims.
 
 ## CHANGELOG
+- 0.3 (2026-09-03): second render round, 2 renders — `sha256:9df23c4bfb119485…`,
+  `sha256:0d47d3e4d0d6c289…`. Each isolates one clause ADR-066 widened; both hold, 1/1 each.
+  MARKS: bottom-left constant becomes three open corners, 2/2 obeyed; `pill` and `seal`
+  tested; a badge may not take its colour from the product, breached by the prompt 1/1.
+  KNOWN-FLAKY gains a re-wrapped line break 1/1 and an inserted word 1/34.
+- 0.2 (2026-09-03): `PARTS/subject` widened from a person to a person, the product, or the
+  product in use, on four of nine sources; `PARTS/field` widened from one flat tone to flat
+  tone, a real room, or a band, on three sources, with legibility as the binding clause.
+  Source count 2 → 9, criterion 1 cleared. Entry written retrospectively at 0.3: ADR-066
+  bumped the version and recorded the reasoning in the log but wrote no CHANGELOG line.
 - 0.1 (2026-09-03): drafted from one observation, `sha256:2da3d3182d3dbd8…`, deliberately ahead
   of better-evidenced proposals because it is the corpus's commonest benefit shape and because
   rendering it settles G16's cluster budget. Flagged throughout as an experiment rather than a

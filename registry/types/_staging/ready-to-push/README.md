@@ -1,6 +1,15 @@
 # Ready to push — three types, six renders
 
-Three staging types whose remaining blocker is **a render**, not more evidence.
+**THE ROUND HAS RUN.** All six renders arrived on 2026-09-03 and all six have been examined
+and measured off the files. The results are written into each type's own file, not here:
+`FOUNDING RENDER ROUND` in `03-spec-callout` and `07-identity-pack`, `SECOND RENDER ROUND`
+in `06-relief-claimstack`, a `WORKED EXAMPLES` entry per render carrying the prompt that
+produced it, and six records in `eval/render-tests.jsonl`.
+
+**What is left is yours and it is short**: three verdicts, and four of the thirteen questions
+below that no measurement can answer.
+
+Three staging types whose remaining blocker was **a render**, not more evidence.
 
 **This folder holds no copies of the type files, and that is deliberate.** They live one
 directory up and are the law:
@@ -21,14 +30,22 @@ reported 0 outstanding (commit `e4af746`). Nothing here would break today; the h
 
 ## What each type is blocked on
 
-| type | criterion 1 · ≥5 distinct sources | criterion 2 · router-confusion | criterion 3 · a rendered example |
+| type | criterion 1 · ≥5 sources | criterion 2 · router-confusion | criterion 3 · a rendered example |
 |---|---|---|---|
-| `03-spec-callout` | **CLEARED — 5/5** | not run | **NO RENDER** ← prompts 1, 2 |
-| `06-relief-claimstack` | **CLEARED — 9/5** | not run | 2 renders, **but the file changed today** ← prompts 3, 4 |
-| `07-identity-pack` | 4/5 — one source short | not run | **NO RENDER** ← prompts 5, 6 |
+| `03-spec-callout` | **CLEARED — 5/5** | not run | 2 renders, **partial · partial** by eye — your verdict outstanding |
+| `06-relief-claimstack` | **CLEARED — 9/5** | not run | 4 renders across 2 rounds, latest **pass · partial** — your verdict outstanding |
+| `07-identity-pack` | 4/5 — one source short | not run | 2 renders, **fail · partial** — your verdict outstanding |
 
 Criterion 2 I can run against `eval/golden/` whenever you want it; it needs no renders.
-Criterion 3 needs you, and criterion 3's verdict is the one SPEC §6.3 says must be yours.
+Criterion 3's verdict is the one SPEC §6.3 says must be yours — ADR-011 lets me grade a
+render I have actually looked at, and I have graded all six, but not for this criterion.
+
+**`07-identity-pack` is the one to read first.** Its `fail` is not a bad frame; it is the
+type's own definition firing. `PARTS/light` said a render whose pack lettering is gibberish
+is a total failure rather than a flaw, and the juicer cup came back printed `batglie`,
+`BRELLING THAT JUICER CUP` and `NONJHUTIVE SUPPORTS`. The repellent pouch in the same round
+printed nine lines perfectly. One of each is a denominator, not a rule — and it means this
+type cannot be promoted on a source count.
 
 **`07-identity-pack` is one source short and is in this folder anyway**, because it is the
 concrete form of your Q2b decision and because a render tells us something a fifth source
@@ -65,7 +82,10 @@ was written from is a coincidence.
 Give each render a verdict of `pass`, `partial` or `fail`. That verdict is yours under ADR-011
 and criterion 3 requires it; I may grade a render I have looked at, but not this one.
 
-Then these, because each answer changes a specific clause in a specific file:
+**Nine of the thirteen questions below are now answered off the files and the answers are in
+the type files.** The four in bold below are yours, because each is a judgement no pixel
+measurement reaches. The rest are left standing with their answers so the table still reads
+as the record of what the round was for.
 
 | # | question | what it changes |
 |---|---|---|
@@ -152,12 +172,35 @@ clause now names something in the frame: *as tall as one earbud is long*, *as ta
 scissor blade*, *as tall as one of the loose balls*. **Mobile legibility comes from choosing a
 big anchor**, and question 12 below asks whether it worked.
 
+## What the round answered, and what it did not
+
+| # | question | answer |
+|---|---|---|
+| 1 | every word spelled exactly? | **33 of 34 lines exact, zero misspelled.** One line gained a word: `The display counts` came back `The display counts reps` |
+| 2 | did all eight clusters hold? | **yes, 8 of 8, once each, nothing duplicated.** The picture did not degrade; the ATTACHMENT did — see 3 |
+| 3 | do the leaders land on the parts they name? | **9 of 10.** At six labels two leaders cross; the one clean miss is a label written for the open lid landing on the case body |
+| 4 | **does a PRODUCT subject read as well as a person did?** | rendered clean, 1 of 1, and structurally safer — no G9 tension, no G13, no cut-out edge. Whether it READS as well is yours |
+| 5 | do words stay legible on an out-of-focus wall, no panel? | **yes, 1 of 1.** What made them read is the depth of the defocus, not a panel |
+| 6 | is every word printed on the pack a real word? | **1 of 2.** Nine lines perfect on the pouch; three invented strings on the cup |
+| 7 | is the badge clean in the lower LEFT? | superseded — badges went to four different corners this round and **6 of 6 landed where asked**. Bottom-right stays barred, and now for every element, not just a badge |
+| 8 | does any text come within a tenth of an edge? | **yes, and it is the badge every time.** Text blocks 5.37–10.16%; badges 0.00–6.05%. The corner ribbon reaches both edges by construction |
+| 9 | did anything appear nobody asked for? | one inserted word, one headline re-wrapped from two lines to three, and an invented net weight, count and ingredient list printed on a pack |
+| 10 | **is the headline a hook or a caption?** | yours. No measurement reaches it |
+| 11 | did a line past seven words render cleanly? | **7 such lines, 6 exact.** The one that did not is the inserted word, not a spelling failure. The cap is off habit and onto evidence |
+| 12 | is the headline as tall as its anchor? | **no — 0.13 to 0.64 of it, five measured, and the ratios run backwards.** The anchor sizes an OBJECT and does not size a GLYPH. G16 carries the finding |
+| 13 | **is the badge the first thing you see?** | yours. Measured at 1.98–5.05% of the frame, in four corners, six colours — but "first thing you see" is perception |
+
 ## What to send back
 
-The renders and your verdicts. I will write the results into each file's own FOUNDING RENDER
-ROUND section with the measurements taken off the files, patch what the evidence moves, and
-say plainly what it does not move. If a clause survives a render that ignored it, that clause
-is a candidate for deletion — ADR-015: a clause is cut only when a render has done without it.
+Three verdicts and the four bold answers. Everything the files could answer is already written
+into them, with the measurements taken off the renders. If a clause survives a render that
+ignored it, that clause is a candidate for deletion — ADR-015: a clause is cut only when a
+render has done without it.
+
+**One hole in the test, recorded rather than hidden.** Nothing in the round records whether a
+reference photograph was actually attached to prompts 1, 2, 3, 4, 5 and 6. For
+`07-identity-pack`, where G1 is the entire frame, that means the juicer-cup failure cannot be
+told apart from a missing reference. The next round logs it.
 
 ## Reading the skeletons
 
