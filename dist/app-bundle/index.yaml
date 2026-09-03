@@ -268,7 +268,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 4
+    evidence_count: 5
     picks: {}
     use_when: >
       The product has more than one operation step, or buyers may assume it is
@@ -366,7 +366,7 @@ types:
     never_with: []
     avoid_adjacent: [05-social-handoff]
     requires_pair: null
-    evidence_count: 0
+    evidence_count: 4
     picks: {}
     use_when: >
       Review sections and social-proof blocks on landing pages and
@@ -394,7 +394,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 22
+    evidence_count: 27
     picks: {}
     use_when: >
       The product solves a problem the buyer already feels but has not named.
@@ -424,7 +424,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 0
+    evidence_count: 1
     picks: {}
     use_when: >
       Closing image of an advertorial or final frame of an ads creative, when
