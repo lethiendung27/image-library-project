@@ -3,10 +3,10 @@ id: 03-mechanism-xray
 step: 3
 job: mechanism
 device: xray
-version: "1.3"
+version: "1.4"
 status: active
 replaced_by: null
-ratios: ["1:1", "4:5", "16:9"]
+ratios: ["1:1", "16:9"]
 channels: [marketplace, landing-page, advertorial]
 requires_product_photo: true
 generation_mode: single-pass
@@ -226,8 +226,11 @@ The marks are the only added colour; the product and its parts keep their own.
   carries a `300mAh Li-ion` label. Watch for it; the text ban is in `internals` for that
   reason.
 - **Shell silhouette drifting once transparency is requested**, predicted and not yet
-  observed. If it recurs, the fallback is multi-pass — generate the opaque product, then edit
-  it to translucent (adapter Rule 3).
+  observed. **There is no multi-pass fallback any more** (ADR-067): the old note here sent a
+  reader to generate the opaque product and edit it translucent, against a Rule 3 that has
+  been retired since ADR-039 and a pipeline that has not composited since ADR-021. If it
+  recurs, it takes the ordinary route SPEC §6.2 prescribes — at ≥2/3 or ≥3 observations, a
+  NEGATIVE clause or a tightened `internals` part; below that, it stays here.
 
 ## NOTES
 Distinction within step 3: `ghostbody` = body translucent, product solid ("why this shape
@@ -242,6 +245,11 @@ not widen the skeleton meanwhile.
 
 ## CHANGELOG
 A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
+- 1.4 (2026-09-03): the KNOWN-FLAKY multi-pass fallback is removed (ADR-067, owner
+  instruction). It pointed at adapter Rule 3, retired at ADR-039, for a capability removed at
+  ADR-021 — a prediction with an illegal remedy attached. The prediction stands; the remedy is
+  SPEC §6.2's ordinary route. `ratios` corrected to ADR-016's legal set: `4:5` dropped,
+  unaskable since 2026-08-13. A portrait ratio returns as `3:4` when a render earns it.
 - 1.3 (2026-08-13): type passed by the owner; file finalised with two rendered worked examples
   in full text per SPEC §3.3. The 1.2 decisions are confirmed at 2 of 2 — a hair dryer whose
   orange coil the old lock forbade, and a robot vacuum carrying `caught` inside its bin and
