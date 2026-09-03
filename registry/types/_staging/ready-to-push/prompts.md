@@ -13,7 +13,7 @@ source list. A rule that holds on a product it has never seen is a rule.
 | the prompts are bloated | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | now **1336–1628**, every one inside the reference band. Measured, not asserted: −152 to −594 chars each. The closing negative ran ~40 words in every prompt and is now one line; the safe-area clause is stated once rather than per element |
 | the badge is monotonous | 6 of 6 said "a small flat solid rectangle… in white capitals" | a badge is a MARK, not a text slot. Each type now owns a form library — tag, seal, pill, roundel, chip, flash — and each prompt names a DIFFERENT form, chosen from what the product's register carries |
 | the background is monotonous | 6 of 6 said "one plain pale grey ground" | six different grounds, each picked from the product's own register |
-| the text is too small | headline bands measured 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor | G16 gains a mobile FLOOR: the headline's capitals at least a tenth of the picture's height, every other line at least a sixteenth. Each prompt now states it |
+| the text is too small | headline bands measured 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor | G16 gains a mobile floor, **anchored rather than numbered**: the capitals are as tall as a named thing in the frame — one earbud, the blade, the lid, a ball. See the second-pass note below; the first attempt stated a fraction and that is the class this renderer ignores |
 
 The copy is **drafted, not any page's own** — no `content.json` was available — so it claims
 only what each object's facts support and carries no figure. G16's caps no longer bind (owner
@@ -46,14 +46,15 @@ the earbud in the case — Drops in, charges, forgets nothing
 the open lid — Pocket-sized, so it comes with you
 
 TEXT: across the top, two lines of white sans-serif, each starting the same distance from the
-left edge as the upper-left label. The capitals stand a tenth of the picture's height, so the
-line reads on a phone:
+left edge as the upper-left label. Each capital is as tall as one earbud is long, so the
+headline is the first thing read:
 UNDERSTAND EACH OTHER
 BEFORE THE SENTENCE ENDS
-Each callout label stands at least a sixteenth of the picture's height.
+Each callout label is half the height of those capitals.
 
-BADGE: lower LEFT, a small white line icon of two speech bubbles inside a thin white circle,
-with the words TWO LANGUAGES in white capitals beneath it.
+BADGE: UPPER RIGHT, overlapping nothing but the ground. A filled circle in a bright signal
+green, as wide as the charging case, with a white line icon of two speech bubbles in its upper
+half and TWO LANGUAGES in white capitals across its lower half.
 
 Nothing comes within a tenth of the picture's width of any edge. The words above are the only
 words in the picture; no logo, no watermark, no person, no room.
@@ -88,13 +89,13 @@ One finger does the whole job · Slow for card, fast for fabric ·
 Charges where your phone charges · Shaped for hands that ache after ten minutes
 
 TEXT: across the top, two lines of cream sans-serif starting the same distance from the left
-edge as the leftmost label, capitals a tenth of the picture's height:
+edge as the leftmost label. Each capital is as tall as the scissor blade is long:
 YOUR HAND STOPS ACHING
 HALFWAY THROUGH THE ROLL
-Each callout label stands at least a sixteenth of the picture's height.
+Each callout label is half the height of those capitals.
 
-BADGE: lower LEFT, a flat cream rectangle with square corners, CORDLESS cut out of it in the
-brown of the bench.
+BADGE: LOWER LEFT, a hard-edged rectangle in a hot signal red, as wide as the scissors' grip
+is long, tilted a few degrees off square, with CORDLESS in white capitals filling it.
 
 Nothing comes within a tenth of the picture's width of any edge. The words above are the only
 words in the picture; no logo, no watermark, no person, no room.
@@ -123,8 +124,8 @@ LIGHT: soft and directional on the vacuum only, from behind and right, a faint r
 upper edge. The field is unlit and flat.
 
 TEXT: in the empty field on the left, all flat white sans-serif, every line and glyph starting
-the same distance from the left edge. The headline's capitals stand a tenth of the picture's
-height; the three lines under it a sixteenth:
+the same distance from the left edge. The headline's capitals are as tall as the vacuum's body
+is wide; the three lines under it are half that height:
 YOU CHANGE THE SHEETS.
 NOTHING UNDER THEM CHANGES.
 then, each with a small line glyph at its left —
@@ -132,8 +133,9 @@ a sun glyph — Works dry, so the bed is yours again by bedtime
 a bed glyph — Goes into the surface, not just over it
 a battery glyph — No cord to drag around the bed frame
 
-BADGE: lower LEFT, a fully rounded white capsule with TEN MINUTES A BED in teal capitals
-inside it.
+BADGE: UPPER LEFT, overlapping the top corner of the headline's field, a fully rounded capsule
+in warm gold, as wide as the vacuum's body is long, with TEN MINUTES A BED in deep teal
+capitals filling it.
 
 Nothing comes within a tenth of the picture's width of any edge. The words above are the only
 words in the picture; no logo, no watermark, no packaging, no person, no room.
@@ -163,8 +165,8 @@ of focus, and the words sit directly on it with no panel behind them.
 LIGHT: plain daylight from the window side. No rim light, no studio key.
 
 TEXT: on the out-of-focus wall at the left, all flat white sans-serif, every line and glyph
-starting the same distance from the left edge. The headline's capitals stand a tenth of the
-picture's height; the three lines under it a sixteenth:
+starting the same distance from the left edge. The headline's capitals are as tall as the
+trainer's handle is long; the three lines under it are half that height:
 THE GYM YOU KEEP MEANING
 TO GO BACK TO
 then, each with a small line glyph at its left —
@@ -172,8 +174,8 @@ a dial glyph — Turn it up the week it starts feeling easy
 a counter glyph — The display counts, so you do not have to
 a chair glyph — Done sitting down, in the room you are already in
 
-BADGE: lower LEFT, on the out-of-focus floor, a white scalloped rosette with NOTHING TO RACK
-in dark grey capitals curved inside it.
+BADGE: UPPER RIGHT, overlapping the man's shoulder, a scalloped rosette in deep gold with a
+darker gold rim, as wide as his head, with NOTHING TO RACK in white capitals curved inside it.
 
 Nothing comes within a tenth of the picture's width of any edge. The words above are the only
 words in the picture; no logo, no watermark, no poster or label in the room, no second person.
@@ -202,11 +204,12 @@ LIGHT: broad and even from the front and slightly above, strong enough that ever
 on the cup stays legible.
 
 TEXT: across the upper empty ground, two lines of flat deep grey sans-serif starting a tenth
-of the picture's width from the left edge, capitals a tenth of the picture's height:
+of the picture's width from the left edge. Each capital is as tall as the cup's lid is deep:
 BREAKFAST THAT FITS
 IN THE CUP HOLDER
 
-BADGE: lower LEFT, a filled deep grey circle with 400ml in white inside it.
+BADGE: LOWER LEFT, a filled circle in a hot coral, as wide as the cup's lid, with 400ml in
+white filling it — the figure large enough to read before the cup does.
 
 Nothing comes within a tenth of the picture's width of any edge. The two lines and the badge
 are the only added words; the cup's own printed label is part of the object and stays exactly
@@ -238,14 +241,44 @@ LIGHT: broad and even from the front and slightly above, strong enough that the 
 words and the balls' surface both read.
 
 TEXT: across the upper empty ground, two lines of flat white sans-serif starting a tenth of the
-picture's width from the left edge, capitals a tenth of the picture's height:
+picture's width from the left edge. Each capital is as tall as one of the loose balls:
 NOTHING SNAPS. NOTHING DIES.
 THEY JUST STOP COMING BACK.
 
-BADGE: a white ribbon crossing the lower LEFT corner at forty-five degrees, with DROP AND WALK
-AWAY in slate capitals along it.
+BADGE: a ribbon in a deep signal green crossing the UPPER LEFT corner at forty-five degrees,
+as wide across as the pack, with DROP AND WALK AWAY in white capitals along it.
 
 Nothing comes within a tenth of the picture's width of any edge. The two lines and the ribbon
 are the only added words; the pack's own printed label is part of the object and stays exactly
 as the reference shows it. No logo, no watermark, no person, no hand, no room.
 ```
+
+---
+
+## Second pass on the second pass, 2026-09-03
+
+The owner rendered nothing and read the prompts instead, and said the badge was still
+monotonous and the text still too small. Both were right, and both were checked before
+anything moved.
+
+**The badge fix had changed the wrong variable.** Six prompts used six different SHAPES, and
+form was never what made a badge read. Three things were, and **not one of them existed
+anywhere** — not in G16, not in any of the three MARKS libraries, not in any prompt:
+
+| | before | now |
+|---|---|---|
+| size | **no size rule anywhere.** The only size word in six prompts was "small" | anchored to the product — as wide as the case, the grip, the lid, his head |
+| position | **6 of 6 in the lower left** | upper right, lower left, upper left, upper right, lower left, upper left. Only the bottom-right is unavailable, and that is the watermark's |
+| colour | **every badge borrowed a colour already in the frame** — white ×7, grey ×2 | signal green, hot red, warm gold, deep gold, coral, deep green. A badge that shares the picture's palette recedes into it |
+
+**And the text fix was the third fixed number.** "A tenth of the picture's height" is a
+fraction, and G10 already records that two fixed numbers failed at sizing an inset here — six
+panels rendered "broadly compliant" and the owner still read them as too small — with its own
+conclusion that *maximisation needs no measurement, which is why it is the rule*. Adapter Rule
+4 is blunter: a written ratio does nothing to this renderer, 6 of 6.
+
+What this library HAS measured working is an **anchor**: an arrow described by its endpoints
+2/2, a badge whose glyph was named 2/2, hotspots tied to named places, alignment written as an
+observable 4/4. So every size clause now reads *as tall as one earbud is long*, *as tall as the
+scissor blade*, *as tall as one of the loose balls*. Mobile legibility comes from choosing a
+big anchor.

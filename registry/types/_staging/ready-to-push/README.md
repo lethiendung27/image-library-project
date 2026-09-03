@@ -80,6 +80,8 @@ Then these, because each answer changes a specific clause in a specific file:
 | 9 | Did anything appear that nobody asked for? | goes to that type's NEGATIVE, not into longer prose |
 | 10 | **Is the headline a hook or a caption?** Would it be equally true of a competitor? | G16's new copy-craft section — the half the rule was missing until 2026-09-03 |
 | 11 | Did any line past seven words render cleanly? | moves G16's line cap off habit and onto evidence |
+| 12 | **Is the headline as tall as the thing it was anchored to?** Measure it against that object | decides whether an anchor beats a fraction at sizing — the fourth time this library has tested that pattern |
+| 13 | **Is the badge the first thing you see, before the product?** | G16's badge prominence rules — size, position and colour, all three added on the third pass |
 
 ## About the copy in these prompts
 
@@ -113,7 +115,7 @@ whether a hook survives at 10 to 14 words, because the old cap was never tested 
 | prompt bloat | 1488–2128 chars against adapter Rule 6's 1450–1600 reference; 4 of 6 over | rewritten to 1336–1628, −152 to −594 chars each |
 | badge monotonous | 6 of 6 prompts wrote the identical flat rectangle | **a badge is a MARK, not a text slot.** G16 hands the form back to the type; each of the three types now owns a form library, and the six prompts use six forms — chip, tag, pill, seal, roundel, flash |
 | background monotonous | 6 of 6 wrote "one plain pale grey ground" | six grounds, each from the product's own register — charcoal, workbench brown, deep teal, a lit wall, a citrus gradient, slate |
-| text too small for mobile | headline bands 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor on both iOS and Android | **G16 gains a mobile FLOOR**: the headline's capitals at least a tenth of the picture's height, every other line at least a sixteenth. Maximisation still sets the ceiling; the floor is new |
+| text too small for mobile | headline bands 5.0–6.1% of frame height, everything else 3.3–5.5% — **19–24px and 13–21px on a 390pt phone**, against a 17px platform floor on both iOS and Android | G16 gains a mobile floor. **First attempt stated a fraction and was wrong** — see the third pass below; it is now anchored to a named thing in the frame |
 
 **The badge change is the structural one.** G16 listed `badge` as a third text slot with one
 shape, and six prompts written under that reading produced six identical rectangles. The repo
@@ -124,6 +126,31 @@ governs a badge's WORDS and the type governs its FORM.
 **Why maximisation alone left the text small.** G16 said the block grows until it would cover
 information. A short block in a large empty field has nothing to grow against, so it stays
 small and stays compliant. The floor is what maximisation was missing.
+
+## Third pass, same day — the first two fixes changed the wrong variables
+
+The owner read the rewritten prompts and said the badge was still monotonous and the text
+still too small. Both correct. Neither needed a render to check.
+
+**The badge had been given eight FORMS and no PROMINENCE.** Six prompts used six shapes and
+were still identical where it counted, because form was never the variable. Checked, not
+assumed: there was **no badge size rule anywhere** — not in G16, not in the three MARKS
+libraries, not in a prompt; the only size word in six prompts was "small". **6 of 6 badges sat
+in the lower left.** And **every badge borrowed a colour already in the frame** — white seven
+times, grey twice. A badge sharing the picture's palette recedes into it. All three now vary
+per product, and G16 carries the rules rather than each prompt inventing them.
+
+**The text floor was the third fixed number aimed at a sizing problem in this library.** G10
+records the first two failing — six inset panels "broadly compliant" between 16.6% and 31.1%
+of frame width and still read as too small — and concludes that *maximisation needs no
+measurement, which is why it is the rule*. Adapter Rule 4: a written ratio does nothing to
+this renderer, 6 of 6. So "a tenth of the picture's height" would have been ignored.
+
+What this library has measured working is an **anchor** — an arrow described by its endpoints
+2/2, a badge whose glyph was named 2/2, alignment written as an observable 4/4. Every size
+clause now names something in the frame: *as tall as one earbud is long*, *as tall as the
+scissor blade*, *as tall as one of the loose balls*. **Mobile legibility comes from choosing a
+big anchor**, and question 12 below asks whether it worked.
 
 ## What to send back
 

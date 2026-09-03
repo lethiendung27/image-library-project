@@ -654,6 +654,27 @@ pill; a circular roundel carrying a figure; a corner flash or ribbon; an icon in
 a short label; a speech-bubble pill. Eight forms, all drawn by real pages, none of them harder
 for a renderer than the rectangle six prompts defaulted to.
 
+**Owner correction, second pass: giving the badge eight FORMS did not make it prominent.** Six
+rewritten prompts used six different shapes and the verdict was still monotonous, because form
+was never the variable that made a badge read. Three things were, and none of them existed
+anywhere in this rule, in any MARKS library, or in any prompt — checked, not assumed:
+
+1. **SIZE — and there was no size rule at all.** The only size word in six prompts was
+   "small", and every badge inherited it. A badge is read BEFORE the product or it is not a
+   badge. Anchor it the way the headline is anchored: *as wide as the product's widest visible
+   part*, *the height of the lid*. **Never "small", and never a percentage.** The market's
+   guarantee seals overlap the subject and are the first thing in the frame; the corner stamp
+   is the exception, not the default.
+2. **POSITION — six of six sat in the lower left.** Only ONE corner is unavailable: the
+   bottom-right belongs to the generation tool's watermark. Upper left, upper right and lower
+   left are all open, and a badge that overlaps the subject is a real choice the corpus makes
+   often. Vary it per product.
+3. **COLOUR — every badge borrowed a colour already in the frame.** White on grey, cream on
+   brown, teal on teal. A badge that shares the picture's palette recedes into it. **A badge
+   carries a colour the photograph does not** — the corpus reaches for gold, a hot red, a
+   signal green — and where G3 assigns a meaning to that hue, the badge either honours it or
+   picks a hue G3 does not govern.
+
 ### The block
 
 | slot | job | shape |
@@ -711,10 +732,11 @@ The block is as large and as clear as it can be. It grows until it would cover
 the subject the frame exists to show, or until it would breach G10's safe area.
 Then it stops. It is never sized to a target.
 
-It has a FLOOR, and the floor is the phone:
-  the headline's capitals stand at least a TENTH of the picture's height;
-  every other line at least a SIXTEENTH.
-A type may raise that floor and may not lower it.
+It has a FLOOR, and the floor is ANCHORED rather than numbered:
+  the headline's capitals are as tall as a NAMED THING in the frame —
+  the width of the product, the height of its cap, the length of one part.
+  Every other line is a named fraction OF THAT LINE, not of the picture.
+Choose a BIG thing to anchor to. That is where mobile legibility comes from.
 ```
 
 Maximisation is G10's own instrument and it sets the ceiling. Two fixed numbers have already
@@ -734,8 +756,25 @@ to grow against, so it stays small and stays compliant. A tenth of the picture's
 headline near 39px on a phone and a sixteenth puts a support line near 24px — above the
 platform floor with margin, and in the band the instruction asks for.
 
-**Mobile is the default reader and the prompt says so.** Where a frame cannot hold the floor,
-the answer is fewer words, not smaller ones.
+**A fraction of the picture will not work and this rule tried one first.** The floor above
+was written on 2026-09-03 as "a tenth of the picture's height", and that is the third fixed
+number this library has aimed at a sizing problem. The first two are already recorded as
+failures in G10 — six inset panels rendered "broadly compliant" between 16.6% and 31.1% of
+frame width and the owner still read several as too small, and G10's own conclusion is that
+**maximisation needs no measurement, which is why it is the rule**. `adapters/nano-banana.md`
+Rule 4 is blunter still: a written ratio does nothing to this renderer, 6 of 6.
+
+**What DOES survive is an anchor**, and this library has measured that four separate times:
+an arrow described by its two endpoints, 2/2; a badge whose glyph was named, 2/2 after a blank
+disc; hotspots anchored to named places, which cured an over-count; and alignment written as
+"every line begins at the same distance from the left edge", 4/4 after the term of art was
+ignored 1 of 3. **A drawn instruction survives when it is tied to something the model is
+already drawing.**
+
+So the floor is stated against the frame's own contents: *the capitals are as tall as the
+bottle's cap*, *as tall as the pouch is wide*, *the height of one earbud*. **Mobile
+legibility comes from choosing a big anchor**, not from naming a percentage. Where the frame
+holds nothing big enough to anchor to, the answer is fewer words rather than smaller ones.
 
 ### Placement
 
