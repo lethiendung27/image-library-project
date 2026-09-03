@@ -826,7 +826,7 @@ them is a decision somebody took rather than a side effect of improving the copy
 |---|---|
 | a price, a discount, a percentage off, a date | **WAIVED.** Cost: a re-render when the number moves. Measured in this corpus — one five-pouch photograph shot once and shipped twice under two headlines, and a claim tile shipped twice differing in one price figure |
 | a second language | **WAIVED.** Cost: one render per language. A wordless still serves all 179 pages of the catalogue; a worded one serves the pages in its own language |
-| a claim the product's own copy does not make | **WAIVED as a rule.** `argument-faults.md` A12 stands as the record of what it costs: a figure baked into a frame is a published claim the frame cannot substantiate, and three proposals are blocked behind that fault |
+| a claim the product's own copy does not make | **WAIVED as a rule.** `argument-faults.md` A15 stands as the record of what it costs: a figure baked into a frame is a published claim the frame cannot substantiate, and three proposals are blocked behind that fault |
 | a person's name, a rating, a star row, a review count, a "verified" mark | **LAW, not taste.** G14's own text calls a fabricated endorsement *illegal* under FTC endorsement rules, and G14 binds the SLOT rather than this rule — so G16 has nothing to waive. Strike it with an ADR if it should be struck |
 | a certification mark, a press logo, an award, a named expert | **LAW, not taste.** A certification mark belongs to the body that issues it; this is a trademark question the library declined to answer on 2026-08-18 by leaving the `author` row empty. Same route: an ADR |
 

@@ -227,7 +227,11 @@ that type because the exposure is structural: any type whose slots are all descr
 problem's location — `01-pain-split`, `02-symptom-rail` — can be complete and still say nothing
 about what the problem costs.
 
-## A12 · A number in a frame is a claim, and the frame cannot substantiate it
+## A15 · A number in a frame is a claim, and the frame cannot substantiate it
+
+*Filed as `A12` by ADR-066 and renumbered here: `A12` was already taken by the pointer
+fault above, and `05-social-handoff` cites that one. Same fault, corrected id — an id
+collision in the one file whose whole job is stable ids a type can cite.*
 
 A statistic, a percentage, a duration or a measurement set into an image reads as verified.
 Nothing in the picture verifies it, the reader cannot check it, and the file outlives the page
