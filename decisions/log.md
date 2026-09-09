@@ -4604,3 +4604,70 @@ stay. `scripts/validate.py` and `scripts/ground_audit.py` read the latest record
 
 **Not done.** `lede-collage` is not rewritten and the two absorbed shapes are not split out.
 Nothing is rendered.
+
+---
+
+## ADR-075 · 2026-09-09 · SPEC §6.4's competitor brand-mark clause does not bind the toplist namespace
+
+**Owner instruction, 2026-09-09:** "riêng với top list, không giới hạn *competitor brand
+marks never appear in prompts*."
+
+**Why the clause could not survive contact with this format.** SPEC §6.4's policy has two
+halves: no prompt may aim to reproduce a specific source image, and competitor brand marks
+never appear in prompts. The second half was written for a product page, where the library
+argues for ONE product and a rival's logo has no business in the frame. A top-N listicle is
+by definition about several named competing products, so applied there the clause refuses
+the format's whole subject rather than a detail of it.
+
+It had already cost something. `lede-lineup` and `lede-collage` shipped `reserved` at
+ADR-069 with TWO blockers named in their BLOCK sections, and this was the second.
+
+**The first half still binds**, here as everywhere: no prompt may aim to reproduce a
+specific source image. Nothing about depicting a real product licenses copying a
+photograph of it.
+
+### The narrower rule that replaces it, and it is easy to miss
+
+**A real brand may be DEPICTED. A brand may not be INVENTED.**
+
+Depiction comes from the reference photo the owner attaches, which is what G1 already
+governs. Invention is what happens when a prompt with NO reference asks for branded units:
+the renderer produces a plausible logo belonging to nobody. That is a fabricated brand, a
+different fault from a competitor's real one, and no permission in this ADR covers it.
+
+The consequence is immediate and slightly counter-intuitive: `lede-lineup` and
+`lede-collage` still specify unbranded units, and `round-1/prompts.md` 3 and 6 still say
+so — but for a new reason. While the one-photo limit stands those prompts attach nothing,
+so branded units could only be invented ones.
+
+### What is NOT covered, stated because the two are easy to conflate
+
+**A certification seal, a press logo and a third-party AWARD mark stay refused.** G16 marks
+those `LAW, not taste`. The reason is different in kind: a competitor's brand mark is the
+mark of the thing being depicted, while an award mark is the mark of a body vouching for
+it, and reproducing that is a claim about the issuer rather than about the product. Three
+of `lede-winner`'s five corpus frames carry one — `CNET LAB TEST WINNER`, `CNET PEOPLE'S
+PICKS`, `GOOD HOUSEKEEPING BEDDING AWARDS` — which makes it the most-breached refusal in
+the namespace and the obvious next decision, but it is not this one.
+
+### Consequences — rule 6c sweep on `"brand mark"`: 61 hits, 23 files, 7 in TEACHES
+
+- `SPEC.md` §6.4 — the policy gains **one named exception**, pointing at §3.7, in the same
+  shape §3.6 already uses for the Vietnamese GIF cards.
+- `registry/toplist-instruction.md` — its *Global rules* entry is **rewritten**: the clause
+  does not bind, the depict/invent distinction replaces it, and the award-mark refusal is
+  named as still standing.
+- `registry/toplist-types/lede-lineup.md` — BLOCK goes from **two decisions to one**.
+- `registry/toplist-types/lede-collage.md` — the same.
+- `registry/toplist-types/round-1/prompts.md` — the paragraph explaining why 3 and 6 carry
+  no brands is **rewritten to the new reason**.
+- `registry/toplist-types/lede-testing.md` and `lede-winner.md` both bar *a competitor's
+  product* in their NEGATIVE blocks. **Both stand.** Those are composition rules — one unit
+  under test, one winner — not the §6.4 policy, and neither would be improved by a rival in
+  the frame.
+- `registry/types/03-spec-split.md` and `_staging/07-identity-pack.md` carry the remaining
+  TEACHES hits. **Both stand**: they are image types, and this exception is named to §3.7
+  alone.
+
+**Nothing becomes routable.** `lede-lineup` and `lede-collage` stay `reserved` on the
+one-reference-photo limit, which is now their only blocker.

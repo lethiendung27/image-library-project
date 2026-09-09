@@ -248,9 +248,22 @@ for image types. Three deserve naming because a top-N page walks into them:
   image for a different page.
 - **G14** binds the SLOT. A lede image that reads as a customer's own photograph, beside
   a ranking the page presents as editorial, is the shape G14 exists to refuse.
-- **SPEC §6.4** — *competitor brand marks never appear in prompts*. A "best 5" frame is
-  by definition about five named brands, which is why `lede-lineup` and `lede-collage`
-  are reserved rather than drafted-and-hoped.
+- **SPEC §6.4's brand-mark clause does NOT bind here** (owner instruction, 2026-09-09,
+  ADR-075). *"Competitor brand marks never appear in prompts"* would refuse the format's
+  whole subject: a top-N page is about several named competing products. §6.4's other half
+  still binds — no prompt may aim to reproduce a specific source image.
+
+  **Two things follow and the second is easy to miss.** A real brand may be DEPICTED, from
+  the reference photo the owner attaches. A brand may not be INVENTED: a prompt with no
+  reference that asks for branded units gets a fabricated logo, which is a different fault
+  and one no permission covers. Where a prompt attaches no photo — as `lede-lineup` and
+  `lede-collage` must while the one-photo limit stands — the units stay unbranded, and that
+  is now a rule about invention rather than about competitors.
+
+  **Still refused, and not covered by this instruction:** a certification seal, a press
+  logo or a third-party AWARD mark. G16 marks those `LAW, not taste`, the reason is the
+  issuing body's trademark rather than the competitor's, and three of `lede-winner`'s five
+  corpus frames carry one.
 
 **Ratio is not declared by these types.** The owner's app resolves the lede ratio
 (2026-09-09), so a toplist type carries no `ratios` key and no prompt states one — the

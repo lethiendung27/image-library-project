@@ -130,9 +130,9 @@ a press logo, a third-party award mark, a fabricated rating or star row
 ```
 
 ## BLOCK — why this is `reserved`
-The same two decisions as `lede-lineup`, for the same reasons: the one-reference-photo
-limit and `SPEC.md:256` on competitor brand marks. Whichever way they go, both types move
-together.
+**One decision, down from two** (ADR-075), and it is `lede-lineup`'s: the
+one-reference-photo limit. The brand-mark clause of `SPEC.md` §6.4 no longer binds this
+namespace. Both types still move together.
 
 ## CHANGELOG
 - 0.4 (2026-09-09): `PARTS/ground` **rewritten from this namespace's own 32 frames**, no

@@ -303,6 +303,12 @@ machine-specific and non-authoritative. Never commit source images. Policy: the 
 learns **structure, not pixels** — no prompt may aim to reproduce a specific source
 image, and competitor brand marks never appear in prompts.
 
+**One named exception: the toplist namespace of §3.7** (owner instruction, 2026-09-09,
+ADR-075). A top-N listicle is by definition about several named competing products, so the
+clause would refuse the format's whole subject. It does not bind
+`registry/toplist-types/`. The other half of this policy — no prompt may aim to reproduce a
+specific source image — binds there as it binds everywhere.
+
 ## 7. Query protocol
 
 1. **Validate** `content.json` against `mapping/content.schema.json`.

@@ -26,11 +26,14 @@ whatever you attach.
 **3 and 6 are the reserved multi-product types and they are written with NO reference
 photo on purpose.** Their blocker is that a five-product frame needs five attachments and
 ADR-021 allows one. Rather than ship a prompt nobody can run, these two render **unbranded
-generic units**, which is single-pass, needs no attachment, and sidesteps `SPEC.md:256` on
-competitor marks entirely. **What that cannot test is G1 fidelity** — whether the renderer
-holds five real products — and that question stays open until the attachment limit is
-decided. What it does test is everything else: the arrangement, the no-favoured-unit law,
-the ground, and for 6 the text and badge.
+generic units**, which is single-pass and needs no attachment. **What that cannot test is
+G1 fidelity** — whether the renderer holds five real products — and that stays open until
+the attachment limit is decided.
+
+**The units stay unbranded for a reason that changed on 2026-09-09.** It used to be
+`SPEC.md` §6.4's ban on competitor brand marks; ADR-075 lifted that for this namespace. What
+holds now is narrower and still binding: with no reference attached, asking for branded
+units produces an INVENTED logo, and a fabricated brand is a fault no permission covers.
 
 **7 is written without the parts that make it illegal.** `lede-authority` has no skeleton
 in its own file, deliberately, because G16 marks *a named expert* as LAW and

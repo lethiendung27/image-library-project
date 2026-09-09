@@ -97,16 +97,22 @@ words at all — the alarm clocks, the knitwear, the blenders, the coffee makers
 desk flat-lay. A badge would also breach the no-favoured-unit law above by marking one.
 
 ## BLOCK — why this is `reserved`
-Two decisions, neither the harness's:
+**One decision, down from two** (ADR-075 removed the second on 2026-09-09).
 
-1. **One reference photo per prompt.** `query/runbook.md:81` — *"one prompt, one
-   generation call, at most one reference photo attached"*. Three to five units need
-   three to five. The renderer accepts several; the limit is a number in this library's
-   law, and its principle — one generation call — is not threatened by attaching five.
-2. **`SPEC.md:256` — competitor brand marks never appear in prompts.** Every unit here is
-   a different maker's product, visibly.
+**One reference photo per prompt.** `query/runbook.md:81` — *"one prompt, one generation
+call, at most one reference photo attached"*. Three to five units need three to five. The
+renderer accepts several; the limit is a number in this library's law, and its principle —
+one generation call — is not threatened by attaching five.
 
-Until both are answered this type is not routable and no prompt is written from it.
+**The brand-mark clause is gone.** `SPEC.md` §6.4's *"competitor brand marks never appear
+in prompts"* does not bind this namespace, so a lineup of five named makers is no longer
+refused on that ground. What replaces it is narrower: a real brand may be DEPICTED from an
+attached reference, and no brand may be INVENTED — so while the photo limit stands and this
+type attaches nothing, its units stay unbranded because a generated logo is a fabricated
+brand, not because a rival's is forbidden.
+
+Until the photo limit is answered this type is not routable and no prompt is written from
+it.
 
 ## CHANGELOG
 - 0.3 (2026-09-09): `PARTS/ground` added, measured on this namespace's own 32 frames with
