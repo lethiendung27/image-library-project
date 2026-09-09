@@ -1,5 +1,17 @@
 # Toplist round 3 — built from the owner's feedback, to test BEFORE any type file moves
 
+> **RENDERED 2026-09-09 — 6 of 7, and the results are at the bottom of this file.**
+> Prompts 1, 2, 3, 4, 6 and 7 came back. **Two `pass` and four `partial`**, against round
+> 2's nought out of six, every verdict self-assigned under ADR-011 on a render that was
+> opened and looked at. Logged in `eval/render-tests.jsonl`.
+>
+> **Prompt 5 — `lede-winner`, smart video doorbell, the `band` mark — was not rendered.**
+> `MARKS`'s only zero-observation form still has none, and `lede-winner` is now the only
+> active toplist type whose round-3 clause changes are untested.
+>
+> **Prompt 3 landed, which was the round's whole point.** Five attachments, five distinct
+> real units, one generation call — the last untested half of ADR-076's route.
+
 **Owner instruction, 2026-09-09:** per-type feedback with named example frames, plus
 *"những chỗ có thể mở prompt, chỉ để đưa gợi ý mang nghĩa inform cho model biết là prompt
 của tôi có các yếu tố a,b,c,… model sẽ tự lắp ghép, styling phù hợp"*, and then
@@ -339,3 +351,61 @@ settle — and the first one is about the prompts rather than the pictures.
 | 10 | **In 6, does the title stay inside its cell and inside the safe area?** | round 2 breached G10 at 4.2% on a self-contradicting prompt; this one is not self-contradicting |
 | 11 | **In 2, does the frame state EASE this time?** | the argument fault round 2 found, and whether it was the prompt or the type |
 | 12 | **In 7, put beside 2 — can you tell them apart?** | whether `lede-authority` survives as a type or folds into `lede-inuse` under a gaze axis |
+
+## Answers, 2026-09-09
+
+### Question 1 first, because it is about the prompts and it is the reason for this round
+
+**Constraints held 14 of 18.** Every `CONSTRAINTS` bullet across the six rendered prompts,
+counted:
+
+| prompt | held | broken |
+|---|---|---|
+| 1 `lede-pain` | 3 of 3 | — |
+| 2 `lede-inuse` | 3 of 3 | — |
+| 3 `lede-lineup` | 2 of 3 | same distance from the lens |
+| 4 `lede-testing` | 2 of 3 | no second product class |
+| 6 `lede-collage` | 2 of 3 | title inside G10's 8% |
+| 7 `lede-authority` | 2 of 3 | no logo anywhere |
+| **total** | **14 of 18** | **4** |
+
+Against round 2, where the four prescriptions of TASTE embedded in an imperative body were
+ignored **4 of 4**. That is suggestive rather than proven — different products, different
+pictures, one render each — but it is the first evidence the library has either way, and it
+points the same direction as the round-2 split between geometry and taste.
+
+**Two of the four breaks are the prompt author's, not the model's.** Prompt 3's `ELEMENTS`
+asked for *"varied depth"* and its `CONSTRAINTS` asked for *"same distance from the lens"* —
+the same self-contradiction round 2 was supposed to have taught, committed again in a
+different block. Prompt 4's *"no second product class"* was written for a bench and applied
+to a laboratory that plausibly holds other units. **So the discipline that matters is not
+the two blocks; it is reading them against each other before shipping.**
+
+### The rest
+
+| # | answer |
+|---|---|
+| 2 | **Yes — five distinct real units from five references, in one call.** The route is complete; round 2 had reached four. The brand marks also rendered legibly and correctly across five different makers, against `07-identity-pack`'s finding that printed lettering fails 1 of 2 |
+| 3 | **Yes, cleanly.** A saturated sweep separates pale metallic units — the bimodal clause's second branch, evidenced for the first time. But *"strongly saturated colour"* returned saturation **1.00** against the corpus branch at 0.66–0.71, the same overshoot as round 2's cobalt at 0.92 against 0.55. **2 of 2** |
+| 4 | **No.** The cluster reads as one group but the units sit at different depths. The prompt asked for both, so this answers nothing about the type |
+| 5 | **Nothing legible — the constraint held under the hardest pressure yet.** Six seven-segment displays lit and facing the lens at frame centre; checked at 6×, not one resolves into a value. Round 2 stated the rule as a mechanism and it was ignored; stated as an outcome it held. **Caveat:** both outcomes rest on the model's inability to render small text (adapter Rule 5), so this is the model's limit rather than its compliance, and it breaks the first time a display is rendered large |
+| 6 | **Yes on bright, no on quiet.** Value **0.78** against the owner's five named frames at 0.80, where the live clause says 0.65 — the correction is confirmed. Saturation came back **0.23** against their 0.07, because *"cool and neutral"* light laid a blue cast over a room the clause wants almost colourless. The lab coat appeared and broke nothing |
+| 7 | **Unanswered.** Prompt 5 was not rendered |
+| 8 | **Unanswered.** Prompt 5 was not rendered |
+| 9 | **Yes to both.** The colour-cell grid reads as a collage and is a different picture from round 2's row. The halftone survived, and it is why ring texture reads **16.8** — the frame files DESIGNED only through `designed()`'s second branch at spread_v 0.08, the patterned-ground amendment, which has now earned its keep on a render for the first time |
+| 10 | **No — and this is the finding.** Line 1 reaches **3.8%** of the frame width from the right edge, line 2 **7.6%**, against a constraint asking for 8%. Round 2 breached it too, at 4.2%, but that prompt contradicted itself and this one does not. **2 of 2.** A stated safe-area percentage does not control large baked type. Round 2's small badge words did keep their margin, so the failing case is SIZE, not text |
+| 11 | **Yes.** Shoulders down, hands loose, jaw unclenched, nothing reading as strain. The round-2 argument fault is not promoted to `argument-faults.md`: one render stating it and one stating its absence is 1 of 2, and what changed was the prompt |
+| 12 | **Yes, and it partly reverses round 2.** A second person stands at the frame edge with their back to camera and the subject is answering them — neither asked for nor forbidden. That makes the frame an INTERVIEW, a register `lede-inuse` cannot reach, because that type requires a candid subject unaware of the lens. **The discriminator may be the interlocutor rather than the gaze**, and a prompt can ask for one without naming anybody |
+
+### Two measurement notes this round produced
+
+**The texture confound now has both ends.** Round 2 found a photographed ground filed
+DESIGNED because it was too DARK (value 0.25, texture 2.8). Round 3's `lede-inuse` render is
+filed DESIGNED because it is too BRIGHT AND SMOOTH — a plain wall thrown out of focus at
+value 0.79 returns texture 2.3. **2 of 2, both off `designed()`'s first branch**, and both
+times `spread_v` said photographed correctly. The repair tested on 2026-09-09 still moves
+five corpus frames and is still not applied here.
+
+**Prompt 1 confirms the floor forwards.** Constraining the exposure moved the same type's
+ground from value 0.25 to 0.45, and its texture from 2.8 to 6.3 — across the line, into
+PHOTOGRAPHED, where it belongs. Fixing the picture fixed the measurement.
