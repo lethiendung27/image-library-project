@@ -107,5 +107,27 @@ gif_types: [use, mechanism, cause, proof, relief, unboxing]
 # floor prefers one of each. `none` = counts toward nothing; ad channel only.
 gif_groups: [working, result, none]
 
+# ------------------------------------------------------------------ toplist
+# A THIRD namespace, for the single lede image of a top-N listicle (SPEC 3.7,
+# ADR-069). Separate from image types for the reason gif types are separate: that
+# page has ONE image slot, so more than half of SPEC 7 — the role shortlist, the
+# cross-slot pass, the coverage pass over the Trust Ladder, one-type-once — has
+# nothing to act on. Ids are ARGUMENTS, not `{step}-{job}-{device}`, and none of
+# these is ever written into index.yaml. Files: registry/toplist-types/<id>.md.
+toplist_types: [lede-pain, lede-inuse, lede-lineup, lede-testing, lede-winner, lede-collage, lede-authority]
+
+# How many DISTINCT products stand in the frame. This is the namespace's one
+# mechanical admission test and it is deliberately not a matter of judgement:
+# `many` needs one reference photo per product, and ADR-021 allows one per prompt.
+# Until that is decided, every `many` type is `status: reserved`.
+toplist_frame_populations: [one, many, none]
+
+# The reader's stage, carried on the product input. It keys the preference table in
+# mapping/toplist-rules.md and NOTHING ELSE — the owner's instruction of 2026-09-09
+# was not to lean on it, and SPEC 7.5 says awareness is read from copy rather than
+# declared. Here there is no page copy, so it is declared and demoted: it orders a
+# shortlist, it never admits or refuses a type.
+toplist_awareness: [unaware, problem-aware, solution-aware, product-aware, most-aware]
+
 # Informative: things that are runtime parameters and must NEVER become identity.
 parameters: [ratio, panel_count, colorway, persona_cast, environment]
