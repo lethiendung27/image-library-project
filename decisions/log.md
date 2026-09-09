@@ -4312,3 +4312,107 @@ and 2 of 2 frames carrying the testing argument on the setting alone against a B
 that calls the instrument test "checkable at a glance". Both are marked in the file and
 left for a curation pass, because `classify-batch.md` makes patches curation's job and
 this is a permission decision, not a curation one.
+
+---
+
+## ADR-072 · 2026-09-09 · The ground rule transfers on value and not on saturation, and two type files owned a badge with no form library
+
+**Owner audit, 2026-09-09: "led winner và collage chưa tốt."** Three passes on the
+direct-response badges were answered by guessing at the wrong axis, so this one measured
+the namespace's own corpus before touching anything. Both files were wrong, in two
+different ways, and one of the errors was shipped this morning.
+
+### Finding 1 — half of ADR-068's ground rule was imported into a namespace that contradicts it
+
+`registry/toplist-instruction.md` told all seven types to take ADR-068's ground: light and
+low in saturation, measured on **119 direct-response product-page frames** at value 0.89
+and saturation 0.06. The toplist corpus was classified at `78ab907` and never consulted.
+Measured now, outer 8% ring, per family:
+
+| family | n | value median | saturation median | saturated > 0.25 |
+|---|---|---|---|---|
+| `lede-winner` | 1 | 0.91 | **0.60** | 1 of 1 |
+| `lede-collage` | 5 | 0.90 | **0.49** | 5 of 5 |
+| `lede-lineup` | 5 | 0.81 | 0.26 | 3 of 5 |
+| `lede-authority` | 3 | 0.67 | 0.15 | 1 of 3 |
+| `lede-testing` | 11 | 0.65 | **0.13** | 2 of 11 |
+| direct-response (ADR-068) | 119 | 0.89 | **0.06** | 24% |
+
+**It transfers on VALUE and not on SATURATION.** Light is right at 0.81–0.91. Quiet is
+wrong by a factor of ten for the two assembled types, and **6 of 6 of their frames sit
+above the 0.25 line ADR-068 treats as loud**.
+
+**The discriminator is whether the ground is DESIGNED or PHOTOGRAPHED**, which is the line
+`lede-lineup` and `lede-collage` were already told apart by. A cut-out unit carries no
+scene, so the ground is the only place colour can live; a bench is a bench. `lede-lineup`
+sits between at 0.26 — photographed, but often onto a chosen seamless.
+
+**This is ADR-068's own failure repeated four days later.** That ADR was written because
+three type files took the ground from the product's own register and nobody measured the
+corpus first. Here a rule measured on one corpus was applied to another whose data was
+already in the ledger. The instrument was right and it was pointed at the wrong family.
+
+### Finding 2 — both files declared a badge and owned no form library
+
+`lede-winner` and `lede-collage` both carry `text_layer: [title, badge]` since ADR-071 and
+**neither had a `MARKS` section**. G16 governs a badge's WORDS and the type governs its
+FORM (ADR-012, ADR-043, ADR-068) — so the form was left to each prompt to invent, which is
+precisely the monotony that took three passes to find on the direct-response types and
+that ADR-068 closed by giving each of them a form table plus an interior spec.
+
+Both now carry `MARKS`, with **observation counts against every form** so nobody mistakes a
+borrowed shape for an attested one: `plaque` has 2, `sticker` has 1, `band` — the owner's
+own named form, "dải Best Overall" — has **0**, and `roundel` is borrowed outright.
+
+### Finding 3 — a number this library shipped this morning was wrong
+
+ADR-071 wrote *"2 of 5 corpus collages carry an award badge"*. Five records name
+`lede-collage`, but two are `variant-candidate` records of a different shape — two views of
+ONE product, and three outfits on one person. The denominator for the type as defined is
+**three**, so it is **2 of 3**. Corrected in both the instruction file and the type file.
+
+### Finding 4 — the badge may sit over one unit, against a law borrowed from another type
+
+`lede-collage`'s `ARRANGEMENT` says no unit is favoured, borrowed from `lede-lineup`, which
+borrowed it from `04-proof-lockedframe`. **Both corpus badges sit over a unit** — one over
+the centre vacuum. Resolved as a distinction rather than a reversal: the law governs SIZE,
+HEIGHT, POSITION and LIGHT, which would decide the comparison before the reader does; a
+mark placed over one unit is the page saying which won, which is this type's job in a way
+it is not `lede-lineup`'s. **That is 1 of 1 reasoning against 2 of 2 observations**, so the
+file says it is the first thing a render round should check, and round 1 asks it as
+question 9.
+
+### Finding 5 — two smaller ones, both recorded rather than smoothed
+
+- `lede-winner`'s BOUNDARY still read *"this boundary is the reason the file is reserved
+  rather than active"* after ADR-071 made it active this morning. Stale, corrected.
+- **`lede-winner` is ACTIVE on one corpus observation, and that observation is not a
+  winner.** Its own ledger deviation says the mark is *"a promotion, not a rank — no
+  ordinal and no award body"*. So the type has **zero** observations of its own argument,
+  and `PARTS/ground` is a clause at n=1. The file now says so in its own words.
+- `lede-collage` gains `PARTS/title` recording a second observed form: **oversized type
+  BEHIND the cut-outs**, which overlap and crop it. Observed once, untested, named so a
+  prompt asks for it deliberately rather than producing it by accident.
+
+### Consequences — rule 6c sweep on `"ADR-068 ground"`: 4 hits, 4 files, all 4 in TEACHES
+
+- `registry/toplist-types/lede-winner.md` 0.2 → **0.3** — `PARTS` and `MARKS` added, the
+  ground pointer replaced, BOUNDARY corrected, the n=1 evidence stated.
+- `registry/toplist-types/lede-collage.md` 0.2 → **0.3** — `PARTS/ground`, `PARTS/title`,
+  `MARKS`, the 2-of-3 correction, the badge-over-a-unit distinction.
+- `registry/toplist-types/lede-lineup.md` and `lede-testing.md` — **their pointers stand**.
+  Both are photographed types and the imported rule is right for them: 0.26 and 0.13
+  against ADR-068's 0.06, and the instruction file now says which families it binds.
+  Their skeleton lines are left as they are rather than churned.
+- `registry/toplist-instruction.md` — a new **Ground** section carrying the table and the
+  designed/photographed split; the Text section's pointer corrected; the 2-of-5 fixed.
+- `registry/toplist-types/round-1/prompts.md` — prompts 5 and 6 rewritten onto saturated
+  designed grounds, both badges named by form, prompt 6's badge moved over a unit to test
+  finding 4, and grading question 9 added. Lengths 1029–1632 against adapter Rule 6's
+  1450–1600, reported rather than padded.
+
+**What this ADR does not do.** It does not touch `lede-pain`, `lede-inuse`,
+`lede-authority` or the two photographed types beyond the instruction file, and it renders
+nothing. `PARTS/ground` on both audited types rests on 1 and 5 observations and no render
+at all — the correction is better-evidenced than what it replaced, which is not the same as
+being evidenced.

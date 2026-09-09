@@ -52,9 +52,12 @@ bottom-right watermark corner, the headline is sized by FILL rather than by an a
 (anchors measured 0.13–0.64 and never 1.0), alignment is written as an observable, and
 nothing comes within a tenth of the width of an edge.
 
-**The ground rule of ADR-068 binds all seven**, text or not: light and low in saturation
-unless the prompt says why not. Corpus median value 0.89 and saturation 0.06 over 119
-frames.
+**The ground rule is per family, not per namespace** — corrected after this set was first
+written, and 5 and 6 below were rewritten for it. ADR-068's finding was measured on 119
+direct-response frames and transfers on VALUE but not on SATURATION: the two assembled
+types run **0.49 and 0.60** saturation against its 0.06, 6 of 6 above the 0.25 line, while
+the photographed types run 0.13–0.15 and match it. A cut-out unit carries no scene, so the
+ground is the only place colour can live. See `toplist-instruction.md`, *Ground*.
 
 ---
 
@@ -185,7 +188,7 @@ the picture. Nothing comes within a tenth of the width of any edge.
 ## 5 — `lede-winner` · portable juicer cup · one photo, title and badge
 
 ```
-TYPE: lede-winner v0.2
+TYPE: lede-winner v0.3
 REGISTER: commercial product photograph, one frame.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the portable juicer cup.
@@ -195,8 +198,9 @@ SUBJECT: the cup alone, upright and complete with its lid on, the face carrying 
 mark to the lens, turned a few degrees so its depth reads. It holds the right half of the
 picture and about half its height.
 
-GROUND: a soft off-white, almost colourless, with one soft contact shadow beneath the cup.
-No room, no prop, no second object.
+GROUND: a designed field, light and saturated — a smooth gradient from warm apricot at the
+upper left to soft rose at the lower right. One soft contact shadow under the cup. No room,
+no prop, no second object.
 
 LIGHT: broad and even from the front and slightly above, strong enough that every word
 printed on the cup stays legible.
@@ -207,13 +211,13 @@ margin to margin and are the largest text in the picture:
 BEST OVERALL
 BLENDS IN NINETY SECONDS
 
-BADGE: UPPER LEFT, above the title, as wide as the cup's lid. A filled circle in a deep
-ink blue with a narrow cream ring inset just inside its edge, a cream line icon of a
-laurel in the upper half, WINNER in large cream capitals under it and OUR PICK in small
-cream capitals under that.
+BADGE: form `sticker`. UPPER LEFT, above the title, as wide as the cup's lid, tilted a few
+degrees. A filled circle in deep ink blue — a colour neither the cup nor the gradient
+carries — with a narrow cream ring inset inside its edge, a cream laurel icon in the upper
+half, WINNER in large cream capitals under it and OUR PICK in small cream capitals below.
 
-No score, no star row, no rating, no review count, no certification seal, no press logo and
-no third-party award mark. The words above are the only added words. Nothing comes within a
+No score, star row, rating, review count, certification seal, press logo or third-party
+award mark. The words above are the only added words. Nothing comes within a
 tenth of the width of any edge.
 ```
 
@@ -222,17 +226,18 @@ tenth of the width of any edge.
 ## 6 — `lede-collage` · four robot vacuums · unbranded, title and badge
 
 ```
-TYPE: lede-collage v0.2
+TYPE: lede-collage v0.3
 REGISTER: graphic product composition, one frame.
 
 CUT-OUTS: four robot vacuums, each cleanly cut out with no scene behind it, each a visibly
-different design — different body colour, different top-plate, one with a dock — and all
-plausible as real products. No brand marks, no logos, no printed names on any of them.
+different design — body colour, top-plate, one with a dock — and all plausible as real
+products. No brand marks, no logos, no printed names.
 
 ARRANGEMENT: a single row across the lower two thirds, read left to right, evenly spaced.
 No unit favoured by size, height or position.
 
-GROUND: one flat pale sage tone filling the frame. Light and quiet, no gradient, no
+GROUND: a DESIGNED field, light and saturated — a smooth gradient running from a clear
+sky blue at the upper left to a soft mint at the lower right, filling the frame. No
 texture, no scene.
 
 SHADOW: one faint contact shadow under each unit, identical for all four.
@@ -243,9 +248,11 @@ and are the largest text in the picture:
 THE BEST FOUR
 ROBOT VACUUMS
 
-BADGE: UPPER RIGHT, clear of the title, as wide as one vacuum. A rounded-square tag in a
-warm terracotta with a slightly deeper terracotta band across its lower third, TESTED in
-large cream capitals on the upper part and ALL FOUR in small cream capitals on the band.
+BADGE: form `plaque`. Sitting OVER the second vacuum from the left, overlapping its upper
+body, as wide as one vacuum. A rounded-square tag in a warm terracotta — a colour neither
+the units nor the gradient carries — with a slightly deeper terracotta band across its
+lower third, TESTED in large cream capitals on the upper part and ALL FOUR in small cream
+capitals on the band.
 
 No rank number, no price, no podium, no scene, no person, no drop shadow under one unit
 only, no certification seal, no press logo, no third-party award mark and no fabricated
@@ -297,5 +304,6 @@ A verdict of `pass`, `partial` or `fail` per render — yours, under ADR-011. Th
 | 4 | **In 7, is anything left that `lede-inuse` does not do?** | whether `lede-authority` survives at all, or is retired |
 | 5 | Do the badges in 5 and 6 read as badges, or as labels? | ADR-068's badge interior, first test outside the direct-response types |
 | 6 | Did FILL size the headlines in 5 and 6? | the fifth instrument aimed at text size |
-| 7 | Are 5 and 6's grounds too quiet, now that ADR-068 pushed them light? | the ground rule, first test in this namespace |
+| 7 | **Are 5 and 6's saturated grounds right, or do they fight the product?** | `PARTS/ground` on both types, rewritten off a 6-frame corpus measurement and untested |
 | 8 | Do the unbranded units in 3 and 6 read as real products, or as toys? | whether the no-attachment route is usable at all while the photo limit stands |
+| 9 | **In 6, does the badge over one unit read as NAMING a winner or as FAVOURING one?** | `lede-collage` MARKS against its own no-favoured-unit law — 2 of 2 corpus badges sit over a unit, and this is the first check of whether that is safe to copy |

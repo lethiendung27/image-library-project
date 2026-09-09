@@ -109,7 +109,7 @@ band, and a cut-out collage under a "BEST X" line.
 | type | `text_layer` | why |
 |---|---|---|
 | `lede-winner` | `[title, badge]` | the verdict mark IS the type — strip it and `07-identity-pack` already does the picture |
-| `lede-collage` | `[title, badge]` | the market form the owner named, and 2 of 5 collage observations carry an award badge |
+| `lede-collage` | `[title, badge]` | the market form the owner named, and **2 of the 3** corpus collages that are actually several products carry an award badge |
 
 The other five do not, and that is the corpus talking rather than a rule: **5 of 5**
 `lede-lineup` observations carry no text at all, and **10 of 11** `lede-testing`
@@ -119,8 +119,8 @@ lede. Adding a text layer to those two would be a clause with one observation ag
 **So G16 binds this namespace after all**, on exactly the types that declare the key —
 four rounds of measured work on line caps, the badge interior, the mobile floor, the
 size anchor and the watermark corner arrive intact and are not restated here. ADR-068's
-GROUND finding continues to bind every type, text or not, because it is a fact about the
-photograph.
+GROUND finding was imported whole and is **corrected below**: it transfers on value and
+not on saturation.
 
 **What is still refused, and it was not part of the instruction.** The owner permitted the
 PAGE'S OWN verdict about its own ranking. Two of G16's content rows are marked `LAW, not
@@ -137,6 +137,42 @@ taste` and neither was addressed:
 A publisher's own SCORE sits between them and is permitted with a leash: it is a figure,
 so `argument-faults.md` A15's working position holds — **the number enters the frame only
 where the product input carries it**, never where a prompt invents one.
+
+## Ground: light everywhere, saturated only where the ground is DESIGNED
+
+**ADR-068's ground rule was imported into this namespace whole on 2026-09-09 and half of
+it was wrong.** It was measured on 119 direct-response product-page frames; this namespace
+has its own corpus and it says something different. Outer 8% ring, per family:
+
+| family | n | value median | saturation median | saturated > 0.25 |
+|---|---|---|---|---|
+| `lede-winner` | 1 | 0.91 | **0.60** | 1 of 1 |
+| `lede-collage` | 5 | 0.90 | **0.49** | 5 of 5 |
+| `lede-lineup` | 5 | 0.81 | 0.26 | 3 of 5 |
+| `lede-authority` | 3 | 0.67 | 0.15 | 1 of 3 |
+| `lede-testing` | 11 | 0.65 | **0.13** | 2 of 11 |
+| direct-response, for comparison | 119 | 0.89 | **0.06** | 24% |
+
+**It transfers on VALUE and does not transfer on SATURATION.** Light is right — 0.81 to
+0.91 across the arranged types against ADR-068's 0.89. Quiet is wrong by a factor of ten
+for two of them: `lede-collage` runs 0.49 and `lede-winner` 0.60 against 0.06, and **6 of
+6 assembled frames sit above the 0.25 line ADR-068 treats as loud**.
+
+**The discriminator is whether the ground is DESIGNED or PHOTOGRAPHED**, which is the line
+`lede-lineup` and `lede-collage` are already told apart by:
+
+- **Designed** — `lede-collage`, `lede-winner`. The units are cut out and carry no scene,
+  so the ground is the ONLY place colour can live. Light AND saturated: a gradient or a
+  strong flat tone. Making it quiet leaves a frame with nothing in it.
+- **Photographed** — `lede-testing`, `lede-authority`, `lede-pain`, `lede-inuse`. A bench
+  is a bench and a kitchen is a kitchen; the corpus runs quiet (0.13, 0.15) and darker
+  (0.65, 0.67) because a real working place is not a studio.
+- **Between** — `lede-lineup` at 0.81 and 0.26, 3 of 5 saturated. Photographed, but often
+  onto a chosen seamless: the coffee makers stand on a strong yellow. A saturated seamless
+  is legal; a gradient is not, because a lineup claims the units were together in one real
+  light.
+
+Each type file carries its own line, and this paragraph is why they differ.
 
 ## Copying: verbatim, and made auditable
 
