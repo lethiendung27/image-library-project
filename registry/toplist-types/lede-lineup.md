@@ -1,6 +1,6 @@
 ---
 id: lede-lineup
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 products_in_frame: many
@@ -47,7 +47,7 @@ Here every unit is a different maker. Same picture shape, opposite argument.
 
 ## SKELETON
 ```
-TYPE: lede-lineup v0.2
+TYPE: lede-lineup v0.3
 REGISTER: editorial product photograph, one frame, no words in it.
 
 [PRODUCT REFERENCES]  one attached photo per unit, in rank order.       -> G1, and see BLOCK
@@ -55,7 +55,7 @@ REGISTER: editorial product photograph, one frame, no words in it.
 [ARRANGEMENT]         no unit favoured by size, height, centring or light.
 [SURFACE]             one real surface the category belongs to.
 [LIGHT]               one soft source for the whole group; no unit separately lit.
-[GROUND]              -> toplist-instruction, the ADR-068 ground rule
+[GROUND]              a studio seamless, near-white OR saturated. -> PARTS/ground
 ```
 
 **No unit may be favoured, and the reason is borrowed rather than invented.**
@@ -63,6 +63,27 @@ REGISTER: editorial product photograph, one frame, no words in it.
 the type: a frame that favours one panel by size or light has decided the comparison
 before the reader does. A lineup that centres and up-lights the winner is a
 `lede-winner` frame wearing five products.
+
+## PARTS
+
+**`ground`** — a studio SEAMLESS, and the measurement corrected what this file assumed.
+Measured on this namespace's own corpus (ADR-073): **texture 2.9**, which puts this type
+with the DESIGNED half and not with the photographed one. Four of its five stand on a
+smooth sweep rather than in a place. **What is real is the SURFACE the units stand on and
+the contact shadows it takes; the backdrop behind it is not.**
+
+**Saturation is bimodal and the median hides it.** The five measure 0.03, 0.21, 0.26, 0.66
+and 0.71 — three near-white sweeps and two strongly coloured, with nothing at all between
+0.26 and 0.66. **So a prompt CHOOSES one and names it**, rather than aiming at a band:
+
+- a **near-white** sweep, when the units are dark or strongly coloured themselves;
+- a **strongly coloured** sweep, when the units are pale or metallic and would otherwise
+  disappear. The coffee makers stand on a saturated yellow at 0.66; the alarm clocks on a
+  terracotta at 0.71.
+
+Value runs 0.68 to 0.96. **No gradient**: hue spread is small on every frame whose ring is
+actually ground, and the one reading 175° is a garment flat-lay filling the frame edge to
+edge, so that metric measured the subject rather than the backdrop.
 
 ## NEGATIVE
 ```
@@ -88,6 +109,12 @@ Two decisions, neither the harness's:
 Until both are answered this type is not routable and no prompt is written from it.
 
 ## CHANGELOG
+- 0.3 (2026-09-09): `PARTS/ground` added, measured on this namespace's own 32 frames with
+  nothing imported (ADR-073, owner instruction). **The measurement moved this type across
+  the line**: texture 2.9 puts it with the designed grounds, not the photographed ones, so
+  the backdrop is a studio seamless and only the surface is real. Saturation is bimodal —
+  0.03/0.21/0.26 against 0.66/0.71, nothing between — so the clause is a choice a prompt
+  names rather than a band.
 - 0.2 (2026-09-09): ADR-071 permits a text layer in this namespace; this type does not
   take one, on 5 of 5 corpus observations carrying no words and because a badge would
   favour a unit, which this type's own law forbids. Still `reserved` on the

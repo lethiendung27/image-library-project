@@ -1,6 +1,6 @@
 ---
 id: lede-collage
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 products_in_frame: many
@@ -47,7 +47,7 @@ WINNER`, `CNET PEOPLE'S PICKS`); reproducing another party's is the trademark qu
 
 ## SKELETON
 ```
-TYPE: lede-collage v0.3
+TYPE: lede-collage v0.4
 REGISTER: graphic product composition, one frame.
 
 [PRODUCT REFERENCES]  one attached photo per unit.                      -> G1, and see BLOCK
@@ -66,11 +66,19 @@ other G7 test still binds.
 
 ## PARTS
 
-**`ground`** — **light AND saturated**, correcting what the file shipped with. This type's
-corpus runs **0.90 value and 0.49 saturation, 5 of 5 above the 0.25 line**, against
-ADR-068's 0.06 measured on a different corpus. Every one of the five is a gradient or a
-strong flat tone: green-to-red, purple-to-teal, magenta-to-orange, sage. The units are cut
-out and carry no scene, so the ground is the only place colour can live.
+**`ground`** — a DESIGNED field, **gradient or flat**. Measured on this namespace's own
+corpus and nothing imported (ADR-073): **texture 1.9**, value 0.90, saturation 0.49 with
+**5 of 5 above 0.34**.
+
+- **Perfectly smooth.** No grain, no texture, no paper, no vignette. Texture 1.9 against
+  7.1 for the photographed families is the single measurement that separates the two halves
+  of this namespace.
+- **Light AND strongly coloured** — both together, since a dark saturated field and a light
+  quiet field are each only half of what the corpus does.
+- **Either a two-hue diagonal gradient or one flat tone, and nothing in between.** Three of
+  the five travel roughly half the colour wheel corner to corner — 177°, 175° and 177° of
+  hue spread on a diagonal axis: green to red, purple to teal, magenta to orange. The other
+  two hold a single tone under 13°. A prompt picks one form and names it.
 
 **`title`** — two forms are observed and they are not the same idea:
 
@@ -127,6 +135,11 @@ limit and `SPEC.md:256` on competitor brand marks. Whichever way they go, both t
 together.
 
 ## CHANGELOG
+- 0.4 (2026-09-09): `PARTS/ground` **rewritten from this namespace's own 32 frames**, no
+  rule imported (ADR-073, owner instruction). Adds what a prompt needs and 0.3 did not
+  carry: smoothness as a measurement, and the gradient's FORM — 3 of 5 are two hues roughly
+  opposite on the wheel running diagonally at 175-177° of spread, 2 of 5 are one flat tone
+  under 13°, and nothing sits between the two forms.
 - 0.3 (2026-09-09): owner audit. **`PARTS/ground` added and it reverses half of what 0.2
   shipped**: this type's corpus runs saturation 0.49 with 5 of 5 above 0.25, against
   ADR-068's 0.06 measured elsewhere. **`PARTS/title`** records the second observed form —

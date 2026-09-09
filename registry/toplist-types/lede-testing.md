@@ -1,6 +1,6 @@
 ---
 id: lede-testing
-version: "0.2"
+version: "0.3"
 status: active
 replaced_by: null
 products_in_frame: one
@@ -41,7 +41,7 @@ third unit stand beside it as candidates the frame is arguing coverage, not meas
 
 ## SKELETON
 ```
-TYPE: lede-testing v0.2
+TYPE: lede-testing v0.3
 REGISTER: editorial documentary photograph, one frame, no words in it.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.        -> G1
@@ -51,13 +51,33 @@ REGISTER: editorial documentary photograph, one frame, no words in it.
 [SURFACE]            a working surface — bench, worktop, test rig — with the tools of
                      the measurement and nothing decorative.
 [LIGHT]              plain working light, even, no studio key and no rim.
-[GROUND]             -> toplist-instruction, the ADR-068 ground rule
+[GROUND]             a real place: mid, quiet, unevenly lit.  -> PARTS/ground
 ```
 
 **The instrument is the argument and it must be doing something.** An instrument lying
 beside the unit is a prop; an instrument in contact with it, held, is evidence. This is
 `argument-faults.md` A12 read forwards: the hand carrying the argument must be employed
 by the measurement and must not also be presenting the product to the lens.
+
+## PARTS
+
+**`ground`** — a REAL place, and this type has the namespace's largest sample: **11
+frames**, measured on its own corpus with nothing imported (ADR-073).
+
+| | measured | against the designed grounds |
+|---|---|---|
+| texture | **7.1** | 0.8 – 2.9 |
+| value median | **0.65** | 0.90 |
+| saturation median | **0.13**, 2 of 11 above 0.25 | 0.49 |
+| value spread across the ring | **0.67** | 0.15 – 0.33 |
+
+- **Real detail**, not a sweep. Racking, a wall, a bench edge, other work going on.
+- **Mid, not light.** A bench under working light is darker than a studio ground, and
+  asking for a bright background here produces the studio this type is not.
+- **Quiet.** The colour lives in the apparatus and the product; the room carries almost
+  none. This is the one clause the corpus states most strongly.
+- **Unevenly lit.** Light falls off across the frame. A prompt asking for even illumination
+  across the background is asking for the wrong picture.
 
 ## NEGATIVE
 ```
@@ -84,6 +104,10 @@ earns one): **10 of 11** corpus observations carry no words, and the single exce
 a video thumbnail rather than a page lede.
 
 ## CHANGELOG
+- 0.3 (2026-09-09): `PARTS/ground` added, measured on this type's own 11 frames — the
+  largest sample in the namespace — with nothing imported (ADR-073, owner instruction).
+  Texture 7.1 against 0.8-2.9 for the designed grounds is what separates the two halves of
+  the namespace; value 0.65, saturation 0.13, ring spread 0.67.
 - 0.2 (2026-09-09): ADR-071 permits a text layer in this namespace; this type does not
   take one, on 10 of 11 corpus observations carrying no words. The lab-coat ban is marked
   as contradicted once by observation 25 and left standing for curation.

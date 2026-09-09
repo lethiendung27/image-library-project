@@ -118,9 +118,8 @@ lede. Adding a text layer to those two would be a clause with one observation ag
 
 **So G16 binds this namespace after all**, on exactly the types that declare the key —
 four rounds of measured work on line caps, the badge interior, the mobile floor, the
-size anchor and the watermark corner arrive intact and are not restated here. ADR-068's
-GROUND finding was imported whole and is **corrected below**: it transfers on value and
-not on saturation.
+size anchor and the watermark corner arrive intact and are not restated here. No ground rule is imported from
+that work: this namespace measures its own, below.
 
 **What is still refused, and it was not part of the instruction.** The owner permitted the
 PAGE'S OWN verdict about its own ranking. Two of G16's content rows are marked `LAW, not
@@ -138,41 +137,73 @@ A publisher's own SCORE sits between them and is permitted with a leash: it is a
 so `argument-faults.md` A15's working position holds — **the number enters the frame only
 where the product input carries it**, never where a prompt invents one.
 
-## Ground: light everywhere, saturated only where the ground is DESIGNED
+## Ground: built from this corpus, and from nothing else
 
-**ADR-068's ground rule was imported into this namespace whole on 2026-09-09 and half of
-it was wrong.** It was measured on 119 direct-response product-page frames; this namespace
-has its own corpus and it says something different. Outer 8% ring, per family:
+**No ground rule is imported into this namespace** (owner instruction, 2026-09-09;
+ADR-073). ADR-068's finding was measured on 119 direct-response product-page frames and
+was carried in here twice — once whole, once half-corrected — and both times it was a rule
+about a different kind of picture. What follows is measured on the 32 frames of
+`stills/top list/`, classified in batches 2026-09-09-A/B, and on nothing else.
 
-| family | n | value median | saturation median | saturated > 0.25 |
-|---|---|---|---|---|
-| `lede-winner` | 1 | 0.91 | **0.60** | 1 of 1 |
-| `lede-collage` | 5 | 0.90 | **0.49** | 5 of 5 |
-| `lede-lineup` | 5 | 0.81 | 0.26 | 3 of 5 |
-| `lede-authority` | 3 | 0.67 | 0.15 | 1 of 3 |
-| `lede-testing` | 11 | 0.65 | **0.13** | 2 of 11 |
-| direct-response, for comparison | 119 | 0.89 | **0.06** | 24% |
+**One measurement splits the namespace in two, and it is not colour.** The mean
+adjacent-pixel difference in the outer 8% ring — call it TEXTURE — separates a ground that
+was DESIGNED from one that was PHOTOGRAPHED, with no overlap:
 
-**It transfers on VALUE and does not transfer on SATURATION.** Light is right — 0.81 to
-0.91 across the arranged types against ADR-068's 0.89. Quiet is wrong by a factor of ten
-for two of them: `lede-collage` runs 0.49 and `lede-winner` 0.60 against 0.06, and **6 of
-6 assembled frames sit above the 0.25 line ADR-068 treats as loud**.
+| family | n | texture | value | saturation | ring spread |
+|---|---|---|---|---|---|
+| `lede-winner` | 1 | **0.8** | 0.91 | 0.60 | 0.15 |
+| `lede-collage` | 5 | **1.9** | 0.90 | 0.49 | 0.25 |
+| `lede-lineup` | 5 | **2.9** | 0.81 | 0.26 | 0.33 |
+| *proposed* `lede-mosaic` | 3 | **2.8** | 0.76 | 0.43 | 0.35 |
+| `lede-authority` | 3 | 7.0 | 0.67 | 0.15 | 0.51 |
+| `lede-testing` | 11 | 7.1 | 0.65 | 0.13 | 0.67 |
+| `lede-inuse` | 1 | 10.0 | 0.16 | 0.26 | 0.34 |
 
-**The discriminator is whether the ground is DESIGNED or PHOTOGRAPHED**, which is the line
-`lede-lineup` and `lede-collage` are already told apart by:
+Everything at or under 2.9 is a made surface; everything at 7.0 and over is a room. There
+is nothing between 2.9 and 7.0 in 32 frames.
 
-- **Designed** — `lede-collage`, `lede-winner`. The units are cut out and carry no scene,
-  so the ground is the ONLY place colour can live. Light AND saturated: a gradient or a
-  strong flat tone. Making it quiet leaves a frame with nothing in it.
-- **Photographed** — `lede-testing`, `lede-authority`, `lede-pain`, `lede-inuse`. A bench
-  is a bench and a kitchen is a kitchen; the corpus runs quiet (0.13, 0.15) and darker
-  (0.65, 0.67) because a real working place is not a studio.
-- **Between** — `lede-lineup` at 0.81 and 0.26, 3 of 5 saturated. Photographed, but often
-  onto a chosen seamless: the coffee makers stand on a strong yellow. A saturated seamless
-  is legal; a gradient is not, because a lineup claims the units were together in one real
-  light.
+**`lede-lineup` is on the DESIGNED side, and that corrects what its own file assumed.**
+It reads 2.9, with the group, not 7. Four of its five stand on a smooth studio sweep rather
+than in a place. What is real in a lineup is the SURFACE the units stand on and the contact
+shadows it takes; the backdrop behind it is not.
 
-Each type file carries its own line, and this paragraph is why they differ.
+Three ground clauses follow, and each type file carries the one that is its own.
+
+### Designed, gradient — `lede-collage`, `lede-winner`, and the proposed `lede-mosaic`
+
+Perfectly smooth: no grain, no texture, no paper, no vignette. **Light AND strongly
+coloured** — value about 0.90 with saturation about 0.50, both together, since a dark
+saturated field and a light quiet field are each only half of what the corpus does.
+
+**Either a two-hue gradient running diagonally, or one flat tone. Nothing between the two
+was observed.** Three of the five collages travel roughly half the colour wheel corner to
+corner — measured at 177°, 175° and 177° of hue spread on a diagonal axis, which is green
+to red, purple to teal, magenta to orange. The other two hold a single tone at under 13°
+of spread. `lede-winner`'s one frame is a diagonal at 179°.
+
+### Designed, seamless — `lede-lineup`
+
+A studio sweep, not a room. **Saturation here is bimodal and the median hides it**: the
+five measure 0.03, 0.21, 0.26, 0.66 and 0.71 — three near-white sweeps and two strongly
+coloured ones, with nothing at all between 0.26 and 0.66. So this is a CHOICE a prompt
+makes rather than a band it lands in. Value runs 0.68 to 0.96.
+
+**No gradient.** Hue spread is small on every frame whose ring is actually ground. The one
+reading 175° is a garment flat-lay filling the frame edge to edge, so the metric measured
+the subject rather than the backdrop — which is the honest limit of measuring a ground from
+a ring, and the reason this clause does not claim a clean 5 of 5.
+
+### Photographed — `lede-testing`, `lede-authority`, and the two copied types
+
+A real place, and measurably so. **Texture ~7.0.** **Mid, not light** — value 0.65 against
+0.90, because a bench under working light is not a sweep. **Quiet** — saturation 0.13, with
+2 of 11 above 0.25: the colour in these frames is in the apparatus and the product, never
+in the room. **Unevenly lit** — value spread 0.67 across the ring, because real light falls
+off; a prompt asking for even illumination across the background is asking for a studio.
+
+`lede-inuse` has one observation and it is dark (0.16). `lede-pain` has **none**: this
+corpus is editorial review publishing and carries no pain lede at all, so that type's
+ground stays whatever its parent gives it and is not written here.
 
 ## Copying: verbatim, and made auditable
 

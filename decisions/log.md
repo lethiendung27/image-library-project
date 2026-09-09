@@ -4416,3 +4416,103 @@ question 9.
 nothing. `PARTS/ground` on both audited types rests on 1 and 5 observations and no render
 at all — the correction is better-evidenced than what it replaced, which is not the same as
 being evidenced.
+
+---
+
+## ADR-073 · 2026-09-09 · The toplist ground rule is measured from the toplist corpus, and TEXTURE splits the namespace in two
+
+**Owner instruction, 2026-09-09:** "không sử dụng Luật nền của ADR-068. tự audit, classify
+các ảnh trong folder toplist để phát triển prompt cho nền của một số loại ảnh."
+
+ADR-068's ground finding was measured on 119 direct-response product-page frames. It was
+carried into this namespace twice — whole at ADR-069, half-corrected at ADR-072 — and both
+times it was a rule about a different kind of picture being asked to govern this one. **It
+is now removed rather than corrected.** Everything below is measured on the 32 frames of
+`stills/top list/`, classified in batches 2026-09-09-A/B, and on nothing else.
+
+### The measurement that mattered was not colour
+
+Six quantities were taken from the outer 8% ring of every frame: median value, median
+saturation, hue spread across eight patches, value spread across the same eight, the axis
+of the largest value change, and **TEXTURE — the mean absolute difference between adjacent
+pixels**. Texture is the one that split the corpus, and it split it cleanly:
+
+| family | n | **texture** | value | saturation | ring spread |
+|---|---|---|---|---|---|
+| `lede-winner` | 1 | **0.8** | 0.91 | 0.60 | 0.15 |
+| `lede-collage` | 5 | **1.9** | 0.90 | 0.49 | 0.25 |
+| *proposed* `lede-mosaic` | 3 | **2.8** | 0.76 | 0.43 | 0.35 |
+| `lede-lineup` | 5 | **2.9** | 0.81 | 0.26 | 0.33 |
+| `lede-authority` | 3 | 7.0 | 0.67 | 0.15 | 0.51 |
+| `lede-testing` | 11 | 7.1 | 0.65 | 0.13 | 0.67 |
+| `lede-inuse` | 1 | 10.0 | 0.16 | 0.26 | 0.34 |
+
+**Nothing in 32 frames sits between 2.9 and 7.0.** A toplist ground is either a made
+surface or a room, and the boundary is not a judgement call.
+
+**`lede-lineup` is on the DESIGNED side, and that corrects its own file.** It reads 2.9,
+with the assembled types, not 7 with the photographed ones: four of its five stand on a
+smooth studio sweep rather than in a place. What is real in a lineup is the SURFACE under
+the units and the contact shadows it takes; the backdrop is not. The file had assumed a
+real room and said so in its skeleton.
+
+### Three clauses, each written from its own family
+
+**Designed, gradient — `lede-collage`, `lede-winner`.** Perfectly smooth. Light AND
+strongly coloured, about 0.90 value with about 0.50 saturation, both together rather than
+either. **Either a two-hue diagonal gradient or one flat tone, and nothing between them
+was observed**: three of five collages travel roughly half the colour wheel corner to
+corner at 177°, 175° and 177° of hue spread on a diagonal axis, and the other two hold a
+single tone under 13°. `lede-winner`'s one frame is a diagonal at 179°.
+
+**Designed, seamless — `lede-lineup`.** A studio sweep. **Saturation is bimodal and the
+median hides it**: 0.03, 0.21, 0.26, 0.66, 0.71 — three near-white and two strongly
+coloured, with nothing between 0.26 and 0.66. So this is a CHOICE a prompt names, not a
+band it aims at: near-white when the units are dark or coloured, strongly coloured when
+they are pale or metallic. No gradient.
+
+**Photographed — `lede-testing`, `lede-authority`.** Real detail at texture 7.0.
+**Mid, not light** at 0.65 against 0.90, because a bench under working light is not a
+sweep. **Quiet** at 0.13 saturation with 2 of 11 above 0.25 — the colour lives in the
+apparatus and the product, never in the room. **Unevenly lit**, ring spread 0.67: real
+light falls off, and a prompt asking for even background illumination is asking for the
+studio this type is not.
+
+### What the measurement could not do, stated rather than hidden
+
+One `lede-lineup` frame reads texture 18.2 and a hue spread of 175° — a garment flat-lay
+filling the frame edge to edge, so the ring sampled the subject rather than the backdrop.
+**Measuring a ground from a ring fails when the subject reaches the edge**, and that is why
+the seamless clause says "every frame whose ring is actually ground" instead of claiming a
+clean 5 of 5.
+
+`lede-pain` has **zero** observations in this corpus — editorial review publishing carries
+no pain lede — so no ground clause is written for it and its copied parent's stays.
+`lede-inuse` has one, and it is dark at 0.16; too thin to legislate and recorded as such.
+
+### Consequences — rule 6c sweep on `"ADR-068"`: 38 hits, 13 files, 11 in TEACHES
+
+- `registry/toplist-instruction.md` — the **Ground** section is rebuilt from this corpus
+  and no longer cites ADR-068 for anything; the Text section's pointer to it is removed.
+- `SPEC.md` §3.7 — the sentence saying ADR-068's ground finding binds every type is
+  **rewritten** to say the namespace measures its own.
+- `lede-winner.md` 0.3 → **0.4**, `lede-collage.md` 0.3 → **0.4** — `PARTS/ground`
+  rewritten with smoothness as a measurement and the gradient's form named.
+- `lede-lineup.md` 0.2 → **0.3** and `lede-testing.md` 0.2 → **0.3** — each gains a real
+  `PARTS/ground` in place of the pointer it carried.
+- `mapping/toplist-rules.md` — its two ADR-068 hits **stand**: they cite it as the
+  precedent for writing an unmeasured rule, which is exactly what this ADR is another
+  instance of, and neither is a ground rule.
+- The remaining ADR-068 references in `lede-collage.md` and `lede-winner.md` are to the
+  **badge interior** finding, not the ground. **They stand**, with the caveat now worth
+  stating: that finding was also measured on the direct-response corpus, and this ADR is
+  the second time an import from there has turned out to govern a different picture. It is
+  not re-measured here and is the obvious next thing to check.
+- `registry/toplist-types/round-1/prompts.md` — prompts 3, 4, 5 and 6 rewritten onto their
+  own family's ground, and **5 and 6 deliberately take the two different designed forms**
+  — 5 the diagonal two-hue gradient, 6 the single flat tone — so one round tests both
+  rather than the same form twice. Four grading questions added.
+
+**Nothing is rendered.** Every clause here is measured off market frames and has no render
+behind it, which is a better position than the imported rule it replaces and is not the
+same as being tested.

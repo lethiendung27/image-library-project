@@ -52,12 +52,25 @@ bottom-right watermark corner, the headline is sized by FILL rather than by an a
 (anchors measured 0.13–0.64 and never 1.0), alignment is written as an observable, and
 nothing comes within a tenth of the width of an edge.
 
-**The ground rule is per family, not per namespace** — corrected after this set was first
-written, and 5 and 6 below were rewritten for it. ADR-068's finding was measured on 119
-direct-response frames and transfers on VALUE but not on SATURATION: the two assembled
-types run **0.49 and 0.60** saturation against its 0.06, 6 of 6 above the 0.25 line, while
-the photographed types run 0.13–0.15 and match it. A cut-out unit carries no scene, so the
-ground is the only place colour can live. See `toplist-instruction.md`, *Ground*.
+**The grounds are this namespace's own** and no rule is imported from the product-page
+registry (ADR-073, owner instruction). Measured on the 32 frames of `stills/top list/`, one
+number splits the namespace with no overlap — the mean adjacent-pixel difference in the
+outer ring:
+
+```
+designed      lede-winner 0.8   lede-collage 1.9   lede-lineup 2.9
+photographed  lede-authority 7.0   lede-testing 7.1   lede-inuse 10.0
+```
+
+Nothing sits between 2.9 and 7.0 in 32 frames. **`lede-lineup` is on the designed side**,
+which corrected that file's own assumption: its backdrop is a studio sweep and only the
+surface under the units is real.
+
+**Prompts 3 to 6 carry the clause of their own family**, and 5 and 6 deliberately take the
+TWO forms the designed grounds come in — 5 the two-hue diagonal gradient (3 of 5 corpus
+collages, measured at 175–177° of hue spread), 6 the single flat tone (2 of 5, under 13°).
+Nothing between the two forms was observed, so the round tests both rather than the same
+one twice.
 
 ---
 
@@ -140,12 +153,15 @@ them.
 ARRANGEMENT: no unit favoured. The same height in frame, the same distance from the lens,
 the same spacing, none centred and none forward of the others.
 
-SURFACE: one pale oak workbench top running the width of the frame, real and slightly worn.
+SURFACE: one pale oak worktop running the width of the frame, real and slightly worn. The
+surface is real and takes real contact shadows.
 
 LIGHT: one broad soft source for the whole group, from the front and slightly above, with
 one real contact shadow under each unit and no unit separately lit.
 
-GROUND: a light, near-neutral wall behind the bench, thrown gently out of focus and empty.
+GROUND: a smooth studio seamless behind the worktop, NEAR-WHITE — the units are dark and
+coloured, so the sweep stays out of their way. No wall, no room, no texture, no gradient,
+no vignette, and no visible join between the sweep and the worktop.
 
 No rank number, no badge, no podium, no riser under any unit, no person, no word, no price
 and no logo anywhere in the picture. Nothing comes within a tenth of the width of any edge.
@@ -174,9 +190,13 @@ forearm. The hands are working, not presenting.
 SURFACE: a real bench — a roll of cable, a small screwdriver, a notebook face down. The
 tools of the measurement and nothing decorative.
 
-LIGHT: plain overhead working light, even, no studio key and no rim.
+LIGHT: plain overhead working light. It falls off across the frame — one side of the
+background is clearly darker than the other. No studio key, no rim, no fill.
 
-GROUND: a light, near-neutral wall behind the bench, out of focus and empty.
+GROUND: a REAL working place behind the bench, mid-toned and almost colourless: metal
+racking, a doorway, other work going on, all thrown out of focus. Not a sweep, not a
+painted backdrop, and not evenly lit. The colour in this picture is in the kettle and the
+meter, never in the room.
 
 The meter's display is turned away from the lens and no reading is legible anywhere. No
 chart, no gauge face, no lab coat, no clipboard, no face, no word, no price and no logo in
@@ -194,13 +214,13 @@ REGISTER: commercial product photograph, one frame.
 PRODUCT REFERENCE: the attached photo is the exact reference for the portable juicer cup.
 Preserve shape, proportions, material, finish, colour and every word printed on it exactly.
 
-SUBJECT: the cup alone, upright and complete with its lid on, the face carrying its brand
-mark to the lens, turned a few degrees so its depth reads. It holds the right half of the
-picture and about half its height.
+SUBJECT: the cup alone, upright with its lid on, the brand face to the lens, turned a few
+degrees so its depth reads. It holds the right half of the picture.
 
-GROUND: a designed field, light and saturated — a smooth gradient from warm apricot at the
-upper left to soft rose at the lower right. One soft contact shadow under the cup. No room,
-no prop, no second object.
+GROUND: a designed field, light and strongly coloured, GRADIENT form. A perfectly smooth
+diagonal gradient from clear teal at the upper left to warm coral at the lower right — two
+hues opposite on the colour wheel. No grain, no texture, no vignette, no banding. One soft
+contact shadow under the cup. No room, no prop.
 
 LIGHT: broad and even from the front and slightly above, strong enough that every word
 printed on the cup stays legible.
@@ -211,10 +231,10 @@ margin to margin and are the largest text in the picture:
 BEST OVERALL
 BLENDS IN NINETY SECONDS
 
-BADGE: form `sticker`. UPPER LEFT, above the title, as wide as the cup's lid, tilted a few
+BADGE: form `sticker`. UPPER LEFT above the title, as wide as the cup's lid, tilted a few
 degrees. A filled circle in deep ink blue — a colour neither the cup nor the gradient
-carries — with a narrow cream ring inset inside its edge, a cream laurel icon in the upper
-half, WINNER in large cream capitals under it and OUR PICK in small cream capitals below.
+carries — a narrow cream ring inset inside its edge, a cream laurel icon above, WINNER in
+large cream capitals and OUR PICK in small cream capitals below.
 
 No score, star row, rating, review count, certification seal, press logo or third-party
 award mark. The words above are the only added words. Nothing comes within a
@@ -236,9 +256,9 @@ products. No brand marks, no logos, no printed names.
 ARRANGEMENT: a single row across the lower two thirds, read left to right, evenly spaced.
 No unit favoured by size, height or position.
 
-GROUND: a DESIGNED field, light and saturated — a smooth gradient running from a clear
-sky blue at the upper left to a soft mint at the lower right, filling the frame. No
-texture, no scene.
+GROUND: a designed field, light and strongly coloured, in the FLAT form — one single
+saturated tone, a clear cobalt, filling the frame corner to corner. No gradient, no second
+hue, no grain, no texture, no vignette, no scene.
 
 SHADOW: one faint contact shadow under each unit, identical for all four.
 
@@ -304,6 +324,9 @@ A verdict of `pass`, `partial` or `fail` per render — yours, under ADR-011. Th
 | 4 | **In 7, is anything left that `lede-inuse` does not do?** | whether `lede-authority` survives at all, or is retired |
 | 5 | Do the badges in 5 and 6 read as badges, or as labels? | ADR-068's badge interior, first test outside the direct-response types |
 | 6 | Did FILL size the headlines in 5 and 6? | the fifth instrument aimed at text size |
-| 7 | **Are 5 and 6's saturated grounds right, or do they fight the product?** | `PARTS/ground` on both types, rewritten off a 6-frame corpus measurement and untested |
+| 7 | **Do 5 and 6's strongly-coloured grounds carry the frame, or fight the product?** | `PARTS/ground` on both types, rewritten off this namespace's own corpus and untested |
+| 10 | **Which of the two designed forms reads better — 5's diagonal gradient or 6's flat tone?** | the corpus does both and nothing between; a preference here is the first evidence either way |
+| 11 | **In 3, does the near-white seamless leave the dark scissors readable, or would a saturated sweep have been better?** | `lede-lineup`'s bimodal saturation — the corpus splits 3 near-white against 2 strongly coloured and the choice is the prompt's |
+| 12 | **In 4, does the uneven light read as a real place or as a badly lit studio?** | `lede-testing`'s ring spread of 0.67, the clause with the largest sample in the namespace |
 | 8 | Do the unbranded units in 3 and 6 read as real products, or as toys? | whether the no-attachment route is usable at all while the photo limit stands |
 | 9 | **In 6, does the badge over one unit read as NAMING a winner or as FAVOURING one?** | `lede-collage` MARKS against its own no-favoured-unit law — 2 of 2 corpus badges sit over a unit, and this is the first check of whether that is safe to copy |

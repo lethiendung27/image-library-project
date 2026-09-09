@@ -218,7 +218,8 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
   by corpus evidence rather than by permission: today `lede-winner` and `lede-collage` do,
   and the other five do not because their observations carry no text. What stays refused
   is another party's mark and a fabricated endorsement, neither of which the permission
-  covered. ADR-068's GROUND finding binds every type, text or not.
+  covered. The ground rule is this namespace's own, measured on its own corpus
+  (ADR-073); nothing is imported from the product-page registry.
 - **Ratio is not declared.** The consuming app resolves the lede ratio, so these types
   carry no `ratios` key; ADR-016's ban on writing a ratio into prompt text is unchanged.
 - **Copying, made auditable** (ADR-070). A type declaring `copied_from` carries the

@@ -1,6 +1,6 @@
 ---
 id: lede-winner
-version: "0.3"
+version: "0.4"
 status: active
 replaced_by: null
 products_in_frame: one
@@ -38,7 +38,7 @@ living room.
 
 ## SKELETON
 ```
-TYPE: lede-winner v0.3
+TYPE: lede-winner v0.4
 REGISTER: commercial product photograph, one frame.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.         -> G1
@@ -50,18 +50,21 @@ REGISTER: commercial product photograph, one frame.
 
 ## PARTS
 
-**`ground`** — **light AND saturated**, and this is a correction to what the file shipped
-with (`toplist-instruction.md`, *Ground*). ADR-068's rule was measured on 119
-direct-response frames at saturation 0.06 and was imported here whole; this type's own
-corpus runs **0.91 value and 0.60 saturation**. Light transfers, quiet does not.
+**`ground`** — a DESIGNED field, **gradient form**. Measured on this namespace's own corpus
+and nothing imported (ADR-073): this type's one frame reads **texture 0.8 — the smoothest
+ground in all 32** — with value 0.91, saturation 0.60, and a hue spread of 179° on a
+diagonal axis.
 
-The reason is structural rather than fashionable: the unit is cut out and carries no
-scene, so **the ground is the only place colour can live**. A gradient or a strong flat
-tone. An off-white studio sweep leaves a frame with nothing in it, which is what this
-type's first prompt asked for before the corpus was measured.
+- **Perfectly smooth.** No grain, no texture, no paper, no vignette.
+- **Light AND strongly coloured** — about 0.90 value with about 0.50–0.60 saturation, both
+  together. The unit is cut out and carries no scene, so the ground is the only place
+  colour can live; a near-white sweep leaves a frame with nothing in it.
+- **A two-hue diagonal gradient**, the two ends roughly opposite on the colour wheel, or
+  one flat saturated tone. Nothing between the two forms is observed anywhere in the
+  namespace.
 
-**Sample size is one.** That single frame is also the type's only observation, so this
-clause is the corpus at n=1 and the first render round is what confirms or kills it.
+**Sample size is one**, and it is also this type's only observation of anything. The first
+render round confirms this clause or kills it.
 
 ## MARKS
 
@@ -123,6 +126,11 @@ its own ranking.* That is what may be printed.
   tone step, two type sizes), the mobile floor, the watermark corner. Not restated here.
 
 ## CHANGELOG
+- 0.4 (2026-09-09): `PARTS/ground` **rewritten from this namespace's own 32 frames**, with
+  no rule imported (ADR-073, owner instruction). The clause gains what a prompt actually
+  needs and 0.3 did not carry: smoothness as a measurement (texture 0.8, the smoothest
+  ground in the corpus), and the gradient's FORM — two hues roughly opposite on the wheel,
+  running diagonally, 179° of spread.
 - 0.3 (2026-09-09): owner audit. **`PARTS/ground` added and it reverses half of what 0.2
   shipped**: ADR-068's rule was imported whole and this type's corpus runs saturation 0.60
   against its 0.06 — light transfers, quiet does not, because a cut-out unit leaves the
