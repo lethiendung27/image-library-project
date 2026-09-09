@@ -213,10 +213,12 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
   `{ product, page }`; a top-N page has no `page.sections` to route and, since ADR-059,
   `page.channel` admits nothing. This namespace consumes the product half alone, extended
   with the fields `registry/toplist-instruction.md` lists as missing.
-- **No toplist type declares `text_layer`.** A lede is scraped as `og:image` and sits
-  beside the page's own headline, so no words are baked into it and G16 does not bind
-  here. ADR-068's finding about the GROUND does carry over, being a fact about the
-  photograph rather than about text.
+- **A toplist type MAY declare `text_layer`** (ADR-071), from the same closed slot list
+  as an image type, and **G16 binds the types that do**. Which types carry one is settled
+  by corpus evidence rather than by permission: today `lede-winner` and `lede-collage` do,
+  and the other five do not because their observations carry no text. What stays refused
+  is another party's mark and a fabricated endorsement, neither of which the permission
+  covered. ADR-068's GROUND finding binds every type, text or not.
 - **Ratio is not declared.** The consuming app resolves the lede ratio, so these types
   carry no `ratios` key; ADR-016's ban on writing a ratio into prompt text is unchanged.
 - **Copying, made auditable** (ADR-070). A type declaring `copied_from` carries the

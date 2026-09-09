@@ -4217,3 +4217,98 @@ something else was being swept at the time.
 **What this does not change.** No prompt and no render exists for any toplist type; all
 seven remain proposals. The four reserved types are still reserved on the same two owner
 decisions. `registry_version` unchanged.
+
+---
+
+## ADR-071 · 2026-09-09 · Toplist ledes may bake text, and G16 follows them in
+
+**Owner instruction, 2026-09-09:** "ảnh cho toplist có thể nướng chữ, badge vào", with two
+named forms — a winner packshot under a "Best Overall" band or a score, and a cut-out
+collage under a "BEST X" line.
+
+**This reverses the owner's own constraint of the same day**, on which ADR-069 built the
+namespace: *"Cần tránh: ảnh có chữ nướng sẵn (og:image và L21 kiểm tra)"*. Recorded as a
+reversal rather than smoothed over, and the corpus is on the new side of it — **7 of the
+32 reference frames classified in batches 2026-09-09-A/B bake text**, including both forms
+named above.
+
+### Which types carry a text layer is decided by evidence, not by the permission
+
+The permission is namespace-wide; the implementation is not. Two types take a layer:
+
+| type | `text_layer` | evidence |
+|---|---|---|
+| `lede-winner` | `[title, badge]` | the verdict mark IS the type — strip it and `07-identity-pack` already makes the picture, which 0.1 said in its own BLOCK |
+| `lede-collage` | `[title, badge]` | the owner's named market form, and 2 of 5 corpus collages carry an award badge over the cut-outs |
+
+The other five take none, and that is the corpus rather than a rule: **5 of 5**
+`lede-lineup` observations carry no words — and a badge there would breach that type's own
+no-favoured-unit law by marking one — and **10 of 11** `lede-testing` observations carry
+none, the single exception being a video thumbnail rather than a page lede. Giving those
+two a layer would be a clause with one observation against ten.
+
+**So G16 binds this namespace after all.** Four rounds of measured work — the seven-word
+line cap now resting on 79 lines, the badge interior of ADR-068, the mobile floor, the
+size anchor that ADR-068 measured failing at 0.13–0.64, the watermark corner, the fill
+rule — arrive intact on the types that declare the key. ADR-069 wrote that G16 "does not
+bind here at all"; that sentence is now false and is rewritten.
+
+### `lede-winner` unblocks, and the distinction that unblocked it was already in the file
+
+0.1 shipped `reserved` with its BLOCK naming the question rather than answering it:
+*"'Best Overall' on a top-N page is not an award issued by an outside body; it is the
+page's own editorial verdict about its own ranking."* The owner took that distinction.
+
+`lede-winner` 0.1 → **0.2, reserved → active**, and its BLOCK becomes SLOT CONSTRAINTS.
+`lede-collage` gains the layer and **stays reserved** — its blocker was never the text, it
+is the one-reference-photo limit against `products_in_frame: many`.
+
+### What was NOT permitted, and is refused in the same breath
+
+The instruction covered the page's own verdict about its own ranking. Two of G16's content
+rows are marked `LAW, not taste` and neither was addressed:
+
+- **another party's mark** — a certification seal, a press logo, a third-party award. The
+  corpus carries `CNET LAB TEST WINNER` and `CNET PEOPLE'S PICKS` precisely because on
+  CNET's own page CNET is the issuing body; on a page that is not theirs it is the
+  trademark question the library declined to answer on 2026-08-18.
+- **a fabricated endorsement** — a customer's name, star row, review count or verified
+  mark. G14 calls it illegal under FTC endorsement rules and binds the SLOT, so G16 has
+  nothing to waive.
+
+**A publisher's own score sits between them and is permitted with a leash.** It is a
+figure, so `argument-faults.md` A15's working position holds: the number enters the frame
+only where the product input carries it, never where a prompt chooses one.
+
+**That leash has a consequence with teeth.** The input has no rank or verdict field — item
+2 of the missing list in `toplist-instruction.md` — so `mapping/toplist-rules.md` layer 1
+gains a condition that **refuses `lede-winner` on every page until the field exists**. The
+type is active and unroutable, which is the same shape as `requires_product_photo: true`
+meeting an empty `reference_photos`: a mechanical precondition, not a block.
+
+### Consequences — rule 6c sweep on `"og:image"`: 6 hits, 5 files, 2 in TEACHES
+
+- `SPEC.md` §3.7's `text_layer` bullet — **rewritten**, and it was one of the two TEACHES
+  hits.
+- `registry/toplist-instruction.md` — *Text: this namespace does not carry one* becomes
+  **Text: some types carry one, and G16 binds them**; the other TEACHES hit.
+- `scripts/validate.py` — the error that refused any `text_layer` is replaced by the same
+  closed-slot check image types get, and `text_layer` joins the optional keys. Fed
+  known-bad input: an illegal slot fired, an empty list fired, the legal list was silent.
+- `registry/toplist-types/lede-winner.md` 0.1 → **0.2**, reserved → **active**, layer
+  declared, BLOCK → SLOT CONSTRAINTS, NEGATIVE gains the third-party mark and the invented
+  placing.
+- `registry/toplist-types/lede-collage.md` 0.1 → **0.2**, layer declared, the "no words"
+  clauses removed, `[TITLE]` and `[BADGE]` added to the skeleton. Still reserved.
+- `registry/toplist-types/lede-lineup.md` and `lede-testing.md` 0.1 → **0.2** — each keeps
+  its word ban and now says whose evidence it is, 5 of 5 and 10 of 11.
+- `mapping/toplist-rules.md` — layer 1 gains the rank condition; the preference rows drop
+  `lede-winner`'s reserved asterisk.
+- GENERATED — `dist/app-bundle/` regenerates for SPEC.md.
+
+**One thing this ADR deliberately does not do.** Batch 2026-09-09-B recorded two findings
+that contradict `lede-testing` — a lab coat in the corpus against a clause banning one,
+and 2 of 2 frames carrying the testing argument on the setting alone against a BOUNDARY
+that calls the instrument test "checkable at a glance". Both are marked in the file and
+left for a curation pass, because `classify-batch.md` makes patches curation's job and
+this is a permission decision, not a curation one.

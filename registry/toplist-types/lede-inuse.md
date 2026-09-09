@@ -56,7 +56,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: 06-relief-scene v3.7
+TYPE: lede-inuse v0.2   (skeleton copied verbatim from 06-relief-scene v3.7)
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject

@@ -1,6 +1,6 @@
 ---
 id: lede-testing
-version: "0.1"
+version: "0.2"
 status: active
 replaced_by: null
 products_in_frame: one
@@ -41,8 +41,8 @@ third unit stand beside it as candidates the frame is arguing coverage, not meas
 
 ## SKELETON
 ```
-TYPE: lede-testing v0.1
-REGISTER: editorial documentary photograph, one frame, no words anywhere in the picture.
+TYPE: lede-testing v0.2
+REGISTER: editorial documentary photograph, one frame, no words in it.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.        -> G1
 [UNIT]               one unit, in the position the measurement needs it.
@@ -74,9 +74,19 @@ The moment a reading is legible, this type has become one of those three and mus
 for the same decision.
 
 **No lab coat, no clipboard.** They are the costume of a credential this page does not
-have, and a credential is what G16 refuses at its `named expert` row.
+have, and a credential is what G16 refuses at its `named expert` row. **Contradicted once
+by the corpus** — observation 25 of batch 2026-09-09-B is a technician in a white coat at
+a real bench — and left standing at 1 observation against a clause with none, for
+curation to settle rather than this diff.
+
+**This type carries no text, on its own evidence** (ADR-071 permits a layer where a type
+earns one): **10 of 11** corpus observations carry no words, and the single exception is
+a video thumbnail rather than a page lede.
 
 ## CHANGELOG
+- 0.2 (2026-09-09): ADR-071 permits a text layer in this namespace; this type does not
+  take one, on 10 of 11 corpus observations carrying no words. The lab-coat ban is marked
+  as contradicted once by observation 25 and left standing for curation.
 - 0.1 (2026-09-09): drafted. The only one of the owner's seven that is a genuinely new
   argument AND blocked by nothing — one product, one reference photo, no text, no rank,
   no competitor mark, no figure. ADR-069.

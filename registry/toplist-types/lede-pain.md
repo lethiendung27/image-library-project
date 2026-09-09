@@ -58,7 +58,8 @@ restated here.
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 01-pain-scene v1.18 [--candid | --confront] [+ --marked]
+TYPE: lede-pain v0.2   (skeleton copied verbatim from 01-pain-scene v1.18)
+      [--candid | --confront] [+ --marked]
 REGISTER: editorial photojournalism, natural and unstaged. Single frame.
 
 [SUBJECT] name the force being applied, and the body under it.   -> PARTS/subject

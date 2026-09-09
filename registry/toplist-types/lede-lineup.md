@@ -1,6 +1,6 @@
 ---
 id: lede-lineup
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 products_in_frame: many
@@ -47,8 +47,8 @@ Here every unit is a different maker. Same picture shape, opposite argument.
 
 ## SKELETON
 ```
-TYPE: lede-lineup v0.1
-REGISTER: editorial product photograph, one frame, no words anywhere in the picture.
+TYPE: lede-lineup v0.2
+REGISTER: editorial product photograph, one frame, no words in it.
 
 [PRODUCT REFERENCES]  one attached photo per unit, in rank order.       -> G1, and see BLOCK
 [FIELD]               3-5 units on one surface, one light, real contact shadows.
@@ -70,6 +70,11 @@ before the reader does. A lineup that centres and up-lights the winner is a
 any word, price or logo baked into the picture
 ```
 
+**This type carries no text, and that is its own evidence rather than a namespace rule**
+(ADR-071 permits a text layer where a type earns one). **5 of 5** corpus lineups carry no
+words at all — the alarm clocks, the knitwear, the blenders, the coffee makers, the
+desk flat-lay. A badge would also breach the no-favoured-unit law above by marking one.
+
 ## BLOCK — why this is `reserved`
 Two decisions, neither the harness's:
 
@@ -83,5 +88,9 @@ Two decisions, neither the harness's:
 Until both are answered this type is not routable and no prompt is written from it.
 
 ## CHANGELOG
+- 0.2 (2026-09-09): ADR-071 permits a text layer in this namespace; this type does not
+  take one, on 5 of 5 corpus observations carrying no words and because a badge would
+  favour a unit, which this type's own law forbids. Still `reserved` on the
+  one-reference-photo limit.
 - 0.1 (2026-09-09): drafted `reserved`. The most valuable genuinely new argument of the
   owner's seven and the one furthest from being renderable. ADR-069.

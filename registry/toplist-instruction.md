@@ -96,21 +96,47 @@ page and a cell keyed on the type alone, so **20 pages make this real** — the 
 this prior can fill anywhere in the library, and the reason this format is worth
 measuring rather than arguing.
 
-## Text: this namespace does not carry one
+## Text: some types carry one, and G16 binds them
 
-**No words are baked into a lede image.** The owner's constraint, 2026-09-09: the file is
-scraped as `og:image` for social previews and is checked at L21, and baked text is
-cropped, duplicated by the page's own headline, or both.
+**A toplist type MAY bake words and a badge into the frame** — owner decision, 2026-09-09
+(ADR-071), reversing the constraint of the same day that this file was first written on.
+The corpus classified in batches 2026-09-09-A/B agrees: **7 of 32 reference frames carry
+baked text**, including both forms the owner named — a winner packshot under a verdict
+band, and a cut-out collage under a "BEST X" line.
 
-So **no toplist type declares `text_layer`**, and G16 — four rounds of work on caps,
-badges, mobile floors and size anchors — **does not bind here at all**. What does carry
-over from that work is ADR-068's finding about the GROUND, because that is a fact about
-the photograph rather than about the text: the direct-response corpus sits at a ground
-value median of 0.89 and saturation 0.06 over 119 frames, and a dark or saturated ground
-is a choice a prompt justifies rather than a default.
+**Which types carry one is decided by evidence, not by permission.** Two do:
 
-A type whose only distinguishing feature is a word — a "Best Overall" band, a "BEST X"
-overlay — therefore does not exist in this namespace until that is decided by ADR.
+| type | `text_layer` | why |
+|---|---|---|
+| `lede-winner` | `[title, badge]` | the verdict mark IS the type — strip it and `07-identity-pack` already does the picture |
+| `lede-collage` | `[title, badge]` | the market form the owner named, and 2 of 5 collage observations carry an award badge |
+
+The other five do not, and that is the corpus talking rather than a rule: **5 of 5**
+`lede-lineup` observations carry no text at all, and **10 of 11** `lede-testing`
+observations carry none — the single exception is a video thumbnail rather than a page
+lede. Adding a text layer to those two would be a clause with one observation against ten.
+
+**So G16 binds this namespace after all**, on exactly the types that declare the key —
+four rounds of measured work on line caps, the badge interior, the mobile floor, the
+size anchor and the watermark corner arrive intact and are not restated here. ADR-068's
+GROUND finding continues to bind every type, text or not, because it is a fact about the
+photograph.
+
+**What is still refused, and it was not part of the instruction.** The owner permitted the
+PAGE'S OWN verdict about its own ranking. Two of G16's content rows are marked `LAW, not
+taste` and neither was addressed:
+
+- **another party's mark** — a certification seal, a press logo, a third-party award. The
+  corpus carries these (`CNET LAB TEST WINNER`, `CNET PEOPLE'S PICKS`) because on CNET's
+  own page CNET is the issuing body. On a page that is not theirs it is a trademark
+  question, and the library declined to answer that one on 2026-08-18.
+- **a fabricated endorsement** — a customer's name, star row, review count or verified
+  mark. G14 calls it illegal under FTC endorsement rules and binds the SLOT rather than
+  the type, so there is nothing here to waive.
+
+A publisher's own SCORE sits between them and is permitted with a leash: it is a figure,
+so `argument-faults.md` A15's working position holds — **the number enters the frame only
+where the product input carries it**, never where a prompt invents one.
 
 ## Copying: verbatim, and made auditable
 

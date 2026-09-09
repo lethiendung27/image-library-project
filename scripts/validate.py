@@ -1378,7 +1378,7 @@ TOPLIST_REQUIRED_KEYS = ["id", "version", "status", "replaced_by",
                          "products_in_frame", "requires_product_photo",
                          "awareness", "copied_from", "copied_at_version",
                          "blocked_by", "exempt_from"]
-TOPLIST_OPTIONAL_KEYS = ["notes"]
+TOPLIST_OPTIONAL_KEYS = ["notes", "text_layer"]
 TOPLIST_REQUIRED_SECTIONS = ["PURPOSE", "TRIGGER", "BOUNDARY", "SKELETON",
                              "NEGATIVE", "CHANGELOG"]
 
@@ -1403,10 +1403,18 @@ def validate_toplist_type_file(path, vocab, rule_ids, image_types):
         return None
     fm = parse_block(fm_lines, where)
 
-    if "text_layer" in fm:
-        err(where, "no toplist type may declare `text_layer` — a lede is scraped "
-                   "as og:image and this namespace bakes no words "
-                   "(registry/toplist-instruction.md)")
+    # A toplist type MAY declare a text layer (ADR-071, owner instruction
+    # 2026-09-09, reversing ADR-069). Same closed slot list as an image type, so
+    # G16 reaches this namespace on the same terms it reaches the other one.
+    tl = fm.get("text_layer")
+    if tl is not None:
+        if not isinstance(tl, list) or not tl:
+            err(where, "text_layer must be a non-empty list of slots")
+        else:
+            for slot in tl:
+                if slot not in TEXT_LAYER_SLOTS:
+                    err(where, f"text_layer slot `{slot}` is not one of "
+                               f"{TEXT_LAYER_SLOTS} (G16)")
     for k in TOPLIST_REQUIRED_KEYS:
         if k not in fm:
             err(where, f"missing required frontmatter key `{k}`")

@@ -1,14 +1,15 @@
 ---
 id: lede-winner
-version: "0.1"
-status: reserved
+version: "0.2"
+status: active
 replaced_by: null
 products_in_frame: one
 requires_product_photo: true
 awareness: [product-aware, most-aware]
+text_layer: [title, badge]
 copied_from: null
 copied_at_version: null
-blocked_by: G16-award-row
+blocked_by: null
 exempt_from: [G7]
 ---
 
@@ -37,12 +38,12 @@ living room.
 
 ## SKELETON
 ```
-TYPE: lede-winner v0.1
+TYPE: lede-winner v0.2
 REGISTER: commercial product photograph, one frame.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.         -> G1
 [SUBJECT]            the winning unit alone, the brand face to the lens.
-[VERDICT MARK]       the rank or award, as a mark.                      -> see BLOCK
+[VERDICT MARK]       the page's own verdict, as a mark.        -> SLOT CONSTRAINTS
 [GROUND]             -> toplist-instruction, the ADR-068 ground rule
 [LIGHT]              broad and even; every printed word on the product legible.
 ```
@@ -50,29 +51,39 @@ REGISTER: commercial product photograph, one frame.
 ## NEGATIVE
 ```
 [G6] + a second unit, a competitor's product, a person, a scene,
-a price, a fabricated rating or star row, a certification seal
+a price, a fabricated rating or star row, a certification seal,
+a press logo, a third-party award mark, an invented placing or score
 ```
 
-## BLOCK — why this is `reserved`
-`registry/rules.md` G16's content table marks two rows **LAW, not taste**, and this type
-needs both:
+## SLOT CONSTRAINTS
+**The verdict mark is this type and it is now permitted** (ADR-071). The distinction this
+file put in front of the owner is the one that was taken: *"Best Overall" on a top-N page
+is not an award issued by an outside body — it is the page's own editorial verdict about
+its own ranking.* That is what may be printed.
 
-- *"a certification mark, a press logo, an award, a named expert"* — a trademark question
-  the library declined to answer on 2026-08-18;
-- *"a person's name, a rating, a star row, a review count, a verified mark"* — G14 calls a
-  fabricated endorsement illegal under FTC endorsement rules, and G14 binds the SLOT, so
-  G16 has nothing to waive.
-
-**A distinction worth putting in front of whoever decides.** "Best Overall" on a top-N
-page is not an award issued by an outside body; it is the page's own editorial verdict
-about its own ranking. That may be a different question from a certification seal, and it
-is one this file is not entitled to answer. A numeric score is a separate matter again
-and lands on `argument-faults.md` A15.
-
-Both rows are struck only by ADR. Until then this type is not routable and no prompt is
-written from it.
+- **The verdict text comes from the product input's rank or verdict field and from
+  nowhere else.** A prompt may not invent a placing. The field does not exist yet — it is
+  item 2 of the missing list in `toplist-instruction.md` — so **a page without it cannot
+  route this type**, the same way an empty `reference_photos` refuses it. That is a
+  mechanical precondition, not a block on the type.
+- **A SCORE is a figure and carries A15's leash**: it enters the frame only where the
+  input carries it. Never a rounded-up number, never one the prompt chose.
+- **Another party's mark stays refused.** A certification seal, a press logo, a
+  third-party award — the corpus carries `CNET LAB TEST WINNER` and `CNET PEOPLE'S PICKS`
+  because on CNET's page CNET is the issuing body. On a page that is not theirs it is a
+  trademark question, still unanswered since 2026-08-18.
+- **A fabricated endorsement stays refused** — a customer's name, star row, review count
+  or verified mark. G14, and it binds the SLOT.
+- **G16 binds every word and the badge**: the line cap, the badge interior (one internal
+  tone step, two type sizes), the mobile floor, the watermark corner. Not restated here.
 
 ## CHANGELOG
+- 0.2 (2026-09-09): **reserved → active** (ADR-071, owner instruction). The verdict mark
+  is permitted where it is the PAGE'S OWN — the distinction 0.1 put to the owner is the
+  one taken. `text_layer: [title, badge]`, so G16 binds this type. `BLOCK` becomes `SLOT
+  CONSTRAINTS`: the verdict text comes from the input's rank field, a score carries A15's
+  leash, and a third-party mark and a fabricated endorsement stay refused because the
+  permission did not cover them.
 - 0.1 (2026-09-09): drafted `reserved`. Recorded plainly: without its verdict mark this
   type collapses into `07-identity-pack`, which is the absorption ladder of SPEC §3.2
   doing its job rather than a defect in the draft. ADR-069.
