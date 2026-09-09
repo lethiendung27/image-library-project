@@ -37,6 +37,8 @@ TEACHES = (
     "query/runbook.md", "query/output.schema.json",
     "mapping/", "adapters/", "registry/rules.md", "registry/vocabulary.yaml",
     "registry/types/", "registry/gif-types/", "registry/gif-instruction.md",
+    "registry/toplist-types/", "registry/toplist-instruction.md",
+    "mapping/toplist-rules.md",
     "registry/argument-faults.md",
     "ingestion/runbooks/", "eval/render-test.md",
 )

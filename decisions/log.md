@@ -4130,3 +4130,90 @@ are untouched and are what unblock four of the seven.
 
 `registry_version` unchanged: no image type, no active structure and no routing outcome
 moves.
+
+---
+
+## ADR-070 · 2026-09-09 · Toplist types copy their parent verbatim, and the copy is made to say when it has drifted
+
+**Owner decision, 2026-09-09: "chép nguyên văn."** ADR-069 shipped `inherits` — a toplist
+type citing its parent's `PARTS` by name — after the instruction had been to duplicate.
+The concern was put to the owner in one paragraph, the owner reaffirmed, and this ADR is
+that decision landing. ADR-069 stands as written; the log is append-only and a later
+reader should be able to see the reversal as a reversal.
+
+**What shipped.** `lede-pain` carries `01-pain-scene` at 1.18 and `lede-inuse` carries
+`06-relief-scene` at 3.7 — PURPOSE, SKELETON, PARTS, THE RELIEF, MARKS, SLOT CONSTRAINTS,
+NEGATIVE and KNOWN-FLAKY, spliced out of the parent **by script rather than retyped**, so
+"nguyên văn" means byte-identical rather than nearly.
+
+**Two sections are not copied, for correctness rather than for brevity.** The parent's
+`WORKED EXAMPLES`, because SPEC §3.3 keeps a rendered example's full prompt text as the
+record of what actually rendered and those renders were the parent's at the parent's
+version — reprinting them under a toplist id would be a false claim about what was
+rendered. And the parent's `CHANGELOG`, which is its own evidence trail and commit hashes.
+
+### The mitigation, because the objection was real and does not go away
+
+A copy cannot be stopped from drifting. It can be made to **say** so.
+
+`inherits` becomes `copied_from` plus **`copied_at_version`**, which records the parent's
+version at the moment of the copy. `scripts/validate.py` compares the two on every run and
+**warns** when the parent has moved, naming the remedy: re-copy, or write into the copy's
+CHANGELOG why the divergence is intended. Fed known-bad input before being believed —
+`01-pain-scene` was bumped to 1.19 and the warning fired against `lede-pain`; a
+`copied_at_version` of null beside a set `copied_from` errored; a `copied_at_version` set
+beside a null `copied_from` errored; control clean at 0 errors.
+
+This is strictly better than what ADR-069 had. Inheritance made drift impossible and
+therefore invisible; copying makes it possible and now visible. The owner's choice is not
+worse for having an instrument pointed at it — it is the first version of this that has
+one.
+
+### What the sweep caught, and it is the part that would have bitten
+
+**A rule keyed on the parent's id does not reach a copy.** `mapping/slot-rules.md` says
+*"drop `06-relief-scene`"* when `result_visibility: invisible`; nothing in it says
+`lede-inuse`. Under ADR-069's `inherits` the gate carried for free and the instruction
+file said so. Under a copy it does not carry at all, and the gate would have gone silently
+missing on the first page routed with an invisible result.
+
+Every gate a copied type should carry is therefore **restated by toplist id** in
+`mapping/toplist-rules.md`, and the instruction file says in the same breath that adding a
+gate to the parent later does not add it here. That is the cost of the decision, paid
+explicitly rather than discovered.
+
+### The sweep tool did not know the namespace existed
+
+`scripts/adr-sweep.py "inherit"` filed `registry/toplist-instruction.md` and every file in
+`registry/toplist-types/` under **UNCLASSIFIED** — its own output says *"classify it, then
+extend this script's TEACHES/RECORDS tuples"*. ADR-069 created that gap yesterday by adding
+a namespace the tool's tuples had never heard of, which means every future sweep on any
+term would have misclassified the whole new registry. The three paths are added to
+`TEACHES`. This is the second time in a week the rule-6c instrument has been found with a
+blind spot — ADR-067 found it matching case-sensitively — and both were found only because
+something else was being swept at the time.
+
+### Consequences — rule 6c sweep on `"inherit"`: 60 hits, 29 files, 12 in TEACHES + 3 UNCLASSIFIED
+
+- `SPEC.md` §3.7 — the frontmatter key list and the *Inheritance rather than copying*
+  bullet, **both rewritten**.
+- `registry/toplist-instruction.md` — *Inheritance* becomes **Copying: verbatim, and made
+  auditable**, and layer 1 of SELECTION is corrected to point at `toplist-rules.md`'s
+  restated gates rather than at the parent's.
+- `mapping/toplist-rules.md` — the `result_visibility` row no longer claims to inherit.
+- `registry/toplist-types/lede-pain.md` 0.1 → **0.2**, `lede-inuse.md` 0.1 → **0.2**; the
+  other five carry the renamed key with both values null.
+- `scripts/validate.py` — `copied_from` + `copied_at_version`, the drift warning, and the
+  null-pairing errors.
+- `scripts/adr-sweep.py` — three paths into `TEACHES`.
+- The nine other TEACHES hits — `adapters/nano-banana.md:36`, `registry/rules.md` ×5,
+  `02-symptom-rail`, `03-mechanism-ghostbody`, `03-mechanism-xray`, `03-spec-split`,
+  `05-persona-grid`, `05-social-handoff`, `_staging/03-use-rail` — are the ordinary English
+  word *inherited* in craft prose ("inherited by habit", "left to inherit from the main
+  frame"). **All stand**; none is about this mechanism.
+- The 0.1 CHANGELOG lines in both files still say *"inheriting"*. **They stand** — 0.1
+  shipped at `c89aa48` and is real history.
+
+**What this does not change.** No prompt and no render exists for any toplist type; all
+seven remain proposals. The four reserved types are still reserved on the same two owner
+decisions. `registry_version` unchanged.

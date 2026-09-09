@@ -206,8 +206,9 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
   owes a `BLOCK` section naming the decision it waits on.
 - Frontmatter: `id`, `version`, `status`, `replaced_by`, `products_in_frame`
   (`one | many | none`), `requires_product_photo`, `awareness` (values from
-  `vocabulary.toplist_awareness`), `inherits` (an ACTIVE image type id, or null),
-  `blocked_by` (non-null exactly when `status: reserved`), `exempt_from`.
+  `vocabulary.toplist_awareness`), `copied_from` (an ACTIVE image type id, or null),
+  `copied_at_version` (non-null exactly when `copied_from` is), `blocked_by` (non-null
+  exactly when `status: reserved`), `exempt_from`.
 - **Input is the `product` block, not `content.json`.** `content.json` is
   `{ product, page }`; a top-N page has no `page.sections` to route and, since ADR-059,
   `page.channel` admits nothing. This namespace consumes the product half alone, extended
@@ -218,10 +219,14 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
   photograph rather than about text.
 - **Ratio is not declared.** The consuming app resolves the lede ratio, so these types
   carry no `ratios` key; ADR-016's ban on writing a ratio into prompt text is unchanged.
-- **Inheritance rather than copying.** A type declaring `inherits` calls the parent's
-  `PARTS` and `MARKS` entries by name and never restates them, the grammar §3.3 already
-  uses for a call-map and `VARIANTS` for a diff. Two copies of one file drift, and the
-  stale one is the one somebody reads.
+- **Copying, made auditable** (ADR-070). A type declaring `copied_from` carries the
+  parent's text verbatim rather than pointing at it, so the file stands alone. The
+  parent's `WORKED EXAMPLES` and `CHANGELOG` are not copied: an example's prompt text is
+  the record of what actually rendered, and those renders were the parent's.
+  `copied_at_version` records the parent's version at the copy, and the validator warns
+  when the parent moves past it — two copies of one file drift, and this is the instrument
+  that makes the drift say so. A gate keyed on the parent's id does not reach a copy, so
+  every such gate is restated by toplist id in `mapping/toplist-rules.md`.
 - Law shared by every toplist type is stated once in `registry/toplist-instruction.md`
   and never restated in a type file, exactly as §5 treats global rules.
 - Selection runs in four layers, of which only the second reads the reader's awareness

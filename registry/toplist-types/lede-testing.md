@@ -6,7 +6,8 @@ replaced_by: null
 products_in_frame: one
 requires_product_photo: true
 awareness: [solution-aware, product-aware]
-inherits: null
+copied_from: null
+copied_at_version: null
 blocked_by: null
 exempt_from: []
 ---

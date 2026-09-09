@@ -1346,7 +1346,8 @@ def check_golden(types, vocab, shortlist, gates):
 
 TOPLIST_REQUIRED_KEYS = ["id", "version", "status", "replaced_by",
                          "products_in_frame", "requires_product_photo",
-                         "awareness", "inherits", "blocked_by", "exempt_from"]
+                         "awareness", "copied_from", "copied_at_version",
+                         "blocked_by", "exempt_from"]
 TOPLIST_OPTIONAL_KEYS = ["notes"]
 TOPLIST_REQUIRED_SECTIONS = ["PURPOSE", "TRIGGER", "BOUNDARY", "SKELETON",
                              "NEGATIVE", "CHANGELOG"]
@@ -1415,15 +1416,30 @@ def validate_toplist_type_file(path, vocab, rule_ids, image_types):
             if a not in (vocab.get("toplist_awareness") or []):
                 err(where, f"awareness `{a}` not in vocabulary.toplist_awareness")
 
-    # `inherits` points at an ACTIVE image type or is null. A toplist type that
-    # inherits calls the parent's PARTS by name and never restates them, so a
-    # dangling parent is a prompt full of bare words at render time.
-    inh = fm.get("inherits")
-    if inh is not None:
-        if inh not in image_types:
-            err(where, f"inherits `{inh}` is not an image type in registry/types/")
-        elif image_types[inh]["fm"].get("status") != "active":
-            err(where, f"inherits `{inh}`, which is not active")
+    # `copied_from` is PROVENANCE, not a live link: the owner chose verbatim
+    # copies over inheritance on 2026-09-09 (ADR-070), so the parent's text lives
+    # in this file too. `copied_at_version` is what makes that choice auditable —
+    # a copy cannot be stopped from drifting, but it can be made to say so.
+    src = fm.get("copied_from")
+    ver_at = fm.get("copied_at_version")
+    if src is not None:
+        if src not in image_types:
+            err(where, f"copied_from `{src}` is not an image type in registry/types/")
+        elif image_types[src]["fm"].get("status") != "active":
+            err(where, f"copied_from `{src}`, which is not active")
+        if not (isinstance(ver_at, str) and re.fullmatch(r"\d+\.\d+", ver_at)):
+            err(where, "copied_from is set, so copied_at_version must be a quoted "
+                       f"MAJOR.MINOR string, got {ver_at!r}")
+        elif src in image_types:
+            now = image_types[src]["fm"].get("version")
+            if isinstance(now, str) and now != ver_at:
+                warn(where,
+                     f"copied verbatim from `{src}` at {ver_at}, and that file is "
+                     f"now {now} — re-copy it or record in this file's CHANGELOG "
+                     "why the divergence is intended. Two copies of one file drift, "
+                     "and the stale one is the one somebody reads")
+    elif ver_at is not None:
+        err(where, "copied_at_version is set but copied_from is null")
 
     # A reserved type must say what blocks it; an active one must be unblocked.
     blocked = fm.get("blocked_by")

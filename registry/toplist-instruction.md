@@ -74,9 +74,11 @@ awareness-free, and awareness only orders what survives.
   decision below. Until then, refused.
 - `requires_product_photo: true` with `reference_photos` empty → refused, and say so in
   the session notes rather than shipping a prompt the owner cannot run.
-- The `product.attributes` gates of `mapping/slot-rules.md` still bind wherever a type
-  `inherits` an image type that they name. Live example: `result_visibility: invisible`
-  drops `06-relief-scene`, and therefore drops `lede-inuse`.
+- The `product.attributes` gates of `mapping/toplist-rules.md`, which **restate by
+  toplist id** every gate a copied type should carry. A gate in `mapping/slot-rules.md`
+  names the parent and does not reach a copy — see *Copying* below. Live example:
+  `result_visibility: invisible` drops `06-relief-scene` there and `lede-inuse` here, and
+  the second line exists because the first one cannot do the work.
 
 **Layer 2 — preference order. Orders. This is the only place awareness is read**, and
 `mapping/toplist-rules.md` says in its own first paragraph that it is a hypothesis with
@@ -110,22 +112,39 @@ is a choice a prompt justifies rather than a default.
 A type whose only distinguishing feature is a word — a "Best Overall" band, a "BEST X"
 overlay — therefore does not exist in this namespace until that is decided by ADR.
 
-## Inheritance: cite the parent, never copy it
+## Copying: verbatim, and made auditable
 
-Where a toplist type declares `inherits: <image-type-id>`, the argument is already owned
-by the image registry and this file exists to place it in a lede slot. Such a file:
+**Owner decision, 2026-09-09 (ADR-070): a toplist type that reuses an argument carries the
+parent's text, not a pointer to it.** Where `copied_from` names an image type, everything
+from `PURPOSE` to `KNOWN-FLAKY` in that file is the parent's own text, spliced by script
+rather than retyped, and the file stands alone.
 
-- **calls the parent's `PARTS` and `MARKS` entries by name and never restates them**,
-  which is the grammar SPEC §3.3 already uses for a call-map and `VARIANTS` already uses
-  for a diff;
-- carries only what differs — the slot, the trigger, the boundary, the extra negatives;
-- inherits the parent's attribute gates and its own laws.
+Two sections are deliberately NOT copied, for correctness rather than for brevity:
 
-The reason is recorded and recent. `registry/types/_staging/ready-to-push/` once shipped
-byte copies of four type files so they could be read without opening the repo, and they
-were deleted on 2026-09-03 with the finding written into that folder's README: *two
-copies of one file drift, and the stale one is the one somebody reads*. A namespace built
-on copies would inherit that defect seven times over.
+- the parent's **`WORKED EXAMPLES`** — SPEC §3.3 keeps a rendered example's full prompt
+  text as the record of what actually rendered, and those renders were the parent's at the
+  parent's version. Reprinting them under a toplist id would be a false claim about what
+  was rendered.
+- the parent's **`CHANGELOG`** — its evidence trail and commit hashes. This file has its
+  own.
+
+**`copied_at_version` is what makes the choice auditable.** It records the parent's
+version at the moment of the copy, and `scripts/validate.py` **warns** when the parent
+moves past it. A copy cannot be stopped from drifting; it can be made to say so. The
+warning names the remedy: re-copy, or write into this file's CHANGELOG why the divergence
+is intended.
+
+The exposure is recorded rather than argued away. `registry/types/_staging/ready-to-push/`
+once shipped byte copies of four type files and they were deleted on 2026-09-03 with the
+finding written into that folder's README — *two copies of one file drift, and the stale
+one is the one somebody reads*. That remains true here. What is different is that this
+namespace has an instrument pointed at it.
+
+**A copy is NOT reached by a rule keyed on the parent's id, and that is the part most
+likely to be forgotten.** `mapping/slot-rules.md` says *"drop `06-relief-scene`"* when
+`result_visibility: invisible`; nothing in it says `lede-inuse`. Every gate a copied type
+should carry is therefore restated by id in `mapping/toplist-rules.md`, and adding one to
+the parent later does not add it here.
 
 ## Global rules
 

@@ -6,7 +6,8 @@ replaced_by: null
 products_in_frame: one
 requires_product_photo: true
 awareness: [product-aware, most-aware]
-inherits: null
+copied_from: null
+copied_at_version: null
 blocked_by: G16-award-row
 exempt_from: [G7]
 ---

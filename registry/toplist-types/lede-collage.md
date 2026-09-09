@@ -6,7 +6,8 @@ replaced_by: null
 products_in_frame: many
 requires_product_photo: true
 awareness: [product-aware, most-aware]
-inherits: null
+copied_from: null
+copied_at_version: null
 blocked_by: reference-photo-limit
 exempt_from: [G7]
 ---

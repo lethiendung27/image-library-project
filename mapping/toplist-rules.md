@@ -21,7 +21,7 @@ Runs first and runs on the product input alone.
 | `products_in_frame: many` and the input carries fewer than 3 distinct products | refuse |
 | `products_in_frame: many` and the reference-photo limit stands | refuse — see `toplist-instruction.md`, *The two decisions* |
 | `requires_product_photo: true` and `reference_photos` is empty | refuse, and say so in the session notes rather than shipping a prompt the owner cannot run |
-| `result_visibility: invisible` | drop `lede-inuse` — inherited from `06-relief-scene` via `mapping/slot-rules.md` |
+| `result_visibility: invisible` | drop `lede-inuse` |
 
 After layer 1 on a page with one product and one photo, the live pool is
 `lede-pain`, `lede-inuse`, `lede-testing` — three types, which is exactly ADR-058's three
