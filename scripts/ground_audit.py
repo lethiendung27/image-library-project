@@ -123,6 +123,22 @@ print("| family | n | value | sat | texture | spread_v | axis | designed? |")
 print("|---|---|---|---|---|---|---|---|")
 
 
+
+def designed(texture, spread_v):
+    """Is the ground MADE or is it a place?
+
+    Batch 2026-09-09-C broke the single-variable rule ADR-073 shipped. Texture alone
+    separates a SMOOTH designed ground from a room, but a designed ground can also be
+    PATTERNED — printed halftone dots, a grain — and three frames in that batch measured
+    11.0 to 12.0, above the line ADR-073 calls photographed.
+
+    What still separates them is the light. A designed ground is evenly lit by
+    construction, so its value hardly varies around the ring: those three read 0.15, 0.01
+    and 0.02. A real place reads 0.34 to 0.67, because real light falls off.
+    """
+    return texture < 3.0 or spread_v < 0.20
+
+
 def med(xs):
     xs = sorted(xs); return xs[len(xs) // 2]
 
@@ -131,11 +147,12 @@ for t in sorted(by):
     rows = [a for a, _ in by[t]]
     n = len(rows)
     tex = med([r["texture"] for r in rows])
+    spr = med([r["spread_v"] for r in rows])
     print(f"| {t} | {n} | {med([r['value'] for r in rows]):.2f} | "
           f"{med([r['sat'] for r in rows]):.2f} | {tex:5.1f} | "
           f"{med([r['spread_v'] for r in rows]):.2f} | "
           f"{Counter(r['axis'] for r in rows).most_common(1)[0][0]} | "
-          f"{'DESIGNED' if tex < 6 else 'photographed'} |")
+          f"{'DESIGNED' if designed(tex, spr) else 'photographed'} |")
 
 print("\nper frame, the two assembled families and the lineup:\n")
 for t in ("lede-winner", "lede-collage", "lede-lineup"):
