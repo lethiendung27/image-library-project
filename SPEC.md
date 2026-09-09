@@ -189,6 +189,46 @@ verdict, not through a shortlist.
 - How many loops a page may carry, and how a shortfall is handled, is `query/runbook.md`
   Step 5d. Whether a given slot earns one is Step 5c.
 
+### 3.7 Toplist types
+
+A third registry governs the **single lede image of a top-N listicle** (ADR-069) — the
+lead, featured or hero image of a "best 5 X" page. It is a **separate namespace** from
+image types for the reason §3.6 gives for gif types: that page carries ONE image slot, so
+the role shortlist of §7.2, the cross-slot pass of §7.3, the coverage pass of §7.5 and
+one-type-once have nothing to act on, and it is never written into `index.yaml`.
+
+- Files live in `registry/toplist-types/<id>.md`; ids are the closed list
+  `vocabulary.toplist_types` and are **arguments** rather than `{step}-{job}-{device}`.
+- Required sections, in order: `PURPOSE`, `TRIGGER`, `BOUNDARY`, `SKELETON`, `NEGATIVE`,
+  `CHANGELOG`. `BOUNDARY` is the anti-overlap section and carries the same weight it does
+  for gif types: with one slot the whole namespace competes for one image, so a type that
+  cannot be told from its neighbour cannot be chosen against it. A `reserved` type also
+  owes a `BLOCK` section naming the decision it waits on.
+- Frontmatter: `id`, `version`, `status`, `replaced_by`, `products_in_frame`
+  (`one | many | none`), `requires_product_photo`, `awareness` (values from
+  `vocabulary.toplist_awareness`), `inherits` (an ACTIVE image type id, or null),
+  `blocked_by` (non-null exactly when `status: reserved`), `exempt_from`.
+- **Input is the `product` block, not `content.json`.** `content.json` is
+  `{ product, page }`; a top-N page has no `page.sections` to route and, since ADR-059,
+  `page.channel` admits nothing. This namespace consumes the product half alone, extended
+  with the fields `registry/toplist-instruction.md` lists as missing.
+- **No toplist type declares `text_layer`.** A lede is scraped as `og:image` and sits
+  beside the page's own headline, so no words are baked into it and G16 does not bind
+  here. ADR-068's finding about the GROUND does carry over, being a fact about the
+  photograph rather than about text.
+- **Ratio is not declared.** The consuming app resolves the lede ratio, so these types
+  carry no `ratios` key; ADR-016's ban on writing a ratio into prompt text is unchanged.
+- **Inheritance rather than copying.** A type declaring `inherits` calls the parent's
+  `PARTS` and `MARKS` entries by name and never restates them, the grammar §3.3 already
+  uses for a call-map and `VARIANTS` for a diff. Two copies of one file drift, and the
+  stale one is the one somebody reads.
+- Law shared by every toplist type is stated once in `registry/toplist-instruction.md`
+  and never restated in a type file, exactly as §5 treats global rules.
+- Selection runs in four layers, of which only the second reads the reader's awareness
+  stage: mechanical admission, then the preference order in `mapping/toplist-rules.md`
+  (declared a hypothesis), then FIT by judgement citing the sentence of product copy that
+  decided it (ADR-059's own mitigation), then the pick-rate prior of §7.7.
+
 ## 4. Vocabulary governance
 
 `registry/vocabulary.yaml` holds **closed lists**: steps, jobs, devices, axes, channels,
@@ -358,6 +398,9 @@ registry/                tier 2 + generated tier 3 (index.yaml)
 registry/argument-faults.md  cross-type catalogue of argument faults (ADR-014)
 registry/gif-types/      motion registry — one file per gif type (SPEC 3.6, ADR-023)
 registry/gif-instruction.md  law shared by every gif type; never restated in one
+registry/toplist-types/  top-N lede registry — one file per type (SPEC 3.7, ADR-069)
+registry/toplist-instruction.md  law shared by every toplist type; never restated in one
+mapping/toplist-rules.md selecting the lede image; layer 2 is a declared hypothesis
 ingestion/               classify template, runbooks, observations ledger
 ingestion/gifs.jsonl     append-only index of the external GIF library
 scripts/gen-gif-cards.py generates the library's folder cards from the gif type files

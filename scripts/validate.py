@@ -26,6 +26,7 @@ PICKS_PATH = os.path.join(ROOT, "feedback", "picks.jsonl")
 SLUGS_PATH = os.path.join(ROOT, "query", "product-slugs.yaml")
 RENDER_PATH = os.path.join(ROOT, "eval", "render-tests.jsonl")
 GIF_TYPES_DIR = os.path.join(ROOT, "registry", "gif-types")
+TOPLIST_TYPES_DIR = os.path.join(ROOT, "registry", "toplist-types")
 GIF_LEDGER_PATH = os.path.join(ROOT, "ingestion", "gifs.jsonl")
 GIF_VI_PATH = os.path.join(ROOT, "registry", "gif-cards-vi.md")
 
@@ -1340,6 +1341,120 @@ def check_golden(types, vocab, shortlist, gates):
     return checked
 
 
+
+# ------------------------------------------------------------- toplist types
+
+TOPLIST_REQUIRED_KEYS = ["id", "version", "status", "replaced_by",
+                         "products_in_frame", "requires_product_photo",
+                         "awareness", "inherits", "blocked_by", "exempt_from"]
+TOPLIST_OPTIONAL_KEYS = ["notes"]
+TOPLIST_REQUIRED_SECTIONS = ["PURPOSE", "TRIGGER", "BOUNDARY", "SKELETON",
+                             "NEGATIVE", "CHANGELOG"]
+
+
+def validate_toplist_type_file(path, vocab, rule_ids, image_types):
+    """SPEC 3.7 — the single-lede namespace for top-N listicles (ADR-069).
+
+    A third namespace, separate for the reason gif types are separate: the page
+    carries ONE image slot, so the role shortlist, the cross-slot pass and the
+    coverage pass have nothing to act on. Never written into index.yaml.
+
+    Two checks here are the namespace's own law rather than schema hygiene:
+    a `reserved` type must NAME what blocks it, and no toplist type may declare a
+    text layer — a lede is scraped as og:image and this namespace bakes no words.
+    """
+    fname = os.path.basename(path)
+    where = f"registry/toplist-types/{fname}"
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    fm_lines, body = split_frontmatter(text, where)
+    if fm_lines is None:
+        return None
+    fm = parse_block(fm_lines, where)
+
+    if "text_layer" in fm:
+        err(where, "no toplist type may declare `text_layer` — a lede is scraped "
+                   "as og:image and this namespace bakes no words "
+                   "(registry/toplist-instruction.md)")
+    for k in TOPLIST_REQUIRED_KEYS:
+        if k not in fm:
+            err(where, f"missing required frontmatter key `{k}`")
+    for k in fm:
+        if k not in TOPLIST_REQUIRED_KEYS + TOPLIST_OPTIONAL_KEYS:
+            err(where, f"unknown frontmatter key `{k}`")
+
+    tid = fm.get("id")
+    if tid != os.path.splitext(fname)[0]:
+        err(where, f"id `{tid}` != filename")
+    if tid is not None and tid not in (vocab.get("toplist_types") or []):
+        err(where, f"id `{tid}` not in vocabulary.toplist_types")
+
+    ver = fm.get("version")
+    if not (isinstance(ver, str) and re.fullmatch(r"\d+\.\d+", ver)):
+        err(where, f"version must be a quoted MAJOR.MINOR string, got {ver!r}")
+
+    status = fm.get("status")
+    if status not in (vocab.get("statuses") or []):
+        err(where, f"status `{status}` not in vocabulary.statuses")
+    if status == "deprecated" and not fm.get("replaced_by"):
+        err(where, "status `deprecated` requires a non-null `replaced_by`")
+
+    pop = fm.get("products_in_frame")
+    if pop not in (vocab.get("toplist_frame_populations") or []):
+        err(where, f"products_in_frame `{pop}` not in "
+                   "vocabulary.toplist_frame_populations")
+
+    if not isinstance(fm.get("requires_product_photo"), bool):
+        err(where, "requires_product_photo must be a boolean")
+
+    aw = fm.get("awareness")
+    if not isinstance(aw, list) or not aw:
+        err(where, "awareness must be a non-empty list")
+    else:
+        for a in aw:
+            if a not in (vocab.get("toplist_awareness") or []):
+                err(where, f"awareness `{a}` not in vocabulary.toplist_awareness")
+
+    # `inherits` points at an ACTIVE image type or is null. A toplist type that
+    # inherits calls the parent's PARTS by name and never restates them, so a
+    # dangling parent is a prompt full of bare words at render time.
+    inh = fm.get("inherits")
+    if inh is not None:
+        if inh not in image_types:
+            err(where, f"inherits `{inh}` is not an image type in registry/types/")
+        elif image_types[inh]["fm"].get("status") != "active":
+            err(where, f"inherits `{inh}`, which is not active")
+
+    # A reserved type must say what blocks it; an active one must be unblocked.
+    blocked = fm.get("blocked_by")
+    if status == "reserved" and not blocked:
+        err(where, "status `reserved` requires a non-null `blocked_by` naming the "
+                   "decision it waits on")
+    if status == "active" and blocked:
+        err(where, f"status `active` but `blocked_by: {blocked}` — an active type "
+                   "cannot be waiting on a decision")
+
+    ex = fm.get("exempt_from")
+    if not isinstance(ex, list):
+        err(where, "exempt_from must be a list")
+    else:
+        for r in ex:
+            if r not in rule_ids:
+                err(where, f"exempt_from references unknown rule `{r}`")
+
+    sections = split_sections(body)
+    for sec in TOPLIST_REQUIRED_SECTIONS:
+        if sec not in sections:
+            err(where, f"missing required section `## {sec}`")
+    if "use_when:" not in sections.get("TRIGGER", ""):
+        err(where, "TRIGGER is missing `use_when:`")
+    if status == "reserved" and "## BLOCK" not in body:
+        err(where, "a `reserved` type owes a `## BLOCK` section saying what it "
+                   "waits on and why")
+
+    return {"fm": fm, "sections": sections}
+
+
 # ------------------------------------------------------------------ gif types
 
 GIF_REQUIRED_KEYS = ["id", "kind", "group", "rung", "version", "status",
@@ -1548,6 +1663,36 @@ def main(argv):
                         "staging files must have status: reserved")
     cross_validate(staging, set(types) | set(staging), "registry/types/_staging")
 
+    # Toplist types (ADR-069). The third namespace: one lede image for a top-N
+    # listicle, consumed from the product input rather than from content.json,
+    # and never written into index.yaml.
+    toplist_types = {}
+    if os.path.isdir(TOPLIST_TYPES_DIR):
+        for fn in sorted(os.listdir(TOPLIST_TYPES_DIR)):
+            if not fn.endswith(".md") or fn == "README.md" or fn.startswith("_"):
+                continue
+            parsed = validate_toplist_type_file(
+                os.path.join(TOPLIST_TYPES_DIR, fn), vocab, rule_ids, types)
+            if parsed and parsed["fm"].get("id"):
+                lid = parsed["fm"]["id"]
+                if lid in toplist_types:
+                    err(f"registry/toplist-types/{fn}", f"duplicate id `{lid}`")
+                toplist_types[lid] = parsed
+    for declared in vocab.get("toplist_types") or []:
+        if declared not in toplist_types:
+            err("registry/vocabulary.yaml",
+                f"toplist_types declares `{declared}` with no "
+                f"registry/toplist-types/{declared}.md")
+    # ADR-058 asks every image slot for three options of three distinct types. A
+    # top-N page has exactly one slot, so the namespace itself has to be able to
+    # offer three, or the page cannot meet the rule no matter how it routes.
+    live = [t for t in toplist_types.values()
+            if t["fm"].get("status") == "active"]
+    if toplist_types and len(live) < 3:
+        err("registry/toplist-types",
+            f"only {len(live)} active toplist type(s) — ADR-058 asks a slot for "
+            "three distinct options and this namespace serves a one-slot page")
+
     # GIF types (ADR-023). A separate namespace from image types: its ids are
     # arguments, not {step}-{job}-{device}, and it is never written into index.yaml
     # because routing reads a gif type by id off the slot verdict, not by shortlist.
@@ -1631,6 +1776,7 @@ def main(argv):
         print(f"ERROR {e}")
     print(f"{len(types)} types, {len(staging)} staging, "
           f"{len(gif_types)} gif types, {len(gif_ledger)} gifs, "
+          f"{len(toplist_types)} toplist types, "
           f"{golden_slots} golden slots, {contracts} content contracts, "
           f"{bundled} bundled files, "
           f"{len(observations)} observations, {len(picks)} picks, "

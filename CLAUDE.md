@@ -17,6 +17,8 @@ tasks to entry points and must stay logic-free.
 | Add / edit an image type | `SPEC.md` §3, then a file in `registry/types/` |
 | File new GIFs into the library | `registry/gif-instruction.md` |
 | Add / edit a GIF type | `SPEC.md` §3.6, then a file in `registry/gif-types/` |
+| Choose the lede image for a top-N listicle | `registry/toplist-instruction.md`, then `mapping/toplist-rules.md` |
+| Add / edit a toplist type | `SPEC.md` §3.7, then a file in `registry/toplist-types/` |
 
 ## Hard rules for any session
 

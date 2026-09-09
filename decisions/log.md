@@ -3977,3 +3977,156 @@ and this library should stop guessing at it and ask the owner to point at a corp
 say *that one*.
 
 `registry_version` unchanged. No skeleton, no argument and no routing outcome moves.
+
+---
+
+## ADR-069 · 2026-09-09 · A third namespace for the top-N lede, and the count that came back as three
+
+**Owner instructions, 2026-09-08 and 2026-09-09**, in order: build seven image types for a
+new page kind, a top-N listicle; that page has one image slot and is driven by product
+input rather than `content.json`; duplicate the types it already owns under new names, on
+the `gif-types` precedent, into `toplist-types`; the input carries an awareness stage but
+do not lean on it; build to the recommendation.
+
+### The seven, checked against the registry before anything was written
+
+The owner supplied the taxonomy: pain shot, lifestyle in-use, lineup, testing shot, winner
+packshot with a badge, composite collage, author/expert. Checking each against what the
+library already owns changed the size of the job more than any other step:
+
+| # | owner's type | what it turned out to be |
+|---|---|---|
+| 1 | pain point | **already owned.** `01-pain-scene`'s `use_when` reads *"Cold traffic that does not know the product yet. Advertorial header image, Facebook/native ad creative, opening image of a story"* — the owner's type 1, including its cold-traffic reasoning |
+| 2 | lifestyle / after | **already owned** — `06-relief-scene`, which even declares `pairs_with: [01-pain-scene]` |
+| 3 | lineup | **genuinely new.** `03-spec-lineup` is several units of ONE product where exactly one thing differs; this is a field of rival makers |
+| 4 | testing / process | **genuinely new, and the only one of the seven blocked by nothing** |
+| 5 | winner packshot | **blocked.** Strip the verdict mark and `07-identity-pack` already does it, so the mark IS the type — and G16 marks *an award* and *a rating* `LAW, not taste` |
+| 6 | collage | **new, and nearly an axis of 3** — see below |
+| 7 | author / expert | **already declared out of scope.** `mapping/slot-rules.md`'s `author` row: *"a portrait of a named person, out of library scope"* |
+
+So the brief was not seven new types. It was **three active files, three reserved on
+owner decisions, one placeholder recording why the seventh has no skeleton.**
+
+### Why a namespace rather than seven more image types
+
+One slot. Over half of SPEC §7 has nothing to act on: the Stage 1 shortlist ranks by role
+affinity and there is one role, so affinity is a constant; the Stage 2 cross-slot pass
+needs a second slot for `never_with`, `avoid_adjacent` and one-type-once to mean anything;
+the coverage pass counts Trust Ladder rungs a single image cannot cover. That is the same
+reasoning SPEC §3.6 gives for gif types, and it is why this is `registry/toplist-types/`
+and never enters `index.yaml`.
+
+The second reason is the one ADR-065 already named for the identity family: since ADR-060
+there is no admission test left, so an active image type is a candidate for every slot on
+every page and `use_when` is the only thing keeping a packshot out of a pain slot. A
+namespace is a wall; a sentence is not.
+
+### Inheritance rather than duplication — a departure, stated
+
+The instruction was to duplicate. What shipped is `inherits`: `lede-pain` and `lede-inuse`
+are real standalone files with their own ids, `use_when` and `BOUNDARY`, and their
+skeletons **call the parent's `PARTS` by name instead of restating them**.
+
+The reason is six days old and in this repo. `registry/types/_staging/ready-to-push/` once
+shipped byte copies of four type files so they could be read without opening the repo;
+they were deleted on 2026-09-03 with the finding written into that folder's README — *two
+copies of one file drift, and the stale one is the one somebody reads*. A namespace built
+on copies inherits that defect seven times. Concretely: `01-pain-scene` carries A14's
+`cost` block, which took a set from 0 pass to 3 pass / 3 partial; a copy would silently
+hold the pre-A14 version the first time the parent improves.
+
+**The `gif-types` precedent the instruction cited does not actually support copying** —
+nothing in that namespace is a copy of an image type; its ids and sections differ because
+its arguments differ. What it supports is a separate namespace, which is what it got. If
+the owner wants literal copies the change is one field per file and this ADR is the record
+of why it was not done that way first.
+
+### Selection: four layers, and awareness carries one of them
+
+The instruction was to carry awareness and not lean on it. The shape that obeys it puts
+every REFUSAL in awareness-free machinery and lets awareness only order what survives:
+
+1. **Mechanical admission** — `status`, `products_in_frame` against the input's product
+   count, `requires_product_photo` against an empty `reference_photos`, and the
+   `product.attributes` gates a type inherits. Refuses. No awareness.
+2. **Preference order**, `mapping/toplist-rules.md`, keyed on awareness and **declared in
+   its own first paragraph as a hypothesis with no evidence behind it**.
+3. **FIT by judgement** on `use_when` and `BOUNDARY`, and — adopting ADR-059's own
+   mitigation as law here — **every choice cites the sentence of product copy that decided
+   it**.
+4. **Pick rate**, SPEC §7.7. It holds 0 records. One slot per page means one record per
+   page and a cell keyed on the type alone, so **twenty pages make this prior live** — the
+   fastest any cell in this library can fill, and the reason this format is where
+   judgement can be replaced by measurement rather than argued about.
+
+A second, awareness-free signal was available — the balance of `problems_solved` against
+`specification` and `raw_features` tells whether a brief is written problem-first or
+feature-first — and is deliberately **left unbuilt**. Writing a second unmeasured rule
+beside the first is exactly how ADR-068's ground clauses happened four days ago.
+
+### No text, so G16 does not bind here
+
+A lede is scraped as `og:image` and sits beside the page's own headline; the owner's
+constraint is that no words are baked in. **No toplist type declares `text_layer`**, the
+validator errors on one that tries, and G16 — four rounds of work on caps, badges, mobile
+floors and size anchors — governs nothing in this namespace. ADR-068's finding about the
+GROUND does carry over, being a fact about the photograph rather than about text.
+
+### Two boundary calls worth recording
+
+**`lede-lineup` and `lede-collage` were nearly merged** into one type with a `staging`
+axis, since SPEC §3.2 makes an execution difference an axis rather than a type. They are
+kept apart on SPEC §3.1: a lineup is photographed on one surface under one light and
+claims the units were TOGETHER; a collage is assembled from cut-outs and claims only that
+these are the five. Possession against enumeration. **The merge condition is written into
+`lede-lineup`**: if a render round shows readers take the same meaning from both, they
+merge and `lede-collage` is the file that goes.
+
+**`lede-winner` collapses into `07-identity-pack` without its verdict mark**, and its file
+says so. That is the absorption ladder working, not a defect in the draft — and it is why
+the type is reserved rather than shipped without the badge.
+
+### Consequences — rule 6c sweep on `"namespace"`: 19 hits, 7 files, 4 in TEACHES
+
+- `SPEC.md` — **§3.7 added** (3 of the 4 TEACHES hits are the new section). `SPEC.md:157`,
+  *"A second, smaller registry governs motion"*, **stands**: gif is still the second, and
+  the word counts its ordinal rather than the registries.
+- `registry/types/_staging/07-identity-inhand.md:42` and `07-identity-pack.md:43` —
+  both say the identity family's home is undecided between a new step in
+  `registry/types/` and *"its own namespace like `registry/gif-types/`"*. **Both stand and
+  neither is decided here**, but the option is no longer hypothetical: there is now a
+  second worked precedent for a third namespace, including a validator, a required-section
+  list and an instruction file. That decision got cheaper without being taken.
+- `registry/vocabulary.yaml` — `toplist_types`, `toplist_frame_populations`,
+  `toplist_awareness`.
+- `registry/toplist-types/` — 7 files: `lede-pain`, `lede-inuse`, `lede-testing` active;
+  `lede-lineup`, `lede-collage`, `lede-winner`, `lede-authority` reserved, each naming its
+  blocker in a `BLOCK` section.
+- `registry/toplist-instruction.md`, `mapping/toplist-rules.md` — new.
+- `scripts/validate.py` — the namespace is validated: id closure, version, status,
+  `products_in_frame`, awareness values, `inherits` resolving to an ACTIVE image type,
+  `blocked_by` present exactly when reserved, a `BLOCK` section on a reserved type, no
+  `text_layer`, and a floor of three active types because ADR-058 asks a slot for three.
+- `CLAUDE.md` — two entry-point rows.
+- GENERATED — `registry/index.yaml` and `dist/app-bundle/` regenerate; **neither gains a
+  toplist type**, which is the namespace doing its job.
+
+**Enforcement fed known-bad input before being believed.** Five injected faults, five
+fired, control clean at 0 errors: a reserved type with `blocked_by: null`; an active type
+carrying a blocker; a declared `text_layer`; `inherits` pointing at a type that does not
+exist; an awareness value off the closed list. The `text_layer` message was initially
+unreachable behind the unknown-key check and was moved ahead of it, because *"unknown
+frontmatter key"* does not tell a reader why this namespace has no text.
+
+### What is NOT done
+
+No prompt has been written from any of these types and no render exists — every clause in
+all seven files is a proposal, which is the state ADR-065 called a staging draft and the
+honest label for a namespace one day old. The product-input schema is **not** built: the
+four missing fields are named in `toplist-instruction.md` (`products[]`, a rank or verdict,
+test facts, a narrower `category`) and `products[]` is what gates two of the four reserved
+types. The two owner decisions — the one-reference-photo limit and G16's two `LAW` rows —
+are untouched and are what unblock four of the seven.
+
+`registry_version` unchanged: no image type, no active structure and no routing outcome
+moves.
