@@ -1,7 +1,7 @@
 ---
 id: lede-collage
-version: "0.4"
-status: reserved
+version: "0.5"
+status: active
 replaced_by: null
 products_in_frame: many
 requires_product_photo: true
@@ -9,7 +9,7 @@ awareness: [product-aware, most-aware]
 text_layer: [title, badge]
 copied_from: null
 copied_at_version: null
-blocked_by: reference-photo-limit
+blocked_by: null
 exempt_from: [G7]
 ---
 
@@ -47,7 +47,7 @@ WINNER`, `CNET PEOPLE'S PICKS`); reproducing another party's is the trademark qu
 
 ## SKELETON
 ```
-TYPE: lede-collage v0.4
+TYPE: lede-collage v0.5
 REGISTER: graphic product composition, one frame.
 
 [PRODUCT REFERENCES]  one attached photo per unit.                      -> G1, and see BLOCK
@@ -129,12 +129,35 @@ a drop shadow under one unit only, a price, a brand logo, a certification seal,
 a press logo, a third-party award mark, a fabricated rating or star row
 ```
 
-## BLOCK — why this is `reserved`
-**One decision, down from two** (ADR-075), and it is `lede-lineup`'s: the
-one-reference-photo limit. The brand-mark clause of `SPEC.md` §6.4 no longer binds this
-namespace. Both types still move together.
+## ATTACHMENTS
+
+**One reference photo per unit in frame, and the prompt names which is which.** The
+attachment cap of one was lifted at ADR-076 (owner instruction, 2026-09-09): a prompt
+still makes ONE generation call and assembles nothing afterwards, but it may carry as many
+references as it has products.
+
+**Where the owner's own app takes only one, the prompt still ships in full** and is
+rendered elsewhere. A prompt is never trimmed to fit a tool — that was the instruction, and
+it is why this type went from `reserved` to `active` without anything about the picture
+changing.
+
+**Brands may be depicted, not invented** (ADR-075). With references attached, the units are
+the real named products and `SPEC.md` §6.4's competitor clause does not bind this
+namespace. With no reference attached the units stay unbranded, because a generated logo is
+a fabricated brand.
+
+**A note this type owes and `lede-lineup` does not.** With the two loud award frames
+re-filed to `lede-winner` at ADR-074, this type has **one** corpus observation of what it
+actually defines — several distinct products, cut out, on one designed ground. Five of its
+six records are two other shapes it has been absorbing: three of *several views of ONE
+product* and two of *one subject in several states*. It is active and it is thin, and the
+split is a curation problem nobody has taken yet.
 
 ## CHANGELOG
+- 0.5 (2026-09-09): **reserved → active** (ADR-076, owner instruction), on the same two
+  blockers clearing as `lede-lineup`. `BLOCK` becomes `ATTACHMENTS`, and the file now
+  records that it holds ONE observation of the type as defined — the other five are two
+  shapes it has been absorbing since ADR-074 moved the award frames out.
 - 0.4 (2026-09-09): `PARTS/ground` **rewritten from this namespace's own 32 frames**, no
   rule imported (ADR-073, owner instruction). Adds what a prompt needs and 0.3 did not
   carry: smoothness as a measurement, and the gradient's FORM — 3 of 5 are two hues roughly

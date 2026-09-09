@@ -123,7 +123,7 @@
                   "enum": [
                     "single-pass"
                   ],
-                  "description": "ADR-021: this pipeline is paste-and-run - one prompt, one generation call, at most one reference photo the owner attaches in the tool. `multi-pass` was removed from this enum at ADR-039, and removed from registry/vocabulary.yaml at ADR-067, so it is no longer a value any type can declare or any option can carry. One delivered page predates it and is grandfathered by name in scripts/validate.py, which is where the rule is actually enforced - nothing validates a prompts.json against this schema, so narrowing the enum states intent and does not catch anything."
+                  "description": "ADR-021: this pipeline is paste-and-run - one prompt, one generation call, and one reference photo per product in frame - the attachment cap of one was lifted at ADR-076 and the one CALL was not. `multi-pass` was removed from this enum at ADR-039, and removed from registry/vocabulary.yaml at ADR-067, so it is no longer a value any type can declare or any option can carry. One delivered page predates it and is grandfathered by name in scripts/validate.py, which is where the rule is actually enforced - nothing validates a prompts.json against this schema, so narrowing the enum states intent and does not catch anything."
                 },
                 "steps": {
                   "type": "array",
@@ -496,7 +496,7 @@
                   "enum": [
                     "single-pass"
                   ],
-                  "description": "ADR-021: this pipeline is paste-and-run - one prompt, one generation call, at most one reference photo the owner attaches in the tool. `multi-pass` was removed from this enum at ADR-039, and removed from registry/vocabulary.yaml at ADR-067, so it is no longer a value any type can declare or any option can carry. One delivered page predates it and is grandfathered by name in scripts/validate.py, which is where the rule is actually enforced - nothing validates a prompts.json against this schema, so narrowing the enum states intent and does not catch anything."
+                  "description": "ADR-021: this pipeline is paste-and-run - one prompt, one generation call, and one reference photo per product in frame - the attachment cap of one was lifted at ADR-076 and the one CALL was not. `multi-pass` was removed from this enum at ADR-039, and removed from registry/vocabulary.yaml at ADR-067, so it is no longer a value any type can declare or any option can carry. One delivered page predates it and is grandfathered by name in scripts/validate.py, which is where the rule is actually enforced - nothing validates a prompts.json against this schema, so narrowing the enum states intent and does not catch anything."
                 },
                 "steps": {
                   "type": "array",

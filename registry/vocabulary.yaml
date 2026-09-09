@@ -118,8 +118,8 @@ toplist_types: [lede-pain, lede-inuse, lede-lineup, lede-testing, lede-winner, l
 
 # How many DISTINCT products stand in the frame. This is the namespace's one
 # mechanical admission test and it is deliberately not a matter of judgement:
-# `many` needs one reference photo per product, and ADR-021 allows one per prompt.
-# Until that is decided, every `many` type is `status: reserved`.
+# `many` needs one reference photo per product. ADR-021 capped attachments at one and
+# ADR-076 lifted that cap on 2026-09-09, so `many` no longer reserves a type.
 toplist_frame_populations: [one, many, none]
 
 # The reader's stage, carried on the product input. It keys the preference table in

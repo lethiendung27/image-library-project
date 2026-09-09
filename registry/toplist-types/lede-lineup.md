@@ -1,14 +1,14 @@
 ---
 id: lede-lineup
-version: "0.3"
-status: reserved
+version: "0.4"
+status: active
 replaced_by: null
 products_in_frame: many
 requires_product_photo: true
 awareness: [product-aware, most-aware]
 copied_from: null
 copied_at_version: null
-blocked_by: reference-photo-limit
+blocked_by: null
 exempt_from: []
 ---
 
@@ -47,7 +47,7 @@ Here every unit is a different maker. Same picture shape, opposite argument.
 
 ## SKELETON
 ```
-TYPE: lede-lineup v0.3
+TYPE: lede-lineup v0.4
 REGISTER: editorial product photograph, one frame, no words in it.
 
 [PRODUCT REFERENCES]  one attached photo per unit, in rank order.       -> G1, and see BLOCK
@@ -96,25 +96,29 @@ any word, price or logo baked into the picture
 words at all — the alarm clocks, the knitwear, the blenders, the coffee makers, the
 desk flat-lay. A badge would also breach the no-favoured-unit law above by marking one.
 
-## BLOCK — why this is `reserved`
-**One decision, down from two** (ADR-075 removed the second on 2026-09-09).
+## ATTACHMENTS
 
-**One reference photo per prompt.** `query/runbook.md:81` — *"one prompt, one generation
-call, at most one reference photo attached"*. Three to five units need three to five. The
-renderer accepts several; the limit is a number in this library's law, and its principle —
-one generation call — is not threatened by attaching five.
+**One reference photo per unit in frame, and the prompt names which is which.** The
+attachment cap of one was lifted at ADR-076 (owner instruction, 2026-09-09): a prompt
+still makes ONE generation call and assembles nothing afterwards, but it may carry as many
+references as it has products.
 
-**The brand-mark clause is gone.** `SPEC.md` §6.4's *"competitor brand marks never appear
-in prompts"* does not bind this namespace, so a lineup of five named makers is no longer
-refused on that ground. What replaces it is narrower: a real brand may be DEPICTED from an
-attached reference, and no brand may be INVENTED — so while the photo limit stands and this
-type attaches nothing, its units stay unbranded because a generated logo is a fabricated
-brand, not because a rival's is forbidden.
+**Where the owner's own app takes only one, the prompt still ships in full** and is
+rendered elsewhere. A prompt is never trimmed to fit a tool — that was the instruction, and
+it is why this type went from `reserved` to `active` without anything about the picture
+changing.
 
-Until the photo limit is answered this type is not routable and no prompt is written from
-it.
+**Brands may be depicted, not invented** (ADR-075). With references attached, the units are
+the real named products and `SPEC.md` §6.4's competitor clause does not bind this
+namespace. With no reference attached the units stay unbranded, because a generated logo is
+a fabricated brand.
 
 ## CHANGELOG
+- 0.4 (2026-09-09): **reserved → active** (ADR-076, owner instruction). Both blockers are
+  gone: the competitor brand-mark clause at ADR-075, and the one-attachment cap here. The
+  `BLOCK` section becomes `ATTACHMENTS` — one reference photo per unit, one generation
+  call, and where the owner's app takes only one the prompt still ships in full. Nothing
+  about the picture changed.
 - 0.3 (2026-09-09): `PARTS/ground` added, measured on this namespace's own 32 frames with
   nothing imported (ADR-073, owner instruction). **The measurement moved this type across
   the line**: texture 2.9 puts it with the designed grounds, not the photographed ones, so

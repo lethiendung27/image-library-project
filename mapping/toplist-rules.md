@@ -17,18 +17,19 @@ Runs first and runs on the product input alone.
 
 | condition | effect |
 |---|---|
-| `status: reserved` | not routable, ever. Today: `lede-lineup`, `lede-collage`, `lede-authority` |
+| `status: reserved` | not routable, ever. Today: `lede-authority` alone |
 | `products_in_frame: many` and the input carries fewer than 3 distinct products | refuse |
-| `products_in_frame: many` and the reference-photo limit stands | refuse — see `toplist-instruction.md`, *The two decisions* |
+| `products_in_frame: many` and the input carries no photo for a unit | refuse — one reference per unit since ADR-076 |
 | `requires_product_photo: true` and `reference_photos` is empty | refuse, and say so in the session notes rather than shipping a prompt the owner cannot run |
 | `result_visibility: invisible` | drop `lede-inuse` |
 | the input carries no rank or verdict for the winning product | drop `lede-winner` — its mark is the type, and the mark's words come from the input (ADR-071). The field does not exist yet, so this refuses on every page until it does |
 
 After layer 1 on a page with one product and one photo, the live pool is `lede-pain`,
 `lede-inuse`, `lede-testing` — three types, which is exactly ADR-058's three distinct
-options. `lede-winner` went active at ADR-071 and joins them on any page whose input
-carries a rank, which no input does yet. **Admission is therefore never the binding
-constraint here; ORDER is.**
+options. On a page carrying three or more products with a photo each, `lede-lineup` and
+`lede-collage` join them (ADR-076), and `lede-winner` joins on any page whose input carries
+a rank, which no input does yet. **Admission is therefore never the binding constraint
+here; ORDER is.**
 
 ## Layer 2 — preference order, keyed on awareness. HYPOTHESIS.
 
@@ -37,11 +38,12 @@ constraint here; ORDER is.**
 | `unaware` | `lede-pain` | nothing else can earn a click from someone who does not know the category exists |
 | `problem-aware` | `lede-pain`, `lede-inuse` | message match with the ad creative; the reader recognises the problem before the product |
 | `solution-aware` | `lede-inuse`, `lede-testing` | the category is accepted; the question is whether it works |
-| `product-aware` | `lede-testing`, `lede-winner`, `lede-lineup`* | the reader is comparing names and wants to know the work was done |
-| `most-aware` | `lede-winner`, `lede-lineup`*, `lede-testing` | one question left, and it is which |
+| `product-aware` | `lede-testing`, `lede-winner`, `lede-lineup` | the reader is comparing names and wants to know the work was done |
+| `most-aware` | `lede-winner`, `lede-lineup`, `lede-testing` | one question left, and it is which |
 
-\* reserved today; the row records where they belong when they unblock. `lede-winner` is
-active as of ADR-071 but needs a rank on the input, which layer 1 refuses without.
+`lede-lineup` and `lede-collage` went active at ADR-076 and need one reference photo per
+unit. `lede-winner` is active as of ADR-071 but needs a rank on the input, which layer 1
+refuses without. Only `lede-authority` is still reserved.
 
 **Awareness is read from the input and from nowhere else, and it is deliberately weak.**
 The owner's instruction of 2026-09-09 was to carry it and not to lean on it, and SPEC §7.5

@@ -4671,3 +4671,72 @@ the namespace and the obvious next decision, but it is not this one.
 
 **Nothing becomes routable.** `lede-lineup` and `lede-collage` stay `reserved` on the
 one-reference-photo limit, which is now their only blocker.
+
+---
+
+## ADR-076 · 2026-09-09 · A prompt may attach one reference photo per product; the cap was the app's, the rule was about the CALL
+
+**Owner instruction, 2026-09-09:** "đối với các loại ảnh cần nhiều input trong khi app chỉ
+tham chiếu 1 ảnh product, hãy cứ xuất prompt đầy đủ, tôi sẽ mang prompt đi gen ảnh ở chỗ
+khác (google flow)."
+
+**ADR-021 declared the render capability on 2026-08-17: "one prompt, one generation call, at
+most one reference photo attached. No compositing, no edit chains, no post assembly."** Two
+different things were bundled into one sentence and only one of them was ever the point.
+
+- **One generation call, nothing assembled afterwards.** That is the rule. It is why
+  `multi-pass` died at ADR-021, why `steps[]` was retired at ADR-039, and why the value was
+  deleted from the vocabulary at ADR-067. **Unchanged.**
+- **At most one attached photo.** That was a fact about the owner's own app, written into
+  the library as if it were a fact about rendering. It is now lifted.
+
+**A prompt may attach one reference photo per product in frame, and it still makes one
+call.** Where the owner's app takes fewer than the prompt needs, **the prompt still ships in
+full** and is rendered in a tool that takes several. A prompt is never trimmed to fit a
+tool — which is the part of the instruction worth quoting back, because trimming is exactly
+what this library did for three weeks.
+
+### What it unblocks, and what it does not
+
+`lede-lineup` **0.3 → 0.4** and `lede-collage` **0.4 → 0.5**, both `reserved` → **active**.
+Their BLOCK sections become `ATTACHMENTS`. **Nothing about either picture changed** — they
+were drafted, measured, given grounds and marks, and held back by an attachment count.
+Six of the seven toplist types are now active; only `lede-authority` is reserved, and it is
+reserved behind G16's *named expert* row and `mapping/slot-rules.md`'s own out-of-scope
+declaration rather than behind anything this ADR touches.
+
+**It does not license invention.** ADR-075 permitted depicting a real brand from an attached
+reference; with references now attachable per unit, a lineup carries the real named products.
+A prompt with no reference still may not ask for branded units, because that produces a
+fabricated logo.
+
+**It does not reopen multi-pass.** One call. Nothing assembled. `scripts/validate.py` still
+errors on `generation_mode: multi-pass`, which is the check ADR-067 left behind.
+
+### Consequences — rule 6c sweep on `"one reference photo"`: 14 hits, 12 files, 7 in TEACHES
+
+- `CLAUDE.md` rule 6b — **rewritten**. It is the thin adapter's statement of ADR-021 and it
+  carried the cap.
+- `query/runbook.md` Step 3's RENDER CAPABILITY — **rewritten**, with the distinction
+  between the count and the call stated in the place types are told to read.
+- `query/output.schema.json` — both `pipeline` descriptions, **rewritten**. The
+  `attachments` array already permitted several and needed no change.
+- `eval/render-test.md` Step 2 — **rewritten**.
+- `registry/vocabulary.yaml` — the `toplist_frame_populations` comment said `many` reserves
+  a type. **Rewritten**; it no longer does.
+- `registry/toplist-instruction.md` — layer 1 of SELECTION, and *The two decisions* becomes
+  *What this namespace is still waiting on*, which is now one: G16's third-party award row,
+  breached by 3 of `lede-winner`'s 5 corpus frames.
+- `mapping/toplist-rules.md` — the reserved list, the `many` gate, the live-pool paragraph
+  and both preference rows.
+- `registry/toplist-types/lede-testing.md:115` — a CHANGELOG line reading "one product, one
+  reference photo". **History, stands.**
+
+**`registry/toplist-types/round-2/prompts.md` is new**: seven prompts, one per type, on
+seven products none of round 1 used, at the live version of every type. Prompts 3 and 6 ask
+for five and four attachments and carry real brand marks — the first prompts this library
+has ever written that its own app cannot run, which is the point of the instruction. Round 1
+is superseded and kept as the record.
+
+**Nothing is rendered.** Six active types, and not one of them has a render behind a single
+clause.

@@ -78,8 +78,15 @@ With the index + shortlist + `product.attributes` + ALL sections visible at once
 **RENDER CAPABILITY, declared once here so no type has to guess it.** Several type
 files gate on "where the renderer cannot composite", and until now nothing in the repo
 said whether it can. It cannot. Owner instruction, 2026-08-17: **this pipeline is
-paste-and-run — one prompt, one generation call, at most one reference photo attached.
-No compositing, no edit chains, no post assembly.** The adapter's note that the model
+paste-and-run — one prompt, one generation call. No compositing, no edit chains, no post
+assembly.**
+
+**The attachment COUNT was capped at one and is not any more** (owner instruction,
+2026-09-09, ADR-076). A prompt may ask for as many reference photos as it has products in
+frame. What has not changed is the thing the rule was actually about: ONE generation call,
+and nothing assembled afterwards. Where a prompt needs more attachments than the owner's
+own app accepts, **it still ships in full** — the owner renders it in a tool that takes
+several. A prompt is never trimmed to fit a tool. The adapter's note that the model
 supports conversational editing is about the MODEL; this is about the operator, and it
 is the operator who is the constraint.
 

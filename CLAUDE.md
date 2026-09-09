@@ -39,11 +39,13 @@ tasks to entry points and must stay logic-free.
    and everything that BINDS is still English in `registry/gif-types/`. SPEC §3.6,
    ADR-044; `scripts/validate.py` fails a gif type with no entry there.
 6. Never commit source images; reference them by sha256 (SPEC §6.4).
-6b. **Every delivered prompt is paste-and-run**: one prompt, one generation call, at
-   most one reference photo the owner attaches in the tool. Never emit a `multi-pass`
-   option, an edit chain or a post-assembly step — take the type's own single-pass
-   route, and where it has none, route to the next candidate and say so. ADR-021,
-   declared in `query/runbook.md` Step 3 and enforced by `scripts/validate.py`.
+6b. **Every delivered prompt is paste-and-run**: one prompt, one generation call, and
+   as many reference photos as the type needs — one per product in frame. Never emit a
+   `multi-pass` option, an edit chain or a post-assembly step. The COUNT of attachments
+   stopped being capped at one on 2026-09-09 (ADR-076); the one CALL did not, and it is
+   the call that made the rule. Where a prompt needs more attachments than the owner's
+   app takes, it still ships in full and is rendered elsewhere. ADR-021 and ADR-076,
+   declared in `query/runbook.md` Step 3.
 6c. **Before writing an ADR's Consequences list, sweep for what it bans**:
    `python3 scripts/adr-sweep.py "<term>"`. That list is a claim about blast radius
    and nothing verifies it, so account for every file the sweep puts in TEACHES or

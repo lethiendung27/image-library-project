@@ -70,8 +70,9 @@ awareness-free, and awareness only orders what survives.
 **Layer 1 — mechanical admission. Refuses. No judgement, no awareness.**
 
 - `status: reserved` → not routable, ever.
-- `products_in_frame: many` → needs `products[]` with ≥3 entries AND the reference-photo
-  decision below. Until then, refused.
+- `products_in_frame: many` → needs `products[]` with ≥3 entries and one reference photo
+  per unit. The attachment cap was lifted at ADR-076, so this no longer refuses a type; it
+  refuses a PAGE whose input carries fewer than three products.
 - `requires_product_photo: true` with `reference_photos` empty → refused, and say so in
   the session notes rather than shipping a prompt the owner cannot run.
 - The `product.attributes` gates of `mapping/toplist-rules.md`, which **restate by
@@ -269,13 +270,19 @@ for image types. Three deserve naming because a top-N page walks into them:
 (2026-09-09), so a toplist type carries no `ratios` key and no prompt states one — the
 ban on writing a ratio into prompt text (ADR-016, adapter Rule 4) is unchanged.
 
-## The two decisions this namespace is waiting on
+## What this namespace is still waiting on
 
-1. **The reference-photo limit.** ADR-021 allows one attached photo per prompt; a five-product
-   frame needs five. The model accepts several (adapter, Rule 2 note); the limit is a number
-   in our law, not a capability of the renderer, and its principle — one generation call — is
-   not threatened by attaching five. Until decided: `lede-lineup` and `lede-collage` reserved.
-2. **The two `LAW, not taste` rows of G16** — an award or a rating, and a named expert.
-   Until decided: `lede-winner` and `lede-authority` reserved.
+**One decision, down from two.** The reference-photo limit was taken on 2026-09-09
+(ADR-076): a prompt may attach one photo per unit, still in one generation call, and where
+the owner's app takes fewer the prompt ships in full and is rendered elsewhere.
+`lede-lineup` and `lede-collage` went active on it.
+
+**What is left is one row of G16, and it is the most-breached refusal here.** A
+certification seal, a press logo or a third-party AWARD mark is `LAW, not taste`, and
+**three of `lede-winner`'s five corpus frames carry one** — `CNET LAB TEST WINNER`, `CNET
+PEOPLE'S PICKS`, `GOOD HOUSEKEEPING BEDDING AWARDS`. ADR-071 permitted the page's OWN
+verdict and left another party's mark refused; the corpus says the market does it anyway.
+`lede-authority` is reserved behind the same row's *named expert* clause, and it is
+additionally out of scope by `mapping/slot-rules.md`'s own `author` row.
 
 Neither is a craft question and neither is the harness's to take.

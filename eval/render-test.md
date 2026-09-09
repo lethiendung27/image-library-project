@@ -20,7 +20,7 @@ A target = type + variant/axes + a real product (with reference photo when
 
 Fill the prompt exactly as `query/runbook.md` Step 5 prescribes (or reuse the type's
 worked example), then apply `adapters/nano-banana.md`. One prompt, one generation call,
-at most one reference photo attached in the tool (ADR-021). There is no script to follow
+and one reference photo per product in frame (ADR-021, ADR-076). There is no script to follow
 and no second pass: `steps[]` was retired at ADR-039 and `multi-pass` removed from the
 vocabulary at ADR-067.
 
