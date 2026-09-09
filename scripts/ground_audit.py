@@ -140,6 +140,20 @@ def designed(texture, spread_v):
     What still separates them is the light. A designed ground is evenly lit by
     construction, so its value hardly varies around the ring: those three read 0.15, 0.01
     and 0.02. A real place reads 0.34 to 0.67, because real light falls off.
+
+    KNOWN BOUND, found by the founding render round on 2026-09-09 and left unfixed on
+    purpose. Texture is a mean ABSOLUTE pixel difference, so it scales with exposure: the
+    same photograph of a real room measures 6.8 at value 0.64 and 2.7 at value 0.25, and
+    an underexposed room therefore returns DESIGNED off the first branch alone. The 32
+    corpus frames this split was measured on all sit at value 0.65-0.90, so the rule is
+    bounded rather than wrong - below about value 0.35 read spread_v, which holds its side
+    down to at least value 0.19.
+
+    Do not "fix" this by ANDing spread_v < 0.35 onto the first branch without re-running
+    the corpus: that was tested and re-files FIVE frames, one of which carries
+    lede-lineup's median of 2.9 and with it ADR-073's finding that the type is designed.
+    Moving a corpus frame is a curation decision, not a bug fix. See
+    registry/toplist-instruction.md, section Ground.
     """
     return texture < 3.0 or spread_v < 0.20
 

@@ -1,6 +1,6 @@
 ---
 id: lede-inuse
-version: "0.2"
+version: "0.3"
 status: active
 replaced_by: null
 products_in_frame: one
@@ -56,7 +56,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: lede-inuse v0.2   (skeleton copied verbatim from 06-relief-scene v3.7)
+TYPE: lede-inuse v0.3   (skeleton copied verbatim from 06-relief-scene v3.7)
 REGISTER: candid documentary photograph, single frame.        -> PARTS/register
 
 [SUBJECT] a person living the resolved state, mid-errand.     -> PARTS/subject
@@ -293,7 +293,46 @@ drained joyless grade, saturated colors, stock photo look
 ## KNOWN-FLAKY
 (populated from observation evidence only)
 
+## FOUNDING RENDER ROUND
+
+**One render, 2026-09-09 — round 2 prompt 2, rendered at v0.2.** A wall-mounted air cooler
+above a bed, a woman asleep on top of it, a hot bedroom. Verdict **`partial`**,
+self-assigned under ADR-011 on a render that was opened and looked at. Ledger:
+`eval/render-tests.jsonl`, ts `2026-09-09`.
+
+**The slots landed and the ARGUMENT did not, and that is the finding.** Every block
+arrived: the cooler is mounted, running and present as the reason the room is bearable
+rather than as the subject of the photograph, which is the hardest thing this type asks
+for. The ground is right for the family — texture 5.0, value 0.48, ring spread 0.86, a real
+place unevenly lit.
+
+**But the frame argues PAIN.** PURPOSE, copied verbatim from `06-relief-scene` at 3.7, is
+*"a person visibly letting go of something they had been bracing against, with the product
+there in the scene as the reason"*. The woman reads as still overheated — sprawled, arm
+flung over the eyes, mouth open. Nothing in the picture says the cooler has worked.
+
+**The prompt built that.** It asked for *"a room that is plainly hot — window open, curtain
+still"* and for a sleeper with an arm over her eyes, then relied on the presence of a
+running cooler to supply the relief. A product in a pain scene is not a relief scene; the
+release has to be in the BODY, and this type inherits a parent whose entire argument is
+that release.
+
+**Recorded, and deliberately NOT written into `argument-faults.md`.** SPEC §6.2 routes
+argument failures there rather than into the type that found them, and this one qualifies
+in kind — a render correct in every slot and wrong in what it says. It does not qualify in
+weight: 1 of 1, and this type has no second render to test a new fault against. Writing an
+A-number from one frame is how the ground clauses of ADR-068 happened.
+
+**Second failure, 1 of 1:** `[LIGHT]` returned warm low-angle sun with a hard wedge on the
+wall, against *"even natural daylight, bright, soft shadows. No golden hour"*.
+
 ## CHANGELOG
+- 0.3 (2026-09-09): **FOUNDING RENDER ROUND** — one render, round 2 prompt 2 at 0.2,
+  `partial`. Every slot landed, including the hard one: the cooler reads as the reason
+  rather than as the subject. What failed is the ARGUMENT — the sleeper reads as still
+  overheated, so the frame states the pain this type is the relief half of, and the prompt
+  built it by asking for a plainly hot room and leaving the release to the product. Noted
+  as a candidate argument fault and NOT written into `argument-faults.md` at 1 of 1.
 - 0.2 (2026-09-09): **copied verbatim from `06-relief-scene` at 3.7** — owner decision,
   reversing 0.1's citation (ADR-070). PURPOSE, SKELETON, PARTS, THE RELIEF, MARKS, SLOT
   CONSTRAINTS, NEGATIVE and KNOWN-FLAKY are that file's text, spliced by script. The

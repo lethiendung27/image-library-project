@@ -1,6 +1,6 @@
 ---
 id: lede-collage
-version: "0.5"
+version: "0.6"
 status: active
 replaced_by: null
 products_in_frame: many
@@ -47,7 +47,7 @@ WINNER`, `CNET PEOPLE'S PICKS`); reproducing another party's is the trademark qu
 
 ## SKELETON
 ```
-TYPE: lede-collage v0.5
+TYPE: lede-collage v0.6
 REGISTER: graphic product composition, one frame.
 
 [PRODUCT REFERENCES]  one attached photo per unit.                      -> G1, and see BLOCK
@@ -153,7 +153,65 @@ six records are two other shapes it has been absorbing: three of *several views 
 product* and two of *one subject in several states*. It is active and it is thin, and the
 split is a curation problem nobody has taken yet.
 
+## FOUNDING RENDER ROUND
+
+**One render, 2026-09-09 — round 2 prompt 6, rendered at v0.5.** Four hydraulic arm
+trainers, FOUR attached references, the GRADIENT ground form, title and `plaque`. Verdict
+**`partial`**, self-assigned under ADR-011 on a render that was opened and looked at.
+Ledger: `eval/render-tests.jsonl`, ts `2026-09-09`.
+
+**ADR-076's multi-reference route works, and this is its first evidence.** Four attachments
+produced four distinct cut-out units in one generation call with nothing assembled
+afterwards. That was the largest open question about this type — whether it is makeable at
+all — and at n=4 the answer is yes.
+
+**Question 8 is answered against this file.** `MARKS` permits the badge over one unit and
+calls it *"the page saying which won"*, flagged as 1-of-1 reasoning against 2-of-2
+observations and *"the thing to check first in a render round"*. Checked: the plaque sits
+over unit 2 and **occludes** it, and unit 2 is the least legible of the four. It reads as a
+floating label, not as a verdict — nothing about it says that unit won. So the render
+supports **neither** reading: not FAVOURING, which was the fear, and not NAMING, which was
+the claim. The paragraph stands unpatched at 1 of 1 and now has one render disagreeing with
+its reasoning rather than none.
+
+**Four failures, none of them patched, and two of them are the prompt's rather than the
+model's:**
+
+| slot | observed |
+|---|---|
+| `[SHADOW]` | **no contact shadow under any unit**; each cut-out carries a white sticker keyline instead. The clause asked for one faint shadow per unit, identical for all four |
+| `[TITLE]` | both lines **breach G10's 8% safe area** — measured 7.1% and 5.0% of frame width on line 1, 4.8% and 4.2% on line 2 |
+| `[MARK]` | a **landscape** plaque against *"an upright rectangle"*, and *"a thin white rule across it"* returned as an inset border |
+| `[CUT-OUTS]` | the wordmark `Gyroscope` printed on **two of the four** units, against *"the units are four different makers"* |
+
+**The `[TITLE]` breach was written into the prompt.** It asked the two lines to fill the
+band *"margin to margin"* and in its closing line asked that nothing come within a tenth of
+the width of any edge. Those cannot both hold; the model obeyed the first. Unlike
+`lede-winner`, this type has **no** display-type carve-out — its `PARTS/title` puts the
+line *over the empty band* or *behind the units*, never across an edge — so this is a plain
+G10 breach with no rule behind it, and the fix belongs in the next prompt rather than in
+this file.
+
+**The gradient is thinner than the corpus form.** Measured 120° of hue spread against the
+three corpus gradients at 175°, 175° and 177°, and it passes through a desaturated olive at
+its midpoint where lime meets magenta. Recorded at 1 of 1; whether a two-hue gradient needs
+its midpoint named is a question for a second render, not a clause today.
+
+**One measurement in this frame is not usable and says so.** Ring texture reads 4.3, which
+would put a smooth designed gradient near the photographed half. It is not the ground: the
+title runs into both side ring bands, so the ring measured the type. **On a type that
+declares a `text_layer`, the ring metric measures the words**, and that is a limit ADR-073
+did not have to state because no frame it measured carried baked text at the edge.
+
 ## CHANGELOG
+- 0.6 (2026-09-09): **FOUNDING RENDER ROUND** — one render, round 2 prompt 6 at 0.5,
+  `partial`. ADR-076's multi-reference route delivered four distinct units from four
+  attachments in one call: first evidence that this type is makeable. Question 8 answered
+  against the file — the plaque over unit 2 occludes it and reads as a floating label,
+  neither favouring nor naming. Four failures recorded and none patched at 1 of 1; the
+  `[TITLE]` G10 breach was written into the prompt, which asked for margin-to-margin and
+  for a tenth of clearance in the same breath. Ring texture is unusable on a frame whose
+  title reaches the edge.
 - 0.5 (2026-09-09): **reserved → active** (ADR-076, owner instruction), on the same two
   blockers clearing as `lede-lineup`. `BLOCK` becomes `ATTACHMENTS`, and the file now
   records that it holds ONE observation of the type as defined — the other five are two

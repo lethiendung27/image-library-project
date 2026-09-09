@@ -1,5 +1,22 @@
 # Toplist round 2 — seven prompts, and this is the set to render
 
+> **RENDERED 2026-09-09 — 6 of 7.** Prompts 1, 2, 4, 5, 6 and 7 came back and are graded
+> below; every verdict is `partial`, self-assigned under ADR-011 on renders that were
+> opened and looked at, and every one is logged in `eval/render-tests.jsonl`. Each type's
+> own file carries its result under `## FOUNDING RENDER ROUND`.
+>
+> **Prompt 3 — `lede-lineup`, five external optical drives, FIVE attachments — was not
+> rendered, and it is the one that matters most.** `lede-lineup` is now the only active
+> toplist type with no render behind any clause. It also carries the round's two unanswered
+> questions: whether the multi-attachment route holds at FIVE units, and whether a
+> near-white seamless leaves dark metallic drives readable. Prompt 6 answered the
+> multi-reference question at four units and answered nothing about the seamless.
+>
+> **Versions here are the versions RENDERED and they stay.** Six type files bumped a minor
+> when their results landed, so the `v0.x` line inside each prompt below is now behind its
+> file. That is correct: SPEC §3.3 keeps a rendered prompt as the record of what actually
+> rendered. Nothing in `scripts/` reads this file, so no check enforces either reading.
+
 **Round 1 is superseded and kept as the record.** It was written before four corrections
 that changed what these types are: `lede-winner` rewritten end to end after the owner named
 three examples (ADR-074), the ground rules rebuilt from this namespace's own corpus
@@ -303,3 +320,21 @@ questions this round can settle:
 | 8 | **In 6, does the mark over one unit read as NAMING a winner or as FAVOURING one?** | `lede-collage` MARKS against its own no-favoured-unit law |
 | 9 | **In 1 and 2, does a photographed ground at 0.65 value read as a real place or as underexposed?** | the photographed clause, on two types that have 0 and 2 corpus observations |
 | 10 | **In 7, is anything left that `lede-inuse` does not do?** | whether `lede-authority` survives at all, or is retired |
+
+## Answers, 2026-09-09
+
+Six renders, one each, so every answer below is **1 of 1** and none of them patched a
+skeleton — SPEC §6.2 wants ≥2/3 or ≥3 observations and a single render meets neither.
+
+| # | answer |
+|---|---|
+| 1 | **Half answered.** Prompt 6's FOUR attachments produced four distinct cut-out units in one call — ADR-076's route works at n=4. FIVE is untested: prompt 3 was not rendered |
+| 2 | **Legible, and wrong.** The lettering did not turn to gibberish, but `Gyroscope` is printed on two of the four units against *"four different makers"*. And prompt 4, which asked for **no words at all**, came back with an invented brand wordmark on a marker pen — invention arriving on a PROP, which ADR-075 reasons about only for the subject |
+| 3 | **As design.** EARBUDS runs x=0 to x=1198 in a 1200px frame, set behind the case and cut by both side edges, and reads as a graphic. It also breaches G10, which grants no exemption and which `lede-winner` does not declare — see that file |
+| 4 | **Flat won, on one frame each.** The flat cobalt returned texture 1.3 and hue spread 1°, clean against the corpus flat form. The lime→magenta gradient returned 120° against the corpus gradients' 175–177° and passes through a desaturated olive at its midpoint |
+| 5 | **Unanswered.** Prompt 3 was not rendered |
+| 6 | **A real place.** Racking, a doorway and work going on behind, light falling off across the frame. The ring numbers for this frame are not usable — it sampled the operator's sleeve |
+| 7 | **No.** Checked at 5× on the native file: a needle and unreadable ticks, no figure anywhere, so A15 is not breached. But the dial FACES the lens against the instruction to turn it away, so the outcome rests on focus rather than on the clause |
+| 8 | **Neither.** The plaque over unit 2 occludes it and reads as a floating label. It does not favour that unit and it does not name it a winner. `lede-collage` MARKS argued 1-of-1 that a mark over a unit says which won; this render supports neither side |
+| 9 | **Underexposed, and it exposed the instrument.** Prompt 1's ground measured value 0.25 against the clause's 0.65 and reads as dusk. At that value the texture metric calls a real office DESIGNED — the split has an exposure floor, now recorded in `toplist-instruction.md` §Ground |
+| 10 | **A demonstrator is left, not an authority.** Nothing refused appeared, and what remains is a man addressing the lens holding the product in a real room. The distinction from `lede-testing` survives; the one from `lede-inuse` reduces to gaze direction |

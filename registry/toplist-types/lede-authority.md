@@ -1,6 +1,6 @@
 ---
 id: lede-authority
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 products_in_frame: one
@@ -61,6 +61,51 @@ NOT DRAFTED — see BLOCK. This type is reserved and produces no prompt.
 NOT DRAFTED — see BLOCK.
 ```
 
+## FOUNDING RENDER ROUND — a diagnostic, and it did not create a skeleton
+
+**One render, 2026-09-09 — round 2 prompt 7, rendered at v0.1.** A man crouched beside a
+sofa in a half-emptied room, holding a furniture lifter, addressing the lens. Verdict
+**`partial`**, self-assigned under ADR-011 on a render that was opened and looked at.
+Ledger: `eval/render-tests.jsonl`, ts `2026-09-09`. **This file still has no SKELETON and
+this section does not write one.**
+
+**The prompt's question was what survives when everything illegal is stripped out.**
+Nothing refused appeared in the render: no name, byline, title card, lab coat, clipboard,
+lanyard, certification seal, star row, logo, word or number. So the picture is what the
+type is allowed to be, and the question is whether that is anything.
+
+**The answer is a DEMONSTRATOR, not an authority.** What is left is a man addressing the
+lens while holding the product in a real room. The authority was carried entirely by the
+credential — the byline, the title, the lanyard — which is exactly what `BLOCK` says the
+type may not show. Strip it and the frame stops arguing *an expert judged it* and starts
+arguing *someone is showing you this*, which is a different claim and a weaker one.
+
+**Against the neighbours it was kept apart from.** `BOUNDARY` distinguishes this type from
+`lede-testing` on METHOD versus PERSON, and that distinction survives — there is no bench
+and no instrument here. What does **not** survive is the distinction from `lede-inuse`: the
+same product, the same kind of real room, the same natural light. The one visible
+difference is the GAZE — this subject addresses the lens and `lede-inuse` requires a
+candid, unaware subject — and a gaze direction is thin ground for a separate type.
+
+**One measurement worth keeping.** This render is the round's **closest match to the
+photographed ground clause anywhere in the namespace**: texture 6.8 against the clause's
+7.0, value 0.64 against 0.65, ring spread 0.88 against 0.67. The clause is right; the type
+carrying it is the one in doubt.
+
+**One failure, 1 of 1:** `[SUBJECT]` — the lifter is held at floor level by its handle,
+against *"holding one lifter up at chest height"*.
+
+**What this does not do.** It does not deprecate the type. SPEC §6.3 requires a
+`replaced_by` for that and no type covers a to-camera demonstration today, so the honest
+state is a reserved placeholder with one render behind its own reasoning rather than none.
+
 ## CHANGELOG
+- 0.2 (2026-09-09): **FOUNDING RENDER ROUND** — one render, round 2 prompt 7 at 0.1,
+  `partial`, run as the diagnostic it was written as and creating no skeleton. Nothing
+  refused appeared, so the render shows what this type is permitted to be: a DEMONSTRATOR
+  addressing the lens, not an authority. The distinction from `lede-testing` survives; the
+  distinction from `lede-inuse` reduces to gaze direction. Not deprecated — SPEC §6.3 wants
+  a `replaced_by` and nothing covers a to-camera demonstration. Its ground is the round's
+  closest match to the photographed clause: texture 6.8, value 0.64.
 - 0.1 (2026-09-09): drafted `reserved` with no skeleton. Filed so the seventh of the
   owner's seven has a record and a reason rather than being silently dropped. ADR-069.

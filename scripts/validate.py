@@ -1396,9 +1396,15 @@ def validate_toplist_type_file(path, vocab, rule_ids, image_types):
     carries ONE image slot, so the role shortlist, the cross-slot pass and the
     coverage pass have nothing to act on. Never written into index.yaml.
 
-    Two checks here are the namespace's own law rather than schema hygiene:
-    a `reserved` type must NAME what blocks it, and no toplist type may declare a
-    text layer — a lede is scraped as og:image and this namespace bakes no words.
+    Two checks here are the namespace's own law rather than schema hygiene: a
+    `reserved` type must NAME what blocks it, and a declared `text_layer` is held to
+    the same closed slot list an image type's is.
+
+    That second one used to REFUSE a text layer outright, and this docstring went on
+    saying so for a day after the code below stopped doing it — the owner reversed the
+    constraint on 2026-09-09 (ADR-071) and G16 now binds the types that declare one.
+    Corrected here because a stale docstring teaching a lifted ban is exactly what
+    CLAUDE.md rule 6c exists to catch, and a sweep does not read code comments.
     """
     fname = os.path.basename(path)
     where = f"registry/toplist-types/{fname}"
@@ -1798,7 +1804,12 @@ def main(argv):
         if rec.get("verdict") not in ("pass", "partial", "fail"):
             err("eval/render-tests.jsonl",
                 f"record {n}: verdict must be pass|partial|fail")
-        if rec.get("type") not in types and rec.get("type") not in staging:
+        # A toplist id is a real type in a real registry; this check predates that
+        # namespace and would have warned on every record of its founding render
+        # round. Third time a tool's membership list has been found not knowing
+        # about registry/toplist-types/ — ADR-070 found it in adr-sweep.py's tuples.
+        if (rec.get("type") not in types and rec.get("type") not in staging
+                and rec.get("type") not in toplist_types):
             warn("eval/render-tests.jsonl",
                  f"record {n}: unknown type `{rec.get('type')}`")
     evidence = evidence_counts(observations, vocab, types)

@@ -1,6 +1,6 @@
 ---
 id: lede-winner
-version: "0.5"
+version: "0.6"
 status: active
 replaced_by: null
 products_in_frame: one
@@ -51,7 +51,7 @@ filed `variant-candidate` rather than `match` for exactly that reason.
 
 ## SKELETON
 ```
-TYPE: lede-winner v0.5
+TYPE: lede-winner v0.6
 REGISTER: designed promotional composition, one frame.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.       -> G1
@@ -148,7 +148,62 @@ a price, a fabricated rating or star row, a certification seal,
 a press logo, a third-party award mark, an invented placing or score
 ```
 
+## FOUNDING RENDER ROUND
+
+**One render, 2026-09-09 — round 2 prompt 5, rendered at v0.5.** Wireless translation
+earbuds, `sticker` mark, the FLAT ground form. Verdict **`partial`**, self-assigned under
+ADR-011 on a render that was opened and looked at. Ledger: `eval/render-tests.jsonl`,
+ts `2026-09-09`.
+
+**Three clauses got their first evidence.** Measured with the ring metric of
+`scripts/ground_audit.py`, so these numbers and the corpus numbers come from one function:
+
+| clause | asks for | this render |
+|---|---|---|
+| `PARTS/ground` texture | 1.5, smooth | **1.3** |
+| ring value spread | 0.17 | **0.15** |
+| flat form, hue spread | under 13° | **1°** |
+| `PARTS/ground` value | 0.99 | 0.84 |
+| `PARTS/ground` saturation | 0.55 | **0.92** |
+
+**`PARTS/title` delivered exactly as written**, which is worth recording because it is the
+strangest clause in this file: EARBUDS set BEHIND the case, overlapped by it, and cut by
+BOTH side edges — measured from x=0 to x=1198 in a 1200px frame. It reads as a graphic
+rather than as a mistake, which is what the clause claims and had never been tested.
+
+**The `sticker` mark carried an interior, and that is the first time anywhere in this
+library.** ADR-068 measured 5 of 6 direct-response badges dead flat at 0.02–0.09 of
+internal value spread and closed the gap with a clause that nothing had yet met. This
+render meets it: a white ring inset from the die-cut edge, a tone step across the fill,
+BEST OVERALL over 2026 at two sizes. n=1, and it is the only n that clause has ever had.
+
+**The ground came back louder than this type's own corpus.** *"A clear cobalt"* returned
+saturation 0.92 where the five corpus frames sit at 0.55 and none exceeds 0.60. **Recorded,
+not patched**: 1 of 1 is below SPEC §6.2's threshold, and one render cannot separate a
+prompt's word choice from a property of the type.
+
+### What this render cannot settle, and both belong to the owner
+
+- **Was the product DEPICTED or INVENTED?** The earbuds render as a recognisable
+  real-world form carrying an `R`. ADR-075 permits depicting a real brand from an attached
+  reference and refuses an invented one; which of the two happened is visible only to
+  whoever attached the photo.
+- **G10 and `PARTS/title` are in conflict, and this render is what exposed it.** G10's
+  scope reads *"every layer of every type ... No exemptions"* and its text says no word may
+  touch or cross a frame edge. `PARTS/title` licenses exactly that and ADR-074 reasons for
+  it — but SPEC §5 says a type opts out only through `exempt_from` and only where the
+  rule's own scope permits, and this file declares `exempt_from: [G7]` alone. The library
+  is teaching a G10 exception that no rule grants. Amending a global rule is not taken
+  here.
+
 ## CHANGELOG
+- 0.6 (2026-09-09): **FOUNDING RENDER ROUND** — one render, round 2 prompt 5 at 0.5,
+  `partial`. First evidence under `PARTS/ground` (texture 1.3 against 1.5, spread 0.15
+  against 0.17, the flat form at 1° of hue spread) and under `PARTS/title`, which returned
+  a display word cut by both side edges exactly as written. The `sticker` mark carried the
+  interior ADR-068 asked for — the first time that clause has been met in this library's
+  output. Ground saturation 0.92 against the corpus 0.55: recorded, not patched, at 1 of 1.
+  Two questions raised for the owner, one of them G10 against `PARTS/title`.
 - 0.5 (2026-09-09): **rewritten after the owner named three examples and two had been
   filed elsewhere by this session** (ADR-074). The discriminator against `lede-collage` was
   product COUNT and is now WORDS: a winner frame carries display type, a mark, or both; a

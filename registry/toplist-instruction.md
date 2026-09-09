@@ -163,6 +163,36 @@ was DESIGNED from one that was PHOTOGRAPHED, with no overlap:
 Everything at or under 2.9 is a made surface; everything at 7.0 and over is a room. There
 is nothing between 2.9 and 7.0 in 32 frames.
 
+**The split has an exposure floor, found by the founding render round and measured in both
+directions.** Texture is a mean ABSOLUTE pixel difference, so it scales with how much light
+is in the frame. Round 2's `lede-pain` render — a photograph of a real office at dusk —
+measured texture **2.8** and was filed DESIGNED. The same two pictures, with nothing changed
+but their exposure:
+
+| the SAME frame, brightness × | value | texture | reads as |
+|---|---|---|---|
+| `lede-pain` render, ×1.0 | 0.25 | **2.8** | DESIGNED |
+| `lede-pain` render, ×2.8 | 0.69 | **5.1** | photographed |
+| `lede-authority` render, ×1.0 | 0.64 | **6.8** | photographed |
+| `lede-authority` render, ×0.4 | 0.25 | **2.7** | DESIGNED |
+
+A real room crosses into the designed band at about **value 0.35–0.40**. Every one of the
+32 corpus frames the split was measured on sits at value 0.65–0.90, so **nothing above is
+wrong — it is bounded**: texture separates a made surface from a room only on a frame that
+is actually lit. Below that, read `spread_v` instead, which holds its side down to at least
+value 0.19 and is what says *real light falls off*.
+
+**The obvious repair was tested and is NOT applied.** Requiring `spread_v < 0.35` alongside
+the low-texture branch of `designed()` re-files **five corpus frames**, including the alarm
+clocks frame that carries `lede-lineup`'s median of 2.9 and therefore ADR-073's finding that
+this type sits on the designed side. A fix that moves corpus frames is a curation change
+wearing a bug fix's clothes, and it belongs to a curation pass rather than to a render round.
+
+**A second limit, and it is new.** On a type that declares a `text_layer`, the ring measures
+the WORDS. Round 2's `lede-collage` render read texture 4.3 on a perfectly smooth gradient
+because its title runs edge to edge through both side ring bands. ADR-073 never had to state
+this: no frame it measured carried baked text at the frame edge.
+
 **`lede-lineup` is on the DESIGNED side, and that corrects what its own file assumed.**
 It reads 2.9, with the group, not 7. Four of its five stand on a smooth studio sweep rather
 than in a place. What is real in a lineup is the SURFACE the units stand on and the contact

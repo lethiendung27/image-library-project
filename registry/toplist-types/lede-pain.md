@@ -1,6 +1,6 @@
 ---
 id: lede-pain
-version: "0.2"
+version: "0.3"
 status: active
 replaced_by: null
 products_in_frame: none
@@ -58,7 +58,7 @@ restated here.
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: lede-pain v0.2   (skeleton copied verbatim from 01-pain-scene v1.18)
+TYPE: lede-pain v0.3   (skeleton copied verbatim from 01-pain-scene v1.18)
       [--candid | --confront] [+ --marked]
 REGISTER: editorial photojournalism, natural and unstaged. Single frame.
 
@@ -286,7 +286,49 @@ rendered, which is why the bounds they carried are asserted positively in the bo
   named the signs by muscle as the slot asks. Watch whether the mark itself invites the model to
   overplay the face.
 
+## FOUNDING RENDER ROUND
+
+**One render, 2026-09-09 — round 2 prompt 1, rendered at v0.2.** A man half-risen from a
+desk chair, one hand on the small of his back, an office at dusk. Verdict **`partial`**,
+self-assigned under ADR-011 on a render that was opened and looked at. Ledger:
+`eval/render-tests.jsonl`, ts `2026-09-09`.
+
+**This type has ZERO corpus observations and now has one render.** The corpus is editorial
+review publishing and never opens on a pain shot, so this file could not be evidenced from
+`stills/top list/` at all. A render is the only evidence it can get, which makes this the
+one type in the namespace where the render round is not a second stream but the first.
+
+**What the type is for arrived.** The stall in the movement reads as a physical fact rather
+than as an expression — knees bent, hips not straight, weight still on the chair — which is
+G9's whole preference. A14's COST is in the same frame and legible: the coat over the chair
+back and a colleague's dark, emptied desk behind him say what the back is taking.
+
+**Three failures, all at 1 of 1, and the third is the prompt's own:**
+
+| slot | observed |
+|---|---|
+| `[GROUND]` | ring value **0.25** and saturation **0.25** against *"mid-toned and almost colourless"*; the frame reads as dusk, not as an ordinary room |
+| `[GROUND]` | *"thrown out of focus"* not delivered — the far desk, monitor and telephone hold readable detail |
+| safe area | the subject is cut by the bottom edge and the desk runs off the right |
+
+**The safe-area line should not have been in that prompt.** G10 binds text and product, and
+this type is defined by having no product and no words. A candid photograph of a person
+cannot keep a tenth of the frame clear of its own subject, so the clause was unsatisfiable
+the moment it was pasted in. That is a prompt-writing fault, not a render fault, and it is
+recorded here because the same boilerplate closes every prompt in the round.
+
+**A measurement caveat that belongs to this render more than to any other.** At value 0.25
+the ring texture reads 2.8, which `scripts/ground_audit.py` calls DESIGNED — a photograph of
+a real office filed with the flat coloured grounds. See `registry/toplist-instruction.md`
+§Ground for the exposure bound; nothing here is patched on it.
+
 ## CHANGELOG
+- 0.3 (2026-09-09): **FOUNDING RENDER ROUND** — one render, round 2 prompt 1 at 0.2,
+  `partial`, and the first evidence this type can have: it holds zero corpus observations
+  because editorial review publishing carries no pain lede. The physical fact and A14's
+  cost both arrived. Three failures at 1 of 1, none patched — and the third, a safe-area
+  breach by the subject's own limbs, is a fault in the prompt: G10 binds text and product,
+  and this type has neither.
 - 0.2 (2026-09-09): **copied verbatim from `01-pain-scene` at 1.18** — owner decision,
   reversing 0.1's citation (ADR-070). PURPOSE, SKELETON, PARTS, MARKS, SLOT CONSTRAINTS,
   NEGATIVE and KNOWN-FLAKY are that file's text, spliced by script. WORKED EXAMPLES and
