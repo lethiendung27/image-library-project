@@ -461,6 +461,36 @@ def evidence_counts(observations, vocab, types):
     return {tid: len(hashes) for tid, hashes in seen.items()}
 
 
+def check_toplist_evidence(observations, toplist_types):
+    """Corpus support per toplist type, and a warning where an ACTIVE one is thin.
+
+    `evidence_counts` above keys on image types only, so a ledger record naming a
+    toplist id counts toward nothing and would be invisible. This is the same
+    question asked of the third namespace: SPEC 6.2's rule wants >=3 distinct
+    observations before a clause is patched from the corpus, and an ACTIVE type
+    with fewer than that is a type the market has not yet been shown to build.
+
+    Reserved types are skipped: they are blocked on a decision, not on evidence.
+    """
+    verdicts = ("match", "variant-candidate")
+    seen = {tid: set() for tid in toplist_types}
+    for rec in observations:
+        tid = rec.get("type")
+        if rec.get("verdict") in verdicts and tid in seen:
+            h = rec.get("hash")
+            if h:
+                seen[tid].add(h)
+    for tid in sorted(toplist_types):
+        if toplist_types[tid]["fm"].get("status") != "active":
+            continue
+        n = len(seen[tid])
+        if n < 3:
+            warn(f"registry/toplist-types/{tid}.md",
+                 f"{n} corpus observation(s) — under SPEC 6.2's threshold of 3. "
+                 "The type is active and routable; what it is not yet is evidenced")
+    return {tid: len(h) for tid, h in seen.items()}
+
+
 def pick_stats(picks, types):
     """Pick-rate per (type x section_role) for SPEC 7.7's soft prior.
 
@@ -1758,6 +1788,7 @@ def main(argv):
             warn("eval/render-tests.jsonl",
                  f"record {n}: unknown type `{rec.get('type')}`")
     evidence = evidence_counts(observations, vocab, types)
+    check_toplist_evidence(observations, toplist_types)
     stats = pick_stats(picks, types)
 
     check_json_files()
