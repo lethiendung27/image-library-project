@@ -474,12 +474,18 @@ def check_toplist_evidence(observations, toplist_types):
     """
     verdicts = ("match", "variant-candidate")
     seen = {tid: set() for tid in toplist_types}
+    # An append-only ledger records a correction as a NEW record, so a frame
+    # re-filed from one type to another appears under both. The LAST record for a
+    # hash is the live one; counting every record would credit the superseded type
+    # as well. This is the first correction the toplist namespace has taken.
+    latest = {}
     for rec in observations:
-        tid = rec.get("type")
-        if rec.get("verdict") in verdicts and tid in seen:
-            h = rec.get("hash")
-            if h:
-                seen[tid].add(h)
+        h = rec.get("hash")
+        if h and rec.get("type") in seen:
+            latest[h] = rec
+    for h, rec in latest.items():
+        if rec.get("verdict") in verdicts:
+            seen[rec["type"]].add(h)
     for tid in sorted(toplist_types):
         if toplist_types[tid]["fm"].get("status") != "active":
             continue

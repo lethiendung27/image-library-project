@@ -19,7 +19,7 @@ whatever you attach.
 | 2 | `lede-inuse` | active | 1 | no |
 | 3 | `lede-lineup` | reserved | **none, deliberately** — see below | no |
 | 4 | `lede-testing` | active | 1 | no |
-| 5 | `lede-winner` | active | 1 | **yes** — title + badge |
+| 5 | `lede-winner` | active | 1 | **yes** — display type + mark |
 | 6 | `lede-collage` | reserved | **none, deliberately** | **yes** — title + badge |
 | 7 | `lede-authority` | reserved | 1 | no |
 
@@ -205,40 +205,39 @@ the picture. Nothing comes within a tenth of the width of any edge.
 
 ---
 
-## 5 — `lede-winner` · portable juicer cup · one photo, title and badge
+## 5 — `lede-winner` · portable juicer cup · display type, `plaque` mark
 
 ```
-TYPE: lede-winner v0.3
+TYPE: lede-winner v0.5
 REGISTER: commercial product photograph, one frame.
 
 PRODUCT REFERENCE: the attached photo is the exact reference for the portable juicer cup.
-Preserve shape, proportions, material, finish, colour and every word printed on it exactly.
+Preserve shape, proportions, material, finish, colour and its printed words exactly.
 
 SUBJECT: the cup alone, upright with its lid on, the brand face to the lens, turned a few
-degrees so its depth reads. It holds the right half of the picture.
+degrees so its depth reads, CUT OUT and floating with no surface under it and no shadow
+implying one. It holds the right half of the picture.
 
-GROUND: a designed field, light and strongly coloured, GRADIENT form. A perfectly smooth
-diagonal gradient from clear teal at the upper left to warm coral at the lower right — two
-hues opposite on the colour wheel. No grain, no texture, no vignette, no banding. One soft
-contact shadow under the cup. No room, no prop.
+GROUND: a designed field, light and strongly coloured. A perfectly smooth diagonal
+gradient from clear teal at the upper left to warm coral at the lower right — two hues
+opposite on the colour wheel. No grain, no texture, no vignette, no banding, no surface,
+no shadow, no room, no prop.
 
-LIGHT: broad and even from the front and slightly above, strong enough that every word
-printed on the cup stays legible.
+LIGHT: broad and even, front and slightly above, strong enough that the cup's printed
+words stay legible.
 
-TITLE: in the empty ground at the left, two lines of flat charcoal sans-serif, each
-beginning the same distance from the left edge. The two lines fill that empty band from
-margin to margin and are the largest text in the picture:
-BEST OVERALL
-BLENDS IN NINETY SECONDS
+DISPLAY TYPE: the single word BLENDERS in flat white capitals, set BEHIND the cup so the
+cup overlaps it, and so large that the word runs off BOTH side edges — the B and the S are
+cut by the frame. It is the largest thing in the picture after the cup.
 
-BADGE: form `sticker`. UPPER LEFT above the title, as wide as the cup's lid, tilted a few
-degrees. A filled circle in deep ink blue — a colour neither the cup nor the gradient
-carries — a narrow cream ring inset inside its edge, a cream laurel icon above, WINNER in
-large cream capitals and OUR PICK in small cream capitals below.
+MARK: form `plaque`. Over the LEFT third, on the display type and clear of the cup, about
+a third of the picture wide. An upright rectangle in deep ink blue — a colour neither the
+cup nor the gradient carries — a thin cream rule across it, BEST OVERALL in large cream
+capitals above and 2026 in small cream capitals below.
 
-No score, star row, rating, review count, certification seal, press logo or third-party
-award mark. The words above are the only added words. Nothing comes within a
-tenth of the width of any edge.
+No score, star row, rating, certification seal, press logo or third-party award mark. The
+display type may be cut by the side edges; the mark's words may not, and nothing else comes
+within a tenth of the width of any edge.
 ```
 
 ---

@@ -4516,3 +4516,91 @@ no pain lede — so no ground clause is written for it and its copied parent's s
 **Nothing is rendered.** Every clause here is measured off market frames and has no render
 behind it, which is a better position than the imported rule it replaces and is not the
 same as being tested.
+
+---
+
+## ADR-074 · 2026-09-09 · `lede-winner` is a designed promotional hero, and the discriminator against `lede-collage` is WORDS rather than product count
+
+**Owner instruction, 2026-09-09:** three frames named as examples of `lede-winner` — a
+television under `TV DEALS`, AirPods with a `TOP DISCOUNTS` sticker, and three laptops under
+an oversized `LAPTOPS` with a `CNET PEOPLE'S PICKS 2026` plaque. **Two of the three had been
+filed elsewhere by this session**: the television as `reject` ("a deals banner, not a
+ranking lede") and the laptops as `match lede-collage`.
+
+**What the three have in common is not what the type file said.** It was drafted as *"the
+number one alone, presented as chosen — a packshot carrying a verdict"*, `products_in_frame:
+one`, with the mark mandatory. Against the examples: the laptops frame carries THREE
+products, and the television frame carries NO mark at all. Both halves of the definition
+were wrong.
+
+**Measured, the three are one of the tightest clusters in the corpus:**
+
+| | TV DEALS | AirPods | LAPTOPS |
+|---|---|---|---|
+| ground value | 1.00 | 0.91 | 0.99 |
+| ground saturation | 0.55 | 0.60 | 0.60 |
+| hue spread | 138.6° | 179.3° | 176.7° |
+| products | 1 | 1 | 3 |
+| display type | huge | none | huge |
+| mark | none | sticker | plaque |
+
+**So the type is a DESIGNED PROMOTIONAL HERO**: cut-out product on a loud designed ground,
+carrying oversized display type, a verdict mark, or both — and **at least one of the two is
+always present**.
+
+### The boundary against `lede-collage` is words, not count
+
+A winner frame carries display type or a mark; a collage carries neither and argues with
+the units alone. Checkable at a glance, and it survives a frame having several products.
+The old boundary was product count, which is exactly why two of the owner's three were
+misfiled.
+
+**Applying that boundary re-files a fourth frame**: the five robot vacuums under a
+`CNET LAB TEST WINNER 2025` plaque, filed `match lede-collage` in batch A. It is the same
+construction as the laptops frame. Re-filed by the owner's own rule rather than by a new
+judgement, and flagged as such in the ledger.
+
+**And it demotes a fifth.** A near-white sheets packshot with a small `GOOD HOUSEKEEPING`
+badge was filed `match lede-winner` by this session in batch C. It measures 0.03 saturation
+and 0° of hue spread against the owner's three at 0.55–0.60 and 138–179° — a quiet packshot,
+not a loud promotional hero. Demoted to `variant-candidate`; whether it belongs here or with
+`07-identity-pack` plus an accolade is the owner's call.
+
+**The "bimodal ground" reported this morning was my own misclassification, not a property
+of the type.** It existed only because that quiet frame was counted as a match. With it
+demoted, the five frames read value 0.99, saturation 0.55, texture 1.5 — one mode.
+
+### `PARTS/title` is new and it is the centre of the type
+
+Display type in this corpus is **set larger than any word elsewhere in the namespace, sits
+BEHIND or ACROSS the cut-out units, and is routinely CROPPED by the frame edge** — `LAPTOPS`
+runs off both sides. **This is the one place in the library where type may be cut by the
+edge**, and it is deliberate: G10's safe area governs words that must be READ, and a display
+word running off the frame is being used as a graphic. The mark's own words still keep the
+margin.
+
+### The instruments were counting corrections twice
+
+These are the first corrections the toplist namespace has taken, and both
+`check_toplist_evidence` in `scripts/validate.py` and `scripts/ground_audit.py` were
+counting every ledger record. An append-only ledger records a correction as a NEW record, so
+a re-filed frame appeared under **both** the old family and the new one. Both now read the
+LAST record per hash, which is what an append-only ledger means. `lede-winner` reads 5 and
+`lede-collage` 6, not 6 and 8.
+
+### A consequence worth stating plainly
+
+With the two loud frames gone, **`lede-collage` has ONE observation of the type as it is
+defined** — several distinct products, cut out, on one ground. Its other five are two other
+shapes it had been absorbing: three of "several VIEWS of one product" and two of "one
+subject in several states". That is a curation problem this ADR does not solve.
+
+**Consequences.** `registry/toplist-types/lede-winner.md` 0.4 → **0.5**, rewritten:
+PURPOSE, TRIGGER, BOUNDARY, SKELETON, `PARTS/subject`, `PARTS/ground`, `PARTS/title`,
+`MARKS` (gaining `none` as an observed form), SLOT CONSTRAINTS, NEGATIVE. Four correction
+records appended to `ingestion/observations.jsonl` — append-only, the superseded records
+stay. `scripts/validate.py` and `scripts/ground_audit.py` read the latest record per hash.
+`round-1/prompts.md` prompt 5 rewritten onto display type and a `plaque`.
+
+**Not done.** `lede-collage` is not rewritten and the two absorbed shapes are not split out.
+Nothing is rendered.

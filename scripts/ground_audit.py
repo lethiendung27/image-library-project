@@ -110,12 +110,17 @@ for fn in os.listdir(SRC):
 
 recs = [json.loads(l) for l in io.open(REPO + "ingestion/observations.jsonl",
                                        encoding="utf-8") if l.strip()]
-by = {}
+# The ledger is append-only and a correction is a NEW record, so the LAST record
+# for a hash is the live one. Counting every record would file a corrected frame
+# under both the old family and the new one.
+latest = {}
 for r in recs:
-    if r.get("template_version") != "t1.0":
-        continue
+    if r.get("template_version") == "t1.0":
+        latest[r["hash"]] = r
+by = {}
+for h, r in latest.items():
     t = r.get("type") or ("PROPOSED " + r["proposed_id"] if r.get("proposed_id") else "REJECT")
-    p = h2p.get(r["hash"])
+    p = h2p.get(h)
     if p:
         by.setdefault(t, []).append((analyse(p), os.path.basename(p)))
 
