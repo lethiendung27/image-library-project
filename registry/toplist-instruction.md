@@ -407,6 +407,30 @@ drawn small stops being photographed"*, from five frames with no repeat among th
 control cell twice. A set that reads one frame as proof about wording will keep writing rules
 the next draw refutes, which is how both withdrawn rules got written.
 
+## A slot named by its ROLE takes a DEFAULT — name the value
+
+**Four instances in one day, 2026-09-10, across two types.** A prompt block that names what a
+slot IS FOR, without naming what goes in it, does not leave the slot empty: the model fills it
+with the commonest thing of that kind, and the commonest thing is almost never what the picture
+needed.
+
+| the clause | what it named | what came back |
+|---|---|---|
+| `lede-collage` — *"a small label between rules, a large word, a small year"* | three type LEVELS, two words | a badge printing the literal word `LABEL`, and another arcing `AAFERABLE BREAD QUALITY` |
+| `lede-collage` — *"the ground shows as a plain even border"* | a border's ROLE | **white in 5 of 5** |
+| `lede-inuse` — *"calm and unbothered"* | a mood | a neutral face, 5 of 6 |
+| `lede-inuse` — *"a natural palette"* | a palette's ROLE | colourless, saturation 0.15 in the flattest frame |
+
+**Each was fixed the same way and each fix landed on its first outing.** Name the strings, one
+per level: 8 of 8. Name the border's value — *the deepest hue of the palette family* — and
+saturation goes 0.02 to 0.67–0.97, 5 of 5. Name the muscles instead of the mood: brow, jaw,
+shoulders, and the frame reads.
+
+**This is the same law as §*Writing a clause* seen from the other side.** That section says a
+prohibition is inert because it asks for a measurement with no picture attached. This one says a
+role is inert because it asks for a category with no instance attached. **Both fail for the want
+of a thing to draw**, and the repair in both directions is to supply one.
+
 ## Writing a clause: state the FAULT, not the property
 
 **A constraint aimed at one fault but written as a general property removes the entire
