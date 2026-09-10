@@ -29,7 +29,9 @@ Invariants any harness must respect:
    loaded only for the types selected for a slot (progressive disclosure).
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are **append-only**. Corrections
    are new records, never edits.
-4. Anything under `registry/types/_staging/` is **not routable**.
+4. Anything under `registry/types/_staging/` is **not routable**, and so is anything under
+   `registry/pdp-dr-types/` while its `status` is `reserved` — which today is every file in
+   it (§3.8, ADR-077).
 5. Every change under `registry/` is validated by `scripts/validate.py` before commit.
    The human gate is the owner's explicit inputs — image feeds, picks, direct
    commands, and render verdicts where the owner gives them; once given, the harness
@@ -80,7 +82,10 @@ Every new image is absorbed at the **cheapest level that fits**, tried strictly 
    (e.g. `register: ugc`). Same argument, different presentation, applicable to several types.
 3. **Variant** (`--slug`) — same job+device, exactly **one** structural decision differs.
    Defined inside the parent type file as a diff-only block.
-4. **New type** — different job or device; a genuinely new argument. Goes to `_staging/`.
+4. **New type** — different job or device; a genuinely new argument. Goes to `_staging/`,
+   or to `registry/pdp-dr-types/` where the cluster was measured on the LP2 product-gallery
+   corpus (§3.8). The corpus a cluster came from decides which, and a draft never sits in
+   both.
 
 A classifier may only escalate a level after the lower level demonstrably fails.
 
@@ -236,6 +241,50 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
   stage: mechanical admission, then the preference order in `mapping/toplist-rules.md`
   (declared a hypothesis), then FIT by judgement citing the sentence of product copy that
   decided it (ADR-059's own mitigation), then the pick-rate prior of §7.7.
+
+### 3.8 PDP-DR types
+
+A fourth registry governs the **image gallery of a direct-response product detail page**,
+LP2 (ADR-077). It is a **separate namespace** from image types, and it is separate for
+none of the reasons §3.6 and §3.7 give: a product gallery carries about twelve slots, so
+the role shortlist of §7.2, the cross-slot pass of §7.3, the coverage pass of §7.5 and
+one-type-once all apply to it, harder than they apply to an advertorial. It stands on
+three differences of LAW instead — text baked into the image (owner decision 2026-08-31),
+a ground rule measured on its own corpus (ADR-068), and marketplace legality gating every
+tile. Like the other two namespaces it is never written into `index.yaml`.
+
+- Files live in `registry/pdp-dr-types/<id>.md`; ids are the closed list
+  `vocabulary.pdp_dr_types`.
+- **Ids keep the `{step}-{job}-{device}` grammar**, unlike gif and toplist ids, which are
+  arguments. This namespace is a **co-registry**: a PDP page routes to `registry/types/`
+  and to this folder in one pass, and two id grammars in one pass is how a reader loses
+  track of which law applies. Promotion out is a `git mv` and a status change, never a
+  rewrite.
+- **Anatomy and frontmatter are an image type's** (§3.3, §3.4) — same required sections,
+  same keys — plus `blocked_by`, which is non-null exactly when `status: reserved`. A
+  reserved type also owes a `BLOCK` section naming the decision or the evidence it waits
+  on. There is no separate `BOUNDARY` section: an image type carries its discriminator
+  inside `use_when`, which is where ADR-060 put the whole trigger, and a second home for it
+  would be a second place to go stale.
+- **No copies, and therefore no drift instrument.** ADR-070 gave `registry/toplist-types/`
+  `copied_from` + `copied_at_version` and a validator warning because the owner had chosen
+  verbatim copies. Nothing here is a copy of an active type, so that machinery is absent.
+  The residual exposure is a skeleton CALLING a part defined in another file, which nothing
+  validates; every such call is registered in `mapping/pdp-dr-rules.md` and the register is
+  the whole instrument.
+- **Input is the whole `content.json`**, unlike §3.7. A product gallery has
+  `page.sections`, the slots are real, and §7 runs unchanged. The first gallery image is out
+  of library scope — a standard product shot (`mapping/slot-rules.md`, cross-rule 6).
+- **A PDP-DR type MAY declare `text_layer`** and G16 binds the types that do. Two rows of
+  G16 are LAW rather than taste and no type-scoped permission reaches them: a named-person
+  or named-profession endorsement (G14 binds the SLOT), and a certification, award, rating
+  or press mark (the trademark question, put to the owner 2026-08-18 and declined).
+- Law shared by every type is stated once in `registry/pdp-dr-instruction.md` and never
+  restated in a type file, exactly as §5 treats global rules. Routing is
+  `mapping/pdp-dr-rules.md`, whose preference table is **measured** from the 159-observation
+  corpus rather than declared a hypothesis.
+- **Every file is `status: reserved` at the namespace's founding** and nothing in it routes.
+  What routes on a PDP page today is the shared active types in `registry/types/`.
 
 ## 4. Vocabulary governance
 

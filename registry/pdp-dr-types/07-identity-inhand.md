@@ -18,6 +18,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
+blocked_by: "Four more distinct sources - one observation is filed under this id today. The first job is a re-filing pass over two frames the ledger put elsewhere."
 ---
 
 # 07-identity-inhand — STAGING DRAFT
@@ -42,6 +43,13 @@ concrete form: a family whose argument is the object rather than a funnel beat. 
 that family lives in `registry/types/` under a new step or in its own namespace like
 `registry/gif-types/` is the decision this draft is meant to make concrete, not to
 pre-empt — the file is written so it can move either way.
+
+**That decision was taken on 2026-09-10 and it went the second way** (ADR-077): the file now
+lives in `registry/pdp-dr-types/`, the fourth namespace. The paragraph above is left standing
+because it is the reasoning the decision was taken against, and because it is still half
+right — this is a namespace, but a **co-registry** rather than a fork, so the id grammar and
+the anatomy are `registry/types/`'s and promotion back into it is a `git mv`. The routing
+question the paragraph says is deferred is still deferred: nothing here routes.
 
 ## PURPOSE
 Show the object at human scale, presented rather than used. A hand holds the product up
@@ -171,6 +179,12 @@ product in one real room filled to the edges; this type deletes the room on purp
 object to argue size. `05-social-snapshot` and the proposed testimony type put a person in
 frame as a witness; here the hand is a ruler and carries no endorsement, which is what keeps
 G14 off this type entirely.
+
+## BLOCK
+**Waiting on a re-filing pass, then on four more distinct sources.** One observation is filed
+under this id; two further frames read as its argument and the ledger puts them elsewhere. The
+promotion header names both and states the rule they run into: **a batch summary naming a
+pattern three times is not a count.**
 
 ## CHANGELOG
 - 0.1 (2026-09-03): drafted from three hash-verified observations across two batches and two

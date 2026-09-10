@@ -17,6 +17,7 @@ exempt_from: [G3, G4, G6]
 pairs_with: [06-relief-hero, 04-proof-lockedframe]
 never_with: []
 avoid_adjacent: [05-social-handoff, 05-persona-grid]
+blocked_by: "Four more distinct sources - 1 of 5 today. Both card modes have a rendered pass, and no amount of render evidence substitutes for exemplars."
 ---
 
 # 05-social-card — STAGING DRAFT
@@ -218,6 +219,15 @@ Step-5 family map: `persona-grid` = many faces, breadth; `social-handoff` = one
 recommendation staged as an overheard moment; `social-card` = one published review,
 face and quote separated by register (photo vs card). One page should carry at most
 one of the three adjacent to conversion sections.
+
+## BLOCK
+**Waiting on four more distinct sources** — one of five, and it has been one of five since
+2026-08-11. Both card modes have a rendered pass, which is why the promotion header says in
+as many words that **no amount of render evidence substitutes for exemplars**.
+
+G14 sits behind the count and is the harder gate: `--verbatim` cites a real published review
+with attribution, and a card carrying a name that nobody published is a fabricated
+endorsement whichever type drew it.
 
 ## CHANGELOG
 - 0.4 (2026-08-10): worked-example set rotated under the cap-2 rule — the untested

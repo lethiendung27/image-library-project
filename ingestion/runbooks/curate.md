@@ -30,10 +30,15 @@ or ≥3 distinct observations**:
 
 - Variant cluster with ≥3 distinct observations → draft the `### --slug` diff block in
   the parent type; bump MINOR; cite hashes.
-- New-type cluster → draft a full type file in `registry/types/_staging/` with
-  `status: reserved`. New job/device values ship in `vocabulary.yaml` in the same
-  diff. Check promotion readiness against SPEC §6.3 (≥5 exemplars, router-confusion
-  test, rendered worked example) — promotion itself is a separate, later diff.
+- New-type cluster → draft a full type file with `status: reserved`. **Which folder is
+  decided by the CORPUS the cluster was measured on**, not by the argument: a cluster from
+  the LP2 product-gallery batches goes to `registry/pdp-dr-types/` and owes a `blocked_by`
+  and a `BLOCK` section (SPEC §3.8, ADR-077); everything else goes to
+  `registry/types/_staging/`. A draft never sits in both, and the validator errors on an id
+  that does. New job/device values ship in `vocabulary.yaml` in the same diff, and a
+  `pdp-dr` draft ships in `vocabulary.pdp_dr_types` too. Check promotion readiness against
+  SPEC §6.3 (≥5 exemplars, router-confusion test, rendered worked example) — promotion
+  itself is a separate, later diff, and out of `pdp-dr-types` it is a `git mv`.
 
 ## 4. Router-confusion test (for any trigger you added or edited)
 

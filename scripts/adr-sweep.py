@@ -39,6 +39,16 @@ TEACHES = (
     "registry/types/", "registry/gif-types/", "registry/gif-instruction.md",
     "registry/toplist-types/", "registry/toplist-instruction.md",
     "mapping/toplist-rules.md",
+    # Fourth namespace, ADR-077. Added in the SAME diff that created it: ADR-070
+    # found these tuples not knowing registry/toplist-types/ existed a day after
+    # ADR-069 made it, which silently filed a whole new registry as UNCLASSIFIED
+    # and would have misclassified every future sweep on any term.
+    "registry/pdp-dr-types/", "registry/pdp-dr-instruction.md",
+    "mapping/pdp-dr-rules.md",
+    # Found UNCLASSIFIED by the ADR-077 sweep and fixed in the same diff, on the
+    # same reasoning: these files tell a harness how to classify, so a hit in one
+    # is an instruction somebody follows.
+    "ingestion/prompts/",
     "registry/argument-faults.md",
     "ingestion/runbooks/", "eval/render-test.md",
 )

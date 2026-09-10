@@ -18,6 +18,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
+blocked_by: "Criterion 2, the router-confusion test against 06-relief-hero. Criterion 1 is cleared at nine sources, and a type this common contests every outcome slot on every page."
 ---
 
 # 06-relief-claimstack — STAGING DRAFT
@@ -348,7 +349,7 @@ warm rim light on the subject with the field left unlit. That was listed as unte
 the least of this type's problems.
 
 ## SECOND RENDER ROUND — 2026-09-03
-Two renders, ratio 1:1, prompts 3 and 4 of `_staging/ready-to-push/prompts.md`. **Each
+Two renders, ratio 1:1, prompts 3 and 4 of `registry/pdp-dr-types/ready-to-push/prompts.md`. **Each
 isolates ONE clause widened by ADR-066**, with the other held at its known-good value, so a
 failure could attribute. Both products come from `query/product-slugs.yaml` and neither is in
 this type's source list. Verdicts by eye under ADR-011.
@@ -389,6 +390,17 @@ plus an anchored size is a combination that walks off the frame.
 **Why this is `relief` and not a new job.** The argument is the state after buying, which is
 step 6's own definition; the enumeration is how the tile is BUILT, not what it argues. A device
 names the mechanism and `claimstack` is the mechanism: a subject beside a stack of claims.
+
+## BLOCK
+**Waiting on criterion 2, the router-confusion test against `06-relief-hero`.** Criterion 1 is
+cleared at nine distinct sources — the best-evidenced proposal this library has ever held,
+active types included — and that is exactly why the test binds: a subject to one side with a
+headline and claim lines filling the other is the commonest argument image on a
+direct-response product page, so it will contest every outcome slot with an active type. ADR-066
+recorded the refusal to promote on that basis and it stands.
+
+`07-identity-callout` re-files four of its six observations to this type on the breakdowns
+already in the ledger. Those are not new sources until the re-filing pass actually runs.
 
 ## CHANGELOG
 - 0.4 (2026-09-03): owner audit of the second round — colour. `PARTS/field`: the flat tone is

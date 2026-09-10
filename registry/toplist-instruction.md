@@ -305,11 +305,17 @@ moves past it. A copy cannot be stopped from drifting; it can be made to say so.
 warning names the remedy: re-copy, or write into this file's CHANGELOG why the divergence
 is intended.
 
-The exposure is recorded rather than argued away. `registry/types/_staging/ready-to-push/`
-once shipped byte copies of four type files and they were deleted on 2026-09-03 with the
-finding written into that folder's README — *two copies of one file drift, and the stale
-one is the one somebody reads*. That remains true here. What is different is that this
-namespace has an instrument pointed at it.
+The exposure is recorded rather than argued away. A `ready-to-push/` folder once shipped byte
+copies of four type files and they were deleted on 2026-09-03 with the finding written into
+that folder's README — *two copies of one file drift, and the stale one is the one somebody
+reads*. That remains true here. What is different is that this namespace has an instrument
+pointed at it. (The folder itself moved to `registry/pdp-dr-types/ready-to-push/` on
+2026-09-10, ADR-077; the finding is unaffected by where it lives.)
+
+**The fourth namespace took the other road and it is worth knowing which is which.**
+`registry/pdp-dr-types/` holds no copies at all, so it needs no drift instrument — and it
+carries a smaller exposure of the same kind, a skeleton CALLING a part defined in another
+file, registered by hand in `mapping/pdp-dr-rules.md` because nothing validates it.
 
 **A copy is NOT reached by a rule keyed on the parent's id, and that is the part most
 likely to be forgotten.** `mapping/slot-rules.md` says *"drop `06-relief-scene`"* when

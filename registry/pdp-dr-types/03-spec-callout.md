@@ -18,6 +18,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: [03-spec-explode, 03-spec-macro]
 requires_pair: null
+blocked_by: "SPEC 6.3(3) wants the OWNER's verdict on the two founding renders and that is outstanding; criterion 2 is unrun, and 07-identity-callout draws from one of the same source pages."
 ---
 
 # 03-spec-callout — STAGING DRAFT
@@ -300,7 +301,7 @@ words in the picture; no logo, no watermark, no person, no room.
   it, because nothing in either frame suggested it was the binding constraint.
 
 ## FOUNDING RENDER ROUND — 2026-09-03
-Two renders, ratio 1:1, prompts 1 and 2 of `_staging/ready-to-push/prompts.md`. Both products
+Two renders, ratio 1:1, prompts 1 and 2 of `registry/pdp-dr-types/ready-to-push/prompts.md`. Both products
 come from `query/product-slugs.yaml` and **neither appears in this type's source list** —
 wireless translation earbuds at four callouts, cordless electric scissors at six. Verdicts by
 eye under ADR-011; SPEC §6.3(3) still wants the owner's own.
@@ -348,6 +349,17 @@ an award, a certification, a best-seller flag — which are claims about the pro
 rather than about its parts, and which G16 refuses. `06-relief-claimstack` puts claims beside a
 subject without attaching them to anything, and that is the real line: **a claim-stack claim is
 about the buyer's life, a callout claim is about a place on the object.**
+
+## BLOCK
+**Waiting on the owner's verdict**, not on evidence. Criterion 1 is cleared at five sources
+and criterion 3 has two renders — both examined, both graded by eye under ADR-011 — but
+SPEC §6.3(3) asks for the OWNER's verdict and ADR-011 forbids assigning that one.
+
+Criterion 2 is unrun and it is no longer hypothetical: `07-identity-callout` entered this
+namespace on 2026-09-10 drawing one of its sources from the same `feicemat-v2` page as this
+file. Two types annotating one object with labelled satellites is the confusion the test
+exists to find, and the discriminator is the JOB — parts and what they do here, what the
+object IS there.
 
 ## CHANGELOG
 - 0.3 (2026-09-03): owner audit of the founding round — colour. `PARTS/setting`: the ground

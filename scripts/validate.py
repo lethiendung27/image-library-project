@@ -27,6 +27,7 @@ SLUGS_PATH = os.path.join(ROOT, "query", "product-slugs.yaml")
 RENDER_PATH = os.path.join(ROOT, "eval", "render-tests.jsonl")
 GIF_TYPES_DIR = os.path.join(ROOT, "registry", "gif-types")
 TOPLIST_TYPES_DIR = os.path.join(ROOT, "registry", "toplist-types")
+PDP_DR_TYPES_DIR = os.path.join(ROOT, "registry", "pdp-dr-types")
 GIF_LEDGER_PATH = os.path.join(ROOT, "ingestion", "gifs.jsonl")
 GIF_VI_PATH = os.path.join(ROOT, "registry", "gif-cards-vi.md")
 
@@ -259,9 +260,10 @@ EXAMPLE_RE = re.compile(
     r"(untested|pass|partial|fail)\s*$", re.M)
 
 
-def validate_type_file(path, vocab, rule_ids):
+def validate_type_file(path, vocab, rule_ids, where_prefix="registry/types",
+                       extra_optional=()):
     fname = os.path.basename(path)
-    where = f"registry/types/{fname}"
+    where = f"{where_prefix}/{fname}"
     with open(path, encoding="utf-8") as f:
         text = f.read()
     fm_lines, body = split_frontmatter(text, where)
@@ -273,7 +275,17 @@ def validate_type_file(path, vocab, rule_ids):
         if k not in fm:
             err(where, f"missing required frontmatter key `{k}`")
     for k in fm:
-        if k not in REQUIRED_KEYS + OPTIONAL_KEYS:
+        if k in REQUIRED_KEYS + OPTIONAL_KEYS + list(extra_optional):
+            continue
+        # Ahead of the generic message on purpose. ADR-069 found the toplist
+        # `text_layer` error unreachable behind an unknown-key check and moved it,
+        # because "unknown frontmatter key" does not tell a reader which namespace
+        # the key belongs to.
+        if k == "blocked_by":
+            err(where, "`blocked_by` belongs to registry/pdp-dr-types/ (SPEC 3.8), "
+                       "not to this registry. A type here is reserved by status "
+                       "alone and its promotion criteria live in SPEC 6.3")
+        else:
             err(where, f"unknown frontmatter key `{k}`")
 
     tid = fm.get("id")
@@ -420,6 +432,50 @@ def cross_validate(files, known_ids, where_prefix="registry/types"):
         rb = fm.get("replaced_by")
         if rb and rb not in known_ids:
             err(where, f"replaced_by references unknown type `{rb}`")
+
+
+# ------------------------------------------------------------------ pdp-dr
+
+# The FOURTH namespace (SPEC 3.8, ADR-077): the gallery of a direct-response
+# product detail page, LP2. Unlike gif-types and toplist-types it is a CO-REGISTRY
+# — same anatomy, same frontmatter, same {step}-{job}-{device} ids as
+# registry/types/ — so it reuses validate_type_file() rather than owning a second
+# copy of those checks. What it adds is `blocked_by` and a BLOCK section, paired
+# to `status: reserved` the way ADR-070 paired copied_from and copied_at_version.
+PDP_DR_EXTRA_KEYS = ["blocked_by"]
+
+
+def validate_pdp_dr_type_file(path, vocab, rule_ids):
+    fname = os.path.basename(path)
+    where = f"registry/pdp-dr-types/{fname}"
+    parsed = validate_type_file(path, vocab, rule_ids,
+                                where_prefix="registry/pdp-dr-types",
+                                extra_optional=PDP_DR_EXTRA_KEYS)
+    if parsed is None:
+        return None
+    fm = parsed["fm"]
+
+    status = fm.get("status")
+    blocked = fm.get("blocked_by")
+    if status == "reserved" and not blocked:
+        err(where, "status `reserved` with no `blocked_by` — SPEC 3.8 pairs them. "
+                   "A reserved type that does not name what it waits on is a file "
+                   "nobody can unblock")
+    if status != "reserved" and blocked:
+        err(where, f"`blocked_by` set on a type whose status is `{status}` — "
+                   "the key is non-null exactly when the type is reserved")
+
+    with open(path, encoding="utf-8") as f:
+        body = f.read()
+    has_block = re.search(r"^## BLOCK\s*$", body, re.M) is not None
+    if status == "reserved" and not has_block:
+        err(where, "status `reserved` with no `## BLOCK` section — SPEC 3.8 asks a "
+                   "reserved type for the prose behind its `blocked_by` line")
+    if status != "reserved" and has_block:
+        err(where, "carries a `## BLOCK` section but is not reserved — a block that "
+                   "no longer blocks is the stale half of a promotion diff")
+
+    return parsed
 
 
 # ---------------------------------------------------------------- ledgers
@@ -971,7 +1027,7 @@ def check_ratios(types):
             err(rel, head)
 
 
-def check_multipass_declarations(types, staging):
+def check_multipass_declarations(types, staging, pdp_dr=None):
     """ADR-067: `multi-pass` is removed from the vocabulary, so this is an ERROR.
 
     Vocabulary closure already refuses the value; this check exists for the
@@ -990,7 +1046,8 @@ def check_multipass_declarations(types, staging):
     `eval/render-test.md` because the term was capitalised.
     """
     for label, group in (("registry/types", types),
-                         ("registry/types/_staging", staging)):
+                         ("registry/types/_staging", staging),
+                         ("registry/pdp-dr-types", pdp_dr or {})):
         for tid in sorted(group):
             if group[tid]["fm"].get("generation_mode") == "multi-pass":
                 err(f"{label}/{tid}.md",
@@ -1807,6 +1864,46 @@ def main(argv):
             f"only {len(live)} active toplist type(s) — ADR-058 asks a slot for "
             "three distinct options and this namespace serves a one-slot page")
 
+    # PDP-DR types (ADR-077). The fourth namespace: the gallery of a direct-response
+    # product detail page. A CO-REGISTRY rather than a replacement — same anatomy and
+    # the same {step}-{job}-{device} ids as registry/types/, because a PDP page routes
+    # to both folders in one pass. Never written into index.yaml.
+    pdp_dr_types = {}
+    if os.path.isdir(PDP_DR_TYPES_DIR):
+        for fn in sorted(os.listdir(PDP_DR_TYPES_DIR)):
+            if not fn.endswith(".md") or fn == "README.md" or fn.startswith("_"):
+                continue
+            parsed = validate_pdp_dr_type_file(
+                os.path.join(PDP_DR_TYPES_DIR, fn), vocab, rule_ids)
+            if parsed and parsed["fm"].get("id"):
+                pid = parsed["fm"]["id"]
+                if pid in pdp_dr_types:
+                    err(f"registry/pdp-dr-types/{fn}", f"duplicate id `{pid}`")
+                pdp_dr_types[pid] = parsed
+    for declared in vocab.get("pdp_dr_types") or []:
+        if declared not in pdp_dr_types:
+            err("registry/vocabulary.yaml",
+                f"pdp_dr_types declares `{declared}` with no "
+                f"registry/pdp-dr-types/{declared}.md")
+    for pid in sorted(pdp_dr_types):
+        if pid not in (vocab.get("pdp_dr_types") or []):
+            err(f"registry/pdp-dr-types/{pid}.md",
+                f"id `{pid}` is not in vocabulary.pdp_dr_types — the closed list is "
+                "the namespace, and a file outside it routes nowhere and is checked "
+                "by nothing else")
+        # This namespace shares an id grammar with registry/types/, which the other
+        # two namespaces do not. So it is the only one where an id can collide, and
+        # a collision is exactly what a half-finished promotion looks like.
+        if pid in types:
+            err(f"registry/pdp-dr-types/{pid}.md",
+                f"id `{pid}` also exists in registry/types/ — promotion is a `git mv`, "
+                "so two files with one id means the move was copied instead of moved")
+        if pid in staging:
+            err(f"registry/pdp-dr-types/{pid}.md",
+                f"id `{pid}` also exists in registry/types/_staging/")
+    cross_validate(pdp_dr_types, set(types) | set(staging) | set(pdp_dr_types),
+                   "registry/pdp-dr-types")
+
     # GIF types (ADR-023). A separate namespace from image types: its ids are
     # arguments, not {step}-{job}-{device}, and it is never written into index.yaml
     # because routing reads a gif type by id off the slot verdict, not by shortlist.
@@ -1856,8 +1953,14 @@ def main(argv):
         # namespace and would have warned on every record of its founding render
         # round. Third time a tool's membership list has been found not knowing
         # about registry/toplist-types/ — ADR-070 found it in adr-sweep.py's tuples.
+        # Fourth namespace, fourth time this membership list has been found not
+        # knowing about one (ADR-070 found it in adr-sweep.py's tuples). Seven types
+        # moved from _staging/ to registry/pdp-dr-types/ on 2026-09-10 and three of
+        # them carry founding renders in this ledger; without this term every one of
+        # those records would warn as an unknown type the moment the files moved.
         if (rec.get("type") not in types and rec.get("type") not in staging
-                and rec.get("type") not in toplist_types):
+                and rec.get("type") not in toplist_types
+                and rec.get("type") not in pdp_dr_types):
             warn("eval/render-tests.jsonl",
                  f"record {n}: unknown type `{rec.get('type')}`")
     evidence = evidence_counts(observations, vocab, types)
@@ -1869,7 +1972,7 @@ def main(argv):
     check_prompt_sets()
     check_option_pools()
     check_ratios(types)
-    check_multipass_declarations(types, staging)
+    check_multipass_declarations(types, staging, pdp_dr_types)
     check_grandfather_sets()
     check_session_names()
     shortlist = check_slot_rules(types)
@@ -1898,6 +2001,7 @@ def main(argv):
     print(f"{len(types)} types, {len(staging)} staging, "
           f"{len(gif_types)} gif types, {len(gif_ledger)} gifs, "
           f"{len(toplist_types)} toplist types, "
+          f"{len(pdp_dr_types)} pdp-dr types, "
           f"{golden_slots} golden slots, {contracts} content contracts, "
           f"{bundled} bundled files, "
           f"{len(observations)} observations, {len(picks)} picks, "

@@ -19,6 +19,8 @@ tasks to entry points and must stay logic-free.
 | Add / edit a GIF type | `SPEC.md` §3.6, then a file in `registry/gif-types/` |
 | Choose the lede image for a top-N listicle | `registry/toplist-instruction.md`, then `mapping/toplist-rules.md` |
 | Add / edit a toplist type | `SPEC.md` §3.7, then a file in `registry/toplist-types/` |
+| Route images for an LP2 product-gallery page | `registry/pdp-dr-instruction.md`, then `mapping/pdp-dr-rules.md` |
+| Add / edit a PDP-DR type | `SPEC.md` §3.8, then a file in `registry/pdp-dr-types/` |
 
 ## Hard rules for any session
 
@@ -32,6 +34,9 @@ tasks to entry points and must stay logic-free.
    errors before finishing the turn.
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are append-only.
 4. `registry/types/_staging/` is never routable; promotion criteria are in `SPEC.md` §6.3.
+   The same holds for `registry/pdp-dr-types/` while a file's `status` is `reserved`, which
+   today is all of them — a reserved type there owes a `blocked_by` and a `BLOCK` section
+   naming what it waits on, and promotion out is a `git mv` (SPEC §3.8).
 5. All artifact content is **English**. Conversation with the user is Vietnamese.
    ONE named exception: the GIF library's Vietnamese folder cards, whose copy lives in
    `registry/gif-cards-vi.md` and which `scripts/gen-gif-cards.py` writes as

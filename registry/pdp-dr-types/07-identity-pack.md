@@ -18,6 +18,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
+blocked_by: "One more distinct source for criterion 1, and criterion 2 is unrun. Criterion 3 has two renders and one is a fail by this type's own definition."
 ---
 
 # 07-identity-pack — STAGING DRAFT
@@ -45,6 +46,13 @@ nothing under `_staging/` is routable, so the choice between keeping this family
 since ADR-060 there is no admission test left: an active type in this registry is a
 candidate for every slot on every page, and `use_when` is the only thing that would keep a
 packshot out of a pain slot.
+
+**The choice was made on 2026-09-10 and this file moved** (ADR-077). Two sentences above are
+now history rather than instruction: this file is no longer under `_staging/`, and the home
+question is settled in favour of a namespace — `registry/pdp-dr-types/`. What has NOT changed
+is the consequence the paragraph names: the namespace is a wall where `use_when` was only a
+sentence, and **that is one of the three reasons the namespace exists**. Nothing here routes,
+so the admission problem ADR-060 left open is still held rather than solved.
 
 ## PURPOSE
 Show the object as it arrives. This frame answers "what am I actually buying" — the pack,
@@ -279,7 +287,7 @@ about the TEXT LAYER caused this. The object did.
   without answering it.
 
 ## FOUNDING RENDER ROUND — 2026-09-03
-Two renders, ratio 1:1, prompts 5 and 6 of `_staging/ready-to-push/prompts.md` — the `closed`
+Two renders, ratio 1:1, prompts 5 and 6 of `registry/pdp-dr-types/ready-to-push/prompts.md` — the `closed`
 form on a portable juicer cup and the `with contents` form on a rodent-repellent pouch. Both
 products come from `query/product-slugs.yaml` and neither is in this type's source list. Both
 frames carry the minimum text this type allows, a title and a badge, so the round is about the
@@ -325,6 +333,16 @@ to give it scale; here nothing gives it scale and that is the trade. `03-spec-li
 several units to argue breadth. `03-spec-flatlay` rings the pack with its ingredients to
 argue composition. `03-spec-macro` magnifies a region of the product to argue material. All
 four have a product in frame and only this one argues nothing beyond identity.
+
+## BLOCK
+**Waiting on one more distinct source for criterion 1, and on criterion 2, which is unrun.**
+Criterion 3 has two renders and one of them is a `fail` by this type's own definition.
+
+A15 arrived through this type and the entry says so: the founding render returned a stand-up
+pouch whose printed surface read `Active Ingredients: Peppermint Oil, Cedarwood Oil` and
+`NET WT. 8 OZ (227g)` — a composition claim and two quantity claims, set legibly on the object,
+written by nobody. A frame from this type is publishable only where the pack's printing is
+checked against the reference word by word.
 
 ## CHANGELOG
 - 0.3 (2026-09-03): owner audit of the founding round — colour. `PARTS/setting`: the ground's

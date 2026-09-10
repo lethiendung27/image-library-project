@@ -18,6 +18,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
+blocked_by: "Two more distinct SOURCES. Three today, and five of the eight observations came from one page in one batch, which moved the source count not at all."
 ---
 
 # 03-spec-stilllife — STAGING DRAFT
@@ -227,6 +228,12 @@ region of the product and needs the product; this type has no product. `02-cause
 buyer has lost — job `cause`, not `spec`. `06-relief-detail` (also proposed) isolates a body
 zone rather than a material. If a frame shows several materials to argue breadth, that is a
 lineup and this is not it.
+
+## BLOCK
+**Waiting on two more distinct SOURCES.** The gap is stated in the promotion header and it is
+the gap between observations and sources: eight records, three pages, five of the eight from
+one page in one batch. Criterion 3 is met with three renders and the owner's verdict
+outstanding.
 
 ## CHANGELOG
 - 0.1 (2026-09-03): drafted from three distinct observations of the 2026-08-31-B batch —

@@ -222,10 +222,17 @@ up. Two things worth knowing before you do:
 
 ## Where this folder sits in the workflow
 
-`_staging/` is not routable — the router never reads it, the validator excludes it from
-`index.yaml`, and no active type may reference anything in it. That is exactly the right place
-for work being tested: the material is under version control and in front of the next session,
-and none of it can reach a page by accident.
+**This folder moved on 2026-09-10** (ADR-077), with the three type files it serves. It was
+`registry/types/_staging/ready-to-push/`; it is now
+`registry/pdp-dr-types/ready-to-push/`. All three of the types it carries prompts for —
+`07-identity-pack`, `06-relief-claimstack`, `03-spec-callout` — were measured on the LP2
+product-gallery corpus and moved with it. Nothing about the material changed.
 
-Both scripts that read `_staging/` enumerate it with `os.listdir` and filter on `.md`, so this
-subdirectory is invisible to them. Checked before it was created, not after.
+Neither folder is routable — the router never reads them, the validator excludes them from
+`index.yaml`, and no active type may reference anything in either. That is exactly the right
+place for work being tested: the material is under version control and in front of the next
+session, and none of it can reach a page by accident.
+
+The enumerator that reads a type directory filters on `.md`, so this subdirectory is invisible
+to it and the namespace count does not move when this folder does. Checked before it was
+created, and re-checked when it moved.

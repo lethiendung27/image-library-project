@@ -4740,3 +4740,245 @@ is superseded and kept as the record.
 
 **Nothing is rendered.** Six active types, and not one of them has a render behind a single
 clause.
+
+---
+
+## ADR-077 · 2026-09-10 · A fourth namespace for the LP2 product gallery, built as a CO-REGISTRY because its page has twelve slots and not one
+
+**Owner instructions, 2026-09-10**, in order: the project is pivoting the way the top-N
+listicle already did — toplist is one landing-page type, advertorial and listicle are two
+more, and landing-page types can SHARE image types; create `registry/pdp-dr-types/` holding
+the image types of LP2, the product page; and ask before building. Four questions were put
+and four were answered, and the answers are what this ADR implements rather than what the
+first instruction implied.
+
+**The LP number was corrected in the same exchange.** The owner's first message called this
+corpus LP3; the second called it LP2; asked which, the owner answered *"trước đây tôi quy
+định nhầm, đúng ra phải là LP2 chứ không phải LP3."* So **LP2 is the product page**, and the
+`lp3-` prefix on ten of this corpus's eleven prefixed source slugs is the old mistake
+preserved in an append-only ledger. `ingestion/observations.jsonl` cannot be rewritten and
+is not; `ingestion/runbooks/classify-batch.md` still names the folder `LP3 assets learn`
+because that is what the folder was called. **A reader who follows an `lp3-` slug to this
+namespace has followed it correctly.**
+
+### The four answers
+
+| question | answer |
+|---|---|
+| what does the folder contain | **only types the shared registry does not have.** The 13 ACTIVE types this corpus already uses stay in `registry/types/` and a PDP page routes to both |
+| evidence bar for a NEW file | **≥3 distinct sources** on this corpus — 15 ids clear it |
+| the 7 `_staging/` types built from this corpus | **move**, wholesale |
+| the LP number | **LP2**; the earlier LP3 was the owner's own mis-numbering |
+
+**Answers 2 and 3 collide and the resolution is stated rather than assumed.** The threshold
+governs which files are WRITTEN; it does not govern which are MOVED. All seven staging files
+move, and the three below the bar — `03-spec-lineup` at 2 sources, `05-social-card` at 1,
+`07-identity-inhand` at 1 — arrive `status: reserved`, which is what they already were. The
+folder is therefore **7 moved + 4 written = 11 files**.
+
+### Why a namespace, when the reason the other two have one does not apply here
+
+This is the part that had to be got right, because copying ADR-069's justification would
+have been wrong. **SPEC §3.6 and §3.7 both rest on the same fact: that page has ONE image
+slot**, so the role shortlist of §7.2, the cross-slot pass of §7.3, the coverage pass of
+§7.5 and one-type-once have nothing to act on.
+
+**A product gallery carries about twelve slots.** Every one of those passes applies to it,
+and applies harder than to a six-slot advertorial, because twelve slots is more places for
+one argument to appear twice. The one-slot reasoning transfers not at all.
+
+Three differences of LAW carry it instead, and each is measured or minuted rather than
+argued:
+
+1. **Text is baked into the image.** Owner decision of 2026-08-31, taken against the
+   advisory recommendation of the session that raised it. Every type here may declare
+   `text_layer`; advertorial and listicle types overwhelmingly do not.
+2. **The ground rule is measured on this corpus.** ADR-068: the outer 8% ring of 119 frames,
+   VALUE median **0.89**, SATURATION median **0.06**. ADR-073 already proved this class of
+   rule does not travel — it had to be re-measured for the toplist corpus, where TEXTURE
+   split the namespace in two.
+3. **Marketplace legality gates every tile.** `mapping/slot-rules.md` cross-rule 5 bars the
+   ugc register and `01-pain-scene` from marketplace galleries and bars `--rivals` outright.
+   An advertorial never meets that gate; a syndicated gallery meets it twelve times.
+
+### CO-REGISTRY, not a fork — and the id grammar follows from the owner's answer
+
+`registry/gif-types/` and `registry/toplist-types/` abandoned `{step}-{job}-{device}` because
+their ids are ARGUMENTS. **This namespace keeps the grammar**, and that is a consequence of
+answer 1 rather than a preference: the folder holds only what the shared registry lacks, so a
+PDP page reads `registry/types/` and `registry/pdp-dr-types/` **in one pass**, and two id
+grammars in one pass is how a reader loses track of which law applies. Anatomy and frontmatter
+are an image type's, plus `blocked_by`. Promotion out is a `git mv` and a status change.
+
+**No copies here, therefore no drift instrument.** ADR-070 gave the toplist namespace
+`copied_from` + `copied_at_version` and a validator warning because the owner had chosen
+verbatim copies. Nothing here is a copy, so that machinery is absent — **and the residual
+exposure is named instead of discovered**: a skeleton may CALL a part defined in another file
+and nothing validates that call. Two such calls exist — `07-identity-callout`'s
+`[PRESENTATION]` and `[SETTING]` both reach into `03-spec-callout`'s `PARTS` — and both are
+registered in `mapping/pdp-dr-rules.md`. The register is the whole instrument, and this
+sentence is its weakness stated in advance rather than found later.
+
+**ADR-070's other finding does NOT bite here, and checking that was the point.** A gate keyed
+on a parent's id does not reach a copy, so every gate had to be restated by toplist id. This
+namespace holds no copies and every gate in `mapping/slot-rules.md` names an ACTIVE type that
+is still active under the same id, so **nothing is restated** and `mapping/pdp-dr-rules.md`
+says so rather than leaving a reader to wonder.
+
+### The four new files, and why every one of them is reserved
+
+The evidence bar admitted 15 ids at ≥3 distinct sources. Seven are ACTIVE and stay put; four
+are among the movers; **four had no file and got one.** Not one of them got a promotion.
+
+| new file | obs / sources | what it is blocked on |
+|---|---|---|
+| `07-identity-callout` | 6 / **5** | a re-filing pass — see below |
+| `04-proof-stat` | 4 / 4 | A15 and the owner substantiation decision |
+| `05-social-testimony` | 3 / 3 | G14, which no evidence unblocks |
+| `06-relief-animal` | 3 / 3 | the absorption ladder |
+
+**`07-identity-callout` cleared criterion 1 on paper and is reserved anyway**, which is the
+finding of this pass. Five distinct sources is what the ledger says; re-reading the six
+breakdowns, **two are unambiguously a subject ringed by labelled satellites** and the other
+four read as `06-relief-claimstack`, as `07-identity-pack` with a text layer, or as a
+packshot carrying one badge. ADR-065 wrote the remedy into `07-identity-inhand` and it is
+applied here a second time: *the first job is re-filing rather than hunting*, and **a batch
+summary naming a pattern three times is not a count.** One of its five sources, `feicemat-v2`,
+already sits in `03-spec-callout`'s own founding table — so criterion 2 is a demonstrated
+fact here rather than an unrun test.
+
+**`06-relief-animal` argues against its own existence and ships anyway.** Three exemplars, three
+registers — a studio seamless, a panning documentary frame, a phone snapshot. What they share
+is that the beneficiary is an animal, which is a SUBJECT and which SPEC §3.2 absorbs as an
+axis before it will absorb a type. The file says so, names the `beneficiary` axis as the
+likely answer, and states why this namespace cannot take that decision: settling it means
+widening `PARTS/subject` on three ACTIVE types, which answer 1 puts outside this folder's
+charter. Its device value `animal` names WHAT is photographed rather than HOW the argument is
+made — the exact fault ADR-065 corrected twice — and `vocabulary.yaml` marks it reserved and
+provisional for that reason.
+
+**`04-proof-stat` ships with NO SKELETON**, which is the state ADR-066 §4 put it in and the
+honest carry-over. A skeleton has to say where a number comes from and no rule in this repo
+does.
+
+**`05-social-testimony` is blocked by something no evidence can move.** G14 binds the SLOT,
+and a testimonial thumbnail sits beside a name by definition, so there is no page arrangement
+under which the type is both itself and legal. The file exists to record that the corpus
+contains the pattern, not to offer a way to draw it.
+
+### The measured finding the routing table exists to carry: step 1 is EMPTY
+
+Counted from the ledger over **159 observations across 26 source pages**, batches
+`2026-08-31-A`/`-B` and `2026-09-03-C` through `-H`, filed against 41 distinct ids. Four
+ACTIVE types appear on **no page** in this corpus, and two of them are the whole of the Trust
+Ladder's first rung:
+
+| absent from all 26 PDP sources | present in the advertorial/listicle corpus |
+|---|---|
+| `01-pain-scene` | yes |
+| `01-pain-split` | yes |
+| `03-spec-explode` | yes |
+| `03-spec-split` | yes |
+
+And the reverse once: **`06-relief-scene` appears here and nowhere in the older corpus.**
+
+`mapping/slot-rules.md` prefers `01-pain-scene` for both `hero` and `problem-agitation`. On a
+product gallery that points at a type the format does not use. So `mapping/pdp-dr-rules.md`'s
+`hero` row names one type and it is a relief type — and unlike `mapping/toplist-rules.md`,
+which declares itself a hypothesis in its own first paragraph, **this table is counted.**
+
+**What it does not prove, written beside it.** The owner selects what enters a batch and the
+harness classifies it, so 26 pages is what was FILED, not a sample of the format. This is
+*absent from what was filed*. `03-spec-explode` in particular is a plausible gallery tile that
+did not turn up. The limit is written next to the rows because the alternative is a rule that
+feels obvious, which is precisely the shape ADR-068 caught moving a whole render set off the
+market.
+
+### Enforcement fed known-bad input before being believed
+
+Seven injected faults, **seven fired**, control clean at 0 errors and the tree restored to 0
+errors afterwards: a reserved type with `blocked_by: null`; `blocked_by` on a type whose status
+is `active`; a reserved type with its `## BLOCK` section renamed; `blocked_by` on a file in
+`registry/types/`; a file whose id is absent from `vocabulary.pdp_dr_types`; a
+`pdp_dr_types` entry with no file; and an id present in both `registry/types/` and
+`registry/pdp-dr-types/`.
+
+Two of those are worth naming. **The id-collision check exists only in this namespace**, because
+this is the only one that shares an id grammar with `registry/types/` — and a collision is
+exactly what a half-finished promotion looks like. And the **`blocked_by`-in-the-wrong-registry
+message is placed AHEAD of the generic unknown-key error**, which is ADR-069's own lesson
+applied without having to relearn it: *"unknown frontmatter key" does not tell a reader why
+this namespace has no text* — or here, which namespace the key belongs to.
+
+**A fourth membership list was found not knowing about a namespace, and this time in the same
+diff that created it.** `scripts/validate.py`'s render-ledger check tests `types`, `staging` and
+`toplist_types`; three of the seven moved files carry founding renders in
+`eval/render-tests.jsonl`, so **every one of those records would have warned as an unknown type
+the moment the files moved.** ADR-070 found the same class of gap in `adr-sweep.py`'s tuples a
+day after ADR-069 opened it; this one was caught before it landed.
+
+### Consequences — rule 6c sweeps on `"namespace"` (218 hits, 41 files, 32 TEACHES) and `"_staging"` (46 hits, 15 files, 9 TEACHES + 1 UNCLASSIFIED)
+
+- `registry/pdp-dr-types/` — **new**, 11 files. Seven moved by `git mv` from
+  `registry/types/_staging/` with their history intact, four written. Every one is
+  `status: reserved` with a `blocked_by` and a `BLOCK`. `ready-to-push/` moved with them: all
+  three types it carries prompts for are LP2 types.
+- `registry/types/_staging/` — 9 files → **2**, `02-cause-scene` and `03-use-rail`, which are
+  the two that appear on no page in this corpus. Its README is **rewritten**: the
+  `ready-to-push/` section becomes a convention that is not folder-specific, and a section is
+  added saying the CORPUS decides which folder a draft goes to.
+- `registry/pdp-dr-instruction.md`, `mapping/pdp-dr-rules.md` — new.
+- `SPEC.md` — **§3.8 added.** `SPEC.md:32` (the not-routable clause of §1) and `SPEC.md:85`
+  (absorption ladder step 4, *"Goes to `_staging/`"*) both **rewritten**: the second was
+  teaching every future curation pass to file an LP2 cluster in the wrong folder.
+  `SPEC.md:157`, *"A second, smaller registry governs motion"*, **stands** on ADR-069's own
+  reading — the word counts its ordinal, not the registries.
+- `ingestion/runbooks/curate.md:33` — **rewritten** for the same reason as the ladder.
+- `registry/vocabulary.yaml` — `pdp_dr_types` (11 ids), and devices `stat`, `testimony`,
+  `animal`. The `animal` entry ships with its own objection in a comment.
+- `scripts/validate.py` — `validate_pdp_dr_type_file`, the `blocked_by`/`BLOCK` pairing, the
+  vocabulary closure both ways, the id-collision check, the specific wrong-registry message,
+  `pdp_dr` in `check_multipass_declarations` and in the render-ledger membership list, and the
+  count in the summary line. `validate_type_file` gains `where_prefix` and `extra_optional` so
+  the co-registry reuses it rather than owning a second copy of those checks.
+- `scripts/adr-sweep.py` — the three new paths into `TEACHES`, in the same diff that created
+  them. **And `ingestion/prompts/` too**, which this sweep found UNCLASSIFIED: those files tell
+  a harness how to classify, so a hit in one is an instruction somebody follows.
+- `CLAUDE.md` — two entry-point rows and rule 4.
+- `registry/toplist-instruction.md:308` — **rewritten**: it cited the `ready-to-push/` folder
+  by a path that no longer exists, and it now also records that the fourth namespace took the
+  other road on copying.
+- `registry/pdp-dr-types/07-identity-inhand.md:43` and `07-identity-pack.md:44` — both said the
+  identity family's home was undecided between `registry/types/` under a new step and *"its own
+  namespace like `registry/gif-types/`"*. ADR-069 left both standing and said the option had
+  got cheaper. **The decision is taken here and both are annotated rather than deleted**, because
+  the paragraph is the reasoning the decision was taken against, and because each is still half
+  right: this is a namespace, but a co-registry.
+- `registry/pdp-dr-types/03-spec-callout.md`, `06-relief-claimstack.md`, `07-identity-pack.md`
+  — three stale `_staging/ready-to-push/prompts.md` paths **rewritten**.
+- `registry/pdp-dr-types/ready-to-push/README.md` — the *Where this folder sits* section
+  **rewritten**; it described a folder it is no longer in.
+- `ingestion/anchor-set.md:71`, *"`03-use-rail` does now exist in `_staging/`"* — **stands**;
+  `03-use-rail` is one of the two that stayed.
+- GENERATED — `registry/index.yaml` and `dist/app-bundle/` regenerate; **neither gains a
+  pdp-dr type**, which is the namespace doing its job.
+- `registry_version` unchanged: no active type, no active structure and no routing outcome
+  moves.
+
+### What is NOT done
+
+**Nothing in this folder routes and no prompt has been written against this namespace's law.**
+Three of the eleven carry FOUNDING RENDER ROUND sections from their time in `_staging/`; those
+renders are real, their measurements stand, and they were taken before any of this existed.
+
+Four decisions gate the folder and three are the owner's: the **substantiation rule** behind
+A15 (blocks `04-proof-stat`, `04-proof-instrument`, `04-proof-interface`); the **trademark
+question** of 2026-08-18 (blocks `07-identity-callout`'s mark library); the **`beneficiary`
+axis** (blocks `06-relief-animal`, and settling it touches three active types). The fourth is
+**criterion 2**, the router-confusion test, which no owner decision unblocks and which is the
+binding gap on the two best-evidenced files here.
+
+The **re-filing pass** `07-identity-callout` and `07-identity-inhand` both ask for is not run.
+It is a curation operation, it moves observations between ids in an append-only ledger by
+adding correction records, and folding it into a namespace diff would have made two decisions
+look like one.

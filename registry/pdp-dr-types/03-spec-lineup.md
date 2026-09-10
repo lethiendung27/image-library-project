@@ -18,6 +18,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: [03-use-grid, 05-persona-grid]
 requires_pair: null
+blocked_by: "Three more distinct sources - 2 of 5 today. Criterion 3 is met at partial with the owner's verdict outstanding."
 ---
 
 # 03-spec-lineup — STAGING DRAFT
@@ -151,6 +152,14 @@ and this argument belongs in a grid where each cell is its own frame.
 - **`sha256:a8d80295d82a894…` is cited by two proposals**, here and by `07-identity-inhand`.
   The boundary is the count — one unit presented is that type, several compared is this one —
   and curation should assign the observation to one rather than letting both count it.
+
+## BLOCK
+**Waiting on three more distinct sources** — two of five today, and the two are a sock page
+and a coffee page. Criterion 3 is met at `partial` with the owner's verdict outstanding.
+
+`lede-lineup` in `registry/toplist-types/` carries the SAME device name for a different
+argument — several units of one product here, a field of rival makers there — and that
+separation is recorded in ADR-069 rather than in either file.
 
 ## CHANGELOG
 - 0.1 (2026-09-03): drafted from two hash-verified observations across two batches. Proposed

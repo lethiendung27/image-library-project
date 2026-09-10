@@ -56,6 +56,14 @@ devices:
   inhand: "the product held up to the lens; the hand is the scale cue and nothing else is"
   pack: "the product as it arrives — closed, open, or with its own contents at its foot"
   callout: "a subject at the centre, labelled satellites around it; what joins them — a leader line, a dashed leader, or nothing — is a parameter"
+  stat: "one measured figure as the subject of the frame, with its source set beside it"
+  testimony: "a person addressing the lens mid-sentence; a video still, not a photograph"
+  # `animal` names WHAT is photographed rather than HOW the argument is made, which is the
+  # fault ADR-065 corrected twice (`ingredient` -> `stilllife`, `range` -> `lineup`). It is
+  # here so the ledger's eight records under `06-relief-animal` can be followed, and that
+  # file's own BLOCK argues it should be a `beneficiary` AXIS on existing relief types
+  # instead. Reserved and provisional: if the axis ships, this value goes with the file.
+  animal: "reserved, provisional — the beneficiary is an animal and its body reports the outcome"
 
 # Cross-cutting presentation dimensions. A type declares which values it supports
 # in its frontmatter `axes:` map. Definitions of the semantics live in rules/runbooks.
@@ -128,6 +136,25 @@ toplist_frame_populations: [one, many, none]
 # declared. Here there is no page copy, so it is declared and demoted: it orders a
 # shortlist, it never admits or refuses a type.
 toplist_awareness: [unaware, problem-aware, solution-aware, product-aware, most-aware]
+
+# ------------------------------------------------------------------ pdp-dr
+# A FOURTH namespace, for the direct-response product detail page — LP2 (SPEC 3.8,
+# ADR-077). It is separate for none of the reasons gif and toplist are separate: that
+# page carries ~12 gallery slots, so every part of SPEC 7 applies to it. It is separate
+# because its LAW differs — text is baked into the image (owner decision 2026-08-31),
+# its ground rule is measured on its own 159-observation corpus, and marketplace
+# legality gates a gallery that an advertorial never meets.
+#
+# It is therefore a CO-REGISTRY, not a replacement: these ids keep the
+# `{step}-{job}-{device}` grammar of registry/types/ rather than becoming arguments the
+# way toplist and gif ids did, because a PDP page routes to BOTH folders in one pass and
+# two grammars in one pass is how a reader loses track of which law applies. Promotion
+# out of here is a `git mv` and not a rewrite.
+#
+# Every file is `status: reserved` today and NONE of them routes. What routes on a PDP
+# page today is the shared active types in registry/types/, ordered by
+# mapping/pdp-dr-rules.md. Files: registry/pdp-dr-types/<id>.md.
+pdp_dr_types: [03-spec-callout, 03-spec-lineup, 03-spec-stilllife, 04-proof-stat, 05-social-card, 05-social-testimony, 06-relief-animal, 06-relief-claimstack, 07-identity-callout, 07-identity-inhand, 07-identity-pack]
 
 # Informative: things that are runtime parameters and must NEVER become identity.
 parameters: [ratio, panel_count, colorway, persona_cast, environment]
