@@ -31,6 +31,29 @@ Keeping the dead half alive in a one-slot format is machinery that cannot run. T
 the same reasoning SPEC §3.6 gives for gif types reaching their registry by id rather
 than through a shortlist.
 
+**And N is FIVE.** Owner, 2026-09-09. The format is not an open-ended list this library
+sizes to taste: **a top list is written about five products**, so a type that shows the
+FIELD shows five of them and a prompt that builds one asks for five. It governs the
+`use_when` of every type that carries more than one unit.
+
+**Two things already sit across it, and both are named rather than smoothed over.**
+
+- **Layer 1's admission gate does not say five.** `mapping/toplist-rules.md` refuses
+  `products_in_frame: many` on an input carrying fewer than THREE distinct products, and
+  no decision in the log says why three. Whether the gate should rise to five is a routing
+  decision and it waits on `products[]` existing at all.
+- **`lede-collage` holds three corpus frames carrying ONE product** — two `split-frame`,
+  one `polaroid` — against its own `products_in_frame: many`, and two of its rendered cells
+  are built that way. Whether this namespace admits a one-product collage is the owner's
+  call; that file flags it and deliberately leaves its frontmatter alone, because the value
+  is a routing promise.
+
+Neither is decided here. The format fact is stated; where a type or a gate disagrees with
+it, the disagreement is the record.
+
+Recorded in `lede-collage.md` first, and moved here on 2026-09-10 because it was never
+that one type's own.
+
 ## Input is the PRODUCT block, not `content.json`
 
 `content.json` is `{ product, page }`. A top-N page has no `page.sections` to route and,
@@ -52,8 +75,10 @@ half alone, extended.
 **What a top-N page needs that the block does not have yet**, named here so a reader is
 not surprised by an absence:
 
-1. `products[]` — the schema carries exactly ONE product. A top-N is N. Every type
-   declaring `products_in_frame: many` is blocked on this and is `status: reserved`.
+1. `products[]` — the schema carries exactly ONE product; a top-N is five. Since ADR-076
+   this no longer reserves a type: `lede-lineup` and `lede-collage` are ACTIVE and declare
+   `products_in_frame: many`, and the absence refuses the PAGE at layer 1 rather than the
+   type. Every page routable today is refused, because every input carries one product.
 2. a rank or verdict per product — "Best Overall", "Best Budget". Nothing carries it.
 3. test facts — what was measured, with what. `lede-testing` works without them and
    would be better with them.
@@ -300,19 +325,56 @@ for image types. Three deserve naming because a top-N page walks into them:
 (2026-09-09), so a toplist type carries no `ratios` key and no prompt states one — the
 ban on writing a ratio into prompt text (ADR-016, adapter Rule 4) is unchanged.
 
+## Writing a clause: state the FAULT, not the property
+
+**A constraint aimed at one fault but written as a general property removes the entire
+dimension it touches.** Three instances in one day — 2026-09-09, across two types:
+
+| clause, written against one fault | what it removed |
+|---|---|
+| `lede-authority` *"the expression is settled"* | every pose, across twelve renders |
+| `lede-authority` *"the backdrop is lighter than the subject's clothing and lighter than the product"* | the ground's whole value range, on pale units |
+| `lede-collage` *"all five panels are the same width and the same height"* | the whole layout axis |
+
+**Each clause did the job it was written for, and then kept working.** The first was added
+after four of five set-1 frames came back startled; it cured that and left twelve subjects
+centred, square to the lens, hands at chest height and faces neutral. The second was a
+separation test, and behind white units it forces the ground to near-white — which is the
+one washed-out frame in the set that named it. The third was added on top of a
+no-favoured-unit law and turned an index into a spec sheet.
+
+**The repair is a finer distinction and never the opposite** — deliberate against caught,
+separation against lightness, prominence against uniformity. Swinging to the far end fails
+worse, because it still legislates the axis instead of the fault.
+
+**So name the fault and leave the axis open.** A clause that reads as a property of the
+whole picture is the shape to distrust; a clause that names what must not happen is the
+shape that survives a render round.
+
+Recorded in `lede-collage.md` at 0.8 and moved here on 2026-09-10 — two of the three
+instances are another type's, so it was never that one file's law to hold.
+
 ## What this namespace is still waiting on
 
-**One decision, down from two.** The reference-photo limit was taken on 2026-09-09
-(ADR-076): a prompt may attach one photo per unit, still in one generation call, and where
-the owner's app takes fewer the prompt ships in full and is rendered elsewhere.
-`lede-lineup` and `lede-collage` went active on it.
+**One decision, down from two, and NO type is reserved behind it.** The reference-photo
+limit was taken on 2026-09-09 (ADR-076): a prompt may attach one photo per unit, still in
+one generation call, and where the owner's app takes fewer the prompt ships in full and is
+rendered elsewhere. `lede-lineup` and `lede-collage` went active on it, and `lede-authority`
+followed at its own 0.3 (commit `c81ae0d`). **All seven types are active.**
 
 **What is left is one row of G16, and it is the most-breached refusal here.** A
 certification seal, a press logo or a third-party AWARD mark is `LAW, not taste`, and
 **three of `lede-winner`'s five corpus frames carry one** — `CNET LAB TEST WINNER`, `CNET
 PEOPLE'S PICKS`, `GOOD HOUSEKEEPING BEDDING AWARDS`. ADR-071 permitted the page's OWN
 verdict and left another party's mark refused; the corpus says the market does it anyway.
-`lede-authority` is reserved behind the same row's *named expert* clause, and it is
-additionally out of scope by `mapping/slot-rules.md`'s own `author` row.
 
-Neither is a craft question and neither is the harness's to take.
+**That row no longer holds a type back, and the correction is worth stating rather than
+just deleting.** `lede-authority` was reserved behind the same row's *named expert* clause
+until its own 0.3, and the block was lifted by READING the refusals rather than by waiving
+them: G16's row governs a text layer that type does not declare, and `mapping/slot-rules.md`'s
+`author` row governs a portrait under a real BYLINE, which a top-N lede does not carry.
+G14 is the one that genuinely binds and it survives as that type's load-bearing NEGATIVE —
+the UGC register is refused. So the award-mark question is now a decision about pictures
+this namespace may make, not a lock on any file.
+
+It is not a craft question and it is not the harness's to take.
