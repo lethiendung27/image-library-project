@@ -218,6 +218,28 @@ the WORDS. Round 2's `lede-collage` render read texture 4.3 on a perfectly smoot
 because its title runs edge to edge through both side ring bands. ADR-073 never had to state
 this: no frame it measured carried baked text at the frame edge.
 
+**A third limit, and it is the largest: the ring assumes the ground REACHES the frame edge.**
+ADR-073 measured 32 frames whose ground was one field, so it did. `lede-collage` now carries
+eight named layouts and on most of them the outer 8% band is not ground at all. Measured
+across the six renders of that type's set 6, 2026-09-10:
+
+| layout | what the ring actually sampled | ring value / sat |
+|---|---|---|
+| `open` | **the ground.** Usable | 0.91 / 0.73 |
+| `colour-cells`, `rounded-cells`, `outlined-panels` | whichever CELLS reach the edge | 0.97–0.99 / 0.04–0.99 |
+| `blocks` | **the white page behind the blocks** | 1.00 / **0.00** |
+
+**The `blocks` frame is the control that fails.** Its composition argues in blue, green,
+orange and yellow, and the ring returns saturation 0.00, because the blocks float on a white
+page and never touch the edge. A ground figure taken from that ring is a false statement about
+the picture rather than a noisy one, so none was published for that set.
+
+On a type with a layout axis, **read the ring only where the layout has no cells**; elsewhere
+measure the named region rather than the frame's border. Nothing is repaired in
+`scripts/ground_audit.py` here — the ring is right for the grounds ADR-073 measured, and
+teaching it to find a ground per layout is a change to a shared instrument that wants its own
+diff and its own known-bad input.
+
 **`lede-lineup` is on the DESIGNED side, and that corrects what its own file assumed.**
 It reads 2.9, with the group, not 7. Four of its five stand on a smooth studio sweep rather
 than in a place. What is real in a lineup is the SURFACE the units stand on and the contact
