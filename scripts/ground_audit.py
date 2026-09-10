@@ -19,8 +19,33 @@ import colorsys, hashlib, io, json, math, os, subprocess, tempfile
 from collections import Counter
 from PIL import Image
 
-SRC = "/Users/lethiendung/Downloads/image-library-assets/stills/top list"
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__))) + "/"
+
+
+def assets_root():
+    """SPEC §6.4 keeps the asset folder outside the repo; find it, never assume it.
+
+    It has always been a SIBLING of the repo directory, and it stayed one when the
+    owner relocated both trees on 2026-09-10 (`~/Downloads` to `~/Downloads/MISEN/
+    Flunnel/Image`). A hard-coded absolute path did not survive that move and would
+    not survive the next one — and it fails by pointing at a folder that is not
+    there rather than by saying so.
+
+    Resolution order: the sibling of this repo, then the historical `~/Downloads`
+    location. Returns the sibling either way, so a missing folder names the place a
+    reader should look. Deliberately does NOT raise: this module is exec'd in slices
+    to reuse `designed()` on renders, where the corpus is never read.
+    """
+    parent = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    for cand in (os.path.join(os.path.dirname(parent), "image-library-assets"),
+                 os.path.join(os.path.expanduser("~"), "Downloads",
+                              "image-library-assets")):
+        if os.path.isdir(cand):
+            return cand
+    return os.path.join(os.path.dirname(parent), "image-library-assets")
+
+
+SRC = os.path.join(assets_root(), "stills", "top list")
 EXT = {".png", ".jpg", ".jpeg", ".webp", ".avif"}
 
 

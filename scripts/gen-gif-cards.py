@@ -26,8 +26,23 @@ import validate as V  # noqa: E402  (parser reuse — one YAML subset, one imple
 GIF_TYPES_DIR = os.path.join(V.ROOT, "registry", "gif-types")
 VI_PATH = os.path.join(V.ROOT, "registry", "gif-cards-vi.md")
 LEDGER_PATH = os.path.join(V.ROOT, "ingestion", "gifs.jsonl")
-DEFAULT_ROOT = os.path.join(os.path.expanduser("~"), "Downloads",
-                            "image-library-assets", "gifs-library")
+def _assets_root():
+    """Find the asset folder rather than assuming it. See SPEC §6.4.
+
+    It is a SIBLING of the repo directory and stayed one when the owner relocated
+    both trees on 2026-09-10. Sibling first, then the historical `~/Downloads`
+    location; the sibling is returned either way, so a missing folder names the
+    place to look instead of quietly building a second empty tree somewhere else.
+    """
+    for cand in (os.path.join(os.path.dirname(V.ROOT), "image-library-assets"),
+                 os.path.join(os.path.expanduser("~"), "Downloads",
+                              "image-library-assets")):
+        if os.path.isdir(cand):
+            return cand
+    return os.path.join(os.path.dirname(V.ROOT), "image-library-assets")
+
+
+DEFAULT_ROOT = os.path.join(_assets_root(), "gifs-library")
 VI_FIELDS = ("message", "yes", "no", "vs")
 MEASURE_MIN = 3  # below this the card reports "not enough files", never a figure
 

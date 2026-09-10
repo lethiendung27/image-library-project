@@ -26,8 +26,16 @@ verdicts are always the user's call.
 
 ## 0. Preconditions
 
-- Source images live OUTSIDE the repo (SPEC §6.4). Canonical local folder:
-  `/Users/lethiendung/Downloads/image-library-assets/` (ADR-006).
+- Source images live OUTSIDE the repo (SPEC §6.4), in `image-library-assets/`
+  **beside the repo directory** (ADR-006). Do not write the absolute path into a
+  script: the owner relocates both trees together — `~/Downloads` became
+  `~/Downloads/MISEN/Flunnel/Image` on 2026-09-10 — and the sibling relation is
+  what has held across every move. `scripts/ground_audit.py` resolves it in
+  `assets_root()` and `scripts/gen-gif-cards.py` in `_assets_root()`. **Copy the
+  two-line resolution below rather than importing either**: `ground_audit.py` has
+  no `__main__` guard, by design — the exec-in-slices route that reuses `designed()`
+  splits the file on `h2p = {}`, and indenting the body under a guard would break
+  that marker — so importing it runs the whole corpus audit as a side effect.
 - `registry/index.yaml` is fresh (`python3 scripts/validate.py --check`).
 
 ## 1. Build the to-do list (ledger = checkpoint)
@@ -35,7 +43,11 @@ verdicts are always the user's call.
 ```python
 # manifest + to-do in one pass. Build it in PYTHON, not shell — see the warning below.
 import hashlib, io, json, os
-ROOT = "/Users/lethiendung/Downloads/image-library-assets/stills"
+# Assets sit BESIDE the repo (SPEC §6.4). Resolve; never type an absolute path.
+ASSETS = os.path.abspath(os.path.join("..", "image-library-assets"))
+if not os.path.isdir(ASSETS):                       # historical location, pre-2026-09-10
+    ASSETS = os.path.expanduser("~/Downloads/image-library-assets")
+ROOT = os.path.join(ASSETS, "stills")
 EXT = {".png", ".jpg", ".jpeg", ".webp", ".avif"}
 rows = []
 for dp, _, fns in os.walk(ROOT):
