@@ -343,6 +343,36 @@ for image types. Three deserve naming because a top-N page walks into them:
   issuing body's trademark rather than the competitor's, and three of `lede-winner`'s five
   corpus frames carry one.
 
+**Prompt economy is `adapters/nano-banana.md` Rule 6 and is not restated here.** What IS
+recorded here is that this namespace ran its render loop for two types without ever measuring
+against it, and what that cost. Owner, 2026-09-10: *"prompt hiện tại đang bị phình lớn, chưa
+áp dụng luật length"*.
+
+| | set 1 → last | |
+|---|---|---|
+| `lede-authority`, median chars | 1498 → 1692 → 1689 → 1820 → 1693 → 1876 → **2158** | 7 sets |
+| `lede-collage`, median chars | 1646 → 1853 → 2199 → 2090 → 2346 → **2464** | 6 sets |
+| rounds 1–3, one prompt per type | 1225 · 1341 · 1476 | inside the band |
+
+**12 of 106 prompts sat in Rule 6's band, and the rise is monotonic in both types.** The
+mechanism is not carelessness: every set answered a render failure by ADDING a clause and no
+set ever removed one. **A loop with no removal step ratchets**, and the rounds that predate
+the loop are the ones still inside the band.
+
+**Three removals put a set back, and each was a rule already written down** — Rule 6.1 caught
+an invented `[CONDITION]` block carried by all 42 prompts of seven sets and named nowhere in
+any type file; Rule 6.3 caught the count, the layer number and the mark rules each stated
+twice; and round 3's ELEMENTS/CONSTRAINTS split settles which of the two a clause belongs in,
+since saying it in both is saying it once and padding it once. Nothing earned was dropped.
+
+**`scripts/validate.py` now warns past Rule 6's ~2500 re-read ceiling** for every prompt under
+`registry/toplist-types/`. Only the ceiling is gated: the 1450–1600 band is a reference number
+measured on a one-subject GIF-inset prompt, and a collage prompt carrying five products, a
+layout, a palette, a graphics layer and a badge does not fit it — four cells of a compressed
+set land at 1709–1818 with every earned clause intact, and that is **reported rather than
+padded down**, exactly as ADR-072 reported 1029–1632. Unlike CLAUDE.md rule 6c's sweep this
+one is gateable, because it is a number rather than a claim about meaning.
+
 **Ratio is not declared by these types.** The owner's app resolves the lede ratio
 (2026-09-09), so a toplist type carries no `ratios` key and no prompt states one — the
 ban on writing a ratio into prompt text (ADR-016, adapter Rule 4) is unchanged.

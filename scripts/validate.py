@@ -1215,6 +1215,54 @@ def parse_attribute_gates():
     return gates
 
 
+# ------------------------------------------------------- toplist prompt economy
+
+# adapters/nano-banana.md Rule 6: a prompt lands at ~1450-1600 characters, and one
+# past ~2500 "should be re-read for a duplicated block". Only the ceiling is gated.
+# The band is a REFERENCE NUMBER measured on a one-subject GIF-inset prompt, and a
+# collage prompt carries five products, a layout, a palette, a graphics layer and a
+# badge; warning at 1600 would fire on 94 of the 106 prompts this namespace has
+# shipped and would be noise rather than a signal.
+PROMPT_REREAD_CEILING = 2500
+
+
+def check_toplist_prompt_length():
+    """Gate the one thing a prompt-length rule can actually gate.
+
+    WHY THIS EXISTS. Rule 6 has been law since 2026-08-11 and the per-type render
+    loop never once measured against it. Set by set, every render failure was
+    answered by ADDING a clause and no set ever removed one, so prompt length
+    ratcheted monotonically in both types that ran the loop -- `lede-authority`
+    1498 -> 2158 across seven sets, `lede-collage` 1646 -> 2464 across six, and
+    the first draft of set 7 reached 3436. The owner found it by reading, which is
+    the same way rule 6c's misses keep being found.
+
+    Unlike rule 6c this one IS gateable: it is a number, not a claim about meaning.
+    So the ratchet cannot run silently again.
+
+    Warns rather than errors. A prompt over the ceiling is a prompt to re-read for a
+    duplicated block, which is a judgement the person writing the set has to make --
+    and the nine prompts already over it are shipped history that a gate must not
+    retroactively fail.
+    """
+    root = os.path.join(ROOT, "registry", "toplist-types")
+    if not os.path.isdir(root):
+        return
+    for dirpath, _, filenames in os.walk(root):
+        if "prompts.md" not in filenames:
+            continue
+        path = os.path.join(dirpath, "prompts.md")
+        rel = os.path.relpath(path, ROOT)
+        with open(path, encoding="utf-8") as f:
+            body = f.read()
+        for i, block in enumerate(re.findall(r"```(.*?)```", body, re.S), 1):
+            n = len(block.strip())
+            if n > PROMPT_REREAD_CEILING:
+                warn(rel, f"prompt {i} is {n} characters — adapter Rule 6 says re-read "
+                          f"anything past {PROMPT_REREAD_CEILING} for a duplicated block "
+                          f"(band is ~1450-1600)")
+
+
 # ------------------------------------------------------------------ app bundle
 
 def check_app_bundle(strict):
@@ -1827,6 +1875,7 @@ def main(argv):
     shortlist = check_slot_rules(types)
     gates = parse_attribute_gates()
     golden_slots = check_golden(types, vocab, shortlist, gates)
+    check_toplist_prompt_length()
     bundled = check_app_bundle(check)
 
     index_text = render_index(vocab, types, evidence, stats)
