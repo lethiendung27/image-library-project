@@ -377,6 +377,36 @@ one is gateable, because it is a number rather than a claim about meaning.
 (2026-09-09), so a toplist type carries no `ratios` key and no prompt states one — the
 ban on writing a ratio into prompt text (ADR-016, adapter Rule 4) is unchanged.
 
+## Reading a render: one render is one DRAW
+
+**Established 2026-09-10, by the only experiment in this namespace that has ever repeated a
+prompt.** `lede-collage` set 7 cell 3 was rendered at 10:52 and again at 10:56 from an
+unchanged prompt. The first draw came back a flat vector illustration in every unit; the
+second came back photographic, with legible maker's marks. **A clause carried in both draws
+cannot explain the difference between them.**
+
+**So a property that varies run to run cannot be evidenced by one frame**, and this namespace
+had been doing exactly that. Two rules were written on single draws and both are now
+withdrawn: a cap of two graphic layers, from one frame that flipped register; and *"a unit
+drawn small stops being photographed"*, from five frames with no repeat among them.
+
+**What follows binds every type here:**
+
+- **A finding about REGISTER — photographic against drawn, material against flat — needs the
+  same prompt run more than once.** One frame states what happened, never what the wording
+  causes.
+- **A finding about GEOMETRY, COUNT or PLACEMENT does not.** Those are things a prompt can
+  determine, and this namespace has measured them landing: geometry fixed a unit count 2 of 2
+  on the layout that had failed twice, while four prescriptions of taste were ignored 4 of 4
+  in round 3. Where a clause names a position, one frame is enough to see whether it took.
+- **A control that varies on the axis it is controlling is not a control.** `lede-collage` has
+  now lost four: one produced the thing it was told not to, one confounded itself with a second
+  variable, one never rendered, and one was answered by a variable nobody was testing.
+
+**This is a rule about evidence, not about pictures, and it is cheap to obey**: render the
+control cell twice. A set that reads one frame as proof about wording will keep writing rules
+the next draw refutes, which is how both withdrawn rules got written.
+
 ## Writing a clause: state the FAULT, not the property
 
 **A constraint aimed at one fault but written as a general property removes the entire
