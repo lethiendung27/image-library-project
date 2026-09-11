@@ -464,6 +464,11 @@ registry/gif-instruction.md  law shared by every gif type; never restated in one
 registry/toplist-types/  top-N lede registry — one file per type (SPEC 3.7, ADR-069)
 registry/toplist-instruction.md  law shared by every toplist type; never restated in one
 mapping/toplist-rules.md selecting the lede image; layer 2 is a declared hypothesis
+registry/pdp-dr-types/   LP2 product-gallery registry — a CO-REGISTRY, same id grammar
+                         and anatomy as registry/types/ (SPEC 3.8, ADR-077)
+registry/pdp-dr-instruction.md  law shared by every pdp-dr type; never restated in one
+mapping/pdp-dr-rules.md  routing a product gallery; preference table is MEASURED, and it
+                         carries the cross-file CALL REGISTER nothing else validates
 ingestion/               classify template, runbooks, observations ledger
 ingestion/gifs.jsonl     append-only index of the external GIF library
 scripts/gen-gif-cards.py generates the library's folder cards from the gif type files
