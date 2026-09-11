@@ -1,0 +1,62 @@
+{
+  "product": {
+    "name": "Dual-Band WiFi Range Extender",
+    "category": "Electronics",
+    "specification": "Plug-in dual-band repeater, 2.4GHz and 5GHz, one WPS pairing button, wall-socket mounted, single indicator LED.",
+    "reference_photos": [],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "none",
+      "mounting": "fixed-installed",
+      "colorways": [
+        "white"
+      ],
+      "body_contact": false,
+      "symptom_visibility": "invisible",
+      "result_visibility": "invisible",
+      "multi_step_usage": false
+    },
+    "problems_solved": [
+      "The far end of the house drops off the network and nothing in the room shows why",
+      "Video calls stall in the back bedroom while the router two walls away reports full health",
+      "Adding a second router means running cable through the house"
+    ],
+    "raw_features": [
+      "Plugs into a wall socket and pairs with one button press — no app, no cable, no configuration screen",
+      "Repeats both bands, so a device keeps the band it was already using",
+      "One indicator LED reports signal strength at the chosen socket, so the socket can be moved before it is trusted"
+    ],
+    "personas": [
+      "Households in older or long-plan homes, 25-65, whose router cannot be moved and whose problem appears only at the far end of the house"
+    ]
+  },
+  "page": {
+    "channel": "landing-page",
+    "sections": [
+      {
+        "id": "howto-1",
+        "role": "how-to-use",
+        "copy_summary": "Setup is one action: put it in a socket halfway to the dead room and press the pair button once. Nothing to install, nothing to configure, no second step.",
+        "image_slots": [
+          {
+            "slot_id": "howto.image",
+            "ratio": "1:1",
+            "position": "setup block, beside the one-line instruction"
+          }
+        ]
+      },
+      {
+        "id": "outcome-1",
+        "role": "outcome",
+        "copy_summary": "The closing beat: the back bedroom works. Nothing about the result is photographable — no output, no mark on an object, no change on a body — so the tile has to carry the state rather than the evidence.",
+        "image_slots": [
+          {
+            "slot_id": "outcome.image",
+            "ratio": "16:9",
+            "position": "closing block above the final CTA"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -347,13 +347,36 @@ def scaffold(doc, export_path):
     warnings = []
     check_marker_coverage(doc, warnings)
 
-    # Which <section> an image sits in, for the copy a reader needs to assign a
-    # role. Provenance only — it does not group the slots (see section_of).
-    block_of, copy_of = {}, {}
+    # Which <section> an image sits in. Provenance only — it does not group the
+    # slots (see section_of) and it does not supply the copy either.
+    block_of = {}
     for sec in parse_sections(html):
         for field, _tag in image_fields(sec["inner"]):
             block_of.setdefault(field, sec["block_key"])
-            copy_of.setdefault(field, text_of(sec["inner"]))
+
+    # The copy a reader needs to assign a role, gathered PER ADR-050 SECTION from
+    # the export's own `page.content`, in document order.
+    #
+    # Taking it from the containing <section> instead is wrong for exactly the
+    # case ADR-050 exists to handle, and the clip-fan advertorial is that case:
+    # `content`, `product`, `product_end` and `reviews` are four sections by the
+    # slot-id rule and ONE `<section data-block-key="features">` in the markup, so
+    # all four came back carrying the same 4,000-character blob. A reader asked to
+    # assign four different roles was shown the same text four times.
+    copy_by_section = {}
+    content = page.get("content") or {}
+    for m in re.finditer(r'data-field="([^"]*)"', html):
+        field = m.group(1)
+        val = content.get(field)
+        if not isinstance(val, str) or not val.strip():
+            continue
+        if val.startswith(("http://", "https://", "data:")):
+            continue
+        bucket = copy_by_section.setdefault(section_of(field), [])
+        text = htmllib.unescape(re.sub(r"<[^>]+>", " ", val))
+        text = re.sub(r"\s+", " ", text).strip()
+        if text and text not in bucket:
+            bucket.append(text)
 
     # One pass over every image field in DOM order. Grouping is ADR-050's;
     # ordering is the document's; an image outside every <section> is placed
@@ -396,9 +419,7 @@ def scaffold(doc, export_path):
             "copy_summary": None,
             "image_slots": g["slots"],
             "_block_keys": g["blocks"],
-            "_copy": copy_of.get(
-                g["slots"][0]["slot_id"] if g["slots"]
-                else (g["dropped"][0]["slot_id"] if g["dropped"] else ""), ""),
+            "_copy": " · ".join(copy_by_section.get(key, []))[:900],
             "_out_of_scope": g["dropped"],
         })
 

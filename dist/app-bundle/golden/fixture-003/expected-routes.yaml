@@ -1,0 +1,91 @@
+# Golden routing expectations — fixture-003 (Dual-Band WiFi Range Extender, landing-page)
+#
+# WHY THIS FIXTURE EXISTS. Measured 2026-09-11: deleting EVERY attribute gate from
+# mapping/slot-rules.md left `scripts/validate.py` reporting 0 errors. The four
+# executable gates had no test holding them. fixture-001 and fixture-002 carry
+# identical attributes and between them fire exactly one gate (body_contact), and
+# even that one is not load-bearing — the assertion that reads `killed` only fires
+# when a fixture ASSERTS a type a gate drops, never when a gate that should have
+# fired did not.
+#
+# The one assertion that IS load-bearing is `only_preferred_type`, because
+# check_golden compares it against the whole surviving cell with an exact set
+# equality. So this fixture inverts every attribute and asserts the two cells that
+# a gate reduces to exactly ONE surviving type. Remove either gate and the cell
+# grows back to two, the set comparison fails, and the tree goes red.
+#
+# WHAT IT COVERS, AND WHAT IT CANNOT. Two of the four gates become load-bearing
+# here. The other two cannot be covered by this mechanism and that is a property of
+# the fixture format rather than an omission:
+#
+#   multi_step_usage: false  -> how-to-use falls to ONE type   COVERED below
+#   result_visibility: invisible -> outcome falls to ONE type  COVERED below
+#   symptom_visibility: invisible -> problem-agitation still holds
+#                                    01-pain-scene and 02-symptom-rail  NOT COVERABLE
+#   body_contact: false      -> mechanism still holds four types        NOT COVERABLE
+#
+# There is no way in this format to assert that a type is ABSENT from a cell except
+# by naming the single type that remains. Covering the other two needs either a new
+# assertion key (a `must_not_survive` list) or a role whose row holds exactly two
+# types, one of which the gate kills. Recorded here rather than left to be found.
+
+registry_version: "2.0.0"
+template: "query/runbook.md Steps 2-4"
+
+slots:
+  howto-1:
+    section_role: how-to-use
+    expected_option_A: {type: 03-use-grid}
+    only_preferred_type: 03-use-grid
+    note: >
+      THE GATE IS THE POINT. The how-to-use row prefers 03-use-sequence first and
+      03-use-grid second. multi_step_usage=false drops 03-use-sequence, so one type
+      survives and it is the second-ranked one. If that gate ever stops parsing —
+      a space inside the backticks, a capitalised value, the word `drop` reworded,
+      the table header renamed — this slot's surviving set becomes
+      [03-use-grid, 03-use-sequence] and the exact-set comparison fails here.
+      That is the whole job of this assertion.
+
+      This is also the gate whose written rule and executable rule DISAGREE. The
+      table says "drop `03-use-sequence` unless buyers plausibly assume complexity";
+      the code drops it unconditionally, because no attribute carries that
+      judgement. This fixture asserts the CODE's behaviour, which is what a router
+      actually does. If the "unless" is ever made real, this assertion moves and
+      the move is the record of the change.
+
+  outcome-1:
+    section_role: outcome
+    expected_option_A: {type: 06-relief-hero}
+    only_preferred_type: 06-relief-hero
+    note: >
+      result_visibility=invisible drops 06-relief-scene, leaving 06-relief-hero
+      alone in the outcome row. Two independent rules agree on this product and
+      only one of them executes: the gate drops the type, and the type's own
+      use_when names "an advertorial or final frame of an ads creative", which
+      scores low on FIT for a landing-page outcome beat. The gate is the one under
+      test here — the use_when is judgement and check_golden does not read it.
+
+      Note for whoever revisits `requires_pair`: mapping/slot-rules.md cross-rule 1
+      says 06-relief-scene REQUIRES 01-pain-scene, while registry/index.yaml carries
+      `requires_pair: null` and only `pairs_with`. On this fixture the attribute gate
+      makes the question moot; on a product where it does not fire, the two files
+      disagree about whether the dependency is enforced.
+
+page_level:
+  coverage_limit: >
+    Deliberately two slots. This fixture is a gate regression, not a page: every
+    extra slot is another assertion to keep true through unrelated changes, and the
+    two here are the only cells any gate reduces to a single surviving type.
+    fixture-001 covers the ordinary routing path; fixture-002 covers social-proof.
+  arc: >
+    Not exercised. Two slots, both late in the arc, no pain or cause section — so
+    G4 at page level has nothing to order and this fixture asserts nothing about it.
+  out_of_scope_roles: []
+  attribute_inversion: >
+    Every one of the eight product.attributes is set to the value that makes the
+    product HARDEST to route: passive operation, no visible output, one colourway,
+    no body contact, an invisible symptom, an invisible result and a single
+    operating step. Four of the eight fire a kill; the other four fire prose
+    constraints that nothing executes (G8, G7-X, the POSE branch, Zone B's
+    single-unit rule). A product like this one is where a router is most likely to
+    return a type that cannot argue the page, which is why it is the fixture.
