@@ -3,9 +3,9 @@ id: 07-identity-callout
 step: 7
 job: identity
 device: callout
-version: "0.1"
-status: reserved
-replaced_by: null
+version: "0.2"
+status: deprecated
+replaced_by: 03-spec-callout
 ratios: ["1:1", "4:3"]
 channels: [landing-page, marketplace]
 requires_product_photo: true
@@ -18,10 +18,10 @@ pairs_with: []
 never_with: []
 avoid_adjacent: [03-spec-callout, 07-identity-pack]
 requires_pair: null
-blocked_by: "A re-filing pass. Six observations across five sources cleared criterion 1 on paper; re-reading the breakdowns, only two are unambiguously this device and the other four read as 06-relief-claimstack, 07-identity-pack with a text layer, or a badge on a packshot. The count is not the evidence until the filing is right."
+blocked_by: null
 ---
 
-# 07-identity-callout — PDP-DR DRAFT
+# 07-identity-callout — RETIRED, replaced by 03-spec-callout
 
 Promotion status (2026-09-10): **5 distinct sources on paper — and the count is the problem,
 not the achievement.**
@@ -131,19 +131,36 @@ a claim about what the product does, more than four satellites,
 a leader line carrying a reading order between satellites
 ```
 
-## BLOCK
-**Waiting on a re-filing pass over its own six observations**, not on a decision and not on a
-render. Four of the six belong to `06-relief-claimstack` or `07-identity-pack` on the breakdowns
-already in the ledger; re-file them and this proposal stands at two sources, which is where the
-evidence rule says it actually is.
+## RETIRED — 2026-09-11
 
-Two further blockers sit behind that one and neither is this file's to settle:
+**This type is deprecated and replaced by `03-spec-callout`.** It is kept rather than deleted
+because the ledger carries six observations under this id and a reader has to be able to follow
+them.
 
-1. **G16's two LAW rows** — a named-profession endorsement and a certification mark are three of
-   the six exemplars' only marks. Until the trademark question of 2026-08-18 is answered, this
-   type's commonest observed content is unwritable.
-2. **`A15`** — every remaining mark class is a figure, and no rule in this repo says where a
-   figure in a frame comes from.
+**The question was answered from two directions on the same day, and both said the same thing.**
+
+**A render answered it.** Set `clip-fan-01` declared this type its CONTROL and predicted, before
+the render, that it would come back indistinguishable from `03-spec-callout` — because with the
+style lock in force ground, light, grade, type and accent were identical between the two prompts,
+leaving only the argument to tell them apart. It came back indistinguishable. That is the
+router-confusion evidence this file's `blocked_by` was waiting for, arriving from a render
+instead of from an argument.
+
+**And a corpus answered it.** The 157-image drop of 2026-09-11 put `03-spec-callout` at ten
+distinct sources and found not one new frame for this id. `hydrovia` img-04 is the test case:
+five labelled pills ringing a bottle, naming *Stainless Steel*, *Durable Glass Body*, *USB
+Rechargeable* — materials and capabilities, which is what `03-spec-callout`'s own `use_when`
+claims. It filed there without difficulty.
+
+**What the original file said, which stands as the reason.** Six observations across five
+sources cleared criterion 1 on paper; re-reading the breakdowns, only two were unambiguously
+this device and the other four read as `06-relief-claimstack`, as `07-identity-pack` with a text
+layer, or as a badge on a packshot. The count was never the evidence.
+
+**The two blockers behind it are not resolved and do not need to be.** G16's two LAW rows still
+refuse a named-profession endorsement and a certification mark, which were three of the six
+exemplars' only marks; and `A15` still has no rule for where a figure in a frame comes from.
+Both now bind `03-spec-callout` instead, where they belong.
 
 ## KNOWN-FLAKY
 - **Nothing observed.** No prompt has been written from this file and no render exists. Every
@@ -151,6 +168,12 @@ Two further blockers sit behind that one and neither is this file's to settle:
   honest label for a file one day old.
 
 ## CHANGELOG
+- 0.2 (2026-09-11): **RETIRED**, `status: deprecated`, `replaced_by: 03-spec-callout`.
+  Answered from two directions on one day — clip-fan-01's control render came back
+  indistinguishable from a `03-spec-callout` prompt under an identical style lock, and the
+  157-image drop put that type at ten distinct sources while finding not one new frame for
+  this id. `BLOCK` becomes `RETIRED`; the file is kept because the ledger carries six
+  observations under this id. ADR-078.
 - 0.1 (2026-09-10): drafted from six observations across five distinct sources in batches
   2026-09-03-C, D, F and H. Filed reserved rather than at criterion 1, because re-reading the
   breakdowns puts four of the six with other types — the `07-identity-inhand` finding of

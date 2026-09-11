@@ -4982,3 +4982,155 @@ The **re-filing pass** `07-identity-callout` and `07-identity-inhand` both ask f
 It is a curation operation, it moves observations between ids in an append-only ledger by
 adding correction records, and folding it into a namespace diff would have made two decisions
 look like one.
+
+---
+
+## ADR-078 · 2026-09-11 · Three types the corpus earned, one it retired, and the six findings that belong to the namespace rather than to any file
+
+**Owner instruction, 2026-09-11: "sửa theo khuyến nghị."** The recommendations were the four
+at the foot of `registry/pdp-dr-types/_CURATION-2026-09-11.md`, written after the 157-image
+drop was classified across batches A–J. This ADR is all four landing.
+
+### What the recommendations were, and what each cost
+
+| | recommendation | what shipped |
+|---|---|---|
+| 1 | write the three Tier-1 files | `03-spec-claimstack`, `03-spec-dimension`, `03-spec-hero` |
+| 2 | retire `07-identity-callout` | `status: deprecated`, `replaced_by: 03-spec-callout` |
+| 3 | `02-symptom-callout` has its third source | a file, reserved, blocked on criterion 1 |
+| 4 | the six findings into the instruction | a new section, and three corrections elsewhere |
+
+`registry/pdp-dr-types/` goes **11 → 15 files**. Tier 2 (eight ids at 3–4 sources) and Tier 3
+(twenty-three ids below three) are deliberately NOT drafted: the recommendation was the three
+that clear criterion 1, and drafting eight more on 3 sources would repeat the mistake
+`07-identity-callout` was just retired for.
+
+### The three Tier-1 files, and why each is still reserved
+
+| id | sources | obs | blocked on |
+|---|---|---|---|
+| `03-spec-claimstack` | **8** | 15 | criterion 2 against `06-relief-claimstack` |
+| `03-spec-dimension` | **7** | 11 | criterion 2 against `03-spec-callout` |
+| `03-spec-hero` | **6** | 18 | criterion 2 against `06-relief-hero` |
+
+**All three clear criterion 1 and all three are blocked on the same test, which is the finding
+rather than a coincidence.** Each is a JOB SIBLING of something that already exists: the same
+device, the same picture, a different job. SPEC §3.1 says two jobs are two types however alike
+the picture, and it is right — but it produces three pairs a router has never been asked to
+separate, on a page kind where both members of every pair are plausible for the same slot.
+
+**That is now the single largest piece of unfinished work in the namespace**, and
+`registry/pdp-dr-instruction.md` says so in those words.
+
+`03-spec-hero` is the sharpest case. Counting it with `06-relief-hero` (ACTIVE, 19 sources)
+and `03-use-hero` (1 source, deliberately no file), **one photograph carrying a baked headline
+appears in 23 of the corpus's 36 sources.** It is the commonest construction on a
+direct-response product page and the registry half-owns it already.
+
+### `07-identity-callout` is retired, and it was answered twice on one day
+
+Deprecated rather than deleted: the ledger carries six observations under that id and a reader
+has to be able to follow them. `status: deprecated`, `replaced_by: 03-spec-callout`,
+`blocked_by: null`, and the `BLOCK` section becomes `RETIRED` — which the validator enforces,
+since it errors on a `BLOCK` that no longer blocks.
+
+**A render answered it.** Set `clip-fan-01` declared this type its CONTROL and predicted,
+before the render, that it would come back indistinguishable from a `03-spec-callout` prompt —
+because with the style lock in force, ground, light, grade, type and accent were identical
+between the two, leaving only the argument to tell them apart. It came back indistinguishable.
+
+**And a corpus answered it.** The 157-image drop put `03-spec-callout` at ten distinct sources
+and found **not one new frame** for `07-identity-callout`. `hydrovia` img-04 is the worked
+case: five pills ringing a bottle naming *Stainless Steel*, *Durable Glass Body*, *USB
+Rechargeable* — materials and capabilities, which is what the spec callout's own `use_when`
+claims. It filed there without difficulty.
+
+**What the file already said is the reason, and it stands as the record.** Six observations
+across five sources cleared criterion 1 on paper; re-reading the breakdowns, only two were
+unambiguously that device. The count was never the evidence. That is `ADR-065`'s
+`07-identity-inhand` finding arriving a second time, and this is the first time this library
+has retired a type for it rather than deferring.
+
+### `02-symptom-callout` gets the file ADR-066 deferred
+
+ADR-066 renamed it from `02-symptom-halo`, recorded it at two sources, and said *"gets no file
+until it has three."* `glowy-liff` is the third. The file ships reserved, blocked on criterion
+1 by two and on criterion 2 against `02-symptom-rail` — a rail LISTS complaints in a band, a
+ring SURROUNDS a subject with them, and the two stand at 4 and 3 sources on this corpus, so a
+promotion decision will have to take them together.
+
+### The six findings, and where each went
+
+They went into `registry/pdp-dr-instruction.md` rather than into any type file, because each
+binds every type in the namespace.
+
+1. **G3 does not hold uniformly, and the split is precise.** It HOLDS for pressure, verdicts
+   and states; it INVERTS for heat, lift and detection. **The market reaches for the colour of
+   the PHENOMENON, not the colour of the judgement.** One source states its own inverted code
+   in words and then contradicts itself on the same device. — *And the distinction nothing in
+   this repo had stated: a product's OWN indicator colours are not signal marks. G3 does not
+   reach an LED wavelength, a status strip or a charging glow, and four sources would be
+   miscounted by a reader who did not hold that.*
+2. **Five honest-substantiation behaviours, found in the wild** — the instrument in shot, the
+   declared error band, the comparison scale, the approximation sign, the stated limitation.
+   All five are better models than the footnote shape A15 proposes from a single frame.
+   **A maximum is falsifiable; a point figure on a render is not** — which is the whole of what
+   A13 and A15 are each trying to say, in one sentence.
+3. **The slot-spending habit, 7 of 10 sources.** The standing argument for `03-spec-lineup`,
+   recorded with its own counter-argument: compressing costs the scale cue.
+4. **Two rules the corpus breaks on purpose.** G7 impossible settings, twice. And **G13 names a
+   configuration this library cannot render at all** — a crying infant in a cot — so a
+   baby-monitor category has a gallery slot no prompt craft can fill.
+5. **Motion in a still**: three instances, two sources, no device name.
+6. **A third mark class**, the compatibility bar, reached by nothing in G16, G14 or the two LAW
+   rows, and banned outright by G6 which bans logos.
+
+### Consequences — rule 6c sweeps on `"identity-callout"` (28 hits, 10 files, 7 TEACHES), `"claimstack"` (76, 14, 10) and `"deprecated"` (32, 13, 7)
+
+The sweeps found four files teaching the opposite and all four are corrected here.
+
+- `mapping/pdp-dr-rules.md` — the **cross-file call register** listed two LIVE calls from
+  `07-identity-callout` into `03-spec-callout`. The caller is retired, so both rows are STRUCK
+  rather than deleted and the register now reads **zero live calls**. This is the register
+  doing exactly the job it was built for: it is the only instrument watching those calls, and
+  without the sweep it would have gone on describing a dead dependency as live.
+- `registry/pdp-dr-instruction.md` — three corrections. The call-cost paragraph cited the same
+  dead call; the trademark-question blocker named the retired type; and the
+  still-waiting-on list was counted at eleven reserved files.
+- `registry/pdp-dr-types/03-spec-callout.md` — its BLOCK said criterion 2 was *"unrun and no
+  longer hypothetical"* against a sibling. **That test has now been run and that sibling lost**,
+  so the passage is rewritten to say so and to name the two confusion tests that remain —
+  against `02-symptom-callout`, which now has a file, and against `03-spec-dimension`, which
+  puts labelled graphics on a plain product exactly as it does.
+- `registry/pdp-dr-types/06-relief-claimstack.md` — gains `avoid_adjacent: [03-spec-claimstack]`
+  and a note that its criterion 2 is now a NAMED PAIR rather than a risk in the abstract.
+- `registry/vocabulary.yaml` — `pdp_dr_types` 11 → 15, and one new device `dimension`, which
+  names how the argument is made rather than what is photographed (the test ADR-065 applied
+  when it renamed `ingredient` to `stilllife`).
+- `SPEC.md:340`, *"Demotion: `deprecated` requires `replaced_by`"* — **stands, and is
+  satisfied**; this is the first demotion in the pdp-dr namespace and the first time that
+  clause has been exercised there.
+- `ingestion/runbooks/classify-batch.md:114` and `mapping/slot-rules.md:59` — ordinary uses of
+  "criterion 1" in craft prose. **Both stand.**
+- GENERATED — `registry/index.yaml` and `dist/app-bundle/` regenerate; **neither gains a
+  pdp-dr type**, which is the namespace doing its job.
+- `registry_version` unchanged: no ACTIVE type, no active structure and no routing outcome
+  moves.
+
+**One soft-limit warning was worked rather than ignored.** `06-relief-claimstack` sat at 21,883
+discretionary characters against ADR-013's 22,000 soft limit, so the sibling note pushed it
+over. The warning's own remedy is *"move workings to the commit message"*, and that is what
+happened: the note in the file is now two sentences and the reasoning is in this ADR.
+
+### What is NOT done
+
+**Nothing in the folder routes.** Fourteen reserved files and one deprecated; `index.yaml`
+gains none. The three Tier-1 files have no render and no prompt.
+
+**The three router-confusion tests are not run**, and they are the same test three times.
+
+**Tier 2 is not drafted** — eight ids at 3–4 sources, each one or two sources short.
+
+**The re-filing pass is still not run.** Retiring `07-identity-callout` does not re-file the
+four observations that belong to `06-relief-claimstack` and `07-identity-pack`; it only stops
+them being counted toward a type that no longer exists.

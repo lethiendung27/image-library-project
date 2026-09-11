@@ -82,14 +82,21 @@ validator warning (ADR-070). This namespace ships no copies, so it has no such i
 and it has a smaller exposure of the same kind. **A skeleton that calls a part defined in
 another file is a reference nothing validates.** Every one of them lives here:
 
-| the caller | calls | defined in | status of the definition |
+| the caller | calls | defined in | status |
 |---|---|---|---|
-| `07-identity-callout` `[PRESENTATION]` | `PARTS/presentation` | `03-spec-callout` | reserved, same folder |
-| `07-identity-callout` `[SETTING]` | `PARTS/setting` | `03-spec-callout` | reserved, same folder |
+| ~~`07-identity-callout` `[PRESENTATION]`~~ | `PARTS/presentation` | `03-spec-callout` | **dead — caller deprecated 2026-09-11** |
+| ~~`07-identity-callout` `[SETTING]`~~ | `PARTS/setting` | `03-spec-callout` | **dead — caller deprecated 2026-09-11** |
 
-Two calls today. **Adding a call without adding a row here is the failure this register
-exists to prevent**, and the register is the whole instrument — the validator does not read
-skeleton prose.
+**Zero live calls today.** Both rows are struck rather than deleted: the caller was retired
+by ADR-078 in favour of the type it was calling into, which is the cleanest way a
+cross-file call can end, and a reader following the deprecation needs to see that the calls
+went with it.
+
+**Adding a call without adding a row here is the failure this register exists to prevent**,
+and the register is the whole instrument — the validator does not read skeleton prose. The
+three files written on 2026-09-11 (`03-spec-claimstack`, `03-spec-dimension`,
+`03-spec-hero`) deliberately restate their own parts rather than calling a sibling's, so the
+register stays empty.
 
 `06-relief-animal` cites `06-relief-scene`'s `PARTS/subject` and `pairs_with` in prose rather
 than calling it from a skeleton; that is an argument, not a reference, and it is deliberately

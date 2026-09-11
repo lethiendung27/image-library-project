@@ -355,11 +355,20 @@ about the buyer's life, a callout claim is about a place on the object.**
 and criterion 3 has two renders — both examined, both graded by eye under ADR-011 — but
 SPEC §6.3(3) asks for the OWNER's verdict and ADR-011 forbids assigning that one.
 
-Criterion 2 is unrun and it is no longer hypothetical: `07-identity-callout` entered this
-namespace on 2026-09-10 drawing one of its sources from the same `feicemat-v2` page as this
-file. Two types annotating one object with labelled satellites is the confusion the test
-exists to find, and the discriminator is the JOB — parts and what they do here, what the
-object IS there.
+**Criterion 2 was RUN against one sibling and that sibling lost.** `07-identity-callout`
+entered this namespace on 2026-09-10 drawing one of its sources from the same `feicemat-v2`
+page as this file, and two days later it was retired in favour of this type (ADR-078) —
+answered by a control render that came back indistinguishable from a prompt of this type, and
+by a 157-image corpus that put this file at ten distinct sources and found not one new frame
+for that one. The discriminator held: parts and what they do here, what the object IS there.
+`hydrovia` img-04 is the worked case — five pills naming *Stainless Steel*, *Durable Glass
+Body*, *USB Rechargeable* — and it filed here without difficulty.
+
+**Two confusion tests remain and neither has been run.** Against `02-symptom-callout`, which
+shares this device with a `symptom` job and now has a file. And against `03-spec-dimension`,
+which puts labelled graphics on a plain product on a quiet ground exactly as this type does —
+the boundary is that a leader POINTS AT a part and a dimension line SPANS an edge, and that
+sentence has never met a router.
 
 ## CHANGELOG
 - 0.3 (2026-09-03): owner audit of the founding round — colour. `PARTS/setting`: the ground

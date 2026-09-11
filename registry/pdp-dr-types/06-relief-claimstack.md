@@ -16,7 +16,7 @@ variants: []
 exempt_from: [G7, G11]
 pairs_with: []
 never_with: []
-avoid_adjacent: []
+avoid_adjacent: [03-spec-claimstack]
 requires_pair: null
 blocked_by: "Criterion 2, the router-confusion test against 06-relief-hero. Criterion 1 is cleared at nine sources, and a type this common contests every outcome slot on every page."
 ---
@@ -399,8 +399,11 @@ headline and claim lines filling the other is the commonest argument image on a
 direct-response product page, so it will contest every outcome slot with an active type. ADR-066
 recorded the refusal to promote on that basis and it stands.
 
-`07-identity-callout` re-files four of its six observations to this type on the breakdowns
-already in the ledger. Those are not new sources until the re-filing pass actually runs.
+**Criterion 2 is now a NAMED PAIR:** `03-spec-claimstack`, 8 sources, same picture with a
+capability claim instead of a felt state (ADR-078).
+
+`07-identity-callout` re-filed four observations here and was retired 2026-09-11. Still not
+new sources until the re-filing pass runs.
 
 ## CHANGELOG
 - 0.4 (2026-09-03): owner audit of the second round — colour. `PARTS/field`: the flat tone is
