@@ -5134,3 +5134,107 @@ gains none. The three Tier-1 files have no render and no prompt.
 **The re-filing pass is still not run.** Retiring `07-identity-callout` does not re-file the
 four observations that belong to `06-relief-claimstack` and `07-identity-pack`; it only stops
 them being counted toward a type that no longer exists.
+
+---
+
+## ADR-079 · 2026-09-11 · LEDE is the fifth operation, `source_dirty` is scoped to what the bundle carries, and the repo gets a front door
+
+**Owner question, 2026-09-11: "repo này đã sẵn sàng để gửi dev chưa?"** The audit found four
+things and the owner asked for three of them fixed. This is those three. The fourth — the
+export → `content.json` step — is not done and is named in the README as the blocking one.
+
+### 1. `registry/toplist-types/` is absent from the bundle because LEDE is a fifth OPERATION
+
+The audit read the absence as an oversight, which is exactly how it looks. It is not, and the
+reason had never been written down anywhere.
+
+`scripts/build-app-bundle.py` says in its own header that *"anything missing is a rule the app
+cannot apply and will silently skip"*, and it ships `gif-types/` while omitting
+`toplist-types/`. Both namespaces sit outside `index.yaml`, so the apparent rule — *outside
+the index, outside the bundle* — does not explain the difference.
+
+**The difference is the operation.** Gif suggestion is a STEP of QUERY, `query/runbook.md`
+Step 5c and 5d, so a page routed from `content.json` gets gif verdicts and needs gif law in the
+bundle. Toplist is not a step of anything: SPEC §3.7 says its input is the `product` block and
+not `content.json`, which is QUERY's input by definition. **It is a fifth operation, and
+`SPEC.md` §1 did not have a row for it.**
+
+So the fix is not to add files to the bundle. It is to name the operation:
+
+- `SPEC.md` §1 gains a **LEDE** row — input, procedure, output — and a paragraph saying why
+  `registry/toplist-types/` is therefore absent from the bundle, and why
+  `registry/pdp-dr-types/` is absent for the opposite reason: pdp-dr is INSIDE QUERY (§3.8) and
+  promotion out of it is a `git mv` into `registry/types/`, so a promoted type enters
+  `index.yaml` and the bundle by itself.
+- `scripts/build-app-bundle.py` gains the same reasoning at the point a reader would ask.
+
+**Ship toplist the day an app implements LEDE, and not before.** Shipping law an app cannot act
+on is worse than omitting it, because the manifest would then assert coverage that does not
+exist.
+
+**The sweep caught a second error while checking the first.** `SPEC.md:16` read *"A conforming
+harness implements three operations"* over a table of FOUR, and this change would have made it
+five. Corrected, with the sentence a consuming dev actually needs: an app on the bundle
+normally implements QUERY alone.
+
+### 2. `source_dirty` was measuring the wrong tree
+
+`bool(git status --porcelain)` over the WHOLE repo. The flag's job is to tell a vendoring app
+that the sources behind its copy were uncommitted, and a dirty file the bundle does not carry
+says nothing about that.
+
+**Measured: four consecutive bundle commits — `4cebcbe`, `108ef97`, `4f1cf19` and the one
+before this — reported DIRTY TREE on account of one unrelated toplist lane that touched no
+bundled file.** A flag that is true whenever any parallel session has uncommitted work is a
+flag that has stopped carrying information, and this repo runs parallel lanes by design.
+
+Now scoped to the bundle's own sources: every path in `FILES`, plus the source DIRECTORIES in
+`DIRS` so a new or deleted type file counts.
+
+**Fed known-bad input before being believed**, three cases:
+
+| case | want | got |
+|---|---|---|
+| only the unrelated toplist lane dirty | False | False |
+| `registry/rules.md` dirty — a vendored file | True | True |
+| a NEW file appears in `registry/types/` | True | True |
+
+Restored clean at False. This is the fourth instrument in this repo to be scoped after it was
+found reporting on something other than its subject, and the first where the fault was breadth
+rather than a blind spot.
+
+### 3. `README.md` — the repo had no front door
+
+`SPEC.md` is a contract and `CLAUDE.md` says of itself that it is a *thin Claude Code adapter*.
+Neither is a place to start. The README is written for four readers, says which four files each
+should open, and does three things a contract cannot:
+
+- **states the known gaps up front** — the missing export converter, the empty picks ledger, a
+  namespace that routes nothing, and an operation no app implements
+- **warns before the converter is written** that a real page export satisfies none of the QUERY
+  input contract: empty `sections`, all eight `product.attributes` absent against nine gates
+  that read them, and `lpTypeId` with no home in the schema
+- **names the four habits** that explain most of what looks unusual here — a clause needs a
+  failed render, evidence counts SOURCES, generated views are regenerated, ledgers are
+  append-only
+
+### Consequences — rule 6c sweeps on `"operations"` (3 hits, 3 files, 1 TEACHES) and `"source_dirty"` (3, 2)
+
+- `SPEC.md` — §1 gains the LEDE row and the bundle-absence paragraph; line 16's *"three
+  operations"* corrected to five. **This is a contract change**: a conforming harness now has
+  five operations to implement, and an app on the bundle is told it needs one of them.
+- `scripts/build-app-bundle.py` — `sources_dirty()` replaces the unscoped check, and the
+  two-namespace absence is documented where a reader would ask.
+- `README.md` — new.
+- GENERATED — `dist/app-bundle/` regenerates; `SPEC.md` inside it moves with the source.
+  **`source_dirty` is now False**, which is the first honest reading that field has carried in
+  four bundle commits.
+- `registry_version` unchanged: no type, no vocabulary value and no routing outcome moves.
+
+### What is still NOT done, and it is the one that matters
+
+**The export → `content.json` step does not exist and this repo does not specify it.** A live
+Shopify/flunnel export carries empty `sections`, none of the eight required
+`product.attributes`, and an `lpTypeId` the schema has no field for. Until that step is
+written, an app cannot be fed by the owner's own system — which is the difference between a
+library that validates and a library that ships.
