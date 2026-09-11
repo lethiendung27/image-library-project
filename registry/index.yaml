@@ -268,7 +268,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 9
+    evidence_count: 10
     picks: {}
     use_when: >
       The product has more than one operation step, or buyers may assume it is
@@ -394,7 +394,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 32
+    evidence_count: 33
     picks: {}
     use_when: >
       The product solves a problem the buyer already feels but has not named.
