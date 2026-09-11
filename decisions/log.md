@@ -5308,3 +5308,187 @@ directory now holds 35 files against a manifest of 34 — exactly the manifest p
 yet fail on an orphan in the output directory. The invariant is now enforced at build time
 and unenforced at check time, which is the weaker half. Recorded rather than built, because
 the build is the only path that writes the directory and a second gate has not earned itself.
+
+## ADR-081 · 2026-09-11 · The export → `content.json` step exists, and the structure was never missing — it was looked for under three names it does not use
+
+**Owner question, 2026-09-11**, on the last open item of ADR-079's dev-readiness audit. Three
+decisions were put and three were answered:
+
+| question | answer |
+|---|---|
+| where do the eight `product.attributes` come from | **the app supplies them** — *"đã có phương án xử lí phần này từ app, đảm bảo tin cậy"* |
+| does `lpTypeId` enter the schema | **yes, as a flat optional `page.lpTypeId`** |
+| how is `page.sections` reconstructed | **from `htmlCompiled`; `role` read from the copy** |
+
+Measured against the two exports that exist on disk: `pdp-dr-360-surround-view-4-channel-dash-cam-v01.json`
+(400,050 bytes, `lpTypeId: pdp_dr`) and `listicle-mini-steam-iron-v01.json` (314,239 bytes,
+`listicle`). **Two exports is what exists, not a sample of the format**, and the converter
+refuses an unknown `schemaVersion` rather than extrapolating from them.
+
+### Two of the three findings this was built on were in the wrong place
+
+ADR-079 and `README.md` were right that a real export satisfies none of the QUERY input
+contract. They were wrong about where the problem sits, and a converter written to that
+description fails on its first call.
+
+**There is no `page.sections`.** The empty `sections` array is at the export's TOP level;
+`'sections' in page` is `False` in both files. Code reading `page["sections"]` raises
+`KeyError` — it never reaches the empty list it was told to handle.
+
+**`htmlCompiled` is not unmarked.** It carries no `data-fl-key`, no `data-slot` and no
+mustache; all three true, all three names it does not use. What it carries:
+
+| | pdp_dr | listicle |
+|---|---|---|
+| `data-field` occurrences / distinct | 141 / 139 | 245 / 245 |
+| `<section data-block-key=…>` | 14 | 15 |
+| `page.content` non-meta keys | 138 | 245 |
+| **content keys carrying no marker** | **0** | **0** |
+| `data-field-type="image"` | 24 | 28 |
+
+Every bound element also carries `data-field-type`, `data-field-attr`, `data-visible` and
+`data-locked`. The page structure was never lost. **The lesson is narrower than "check your
+work": a negative finding about markup is only as good as the list of names searched**, and
+three names were searched where one more would have closed the whole question a day earlier.
+
+Only the third finding survives intact — `lpTypeId` had no home, and now has one.
+
+### The line the converter draws, and why it is drawn there
+
+MECHANICAL, taken from the export: the section list and its ORDER from `data-block-key` in DOM
+order; each section's image slots from `data-field-type="image"`, whose `data-field` IS the
+slot id; each ratio from the rendered box the markup states in preference to the asset's own
+`width`/`height`, snapped to ADR-016's five and reported; `product.name`, `personas`,
+`raw_features` and `specification` from `brief`.
+
+JUDGEMENT, refused rather than guessed — each for a measured reason:
+
+- **`role`.** In `advertorial-cord-tensioner-cam-lock-v01`, **seven** sibling cards of ONE
+  repeating block (`content.items.0` … `.6`) carry **six different roles**. A block → role
+  table collapses all seven into one and destroys the page arc `mapping/slot-rules.md`
+  cross-rule 3 enforces. The worksheet carries each section's own copy so the assignment is
+  made by reading it, which is SPEC §7.5's own position on awareness stage.
+- **`page.channel`.** The export does not carry it, and the router learned it by GUESSING from
+  `lpTypeId` for five sessions running — half of why ADR-059 removed channel as an admission
+  test. Repeating that guess inside the converter would have re-opened a closed decision one
+  layer down, where nobody would look for it.
+- **The eight attributes.** The owner's answer, and `query/runbook.md` Step 1 already demanded
+  it: *"Do not infer missing attributes — ask; inference here is the G7-X failure path."* The
+  measurement that shows why: in the dash-cam export the only colour words anywhere in the
+  brief and page copy are *black*, *white* and *green*, and **all three sit inside one
+  sentence** the brief itself labels *"buyer doubts to answer, **not facts about this
+  product**"* — a side channel showing a green screen, everything recording in black and
+  white. A keyword derivation harvests three colorways from a sentence that disclaims being
+  about the product, and `colorways`'s own contract calls a fabricated one a G2 violation.
+
+### The section walk independently reproduces ADR-050, 30 of 30
+
+`query/runbook.md` derives a section from the slot id arithmetically — top-level prefix, plus
+the next segment when it is a number. That rule was worked out by hand from routed pages.
+Applied to every in-scope slot in both exports and compared against `data-block-key`, the two
+**agree 30 of 30, with no disagreement.** The export's own markup and the rule this repo
+derived independently say the same thing, so the converter does not restate ADR-050 — the
+markup already encodes it. A cheap check that could have contradicted the design and did not.
+
+### `page.lpTypeId` is provenance, and the distinction is the whole of it
+
+The converter MUST read `lpTypeId`: the two exports share no argued block key at all —
+`hero trust why press product tank …` against `disclosure header content.0 … compare
+scarcity closing …` — so whatever maps a block to a page structure is per-`lpTypeId`. The
+router must NOT. ADR-059 forbids it as an admission test and says nothing against recording
+it; this is the treatment `channels` already has, kept as a record of where something came
+from and read by nothing that admits or refuses. The field's own description says so at
+length, because the next reader to find it will be looking for permission to gate on it.
+
+**A latent trap was found and stepped around rather than sprung.** The first draft carried a
+`$comment` key beside the description. `scripts/validate.py`'s `schema_errors` errors on a
+schema keyword it does not implement — and it did not fire, because it only recurses into a
+sub-schema for keys PRESENT IN THE DOCUMENT, and no `content.json` carried `lpTypeId` yet. The
+unknown keyword would have detonated on the converter's first real output. `$comment` was
+dropped and the note folded into the description. **The blind spot itself is left standing and
+recorded here:** any annotation added to a sub-schema for an optional field is unchecked until
+some document uses that field. Fixing it is a change to the validator and belongs to whoever
+opens it next.
+
+### Enforcement fed known-bad input before being believed
+
+**Nineteen injected faults, nineteen fired, two clean controls**, tree restored afterwards.
+Export-level: wrong `kind`; `schemaVersion` ≠ 1; no `page`; empty `htmlCompiled`; a file that
+is not JSON. Scaffold: a `page.content` key with no marker; an in-scope image outside every
+`<section>` — which is REAL, not injected, `rail.image` in the listicle export; an image with
+no derivable ratio. Build: `channel` unanswered; no `product`; `attributes` left as the
+placeholder string; `attributes` missing 2 of the 8; a section with image slots and no role;
+two sections sharing an id; a slot with no ratio; no section surviving; an empty
+`problems_solved`; a role outside the contract's twelve.
+
+**One warns rather than refuses, and it is the gap the contract cannot close.**
+`visible_output` is the only one of the eight typed as an open `string`, and **4 of the repo's
+15 `content.json` files carry 49–140 characters of prose in it.** `mapping/slot-rules.md`
+gates on `visible_output ≠ none` — which prose satisfies — so G8 binds and the output becomes
+the primary subject by accident, in four pages already routed. Failing on it here would reject
+files the contract accepts, so it warns. Making it an enum is a separate decision that breaks
+those four.
+
+`schema_errors` is IMPORTED from `scripts/validate.py` rather than reimplemented: two
+validators drift, and the one in the validator is the one CI runs.
+
+### Consequences — rule 6c sweeps on `"lpTypeId"` (4 TEACHES), `"content.json"` (19) and `"export"` (9)
+
+- `mapping/content.schema.json` — **`page.lpTypeId` added**, optional, provenance. This is a
+  contract change, and the only one here: every `content.json` written before it stays valid.
+- `mapping/export-to-content.md` — **new**, 159 lines. The step's law.
+- `scripts/export-to-content.py` — **new**, 558 lines. `scaffold` then `build`.
+- `README.md` — *"Before you write the converter"* becomes *"Feeding it from a real page"*,
+  and the known-gaps list loses the converter and gains the `visible_output` gap in its place.
+- `SPEC.md` §9 — the repo map gains both new files, **and says the converter is NOT a sixth
+  operation**: it produces QUERY's input rather than consuming the library's rules, so no
+  harness implements it. Named explicitly because ADR-079 had just finished establishing that
+  there are five, and a reader meeting a new entry point deserves to be told which side of
+  that line it sits on. §1's five-operation table is untouched.
+- `query/runbook.md` Step 1 — gains a pointer to where a `content.json` comes from when the
+  page is a live one. Its own *"do not infer missing attributes"* rule is now enforced one step
+  earlier, and the paragraph says so.
+- `SPEC.md:386` and `mapping/slot-rules.md:20` — both teach that the router guessed the channel
+  from `lpTypeId`, which is ADR-059's reasoning. **Both stand**: recording the value is not
+  gating on it, and nothing in this diff lets a router read it.
+- `query/runbook.md:407`, `registry/gif-instruction.md:79`, `registry/rules.md:359` — all three
+  teach that the page id identifies the source export and lives in `prompts.json.page_id`.
+  **All three stand**, and the owner's choice of a flat `lpTypeId` over a richer `page.source`
+  block is what keeps them true: no second home for a page id was created.
+- `query/runbook.md:37` — *"`product.reference_photos` may be an empty array, and that is a
+  statement"*. **Stands, and is now produced mechanically**: the converter emits `[]`.
+- The remaining `content.json` TEACHES hits are the A15 substantiation rule
+  (`registry/argument-faults.md`, `registry/pdp-dr-instruction.md`, `03-spec-claimstack`,
+  `03-spec-dimension`, `04-proof-stat`), `mapping/toplist-rules.md`'s one-product note, and
+  `query/output.schema.json`'s two ratio descriptions. **All stand**: each is about what a
+  `content.json` must CARRY, and an optional provenance field changes none of them.
+- `scripts/adr-sweep.py` — **three paths added to `TEACHES`**, and this is the **fifth** time
+  these tuples have been caught not knowing about a file. The worst of the five: **`README.md`
+  was created by ADR-079 one day earlier and not added**, so the repo's own front door — the
+  file a new consumer is told to open first — was invisible to the instrument whose whole job
+  is finding files that teach the opposite of a new decision. Also added:
+  `query/product-slugs.yaml`, which carries the rule for when to extend its own map, and
+  `eval/golden/`, which SPEC §1 invariant 6 calls *"the conformance contract between any two
+  harnesses"* — a fixture states the right answer rather than recording a past one. Proven live
+  afterwards by planting a term in `README.md` and watching it classify as TEACHES.
+- GENERATED — `registry/index.yaml` and `dist/app-bundle/` regenerate; the bundle carries
+  `content.schema.json` and `SPEC.md`, so both move with their sources. **The converter and its
+  spec are deliberately NOT bundled**: the bundle is the app's view of QUERY, and this step
+  runs before QUERY begins.
+- `registry_version` unchanged: no type, no vocabulary value and no routing outcome moves.
+
+### What is NOT done
+
+**No page has been routed through it.** The converter was exercised on both exports and its
+output validated against the contract, but turning that into a `query/sessions/` entry is a
+QUERY operation and needs the app's eight attributes and the owner's channel — neither of
+which is a converter problem.
+
+**`visible_output` stays an open string.** Four existing files depend on that.
+
+**The eight attributes have no schema-level check beyond the contract's own.** The app
+guarantees them; the converter checks presence, the contract checks the seven enums, and
+nothing checks that the values describe the product. That is the same trust boundary
+`query/runbook.md` Step 1 has always drawn.
+
+---

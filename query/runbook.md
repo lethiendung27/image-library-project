@@ -27,6 +27,12 @@ message on: missing `product.attributes` fields, fabricated-looking colorways, r
 outside the vocabulary, missing `image_slots`. Do not infer missing attributes —
 ask; inference here is the G7-X failure path.
 
+**Where a `content.json` comes from when the page is a live one:**
+`mapping/export-to-content.md`, run by `scripts/export-to-content.py` (ADR-081). It is
+mechanical about sections, slot ids and ratios and refuses to guess `role`,
+`page.channel` or the eight attributes — the same rule as the paragraph above, enforced
+one step earlier. A page routed from a hand-written `content.json` is unaffected.
+
 **`scripts/validate.py` now enforces this on every run** (ADR-035), over each session's
 `content.json` and each golden fixture's, so a contract that drifts from the schema is
 caught in the repo rather than in a prompt. Writing the session's `content.json` is

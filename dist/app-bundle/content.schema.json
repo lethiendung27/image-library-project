@@ -146,6 +146,11 @@
             "advertorial"
           ]
         },
+        "lpTypeId": {
+          "type": "string",
+          "minLength": 1,
+          "description": "PROVENANCE ONLY — the flunnel page-export's own template id (`pdp_dr`, `listicle`, ...), recorded so a content.json can say which export and which block map produced it. NOTHING READS IT TO ROUTE. ADR-059 removed channel as an admission test precisely because the router had been guessing the channel from this value for five sessions running; recording a fact is not the same as gating on it, and this is the treatment `channels` already has in type frontmatter — kept as a record of where something came from, read by nothing that admits or refuses. The converter DOES read it, upstream of this file, to choose which block map applies: two exports measured 2026-09-11 share no argued block key at all. Optional (ADR-081), so every content.json written before it stays valid, and a hand-written one has no export to name."
+        },
         "sections": {
           "type": "array",
           "minItems": 1,

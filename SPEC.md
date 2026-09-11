@@ -486,6 +486,10 @@ scripts/gen-gif-cards.py generates the library's folder cards from the gif type 
 scripts/build-app-bundle.py  generates dist/app-bundle/ — the library as an app vendors it
 dist/app-bundle/         generated; never hand-edited (SPEC 1, invariant 6)
 mapping/                 content.json schema + role→type routing table
+mapping/export-to-content.md  the step from a live flunnel page export to a content.json
+                         (ADR-081). NOT a sixth operation: it PRODUCES QUERY's input rather
+                         than consuming the library's rules, so no harness implements it
+scripts/export-to-content.py  implements that step — `scaffold`, then `build`
 query/                   query runbook + output schema
 adapters/                per-model rendering transforms
 feedback/                picks ledger

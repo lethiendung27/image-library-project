@@ -13,7 +13,7 @@ Nothing here runs a model. An application *consumes* this library and does the g
 | **building the consuming app** | this file → `SPEC.md` §1 (the contract) → §7 (routing) → `dist/app-bundle/` |
 | **adding or editing a rule** | `SPEC.md` §3 (registry model) → §6 (evidence) → the type file → `decisions/log.md` |
 | **running Claude Code here** | `CLAUDE.md` — a thin adapter, entry points only, no logic |
-| **wondering why a rule exists** | `decisions/log.md`, append-only, 79 ADRs, every one cites its evidence |
+| **wondering why a rule exists** | `decisions/log.md`, append-only, 82 ADRs, every one cites its evidence |
 
 ## What an app actually consumes
 
@@ -47,19 +47,31 @@ namespaces are deliberately not.
 against `registry/index.yaml` + `mapping/slot-rules.md`, opens only the selected type files,
 and emits prompts. `query/runbook.md` is the procedure, step by step.
 
-## Before you write the converter
+## Feeding it from a real page
 
-**The QUERY input contract is strict and a real page export does not satisfy it.** Measured
-2026-09-10 against a live Shopify/flunnel export:
+**A live page export does not satisfy the QUERY input contract, so there is a step in
+between — and since 2026-09-11 this repo specifies it.** `mapping/export-to-content.md` is the
+law and `scripts/export-to-content.py` runs it:
 
-- `page.sections` came back empty — the slots live in `htmlCompiled`
-- **all eight required `product.attributes` were absent** and must be derived, and
-  `mapping/slot-rules.md` runs nine attribute gates on exactly those eight
-- `lpTypeId` is carried by the export and has no home in `mapping/content.schema.json`
+```
+python3 scripts/export-to-content.py scaffold EXPORT.json -o work.json
+python3 scripts/export-to-content.py build EXPORT.json -d work.json -o content.json
+```
 
-So there is an export → `content.json` step between a real page and this library, and **this
-repo does not yet specify it.** That is the largest piece of work facing a new consumer and
-it is named here rather than discovered.
+It is mechanical about structure and refuses to guess judgement. Sections, slot ids, ratios
+and their order come out of `page.htmlCompiled`, which carries a `<section data-block-key=…>`
+per block and a `data-field` on every bound element — 138 of 138 and 245 of 245 content keys
+marked, across the two exports measured. What it will not invent: `role` and `copy_summary`
+(measured: seven sibling cards of one repeating block carry six different roles, so no
+block → role table is safe), `page.channel` (ADR-059 — the router used to guess it from
+`lpTypeId`), and the eight `product.attributes`, **which the app supplies** (owner decision,
+2026-09-11). `page.lpTypeId` now has a home in `mapping/content.schema.json` as provenance
+that nothing routes on (ADR-081).
+
+The correction worth carrying: the 2026-09-10 reading of this problem put two of its three
+findings in the wrong place. There is no `page.sections` at all — the empty array is
+top-level — and `htmlCompiled` is fully marked up, just not under any of the three attribute
+names that were searched for.
 
 ## Validate everything
 
@@ -93,7 +105,10 @@ them than inferring them:
 
 Stated rather than left to be found:
 
-- **the export → `content.json` step does not exist** (above) — the blocking one
+- **`visible_output` is an open string, not an enum** — the only one of the eight, and 4 of
+  the repo's 15 `content.json` files carry prose in it. `mapping/slot-rules.md` gates on
+  `≠ none`, which prose satisfies, so G8 binds by accident. The converter warns; closing it
+  would fail those four files and is a separate decision
 - **`feedback/picks.jsonl` is empty**, so `SPEC.md` §7.7's pick-rate prior has no data and
   one of the five ranking criteria is inert
 - **`registry/pdp-dr-types/` routes nothing** — fifteen files, all `reserved`, three of them

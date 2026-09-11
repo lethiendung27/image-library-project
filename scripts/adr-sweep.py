@@ -51,6 +51,21 @@ TEACHES = (
     "ingestion/prompts/",
     "registry/argument-faults.md",
     "ingestion/runbooks/", "eval/render-test.md",
+    # Found UNCLASSIFIED by the ADR-081 sweep, and the fifth time these tuples
+    # have been caught not knowing about a file. README.md is the worst case so
+    # far: ADR-079 CREATED it one day earlier and did not add it, so the repo's
+    # own front door — the file a new consumer is told to read first — was
+    # invisible to the instrument that checks whether a decision left teaching
+    # files behind. It teaches: it states the gaps and tells four kinds of reader
+    # which files to open.
+    "README.md",
+    # `query/product-slugs.yaml` carries a hand-maintained map and the rule for
+    # when to add to it, so a hit there is an instruction too.
+    "query/product-slugs.yaml",
+    # SPEC 1 invariant 6 calls `eval/golden/` "the conformance contract between
+    # any two harnesses". A fixture states the right answer rather than recording
+    # a past one, so it teaches.
+    "eval/golden/",
 )
 
 # Files that RECORD. A hit here is history and is expected to stay.
