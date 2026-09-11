@@ -580,3 +580,46 @@ CONSTRAINTS — binding.
 | 11 | **Casting, dress, gaze, ease, light, condition — anything regress?** | six clauses that have held for three sets |
 | 12 | **Any word or number anywhere, on a scene object, a product label or a mat?** | the standing check, and the mats are new surfaces for it |
 | 13 | **Did any frame read as a customer's own photograph?** | the G14 firewall, 58 of 58, and cell 9 goes nearest the line |
+
+---
+
+## RESULT — rendered 2026-09-10, all thirteen opened and graded under ADR-011
+
+**8 pass, 4 partial, 1 fail.** Full finding in `lede-inuse.md` at 0.15.
+
+| # | case | verdict |
+|---|---|---|
+| 1 | oil mister | **partial** — no cone of spray standing in the air, and a barcode is legible on the product's own label |
+| 2 | garden trowel | **fail** — **the eyes are on the lens**, and the trowel is a plain wooden one, so the wrist clause had nothing to land on |
+| 3 | bench vice | **pass** — both hands on the file, neither holding the work |
+| 4 | rust eraser | **pass** — flecks and islands thinning into the rust, scour marks across them, no straight edge |
+| 5 | apple picker | **pass** — crate filled, second started, both feet on the grass |
+| 6 | under-cabinet light | **pass** — shelf lit to the back, the hand goes straight to the jar |
+| 7 | beekeeper's veil | **pass** — the veil is the outer layer and the face reads behind the mesh |
+| 8 | car cabin filter | **partial** — a scene and not a packshot, and I named a road atlas |
+| 9 | shaving, `gaze: reflect` | **pass** — eyes on the reflection, no selfie register |
+| 10 | whetstone, scalloped mat | **pass** |
+| 11 | darning, plain square mat | **partial** — the mat landed, the ground came back an ornate damask |
+| 12 | mezzaluna, framed WITH A FACE, draw 1 | **pass** — the whole head, a real smile, eyes on the board |
+| 13 | mezzaluna, framed WITH A FACE, draw 2 | **partial** — the crown is clipped and the expression still reads; the ground carries a dot texture |
+
+**Question 1 — does the mat hold a FACE, and do the draws agree? YES, and yes.** This was the whole
+reason the set ran to thirteen cells. The framed variant is **not** a no-face form, and
+`presentation` is now **7 of 7**.
+
+**Question 3 — does the plain square mat work as well as the scalloped one?** Both landed. **The
+mat's shape is a free choice.**
+
+**Questions 4 to 7 — every second draw held**: the physics fix on a new material, the light
+exception's third draw, `gaze: reflect`'s second, and the enclosed-package route's second, again a
+scene rather than a packshot.
+
+**What the set was not built to find:**
+
+- **The designed GROUND drifts to PATTERN when the mat is named in detail**, 2 of 4 framed cells,
+  against *one flat designed field*. The mat took the attention and the ground took a default.
+- **The gaze broke on a cell with no turn-back option in it** — a crouching full-body subject with
+  space around her. **The framing is the other half of the cause**, which 0.12 named and could not
+  test.
+- **I named a text object again.** *A road atlas in the door pocket*, written five versions after
+  the clause banning exactly that. Third instance, and the first where the rule already existed.

@@ -1,6 +1,6 @@
 ---
 id: lede-inuse
-version: "0.14"
+version: "0.15"
 status: active
 replaced_by: null
 products_in_frame: one
@@ -82,7 +82,7 @@ A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives th
 A rendered prompt expands what it calls — the model never reads this file (ADR-017).
 
 ```
-TYPE: lede-inuse v0.14  (copied from 06-relief-scene v3.7; MARKS removed, see CHANGELOG)
+TYPE: lede-inuse v0.15  (copied from 06-relief-scene v3.7; MARKS removed, see CHANGELOG)
       This line is the FILE's header. It never enters a prompt body — SLOT CONSTRAINTS.
 REGISTER: editorial documentary photograph, made by a photographer. -> PARTS/register
 
@@ -362,6 +362,13 @@ thing in their hands. The repair is the option list, not the openness: closing t
 the wall lean, and `registry/toplist-instruction.md` §*Writing a clause* says the fix for a clause
 that did its job and kept working is a finer distinction, never the opposite end.
 
+**Set 9 confirms the OTHER suspect, and it is the one 0.11 could not separate.** The gaze broke
+again, 1 of 13, on a cell with no turn-back option anywhere in it: a crouching full-body subject
+with space around her, who looked straight into the lens. **So the option list was half the cause
+and the FRAMING is the other half** — a subject seen whole, at a distance, with room around them,
+is portrait grammar whatever the pose range says. 0.12 named this as the better explanation for
+set 6's paused bodies and could not test it; set 9 tested it by accident and it holds.
+
 **Set 6 tested that and it holds: the option present, 1 of 2 looked into the lens; the option
 removed, 0 of 10.** The control's two draws split — one looked off-frame, one into the lens — which
 is the whole argument for drawing a control twice, since either draw alone would have settled this
@@ -428,6 +435,19 @@ photograph presented as a graphic OBJECT"*. Measured, its ring reads value 0.94 
 **3 of 3 rendered, across set 1 and set 6.** Set 6 returned it exactly as written — a sage ground,
 a clay mat with a scalloped inner edge, a pressed-flower ornament at each corner, no lettering
 anywhere. This is the most reliable thing in the file after the G14 firewall.
+
+**THE MAT HOLDS A FACE — settled at 0.15, 2 of 2, and the two draws agree.** Set 9 drew the
+never-drawn case twice. Draw 1 gave the whole head with room around it and a real smile reading
+clearly inside the mat; draw 2 clipped the crown and the expression still read. **The framed
+variant is NOT a no-face form**, which is what the prediction said and what the repeat now carries.
+**And the mat's SHAPE is a free choice**: a scalloped edge and a plain square with an inner rule
+both landed. `presentation` is **7 of 7** across sets 1, 6 and 9.
+
+**But the GROUND drifts to PATTERN when the mat is named in detail — 2 of 4 framed cells.** Both
+asked for *one flat designed field in a second hue*; one returned an ornate damask wallpaper, the
+other a dotted halftone. **The mat took the attention and the ground took a default**, which is the
+role-vs-value law arriving inside a clause that already names a value. The ground needs its own
+word — FLAT, unbroken, no pattern and no texture — not just its hue.
 
 **PROMOTED TO A STANDING VARIANT at 0.13, on the owner's question, and the drift it corrects is a
 PROCESS fault rather than a craft one.** Owner, 2026-09-10: *"các inuse có frame đâu? lede-inuse
@@ -830,6 +850,12 @@ a later reader sees it as a decision rather than as drift.
   set that added the unlabelled rule. **A jar can be plain; a filled notebook cannot** — its
   content IS the words, which is the `06-relief-hero` newspaper finding arriving a third time.
   Closed book, blank pad, a screen turned away, or choose a different tell.
+
+  **Third instance at 0.15, and this one is worse than the first two: the clause already existed
+  and I wrote past it.** Set 9 cell 8 named *a road atlas in the door pocket* as a lived-in prop,
+  in a set written five versions after the rule went in, and the atlas came back with its cover
+  lettering legible. **A rule a writer has to remember is a rule that gets broken**; the check that
+  works is reading the prop list of every cell against this clause before the set ships.
 - **The product's own label is not safe at three words.** The type has taught since 3.5 that *two
   words render clean, a paragraph renders as gibberish*. Set 4 cell 6 returned a spray bottle
   reading `CO2-EALC BATHSOOM CLEANER` — three words, garbled. **The threshold is not a word count
@@ -943,6 +969,28 @@ A-number from one frame is how the ground clauses of ADR-068 happened.
 wall, against *"even natural daylight, bright, soft shadows. No golden hour"*.
 
 ## CHANGELOG
+- 0.15 (2026-09-11): **set 9 rendered — thirteen cells, the framed variant's open question closes,
+  and the gaze's other suspect is confirmed by accident.** All thirteen opened and graded under
+  ADR-011: **8 pass, 4 partial, 1 fail.** **THE MAT HOLDS A FACE, 2 of 2, and the two draws agree**
+  — one gave the whole head with room around it, the other clipped the crown and the expression
+  still read. The framed variant is not a no-face form, which is what the prediction said. **The
+  mat's SHAPE is a free choice**: a scalloped edge and a plain square with an inner rule both
+  landed, so `presentation` is now **7 of 7** across sets 1, 6 and 9. **New fault inside it: the
+  designed GROUND drifts to PATTERN when the mat is named in detail, 2 of 4 framed cells** — an
+  ornate damask and a dotted halftone against *one flat designed field*. The mat took the attention
+  and the ground took a default; it needs its own word, FLAT and unbroken, not just its hue. **The
+  gaze broke 1 of 13 with no turn-back option anywhere in the cell** — a crouching full-body subject
+  with space around her, looking into the lens. **So 0.11's option-list repair was half the cause
+  and the FRAMING is the other half**, which 0.12 named as the better explanation for set 6's paused
+  bodies and could not test. Set 9 tested it by accident and it holds. **Every second draw held**:
+  the physics fix 2 of 2 on a new material, the light exception 3 of 3, `gaze: reflect` 2 of 2, the
+  enclosed-package route 2 of 2 and again a scene rather than a packshot. **And I broke my own clause
+  writing the set that came after it** — set 9 cell 8 named *a road atlas in the door pocket*, an
+  object whose content is text, five versions after the rule banning exactly that went in. Third
+  instance, and the first where the clause already existed: a rule a writer has to remember is a rule
+  that gets broken, so the prop list of every cell is read against it before a set ships. Cell 1 also
+  returned a visible barcode on the product's own label, which the type bans and G1 permits from a
+  reference — recorded, not resolved.
 - 0.14 (2026-09-10): **set 8 rendered — 6 of 6 pass, the length cut is vindicated, and the physics
   fix repairs the fault the owner named.** All six opened and graded under ADR-011. **The cut
   holds**: five constraint lines were removed from four cells and **none of the five faults appeared
