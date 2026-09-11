@@ -163,13 +163,25 @@ is whatever a consuming app does at Stage 2. Deciding it means either populating
 which changes nothing here until something reads it — or deleting it and rewording rule 1.
 Not decided; stated so the next reader does not have to rediscover the disagreement.
 
-**`01-pain-split` has never been offered as an option in any routed session.** Fourteen
-sessions, 171 image slots, and a type that is among the library's better performers
-(18 passes of 29 renders, the second-best of the high-n types) appears in no option pool at
-all. Its attribute gate explains one page of fourteen. Three explanations remain open and
-they call for opposite fixes: it ranks second in the `problem-agitation` row behind
-`01-pain-scene` and simply loses on fit; thirteen of the fourteen sessions predate ADR-058,
-when a slot returned one distinct type and a second type was never reached; or `never_with`
-is being applied to the POOL, which is exactly the misreading the top of this section
-describes, on a different field, uncorrected. **Measuring which is the work; changing a rule
-before that measurement is not.**
+**`01-pain-split` has never been offered as an option in any routed session, and the
+measurement now points at one explanation.** Fourteen sessions, 171 image slots, and a type
+among the library's better performers (18 passes of 29 renders, second-best of the high-n
+types) appears in no option pool at all. Its attribute gate explains one page of fourteen.
+
+Measured 2026-09-11: **`01-pain-scene` is offered in 14 of 14 sessions; `01-pain-split` in
+0 of 14.** The two are `never_with` each other. On the ONE session routed after ADR-058 —
+`advertorial-cord-tensioner-cam-lock-v01`, the only one where a slot is required to carry
+three DISTINCT types — the `problem-agitation` slot came back as `04-proof-lockedframe`,
+`01-pain-scene`, `06-relief-hero`. **Two of those three are from outside the
+`problem-agitation` row, while the row's own second entry, `01-pain-split`, is absent.**
+SPEC §7.2 says types named in a row outrank types outside it at equal fit, so a row member
+losing to two non-members on its own beat is what EXCLUSION looks like, not what ranking
+looks like.
+
+That is consistent with `never_with` being applied to the POOL — the same misreading the top
+of this section describes, on a different field, uncorrected — and it is **n=1 for the
+post-ADR-058 case**, which is why the rule is recorded here rather than changed. What would
+settle it: route one more page whose copy argues a before/after, with `01-pain-scene` already
+recommended elsewhere, and see whether `01-pain-split` reaches the option pool for the
+problem beat. If it does not, `never_with` is gating the pool and the fix is a scope sentence,
+not a weaker rule.
