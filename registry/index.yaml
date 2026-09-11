@@ -96,7 +96,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 2
+    evidence_count: 3
     picks: {}
     use_when: >
       The product solves several problems at once and one image must show the
@@ -192,7 +192,7 @@ types:
     never_with: [03-spec-split]
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 5
+    evidence_count: 6
     picks: {}
     use_when: >
       Categories where buyers finger the merchandise in their head: cutting
@@ -241,7 +241,7 @@ types:
     never_with: []
     avoid_adjacent: [05-persona-grid]
     requires_pair: null
-    evidence_count: 3
+    evidence_count: 5
     picks: {}
     use_when: >
       The buyer's question is "how much will this one thing do for me" —
@@ -268,7 +268,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 11
+    evidence_count: 12
     picks: {}
     use_when: >
       The product has more than one operation step, or buyers may assume it is
@@ -293,7 +293,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 5
+    evidence_count: 6
     picks: {}
     use_when: >
       The buyer already understands the problem and mechanism, is now
