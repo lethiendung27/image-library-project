@@ -62,6 +62,10 @@ TEACHES = (
     # `query/product-slugs.yaml` carries a hand-maintained map and the rule for
     # when to add to it, so a hit there is an instruction too.
     "query/product-slugs.yaml",
+    # `registry/gif-cards-vi.md` is the SOURCE the Vietnamese folder cards are
+    # generated from (CLAUDE.md rule 5's one named exception) and it states its
+    # own format rules, so a hit there is an instruction somebody follows.
+    "registry/gif-cards-vi.md",
     # SPEC 1 invariant 6 calls `eval/golden/` "the conformance contract between
     # any two harnesses". A fixture states the right answer rather than recording
     # a past one, so it teaches.

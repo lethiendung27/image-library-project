@@ -76,6 +76,38 @@ validator never mutates source files.
 
 ## 3. Registry model
 
+### 3.0 Page kinds, and which corpus each registry was measured on
+
+Owner statement, 2026-09-11. The repo used "LP2" in six places and had never said what LP1
+was, which left a reader no way to know which corpus `registry/types/` came from.
+
+| page kind | `lpTypeId` in an export | registry | notes |
+|---|---|---|---|
+| **LP1** | `listicle`, `advertorial` | `registry/types/` | **two `lpTypeId`s, one page kind** |
+| **LP2** | `pdp_dr` | `registry/pdp-dr-types/` + `registry/types/` | the direct-response product detail page (§3.8) |
+| **top-N listicle** | — | `registry/toplist-types/` | **a different kind, not LP-numbered** (§3.7) |
+
+Three things follow, and the third is the one that bites.
+
+**`lpTypeId` is not 1:1 with a page kind.** LP1 has two of them. Anything keyed on
+`lpTypeId` — the converter's block map, for instance — is keyed finer than the page kind.
+
+**A registry's corpus is not its routing scope.** `registry/types/` was MEASURED on LP1 and
+is USED by every page kind: ADR-059 made the library a set of image types usable on any page,
+and an LP2 page routes to both registries (ADR-077 answer 1). Where a clause in a type file
+cites renders, those renders are LP1's unless the file says otherwise — which is what
+ADR-073 proved matters when a ground rule measured on one corpus had to be re-measured for
+another and split the namespace in two.
+
+**Measured, so the grouping is not taken on faith.** Across the 57 flunnel exports on disk
+(33 `advertorial`, 23 `listicle`, 1 `pdp_dr`), comparing the set of `data-block-key` values
+each kind uses: listicle∩advertorial = 15 blocks, Jaccard **0.33**; listicle∩pdp_dr **0.14**;
+advertorial∩pdp_dr **0.17**. The two LP1 members are about twice as close to each other as
+either is to LP2 — and what they share includes argued blocks (`content.items.0`…`.5`),
+while all three share only furniture (`faq`, `guarantee`, `hero`, `legal_*`, `reviews`).
+**They are one kind by family resemblance, not by a common template**, and a converter still
+needs a block map per `lpTypeId`.
+
 ### 3.1 Type identity
 
 A type's identity is its **argument structure**: `{step}-{job}-{device}`, lowercase,

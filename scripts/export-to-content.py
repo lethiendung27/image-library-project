@@ -8,10 +8,13 @@ the missing step, and `mapping/export-to-content.md` is its specification.
 WHAT IT DOES AND DOES NOT DO, because the difference is the whole design.
 
 MECHANICAL — taken from the export, never invented:
-  - the section list and its ORDER, from `<section data-block-key=...>` in
-    `page.htmlCompiled`, in DOM order;
-  - each section's image slots, from descendants carrying
+  - the image slots, from every element in `page.htmlCompiled` carrying
     `data-field-type="image"`, whose `data-field` IS the slot id;
+  - their ORDER, which is the document's;
+  - their grouping into sections, by ADR-050's arithmetic on the slot id and NOT
+    by `<section data-block-key>` — see `section_of`. The markup groups more
+    coarsely because a `<section>` is a styling container: measured across the 57
+    exports on disk, the two rules agree on 27 and differ on 30;
   - each slot's ratio, from the rendered box where the markup states one and the
     asset's own dimensions otherwise, snapped to ADR-016's five;
   - which slots the library does not cover at all (logos, avatars, the first
@@ -95,7 +98,13 @@ def out_of_scope(field):
     leaf = field.rsplit(".", 1)[-1]
     if leaf == "logo" or re.search(r"(^|\.)logos?(\.\d+)?$", field):
         return "brand or press logo — G6 bans logos outright"
-    if leaf in ("avatar", "author_avatar") or leaf.endswith("_avatar"):
+    if (leaf in ("avatar", "author_avatar", "bio_image")
+            or leaf.endswith("_avatar")):
+        # The `author` row's own rationale names these: "a byline avatar, an
+        # About-the-author image, a comment thread of faces". Verified rather
+        # than guessed from the name — `closing.bio_image` sits beside
+        # `closing.bio_title` "About the specialist" and a signed `closing.
+        # signature`, so the picture is of a named person.
         return ("portrait of a named person — `mapping/slot-rules.md`'s `author` "
                 "row is empty by decision")
     if field == "product.gallery.0":
@@ -106,6 +115,31 @@ def out_of_scope(field):
     if "badge" in leaf:
         return "trust badge, not an argued image"
     return None
+
+
+# ------------------------------------------------------------- section identity
+
+def section_of(slot_id):
+    """ADR-050's rule, verbatim from `query/runbook.md`.
+
+    A section is the slot id's top-level prefix, plus its next segment when that
+    segment is a NUMBER. A number directly after the prefix is a BLOCK index and
+    each block is its own section; a number after a container word — `items`,
+    `photos`, `shots`, `quotes` — is an ITEM index and the list stays one section.
+
+    THIS, not `<section data-block-key>`, decides a section. Measured across the
+    57 exports on disk: the two rules give the same grouping on 27 and a
+    DIFFERENT one on 30. Where they differ the markup is coarser, because a
+    `<section>` is a styling container — the advertorial template wraps seven
+    argument cards, a product shot, a closing card and four review photos in one
+    `features` element. ADR-050 exists precisely to stop a template's packaging
+    being read as the page's argument structure, and it was derived from routed
+    pages rather than from markup.
+
+    The DOM still decides ORDER; it just does not decide grouping.
+    """
+    p = slot_id.split(".")
+    return f"{p[0]}.{p[1]}" if len(p) > 1 and p[1].isdigit() else p[0]
 
 
 # -------------------------------------------------------------- ratio derivation
@@ -146,12 +180,19 @@ def ratio_for(tag):
     rendered box is the shape the reader sees. Both are recorded so a
     disagreement is visible rather than resolved silently.
     """
+    # Tailwind states a rendered box three ways and all three appear on image
+    # fields in the exports on disk: aspect-[a/b] (435), aspect-square (695) and
+    # aspect-video (6). `aspect-video` is 16/9 and missing it left eight
+    # `hero.image` slots — the most important slot on the page — with no ratio.
+    # `aspect-auto` (2) is NOT a ratio and must not be read as one.
     cls = None
     m = re.search(r"aspect-\[(\d+)\s*/\s*(\d+)\]", tag)
     if m:
         cls = (int(m.group(1)), int(m.group(2)))
     elif re.search(r"\baspect-square\b", tag):
         cls = (1, 1)
+    elif re.search(r"\baspect-video\b", tag):
+        cls = (16, 9)
 
     attrs = None
     mw = re.search(r'\swidth="(\d+)"', tag)
@@ -302,56 +343,72 @@ def brief_specification(doc):
 def scaffold(doc, export_path):
     page = doc["page"]
     brief = doc.get("brief") or {}
+    html = page["htmlCompiled"]
     warnings = []
     check_marker_coverage(doc, warnings)
 
+    # Which <section> an image sits in, for the copy a reader needs to assign a
+    # role. Provenance only — it does not group the slots (see section_of).
+    block_of, copy_of = {}, {}
+    for sec in parse_sections(html):
+        for field, _tag in image_fields(sec["inner"]):
+            block_of.setdefault(field, sec["block_key"])
+            copy_of.setdefault(field, text_of(sec["inner"]))
+
+    # One pass over every image field in DOM order. Grouping is ADR-050's;
+    # ordering is the document's; an image outside every <section> is placed
+    # like any other, which is why there is no "unplaced" case any more.
+    groups, order = {}, []
+    for field, tag in image_fields(html):
+        key = section_of(field)
+        if key not in groups:
+            groups[key] = {"slots": [], "dropped": [], "blocks": []}
+            order.append(key)
+        g = groups[key]
+        b = block_of.get(field)
+        if b and b not in g["blocks"]:
+            g["blocks"].append(b)
+        reason = out_of_scope(field)
+        if reason:
+            g["dropped"].append({"slot_id": field, "reason": reason})
+            continue
+        r = ratio_for(tag)
+        if r is None:
+            g["slots"].append({
+                "slot_id": field,
+                "ratio": None,
+                "RATIO-UNRESOLVED": ("the markup states no rendered box and the "
+                                     "asset carries no width/height; supply one "
+                                     "of ADR-016's five"),
+            })
+        else:
+            slot = {"slot_id": field, "ratio": r["ratio"]}
+            if r["note"]:
+                slot["ratio_note"] = r["note"]
+            g["slots"].append(slot)
+
     sections = []
-    for s in parse_sections(page["htmlCompiled"]):
-        slots, dropped = [], []
-        for field, tag in image_fields(s["inner"]):
-            reason = out_of_scope(field)
-            if reason:
-                dropped.append({"slot_id": field, "reason": reason})
-                continue
-            r = ratio_for(tag)
-            if r is None:
-                slots.append({
-                    "slot_id": field,
-                    "ratio": None,
-                    "RATIO-UNRESOLVED": ("the markup states no rendered box and "
-                                         "the asset carries no width/height; "
-                                         "supply a ratio from ADR-016's five"),
-                })
-            else:
-                slot = {"slot_id": field, "ratio": r["ratio"]}
-                if r["note"]:
-                    slot["ratio_note"] = r["note"]
-                slots.append(slot)
+    for key in order:
+        g = groups[key]
         sections.append({
-            "id": s["block_key"],
-            "block_key": s["block_key"],
-            "visible": s["visible"],
+            "id": key,
             "role": None,
             "copy_summary": None,
-            "image_slots": slots,
-            "_copy": text_of(s["inner"]),
-            "_out_of_scope": dropped,
+            "image_slots": g["slots"],
+            "_block_keys": g["blocks"],
+            "_copy": copy_of.get(
+                g["slots"][0]["slot_id"] if g["slots"]
+                else (g["dropped"][0]["slot_id"] if g["dropped"] else ""), ""),
+            "_out_of_scope": g["dropped"],
         })
 
-    # An image that sits outside every <section> is invisible to the walk above.
-    # Only the IN-SCOPE ones are worth a warning: an unplaced logo is out of
-    # scope wherever it sits, and warning about it trains a reader to skip the
-    # line that matters. Measured: `rail.image` in the listicle export is a real
-    # slot with no section; `footer.logo` is not.
-    placed = {sl["slot_id"] for sec in sections for sl in sec["image_slots"]}
-    placed |= {d["slot_id"] for sec in sections for d in sec["_out_of_scope"]}
-    unplaced = [f for f, _ in image_fields(page["htmlCompiled"])
-                if f not in placed and not out_of_scope(f)]
-    if unplaced:
+    unresolved = [sl["slot_id"] for s_ in sections for sl in s_["image_slots"]
+                  if not sl.get("ratio")]
+    if unresolved:
         warnings.append(
-            "%d in-scope image field(s) sit outside every <section> and were "
-            "NOT placed: %s. Add each to a section by hand, or it goes unrouted."
-            % (len(unplaced), ", ".join(unplaced)))
+            "%d in-scope slot(s) have no derivable ratio and need one of "
+            "ADR-016's five by hand: %s" % (len(unresolved),
+                                            ", ".join(unresolved)))
 
     return {
         "_README": [
@@ -364,6 +421,13 @@ def scaffold(doc, export_path):
             "A section whose role stays null is dropped unless it has image "
             "slots, in which case `build` refuses: an image slot with no role "
             "cannot be routed.",
+            "Sections are ADR-050's grouping of the slot ids, in document "
+            "order. SPLIT one further where a repeating block's items argue "
+            "different things and give each its own id and role: "
+            "advertorial-cord-tensioner-cam-lock-v01 split content.items.0-6 "
+            "into seven sections carrying six different roles. Merging two is "
+            "not a thing to do — the grouping is already the coarsest the "
+            "cross-slot rules allow.",
         ],
         "_source": {
             "export": os.path.basename(export_path),

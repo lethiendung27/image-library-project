@@ -5635,3 +5635,149 @@ than answering it. If that type ever needs a shape the page cannot give it, the 
 be made in `SLOT CONSTRAINTS` as prose, where a reader can weigh it.
 
 ---
+
+## ADR-083 · 2026-09-11 · LP1 gets a name, and the converter's section rule was right twice by luck
+
+**Owner statement, 2026-09-11: *"lp1 là listicle và advertorial (trong corpus), lp2 là product
+page direct response, top list là 1 loại khác."*** A taxonomy note. Checking whether the repo
+already held it turned up a gap, and checking the gap turned up three false claims in ADR-081,
+written four commits earlier in this same session.
+
+### 1. The taxonomy, and the gap it closed
+
+`LP2` appeared in **six** places across `SPEC.md`, `CLAUDE.md`, `vocabulary.yaml`,
+`validate.py` and two runbooks. **`LP1` appeared nowhere** — no file said which corpus
+`registry/types/` was measured on, and the top-N listicle had never been placed in the scheme
+at all. `SPEC.md` §3.0 now carries the table.
+
+| page kind | `lpTypeId` | registry |
+|---|---|---|
+| **LP1** | `listicle`, `advertorial` | `registry/types/` |
+| **LP2** | `pdp_dr` | `registry/pdp-dr-types/` + `registry/types/` |
+| **top-N listicle** | — | `registry/toplist-types/`, not LP-numbered |
+
+Three consequences are written beside it. **`lpTypeId` is not 1:1 with a page kind** — LP1 has
+two — so anything keyed on `lpTypeId` is keyed finer than the kind. **A registry's corpus is
+not its routing scope**: `registry/types/` was measured on LP1 and is used by every kind
+(ADR-059, and ADR-077 answer 1), so a clause citing renders cites LP1's renders unless it says
+otherwise — which is exactly what ADR-073 proved matters. And the grouping is **measured**
+rather than accepted: over the 57 exports, listicle∩advertorial = 15 blocks, Jaccard **0.33**,
+against **0.14** and **0.17** for either against `pdp_dr`. What the two LP1 members share
+includes argued blocks (`content.items.0`…`.5`); what all three share is only furniture. **One
+kind by family resemblance, not by a common template.**
+
+### 2. There are 57 exports on disk, not 2
+
+ADR-081 said *"two exports is what exists on disk"* and `mapping/export-to-content.md` repeated
+it. Both were wrong: `~/Downloads` holds **57** flunnel page exports — 33 `advertorial`, 23
+`listicle`, 1 `pdp_dr`. The session had looked for the two files its own handover block named
+and stopped, and then wrote the negative claim as if it had searched. **A count is a
+measurement and has to be taken like one.**
+
+All 57 now scaffold with zero failures, placing **847 in-scope slots** out of 1,392 image
+fields.
+
+### 3. The section rule agreed 30 of 30 because the sample was two
+
+ADR-081's convergence check — *"the `data-block-key` section walk independently reproduces
+ADR-050, 30 of 30, no disagreement"* — was reported as a cheap check that could have
+contradicted the design and did not. **Across all 57 exports the two rules agree on 27 and
+disagree on 30**, 313 slots out of 934.
+
+Where they differ the markup is coarser, and the case is the commonest template in the corpus:
+the advertorial wraps seven argument cards, a product shot, a closing card and four review
+photos in ONE `<section data-block-key="features">`. ADR-050's arithmetic splits that into
+`content`, `product`, `product_end` and `reviews`.
+
+**ADR-050 is right and the markup is wrong for this purpose**, and the runbook says why in its
+own words: the rule that read the prefix alone *"merged every editorial block a template
+numbers under one name"*. A `<section>` is a styling container; ADR-050 was derived from routed
+pages to recover the argument structure a template packages away. Reading the container as the
+structure hands `mapping/slot-rules.md` cross-rule 2 a thirteen-slot "repeating section" whose
+members are not equivalent entries, and gives cross-rule 3's page arc one beat where the page
+has four.
+
+So the converter now sections by `section_of()` — ADR-050, verbatim — ordered by first
+appearance in the document. `data-block-key` is kept in the worksheet as `_block_keys`,
+provenance a reader sees and nothing routes on.
+
+**Two things fell out of the fix.** An image outside every `<section>` is now placed like any
+other, because the section comes from the slot id — the "unplaced" warning is gone, and with it
+26 real instances across the corpus (`rail.image` ×17, `hero.image` ×9). And the worksheet now
+says what ADR-050 cannot: **a reader may SPLIT a section further and often should.** ADR-050 is
+the coarsest grouping the cross-slot rules allow, not the finest that is right —
+`advertorial-cord-tensioner-cam-lock-v01` split `content.items.0`…`.6` into seven sections
+carrying six roles. Merging two is never right.
+
+### 4. Two more claims that did not survive the corpus
+
+**`aspect-video` is a ratio and the converter did not know it.** ADR-081 said every in-scope
+slot resolves. Across 57 exports, 12 did not — and 8 of those were `hero.image`, the most
+important slot on a page, wearing Tailwind's `aspect-video` (16/9). Handled now, along with
+`aspect-auto`, which is NOT a ratio and must not be read as one. **845 of 847 resolve**; the
+two that do not carry `w-full rounded-md object-cover` and nothing else, and are named rather
+than invented.
+
+**`closing.bio_image` is an author portrait.** `mapping/slot-rules.md`'s `author` row is empty
+by decision and its rationale names the exact thing — *"a byline avatar, an About-the-author
+image, a comment thread of faces"*. Verified from the page rather than from the field name:
+`closing.bio_image` sits beside `closing.bio_title` *"About the specialist"* and a signed
+`closing.signature`. Out of scope, 4 instances.
+
+### The pattern, since this is the second time in one session
+
+ADR-081 found ADR-079's negative finding about markup wrong because it had searched three
+attribute names and reported the absence as a fact about the file. This ADR finds ADR-081's
+claims wrong because it measured two files and reported the agreement as a fact about the
+format. **Both are the same error at different scales: a search that stopped at the first
+answer, written up as a property of the thing searched.** The instrument that caught it both
+times was widening the input, not re-reading the conclusion.
+
+### Consequences — rule 6c sweeps on `"LP2"` (32 hits, 13 files, 8 TEACHES), `"data-block-key"` (32, 13, 2) and `"section"` (2337, 148, 50)
+
+- `SPEC.md` — **§3.0 added**, the page-kind table plus the three consequences. This is a
+  documentation change, not a contract change: no operation, invariant or field moves.
+- `scripts/export-to-content.py` — `section_of()` added and used for grouping; `aspect-video`
+  understood, `aspect-auto` explicitly not; `bio_image` out of scope; the "unplaced" warning
+  replaced by one that names slots with no derivable ratio; the worksheet README gains the
+  split note; the module docstring corrected where it said sections come from `data-block-key`.
+- `mapping/export-to-content.md` — head, sectioning, ratio and scope sections rewritten to the
+  57-export measurement; the false convergence claim replaced by what the corpus says; the
+  `lpTypeId` section now carries the Jaccard figures and points at §3.0.
+- `README.md` — the converter paragraph said sections "come out of `page.htmlCompiled`,
+  which carries a `<section data-block-key=…>` per block". **The `data-block-key` sweep caught
+  it**, one commit after that sentence was written, teaching the rule this ADR supersedes.
+  Rewritten, and the "two exports measured" count with it.
+- `scripts/adr-sweep.py` — `registry/gif-cards-vi.md` into `TEACHES`, found UNCLASSIFIED by the
+  `"section"` sweep. It is the SOURCE the Vietnamese folder cards are generated from
+  (`CLAUDE.md` rule 5's one named exception) and it states its own format rules. **Sixth file
+  these tuples did not know about**, and the second found in this session.
+- `decisions/log.md` — ADR-081's three claims stand as written, and are corrected HERE rather
+  than edited there. The log is append-only in spirit; a reader tracing the converter should be
+  able to see what was believed on the way.
+- `query/runbook.md`'s ADR-050 block — **stands, and is now load-bearing in a second place.**
+  It was written for the gif loop-spacing rule; it is now also what a converter sections by.
+- `mapping/slot-rules.md` cross-rules 2, 3 and 6 — **all stand.** Nothing about them changes;
+  what changes is that the converter now feeds them the grouping they were written against.
+- `registry/vocabulary.yaml`'s pdp-dr comment and `CLAUDE.md`'s two LP2 rows — **stand.** They
+  use LP2 correctly and §3.0 now defines the term they were leaning on.
+- GENERATED — `dist/app-bundle/` regenerates; `SPEC.md`, `export-to-content.md` and
+  `export-to-content.py` are all bundled, so all three move with their sources. The bundle's
+  own check caught them stale, which is the `input` and `contract` groups doing their job one
+  commit after being added.
+- `registry_version` unchanged: no type, no vocabulary value, no routing outcome.
+
+### What is NOT done
+
+**No content.json in `query/sessions/` was regenerated.** The fifteen that exist were routed by
+hand against the old grouping where a converter was involved at all; none is known to be wrong,
+and none has been re-derived. A page re-routed from today gets the ADR-050 grouping.
+
+**The 57 exports were scaffolded, not built.** `build` needs a channel, eight attributes and a
+role per section — none of which is a converter problem — so what is proven is that the
+mechanical half holds across the corpus, not that 57 valid `content.json` files exist.
+
+**`hero.image` on two seat-cushion pages still has no ratio.** The markup states none. It is a
+human decision and the scaffold says so.
+
+---

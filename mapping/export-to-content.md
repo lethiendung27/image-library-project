@@ -5,16 +5,14 @@ The step between a live flunnel page export and the QUERY operation's input.
 `content.json` QUERY's input; a real export satisfies none of that contract, and until
 2026-09-11 nothing in this repo said how to get from one to the other.
 
-Measured against the two exports that exist on disk:
+Measured against the **57 flunnel page exports on disk** — 33 `advertorial`, 23 `listicle`,
+1 `pdp_dr`, all `kind: flunnel-page-export`, `schemaVersion: 1`. Every one scaffolds without
+error, and 847 in-scope image slots are placed between them.
 
-| | file | bytes | `lpTypeId` |
-|---|---|---|---|
-| A | `pdp-dr-360-surround-view-4-channel-dash-cam-v01.json` | 400,050 | `pdp_dr` |
-| B | `listicle-mini-steam-iron-v01.json` | 314,239 | `listicle` |
-
-Both `kind: flunnel-page-export`, `schemaVersion: 1`. **Two exports is what exists, not a
-sample of the format.** A third `lpTypeId` may carry a block vocabulary neither covers, which
-is why the converter refuses an unknown `schemaVersion` instead of trying.
+**An earlier draft of this file said "two exports is what exists on disk" and generalised from
+those two.** It was wrong on the count and wrong in two conclusions drawn from it — both
+corrected below and recorded in ADR-083. The converter still refuses an unknown
+`schemaVersion` rather than extrapolating past what has been measured.
 
 ## Where the structure actually is
 
@@ -50,26 +48,44 @@ to that measurement fails on the first call:
 
 Taken from the export, never invented:
 
-- **`sections[].id` and their ORDER** ← `data-block-key`, in DOM order. `page.content` key
-  order is not page order: grouped by prefix in stored order it gives **60 runs** over 15
-  blocks, because the keys are stored by string length. The same grouping over DOM order gives
-  **17 runs**, the 2 above 15 being one sticky bar that repeats `hero.cta` and `cta.button`.
+- **`sections[].id`** ← **ADR-050's arithmetic on the slot id**, ordered by first appearance
+  in the document — **not** `data-block-key`. `query/runbook.md` states the rule: the
+  top-level prefix, plus the next segment when that segment is a number. Across all 57 exports
+  the markup and ADR-050 give the **same grouping on 27 and a different one on 30**, and where
+  they differ the markup is coarser: the advertorial template wraps seven argument cards, a
+  product shot, a closing card and four review photos in ONE
+  `<section data-block-key="features">`. ADR-050 exists precisely to stop a template's
+  packaging being read as the page's argument structure. Grouping by slot id also places an
+  image that sits outside every `<section>`, so the "unplaced" case is gone.
+
+  **A reader may SPLIT a section further, and often should.** ADR-050 is the coarsest grouping
+  the cross-slot rules allow, not the finest that is right:
+  `advertorial-cord-tensioner-cam-lock-v01` split `content.items.0` … `.6` into **seven**
+  sections carrying **six** roles, because each card argues something different. Merging two
+  is never right.
+- **ORDER** ← the document's. `page.content` key order is not page order: grouped by prefix in
+  stored order it gives **60 runs** over 15 blocks, because the keys are stored by string
+  length; the same grouping over DOM order gives **17**.
 - **`image_slots[].slot_id`** ← the `data-field` of each `data-field-type="image"` element.
   This is already the vocabulary sessions use by hand:
   `advertorial-cord-tensioner-cam-lock-v01/content.json` carries `hero.image`,
   `content.items.0.image`, `reviews.shots.0.image`.
-- **`image_slots[].ratio`** ← the rendered box the markup states (`aspect-[a/b]`,
-  `aspect-square`) in preference to the asset's own `width`/`height`, snapped to ADR-016's
-  five and reported. Every in-scope slot in both exports resolves. The three that resolve to
-  nothing are two logos and a badge, all out of scope. The only near-tie is `how.poster` at
-  278:179 — 4:3 by 0.220, 16:9 by 0.225 — and it is a video poster, also out of scope.
+- **`image_slots[].ratio`** ← the rendered box the markup states — `aspect-[a/b]` (435
+  occurrences on image fields), `aspect-square` (695), `aspect-video` (6) — in preference to
+  the `<img>` `width`/`height` attributes, then snapped to ADR-016's five and reported.
+  `aspect-auto` (2) is not a ratio and is not read as one. **845 of 847 in-scope slots
+  resolve.** The two that do not are `hero.image` on two seat-cushion pages carrying only
+  `w-full rounded-md object-cover`; the scaffold names them and refuses to invent one. The
+  only near-tie met so far is `how.poster` at 278:179 — 4:3 by 0.220, 16:9 by 0.225 — and it
+  is a video poster, out of scope.
 - **`product.name`, `personas`, `raw_features`, `specification`** ← `brief`.
 
-**The section walk independently reproduces ADR-050.** `query/runbook.md` derives a section
-from the slot id arithmetically — top-level prefix, plus the next segment when it is a number.
-Run against every in-scope slot in both exports, `data-block-key` and ADR-050 agree **30 of
-30, with no disagreement**: the export's own markup and the rule this repo derived by hand say
-the same thing. So the converter does not restate ADR-050; the markup already encodes it.
+**The markup does NOT encode ADR-050, and an earlier draft of this file said it did.** On the
+two exports first examined the two rules happened to coincide, 30 slots out of 30. Across all
+57 they coincide on 27 exports and diverge on 30 — 313 slots of 934. The coincidence was the
+sample, not the rule. ADR-050 is authoritative here because it is the library's own answer to
+this exact question, written from routed pages; `data-block-key` is kept in the worksheet as
+`_block_keys`, provenance a reader can see and nothing routes on.
 
 ## What is judgement, and why each one is
 
@@ -106,9 +122,16 @@ A  hero trust why press product tank how reviews guarantee faq cta legal_privacy
 B  disclosure header content.0 content.1 content.2 content.3 compare reviews comments scarcity faq closing guarantee legal_privacy legal_terms
 ```
 
-— so whatever maps a block to a page structure is per-`lpTypeId`. Recording which one ran is
-not the same as gating on it, and this is the treatment `channels` already has: kept as a
-record of where something came from, read by nothing that admits or refuses.
+— so whatever maps a block to a page structure is per-`lpTypeId`. Measured over all 57:
+listicle∩advertorial = 15 blocks (Jaccard **0.33**), listicle∩pdp_dr **0.14**,
+advertorial∩pdp_dr **0.17**. The two LP1 members are about twice as close to each other as
+either is to LP2, and what all three share is only furniture — `faq`, `guarantee`, `hero`,
+`legal_*`, `reviews`. **So `lpTypeId` is finer than the page kind** (SPEC §3.0: LP1 has two
+of them) and it is `lpTypeId`, not the page kind, that a block map is keyed on.
+
+Recording which one ran is not the same as gating on it, and this is the treatment `channels`
+already has: kept as a record of where something came from, read by nothing that admits or
+refuses.
 
 ## Out of library scope
 
@@ -117,15 +140,14 @@ Dropped from the slot list, each against a written rule, not against the picture
 | pattern | rule |
 |---|---|
 | `*.logo`, `*.logos.N` | G6 bans logos outright |
-| `*.avatar`, `*_avatar` | `mapping/slot-rules.md`'s `author` row is empty by decision |
+| `*.avatar`, `*_avatar`, `*.bio_image` | `mapping/slot-rules.md`'s `author` row is empty by decision — its rationale names "a byline avatar, an About-the-author image, a comment thread of faces" |
 | `product.gallery.0` | cross-rule 6 — the standard product shot |
 | `*.poster` | a video poster frame, not an argued image |
 | `*badge*` | a trust badge, not an argued image |
 
-A **24 `<img>` → 14 in scope**; B **28 → 17**, one of which (`rail.image`) sits outside every
-`<section>` and is reported as unplaced rather than dropped. The `cta` block's image is KEPT:
-`cta` is a ROLE that carries no image by definition, and SPEC §7.4 leaves that to routing's
-`out_of_scope_reason`. The converter does not pre-empt a routing decision.
+Across the 57 exports: **1392 image fields → 847 in scope, 545 dropped** (439 portrait of a named person; 87 brand or press logo; 17 trust badge, not an argued image; 1 first gallery image; 1 video poster frame, not an argued image). The `cta` block's
+image is KEPT: `cta` is a ROLE that carries no image by definition, and SPEC §7.4 leaves that
+to routing's `out_of_scope_reason`. The converter does not pre-empt a routing decision.
 
 ## Running it
 
@@ -145,9 +167,9 @@ if it does not pass.
 
 Nineteen faults were injected and **all nineteen fired**, with two clean controls, on
 2026-09-11. Export-level: wrong `kind`; `schemaVersion` ≠ 1; no `page`; empty `htmlCompiled`;
-a file that is not JSON. Scaffold: a `page.content` key with no marker; an in-scope image
-outside every section (real — `rail.image` in export B); an image with no derivable ratio.
-Build: `channel` unanswered; no `product`; `attributes` left as the placeholder; `attributes`
+a file that is not JSON. Scaffold: a `page.content` key with no marker; an image that sits
+outside every `<section>` still being placed (real — `rail.image` in the mini-steam-iron
+listicle lands in section `rail`); an image with no derivable ratio. Build: `channel` unanswered; no `product`; `attributes` left as the placeholder; `attributes`
 missing 2 of the 8; a section with image slots and no role; two sections sharing an id; a slot
 with no ratio; no section surviving; an empty `problems_solved`; a role outside the contract's
 twelve. One warns rather than refuses: prose in `visible_output`.

@@ -13,7 +13,7 @@ Nothing here runs a model. An application *consumes* this library and does the g
 | **building the consuming app** | this file → `SPEC.md` §1 (the contract) → §7 (routing) → `dist/app-bundle/` |
 | **adding or editing a rule** | `SPEC.md` §3 (registry model) → §6 (evidence) → the type file → `decisions/log.md` |
 | **running Claude Code here** | `CLAUDE.md` — a thin adapter, entry points only, no logic |
-| **wondering why a rule exists** | `decisions/log.md`, append-only, 83 ADRs, every one cites its evidence |
+| **wondering why a rule exists** | `decisions/log.md`, append-only, 84 ADRs, every one cites its evidence |
 
 ## What an app actually consumes
 
@@ -58,10 +58,12 @@ python3 scripts/export-to-content.py scaffold EXPORT.json -o work.json
 python3 scripts/export-to-content.py build EXPORT.json -d work.json -o content.json
 ```
 
-It is mechanical about structure and refuses to guess judgement. Sections, slot ids, ratios
-and their order come out of `page.htmlCompiled`, which carries a `<section data-block-key=…>`
-per block and a `data-field` on every bound element — 138 of 138 and 245 of 245 content keys
-marked, across the two exports measured. What it will not invent: `role` and `copy_summary`
+It is mechanical about structure and refuses to guess judgement. Slot ids, ratios and their
+order come out of `page.htmlCompiled`, which carries a `data-field` on every bound element —
+every addressable key marked, across all 57 exports on disk. Sections are ADR-050's grouping
+of the slot ids, **not** the markup's `<section>` elements: the two agree on 27 exports and
+differ on 30, and where they differ the markup packages several argument beats into one
+styling container (ADR-083). What it will not invent: `role` and `copy_summary`
 (measured: seven sibling cards of one repeating block carry six different roles, so no
 block → role table is safe), `page.channel` (ADR-059 — the router used to guess it from
 `lpTypeId`), and the eight `product.attributes`, **which the app supplies** (owner decision,
