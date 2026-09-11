@@ -6,7 +6,6 @@ device: rail
 version: "0.1"
 status: reserved
 replaced_by: null
-ratios: ["1:1", "2:1"]
 channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass

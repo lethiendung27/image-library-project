@@ -240,7 +240,7 @@ def extract_folded(section_text, name, where):
 
 REQUIRED_KEYS = [
     "id", "step", "job", "device", "version", "status", "replaced_by",
-    "ratios", "channels", "requires_product_photo", "generation_mode",
+    "channels", "requires_product_photo", "generation_mode",
 ]
 OPTIONAL_KEYS = [
     "axes", "variants", "exempt_from", "pairs_with", "never_with",
@@ -316,9 +316,10 @@ def validate_type_file(path, vocab, rule_ids, where_prefix="registry/types",
     if status != "deprecated" and fm.get("replaced_by"):
         err(where, "replaced_by is only valid on deprecated types")
 
-    for r in fm.get("ratios") or []:
-        if not re.fullmatch(r"\d+:\d+", str(r)):
-            err(where, f"ratio `{r}` is not W:H")
+    # `ratios` was a required key until ADR-082 removed it from every type file.
+    # No format check replaces this one: the key is no longer in REQUIRED_KEYS or
+    # OPTIONAL_KEYS, so re-adding it is caught by the unknown-frontmatter-key
+    # error above, which is a stronger guard than validating its contents.
     for c in fm.get("channels") or []:
         if c not in (vocab.get("channels") or []):
             err(where, f"channel `{c}` not in vocabulary")
@@ -600,7 +601,6 @@ def render_index(vocab, types, evidence, picks):
         out.append(f"    version: {yq(fm.get('version'))}")
         out.append(f"    status: {yq(fm.get('status'))}")
         out.append(f"    channels: {ylist(fm.get('channels') or [])}")
-        out.append(f"    ratios: {ylist(fm.get('ratios') or [])}")
         out.append(f"    requires_product_photo: {yq(fm.get('requires_product_photo'))}")
         out.append(f"    generation_mode: {yq(fm.get('generation_mode'))}")
         axes = fm.get("axes") or {}
@@ -971,27 +971,20 @@ def check_prompt_sets():
 def check_ratios(types):
     """ADR-016: only 16:9, 4:3, 1:1, 3:4 and 9:16, system-wide.
 
-    Two surfaces, and they get different treatment on purpose.
+    ONE surface now. A DELIVERED prompt is the deliverable, so an illegal ratio
+    there is an error for anything routed from now on; three sessions predate the
+    check and are named in GRANDFATHERED_RATIOS with their reasons.
 
-    A DELIVERED prompt is the deliverable, so an illegal ratio there is an error
-    for anything routed from now on. Three sessions predate this check and are
-    named in GRANDFATHERED_RATIOS with their reasons; they warn.
+    The type-file half is gone with ADR-082, which deleted `ratios` from all 34
+    type files: nothing read it to route, the ratio a renderer is asked for comes
+    from the SLOT in content.json, and the field had drifted in 10 of the 34 —
+    5 of them in `_staging/` and `pdp-dr-types/`, where this check never looked.
+    A warning that says "correct it when the file is next opened" only works if
+    somebody opens the file.
 
-    A TYPE FILE only warns, because ADR-016 said those are "corrected when it is
-    next opened" and the files belong to render-refinement lanes. Erroring them
-    would turn the tree red for ten types nobody is currently editing and block
-    every lane's ADR-007 autopilot for a rule none of them broke today.
+    `types` is still taken so main() need not change shape, and so the next
+    reader sees that the argument became unused on purpose.
     """
-    for tid in sorted(types):
-        declared = types[tid]["fm"].get("ratios") or []
-        illegal = [r for r in declared if r not in LEGAL_RATIOS]
-        if illegal:
-            warn(f"registry/types/{tid}.md",
-                 f"declares {illegal} — ADR-016 allows only "
-                 f"{list(LEGAL_RATIOS)}. Correct it when this file is next "
-                 f"opened; the declared set is what a router is allowed to ask "
-                 f"the renderer for")
-
     sessions_dir = os.path.join(ROOT, "query", "sessions")
     if not os.path.isdir(sessions_dir):
         return

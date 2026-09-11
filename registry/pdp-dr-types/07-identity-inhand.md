@@ -6,7 +6,6 @@ device: inhand
 version: "0.1"
 status: reserved
 replaced_by: null
-ratios: ["1:1", "3:4"]
 channels: [landing-page, marketplace]
 requires_product_photo: true
 generation_mode: single-pass

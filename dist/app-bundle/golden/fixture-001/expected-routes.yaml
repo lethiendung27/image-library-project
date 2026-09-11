@@ -1,0 +1,139 @@
+# Golden routing expectations — fixture-001 (Metal Shower Filter, landing-page)
+# Produced by the first dry-run of query/runbook.md against registry v2.0.0
+# (2026-08-10). Regression contract: re-run Steps 2-4 of the runbook after any
+# trigger/index/slot-rules change; every assertion below must still hold, or the
+# change is either a bug or an intended improvement that updates this file in the
+# SAME commit (SPEC section 9).
+#
+# NOTE: reference_photos in content.json is a placeholder hash until the real
+# product photo is hashed. This affects rendering only, never routing.
+
+registry_version: "2.0.0"
+template: "query/runbook.md Steps 2-4"
+
+slots:
+  hero-1:
+    section_role: hero
+    expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: vsinset}}
+    legal_alternatives_must_include:
+      - {type: 06-relief-hero, axes: {register: commercial, inset_mode: recall}}
+    forbidden:
+      - reason: "ugc register is paid-social/advertorial only (slot-rules); this page is landing-page"
+        config: {type: 06-relief-hero, axes: {register: ugc}}
+    gates_that_must_fire:
+      - "G8: visible_output=water-jet -> backlight branch, water jets primary subject"
+      - "operation=passive -> relaxed POSE branch"
+      - "mounting=fixed-installed -> installed mode in every layer (G7-X)"
+      - "colorways has 1 entry -> Zone B shows 1 unit only"
+
+  problem-1:
+    section_role: problem-agitation
+    expected_option_A: {type: 02-symptom-rail, note: "vignette mode visible-symptom; multiple problems_solved -> breadth argument"}
+    legal_alternatives_must_include:
+      - {type: 01-pain-split, note: "legal because symptom_visibility=visible"}
+      - {type: 01-pain-scene, variant: confront, note: "legal on landing-page per slot-rules"}
+    composition_note_required: >
+      01-pain-scene and 01-pain-split are never_with each other — both may appear
+      as OPTIONS for this slot, but the page set may contain only one of them.
+
+  cause-1:
+    section_role: cause
+    expected_option_A: {type: 02-cause-anatomy}
+    only_preferred_type: 02-cause-anatomy
+    note: >
+      REWRITTEN 2026-08-26 (ADR-058). It read "options B/C must vary on execution
+      (hair-strand vs limescale-in-pipe), not type" — the exact instruction the
+      three-distinct-types rule reverses. 02-cause-anatomy is the only type the
+      landing-page cause cell PREFERS; it is not the only one legal here. B and C
+      now come from the channel-legal set ranked by fit, and the hair-strand and
+      limescale-in-pipe executions stay what they always were — two ways to build
+      option A, not two options.
+
+  proof-1:
+    section_role: proof
+    expected_option_A: {type: 04-proof-lockedframe, variant: timelapse, axes: {camera_lock: handheld}}
+    legal_alternatives_must_include:
+      - {type: 04-proof-lockedframe, variant: capture, axes: {context_mode: declared-test}}
+    forbidden:
+      - reason: "VARIANT SELECTION RULE (verified on this very product): filter differences are not visible in a static frame -> object variants are empty"
+        config: {type: 04-proof-lockedframe, variant: rivals}
+      - reason: "same rule"
+        config: {type: 04-proof-lockedframe, variant: verdict}
+    gates_that_must_fire:
+      - "camera_lock=handheld because timelapse panels are separated by time"
+      - "pipeline note: every option is single-pass (ADR-021, ADR-067); strict states its cross-panel invariants once, before any panel"
+
+  howto-1:
+    section_role: how-to-use
+    expected_option_A: {type: 03-use-sequence}
+    legal_alternatives_must_include:
+      - {type: 03-use-grid}
+    note: >
+      REWRITTEN 2026-08-26 (ADR-058). It read "options vary on execution" and
+      asserted 03-use-sequence alone. 03-use-grid promoted on 2026-08-26 and
+      entered this cell the same day, so the cell now holds two — the assertion
+      moves rather than breaking, which is this fixture doing its job: the
+      slot-rules edit failed here before any prompt was written.
+      multi_step_usage=true still keeps 03-use-sequence at A; 03-use-grid is a
+      genuine B because it argues the same beat by application rather than by
+      order.
+
+  outcome-1:
+    section_role: outcome
+    expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: context}}
+    legal_alternatives_must_include:
+      - {type: 06-relief-scene, conditional: true}
+    only_preferred_type_removed_2026_08_26: >
+      It said 06-relief-hero. ADR-059 collapsed the four channel columns into one
+      preference row, and the outcome row holds 06-relief-hero AND 06-relief-scene
+      — the second was kept off landing-page by a channel wall, and channel is no
+      longer an admission test. Nothing is lost: 06-relief-scene's own use_when
+      names only "an advertorial or final frame of an ads creative", so it scores
+      low on FIT for this landing-page beat by its own words, and its requires_pair
+      (01-pain-scene, same person) is not satisfied on this fixture. It is a
+      CONDITIONAL alternative now rather than an invisible exclusion, which is the
+      whole point of the change: the type's own law does the refusing, in the open.
+    composition_note_required: >
+      REWRITTEN 2026-08-26 (ADR-058). 06-relief-hero is the only type the
+      landing-page outcome cell PREFERS and it already serves hero-1, so
+      one-type-once cannot be satisfied inside the cell. The old ladder answered
+      with rung 4 — another execution of a type already on the page — and that
+      rung no longer fills a pool, because an execution is not a second type.
+      This slot now ranks the channel-legal set: A stays 06-relief-hero in
+      inset_mode context against hero-1's vsinset, and B and C are two other
+      types, so the owner has a real alternative to a type the page has already
+      spent. The inset_mode distinction still has to appear in varies_on.
+    superseded_2026_08_19: >
+      Until today this slot listed 06-relief-scene as a conditional alternative.
+      That line was written on 2026-08-10, one day before mapping/slot-rules.md
+      trimmed 06-relief-scene off the landing-page column on the type's own
+      use_when, which names only "an advertorial or final frame of an ads
+      creative". The fixture was never re-run because nothing read it; check_golden
+      now does, and it caught this on its first run.
+
+page_level:
+  coverage_limit: >
+    This fixture has no social-proof and no personas slot, so it cannot test any
+    step-5 candidate. eval/golden/fixture-002 was built 2026-08-11 to cover
+    social-proof; route both when a step-5 trigger changes.
+  arc: "pain (s2) and cause (s3) precede all relief (s1 is promise-hero, s6 outcome) — acceptable; pain never reappears after s4"
+  out_of_scope_roles: []
+  resolved_gap: >
+    (was known_gap until 2026-08-11) A 'mechanism' section for this product now
+    routes to 03-mechanism-xray, promoted registry v2.0.0 with 5 exemplars +
+    render-test pass + confusion test against this fixture (all 6 slot
+    assertions above held, 0 unintended flips). body_contact=false still drops
+    ghostbody; xray's avoid_when still gates trivial interiors and
+    anti-tech-render categories. A mechanism slot added to this page would
+    expect: {type: 03-mechanism-xray, note: "internals: mesh disc, granule bed,
+    outlet channel; G8 water path active"}.
+  confusion_test_2026_08_12: >
+    03-spec-explode promoted to active v1.0. Re-ran Steps 2-4 against this
+    fixture: all 6 slot assertions held, 0 unintended flips. It is channel-legal
+    here (landing-page) and shares the mechanism cell, but the documented
+    mechanism expectation above stays 03-mechanism-xray on the type's own gate
+    rather than on wording — that slot needs the water path shown ACTIVE, and
+    explode's NEGATIVE bans an exploded view combined with a translucent intact
+    shell, so it cannot serve a WHY slot at all. A granule bed is also near the
+    "trivial interiors" case explode's avoid_when excludes. howto-1 is job=use
+    and untouched.

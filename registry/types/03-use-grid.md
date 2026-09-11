@@ -6,7 +6,6 @@ device: grid
 version: "1.0"
 status: active
 replaced_by: null
-ratios: ["1:1", "16:9"]
 channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass

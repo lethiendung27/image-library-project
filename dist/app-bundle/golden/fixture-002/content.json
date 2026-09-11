@@ -1,0 +1,37 @@
+{
+  "product": {
+    "name": "Portable Wireless Wall-Mounted Air Conditioner",
+    "category": "personal evaporative air cooler",
+    "reference_photos": ["sha256:d3ce1b733b099bf6bc63f5908d0663f7b7192e333e9d708ca45b115bd0820877"],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "mist",
+      "mounting": "fixed-installed",
+      "colorways": ["white", "grey"],
+      "body_contact": false,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": true
+    },
+    "problems_solved": [
+      "a kitchen that becomes unbearable at the stove",
+      "a stuffy home office by midday",
+      "a bedroom too warm to sleep in",
+      "no floor space and no permission to drill"
+    ],
+    "personas": ["renters in small apartments", "home-office workers", "dorm and RV dwellers"]
+  },
+  "page": {
+    "channel": "advertorial",
+    "sections": [
+      {"id": "hero-header", "role": "hero", "copy_summary": "Why I stopped running my costly home AC after mounting this small cooling unit", "image_slots": [{"slot_id": "hero-header", "ratio": "16:9", "position": "header"}]},
+      {"id": "story-0", "role": "problem-agitation", "copy_summary": "The hot kitchen I dreaded; the office thick and stale by midday; a fan that only moved warm air", "image_slots": [{"slot_id": "story-0-problem", "ratio": "1:1"}]},
+      {"id": "story-1", "role": "social-proof", "copy_summary": "A coworker recommended a personal evaporative cooler that needs no permanent installation", "image_slots": [{"slot_id": "story-1-recommendation", "ratio": "5:3"}]},
+      {"id": "story-2", "role": "mechanism", "copy_summary": "Magnetic levitation motor, zero-contact drive, 3D turbine circulation through an ice carbon grille", "image_slots": [{"slot_id": "story-2-mechanism", "ratio": "16:9"}]},
+      {"id": "story-3", "role": "how-to-use", "copy_summary": "Punch-free adhesive backing plate; no tools, no drilling, undamaged walls; or the freestanding base", "image_slots": [{"slot_id": "story-3-howto", "ratio": "4:5"}]},
+      {"id": "comparison", "role": "comparison", "copy_summary": "How it compares to standard fans and portable compressor units on cooling, install, energy and noise", "image_slots": [{"slot_id": "comparison", "ratio": "5:3"}]},
+      {"id": "reviews", "role": "social-proof", "copy_summary": "Five verified-purchase quotes from a home office, a kitchen, a studio apartment, an RV and a garage", "image_slots": [{"slot_id": "reviews", "ratio": "5:3"}]},
+      {"id": "reclaim", "role": "outcome", "copy_summary": "No more sweating through a home-cooked meal; keeping your personal space comfortable is finally simple", "image_slots": [{"slot_id": "reclaim-outcome", "ratio": "2:1"}]}
+    ]
+  }
+}

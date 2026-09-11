@@ -1,0 +1,68 @@
+{
+  "product": {
+    "name": "Metal Shower Filter",
+    "category": "bathroom / water filtration",
+    "reference_photos": ["sha256:0000000000000000"],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "water-jet",
+      "mounting": "fixed-installed",
+      "colorways": ["brushed-silver"],
+      "body_contact": false,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": true
+    },
+    "problems_solved": [
+      "hard-water minerals drying out hair and causing breakage",
+      "flaky irritated skin after showering",
+      "itchy scalp",
+      "limescale buildup on the showerhead"
+    ],
+    "personas": [
+      "late-20s woman with long hair, urban apartment",
+      "early-40s man, homeowner, skeptical of gadgets"
+    ]
+  },
+  "page": {
+    "channel": "landing-page",
+    "sections": [
+      {
+        "id": "s1",
+        "role": "hero",
+        "copy_summary": "Headline promise: softer water, healthier hair and skin, from the first shower.",
+        "image_slots": [{ "slot_id": "hero-1", "ratio": "2:1", "position": "above-fold" }]
+      },
+      {
+        "id": "s2",
+        "role": "problem-agitation",
+        "copy_summary": "Your water is quietly wrecking your hair and skin: dryness, breakage, flaking, itching.",
+        "image_slots": [{ "slot_id": "problem-1", "ratio": "1:1" }]
+      },
+      {
+        "id": "s3",
+        "role": "cause",
+        "copy_summary": "The culprit is hard-water mineral load — what it does to a single hair strand.",
+        "image_slots": [{ "slot_id": "cause-1", "ratio": "16:9" }]
+      },
+      {
+        "id": "s4",
+        "role": "proof",
+        "copy_summary": "See what the cartridge catches — the same cartridge over weeks of use.",
+        "image_slots": [{ "slot_id": "proof-1", "ratio": "5:3" }]
+      },
+      {
+        "id": "s5",
+        "role": "how-to-use",
+        "copy_summary": "Fits your existing shower arm in two minutes, no tools.",
+        "image_slots": [{ "slot_id": "howto-1", "ratio": "1:1" }]
+      },
+      {
+        "id": "s6",
+        "role": "outcome",
+        "copy_summary": "Step out of the shower without thinking about your hair again.",
+        "image_slots": [{ "slot_id": "outcome-1", "ratio": "2:1" }]
+      }
+    ]
+  }
+}

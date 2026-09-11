@@ -6,7 +6,6 @@ device: split
 version: "1.9"
 status: active
 replaced_by: null
-ratios: ["1:1"]
 channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass

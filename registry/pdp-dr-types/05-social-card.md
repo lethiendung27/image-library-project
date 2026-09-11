@@ -6,7 +6,6 @@ device: card
 version: "0.4"
 status: reserved
 replaced_by: null
-ratios: ["16:9", "3:2", "1:1", "4:5"]
 channels: [landing-page, paid-social, advertorial]
 requires_product_photo: true
 generation_mode: single-pass

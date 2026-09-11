@@ -6,7 +6,6 @@ device: stilllife
 version: "0.1"
 status: reserved
 replaced_by: null
-ratios: ["1:1", "3:4"]
 channels: [landing-page]
 requires_product_photo: false
 generation_mode: single-pass

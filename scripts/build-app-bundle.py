@@ -76,10 +76,27 @@ FILES = {
     "gif": [
         "registry/gif-instruction.md",
     ],
+    # Call 0 — building QUERY's input from a live page export. Added 2026-09-11
+    # (ADR-082) when the owner settled that THE DEV RUNS THE CONVERTER: if the
+    # app ingests exports itself, the law for doing so has to travel with the
+    # bundle, or the dev reimplements it from a file they were never given. The
+    # .py ships beside the .md because it is the executable statement of the same
+    # rules and the reference against which a reimplementation is checked.
+    "input": [
+        "mapping/export-to-content.md",
+        "scripts/export-to-content.py",
+    ],
 }
 DIRS = [
     ("registry/types", "types", ".md"),
     ("registry/gif-types", "gif-types", ".md"),
+    # SPEC 1 invariant 6 calls these "the conformance contract between any two
+    # harnesses: both must derive the same Stage 1 shortlist for every fixture
+    # slot." That promise sits INSIDE the invariant describing this bundle, and
+    # until ADR-082 the bundle shipped 0 of them — the description of the
+    # contract without the contract. A dev vendoring the bundle could not check
+    # that their router agrees with this library's.
+    ("eval/golden", "golden", None),
 ]
 
 
@@ -117,10 +134,26 @@ def collect():
         d = os.path.join(ROOT, src_dir)
         if not os.path.isdir(d):
             continue
+        group = ("gif" if "gif" in src_dir else
+                 "conformance" if "golden" in src_dir else "fill")
+        if ext is None:
+            # ext None means "every file, at any depth" — eval/golden/ nests one
+            # directory per fixture and holds two extensions. Walked rather than
+            # listed by name on purpose: a fixture-003 added later must ship
+            # without anyone remembering to edit this file, which is the same
+            # failure mode ADR-080 found in the other direction.
+            for root, dirs, files in os.walk(d):
+                dirs[:] = sorted(x for x in dirs if not x.startswith("_"))
+                for fn in sorted(files):
+                    if fn.startswith("_") or fn == "README.md":
+                        continue
+                    full = os.path.join(root, fn)
+                    rel = os.path.relpath(full, d)
+                    out.append((f"{src_dir}/{rel}", f"{dest_dir}/{rel}", group))
+            continue
         for fn in sorted(os.listdir(d)):
             if fn.endswith(ext) and not fn.startswith("_") and fn != "README.md":
-                out.append((f"{src_dir}/{fn}", f"{dest_dir}/{fn}",
-                            "gif" if "gif" in src_dir else "fill"))
+                out.append((f"{src_dir}/{fn}", f"{dest_dir}/{fn}", group))
     return out
 
 

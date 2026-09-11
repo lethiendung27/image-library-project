@@ -6,7 +6,6 @@ device: explode
 version: "1.7"
 status: active
 replaced_by: null
-ratios: ["1:1", "4:5", "16:9"]
 channels: [marketplace, landing-page]
 requires_product_photo: true
 generation_mode: single-pass
@@ -111,7 +110,9 @@ it, and a mid-grey cushion on warm off-white barely separated.
 **A tall narrow product explodes on a DIAGONAL.** The frame will not save it: ratio cannot be
 requested, 3 of 3 on tall products here and 6 of 6 in adapter Rule 4. The axis can — run it
 corner to corner and the stack uses both dimensions while staying one line in assembly order.
-`4:5` stays in `ratios` for the page's layout, not for the composition.
+A tall slot is the page's layout decision, not this composition's: the shape arrives from the
+slot in `content.json` and the diagonal is what makes it survivable (ADR-082 removed `ratios`
+from every type file, so there is no longer a second place where a shape is declared).
 
 **`stack`** — the product separated along ONE axis into its real component groups, in true
 assembly order, evenly spaced **including the LAST pair, where a run breaks**, each part

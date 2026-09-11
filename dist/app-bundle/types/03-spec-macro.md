@@ -6,7 +6,6 @@ device: macro
 version: "1.0"
 status: active
 replaced_by: null
-ratios: ["1:1"]
 channels: [marketplace]
 requires_product_photo: true
 generation_mode: single-pass

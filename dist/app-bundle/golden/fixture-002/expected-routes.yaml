@@ -1,0 +1,143 @@
+# Golden routing expectations — fixture-002 (Portable wall-mounted personal cooler, advertorial)
+# Built 2026-08-11 from the real query session of the same page, to give the
+# social-proof and mechanism cells a regression contract. fixture-001 covers
+# neither: it has no social-proof slot at all, so it cannot test any step-5
+# candidate, and its mechanism gap was only closed when 03-mechanism-xray
+# promoted. Re-run Steps 2-4 of query/runbook.md after any trigger, index or
+# slot-rules change; every assertion must still hold or the change is a bug or
+# an intended improvement that updates this file in the SAME commit.
+
+registry_version: "2.0.0"
+template: "query/runbook.md Steps 2-4"
+
+slots:
+  hero-header:
+    section_role: hero
+    expected_option_A: {type: 01-pain-scene, variant: candid, axes: {gaze: candid}}
+    legal_alternatives_must_include:
+      - {type: 01-pain-scene, variant: confront, axes: {gaze: confront}}
+    forbidden:
+      - reason: "06-relief-hero is not in the advertorial hero cell; the advertorial header is a pain beat"
+        config: {type: 06-relief-hero}
+    note: "G1-exempt, no reference photo needed"
+
+  story-0-problem:
+    section_role: problem-agitation
+    expected_option_A: {type: 01-pain-scene, note: "another execution of the type already at hero-header, differing on subject class; varies_on must name the move. REWRITTEN 2026-08-26: this was 'rung 4' of the old ladder, a rung that no longer fills a pool (ADR-058) — it stays the right choice for option A and is no longer an answer to what B and C are."}
+    forbidden:
+      - reason: "never_with 01-pain-scene, which serves the header of this same page"
+        config: {type: 01-pain-split}
+      - reason: "02-symptom-rail's own avoid_when excludes an EDITORIAL page — the
+          infographic-tile register reads as cheap goods beside prose. That was a
+          channel wall until ADR-059 and is now the type's own sentence, which is
+          why this assertion still holds with the wall gone."
+        config: {type: 02-symptom-rail}
+    only_preferred_type_removed_2026_08_26: >
+      It said 01-pain-scene. The problem-agitation row now holds three types, and
+      both of the others are refused HERE by their own law rather than by a channel
+      column — 01-pain-split by never_with, 02-symptom-rail by avoid_when. The
+      outcome is unchanged and the reasoning is now visible in the forbidden list.
+    superseded_2026_08_19: >
+      expected_option_A was 02-symptom-rail until today. That was written on
+      2026-08-11, in the same window as the slot-rules trim that took
+      02-symptom-rail off the advertorial column — 03-spec-split's avoid_when
+      calls the infographic-tile aesthetic a marketplace signal and the rail shares
+      that register. The advertorial problem-agitation cell holds 01-pain-scene
+      alone, and that type already serves hero-header, so this slot is a
+      one-type-once conflict resolved at rung 4 — the same resolution page 65 used
+      at reasons.items.1 with an object-only execution.
+
+  story-1-recommendation:
+    section_role: social-proof
+    expected_option_A: {type: 05-social-handoff}
+    note: >
+      The copy is literally the "a coworker recommended" beat — handoff's own
+      use_when. This is the assertion that guards 05-social-snapshot: a
+      recommendation spoken by an advocate must NOT be stolen by a type whose
+      argument is silent possession.
+    forbidden:
+      - reason: "snapshot has no advocate and stages nothing; it shows a product existing in a home"
+        config: {type: 05-social-snapshot}
+
+  story-2-mechanism:
+    section_role: mechanism
+    expected_option_A: {type: 03-mechanism-xray}
+    gates_that_must_fire:
+      - "body_contact=false drops 03-mechanism-ghostbody"
+      - "visible_output=mist -> the emitting path is shown ACTIVE in the render (G8 in technical register)"
+    note: "resolved 2026-08-11 when xray promoted; before that this slot was out of scope"
+
+  story-3-howto:
+    section_role: how-to-use
+    expected_option_A: {type: 03-use-sequence}
+    legal_alternatives_must_include:
+      - {type: 03-use-grid}
+    note: >
+      multi_step_usage=true keeps 03-use-sequence at A. 03-use-grid became a real
+      alternative on 2026-08-26 (ADR-059): it argues the same beat by APPLICATION
+      rather than by ORDER, and it was held off advertorial only by a channel wall.
+      This is the first assertion in either fixture that the wall's removal turns
+      from a refusal into a choice, which is what the change was for.
+
+  comparison:
+    section_role: comparison
+    expected_option_A: {type: 04-proof-lockedframe, variant: verdict, axes: {camera_lock: strict, context_mode: natural-use}}
+    legal_alternatives_must_include:
+      - {type: 04-proof-lockedframe, variant: rivals, note: "advertorial-legal; needs no reference photo"}
+    note: "the difference IS visible in a static frame (floor space, hose, propped sash), so the object variants are legal here — unlike fixture-001"
+
+  reviews:
+    section_role: social-proof
+    expected_option_A: {type: 05-social-snapshot, axes: {register: ugc}}
+    note: >
+      INTENDED IMPROVEMENT 2026-08-11. Before 05-social-snapshot promoted this
+      slot was out of scope: the advertorial social-proof cell held only
+      05-social-handoff, which one-type-once had already spent on story-1.
+      Snapshot fills it without touching story-1 because the two answer
+      different questions — handoff stages a recommendation, snapshot shows
+      possession.
+    forbidden:
+      - reason: "one-type-once; handoff already serves story-1 on this page"
+        config: {type: 05-social-handoff}
+      - reason: "05-persona-grid is marketplace-only in the slot-rules table"
+        config: {type: 05-persona-grid}
+    composition_note_required: >
+      avoid_adjacent 05-social-handoff — both step-5 social types appear on this
+      page, so they must not sit adjacent, and the page must not read as two
+      social mechanisms in a row.
+    compliance_note_required: >
+      Generated snapshots are section imagery, never customer records: no
+      reviewer name, avatar, star row or verified label may sit near them. The
+      five quoted reviews on this page stay text.
+
+  reclaim-outcome:
+    section_role: outcome
+    expected_option_A: {type: 06-relief-hero, axes: {register: commercial, inset_mode: none}}
+    legal_alternatives_must_include:
+      - {type: 06-relief-scene, conditional: "ONLY if the header keeps a 01-pain-scene of the same person (requires_pair)"}
+
+page_level:
+  arc: "pain (header) -> breadth (story-0) -> social (story-1) -> mechanism (story-2) -> operation (story-3) -> proof (comparison) -> social (reviews) -> relief (reclaim). Pain never reappears after the outcome image."
+  step_3_budget: "2 of 2 used — 03-mechanism-xray and 03-use-sequence. A third step-3 answer would be a lecture."
+  out_of_scope_roles: []
+  known_gap: >
+    story-4 (durability, ABS housing) has no slot here because no active type
+    argues build quality. 03-spec-macro promoted 2026-08-26 and this gap did
+    NOT close: that type is channels:[marketplace] and this fixture is
+    advertorial, so a durability slot here could not route to it. The note
+    below was written assuming promotion would be enough; it was not. What
+    this gap actually needs is either a marketplace fixture, or an active
+    build-quality type legal on advertorial. ADR-057. NOT closed by 03-spec-explode's promotion
+    on 2026-08-12: this gap is about the HOUSING MATERIAL, which is macro's
+    argument, while explode argues build quality by component inventory. A
+    cooler's interior (fan, tank, grille) is also close to explode's own
+    "trivial interiors" exclusion.
+  confusion_test_2026_08_12: >
+    03-spec-explode promoted to active v1.0. Re-ran Steps 2-4 against this
+    fixture: all 8 slot assertions held, 0 unintended flips. story-2-mechanism
+    keeps 03-mechanism-xray on its own gate — that slot requires the mist path
+    shown ACTIVE (G8 in technical register) and explode's NEGATIVE bans an
+    exploded view combined with a translucent intact shell, so it cannot show an
+    active path. comparison is advertorial, a channel explode does not declare.
+    story-3-howto is job=use. step_3_budget is unchanged at 2 of 2: promotion
+    adds a competitor for those two answers, it does not add a third seat.

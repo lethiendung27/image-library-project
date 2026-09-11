@@ -6,7 +6,6 @@ device: handoff
 version: "2.9"
 status: active
 replaced_by: null
-ratios: ["16:9", "1:1", "3:4"]
 channels: [paid-social, advertorial, landing-page]
 requires_product_photo: true
 generation_mode: single-pass

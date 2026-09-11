@@ -6,7 +6,6 @@ device: callout
 version: "0.2"
 status: deprecated
 replaced_by: 03-spec-callout
-ratios: ["1:1", "4:3"]
 channels: [landing-page, marketplace]
 requires_product_photo: true
 generation_mode: single-pass

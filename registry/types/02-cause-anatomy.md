@@ -6,7 +6,6 @@ device: anatomy
 version: "1.17"
 status: active
 replaced_by: null
-ratios: ["16:9", "1:1"]
 channels: [landing-page, marketplace, advertorial]
 requires_product_photo: true
 generation_mode: single-pass

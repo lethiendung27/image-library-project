@@ -6,7 +6,6 @@ device: snapshot
 version: "1.2"
 status: active
 replaced_by: null
-ratios: ["4:3", "1:1", "3:4"]
 channels: [landing-page, advertorial]
 requires_product_photo: true
 generation_mode: single-pass

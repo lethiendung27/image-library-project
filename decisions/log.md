@@ -5492,3 +5492,146 @@ nothing checks that the values describe the product. That is the same trust boun
 `query/runbook.md` Step 1 has always drawn.
 
 ---
+
+## ADR-082 · 2026-09-11 · `ratios` leaves every type file, and the bundle starts shipping the two things a dev was told to use and never given
+
+**Owner instruction, 2026-09-11: *"sửa chỗ ratio, xoá ratio. dev chạy."*** Two decisions in
+one line, both taken against a readiness audit run the same day. Fix the ratio problem by
+DELETING the ratio; and the dev — not the owner — runs the export → `content.json` converter.
+
+### 1. A required field that nothing read, wrong in a third of the files
+
+Measured before the change:
+
+| registry | files with `ratios` | ratio values | files carrying an illegal value |
+|---|---|---|---|
+| `registry/types/` | 17 | 36 | 5 |
+| `registry/types/_staging/` | 2 | 6 | 2 |
+| `registry/pdp-dr-types/` | 15 | 33 | 3 |
+| **total** | **34** | **75** | **10 files, 12 values** |
+
+**Nothing read it to route.** SPEC §1 invariant 2 says routing reads `registry/index.yaml` plus
+`mapping/slot-rules.md`; neither consults a type's ratios, and `query/output.schema.json` says
+the delivered aspect *"is always the SLOT's declared ratio from content.json"*. The field was a
+second source of truth for a value the page already carries, and a second source of truth is a
+thing that drifts.
+
+**And half the drift was unmonitored.** `check_ratios` warned on `registry/types/` only, so the
+five illegal declarations there had been reported for weeks under the message *"correct it when
+this file is next opened"* — while the other five, in `_staging/` and `pdp-dr-types/`, were
+never looked at by anything. `05-social-card` carried `3:2` AND `4:5`, two ratios ADR-016 has
+banned system-wide since 2026-08-13, and no run of the validator ever said so.
+
+**A warning that defers to the next person to open the file only works if somebody opens the
+file.** Nobody did, for five files, for a month.
+
+### The precedent was already set twice, and this completes it rather than inventing it
+
+`registry/gif-types/` (6 files) and `registry/toplist-types/` (7 files) already carry no
+`ratios` key. `registry/toplist-instruction.md` states the reasoning in its own words: *"The
+owner's app resolves the lede ratio (2026-09-09), so a toplist type carries no `ratios` key."*
+SPEC §3.7 says the same. **The argument was never specific to the lede image** — it is that the
+consumer resolves the shape — and what made it newly true for image types is ADR-081, one
+commit earlier: the converter now derives each slot's ratio from the page's own markup and
+snaps it to ADR-016's five. The shape arrives with the slot. The type has nothing to add.
+
+`SPEC.md` §3.7's bullet is kept and annotated rather than deleted, because it is where the
+reasoning was first written down; it now records that the peculiarity ended.
+
+**What replaces the check is stronger than the check.** `ratios` is in neither `REQUIRED_KEYS`
+nor `OPTIONAL_KEYS`, so re-adding it is an `unknown frontmatter key` ERROR rather than a
+warning about its contents. The type-file half of `check_ratios` is gone; the
+`prompts.json` half stays untouched, because a DELIVERED prompt is the deliverable and an
+illegal ratio there is still an error.
+
+### 2. The bundle was missing the conformance contract it describes
+
+`SPEC.md` §1 invariant 6 — the invariant that DEFINES this bundle — promises: *"`eval/golden/`
+is the conformance contract between any two harnesses: both must derive the same Stage 1
+shortlist for every fixture slot."*
+
+The bundle shipped **0** golden files, and `scripts/build-app-bundle.py` mentioned `golden`
+**zero times**: not a reasoned omission like `toplist-types/` and `pdp-dr-types/`, which the
+script argues at length, but a gap nobody had looked at. A dev vendoring the bundle got the
+description of the contract without the contract, and could not check that their router agreed
+with this library's. Four files now ship as group `conformance`.
+
+**And the converter ships, because the dev runs it.** The owner's *"dev chạy"* settles what
+ADR-081 left open. If the app ingests exports itself, then `mapping/export-to-content.md` and
+`scripts/export-to-content.py` have to travel with the bundle — otherwise the dev is asked to
+reimplement a step from a file they were never sent. They ship as group `input`, and the `.py`
+goes beside the `.md` deliberately: it is the executable statement of the same rules and the
+reference a reimplementation is checked against. ADR-081 reasoned the converter out of the
+bundle on the grounds that it runs before QUERY begins; that reasoning was sound and the
+premise was wrong — it assumed the owner would run it.
+
+Bundle: **34 → 40 files**, `conformance: 4 · contract: 5 · fill: 20 · gif: 7 · input: 2 ·
+route: 2`.
+
+**`DIRS` learned to walk.** `eval/golden/` nests one directory per fixture and holds two
+extensions, and the loop was flat with a mandatory suffix — `fn.endswith(None)` would have
+raised. An `ext` of `None` now means *every file, at any depth*. **Walked rather than listed by
+name on purpose**: a `fixture-003` added later must ship without anyone remembering to edit the
+build script, which is ADR-080's failure in the other direction — that one kept a file whose
+source had gone, this one would have missed a file whose source had arrived.
+
+### Enforcement fed known-bad input before being believed
+
+**Six cases, six as specified**, tree restored, both gates clean at 40 files afterwards:
+a clean control; re-adding `ratios` to a type file (caught as `unknown frontmatter key`, an
+ERROR where it used to be a warning); the tree restored to 0 errors; a new fixture
+`fixture-zz-probe` shipping with no edit to the build script; that fixture's removal being
+PRUNED out of the bundle from a NESTED path; and both gates clean at the end.
+
+Warnings **31 → 26**: the five `4:5` type-file warnings are gone because the declarations are.
+
+### Consequences — rule 6c sweeps on `"ratios"` (17 TEACHES), `"eval/golden"` (8) and `"conformance"` (1)
+
+- **34 type files** — the `ratios:` frontmatter line removed. 17 in `registry/types/`, 2 in
+  `registry/types/_staging/`, 15 in `registry/pdp-dr-types/`. No other line moves in any of
+  them.
+- `scripts/validate.py` — `ratios` out of `REQUIRED_KEYS`; the W:H format loop deleted with a
+  note saying why no check replaces it; the index generator stops emitting the field;
+  `check_ratios` loses its type-file half and its docstring says what the remaining half is for.
+- `scripts/build-app-bundle.py` — the `input` group, the `eval/golden` DIRS entry, and the
+  recursive walk for `ext=None`.
+- `SPEC.md` — the `ratios:` line leaves the §3.3 frontmatter spec, **which is also the sixth
+  place that was teaching `4:5`**: the spec's own example declared a banned ratio. §3.7's
+  ratio-not-declared bullet gains one sentence saying the peculiarity ended.
+- `registry/types/03-spec-explode.md:113` — **the one live instruction the sweep found**:
+  *"`4:5` stays in `ratios` for the page's layout, not for the composition"*, body prose rather
+  than CHANGELOG, teaching a reader about a field that no longer exists. Rewritten to say the
+  shape arrives from the slot. Its line 341 is a CHANGELOG entry and **stands**.
+- `registry/types/01-pain-split.md:293`, `03-mechanism-xray.md:250`, `03-use-grid.md:179`,
+  `04-proof-lockedframe.md:353` and `:362` — all CHANGELOG entries recording past corrections
+  to the field. **All stand**: history is what the CHANGELOG is for, and a correction that was
+  right on the day stays legible.
+- `registry/types/02-cause-anatomy.md:222`, `04-proof-lockedframe.md:69`,
+  `registry/rules.md:792`, and the two `ready-to-push/` hits — **all stand**: every one uses
+  "ratios" to mean image proportions or measured size relations, not the frontmatter key.
+- `registry/toplist-instruction.md:383` — **stands, and is still true.** A toplist type does
+  carry no `ratios` key. It no longer marks a distinction, which costs a reader nothing, and
+  that file belongs to another lane's write territory.
+- `README.md:61` and `query/runbook.md:32` — both describe the converter deriving slot ratios.
+  **Both stand and are now the only place a ratio is discussed as an input.**
+- `ingestion/runbooks/curate.md:46` — tells a curator to check routing against `eval/golden/`
+  fixtures. **Stands**, and is the reason those fixtures had to reach a second harness.
+- GENERATED — `registry/index.yaml` regenerates **without the `ratios` line on all 17 types**;
+  `dist/app-bundle/` regenerates at 40 files.
+- `registry_version` unchanged. This removes a RUNTIME PARAMETER, which SPEC §3.2 step 1 calls
+  the cheapest level of absorption and §3.3 already called *"never identity"*. No type's
+  argument, no vocabulary value and no routing outcome moves — the same shortlist comes back
+  for every fixture slot, which the golden fixtures assert on every run.
+
+### What is NOT done
+
+**No fixture was added.** Two is what `eval/golden/` holds, 14 slots between them, and a
+conformance contract that thin is a thing the next dev will find out about. Shipping the two
+that exist beats shipping none; it does not make two enough.
+
+**`05-social-card`'s illegal ratios were deleted, not adjudicated.** `3:2` and `4:5` were in
+that file for a reason nobody wrote down, and removing the field removes the question rather
+than answering it. If that type ever needs a shape the page cannot give it, the argument has to
+be made in `SLOT CONSTRAINTS` as prose, where a reader can weigh it.
+
+---

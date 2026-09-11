@@ -6,7 +6,6 @@ device: scene
 version: "3.7"
 status: active
 replaced_by: null
-ratios: ["16:9", "4:3", "3:4"]
 channels: [paid-social, advertorial]
 requires_product_photo: true
 generation_mode: single-pass

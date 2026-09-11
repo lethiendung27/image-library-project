@@ -1,0 +1,159 @@
+# Export → `content.json`
+
+The step between a live flunnel page export and the QUERY operation's input.
+`scripts/export-to-content.py` implements it; this file is its law. SPEC §1 makes
+`content.json` QUERY's input; a real export satisfies none of that contract, and until
+2026-09-11 nothing in this repo said how to get from one to the other.
+
+Measured against the two exports that exist on disk:
+
+| | file | bytes | `lpTypeId` |
+|---|---|---|---|
+| A | `pdp-dr-360-surround-view-4-channel-dash-cam-v01.json` | 400,050 | `pdp_dr` |
+| B | `listicle-mini-steam-iron-v01.json` | 314,239 | `listicle` |
+
+Both `kind: flunnel-page-export`, `schemaVersion: 1`. **Two exports is what exists, not a
+sample of the format.** A third `lpTypeId` may carry a block vocabulary neither covers, which
+is why the converter refuses an unknown `schemaVersion` instead of trying.
+
+## Where the structure actually is
+
+The section structure is in `page.htmlCompiled`, and it is explicit:
+
+```html
+<section data-block-key="why" data-visible="true" data-locked="false" id="why">
+  …<img data-field="why.cards.0.image" data-field-type="image" data-field-attr="src" …>
+```
+
+| | A | B |
+|---|---|---|
+| `data-field` occurrences / distinct | 141 / 139 | 245 / 245 |
+| `<section data-block-key=…>` | 14 | 15 |
+| `page.content` non-meta keys | 138 | 245 |
+| **content keys carrying no marker** | **0** | **0** |
+| `data-field-type="image"` | 24 | 28 |
+
+That last row of zeroes is load-bearing: every addressable field is marked, so walking the
+sections cannot miss one. The converter re-checks it on every run and warns if it stops
+holding.
+
+**Three things are NOT where the 2026-09-10 measurement put them**, and a converter written
+to that measurement fails on the first call:
+
+- **There is no `page.sections`.** The empty `sections` array is at the export's TOP level.
+  `page["sections"]` raises `KeyError`; it does not return an empty list.
+- **`htmlCompiled` is not unmarked.** It carries no `data-fl-key`, no `data-slot` and no
+  mustache — three names it does not use. It uses `data-field`.
+- `lpTypeId` — confirmed as measured, and now has a home (below).
+
+## What is mechanical
+
+Taken from the export, never invented:
+
+- **`sections[].id` and their ORDER** ← `data-block-key`, in DOM order. `page.content` key
+  order is not page order: grouped by prefix in stored order it gives **60 runs** over 15
+  blocks, because the keys are stored by string length. The same grouping over DOM order gives
+  **17 runs**, the 2 above 15 being one sticky bar that repeats `hero.cta` and `cta.button`.
+- **`image_slots[].slot_id`** ← the `data-field` of each `data-field-type="image"` element.
+  This is already the vocabulary sessions use by hand:
+  `advertorial-cord-tensioner-cam-lock-v01/content.json` carries `hero.image`,
+  `content.items.0.image`, `reviews.shots.0.image`.
+- **`image_slots[].ratio`** ← the rendered box the markup states (`aspect-[a/b]`,
+  `aspect-square`) in preference to the asset's own `width`/`height`, snapped to ADR-016's
+  five and reported. Every in-scope slot in both exports resolves. The three that resolve to
+  nothing are two logos and a badge, all out of scope. The only near-tie is `how.poster` at
+  278:179 — 4:3 by 0.220, 16:9 by 0.225 — and it is a video poster, also out of scope.
+- **`product.name`, `personas`, `raw_features`, `specification`** ← `brief`.
+
+**The section walk independently reproduces ADR-050.** `query/runbook.md` derives a section
+from the slot id arithmetically — top-level prefix, plus the next segment when it is a number.
+Run against every in-scope slot in both exports, `data-block-key` and ADR-050 agree **30 of
+30, with no disagreement**: the export's own markup and the rule this repo derived by hand say
+the same thing. So the converter does not restate ADR-050; the markup already encodes it.
+
+## What is judgement, and why each one is
+
+Never guessed by the converter. It refuses to emit until each is answered.
+
+- **`role` and `copy_summary`.** Role follows what a section's COPY argues, not which block it
+  sits in. Measured: in `advertorial-cord-tensioner-cam-lock-v01`, **seven** sibling cards of
+  ONE repeating block — `content.items.0` … `.6` — carry **six different roles**
+  (problem-agitation, comparison, cause, mechanism, how-to-use, outcome, comparison). A
+  block → role table collapses all seven into one and destroys the page arc
+  `mapping/slot-rules.md` cross-rule 3 enforces. The worksheet carries each section's own copy
+  so the assignment is made by reading it.
+- **`page.channel`.** The export does not carry it. The router learned it by GUESSING from
+  `lpTypeId` for five sessions running, which is half of why ADR-059 removed channel as an
+  admission test. The converter will not repeat that guess.
+- **The eight `product.attributes`.** Owner decision, 2026-09-11: **the app supplies them.**
+  The converter validates and never derives. This is `query/runbook.md` Step 1's standing
+  rule — *"Do not infer missing attributes — ask; inference here is the G7-X failure path"* —
+  and the reason it is right is measurable. In export A the only colour words anywhere in the
+  brief and page copy are *black*, *white* and *green*, and all three sit inside one sentence
+  the brief itself labels *"buyer doubts to answer, **not facts about this product**"*. A
+  keyword derivation harvests three colorways from a sentence that disclaims being about the
+  product, and `colorways`'s own contract calls a fabricated one a G2 violation.
+- **`product.category` and `problems_solved`.**
+
+## `page.lpTypeId`
+
+Optional, provenance only, added to `mapping/content.schema.json` by ADR-081. **Nothing reads
+it to route.** The converter reads it upstream, because it must: the two exports share no
+argued block key at all —
+
+```
+A  hero trust why press product tank how reviews guarantee faq cta legal_privacy legal_terms legal_about
+B  disclosure header content.0 content.1 content.2 content.3 compare reviews comments scarcity faq closing guarantee legal_privacy legal_terms
+```
+
+— so whatever maps a block to a page structure is per-`lpTypeId`. Recording which one ran is
+not the same as gating on it, and this is the treatment `channels` already has: kept as a
+record of where something came from, read by nothing that admits or refuses.
+
+## Out of library scope
+
+Dropped from the slot list, each against a written rule, not against the picture:
+
+| pattern | rule |
+|---|---|
+| `*.logo`, `*.logos.N` | G6 bans logos outright |
+| `*.avatar`, `*_avatar` | `mapping/slot-rules.md`'s `author` row is empty by decision |
+| `product.gallery.0` | cross-rule 6 — the standard product shot |
+| `*.poster` | a video poster frame, not an argued image |
+| `*badge*` | a trust badge, not an argued image |
+
+A **24 `<img>` → 14 in scope**; B **28 → 17**, one of which (`rail.image`) sits outside every
+`<section>` and is reported as unplaced rather than dropped. The `cta` block's image is KEPT:
+`cta` is a ROLE that carries no image by definition, and SPEC §7.4 leaves that to routing's
+`out_of_scope_reason`. The converter does not pre-empt a routing decision.
+
+## Running it
+
+```
+python3 scripts/export-to-content.py scaffold EXPORT.json -o work.json
+# fill every NEEDS-DECISION in work.json — channel, the eight attributes,
+# category, problems_solved, and a role per section with images
+python3 scripts/export-to-content.py build EXPORT.json -d work.json -o content.json
+```
+
+`build` validates its own output against `mapping/content.schema.json` using
+`scripts/validate.py`'s own `schema_errors` — imported, not reimplemented, because two
+validators drift and the one in the validator is the one CI runs — and exits 2 without writing
+if it does not pass.
+
+## What it refuses, proven
+
+Nineteen faults were injected and **all nineteen fired**, with two clean controls, on
+2026-09-11. Export-level: wrong `kind`; `schemaVersion` ≠ 1; no `page`; empty `htmlCompiled`;
+a file that is not JSON. Scaffold: a `page.content` key with no marker; an in-scope image
+outside every section (real — `rail.image` in export B); an image with no derivable ratio.
+Build: `channel` unanswered; no `product`; `attributes` left as the placeholder; `attributes`
+missing 2 of the 8; a section with image slots and no role; two sections sharing an id; a slot
+with no ratio; no section surviving; an empty `problems_solved`; a role outside the contract's
+twelve. One warns rather than refuses: prose in `visible_output`.
+
+**`visible_output` is the one gap the contract cannot close.** It is the only one of the eight
+typed as an open `string`, and 4 of the repo's 15 `content.json` files carry 49–140 characters
+of prose in it. `mapping/slot-rules.md` gates on `visible_output ≠ none`, which prose
+satisfies — so G8 binds and the output becomes the primary subject by accident. Warned here;
+making it an enum would fail four existing files and is a separate decision.

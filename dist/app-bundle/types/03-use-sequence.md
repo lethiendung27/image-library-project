@@ -6,7 +6,6 @@ device: sequence
 version: "1.11"
 status: active
 replaced_by: null
-ratios: ["3:4", "1:1"]
 channels: [marketplace, landing-page, advertorial]
 requires_product_photo: true
 generation_mode: single-pass

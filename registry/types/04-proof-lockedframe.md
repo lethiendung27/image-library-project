@@ -6,7 +6,6 @@ device: lockedframe
 version: "1.16"
 status: active
 replaced_by: null
-ratios: ["16:9", "1:1"]
 channels: [advertorial, landing-page, marketplace, paid-social]
 requires_product_photo: true
 generation_mode: single-pass

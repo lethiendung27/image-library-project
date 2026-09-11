@@ -143,7 +143,6 @@ device: split                # required; in vocabulary.devices
 version: "1.2"               # required; semver-ish "MAJOR.MINOR"
 status: active               # required; active | reserved | deprecated
 replaced_by: null            # required non-null when status: deprecated
-ratios: ["1:1", "4:5"]       # required; runtime parameters, never identity
 channels: [marketplace]      # required; subset of vocabulary.channels
 requires_product_photo: true # required
 generation_mode: single-pass # required; the ONLY legal value, ADR-067
@@ -238,6 +237,8 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
   (ADR-073); nothing is imported from the product-page registry.
 - **Ratio is not declared.** The consuming app resolves the lede ratio, so these types
   carry no `ratios` key; ADR-016's ban on writing a ratio into prompt text is unchanged.
+  **This stopped being peculiar to this namespace on 2026-09-11**: ADR-082 removed `ratios`
+  from every image type too, on the same reasoning one registry had already proved.
 - **Copying, made auditable** (ADR-070). A type declaring `copied_from` carries the
   parent's text verbatim rather than pointing at it, so the file stands alone. The
   parent's `WORKED EXAMPLES` and `CHANGELOG` are not copied: an example's prompt text is
