@@ -167,7 +167,7 @@ types:
     never_with: [03-spec-split]
     avoid_adjacent: [03-mechanism-xray]
     requires_pair: null
-    evidence_count: 1
+    evidence_count: 2
     picks: {}
     use_when: >
       Compact products whose value is component density — cameras, audio gear,
@@ -217,7 +217,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 6
+    evidence_count: 8
     picks: {}
     use_when: >
       Categories where buyers genuinely compare component specs: motors,
@@ -241,7 +241,7 @@ types:
     never_with: []
     avoid_adjacent: [05-persona-grid]
     requires_pair: null
-    evidence_count: 2
+    evidence_count: 3
     picks: {}
     use_when: >
       The buyer's question is "how much will this one thing do for me" —
@@ -268,7 +268,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 10
+    evidence_count: 11
     picks: {}
     use_when: >
       The product has more than one operation step, or buyers may assume it is
@@ -293,7 +293,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 4
+    evidence_count: 5
     picks: {}
     use_when: >
       The buyer already understands the problem and mechanism, is now
@@ -394,7 +394,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 35
+    evidence_count: 37
     picks: {}
     use_when: >
       The product solves a problem the buyer already feels but has not named.
