@@ -167,7 +167,7 @@ types:
     never_with: [03-spec-split]
     avoid_adjacent: [03-mechanism-xray]
     requires_pair: null
-    evidence_count: 0
+    evidence_count: 1
     picks: {}
     use_when: >
       Compact products whose value is component density — cameras, audio gear,
@@ -192,7 +192,7 @@ types:
     never_with: [03-spec-split]
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 0
+    evidence_count: 1
     picks: {}
     use_when: >
       Categories where buyers finger the merchandise in their head: cutting
@@ -217,7 +217,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 4
+    evidence_count: 5
     picks: {}
     use_when: >
       Categories where buyers genuinely compare component specs: motors,
@@ -268,7 +268,7 @@ types:
     never_with: []
     avoid_adjacent: []
     requires_pair: null
-    evidence_count: 7
+    evidence_count: 8
     picks: {}
     use_when: >
       The product has more than one operation step, or buyers may assume it is
