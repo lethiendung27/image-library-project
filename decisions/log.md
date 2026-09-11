@@ -5238,3 +5238,73 @@ Shopify/flunnel export carries empty `sections`, none of the eight required
 `product.attributes`, and an `lpTypeId` the schema has no field for. Until that step is
 written, an app cannot be fed by the owner's own system — which is the difference between a
 library that validates and a library that ships.
+
+---
+
+## ADR-080 · 2026-09-11 · The bundle never deleted anything, so a retired type stayed in it forever
+
+**Found by leaking a test fixture into a commit**, which is a poor way to find it and the
+only way it had been found in 34 builds. The provenance is recorded because it is the honest
+one: the bug was not reasoned to, it was tripped over.
+
+### What happened
+
+ADR-079's known-bad-input probe for the `source_dirty` fix created
+`registry/types/zz-probe-type.md`, rebuilt the bundle, then removed the source. The next
+bundle commit carried `dist/app-bundle/types/zz-probe-type.md` — **a type file with no source,
+committed into the generated directory.**
+
+### What it revealed, which is the actual defect
+
+`build()` imported `shutil` and only ever called `copyfile`. There was **no step that removed
+a destination file whose source had gone.** So:
+
+- a type DELETED from `registry/types/` stayed in `dist/app-bundle/types/` permanently
+- a type RENAMED left its old name behind beside its new one
+- **the manifest did not list the orphan**, because the manifest is built from the sources —
+  so the file was in the directory and absent from the index of the directory
+
+**An app that enumerates `types/` rather than reading `MANIFEST.json` would load a type this
+library had retired.** That is precisely the failure the bundle's own header says it exists to
+prevent: *"a copy shaped by hand is how a rule and its documentation drift, and the drift is
+invisible because nothing compares the two."* An unlisted orphan is invisible drift, and the
+hash manifest cannot catch it — a hash check compares files it knows about.
+
+**It was not hypothetical for this repo.** Promotion out of `registry/pdp-dr-types/` is a
+`git mv` into `registry/types/` (SPEC §3.8), and renames are how this library has moved types
+before — `03-spec-ingredient` to `03-spec-stilllife`, `03-spec-range` to `03-spec-lineup`,
+`02-symptom-halo` to `02-symptom-callout`. Every one of those, had it happened to an ACTIVE
+type after the bundle existed, would have left a ghost.
+
+### The fix
+
+`prune(out_dir, manifest)` walks the output directory and deletes anything not in
+`manifest["files"]` plus `MANIFEST.json` itself. It runs before the manifest is written, and
+every removal is printed:
+
+```
+PRUNED types/zz-probe-type.md — no source; it had been orphaned in the bundle
+```
+
+**Silent pruning would have been the wrong fix.** A generated directory that quietly deletes
+files is as hard to reason about as one that quietly keeps them; the line makes a removal a
+thing a reader sees in the build output and in the commit diff.
+
+**Fed known-bad input before being believed.** A fresh orphan, `types/zz-orphan.md`, was
+written into the bundle by hand and the next build reported `PRUNED` and removed it. The
+directory now holds 35 files against a manifest of 34 — exactly the manifest plus
+`MANIFEST.json` — which is the invariant that was never checked and now holds.
+
+### Consequences
+
+- `scripts/build-app-bundle.py` — `prune()` added, called from `build()` when writing, with
+  every removal reported on stdout.
+- `dist/app-bundle/types/zz-probe-type.md` — **deleted**, having been committed one commit
+  earlier. It is left in history rather than amended away: the log is append-only in spirit
+  and a reader tracing this ADR should be able to see the leak that produced it.
+- No source file, no rule and no type moves. `registry_version` unchanged.
+
+**What this does not fix.** `--check` compares the manifest against the sources; it does not
+yet fail on an orphan in the output directory. The invariant is now enforced at build time
+and unenforced at check time, which is the weaker half. Recorded rather than built, because
+the build is the only path that writes the directory and a second gate has not earned itself.

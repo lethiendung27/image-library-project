@@ -172,10 +172,38 @@ def build(out_dir, write=True):
             shutil.copyfile(src, target)
     if write:
         os.makedirs(out_dir, exist_ok=True)
+        pruned = prune(out_dir, manifest)
         with open(os.path.join(out_dir, "MANIFEST.json"), "w", encoding="utf-8") as f:
             json.dump(manifest, f, indent=2, ensure_ascii=False)
             f.write("\n")
+        manifest["_pruned"] = pruned
     return manifest, missing
+
+
+def prune(out_dir, manifest):
+    """Delete anything in the bundle that no longer has a source.
+
+    The build only ever COPIED, so a file removed or renamed in registry/types/
+    stayed in dist/app-bundle/types/ forever — and the manifest did not list it,
+    because the manifest is built from the sources. An unlisted orphan is the
+    exact failure this bundle's header says it exists to prevent: drift that is
+    invisible because nothing compares the two copies. An app that enumerates the
+    directory rather than reading the manifest would load a type the library has
+    retired.
+
+    Found on 2026-09-11 by leaking a test fixture into a commit, which is a poor
+    way to find it and the only way it had been found in 34 builds.
+    """
+    keep = set(manifest["files"]) | {"MANIFEST.json"}
+    removed = []
+    for dirpath, _dirnames, filenames in os.walk(out_dir):
+        for fn in filenames:
+            full = os.path.join(dirpath, fn)
+            rel = os.path.relpath(full, out_dir)
+            if rel not in keep:
+                os.remove(full)
+                removed.append(rel)
+    return sorted(removed)
 
 
 def main(argv):
@@ -233,6 +261,8 @@ def main(argv):
     print(f"  registry_version {manifest['registry_version']} · commit "
           f"{manifest['source_commit'][:7]}"
           f"{' (DIRTY TREE — regenerate after committing)' if manifest['source_dirty'] else ''}")
+    for rel in manifest.get("_pruned") or []:
+        print(f"  PRUNED {rel} — no source; it had been orphaned in the bundle")
     return 1 if missing else 0
 
 
