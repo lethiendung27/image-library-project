@@ -13,14 +13,25 @@ argument structures for e-commerce product imagery.
 
 ## 1. Consumption contract
 
-A conforming harness implements three operations:
+A conforming harness implements five operations. **An app consuming `dist/app-bundle/`
+normally implements QUERY alone** — the bundle is that operation's view of the library, and
+the other four are the library's own loops.
 
 | Operation | Input | Procedure | Output |
 |---|---|---|---|
 | **INGEST** | source images (outside repo) | `ingestion/runbooks/classify-batch.md` | appended records in `ingestion/observations.jsonl` |
 | **CURATE** | observation ledger | `ingestion/runbooks/curate.md` | patches / staging candidates via PR (human gate) |
 | **QUERY** | `content.json` valid against `mapping/content.schema.json` | `query/runbook.md` | JSON valid against `query/output.schema.json` |
+| **LEDE** | the `product` block alone, extended — NOT `content.json` (§3.7) | `registry/toplist-instruction.md`, then `mapping/toplist-rules.md` | one prompt for the single lede image of a top-N page |
 | **RENDER-TEST** | a filled prompt + the target model | `eval/render-test.md` | appended records in `eval/render-tests.jsonl`; patches via the evidence rule |
+
+**LEDE is a fifth operation and it was missing from this table until 2026-09-11.** It takes a
+different input from QUERY, runs a different procedure, and emits one image rather than a
+routed page, which is why `registry/toplist-types/` is absent from `dist/app-bundle/` — the
+bundle is the app's view of the QUERY operation, and until an app implements LEDE it would be
+shipping law it cannot act on. `registry/pdp-dr-types/` is absent for the opposite reason: it
+is INSIDE QUERY (§3.8), and promotion out of it is a `git mv` into `registry/types/`, so a
+promoted type enters `index.yaml` and the bundle by itself.
 
 Invariants any harness must respect:
 
