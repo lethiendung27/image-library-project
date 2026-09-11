@@ -57,6 +57,7 @@ devices:
   pack: "the product as it arrives — closed, open, or with its own contents at its foot"
   callout: "a subject at the centre, labelled satellites around it; what joins them — a leader line, a dashed leader, or nothing — is a parameter"
   stat: "one measured figure as the subject of the frame, with its source set beside it"
+  dimension: "a line spanning a real edge of the object, labelled with the figure it measures"
   testimony: "a person addressing the lens mid-sentence; a video still, not a photograph"
   # `animal` names WHAT is photographed rather than HOW the argument is made, which is the
   # fault ADR-065 corrected twice (`ingredient` -> `stilllife`, `range` -> `lineup`). It is
@@ -154,7 +155,7 @@ toplist_awareness: [unaware, problem-aware, solution-aware, product-aware, most-
 # Every file is `status: reserved` today and NONE of them routes. What routes on a PDP
 # page today is the shared active types in registry/types/, ordered by
 # mapping/pdp-dr-rules.md. Files: registry/pdp-dr-types/<id>.md.
-pdp_dr_types: [03-spec-callout, 03-spec-lineup, 03-spec-stilllife, 04-proof-stat, 05-social-card, 05-social-testimony, 06-relief-animal, 06-relief-claimstack, 07-identity-callout, 07-identity-inhand, 07-identity-pack]
+pdp_dr_types: [02-symptom-callout, 03-spec-callout, 03-spec-claimstack, 03-spec-dimension, 03-spec-hero, 03-spec-lineup, 03-spec-stilllife, 04-proof-stat, 05-social-card, 05-social-testimony, 06-relief-animal, 06-relief-claimstack, 07-identity-callout, 07-identity-inhand, 07-identity-pack]
 
 # Informative: things that are runtime parameters and must NEVER become identity.
 parameters: [ratio, panel_count, colorway, persona_cast, environment]
