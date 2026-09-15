@@ -56,7 +56,7 @@ types:
     step: 2
     job: cause
     device: anatomy
-    version: "1.17"
+    version: "1.18"
     status: active
     channels: [landing-page, marketplace, advertorial]
     requires_product_photo: true
@@ -74,8 +74,11 @@ types:
       Need to blame a specific object in the customer's everyday life and show
       its measurable harm mechanism. Placed after the pain image and before
       the product mechanism image; fits the middle of an advertorial. The
-      paired dashed reference lines are the argument — use only when a
-      measurable landmark exists.
+      body's own change of state is the argument — use only when the product
+      changes a POSITION of the body that can be drawn, a posture, an angle, a
+      curve or where weight rests, and it reads with every mark covered. Never
+      for a product whose benefit is less force or fatigue with the body held
+      the same way.
   - id: 02-symptom-rail
     step: 2
     job: symptom
