@@ -13,7 +13,7 @@ Nothing here runs a model. An application *consumes* this library and does the g
 | **building the consuming app** | this file → `SPEC.md` §1 (the contract) → §7 (routing) → `dist/app-bundle/` |
 | **adding or editing a rule** | `SPEC.md` §3 (registry model) → §6 (evidence) → the type file → `decisions/log.md` |
 | **running Claude Code here** | `CLAUDE.md` — a thin adapter, entry points only, no logic |
-| **wondering why a rule exists** | `decisions/log.md`, append-only, 87 ADRs, every one cites its evidence |
+| **wondering why a rule exists** | `decisions/log.md`, append-only, 88 ADRs, every one cites its evidence |
 
 ## What an app actually consumes
 
@@ -65,7 +65,8 @@ order come out of `page.htmlCompiled`, which carries a `data-field` on every bou
 every addressable key marked, across all 57 exports on disk. Sections are ADR-050's grouping
 of the slot ids, **not** the markup's `<section>` elements: the two agree on 27 exports and
 differ on 30, and where they differ the markup packages several argument beats into one
-styling container (ADR-083). What it will not invent: `role` and `copy_summary`
+styling container (ADR-083). That grouping is what the converter declares, and the declared
+sections are what the motion rules count in (ADR-087). What it will not invent: `role` and `copy_summary`
 (measured: seven sibling cards of one repeating block carry six different roles, so no
 block → role table is safe), `page.channel` (ADR-059 — the router used to guess it from
 `lpTypeId`), and the eight `product.attributes`, **which the app supplies** (owner decision,

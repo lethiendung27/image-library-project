@@ -578,7 +578,7 @@
         },
         "ceiling": {
           "type": "integer",
-          "description": "Maximum loops the page may carry: 5, with at most one per section \u2014 plus ONE more where that section carries five items or more and the two are not adjacent (ADR-032 amending ADR-024). Adjacency binds INSIDE a section and nowhere else: two loops in consecutive sections are fine, which is the general never-adjacent clause ADR-024 dropped and this description outlived. A section is the slot id's top-level prefix plus its next segment when that segment is a number, so `content.1` and `content.3` are two sections while `features.items.0` through `features.items.4` are one (ADR-050)."
+          "description": "Maximum loops the page may carry: 5, with at most one per section \u2014 plus ONE more where that section carries five items or more and the two are not adjacent (ADR-032 amending ADR-024). Adjacency binds INSIDE a section and nowhere else: two loops in consecutive sections are fine, which is the general never-adjacent clause ADR-024 dropped and this description outlived. A section is the entry of `page.sections[]` in content.json that the slot belongs to (ADR-087, superseding ADR-050's arithmetic on the slot id). An entry carrying its own copy is its own section even when a template numbers it inside a list, while equivalent tiles under one lead — a review wall, a gallery of cells — are one section with N entries."
         },
         "delivered": {
           "type": "integer",

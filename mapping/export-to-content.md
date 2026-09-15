@@ -49,8 +49,10 @@ to that measurement fails on the first call:
 Taken from the export, never invented:
 
 - **`sections[].id`** ← **ADR-050's arithmetic on the slot id**, ordered by first appearance
-  in the document — **not** `data-block-key`. `query/runbook.md` states the rule: the
-  top-level prefix, plus the next segment when that segment is a number. Across all 57 exports
+  in the document — **not** `data-block-key`. The rule: the top-level prefix, plus the next
+  segment when that segment is a number. Since ADR-087, `query/runbook.md` no longer derives
+  sections from the slot id: Step 5d counts in the sections `content.json` DECLARES. So the
+  grouping written here, split or not, is the grouping the motion rules count in. Across all 57 exports
   the markup and ADR-050 give the **same grouping on 27 and a different one on 30**, and where
   they differ the markup is coarser: the advertorial template wraps seven argument cards, a
   product shot, a closing card and four review photos in ONE
@@ -58,8 +60,9 @@ Taken from the export, never invented:
   packaging being read as the page's argument structure. Grouping by slot id also places an
   image that sits outside every `<section>`, so the "unplaced" case is gone.
 
-  **A reader may SPLIT a section further, and often should.** ADR-050 is the coarsest grouping
-  the cross-slot rules allow, not the finest that is right:
+  **A reader may SPLIT a section further, and should wherever an entry carries its own copy.**
+  ADR-050 is the coarsest grouping the cross-slot rules allow, not the finest that is right.
+  Since ADR-087, an entry with its own heading and body IS a section for Step 5d:
   `advertorial-cord-tensioner-cam-lock-v01` split `content.items.0` … `.6` into **seven**
   sections carrying **six** roles, because each card argues something different. Merging two
   is never right.

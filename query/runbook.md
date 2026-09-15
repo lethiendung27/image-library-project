@@ -424,7 +424,7 @@ files it under the same string, and the type in it names the destination folder.
 ADR-051). With no slot and no sequence in the name, two loops that argue the same thing on
 one page would produce the same file, so a page carries at most one of each type — and it
 says something true anyway: a page making the same kind of motion argument twice is
-repeating itself. Where ADR-050's block-sections tempt a second loop of one type
+repeating itself. Where separate declared sections (ADR-087) tempt a second loop of one type
 (`mechanism` on `content.1` and again on `content.3`), the second slot takes a different
 argument or no loop, and `motion.notes` records the call.
 
@@ -508,29 +508,36 @@ ambient on, and never by lowering the temporal test.
 
 **Ceiling and spacing, both binding:** at most 5 loops on a page, and **at most one per
 section — plus ONE more where the section carries five items or more and the two are not
-adjacent** (ADR-032 amending ADR-024). A repeating list still counts as one section, not one
-per item, and which items keep the motion is decided by the section's own set law rather than
-by position.
+adjacent** (ADR-032 amending ADR-024). A list of equivalent entries under one lead still counts
+as one section, not one per item, and which items keep the motion is decided by the section's
+own set law rather than by position.
 
-**What a section IS, because the rule is arithmetic on the slot id** (ADR-050). A section is the
-slot id's top-level prefix, plus its next segment when that segment is a NUMBER. A number sitting
-directly after the prefix is a BLOCK index and each block is its own section; a number sitting
-after a container word — `items`, `photos`, `shots`, `quotes` — is an ITEM index and the list
-stays one section.
+**What a section IS: the section `content.json` declares** (ADR-087, superseding ADR-050's
+arithmetic on the slot id). Every `image_slots` entry belongs to exactly one entry of
+`page.sections[]`, and that entry is the unit counted by all three: the spacing rule, the
+ceiling's per-section clause, and cross-slot rule 2's repeating-section exception. A section is
+one block of the page carrying one role and one `copy_summary`:
 
-```python
-def section(slot_id):
-    p = slot_id.split(".")
-    return f"{p[0]}.{p[1]}" if len(p) > 1 and p[1].isdigit() else p[0]
-```
+- **An entry that carries its OWN copy is its own section**, even when the template numbers it
+  inside a list. The seven reason cards of page 219 (`content.items.0` … `.6`, each with a
+  heading and a body) are seven sections carrying six different roles.
+- **Entries that carry no copy of their own are ONE section with N entries.** These are
+  equivalent tiles under one lead: a review wall's `reviews.shots.0-3`, a gallery of cells, a
+  feature list whose items are images and nothing else.
 
-So `content.1.items.3.image` and `content.3.items.0.image` are two sections, `reason.0.image` and
-`reason.4.image` are two sections, and `features.items.0.image` through `features.items.4.image`
-remain one — the case ADR-024 was written against, untouched. The rule used to read the prefix
-alone, which merged every editorial block a template numbers under one name: on the exports now
-arriving, an opener at `content.0`, a five-card list at `content.1` and a two-card list at
-`content.3` were one section between them and the page body was allowed 2 loops for all three. It
-is allowed 4.
+The slot id is never consulted for this. The same key shape, `content.items.N.image`, is seven
+sections on one template and one section on another, and only the declared structure can say
+which. So whoever assembles `content.json` decides the count by how it groups slots into
+sections: a session by hand, the worksheet of `scripts/export-to-content.py`, or the consuming
+app. Step 1 validates that document before anything is routed.
+
+ADR-050 read the id arithmetically. Page 219 was nonetheless routed on 2026-08-26 under the
+declared reading, with four loops across `content.items.0` … `.5`, two of them on adjacent cards,
+while this step still taught the arithmetic one.
+
+**Adjacency binds between the ENTRIES of one declared section and nowhere else.** Two loops on
+consecutive cards that are separate sections are fine, the same way two loops in consecutive
+named sections always were.
 
 The relaxation exists because the floor had no margin. Measured across every page routed
 under the unamended rule — 58, 65, 73 and 77 — loop-capable sections came to exactly 2 and
@@ -539,6 +546,11 @@ a single loop that could not be built put the page below the owner's standing fl
 set one-per-section against a measured fairground (page 31 drafted four moving tiles inside
 one feature list); two loops with a static item between them in a list of five is not that
 image, and the not-adjacent clause is what keeps it from becoming it.
+
+**Since ADR-087 that clause guards a list of equivalent entries, not a list of cards.** Page
+31's five feature cards each carry a heading and a body, so under the definition above they are
+five sections. Its four moving cards, three of them adjacent, would pass the spacing rule, and
+only the page ceiling bounds them. The owner accepted that cost knowingly on 2026-09-15.
 
 **Every delivered loop carries `gif.alt`**, a second way to shoot the same argument in the
 same slot. It drops whatever the primary is most likely to be blocked on — an actor, a moving

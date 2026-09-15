@@ -6077,3 +6077,73 @@ the owner.
 No golden fixture changes, and `registry_version` is unchanged.
 
 ---
+
+## ADR-087 · 2026-09-15 · A section is what `content.json` declares, not what the slot id spells
+
+**Owner instruction, 2026-09-15: *"thông qua 086 và 087/088 của dev"*.** This takes ADR-086 from the
+dev's working copy (`~/Downloads/Image Library Project 2`). The copy records it as an owner decision
+of 2026-08-27, made in the consuming app's own lineage, which is not on this machine. The owner
+approved it here after being told what it costs (below).
+
+**The decision.** Step 5d counts in the entry of `page.sections[]` that a slot belongs to, not in
+ADR-050's arithmetic on the slot id. That entry is the unit for the spacing rule, for the
+ceiling's per-section clause and for cross-slot rule 2's repeating-section exception.
+- An entry that carries its own copy is its own section, even when a template numbers it inside
+  a list.
+- Entries with no copy of their own — equivalent tiles under one lead, a review wall, a gallery of
+  cells — are one section with N entries.
+
+ADR-050's arithmetic survives as the converter's DEFAULT declaration, and a reader splits it
+wherever an entry carries its own copy.
+
+**Why.** Page 219 (`advertorial-cord-tensioner-cam-lock-v01`) was routed on 2026-08-26 with four
+loops on `content.items.0`, `.2`, `.3` and `.5`, two of them on adjacent cards. It recorded no
+conflict, because its `content.json` declares the seven cards as seven sections carrying six
+roles. The runbook taught one unit, the newest session counted in another, and nothing caught
+it.
+
+Measured 2026-09-15 on the 12 routed `content.json` files that declare sections:
+- the declared unit splits an ADR-050 section on 11 of them;
+- it re-legalizes a loop set that ADR-050 refuses on exactly 1, page 219.
+
+**What it costs, stated to the owner before the approval.** ADR-024 set one loop per section
+against a measured fairground: page 31 drafted four moving tiles inside one `features` list.
+ADR-050 kept that case on purpose: *"`features.items.0.image` through `features.items.4.image`
+remain one, which is the case ADR-024 was actually written against and which this does not
+touch"*.
+
+Page 31's five feature cards each carry a heading and a body, so under this definition they
+are five sections. Its four moving cards, three of them adjacent, would pass the spacing rule,
+and only the page ceiling of 5 bounds them. The not-adjacent clause now guards lists of
+equivalent entries, not lists of cards.
+
+**Two harnesses may count one template differently.** A reader who keeps the converter's
+default grouping counts fewer sections than one who splits the cards. That disagreement is
+visible in the two `content.json` documents, which is where it belongs.
+
+No validator gate is added, for ADR-050's own reason: a gate would be checking a harness against
+the document that harness wrote. `scripts/validate.py` has no motion-spacing check today, so
+nothing in it moves.
+
+**Rule 6c sweeps** (on `ff22c4e`): `"top-level prefix"`, `"one section"`, `"repeating list"`,
+`"ADR-050"`, `"BLOCK index"`, `"section_of"`, `"fairground"`, `"block-sections"`.
+- `query/runbook.md` Step 5d:
+  - the definition block, **rewritten**;
+  - *"A repeating list still counts as one section"*, **amended** to lists of equivalent
+    entries — the copy's own sweep missed this line;
+  - the fairground paragraph, which **gains** the cost above.
+- `query/runbook.md` Step 5c: *"Where ADR-050's block-sections tempt a second loop"*,
+  **amended** to declared sections.
+- `query/output.schema.json` `motion.ceiling`: **rewritten**.
+- `mapping/export-to-content.md`: the `sections[].id` bullet, **amended** to say two things: the
+  grouping is a declaration the motion rules count in, and a reader should split an entry that
+  has its own copy. Its other ADR-050 hits measure the converter's own grouping and **stand**.
+- `scripts/export-to-content.py`: `section_of`'s docstring and the worksheet note, **amended**,
+  with no behaviour change.
+- `README.md`: the converter paragraph, which **gains** one sentence.
+- RECORDS: `query/sessions/*` and this log.
+
+**Consequences.** The files above change, `README.md`'s ADR count moves, and `dist/app-bundle/`
+is regenerated. No session is re-routed, and `registry_version` is unchanged.
+
+---

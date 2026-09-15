@@ -122,7 +122,13 @@ def out_of_scope(field):
 # ------------------------------------------------------------- section identity
 
 def section_of(slot_id):
-    """ADR-050's rule, verbatim from `query/runbook.md`.
+    """ADR-050's rule — the grouping this converter DECLARES by default.
+
+    `query/runbook.md` stopped deriving sections from the slot id at ADR-087: the
+    spacing rule, the ceiling's per-section clause and cross-slot rule 2 count in
+    whatever `page.sections[]` content.json declares. So this arithmetic now
+    lives here and nowhere else, and a split made in the work file changes what
+    those rules count.
 
     A section is the slot id's top-level prefix, plus its next segment when that
     segment is a NUMBER. A number directly after the prefix is a BLOCK index and
@@ -450,7 +456,8 @@ def scaffold(doc, export_path):
             "advertorial-cord-tensioner-cam-lock-v01 split content.items.0-6 "
             "into seven sections carrying six different roles. Merging two is "
             "not a thing to do — the grouping is already the coarsest the "
-            "cross-slot rules allow.",
+            "cross-slot rules allow. What you declare is what the motion "
+            "spacing rules count in (ADR-087).",
         ],
         "_source": {
             "export": os.path.basename(export_path),
