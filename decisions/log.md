@@ -6023,3 +6023,57 @@ says the field is optional.
 No routing outcome moves, no golden fixture changes, and `registry_version` is unchanged.
 
 ---
+
+## ADR-086 · 2026-09-15 · ADR-082's sweep missed Step 4's ratio gate: ratio removes no candidate
+
+**Owner instruction, 2026-09-15: *"đồng ý"*** — the second of the two decisions ADR-085 names,
+taken from the dev's working copy, where it is ADR-089.
+
+**What was wrong.** `query/runbook.md` Step 4 listed four things that remove a candidate. The
+second read *"a type that does not declare the slot's ratio cannot serve it"*.
+
+ADR-082 (2026-09-11) deleted `ratios` from every type file on the finding that *"nothing read it
+to route"*, and its rule 6c sweep searched `"ratios"`. The item said `ratio`, in the singular, so
+the sweep never saw it. Read literally, the item now removes every type from every slot, because
+no type declares a ratio any more.
+
+The dev copy records how the defect surfaced: the consuming app had transcribed the item into a
+gate, and its self-test went red on the first sync after ADR-082. That app is not on this machine,
+but the defect is visible in this lineage's runbook without it.
+
+**ADR-082's consequence holds for the library's own checks, not for the runbook.** ADR-082 wrote
+that *"no routing outcome moves — the same shortlist comes back for every fixture slot, which the
+golden fixtures assert on every run"*. That is true of this library's own checks: `check_golden`
+in `scripts/validate.py` applies no ratio. It was not true for a reader who followed Step 4 as
+written.
+
+**Decision.** Step 4 lists three things that remove a candidate, and a new paragraph says why ratio
+is not one of them. This adds no new rule. The slot's ratio stays what `query/output.schema.json`
+already calls it: a requirement passed to the renderer as the aspect-ratio parameter. Each type's
+`SLOT CONSTRAINTS` and G15 govern how that type composes at that shape.
+
+**Rule 6c sweeps** (on `b595ebf`): `"slot's ratio"`, `"declare the slot"`, `"cut the field"`,
+`"ratio gate"`, `"Four things still"`, `"remove a candidate"` and `"seventeen types to nine"`.
+- **TEACHES, one file:** `query/runbook.md` lines 140–146, the list and its ratio item.
+  **Rewritten.**
+- **`registry/rules.md` G15 and `registry/types/03-use-sequence.md`:** both use the slot's ratio as a
+  shape to compose at, not as a test for admitting a type. **Both stand.**
+- `"ratio gate"` has no hit anywhere.
+
+**What is NOT done.** Item 2 of the rewritten list, the cross-slot fields, keeps its wording. It
+still conflicts with the SET/POOL table that `mapping/slot-rules.md` gained at `79a9593`:
+- That table says those rules bind the recommended SET and never the option pool.
+- It calls marketplace legality *"the one admission test left"* (`mapping/slot-rules.md:154`).
+- Step 4 itself says *"There is no admission test left"* (`query/runbook.md:135`).
+
+Resolving that is a decision about the pool, not a sweep fix, so it is recorded here and left for
+the owner.
+
+**Consequences.**
+- `query/runbook.md`: Step 4.
+- `README.md`: the ADR count.
+- `dist/app-bundle/`: regenerated.
+
+No golden fixture changes, and `registry_version` is unchanged.
+
+---

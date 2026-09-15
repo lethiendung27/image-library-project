@@ -137,17 +137,21 @@ with rerolls. **There is no admission test left, and that is deliberate** (ADR-0
 candidate for every slot, and what a type is FOR is now argued entirely by `use_when`
 through FIT. A type is not refused, it is out-ranked.
 
-Four things still remove a candidate, and none of them is a preference:
+Three things still remove a candidate, and none of them is a preference:
 
 1. **The attribute gates** in `mapping/slot-rules.md` — deterministic kill-rules read
    off `product.attributes`.
-2. **Ratio** — a type that does not declare the slot's ratio cannot serve it. Nine of
-   ten slots on the first page routed this way were 16:9, and that alone cut the field
-   from seventeen types to nine.
-3. **The cross-slot fields** — `never_with`, `pairs_with`, `avoid_adjacent` and
+2. **The cross-slot fields** — `never_with`, `pairs_with`, `avoid_adjacent` and
    one-type-once, all frontmatter, all still binding.
-4. **`registry/rules.md`** — the global rules, G14 among them: a generated image may
+3. **`registry/rules.md`** — the global rules, G14 among them: a generated image may
    never pose as a customer's own.
+
+**Ratio is not one of them** (ADR-082, and ADR-086 for this paragraph). No type declares a
+ratio, so there is nothing to test a slot's shape against. The slot's ratio arrives from
+`content.json` and is passed to the renderer as the aspect-ratio parameter
+(`query/output.schema.json`); a type's `SLOT CONSTRAINTS` and G15 say how it composes at that
+shape. This list said "four" and still carried a ratio gate after ADR-082 deleted the field
+it read: that sweep searched `ratios`, and this item said `ratio`.
 
 **What this rule costs, stated rather than discovered later.** B and C are lower-ranked
 by construction, so on a slot whose cell holds one type they will be types the table
