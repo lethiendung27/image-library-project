@@ -101,9 +101,15 @@ def main(argv):
     term = argv[0]
     want_context = "--context" in argv[1:]
 
+    # Case-INSENSITIVE since 2026-09-15. ADR-067 found this tool matching
+    # case-sensitively — a capitalised step heading went unreported — and deferred
+    # the fix to its own diff. It was never made, and twenty-four ADRs later a sweep
+    # on "co-registry" missed the heading `## A CO-REGISTRY` and a comment block in
+    # registry/vocabulary.yaml the same way. A term is capitalised exactly where it
+    # is most likely to be an instruction: a heading, a warning, a bold rule.
     try:
         out = subprocess.run(
-            ["git", "grep", "-n", "-I", "--fixed-strings", term],
+            ["git", "grep", "-n", "-I", "--ignore-case", "--fixed-strings", term],
             cwd=ROOT, capture_output=True, text=True).stdout
     except FileNotFoundError:
         print("git not available")
