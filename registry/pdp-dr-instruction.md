@@ -302,7 +302,7 @@ and `03-spec-claimstack` ships with no mark library at all for exactly this reas
 
 ## What this namespace is still waiting on
 
-**None of LP2's own drafts routes.** Fifteen files: fourteen `status: reserved`, each carrying a
+**None of LP2's own drafts routes.** Sixteen files: fifteen `status: reserved`, each carrying a
 `blocked_by` and a `BLOCK`, and one `deprecated` — `07-identity-callout`, retired on
 2026-09-11 and replaced by `03-spec-callout` after a control render and a ten-source corpus
 answered the same question the same way. `registry/pdp-dr-index.yaml` gains none of them. What

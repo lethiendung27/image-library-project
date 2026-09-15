@@ -6601,3 +6601,91 @@ Every TEACHES hit is accounted for below.
 - **No LP2 page has been routed from the new surface, and no golden fixture is an LP2 page.**
 
 ---
+
+## ADR-092 · 2026-09-15 · `03-mechanism-contact` gets the draft ADR-078 withheld: the owner's example asked for it, and all four sources survive a re-read
+
+**Owner instruction, 2026-09-15:** *"classify các ảnh mới … để build type"*. It came with the
+five Densjet gallery tiles and a restatement of ADR-091's one-folder rule.
+
+**The five tiles were not new.** Each hash already had one ledger record, filed in batch
+2026-09-15-A at `3cabeab`, so no record was appended. Four of the tiles resolve to a type that
+is already in LP2's folder:
+- `06-relief-hero`, an active copy;
+- `03-spec-hero`, `03-spec-callout` and `03-spec-claimstack`, reserved drafts.
+
+The fifth, tile 4, resolved to a proposal with no file: `03-mechanism-contact`. So "build type"
+had one file to build.
+
+**What ADR-078 withheld, and why it no longer holds for this id.** ADR-078 deliberately left
+Tier 2 undrafted — eight ids at 3–4 sources — because *"drafting eight more on 3 sources would
+repeat the mistake `07-identity-callout` was just retired for"*. That mistake was a count taken
+for evidence: only two of that type's five frames were really the device. This ADR drafts ONE
+of the eight, and it runs the test the mistake names:
+- **The count moved.** It went from 3 sources to 4 when densjet-nova arrived. `validate.py
+  --evidence` reports 7 observations, 4 sources and 0 unsourced.
+- **Every frame was re-read.** All seven were opened and looked at before the file was written,
+  and every source carries at least one frame that is unambiguously the device.
+- **The weak frame is named.** `feicemat-v2` img-17 carries the construction only in an inset,
+  and img-16 already carries its source.
+
+The other seven Tier-2 ids stay undrafted. ADR-078's reasoning still binds them.
+
+**What the type is, derived from the seven frames.** The product's working end, or its output,
+meets a RENDERED body at one place. Something drawn crosses the boundary in the phenomenon's own
+form. The headline sits at the top.
+
+The owner's example (gallery-4) differs in two ways: the contact is at the SURFACE, and the
+agent is the product's OUTPUT. Both are absorbed as the parameter `cut: section | surface`
+rather than a second type (SPEC §3.2), because there is one observation of them.
+- **New device `contact`.** It names HOW the argument is made — the meeting at one place — not
+  what is photographed. That is the test ADR-065 and ADR-078 applied.
+- **Reserved.** `blocked_by` names three gaps: criterion 1 is one source short, criterion 2 is
+  unrun against ghostbody and xray, and criterion 3 has no render.
+- **Boundaries recorded** against four neighbours:
+  - `03-mechanism-ghostbody`: a whole anonymous figure, arguing why the shape fits;
+  - `03-mechanism-xray`: the product's interior;
+  - `03-spec-macro`: the product's own surface;
+  - the proposal `03-mechanism-emanation`: output filling a space.
+- **Borrowed, and marked untested.** Ghostbody's closed layer list (A13) for `section`, and
+  xray's `caught` confinement for `removed`.
+- **G3 meets heat.** The corpus draws therapeutic heat in red and orange, against G3. The
+  founding set writes no heat product.
+- **G5 does not bind**, because the frame compares nothing. Whether a photographed product on a
+  rendered body reads as one image is a question for the first renders.
+
+**The founding set** is `registry/pdp-dr-types/sets/03-mechanism-contact-01/`.
+- **Six products outside the corpus's face-wand family:** a massage gun as the CONTROL,
+  predicted PASS; an EMS pad; a blackhead suction cleaner; a callus remover; a scalp massager; a
+  cupping cup.
+- **One variable:** the closed layer list, in the four prompts that cut the body open.
+- **Uncommitted and owner-gated**, like every pdp-dr set.
+- **Gated before delivery.** Prompts run 1423–1536 characters, under the 1800 gate.
+- **The checker was tested too.** Its `check.py` fired on 8 of 8 known-bad inputs. Its first
+  control run caught a fault in the checker itself: a substring test matched "face" inside
+  "surface" in all six prompts. It now matches whole words.
+
+**Consequences.** The new id adds one file to LP2's folder.
+- **`registry/pdp-dr-types/03-mechanism-contact.md`:** new, reserved.
+- **`registry/vocabulary.yaml`:** the device `contact`, and `pdp_dr_types` 32 → 33, generated
+  from the folder.
+- **`registry/pdp-dr-instruction.md` and `README.md`:** ADR-091 wrote "fifteen drafts: fourteen
+  reserved, one deprecated". Both counts are regenerated to sixteen: fifteen reserved, one
+  deprecated.
+- **Rule 6c:** this decision bans nothing. The sweep on "Tier 2" finds no teaching file saying
+  Tier 2 is withheld. It finds only SPEC's data tiers, which use the word in another sense, and
+  `_CURATION-2026-09-11.md`, which decides nothing by its own first line.
+- **Generated views:**
+  - `registry/index.yaml` and `registry/pdp-dr-index.yaml` are unchanged, because a reserved
+    draft routes nowhere;
+  - `dist/app-bundle/` rebuilds `vocabulary.yaml` and `pdp-dr-instruction.md`, and does not
+    gain the draft, since ADR-091 ships only LP2's active files.
+- `registry_version` is unchanged.
+
+**What is NOT done.**
+- **LP1 does not get the type.** Whether it should is the reverse-direction question ADR-091
+  left open.
+- **`03-use-demo` stays undrafted.** It also stands at 4 sources — the Densjet section image
+  `benefit-braces` is its fourth — but it was not among the owner's five tiles.
+- **No render exists.** The set is the founding round.
+
+---
