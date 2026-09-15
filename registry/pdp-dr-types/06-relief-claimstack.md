@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: [03-spec-claimstack]
 requires_pair: null
-blocked_by: "Criterion 2, the router-confusion test against 06-relief-hero. Criterion 1 is cleared at nine sources, and a type this common contests every outcome slot on every page."
+blocked_by: "Criterion 2, the router-confusion test against 06-relief-hero. Criterion 1 is cleared: 10 distinct sources on 2026-09-15, and a type this common contests every outcome slot on every page."
 ---
 
 # 06-relief-claimstack — STAGING DRAFT
@@ -392,8 +392,8 @@ names the mechanism and `claimstack` is the mechanism: a subject beside a stack 
 
 ## BLOCK
 **Waiting on criterion 2, the router-confusion test against `06-relief-hero`.** Criterion 1 is
-cleared at nine distinct sources — the best-evidenced proposal this library has ever held,
-active types included — and that is exactly why the test binds: a subject to one side with a
+cleared: 10 distinct sources on 2026-09-15, against 11 recorded for `06-relief-hero` itself —
+and that is exactly why the test binds: a subject to one side with a
 headline and claim lines filling the other is the commonest argument image on a
 direct-response product page, so it will contest every outcome slot with an active type. ADR-066
 recorded the refusal to promote on that basis and it stands.

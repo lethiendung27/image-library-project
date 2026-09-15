@@ -17,8 +17,9 @@ Nothing here runs a model. An application *consumes* this library and does the g
 
 ## What an app actually consumes
 
-**`dist/app-bundle/` — generated, never hand-edited.** 34 files, each with a sha256 in
-`MANIFEST.json`. An app vendors a copy and compares `source_commit` plus the per-file hashes
+**`dist/app-bundle/` — generated, never hand-edited.** 42 files as of 2026-09-15, each with a
+sha256 in `MANIFEST.json`, which is the live count — this line said 34 through two bundle
+changes. An app vendors a copy and compares `source_commit` plus the per-file hashes
 against what it vendored; a mismatch means the vendor copy is stale rather than silently
 wrong.
 
@@ -27,7 +28,8 @@ python3 scripts/build-app-bundle.py            # regenerate
 python3 scripts/build-app-bundle.py --check    # fail if stale (CI)
 ```
 
-The bundle is grouped by the call that reads it — `route`, `fill`, `contract`, `gif` — and
+The bundle is grouped by the call that reads it — `route`, `fill`, `contract`, `gif`, `input`
+(the export converter and its law) and `conformance` (the golden fixtures) — and
 `scripts/build-app-bundle.py` explains at the top why each file is in it and why two
 namespaces are deliberately not.
 
