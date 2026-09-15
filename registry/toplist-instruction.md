@@ -312,10 +312,13 @@ reads*. That remains true here. What is different is that this namespace has an 
 pointed at it. (The folder itself moved to `registry/pdp-dr-types/ready-to-push/` on
 2026-09-10, ADR-077; the finding is unaffected by where it lives.)
 
-**The fourth namespace took the other road and it is worth knowing which is which.**
-`registry/pdp-dr-types/` holds no copies at all, so it needs no drift instrument — and it
-carries a smaller exposure of the same kind, a skeleton CALLING a part defined in another
-file, registered by hand in `mapping/pdp-dr-rules.md` because nothing validates it.
+**The fourth namespace took the same road on 2026-09-15, and differs in one respect worth
+knowing** (ADR-091). `registry/pdp-dr-types/` now carries a verbatim copy of every active
+image type under the same `copied_from` + `copied_at_version` instrument — but its copies keep
+their parent's id, so a gate keyed on the parent's id reaches them and nothing is restated.
+The paragraph below is this namespace's cost alone. The smaller exposure the instrument does
+not reach, a skeleton CALLING a part defined in another file, that namespace registers by
+hand in `mapping/pdp-dr-rules.md`.
 
 **A copy is NOT reached by a rule keyed on the parent's id, and that is the part most
 likely to be forgotten.** `mapping/slot-rules.md` says *"drop `06-relief-scene`"* when

@@ -35,10 +35,11 @@ or ≥3 distinct observations**:
   the LP2 product-gallery batches goes to `registry/pdp-dr-types/` and owes a `blocked_by`
   and a `BLOCK` section (SPEC §3.8, ADR-077); everything else goes to
   `registry/types/_staging/`. A draft never sits in both, and the validator errors on an id
-  that does. New job/device values ship in `vocabulary.yaml` in the same diff, and a
+  that does — the one legal shared id is a declared verbatim copy (ADR-091). New job/device values ship in `vocabulary.yaml` in the same diff, and a
   `pdp-dr` draft ships in `vocabulary.pdp_dr_types` too. Check promotion readiness against
   SPEC §6.3 (≥5 exemplars, router-confusion test, rendered worked example) — promotion
-  itself is a separate, later diff, and out of `pdp-dr-types` it is a `git mv`.
+  itself is a separate, later diff, and in `pdp-dr-types` it is a status change in place:
+  that folder is the one an LP2 page routes (ADR-091), so a promoted LP2 type stays in it.
 
 ## 4. Router-confusion test (for any trigger you added or edited)
 

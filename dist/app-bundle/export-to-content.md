@@ -119,9 +119,10 @@ Never guessed by the converter. It refuses to emit until each is answered.
 
 ## `page.lpTypeId`
 
-Optional, provenance only, added to `mapping/content.schema.json` by ADR-081. **Nothing reads
-it to route.** The converter reads it upstream, because it must: the two exports share no
-argued block key at all —
+Optional, added to `mapping/content.schema.json` by ADR-081. **Since ADR-091 it selects the
+page kind, and with it the one folder the page routes** (SPEC §3.0): `pdp_dr` routes LP2's,
+and any other value, or none, routes LP1's. It admits or refuses no type. The converter reads
+it upstream as well, because it must: the two exports share no argued block key at all —
 
 ```
 A  hero trust why press product tank how reviews guarantee faq cta legal_privacy legal_terms legal_about
@@ -135,9 +136,10 @@ either is to LP2, and what all three share is only furniture — `faq`, `guarant
 `legal_*`, `reviews`. **So `lpTypeId` is finer than the page kind** (SPEC §3.0: LP1 has two
 of them) and it is `lpTypeId`, not the page kind, that a block map is keyed on.
 
-Recording which one ran is not the same as gating on it, and this is the treatment `channels`
-already has: kept as a record of where something came from, read by nothing that admits or
-refuses.
+Selecting a folder by the export's own id is not gating on it: no type is admitted or refused
+by this value, which is the treatment `channels` already has — kept as a record of where
+something came from, read by nothing that admits or refuses. ADR-059's objection was to
+guessing the CHANNEL from it, and nothing here does that.
 
 ## Out of library scope
 

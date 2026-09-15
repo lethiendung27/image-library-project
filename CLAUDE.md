@@ -24,19 +24,21 @@ tasks to entry points and must stay logic-free.
 
 ## Hard rules for any session
 
-1. Never hand-edit a generated view — regenerate it. `registry/index.yaml`:
-   `python3 scripts/validate.py --write-index`. The GIF library's folder cards:
-   `python3 scripts/gen-gif-cards.py`. A session's motion brief plates:
-   `python3 scripts/gen-plate.py`. The app bundle:
+1. Never hand-edit a generated view — regenerate it. `registry/index.yaml` and
+   `registry/pdp-dr-index.yaml`: `python3 scripts/validate.py --write-index`. The GIF
+   library's folder cards: `python3 scripts/gen-gif-cards.py`. A session's motion brief
+   plates: `python3 scripts/gen-plate.py`. The app bundle:
    `python3 scripts/build-app-bundle.py` (run it in the same commit as any change
    under `registry/`, `mapping/`, `adapters/` or the schemas).
 2. After **any** edit under `registry/`, run `python3 scripts/validate.py` and fix
    errors before finishing the turn.
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are append-only.
 4. `registry/types/_staging/` is never routable; promotion criteria are in `SPEC.md` §6.3.
-   The same holds for `registry/pdp-dr-types/` while a file's `status` is `reserved`, which
-   today is all of them — a reserved type there owes a `blocked_by` and a `BLOCK` section
-   naming what it waits on, and promotion out is a `git mv` (SPEC §3.8).
+   The same holds for a file in `registry/pdp-dr-types/` whose `status` is `reserved` — it
+   owes a `blocked_by` and a `BLOCK` section naming what it waits on, and it is promoted in
+   place, never by `git mv` (SPEC §3.8). That folder is the ONE an LP2 page routes: LP2's
+   drafts beside a verbatim copy of every active `registry/types/` file, each declaring
+   `copied_from` (ADR-091).
 5. All artifact content is **English**. Conversation with the user is Vietnamese.
    ONE named exception: the GIF library's Vietnamese folder cards, whose copy lives in
    `registry/gif-cards-vi.md` and which `scripts/gen-gif-cards.py` writes as

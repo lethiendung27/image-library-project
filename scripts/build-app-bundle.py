@@ -34,9 +34,9 @@ DEFAULT_OUT = os.path.join(ROOT, "dist", "app-bundle")
 # deliberate act: the bundle is the app's whole view of the library, so anything
 # missing is a rule the app cannot apply and will silently skip.
 #
-# TWO NAMESPACES ARE DELIBERATELY ABSENT, and the reasons differ. Written here
-# because the absence is otherwise indistinguishable from an oversight — a
-# dev-readiness audit on 2026-09-11 read it as exactly that.
+# ONE NAMESPACE IS DELIBERATELY ABSENT. Written here because the absence is
+# otherwise indistinguishable from an oversight — a dev-readiness audit on
+# 2026-09-11 read it as exactly that.
 #
 #   registry/toplist-types/  — outside this bundle because it is outside the QUERY
 #       operation. SPEC 3.7: its input is the `product` block, not content.json.
@@ -45,24 +45,29 @@ DEFAULT_OUT = os.path.join(ROOT, "dist", "app-bundle")
 #       so a page routed from content.json gets gif verdicts and needs the law.
 #       Ship toplist the day an app implements LEDE, and not before.
 #
-#   registry/pdp-dr-types/   — INSIDE QUERY (SPEC 3.8), and needs no path of its
-#       own: promotion out of that namespace is a `git mv` into registry/types/,
-#       so a promoted type enters index.yaml and this bundle by itself. Nothing is
-#       missing today because nothing there routes. What WILL need adding when the
-#       first type promotes is registry/pdp-dr-instruction.md, which carries law
-#       that registry/rules.md does not — the G3 split, the substantiation models,
-#       the compatibility-bar question.
+# registry/pdp-dr-types/ is SHIPPED since ADR-091. Each page kind routes ONE
+# folder: an LP2 (`pdp_dr`) page routes registry/pdp-dr-index.yaml +
+# mapping/pdp-dr-rules.md (applying mapping/slot-rules.md's gates unchanged),
+# fills from pdp-dr-types/ under the law of registry/pdp-dr-instruction.md, and
+# never opens types/. That folder holds verbatim copies of every active image
+# type under the same ids, so both type directories ship and the app chooses
+# between them by page kind. Only its ACTIVE files ship: the drafts beside the
+# copies route nowhere (see collect()).
 FILES = {
-    # Call 1 — route and plan. Nothing else may be opened at this stage.
+    # Call 1 — route and plan. Nothing else may be opened at this stage. One pair
+    # per page kind; a page reads the pair its lpTypeId selects (SPEC 3.0).
     "route": [
         "registry/index.yaml",
         "mapping/slot-rules.md",
+        "registry/pdp-dr-index.yaml",
+        "mapping/pdp-dr-rules.md",
     ],
     # Call 2 — fill. The selected type file plus the law it references by ID.
     "fill": [
         "registry/rules.md",
         "registry/argument-faults.md",
         "adapters/nano-banana.md",
+        "registry/pdp-dr-instruction.md",
     ],
     # Closed lists and contracts. The app validates its own output against these.
     "contract": [
@@ -89,6 +94,7 @@ FILES = {
 }
 DIRS = [
     ("registry/types", "types", ".md"),
+    ("registry/pdp-dr-types", "pdp-dr-types", ".md"),
     ("registry/gif-types", "gif-types", ".md"),
     # SPEC 1 invariant 6 calls these "the conformance contract between any two
     # harnesses: both must derive the same Stage 1 shortlist for every fixture
@@ -124,6 +130,19 @@ def registry_version():
     return ""
 
 
+def status_of(path):
+    """The `status:` value in a type file's frontmatter, or None."""
+    with open(path, encoding="utf-8") as f:
+        if f.readline().strip() != "---":
+            return None
+        for line in f:
+            if line.strip() == "---":
+                return None
+            if line.startswith("status:"):
+                return line.split(":", 1)[1].strip()
+    return None
+
+
 def collect():
     """[(source path relative to ROOT, path inside the bundle, group)]"""
     out = []
@@ -152,8 +171,16 @@ def collect():
                     out.append((f"{src_dir}/{rel}", f"{dest_dir}/{rel}", group))
             continue
         for fn in sorted(os.listdir(d)):
-            if fn.endswith(ext) and not fn.startswith("_") and fn != "README.md":
-                out.append((f"{src_dir}/{fn}", f"{dest_dir}/{fn}", group))
+            if not fn.endswith(ext) or fn.startswith("_") or fn == "README.md":
+                continue
+            # LP2's folder ships only what registry/pdp-dr-index.yaml can route. Its
+            # drafts are `reserved` or `deprecated`, SPEC 1 invariant 4 makes them
+            # unroutable, and shipped they are a type file that an app enumerating the
+            # directory rather than reading the index would load (see prune()).
+            if (src_dir == "registry/pdp-dr-types"
+                    and status_of(os.path.join(d, fn)) != "active"):
+                continue
+            out.append((f"{src_dir}/{fn}", f"{dest_dir}/{fn}", group))
     return out
 
 

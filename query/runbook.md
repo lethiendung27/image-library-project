@@ -10,6 +10,14 @@ Load into context: `registry/index.yaml` + `mapping/slot-rules.md` + the input
 type files (typically 2–4) plus `adapters/<model>.md`. The full library never enters
 context.
 
+**An LP2 page routes a different folder** (`page.lpTypeId: pdp_dr`, SPEC §3.0, ADR-091).
+Load `registry/pdp-dr-index.yaml` in place of `registry/index.yaml`, add
+`mapping/pdp-dr-rules.md`, and fill from `registry/pdp-dr-types/` under
+`registry/pdp-dr-instruction.md` — never from `registry/types/`. Keep `mapping/slot-rules.md`:
+its attribute gates and cross-slot rules apply to an LP2 page unchanged, and they reach the
+copies because a copy keeps its parent's id. Any other value of `lpTypeId`, and none, routes
+as above.
+
 **And load only the SECTIONS you fill from.** A seven-reason listicle forces eight
 distinct types under one-type-once, so "typically 2–4" understates the worst case and
 the cost lands here. Measured across the nine type files page 73 needed: `SKELETON`,
@@ -48,9 +56,10 @@ up. Say "attach the product photo", never "cannot run".
 
 ## Step 2 — Stage 1 shortlist (mechanical)
 
-For each `image_slot`, read the slot-rules row for its `role`.
+For each `image_slot`, read the slot-rules row for its `role` — on an LP2 page, the
+`mapping/pdp-dr-rules.md` Layer 2 row.
 **That row is a PREFERENCE ORDER, not the candidate list.** The candidate list is
-**every active type** — 17 of them, for every slot on every page. Row members outrank
+**every active type in the page kind's index** — 17 of them, for every slot on every page. Row members outrank
 non-members at equal fit; a non-member is a candidate, not a violation.
 
 **The row has one column since ADR-059**, because channel stopped being an admission

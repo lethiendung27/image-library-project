@@ -6392,3 +6392,212 @@ legality"`, `"gated out"`:
 - `registry_version` is unchanged.
 
 ---
+
+## ADR-091 · 2026-09-15 · Each page kind routes ONE folder, and LP2's holds a verbatim copy of every active image type
+
+**Owner instruction, 2026-09-15:** *"sửa: lp1, lp2 hay top list chứa tất cả các types mà trang
+đấy có thể sẽ dùng. chỉ định tuyến 1 thư mục cụ thể cho từng loại trang"*. Two rules follow from
+it. Each page kind's folder holds every type that page may use. A page routes one folder, the one
+for its kind.
+
+It came as a correction to an explanation of ADR-077 answer 1, given in the same session, and it
+reverses three earlier decisions. Recorded as reversals:
+- **ADR-077 answer 1.** `registry/pdp-dr-types/` held *only types the shared registry does not
+  have*, and a PDP page routed to `registry/types/` and to that folder in one pass. That was the
+  CO-REGISTRY, and it is retired.
+- **Two consequences of that answer, both retired with it.** ADR-077 wrote *"no copies, therefore
+  no drift instrument"* and *"promotion out is a `git mv`"*.
+- **ADR-081's `lpTypeId`**, described as *"PROVENANCE ONLY … NOTHING READS IT TO ROUTE"*. ADR-090
+  also listed that description among the things that stand. `lpTypeId` now selects the folder.
+
+**Decision.**
+1. **One folder per page kind.**
+   - LP1 routes `registry/types/`.
+   - LP2 routes `registry/pdp-dr-types/` and never opens `registry/types/`.
+   - A top-N page routes `registry/toplist-types/`. That folder already held its own verbatim
+     copies (ADR-070) and does not change.
+2. **The page kind comes from `page.lpTypeId`, by SPEC §3.0's table.** `pdp_dr` selects LP2; any
+   other value, or none, selects LP1.
+   - This is not ADR-059's fault come back. That fault was guessing the CHANNEL from this value
+     and using the guess to admit or refuse a type. This choice picks a folder by the export's own
+     id, and it admits or refuses nothing.
+   - `scripts/export-to-content.py` already copies the value through, so a converted LP2 page
+     carries it. A hand-written LP2 `content.json` must carry it too.
+3. **LP2's folder holds a verbatim copy of all 17 active image types**, beside its own 15 drafts.
+   - It is all 17 rather than only the types the LP2 corpus shows. An LP2 slot's pool was every
+     active type (ADR-058, ADR-090).
+   - Four of the 17 appear on no LP2 page: `01-pain-scene`, `01-pain-split`, `03-spec-explode`
+     and `03-spec-split` (`mapping/pdp-dr-rules.md`).
+   - Leaving those four out would have removed four candidates from every LP2 slot. That is a
+     routing decision nobody took.
+4. **A copy is ADR-070's copy.**
+   - **Source.** It was spliced by script from the COMMITTED text at `3cabeab`, not from the
+     working tree. Another lane holds uncommitted edits to two of the parents.
+   - **What it carries.** Every section except `WORKED EXAMPLES` and `CHANGELOG`. A dated note at
+     the foot of `PURPOSE` says so.
+   - **`copied_from`** names the file's own id, which must be an active image type.
+   - **`copied_at_version`** records the parent's version at the copy. The validator warns when
+     the parent moves past it.
+5. **A copy keeps its parent's id.** That is why the `{step}-{job}-{device}` grammar stays, now
+   for a different reason.
+   - ADR-077 kept the grammar because two grammars in one pass lose a reader. There is no longer a
+     second folder in the pass.
+   - It stays because every gate in `mapping/slot-rules.md` is keyed on an id, so the gates reach
+     the copies with nothing restated.
+   - This is the one respect in which these copies cost less than the toplist copies. ADR-070 had
+     to restate every gate by toplist id.
+6. **LP2's routing surface is `registry/pdp-dr-index.yaml`.**
+   - `--write-index` generates it from the folder's ACTIVE files, in `index.yaml`'s shape.
+   - `--check` fails if either index is stale or missing.
+   - Routing an LP2 page reads this index plus `mapping/pdp-dr-rules.md`. That file applies
+     `mapping/slot-rules.md`'s gates and cross-slot rules unchanged.
+7. **`registry/pdp-dr-instruction.md` binds the copies**, as it binds every file in its folder.
+   Before this decision it bound only the drafts, so an LP2 page filled a shared type without it.
+   - Where a copied clause disagrees with the instruction on an LP2 page, the instruction binds.
+   - A type that must keep its clause there says so by editing the copy and its CHANGELOG. That is
+     the divergence `copied_at_version` exists to show.
+   - One copied clause reads against the instruction today. `02-cause-anatomy`'s `ground` row asks
+     for a deep, muted hue. The instruction's ground is quiet by default and allows a dark ground
+     only as a choice the prompt justifies. The two have not been tested against each other on a
+     render.
+8. **A draft is promoted in place**, by a status change. It is never moved with `git mv`, because
+   that would take it out of the folder LP2 routes.
+
+**Measured: no routing outcome moves today.**
+- The generated `registry/pdp-dr-index.yaml` is block-for-block identical to `registry/index.yaml`
+  for all 17 ids: frontmatter, `use_when`, `evidence_count` and picks. Only the surface line
+  differs.
+- No `content.json` in the repo carries `pdp_dr`. Fifteen of sixteen carry no `lpTypeId` and one
+  carries `advertorial`. So no routed session and no golden fixture changes route.
+
+**Enforcement fed known-bad input before being believed.** The checks ran in a clean worktree at
+`c2f9173` holding only this lane's files. All 14 fired as expected:
+- **Five errors:**
+  - `copied_from` naming another id;
+  - `copied_from` naming a parent that is not active;
+  - `copied_at_version` null beside a set `copied_from`;
+  - `copied_at_version` set beside a null `copied_from`;
+  - one id in both folders with no `copied_from`.
+- **Two warnings:**
+  - drift, with the parent bumped to 9.9;
+  - an active image type with no LP2 file, which is the new check.
+- **Two index failures under `--check`:** a stale LP2 index and a missing one.
+- **Three bundle checks:**
+  - the bundle ships exactly the 17 active LP2 files and none of the drafts;
+  - it carries both indexes and both LP2 law files;
+  - a copy demoted to `reserved` drops out of it.
+- **Two controls:** the LP2 index equals the LP1 index for every type, and the restored tree is
+  back to 0 errors.
+
+**The rule-6c instrument was fixed first, in its own commit.** `c2f9173` makes
+`scripts/adr-sweep.py` case-insensitive.
+- ADR-067 found this blind spot and deferred the fix to "its own diff". The fix never landed.
+- Here it hid three things from the sweep this ADR depends on: the heading
+  `## A CO-REGISTRY`, the `vocabulary.yaml` comment, and SPEC's "**No copies**" bullet.
+
+**Machinery.**
+- **`scripts/validate.py`:**
+  - pdp-dr files accept `copied_from` and `copied_at_version`, with ADR-070's pairing errors and
+    drift warning;
+  - an id shared with `registry/types/` is legal only as a declared copy;
+  - a copy is skipped by the no-evidence warning, because the parent's namespace owns that count;
+  - an active image type with no file in the LP2 folder raises a warning, because a promotion into
+    `registry/types/` does not reach LP2 by itself. The fix is to copy it, or to copy it
+    `reserved` with a `BLOCK` saying why;
+  - it writes and checks `registry/pdp-dr-index.yaml`.
+- **`scripts/build-app-bundle.py`:**
+  - the route call gains `registry/pdp-dr-index.yaml` and `mapping/pdp-dr-rules.md`, and the fill
+    call gains `registry/pdp-dr-instruction.md`;
+  - from the LP2 folder it ships ACTIVE files only. A shipped draft is a type file that an app
+    enumerating the directory would load, which `prune()` already warns about;
+  - the header comment no longer lists this folder as deliberately absent.
+- **`registry/vocabulary.yaml`:** `pdp_dr_types` goes from 15 ids to 32, generated from the folder,
+  and its comment is rewritten.
+
+**Consequences.** The rule-6c sweeps ran with the fixed tool before any teaching file was edited,
+on 14 terms. Each count is hits / files / files in TEACHES:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"co-registry"` | 14 | 9 | 5 |
+| `"both folders"` | 2 | 2 | 1 |
+| `"routes to both"` | 5 | 5 | 2 |
+| `"no copies"` | 10 | 8 | 6 |
+| `"git mv"` | 15 | 10 | 7 |
+| `"provenance only"` | 8 | 8 | 3 |
+| `"nothing reads it to route"` | 2 | 2 | 1 |
+| `"nothing routes on"` | 6 | 5 | 2 |
+| `"routes nothing"` | 2 | 2 | 1 |
+| `"nothing in this folder routes"` | 2 | 2 | 1 |
+| `"nothing here routes"` | 2 | 2 | 2 |
+| `"which today is"` | 2 | 2 | 1 |
+| `"routing reads"` | 8 | 6 | 1 |
+| `"lpTypeId"` | 96 | 41 | 5 |
+
+Every TEACHES hit is accounted for below.
+- **`SPEC.md` — rewritten:**
+  - §1: the bundle sentence, invariant 2 and invariant 4;
+  - §2: tier 3, and "the generated indexes";
+  - §3.0: the LP2 row, and the routing-scope paragraph, which gains the one-folder rule and the
+    `lpTypeId` selector;
+  - §3.8: rewritten whole;
+  - §7 item 2, §8, and the §9 repo map.
+- **`mapping/pdp-dr-rules.md` — rewritten:**
+  - the opening;
+  - the Layer 1 admission row, whose "all eleven" was already stale because the folder held
+    fifteen;
+  - the gates paragraph and the pool sentence;
+  - the call-register opening;
+  - "What happens when the reserved files unblock", which now says this file grows as the
+    namespace succeeds.
+- **`registry/pdp-dr-instruction.md` — rewritten:**
+  - *A CO-REGISTRY, not a replacement* becomes *The ONE folder an LP2 page routes*;
+  - the waiting-on paragraph;
+  - the no-prompt sentence, now scoped to the drafts, which is what it meant when written.
+- **`registry/vocabulary.yaml`:** the `pdp_dr_types` comment is rewritten.
+- **`CLAUDE.md`:** rule 1 names the second generated index, and rule 4 is rewritten.
+- **`query/runbook.md`:** the context budget gains the LP2 paragraph, and Step 2 reads the page
+  kind's index and row.
+- **`README.md`:** the QUERY paragraph, the `lpTypeId` sentence, the known-gaps line and the ADR
+  count.
+- **`mapping/content.schema.json`:** the `lpTypeId` description is rewritten. This is the contract
+  change.
+- **`mapping/export-to-content.md`:** both `lpTypeId` paragraphs are rewritten.
+- **`registry/toplist-instruction.md`:** *The fourth namespace took the other road* is rewritten.
+- **`ingestion/runbooks/curate.md`:** the shared-id sentence and the promotion sentence are
+  rewritten.
+- **`registry/pdp-dr-types/07-identity-inhand.md` — annotated rather than rewritten**, as ADR-077
+  annotated it. The co-registry sentence stays as the reasoning it was, and a dated paragraph
+  follows it. As with ADR-077's annotation, the version does not move.
+- **These hits stand:**
+  - "nothing here routes" in `07-identity-pack.md` and `07-identity-inhand.md`. *Here* means the
+    reserved file itself, which still routes nowhere.
+  - "no copies of the type files" in the READMEs of `pdp-dr-types/ready-to-push/` and
+    `types/_staging/`. It is about those folders, not this namespace.
+  - "provenance only" at `02-cause-anatomy.md:139`, which is about the provenance of a render
+    count.
+  - "nothing routes on" at `mapping/export-to-content.md:91`, which is about `_block_keys`.
+  - `mapping/slot-rules.md:21` and `mapping/export-to-content.md:105`. Both are about guessing
+    the channel from `lpTypeId`, which this ADR does not do.
+  - SPEC §3.0's `lpTypeId` table, which is the selector itself.
+- **New files:** the 17 copies, and `registry/pdp-dr-index.yaml`, which is generated.
+- **Generated:** `dist/app-bundle/` is rebuilt.
+  - The rebuild also refreshes `index.yaml`. `3cabeab` changed that file without rebuilding the
+    bundle, which had left `validate.py --check` red on one error at HEAD.
+- `registry_version` is unchanged, because no routing outcome moves.
+
+**What is NOT done.**
+- **Two copies drift the moment another lane commits.**
+  - `03-mechanism-ghostbody` is copied at 2.3 and `03-mechanism-xray` at 1.4.
+  - Their parents stand at 2.4 and 1.5, uncommitted, in a lane awaiting the owner's approval.
+  - The drift warning already fires on the main working tree, and the remedy it names is a
+    re-copy in that lane's commit.
+  - No re-copy tool is committed; the splice ran from a session scratchpad, as ADR-070's did.
+- **Session and golden checks still resolve type ids against `registry/types/` alone.** That is
+  right for every copy. It becomes wrong for the first draft promoted in place and then routed in
+  an LP2 session, and that promotion diff must teach those checks about the LP2 folder.
+- **No instrument watches a copy in the other direction**, meaning an LP2 type that LP1 should also
+  route. Whether any should is a separate decision.
+- **No LP2 page has been routed from the new surface, and no golden fixture is an LP2 page.**
+
+---

@@ -50,6 +50,12 @@ right — this is a namespace, but a **co-registry** rather than a fork, so the 
 the anatomy are `registry/types/`'s and promotion back into it is a `git mv`. The routing
 question the paragraph says is deferred is still deferred: nothing here routes.
 
+**ADR-091 changed the last sentence but one on 2026-09-15.** This folder is now the ONE an LP2
+page routes, so a promotion here is a status change in place and never a `git mv` back into
+`registry/types/`. The id grammar and the anatomy stay `registry/types/`'s for a new reason: a
+verbatim copy of every active image type now sits beside this file under its parent's id. This
+file still routes nowhere.
+
 ## PURPOSE
 Show the object at human scale, presented rather than used. A hand holds the product up
 to the camera so the buyer can read its size, its proportion and its finished face in one

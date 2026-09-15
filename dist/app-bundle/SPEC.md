@@ -29,20 +29,24 @@ the other four are the library's own loops.
 different input from QUERY, runs a different procedure, and emits one image rather than a
 routed page, which is why `registry/toplist-types/` is absent from `dist/app-bundle/` — the
 bundle is the app's view of the QUERY operation, and until an app implements LEDE it would be
-shipping law it cannot act on. `registry/pdp-dr-types/` is absent for the opposite reason: it
-is INSIDE QUERY (§3.8), and promotion out of it is a `git mv` into `registry/types/`, so a
-promoted type enters `index.yaml` and the bundle by itself.
+shipping law it cannot act on. `registry/pdp-dr-types/` is in the bundle for the opposite
+reason: it is INSIDE QUERY (§3.8), and since ADR-091 it is the one folder an LP2 page routes, so
+its active files ship with `registry/pdp-dr-index.yaml` beside `registry/types/` and
+`index.yaml`.
 
 Invariants any harness must respect:
 
 1. `registry/index.yaml` is **generated** by `scripts/validate.py --write-index`. Never hand-edit it.
-2. Routing reads **only** `registry/index.yaml` + `mapping/slot-rules.md`. Full type files are
-   loaded only for the types selected for a slot (progressive disclosure).
+2. Routing reads **only** one generated index and its rules file: `registry/index.yaml` +
+   `mapping/slot-rules.md` for an LP1 page, `registry/pdp-dr-index.yaml` +
+   `mapping/pdp-dr-rules.md` for an LP2 page — which applies `mapping/slot-rules.md`'s gates
+   and cross-slot rules unchanged (§3.0, ADR-091). Full type files are loaded only for the
+   types selected for a slot (progressive disclosure), and only from the page kind's folder.
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are **append-only**. Corrections
    are new records, never edits.
-4. Anything under `registry/types/_staging/` is **not routable**, and so is anything under
-   `registry/pdp-dr-types/` while its `status` is `reserved` — which today is every file in
-   it (§3.8, ADR-077).
+4. Anything under `registry/types/_staging/` is **not routable**, and neither is a file under
+   `registry/pdp-dr-types/` whose `status` is not `active` — which today is every one of LP2's
+   own drafts. What routes there is the verbatim copies (§3.8, ADR-077, ADR-091).
 5. Every change under `registry/` is validated by `scripts/validate.py` before commit.
    The human gate is the owner's explicit inputs — image feeds, picks, direct
    commands, and render verdicts where the owner gives them; once given, the harness
@@ -67,10 +71,10 @@ Invariants any harness must respect:
 TIER 1  raw evidence      ingestion/observations.jsonl, feedback/picks.jsonl,
                           eval/render-tests.jsonl                              append-only
 TIER 2  curated knowledge registry/ (types, vocabulary, rules)                 versioned, human-gated
-TIER 3  routing surface   registry/index.yaml                                  generated from tier 2 (+ derived stats from tier 1)
+TIER 3  routing surface   registry/index.yaml, registry/pdp-dr-index.yaml      generated from tier 2 (+ derived stats from tier 1)
 ```
 
-Derived numbers (`evidence_count`, pick statistics) live **only in the generated index**,
+Derived numbers (`evidence_count`, pick statistics) live **only in the generated indexes**,
 computed from tier 1 at generation time. Type files never carry derived fields, so the
 validator never mutates source files.
 
@@ -93,7 +97,7 @@ was, which left a reader no way to know which corpus `registry/types/` came from
 | page kind | `lpTypeId` in an export | registry | notes |
 |---|---|---|---|
 | **LP1** | `listicle`, `advertorial` | `registry/types/` | **two `lpTypeId`s, one page kind** |
-| **LP2** | `pdp_dr` | `registry/pdp-dr-types/` + `registry/types/` | the direct-response product detail page (§3.8) |
+| **LP2** | `pdp_dr` | `registry/pdp-dr-types/` | the direct-response product detail page (§3.8); its folder carries a verbatim copy of every active image type (ADR-091) |
 | **top-N listicle** | — | `registry/toplist-types/` | **a different kind, not LP-numbered** (§3.7) |
 
 Three things follow, and the third is the one that bites.
@@ -101,12 +105,16 @@ Three things follow, and the third is the one that bites.
 **`lpTypeId` is not 1:1 with a page kind.** LP1 has two of them. Anything keyed on
 `lpTypeId` — the converter's block map, for instance — is keyed finer than the page kind.
 
-**A registry's corpus is not its routing scope.** `registry/types/` was MEASURED on LP1 and
-is USED by every page kind: ADR-059 made the library a set of image types usable on any page,
-and an LP2 page routes to both registries (ADR-077 answer 1). Where a clause in a type file
-cites renders, those renders are LP1's unless the file says otherwise — which is what
-ADR-073 proved matters when a ground rule measured on one corpus had to be re-measured for
-another and split the namespace in two.
+**A registry's corpus is not its routing scope.** `registry/types/` was MEASURED on LP1, and
+its types are USED by every page kind — ADR-059 made the library a set of image types usable on
+any page. Since ADR-091 (owner instruction, 2026-09-15) **each page kind routes exactly one
+folder, and that folder holds every type the page may use**: LP1 routes `registry/types/`, a
+top-N page `registry/toplist-types/`, and LP2 `registry/pdp-dr-types/`, which carries a
+verbatim copy of every active image type under the parent's id. QUERY reads the page kind from
+`page.lpTypeId` by the table above: `pdp_dr` selects LP2, and any other value, or none, selects
+LP1. Where a clause in a type file, or in a copy of one, cites renders, those renders are LP1's
+unless the file says otherwise — which is what ADR-073 proved matters when a ground rule
+measured on one corpus had to be re-measured for another and split the namespace in two.
 
 **Measured, so the grouping is not taken on faith.** Across the 57 flunnel exports on disk
 (33 `advertorial`, 23 `listicle`, 1 `pdp_dr`), comparing the set of `data-block-key` values
@@ -298,46 +306,58 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
 ### 3.8 PDP-DR types
 
 A fourth registry governs the **image gallery of a direct-response product detail page**,
-LP2 (ADR-077). It is a **separate namespace** from image types, and it is separate for
-none of the reasons §3.6 and §3.7 give: a product gallery carries about twelve slots, so
-the role shortlist of §7.2, the cross-slot pass of §7.3, the coverage pass of §7.5 and
-one-type-once all apply to it, harder than they apply to an advertorial. It stands on
-three differences of LAW instead — text baked into the image (owner decision 2026-08-31),
-a ground rule measured on its own corpus (ADR-068), and marketplace legality gating every
-tile. Like the other two namespaces it is never written into `index.yaml`.
+LP2 (ADR-077), and since ADR-091 it is **the one folder an LP2 page routes**. It is a
+**separate namespace** from image types, and it is separate for none of the reasons §3.6
+and §3.7 give: a product gallery carries about twelve slots, so the role shortlist of
+§7.2, the cross-slot pass of §7.3, the coverage pass of §7.5 and one-type-once all apply
+to it, harder than they apply to an advertorial. It stands on three differences of LAW
+instead — text baked into the image (owner decision 2026-08-31), a ground rule measured
+on its own corpus (ADR-068), and marketplace legality gating every tile. It is never
+written into `index.yaml`; its active files are written into `registry/pdp-dr-index.yaml`,
+LP2's routing surface, by the same `--write-index`.
 
 - Files live in `registry/pdp-dr-types/<id>.md`; ids are the closed list
   `vocabulary.pdp_dr_types`.
+- **Two kinds of file** (ADR-091; owner instruction, 2026-09-15: each page kind routes one
+  folder, and that folder holds every type the page may use). A **verbatim copy of every
+  active `registry/types/` file**, which is what routes today, and LP2's **own drafts**,
+  every one `reserved` or `deprecated`.
 - **Ids keep the `{step}-{job}-{device}` grammar**, unlike gif and toplist ids, which are
-  arguments. This namespace is a **co-registry**: a PDP page routes to `registry/types/`
-  and to this folder in one pass, and two id grammars in one pass is how a reader loses
-  track of which law applies. Promotion out is a `git mv` and a status change, never a
-  rewrite.
+  arguments, because a copy keeps its parent's id. That is the one respect in which these
+  copies cost less than §3.7's: every gate in `mapping/slot-rules.md` is keyed on an id, so
+  it reaches the copy with nothing restated.
+- **Copying is made auditable exactly as in §3.7** (ADR-070). A copy declares `copied_from`,
+  its own id, naming an ACTIVE image type, and `copied_at_version`; the parent's
+  `WORKED EXAMPLES` and `CHANGELOG` are not copied; the validator warns when the parent moves
+  past `copied_at_version`. It also warns on an active image type with no file here, because
+  a promotion into `registry/types/` does not reach LP2 by itself: copy it, or copy it
+  `reserved` with a `BLOCK` saying why LP2 must not use it.
 - **Anatomy and frontmatter are an image type's** (§3.3, §3.4) — same required sections,
-  same keys — plus `blocked_by`, which is non-null exactly when `status: reserved`. A
-  reserved type also owes a `BLOCK` section naming the decision or the evidence it waits
-  on. There is no separate `BOUNDARY` section: an image type carries its discriminator
-  inside `use_when`, which is where ADR-060 put the whole trigger, and a second home for it
-  would be a second place to go stale.
-- **No copies, and therefore no drift instrument.** ADR-070 gave `registry/toplist-types/`
-  `copied_from` + `copied_at_version` and a validator warning because the owner had chosen
-  verbatim copies. Nothing here is a copy of an active type, so that machinery is absent.
-  The residual exposure is a skeleton CALLING a part defined in another file, which nothing
-  validates; every such call is registered in `mapping/pdp-dr-rules.md` and the register is
-  the whole instrument.
+  same keys — plus `blocked_by`, which is non-null exactly when `status: reserved`, and the
+  copy pair above. A reserved type also owes a `BLOCK` section naming the decision or the
+  evidence it waits on. There is no separate `BOUNDARY` section: an image type carries its
+  discriminator inside `use_when`, which is where ADR-060 put the whole trigger, and a second
+  home for it would be a second place to go stale.
+- **A draft is promoted in place** — a status change, never a `git mv`, which would take it
+  out of the folder LP2 routes. Whether LP1 should route a promoted LP2 type as well is a
+  separate decision, and no instrument watches a copy in that direction yet.
+- What the copy instrument does not reach is a skeleton CALLING a part defined in another
+  file, which nothing validates; every such call is registered in `mapping/pdp-dr-rules.md`
+  and the register is the whole instrument.
 - **Input is the whole `content.json`**, unlike §3.7. A product gallery has
-  `page.sections`, the slots are real, and §7 runs unchanged. The first gallery image is out
-  of library scope — a standard product shot (`mapping/slot-rules.md`, cross-rule 6).
+  `page.sections`, the slots are real, and §7 runs unchanged against
+  `registry/pdp-dr-index.yaml`. The first gallery image is out of library scope — a
+  standard product shot (`mapping/slot-rules.md`, cross-rule 6).
 - **A PDP-DR type MAY declare `text_layer`** and G16 binds the types that do. Two rows of
   G16 are LAW rather than taste and no type-scoped permission reaches them: a named-person
   or named-profession endorsement (G14 binds the SLOT), and a certification, award, rating
   or press mark (the trademark question, put to the owner 2026-08-18 and declined).
 - Law shared by every type is stated once in `registry/pdp-dr-instruction.md` and never
-  restated in a type file, exactly as §5 treats global rules. Routing is
-  `mapping/pdp-dr-rules.md`, whose preference table is **measured** from the 159-observation
-  corpus rather than declared a hypothesis.
-- **Every file is `status: reserved` at the namespace's founding** and nothing in it routes.
-  What routes on a PDP page today is the shared active types in `registry/types/`.
+  restated in a type file, exactly as §5 treats global rules. **It binds the copies too**:
+  on an LP2 page it wins over a copied clause that disagrees with it, and a type that must
+  keep its clause there says so by editing the copy. Routing is `mapping/pdp-dr-rules.md`,
+  whose preference table is **measured** from the 159-observation corpus rather than
+  declared a hypothesis.
 
 ## 4. Vocabulary governance
 
@@ -415,7 +435,8 @@ specific source image — binds there as it binds everywhere.
 
 1. **Validate** `content.json` against `mapping/content.schema.json`.
 2. **Stage 1 — shortlist** (mechanical, DERIVED): per slot, take **every active type**
-   in `registry/index.yaml` and drop only those the **attribute gates** in
+   in the page kind's index — `registry/index.yaml`, or `registry/pdp-dr-index.yaml` on an
+   LP2 page (§3.0) — and drop only those the **attribute gates** in
    `mapping/slot-rules.md` kill, then rank by **role affinity**, read from the type's
    `step` and `job` (both already in the index). `mapping/slot-rules.md`'s table is a
    human-readable **view** of the preference order, not the pool.
@@ -492,8 +513,8 @@ specific source image — binds there as it binds everywhere.
 `python3 scripts/validate.py` (stdlib only, Python ≥3.9):
 
 - default: validate everything, print report, exit non-zero on errors;
-- `--write-index`: additionally regenerate `registry/index.yaml`;
-- `--check`: fail if the committed index differs from what would be generated (CI mode).
+- `--write-index`: additionally regenerate `registry/index.yaml` and `registry/pdp-dr-index.yaml`;
+- `--check`: fail if either committed index differs from what would be generated (CI mode).
 
 Checks: frontmatter schema + YAML subset; id/filename/step/job/device coherence;
 vocabulary closure; referential integrity (`pairs_with`, `never_with`, `replaced_by`,
@@ -515,15 +536,16 @@ operation; never auto-push; every commit is reported with its hash and revert pa
 ```
 SPEC.md                  this contract
 CLAUDE.md                thin Claude Code adapter
-registry/                tier 2 + generated tier 3 (index.yaml)
+registry/                tier 2 + generated tier 3 (index.yaml, pdp-dr-index.yaml)
 registry/argument-faults.md  cross-type catalogue of argument faults (ADR-014)
 registry/gif-types/      motion registry — one file per gif type (SPEC 3.6, ADR-023)
 registry/gif-instruction.md  law shared by every gif type; never restated in one
 registry/toplist-types/  top-N lede registry — one file per type (SPEC 3.7, ADR-069)
 registry/toplist-instruction.md  law shared by every toplist type; never restated in one
 mapping/toplist-rules.md selecting the lede image; layer 2 is a declared hypothesis
-registry/pdp-dr-types/   LP2 product-gallery registry — a CO-REGISTRY, same id grammar
-                         and anatomy as registry/types/ (SPEC 3.8, ADR-077)
+registry/pdp-dr-types/   LP2's registry — the ONE folder an LP2 page routes: its own drafts
+                         plus a verbatim copy of every active image type (SPEC 3.8, ADR-091)
+registry/pdp-dr-index.yaml  generated: LP2's routing surface, written by --write-index
 registry/pdp-dr-instruction.md  law shared by every pdp-dr type; never restated in one
 mapping/pdp-dr-rules.md  routing a product gallery; preference table is MEASURED, and it
                          carries the cross-file CALL REGISTER nothing else validates

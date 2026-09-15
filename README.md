@@ -13,7 +13,7 @@ Nothing here runs a model. An application *consumes* this library and does the g
 | **building the consuming app** | this file → `SPEC.md` §1 (the contract) → §7 (routing) → `dist/app-bundle/` |
 | **adding or editing a rule** | `SPEC.md` §3 (registry model) → §6 (evidence) → the type file → `decisions/log.md` |
 | **running Claude Code here** | `CLAUDE.md` — a thin adapter, entry points only, no logic |
-| **wondering why a rule exists** | `decisions/log.md`, append-only, 91 ADRs, every one cites its evidence |
+| **wondering why a rule exists** | `decisions/log.md`, append-only, 92 ADRs, every one cites its evidence |
 
 ## What an app actually consumes
 
@@ -47,7 +47,9 @@ namespaces are deliberately not.
 
 **An app implementing QUERY is the common case.** It reads `content.json`, routes each slot
 against `registry/index.yaml` + `mapping/slot-rules.md`, opens only the selected type files,
-and emits prompts. `query/runbook.md` is the procedure, step by step.
+and emits prompts. An LP2 page (`page.lpTypeId: pdp_dr`) routes against
+`registry/pdp-dr-index.yaml` + `mapping/pdp-dr-rules.md` instead, and opens type files from
+`registry/pdp-dr-types/` alone (ADR-091). `query/runbook.md` is the procedure, step by step.
 
 ## Feeding it from a real page
 
@@ -70,8 +72,8 @@ sections are what the motion rules count in (ADR-087). What it will not invent: 
 (measured: seven sibling cards of one repeating block carry six different roles, so no
 block → role table is safe), `page.channel` (ADR-059 — the router used to guess it from
 `lpTypeId`), and the eight `product.attributes`, **which the app supplies** (owner decision,
-2026-09-11). `page.lpTypeId` now has a home in `mapping/content.schema.json` as provenance
-that nothing routes on (ADR-081).
+2026-09-11). `page.lpTypeId` has a home in `mapping/content.schema.json` (ADR-081), and since
+ADR-091 it selects the page kind's folder: `pdp_dr` routes LP2's. It admits or refuses no type.
 
 The correction worth carrying: the 2026-09-10 reading of this problem put two of its three
 findings in the wrong place. There is no `page.sections` at all — the empty array is
@@ -116,8 +118,10 @@ Stated rather than left to be found:
   would fail those four files and is a separate decision
 - **`feedback/picks.jsonl` is empty**, so `SPEC.md` §7.7's pick-rate prior has no data and
   one of the five ranking criteria is inert
-- **`registry/pdp-dr-types/` routes nothing** — fifteen files, all `reserved`, three of them
-  past the evidence bar and blocked on router-confusion tests that have not been run
+- **LP2's own drafts route nothing** (2026-09-15) — `registry/pdp-dr-types/` routes only its
+  seventeen copies of the active image types (ADR-091). Its fifteen drafts are fourteen
+  `reserved` and one `deprecated`, and the best-evidenced are blocked on
+  router-confusion tests that have not been run
 - **no app implements LEDE**, which is why `registry/toplist-types/` is not in the bundle
 
 ## Layout
