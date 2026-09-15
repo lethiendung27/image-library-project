@@ -62,7 +62,7 @@ three types, so a cell-as-pool reading caps most slots at one or two options —
 measured across the 13 sessions routed before this rule: **161 image slots, 111 on a
 single type, 50 on two, and not one slot in the library's history carrying three.**
 An empty cell is not an empty slot: it means no type is PREFERRED here, and the
-channel-legal set still decides. Report out-of-scope only where the role itself
+whole pool still decides (ADR-090). Report out-of-scope only where the role itself
 carries no image by definition (`cta`, `author`).
 
 ## Step 3 — Stage 2 portfolio (one judgment pass over the WHOLE page)
@@ -70,16 +70,15 @@ carries no image by definition (`cta`, `author`).
 With the index + shortlist + `product.attributes` + ALL sections visible at once:
 
 1. Apply every attribute gate from `mapping/slot-rules.md` (deterministic kills).
-2. Apply each candidate's `avoid_when` from the index against the section's
-   `copy_summary` and the product.
-3. Enforce cross-slot rules: `never_with`, `requires_pair`, `avoid_adjacent`,
-   one-type-once, pain-before-relief arc, step-3 budget.
-4. Select the page as a SET — never slot-by-slot greedily. If two slots compete for
-   one type, the type goes where its `use_when` fits best and the other slot takes
-   its next candidate.
-5. Tie-breaker (G6 decision): consult `picks` in the index for the (type × role)
+2. Enforce cross-slot rules ON THE RECOMMENDED SET: `never_with`, `requires_pair`,
+   `avoid_adjacent`, one-type-once, pain-before-relief arc, step-3 budget. They decide
+   what the page recommends, never which types a slot may offer (ADR-090).
+3. Select the page as a SET — never slot-by-slot greedily. If two slots compete for
+   one type, the type goes where its `use_when` fits best and the other slot
+   recommends its next candidate; the type may stay among that slot's options.
+4. Tie-breaker (G6 decision): consult `picks` in the index for the (type × role)
    cell ONLY if that cell's `shown` ≥ 20. Soft prior only — it never overrides an
-   `avoid_when` or a cross-slot rule.
+   attribute gate or a cross-slot rule.
 
 **RENDER CAPABILITY, declared once here so no type has to guess it.** Several type
 files gate on "where the renderer cannot composite", and until now nothing in the repo
@@ -126,27 +125,43 @@ not three dimensions of variation.
 - **B — `type: <id>`**: the second-best fit. A different type, always.
 - **C — `type: <id>`**: the third-best fit. A different type, always.
 
-Rank the whole channel-legal candidate set by the five criteria below, FIT first, and
-take the top three. Each option then picks its OWN best variant, axes and execution —
-those are how an option is built, never how the pool is filled.
+Rank the whole pool by the five criteria below, FIT first, and take the top three. Each
+option then picks its OWN best variant, axes and execution — those are how an option is
+built, never how the pool is filled.
 
-Rules that do not move: an option requiring a pair or carrying channel restrictions
-says so in `composition_notes`; never present a gated-out type as an option; never pad
-with rerolls. **There is no admission test left, and that is deliberate** (ADR-060).
-`channels` went at ADR-059 and `avoid_when` went the day after: every active type is a
-candidate for every slot, and what a type is FOR is now argued entirely by `use_when`
-through FIT. A type is not refused, it is out-ranked.
+Rules that do not move:
+- An option requiring a pair or carrying a marketplace restriction says so in
+  `composition_notes`.
+- Never present a removed type as an option.
+- Never pad with rerolls.
 
-Three things still remove a candidate, and none of them is a preference:
+**No test reads a type's ARGUMENT to admit or refuse it, and that is deliberate**
+(ADR-060). `channels` went at ADR-059 and `avoid_when` went the day after, so what a type is
+FOR is argued entirely by `use_when` through FIT. A type is not refused for what it argues;
+it is out-ranked.
+
+**The pool is content-first** (owner decision, 2026-09-15, ADR-090). Every active type is a
+candidate for every slot, ranked by what that slot's content argues. Three things remove a
+candidate from the pool. None of them is a preference, and each is about the product, the law
+or the surface — never about what the page's other slots recommend:
 
 1. **The attribute gates** in `mapping/slot-rules.md` — deterministic kill-rules read
    off `product.attributes`.
-2. **The cross-slot fields** — `never_with`, `pairs_with`, `avoid_adjacent` and
-   one-type-once, all frontmatter, all still binding.
-3. **`registry/rules.md`** — the global rules, G14 among them: a generated image may
+2. **`registry/rules.md`** — the global rules, G14 among them: a generated image may
    never pose as a customer's own. A tile attributed to a customer, on the tile or by its
    wall's lead, takes a real photograph or nothing (ADR-088). A harness that renders routes
    it anyway and ships the prompt flagged for the merchant (ADR-089).
+3. **Marketplace legality** — cross-slot rule 5 in `mapping/slot-rules.md`. `01-pain-scene` is
+   never offered in a marketplace gallery, and the `--rivals` and ugc-register executions are
+   never offered on marketplace. It is the only remover about the SURFACE rather than the
+   argument.
+
+**The cross-slot fields bind the recommended SET, never the pool** (ADR-090). These fields are
+`never_with`, `pairs_with`, `avoid_adjacent`, `requires_pair`, one-type-once, the page arc and
+the step-3 budget. They decide which option each slot RECOMMENDS and in what order the page
+reads; none of them removes a type from a slot's options. An option the set cannot also hold
+stays on offer and says so in `composition_notes`. `mapping/slot-rules.md` states this field by
+field.
 
 **Ratio is not one of them** (ADR-082, and ADR-086 for this paragraph). No type declares a
 ratio, so there is nothing to test a slot's shape against. The slot's ratio arrives from
@@ -164,10 +179,14 @@ hid this cost by spending B and C on re-executions of A, which is why the librar
 can reject beats a third camera angle on the same type he cannot compare.
 
 **Fewer than three surviving types is a real state and declares itself.** Emit what
-exists and set `pool_basis` on the slot naming what ran out: which gates fired and how
-many types the channel had to begin with. It is not rare on `paid-social`, where only 5
-active types are legal at all against 14 on `landing-page`. A shortfall stated is a
-record; a shortfall padded is a lie about the library's width.
+exists and set `pool_basis` on the slot naming what ran out:
+- which attribute gates fired;
+- which global rule refused a type;
+- whether marketplace legality removed one.
+
+With every active type in the pool and only those three removers, a shortfall is uncommon,
+so say exactly what caused it. A shortfall stated is a record; a shortfall padded is a lie
+about the library's width.
 
 **A REPEATING SECTION IS ONE SLOT FOR THIS PURPOSE, AND THE SET TAKES THE THREE
 TYPES** (ADR-022, amended 2026-08-26). Where cross-slot rule 2 applies — a review wall,
@@ -212,9 +231,9 @@ back to an axis or an execution every time, and a page ships with no type variat
 all. Measured across the first four routed pages before the correction: 83 of 101
 non-A options varied on execution, 11 on axis, and 7 on type. When B does carry a type
 recommended elsewhere, name the displaced slot in `composition_notes` and move on. The
-only slots that legitimately fall short of three types are the ones where the CHANNEL —
-not the role cell — runs out after the attribute gates and `avoid_when`. Say that in
-`pool_basis` so the reason is on the record rather than inferred. `e7dfe8c`
+only slots that legitimately fall short of three types are the ones where the POOL — not
+the role cell — runs out after the three removers above. Say that in `pool_basis` so the
+reason is on the record rather than inferred. `e7dfe8c`
 
 **Enforced since ADR-052, because this paragraph was breached with itself already in
 force.** Page 193's first routing shipped 8 of 8 multi-option slots single-type — the
@@ -225,7 +244,8 @@ books. So the rule runs in `scripts/validate.py` rather than on trust.
 **Its threshold moved from two to three on 2026-08-26** (ADR-058). The gate used to fail
 a multi-option slot carrying ONE type across its options; it now fails one carrying fewer
 than THREE distinct types. The shortfall declares itself in `pool_basis` on the slot,
-naming which gates fired and how wide the channel was — `single_type_basis` is the
+naming which gates fired, which global rule refused a type and whether marketplace legality
+removed one — `single_type_basis` is the
 retired name for the same field and is still read, because thirteen sessions carry it.
 Those thirteen predate the three-type rule and every one of them would fail it: they hold
 161 image slots between them and not one carries three types. They stand as grandfathered
@@ -240,10 +260,10 @@ than three is a declared shortfall. Work down and keep collecting:
 2. **Adjacent steps.** Role affinity is a preference, not a wall: a `comparison` slot
    may take a step-3 or step-4 type; a roundup entry that indicts an object may take a
    step-1 `job: pain` type. Say which step you moved to in `varies_on`.
-3. **The rest of the channel-legal set, ranked by FIT.** Any active type legal on this
-   channel whose `avoid_when` does not exclude the case. This rung is where the third
-   type usually comes from and it is not a fallback tier — SPEC §7.4 always derived from
-   here; only this runbook narrowed it to a cell.
+3. **The rest of the pool, ranked by FIT.** Any active type the three removers leave
+   standing. This rung is where the third type usually comes from and it is not a
+   fallback tier — SPEC §7.4 always derived from here; only this runbook narrowed it to
+   a cell.
 
 **Rungs 3 and 4 of the old ladder are gone from the POOL and kept for the SET.** They
 were "a repeating-section repeat" and "another execution of a type already on the page",
@@ -253,13 +273,15 @@ recommended set when a page needs the same type twice. Cross-slot rule 2 and
 `composition_notes` carry them now, not this ladder.
 
 Nothing on this ladder is an admission test any more (ADR-060). Every rung yields
-candidates and the ranking sorts them; what removes a type is an attribute gate, a
-ratio it does not declare, a cross-slot field, or a global rule. Every option emitted
-is a real active type carrying its own laws; there is no fallback tier, and no image
+candidates and the ranking sorts them. What removes a type is an attribute gate, a global
+rule or marketplace legality. It is never a ratio (ADR-086, which missed this sentence), and
+never a cross-slot field, which binds the recommended set instead (ADR-090). Every option
+emitted is a real active type carrying its own laws; there is no fallback tier, and no image
 ships unrouted.
 
 Worked precedent: a listicle's five ranked entries, each indicting one alternative, had
-no comparison type left after one-type-once spent `04-proof-lockedframe`. Rung 2 plus
+no comparison type left to RECOMMEND after one-type-once spent `04-proof-lockedframe` on
+the set; under ADR-090 that type may still be offered as an option there. Rung 2 plus
 rung 3 resolved it to `01-pain-scene` in its object-only execution — an execution the
 ledger already records twice (obs `sha256:30c9568…`, `sha256:4e8f238…`, both filed as
 pain-scene with "no person as subject, only the indicted OBJECT").
@@ -344,8 +366,9 @@ and hard-coding one would replace judgment with a table that is wrong half the t
 
 Rules for what may be proposed:
 
-1. Same admission tests as any option — channel legality, attribute gates, `avoid_when`.
-2. Same cross-slot rules — one-type-once, step-3 budget, `avoid_adjacent`, page arc.
+1. Same removers as any option — attribute gates, global rules, marketplace legality.
+2. Same cross-slot rules — one-type-once, step-3 budget, `avoid_adjacent`, page arc —
+   because a proposal joins the recommended set, which is what those rules bind (ADR-090).
    Coverage is not a licence to bloat; those rules exist because more explanation is
    not more persuasion.
 3. Every proposal states **which rung it fills** and **where it would sit**. A proposal

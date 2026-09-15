@@ -1008,8 +1008,8 @@ def check_option_pools():
     """ADR-058: every image slot carries THREE options of three DISTINCT types,
     the three best fits for that slot's content (SPEC §7 item 4, runbook Step 4).
     A slot holding fewer must declare what ran out in `pool_basis` — which gates
-    fired, which `avoid_when` excluded a candidate, how wide the channel was —
-    or the session errors.
+    fired, which global rule refused a type, whether marketplace legality
+    removed one (ADR-090) — or the session errors.
 
     This replaces ADR-052's threshold, which failed a multi-option slot only when
     ALL its options carried ONE type. That caught the worst case and passed the

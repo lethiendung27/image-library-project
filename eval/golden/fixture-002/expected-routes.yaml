@@ -6,6 +6,11 @@
 # promoted. Re-run Steps 2-4 of query/runbook.md after any trigger, index or
 # slot-rules change; every assertion must still hold or the change is a bug or
 # an intended improvement that updates this file in the SAME commit.
+#
+# `forbidden` names a configuration this slot must not RECOMMEND, or must not
+# produce at all where its reason is an execution rule. Since ADR-090 a
+# cross-slot field is never a reason to keep a TYPE out of a slot's options:
+# the pool is content-first.
 
 registry_version: "2.0.0"
 template: "query/runbook.md Steps 2-4"
@@ -17,7 +22,7 @@ slots:
     legal_alternatives_must_include:
       - {type: 01-pain-scene, variant: confront, axes: {gaze: confront}}
     forbidden:
-      - reason: "06-relief-hero is not in the advertorial hero cell; the advertorial header is a pain beat"
+      - reason: "not option A: the advertorial header is a pain beat. The old reason, the advertorial hero CELL, went with the channel columns at ADR-059"
         config: {type: 06-relief-hero}
     note: "G1-exempt, no reference photo needed"
 
@@ -25,18 +30,26 @@ slots:
     section_role: problem-agitation
     expected_option_A: {type: 01-pain-scene, note: "another execution of the type already at hero-header, differing on subject class; varies_on must name the move. REWRITTEN 2026-08-26: this was 'rung 4' of the old ladder, a rung that no longer fills a pool (ADR-058) — it stays the right choice for option A and is no longer an answer to what B and C are."}
     forbidden:
-      - reason: "never_with 01-pain-scene, which serves the header of this same page"
+      - reason: "never RECOMMENDED here: never_with 01-pain-scene, which serves the
+          header of this same page. It binds the set, not the pool (ADR-090), so
+          01-pain-split may still be OFFERED on this slot, with composition_notes
+          saying the page cannot recommend both."
         config: {type: 01-pain-split}
-      - reason: "02-symptom-rail's own avoid_when excludes an EDITORIAL page — the
-          infographic-tile register reads as cheap goods beside prose. That was a
-          channel wall until ADR-059 and is now the type's own sentence, which is
-          why this assertion still holds with the wall gone."
+      - reason: "never RECOMMENDED here: on an EDITORIAL page the infographic-tile
+          register reads as cheap goods beside prose. That was a channel wall until
+          ADR-059 and an avoid_when line until ADR-060. It is a FIT judgement now,
+          so the type may still reach this slot's options."
         config: {type: 02-symptom-rail}
     only_preferred_type_removed_2026_08_26: >
       It said 01-pain-scene. The problem-agitation row now holds three types, and
       both of the others are refused HERE by their own law rather than by a channel
       column — 01-pain-split by never_with, 02-symptom-rail by avoid_when. The
       outcome is unchanged and the reasoning is now visible in the forbidden list.
+    pool_reading_2026_09_15: >
+      ADR-090 made the pool content-first. Neither type above is refused from
+      the pool any more: never_with binds the recommended set, and avoid_when
+      has not existed since ADR-060. Both stay out of this slot's
+      RECOMMENDATION, which is what the forbidden list now says.
     superseded_2026_08_19: >
       expected_option_A was 02-symptom-rail until today. That was written on
       2026-08-11, in the same window as the slot-rules trim that took
@@ -97,9 +110,13 @@ slots:
       different questions — handoff stages a recommendation, snapshot shows
       possession.
     forbidden:
-      - reason: "one-type-once; handoff already serves story-1 on this page"
+      - reason: "never RECOMMENDED here: one-type-once, and handoff already serves
+          story-1 on this page. That rule binds the set (ADR-090), so handoff may
+          still be offered on this slot, naming story-1 in composition_notes."
         config: {type: 05-social-handoff}
-      - reason: "05-persona-grid is marketplace-only in the slot-rules table"
+      - reason: "not option A: it ranks below 05-social-snapshot on this beat. The
+          old reason, marketplace-only in the slot-rules table, went with the
+          channel columns at ADR-059."
         config: {type: 05-persona-grid}
     composition_note_required: >
       avoid_adjacent 05-social-handoff — both step-5 social types appear on this

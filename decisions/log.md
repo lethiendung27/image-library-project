@@ -6273,3 +6273,122 @@ it takes nothing"`.
 `registry_version` is unchanged.
 
 ---
+
+## ADR-090 · 2026-09-15 · The pool is content-first: cross-slot rules bind the recommended set, and three things remove a type
+
+**Owner instruction, 2026-09-15: *"quyết định theo pool (content-first)"*.** This settles what ADR-086
+recorded and left open: three statements that could not all be true.
+- `query/runbook.md` Step 4 listed the cross-slot fields among the things that remove a candidate.
+- The SET/POOL table that `mapping/slot-rules.md` gained at `79a9593` said those rules bind the
+  recommended set and never the option pool.
+- That table called marketplace legality *"the one admission test left"*, while Step 4 said *"There
+  is no admission test left"*.
+
+**Decision.** A slot's option pool is built from what the slot's content argues. Every active type
+is a candidate, ranked FIT first.
+
+Three things remove a type from the pool. Each is about the product, the law or the surface, never
+about what the page's other slots recommend:
+1. the attribute gates of `mapping/slot-rules.md`;
+2. the global rules of `registry/rules.md` — G14 refuses in a manual session and flags in a
+   rendering harness (ADR-088, ADR-089);
+3. marketplace legality, cross-slot rule 5 — the only remover about the SURFACE rather than the
+   argument.
+
+The cross-slot fields bind the RECOMMENDED SET and its order: `never_with`, `pairs_with`,
+`avoid_adjacent`, `requires_pair`, one-type-once, the page arc and the step-3 budget. An option the
+set cannot also hold stays on offer and says so in `composition_notes`.
+
+No test reads a type's argument to admit or refuse it (ADR-059, ADR-060). That sentence stands,
+reworded so it no longer contradicts rule 5.
+
+**What it settles.** `01-pain-split` was offered in 0 of 14 routed sessions while `01-pain-scene`
+was offered in 14 of 14, and the two are `never_with` each other (`mapping/slot-rules.md`, measured
+2026-09-11). That paragraph proposed a routing to tell a pool misreading apart from ranking.
+
+This decision makes the answer law instead: `never_with` binds the set, so the pain-split may reach
+the pool beside a recommended pain-scene. It is the correction the runbook had already made for
+one-type-once. Read as a pool rule, one-type-once had left 83 of 101 non-A options varying on
+execution rather than type.
+
+**Stale teaching removed on the way, because it described a pool this decision rules out.**
+- **`avoid_when`**, gone from every image type since ADR-060, was still applied or named in:
+  - runbook Step 3 (its own item and the tie-breaker);
+  - runbook Step 4 (the one-type-once paragraph and rung 3);
+  - runbook Step 5b;
+  - the `pool_basis` description;
+  - the `check_option_pools` docstring;
+  - `mapping/slot-rules.md`'s `body_contact` row;
+  - fixture-002's `02-symptom-rail` reason.
+- **The channel as a pool boundary** outlived ADR-059. "the channel-legal set", "how wide the channel
+  was" and "paid-social admits 5 active types against landing-page's 14" appeared in runbook Steps 2
+  and 4, SPEC §7.4, the `pool_basis` description and the fixtures' `forbidden` reasons. Only rule 5
+  reads the surface now.
+- **ADR-086's sweep missed two sentences that still taught the ratio gate:**
+  - runbook Step 4: *"what removes a type is an attribute gate, a ratio it does not declare, …"*;
+  - the opening of `mapping/slot-rules.md`: *"… and the ratio each type declares"*.
+
+  Both are rewritten here. That sweep searched `"slot's ratio"` and `"declare the slot"`, and these
+  sentences said "a ratio it does not declare" and "the ratio each type declares". It is the same
+  failure ADR-086 recorded for ADR-082.
+
+**Rule 6c sweeps** (on `ff22c4e` and `6c01052`) — `"option pool"`, `"the POOL"`, `"remove a
+candidate"`, `"admission test"`, `"channel-legal"`, `"gated-out"`, `"avoid_when"`,
+`"paid-social"`, `"channel restrictions"`, `"spent"`, `"how wide the channel"`, `"channel
+legality"`, `"gated out"`:
+- **`query/runbook.md` — rewritten:**
+  - Step 2: the empty-cell sentence.
+  - Step 3: the `avoid_when` item removed, the cross-slot item scoped to the set, the tie-breaker.
+  - Step 4: the ranking sentence, the rules paragraph, and the removers list with its new set
+    paragraph.
+  - Step 4: the shortfall paragraph, the last sentence of the one-type-once paragraph, the ADR-058
+    paragraph, rung 3, the ladder's removers sentence and the worked precedent.
+  - Step 5b: its first two rules.
+- **`mapping/slot-rules.md` — amended:** the opening; the `body_contact` row, whose gate still parses;
+  the SET/POOL intro; the rule-5 row; the open-items heading; and the `01-pain-split` paragraph,
+  which gains the settlement.
+- **`SPEC.md` §7 items 3, 4 and 5 — amended.**
+- **`query/output.schema.json` `pool_basis` — rewritten.** Its `channel` enum **stands**: the field
+  still exists and rule 5 reads it.
+- **`scripts/validate.py` `check_option_pools` docstring — amended**, with no behaviour change.
+- **`eval/golden/fixture-001` and `fixture-002` — amended.**
+  - Each gains a header note saying what `forbidden` means since this decision.
+  - Reasons that cited a cross-slot field, `avoid_when` or a channel column are **rewritten** to say
+    what the slot must not RECOMMEND.
+  - A dated `pool_reading_2026_09_15` note follows fixture-002's `story-0-problem` record.
+  - The executable assertions are untouched: `check_golden` still reads only the role, option A,
+    the preferred cell and the alternatives.
+- **Stand:**
+  - the stale words that survive inside dated fixture notes, since those notes are records of
+    their day:
+    - "channel-legal" in fixture-001's `REWRITTEN 2026-08-26` notes and in its 2026-08-12
+      confusion-test note;
+    - `avoid_when` in fixture-001's 2026-08-12 confusion-test notes, and in fixture-002's
+      `only_preferred_type_removed_2026_08_26` and `superseded_2026_08_19` notes;
+    - "spent" in fixture-002's 2026-08-11 `reviews` note;
+  - `query/output.schema.json`'s top-level description, which already derives Stage 1 from every
+    active type and the attribute gates;
+  - `SPEC.md` §7.2's "gated out";
+  - `mapping/content.schema.json`'s channel enum and `lpTypeId` description;
+  - the gif types' `avoid_when` and `channels`, which belong to another namespace and are still live
+    there;
+  - `registry/pdp-dr-types/07-identity-pack.md`'s "no admission test left", which that file already
+    marks as history;
+  - `registry/argument-faults.md`'s admission test, which is a different sense of the term.
+
+**What is NOT done.**
+- `requires_pair` is still `null` on every active type and nothing reads it (`mapping/slot-rules.md`).
+  That is a separate decision.
+- `SPEC.md` §7 item 6 still says the variation floor "is met by execution when no second type or
+  axis is legal", which ADR-058's three distinct types outgrew. It is not about what removes a type,
+  so it is left for its own pass.
+- No routed session is re-routed. The first page routed after this is where `01-pain-split` can
+  first reach a pool.
+
+**Consequences.**
+- The files above change, and `README.md`'s ADR count updates.
+- `dist/app-bundle/` is regenerated: the runbook, slot-rules, SPEC, the output schema and both golden
+  fixtures.
+- `registry_version` is unchanged.
+
+---

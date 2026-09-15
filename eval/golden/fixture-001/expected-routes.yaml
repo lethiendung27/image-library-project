@@ -7,6 +7,11 @@
 #
 # NOTE: reference_photos in content.json is a placeholder hash until the real
 # product photo is hashed. This affects rendering only, never routing.
+#
+# `forbidden` names a configuration this slot must not RECOMMEND, or must not
+# produce at all where its reason is an execution rule (a variant selection
+# rule, marketplace legality). Since ADR-090 a cross-slot field is never a
+# reason to keep a TYPE out of a slot's options: the pool is content-first.
 
 registry_version: "2.0.0"
 template: "query/runbook.md Steps 2-4"
@@ -18,7 +23,7 @@ slots:
     legal_alternatives_must_include:
       - {type: 06-relief-hero, axes: {register: commercial, inset_mode: recall}}
     forbidden:
-      - reason: "ugc register is paid-social/advertorial only (slot-rules); this page is landing-page"
+      - reason: "not option A on this landing-page hero, as a FIT call. Since ADR-059 no channel refuses the ugc register here; slot-rules rule 5 bars it on marketplace only"
         config: {type: 06-relief-hero, axes: {register: ugc}}
     gates_that_must_fire:
       - "G8: visible_output=water-jet -> backlight branch, water jets primary subject"

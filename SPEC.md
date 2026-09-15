@@ -437,7 +437,9 @@ specific source image — binds there as it binds everywhere.
    `product.attributes` against skeleton conditionals; enforce
    cross-slot constraints (`pairs_with`, `never_with`, `avoid_adjacent`,
    `requires_pair`, pain→relief arc). The page is selected as a **set**, never
-   slot-by-slot greedily.
+   slot-by-slot greedily. **The pool is content-first** (ADR-090): those constraints
+   bind the recommended set, never which types a slot may offer. What removes a type
+   from a slot's pool is an attribute gate, a global rule or marketplace legality.
 4. **Options**: **3 per slot, each a DISTINCT active type** — the three best fits for
    that slot's content, ranked. `varies_on` labels each: A is `baseline`, B and C are
    `type: <id>`. Axis and execution are how an option is EXECUTED, never how the pool is
@@ -446,10 +448,12 @@ specific source image — binds there as it binds everywhere.
    cannot silently violate a cross-slot rule.
    **Never-empty rule**: an image slot ALWAYS returns at least one renderable option,
    and every option is a real active type carrying that type's laws. There is no
-   fallback tier and no unrouted image: Stage 1 derives from the whole channel-legal
-   set, not from one table cell, so exhausting a cell is not exhausting the registry.
-   When the obvious type is spent by one-type-once, take the next by role affinity and
-   say so in `varies_on`. `out_of_scope_reason` survives only for slots that carry no
+   fallback tier and no unrouted image: Stage 1 derives from the whole pool, not from
+   one table cell, so exhausting a cell is not exhausting the registry. A type already
+   recommended elsewhere on the page is not spent for this slot's options (ADR-090).
+   It may still be offered here. The recommended set resolves the conflict by
+   recommending the next type by role affinity, and `composition_notes` name it.
+   `out_of_scope_reason` survives only for slots that carry no
    image by definition — the `cta` cell and text furniture (comment threads, pricing
    tables). Refusing to route a *wrong* type is still correct; refusing to deliver an
    image is not, and the two were conflated.
@@ -458,8 +462,9 @@ specific source image — binds there as it binds everywhere.
    absence against the reader's awareness stage — **read from the page's own copy, not
    declared as an input field** — because **an absent rung is not automatically a
    gap**. Rungs the stage says matter become `recommended[]`: additive proposals, each
-   naming the rung it fills and where it would sit, bound by the same admission tests
-   and cross-slot rules as any option. Never keyed on page format: two listicles at
+   naming the rung it fills and where it would sit. A proposal is removed by the same
+   three things as any option, and it is bound by the cross-slot rules because it joins
+   the recommended set. Never keyed on page format: two listicles at
    different awareness stages need different rungs, so no format → rungs table exists.
    Every image slot also carries a `gif` verdict, positive or negative, per
    `query/runbook.md` Step 5c.

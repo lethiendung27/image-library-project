@@ -289,7 +289,7 @@
           },
           "pool_basis": {
             "type": "string",
-            "description": "Why this slot's option pool holds fewer than THREE distinct types. Every image slot carries three options of three distinct types (SPEC \u00a77 item 4, runbook Step 4, ADR-058), ranked best-fit first, so a shortfall is an error unless this field says what ran out: which attribute gates fired, which avoid_when excluded a candidate, and how many active types the page's channel had to begin with. Naming a role\u00d7channel cell is NOT sufficient on its own \u2014 the cell is a preference order and the pool is the whole channel-legal set. scripts/validate.py enforces this for sessions routed after 2026-08-26. Real shortfalls exist: paid-social admits 5 active types against landing-page's 14."
+            "description": "Why this slot's option pool holds fewer than THREE distinct types. Every image slot carries three options of three distinct types (SPEC \u00a77 item 4, runbook Step 4, ADR-058), ranked best-fit first, so a shortfall is an error unless this field says what ran out: which attribute gates fired, which global rule refused a type, and whether marketplace legality removed one. The pool is content-first (ADR-090): a cross-slot rule never removes a type from it, so a conflict with the recommended set is a composition note, not a shortfall. Naming a role\u00d7channel cell is NOT sufficient on its own \u2014 the cell is a preference order, and the pool is every active type those three removers leave standing. scripts/validate.py enforces this for sessions routed after 2026-08-26."
           },
           "single_type_basis": {
             "type": "string",

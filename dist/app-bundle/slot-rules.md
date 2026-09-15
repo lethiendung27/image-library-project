@@ -1,9 +1,10 @@
 # Slot rules — role → preferred types
 
 Stage 1 of routing (SPEC §7): a mechanical lookup producing the per-slot shortlist.
-Stage 2 (the portfolio pass in `query/runbook.md`) then applies attribute gates,
-the cross-slot rules below, and the ratio each type declares. This table proposes; it
-never decides.
+Stage 2 (the portfolio pass in `query/runbook.md`) then applies the attribute gates to the
+pool and the cross-slot rules below to the recommended set (ADR-090). No type declares a
+ratio any more (ADR-082; ADR-086 missed this sentence). This table proposes; it never
+decides.
 
 **This is a PREFERENCE ORDER, not the candidate pool** (ADR-058). The pool is every
 active type — all 17, for every slot. Types named in a row outrank types outside it at
@@ -78,7 +79,7 @@ forever.
 | static frame cannot show the product difference | `04-proof-lockedframe`: forbid `--rivals`/`--verdict`, require `--timelapse`/`--capture` (VARIANT SELECTION RULE — verified) |
 | `mounting: fixed-installed` | G7-X: installed mode in every layer; ugc register needs the low-angle reframe (product + output as subject) |
 | `operation: active` / `passive` | POSE branch: mid-action vs relaxed |
-| `body_contact: false` | drop `03-mechanism-ghostbody`; mechanism slots fall to `03-mechanism-xray` (whose own `avoid_when` still gates trivial interiors and anti-tech-render categories) |
+| `body_contact: false` | drop `03-mechanism-ghostbody`; mechanism slots fall to `03-mechanism-xray` (its `avoid_when` went at ADR-060, so trivial interiors and anti-tech-render categories are a FIT judgement now, not a refusal) |
 | `result_visibility: invisible` | drop `06-relief-scene` (close with `06-relief-hero` instead) |
 | `multi_step_usage: false` | drop `03-use-sequence` |
 | `colorways` has 1 entry | Zone B of `06-relief-hero` shows 1 unit only (fabricating a second colorway violates G2) |
@@ -131,7 +132,8 @@ this gate to the code's behaviour.
 
 ### Which of these bind the SET, and which bind the POOL
 
-Every rule above constrains the page that is RECOMMENDED. **None of them constrains which
+**Decided 2026-09-15: the pool is content-first** (owner instruction, ADR-090). Every rule
+above except rule 5 constrains the page that is RECOMMENDED. **None of those constrains which
 types may be OFFERED for a slot**, and the distinction has already cost this library one
 correction. `query/runbook.md` states it for rule 2 in its own words — *"So `one-type-once`
 binds the recommended SET, never the option pool"* — and records what the other reading did:
@@ -151,9 +153,9 @@ misreading is available for each:
 | 2 one-type-once | the SET | carry a type recommended elsewhere; name the displaced slot in `composition_notes` |
 | 3 page arc | the SET's ORDER | always be offered |
 | 4 step-3 budget | the SET | always be offered; the budget is counted over what is chosen |
-| 5 marketplace legality | the POOL | **not** be offered where the channel forbids it — this is the one admission test left, and it is about the SURFACE rather than the argument |
+| 5 marketplace legality | the POOL | **not** be offered where the channel forbids it — one of the three removers, with the attribute gates and the global rules, and the only one about the SURFACE rather than the argument |
 
-**Two things this table does not settle, both recorded rather than fixed.**
+**Two things this table left open. The second is now settled.**
 
 **`requires_pair` is `null` on all 17 active types and nothing in this repo reads it.**
 Rule 1 above says `06-relief-scene` *requires* `01-pain-scene`; `registry/index.yaml` carries
@@ -185,3 +187,11 @@ settle it: route one more page whose copy argues a before/after, with `01-pain-s
 recommended elsewhere, and see whether `01-pain-split` reaches the option pool for the
 problem beat. If it does not, `never_with` is gating the pool and the fix is a scope sentence,
 not a weaker rule.
+
+**Settled by decision, 2026-09-15** (owner instruction, ADR-090). The pool is content-first, so
+`never_with` binds the SET. `01-pain-split` may be offered on a slot while `01-pain-scene` is
+recommended elsewhere on the page: the recommendation holds one of them, and the options may
+hold both. That is the scope sentence above, written as law.
+
+The measurement stays as the record of what the pool reading cost. The routing it proposed is no
+longer needed to decide the rule, only to confirm that routers now follow it.
