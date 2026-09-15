@@ -331,7 +331,10 @@ for image types. Three deserve naming because a top-N page walks into them:
 - **G1** is load-bearing everywhere here: a lede image whose product is wrong is a lede
   image for a different page.
 - **G14** binds the SLOT. A lede image that reads as a customer's own photograph, beside
-  a ranking the page presents as editorial, is the shape G14 exists to refuse.
+  a ranking the page presents as editorial, is the shape G14 exists to refuse. This namespace
+  does not wait for G14's page test (ADR-088) to fire on that shape. `lede-inuse` and
+  `lede-authority` carry the refusal as a register firewall in their own files, and ADR-089's
+  flag, which lets a rendering harness ship an attributed slot, does not relax it here.
 - **SPEC §6.4's brand-mark clause does NOT bind here** (owner instruction, 2026-09-09,
   ADR-075). *"Competitor brand marks never appear in prompts"* would refuse the format's
   whole subject: a top-N page is about several named competing products. §6.4's other half

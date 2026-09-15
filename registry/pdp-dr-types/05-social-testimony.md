@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: [05-social-snapshot, 05-social-card, 05-social-handoff]
 requires_pair: null
-blocked_by: "G14, which binds the SLOT and not the type. A testimonial thumbnail sits beside a name by definition, and G14's test says such a slot takes a real customer photograph or it takes nothing. There is no version of this type that survives its own slot."
+blocked_by: "G14, which binds the SLOT and not the type. A testimonial thumbnail carries its reviewer's name on the tile by definition, and G14's test (ADR-088) says an attributed tile takes a real customer photograph or it takes nothing. There is no version of this type that survives its own slot."
 ---
 
 # 05-social-testimony — PDP-DR DRAFT
@@ -96,19 +96,30 @@ a graded or warm-boosted image, a clinic, a uniform, a professional setting
 
 ## BLOCK
 **Waiting on nothing that can be waited for.** G14 binds the SLOT rather than the type: *what
-makes an image a fabricated endorsement is the furniture around it, not which type drew it*, and
-the test is read off the page — if the slot sits beside a name, an avatar, a star row, a
-verified badge or a review count, it takes a real customer photograph or it takes nothing.
+makes an image a fabricated endorsement is the furniture around it, not which type drew it*. The
+test is read off the page, and since ADR-088 off the tile's own entry and its wall's lead. A tile
+carrying a name, an avatar, a star row, a verified badge or a review count takes a real customer
+photograph or it takes nothing.
 
-A testimonial thumbnail sits beside a name **by definition**. That is what a testimonial is. So
-there is no page arrangement under which this type is both itself and legal, and this file
-exists to record that the corpus contains the pattern rather than to offer a way to draw it.
+A testimonial thumbnail carries a name ON its own card **by definition**. That is what a
+testimonial is. So there is no page arrangement under which this type is both itself and legal,
+and this file exists to record that the corpus contains the pattern rather than to offer a way to
+draw it.
 
-**The measured precedent is on a live page.** An advertorial carrying four `reviews.shots.*`
-slots in a block with three named *Verified Purchase* quotes routed to nothing, and the session
-recorded `out_of_scope_reason` rather than a prompt (2026-08-27). The same listicle template
-carrying six photo slots with **no** name and **no** badge was legal with the same image — the
-slot decided, not the type.
+**A flag does not change that** (ADR-089). A rendering harness may route and flag a tile that a
+PAGE happens to attribute, so the merchant can choose a real photograph for it. This type's own
+purpose is a generated person testifying to the lens, which is the fabrication G14's principle
+names. It stays reserved.
+
+**The measured precedent is on a live page.** An advertorial carried four `reviews.shots.*` slots
+in a block with three named *Verified Purchase* quotes. Those slots routed to nothing, and the
+session recorded `out_of_scope_reason` rather than a prompt (2026-08-27). The same listicle
+template carrying six photo slots with **no** name and **no** badge was legal with the same
+image: the slot decided, not the type.
+
+ADR-088 re-read the first case. Those four tiles carry nothing of their own, and the lead claims
+that reviews exist, not that these photos are theirs, so they route today. A testimonial
+thumbnail is not that case, because its name is on the card.
 
 **What would unblock it, and it is not a rule change.** A page that plays real filmed
 testimonials and needs their thumbnails generated is a different request from a page that needs

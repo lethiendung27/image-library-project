@@ -6147,3 +6147,129 @@ nothing in it moves.
 is regenerated. No session is re-routed, and `registry_version` is unchanged.
 
 ---
+
+## ADR-088 · 2026-09-15 · G14 tests ATTRIBUTION, not proximity: a generated tile is a customer's photo only when the tile itself, or its wall's lead, says so
+
+**Owner instruction, 2026-09-15: *"thông qua 086 và 087/088 của dev"*.** This takes the dev working
+copy's ADR-087. The copy records it as an owner decision of 2026-08-28, made in the consuming app's
+lineage, and quotes the owner there: *"trường hợp t muốn sửa rule G14 có được không để chấp thuận
+các field trên? … Chọn A."* The owner approved it here after being told the risk below.
+
+**The principle does not move.** *A generated image may never pose as a customer's own.* What moves
+is the test for "pose as": it changes from where the tile SITS to what the tile SAYS.
+
+**Decision.** A generated image poses as a customer's own when it is ATTRIBUTED to one, and only
+then. Two things attribute it:
+1. **The tile itself.** The slot's own entry — the keys sharing its prefix, the caption under it,
+   the chrome on it — carries a reviewer name, an avatar, a handle, a star row, a verified label,
+   a review count or a post timestamp.
+2. **The wall's own lead.** The declared section's copy states or implies that the photos came
+   from customers, readers, users, followers or a community, or that they sent the photos in,
+   posted, shared, uploaded or submitted them.
+
+A wall of unattributed tiles that shares a block with named, badged reviews no longer fires. The
+block's key decides nothing, and neither does the word after "Verified".
+
+**Why, as the copy records it.** The proximity test was measured on 2026-08-28 against the app's
+four default templates, and its outcome turned on which word followed "Verified" and on what the
+template author named the block.
+- Under this test, V01 is out (its lead claims origin) and V02, V03 and V04 are in.
+- ADR-060's own case, four `reviews.shots.*` under "Thousands of 5-Star Reviews Agree", is in
+  scope under this test. Its session record stands as the routing that was made.
+- None of those templates is on this machine, so the measurement is the copy's and is not re-run
+  here.
+
+**The risk, stated to the owner before the approval.** `05-social-snapshot`'s own register is *"a
+real customer's phone photo"*.
+- An unlabelled tile in that register, beside "Verified Purchase" reviews, can read as a
+  customer's photograph with no label at all. An endorsement reading is judged by the overall
+  impression a page gives, and this test reads only labels and leads.
+- G6's in-frame negatives stand and remain the other half of the rule: no badge, star row, name,
+  avatar or overlay is ever rendered into the tile.
+- The copy's two weakest calls are "Thousands of 5-Star Reviews Agree", and V04's "It's Going Viral
+  on Social Media" beside six named "Verified" posts. Both were judged not to attribute.
+
+**Enforcement.** `scripts/validate.py` gains no check. The test reads page copy, which the validator
+sees only after the routing it would be checking.
+
+**Rule 6c sweeps** (on `ff22c4e`): `"G14"`, `"beside a name"`, `"real customer photograph"`,
+`"anywhere near"`, `"star row"`, `"review count"`, `"customer's own"`.
+- **`registry/rules.md` G14.** The test and measured paragraphs are **rewritten**. The title, the
+  two quoted sentences and "real customer photos always win" stand. The G16 table row that makes a
+  name or rating on a text layer LAW **stands**, because it is about the frame.
+- **`query/runbook.md` Step 4, item 3.** **Amended** to name the test.
+- **`registry/types/05-social-snapshot.md`, AUTHENTICITY FENCE.** **Rewritten**: "anywhere near it"
+  becomes "on the tile itself, and no lead that claims origin". Its G6 negatives stand. There is no
+  version bump, because registry-wide law edits have not bumped type versions (ADR-059/060,
+  ADR-082).
+- **`eval/golden/fixture-002/expected-routes.yaml`, `compliance_note_required`.** **Rewritten**.
+- **`registry/pdp-dr-types/04-proof-stat.md` and `05-social-testimony.md`.** Both are reserved and
+  route nothing, but they TEACH. Both quoted the proximity test and are **amended**.
+  `05-social-testimony` stays blocked; ADR-089 says why a flag does not unblock it.
+- **`registry/pdp-dr-types/06-relief-animal.md`.** *"Drop that into a review block beside a name"*
+  taught proximity and is **amended**. The copy's own sweep missed it.
+- **`registry/toplist-instruction.md`.** The G14 bullet **gains** a sentence: `lede-inuse` and
+  `lede-authority` refuse the customer-photo register in their own files, and this change does not
+  relax that. The sentence it follows is kept verbatim, because `lede-inuse.md` quotes it.
+- **Stand.** `SPEC.md`, `registry/argument-faults.md`, `registry/pdp-dr-instruction.md`,
+  `registry/pdp-dr-types/05-social-card.md`, `07-identity-inhand.md`, `07-identity-callout.md` and
+  the toplist type files. Each names G14 for an endorsement, a testimonial or a lede register that
+  is attributed on the image or on its own card under either test.
+- **RECORDS.** `query/sessions/*`, `ingestion/observations.jsonl`, and the prompt sets.
+
+**Consequences.** The files above change, `README.md`'s ADR count updates, and `dist/app-bundle/` is
+regenerated. `registry_version` is unchanged.
+
+---
+
+## ADR-089 · 2026-09-15 · In a harness that renders, G14 FLAGS the slot and ships the prompt; it never refuses
+
+**Owner instruction, 2026-09-15: *"thông qua 086 và 087/088 của dev"*.** This takes the dev working
+copy's ADR-088. The copy records it as an owner decision of 2026-08-28, quoting the owner there:
+*"build theo ý G14 - cờ… chọn phương án A đồng bộ lib luôn"*.
+
+**Decision.** ADR-088's test does not move. In a harness that renders:
+1. A slot the test fires on is ROUTED and FILLED like any other slot.
+2. That slot carries `compliance: { flag, note }`.
+   - `flag` is `attributed-tile` (ADR-088 clause 1) or `origin-claim-lead` (clause 2).
+   - `note` names the key and sentence that attributed the tile, and says a real customer
+     photograph always wins.
+   - The harness shows the note beside the prompt.
+3. Nothing in the FRAME changes: G6's negatives stand.
+4. `out_of_scope_reason` keeps the meaning `query/output.schema.json` always gave it: the `cta` row
+   and text furniture only. A plan that marks any other image slot out of scope is rejected.
+
+A manual session may still refuse, because its editor can source the real photograph on the spot.
+The field is optional in the schema for that reason.
+
+**Why, as the copy records it.** The consuming app offers a prompt, and the merchant decides between
+it and a real photograph, often later. On the app's dev store on 2026-08-28, 43 pages carried a
+review or social wall and 41 of them routed. The two that did not were exactly the pages whose
+merchant needs to be TOLD why rather than silently handed an empty slot. This was not measured here.
+
+**What it costs.** A merchant who ignores the flag ships a generated image under a lead that calls
+it a customer's. The harness makes that choice in neither direction; the note is the record.
+
+**A flag does not unblock `05-social-testimony`.** A flag lets a merchant choose, slot by slot, for
+a tile that a PAGE happens to attribute. That type's own purpose is a generated person testifying
+to the lens, which is the fabrication G14's principle names. No page arrangement makes it legal, so
+it stays reserved.
+
+**Rule 6c sweeps** (on `ff22c4e`): `"out_of_scope_reason"` and `"takes a real customer photograph or
+it takes nothing"`.
+- **`registry/rules.md` G14.** A "harness that renders" paragraph now follows the test.
+- **`query/runbook.md` Step 4, item 3.** One clause added.
+- **`05-social-snapshot.md`, the fence.** One sentence added.
+- **`query/output.schema.json`.** `slots[].compliance` **added**: optional, with a `flag` enum and a
+  `note`. The `out_of_scope_reason` description **stands**.
+- **`eval/golden/fixture-002/expected-routes.yaml`.** One clause added.
+- **`SPEC.md` §7.4 and `mapping/export-to-content.md`.** Both **stand**: they already limit
+  `out_of_scope_reason` to slots that carry no image by definition.
+- **`registry/pdp-dr-types/05-social-testimony.md`.** Its precedent paragraph records a refusal of
+  2026-08-27 and **stands** as a record. ADR-088's re-reading and the paragraph above are added to
+  it.
+
+**Consequences.** The files listed above change, and `dist/app-bundle/` is regenerated.
+`registry_version` is unchanged.
+
+---

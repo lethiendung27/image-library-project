@@ -508,21 +508,49 @@ are the two sentences as they were written:
   or counter — fabricated endorsements are illegal (FTC endorsement rules and
   equivalents)."*
 
-**It binds the SLOT, not the type.** What makes an image a fabricated endorsement is the
-furniture around it, not which type drew it. A review block carrying reviewer names and
-`Verified Purchase` badges turns ANY generated image dropped into it into a claim that a
-customer took that photograph. So the test is read off the page: if the slot sits beside a
-name, an avatar, a star row, a verified badge or a review count, it takes a real customer
-photograph or it takes nothing.
+**It binds the SLOT, not the type — and the test is ATTRIBUTION, not proximity**
+(ADR-088, amending ADR-060). What makes an image a fabricated endorsement is that it is
+presented as a particular customer's. A page does that in exactly two places:
+- **On the tile.** The tile's own entry carries a reviewer name, an avatar, a handle, a star
+  row, a verified label, a review count or a post timestamp.
+- **In the wall's own lead.** The lead says the photos were sent in, posted, shared, uploaded
+  or submitted by customers, readers, users or a community.
+
+Either one attributes the tile, and an attributed tile takes a real customer photograph or it
+takes nothing. A wall of unlabelled tiles that shares a block with named, badged reviews is not
+attributed by them: the reviews are text, the tiles are section imagery, and the lead is where
+the page says which. The block's key decides nothing, and neither does the wording of a label
+that is not on the tile.
+
+**In a harness that renders, the test FLAGS; it never refuses** (ADR-089). The consuming app
+routes and fills an attributed slot like any other and ships the prompt with
+`compliance: { flag, note }`. The flag is `attributed-tile` or `origin-claim-lead`, and the note
+names the key and sentence that attributed it. The merchant sees the note beside the prompt and
+chooses between the prompt and a real customer photograph; the harness makes that choice in
+neither direction.
+
+The frame is unchanged by the flag. G6's negatives keep every badge, star row, reviewer name,
+avatar and text overlay out of the image, so what attributes a tile is only ever the page. A
+manual session may still refuse, because its editor can source the real photograph on the spot.
+`out_of_scope_reason` stays what the output schema always said it was: legal for the `cta` row
+and text furniture only. A plan that marks any other image slot out of scope is rejected.
 
 **When real customer photos exist, they always win over generated ones.**
 
-**Measured on a live page, 2026-08-27.** `advertorial-cord-and-rope-tightening-and-cinching-tool-v01`
-carries four `reviews.shots.*` slots in a block with three named "Verified Purchase"
-quotes and the lead "Thousands of 5-Star Reviews Agree". Those four slots route to nothing
-and the session records `out_of_scope_reason` rather than a prompt. The listicle template
-TPL-ADV21 carries six photo slots in a review block with **no** name and **no** badge, and
-there the same image is legal — which is the point: the slot decides, not the type.
+**Measured 2026-08-28 by the consuming app, as the dev copy's ADR-087 records it; not re-run
+here.** The four default templates, with their default copy:
+- **V01** — `reviews.shots.0-3` under the lead "Photos and notes sent in by readers…". Attributed
+  by the lead, so out of scope until the lead stops claiming origin.
+- **V02** — `reviews.gallery.0-5` sharing a block with five "Verified Purchase" cards, the tiles
+  unlabelled, under the lead "It Is Not Just Me...". In scope.
+- **V03** — `reviews.photos.0-5` under "What the first month looks like". In scope.
+- **V04** — `social.photos.0-5` under "It's Going Viral on Social Media", beside six named
+  "Verified" posts, the tiles unlabelled. In scope.
+
+ADR-060's own case is `advertorial-cord-and-rope-…-v01`: four `reviews.shots.*` under "Thousands
+of 5-Star Reviews Agree". It is in scope under this test and was out under the old one; its session
+record stands as the routing that was made. TPL-ADV21's six review-photo slots are legal under
+both tests.
 
 ## G15 — At 1:1 a multi-frame layout PACKS the square; it never stripes it
 

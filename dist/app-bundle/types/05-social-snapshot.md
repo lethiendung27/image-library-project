@@ -86,9 +86,14 @@ here.
   and one shoot reads as fake. Generate as independent prompts, never as a batch with shared
   seeds or shared scene text.
 - **AUTHENTICITY FENCE, hard and non-negotiable.** This image is page imagery, never a customer
-  record: no reviewer name, no avatar, no star row, no verified label anywhere near it in the
-  layout. It must never imitate a SPECIFIC real customer's photo (structure, not pixels, SPEC
-  §6.4).
+  record.
+  - Nothing sits on the tile itself: no reviewer name, no avatar, no handle, no star row, no
+    verified label, no post timestamp.
+  - No lead over the wall claims the photos came from customers (ADR-088).
+  - Named and badged reviews may share the block as TEXT; they never attach to the tile.
+  - A harness that renders and meets attribution on the page flags the slot rather than
+    refusing it (ADR-089). The frame still carries none of it.
+  - It must never imitate a SPECIFIC real customer's photo (structure, not pixels, SPEC §6.4).
 - **No MARKS section, and it can never have one.** A drawn arrow, ring or badge is by definition
   something a phone camera did not capture, so it does not merely weaken this register — it
   refutes it (A11: register decides). A snapshot that needs a mark is the wrong type for the slot.

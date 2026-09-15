@@ -66,6 +66,28 @@
             "type": "string",
             "description": "Only legal for slots that carry NO image by definition: the cta cell (standard product shot) and text furniture such as comment threads or pricing tables. An image slot may never use it — Stage 1 derivation always yields candidates."
           },
+          "compliance": {
+            "type": "object",
+            "description": "Set by a harness that renders when G14's attribution test fires on this slot (ADR-088). It fires when the tile's own entry carries a reviewer identity, a verified label, a star row, a handle or a post timestamp (`attributed-tile`), or when the wall's own lead says the photos came from customers (`origin-claim-lead`). The slot is routed and filled like any other. The note names the key and sentence that attributed it and reminds that a real customer photograph always wins. The harness shows the note beside the prompt, and the merchant decides (ADR-089). A manual session that refuses instead leaves the field out.",
+            "additionalProperties": false,
+            "required": [
+              "flag",
+              "note"
+            ],
+            "properties": {
+              "flag": {
+                "type": "string",
+                "enum": [
+                  "attributed-tile",
+                  "origin-claim-lead"
+                ]
+              },
+              "note": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          },
           "options": {
             "type": "array",
             "maxItems": 3,

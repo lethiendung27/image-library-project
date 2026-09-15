@@ -144,7 +144,9 @@ Three things still remove a candidate, and none of them is a preference:
 2. **The cross-slot fields** — `never_with`, `pairs_with`, `avoid_adjacent` and
    one-type-once, all frontmatter, all still binding.
 3. **`registry/rules.md`** — the global rules, G14 among them: a generated image may
-   never pose as a customer's own.
+   never pose as a customer's own. A tile attributed to a customer, on the tile or by its
+   wall's lead, takes a real photograph or nothing (ADR-088). A harness that renders routes
+   it anyway and ships the prompt flagged for the merchant (ADR-089).
 
 **Ratio is not one of them** (ADR-082, and ADR-086 for this paragraph). No type declares a
 ratio, so there is nothing to test a slot's shape against. The slot's ratio arrives from

@@ -81,8 +81,9 @@ type.
 - **G13 still binds** — two of three exemplars are outdoors with hands in frame, and a pet page
   reaches for a child beside a dog by default. No private-room setting, no age in years.
 - **G14 binds the snapshot exemplar.** The beagle frame is a phone photograph with a wedding
-  ring and a beaded bracelet in it; drop that into a review block beside a name and it is a
-  fabricated endorsement whichever type drew it.
+  ring and a beaded bracelet in it. Put that on a tile carrying a reviewer's name, or under a
+  lead that says customers sent the photos in, and it is a fabricated endorsement whichever
+  type drew it (ADR-088; a harness that renders flags that slot, ADR-089).
 - **A15 binds the studio exemplar.** The bowl frame's argument is *visible fresh food* —
   identifiable grains, kale, squash. That is a composition claim made by a photograph, and the
   library has no rule saying where it comes from.

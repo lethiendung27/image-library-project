@@ -89,9 +89,10 @@ TYPE: 04-proof-stat v0.1                                  [NOT WRITTEN]
   floor. G16's round 3 measured four instruments at text size and all four failed; the lever it
   named as untried is **fewer words**, and a source line is where a writer will be tempted to
   spend them.
-- **G14 is engaged whenever the figure is an endorsement percentage** — *91% of users
-  recommend* is a claim about people, and if the slot sits beside names, avatars, a star row or
-  a review count it takes a real customer photograph or it takes nothing.
+- **G14 is engaged whenever the figure is an endorsement percentage.** *91% of users recommend*
+  is a claim about people. Where the tile itself carries names, avatars, a star row or a review
+  count, or its wall's lead says the photos are customers', the slot takes a real customer
+  photograph or it takes nothing (ADR-088; a harness that renders flags it, ADR-089).
 - **A15 binds twice.** Once on the text layer, which this type is entirely made of, and once on
   anything printed on an object in frame — `07-identity-pack`'s founding render wrote
   `NET WT. 8 OZ (227g)` onto a pouch unprompted, and the better the lettering renders the less

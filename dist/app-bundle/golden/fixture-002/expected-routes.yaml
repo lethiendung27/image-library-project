@@ -106,9 +106,12 @@ slots:
       page, so they must not sit adjacent, and the page must not read as two
       social mechanisms in a row.
     compliance_note_required: >
-      Generated snapshots are section imagery, never customer records: no
-      reviewer name, avatar, star row or verified label may sit near them. The
-      five quoted reviews on this page stay text.
+      Generated snapshots are section imagery, never customer records. Nothing
+      goes on the tiles — no reviewer name, avatar, handle, star row, verified
+      label or post timestamp — and no lead may claim the photos came from
+      customers (ADR-088: attribution, not proximity). A rendering harness flags
+      the slot rather than refusing it (ADR-089). The five quoted reviews on this
+      page stay text and may share the block.
 
   reclaim-outcome:
     section_role: outcome
