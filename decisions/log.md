@@ -5781,3 +5781,172 @@ mechanical half holds across the corpus, not that 57 valid `content.json` files 
 human decision and the scaffold says so.
 
 ---
+
+## ADR-084 · 2026-09-15 · The evidence counter could not see the promotion queue, and now every source count is generated
+
+**Owner instruction, 2026-09-15: *"hãy thực hiện theo khuyến nghị."*** The recommendation came
+out of an audit of the classification mechanism the owner asked about: write the pdp-dr
+evidence check the toplist namespace already had, and make the counter read `proposed_id` for
+an id that has a file. Doing it turned up two more things the counter needed and one it must
+not do.
+
+### What the counter could see
+
+`evidence_counts()` read `rec["type"]` alone and credited only ids with a file in
+`registry/types/`. Three kinds of evidence fell outside it:
+
+- **66 records filed `match` with `type: null` and a `proposed_id`** — a match to a proposal
+  made earlier in the same batch. `ingestion/prompts/classify.md` does not describe this shape;
+  classifiers produced it anyway, and it is semantically sound.
+- **Founding observations.** A `new-candidate` names its proposal in `proposed_id`. When the
+  proposal becomes a file, those records ARE its exemplars, and they stayed invisible.
+- **The whole pdp-dr namespace.** `check_toplist_evidence` exists because a record naming a
+  toplist id counted toward nothing. The identical gap stood for pdp-dr and it was larger —
+  123 ledger references named a pdp-dr id and no function read one — while every file in that
+  folder states its criterion-1 source count in prose.
+
+### Calibrated against the hand counts before a line was written
+
+`registry/pdp-dr-types/_CURATION-2026-09-11.md` holds six source counts made by hand. Rule
+variants were run against them:
+
+| rule | source counts reproduced |
+|---|---|
+| `type` alone, any verdict set | **0 of 6** |
+| `type` + `proposed_id`, match and variant only | 0 of 6 |
+| `type` + `proposed_id`, plus `new-candidate` | **6 of 6** |
+
+Taking the last record per hash changed nothing today; stripping the old `lp3-` slug prefix
+changed nothing and was not adopted. Observation counts reproduce 4 of 6 — `03-spec-dimension`
+measures 10 against 11 and `03-spec-hero` 19 against 18, off by one in opposite directions,
+and nothing in the ledger says which side is wrong. Criterion 1 reads sources, which agree.
+
+**One refinement the calibration could not show and the template makes mandatory:** on a
+`new-candidate`, `type` is the NEAREST existing type, not a match. So `type` counts only on
+`match` and `variant-candidate`, and `new-candidate` counts only through `proposed_id` —
+otherwise every new-candidate filed near `06-relief-hero` would inflate it.
+
+### Two findings the generated counts surfaced at once
+
+Running the rule over the fifteen pdp-dr files disagreed with five typed counts. Each was
+chased to a cause before anything was recorded.
+
+**Renames split the evidence, 3 of 3.** The ledger is append-only and a rename is not a
+re-filing, so observations stay under the old id:
+
+| file | new id | old id | union | the file records |
+|---|---|---|---|---|
+| `03-spec-stilllife` | 2 | `03-spec-ingredient` 2 | **3** | 3 |
+| `03-spec-lineup` | 1 | `03-spec-range` 2 | **2** | 2 |
+| `02-symptom-callout` | 1 | `02-symptom-halo` 2 | **3** | 3 |
+
+All three explained exactly. `FORMER_IDS` in `scripts/validate.py` now carries these renames,
+cited to ADR-065 and ADR-066, and **reports on itself** — an old id with a file again, or a new
+id with no file, is an error — because a name-keyed constant goes stale silently otherwise, the
+lesson this repo already paid for once when a directory rename orphaned an exemption set.
+A deprecation is not a rename: `07-identity-callout`'s observations are not credited to its
+`replaced_by`, because ADR-078 says retiring it did not re-file them.
+
+**Typed numbers drifted, 2 of 2.** `07-identity-pack` had 4 distinct sources before the
+157-image drop of 2026-09-11 and gained 6 in it; its undated `blocked_by` still reads *"One more
+distinct source for criterion 1"*, written at 4, now at 10. `06-relief-claimstack` had 9 and
+gained one (`hydrovia`); its BLOCK reads *"nine"*. **Neither file is edited here** — type files
+are a diff the owner reviews — but this is exactly the failure the rule *generate numbers, never
+type them* exists for, and it is now visible to anyone who runs `--evidence`.
+
+### What was built, and what was deliberately not
+
+- **`ledger_evidence(observations, ids)`** — the one reading every count now shares: last
+  record per hash, `type` on match/variant, `proposed_id` on all three, former ids followed, and
+  a source taken from the slug before `__` in a `source file:` note. A record with no such note
+  counts as an observation and is reported `unsourced`, never guessed into a source.
+- **`evidence_counts`** keeps its contract — distinct observations per image type, SPEC 6.2's
+  number, the `evidence_count` the index has always carried.
+- **`check_toplist_evidence`** reads through the same function. Counts identical to before on
+  every toplist id; its old last-record logic filtered to toplist ids before picking the last
+  record, which let a frame re-filed away from toplist keep counting — the comment above it
+  said the opposite. Now it does what the comment said.
+- **`check_pdp_dr_evidence`** — one warning, for the fault a count proves without reading
+  prose: a non-deprecated file whose id and former ids resolve to no observation at all.
+- **`--evidence`** prints observations, sources and unsourced records for every classified
+  namespace.
+
+**Not built: a parser for the typed counts.** The obvious check compares each file's written
+number against the measured one. It would be wrong on the first run: the counts mix digits and
+words (*"2 of 5"*, *"three of five"*, *"Three today"*), and `03-spec-hero`'s `blocked_by` says
+*"19 sources"* about `06-relief-hero`. A checker that warns on correct text teaches people to
+ignore it.
+
+### Enforcement fed known-bad input before being believed
+
+**Fifteen cases, fifteen as specified**, run in memory — the append-only ledger was never
+touched, verified by line count. The hand counts reproduce; deleting one `FORMER_IDS` entry drops
+`03-spec-stilllife` from 3 to 2; an old id with a file again errors; a new id with no file
+errors; real ids stay silent; a correction record moves one hash from `03-spec-claimstack` to
+`03-spec-callout` without double-counting; a `new-candidate` whose `type` is only the nearest
+type credits nothing; `duplicate` and `reject` credit nothing while a real `match` credits one;
+the zero-evidence guard fires on an empty pdp-dr id and stays silent on a deprecated one; toplist
+counts equal the pre-change baseline; an unknown verdict still errors; and the old and new
+`evidence_counts` differ on exactly five image types, every one upward.
+
+### What moved
+
+**328 of 468** unique hashes in the ledger now resolve to an id that has a file.
+`registry/index.yaml` changes on five rows, every one a type whose founding observations sat
+under `proposed_id`:
+
+| type | before | after |
+|---|---|---|
+| `03-mechanism-xray` | 0 | 5 |
+| `03-spec-explode` | 3 | 8 |
+| `03-spec-macro` | 10 | 14 |
+| `03-use-grid` | 10 | 15 |
+| `05-social-snapshot` | 4 | 16 |
+
+`03-mechanism-xray` from 0 to 5 is anchor A8's case: its founding exemplar was filed
+`new-candidate` before the type existed, and the index had reported it as having no evidence
+for five weeks. **Nothing routes on `evidence_count`** — SPEC §2 is the only file that teaches
+it — so no routing outcome moves and `registry_version` is unchanged.
+
+### Consequences — rule 6c sweeps on `"evidence_count"` (1 TEACHES), `"proposed_id"` (2), `"distinct source"` (22), `"FORMER_IDS"` (1) and `"unsourced"` (1)
+
+- `scripts/validate.py` — `ledger_evidence`, `FORMER_IDS`, `check_pdp_dr_evidence`,
+  `check_former_ids`, `evidence_report`; `evidence_counts` and `check_toplist_evidence` rewritten
+  to read through the shared function; `--evidence` wired into `main`.
+- `SPEC.md` §2 — gains the definition of `evidence_count` and names `--evidence` as where
+  criterion 1's source count comes from. **This is the `evidence_count` TEACHES hit, updated.**
+  The `FORMER_IDS` and `unsourced` hits are this same paragraph.
+- `ingestion/anchor-set.md` — its duplicate-coverage paragraph said *"97 observations have
+  produced zero `duplicate` verdicts"*; the ledger has since produced them. Rewritten to say the
+  path is exercised and its anchor still owed — **without a number**, because the number is what
+  went stale.
+- `ingestion/prompts/classify.md:44` — `"proposed_id": "<only for new-candidate>"` **teaches
+  against 66 records the counter now honours, and stands.** Correcting it is a template edit, and
+  that file's own rule bumps `template_version`, after which `ingestion/runbooks/curate.md`
+  discounts the 425 records made under c1.0. An owner decision, not a sweep fix.
+- `ingestion/prompts/classify-toplist.md:13` — `new-candidate` with a `proposed_id` for a toplist
+  frame. **Stands**; consistent with the rule.
+- The 22 `"distinct source"` TEACHES hits — SPEC §6.3's criterion, `mapping/pdp-dr-rules.md:31`
+  ranking by source count, `registry/pdp-dr-instruction.md:296`'s 8/7/6, and a dated
+  *"Promotion status (date): N distinct sources"* line in every pdp-dr file. **All stand.** The
+  dated lines were true on their dates; the instruction's 8/7/6 is now reproduced by script. The
+  two that are not dated and are no longer true — `07-identity-pack`'s `blocked_by` and
+  `06-relief-claimstack`'s *"nine"* — are recorded above and left for the owner's review.
+- GENERATED — `registry/index.yaml` on five `evidence_count` rows; `dist/app-bundle/` carries
+  that index and SPEC.md.
+
+### What is NOT done
+
+**No typed count in a type file was corrected.** Two are stale and the owner reviews type files.
+
+**The records with no source note stay unsourced.** Every toplist record and the earliest
+batches of 2026-08-10 and -11 carry no page slug, so their source counts read 0. That is an
+absence of data, stated as one — not a finding that those types have no sources.
+
+**The ±1 on `03-spec-dimension` and `03-spec-hero` observations is unexplained.** The two share
+five source pages and no hash moved between them.
+
+**The `duplicate` anchor is still owed**, and so is an owner decision on documenting the
+`match`-plus-`proposed_id` shape in the classification template.
+
+---

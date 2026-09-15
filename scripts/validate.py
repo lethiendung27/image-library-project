@@ -502,56 +502,181 @@ def load_jsonl(path, required_keys, where):
     return records
 
 
-def evidence_counts(observations, vocab, types):
-    verdicts = set(vocab.get("observation_verdicts") or [])
-    seen = {tid: set() for tid in types}
+# ---------------------------------------------------------------- evidence
+
+# Renames whose observations stay filed under the OLD id, because the ledger is
+# append-only and a rename is not a re-filing. Each entry cites the decision that
+# made it. Without this map the three renamed pdp-dr files counted fewer distinct
+# sources than their own promotion-status lines, and nothing was lost:
+# 03-spec-stilllife 2 + 03-spec-ingredient 2 = the 3 its file records;
+# 03-spec-lineup 1 + 03-spec-range 2 = 2; 02-symptom-callout 1 + 02-symptom-halo
+# 2 = 3 (ADR-084). A DEPRECATION is not a rename and does not belong here:
+# 07-identity-callout's observations are not credited to its replaced_by, because
+# ADR-078 says retiring it did not re-file them.
+FORMER_IDS = {
+    "03-spec-ingredient": "03-spec-stilllife",   # ADR-065
+    "03-spec-range": "03-spec-lineup",           # ADR-065
+    "02-symptom-halo": "02-symptom-callout",     # ADR-066
+}
+
+_TYPE_VERDICTS = ("match", "variant-candidate")
+_PROPOSAL_VERDICTS = ("match", "variant-candidate", "new-candidate")
+_SOURCE_NOTE = re.compile(r"source file:\s*(\S+)")
+
+
+def ledger_evidence(observations, ids):
+    """Which observations evidence which id — the one reading every count shares.
+
+    Three rules, each from a measured miss (ADR-084):
+
+    - The LAST record for a hash is the live one. The ledger is append-only, so a
+      re-filed frame appears under both ids; counting every record credits the
+      superseded one as well.
+    - `type` counts on `match` and `variant-candidate` only. On a `new-candidate`
+      the template makes `type` the NEAREST existing type, which is evidence that
+      the image is something ELSE.
+    - `proposed_id` counts on all three, once that id has a file. A new-candidate
+      naming a proposal is that proposal's founding exemplar, and a record filed
+      `match` with `type: null` and a `proposed_id` matches a proposal made earlier
+      in the same batch. Reading `type` alone reproduced 0 of the 6 hand-counted
+      source totals in `registry/pdp-dr-types/_CURATION-2026-09-11.md`; reading
+      both reproduces all 6.
+
+    A source is the page slug before `__` in a `source file:` note. A record with
+    no such note counts as an observation and is reported `unsourced` — never
+    guessed into a source, because SPEC 6.3 criterion 1 counts sources and a
+    guess there is a promotion made on a number nobody can check.
+
+    Returns {id: {"obs": set of hashes, "sources": set of slugs, "unsourced": int}}.
+    """
+    latest = {}
     for rec in observations:
-        v = rec.get("verdict")
-        if v not in verdicts:
-            err("ingestion/observations.jsonl", f"unknown verdict `{v}`")
+        h = rec.get("hash")
+        if h:
+            latest[h] = rec
+    out = {tid: {"obs": set(), "sources": set(), "unsourced": 0} for tid in ids}
+    for h, rec in latest.items():
+        verdict = rec.get("verdict")
+        t = FORMER_IDS.get(rec.get("type"), rec.get("type"))
+        p = FORMER_IDS.get(rec.get("proposed_id"), rec.get("proposed_id"))
+        if t in out and verdict in _TYPE_VERDICTS:
+            tid = t
+        elif p in out and verdict in _PROPOSAL_VERDICTS:
+            tid = p
+        else:
             continue
-        tid = rec.get("type")
-        if v in ("match", "variant-candidate") and tid in seen:
-            h = rec.get("hash")
-            if h:
-                seen[tid].add(h)
-    return {tid: len(hashes) for tid, hashes in seen.items()}
+        entry = out[tid]
+        entry["obs"].add(h)
+        m = _SOURCE_NOTE.search(rec.get("notes") or "")
+        if m and "__" in m.group(1):
+            entry["sources"].add(m.group(1).split("__", 1)[0])
+        else:
+            entry["unsourced"] += 1
+    return out
+
+
+def evidence_counts(observations, vocab, types):
+    """Distinct observations per image type — the `evidence_count` in index.yaml.
+
+    Observations, not sources: SPEC 6.2's number (>=3 distinct observations
+    before a patch), and what the index has always carried. The source count
+    SPEC 6.3 criterion 1 reads comes from the same `ledger_evidence` and is
+    printed by `--evidence`.
+    """
+    verdicts = set(vocab.get("observation_verdicts") or [])
+    for rec in observations:
+        if rec.get("verdict") not in verdicts:
+            err("ingestion/observations.jsonl",
+                f"unknown verdict `{rec.get('verdict')}`")
+    ev = ledger_evidence(observations, types)
+    return {tid: len(e["obs"]) for tid, e in ev.items()}
 
 
 def check_toplist_evidence(observations, toplist_types):
     """Corpus support per toplist type, and a warning where an ACTIVE one is thin.
 
-    `evidence_counts` above keys on image types only, so a ledger record naming a
-    toplist id counts toward nothing and would be invisible. This is the same
-    question asked of the third namespace: SPEC 6.2's rule wants >=3 distinct
-    observations before a clause is patched from the corpus, and an ACTIVE type
-    with fewer than that is a type the market has not yet been shown to build.
+    A ledger record naming a toplist id once counted toward nothing and was
+    invisible. SPEC 6.2's rule wants >=3 distinct observations before a clause is
+    patched from the corpus, and an ACTIVE type with fewer than that is a type the
+    market has not yet been shown to build.
 
     Reserved types are skipped: they are blocked on a decision, not on evidence.
+    The last-record and proposal rules live in `ledger_evidence` (ADR-084), shared
+    with the image and pdp-dr counts so the three readings cannot drift apart.
     """
-    verdicts = ("match", "variant-candidate")
-    seen = {tid: set() for tid in toplist_types}
-    # An append-only ledger records a correction as a NEW record, so a frame
-    # re-filed from one type to another appears under both. The LAST record for a
-    # hash is the live one; counting every record would credit the superseded type
-    # as well. This is the first correction the toplist namespace has taken.
-    latest = {}
-    for rec in observations:
-        h = rec.get("hash")
-        if h and rec.get("type") in seen:
-            latest[h] = rec
-    for h, rec in latest.items():
-        if rec.get("verdict") in verdicts:
-            seen[rec["type"]].add(h)
+    ev = ledger_evidence(observations, toplist_types)
     for tid in sorted(toplist_types):
         if toplist_types[tid]["fm"].get("status") != "active":
             continue
-        n = len(seen[tid])
+        n = len(ev[tid]["obs"])
         if n < 3:
             warn(f"registry/toplist-types/{tid}.md",
                  f"{n} corpus observation(s) — under SPEC 6.2's threshold of 3. "
                  "The type is active and routable; what it is not yet is evidenced")
-    return {tid: len(h) for tid, h in seen.items()}
+    return {tid: len(e["obs"]) for tid, e in ev.items()}
+
+
+def check_pdp_dr_evidence(observations, pdp_dr_types):
+    """Corpus support per pdp-dr type — the count nothing took until ADR-084.
+
+    `check_toplist_evidence` exists because a ledger record naming a toplist id
+    counted toward nothing. The identical gap stood for this namespace and it was
+    larger: every file in the folder states its criterion-1 source count in prose,
+    and no function read a single observation filed against one of them. Those
+    numbers were typed; `--evidence` now generates them.
+
+    One warning, for the fault a count can prove without reading prose: a file
+    whose own id, and any former id, resolves to no observation at all — a type
+    written without ledger evidence, or a rename FORMER_IDS does not know. The
+    typed counts in each file's BLOCK and `blocked_by` are NOT parsed: they mix
+    digits and words, and one of them ("19 sources" in 03-spec-hero) is about a
+    different type, so a parser would warn on text that is correct.
+    """
+    ev = ledger_evidence(observations, pdp_dr_types)
+    for tid in sorted(pdp_dr_types):
+        if pdp_dr_types[tid]["fm"].get("status") == "deprecated":
+            continue
+        if not ev[tid]["obs"]:
+            warn(f"registry/pdp-dr-types/{tid}.md",
+                 "no ledger observation resolves to this id or to a former id in "
+                 "FORMER_IDS — a type with no corpus evidence, or a rename the map "
+                 "does not know about")
+    return {tid: (len(e["obs"]), len(e["sources"]), e["unsourced"])
+            for tid, e in ev.items()}
+
+
+def check_former_ids(file_ids):
+    """FORMER_IDS is keyed by name, so it goes stale silently unless it reports.
+
+    An old id with a file again would credit one frame to two ids; a new id with
+    no file resolves to nothing and swallows the old id's evidence.
+    """
+    for old, new in sorted(FORMER_IDS.items()):
+        if old in file_ids:
+            err("scripts/validate.py",
+                f"FORMER_IDS maps `{old}` -> `{new}` but `{old}` has a file "
+                "again; its observations would be credited to two ids")
+        if new not in file_ids:
+            err("scripts/validate.py",
+                f"FORMER_IDS maps `{old}` -> `{new}` and `{new}` has no file in "
+                "any namespace; the renamed evidence resolves to nothing")
+
+
+def evidence_report(observations, namespaces):
+    """`--evidence`: every count a promotion decision reads, generated not typed.
+
+    Observations are SPEC 6.2's number; sources are SPEC 6.3 criterion 1's.
+    """
+    print("EVIDENCE  namespace  id                        status      "
+          "obs  sources  unsourced")
+    for label, registry in namespaces:
+        ev = ledger_evidence(observations, registry)
+        for tid in sorted(registry):
+            e = ev[tid]
+            status = (registry[tid].get("fm") or {}).get("status", "?")
+            print(f"EVIDENCE  {label:9s}  {tid:24s}  {str(status):10s}  "
+                  f"{len(e['obs']):3d}  {len(e['sources']):7d}  "
+                  f"{e['unsourced']:9d}")
 
 
 def pick_stats(picks, types):
@@ -1958,6 +2083,9 @@ def main(argv):
                  f"record {n}: unknown type `{rec.get('type')}`")
     evidence = evidence_counts(observations, vocab, types)
     check_toplist_evidence(observations, toplist_types)
+    check_pdp_dr_evidence(observations, pdp_dr_types)
+    check_former_ids(set(types) | set(staging) | set(toplist_types)
+                     | set(pdp_dr_types) | set(gif_types))
     stats = pick_stats(picks, types)
 
     check_json_files()
@@ -2000,6 +2128,10 @@ def main(argv):
           f"{len(observations)} observations, {len(picks)} picks, "
           f"{len(render_tests)} render tests, "
           f"{len(ERRORS)} errors, {len(WARNINGS)} warnings")
+    if "--evidence" in argv:
+        evidence_report(observations, [("types", types), ("staging", staging),
+                                       ("toplist", toplist_types),
+                                       ("pdp-dr", pdp_dr_types)])
     return 1 if ERRORS else 0
 
 

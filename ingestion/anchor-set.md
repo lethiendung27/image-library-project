@@ -5,11 +5,13 @@ Ten anchors covering six clean matches across five types, one variant-candidate,
 new-candidates, and one reject. Anchors are never removed, only superseded: append a
 new row and mark the old one `superseded`.
 
-**Duplicate coverage is a known gap.** 97 observations have produced zero `duplicate`
-verdicts — the to-do diff removes exact-hash repeats before classification ever sees
-them, so the verdict only fires on a near-duplicate a classifier notices by eye, which
-has not happened yet. Add an anchor for it the first time one appears; until then the
-`duplicate` path is uncalibrated and should be treated as such.
+**Duplicate coverage — this gap has half-closed.** When the set was built, 97
+observations had produced zero `duplicate` verdicts: the to-do diff removes exact-hash
+repeats before classification ever sees them, so the verdict fires only on a
+near-duplicate a classifier notices by eye. The ledger has since produced `duplicate`
+verdicts — count them from `ingestion/observations.jsonl`, not from this sentence, which
+once carried a number and went stale — but **no anchor row has been added for one**. The
+path is exercised and still uncalibrated; add the anchor at the next calibration pass.
 
 **How to use this table.** Classify each image fresh with the current template WITHOUT
 reading the expected columns or the image's own ledger record first, then score. The

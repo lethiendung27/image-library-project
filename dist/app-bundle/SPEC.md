@@ -74,6 +74,15 @@ Derived numbers (`evidence_count`, pick statistics) live **only in the generated
 computed from tier 1 at generation time. Type files never carry derived fields, so the
 validator never mutates source files.
 
+**`evidence_count` counts distinct observations, and ADR-084 fixed what counts as one.**
+The last ledger record for a hash is the live one; `type` evidences a type only on `match`
+or `variant-candidate`, because on a `new-candidate` it names the NEAREST type; `proposed_id`
+evidences the id it names on all three once that id has a file; and a renamed id's
+observations follow it (`FORMER_IDS` in `scripts/validate.py`). The distinct-SOURCE count
+§6.3 criterion 1 reads is not stored anywhere — `python3 scripts/validate.py --evidence`
+prints it, with observations and unsourced records, for every classified namespace, so a
+promotion number is generated rather than typed.
+
 ## 3. Registry model
 
 ### 3.0 Page kinds, and which corpus each registry was measured on
