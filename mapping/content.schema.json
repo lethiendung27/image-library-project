@@ -13,7 +13,6 @@
       "type": "object",
       "required": [
         "name",
-        "category",
         "reference_photos",
         "attributes",
         "problems_solved"
@@ -26,7 +25,8 @@
         },
         "category": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "description": "The product's category, as the merchant states it. OPTIONAL since ADR-085: a merchant with no category anywhere ships without it. When present it must be non-empty, and a consumer must never stop on its absence. The converter omits an undecided value rather than shipping its placeholder."
         },
         "reference_photos": {
           "type": "array",

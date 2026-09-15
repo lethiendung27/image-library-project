@@ -34,7 +34,9 @@ JUDGEMENT — never guessed here, and the reason is recorded in each case:
     that guess.
   - the eight `product.attributes`. Owner decision of 2026-09-11: the app
     supplies them. They are validated here, never derived.
-  - `product.category` and `problems_solved`.
+  - `product.category` and `problems_solved`. Category is OPTIONAL (ADR-085):
+    left undecided in the work file, it is omitted rather than shipped as a
+    placeholder.
 
 So the run is two passes. `scaffold` emits a worksheet carrying every mechanical
 fact plus the copy a reader needs to assign roles; `build` takes the export and
@@ -464,7 +466,8 @@ def scaffold(doc, export_path):
                    "ADR-059 forbids guessing it from lpTypeId.",
         "product": {
             "name": brief.get("productName"),
-            "category": "NEEDS-DECISION: the product's category, as a string.",
+            "category": "NEEDS-DECISION (optional, ADR-085): the product's "
+                        "category as a string, or empty when there is none.",
             "reference_photos": [],
             "attributes": "NEEDS-DECISION: the eight product.attributes, "
                           "supplied by the app (owner decision, 2026-09-11). "
@@ -560,13 +563,20 @@ def build(doc, decisions, export_path):
             "no section survived: every one was left without a role. The "
             "contract requires at least one.")
 
-    product = {
-        "name": dp.get("name"),
-        "category": dp.get("category"),
+    # `category` is optional since ADR-085. An undecided worksheet value — the
+    # scaffold's placeholder, or an empty string — is dropped rather than
+    # shipped: the placeholder is a non-empty string, so the schema would accept
+    # it as a category. A decided value ships unchanged, in its old position.
+    product = {"name": dp.get("name")}
+    category = dp.get("category")
+    if (isinstance(category, str) and category.strip()
+            and not category.startswith("NEEDS-DECISION")):
+        product["category"] = category
+    product.update({
         "reference_photos": dp.get("reference_photos") or [],
         "attributes": attrs,
         "problems_solved": dp.get("problems_solved"),
-    }
+    })
     for opt in ("specification", "raw_features", "personas"):
         if dp.get(opt):
             product[opt] = dp[opt]

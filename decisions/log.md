@@ -5950,3 +5950,76 @@ five source pages and no hash moved between them.
 `match`-plus-`proposed_id` shape in the classification template.
 
 ---
+
+## ADR-085 · 2026-09-15 · `product.category` is optional, and the converter stops shipping its placeholder as a category
+
+**Owner instruction, 2026-09-15: *"đồng ý"*** — to a review recommending that two decisions be
+taken now from a dev's working copy (`~/Downloads/Image Library Project 2`, a separate repository
+forked at `c38679f`):
+- that copy's ADR-085, recorded here;
+- its ADR-089, which lands next as ADR-086.
+
+The rest of that copy was handled differently:
+- **Its ADR-084, `gif.prompt`, was reviewed and not taken.** In this lineage a loop is a work
+  order an editor builds (ADR-019, ADR-020, ADR-028, ADR-032, ADR-051). The copy's case for
+  reversing that rested on the claim that this lineage never met the question, and it did.
+- **Its ADR-086 to ADR-088 wait on the owner.**
+
+Numbers here follow the order decisions land in THIS log; each entry names its number in the copy.
+
+**The decision.** `product.category` leaves `product.required` in `mapping/content.schema.json`.
+A merchant with no category anywhere ships without it, and a value that is present must still be
+non-empty. The copy records this as an owner ruling of 2026-08-24, made in the consuming app's
+own lineage, which is not on this machine. The authority for this lineage is the instruction
+above.
+
+**Traced before it was taken.** Nothing in this lineage chose to make the field required:
+- it has been required since the scaffold commit of 2026-08-10, `145f9f9`;
+- no check in `scripts/validate.py` reads it;
+- no step of `query/runbook.md` names it.
+
+This removes a default rather than reversing a decision.
+
+**The defect it also fixes, measured on this lineage's converter.** Every other unanswered
+worksheet field makes `build` refuse: `channel`, `attributes`, and a missing role on a section
+that has image slots. `category` did not. `scaffold` writes the placeholder
+`"NEEDS-DECISION: the product's category, as a string."`, `build` copied whatever the worksheet
+held, and the placeholder is a non-empty string the schema accepts.
+
+The table below is the clip-fan advertorial export run with the worksheet otherwise filled:
+
+| category in the worksheet | before | after |
+|---|---|---|
+| placeholder left in | the placeholder sentence ships as the category | omitted |
+| empty string | refused by the schema | omitted |
+| `Electronics` | ships `Electronics` | ships `Electronics`, in the same key position |
+
+`scaffold` was also run over all 24 flunnel exports in `~/Downloads`. On every one, the new
+worksheet differs from the old converter's on a single line: the category placeholder, which now
+says the field is optional.
+
+**Rule 6c sweeps** (on `b595ebf`):
+- **`product.category`, TEACHES 1:** `mapping/export-to-content.md`, in its list of what the
+  converter never guesses. **Amended.**
+- **`category` in backticks, TEACHES 2, both in `registry/toplist-instruction.md`:**
+  - Line 73's table of what the product block carries listed `category` as always present.
+    **Amended** to say it is optional.
+  - Line 85 says a top-N needs a narrower category than the block's one coarse string.
+    **Stands**: that is true whether the field is present or not. ADR-069's note of the same gap
+    is a RECORD.
+- **RECORDS:** `query/sessions/*/content.json` and `eval/golden/*/content.json` carry a category
+  and stand, because an optional field that is present is still valid.
+
+**Consequences.**
+- `mapping/content.schema.json`: `category` leaves `product.required`, and its description says
+  why.
+- `scripts/export-to-content.py`: the docstring, the scaffold placeholder, and `build` dropping an
+  undecided value.
+- `mapping/export-to-content.md`: the amended line.
+- `registry/toplist-instruction.md`: the product-block row marks `category` optional.
+- `README.md`: the ADR count.
+- `dist/app-bundle/`: regenerated.
+
+No routing outcome moves, no golden fixture changes, and `registry_version` is unchanged.
+
+---

@@ -70,7 +70,7 @@ half alone, extended.
 | `specification` | the manufacturer's own line, verbatim | no, prose |
 | `raw_features[]` | feature claims as the brief states them | no, prose |
 | `reference_photos[]` | sha256 hashes; **empty is a statement, not a gap** | yes |
-| `name`, `category` | identity | yes |
+| `name`, `category` | identity — `category` is optional since ADR-085, so no type may assume it | yes |
 
 **What a top-N page needs that the block does not have yet**, named here so a reader is
 not surprised by an absence:

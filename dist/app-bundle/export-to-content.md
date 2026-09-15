@@ -109,7 +109,10 @@ Never guessed by the converter. It refuses to emit until each is answered.
   the brief itself labels *"buyer doubts to answer, **not facts about this product**"*. A
   keyword derivation harvests three colorways from a sentence that disclaims being about the
   product, and `colorways`'s own contract calls a fabricated one a G2 violation.
-- **`product.category` and `problems_solved`.**
+- **`product.category` and `problems_solved`.** Category is optional (ADR-085): a work file
+  that leaves it undecided builds a `content.json` without it. Before ADR-085 `build` shipped
+  the scaffold's placeholder sentence as the category, because the schema accepts any
+  non-empty string.
 
 ## `page.lpTypeId`
 
