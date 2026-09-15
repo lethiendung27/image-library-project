@@ -378,10 +378,10 @@ A decision and its evidence pointer. The reasoning is in the commit (ADR-013).
 - 1.18 (2026-09-15): **`measure` and `paper-cut` withdrawn; cause then effect; a mark answers
   one question at the feature; the comparison comes from the product's brief; an admission gate
   of position, not effort; the ground deep, muted, from the product's world; `ghost-mannequin`
-  added.** Owner instructions and findings over six sets, 28 records.
+  added.** Owner instructions and findings over six sets, 28 records. `1907424`
 - 1.17 (2026-08-26): **fixes a contradiction 1.16 introduced.** `verdict-none` legalised a frame
   with no badge while SLOT CONSTRAINTS still required one on both panels and NEGATIVE still
-  banned a missing badge. Caught before a prompt was written against it. · this commit
+  banned a missing badge. Caught before a prompt was written against it. · `7f75fa4`
 - 1.16 (2026-08-26): `verdict` becomes five badge forms (ADR-043); a set diversity law; a cover
   test, failed 3 of 6. `ba4bc33`
 - 1.15 (2026-08-13): type passed by the owner; file finalised. Worked examples become two
