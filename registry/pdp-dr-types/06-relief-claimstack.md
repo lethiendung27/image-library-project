@@ -3,7 +3,7 @@ id: 06-relief-claimstack
 step: 6
 job: relief
 device: claimstack
-version: "0.4"
+version: "0.5"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -71,7 +71,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 06-relief-claimstack v0.4
+TYPE: 06-relief-claimstack v0.5
 REGISTER: commercial editorial photograph on a flat coloured field.
 
 [SUBJECT]   one person carrying the state, cut out.        -> PARTS/subject
@@ -204,8 +204,9 @@ small composition, and it is what makes a stamp read as a stamp rather than as a
   type may not: a disclaimer is legal furniture whose wording changes by market and by year, and
   it belongs in page HTML beside the image. This is the one place the type deliberately refuses
   to copy its own exemplar.
-- **No product, no packaging, no capsule.** If the product must appear, the frame is
-  `06-relief-hero`'s and this type is the wrong one.
+- **No packaging and no capsule — and the PRODUCT IS ALLOWED as the subject**, per
+  `PARTS/subject`, which has the only render behind it. What stays refused is the product as a
+  PROP beside a person: that frame is `06-relief-hero`'s.
 - **G11 exemption.** G11 sets the absolute grade of a single-state frame, and this type's field
   is a brand tone rather than a graded state. The subject is graded warm; the field is not
   graded at all.
@@ -405,6 +406,10 @@ capability claim instead of a felt state (ADR-078).
 new sources until the re-filing pass runs.
 
 ## CHANGELOG
+- 0.5 (2026-09-16): **the file contradicted itself; the rendered clause wins.** SLOT
+  CONSTRAINTS barred the product where `PARTS/subject` allows it and has the render. The
+  constraint is narrowed to packaging and to the product-as-prop. Two sets hit it first. No new
+  law; the workings are in the commit.
 - 0.4 (2026-09-03): owner audit of the second round — colour. `PARTS/field`: the flat tone is
   LIGHT and low-saturation; deriving it from the product's register governs hue, not depth.
   Measured — this type's own render came back at 0.90 saturation against a corpus median of
