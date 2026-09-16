@@ -3,7 +3,7 @@ id: 06-relief-claimstack
 step: 6
 job: relief
 device: claimstack
-version: "0.5"
+version: "0.6"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -22,37 +22,20 @@ blocked_by: "Criterion 2, the router-confusion test against 06-relief-hero. Crit
 
 # 06-relief-claimstack — STAGING DRAFT
 
-Promotion status (2026-09-03, after batches F, G and H): **9 distinct sources — criterion 1
-is CLEARED and by a wide margin.** mida-fernwell, holloway, redpine, dermadream, lw-womens,
-ezy-talux, quietmex, retro-noxt, snif-rect: supplements, coffee, personal-care devices, audio
-and consumer electronics. **Nine sources makes this the best-evidenced proposal this library
-has ever held, active types included**, and the finding behind the number is worth stating:
-a subject to one side with a headline and short claim lines filling the other is the single
-most common argument image on a direct-response product page.
-
-**Criterion 2 (router-confusion) is the binding gap**, and it is a real one — a type this
-common will compete with `06-relief-hero` for every outcome slot on every page, and that test
-has to be run before promotion rather than after. Criterion 3 now has FOUR renders across two
-rounds, all four examined and graded by eye under ADR-011; §6.3(3) wants the owner's own
-verdict and that is what is outstanding.
-
-Superseded status line, kept so the count's history is legible: **2/5 exemplars** — `sha256:2da3d3182d3dbd8…`, a laughing
-woman cut out against a pale green field beside a headline and four icon-and-claim lines;
-and `sha256:4a3fbc492b392e5e4…`, the identical layout with the PRODUCT in the subject
-position and no person at all. The second is why PARTS/subject below is too narrow as
-drafted — see KNOWN-FLAKY.
+Promotion status (2026-09-15): **10 distinct sources — criterion 1 is CLEARED and by a wide
+margin**, across supplements, coffee, personal-care devices, audio and consumer electronics.
+The count is itself the finding: a subject to one side with a headline and short claim lines
+filling the other is the single most common argument image on a direct-response product page,
+and the benefit slice of the corpus carries 181 `benefit-*` files across 13 of 13 products.
+**Criterion 2 is the binding gap — see BLOCK.** Criterion 3 has four renders across two
+rounds, all graded by eye under ADR-011; §6.3(3) wants the owner's own verdict.
 
 Not routable. Device `claimstack` is new vocabulary.
 
-**This draft existed to be TESTED rather than promoted, and the test has run twice — see
-FOUNDING RENDER ROUND and SECOND RENDER ROUND. The paragraph below is left standing as the
-reason it was written.** One observation is well below the bar. What earns it a place ahead of
-better-evidenced proposals is that it is the single most common shape in the benefit slice
-of the corpus — 181 `benefit-*` files across 13 of 13 products — and that rendering it
-answers the one question the owner's Q1b decision turns on: **how many separate text
-clusters does this renderer actually hold in one frame?** G16's drafted budget is one block
-plus one badge, measured 3 of 3 in the founding round. The market tile this type copies
-carries six. Everything else about the type is ordinary; the cluster count is the experiment.
+**This draft existed to be TESTED rather than promoted, and the test has run twice** — see
+FOUNDING RENDER ROUND and SECOND RENDER ROUND. The question it was drafted to settle, how
+many separate text clusters this renderer holds in one frame, is answered and the answer is
+in G16: what binds is the FILL, not the count.
 
 ## PURPOSE
 Sell the state after buying by putting a person who has it beside the reasons, stated in the
@@ -71,7 +54,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 06-relief-claimstack v0.5
+TYPE: 06-relief-claimstack v0.6
 REGISTER: commercial editorial photograph on a flat coloured field.
 
 [SUBJECT]   one person carrying the state, cut out.        -> PARTS/subject
@@ -91,24 +74,17 @@ product **in use** — a hand holding it, a glass being made, a device being wor
 is, it occupies one third to one half of the frame at one side and nothing else competes with
 it.
 
-**The subject slot was written around a person and nine sources say it is wider than that.**
-Four of the nine put a product where the draft put a face — capsules, a neck device, a
-mouthpiece, a headset — and the argument does not change: the claims still carry the reasons
-and the subject still carries the promise. This is corrected here rather than left in
-KNOWN-FLAKY because four independent sources is past the evidence rule twice over.
-
-**The product form is now RENDERED, 1 of 1, and it is the cleaner of the two.** A cut-out
-vacuum on a flat deep-teal field carried the promise with no face in the frame and nothing
-was lost: five clusters, every word exact, no duplication. Where the subject is the product
-there is no G9 tension, no G13 exposure and no cut-out-person edge to go wrong — three
-failure modes the person form carries and this one does not.
+**The product form is RENDERED, 1 of 1, and it is the cleaner of the two.** Four of the ten
+sources put a product where the draft put a face — capsules, a neck device, a mouthpiece, a
+headset — and the argument does not change: the claims still carry the reasons and the
+subject still carries the promise.
 
 **Where the subject IS a person, G9 is in tension and the tension is real:** G9 ranks a visible
 symptom or result above a face and says emotion on a face is not evidence. This type has no
 visible result by definition — that is its trigger — so the face is the only rung of G9's
-ladder available. Where a result IS visible, G9 says take another type, and the trigger above
-says the same thing in different words. **Where the subject is the product, G9 is not engaged
-at all**, which makes the product form the safer of the two and is worth knowing.
+ladder available, and where a result IS visible the trigger says take another type.
+**Where the subject is the product, G9 is not engaged at all**, and neither is G13 nor the
+cut-out edge: three failure modes the person form carries and this one does not.
 
 **`offset`** — the subject occupies one third to one half of the frame at one side; the words
 occupy the rest. **The field between them is empty by construction and nothing else may claim
@@ -118,14 +94,11 @@ it** — two reservations for one area render as dead air, measured 2 of 2 on `0
 three is **legibility, not flatness**:
 
 - **flat tone** — one colour, no gradient, no texture, the subject cut out and placed on it.
-  The easiest to keep legible. The corpus builds this form on sage, sand, cobalt, cream, pale
-  blue and warm beige — **and note what those six have in common: every one is LIGHT and
-  low in saturation.** The instruction here used to be "chosen from the product's own
-  register rather than reached for", and the founding round obeyed it into a fully saturated
-  deep teal, 0.90 saturation against a corpus median of 0.06 across 119 frames. Choosing from
-  the product's register is right about HUE and was read as licence for depth and intensity.
-  The tone is light and quiet; a dark or saturated field is a choice the prompt justifies,
-  and a tone that could belong to any product in the category is still a tone nobody chose.
+  The easiest to keep legible. The corpus builds it on sage, sand, cobalt, cream, pale blue
+  and warm beige, and every one of the six is **LIGHT and low in saturation**. Deriving the
+  tone from the product's own register governs HUE, not depth: the tone stays light and
+  quiet, a dark or saturated field is a choice the prompt justifies, and a tone that could
+  belong to any product in the category is still a tone nobody chose.
 - **a real room** — the subject photographed in place, the words set into the room's own
   out-of-focus area. Three sources build it this way; one puts the words straight onto the
   wall with no panel at all. **Rendered, 1 of 1, in its hardest form**: white words straight
@@ -135,11 +108,9 @@ three is **legibility, not flatness**:
 - **a band** — the photograph occupying two thirds and the claims a solid band beneath,
   with the product cut out across the boundary.
 
-**The flat-tone-only clause was wrong and this corrects it.** It existed to keep the words
-legible; a blurred room does that job, and a real room buys context the flat field throws
-away. What still binds is that the area the words occupy carries nothing else — G16's
-never-reserve-space-you-do-not-fill rule applies to all three forms equally, and the flat
-field is the one most able to invite the duplication G16 measured.
+**What binds all three forms is that the area the words occupy carries nothing else** — G16's
+never-reserve-space-you-do-not-fill rule reaches each of them equally, and the flat field is
+the one most able to invite the duplication G16 measured.
 
 The tone or the room is a runtime value (`parameters: environment`).
 
@@ -155,10 +126,9 @@ and is set by G16, not here** — see KNOWN-FLAKY.
 ## MARKS
 
 **A badge is a mark and this type owns its forms** (ADR-012, ADR-043, G16's badge note). The
-skeleton calls `badge` by name; the prompt names WHICH form, and the choice is made per
-product from what its register can carry. **Three forms minimum, and none of them is a
-default** — six test prompts written before this section existed produced six identical flat
-rectangles, which is the monotony that put this section here.
+skeleton calls `badge` by name; the prompt names WHICH form, per product, from what its
+register can carry. **None of the forms is a default** — six prompts written before this
+section existed produced six identical flat rectangles.
 
 | form | shape | the register it belongs to |
 |---|---|---|
@@ -176,25 +146,24 @@ right and got both, 2 of 2.
 the object it was told to match and `seal` at 0.96, against 0.13 and 0.24 for the headlines
 in the same frames. G16 carries the general form; here it means the badge clauses can be
 trusted as written.
-**A badge must not take its colour from the product.** Round 2 asked for a warm-gold `pill`
-on a champagne-gold vacuum and got exactly that — a badge the same hue as the thing it sits
-beside. Nothing in the render failed; the PROMPT broke G16's own rule that a badge carries a
-colour the photograph does not, and it broke it because the writer read the colour off the
-product. Choose the badge hue against the frame, never from it.
+**A badge must not take its colour from the product.** Choose the hue against the frame,
+never off the product: round 2 asked for a warm-gold `pill` on a champagne-gold vacuum and
+got a badge the same hue as the thing beside it. The render obeyed; the PROMPT broke G16's
+rule that a badge carries a colour the photograph does not.
+
+**A badge must clear an EDGE, not just reach a corner** (G10, round 2, 1 of 1). A named
+corner plus an anchored size is the combination that walks off the frame: render 4's `seal`
+came within 3.71% of an edge while its own text block held 5.76%. The badge goes precisely
+where the prompt puts it, so the prompt names the margin as well as the corner.
 
 **A badge is not FLAT and it is not ONE WORD AT ONE SIZE** (G16, round 4, 2026-09-03). The
-table above describes an OUTLINE; it said nothing about the interior, and five of six
-founding-round badges came back with a value spread of 0.02–0.09 — dead flat — against
-0.10–0.35 on four corpus badges. The only render that was not flat is the only one whose
-prompt named a second tone. What every badge in this type owes:
-
-- **at least one internal tone step** — a rim, a concentric ring, an outline inset from the
-  edge, or a sheen across the fill;
-- **at least two type sizes** — corpus badges run 2 to 4; the six renders ran 1 to 2, and
-  3 of 6 carried a single line of type at a single size.
-
-A figure large, its label smaller, a qualifier smaller still, and often a glyph. That is a
-small composition, and it is what makes a stamp read as a stamp rather than as a label.
+table above describes an OUTLINE and says nothing about the interior; five of six
+founding-round badges came back dead flat, 0.02–0.09 value spread against 0.10–0.35 on four
+corpus badges, and the one that was not flat is the one whose prompt named a second tone.
+Every badge owes **at least one internal tone step** — a rim, a concentric ring, an outline
+inset from the edge, a sheen across the fill — and **at least two type sizes**: corpus badges
+run 2 to 4, the six renders ran 1 to 2. A figure large, its label smaller, a qualifier
+smaller still, often a glyph. That composition is what makes a stamp read as a stamp.
 
 ## SLOT CONSTRAINTS
 - **Every word comes from the page's own copy.** G16's content rule binds hardest on this type,
@@ -317,7 +286,7 @@ words in the picture; no logo, no watermark, no poster or label in the room, no 
   in the same round and did NOT duplicate, because their headline filled the band it was
   given. That is consistent with G16's fill rule rather than a reprieve for a short stack.
 - Superseded, kept for the record: *"One observation. Two of the four things above could turn
-  out to be one thing."* The count is nine and the two widened clauses each have a render.
+  out to be one thing."* The count is ten and the two widened clauses each have a render.
 
 ## FOUNDING RENDER ROUND — 2026-09-03
 Two renders, ratio 1:1, two different subjects and two different budgets, so a failure could
@@ -332,21 +301,14 @@ not be confounded by re-running one product. **The result inverted the hypothesi
 | badge, bottom left | clean | clean |
 | margins | 7.3% L, 8.1% T | 6.8% L, 6.6% B |
 
-**The two-cluster frame drew its text block a second time**, lower and re-wrapped — measured
-as seven separate ink bands in the left half where four were asked for. The five-cluster frame
-declared the same area and filled it, and nothing repeated.
+**The two-cluster frame drew its text block a second time**, lower and re-wrapped — seven
+separate ink bands in the left half where four were asked for. The five-cluster frame declared
+the same area and filled it, and nothing repeated. **So the constraint is not the count, it is
+the fill**: G16 carries the rule, and this type carries the risk, because a short headline over
+a half-frame reservation is exactly the dangerous shape. The cut-out person worked, 2 of 2.
 
-**So the constraint is not the count, it is the fill.** This type's `offset` reserves one third
-to one half of the frame for the words and calls the rest of the field empty; a short block in
-that reservation leaves the renderer space it will fill by repeating what it already drew. The
-mechanism is already in `adapters/nano-banana.md` Rule 4 for panels — "the model fills the
-vertical space it has by repeating what it already drew" — and this is the first time the
-library has seen it in text. G16 now carries the rule; this type carries the risk, because a
-claim stack with a short headline and no claims is exactly the dangerous shape.
-
-**The cut-out person worked, 2 of 2** — clean edges on a flat field, no halo, no drop shadow,
-warm rim light on the subject with the field left unlit. That was listed as untested and is now
-the least of this type's problems.
+**Neither render is in `eval/render-tests.jsonl`.** No output hash was recorded for either, so
+this table is their only record and the verdicts in it are proposals rather than ledger lines.
 
 ## SECOND RENDER ROUND — 2026-09-03
 Two renders, ratio 1:1, prompts 3 and 4 of `registry/pdp-dr-types/ready-to-push/prompts.md`. **Each
@@ -367,24 +329,11 @@ this type's source list. Verdicts by eye under ADR-011.
 | closest prompted ink to an edge | 6.05% text · 6.05% badge | 5.76% text · **3.71% badge** |
 | output | `sha256:9df23c4bfb119485…` | `sha256:0d47d3e4d0d6c289…` |
 
-**Both widened clauses hold.** The product in the subject slot carried the promise with no
-face in the frame; the words on a defocused wall with no panel stayed legible. ADR-066
-widened both on source counts alone and each now has a render behind it.
-
-**Render 3 is the better frame and the reason is structural.** With the product as subject
-there is no G9 tension to manage, no G13 exposure and no cut-out edge to go wrong. The
-person form is not worse-rendered — it is worse-EXPOSED.
-
-**Two faults, and neither is about the widening.**
-
-- **The headline was given two lines and drew three.** A break in the prompt is a suggestion.
-- **One claim line gained a word** — `The display counts` came back as `The display counts
-  reps`. It reads better and the page did not write it, which is exactly the shape G16's
-  content rule exists to catch: an improvement is still an invention.
-
-**The badge is where G10 breaks.** Render 4's `seal` came within 3.71% of an edge while its
-own text block held 5.76%. The badge goes precisely where the prompt puts it, and a corner
-plus an anchored size is a combination that walks off the frame.
+**Both widened clauses hold**, and each now has a render behind a widening ADR-066 made on
+source counts alone. Render 3 is the better frame for a structural reason, in `PARTS/subject`:
+the person form is not worse-rendered, it is worse-EXPOSED. The two faults are in KNOWN-FLAKY
+and neither is about the widening; the badge margin is in `MARKS`. Both renders are in
+`eval/render-tests.jsonl` at `type_version` 0.2.
 
 ## NOTES
 **Why this is `relief` and not a new job.** The argument is the state after buying, which is
@@ -406,6 +355,12 @@ capability claim instead of a felt state (ADR-078).
 new sources until the re-filing pass runs.
 
 ## CHANGELOG
+- 0.6 (2026-09-16): **compression pass, ADR-013 — 22,359 discretionary characters to 19,450,
+  no law removed.** Case histories and measurement narratives leave the header, PARTS, MARKS
+  and both render rounds for the commits that cite them; both round TABLES stay, because they
+  are the record. The header said 9 sources against BLOCK's 10 and `--evidence` measures 10;
+  the G10 badge-margin finding moves into MARKS, where it binds; the founding round's two
+  renders have no ledger line, so that table is their only record. · this commit
 - 0.5 (2026-09-16): **the file contradicted itself; the rendered clause wins.** SLOT
   CONSTRAINTS barred the product where `PARTS/subject` allows it and has the render. The
   constraint is narrowed to packaging and to the product-as-prop. Two sets hit it first. No new
