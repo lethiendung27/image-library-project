@@ -3,7 +3,7 @@ id: 05-social-card
 step: 5
 job: social
 device: card
-version: "0.4"
+version: "0.5"
 status: reserved
 replaced_by: null
 channels: [landing-page, paid-social, advertorial]
@@ -46,8 +46,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 05-social-card v0.4
-RATIO: [16:9 / 3:2 / 1:1 / 4:5]
+TYPE: 05-social-card v0.5
 LAYERS: photographic hero base + review card, BOTH GENERATED in one pass.
 REGISTER: bright lifestyle photography with one clean graphic card overlay.
 
@@ -114,6 +113,9 @@ label. No logo, no watermark.
   frame there is nowhere legible for the card, and the type fails.
 - Keep the quote SHORT (≤ 12 words ideal, ≤ 20 hard) — text fidelity degrades with
   length; long quotes belong to page copy, not the image.
+- Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4). What a
+  prompt CAN control is the card's share of frame and which side it sits on, and those
+  survive whatever aspect the renderer returns.
 
 ## NEGATIVE
 G6-exempt (text tokens only) — non-text protections restated in full:
@@ -139,6 +141,11 @@ label, NO counters, NO trust bar. The card carries a message, never a person —
 it must not impersonate a reviewer.
 
 ## WORKED EXAMPLES
+Both examples open `A 3:2 bright lifestyle photograph`, which the skeleton no longer permits
+and which names a ratio outside ADR-016's five. **They are not corrected**: SPEC §3.3 keeps a
+`run: pass` example's full prompt text because that text is the only record of what actually
+rendered, and both rendered with the ratio written. The next render under 0.5 replaces them.
+
 ### example: l-cushion-office-verbatim — skeleton@0.4, run: pass
 --verbatim layout. Quote and name taken verbatim from the product's own landing-page
 reviews section (ErgoSupport L-Shape Cushion, flunnel export 2026-08-06); the scene
@@ -229,6 +236,12 @@ with attribution, and a card carrying a name that nobody published is a fabricat
 endorsement whichever type drew it.
 
 ## CHANGELOG
+- 0.5 (2026-09-16): **the `RATIO:` line leaves the skeleton.** ADR-016 closed the legal set to
+  five ratios and adapter Rule 4 keeps a ratio out of prompt text entirely — this renderer
+  ignores a written one, 6 of 6 — and ADR-082 then deleted the `ratios` key from every type
+  file. This skeleton kept `[16:9 / 3:2 / 1:1 / 4:5]` through all three, two of them illegal.
+  SLOT CONSTRAINTS gains the clause 14 other files in this folder carry, in their words. No
+  other law moves. The two worked examples keep their `3:2` opening under SPEC §3.3.
 - 0.4 (2026-08-10): worked-example set rotated under the cap-2 rule — the untested
   comb example (illustrative, redundant with the tested sharpener) replaced by the
   first --verbatim example: L-shape cushion, quote and name sourced verbatim from
