@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.12"
+version: "1.13"
 status: active
 replaced_by: null
 channels: [marketplace, landing-page, advertorial]
@@ -41,8 +41,9 @@ this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds t
 - **No frame and no border around a panel** — the thin white gutters are the only divider. Three
   of the owner's four sequence renders set their panels in rounded frames; the fourth, labelled
   with a numeral and a word touching each panel and nothing framed, was clean.
-- **The steps are the page's.** Where the page gives its own steps, those are the panels; where it
-  names no fill step, no panel fills anything and `fill` has nothing to mark.
+- **No step the page does not give.** A panel never shows an action the page does not describe —
+  where it names no fill step, nothing is filled and `fill` has nothing to mark. PREPARE, USE and
+  RESULT stay this type's three beats; a page's own list of steps is not a panel count.
 - **The product is the set's one variant in every panel.** One render switched colourway between
   its sequence and the rest of the set.
 - **Place:** image 4 or 5, usually the second mechanism-class tile.
@@ -300,5 +301,8 @@ argues what is better inside, and this type answers "can I operate it". A galler
 more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
+- 1.13 (2026-09-16): the 1.12 steps clause made each step a page lists into a panel, which fights
+  the PREPARE, USE and RESULT beats this type measured; the first set written under it caught it.
+  Narrowed to what the brief behind it needed: no panel shows a step the page does not give.
 - 1.12 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a title outside the panels and nothing else, nothing drawn even on packaging, no frame around a panel, the page's own steps. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.11. ADR-094.
 - 1.11 (2026-09-15): copied verbatim from `registry/types/03-use-sequence.md` at 1.11, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.
