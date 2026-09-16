@@ -53,6 +53,12 @@ This is a PREFERENCE ORDER and not the candidate pool (ADR-058). The pool is eve
 type in `registry/pdp-dr-index.yaml`, for every slot; a type outside a row is a candidate, not
 a violation.
 
+**One tile carries one message** (owner instruction, 2026-09-16). A section whose copy names
+three unrelated features is not one slot's worth of argument: the page arc decides which
+feature this tile makes, and the others belong to other tiles or to a claim stack whose lines
+all support the same message. Routing a three-feature paragraph into one tile is how a gallery
+ends up with a frame nobody can summarise.
+
 ### The finding this table exists to record: step 1 is EMPTY
 
 **Four active types appear on no page in this corpus**, and two of them are the whole of the
@@ -110,7 +116,8 @@ not in the table above.
 
 ## Cross-slot rules — where a gallery differs from an advertorial
 
-All of `mapping/slot-rules.md`'s portfolio constraints apply. Three do more work here:
+All of `mapping/slot-rules.md`'s portfolio constraints apply. Five do more work here — three
+because of the page's shape, and two the owner added on 2026-09-16:
 
 1. **One type at most once per page.** A twelve-tile gallery is **not** a repeating section in
    cross-rule 2's sense. A roundup's ranked entries are equivalent list items; a gallery's
@@ -124,6 +131,14 @@ All of `mapping/slot-rules.md`'s portfolio constraints apply. Three do more work
    `03-use-sequence`. `03-spec-macro` is the corpus's commonest mechanism tile at 13 sources
    and is **not** in that trio, so a gallery can carry it alongside two of the three — which
    is what the corpus does.
+4. **One style lock per session** (owner instruction, 2026-09-16). Every image a session emits
+   for a page — gallery tiles and section images alike — shares one ground, one light, one
+   grade, one typeface and one accent colour, named once and then repeated in every prompt in
+   the same words. The lock's fields are in `registry/pdp-dr-instruction.md`.
+5. **Composition varies tile to tile.** Layout, camera angle, crop and the product's share of
+   frame are where a gallery shows design, and the style lock is not a licence to repeat one
+   frame twelve times. A routed SET whose options all resolve to the same camera is a set to
+   re-route, not a page to ship.
 
 ## What happens when the reserved files unblock
 

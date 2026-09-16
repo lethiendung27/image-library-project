@@ -6689,3 +6689,97 @@ rather than a second type (SPEC §3.2), because there is one observation of them
 - **No render exists.** The set is the founding round.
 
 ---
+
+## ADR-093 · 2026-09-16 · Four owner rules for a product gallery: the style system is locked, the composition is not
+
+**Owner instruction, 2026-09-16**, four rules for the images of a product page:
+
+1. *"mỗi phiên generate bộ prompt là 1 bộ ảnh (tất cả các ảnh trong gallery và ảnh khác
+   gallery) có tone màu, ngôn ngữ thiết kế đồng nhất về styling"*
+2. *"các ảnh trong gallery (chứa chữ) cần tập trung vào 1 feature/benefit nhất định: mọi text,
+   visual element, badge, icon,... đều phục vụ 1 message cần truyền tải của sản phẩm"*
+3. *"bố cục, góc máy cần đa dạng, sáng tạo. có thể lồng ghép nhiều yếu tố để tạo ra 1 image
+   gallery được meticulously designed"*
+4. *"sử dụng số lượng từ phù hợp: title, copy, chips,... có tính hỗ trợ cho ảnh"*
+
+**They are LP2 law, so they land in the namespace's instruction file.** Each binds every type
+in the folder rather than any one of them, which is how SPEC §5 treats a shared rule and where
+ADR-078 put its six findings for the same reason.
+
+### Rules 1 and 3 look like opposites and are not
+
+The sentence that separates them is the load-bearing one, and it is written into the
+instruction in these words: **the STYLE SYSTEM is locked across a session's set, the
+COMPOSITION is not.** Ground, light, grade, typeface and accent hold from tile to tile; layout,
+camera angle, crop and the product's share of frame are where the work shows. A set that reads
+as one set and a set of twelve identical frames are different failures, and only the second one
+is what rule 1 could have produced if rule 3 had not arrived with it.
+
+### The lock has named fields, so a set can be checked rather than admired
+
+Ground, light, grade, type, accent, register — named once before the first prompt and repeated
+in every prompt of that session in the same words.
+
+**This is not new practice.** `clip-fan-01` already ran under exactly this lock, and ADR-078
+recorded what it proved: with ground, light, grade, type and accent identical between two
+prompts, `07-identity-callout` came back indistinguishable from `03-spec-callout`, and the type
+was retired on that evidence. The lock working is what made the argument the only variable.
+
+### Rule 2 meets the claim stack, and the resolution is written rather than left
+
+A tile carries one feature or one benefit, and every element serves it: title, copy, each chip,
+the badge, the marks, the props. **An element that would still be there if the message changed
+is decoration, and it goes.** A claim stack is not an exception — its lines all support the one
+message, and what it may not be is a list of everything the product does. A section whose copy
+names three unrelated features is not one slot's worth of argument, which is the routing half
+and sits in `mapping/pdp-dr-rules.md`.
+
+### Rule 4 defers to G16 and adds one sentence
+
+G16 already bands the title at 6–12 words, seven to a line, and gives copy a different job from
+the title. This namespace adds only that **every word in the frame is there because the picture
+cannot say that part** — and that chips and labels are where it breaks, because a type's own
+part puts them in frame (`03-spec-callout`'s `callouts`) rather than a G16 slot, so the rule
+does not cap them and the tile's one message has to. Measured on the Densjet gallery: the two
+tiles carrying chips run 2–4 words a chip, and the busiest carries six.
+
+### Consequences
+
+Rule 6c sweeps: `"style lock"` (6 hits, 4 files, 3 TEACHES), `"one message"` (16, 10, 6),
+`"camera angle"` (53, 21, 9), `"design language"` (3, 3, 2).
+
+- **`registry/pdp-dr-instruction.md` — new section**, *One session, one set: what is LOCKED and
+  what must VARY*, placed before the text section it leans on.
+- **`mapping/pdp-dr-rules.md`** — cross-slot rules **4** (the lock) and **5** (composition
+  varies); the section intro's count goes three → five; the Layer-2 pool paragraph gains the
+  one-message routing consequence.
+- **`query/runbook.md` Step 5** — an LP2 page declares the session's lock before the first
+  prompt and repeats it in every one.
+- **`registry/pdp-dr-types/03-mechanism-contact.md` 0.2 → 0.3** — its camera line was a lock
+  and is now a DEFAULT, because rule 3 asks a set for varied cameras. All six renders of its
+  founding round were shot level, so nothing already rendered is invalidated.
+- **The `"camera angle"` sweep found the one thing this could have broken, and it does not.**
+  `01-pain-split` and `04-proof-lockedframe --strict` require the SAME camera angle between the
+  panels of ONE frame. Rule 3 is about variety BETWEEN tiles and does not reach inside a locked
+  pair. Both files **stand**, and so do the five other type files the sweep put in TEACHES.
+- **`registry/gif-instruction.md` and `SPEC.md` §3.6's "one type, one message"** are the same
+  shape in another namespace, measured on another corpus. They **stand**, and nothing here
+  crosses into them.
+- **`registry/pdp-dr-types/07-identity-callout.md`'s two "style lock" lines stand**: they record
+  the render that proved the lock, which is the evidence this ADR cites.
+- **GENERATED** — `dist/app-bundle/` rebuilds three bundled files: the instruction, the pdp-dr
+  rules and the runbook. Neither index moves, because no type's status and no routing outcome
+  changes.
+- `registry_version` unchanged.
+
+### What is NOT done
+
+- **No checker enforces the lock.** The lock's fields are written in the same words precisely so
+  one regex can compare a set's prompts against each other, and no script does it yet. A page
+  set's `check.py` is where that belongs.
+- **Rule 2 has no gate and cannot have a mechanical one.** Counting messages in a tile is a
+  judgement made from the section's copy.
+- **The two sets shipped this session are type tests, not pages.** They hold one camera on
+  purpose, and `03-mechanism-contact-02` now says so in its own words.
+
+---

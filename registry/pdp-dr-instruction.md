@@ -106,6 +106,57 @@ whole job. Three of §7's passes do more work here than anywhere else in the lib
 **The first gallery image is out of library scope.** It is a standard product shot; the
 library covers images 2 and after (`mapping/slot-rules.md`, cross-rule 6).
 
+## One session, one set: what is LOCKED and what must VARY
+
+**Owner instruction, 2026-09-16.** Four rules for the images of a product page. The first and
+the third are about the SET; the second and the fourth are about a tile.
+
+**1. Every prompt a session emits belongs to ONE set.** A page's gallery tiles and its section
+images are one body of work and carry one tone and one design language. The lock is named once,
+before the first prompt is written, and repeated in every prompt of that session **in the same
+words**:
+
+| locked | what the lock names |
+|---|---|
+| ground | the field behind the subject, its value and its saturation family |
+| light | direction, quality, and where the shadow falls |
+| grade | warm, neutral or cool, and how far |
+| type | one typeface family, and the weight pattern of title against copy |
+| accent | the one colour marks, chips and badges may use, and nothing else may |
+| register | photograph or render, wherever the types in the set leave that open |
+
+This is the lock `clip-fan-01` already ran under, and the one that made
+`07-identity-callout`'s control render indistinguishable from a `03-spec-callout` prompt
+(ADR-078): with ground, light, grade, type and accent identical, only the argument was left to
+tell two tiles apart. That was the lock working. A set is supposed to look like one set.
+
+**2. One tile, one message.** Every gallery tile that carries words says ONE feature or ONE
+benefit, and every element in the frame serves it — the title, the copy, each chip, the badge,
+the marks, and whatever props the type allows. **An element that would still be there if the
+message changed is decoration, and it goes.** A tile naming three unrelated features is two
+tiles, or it is a claim stack whose lines all support one message. That is what
+`03-spec-claimstack` and `06-relief-claimstack` are for, and what they are not is a list of
+everything the product does.
+
+**3. Composition varies across the set, and the variety is what makes a gallery look
+designed.** Layout, camera angle, crop, the share of frame the product takes, whether the
+subject is cut out or in a real place, how the words meet the picture: these change tile to
+tile. **A set where every tile is the same three-quarter packshot on the same seamless is the
+failure this rule names**, and the fix is never a new type — it is a different camera on the
+type already chosen.
+
+**Rules 1 and 3 do not contradict each other, and the line between them is the load-bearing
+sentence here: the STYLE SYSTEM is locked, the COMPOSITION is not.** Palette, light, grade,
+type and accent hold across the set; layout, angle, crop and scale are where the work shows.
+
+**4. Word count is a support decision, not a budget to spend.** G16 sets the bands — a title of
+6–12 words at no more than seven per line, and copy that does a different job from the title —
+and this namespace adds one thing: **every word in the frame is there because the picture
+cannot say that part.** Chips and labels are the easiest place to break it, because a type's
+own part puts them in frame — `03-spec-callout`'s `callouts`, for instance — so G16's slots do
+not cap them and the tile's one message has to. Measured on the Densjet gallery: the two tiles
+carrying chips run 2–4 words a chip, and the busiest carries six.
+
 ## Text: every type may declare one, and G16 binds it
 
 G16 is not lifted, it is narrowed one type at a time, and this namespace is where it does

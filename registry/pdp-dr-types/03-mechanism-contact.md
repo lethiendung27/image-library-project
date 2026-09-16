@@ -3,7 +3,7 @@ id: 03-mechanism-contact
 step: 3
 job: mechanism
 device: contact
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -79,7 +79,7 @@ use_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-mechanism-contact v0.2
+TYPE: 03-mechanism-contact v0.3
 REGISTER: product photograph meeting a clean technical render of the body.  -> PARTS/register
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.        -> G1
@@ -141,8 +141,11 @@ calf's curve, a thigh's taper, a shoulder's slope.
   register is not enough there: say what makes the body DRAWN — flat matte colour, simple
   outlines, the pores or the texture as drawn marks rather than photographed skin.
 
-The camera is level with the place they touch — feicemat-16's record, and the geometry all
-seven share.
+The camera is level with the place they touch **by default** — feicemat-16's record, and the
+boundary runs across the frame in all seven. Level is a default and not a lock: glowy-liff's
+three look slightly down onto the contact plane and gallery-4 enters at an angle from the upper
+left. The namespace's composition rule (`registry/pdp-dr-instruction.md`, rule 3, 2026-09-16)
+asks a page's SET for varied cameras; what a camera may not do here is lose the boundary.
 
 **`ground`** — quiet by default (`registry/pdp-dr-instruction.md`, ADR-068): light in value,
 close to neutral. Pale blue, lilac, pink and blue-white in 6 of 7; glowy-22's panel is lit red
@@ -287,6 +290,10 @@ Six renders, 2026-09-16, set `03-mechanism-contact-01`.
   below its last named layer, 4 of 4; no removed matter drifted, 2 of 2.
 
 ## CHANGELOG
+- 0.3 (2026-09-16): the namespace gained the owner's four gallery rules (ADR-093). `PARTS/cut`'s
+  camera line becomes a DEFAULT rather than a lock, so a page's set can vary its cameras under
+  rule 3 without leaving this type. Nothing else moves, and no render is affected: all six of
+  the founding round were shot level.
 - 0.2 (2026-09-16): **founding round — six renders, two pass, four partial** (render-test ts
   2026-09-16; massage gun, EMS pad, blackhead suction, callus remover, scalp massager, cupping
   cup). The closed layer list held 4 of 4 and `removed` confinement 2 of 2, so neither is
