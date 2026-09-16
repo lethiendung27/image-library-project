@@ -3,7 +3,7 @@ id: 03-mechanism-contact
 step: 3
 job: mechanism
 device: contact
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 1: four distinct sources of the five SPEC 6.3 asks. Criterion 2, the router-confusion test against 03-mechanism-ghostbody and 03-mechanism-xray, is unrun. Criterion 3 has no render."
+blocked_by: "Criterion 1: four distinct sources of the five SPEC 6.3 asks. Criterion 2, the router-confusion test against 03-mechanism-ghostbody and 03-mechanism-xray, is unrun. Criterion 3 now has six renders, two pass and four partial, but every verdict is the harness's own and ADR-011 excludes those from promotion."
 ---
 
 # 03-mechanism-contact — PDP-DR DRAFT
@@ -28,6 +28,9 @@ whose tile 4 is this construction. ADR-078 withheld every Tier-2 id because a co
 been taken for evidence (`07-identity-callout`, two of five frames really that device). So
 all seven frames below were opened and looked at before this file was written, and **every
 source carries at least one frame that is unambiguously this device.**
+
+**Founding round rendered 2026-09-16** — six prompts, two pass and four partial, graded by the
+harness under ADR-011. What it settled is in `PARTS/cut`, `PARTS/target` and `MARKS`.
 
 | source | frame | the working end | the body, and the cut | what crosses the boundary | the frame's claim |
 |---|---|---|---|---|---|
@@ -76,7 +79,7 @@ use_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-mechanism-contact v0.1
+TYPE: 03-mechanism-contact v0.2
 REGISTER: product photograph meeting a clean technical render of the body.  -> PARTS/register
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.        -> G1
@@ -114,14 +117,29 @@ stream reaches, the pore a suction tip empties. Never a generic tissue. fosen-ri
 warning: skin over rows of fat cells, *"generic enough to mean nothing"*, carrying the page's
 strongest claim.
 
+**The frame says WHICH region, not only which layers.** The cupping render of 2026-09-16 drew a
+correct stack — skin, fat, calf muscle — that nothing in the frame identified as a calf (1 of 4
+section renders). Show enough of the region's own outline for the name in the copy to land: a
+calf's curve, a thigh's taper, a shoulder's slope.
+
 **`cut`** — a parameter, and the copy picks it.
 - `section`: the body cut open under the working end, 6 of 7. **Depth is DERIVED, never
   chosen** (A13): name the layers as a closed list from the surface, ending at the first layer
   below the deepest structure the product reaches, and draw nothing deeper. Borrowed from
   `03-mechanism-ghostbody` `PARTS/cutaway`, where an unbounded cut took a scalp comb into the
-  cranium 2 of 2. **Untested in this type.**
+  cranium 2 of 2. **Tested here 2026-09-16 and it held 4 of 4** — including the scalp, where the
+  list ended at the hair roots and no skull was drawn.
+- **The cut is a WINDOW, and the silhouette survives it.** The body continues out of the frame
+  on both sides; it is never a segment closed off at each end. Borrowed from the same file,
+  after the first control render drew a thigh as a slab cut at both ends (2026-09-16, 1 of 4
+  section renders).
 - `surface`: the body's outer surface seen close, not cut, where the effect shows there — a gap
   between teeth, a heel, a pore. 1 of 7: gallery-4, the owner's example.
+- **The surface form is where the register flips, 2 of 2** (2026-09-16). Both surface renders
+  came back as photography — real skin with pores, a real heel — although the prompt named a
+  clean matte technical render, and one of them brought a face fragment with it. Naming the
+  register is not enough there: say what makes the body DRAWN — flat matte colour, simple
+  outlines, the pores or the texture as drawn marks rather than photographed skin.
 
 The camera is level with the place they touch — feicemat-16's record, and the geometry all
 seven share.
@@ -134,8 +152,8 @@ from within by its own heat glow.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `agent` | what crosses the boundary, in the phenomenon's own form — pressure rings, wave lines, fine pulses, beams, the stream itself — leaving the working end and stopping at the target | clear cyan-blue (G3: working mechanism); a liquid keeps its own colour | one family | corpus 7 of 7 · 0 renders |
-| `removed` | what the product takes away — debris, a plug, flakes — leaving the target only at the contact point | the matter's own colour | only where something is removed | corpus 2 of 7 · 0 renders |
+| `agent` | what crosses the boundary, in the phenomenon's own form — pressure rings, wave lines, fine pulses, beams, the stream itself — leaving the working end and stopping at the target | clear cyan-blue (G3: working mechanism); a liquid keeps its own colour | one family | corpus 7 of 7 · 6 renders, cyan in all six, none needing an arrow |
+| `removed` | what the product takes away — debris, a plug, flakes — leaving the target only at the contact point | the matter's own colour | only where something is removed | corpus 2 of 7 · 2 renders, both confined to the contact |
 
 - **The agent carries direction by its own form.** A wave spreads from its source, a stream has
   a nozzle end. Arrows appear in 3 of 7 and never say anything the agent's form does not;
@@ -143,7 +161,9 @@ from within by its own heat glow.
   asked for, and not banned until a render of this type shows one doing harm.
 - **`removed` stays at the contact point.** Borrowed from `03-mechanism-xray` `MARKS/caught`:
   matter lifted in open space swirled through the volume and made the product the problem
-  (1 render). Untested here.
+  (1 render). **Tested here 2026-09-16 and it held 2 of 2**: pore plugs sat on the suction
+  lines between skin and tip, callus flakes sat at the roller, and nothing drifted in either
+  frame.
 - **G3 meets heat and does not agree.** glowy-22 draws RF heat in red and orange; G3 gives orange
   to WRONG heat and red to pain. The namespace finding is that the market reaches for the colour
   of the phenomenon. G3 binds here as everywhere, so a heat product in this type is a
@@ -175,6 +195,67 @@ a face, an outcome drawn on a body, a generic tissue the copy does not name, a c
 deeper than the last named layer, the product floating beside the body, a badge, a seal
 ```
 
+## WORKED EXAMPLES
+The two passes of the founding round, kept in full text because that text is the only record of
+what actually rendered (SPEC §3.3). Both verdicts are the harness's own (ADR-011), so neither
+can serve SPEC §6.3(3). Both were rendered at 0.1 and neither carries the two clauses 0.2 adds.
+
+### example: ems-pad-shoulder — skeleton@0.1, run: pass
+```
+Product photograph meeting a clean technical render of the body. One frame, no panels, no insets.
+
+Use the attached product photo as the exact reference for the product.
+Preserve its shape, proportions, material, finish and color exactly as shown.
+Do not redesign, restyle, simplify or add features.
+Render it at 30% of the frame height, integrated with the scene lighting, lying flat on the top of a shoulder at the centre of the frame, its pad against the skin, the whole product in frame.
+
+The body is a clean matte technical render in pale, low-saturation tones, cut open beneath the pad.
+The cut shows, from the surface down: the skin, a thin fat layer, the shoulder muscle. Nothing below the shoulder muscle is drawn.
+The camera is level with the place they touch.
+
+Fine pulses travel from the pad down through the fat layer into the shoulder muscle and stop there, drawn in clear cyan-blue and brightest at the pad.
+
+Ground: one pale, near-neutral field, light in value and low in saturation, with nothing on it.
+
+A headline across the top in bold grotesque sans-serif, sentence case:
+"Unknot a stiff shoulder while you sit and read"
+Under it, one line of dark grey medium-weight grotesque sans-serif:
+"Gentle pulses reach the muscle beneath"
+The headline and the line under it fill the top quarter of the frame, appear once, in one place, and nowhere else.
+Nothing is placed in the bottom-right corner of the frame.
+```
+The whole-product case: at 30% of frame height the pad stays in frame entire, so nothing is
+cropped and the contact edge is the only thing to read. The pulses enter under the pad and die
+in the deltoid.
+
+### example: scalp-massager-roots — skeleton@0.1, run: pass
+```
+Product photograph meeting a clean technical render of the body. One frame, no panels, no insets.
+
+Use the attached product photo as the exact reference for the product.
+Preserve its shape, proportions, material, finish and color exactly as shown.
+Do not redesign, restyle, simplify or add features.
+Render it at 50% of the frame height, integrated with the scene lighting, pointing down onto a close patch of scalp, its nodes pressed into the hair at the centre of the frame; the rest of it runs up behind the headline and out of the top edge.
+
+The body is a clean matte technical render in pale, low-saturation tones, cut open beneath the nodes.
+The cut shows, from the surface down: the hair, the scalp skin, the hair roots. Nothing below the hair roots is drawn.
+The camera is level with the place they touch.
+
+Vibration rings spread from each node down to the hair roots and stop there, drawn in clear cyan-blue and brightest at the nodes.
+
+Ground: one pale, near-neutral field, light in value and low in saturation, with nothing on it.
+
+A headline across the top in bold grotesque sans-serif, sentence case:
+"Wake up a tired scalp right at the roots"
+Under it, one line of dark grey medium-weight grotesque sans-serif:
+"Soft nodes send vibration to the roots"
+The headline and the line under it fill the top quarter of the frame, appear once, in one place, and nowhere else.
+Nothing is placed in the bottom-right corner of the frame.
+```
+The A13 case, and the reason the closed layer list is in `PARTS/cut`. `03-mechanism-ghostbody`
+drew a scalp comb into the cranium 2 of 2 with an unbounded cut; the same anatomy under a closed
+list stopped at the roots, with the bulbs sitting in their own bed and no skull anywhere.
+
 ## BLOCK
 **Criterion 1 is one source short**: feicemat-v2, fosen-ring, glowy-liff and densjet-nova, of
 the five SPEC §6.3 asks. Three are beauty and body-contouring devices; densjet is the only one
@@ -191,16 +272,27 @@ fills a space — a mist plume, a lamp's light, an airflow. Where the output mee
 structure at one place and the effect there is the subject, it is this type. `lp3-21hume-band`'s
 sensing arcs through a wrist sit on that line and stay where they were filed.
 
-**Criterion 3 has no render.** `sets/03-mechanism-contact-01/` is the founding round.
+**Criterion 3 has six renders and no owner verdict.** The founding round,
+`sets/03-mechanism-contact-01/`, rendered 2026-09-16: two pass, four partial, every verdict the
+harness's own, which ADR-011 excludes from promotion. Set 02 tests the two clauses 0.2 adds.
 
 ## KNOWN-FLAKY
-- **Nothing observed.** No render exists for this file.
-- Predicted, from the corpus and two siblings: a figure or depth label appearing unasked (6 of 7
-  corpus frames carry one, and `03-mechanism-xray` records a spec label arriving from its seed);
-  a section cut deeper than the last named layer (A13, 2 of 2 on `03-mechanism-ghostbody`);
-  removed matter spreading through the frame (`03-mechanism-xray` `caught`, 1 render).
+Six renders, 2026-09-16, set `03-mechanism-contact-01`.
+- **The state boundary did not render, 1 of 1.** The callus prompt asked for skin rough ahead of
+  the roller and smooth behind it, with the roller's path as the line between (A8). The heel came
+  back uniformly smooth apart from the flakes at the contact. One observation, so it stays here
+  and the skeleton is untouched.
+- **Three predicted failures did not occur and are struck** (`eval/render-test.md` §5, stale
+  caution is noise): no figure or depth label appeared unasked in any of the six; no cut went
+  below its last named layer, 4 of 4; no removed matter drifted, 2 of 2.
 
 ## CHANGELOG
+- 0.2 (2026-09-16): **founding round — six renders, two pass, four partial** (render-test ts
+  2026-09-16; massage gun, EMS pad, blackhead suction, callus remover, scalp massager, cupping
+  cup). The closed layer list held 4 of 4 and `removed` confinement 2 of 2, so neither is
+  borrowed-untested now. Two clauses added: the cut is a WINDOW and the silhouette survives it
+  (1 of 4 drew a segment); the `surface` form must say what makes the body DRAWN (2 of 2 came
+  back photographic). `PARTS/target` gains the region test. Two worked examples, harness-graded.
 - 0.1 (2026-09-15): drafted from seven observations across four distinct sources, batches
   2026-09-03-H, 2026-09-11-C, 2026-09-11-D and 2026-09-15-A, all seven frames opened first.
   Tier 2 at three sources in `_CURATION-2026-09-11.md`; the Densjet tile is the fourth. New
