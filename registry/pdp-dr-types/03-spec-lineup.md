@@ -3,7 +3,7 @@ id: 03-spec-lineup
 step: 3
 job: spec
 device: lineup
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -45,7 +45,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-lineup v0.1
+TYPE: 03-spec-lineup v0.2
 REGISTER: commercial product photograph. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference; every unit in
@@ -55,8 +55,9 @@ REGISTER: commercial product photograph. One frame, no panels, no insets.
 [SETTING]            one plain ground the units sit on or against. -> PARTS/setting
 [LIGHT]              one direction across the whole row.          -> PARTS/light
 
-[TITLE]              the claim.                                   -> G16/title
-[BADGE]              one short stamp. Bottom LEFT.                -> G16/badge
+[LABELS]             optional: each unit's variant, in the page's word. -> PARTS/variable
+[TITLE]              the range claim, 2–5 words.                  -> SLOT CONSTRAINTS
+[BADGE]              one short stamp. Bottom LEFT, in the set's accent. -> G16/badge
 ```
 
 ## PARTS
@@ -77,6 +78,14 @@ from `product.attributes.colorways` and from `product.raw_features`, never inven
 fabricated-colourway rule binds every unit in the frame at once, so this type multiplies the
 cost of getting it wrong by the number of units.
 
+**Where the variable is the colourway, each unit is its own reference photograph** (ADR-094,
+ADR-076): one photograph per unit, attached in order, and the prompt names each unit as the page
+names that variant — *the first unit is the pink reference* — and never says what it looks like.
+A flavour or a size is named the same way, in the page's own word. **One optional label per unit,
+1–2 words, is that name** and the only text besides the title and the badge: **no feature
+chips.** The one lineup in the owner's runs set three brushes side by side, two alike and one
+turned over, under three feature chips, one of them an invented weight.
+
 **`setting`** — one plain ground, no room, no props, no second product class. A ground tone is a
 runtime value (`parameters: environment`) and changes nothing about what the type is. A real
 surface is legal where the category expects one; a real ROOM is not, because a room gives each
@@ -87,6 +96,9 @@ G5 equivalent:** if one unit is lit differently it reads as favoured, and a rang
 favours one variant has argued for that variant instead of for the range.
 
 ## SLOT CONSTRAINTS
+- **The words** (ADR-094): a range claim of 2–5 words, the per-unit labels, and a badge at the
+  bottom left that may carry the set's accent. At most 16 words in the frame.
+- **Never beside a grid tile**, which `avoid_adjacent` already says.
 - **G1 gains its multi-layer sentence and it is load-bearing here.** *The product must be
   identical in every layer of this image* becomes *identical in every unit except the named
   variable*. `adapters/nano-banana.md` Rule 5 names multi-region consistency as the hardest
@@ -108,7 +120,7 @@ favours one variant has argued for that variant instead of for the range.
 [G6] + a person, a hand, a room, props between the units, a different
 product class in the row, one unit lit or angled differently from the rest,
 a unit in a colourway the product does not really have, reflections that
-break at one unit, more than five units
+break at one unit, more than five units, a feature chip, a colour word for a unit
 ```
 
 ## FOUNDING RENDER ROUND — 2026-09-03
@@ -161,6 +173,11 @@ argument — several units of one product here, a field of rival makers there �
 separation is recorded in ADR-069 rather than in either file.
 
 ## CHANGELOG
+- 0.2 (2026-09-16): the owner's Lineup lands here (ADR-094). Where the variable is the
+  colourway, each unit is its own attached photograph, named in the page's word and never
+  described (ADR-076); one optional 1–2 word label per unit and no feature chip; a range claim
+  of 2–5 words; the badge bottom left in the set's accent. The one lineup in the owner's runs
+  carried three feature chips and an invented weight.
 - 0.1 (2026-09-03): drafted from two hash-verified observations across two batches. Proposed
   in batch 2026-08-31-B as `03-spec-range`; renamed here because `lineup` names the visual
   mechanism — units standing together — while `range` names the subject, and SPEC §3.1 makes

@@ -3,7 +3,7 @@ id: 03-spec-macro
 step: 3
 job: spec
 device: macro
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 channels: [marketplace]
@@ -15,6 +15,7 @@ exempt_from: []
 pairs_with: []
 never_with: [03-spec-split]
 avoid_adjacent: []
+text_layer: [title]
 copied_from: 03-spec-macro
 copied_at_version: "1.0"
 blocked_by: null
@@ -50,6 +51,31 @@ tread — is the entire argument. Texture as proof of engineering; nothing is
 claimed that the surface cannot show.
 
 **Copied verbatim from `registry/types/03-spec-macro.md` at version 1.0** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Feature + Benefit · Material Macro. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words: a title of at most 4 words, set off the texture, and nothing else** — no copy, no
+  chip, no badge. The skeleton's `NO text` line gives way to that on an LP2 page and to nothing
+  more. Four of the owner's six macro renders carried copy or a chip, one chip reading "Material
+  Macro"; the two that carried a title alone both put their photograph in a drawn frame.
+- **The skeleton's `RATIO:` line is not rendered here** (ADR-016, adapter Rule 4). The line itself
+  belongs to the parent's lane.
+- **Light behaviour comes only from material words the page supplies** — matte grain, glints,
+  sheen. With none, the prompt asks for *the surface resolved exactly as the photo shows it, under
+  raking light*. The material is never invented.
+- **The subject is a TRUE region of the photograph** — no cover cut open to show a core; the
+  owner's runs did that once.
+- **A locator never sits in the bottom-right corner, never over the texture, and never inside a
+  drawn frame or an accent ring.** One render did all three.
+- **No frame around the photograph, no panel, no dark grade, no added sheen.**
+- **One macro to a set**, whatever the surface.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]  at most 4 words, off the texture.          -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -160,4 +186,5 @@ observation is superseded (ADR-054); that observation was already counted among
 this type's exemplars, so reversing the ruling adds none.
 
 ## CHANGELOG
+- 1.1 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a title of at most four words and nothing else, material words only from the page, a locator never in the bottom-right, one macro to a set; the skeleton's `RATIO:` line marked as not rendered on LP2. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.0. ADR-094.
 - 1.0 (2026-09-15): copied verbatim from `registry/types/03-spec-macro.md` at 1.0, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

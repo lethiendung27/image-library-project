@@ -656,6 +656,12 @@ So each slot now carries a JOB, taken from the owner's own working instruction
   nothing, it was a restatement and it should go.
 **Each line earns its place by doing a job the line above it did not.**
 
+**LP2 narrows this section** (ADR-094). On a product-gallery page the title runs 2–5 words and
+never past 6, copy is one earned sentence of 6–10 words, and the words are counted over the set
+again — the owner's current generator, `product-gallery-instruction.txt`, superseded the one
+cited above. The bands here stand for every other type that declares a text layer.
+`registry/pdp-dr-instruction.md` carries the LAW for LP2.
+
 ### A badge is a MARK, not a text slot — owner correction, 2026-09-03
 
 `badge` was listed above as a third text slot with one shape: a flat rectangle carrying

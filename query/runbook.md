@@ -323,12 +323,15 @@ reference block where the type demands one, because then nothing binds the
 render to the real product.
 
 **On an LP2 page, declare the session's STYLE LOCK before the first prompt and repeat it in
-every one** (owner instruction, 2026-09-16; `registry/pdp-dr-instruction.md`). Ground, light,
-grade, typeface and accent are named once for the whole set — gallery tiles and section images
-together — and written into each prompt in the same words, so one regex can check them.
-Layout, camera angle, crop and the product's share of frame are what change between prompts;
-a set that resolves to twelve versions of one frame is re-routed rather than shipped. The
-deliverable is a set that reads as one set.
+every one** (owner instructions, 2026-09-16; `registry/pdp-dr-instruction.md`). The two grounds,
+the text colours, the one accent, the typography, the chip form, the design language and the
+lighting family are named once for the whole set — gallery tiles and section images together —
+and written into each prompt in the same words, so one regex can check them. Layout, camera
+angle, crop and the product's share of frame are what change between prompts; a set that
+resolves to twelve versions of one frame is re-routed rather than shipped. **An LP2 prompt
+opens with that namespace's product block instead of G1's, and its words are counted over the
+set** — copy, chips, title-only and wordless tiles (ADR-094). The deliverable is a set that
+reads as one set.
 
 ## Step 6 — Render through the adapter
 

@@ -3,7 +3,7 @@ id: 02-cause-anatomy
 step: 2
 job: cause
 device: anatomy
-version: "1.18"
+version: "1.19"
 status: active
 replaced_by: null
 channels: [landing-page, marketplace, advertorial]
@@ -13,6 +13,7 @@ variants: [diagnostic]
 exempt_from: []
 pairs_with: [01-pain-scene, 03-mechanism-ghostbody]
 never_with: []
+text_layer: [title, copy]
 copied_from: 02-cause-anatomy
 copied_at_version: "1.18"
 blocked_by: null
@@ -27,6 +28,36 @@ right, and the body itself carrying the difference. `--diagnostic` drops the pro
 advertorial middle, where the culprit is named before the product is revealed.
 
 **Copied verbatim from `registry/types/02-cause-anatomy.md` at version 1.18** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Problem Tile · Cause Anatomy. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+No render of this type exists under it.
+
+- **On an LP2 page the product is absent, or a small silhouette.** The tile indicts the everyday
+  object and the page's mechanism tile carries the product, so `--diagnostic` is the default
+  here — and its own condition, *a later image on the same page carries the product*, is met by
+  the gallery's order. The small silhouette is the instruction's addition and has no render.
+- **It pairs with the Body mechanism.** Draw the body the page's `03-mechanism-ghostbody` tile
+  draws — the `ghost-mannequin` style is that body — wrong here and right there. For a seated
+  product that is the spine and the pelvis inside a translucent seated figure.
+- **The admission gate is unchanged**: a POSITION the body takes that can be drawn, never less
+  force with the body held the same way.
+- **Marks:** the wrong curve drawn on the named structure; red on that structure only; one arrow
+  at most; name the structure, never a count.
+- **The words.** A title of 2–5 words naming the cause — *"Flat seats tilt your pelvis"*. Copy
+  only where earned, and then the harm in plain words. No chips.
+- **Place:** image 2 or 3 — after any split or rail, before the mechanism tile.
+- **The ground keeps this type's deep, muted field.** A type's own tone is the reason the set's
+  lock admits a dark key, which settles on the owner's wording the question ADR-091 left open about
+  this row; no render has tested it.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]  the cause, 2–5 words.                      -> LP2 LAW
+[COPY]   the harm, only where earned.               -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -294,4 +325,5 @@ is the CULPRIT, not the product's mechanism; the sentence is "this is what harms
 one palette or they read as two sources.
 
 ## CHANGELOG
+- 1.19 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — the product absent or a silhouette by default on an LP2 page, the pairing with the Body mechanism, its marks and its words; the deep ground kept as the type's own tone. No render under it. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.18. ADR-094.
 - 1.18 (2026-09-15): copied verbatim from `registry/types/02-cause-anatomy.md` at 1.18, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.18"
+version: "1.19"
 status: active
 replaced_by: null
 channels: [landing-page, marketplace, paid-social, advertorial]
@@ -17,6 +17,7 @@ variants: []
 exempt_from: []
 pairs_with: [01-pain-split, 01-pain-scene]
 never_with: []
+text_layer: [title, copy]
 copied_from: 06-relief-hero
 copied_at_version: "1.18"
 blocked_by: null
@@ -30,6 +31,28 @@ axes — `register` (commercial | ugc), `inset_mode` (vsinset | recall | context
 none) and `inset_motion` (still | loop) — named `06-relief-hero--{register}--{inset_mode}`.
 
 **Copied verbatim from `registry/types/06-relief-hero.md` at version 1.18** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Outcome Hero. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words.** A title of 2–5 words — the relief state as the reader feels it. Copy of 6–10
+  words only where earned, by a timeframe or a mechanism. At most one chip, and only where
+  earned. The setting's text ban stands for every prop.
+- **The text block or the inset occupies 70–85% of the space the subject is offset from**, as
+  `offset` already says, and nothing else is reserved there.
+- **No inset in the bottom-right corner** — `--detail` "at a corner" means one of the other
+  three. One of the owner's two vsinset renders sat there.
+- **A seated product is seen whole** (the instruction's product section): a side profile or a rear
+  three-quarter, at least 15% of the frame, on a host of a clearly different tone.
+- **Place:** image 2 or 3, or the closing tile; the first one closes the problem phase.
+- Commercial by default, and `--ugc` never in a marketplace gallery.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]  the relief state, 2–5 words, in the offset space. -> LP2 LAW
+[COPY]   only where earned.                         -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -321,4 +344,5 @@ carry over, the lettering ones do not.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.19 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — its words, no inset in the bottom-right, a seated product seen whole, its place in the gallery. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.18. ADR-094.
 - 1.18 (2026-09-15): copied verbatim from `registry/types/06-relief-hero.md` at 1.18, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

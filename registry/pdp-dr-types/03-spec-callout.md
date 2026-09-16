@@ -3,14 +3,14 @@ id: 03-spec-callout
 step: 3
 job: spec
 device: callout
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
 requires_product_photo: true
 generation_mode: single-pass
 axes: {}
-text_layer: [title, copy, badge]
+text_layer: [title, badge]
 variants: []
 exempt_from: [G7]
 pairs_with: []
@@ -68,7 +68,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-callout v0.3
+TYPE: 03-spec-callout v0.4
 REGISTER: commercial product photograph. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -77,7 +77,7 @@ REGISTER: commercial product photograph. One frame, no panels, no insets.
 [LIGHT]              even enough that every annotated part reads.  -> PARTS/light
 [CALLOUTS]           where each label sits and what joins it.      -> PARTS/callouts
 
-[TITLE]              the claim the whole frame makes. Optional.    -> G16/title
+[TITLE]              the one claim, 2–5 words. Optional.           -> SLOT CONSTRAINTS
 [BADGE]              one short stamp, in a named corner. Optional. -> MARKS
 ```
 
@@ -122,6 +122,14 @@ empty ground.
   one device.
 - **dashed leader** — the same as a leader line, drawn broken. A styling choice.
 
+**Each label names a PART, and the part delivers the frame's one claim** (ADR-094). "Lumbar
+curve", "tailbone cutout", "atomiser" are parts; "hip alignment", "one-piece stability" and
+"high-density foam" are benefits or properties with no place, and three of the owner's five
+callout renders carried at least one of them. **Four labels are the safe count; at six, two
+leaders cross** — this type's founding round, and at five in one of those renders. No copy line:
+the labels are the tile's words besides the title, and the render that added copy changed its
+typeface with it. No second product, and no arrow between labels.
+
 **Every label must point at something the frame actually shows.** A label naming a part that is
 not visible is argument-fault A2 wearing a line: a mark states, it cannot suppose. Where a claim
 has no place on the object — a warranty, a certification, a feeling — it does not belong in
@@ -144,7 +152,7 @@ rectangles, which is the monotony that put this section here.
 |---|---|---|
 | `tag` | a flat rectangle, square or lightly rounded, capitals cut out of the fill | technical, tools, anything that reads as engineered |
 | `roundel` | a filled circle carrying a short figure or a two-word fact | a number that should feel like a stamp — a count, a rating, a spec |
-| `chip` | a small line icon in a circle with one short label beneath it | a capability, where the icon does half the reading |
+| `icon-disc` | a small line icon in a circle with one short label beneath it — called `chip` until ADR-094, when the namespace's flat chip form took that word | a capability, where the icon does half the reading |
 | `flash` | a corner triangle or ribbon crossing one corner of the frame | urgency and offers. **Carries the highest going-stale cost**, since what a flash usually says is a price or a date |
 
 **One badge per frame.** Two stamps compete and neither is read.
@@ -152,7 +160,7 @@ rectangles, which is the monotony that put this section here.
 tool's watermark (`adapters/nano-banana.md` Rule 7). The founding round asked for `roundel`
 upper right and `tag` lower left and got both, 2 of 2, so the corner is a per-product choice
 rather than a constant.
-**Tested: `roundel` and `tag`, 1 render each, both clean.** `chip` and `flash` have no render
+**Tested: `roundel` and `tag`, 1 render each, both clean.** `icon-disc` and `flash` have no render
 and their first is their founding evidence, the treatment ADR-012 gave a MARKS entry with
 nothing behind it.
 **A badge is sized by the anchor and the anchor WORKS on a badge** — 0.51 and 0.59 of the
@@ -185,13 +193,16 @@ small composition, and it is what makes a stamp read as a stamp rather than as a
   registry: a title, up to six labels, and a badge. That was past the five-cluster budget
   G16's own founding rounds measured, and the count rule was provisional on it. **It is no
   longer**: eight clusters were asked for and eight came back, once each. The band stands.
+  **On an LP2 page the frame holds at most 16 words, labels included** (ADR-094): a title of
+  2–5 words and 3–6 labels of 1–3 words each, and no copy.
 - **G7 exemption, narrow** — an object arranged on a plain ground for annotation exists only
   to be photographed. Covers the arrangement only, per G7's scope note as amended by ADR-064.
 - **G3 is engaged more often than it is honoured**, and the corpus says so: four frames in one
   batch used colour for the product's own LED modes, for an improved audio signal, for
   corrected airflow and for an active sensing field. None is a signal in the library's sense.
-  Where this type uses colour on a callout it uses ONE neutral, and where the product's own
-  colours name its modes they are the product's, not marks.
+  The labels take the set's chip form in ONE neutral; **a leader may carry the set's accent**,
+  and nothing else in the callouts does (ADR-094). Where the product's own colours name its
+  modes they are the product's, not marks.
 - **G8 is not engaged** unless the product visibly emits; where it does, the emission is the
   subject and the callouts sit around it.
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
@@ -201,7 +212,8 @@ small composition, and it is what makes a stamp read as a stamp rather than as a
 [G6] + a person, a hand, a room with objects in it, a second product,
 a label pointing at a part not visible in frame, more than six labels,
 more than one magnified inset, arrows carrying a reading order between labels,
-dramatic side light, a part in shadow
+dramatic side light, a part in shadow, a copy line, a label naming a benefit
+rather than a part
 ```
 
 ## WORKED EXAMPLES
@@ -370,6 +382,11 @@ the boundary is that a leader POINTS AT a part and a dimension line SPANS an edg
 sentence has never met a router.
 
 ## CHANGELOG
+- 0.4 (2026-09-16): the owner's Callout lands here (ADR-094). Each label names a PART that
+  delivers the one claim — three of the owner's five callout renders labelled a benefit or a
+  property instead; four labels safe, six cross; no copy, so `text_layer` drops `copy`; at most
+  16 words; labels in the set's chip form, the accent allowed on a leader. The badge form `chip`
+  becomes `icon-disc`, since the namespace's flat chip form now owns that word.
 - 0.3 (2026-09-03): owner audit of the founding round — colour. `PARTS/setting`: the ground
   is quiet by default; a dark or saturated one needs a reason. Measured — corpus ground
   value median 0.89 over 119 frames against 0.30 and 0.48 here. `MARKS` gains the badge

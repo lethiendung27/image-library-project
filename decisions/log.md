@@ -6783,3 +6783,236 @@ Rule 6c sweeps: `"style lock"` (6 hits, 4 files, 3 TEACHES), `"one message"` (16
   purpose, and `03-mechanism-contact-02` now says so in its own words.
 
 ---
+
+## ADR-094 · 2026-09-16 · The owner's tested gallery instruction lands in LP2: the lock gets its fields, the product gets its block, the words get counted, and the Endorsed tile is not written
+
+**Owner instruction, 2026-09-16:** *"product-gallery-instruction.txt tôi đã test và chạy thử, có
+kết quả của instruction này, việc cần làm bây giờ là đưa các cơ chế của instruction vào các type
+ảnh tương ứng"* — the owner tested the instruction, the results exist, and its mechanisms go into
+the matching image types.
+
+**What the instruction is.** `~/Downloads/product-gallery-instruction.txt`, saved 16:34, is the
+owner's own gallery generator — the successor of `product gallery img.txt`, which G16 already
+credits as *"the generator this library is being built to replace"* and took its title and copy
+bands from on 2026-09-03. It writes a twelve-tile gallery for one product under one style,
+through seven types in gallery order, with a ledger carried from tile to tile.
+
+**What it was tested on — read before anything was written.** 77 renders in the owner's
+`feedback/` folder, all opened and read, in six batches:
+
+| batch | time | product | tiles |
+|---|---|---|---|
+| 1 | 10:47–10:50 | L-shaped seat cushion | 20 |
+| 2 | 11:15–11:20 | the same | 20 |
+| 3 | 13:02–13:03 | the same | 7 |
+| 4 | 13:12–13:13 | the same | 6 |
+| 5 | 15:04–15:06 | the same | 11 |
+| 6 | 16:23–16:29 | spray massage comb | 13 |
+
+Eleven more files were byte-identical copies of batch 5 in `~/Downloads`, dropped by sha256. No
+repo prompt produced these renders, so **none of them is written to `eval/render-tests.jsonl`**:
+a ledger line names the type version that rendered, and none did. They are this decision's
+evidence, cited below by sha256 prefix.
+
+**What the renders showed, and which clause each finding became.** Counts are this session's
+reading of the 77 files.
+
+| finding | n | renders (sha256 prefix) | became |
+|---|---|---|---|
+| the product in more than one colourway inside one batch | 5 of 6 batches | batch 1 `8b28bb4a687a` against `219dcaac166d`, `162d5ee4a486`, `943c3d2dd1b9`; batch 2 `8380fe08ff93`; batch 4 `8ff5aafae6fc`; batch 5 `0604bf41837e` against `3fce5fcac559`; batch 6 `8b72d887537d` against `2296b302021a` | the product block, one variant per set |
+| a superlative or absolute from the owner's list | 22 of 77 | e.g. `a2bcb2929c3d`, `bdef14c16713`, `0604bf41837e`, `d2b8815940e3`, `3e59f0fe4015` | the never-list |
+| a verdict word | 8 of 77 | `219dcaac166d`, `943c3d2dd1b9`, `c4dd0b969fa6`, `44a920c82180`, `f32891d22a9c`, `ac4c8e8fe155`, `d5c9f4d7cdfc`, `09dccd07d612` | the never-list |
+| a figure nobody supplied | 8 of 77 | `943c3d2dd1b9`, `bd8a1f46d3bc`, `ae0f9a7e9501`; batch 6: `2296b302021a`, `e9e73e7b624a`, `38d3db533247`, `ba2aed1ffa40`, `760a1682bb0b` | A15, restated in the never-list |
+| a health or medical outcome | 5 of 77 | `bd8a1f46d3bc`, `8ca5cd5dc9c5`, `e7dd8b72f09f`, `7fda082f3322`, `4b4eb6d63f19` | the never-list |
+| copy on every tile, a chip on every tile | batch 1, 20 of 20 each | all of batch 1 | TITLE ONLY, earned copy and chips, caps per twelve |
+| a tile with a title and nothing else | 6 of 77; no tile without words | `deac8e9a369b`, `3dcd86aa342d`, `617a7d0d0982`, `8afc35c350c2`, `38c61ec7b17c`, `8b72d887537d` | the title-only and wordless floors |
+| the same title and copy shipped twice | 1 pair | `7fda082f3322`, `4b4eb6d63f19` | feature keys; a repeated title is a duplicate tile |
+| "use it in a place" scenes | 7 and 8 of 20 | batches 1 and 2 | at most two to a set |
+| a typeface the set did not use | 3 | `219dcaac166d`, `44a920c82180`, `b27592fe6f40` | the lock's typography row |
+| a photograph or panel in a drawn frame | 10 | `bdef14c16713`, `162d5ee4a486`, `0d057939aeb3`, `8e1bfe7eb823`, `f234c3e08d0e`, `dabee99a66b1`, `617a7d0d0982`, `0a516d17d395`, `38c61ec7b17c`, `59a0ebecc25e` | the lock's design-language row |
+| a signal blue on a frame, ring, line, arrow or the product | 6 of 13 in batches 3–4 | `dabee99a66b1`, `4d39a0b92618`, `617a7d0d0982`, `0a516d17d395`, `76f4d991d0eb`, `0cc83fa16b87` | the lock's accent row: never a mark |
+| a stacked chip; a figure boxed in a chip; chips in two cases within a batch | 1; 1; 5 of 6 batches | `46bc040d5a62`; `943c3d2dd1b9` | the lock's chip-form row |
+| a type name printed as a chip | 1 | `2fac81036fbf` ("Material Macro") | no repo name reaches a prompt |
+| words set along an arrow came back as nonsense | 1 | `8ca5cd5dc9c5` | words never on an arrow, line or diagram |
+| a leader into empty ground, or a meaningless line | 4 | `50c696d71b1c`, `b421a501cf3c`, `4df95ffac67b`, `02e8a8c8dcaf` | a leader ends on the part it names |
+| an interior the product does not have | 3 | `990391b51ec0`, `d5c9f4d7cdfc`, `4d39a0b92618` | no invented interior; X-ray only on named components |
+| a diagram painted onto the product | 4 | `e91a20f8aa02`, `8b8d6733c905`, `4d39a0b92618`, `e7dd8b72f09f` | never on the product; the Principle form |
+| an emission the product does not make | 3 | `8b8d6733c905`, `4df95ffac67b`, `4d39a0b92618` | the functional cue is real or absent |
+| a seated product hidden, or on a chair of its own tone | 6 | `bd8a1f46d3bc`, `f32891d22a9c`, `6b3591f22410`, `32de414339e3`, `8380fe08ff93`, `d2b8815940e3` | side or rear view, at least 15%, a host of a different tone |
+| an arrow printed on the shipping box | 2 | `cad1856bd216`, `dabee99a66b1` | nothing drawn, including on packaging |
+| an inset or locator in the bottom-right corner | 2 | `ae0f9a7e9501`, `617a7d0d0982` | the named corners |
+| split: BEFORE in colour; marks not flat discs in the top corners | 2 of 4; 2 of 4 | `12be8a8d2174`, `2650e42a9b7b`; `3dcd86aa342d`, `2650e42a9b7b` | `01-pain-split` `LP2 LAW` |
+| rail: rectangles and an x-ray; rendered skeletons in blue rings; "Relief" as a label; a frowning hero | 3 of 3 | `f5bf83196846`, `0a516d17d395`, `310da09b153b` | `02-symptom-rail` `LP2 LAW` |
+| comparison: headers repeated, copy printed twice, arrows, an invented test | 3 of 3 | `bdef14c16713`, `943c3d2dd1b9`, `76f4d991d0eb` | `04-proof-lockedframe` `LP2 LAW` |
+| sequence panels in frames | 3 of 4; one clean | `f234c3e08d0e`, `dabee99a66b1`, `59a0ebecc25e`; clean `8e25d2460cf6` | `03-use-sequence` `LP2 LAW` |
+| grid framed, labelled or bracketed | 3 of 4; one clean | `8e1bfe7eb823`, `1d5b8ae8f1b8`, `ed4fa6f64b65`; clean `8afc35c350c2` | `03-use-grid` `LP2 LAW` |
+| a callout label naming a benefit, not a part | 3 of 5 | `66e9b917f80b`, `b27592fe6f40`, `3e59f0fe4015` | `03-spec-callout` 0.4 |
+| a macro with copy or a chip | 4 of 6 | `56ade28b6c42`, `990391b51ec0`, `02e8a8c8dcaf`, `2fac81036fbf` | `03-spec-macro` `LP2 LAW` |
+| a hero with a line, a leader, a restating chip or an invented name | 4 of 5; one clean | `8b28bb4a687a`, `a2bcb2929c3d`, `b421a501cf3c`, `c37b9ba8c245`; clean `deac8e9a369b` | `03-spec-hero` 0.2 |
+| a vessel network drawn across a whole head | 2 | `7fda082f3322`, `4b4eb6d63f19` | `03-mechanism-contact` 0.4: nothing away from the contact place |
+| a lineup with feature chips and an invented weight | 1 | `760a1682bb0b` | `03-spec-lineup` 0.2 |
+| an invented, named dermatologist recommending the product | 1 | `09dccd07d612` | **not written — see below** |
+| a child's hair brushed at a dressing table, a towel on her shoulders | 1 | `198594580abe` | G13 restated beside the people rule |
+
+**And what held.** Every titled render ran one to five words, 75 of those 76 titles read
+correctly, and no text block was drawn twice. The clean tiles the type sections cite are a
+title-only hero on a seamless, a 2×2 compatibility grid, and a labelled three-panel sequence.
+
+### Decision
+
+**1. The namespace law, in `registry/pdp-dr-instruction.md`.**
+- **The lock's fields are the owner's.** Two ground treatments that alternate; a text colour per
+  ground; ONE accent, allowed on the chip form, a Callout leader and a declared badge and never on
+  a frame, border, ring, arrow, line, glow, mark or the product; one typography — one family, or a
+  title face and a copy face where the page's style line names two; one flat chip form; a design
+  language that never names a device and never frames a photograph; one lighting family. The style
+  line seeds the lock and never touches the product; with none, the lock is neutral.
+- **The product block replaces G1's on an LP2 page** — the owner's clause, with G1's "do not
+  redesign" sentence kept word for word, and the owner's two conditional sentences (several
+  photographs attached; the product shown more than once) written only where their case exists,
+  as G1 already treats its own multi-layer sentence. **The owner's example list of parts — body,
+  trim, metal rings, buttons, bristles, tips — is left out**: each item is a construction word G2
+  bars, and for a product without that part it invites one.
+- **The words are counted.** TITLE ONLY by default; copy and chips earned; title 2–5 words, never
+  past 6; copy 6–10 words, one sentence; a chip 1–3 words and one to a tile; at most 16 words to a
+  frame; per twelve tiles copy on at most 6, a chip on at most 4, a title alone on at least 4, no
+  words on at least 1; the never-list — superlatives, verdict words, unsourced figures, health
+  outcomes; no repo name in a prompt; flat type; one secondary element at most. **The hook stays**:
+  G16's finding that length never separated a hook from a caption holds, and the owner set the hook
+  short.
+- **Feature keys, and one family of place scenes, at most two to a set.**
+- **Composition, scene and people**: camera families rotate, none more than twice in twelve;
+  devices only where the frame earns them; the named corners; leaders only where a type calls for
+  one and ending on a part; words never on an arrow; a photographic scene unless the type renders;
+  a functional cue only where the product makes one; people wherever they serve, **G13 unchanged**.
+- **Casting — the owner's rule of 2026-09-16, recorded as the owner's**: the page's target market;
+  where none is named, European or North American; never Asian-presenting; named positively in
+  the prompt.
+- **A type map** from the instruction's seven types to LP2 ids.
+
+**2. Routing, in `mapping/pdp-dr-rules.md`** — nine cross-slot rules where there were five: one
+type per page with its variants; the page arc with named places; **the mechanism-class budget** —
+at most two tiles from mechanism, comparison or proof, and use steps, one mechanism variant — which
+widens the step-3 trio and still contains it; the lock's fields; no angle twice in a row and no
+family more than twice in twelve; one product variant; a Lineup never beside a Grid; at most two
+place scenes; the words counted over the page. **And the set's ledger**, which a set's `check.py`
+checks.
+
+**3. Into the types.**
+- **Nine active copies gain a `## LP2 LAW` section and a `text_layer`**: `01-pain-split`,
+  `02-symptom-rail`, `02-cause-anatomy`, `03-spec-macro`, `03-use-sequence`, `03-use-grid`,
+  `04-proof-lockedframe`, `06-relief-hero`, `06-relief-scene`. Every other section of each copy is
+  still its parent's spliced text; the new section is the divergence ADR-091 §7 made room for,
+  gathered in one place so a re-splice keeps it. **From its first LP2 edit a copy's `version` is its
+  own sequence**, so each moves one minor step while `copied_at_version` stays where it was — the
+  only field `scripts/validate.py` compares.
+- **Five LP2 drafts change in place**: `03-mechanism-contact` 0.4, `03-spec-hero` 0.2,
+  `03-spec-callout` 0.4 (whose `text_layer` drops `copy`), `03-spec-lineup` 0.2,
+  `06-relief-claimstack` 0.7.
+- **The badge form `chip` becomes `icon-disc`** in `03-spec-callout` and `06-relief-claimstack`,
+  so the namespace's flat chip form owns the word alone.
+- **`03-mechanism-ghostbody` and `03-mechanism-xray` take their LP2 law in the instruction file**,
+  not in the copies: their parents stand at 2.4 and 1.5, uncommitted, in another lane whose commit
+  owes the re-copy (ADR-091). **That re-copy should carry the two blocks from the type map into
+  each copy's `LP2 LAW`.** Until then the instruction binds them, as it binds every copy.
+- **Three of the instruction's mechanisms get no file**: Principle and Demonstrated have no corpus
+  id and no passing render, and Applied Use Storytelling's nearest proposal, `03-use-demo`, stays
+  undrafted under ADR-078. Their definitions are written in the type map for the draft that comes.
+
+**4. The Endorsed tile is not written.** The instruction lets an expert recommend the product under
+a persona the page supplies or one the writer invents. **An invented expert is a fabricated
+endorsement**: the LAW row G14 carries, whatever the name, because the endorsement rules G14 cites
+turn on an endorser who exists and holds the expertise claimed. **A real expert is a real
+photograph**: the instruction itself bars generating a real person's likeness, and a named person's
+portrait is the `author` row of `mapping/slot-rules.md`, out of scope since 2026-08-18. So no
+generated form is left, and `05-social-testimony`'s BLOCK already says the same of a generated
+person testifying to the lens. The nearest thing the namespace offers is the Demonstrated form — an
+unnamed person, no title, **no clinical dress or setting**.
+
+### Reversals, recorded as reversals
+
+- **G16's bands, on an LP2 page only.** Title 6–12 words → 2–5, never past 6; copy 5–15 words on up
+  to three lines → 6–10 words in one sentence; the 2026-09-03 waiver of the caps → counts per
+  twelve tiles. Both bands came from the owner's earlier generator, and the owner's current one
+  replaces them. **G16 keeps them for the toplist ledes** (ADR-071), and gains a pointer.
+- **ADR-093's lock rows.** Ground → two treatments that alternate; "one typeface" → one typography,
+  two faces where the style line names two; the accent "marks, chips and badges may use" → never a
+  mark.
+- **`03-spec-hero`'s "the market writes at 8.0 words"** as a target.
+- **The step-3 trio as LP2's whole budget** → the mechanism-class budget, which contains it.
+- **ADR-091's open question on `02-cause-anatomy`'s ground** is settled on the owner's wording: a
+  type's own dark tone is the reason the lock admits one. No render has tested it.
+
+### Consequences
+
+The rule-6c sweeps ran before any teaching file was edited (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"6–12 words"` | 5 | 5 | 2 |
+| `"5–15 words"` | 2 | 2 | 1 |
+| `"8.0 words"` | 5 | 5 | 3 |
+| `"12-word hook"` | 4 | 4 | 2 |
+| `"caps do not bind"` | 2 | 2 | 1 |
+| `"up to **three**"` | 2 | 2 | 1 |
+| `"Step-3 budget"` | 55 | 28 | 4 |
+| `"product gallery img"` | 2 | 2 | 1 |
+| `"one typeface"` | 8 | 6 | 3 |
+| `"chips and badges may use"` | 2 | 2 | 1 |
+| `"icon in a circle"` | 4 | 4 | 3 |
+| `"two grounds"` | 9 | 7 | 1 |
+| `"verbatim copy"` | 21 | 14 | 8 |
+
+And after the edits, because the change introduces its own block: `"G1 reference block"` (22 / 17 / 2),
+`"G16/title"` (9 / 9 / 9), `"G16/copy"` (2 / 2 / 2).
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the copy bullet, the budget bullet, the lock,
+  rule 2's keys, rule 4, the new product section, the text section, the LAW rows' lead and the
+  Endorsed paragraph, the ground's two treatments, the new composition section, the G1 bullet, the
+  new type map. `mapping/pdp-dr-rules.md` — the cross-slot section and the one-message paragraph.
+  `03-spec-hero.md` — the 8.0-word bullet.
+- **Amended:** `SPEC.md` §3.8 — the copy bullet gains `LP2 LAW`, the `text_layer` bullet the LP2
+  narrowing. `query/runbook.md` Step 5 — the lock's fields, the product block, the counted words.
+  `registry/rules.md` G16 — one pointer paragraph after the two jobs.
+- **These hits stand:**
+  - G16's `6–12 words`, `5–15 words`, `8.0 words`, `12-word hook`, `caps do not bind`, `up to three`,
+    `product gallery img` and `one typeface` — true for every text-layer type outside LP2, and the
+    pointer routes an LP2 reader away from them.
+  - `Step-3 budget` in `mapping/slot-rules.md` and `query/runbook.md` — LP1's rule, which still holds
+    on an LP2 page inside the wider budget; the runbook's "applies unchanged" stays true.
+  - `icon in a circle` in G16's list of observed badge forms — a description, not a name.
+  - `two grounds` in `03-spec-stilllife` — a render count, not a rule.
+  - `verbatim copy` in `CLAUDE.md`, `mapping/pdp-dr-rules.md`, `ingestion/runbooks/curate.md`,
+    `07-identity-inhand.md`, `registry/toplist-instruction.md` and `registry/vocabulary.yaml` —
+    every section a copy splices is still verbatim; the `LP2 LAW` section is the one addition and
+    SPEC §3.8 names it.
+  - `G1 reference block` in `query/runbook.md` and `mapping/content.schema.json` — about attachments
+    and paste-and-run, true of the LP2 block, which is G1's form here.
+  - `G16/title` and `G16/copy` arrows in eight LP2 drafts and one toplist type — G16 is still where
+    a title's job is defined, and its pointer carries the LP2 narrowing.
+- **New in the type files:** nine `LP2 LAW` sections and nine `text_layer` keys; five drafts moved.
+- **`README.md`**: the ADR count, regenerated.
+- **Generated:** `registry/pdp-dr-index.yaml` (nine copies' versions and layers) and
+  `dist/app-bundle/` (the nine copies, both LP2 law files, the runbook, SPEC and the rules).
+  `registry/index.yaml` does not move: no LP1 file changed.
+- `registry_version` unchanged — no type's status moves, and no slot routes differently.
+
+### What is NOT done
+
+- **The two pending copies.** `03-mechanism-ghostbody` and `03-mechanism-xray` keep their law in the
+  instruction until the other lane's re-copy lands.
+- **No file for Principle, Demonstrated or Applied Use Storytelling**, and `03-use-demo` stays
+  undrafted.
+- **The eight `G16/title` arrows** are not repointed; the G16 pointer carries them.
+- **The two unrendered sets written under the old bands** — `03-mechanism-contact-02` and
+  `seat-cushion-01` — keep their longer titles. They test the versions they name.
+- **The parents' `TYPE:` lines that lag their own versions** — `01-pain-split` v1.8,
+  `03-use-sequence` v1.9, `04-proof-lockedframe` v1.13, `06-relief-hero` v1.15 — are the parents'
+  text and stay as spliced.
+- **The casting rule is recorded, not measured.** The only render the instruction ties to it is the
+  invented dermatologist, 1 of 1, and this repo does not tally the apparent ethnicity of rendered
+  people.
+- **Nothing enforces the counts on a routed page.** The first set built under this law carries a
+  `check.py` that does, which is also where ADR-093 said the lock's check belongs.
+
+---

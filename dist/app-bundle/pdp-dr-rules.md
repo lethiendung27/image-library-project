@@ -57,7 +57,8 @@ a violation.
 three unrelated features is not one slot's worth of argument: the page arc decides which
 feature this tile makes, and the others belong to other tiles or to a claim stack whose lines
 all support the same message. Routing a three-feature paragraph into one tile is how a gallery
-ends up with a frame nobody can summarise.
+ends up with a frame nobody can summarise. A set counts messages as feature keys, and a new
+tile needs a key the set has not used (`registry/pdp-dr-instruction.md`, ADR-094).
 
 ### The finding this table exists to record: step 1 is EMPTY
 
@@ -116,29 +117,54 @@ not in the table above.
 
 ## Cross-slot rules — where a gallery differs from an advertorial
 
-All of `mapping/slot-rules.md`'s portfolio constraints apply. Five do more work here — three
-because of the page's shape, and two the owner added on 2026-09-16:
+All of `mapping/slot-rules.md`'s portfolio constraints apply. Nine do more work here — three
+because of the page's shape, and six the owner added on 2026-09-16 (ADR-093, ADR-094):
 
-1. **One type at most once per page.** A twelve-tile gallery is **not** a repeating section in
-   cross-rule 2's sense. A roundup's ranked entries are equivalent list items; a gallery's
-   tiles are a linear argument, and repeating a type across a linear funnel repeats an
-   argument. The exception stays available to a review wall inside the page, which is a
-   genuine repeating section.
-2. **Page arc, G4 at page level.** Cause tiles precede relief and outcome tiles; a problem
-   tile never reappears after the first relief tile. With twelve slots there is room to break
-   this without noticing.
-3. **Step-3 budget.** At most two of `03-mechanism-ghostbody`, `03-spec-split`,
-   `03-use-sequence`. `03-spec-macro` is the corpus's commonest mechanism tile at 13 sources
-   and is **not** in that trio, so a gallery can carry it alongside two of the three — which
-   is what the corpus does.
-4. **One style lock per session** (owner instruction, 2026-09-16). Every image a session emits
-   for a page — gallery tiles and section images alike — shares one ground, one light, one
-   grade, one typeface and one accent colour, named once and then repeated in every prompt in
-   the same words. The lock's fields are in `registry/pdp-dr-instruction.md`.
+1. **One type at most once per page**, and a type's variant or form counts as the type. A
+   twelve-tile gallery is **not** a repeating section in cross-rule 2's sense. A roundup's
+   ranked entries are equivalent list items; a gallery's tiles are a linear argument, and
+   repeating a type across a linear funnel repeats an argument. The exception stays available to
+   a review wall inside the page, which is a genuine repeating section.
+2. **Page arc, G4 at page level, with places named.** Image 1 is the standard packshot and out of
+   scope. **Problem tiles sit at images 2–3 and never after the first Outcome Hero** — a split
+   before a rail, a cause anatomy after either and before the mechanism tile. **The mechanism
+   tile sits at 3–4**, after the problem tiles and before the use steps; **use steps at about
+   4–5**; **an Outcome Hero at 2–3 or closing**, the first one closing the problem phase. With
+   twelve slots there is room to break this without noticing.
+3. **The mechanism-class budget** (ADR-094, widening the step-3 trio). **At most two tiles per
+   page** from three groups: any mechanism (`03-mechanism-*`, and the Principle and Demonstrated
+   forms once they have files); any comparison or proof (`04-proof-lockedframe`, `04-proof-stat`,
+   `03-spec-split`); any use steps (`03-use-sequence`, `03-use-grid`). **One mechanism variant
+   per page** unless the page asks for two. `mapping/slot-rules.md`'s trio — at most two of
+   `03-mechanism-ghostbody`, `03-spec-split` and `03-use-sequence` — sits inside this budget and
+   still holds. `03-spec-macro` is outside it: the corpus's commonest mechanism tile at 13
+   sources, a feature tile in the owner's taxonomy, and one to a page whatever the surface.
+4. **One style lock per session.** Every image a session emits for a page — gallery tiles and
+   section images alike — shares the lock's two grounds, its text colours, its one accent, its
+   typography, its chip form, its design language and its lighting family, named once and then
+   repeated in every prompt in the same words. The fields are in
+   `registry/pdp-dr-instruction.md`.
 5. **Composition varies tile to tile.** Layout, camera angle, crop and the product's share of
    frame are where a gallery shows design, and the style lock is not a licence to repeat one
-   frame twelve times. A routed SET whose options all resolve to the same camera is a set to
-   re-route, not a page to ship.
+   frame twelve times. **No tile repeats the previous tile's angle, and no angle family appears
+   more than twice in twelve.** A routed SET whose options all resolve to the same camera is a
+   set to re-route, not a page to ship.
+6. **One product variant per page** — the first photograph attached, or the one the page names.
+   Another variant appears only in a Lineup tile, or where the page asks.
+7. **A Lineup and a Grid are never adjacent.** `03-spec-lineup` already names both grid types in
+   `avoid_adjacent`.
+8. **At most two "use it in a place" scenes per page** — office, car, truck, gaming, wheelchair,
+   pregnancy — unless the page asks for a persona series; `06-relief-scene` always counts. At
+   two, the idea is re-cut as a feature, an outcome or a grid tile.
+9. **The words are counted over the page.** Per twelve tiles, scaled to any other count: copy on
+   at most 6, a chip on at most 4, at least 4 tiles carrying a title alone, at least 1 carrying
+   no words. The law, and what a line may never say, are in the instruction's text section.
+
+**The set keeps a ledger, and every tile reads it before it chooses anything.** Tile by tile and
+cumulatively: the types used, the message keys used (feature keys, not sentences), the angle
+families used, and the copy, chip, title-only, wordless and place-scene counts. A new tile takes
+a type, a key and an angle the ledger does not already hold; a set whose ledger breaks a count
+above is re-routed rather than shipped. The ledger is what a set's `check.py` checks.
 
 ## What happens when the reserved files unblock
 

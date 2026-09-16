@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.16"
+version: "1.17"
 status: active
 replaced_by: null
 channels: [advertorial, landing-page, marketplace, paid-social]
@@ -16,6 +16,7 @@ variants: [rivals, verdict, timelapse, capture]
 exempt_from: [G3, G4, G11]
 pairs_with: [02-cause-anatomy, 06-relief-hero, 01-pain-scene]
 never_with: []
+text_layer: [title, copy]
 copied_from: 04-proof-lockedframe
 copied_at_version: "1.16"
 blocked_by: null
@@ -29,6 +30,29 @@ constant, exactly one variable changes. No badges, no glow, no winner declared �
 does not ask for belief, it invites a look.
 
 **Copied verbatim from `registry/types/04-proof-lockedframe.md` at version 1.16** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Feature + Benefit · Comparative / Proof. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words.** A spec-led title of 2–5 words. **Panel headers once, above the panels, never
+  repeated below**, and they count as copy. Any other copy only as a figure the page supplies with
+  its source (A15). The register's "no text" gives way to these on an LP2 page and to nothing else.
+- **No icon and no pictogram.** A stopwatch drawn beside one panel came back labelled.
+- **Never an invented test, a cycle count, or "tested" or "approved".** One render set a steel
+  press on the product under an invented "10,000+ Cycles".
+- **A certification the page supplies may be stated in words, with its source; the certification
+  MARK may not** — that is the trademark question of 2026-08-18.
+- **The generic rival stays plain and unbranded, never broken or mocked** — the fairness rule
+  already says so.
+- Each of the owner's three comparison renders broke a clause here: headers repeated beneath the
+  panels or again as a chip, a copy line printed twice, arrows between the panels, an invented test.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]    spec-led, 2–5 words.                     -> LP2 LAW
+[HEADERS]  one per panel, above it, once.           -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -250,4 +274,5 @@ the cause is the only thing this variant supplies.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.17 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a spec-led title and headers once above the panels, a figure only with its source, no icon, no invented test, a certification in words and never as a mark. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.16. ADR-094.
 - 1.16 (2026-09-15): copied verbatim from `registry/types/04-proof-lockedframe.md` at 1.16, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

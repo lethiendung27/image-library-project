@@ -331,7 +331,10 @@ LP2's routing surface, by the same `--write-index`.
   `WORKED EXAMPLES` and `CHANGELOG` are not copied; the validator warns when the parent moves
   past `copied_at_version`. It also warns on an active image type with no file here, because
   a promotion into `registry/types/` does not reach LP2 by itself: copy it, or copy it
-  `reserved` with a `BLOCK` saying why LP2 must not use it.
+  `reserved` with a `BLOCK` saying why LP2 must not use it. **A copy that must differ on an LP2
+  page carries the difference in one `## LP2 LAW` section of its own**, which a re-copy keeps;
+  from its first LP2 edit its `version` is its own sequence and `copied_at_version` is the only
+  link to the parent (ADR-094).
 - **Anatomy and frontmatter are an image type's** (§3.3, §3.4) — same required sections,
   same keys — plus `blocked_by`, which is non-null exactly when `status: reserved`, and the
   copy pair above. A reserved type also owes a `BLOCK` section naming the decision or the
@@ -348,7 +351,9 @@ LP2's routing surface, by the same `--write-index`.
   `page.sections`, the slots are real, and §7 runs unchanged against
   `registry/pdp-dr-index.yaml`. The first gallery image is out of library scope — a
   standard product shot (`mapping/slot-rules.md`, cross-rule 6).
-- **A PDP-DR type MAY declare `text_layer`** and G16 binds the types that do. Two rows of
+- **A PDP-DR type MAY declare `text_layer`** and G16 binds the types that do, as
+  `registry/pdp-dr-instruction.md` narrows it: a title of 2–5 words, copy and chips only where
+  earned, the words counted over the set (ADR-094). Two rows of
   G16 are LAW rather than taste and no type-scoped permission reaches them: a named-person
   or named-profession endorsement (G14 binds the SLOT), and a certification, award, rating
   or press mark (the trademark question, put to the owner 2026-08-18 and declined).

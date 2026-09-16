@@ -3,7 +3,7 @@ id: 03-use-sequence
 step: 3
 job: use
 device: sequence
-version: "1.11"
+version: "1.12"
 status: active
 replaced_by: null
 channels: [marketplace, landing-page, advertorial]
@@ -15,6 +15,7 @@ variants: [labelled]
 exempt_from: [G3, G4]
 pairs_with: [03-mechanism-ghostbody]
 never_with: []
+text_layer: [title]
 copied_from: 03-use-sequence
 copied_at_version: "1.11"
 blocked_by: null
@@ -28,6 +29,28 @@ alone — nothing in the frame numbers the steps or points from one panel to the
 Answers "can I actually use this?" without looking like an instruction manual.
 
 **Copied verbatim from `registry/types/03-use-sequence.md` at version 1.11** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Use Steps · Sequence. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words: a title of 2–5 words OUTSIDE the panels, and nothing else.** No copy and no chip.
+  `--labelled` adds one label of 1–3 words, or a numeral, touching each panel; arrows stay banned.
+- **Nothing drawn anywhere, including on packaging.** Two of the owner's renders printed an arrow
+  on the shipping box.
+- **No frame and no border around a panel** — the thin white gutters are the only divider. Three
+  of the owner's four sequence renders set their panels in rounded frames; the fourth, labelled
+  with a numeral and a word touching each panel and nothing framed, was clean.
+- **The steps are the page's.** Where the page gives its own steps, those are the panels; where it
+  names no fill step, no panel fills anything and `fill` has nothing to mark.
+- **The product is the set's one variant in every panel.** One render switched colourway between
+  its sequence and the rest of the set.
+- **Place:** image 4 or 5, usually the second mechanism-class tile.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]  the ease, 2–5 words, outside the panels.   -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -277,4 +300,5 @@ argues what is better inside, and this type answers "can I operate it". A galler
 more than two step-3 answers, and this one is usually the second.
 
 ## CHANGELOG
+- 1.12 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a title outside the panels and nothing else, nothing drawn even on packaging, no frame around a panel, the page's own steps. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.11. ADR-094.
 - 1.11 (2026-09-15): copied verbatim from `registry/types/03-use-sequence.md` at 1.11, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

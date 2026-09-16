@@ -3,7 +3,7 @@ id: 02-symptom-rail
 step: 2
 job: symptom
 device: rail
-version: "1.12"
+version: "1.13"
 status: active
 replaced_by: null
 channels: [marketplace, landing-page]
@@ -13,6 +13,7 @@ variants: []
 exempt_from: []
 pairs_with: [01-pain-split, 03-mechanism-ghostbody]
 never_with: []
+text_layer: [title]
 copied_from: 02-symptom-rail
 copied_at_version: "1.12"
 blocked_by: null
@@ -25,6 +26,30 @@ One product, many problems: a calm hero scene plus a vertical rail of symptom vi
 Argues by breadth of the problem — it does not prove, it counts.
 
 **Copied verbatim from `registry/types/02-symptom-rail.md` at version 1.12** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Problem Tile · Symptom Rail. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words.** A title, and one SYMPTOM label of 1–2 words beside each vignette — **never
+  "relief"**, which names the product's job instead of the reader's complaint. No copy. The
+  message is the coverage, and the three vignettes are its proof.
+- **The vignettes are photographs.** Three circles of equal diameter, each in a thin WHITE ring —
+  the set's accent never on a ring — with no x-ray, skeleton or rendered overlay inside, on a
+  pale tinted panel with a straight or soft-S left edge. The owner's three rail renders broke
+  this three ways: rectangles with a pelvis x-ray in one of them; rendered skeletons inside
+  accent-blue rings; a label reading "Tailbone Relief".
+- **The hero is calm, and the product is WORKING in it** — PARTS/hero already says so. The one
+  rail render that met every form rule set a frowning woman in the hero, brushing with the
+  product, which argues that the product is the struggle.
+- **Marks:** one soft red glow per vignette — a discomfort, never an injury.
+- **Place:** image 2 or 3, after any split.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]   the coverage, 2–5 words.                  -> LP2 LAW
+[LABELS]  one 1–2 word symptom beside each vignette. -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -207,4 +232,5 @@ Open: `field` has no render evidence at all. Its first render is its founding ev
 the amber-versus-neutral question above is the thing to watch.
 
 ## CHANGELOG
+- 1.13 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a title and three symptom labels, photographic vignettes in white rings with no overlay, and the three ways its three rail renders broke that. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.12. ADR-094.
 - 1.12 (2026-09-15): copied verbatim from `registry/types/02-symptom-rail.md` at 1.12, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

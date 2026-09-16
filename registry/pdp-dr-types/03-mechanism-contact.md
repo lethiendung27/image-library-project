@@ -3,7 +3,7 @@ id: 03-mechanism-contact
 step: 3
 job: mechanism
 device: contact
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -31,6 +31,9 @@ source carries at least one frame that is unambiguously this device.**
 
 **Founding round rendered 2026-09-16** — six prompts, two pass and four partial, graded by the
 harness under ADR-011. What it settled is in `PARTS/cut`, `PARTS/target` and `MARKS`.
+
+**The owner's gallery instruction reached this type the same day** (0.4, ADR-094): its title
+band, its labels, a dark key, and the rule that nothing is drawn away from the one contact place.
 
 | source | frame | the working end | the body, and the cut | what crosses the boundary | the frame's claim |
 |---|---|---|---|---|---|
@@ -79,7 +82,7 @@ use_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-mechanism-contact v0.3
+TYPE: 03-mechanism-contact v0.4
 REGISTER: product photograph meeting a clean technical render of the body.  -> PARTS/register
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.        -> G1
@@ -88,11 +91,13 @@ REGISTER: product photograph meeting a clean technical render of the body.  -> P
 [CUT]                section | surface                                 -> PARTS/cut
 [AGENT]              what crosses the boundary, drawn as itself.       -> MARKS/agent
 [REMOVED]            only where the product takes something away.      -> MARKS/removed
-[GROUND]             quiet by default.                                 -> PARTS/ground
-[TITLE]              the claim, as a hook.                             -> G16/title
-[COPY]               the mechanism in plain words.                     -> G16/copy
+[LABELS]             optional: 1–3 words beside a structure named.     -> PARTS/labels
+[GROUND]             quiet by default; a dark key is allowed.          -> PARTS/ground
+[TITLE]              what happens, in the buyer's words, 2–5 words.    -> SLOT CONSTRAINTS
+[COPY]               the mechanism in plain words, at most 10 words.   -> SLOT CONSTRAINTS
 
-Nothing in the frame is marked that is not named here.
+Nothing in the frame is marked that is not named here, and nothing is drawn
+away from the one place the product meets the body.
 ```
 
 ## PARTS
@@ -149,7 +154,15 @@ asks a page's SET for varied cameras; what a camera may not do here is lose the 
 
 **`ground`** — quiet by default (`registry/pdp-dr-instruction.md`, ADR-068): light in value,
 close to neutral. Pale blue, lilac, pink and blue-white in 6 of 7; glowy-22's panel is lit red
-from within by its own heat glow.
+from within by its own heat glow. **A dark key is allowed** (ADR-094): the owner's instruction
+admits one for this type, and a prompt that takes one says why — the corpus built light grounds
+6 times in 7.
+
+**`labels`** — optional, 1–3 words each, set beside the structure they name and never on the
+agent, a line or the product; only structures the copy names. They are this type's chips and
+count toward the tile's sixteen words (ADR-094). No contact render has carried one; the one
+mechanism render in the owner's runs that labelled a named part — a comb's atomiser — held it
+cleanly.
 
 ## MARKS
 
@@ -162,6 +175,10 @@ from within by its own heat glow.
   a nozzle end. Arrows appear in 3 of 7 and never say anything the agent's form does not;
   `03-mechanism-xray` recorded an unrequested arrow over a flow that already ran (1 render). Not
   asked for, and not banned until a render of this type shows one doing harm.
+- **Nothing is drawn away from the contact place** (ADR-094). The agent, the removed matter and
+  any label stay where the working end meets the body, and the body elsewhere carries no mark.
+  The owner's comb runs drew a network of vessels across a whole head under a scalp brush, twice
+  — a rendered body turned into a diagram of everything.
 - **`removed` stays at the contact point.** Borrowed from `03-mechanism-xray` `MARKS/caught`:
   matter lifted in open space swirled through the volume and made the product the problem
   (1 render). **Tested here 2026-09-16 and it held 2 of 2**: pore plugs sat on the suction
@@ -187,21 +204,27 @@ from within by its own heat glow.
   gallery-4's stream is.
 - **G13.** No person in frame; the body is rendered anatomy. A frame that needs a face is not
   this type.
-- **The text block sits at the top, above the scene**, 7 of 7. `title` is a hook (G16);
-  `copy` carries the mechanism in plain words, the one job the picture cannot finish alone.
+- **The text block sits at the top, above the scene**, 7 of 7. **The title says what happens,
+  in the buyer's words, in 2–5 words** (ADR-094); the founding round's hooks ran eight and nine
+  words and rendered exactly, and the worked examples keep them as rendered. **One copy line of
+  at most 10 words** carries the mechanism in plain words, the one job the picture cannot finish
+  alone — presumed earned in a mechanism tile, and still counted over the set.
+- **One mechanism variant to a set** (`mapping/pdp-dr-rules.md`, rule 3).
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
 
 ## NEGATIVE
 ```
 [G6] + a figure, a depth label, a temperature, a frequency, a percentage, a person,
 a face, an outcome drawn on a body, a generic tissue the copy does not name, a cut
-deeper than the last named layer, the product floating beside the body, a badge, a seal
+deeper than the last named layer, the product floating beside the body, a badge, a seal,
+a mark drawn away from the contact place, a label set on a line or on the product
 ```
 
 ## WORKED EXAMPLES
 The two passes of the founding round, kept in full text because that text is the only record of
 what actually rendered (SPEC §3.3). Both verdicts are the harness's own (ADR-011), so neither
-can serve SPEC §6.3(3). Both were rendered at 0.1 and neither carries the two clauses 0.2 adds.
+can serve SPEC §6.3(3). Both were rendered at 0.1 and neither carries the two clauses 0.2 adds,
+and both titles run longer than the band 0.4 sets — they stay as they rendered (SPEC §3.3).
 
 ### example: ems-pad-shoulder — skeleton@0.1, run: pass
 ```
@@ -290,6 +313,11 @@ Six renders, 2026-09-16, set `03-mechanism-contact-01`.
   below its last named layer, 4 of 4; no removed matter drifted, 2 of 2.
 
 ## CHANGELOG
+- 0.4 (2026-09-16): the owner's gallery instruction for this type (ADR-094). The title says what
+  happens in 2–5 words; one copy line of at most 10; optional 1–3 word `labels` beside a named
+  structure; a dark key allowed; nothing drawn away from the one contact place, which two comb
+  renders broke by drawing vessels across a whole head. One mechanism variant to a set. The
+  worked examples keep their longer rendered titles.
 - 0.3 (2026-09-16): the namespace gained the owner's four gallery rules (ADR-093). `PARTS/cut`'s
   camera line becomes a DEFAULT rather than a lock, so a page's set can vary its cameras under
   rule 3 without leaving this type. Nothing else moves, and no render is affected: all six of

@@ -32,7 +32,7 @@ types:
     step: 1
     job: pain
     device: split
-    version: "1.9"
+    version: "1.10"
     status: active
     channels: [marketplace, landing-page]
     requires_product_photo: true
@@ -56,7 +56,7 @@ types:
     step: 2
     job: cause
     device: anatomy
-    version: "1.18"
+    version: "1.19"
     status: active
     channels: [landing-page, marketplace, advertorial]
     requires_product_photo: true
@@ -83,7 +83,7 @@ types:
     step: 2
     job: symptom
     device: rail
-    version: "1.12"
+    version: "1.13"
     status: active
     channels: [marketplace, landing-page]
     requires_product_photo: true
@@ -175,7 +175,7 @@ types:
     step: 3
     job: spec
     device: macro
-    version: "1.0"
+    version: "1.1"
     status: active
     channels: [marketplace]
     requires_product_photo: true
@@ -222,7 +222,7 @@ types:
     step: 3
     job: use
     device: grid
-    version: "1.0"
+    version: "1.1"
     status: active
     channels: [marketplace, landing-page]
     requires_product_photo: true
@@ -247,7 +247,7 @@ types:
     step: 3
     job: use
     device: sequence
-    version: "1.11"
+    version: "1.12"
     status: active
     channels: [marketplace, landing-page, advertorial]
     requires_product_photo: true
@@ -270,7 +270,7 @@ types:
     step: 4
     job: proof
     device: lockedframe
-    version: "1.16"
+    version: "1.17"
     status: active
     channels: [advertorial, landing-page, marketplace, paid-social]
     requires_product_photo: true
@@ -366,7 +366,7 @@ types:
     step: 6
     job: relief
     device: hero
-    version: "1.18"
+    version: "1.19"
     status: active
     channels: [landing-page, marketplace, paid-social, advertorial]
     requires_product_photo: true
@@ -396,7 +396,7 @@ types:
     step: 6
     job: relief
     device: scene
-    version: "3.7"
+    version: "3.8"
     status: active
     channels: [paid-social, advertorial]
     requires_product_photo: true

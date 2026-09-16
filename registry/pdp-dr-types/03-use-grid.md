@@ -3,7 +3,7 @@ id: 03-use-grid
 step: 3
 job: use
 device: grid
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 channels: [marketplace, landing-page]
@@ -15,6 +15,7 @@ exempt_from: [G3, G4]
 pairs_with: []
 never_with: []
 avoid_adjacent: [05-persona-grid]
+text_layer: [title]
 copied_from: 03-use-grid
 copied_at_version: "1.0"
 blocked_by: null
@@ -36,6 +37,23 @@ different host tools, or different exercise positions. The grid argues by counti
 what one purchase covers; nothing is indicted, nothing is compared.
 
 **Copied verbatim from `registry/types/03-use-grid.md` at version 1.0** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Use Steps · Grid. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words: a title of 2–5 words outside the cells, and nothing else.** No copy, and no chip,
+  label or badge inside a cell; the skeleton's `NO text` gives way to the title alone.
+- **No frame around a cell**, only the thin white gutters, and no bracket or leader joining cells.
+- **Never adjacent to a Lineup.**
+- Of the owner's four grid renders, one was clean — four seats in a 2×2, the product fitted in
+  each, a title and nothing else — and three framed the cells, labelled them, or bracketed them to
+  a chip.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]  the range of use, 2–5 words, outside the cells. -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -133,4 +151,5 @@ form deliberately occupies persona-grid geometry with hosts instead of people
 (obs `sha256:9d88fa…` records the head-on collision).
 
 ## CHANGELOG
+- 1.1 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a title outside the cells and nothing else, no frame, no bracket, never beside a Lineup; one of its four grid renders clean. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.0. ADR-094.
 - 1.0 (2026-09-15): copied verbatim from `registry/types/03-use-grid.md` at 1.0, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

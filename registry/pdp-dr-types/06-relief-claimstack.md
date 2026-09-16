@@ -3,7 +3,7 @@ id: 06-relief-claimstack
 step: 6
 job: relief
 device: claimstack
-version: "0.6"
+version: "0.7"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -54,7 +54,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 06-relief-claimstack v0.6
+TYPE: 06-relief-claimstack v0.7
 REGISTER: commercial editorial photograph on a flat coloured field.
 
 [SUBJECT]   one person carrying the state, cut out.        -> PARTS/subject
@@ -135,13 +135,13 @@ section existed produced six identical flat rectangles.
 | `tag` | a flat rectangle, capitals cut out of the fill | anything that reads as engineered or clinical |
 | `seal` | a scalloped rosette or a shield, a short line curved inside it | a guarantee, a standard, a promise about the seller. **Reads as authority, which is exactly why G16 refuses a certification mark in one** |
 | `pill` | a fully rounded capsule, a short line inside | soft categories — supplements, personal care, anything domestic |
-| `chip` | a small line icon in a circle with one short label beneath | a capability where the icon carries half the reading |
+| `icon-disc` | a small line icon in a circle with one short label beneath — `chip` until ADR-094, when the namespace's flat chip form took the word | a capability where the icon carries half the reading |
 
 **One badge per frame**, and it never repeats a line the stack already carries.
 **Three corners are open and the bottom-right is not**, per `adapters/nano-banana.md` Rule 7
 — that corner carries the tool's watermark. The second round asked for upper left and upper
 right and got both, 2 of 2.
-**Tested: `tag` 2 of 2, `pill` 1 of 1, `seal` 1 of 1**, all clean. Only `chip` has no render.
+**Tested: `tag` 2 of 2, `pill` 1 of 1, `seal` 1 of 1**, all clean. Only `icon-disc` has no render.
 **The badge's size anchor works and the headline's does not** — `pill` came back at 0.71 of
 the object it was told to match and `seal` at 0.96, against 0.13 and 0.24 for the headlines
 in the same frames. G16 carries the general form; here it means the badge clauses can be
@@ -182,6 +182,10 @@ smaller still, often a glyph. That composition is what makes a stamp read as a s
 - **G7 exemption** — a cut-out person on a flat field is not a scene and G7's three tests have
   nothing to bind to.
 - **G13 binds without exemption** where the subject could read as young.
+- **The namespace's word law binds the stack** (ADR-094): at most 16 words in the frame, labels
+  included. A short title and three short claims fit — the founding round's five clusters ran 13
+  words — and the claim lines are this type's own part, so they keep this type's count rather
+  than the one-copy-line rule.
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
 
 ## NEGATIVE
@@ -355,6 +359,9 @@ capability claim instead of a felt state (ADR-078).
 new sources until the re-filing pass runs.
 
 ## CHANGELOG
+- 0.7 (2026-09-16): the badge form `chip` becomes `icon-disc`, because the namespace's flat chip
+  form now owns that word; the stack sits inside the namespace's 16-word frame, its claim lines
+  keeping this type's own count. ADR-094.
 - 0.6 (2026-09-16): **compression pass, ADR-013 — 22,359 discretionary characters to 19,450,
   no law removed.** Case histories and measurement narratives leave the header, PARTS, MARKS
   and both render rounds for the commits that cite them; both round TABLES stay, because they

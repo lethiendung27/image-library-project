@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.7"
+version: "3.8"
 status: active
 replaced_by: null
 channels: [paid-social, advertorial]
@@ -16,6 +16,7 @@ variants: []
 exempt_from: [G3, G4]
 pairs_with: [01-pain-scene]
 never_with: []
+text_layer: [title]
 copied_from: 06-relief-scene
 copied_at_version: "3.7"
 blocked_by: null
@@ -30,6 +31,22 @@ Candid, single frame, no inset and no graphics — the product is part of the li
 to the camera.
 
 **Copied verbatim from `registry/types/06-relief-scene.md` at version 3.7** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Contextual / Lifestyle. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words: a title of at most 5 words, or none.**
+- **It counts as a place scene**, and a set carries at most two (`mapping/pdp-dr-rules.md`).
+- The type's own law — a public place, relief with something coming back, the product standing as
+  its own object — is what makes a context tile an argument rather than a stock photograph. The
+  owner's first two cushion batches spent seven and eight of their twenty tiles each on scenes of
+  use in a place.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]  at most 5 words, or none.                  -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -281,4 +298,5 @@ drained joyless grade, saturated colors, stock photo look
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.8 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a title of at most five words or none, and the count of place scenes it belongs to. `text_layer` declared. First LP2 edit; `copied_at_version` stays 3.7. ADR-094.
 - 3.7 (2026-09-15): copied verbatim from `registry/types/06-relief-scene.md` at 3.7, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

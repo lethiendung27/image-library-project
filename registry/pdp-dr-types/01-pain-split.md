@@ -3,7 +3,7 @@ id: 01-pain-split
 step: 1
 job: pain
 device: split
-version: "1.9"
+version: "1.10"
 status: active
 replaced_by: null
 channels: [marketplace, landing-page]
@@ -13,6 +13,7 @@ variants: [object, mirror, oldway]
 exempt_from: []
 pairs_with: [06-relief-hero]
 never_with: [01-pain-scene]
+text_layer: [title, copy]
 copied_from: 01-pain-split
 copied_at_version: "1.9"
 blocked_by: null
@@ -26,6 +27,25 @@ after**: the same situation wrong on the left, resolved on the right, judged by 
 Image 2 on Amazon, ad thumbnails, tiles in a landing-page grid.
 
 **Copied verbatim from `registry/types/01-pain-split.md` at version 1.9** (owner instruction, 2026-09-15, ADR-091: each page kind routes ONE folder, and that folder holds every type the page may use). Every section below is that file's text at commit `3cabeab`, spliced by script rather than retyped. `copied_at_version` is what makes the copy auditable: `scripts/validate.py` warns when the parent moves past it. Not copied: the parent's WORKED EXAMPLES, whose prompt text is the record of renders that were the parent's, and its CHANGELOG, which is the parent's own evidence trail. Where a clause below cites renders or a corpus, those were LP1's; `registry/pdp-dr-instruction.md` binds this file as it binds every file in the folder.
+
+## LP2 LAW
+Added 2026-09-16 (ADR-094): the owner's gallery instruction for Problem Tile · Before–After Split. This section is
+this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
+
+- **The words.** A title of 2–5 words naming the problem state as the reader feels it. Copy only
+  where it is earned, and panel headers count as copy. No chips: the verdict discs are marks.
+- **The BEFORE panel is grayscale, and the verdict marks are flat discs in the TOP corners.** Both
+  are already law in PARTS and MARKS, and they are the two clauses the owner's four split renders
+  broke: two came back with a BEFORE panel in colour, one drew the cross and the check as bare
+  glyphs, and one hung its discs off chips half-way down the frame.
+- **Place:** image 2 or 3, before any rail, never after the first Outcome Hero.
+- **Marketplace-safe:** no dim or cluttered after panel, no red cue in it, no blood, no injury.
+
+Slots an LP2 prompt adds to the SKELETON above:
+```
+[TITLE]  the problem state, 2–5 words.              -> LP2 LAW
+[COPY]   only where earned; headers count as copy.  -> LP2 LAW
+```
 
 ## TRIGGER
 use_when: >
@@ -196,4 +216,5 @@ panel is a room with a person struggling in it.
   room to be named a second time inside the AFTER slot.
 
 ## CHANGELOG
+- 1.10 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — its words, and the two clauses its four split renders broke, already law here. `text_layer` declared. First LP2 edit, so `version` is this copy's own from here and `copied_at_version` stays 1.9. ADR-094.
 - 1.9 (2026-09-15): copied verbatim from `registry/types/01-pain-split.md` at 1.9, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

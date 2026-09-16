@@ -3,7 +3,7 @@ id: 03-spec-hero
 step: 3
 job: spec
 device: hero
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -45,6 +45,10 @@ One photograph and one baked headline block, and the headline makes a claim abou
 product IS or DOES. No panels, no cut-out, no card — the words sit in the picture's own quiet
 area. The tile that carries a single feature when a claim stack would be four claims too many.
 
+**It is the owner's "Hero + Angle & Detail"** (ADR-094): shape, identity and craftsmanship, the
+product as the object of the frame — which is this type's claim about what the product IS, shown
+by the angle that makes it visible.
+
 ## TRIGGER
 use_when: >
   The page needs one tile to carry ONE feature and to show it happening. A gallery tile
@@ -58,7 +62,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-hero v0.1
+TYPE: 03-spec-hero v0.2
 REGISTER: commercial product photograph or lifestyle photograph. One frame.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -67,9 +71,9 @@ REGISTER: commercial product photograph or lifestyle photograph. One frame.
 [LIGHT]              whatever the setting has; the claim stays legible.
 [QUIET AREA]         where the words go, decided before they are written. -> PARTS/quiet-area
 
-[TITLE]              the claim, as a hook.                        -> G16/title
-[COPY]               the mechanism or the proof, in plain words. Optional. -> G16/copy
-[BADGE]              one short stamp. Optional.                   -> MARKS
+[TITLE]              the claim, as a hook, 2–5 words.             -> SLOT CONSTRAINTS
+[TAGLINE]            optional, 4–8 words, one line, same alignment. -> SLOT CONSTRAINTS
+[BADGE]              one short stamp. Optional, and only where earned. -> MARKS
 ```
 
 ## PARTS
@@ -79,6 +83,12 @@ type's whole discipline and the corpus keeps it: a foot pressing a mat leaves a 
 lens turned away IS privacy mode, rain falling on a lamp IS the ingress rating, a finger on a
 mesh IS the safety gap. **A headline over a product that is merely present is the failure
 mode**, not a variant.
+
+**A claim about FORM is shown by the angle that makes the form visible** (ADR-094). One piece, a
+contour, how a thing is made: there the product as the object of the frame IS the demonstration,
+on a seamless with a floor plane and a cast shadow or in its place, and the camera is chosen for
+the part the claim names. An angle that hides that part is the merely-present failure again. A
+claim about FUNCTION is still shown happening.
 
 **`setting`** — a quiet ground by default: light in value, close to neutral in colour
 (ADR-068). A real place is legal and is the better choice where the claim is about a
@@ -91,15 +101,23 @@ sky above a lamp, the white above a cropped product. G16's own measurement appli
 drawn twice.
 
 ## MARKS
+**No leader, no decorative line, and no chip unless it is earned** (ADR-094). The owner's five
+hero renders under the instruction: one clean, a title alone on a seamless; the others drew a
+sweeping line that meant nothing, ran a leader from the copy to empty ground, set a chip
+restating the copy, and titled a distorted product "Ergonomic Perfection".
+
 Optional and plain. Where a badge appears in the corpus it is a single icon in a disc — a
 snowflake for defrost, a foot-and-slip glyph for a non-slip backing, a shield for a safety
 claim. **One badge, and it names the same thing the headline names**; a badge making a second
 claim turns this type into a claim stack with a picture.
 
 ## SLOT CONSTRAINTS
-- **The headline is a HOOK, not a caption** (G16). The market writes at 8.0 words and names a
-  result, a feeling or a problem state; this library's first attempt wrote 4.5-word captions
-  naming what is in the picture. A caption describes the frame; a hook describes the reader.
+- **The headline is a HOOK, not a caption, and it is short** (ADR-094). An identity hook of 2–5
+  words, never more than 6, with an optional tagline of 4–8 words on one line in the same
+  alignment — centred, or upper left with a margin. A caption describes the frame; a hook
+  describes the reader; and G16 recorded that length was never what separated them.
+- **Never a product name the page did not write.** One of the owner's hero renders titled the
+  product with a brand of its own invention.
 - **G2 binds hardest here.** The PRODUCT slot may carry position, angle, scale in frame and
   relation to other objects — nothing about shape, material, colour or construction. This is
   the type most likely to break it, because the headline is usually ABOUT the material and the
@@ -117,7 +135,8 @@ claim turns this type into a claim stack with a picture.
 [G6] + a product that is merely present rather than doing the thing claimed,
 a second headline, a paragraph, a claim stack, a certification seal, an award,
 a press mark, a bare figure with no instrument in frame, a gradient bar behind
-the words, a setting the product could not actually be in
+the words, a setting the product could not actually be in, a leader line, a decorative line,
+a product name the page did not write
 ```
 
 ## BLOCK
@@ -139,13 +158,18 @@ Whether that is a gap in G7 or a discipline this type should keep is an owner de
 it is taken, the NEGATIVE above refuses it.
 
 ## KNOWN-FLAKY
-- **Nothing observed.** No prompt and no render exist for this file.
+- **No prompt from this file has rendered.** The five hero renders in the owner's instruction
+  runs are recorded under MARKS as the instruction's evidence, not this file's.
 - Predicted from the corpus: the failure mode is a headline over a product that is not doing
   anything. Five of the six sources avoid it and `mozzapx` does not — its solar tile shows a
   lamp lit in full daylight while the same page's copy claims the lamp turns itself off during
   the day. Recorded as the first thing a founding round should check.
 
 ## CHANGELOG
+- 0.2 (2026-09-16): the owner's Hero + Angle & Detail lands here (ADR-094). A FORM claim is shown
+  by the angle that makes the form visible; the title is an identity hook of 2–5 words with an
+  optional one-line tagline; no leader, no decorative line, no chip unless earned, no invented
+  product name — the faults four of the owner's five hero renders showed.
 - 0.1 (2026-09-11): drafted from eighteen observations across six distinct sources, batches
   2026-09-11-A, D, E, G, H and I. Criterion 1 cleared at six; criterion 2 against
   `06-relief-hero` is the binding gap and criterion 3 is unrun. Filed as a spec-job sibling
