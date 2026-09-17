@@ -7016,3 +7016,244 @@ And after the edits, because the change introduces its own block: `"G1 reference
   `check.py` that does, which is also where ADR-093 said the lock's check belongs.
 
 ---
+
+## ADR-095 · 2026-09-17 · Four owner answers open four LP2 gates: a mark the page names may be drawn, a figure the page carries stands, an animal is a relief subject, and LP1 routes `03-mechanism-contact`
+
+**Owner instructions, 2026-09-16.** `registry/pdp-dr-instruction.md` listed four decisions that
+gated the namespace. They were restated to the owner in Vietnamese, and the owner answered each:
+
+1. **The trademark question** of 2026-08-18 — certification seals, awards, ratings, press marks,
+   and the compatibility bar the corpus added: *"được vẽ"* — they may be drawn.
+2. **Substantiation, A15**: *"chỉ cần json có số là legit. indentity pack tôi sẽ có ảnh sản phẩm,
+   chỉ cần prompt "keep the product...""* — a number the JSON carries is legitimate. For the pack
+   type the owner will attach the product photograph, and the prompt only has to say to keep the
+   product.
+3. **The `beneficiary` axis**: *"tại sao phải là relief-animal riêng trong khi có thể đưa vào
+   relief tuỳ sản phẩm"* — why a separate relief-animal, when the relief types can take the
+   animal, depending on the product?
+4. **Whether LP1 routes `03-mechanism-contact`**, which ADR-092 left open: *"có dùng"* — yes.
+
+**One correction before the decision.** The handover this session started from said the
+trademark question blocks `06-relief-animal`. It does not: the instruction file and that file's
+own `blocked_by` both name the `beneficiary` axis. This ADR follows the files.
+
+### Decision
+
+**1. Marks — drawn where `content.json` names them, on LP2 only.**
+- A certification seal, an award, a rating, a press mark and a compatibility bar may be drawn on
+  an LP2 tile. The instruction's second LAW row becomes a permission.
+- **The condition is not new.** The answer the owner picked from was "forbid, or draw where the
+  page has the proof". And G16's content law already says the words come from `content.json` and
+  from nowhere else. A mark the page does not name is an invented claim, whatever it looks like.
+- **G6's `logo` narrows for these marks, on LP2, and for nothing else.** G6 gains a pointer.
+- **What does not move:**
+  - the first LAW row: a named person or profession endorsing (G14), including ADR-094's refusal
+    of the invented expert;
+  - G14's attribution test: a reviewer's name, an avatar or a verified label on a tile;
+  - the product block's ban on a logo added to the product;
+  - the brand and rival marks in `03-spec-split`'s and `04-proof-lockedframe`'s negatives.
+- **Scope.** The toplist namespace refuses another party's mark in its own instruction, measured
+  on its own corpus (ADR-071, ADR-073). Nothing here crosses into it. LP1's types carry no text
+  layer.
+
+**2. Figures — a figure `content.json` carries stands, on LP2.**
+- A15's working position on an LP2 page becomes: **a figure enters a frame where `content.json`
+  carries it.**
+  - No source is required beside it.
+  - The five honest forms the 2026-09-11 corpus finding recorded are the stronger choice, not a
+    gate.
+  - A figure the page does not carry never enters.
+- **A product's own printing is its reference photograph's**, and the product block keeps it.
+  - This retires the word-by-word publishability check that `07-identity-pack` and A15 carried.
+  - The founding round that raised the check did not record whether a photograph was attached
+    (`07-identity-pack` KNOWN-FLAKY). So its invented net weight is not evidence against the
+    block.
+  - A render that re-letters a pack against its attached photograph is graded as a G1 failure.
+- **What does not move:**
+  - A13. A depth label on a rendered section is a precision a render cannot carry, so
+    `03-mechanism-contact` keeps it in its negative.
+  - Outside LP2, A15's narrow position stands. A15 gains an LP2 paragraph.
+- **Unblocks** `04-proof-stat` on A15, and the two proposals behind it, `04-proof-instrument`
+  and `04-proof-interface`, which have no files.
+  - `04-proof-stat` 0.2 still owes a fifth source (four on 2026-09-17, `validate.py --evidence`),
+    its first skeleton and set, and criteria 2 and 3.
+  - Its source slot is optional now, and its negative refuses a figure the page did not supply
+    rather than one without a source.
+
+**3. An animal is a subject the relief types take — `06-relief-animal` is retired.**
+- **Retired.** `06-relief-animal` 0.2 is `deprecated`, with `replaced_by: 06-relief-hero`: the
+  hero's purpose is that file's purpose with the product in frame. `BLOCK` becomes `RETIRED`.
+- **The pass the retired file asked for was run, and all three relief subjects refused an animal:**
+  - `06-relief-hero`: one person;
+  - `06-relief-scene`: the same person as the paired pain image;
+  - `06-relief-claimstack`: a person or the product.
+- **The owner's answer is cheaper than the axis that file proposed.** The subject is a value
+  picked from the product, SPEC §3.2's first rung. So no `beneficiary` axis ships and
+  `vocabulary.yaml` gains no value.
+- **Written into LP2's files only:**
+  - the `LP2 LAW` of the `06-relief-hero` copy (1.20) and the `06-relief-scene` copy (3.9);
+  - `06-relief-claimstack` 0.8's `PARTS/subject`.
+- **The subject rules.**
+  - The animal is the one the page names: its species, and a breed only where the page names one.
+  - G9 holds by itself for an animal.
+  - The scene's same-person clause and its `01-pain-scene` pairing do not bind an animal subject.
+- **Nothing is re-filed.** The three ledger records already name `06-relief-hero` once and
+  `06-relief-scene` twice as their `type`, with the retired id as `proposed_id`.
+- **Each record's second deviation stays unabsorbed:** a studio seamless where the hero wants a
+  room, and no product where the scene wants one.
+- **Not widened:**
+  - `05-social-snapshot`, which the retired file also named. It is a step-5 type.
+  - LP1's parents in `registry/types/`.
+
+**4. LP1 routes `03-mechanism-contact` once it is promoted — a register, and a direction.**
+- **The register.** `mapping/pdp-dr-rules.md` gains *LP2 drafts LP1 routes too*, with one row. A
+  draft with no row routes on LP2 alone. SPEC §3.8 says so.
+- **The direction is chosen here rather than left to the promotion diff.**
+  - The promotion writes the type into `registry/types/` as the PARENT: no `text_layer` and no LP2
+    law. Its rendered worked examples and its CHANGELOG go with it, because the id's ledger lines
+    are the parent's evidence.
+  - The LP2 file becomes its declared copy, with `copied_from`, `copied_at_version` and a
+    `## LP2 LAW`.
+  - **Why this way round.** The one instrument that watches a pair of files runs from
+    `registry/types/` to this folder (ADR-091). The other direction has none. The draft still
+    never moves.
+- **LP1's bar binds the parent:**
+  - criterion 3 under LP1's law, which carries no words;
+  - the router-confusion test, which is LP1's anyway, since both siblings are LP1 types;
+  - the session and golden checks, which learn the LP2 folder in the same diff (ADR-091's open
+    item).
+- **Standing debt closed.** This settles "nothing watches an LP2 type LP1 should also route", for
+  the types on the register.
+
+### Fixed in the same section, not by the owner
+
+These were fixed because the waiting-on section was rewritten, and each was already false:
+- The criterion-1 queue named three files at 8, 7 and 6 sources. `--evidence` measures six files
+  at 11, 10, 10, 9, 7 and 7 on 2026-09-17. All six are blocked on criterion 2.
+- *"No prompt has been written from any of LP2's own drafts against this namespace's law, and no
+  render exists under it"* was false: `03-mechanism-contact-01` rendered six on 2026-09-16.
+- *"Three of the eleven"* drafts carrying FOUNDING RENDER ROUND sections: the count is six.
+- `06-relief-animal` and `vocabulary.yaml` said *eight* records. The ledger holds three.
+- `06-relief-claimstack`'s skeleton line said *one person*, while its `PARTS/subject` had allowed
+  the product since 0.2.
+
+### Consequences
+
+The rule-6c sweeps ran before any teaching file was edited. The counts below were re-taken in a
+clean worktree at `1aa8773`, which holds the pre-edit text (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"trademark"` | 84 | 41 | 13 |
+| `"press mark"` | 14 | 10 | 7 |
+| `"certification mark"` | 7 | 7 | 4 |
+| `"certification seal"` | 103 | 28 | 24 |
+| `"compatibility bar"` | 10 | 6 | 3 |
+| `"unwritable"` | 3 | 3 | 1 |
+| `"AND its source"` | 5 | 4 | 2 |
+| `"with its source"` | 13 | 7 | 4 |
+| `"its source"` | 26 | 14 | 8 |
+| `"sourced figure"` | 3 | 3 | 1 |
+| `"figure sourced"` | 2 | 2 | 1 |
+| `"word by word"` | 4 | 3 | 2 |
+| `"bare figure"` | 2 | 2 | 1 |
+| `"bare percentage"` | 4 | 2 | 1 |
+| `"substantiation"` | 41 | 9 | 5 |
+| `"beneficiary"` | 15 | 7 | 3 |
+| `"relief-animal"` | 17 | 9 | 4 |
+| `"non-human"` | 2 | 1 | 1 |
+| `"separate decision"` | 16 | 9 | 5 |
+| `"LP1 should"` | 5 | 5 | 2 |
+
+- **Rewritten, `registry/pdp-dr-instruction.md`:**
+  - the product section's printing bullet;
+  - the chip row;
+  - the never-list's figure line;
+  - the secondary element;
+  - the LAW rows, now *one row that is LAW and not taste, and one the owner lifted*, with the
+    three references to them;
+  - the A15 bullet;
+  - the X-ray and Principle figure clauses and the Comparative must;
+  - the five-behaviours lead;
+  - the compatibility-bar paragraph;
+  - the whole waiting-on section.
+- **Rewritten, `mapping/pdp-dr-rules.md`:** the retired file's call-register note, the promotion
+  paragraph, and the new register with what its promotions owe.
+- **Amended, shared files, each recording the LP2 decision:**
+  - `SPEC.md` §3.8: the promotion bullet and the `text_layer` bullet;
+  - `registry/rules.md`: a G6 pointer, and the two G16 cost-table rows (A15's and the marks');
+  - `registry/argument-faults.md`: an LP2 paragraph under A15;
+  - `registry/vocabulary.yaml`: `stat`'s definition, and the `animal` comment and value.
+- **Type files:**
+  - `06-relief-animal` 0.2, retired;
+  - `06-relief-hero` 1.20 and `06-relief-scene` 3.9, `LP2 LAW` only, `copied_at_version`
+    unchanged;
+  - `06-relief-claimstack` 0.8;
+  - `04-proof-stat` 0.2;
+  - `03-spec-claimstack` 0.2;
+  - `03-spec-hero` 0.3;
+  - `03-spec-dimension` 0.2, whose A15-benign bullet said `04-proof-stat` may not carry figures;
+  - `07-identity-pack` 0.4, whose `blocked_by` does not move;
+  - `03-mechanism-contact` 0.5;
+  - the `04-proof-lockedframe` copy 1.18, `LP2 LAW` only.
+  - Where a type's negative lists a mark, a line under it says the prompt drops that item when
+    the page names the mark.
+- **These hits stand:**
+  - **Records, not instructions:**
+    - `07-identity-callout`, retired;
+    - `_CURATION-2026-09-11.md`, which decides nothing by its own first line;
+    - `pdp-dr-types/ready-to-push/README.md`, which describes the 2026-09-03 round it ships;
+    - `03-spec-claimstack`'s account of the two classes the 2026-08-18 question refused;
+    - CHANGELOG lines.
+  - **Brand and rival marks, which this decision does not reach:** "recognizable trademarks" and
+    "brand logos" in the negatives of `03-spec-split` and `04-proof-lockedframe`, in both
+    folders.
+  - **Another namespace's law:** every toplist hit — its instruction, `lede-winner`,
+    `lede-collage` and the round and set prompts.
+  - **Still true outside LP2:** A15's narrow position and its word-by-word paragraph, each now
+    followed by the LP2 paragraph.
+  - **Craft, not a gate:**
+    - "the cheapest substantiation a page can offer" in `03-spec-claimstack`;
+    - A15's measurement table;
+    - the corpus finding's heading.
+  - **Another sense:**
+    - "separate decision" in `README.md`, `mapping/export-to-content.md` and `lede-authority`;
+    - "its source" in `03-mechanism-contact` (a wave's source), `03-spec-callout` and
+      `query/product-slugs.yaml`.
+  - **The retired file's own text**, kept as the record of the proposal.
+- **The owner-gated sets are not rewritten.** They test the versions they name.
+  `mini-steam-iron-01` names `03-spec-hero` v0.2 and `06-relief-hero` v1.19, and neither bump
+  touches a clause those prompts carry. All six `check.py` and `mini-steam-iron-01/knownbad.py`
+  still exit 0.
+- **`README.md`:** the ADR count, regenerated, and the known-gaps line on LP2's drafts, now
+  fourteen reserved and two deprecated.
+- **Generated:**
+  - `registry/pdp-dr-index.yaml`: three copies' versions;
+  - `dist/app-bundle/`: SPEC, the rules, the argument faults, the vocabulary, both LP2 law files
+    and the three copies.
+  - `registry/index.yaml` does not move, because no LP1 file changed.
+- `registry_version` is unchanged: no type becomes active, and no slot routes differently.
+
+### What is NOT done
+
+- **No render tests any of the four.** Each change states that in its own file.
+  - The first mark should be graded against the real mark, since nothing in the prompt shows the
+    renderer what that mark looks like.
+  - The first animal subject is an untested slot value.
+  - The first bare page figure waits on `04-proof-stat`'s skeleton.
+- **Two things are unwritten:** `04-proof-stat`'s skeleton and `03-spec-claimstack`'s mark
+  library. Each is written with its first set.
+- **Nothing reads the new register.** `scripts/validate.py` does not, and the promotion diff is
+  the only reader.
+- **The owner's words are general, and they are recorded for LP2** because that is where the four
+  questions were asked:
+  - the toplist namespace keeps its refusal of another party's mark;
+  - LP1 keeps A15's narrow position;
+  - LP1's relief parents take no animal.
+  - Each of those is a decision for its own lane, if it is wanted.
+- **`05-social-snapshot` takes no animal.** The owner's answer named the relief types.
+- **The two copies with their law in the instruction are unchanged.** `03-mechanism-ghostbody`
+  and `03-mechanism-xray` still wait on the other lane's re-copy. The X-ray figure clause this ADR
+  rewrote lives in the instruction, so the re-copy should carry it into that copy's `LP2 LAW`.
+
+---

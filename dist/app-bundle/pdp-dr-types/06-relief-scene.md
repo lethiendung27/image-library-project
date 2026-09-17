@@ -3,7 +3,7 @@ id: 06-relief-scene
 step: 6
 job: relief
 device: scene
-version: "3.8"
+version: "3.9"
 status: active
 replaced_by: null
 channels: [paid-social, advertorial]
@@ -42,9 +42,16 @@ this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds t
   its own object — is what makes a context tile an argument rather than a stock photograph. The
   owner's first two cushion batches spent seven and eight of their twenty tiles each on scenes of
   use in a place.
+- **The subject may be an animal, where the page's product serves one** (owner decision,
+  2026-09-16, ADR-095). `PARTS/subject` then takes the animal the page names — its species, and a
+  breed only where the page names one — and `THE RELIEF` reads on its body: what the problem made
+  it avoid, done freely in a public place. The same-person clause and the `01-pain-scene` pairing
+  do not apply, because nobody photographs an animal in pain to sell its relief
+  (`06-relief-animal`), so the frame closes without a bookend. No render has tested this form.
 
-Slots an LP2 prompt adds to the SKELETON above:
+Slots an LP2 prompt adds to, or widens in, the SKELETON above:
 ```
+[SUBJECT] widened: or the animal the product serves. -> LP2 LAW
 [TITLE]  at most 5 words, or none.                  -> LP2 LAW
 ```
 
@@ -298,5 +305,8 @@ drained joyless grade, saturated colors, stock photo look
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 3.9 (2026-09-17): `LP2 LAW` gains the animal subject — the owner's answer of 2026-09-16 to why
+  `06-relief-animal` was a type of its own. The pain pairing does not bind it. A slot value picked
+  from the product, with no render behind it yet. ADR-095.
 - 3.8 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a title of at most five words or none, and the count of place scenes it belongs to. `text_layer` declared. First LP2 edit; `copied_at_version` stays 3.7. ADR-094.
 - 3.7 (2026-09-15): copied verbatim from `registry/types/06-relief-scene.md` at 3.7, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

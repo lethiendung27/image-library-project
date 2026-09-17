@@ -57,15 +57,16 @@ devices:
   inhand: "the product held up to the lens; the hand is the scale cue and nothing else is"
   pack: "the product as it arrives — closed, open, or with its own contents at its foot"
   callout: "a subject at the centre, labelled satellites around it; what joins them — a leader line, a dashed leader, or nothing — is a parameter"
-  stat: "one measured figure as the subject of the frame, with its source set beside it"
+  stat: "one measured figure as the subject of the frame, with its source beside it where the page gives one"
   dimension: "a line spanning a real edge of the object, labelled with the figure it measures"
   testimony: "a person addressing the lens mid-sentence; a video still, not a photograph"
   # `animal` names WHAT is photographed rather than HOW the argument is made, which is the
   # fault ADR-065 corrected twice (`ingredient` -> `stilllife`, `range` -> `lineup`). It is
-  # here so the ledger's eight records under `06-relief-animal` can be followed, and that
-  # file's own BLOCK argues it should be a `beneficiary` AXIS on existing relief types
-  # instead. Reserved and provisional: if the axis ships, this value goes with the file.
-  animal: "reserved, provisional — the beneficiary is an animal and its body reports the outcome"
+  # here so the ledger's three records under `06-relief-animal` can be followed. That file
+  # is deprecated (ADR-095): the owner put an animal subject into the relief types as a
+  # slot value, so no `beneficiary` axis ships, and this value stays only because a
+  # deprecated file keeps its device.
+  animal: "deprecated with 06-relief-animal — the relief types take an animal subject instead (ADR-095)"
 
 # Cross-cutting presentation dimensions. A type declares which values it supports
 # in its frontmatter `axes:` map. Definitions of the semantics live in rules/runbooks.

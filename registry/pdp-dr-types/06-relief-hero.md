@@ -3,7 +3,7 @@ id: 06-relief-hero
 step: 6
 job: relief
 device: hero
-version: "1.19"
+version: "1.20"
 status: active
 replaced_by: null
 channels: [landing-page, marketplace, paid-social, advertorial]
@@ -47,9 +47,15 @@ this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds t
   three-quarter, at least 15% of the frame, on a host of a clearly different tone.
 - **Place:** image 2 or 3, or the closing tile; the first one closes the problem phase.
 - Commercial by default, and `--ugc` never in a marketplace gallery.
+- **The subject may be an animal, where the page's product serves one** (owner decision,
+  2026-09-16, ADR-095). `PARTS/subject` then takes the animal the page names — its species, and a
+  breed only where the page names one — and its body carries the relief: eating, running,
+  resting. G9 holds by itself, since an animal performs nothing for the lens, and the person's
+  warm expression is not exercised. No render has tested this form.
 
-Slots an LP2 prompt adds to the SKELETON above:
+Slots an LP2 prompt adds to, or widens in, the SKELETON above:
 ```
+[SUBJECT] widened: or the animal the product serves. -> LP2 LAW
 [TITLE]  the relief state, 2–5 words, in the offset space. -> LP2 LAW
 [COPY]   only where earned.                         -> LP2 LAW
 ```
@@ -344,5 +350,8 @@ carry over, the lettering ones do not.
   drafts `### --product`; until then no prompt should ship a person-free hero on this type.
 
 ## CHANGELOG
+- 1.20 (2026-09-17): `LP2 LAW` gains the animal subject — the owner's answer of 2026-09-16 to why
+  `06-relief-animal` was a type of its own. A slot value picked from the product, with no render
+  behind it yet. `06-relief-animal` is retired and names this file. ADR-095.
 - 1.19 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — its words, no inset in the bottom-right, a seated product seen whole, its place in the gallery. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.18. ADR-094.
 - 1.18 (2026-09-15): copied verbatim from `registry/types/06-relief-hero.md` at 1.18, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

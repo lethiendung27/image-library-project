@@ -3,9 +3,9 @@ id: 06-relief-animal
 step: 6
 job: relief
 device: animal
-version: "0.1"
-status: reserved
-replaced_by: null
+version: "0.2"
+status: deprecated
+replaced_by: 06-relief-hero
 channels: [landing-page]
 requires_product_photo: false
 generation_mode: single-pass
@@ -16,10 +16,10 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "The absorption ladder. Three exemplars carry three different registers, so what they share is a SUBJECT and not a device — which SPEC 3.2 says is an axis, tried before a type. Settling it means widening PARTS/subject on active types in registry/types/, and this namespace holds only new PDP types."
+blocked_by: null
 ---
 
-# 06-relief-animal — PDP-DR DRAFT
+# 06-relief-animal — RETIRED, absorbed by the relief types
 
 Promotion status (2026-09-10): **3 observations, 3 distinct sources — and the file argues
 against its own existence.**
@@ -38,7 +38,7 @@ is an animal, which is a value in a slot, not a way of making a picture.
 **The device name says so out loud.** `animal` names WHAT is photographed. ADR-065 corrected
 exactly that fault twice in one pass — `03-spec-ingredient` became `03-spec-stilllife` and
 `03-spec-range` became `03-spec-lineup`, both because the id has to name how the argument is
-made. This id fails that test and keeps the ledger's name only so the eight records filed under
+made. This id fails that test and keeps the ledger's name only so the three records filed under
 it can be followed.
 
 ## PURPOSE
@@ -48,9 +48,9 @@ three pet and supplement pages; **not** because a distinct visual mechanism has 
 
 ## TRIGGER
 use_when: >
-  NOT YET ROUTABLE — see BLOCK. The pattern belongs to the outcome beat of a pet
-  product page, where the animal is what the product acts on and the owner is the
-  reader. Today the frames it names are served by 06-relief-hero, 06-relief-scene and
+  RETIRED — see RETIRED; the relief types route this beat. The pattern belongs
+  to the outcome beat of a pet product page, where the animal is what the product
+  acts on and the owner is the reader. Today the frames it names are served by 06-relief-hero, 06-relief-scene and
   05-social-snapshot with a non-human subject, and the routing question is whether
   those types' subject slots already take one.
 
@@ -94,7 +94,34 @@ type.
 a person's face, a stated breed the reference does not show, a product held to the lens
 ```
 
-## BLOCK
+## RETIRED — 2026-09-17
+
+**This type is deprecated. The relief types take an animal subject instead** (owner decision,
+2026-09-16, ADR-095: *"tại sao phải là relief-animal riêng trong khi có thể đưa vào relief tuỳ
+sản phẩm"* — why a separate relief-animal when relief can take it, depending on the product).
+The file argued the same thing from its first day. `replaced_by` names `06-relief-hero`, whose
+purpose is this file's purpose with the product in frame; `06-relief-scene` and
+`06-relief-claimstack` take the animal too, each in its own section.
+
+**The pass the paragraph below asked for was run: all three refused an animal.**
+`06-relief-hero`'s subject was one person, `06-relief-scene`'s the same person as the paired pain image, and
+`06-relief-claimstack`'s a person or the product. The paragraph's plan for that answer was an
+axis; the owner's answer is cheaper — the subject is a value picked from the product, the
+parameter rung of SPEC §3.2 — so no `beneficiary` axis ships and `vocabulary.yaml` gains no
+value. It is written in each LP2 file, not in `registry/types/`: since ADR-091 this folder holds its own copies of the active types, which
+removed the reason this file gave for waiting.
+
+**The ledger is not re-filed, because it does not need to be.** The three records name
+`06-relief-hero` once and `06-relief-scene` twice as their `type`, with this id as
+`proposed_id`. Each also breaks its type in a second way — a studio seamless where the hero
+wants a room, and no product where the scene wants one — and those stay what they were:
+deviations the relief types do not absorb, which nothing here widens. `05-social-snapshot`,
+which the paragraph below also named, is a step-5 type and not a relief type, and it is not
+widened either.
+
+**The sections above are the record of the proposal, not instructions.** The paragraph below is
+the block as it stood.
+
 **Waiting on a ladder decision that this namespace cannot take.** The question is whether
 `06-relief-scene`, `06-relief-hero` and `05-social-snapshot` already take a non-human subject —
 and answering it means editing `PARTS/subject` on three ACTIVE types in `registry/types/`.
@@ -119,6 +146,11 @@ re-filed. If they do, the axis ships and this file is still deleted.
   than to a still type, and the ledger record should be re-read with that in mind.
 
 ## CHANGELOG
+- 0.2 (2026-09-17): **RETIRED**, `status: deprecated`, `replaced_by: 06-relief-hero`. Owner decision
+  of 2026-09-16: the relief types take an animal subject, picked from the product, so no type and
+  no `beneficiary` axis. The pass this file asked for found all three relief subjects refusing an
+  animal, and each LP2 file now takes one. `BLOCK` becomes `RETIRED`; the ledger is not re-filed.
+  "eight records" corrected to three. ADR-095.
 - 0.1 (2026-09-10): drafted from three observations across three distinct sources in batches
   2026-08-31-A and B — including `lp2-19halden-densifol`, the one source in this corpus whose
   slug carries the correct LP number. Filed reserved with no skeleton and with the case against

@@ -3,7 +3,7 @@ id: 06-relief-claimstack
 step: 6
 job: relief
 device: claimstack
-version: "0.7"
+version: "0.8"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -54,10 +54,10 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 06-relief-claimstack v0.7
+TYPE: 06-relief-claimstack v0.8
 REGISTER: commercial editorial photograph on a flat coloured field.
 
-[SUBJECT]   one person carrying the state, cut out.        -> PARTS/subject
+[SUBJECT]   a person, the product, or the animal it serves. -> PARTS/subject
 [OFFSET]    the subject holds one side; the words the other. -> PARTS/offset
 [FIELD]     one flat tone behind everything.               -> PARTS/field
 [LIGHT]     warm and directional on the subject only.      -> PARTS/light
@@ -70,9 +70,10 @@ REGISTER: commercial editorial photograph on a flat coloured field.
 ## PARTS
 
 **`subject`** — choose ONE. A **person** carrying the state, or the **product** itself, or the
-product **in use** — a hand holding it, a glass being made, a device being worn. Whichever it
-is, it occupies one third to one half of the frame at one side and nothing else competes with
-it.
+product **in use** — a hand holding it, a glass being made, a device being worn — or, where the
+page's product serves one, the **animal** the page names: its species, and a breed only where the
+page names one (owner decision, 2026-09-16, ADR-095; no render yet). Whichever it is, it
+occupies one third to one half of the frame at one side and nothing else competes with it.
 
 **The product form is RENDERED, 1 of 1, and it is the cleaner of the two.** Four of the ten
 sources put a product where the draft put a face — capsules, a neck device, a mouthpiece, a
@@ -83,7 +84,8 @@ subject still carries the promise.
 symptom or result above a face and says emotion on a face is not evidence. This type has no
 visible result by definition — that is its trigger — so the face is the only rung of G9's
 ladder available, and where a result IS visible the trigger says take another type.
-**Where the subject is the product, G9 is not engaged at all**, and neither is G13 nor the
+**Where the subject is the animal, G9 holds by itself** — an animal performs nothing for the
+lens. **Where the subject is the product, G9 is not engaged at all**, and neither is G13 nor the
 cut-out edge: three failure modes the person form carries and this one does not.
 
 **`offset`** — the subject occupies one third to one half of the frame at one side; the words
@@ -133,7 +135,7 @@ section existed produced six identical flat rectangles.
 | form | shape | the register it belongs to |
 |---|---|---|
 | `tag` | a flat rectangle, capitals cut out of the fill | anything that reads as engineered or clinical |
-| `seal` | a scalloped rosette or a shield, a short line curved inside it | a guarantee, a standard, a promise about the seller. **Reads as authority, which is exactly why G16 refuses a certification mark in one** |
+| `seal` | a scalloped rosette or a shield, a short line curved inside it | a guarantee, a standard, a promise about the seller. **Reads as authority, so a certification mark goes in one only where `content.json` names it** (ADR-095) |
 | `pill` | a fully rounded capsule, a short line inside | soft categories — supplements, personal care, anything domestic |
 | `icon-disc` | a small line icon in a circle with one short label beneath — `chip` until ADR-094, when the namespace's flat chip form took the word | a capability where the icon carries half the reading |
 
@@ -359,6 +361,10 @@ capability claim instead of a felt state (ADR-078).
 new sources until the re-filing pass runs.
 
 ## CHANGELOG
+- 0.8 (2026-09-17): `PARTS/subject` takes the animal a page's product serves — the owner's answer of
+  2026-09-16 that retired `06-relief-animal` — and the skeleton line names all three subjects it
+  already allowed. The `seal` form may carry a certification mark the page names. No render behind
+  either. ADR-095.
 - 0.7 (2026-09-16): the badge form `chip` becomes `icon-disc`, because the namespace's flat chip
   form now owns that word; the stack sits inside the namespace's 16-word frame, its claim lines
   keeping this type's own count. ADR-094.

@@ -3,7 +3,7 @@ id: 03-spec-hero
 step: 3
 job: spec
 device: hero
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -62,7 +62,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-hero v0.2
+TYPE: 03-spec-hero v0.3
 REGISTER: commercial product photograph or lifestyle photograph. One frame.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -126,18 +126,21 @@ claim turns this type into a claim stack with a picture.
   photographic and its settings are real places, so context integrity binds whole. See BLOCK
   for the one thing the corpus does that G7 refuses.
 - **A15 binds the headline.** `capix-mat` asserts "10CM thickening" with nothing behind it in
-  one tile and photographs a tape measure against the same edge two tiles later. The second is
-  the form this type should take whenever the claim is a figure.
+  one tile and photographs a tape measure against the same edge two tiles later. Since the
+  owner's decision of 2026-09-16 (ADR-095) both are legitimate where the page supplies the
+  figure; the second is the stronger form, and the one to reach for first.
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
 
 ## NEGATIVE
 ```
 [G6] + a product that is merely present rather than doing the thing claimed,
 a second headline, a paragraph, a claim stack, a certification seal, an award,
-a press mark, a bare figure with no instrument in frame, a gradient bar behind
+a press mark, a figure the page did not supply, a gradient bar behind
 the words, a setting the product could not actually be in, a leader line, a decorative line,
 a product name the page did not write
 ```
+Where the page names a certification, an award or an outlet and the tile carries its mark, the
+prompt drops that item from this list (ADR-095).
 
 ## BLOCK
 **Waiting on criterion 2 against `06-relief-hero`**, which is ACTIVE, holds 19 distinct
@@ -166,6 +169,9 @@ it is taken, the NEGATIVE above refuses it.
   the day. Recorded as the first thing a founding round should check.
 
 ## CHANGELOG
+- 0.3 (2026-09-17): two owner decisions of 2026-09-16 (ADR-095). A figure the page supplies may
+  stand without an instrument in frame, which stays the stronger form; a certification, award or
+  press mark the page names may be drawn, and the negative drops it then.
 - 0.2 (2026-09-16): the owner's Hero + Angle & Detail lands here (ADR-094). A FORM claim is shown
   by the angle that makes the form visible; the title is an identity hook of 2–5 words with an
   optional one-line tagline; no leader, no decorative line, no chip unless earned, no invented

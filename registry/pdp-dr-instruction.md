@@ -245,8 +245,11 @@ same thing and names nothing.
   The one exception is `03-mechanism-xray` showing components the page names. Three cushion
   renders cut the cover open or drew a structure inside a product that has none, and four
   painted a heat map, waves or light lines onto the product itself.
-- **No printed text the page did not write** — on the product, on its packaging, on a prop. Two
-  renders printed an arrow on the shipping box.
+- **No printed text the page did not write** — on its packaging, on a prop, or added to the
+  product. Two renders printed an arrow on the shipping box. **The product's own printing is the
+  reference photograph's** (owner decision, 2026-09-16, ADR-095): the photograph is attached and
+  the block keeps it as it keeps every other part, so a render that re-letters it has broken the
+  block and is graded as any other product drift.
 - **A prompt with the product in frame ships with its reference flag set**, so the owner attaches
   the photograph at render time. A prompt with no product in frame carries no block.
 
@@ -269,7 +272,7 @@ between a hook and a caption; the owner's runs agree, and set the hook short. Ev
 |---|---|
 | title | **2–5 words, never more than 6.** Plain text, never inside a chip, a pill or a box |
 | copy | **earned or absent** — earned only where the message needs a number, a timeframe or a mechanism the picture cannot show. 6–10 words: one sentence, one line, one full stop |
-| chip | **earned or absent** — only a certification, rating or figure the page supplies verbatim with its source; a part label in a Callout, a Rail or a Lineup; a diagram or model label in a mechanism tile; or a use case the picture does not show. **A chip that restates the title or the copy is cut.** 1–3 words, one to a tile, except where a type keeps its own count |
+| chip | **earned or absent** — only a certification, rating or figure the page supplies, verbatim; a part label in a Callout, a Rail or a Lineup; a diagram or model label in a mechanism tile; or a use case the picture does not show. **A chip that restates the title or the copy is cut.** 1–3 words, one to a tile, except where a type keeps its own count |
 | the whole frame | **at most 16 words**, labels included |
 
 **Counted over the set, per twelve tiles** and scaled to a set of any other size: **copy on at
@@ -302,9 +305,10 @@ one tile of those 64 carried a title alone; the two batches written tighter put 
   renders carried at least one of its words;
 - **a verdict word** unless the page supplies the exact claim — *approved, tested, safe,
   certified, proven, guaranteed, clinical* — 8 of 77;
-- **a figure the page did not supply with its source** — a percentage, seconds, grams, an LED
-  count, "millions". Specificity is not evidence: the comb batch invented five figures in thirteen
-  tiles. This is A15, and it binds every word;
+- **a figure the page did not supply** — a percentage, seconds, grams, an LED count, "millions".
+  Specificity is not evidence: the comb batch invented five figures in thirteen tiles. This is
+  A15 as the owner settled it (ADR-095) — a figure `content.json` carries may stand, one it does
+  not carry may not — and it binds every word;
 - **a health or medical outcome** — *better circulation*, *stimulates blood flow* — 5 of 77.
 
 **Read every title, copy line and label back before the prompt ships.** The owner's runs
@@ -321,10 +325,10 @@ LEFT, PREPARE — and type, variant and field names alike: one render printed "M
 a chip. Describe the region in words (adapter Rule 1b).
 
 **A secondary element is absent by default, and there is at most one.** It proves the tile's
-message with something the picture and the title lack: a sourced figure, a certification the page
-supplies, or a plain 2D diagram of the mechanism where the product warrants one. It never covers
+message with something the picture and the title lack: a figure the page supplies, a certification
+the page supplies — in words or as its mark — or a plain 2D diagram of the mechanism where the product warrants one. It never covers
 the product, and it lives in the frame's empty air. An expert is never a secondary element (the
-LAW rows below).
+LAW row below).
 
 **Numbers beat adjectives, and one figure replaces three claims.** If the count is right, the
 tile still works with its words removed.
@@ -345,18 +349,27 @@ block occupies AND that it appears once, in one place, and nowhere else. **The o
 titles were drawn once in all 76 renders that carried one**, set large enough to fill their
 area; a two-word title still needs its area named.
 
-### The two rows that are LAW and not taste
+### One row that is LAW and not taste, and one the owner lifted
 
 The owner waived G16's caps on 2026-09-03 after finding the copy too weak to ship, and set this
-namespace's own counts on 2026-09-16. **Two rows moved with neither decision**, and neither is
-G16's to waive:
+namespace's own counts on 2026-09-16. **Two rows moved with neither decision**, because neither
+is G16's to waive. The owner has since answered the second:
 
-1. **A named-person or named-profession endorsement.** G14 calls it illegal in its own
+1. **A named-person or named-profession endorsement — LAW.** G14 calls it illegal in its own
    words (FTC endorsement rules), and G14 binds the SLOT rather than the type — so there is
    nothing here for a type-scoped permission to lift.
-2. **A certification seal, an award, a rating or a press mark.** The trademark question,
-   put to the owner on 2026-08-18 and declined. Until it is answered these are unwritable,
-   and two files in this folder record that it is their commonest observed content.
+2. **A certification seal, an award, a rating or a press mark — MAY BE DRAWN** (owner decision,
+   2026-09-16, ADR-095, answering the trademark question put on 2026-08-18). So may the third
+   class the corpus showed, a **compatibility bar** of the platforms a product works with.
+   **A mark enters a frame only where `content.json` names it** — the body, the award, the
+   rating, the outlet, the platform — because the words come from the page and from nowhere
+   else (G16), and a mark the page does not name is an invented claim whatever it looks like.
+   G6's `logo` gives way for these marks and for nothing else: the product block still bars a
+   logo added to the product, and a brand's or a rival's mark stays out. **What stays G14's is
+   attribution**: a rating drawn as a mark is the page's claim, while a reviewer's name, an avatar
+   or a verified label on a tile still makes the tile a customer's (ADR-088). No render in this
+   namespace has drawn one of these marks yet; the first set that does grades each against the
+   real mark.
 
 **The owner's Endorsed tile has no generated form this namespace can write** (ADR-094). The
 instruction of 2026-09-16 lets an expert figure recommend the product, under a persona the page
@@ -478,10 +491,14 @@ itself — the owner records an invented "Dr. L. Chen" rendering an Asian face, 
   about the object and the writer reaches for the object's own adjectives.
 - **Never state the frame's shape or ratio in prompt text** (ADR-016, adapter Rule 4). A
   written ratio did nothing to this renderer, 6 of 6.
-- **A15**: a figure enters a frame only where `content.json` carries the figure AND its
-  source, and the source is set beside it. This binds the text layer and it also binds
-  anything printed on an object — `07-identity-pack`'s founding render wrote a net weight
-  and an ingredient list onto a pouch that nobody asked for.
+- **A15, as the owner settled it** (2026-09-16, ADR-095): **a figure enters a frame only where
+  `content.json` carries it.** No source is required beside it; where the page gives one it may
+  sit there, and the five honest forms in the corpus finding below stay the stronger choice. A
+  figure the page does not carry never enters, in the text layer or printed on an object.
+  **An object's own printing is its reference photograph's**: `07-identity-pack`'s founding
+  render wrote a net weight and an ingredient list onto a pouch, in a round that did not record
+  whether a photograph was attached, and the owner's answer is the attached photograph and the
+  product block rather than a word-by-word check.
 - **G13 has no exemptions.** A refused prompt returns no image at all, which is a different
   failure class from a weak one.
 
@@ -518,7 +535,7 @@ is a verbatim copy, and in place where it is LP2's own draft.
 | Mechanism · Product X-ray | `03-mechanism-xray` | active copy | **below, until its re-copy** |
 | Mechanism · Principle | — | **no file** | below |
 | Mechanism · Demonstrated | — | **no file** | below |
-| Mechanism · Endorsed | — | **not written** | the LAW rows of the text section |
+| Mechanism · Endorsed | — | **not written** | the LAW row of the text section |
 | Use Steps · Sequence | `03-use-sequence` | active copy | its `LP2 LAW` |
 | Use Steps · Grid | `03-use-grid` | active copy | its `LP2 LAW` |
 | Outcome Hero | `06-relief-hero` | active copy | its `LP2 LAW` |
@@ -558,22 +575,23 @@ here until then, and it binds them now, since this file binds every copy in the 
 - Only components **the page names** are solid inside the shell. **Where the page names none,
   the type is locked** — take the Body form, or the Principle form below. **A cushion, a mat or a
   garment has no interior to show**; two cushion renders drew one anyway.
-- **Labels are allowed, figures are not.** A 1–3 word label naming a component the page names is
-  the type's chip — the owner's comb render labelled its atomiser cleanly. The copy's ban on spec
-  and capacity text stands: a figure is A15.
+- **Labels are allowed, and a figure only where the page supplies it.** A 1–3 word label naming a
+  component the page names is the type's chip — the owner's comb render labelled its atomiser
+  cleanly. The copy's ban on spec and capacity text gives way to a figure `content.json` carries,
+  and to nothing else (A15, ADR-095).
 - A dark key is allowed. The words as for any mechanism tile.
 
 **Three mechanisms with no file.**
 - **Principle** — the science is general physics or biology: a point load against a spread load,
   slow rebound, airflow, an ingredient's action. One clean 2D or 3D diagram BESIDE the product or
   in an inset, in one neutral line colour, **never painted onto the product and never a rainbow
-  gradient**; a figure only where the page supplies it with its source. The owner's runs tried the
+  gradient**; a figure only where the page supplies it. The owner's runs tried the
   form three times and painted all three onto the product — a heat map twice, flow waves once — so
   it has no passing render and no corpus id.
 - **Demonstrated** — an unnamed, untitled person demonstrates the mechanism on a spine or pelvis
   model, or on a seated person; the model may carry 1–3 word part labels. No "recommended by", no
   "clinically", **and no clinical dress or clinic setting**, which would present the demonstrator
-  as a practitioner and make the tile the named-profession endorsement the LAW rows refuse. The
+  as a practitioner and make the tile the named-profession endorsement the LAW row refuses. The
   authority is the demonstration's. No render and no corpus id.
 - **Applied Use Storytelling** — a feature in real, energetic use: the light, motion and water of
   the place, with the product and the place integrated — splashes, sweat, reflections. Copy only
@@ -586,7 +604,7 @@ take a dark key; and **a set carries one mechanism variant** unless the page ask
 **Each type's musts, for the check before a prompt ships:** Split — the product in the after
 panel, the verdict marks flat discs; Rail — photographic vignettes, a white ring, symptom labels;
 Sequence — nothing drawn inside the panels; Callout — no copy, and every label a part serving the
-one claim; Comparative — headers once, any figure sourced; Macro — a title only, a locator never
+one claim; Comparative — headers once, any figure the page's; Macro — a title only, a locator never
 in the bottom-right, one macro to a set whatever the surface; Grid — no label, chip or badge inside
 a cell; Hero — no leader, and no chip unless earned; Mechanism — the variant fits the product
 class the page describes, X-ray only with named components, nothing drawn on the product's
@@ -624,7 +642,9 @@ holding this will miscount four sources.
 ### 2. Five honest-substantiation behaviours, found in the wild
 
 A15 proposes a footnote-and-survey shape drawn from one corpus frame. The drop found five
-better models, each in a real page, and they are what a substantiation rule should legislate:
+better models, each in a real page. **The owner's rule of 2026-09-16 requires none of them**
+(ADR-095) — a figure the page supplies may stand bare — so they are the stronger forms a tile
+may choose, not a gate:
 
 1. **the instrument in shot** — a tape measure stood against the edge, substantiating the same
    figure the page asserts bare two tiles earlier
@@ -681,48 +701,45 @@ trademark question of 2026-08-18 — the certification seal and the press mark. 
 mark is different in kind:** it confers no authority on the product, it states an
 interoperability fact a buyer can verify by trying it.
 
-Nothing in G16, G14 or the two LAW rows reaches it. **G6 bans logos outright** and the source
-carries twelve. Until that is decided, no type here writes a mark library that includes one,
-and `03-spec-claimstack` ships with no mark library at all for exactly this reason.
+Nothing in G16, G14 or the two LAW rows reached it, and **G6 bans logos outright** while the
+source carries twelve. **Decided by the owner on 2026-09-16** (ADR-095): a compatibility bar may
+be drawn where `content.json` names the platforms. `03-spec-claimstack` still has no mark
+library; the gate on writing one is gone, and the library is written with the first set that
+draws a mark.
 
 ## What this namespace is still waiting on
 
-**None of LP2's own drafts routes.** Sixteen files: fifteen `status: reserved`, each carrying a
-`blocked_by` and a `BLOCK`, and one `deprecated` — `07-identity-callout`, retired on
-2026-09-11 and replaced by `03-spec-callout` after a control render and a ten-source corpus
-answered the same question the same way. `registry/pdp-dr-index.yaml` gains none of them. What
-routes on an LP2 page today is the seventeen verbatim copies of the active image types,
+**None of LP2's own drafts routes.** Sixteen files: fourteen `status: reserved`, each carrying a
+`blocked_by` and a `BLOCK`, and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
+and replaced by `03-spec-callout` after a control render and a ten-source corpus answered the
+same question the same way, and `06-relief-animal`, retired on 2026-09-17 after the owner put an
+animal subject into the relief types (ADR-095). `registry/pdp-dr-index.yaml` gains none of them.
+What routes on an LP2 page today is the seventeen verbatim copies of the active image types,
 through that index, ordered by `mapping/pdp-dr-rules.md` (ADR-091).
 
-**Three files clear SPEC §6.3 criterion 1 and are the promotion queue**, in order of evidence:
-`03-spec-claimstack` (8 distinct sources), `03-spec-dimension` (7), `03-spec-hero` (6). All
-three are blocked on criterion 2 alone, and in each case against a named sibling —
-`06-relief-claimstack`, `03-spec-callout`, `06-relief-hero`. **Those three router-confusion
-tests are now the single largest piece of unfinished work in this namespace**, and they are
-the same test three times: can a router separate two types that share a device and differ only
-in job?
+**Six drafts clear SPEC §6.3 criterion 1** — `03-spec-callout`, `06-relief-claimstack`,
+`07-identity-pack`, `03-spec-claimstack`, `03-spec-dimension` and `03-spec-hero`, at 11, 10,
+10, 9, 7 and 7 distinct sources on 2026-09-17. The counts are `python3 scripts/validate.py --evidence`'s and move with
+the ledger; read them there. Until this paragraph was rewritten it named three files at 8, 7
+and 6, which the ledger had already passed. **Every one of them is blocked on criterion 2**, and
+four of those tests are one test: can a router separate two types that share a device and
+differ only in job? — `03-spec-claimstack` against `06-relief-claimstack`, `03-spec-dimension`
+against `03-spec-callout`, and `03-spec-hero` and `06-relief-claimstack` each against
+`06-relief-hero`. Each file's `blocked_by` names the rest.
 
-Four decisions gate the rest of the folder, and three of them are the owner's:
+**The owner decisions this section used to list are taken** (2026-09-16, ADR-095): a mark the
+page names may be drawn; a figure `content.json` carries is substantiated; an animal is a
+subject the relief types take, not a type of its own; and LP1 routes `03-mechanism-contact` once
+it is promoted, which `mapping/pdp-dr-rules.md` registers. `04-proof-stat` now waits on a fifth
+source, its first skeleton and set, and criteria 2 and 3.
 
-1. **The substantiation rule** (A15). Blocks `04-proof-stat`, and behind it
-   `04-proof-instrument` and `04-proof-interface`. A skeleton has to say where a number
-   comes from.
-2. **The trademark question** of 2026-08-18, now WIDER than when it was asked. It blocked
-   `07-identity-callout`'s mark library; that type is retired, and the question moved to
-   `03-spec-claimstack`, which ships with no mark library at all because the badge this
-   construction actually carries in the corpus is a **compatibility bar** — six third-party
-   platform marks. That is a third mark class, neither a certification seal nor a press
-   mark, and answering the 2026-08-18 question as asked would not settle it.
-3. **The `beneficiary` axis.** Blocks `06-relief-animal`, and settling it means widening
-   `PARTS/subject` on three ACTIVE types — work this namespace's charter does not cover.
-4. **Criterion 2, the router-confusion test**, which no owner decision unblocks. It is now
-   the binding gap on the three best-evidenced files here and on nothing else, and it is
-   the SAME test three times — `03-spec-claimstack` against `06-relief-claimstack`,
-   `03-spec-dimension` against `03-spec-callout`, `03-spec-hero` against `06-relief-hero`.
-   Each pair shares a device and differs only in job. ADR-066 refused to promote past this
-   test once already, before any of the three siblings existed to make it concrete.
+**Criterion 2, the router-confusion test, is the one no owner decision unblocks**, and it is the
+binding gap on every draft above. ADR-066 refused to promote past it once already, before any of
+the siblings existed to make it concrete. **What still waits on the owner is verdicts**: SPEC
+§6.3(3) takes the owner's own on a rendered example, and three drafts name one as outstanding —
+`03-spec-callout`, `03-spec-lineup` and `03-mechanism-contact`.
 
-**No prompt has been written from any of LP2's own drafts against this namespace's law, and
-no render exists under it.** Three of the eleven carry FOUNDING RENDER ROUND sections from
-their time in `_staging/`; those renders are real and their measurements stand, and they
-were taken before this file existed.
+**Prompts under this namespace's law exist, and one set has rendered.**
+`sets/03-mechanism-contact-01/` rendered six on 2026-09-16, harness-graded; the other sets
+under `sets/` are owner-gated and wait on renders. Six drafts carry FOUNDING RENDER ROUND
+sections; those renders are real and their measurements stand.

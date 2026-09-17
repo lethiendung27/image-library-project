@@ -290,3 +290,11 @@ blocked proposals stay blocked. What it adds is that the block is not sufficient
 from any type whose subject carries printed words is publishable only where that printing is
 checked against the reference word by word. `07-identity-pack` carries the constraint;
 whether it belongs in a rule is the same owner decision A15 already names.
+
+**LP2, the owner's decision of 2026-09-16** (ADR-095). On an LP2 page the working position
+above is replaced: **a figure enters a frame where `content.json` carries it**, and no source is
+required beside it; the five honest forms `registry/pdp-dr-instruction.md` records stay the
+stronger choice. **A product's own printing is its reference photograph's**, kept by LP2's
+product block, and the word-by-word check above is not a gate there. The three proposals this
+entry blocked are unblocked on this fault in that namespace, and each still owes what its own
+file names. Outside LP2 the working position above stands.

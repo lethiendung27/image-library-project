@@ -3,7 +3,7 @@ id: 07-identity-pack
 step: 7
 job: identity
 device: pack
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -70,7 +70,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 07-identity-pack v0.3
+TYPE: 07-identity-pack v0.4
 REGISTER: commercial product photograph. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -143,7 +143,7 @@ rectangles, which is the monotony that put this section here.
 | form | shape | the register it belongs to |
 |---|---|---|
 | `tag` | a flat rectangle, capitals cut out of the fill | tools, hardware, anything engineered |
-| `seal` | a scalloped rosette or a shield | a guarantee or a standard about the seller. Note G16 refuses a certification mark inside one |
+| `seal` | a scalloped rosette or a shield | a guarantee or a standard about the seller. A certification mark goes inside one only where `content.json` names it (ADR-095) |
 | `pill` | a rounded capsule | supplements, personal care, food |
 | `roundel` | a filled circle carrying a figure — a count, a size, a quantity | a pack fact the label already carries and the eye should not have to hunt for |
 | `flash` | a corner ribbon | an offer. **Highest going-stale cost of the five** |
@@ -185,10 +185,11 @@ small composition, and it is what makes a stamp read as a stamp rather than as a
   ADR-064. Every other G7 test still binds: the pack is complete, nothing is cut open that
   the product does not open, no component is missing.
 - **G8, G9 and G11 are not engaged** — no output, no symptom, no state.
-- **G16 governs any text.** In practice a title and a badge at most, and the classes G16
-  refuses are exactly the ones this corpus stamps onto packshots most often: an accolade, a
-  certification seal, a best-seller flag, a discount. An origin claim sits close to the same
-  line and is not yet listed there.
+- **G16 governs any text.** In practice a title and a badge at most. The classes this corpus
+  stamps onto packshots most often are an accolade, a certification seal, a best-seller flag and
+  a discount. On an LP2 tile an accolade or a certification the page names may be drawn
+  (ADR-095), a discount is G16's waived row, and a best-seller flag is a claim that enters only
+  where the page makes it. An origin claim sits close to the same line.
 - **The pack's OWN printing is a text surface this type does not govern, and that is the
   sharpest exposure it has.** `text_layer` declares `[title, badge]`; the words on the object
   are diegetic and G16 does not reach them. The 2026-09-03 round returned a pouch printed
@@ -196,9 +197,13 @@ small composition, and it is what makes a stamp read as a stamp rather than as a
   Contains 12 Repellent Balls` — a composition claim and two quantity claims, rendered
   legibly, none of them written by anybody. **Gibberish lettering is a visible failure; a
   well-rendered invented net weight is an invisible one**, and it is `argument-faults.md`
-  A15 arriving inside the one type whose whole deliverable is the printed object. A frame
-  from this type is only publishable where its printed surface is checked against the
-  reference word by word.
+  A15 arriving inside the one type whose whole deliverable is the printed object. **The
+  owner's answer, 2026-09-16 (ADR-095): the product photograph is attached, and the product
+  block keeps the pack exactly as it shows it, printing included.** That replaces the
+  word-by-word check this bullet used to require. The founding round did not record whether a
+  photograph was attached (KNOWN-FLAKY), so its invented net weight is not evidence against the
+  block; a render that re-letters a pack against its attached photograph is a G1 failure and
+  is graded as one.
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
 
 ## NEGATIVE
@@ -208,6 +213,8 @@ an ingredient or garnish beside the pack, a variant of the same product,
 a certification seal, a discount flash, a torn or opened pack the product
 does not open, a reflection that breaks the label
 ```
+Where the page names a certification and the badge carries its mark, the prompt drops `a
+certification seal` from this list (ADR-095).
 
 ## WORKED EXAMPLES
 ### example: repellent-pouch-with-contents — skeleton@0.1, run: partial
@@ -344,10 +351,15 @@ the file (ADR-084).
 A15 arrived through this type and the entry says so: the founding render returned a stand-up
 pouch whose printed surface read `Active Ingredients: Peppermint Oil, Cedarwood Oil` and
 `NET WT. 8 OZ (227g)` — a composition claim and two quantity claims, set legibly on the object,
-written by nobody. A frame from this type is publishable only where the pack's printing is
-checked against the reference word by word.
+written by nobody. **That is no longer a block** (owner decision, 2026-09-16, ADR-095): the
+attached photograph carries the pack's printing and the product block keeps it, so what stays
+open is criteria 2 and 3.
 
 ## CHANGELOG
+- 0.4 (2026-09-17): two owner decisions of 2026-09-16 (ADR-095). The pack's printing is the attached
+  photograph's and the product block keeps it, which retires the word-by-word publishability
+  check; a certification or accolade the page names may be drawn, in the `seal` form among
+  others. `blocked_by` does not move: criteria 2 and 3 are what it names.
 - 0.3 (2026-09-03): owner audit of the founding round — colour. `PARTS/setting`: the ground's
   HUE comes from the pack, its VALUE and SATURATION do not — light and quiet by default.
   Measured against a corpus ground-value median of 0.89 over 119 frames. `MARKS` gains the

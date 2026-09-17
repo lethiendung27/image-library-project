@@ -13,7 +13,7 @@ Nothing here runs a model. An application *consumes* this library and does the g
 | **building the consuming app** | this file → `SPEC.md` §1 (the contract) → §7 (routing) → `dist/app-bundle/` |
 | **adding or editing a rule** | `SPEC.md` §3 (registry model) → §6 (evidence) → the type file → `decisions/log.md` |
 | **running Claude Code here** | `CLAUDE.md` — a thin adapter, entry points only, no logic |
-| **wondering why a rule exists** | `decisions/log.md`, append-only, 95 ADRs, every one cites its evidence |
+| **wondering why a rule exists** | `decisions/log.md`, append-only, 96 ADRs, every one cites its evidence |
 
 ## What an app actually consumes
 
@@ -119,8 +119,8 @@ Stated rather than left to be found:
 - **`feedback/picks.jsonl` is empty**, so `SPEC.md` §7.7's pick-rate prior has no data and
   one of the five ranking criteria is inert
 - **LP2's own drafts route nothing** (2026-09-15) — `registry/pdp-dr-types/` routes only its
-  seventeen copies of the active image types (ADR-091). Its sixteen drafts are fifteen
-  `reserved` and one `deprecated`, and the best-evidenced are blocked on
+  seventeen copies of the active image types (ADR-091). Its sixteen drafts are fourteen
+  `reserved` and two `deprecated`, and the best-evidenced are blocked on
   router-confusion tests that have not been run
 - **no app implements LEDE**, which is why `registry/toplist-types/` is not in the bundle
 

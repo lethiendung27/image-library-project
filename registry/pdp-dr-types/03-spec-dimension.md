@@ -3,7 +3,7 @@ id: 03-spec-dimension
 step: 3
 job: spec
 device: dimension
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -57,7 +57,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-dimension v0.1
+TYPE: 03-spec-dimension v0.2
 REGISTER: commercial product photograph, knockout. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -100,8 +100,9 @@ nothing about the product, so it is the weaker form.
   `content.json` carries no measurement, this type does not route.
 - **A dimension is the A15-benign class and the reason is worth stating.** A line drawn on an
   object is substantiated BY the object: a reader compares the label to the thing it spans.
-  That is not true of a performance percentage, and it is why this type may carry figures
-  where `04-proof-stat` may not.
+  That is not true of a performance percentage, whose only standing in a frame is that the page
+  supplied it — enough since the owner's decision of 2026-09-16 (ADR-095), and still less than a
+  line a reader can hold against the object.
 - **State the tolerance where the page has one.** gripi-mata prints *"Manual Measurement May
   Result In An Error Of 1-3 Cm / This Will Not Affect Usage"* under its three lines. A
   declared error band is worth more than a decimal place and is the honest form of this
@@ -145,6 +146,8 @@ alone. The fusion is recorded here rather than legislated.
   watch in a founding round, not as a rule.
 
 ## CHANGELOG
+- 0.2 (2026-09-17): the A15-benign bullet no longer says `04-proof-stat` may not carry figures;
+  the owner's decision of 2026-09-16 lets a figure the page supplies stand. ADR-095.
 - 0.1 (2026-09-11): drafted from eleven observations across seven distinct sources, batches
   2026-09-11-A, B, C, D, E, G and I. Criterion 1 cleared at seven; criteria 2 and 3 unrun.
   New device value `dimension`, which names how the argument is made rather than what is

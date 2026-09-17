@@ -3,7 +3,7 @@ id: 04-proof-lockedframe
 step: 4
 job: proof
 device: lockedframe
-version: "1.17"
+version: "1.18"
 status: active
 replaced_by: null
 channels: [advertorial, landing-page, marketplace, paid-social]
@@ -36,13 +36,14 @@ Added 2026-09-16 (ADR-094): the owner's gallery instruction for Feature + Benefi
 this copy's own and a re-copy keeps it; `registry/pdp-dr-instruction.md` binds the rest.
 
 - **The words.** A spec-led title of 2–5 words. **Panel headers once, above the panels, never
-  repeated below**, and they count as copy. Any other copy only as a figure the page supplies with
-  its source (A15). The register's "no text" gives way to these on an LP2 page and to nothing else.
+  repeated below**, and they count as copy. Any other copy only as a figure the page supplies
+  (A15, as the owner settled it in ADR-095). The register's "no text" gives way to these on an LP2 page and to nothing else.
 - **No icon and no pictogram.** A stopwatch drawn beside one panel came back labelled.
 - **Never an invented test, a cycle count, or "tested" or "approved".** One render set a steel
   press on the product under an invented "10,000+ Cycles".
-- **A certification the page supplies may be stated in words, with its source; the certification
-  MARK may not** — that is the trademark question of 2026-08-18.
+- **A certification the page supplies may be stated in words or drawn as its mark** — the owner's
+  answer of 2026-09-16 to the trademark question of 2026-08-18 (ADR-095). A certification the page
+  does not name is never drawn.
 - **The generic rival stays plain and unbranded, never broken or mocked** — the fairness rule
   already says so.
 - Each of the owner's three comparison renders broke a clause here: headers repeated beneath the
@@ -274,5 +275,8 @@ the cause is the only thing this variant supplies.
 (populated from observation evidence only)
 
 ## CHANGELOG
+- 1.18 (2026-09-17): `LP2 LAW` follows two owner decisions of 2026-09-16 — a figure the page supplies
+  needs no source beside it, and a certification the page supplies may be drawn as its mark.
+  `copied_at_version` stays 1.16. ADR-095.
 - 1.17 (2026-09-16): `LP2 LAW` added: the owner's gallery instruction for this type — a spec-led title and headers once above the panels, a figure only with its source, no icon, no invented test, a certification in words and never as a mark. `text_layer` declared. First LP2 edit; `copied_at_version` stays 1.16. ADR-094.
 - 1.16 (2026-09-15): copied verbatim from `registry/types/04-proof-lockedframe.md` at 1.16, commit `3cabeab` — owner instruction, ADR-091. Every section except WORKED EXAMPLES and CHANGELOG is that file's text. The version is the parent's; this file's own edits bump it from here.

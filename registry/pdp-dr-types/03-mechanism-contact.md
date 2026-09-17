@@ -3,7 +3,7 @@ id: 03-mechanism-contact
 step: 3
 job: mechanism
 device: contact
-version: "0.4"
+version: "0.5"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -82,7 +82,7 @@ use_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-mechanism-contact v0.4
+TYPE: 03-mechanism-contact v0.5
 REGISTER: product photograph meeting a clean technical render of the body.  -> PARTS/register
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.        -> G1
@@ -192,9 +192,10 @@ cleanly.
 ## SLOT CONSTRAINTS
 - **The prompt budget** (ADR-013, ADR-015): a clause earns its place only after a render failed
   without it.
-- **A15 binds every word.** A figure enters only where `content.json` carries it with its
-  source, and the source is set beside it. The corpus puts a figure in 6 of 7 frames and a
-  source beside none.
+- **A15 binds every word**, as the owner settled it on 2026-09-16 (ADR-095): a figure enters
+  only where `content.json` carries it. The corpus puts a figure in 6 of 7 frames and a source
+  beside none. A figure the page supplies goes in the copy line, and the prompt then drops
+  `a figure` and `a percentage` from the negative; a depth label stays out, because it is A13.
 - **A13 binds the cut** — `PARTS/cut`. A depth label is A13 and A15 at once: glowy-23's
   `4.0mm / 4.5mm` is a precision a render cannot carry.
 - **A2.** The frame shows the mechanism at the boundary as it happens. An outcome drawn on a
@@ -298,6 +299,11 @@ fills a space — a mist plume, a lamp's light, an airflow. Where the output mee
 structure at one place and the effect there is the subject, it is this type. `lp3-21hume-band`'s
 sensing arcs through a wrist sit on that line and stay where they were filed.
 
+**LP1 routes this type too, once it is promoted** (owner decision, 2026-09-16, ADR-095). The
+promotion diff also writes it into `registry/types/`, as the parent of this file, and owes what
+the register in `mapping/pdp-dr-rules.md` lists — LP1's criteria included. Criterion 2's two
+siblings are LP1 types already, so the test above serves both folders.
+
 **Criterion 3 has six renders and no owner verdict.** The founding round,
 `sets/03-mechanism-contact-01/`, rendered 2026-09-16: two pass, four partial, every verdict the
 harness's own, which ADR-011 excludes from promotion. Set 02 tests the two clauses 0.2 adds.
@@ -313,6 +319,9 @@ Six renders, 2026-09-16, set `03-mechanism-contact-01`.
   below its last named layer, 4 of 4; no removed matter drifted, 2 of 2.
 
 ## CHANGELOG
+- 0.5 (2026-09-17): two owner decisions of 2026-09-16 (ADR-095). LP1 routes this type once it is
+  promoted, so `BLOCK` names what the promotion diff owes; a figure the page supplies may stand in
+  the copy line without a source beside it. No clause about the picture moves.
 - 0.4 (2026-09-16): the owner's gallery instruction for this type (ADR-094). The title says what
   happens in 2–5 words; one copy line of at most 10; optional 1–3 word `labels` beside a named
   structure; a dark key allowed; nothing drawn away from the one contact place, which two comb

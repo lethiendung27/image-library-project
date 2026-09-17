@@ -3,7 +3,7 @@ id: 03-spec-claimstack
 step: 3
 job: spec
 device: claimstack
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -58,7 +58,7 @@ use_when: >
 
 ## SKELETON
 ```
-TYPE: 03-spec-claimstack v0.1
+TYPE: 03-spec-claimstack v0.2
 REGISTER: commercial product photograph. One frame, no panels, no insets.
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.   -> G1
@@ -106,16 +106,19 @@ a **COMPATIBILITY BAR** — `pawdi-cas` runs Alexa, Google Assistant, MOES, Smar
 Tuya across the foot of two frames. That is a third mark class this library has never named.
 It is not a certification seal and not a press mark, the two the trademark question of
 2026-08-18 refused; it confers no authority and states an interoperability fact a buyer can
-verify by trying it. **G6 bans logos outright and nothing exempts this.** Until that is
-decided, this type ships with no mark library and a badge is optional and plain.
+verify by trying it. **G6 bans logos outright and nothing exempted this** until the owner
+decided on 2026-09-16 (ADR-095) that a mark `content.json` names may be drawn on an LP2 tile —
+a platform in a compatibility bar as much as a certification. **The gate is gone and the library
+is still unwritten**: it is written with the first set that draws a mark, from the frames the
+ledger holds, and until then a badge is optional and plain.
 
 ## SLOT CONSTRAINTS
 - **The claims come from `product.specification` and `product.raw_features` and from nowhere
   else** — the same law `03-spec-callout` already carries. A claim line naming a capability
   the product does not have is a published claim, not a bad render.
-- **No figure without a source.** Four sources put a bare percentage or a bare duration in a
-  claim line. A15 binds: a figure enters only where `content.json` carries the figure AND its
-  source, and the source sits beside it.
+- **No figure the page did not supply.** Four sources put a bare percentage or a bare duration
+  in a claim line. A15 binds as the owner settled it (ADR-095): a figure enters where
+  `content.json` carries it, and a source beside it is the stronger form, not a requirement.
 - **G16 governs every line.** Six claims plus a title plus a badge is eight clusters, which is
   the count G16's own founding rounds tested and held at exactly eight.
 - **G7 exemption, narrow** — an object arranged on a plain ground beside a text block exists to
@@ -129,9 +132,11 @@ decided, this type ships with no mark library and a badge is optional and plain.
 ```
 [G6] + a paragraph, more than six claim lines, a claim line longer than one line,
 a second text block, a certification seal, an award, a press mark, a third-party
-platform logo, a bare percentage, a bare duration, a gradient behind the words,
+platform logo, a percentage or a duration the page did not supply, a gradient behind the words,
 a claim about a felt state rather than a capability
 ```
+Where the page names a certification, an award, an outlet or a platform and the tile carries its
+mark, the prompt drops that item from this list (ADR-095).
 
 ## BLOCK
 **Waiting on criterion 2, and it is the most consequential router-confusion test this library
@@ -155,6 +160,9 @@ decision above.
   mode this type drifts toward, which is accretion rather than any single bad clause.
 
 ## CHANGELOG
+- 0.2 (2026-09-17): two owner decisions of 2026-09-16 (ADR-095). A mark the page names may be
+  drawn, compatibility bar included, so the gate on `MARKS` is lifted and the library waits only on
+  a set; a figure the page supplies needs no source beside it. No render behind either.
 - 0.1 (2026-09-11): drafted from fifteen observations across eight distinct sources, batches
   2026-09-11-B, C, D, F, G, H, I and J. Criterion 1 cleared at eight; criterion 2 is the
   binding gap against `06-relief-claimstack` and criterion 3 is unrun. Filed as a spec-job

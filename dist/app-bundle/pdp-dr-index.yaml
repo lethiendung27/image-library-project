@@ -270,7 +270,7 @@ types:
     step: 4
     job: proof
     device: lockedframe
-    version: "1.17"
+    version: "1.18"
     status: active
     channels: [advertorial, landing-page, marketplace, paid-social]
     requires_product_photo: true
@@ -366,7 +366,7 @@ types:
     step: 6
     job: relief
     device: hero
-    version: "1.19"
+    version: "1.20"
     status: active
     channels: [landing-page, marketplace, paid-social, advertorial]
     requires_product_photo: true
@@ -396,7 +396,7 @@ types:
     step: 6
     job: relief
     device: scene
-    version: "3.8"
+    version: "3.9"
     status: active
     channels: [paid-social, advertorial]
     requires_product_photo: true

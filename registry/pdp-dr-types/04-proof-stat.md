@@ -3,7 +3,7 @@ id: 04-proof-stat
 step: 4
 job: proof
 device: stat
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,13 +17,14 @@ pairs_with: []
 never_with: []
 avoid_adjacent: [06-relief-claimstack]
 requires_pair: null
-blocked_by: "A15 and the owner substantiation decision behind it. A skeleton has to say where the number comes from, and no rule in this repo does. ADR-066 blocked this proposal by name on 2026-09-03 and nothing has moved since."
+blocked_by: "Criterion 1: four distinct sources of the five SPEC 6.3 asks. No skeleton yet: the A15 block is lifted (owner decision 2026-09-16, ADR-095) and the skeleton is written with the first set. Criteria 2 and 3 are unrun."
 ---
 
 # 04-proof-stat — PDP-DR DRAFT
 
 Promotion status (2026-09-10): **4 observations, 4 distinct sources. Criterion 1 not met, and
-that is the LEAST of what is wrong with promoting it.**
+that is the LEAST of what is wrong with promoting it.** Since 2026-09-17 the worst of it is gone:
+the owner settled A15, so a skeleton can now say where the number comes from (ADR-095).
 
 | source | the figure | what stood behind it in the frame |
 |---|---|---|
@@ -43,33 +44,35 @@ women aged 18+, two capsules daily for twelve weeks — set in the frame beside 
 supports (`sha256:8e885077254e2…`).
 
 ## PURPOSE
-Make one measured figure the subject of the frame, with its source set beside it, so a sceptic
-can see both at once. The argument is not that the number is large; it is that somebody
-counted, and that the counting is named where the number is.
+Make one measured figure the subject of the frame, so a sceptic reads the number before
+anything else. The argument is not that the number is large; it is that somebody counted — and
+where the page names who, the frame says so beside the number.
 
 ## TRIGGER
 use_when: >
   NOT YET ROUTABLE — see BLOCK. When it is: the proof beat of a product page where
-  content.json carries BOTH a figure and its source, and the buyer's doubt is whether
-  anyone has measured the claim. Choose 04-proof-lockedframe when the proof is
+  content.json carries a figure, and the buyer's doubt is whether anyone has measured
+  the claim. Choose 04-proof-lockedframe when the proof is
   something the reader can watch happen; that type shows, this one cites. Choose
   06-relief-claimstack when the frame's words are benefit claims rather than one
-  measured figure with an attribution.
+  measured figure.
 
 ## SKELETON
-**There is no skeleton and that is the decision, not an omission.** ADR-066 stated the reason
-in one line and it has not changed: *none of them can be given a skeleton, because a skeleton
-has to say where the number comes from and no rule in this repo does.*
+**There is no skeleton yet, and what kept it unwritten is gone.** ADR-066 stated the reason in
+one line: *none of them can be given a skeleton, because a skeleton has to say where the number
+comes from and no rule in this repo does.* The owner answered it on 2026-09-16 (ADR-095): the
+number comes from `content.json`, and nothing more is required beside it. The skeleton is
+written with this type's first set, where its clauses can be tested.
 
 What a skeleton would have to legislate, written down so the eventual one is not re-derived:
 
 ```
-TYPE: 04-proof-stat v0.1                                  [NOT WRITTEN]
+TYPE: 04-proof-stat v0.2                                  [NOT WRITTEN]
 
 [FIGURE]        the one number, large. From content.json, never composed.
 [WHAT IT SAYS]  the claim the number is about, in the reader's words.
-[SOURCE]        who measured, how many, over how long — IN THE FRAME,
-                set beside the figure and not in a footnote the crop can lose.
+[SOURCE]        only where content.json names who measured — then IN THE
+                FRAME, beside the figure, never in a footnote the crop can lose.
 [GROUND]        quiet: light, close to neutral.        -> ADR-068
 ```
 
@@ -79,10 +82,11 @@ TYPE: 04-proof-stat v0.1                                  [NOT WRITTEN]
   has measured what happens when a renderer is given a chart idiom: N shapes each bigger than
   the last came back as a bar chart 5 of 5, and the remedy was to ask for ONE tapering shape.
   A percentage does not need a chart at all — the numeral is the picture.
-- **A figure with no source.** Two of the four exemplars carry none, and one of those carries
-  two decimal places, which is precision standing in for provenance. A15's working position is
-  narrow and it is the whole of what this type may do: **a figure enters a frame only where
-  `content.json` carries the figure AND its source, and the source is set beside it.**
+- **A figure the page did not supply.** Two of the four exemplars carry no source, and one of
+  those carries two decimal places, which is precision standing in for provenance. The owner's
+  rule (ADR-095) is the whole of what this type may do: **a figure enters a frame only where
+  `content.json` carries it**, at the precision the page wrote. A source is not required; where
+  the page names one, it sits beside the figure.
 
 ## SLOT CONSTRAINTS
 - **G16 governs every word**, and the source line is the one that must survive the mobile
@@ -93,20 +97,25 @@ TYPE: 04-proof-stat v0.1                                  [NOT WRITTEN]
   is a claim about people. Where the tile itself carries names, avatars, a star row or a review
   count, or its wall's lead says the photos are customers', the slot takes a real customer
   photograph or it takes nothing (ADR-088; a harness that renders flags it, ADR-089).
-- **A15 binds twice.** Once on the text layer, which this type is entirely made of, and once on
-  anything printed on an object in frame — `07-identity-pack`'s founding render wrote
-  `NET WT. 8 OZ (227g)` onto a pouch unprompted, and the better the lettering renders the less
-  anything in the frame says the number is invented.
+- **A15 binds every figure in the frame**, as the owner settled it (ADR-095): `content.json`
+  carries it, or it is not there. The better a figure renders, the less anything in the frame
+  says it was invented, so the prompt names the page's figure and no other.
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
 
 ## NEGATIVE
 ```
 [G6] + a donut chart, a ring chart, a bar, a pie, a gauge, a graded row of shapes,
-a percentage with no source in the same frame, a decimal place,
+a figure the page did not supply, a decimal place the page did not write,
 an asterisk with no footnote, a person, a product
 ```
 
 ## BLOCK
+**No longer waiting on A15.** The owner decided on 2026-09-16 that a figure `content.json` carries
+is substantiated (ADR-095). What this file waits on now: a fifth distinct source (four on
+2026-09-17, `python3 scripts/validate.py --evidence`), its first skeleton and set, and criteria 2
+and 3. `04-proof-instrument` and `04-proof-interface` are unblocked on the same fault and have no
+file. The paragraphs below are the block as it stood.
+
 **Waiting on the owner's substantiation decision**, named in `argument-faults.md` A15 and in
 ADR-066 §4. A15 is deliberate about what it does and does not decide: it names the fault,
 measures it, and states a narrow working position; **what it does not do is bind the library by
@@ -127,6 +136,10 @@ The one corpus frame that does it right is the shape to legislate from.
   corpus does not govern another until it is re-measured here.
 
 ## CHANGELOG
+- 0.2 (2026-09-17): **unblocked on A15.** The owner decided on 2026-09-16 that a figure `content.json`
+  carries is substantiated, with no source required beside it; the source slot becomes optional,
+  and the negative refuses a figure the page did not supply rather than one without a source.
+  Still no skeleton: it is written with the first set. ADR-095.
 - 0.1 (2026-09-10): drafted from four observations across four distinct sources in batches
   2026-09-03-C, D, F and G. Filed reserved with NO SKELETON, which is the state ADR-066 §4 put
   this proposal in on 2026-09-03 and the honest carry-over of it. New device value `stat`.

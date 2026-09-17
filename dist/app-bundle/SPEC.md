@@ -342,8 +342,10 @@ LP2's routing surface, by the same `--write-index`.
   discriminator inside `use_when`, which is where ADR-060 put the whole trigger, and a second
   home for it would be a second place to go stale.
 - **A draft is promoted in place** — a status change, never a `git mv`, which would take it
-  out of the folder LP2 routes. Whether LP1 should route a promoted LP2 type as well is a
-  separate decision, and no instrument watches a copy in that direction yet.
+  out of the folder LP2 routes. **Whether LP1 routes it as well is the owner's decision, type
+  by type**, kept as a register in `mapping/pdp-dr-rules.md`. A type on it is also written into
+  `registry/types/` at promotion, as the PARENT of the LP2 file, which becomes its declared copy
+  — so the copy instrument above watches the pair (ADR-095).
 - What the copy instrument does not reach is a skeleton CALLING a part defined in another
   file, which nothing validates; every such call is registered in `mapping/pdp-dr-rules.md`
   and the register is the whole instrument.
@@ -353,10 +355,11 @@ LP2's routing surface, by the same `--write-index`.
   standard product shot (`mapping/slot-rules.md`, cross-rule 6).
 - **A PDP-DR type MAY declare `text_layer`** and G16 binds the types that do, as
   `registry/pdp-dr-instruction.md` narrows it: a title of 2–5 words, copy and chips only where
-  earned, the words counted over the set (ADR-094). Two rows of
-  G16 are LAW rather than taste and no type-scoped permission reaches them: a named-person
-  or named-profession endorsement (G14 binds the SLOT), and a certification, award, rating
-  or press mark (the trademark question, put to the owner 2026-08-18 and declined).
+  earned, the words counted over the set (ADR-094). One row of
+  G16 is LAW rather than taste and no type-scoped permission reaches it: a named-person or
+  named-profession endorsement (G14 binds the SLOT). The other, a certification, award, rating
+  or press mark — the trademark question of 2026-08-18 — the owner lifted for this namespace on
+  2026-09-16, for a mark `content.json` names (ADR-095).
 - Law shared by every type is stated once in `registry/pdp-dr-instruction.md` and never
   restated in a type file, exactly as §5 treats global rules. **It binds the copies too**:
   on an LP2 page it wins over a copied clause that disagrees with it, and a type that must

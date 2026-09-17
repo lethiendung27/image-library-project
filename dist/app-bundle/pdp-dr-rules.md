@@ -111,9 +111,9 @@ three files written on 2026-09-11 (`03-spec-claimstack`, `03-spec-dimension`,
 `03-spec-hero`) deliberately restate their own parts rather than calling a sibling's, so the
 register stays empty.
 
-`06-relief-animal` cites `06-relief-scene`'s `PARTS/subject` and `pairs_with` in prose rather
-than calling it from a skeleton; that is an argument, not a reference, and it is deliberately
-not in the table above.
+`06-relief-animal`, retired on 2026-09-17 (ADR-095), cited `06-relief-scene`'s `PARTS/subject`
+and `pairs_with` in prose rather than calling it from a skeleton; that was an argument, not a
+reference, and it was never in the table above.
 
 ## Cross-slot rules — where a gallery differs from an advertorial
 
@@ -171,9 +171,30 @@ above is re-routed rather than shipped. The ledger is what a set's `check.py` ch
 A draft is promoted **in place**: its `status` becomes `active` and its `blocked_by` null,
 and `scripts/validate.py --write-index` writes it into `registry/pdp-dr-index.yaml`. It does
 NOT move to `registry/types/` — that would take it out of the one folder an LP2 page routes
-(ADR-091) — and it gains a row in the Layer 2 table above under its role. **This file grows
+(ADR-091); a type in the register below is also WRITTEN there — and it gains a row in the
+Layer 2 table above under its role. **This file grows
 as the namespace succeeds.** ADR-077 wrote the opposite, that promotion was a `git mv` and
 this file would shrink; that was the co-registry, and ADR-091 retired it.
 
-Whether LP1 should route a promoted LP2 type as well is a separate decision. No instrument
-watches a copy in that direction yet; the first diff that makes one builds it.
+### LP2 drafts LP1 routes too — a register
+
+**Whether LP1 routes a promoted LP2 type as well is the owner's decision, type by type, and
+each answer is a row here** (ADR-095). Like the call register above, this table is the whole
+instrument: nothing reads it but the promotion diff, and a draft with no row routes on LP2
+alone.
+
+| LP2 draft | LP1 routes it | decided | what its promotion diff owes |
+|---|---|---|---|
+| `03-mechanism-contact` | **yes** | owner, 2026-09-16, ADR-095 | see below |
+
+**What a promotion on this register owes**, so the pair is watched by the instrument that
+already exists rather than by a new one:
+- **The file is written into `registry/types/` as the PARENT**, without `text_layer` and without
+  the LP2 law, since no LP1 type declares a text layer. Its rendered WORKED EXAMPLES and its
+  CHANGELOG go with it: the id's render lines and ledger records are the parent's evidence.
+- **The LP2 file becomes its declared copy** — `copied_from`, `copied_at_version`, and every
+  LP2 difference gathered in `## LP2 LAW` beside its `text_layer` — so the drift warning
+  `scripts/validate.py` already runs covers the pair. Nothing moves out of this folder.
+- **LP1's own bar binds the parent.** Criterion 3 wants a render under LP1's law, which carries
+  no words; the router-confusion test is LP1's anyway, since both siblings are LP1 types; and
+  the session and golden checks learn the LP2 folder in the same diff (ADR-091).
