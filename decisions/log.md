@@ -7592,3 +7592,78 @@ The rule-6c sweeps ran in a clean worktree at `3828758` (hits / files / TEACHES)
     another lane holds uncommitted, so it waits for a commit that may regenerate that file.
 
 ---
+
+## ADR-098 · 2026-09-17 · The owner drops `04-proof-testing`: ADR-097's copy and its machinery are reverted, and ADR-097 stays on the record
+
+**Owner instructions, 2026-09-17.** First *"deny set 04-proof-testing-01"*, and in the same
+message *"lede-testing sẽ được dùng ở section cụ thể nào? template nào?"* — which section, which
+template, will it be used in?
+
+**The answer, read from the four templates' copy:**
+- **One field for certain:** Aure's `safety.image`, under *"Third-party tested for skin safety"*,
+  *"Skin safety tested"* and *"Third-party lab tested"*.
+- **One field on a condition:** WiBoofy's `expert.scene`, under *"Tests every extender on both
+  bands"*. The block's expert is invented copy.
+- **One use advised against:** a gallery tile under Aure's "Dermatologist Tested" chip.
+- **Nothing on Deal or Eco:** their certification lines are text with no image.
+
+Two options were offered: keep the type, or revert `05e47f8` and `bed369a`, the copy and the
+validator change together. **The owner answered "2".**
+
+### Decision
+
+1. **`bed369a` and its manifest stamp `05e47f8` are reverted.** That removes:
+   - the file `04-proof-testing` and the `testing` device;
+   - the validator's toplist parent;
+   - the third kind of file in SPEC §3.0 and §3.8, in the instruction, the LP2 rules, the
+     vocabulary comment and CLAUDE.md rule 4;
+   - README's copy line;
+   - the Layer 2 proof row and rule 3's group entry.
+2. **ADR-097 stays in this log.** The log is append-only, and a reversal is a new entry.
+   - A plain `git revert` would have deleted ADR-097, so the log is the one file the revert does
+     not take back.
+   - ADR-097 stands as the record of what was tried and why, and this entry follows it.
+   - ADR-097's number is not reused.
+3. **The permission stands.** The owner's instruction that fitting types from other page kinds
+   may be copied into LP2 is not withdrawn. Nothing in the folder uses it now, so the machinery
+   left with the one file that needed it. A later copy brings its validator support and its
+   folder description back in its own diff, and ADR-097's diff is the pattern for that.
+4. **No type draws a test now**, so `mapping/pdp-dr-rules.md` rule 12 and the instruction's
+   paragraph on blocks that name a person drop "or a test". The product or a pair of working
+   hands carries such a block.
+5. **Aure's `safety.image` is a section field like any other.** It routes by its block's copy,
+   and the library still does not generate clinical dress there (ADR-094).
+6. **The set `04-proof-testing-01` was denied and never committed**, and it is gone from `sets/`.
+
+### Consequences
+
+The rule-6c sweeps ran in the reverted tree, before this entry's two edits (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"04-proof-testing"` | 7 | 1 | 0 |
+| `"a test carries"` | 6 | 5 | 2 |
+| `"or a test"` | 4 | 4 | 2 |
+| `"lede-testing"` | 72 | 17 | 13 |
+
+- **Rewritten:** the two "a test carries" lines, in rule 12 and the instruction.
+- **These hits stand:**
+  - every "04-proof-testing" in this log, which is ADR-097's record;
+  - every "lede-testing", which is the toplist namespace's own type and is untouched.
+- **Reverted with the commit:**
+  - `SPEC.md`, `CLAUDE.md`, `README.md`'s copy line, `mapping/pdp-dr-rules.md`,
+    `registry/pdp-dr-instruction.md`, `registry/vocabulary.yaml` and `scripts/validate.py`;
+  - `registry/pdp-dr-types/04-proof-testing.md`, now deleted.
+- **README:** the ADR count is regenerated, and now counts this entry.
+- **Generated:** `registry/pdp-dr-index.yaml` loses the entry, and `dist/app-bundle/` loses the
+  file and rebuilds both LP2 law files. `registry/index.yaml` does not move.
+- `registry_version` unchanged.
+
+### What is NOT done
+
+- **ADR-097's finding stands, unfixed.** The index generator wraps at hyphens and can split a
+  type id. The fix moves `registry/index.yaml`, which another lane holds uncommitted.
+- **Aure's safety block has no image type of its own**, and the invented experts in two
+  templates' copy are unchanged.
+
+---

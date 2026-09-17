@@ -444,13 +444,11 @@ def cross_validate(files, known_ids, where_prefix="registry/types"):
 # {step}-{job}-{device} ids as registry/types/, so it reuses validate_type_file()
 # rather than owning a second copy of those checks. What it adds is `blocked_by`
 # and a BLOCK section, paired to `status: reserved`, and ADR-070's `copied_from` +
-# `copied_at_version` pair for the copies. Since ADR-097 a copy may also come from the
-# toplist namespace, under an LP2 id, naming an active toplist type as its parent.
+# `copied_at_version` pair for the copies.
 PDP_DR_EXTRA_KEYS = ["blocked_by", "copied_from", "copied_at_version"]
 
 
-def validate_pdp_dr_type_file(path, vocab, rule_ids, image_types, toplist_types=None):
-    toplist_types = toplist_types or {}
+def validate_pdp_dr_type_file(path, vocab, rule_ids, image_types):
     fname = os.path.basename(path)
     where = f"registry/pdp-dr-types/{fname}"
     parsed = validate_type_file(path, vocab, rule_ids,
@@ -470,37 +468,24 @@ def validate_pdp_dr_type_file(path, vocab, rule_ids, image_types, toplist_types=
         err(where, f"`blocked_by` set on a type whose status is `{status}` — "
                    "the key is non-null exactly when the type is reserved")
 
-    # A copy of an image type keeps its parent's id (ADR-091), so `copied_from` must
-    # name the file's own id. A copy from the toplist namespace cannot: its ids are
-    # arguments, not {step}-{job}-{device}, so it takes an LP2 id and names its
-    # parent (ADR-097), as ADR-070's toplist copies name theirs. Provenance, not a
-    # live link: the drift is made visible, never blocked.
+    # A copy keeps its parent's id (ADR-091), so `copied_from` must name the file's
+    # own id. Provenance, not a live link: the drift is made visible, never blocked.
     tid = fm.get("id")
     src = fm.get("copied_from")
     ver_at = fm.get("copied_at_version")
-    parent = None
     if src is not None:
-        if src != tid and src in toplist_types:
-            parent = toplist_types[src]
-            if parent["fm"].get("status") != "active":
-                err(where, f"copied_from `{src}`, a toplist type that is not active")
-        else:
-            if src != tid:
-                err(where, f"copied_from `{src}` differs from this file's id `{tid}` — an "
-                           "LP2 copy of an image type keeps its parent's id (ADR-091), and "
-                           "a copy under another id must name an active toplist type "
-                           "(ADR-097)")
-            if src not in image_types:
-                err(where, f"copied_from `{src}` is not an image type in registry/types/")
-            else:
-                parent = image_types[src]
-                if parent["fm"].get("status") != "active":
-                    err(where, f"copied_from `{src}`, which is not active")
+        if src != tid:
+            err(where, f"copied_from `{src}` differs from this file's id `{tid}` — an "
+                       "LP2 copy keeps its parent's id (ADR-091)")
+        if src not in image_types:
+            err(where, f"copied_from `{src}` is not an image type in registry/types/")
+        elif image_types[src]["fm"].get("status") != "active":
+            err(where, f"copied_from `{src}`, which is not active")
         if not (isinstance(ver_at, str) and re.fullmatch(r"\d+\.\d+", ver_at)):
             err(where, "copied_from is set, so copied_at_version must be a quoted "
                        f"MAJOR.MINOR string, got {ver_at!r}")
-        elif parent is not None:
-            now = parent["fm"].get("version")
+        elif src in image_types:
+            now = image_types[src]["fm"].get("version")
             if isinstance(now, str) and now != ver_at:
                 warn(where,
                      f"copied verbatim from `{src}` at {ver_at}, and that file is "
@@ -2046,8 +2031,7 @@ def main(argv):
             if not fn.endswith(".md") or fn == "README.md" or fn.startswith("_"):
                 continue
             parsed = validate_pdp_dr_type_file(
-                os.path.join(PDP_DR_TYPES_DIR, fn), vocab, rule_ids, types,
-                toplist_types)
+                os.path.join(PDP_DR_TYPES_DIR, fn), vocab, rule_ids, types)
             if parsed and parsed["fm"].get("id"):
                 pid = parsed["fm"]["id"]
                 if pid in pdp_dr_types:

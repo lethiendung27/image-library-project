@@ -292,36 +292,6 @@ types:
       beat of an advertorial, or a comparison image in the gallery. Use ONLY
       when the difference is visible to the naked eye inside a static frame —
       otherwise switch variants (see VARIANT SELECTION RULE).
-  - id: 04-proof-testing
-    step: 4
-    job: proof
-    device: testing
-    version: "0.5"
-    status: active
-    channels: [landing-page, marketplace]
-    requires_product_photo: true
-    generation_mode: single-pass
-    axes: {}
-    variants: []
-    exempt_from: []
-    pairs_with: []
-    never_with: []
-    avoid_adjacent: []
-    requires_pair: null
-    evidence_count: 0
-    picks: {}
-    use_when: >
-      The page says the product was tested, measured or checked — a load or
-      durability test, a signal or output check, a seal or leak test, a skin
-      safety test — and a slot has to show that the testing happened rather
-      than state its result. A proof or quality section, a safety block, an
-      expert block whose claim is a test, or a proof tile in the gallery. The
-      frame shows one unit on a bench or rig, an instrument in contact with it
-      and working hands, and never a legible number. Where the proof is a
-      comparison or a before and after the reader can watch, the type is
-      04-proof-lockedframe; where the product is shown doing its job in a
-      home, 06-relief-hero; where the claim is the product's own surface seen
-      close, 03-spec-macro.
   - id: 05-persona-grid
     step: 5
     job: persona

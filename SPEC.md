@@ -97,7 +97,7 @@ was, which left a reader no way to know which corpus `registry/types/` came from
 | page kind | `lpTypeId` in an export | registry | notes |
 |---|---|---|---|
 | **LP1** | `listicle`, `advertorial` | `registry/types/` | **two `lpTypeId`s, one page kind** |
-| **LP2** | `pdp_dr` | `registry/pdp-dr-types/` | the direct-response product detail page (§3.8); its folder carries a verbatim copy of every active image type (ADR-091), and copies of fitting types from other page kinds (ADR-097) |
+| **LP2** | `pdp_dr` | `registry/pdp-dr-types/` | the direct-response product detail page (§3.8); its folder carries a verbatim copy of every active image type (ADR-091) |
 | **top-N listicle** | — | `registry/toplist-types/` | **a different kind, not LP-numbered** (§3.7) |
 
 Three things follow, and the third is the one that bites.
@@ -318,21 +318,16 @@ LP2's routing surface, by the same `--write-index`.
 
 - Files live in `registry/pdp-dr-types/<id>.md`; ids are the closed list
   `vocabulary.pdp_dr_types`.
-- **Three kinds of file** (ADR-091; owner instruction, 2026-09-15: each page kind routes one
-  folder, and that folder holds every type the page may use):
-  - a **verbatim copy of every active `registry/types/` file**;
-  - since ADR-097, a **copy of a fitting type from another page kind's folder**, under an LP2
-    id, with its router-facing sections rewritten for LP2;
-  - LP2's **own drafts**, every one `reserved` or `deprecated`.
-
-  The two kinds of copy are what route today.
+- **Two kinds of file** (ADR-091; owner instruction, 2026-09-15: each page kind routes one
+  folder, and that folder holds every type the page may use). A **verbatim copy of every
+  active `registry/types/` file**, which is what routes today, and LP2's **own drafts**,
+  every one `reserved` or `deprecated`.
 - **Ids keep the `{step}-{job}-{device}` grammar**, unlike gif and toplist ids, which are
   arguments, because a copy keeps its parent's id. That is the one respect in which these
   copies cost less than §3.7's: every gate in `mapping/slot-rules.md` is keyed on an id, so
   it reaches the copy with nothing restated.
 - **Copying is made auditable exactly as in §3.7** (ADR-070). A copy declares `copied_from`,
-  its own id, naming an ACTIVE image type, and `copied_at_version`. A copy from the toplist
-  namespace names an ACTIVE toplist type under an LP2 id instead (ADR-097); the parent's
+  its own id, naming an ACTIVE image type, and `copied_at_version`; the parent's
   `WORKED EXAMPLES` and `CHANGELOG` are not copied; the validator warns when the parent moves
   past `copied_at_version`. It also warns on an active image type with no file here, because
   a promotion into `registry/types/` does not reach LP2 by itself: copy it, or copy it
@@ -563,7 +558,6 @@ registry/toplist-instruction.md  law shared by every toplist type; never restate
 mapping/toplist-rules.md selecting the lede image; layer 2 is a declared hypothesis
 registry/pdp-dr-types/   LP2's registry — the ONE folder an LP2 page routes: its own drafts
                          plus a verbatim copy of every active image type (SPEC 3.8, ADR-091)
-                         and copies of fitting types from other page kinds (ADR-097)
 registry/pdp-dr-index.yaml  generated: LP2's routing surface, written by --write-index
 registry/pdp-dr-instruction.md  law shared by every pdp-dr type; never restated in one
 mapping/pdp-dr-rules.md  routing a product gallery; preference table is MEASURED, and it

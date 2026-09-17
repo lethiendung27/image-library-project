@@ -7,14 +7,10 @@ and what nothing checks.
 **An LP2 page routes ONE folder, `registry/pdp-dr-types/`, and never opens
 `registry/types/`** (ADR-091; owner instruction, 2026-09-15: each page kind routes one
 folder, and that folder holds every type the page may use). Its routing surface is
-`registry/pdp-dr-index.yaml`, generated from the folder's active files. Three kinds of file
-live there:
-- a verbatim copy of every active image type, under the parent's id;
-- a copy of a fitting type from another page kind's folder, under an LP2 id (ADR-097);
-- LP2's own drafts, every one `reserved` or `deprecated`, which route nowhere until one is
-  promoted in place.
-
-The two kinds of copy are what route today.
+`registry/pdp-dr-index.yaml`, generated from the folder's active files. Two kinds of file
+live there: a verbatim copy of every active image type, under the parent's id, which is
+what routes today; and LP2's own drafts, every one `reserved` or `deprecated`, which route
+nowhere until one is promoted in place.
 
 ## Slot kinds — what each image field of a template is
 
@@ -87,7 +83,7 @@ badly and SPEC §6.3 counts sources for that reason.
 | problem-agitation | `02-symptom-rail` (2) |
 | cause | `02-cause-anatomy` (3) |
 | mechanism | `03-spec-macro` (13), `03-mechanism-ghostbody` (2), `03-mechanism-xray` (1) |
-| proof | `04-proof-lockedframe` (5), `04-proof-testing` (0 — copied from the toplist namespace, ADR-097) |
+| proof | `04-proof-lockedframe` (5) |
 | social-proof | `05-social-snapshot` (7), `05-social-handoff` (1) |
 | personas | `05-persona-grid` (1) |
 | how-to-use | `03-use-sequence` (4), `03-use-grid` (2) |
@@ -182,8 +178,8 @@ clause bind every image a session emits for the page.
    twelve slots there is room to break this without noticing.
 3. **The mechanism-class budget** (ADR-094, widening the step-3 trio). **At most two gallery
    tiles** from three groups: any mechanism (`03-mechanism-*`, and the Principle and Demonstrated
-   forms once they have files); any comparison or proof (`04-proof-lockedframe`, `04-proof-testing`,
-   `04-proof-stat`, `03-spec-split`); any use steps (`03-use-sequence`, `03-use-grid`). **One mechanism variant
+   forms once they have files); any comparison or proof (`04-proof-lockedframe`, `04-proof-stat`,
+   `03-spec-split`); any use steps (`03-use-sequence`, `03-use-grid`). **One mechanism variant
    per page** unless the page asks for two. `mapping/slot-rules.md`'s trio — at most two of
    `03-mechanism-ghostbody`, `03-spec-split` and `03-use-sequence` — sits inside this budget and
    still holds. `03-spec-macro` is outside it: the corpus's commonest mechanism tile at 13
@@ -224,7 +220,7 @@ clause bind every image a session emits for the page.
     `compliance` flag and note (ADR-089), and no LP2 session refuses. **A section image in a
     block that names a person never shows a face** — the `expert` blocks today. A face beside a
     name is that person's portrait, the `author` row, and an invented person there is the
-    endorsement ADR-094 refused; the product, a pair of hands or a test (`04-proof-testing`) carries that block.
+    endorsement ADR-094 refused; the product or a pair of hands carries that block.
 
 **The set keeps a ledger, and every tile reads it before it chooses anything.** Tile by tile and
 cumulatively: the types used, the message keys used (feature keys, not sentences), the angle

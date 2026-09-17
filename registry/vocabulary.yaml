@@ -58,7 +58,6 @@ devices:
   pack: "the product as it arrives — closed, open, or with its own contents at its foot"
   callout: "a subject at the centre, labelled satellites around it; what joins them — a leader line, a dashed leader, or nothing — is a parameter"
   stat: "one measured figure as the subject of the frame, with its source beside it where the page gives one"
-  testing: "one unit under test on a bench or rig, an instrument in contact with it and a working hand, caught mid-measurement; no legible reading"
   dimension: "a line spanning a real edge of the object, labelled with the figure it measures"
   testimony: "a person addressing the lens mid-sentence; a video still, not a photograph"
   # `animal` names WHAT is photographed rather than HOW the argument is made, which is the
@@ -151,10 +150,9 @@ toplist_awareness: [unaware, problem-aware, solution-aware, product-aware, most-
 #
 # Since ADR-091 it is the ONE folder an LP2 page routes (owner instruction 2026-09-15:
 # each page kind routes one folder, and that folder holds every type the page may use).
-# So it holds LP2's own drafts, and a verbatim copy of every ACTIVE registry/types/ file,
-# which declares `copied_from` + `copied_at_version` (ADR-070's instrument). Since ADR-097
-# it also holds copies of fitting types from other page kinds, under LP2 ids, each naming
-# its parent in `copied_from`. The ids keep the `{step}-{job}-{device}` grammar because a copy keeps its
+# So it holds two kinds of file: LP2's own drafts, and a verbatim copy of every ACTIVE
+# registry/types/ file, which declares `copied_from` + `copied_at_version` (ADR-070's
+# instrument). The ids keep the `{step}-{job}-{device}` grammar because a copy keeps its
 # parent's id — which is what lets every gate in mapping/slot-rules.md, keyed on an id,
 # reach the copy unrestated. A draft is promoted by a status change IN PLACE; moving it
 # to registry/types/ would take it out of the folder LP2 routes.
@@ -162,7 +160,7 @@ toplist_awareness: [unaware, problem-aware, solution-aware, product-aware, most-
 # The drafts are `reserved` or `deprecated` and route nowhere; the copies are `active`
 # and are what an LP2 page routes, through registry/pdp-dr-index.yaml, ordered by
 # mapping/pdp-dr-rules.md. Files: registry/pdp-dr-types/<id>.md.
-pdp_dr_types: [01-pain-scene, 01-pain-split, 02-cause-anatomy, 02-symptom-callout, 02-symptom-rail, 03-mechanism-contact, 03-mechanism-ghostbody, 03-mechanism-xray, 03-spec-callout, 03-spec-claimstack, 03-spec-dimension, 03-spec-explode, 03-spec-hero, 03-spec-lineup, 03-spec-macro, 03-spec-split, 03-spec-stilllife, 03-use-grid, 03-use-sequence, 04-proof-lockedframe, 04-proof-stat, 04-proof-testing, 05-persona-grid, 05-social-card, 05-social-handoff, 05-social-snapshot, 05-social-testimony, 06-relief-animal, 06-relief-claimstack, 06-relief-hero, 06-relief-scene, 07-identity-callout, 07-identity-inhand, 07-identity-pack]
+pdp_dr_types: [01-pain-scene, 01-pain-split, 02-cause-anatomy, 02-symptom-callout, 02-symptom-rail, 03-mechanism-contact, 03-mechanism-ghostbody, 03-mechanism-xray, 03-spec-callout, 03-spec-claimstack, 03-spec-dimension, 03-spec-explode, 03-spec-hero, 03-spec-lineup, 03-spec-macro, 03-spec-split, 03-spec-stilllife, 03-use-grid, 03-use-sequence, 04-proof-lockedframe, 04-proof-stat, 05-persona-grid, 05-social-card, 05-social-handoff, 05-social-snapshot, 05-social-testimony, 06-relief-animal, 06-relief-claimstack, 06-relief-hero, 06-relief-scene, 07-identity-callout, 07-identity-inhand, 07-identity-pack]
 
 # Informative: things that are runtime parameters and must NEVER become identity.
 parameters: [ratio, panel_count, colorway, persona_cast, environment]

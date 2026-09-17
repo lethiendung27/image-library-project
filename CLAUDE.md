@@ -39,8 +39,7 @@ tasks to entry points and must stay logic-free.
    owes a `blocked_by` and a `BLOCK` section naming what it waits on, and it is promoted in
    place, never by `git mv` (SPEC §3.8). That folder is the ONE an LP2 page routes: LP2's
    drafts beside a verbatim copy of every active `registry/types/` file, each declaring
-   `copied_from` (ADR-091), and copies of fitting types from other page kinds under LP2 ids
-   (ADR-097).
+   `copied_from` (ADR-091).
 5. All artifact content is **English**. Conversation with the user is Vietnamese.
    ONE named exception: the GIF library's Vietnamese folder cards, whose copy lives in
    `registry/gif-cards-vi.md` and which `scripts/gen-gif-cards.py` writes as
