@@ -588,7 +588,7 @@ is a verbatim copy, and in place where it is LP2's own draft.
 | Mechanism · Body | `03-mechanism-ghostbody` | active copy | **below, until its re-copy** |
 | Mechanism · Contact | `03-mechanism-contact` | reserved draft | in place, 0.4 |
 | Mechanism · Product X-ray | `03-mechanism-xray` | active copy | **below, until its re-copy** |
-| Mechanism · Principle | — | **no file** | below |
+| Mechanism · Principle | — | **no file** | below; a signal the product sends or senses is `03-mechanism-signal`, a reserved draft (ADR-099) |
 | Mechanism · Demonstrated | — | **no file** | below |
 | Mechanism · Endorsed | — | **not written** | the LAW row of the text section |
 | Use Steps · Sequence | `03-use-sequence` | active copy | its `LP2 LAW` |
@@ -642,7 +642,9 @@ here until then, and it binds them now, since this file binds every copy in the 
   in an inset, in one neutral line colour, **never painted onto the product and never a rainbow
   gradient**; a figure only where the page supplies it. The owner's runs tried the
   form three times and painted all three onto the product — a heat map twice, flow waves once — so
-  it has no passing render and no corpus id.
+  it has no passing render and no corpus id. **A signal the product sends or senses — WiFi,
+  Bluetooth, detection — is not this form.** It is `03-mechanism-signal`, a reserved draft since
+  ADR-099, whose marks run from the product to what it reaches.
 - **Demonstrated** — an unnamed, untitled person demonstrates the mechanism on a spine or pelvis
   model, or on a seated person; the model may carry 1–3 word part labels. No "recommended by", no
   "clinically", **and no clinical dress or clinic setting**, which would present the demonstrator
@@ -764,7 +766,7 @@ draws a mark.
 
 ## What this namespace is still waiting on
 
-**None of LP2's own drafts routes.** Sixteen files: fourteen `status: reserved`, each carrying a
+**None of LP2's own drafts routes.** Seventeen files: fifteen `status: reserved`, each carrying a
 `blocked_by` and a `BLOCK`, and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
 and replaced by `03-spec-callout` after a control render and a ten-source corpus answered the
 same question the same way, and `06-relief-animal`, retired on 2026-09-17 after the owner put an

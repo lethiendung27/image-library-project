@@ -48,6 +48,7 @@ devices:
   demo: "reserved — close-up hand demonstration"
   xray: "see-through product internals: product translucent, internals solid"
   contact: "the product's working end, or what it sends out, meeting a rendered body at one place; the body cut open or seen close so the effect there shows"
+  signal: "a signal the product sends or senses and nobody can see, drawn as arcs, rings or a path between the product and what it reaches"
   explode: "product separated into its real component groups along one axis, technical render"
   timeline: "reserved — states along a time axis"
   macro: "reserved — extreme close-up of material/texture"
@@ -160,7 +161,7 @@ toplist_awareness: [unaware, problem-aware, solution-aware, product-aware, most-
 # The drafts are `reserved` or `deprecated` and route nowhere; the copies are `active`
 # and are what an LP2 page routes, through registry/pdp-dr-index.yaml, ordered by
 # mapping/pdp-dr-rules.md. Files: registry/pdp-dr-types/<id>.md.
-pdp_dr_types: [01-pain-scene, 01-pain-split, 02-cause-anatomy, 02-symptom-callout, 02-symptom-rail, 03-mechanism-contact, 03-mechanism-ghostbody, 03-mechanism-xray, 03-spec-callout, 03-spec-claimstack, 03-spec-dimension, 03-spec-explode, 03-spec-hero, 03-spec-lineup, 03-spec-macro, 03-spec-split, 03-spec-stilllife, 03-use-grid, 03-use-sequence, 04-proof-lockedframe, 04-proof-stat, 05-persona-grid, 05-social-card, 05-social-handoff, 05-social-snapshot, 05-social-testimony, 06-relief-animal, 06-relief-claimstack, 06-relief-hero, 06-relief-scene, 07-identity-callout, 07-identity-inhand, 07-identity-pack]
+pdp_dr_types: [01-pain-scene, 01-pain-split, 02-cause-anatomy, 02-symptom-callout, 02-symptom-rail, 03-mechanism-contact, 03-mechanism-ghostbody, 03-mechanism-signal, 03-mechanism-xray, 03-spec-callout, 03-spec-claimstack, 03-spec-dimension, 03-spec-explode, 03-spec-hero, 03-spec-lineup, 03-spec-macro, 03-spec-split, 03-spec-stilllife, 03-use-grid, 03-use-sequence, 04-proof-lockedframe, 04-proof-stat, 05-persona-grid, 05-social-card, 05-social-handoff, 05-social-snapshot, 05-social-testimony, 06-relief-animal, 06-relief-claimstack, 06-relief-hero, 06-relief-scene, 07-identity-callout, 07-identity-inhand, 07-identity-pack]
 
 # Informative: things that are runtime parameters and must NEVER become identity.
 parameters: [ratio, panel_count, colorway, persona_cast, environment]

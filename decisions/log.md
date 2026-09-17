@@ -7667,3 +7667,126 @@ The rule-6c sweeps ran in the reverted tree, before this entry's two edits (hits
   templates' copy are unchanged.
 
 ---
+
+## ADR-099 · 2026-09-17 · `03-mechanism-signal` is drafted: a product whose result nobody can see gets its signal drawn, and the owner's ClikTric pages are the fourth source
+
+**Owner instructions, 2026-09-17**, in order:
+1. **The correction.** The owner rejected the WiBoofy template mapping this lane had given:
+   *"logic dùng ảnh hiện tại đang sai rất nhiều … sản phẩm này không nhìn thấy kết quả cụ thể,
+   tại sao "Four antennas aim through walls" lại dùng A: 04-proof-lockedframe --verdict … khi
+   các frame chỉ là ảnh chụp sản phẩm khác nhau. tương tự "Two bands, split by task""*. The
+   product has no visible result, so photographs of different products prove nothing.
+2. **The references.** *"hãy tham khảo các ảnh feature ở
+   https://content.misencorp.com/lp2-new/cliktric-lp00412/
+   https://content.misencorp.com/lp2-new/cliktric-lp00132"*.
+3. **The go.** *"đồng ý"*, to a three-step plan: classify the ClikTric images, draft the type,
+   and build its first set on the WiBoofy template's own fields.
+
+**The correction was right, and the repo already said so.** `mapping/slot-rules.md` gates
+`04-proof-lockedframe`: where a static frame cannot show the product difference, `--verdict` is
+forbidden. The mapping applied that gate to the antenna count, which a still can show, instead
+of to the claim, which it cannot. The same fault put `03-spec-split --products` on the problem
+block.
+
+**What the references showed.** Eight feature images, four per page, opened in a browser, use
+four constructions:
+- the invisible drawn — WiFi arcs around the camera, arrows from the camera to a phone;
+- the feature part in use in a hand — the flip screen;
+- the result on a device in the real context — the zoom shown on the camera's screen at a
+  stadium;
+- the product with a figure or its outputs — a spec numeral in a render, a lens macro with a
+  badge, the camera among the photographs it took.
+
+The first is a corpus proposal that had no file: `03-mechanism-signal`, three sources at
+`_CURATION-2026-09-11.md`.
+
+### Decision
+
+1. **Batch 2026-09-17-A** (`6fcd3c4`) filed five ClikTric images.
+   - Two `match` the signal proposal, one `match`es `03-use-demo`, and one is a
+     `variant-candidate` of `03-spec-hero`.
+   - One is a `reject`: the flip-screen image is an animated WebP of 87 frames.
+   - The two pages sell one product and carry one source slug, `cliktric`. The signal proposal
+     stands at **four sources**.
+   - **Two images are deferred:** a `03-spec-macro` variant and a `03-use-grid` variant. Filing
+     them would move `registry/index.yaml`, which another lane holds uncommitted.
+2. **`03-mechanism-signal` 0.1, reserved**, with new device `signal`.
+   - **Evidence.** Ten observations from four sources, every frame opened before the file was
+     written. This is ADR-092's answer to ADR-078's reason for withholding Tier 2: a count is not
+     evidence until the frames are read.
+   - **What the ten share,** counted and written into the file:
+     - something with no visible existence drawn, 10 of 10;
+     - the far end in frame, 8 of 10;
+     - the product in frame, 9 of 10;
+     - the result as phone interface text, 4 of 10, which G6 keeps out of a generated frame;
+     - a barrier cut open, 2 of 10;
+     - blue for a working signal, 7 of 10;
+     - red for an alert, 3 of 10.
+   - **The construction.** The product at its real place, installed if it is fixed. The far end
+     named by the page, showing the result by itself. A barrier cut open only where the claim
+     passes through something. A path of `arcs`, `line` or `rings`. One family of thin blue marks
+     beside the product and never on it.
+   - **The words.** A title in a gallery tile, none outside it (ADR-096).
+   - **Boundaries:** `03-mechanism-contact` (a body at one place), `03-use-grid` (the range of
+     hosts), `03-spec-macro` (the part itself). Among the proposals, emanation (a visible output)
+     and interface (a reading on a screen).
+3. **Why this is not the Principle form.** Principle is a diagram of general physics beside the
+   product, with no corpus id. A signal has ten frames and a far end. The instruction's type map
+   and its Principle paragraph now point at the draft.
+4. **The first set**, `registry/pdp-dr-types/sets/03-mechanism-signal-01/`, is owner-gated.
+   - It fills five fields of the owner's `wiboofy-final-product-type` template:
+     `faq.help_image` (the control), `features.items.0.image`, `features.items.1.image`,
+     `problem.image` and `buy.gallery.5.image`. This follows the rule the owner set when
+     `04-proof-testing-01` was denied.
+   - The prompts run 1,422–1,703 characters, and every one plugs the extender into a wall socket.
+   - `check.py` passes on the clean set, and `knownbad.py` catches 35 of 35.
+   - The clean run caught two defects in the checker itself before it was believed. The word
+     "section" was flagged in a wall-section prompt. And the casting check was satisfied by the
+     setting sentence alone.
+5. **What the owner also wrote, and what was not done.** The owner allowed `expert.scene` an
+   invented name and an invented face. That is ADR-094's Endorsed tile, and the refusal stands.
+   The alternatives were offered once, as the handover asks: a real photograph of a real expert,
+   or a frame with no face.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `6fcd3c4` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"no file"` | 126 | 53 | 8 |
+| `"Tier 2"` | 13 | 5 | 3 |
+| `"Sixteen files"` | 2 | 2 | 1 |
+| `"sixteen drafts"` | 1 | 1 | 1 |
+| `"no corpus id"` | 4 | 2 | 1 |
+
+- **Rewritten:**
+  - `registry/pdp-dr-instruction.md`: the Principle row of the type map, the Principle
+    paragraph, and the waiting-on count, now seventeen files, fifteen reserved;
+  - `README.md`: the gap line's count.
+- **These hits stand:**
+  - "no file" for the proposals and forms that still have none (Demonstrated, Applied Use,
+    emanation, interface);
+  - "Tier 2" in `_CURATION-2026-09-11.md`, which decides nothing by its own first line, and in
+    `03-mechanism-contact`'s changelog, which is a record;
+  - "no corpus id" for the Demonstrated form.
+- **New:**
+  - `registry/pdp-dr-types/03-mechanism-signal.md`;
+  - `registry/vocabulary.yaml`'s `signal` device, with `pdp_dr_types` regenerated from the
+    folder (33 → 34).
+- **Generated:** `dist/app-bundle/` rebuilds the vocabulary and the instruction. Neither index
+  moves, because the draft is reserved.
+- `registry_version` unchanged.
+
+### What is NOT done
+
+- **The two deferred ClikTric images**, which wait on `registry/index.yaml`.
+- **Criterion 1** (one source short), **criterion 2** (unrun) and **criterion 3** (no render).
+- **The corrected WiBoofy mapping lives in the conversation, not the repo.** No file maps a
+  template's fields to types: ADR-096 gives a field its kind, and its role still comes from the
+  copy.
+- **`03-spec-split --products` has no gate for an invisible result.** Only `04-proof-lockedframe`
+  has one. The split's own trigger keeps its FIT low for such a product, and a gate row is the
+  fix if it is ever routed there.
+
+---
