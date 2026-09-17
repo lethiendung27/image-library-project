@@ -408,21 +408,55 @@ the prompt keeps G6's `text, letters, numbers` whole. The product's own printing
 the prompt writes; the product block keeps it. Which field is which is read from the template by
 `mapping/pdp-dr-rules.md`'s *Slot kinds*.
 
-**The hero is a banner the template crops.** Measured on the four templates of 2026-09-17:
-- **On a wide screen** the image fills the hero block behind the page's words, which sit in a
-  panel over its left 45% or so. Three templates fix the block at 12:5, where a 16:9 render
-  loses about an eighth at the top and at the bottom. The fourth sizes the block by its words
-  and can lose up to a fifth.
-- **On a phone** the words stack above or below, and the image shows alone in a 4:3 window
-  anchored to its right side. Three templates anchor it at the right edge and one at 77% across,
-  so the narrowest window keeps 19–94% of a 16:9 render's width.
+**The hero is a banner the template crops** (ADR-096, re-measured by ADR-103). The owner
+renders it at 16:9, the widest ratio the set allows (ADR-016). Read from the markup of the four
+templates of 2026-09-17, every one of which crops about the centre on a desktop:
 
-So the subject — the product, a person, or both — sits **in the right half, whole, clear of the
-right edge and inside the middle three fifths of the height**. The left half stays quiet enough
-to carry a panel of words: ground and soft context, nothing the argument needs. No words and no
-inset. The prompt says where things sit and never the shape (ADR-016); the owner renders the
-hero at 16:9, the widest ratio the set allows. The hero routes like any slot, by its copy — `06-relief-hero`
-first on this corpus.
+| screen | what the template shows | what a 16:9 render keeps |
+|---|---|---|
+| desktop, 1024–1536 px | the block at 12:5 | its height from 13% to 87% |
+| desktop, 1920 px | about 3:1, because the block stops growing taller at 640 px | its height from 20% to 80% |
+| tablet, 768–1023 px | 16:9, with the words stacked above or below | all of it |
+| phone | 4:3, anchored to the right edge — at 77% across on `t2-eco` | its width from 25% to 100%, or 19% to 94% |
+
+- **On a desktop the page's words sit in a panel over the image's left side.** On three
+  templates the panel reaches 45–46% of the width.
+- **`t1-deal` sizes its block by its words and lays its panel over the image from 768 px.**
+  - The panel reaches 72% of the width at 768 px and 54% at 1024 px.
+  - On a 2560 px screen, a 16:9 render keeps only 27–73% of its height.
+  - The owner keeps the templates as they are (2026-09-17), so these are limits a render lives
+    with, not faults a prompt can fix.
+
+**The safe box is 55–88% across and 22–78% down.** It is where those windows overlap, less the
+panel, and everything the image is about sits inside it:
+- **The group** — the product, and anyone using it — fills about half the height. A 3:1 desktop
+  then shows it across about four fifths of what it keeps, and a phone shows it just right of centre.
+- **The product** is at least about an eighth of the width, so a 390 px phone still shows it
+  whole and recognisable.
+- **The left half** is the same place continuing: soft in focus, bright and low in contrast. It
+  sits under the panel on a desktop and inside the frame on a phone. `PARTS/setting`'s "never
+  blank" still holds, but nothing there matters to the argument, and nothing important sits where
+  a phone window cuts, 19–25% across.
+- **The top and bottom fifths** hold none of the group.
+- **The right edge** keeps a margin, because one phone window ends at 94%.
+- **The light comes from the left**, the page's side, and a person turns slightly toward it.
+
+**Every hero prompt carries these sentences, word for word, whatever type fills the field.** The
+first four go in every prompt; the fifth goes in only where a person is in the frame:
+
+```
+The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge.
+Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth.
+The left half continues the same place in soft focus, bright and calm, with nothing in it that matters.
+The product is big enough to recognise at a glance, never a small detail in the distance.
+Any person turns slightly toward the left side of the picture.
+```
+
+The session's lock names light from the left. The prompt says where things sit and never states
+the frame's shape (ADR-016). A hero carries no words and no inset. It routes like any slot, by
+its section and its copy, with `06-relief-hero` first on this corpus (*Section routing*).
+**Untested:** the first set is `registry/pdp-dr-types/sets/hero-01/`, which the owner grades on
+the four templates themselves.
 
 **A pair shares one description.** A before-and-after pair fills two image fields, and every
 prompt is one call (ADR-021), so nothing but the words holds the two files together.

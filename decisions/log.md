@@ -8182,3 +8182,86 @@ The rule-6c sweeps ran in a clean worktree at `fe8a0e7` (hits / files / TEACHES)
 - **`@portrait` still reads a block list written into the script** (ADR-096's debt). The section table does not touch it.
 
 ---
+
+## ADR-103 · 2026-09-17 · The hero's safe box is 55–88% across and 22–78% down, and every hero prompt carries its placement in fixed sentences
+
+**Owner instructions, 2026-09-17**, in order:
+1. *"tôi sẽ sửa các types ảnh cho product detail page - direct response. tôi sẽ sửa và set rules theo section. bắt đầu từ hero: hiện tại hero section của các template của tôi ở desktop đang set ảnh 3:1 với chủ thể nằm ở phần bên phải của ảnh, mobile là 16:9. nên tối ưu bố cục ảnh thế nào để đảm bảo phù hợp cho cả 2 thiết bị?"*
+   - The owner will rework LP2's image types and rules section by section, starting with the hero.
+   - The owner asked how one image can serve a 3:1 desktop, with the subject on the right, and a 16:9 phone.
+2. After the analysis: *"không sửa template. - cập nhật luật hero theo vùng an toàn ở trên; - thêm câu mô tả vị trí cố định cho mọi prompt hero; - dựng một bộ prompt thử trên sản phẩm của các template (WiBoofy, Hivefold, TopLaser), để tôi test hero image trực tiếp trên các template"*. The owner's four decisions:
+   - keep the templates as they are;
+   - write the safe box into the hero rule;
+   - give every hero prompt fixed sentences that place its subject;
+   - build a test set on the templates' own products, which the owner tests on the templates.
+
+**What the markup says, and what ADR-096's paragraph missed.** The hero markup of the four templates, read on 2026-09-17, shows the following.
+- **Desktop.** Three templates hold the block at 12:5 from 1024 px, but cap it at 640 px tall and 1920 px wide. At 1920 px the block is about 3:1.
+  - The height cap is in the classes: `lg:h-[min(41.6667cqw,640px)]`, `lg:aspect-12/5 lg:max-h-160` and `lg:aspect-[12/5] lg:max-h-[40rem]`.
+  - ADR-096 wrote that a 16:9 render "loses about an eighth" at the top and the bottom. That holds only up to 1536 px. At 1920 px it loses a fifth at each, so "the middle three fifths" left no margin.
+- **Tablet.** From 768 to 1023 px the block is 16:9, with the words stacked above or below. ADR-096 did not name this width.
+- **Phone.** The block is 4:3 and anchored right, at 77% on `t2-eco`, as ADR-096 said. The owner's "3:1 desktop, 16:9 mobile" describes the widest desktop and the tablet; a phone shows 4:3.
+- **The desktop panel** reaches 45–46% of the width: `45cqw` on WiBoofy, `46cqw` on `t2-eco`, `lg:w-[45%]` on Aure.
+- **`t1-deal` is the exception.**
+  - Its block height is `md:min-h-[clamp(31rem,33vw,41rem)]`.
+  - It overlays its `max-w-[33rem]` panel from `md`, 768 px. The panel reaches 72% of the width at 768 px and 54% at 1024 px.
+  - On a 2560 px screen, a 16:9 render keeps 27–73% of its height.
+
+### Decision
+
+1. **The safe box is 55–88% across and 22–78% down.** It is where the windows overlap, less the panel, and each bound has a margin:
+   - the left bound clears the panel (46%) and `t1-deal` at 1024 px (54%);
+   - the right bound stays inside `t2-eco`'s phone window, which ends at 94%;
+   - the top and bottom bounds stay inside the 3:1 window, which runs from 20% to 80%.
+
+   Inside the box:
+   - **The group** — the product and anyone using it — fills about half the height.
+   - **The product** is at least about an eighth of the width.
+   - **The left half** is the same place continuing. `PARTS/setting`'s "never blank" still holds there.
+   - **The top and bottom fifths** hold none of the group, and the right edge keeps a margin.
+   - **The light** comes from the left, and a person turns slightly toward it.
+2. **Every hero prompt carries five fixed sentences, word for word, whatever type fills the field.** Four go in every prompt, and the fifth only where a person is in frame. They say where things sit, never the frame's shape (ADR-016). They are stated once, in the instruction, and a set's checker holds prompts to them.
+3. **The templates stay as they are**, by the owner's decision. `t1-deal`'s panel at 768–1023 px and its crop at 2560 px are recorded as limits a render lives with.
+4. **The first set is `registry/pdp-dr-types/sets/hero-01/`**, and it is owner-gated. It has six prompts on the four hero fields:
+   - WiBoofy, once on its own template and once on `t1-deal`;
+   - Hivefold, twice on `t2-eco`, once with no person;
+   - TopLaser, twice on Aure, once seated and once standing.
+
+   About the set:
+   - **Control and risk.** Prompt 3 is the control, predicted PASS. Prompt 6, a standing person, is the known risk.
+   - **Checks.** `check.py` passes the clean set, and `knownbad.py` catches 38 of 38.
+   - **Length.** The prompts run 1,591–1,723 characters, under the gate with the product block and the fixed sentences.
+   - **TopLaser's people.** They have light skin and dark hair, because the page's own FAQ says IPL needs that contrast. The treatment stays on the arm, because a leg reaches into the bottom fifth.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `ce29687` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"about an eighth"` | 3 | 3 | 1 |
+| `"middle three fifths"` | 10 | 6 | 1 |
+| `"up to a fifth"` | 3 | 3 | 1 |
+| `"right half, whole"` | 3 | 3 | 1 |
+| `"banner the template crops"` | 5 | 5 | 2 |
+| `"widest ratio"` | 3 | 3 | 1 |
+
+- **Rewritten:** the hero section of `registry/pdp-dr-instruction.md`. It is the only file that teaches any of the six terms.
+- **These hits stand:**
+  - `mapping/pdp-dr-rules.md`'s Slot kinds row, which points at "the instruction's section of that name" and still does;
+  - the records — this log and the sets that quoted "middle three fifths".
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md` and the manifest. Neither index moves.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render tests the box yet.** The owner renders `hero-01` and checks it on the templates.
+- **No crop preview.** A script could cut each render to the four windows. It is not built, because image files are exported only when the owner asks.
+- **`06-relief-hero`'s type file is unchanged.**
+  - Its `PARTS/offset` puts a layer in the offset space, and a wordless hero field has no layer.
+  - The instruction's sentences govern the hero field, and `PARTS/setting`'s "never blank" still binds its left half.
+- **`t1-deal`'s limits stand**, by the owner's decision.
+- **The other sections.** They are the owner's next steps, taken one section at a time.
+
+---
