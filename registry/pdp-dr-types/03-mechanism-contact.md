@@ -3,7 +3,7 @@ id: 03-mechanism-contact
 step: 3
 job: mechanism
 device: contact
-version: "0.5"
+version: "0.6"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -82,7 +82,7 @@ use_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-mechanism-contact v0.5
+TYPE: 03-mechanism-contact v0.6
 REGISTER: product photograph meeting a clean technical render of the body.  -> PARTS/register
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.        -> G1
@@ -209,7 +209,9 @@ cleanly.
   in the buyer's words, in 2–5 words** (ADR-094); the founding round's hooks ran eight and nine
   words and rendered exactly, and the worked examples keep them as rendered. **One copy line of
   at most 10 words** carries the mechanism in plain words, the one job the picture cannot finish
-  alone — presumed earned in a mechanism tile, and still counted over the set.
+  alone — presumed earned in a mechanism tile, and still counted over the gallery. **In a slot
+  outside the product card's gallery the frame carries no title, copy or label at all**
+  (ADR-096).
 - **One mechanism variant to a set** (`mapping/pdp-dr-rules.md`, rule 3).
 - Never state the frame's shape or ratio in a prompt (ADR-016, adapter Rule 4).
 
@@ -319,6 +321,9 @@ Six renders, 2026-09-16, set `03-mechanism-contact-01`.
   below its last named layer, 4 of 4; no removed matter drifted, 2 of 2.
 
 ## CHANGELOG
+- 0.6 (2026-09-17): only the product card's gallery carries words (owner decision, ADR-096), so
+  the title, copy and labels are a gallery tile's, and the same frame in a section slot carries
+  none. The picture does not change.
 - 0.5 (2026-09-17): two owner decisions of 2026-09-16 (ADR-095). LP1 routes this type once it is
   promoted, so `BLOCK` names what the promotion diff owes; a figure the page supplies may stand in
   the copy line without a source beside it. No clause about the picture moves.

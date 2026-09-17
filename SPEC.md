@@ -353,9 +353,14 @@ LP2's routing surface, by the same `--write-index`.
   `page.sections`, the slots are real, and §7 runs unchanged against
   `registry/pdp-dr-index.yaml`. The first gallery image is out of library scope — a
   standard product shot (`mapping/slot-rules.md`, cross-rule 6).
-- **A PDP-DR type MAY declare `text_layer`** and G16 binds the types that do, as
-  `registry/pdp-dr-instruction.md` narrows it: a title of 2–5 words, copy and chips only where
-  earned, the words counted over the set (ADR-094). One row of
+- **Only the product card's gallery carries words** (ADR-096, owner decision 2026-09-17). Every
+  image field of an LP2 template has a KIND — gallery, hero, section, pair, buyer tile, closing,
+  or one the library never generates — read from its path by the *Slot kinds* table in
+  `mapping/pdp-dr-rules.md` and applied by `scripts/pdp-dr-slots.py`, which parses that table and
+  owns no rule of its own.
+- **A PDP-DR type MAY declare `text_layer`**, for a gallery tile, and G16 binds the types that
+  do, as `registry/pdp-dr-instruction.md` narrows it: a title of 2–5 words, copy and chips only
+  where earned, the words counted over the gallery (ADR-094, ADR-096). One row of
   G16 is LAW rather than taste and no type-scoped permission reaches it: a named-person or
   named-profession endorsement (G14 binds the SLOT). The other, a certification, award, rating
   or press mark — the trademark question of 2026-08-18 — the owner lifted for this namespace on
@@ -557,6 +562,8 @@ registry/pdp-dr-index.yaml  generated: LP2's routing surface, written by --write
 registry/pdp-dr-instruction.md  law shared by every pdp-dr type; never restated in one
 mapping/pdp-dr-rules.md  routing a product gallery; preference table is MEASURED, and it
                          carries the cross-file CALL REGISTER nothing else validates
+scripts/pdp-dr-slots.py  gives every image field of an LP2 template its KIND, by the
+                         *Slot kinds* table it parses from mapping/pdp-dr-rules.md
 ingestion/               classify template, runbooks, observations ledger
 ingestion/gifs.jsonl     append-only index of the external GIF library
 scripts/gen-gif-cards.py generates the library's folder cards from the gif type files

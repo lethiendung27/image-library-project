@@ -28,7 +28,9 @@ So this namespace stands on three differences of LAW, not of machinery:
    advice of the session that raised it: an ad image with words is generated with the
    words in the file rather than handed to the page as a clean plate for an HTML
    overlay. Every type here may declare `text_layer` and G16 binds the ones that do.
-   Advertorial and listicle types overwhelmingly do not.
+   Advertorial and listicle types overwhelmingly do not. **Since 2026-09-17 those words
+   belong to the product card's gallery alone** (ADR-096); every other image on the page
+   is wordless.
 2. **The ground rule is measured on this corpus.** ADR-068 measured the outer 8% ring of
    119 frames from these batches: **VALUE median 0.89, SATURATION median 0.06.** That is
    a fact about these pages and it does not transfer — ADR-073 had to re-measure the same
@@ -94,13 +96,13 @@ Unlike the toplist namespace, this one consumes the **whole** `content.json`
 **The gallery is a SET and the set is what is checked**, which is `mapping/pdp-dr-rules.md`'s
 whole job. Three of §7's passes do more work here than anywhere else in the library:
 
-- **One type at most once per page**, and a twelve-tile gallery is not a repeating section
+- **One type at most once in the gallery**, and a twelve-tile gallery is not a repeating section
   in cross-rule 2's sense. A roundup's five ranked entries are equivalent list items; a
   gallery's twelve tiles are a linear argument, and repeating a type across a linear funnel
   repeats an argument.
 - **The page arc (G4 at page level).** Pain and cause tiles precede relief and outcome
   tiles; pain never reappears after the first relief tile.
-- **The mechanism-class budget.** At most two mechanism-class tiles on one page — any
+- **The mechanism-class budget.** At most two mechanism-class tiles in one gallery — any
   mechanism, any comparison or proof, any use steps (`mapping/pdp-dr-rules.md`, rule 3, which
   widened the step-3 trio in ADR-094). Three is a lecture, and a gallery has room to make that
   mistake in a way a six-slot advertorial does not.
@@ -255,6 +257,10 @@ same thing and names nothing.
 
 ## Text: TITLE ONLY by default, and G16 narrowed for this namespace
 
+**This section governs the product card's gallery tiles**, the only images on an LP2 page that
+carry words (ADR-096). Every other image carries none — see *Images outside the product card's
+gallery*.
+
 **Owner instruction, 2026-09-16 (ADR-094):** *"TITLE ONLY. Copy and chips are earned, never
 template slots."* G16 is not lifted — it is narrowed here, and this namespace is where it does
 most of its work. What follows replaces, on an LP2 page only, the bands G16 took on 2026-09-03
@@ -275,7 +281,7 @@ between a hook and a caption; the owner's runs agree, and set the hook short. Ev
 | chip | **earned or absent** — only a certification, rating or figure the page supplies, verbatim; a part label in a Callout, a Rail or a Lineup; a diagram or model label in a mechanism tile; or a use case the picture does not show. **A chip that restates the title or the copy is cut.** 1–3 words, one to a tile, except where a type keeps its own count |
 | the whole frame | **at most 16 words**, labels included |
 
-**Counted over the set, per twelve tiles** and scaled to a set of any other size: **copy on at
+**Counted over the gallery, per twelve tiles** and scaled to a gallery of any other size: **copy on at
 most 6, a chip on at most 4, at least 4 tiles carrying a title and nothing else, and at least 1
 carrying no words at all.** At a cap the field is empty. Measured on the owner's runs: the four
 batches written without a count put copy on 62–100% of their tiles and a chip on 36–100%, and
@@ -383,6 +389,53 @@ under the words "Expert Approved" — is that case. **Where a page needs the aut
 would lend, a mechanism tile carries it**: the `Demonstrated` form in the type map below, an
 unnamed person showing how the product works, with no name, no title and no clinical dress.
 
+## Images outside the product card's gallery
+
+**Only the product card's gallery carries words** (owner decision, 2026-09-17, ADR-096). The
+hero, every section image, both halves of a before-and-after pair, a buyer-photo tile and a
+closing image carry none — no title, no copy, no chip, no label, no badge — because the page
+sets its words beside them in HTML. A type that declares `text_layer` fills such a slot without
+it: the `[TITLE]`, `[COPY]` and label slots an `LP2 LAW` section adds are for a gallery tile, and
+the prompt keeps G6's `text, letters, numbers` whole. The product's own printing is not a word
+the prompt writes; the product block keeps it. Which field is which is read from the template by
+`mapping/pdp-dr-rules.md`'s *Slot kinds*.
+
+**The hero is a banner the template crops.** Measured on the four templates of 2026-09-17:
+- **On a wide screen** the image fills the hero block behind the page's words, which sit in a
+  panel over its left 45% or so. Three templates fix the block at 12:5, where a 16:9 render
+  loses about an eighth at the top and at the bottom. The fourth sizes the block by its words
+  and can lose up to a fifth.
+- **On a phone** the words stack above or below, and the image shows alone in a 4:3 window
+  anchored to its right side. Three templates anchor it at the right edge and one at 77% across,
+  so the narrowest window keeps 19–94% of a 16:9 render's width.
+
+So the subject — the product, a person, or both — sits **in the right half, whole, clear of the
+right edge and inside the middle three fifths of the height**. The left half stays quiet enough
+to carry a panel of words: ground and soft context, nothing the argument needs. No words and no
+inset. The prompt says where things sit and never the shape (ADR-016); the owner renders the
+hero at 16:9, the widest ratio the set allows. The hero routes like any slot, by its copy — `06-relief-hero`
+first on this corpus.
+
+**A pair shares one description.** A before-and-after pair fills two image fields, and every
+prompt is one call (ADR-021), so nothing but the words holds the two files together.
+- Write the locked description once: the subject — the same body area or object, the same
+  person where a person shows — the framing, the camera height and distance, the light and the
+  ground. Paste it into both prompts word for word.
+- The two prompts differ in one line, the state. Nothing else moves: not a prop, not the crop.
+- **Untested.** No pair has rendered under this law, and the first set that ships one grades
+  whether two calls hold one frame.
+
+**A buyer-photo tile is a phone snapshot, and it is always generated** (ADR-096).
+- The register is `05-social-snapshot`'s: an ordinary home, found rather than styled, and a
+  different room, light and distance for every tile.
+- The image carries no name, star row, verified label or caption; the page sets those.
+- Where G14's attribution test fires, the prompt ships with its flag and note (ADR-089), and the
+  merchant decides. No LP2 session refuses.
+
+**A block that names a person shows no face** — the `expert` blocks today. A face beside a name
+is that person's portrait, and an invented person there is the endorsement this file already
+refuses. The product, a pair of working hands or a test carries the block.
+
 ## Ground: quiet by default, and a dark one is a CHOICE
 
 Measured, ADR-068, the outer 8% ring, corpus n=119 against this library's own six renders:
@@ -481,6 +534,8 @@ itself — the owner records an invented "Dr. L. Chen" rendering an Asian face, 
 - **Every delivered prompt is paste-and-run**: one prompt, one generation call, and as many
   reference photos as the type needs — one per product in frame (ADR-021, ADR-076). Never a
   multi-pass option, an edit chain or a post-assembly step.
+- **An image outside the product card's gallery carries no words** — no title, copy, chip,
+  label or badge (ADR-096).
 - **The product block is mandatory** in every prompt with the product in frame — this
   namespace's form of G1, in the words the product section above fixes, with its two conditional
   sentences wherever their case exists.

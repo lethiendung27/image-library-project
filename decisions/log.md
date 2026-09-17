@@ -7257,3 +7257,190 @@ clean worktree at `1aa8773`, which holds the pre-edit text (hits / files / TEACH
   rewrote lives in the instruction, so the re-copy should carry it into that copy's `LP2 LAW`.
 
 ---
+
+## ADR-096 · 2026-09-17 · An LP2 template's image fields get KINDS: only the product card's gallery carries words, buyer tiles and pairs are always generated, and a script reads the kinds from one table
+
+**Owner instructions, 2026-09-17.** The request came first: *"đây là các product detail page
+template hiện tại của tôi (có thể sẽ thêm), cần các image type phù hợp để có thể chọn dựa trên
+template và content, hãy đọc và đưa ra các đề xuất, gợi ý trước khi thực hiện"*. The owner's
+current product-page templates, with more to come, need image types that can be chosen from
+the template and the content. The owner asked for proposals before anything was done.
+
+The proposals were given, and the owner answered:
+1. *"trong product detail page, chỉ có ảnh ở image gallery bên trong product card mới có chữ"* —
+   on a product detail page, only the images in the product card's gallery carry words.
+2. *"luôn cho phép sinh ảnh"* — always allow generating. This answered the buyer-photo walls,
+   whose lead says the photos came from buyers. The options offered were real photos, or a lead
+   that makes no such claim.
+3. *"luôn cho phép sinh ảnh"* — the same, for Aure's before-and-after pairs under "Real
+   Results". The options offered were real photos, or one merged slot without that label.
+4. *"không chia loại đồ hoạ và ảnh chụp, chỉ theo luật LP2 hiện tại "đồ hoạ""* — no split
+   between an illustrated and a photographic gallery; the current LP2 law, the illustrated
+   one, is the only one.
+5. *"có thể tìm và lấy các type khác của trang khác nếu phù hợp, duplicate và sửa rồi đưa vào
+   pdp-dr"* — types from other page kinds may be copied in. That is ADR-097.
+
+**Answers 2 and 3 are the owner's decision against the advice given, and they are recorded as
+such**, as ADR-008 recorded one. The advice was that a generated photo under a lead saying buyers
+sent it is the fabricated endorsement G14 names, and that a generated before-and-after under
+"Real Results" is evidence of a result nobody measured. G14's text is unchanged. What reaches the
+merchant is the flag and note ADR-089 already attaches.
+
+**What was read, before anything was written.** Four templates in `~/Downloads`, all built
+2026-09-17:
+- `t1-deal`, filled with the WiBoofy example;
+- `t2-eco`, filled with a beeswax bread bag;
+- `wiboofy`, a full page;
+- `aure-toplaser`, a full page.
+
+They carry **171 image fields: 32, 38, 38 and 63**. For each field the following were read from
+the HTML: the path, the block, the lock, the width, and the sizing class of the image and its
+container. Every example asset was opened on a contact sheet. The four share one block
+vocabulary (hero, buy, problem, how, features, proof or demo, reviews, compare, guarantee, faq,
+close), and Aure and WiBoofy add expert, ugc, offer, trusted, why, expect, uses, safety, modes and
+testimonials.
+
+### Decision
+
+1. **Only the product card's gallery carries words** (`registry/pdp-dr-instruction.md`, new
+   section *Images outside the product card's gallery*).
+   - The hero, section images, both halves of a pair, buyer tiles and closing images carry no
+     title, copy, chip, label or badge.
+   - A type with a `text_layer` fills such a slot without it, and G6's `text, letters, numbers`
+     stays whole there.
+   - An `LP2 LAW` section's added word slots are a gallery tile's.
+2. **Every image field has a KIND, and one table says which.**
+   - `mapping/pdp-dr-rules.md` gains *Slot kinds*: fourteen rows of path globs and two defined
+     tokens, `@locked` and `@portrait`. The first match wins.
+   - The kinds are chrome, thumb, packshot, gallery, hero, gif, portrait, pair, buyer-wall,
+     section, chart and closing. Each row says whether the library generates the field, and
+     whether it carries words.
+   - `scripts/pdp-dr-slots.py` parses that table and owns no rule of its own, the way
+     `parse_attribute_gates()` reads `mapping/slot-rules.md`. A template added later needs no
+     edit, and a field no row matches fails the script.
+3. **Buyer tiles and pairs are always generated on LP2.** G14's attribution test still runs on
+   each, and where it fires the flag and note travel with the prompt (ADR-089). No LP2 session
+   refuses, manual ones included. G14 gains that pointer.
+4. **One gallery law.** The proposed split by look is withdrawn.
+5. **The hero is a banner the template crops.** Measured on the four:
+   - on a wide screen, the words sit in a panel over the image's left 45% or so;
+   - three templates fix the block at 12:5, where a 16:9 render loses about an eighth top and
+     bottom, and the fourth sizes the block by its words and can lose up to a fifth;
+   - on a phone, a 4:3 window is anchored at the right edge in three templates and at 77% in
+     the fourth, so the narrowest window keeps 19–94% of the width.
+
+   The subject therefore sits in the right half, whole, clear of the right edge and inside the
+   middle three fifths of the height. The left half stays quiet, and the hero renders at 16:9,
+   the widest ratio ADR-016 allows.
+6. **A pair shares one description.** Two fields and two calls, so both prompts carry one locked
+   description word for word and differ only in the state line. The pair is routed once: to
+   `04-proof-lockedframe --timelapse` for a change over time, or to `01-pain-split`'s halves for
+   the old way against the new. **Untested.**
+7. **A block that names a person shows no face** — the `expert` blocks. A face beside a name is
+   that person's portrait, and an invented one is the endorsement ADR-094 refused.
+8. **The gallery's rules bind the gallery.** Sections are fixed by the template and route by
+   their own block's copy (cross-slot rule 10).
+   - Rules 1, 2, 7, 8 and 9 and rule 3's budget bind the gallery.
+   - Rules 4–6 and rule 3's one-variant clause bind every image.
+   - The items of one block route item by item, and equivalent items may share a type if they
+     differ on a named dimension.
+   - A section image never repeats a gallery tile's type AND its message.
+
+### Verification
+
+- **Control.** `pdp-dr-slots.py` on the four templates: exit 0, every one of the 171 fields
+  matched, and the per-kind counts agree with a classification made by hand before the table
+  existed. The script does not report the kinds' reasons, so the counts were compared by kind.
+- **Known-bad, 11 checks, all fired as expected:**
+  - A synthetic page with one field per row landed every field where the table says, and left a
+    text field out.
+  - Its `aspect-[4/3]` frame parsed.
+  - With no catch-all row, the unknown block exited 1 and was named.
+  - Swapping the pair and buyer-wall rows moved exactly the field they share.
+  - Without its row, `@locked` fell through. Without its token, `@portrait` fell through.
+  - An unknown token, a broken header and a missing section each exited 1.
+  - The real table on the Aure template exited 0.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `8c51d69`, which holds the pre-edit text (hits /
+files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"counted over the page"` | 3 | 3 | 1 |
+| `"counted over the set"` | 7 | 7 | 4 |
+| `"once per page"` | 21 | 13 | 3 |
+| `"per page"` | 71 | 35 | 9 |
+| `"may still refuse"` | 3 | 3 | 1 |
+| `"or it takes nothing"` | 3 | 2 | 2 |
+| `"actual customer"` | 20 | 8 | 1 |
+| `"customer photo"` | 184 | 51 | 3 |
+| `"sent in by"` | 4 | 3 | 1 |
+| `"section image"` | 22 | 21 | 6 |
+| `"text is baked"` | 5 | 5 | 2 |
+| `"before-and-after"` | 15 | 10 | 4 |
+| `"hero image"` | 8 | 8 | 1 |
+| `"17 of them"` | 2 | 2 | 1 |
+
+- **Rewritten, `registry/pdp-dr-instruction.md`:**
+  - the first law difference;
+  - the gallery-unit bullets (one type, the budget);
+  - the text section's scope and its count;
+  - the new outside-the-gallery section;
+  - a new bullet in *What binds every prompt*.
+- **Rewritten, `mapping/pdp-dr-rules.md`:**
+  - the new *Slot kinds* section;
+  - the cross-slot intro and its scope sentence;
+  - rules 1, 3, 8 and 9;
+  - new rules 10–12;
+  - the ledger paragraph.
+- **Amended, shared files:**
+  - `SPEC.md` §3.8: a new bullet, the `text_layer` bullet, and the repo map;
+  - `registry/rules.md`: a G14 pointer after the flag paragraph, and G16's LP2 pointer, which now
+    counts over the gallery;
+  - `query/runbook.md`: the LP2 paragraph gains the slot step, Step 2 loses a typed "17", and
+    Step 5 counts words over the gallery;
+  - `CLAUDE.md`: one entry-point row.
+- **Type file:** `03-mechanism-contact` 0.6, whose copy line was "counted over the set" and
+  whose frame carries no words in a section slot.
+- **New:** `scripts/pdp-dr-slots.py`.
+- **These hits stand:**
+  - `mapping/slot-rules.md` cross-rule 2 and G16's own count, which are LP1's and the toplist
+    ledes';
+  - G14's *"never present a generated image as an actual customer upload"*, *"takes a real
+    customer photograph or it takes nothing"* and *"a manual session may still refuse"*. Those
+    are the rule's text, true off LP2, and on LP2 they are what the flag note warns about;
+  - `query/output.schema.json`'s *"a manual session that refuses instead leaves the field out"*,
+    true on LP1;
+  - `04-proof-stat`'s and `05-social-testimony`'s G14 lines: neither is a photo tile or a pair,
+    which is all the owner's answer covered;
+  - the style-lock lines naming section images in `mapping/pdp-dr-rules.md` rule 4 and the
+    runbook, which still bind them;
+  - `05-social-snapshot`'s *"Use as SECTION imagery"*, which is the type's own trigger;
+  - the instruction's device list *"a hard-divided split or before-and-after"*;
+  - `vocabulary.yaml`'s comment that text is baked into the image, still true of the gallery;
+  - SPEC §3.7's *"hero image"*, about top-N ledes;
+  - `mapping/pdp-dr-rules.md` rule 6, one product variant per page, which binds every image;
+  - the toplist set prompts.
+- **Generated:** `dist/app-bundle/` rebuilds SPEC, the rules, both LP2 law files and the
+  runbook. Neither index moves: no type's status changed, and the one type file that changed is
+  a reserved draft.
+- `registry_version` unchanged.
+
+### What is NOT done
+
+- **No render tests** the banner rule, the pair rule, a wordless section image from a type that
+  declares a text layer, or a buyer tile under this decision.
+- **No converter turns these templates' `content.json` into this repo's contract.** Their file is
+  `{schema_version, artifact, fields}`, and the contract wants `page.sections` with a role each.
+  The script gives a field its kind, not its role; the role still comes from the block's copy.
+- **`@portrait`'s 160 px** is read off four templates, whose faces are 80–160 px and whose scenes
+  are 360 px or more. A template that shows a named face larger passes as a section, and only the
+  `expert` row catches that block by name.
+- **`05-social-testimony` stays blocked.** A generated person testifying under a name is not a
+  photo tile, and the owner's answer named the walls and the pairs.
+- **The named experts in two templates** — Aure's "Dan Friedmann, MD" and WiBoofy's installer — are
+  page copy. ADR-094's refusal of an invented expert stands, and no image here gives them a face.
+
+---

@@ -534,6 +534,11 @@ names the key and sentence that attributed it. The merchant sees the note beside
 chooses between the prompt and a real customer photograph; the harness makes that choice in
 neither direction.
 
+**On an LP2 page no session refuses** (owner decision, 2026-09-17, ADR-096). Buyer-photo tiles
+and before-and-after pairs are always generated there, manual sessions included, and the flag
+and its note still travel with the prompt wherever this test fires. `mapping/pdp-dr-rules.md`
+carries the rule.
+
 The frame is unchanged by the flag. G6's negatives keep every badge, star row, reviewer name,
 avatar and text overlay out of the image, so what attributes a tile is only ever the page. A
 manual session may still refuse, because its editor can source the real photograph on the spot.
@@ -662,9 +667,10 @@ So each slot now carries a JOB, taken from the owner's own working instruction
 **Each line earns its place by doing a job the line above it did not.**
 
 **LP2 narrows this section** (ADR-094). On a product-gallery page the title runs 2–5 words and
-never past 6, copy is one earned sentence of 6–10 words, and the words are counted over the set
-again — the owner's current generator, `product-gallery-instruction.txt`, superseded the one
-cited above. The bands here stand for every other type that declares a text layer.
+never past 6, copy is one earned sentence of 6–10 words, and the words are counted again — the
+owner's current generator, `product-gallery-instruction.txt`, superseded the one cited above.
+They are counted over the product card's gallery, the only images on an LP2 page that carry
+words (ADR-096). The bands here stand for every other type that declares a text layer.
 `registry/pdp-dr-instruction.md` carries the LAW for LP2.
 
 ### A badge is a MARK, not a text slot — owner correction, 2026-09-03
