@@ -7444,3 +7444,151 @@ files / TEACHES):
   page copy. ADR-094's refusal of an invented expert stands, and no image here gives them a face.
 
 ---
+
+## ADR-097 · 2026-09-17 · A type from another page kind may be copied into LP2: `lede-testing` becomes `04-proof-testing`, and the validator learns a copy that names a toplist parent
+
+**Owner instruction, 2026-09-17:** *"có thể tìm và lấy các type khác của trang khác nếu phù hợp,
+duplicate và sửa rồi đưa vào pdp-dr"* — types from other page kinds may be found and taken where
+they fit, duplicated, changed, and put into the LP2 folder. It came with the answers ADR-096
+records, for the four templates that ADR reads.
+
+### What was searched, and what fits
+
+**Every active type in another folder was read against the slots ADR-096 found.**
+- **LP1's 17 active types** are already in LP2 as verbatim copies (ADR-091).
+- **LP1's two staging drafts** cannot move:
+  - `03-use-rail` would suit Aure's `uses` block, but it is a reserved draft with four
+    unsourced records. SPEC §3.2 says a draft never sits in both folders.
+  - `02-cause-scene` is also reserved, and it indicts an object rather than serving a slot these
+    templates carry.
+- **The seven toplist types:**
+
+| toplist type | fits an LP2 template? |
+|---|---|
+| `lede-testing` | **yes** — one unit under test, an instrument in contact, working hands, no number. That is the proof a `safety` block, a proof section, a quality claim and an `expert` block need without a face (ADR-096, rule 12). No LP2 type makes that argument: `04-proof-lockedframe` compares states, and the corpus proposal `04-proof-instrument` is a thermogram, one record, a different construction |
+| `lede-inuse`, `lede-pain` | no — themselves copies of `06-relief-scene` and `01-pain-scene`, whose parents are already in LP2 |
+| `lede-winner`, `lede-collage`, `lede-lineup` | no — each argues over a field of competing products, which a single-product page does not have |
+| `lede-authority` | no — a person reporting on the product. On these templates the only place for one is the `expert` block, where the page names the person, and a face there is the endorsement ADR-094 refused |
+
+- **The six GIF types** stay where they are. The templates' `proof` and `demo` slots route to
+  them directly (ADR-096), and a loop is not an image type.
+
+### Decision
+
+1. **LP2's folder may hold a copy of a type from another page kind's folder.** This is a third
+   kind of file, beside the verbatim image-type copies and LP2's own drafts.
+   - It takes an **LP2 id**, because the toplist namespace's ids are arguments, not
+     `{step}-{job}-{device}`. This is ADR-070's precedent read the other way.
+   - It names its parent in `copied_from`, and `copied_at_version` records the parent's version.
+   - **Its router-facing sections are rewritten for LP2**: `use_when` is what the router reads,
+     and it must speak LP2's language. Everything else is spliced from the parent. The
+     difference is gathered in `## LP2 LAW`, as ADR-094 set for the image-type copies.
+   - No gate in `mapping/slot-rules.md` is keyed on its id, so any gate it needs is written in
+     `mapping/pdp-dr-rules.md`. It is active on arrival, as ADR-091's copies were, because its
+     parent is active in its own namespace.
+2. **`04-proof-testing` 0.5, copied from `lede-testing` 0.4.**
+   - **Spliced by script from `3828758`:** PURPOSE, SKELETON, PARTS and NEGATIVE.
+   - **Rewritten:** TRIGGER, for LP2's router, with the parent's BOUNDARY folded into it, since an
+     LP2 type keeps its discriminator there (SPEC §3.8).
+   - **Not copied:** FOUNDING RENDER ROUND and CHANGELOG, the parent's record.
+   - **What `LP2 LAW` says:**
+     - the unit under test is the page's product, and the test is the page's, never an
+       invented one;
+     - the reading stays illegible, and on LP2 the reason is G6's rule on model-drawn readouts.
+       The parent's A15 reason predates ADR-095;
+     - in the gallery, a title and a copy line only where the page supplies the figure; outside
+       it, no words (ADR-096);
+     - no face and no clinical dress, which lets the type carry an `expert` block;
+     - the lock's grounds bind, and the parent's bench numbers were measured on another corpus;
+     - untested here.
+   - **New vocabulary:** the device `testing`.
+3. **The validator learns this kind of copy** (`scripts/validate.py`, a shared file edited for
+   this LP2 decision).
+   - An LP2 file whose `copied_from` names an active toplist type may carry another id.
+   - It errors when that parent is not active, and warns when the parent moves past
+     `copied_at_version`.
+   - Every ADR-091 check still stands. A copy of an image type keeps its parent's id, and an LP2
+     file that shares an LP1 id must declare that id as its parent.
+
+### Verification, known-bad before believed
+
+Ten checks ran in a clean worktree at `3828758` holding only this operation's three files. All
+fired as expected:
+- **Control:** 0 errors, and no drift warning on the new copy.
+- **A reserved parent:** an error on the copy.
+- **The parent moved to 0.9:** the drift warning on the copy.
+- **An unknown parent under another id:** both the id error and the not-an-image-type error.
+- **An LP1 parent under another id:** ADR-091's id error.
+- **`copied_at_version` set to null:** its error.
+- **LP1 copies:**
+  - under a sibling id, still an error;
+  - naming a toplist parent while holding an LP1 id, caught by the collision check.
+- **The device removed from the vocabulary:** its error.
+- **Restored:** 0 errors.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `3828758` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"two kinds of file"` | 8 | 8 | 4 |
+| `"keeps its parent's id"` | 10 | 8 | 3 |
+| `"copy of every active"` | 16 | 12 | 7 |
+| `"seventeen"` | 8 | 6 | 3 |
+| `"a test carries"` | 4 | 4 | 2 |
+| `"instrument-capture"` | 2 | 2 | 1 |
+
+- **Rewritten:**
+  - "two kinds of file" becomes three, in `SPEC.md` §3.8, `mapping/pdp-dr-rules.md`,
+    `registry/pdp-dr-instruction.md` and the `vocabulary.yaml` comment;
+  - "seventeen" gains the new copy, in `README.md` and the instruction's waiting-on section;
+  - "a test carries" names `04-proof-testing`, in rule 12 and the instruction.
+- **Amended:**
+  - `SPEC.md`: §3.0's LP2 row, §3.8's copy bullet, and the repo map;
+  - `CLAUDE.md`: rule 4;
+  - `mapping/pdp-dr-rules.md`: the Layer 2 proof row, with 0 PDP sources and the reason, and rule
+    3's proof group;
+  - the instruction: the new third bullet in *The ONE folder*;
+  - `scripts/validate.py`: the pdp-dr header comment.
+- **These hits stand:**
+  - "keeps its parent's id" in SPEC §3.8, the runbook and the instruction. It is true of every
+    image-type copy, and it is why the gates reach them. The new kind is described beside it.
+  - "copy of every active" in SPEC §3.0's routing paragraph and `07-identity-inhand`, still
+    true, and in `registry/toplist-instruction.md`, another lane's file, whose sentence is still
+    true.
+  - "seventeen" in `03-spec-claimstack`, which counts text elements.
+  - "instrument-capture" in A15, which is the thermogram proposal, not this type.
+- **New:**
+  - `registry/pdp-dr-types/04-proof-testing.md`, active;
+  - `vocabulary.yaml`'s `testing` device, with `pdp_dr_types` regenerated from the folder
+    (33 → 34).
+- **Generated:**
+  - `registry/pdp-dr-index.yaml` gains `04-proof-testing`;
+  - `dist/app-bundle/` ships it, beside SPEC, the vocabulary, both LP2 law files and the LP2
+    index;
+  - `registry/index.yaml` does not move.
+- **`registry_version` unchanged.** It has not moved since 2.0.0 through two promotions, and an
+  LP2 page's pool gains one candidate without any existing route changing.
+
+### What is NOT done
+
+- **No render under LP2's law**, and no owner verdict on the parent's one render. The first set is
+  `registry/pdp-dr-types/sets/04-proof-testing-01/`, owner-gated.
+- **Copying back is not watched.** A change to `04-proof-testing`'s LP2 law never reaches
+  `lede-testing`, and nothing says whether it should.
+- **`03-use-rail` and an application-area type** are still wanted by Aure's `uses` block.
+  `03-use-rail` can move to LP2 only as a draft that leaves LP1's staging, which is a decision for
+  whoever owns it.
+- **`03-use-demo`**, the Applied Use Storytelling form, stays undrafted. On these templates
+  `06-relief-hero` takes its slots, wordless.
+- **The index generator breaks lines at hyphens.** `render_index()` calls `textwrap.wrap` with its
+  default `break_on_hyphens`, so a folded `use_when` can split a type id across two lines, which a
+  router reads as two words.
+  - This copy's first wording printed `04-proof-` and `lockedframe` apart. The wording was
+    changed until no line ended in a hyphen.
+  - The same fault already splits `paid-social` in `06-relief-hero`'s entry, in both indexes.
+  - The fix is one argument, `break_on_hyphens=False`. It moves `registry/index.yaml`, which
+    another lane holds uncommitted, so it waits for a commit that may regenerate that file.
+
+---

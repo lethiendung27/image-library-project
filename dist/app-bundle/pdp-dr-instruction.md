@@ -44,11 +44,17 @@ So this namespace stands on three differences of LAW, not of machinery:
 
 **Owner instruction, 2026-09-15 (ADR-091): each page kind routes one folder, and that folder
 holds every type the page may use.** So an LP2 page reads `registry/pdp-dr-index.yaml` and this
-folder, and never opens `registry/types/`. The folder holds two kinds of file:
+folder, and never opens `registry/types/`. The folder holds three kinds of file:
 
 - **a verbatim copy of every active image type**, under the parent's id, carrying
   `copied_from` + `copied_at_version`. These are what route today. Since ADR-094 a copy may
   also carry one `## LP2 LAW` section of its own — see the type map below.
+- **a copy of a type from another page kind's folder**, where it fits a product page (owner
+  instruction, 2026-09-17, ADR-097). It takes an LP2 id, because the toplist namespace's ids are
+  arguments. It carries `copied_from` naming its parent, and its router-facing sections are
+  rewritten for LP2. `04-proof-testing`, copied from `lede-testing`, is the first. No gate in
+  `mapping/slot-rules.md` is keyed on its id, so any gate it needs is written in
+  `mapping/pdp-dr-rules.md`.
 - **LP2's own drafts**, every one `reserved` or `deprecated`. A draft is promoted in place —
   a status change, never a `git mv` out, which would take it out of the folder LP2 routes.
 
@@ -434,7 +440,7 @@ prompt is one call (ADR-021), so nothing but the words holds the two files toget
 
 **A block that names a person shows no face** — the `expert` blocks today. A face beside a name
 is that person's portrait, and an invented person there is the endorsement this file already
-refuses. The product, a pair of working hands or a test carries the block.
+refuses. The product, a pair of working hands or a test (`04-proof-testing`) carries the block.
 
 ## Ground: quiet by default, and a dark one is a CHOICE
 
@@ -769,8 +775,8 @@ draws a mark.
 and replaced by `03-spec-callout` after a control render and a ten-source corpus answered the
 same question the same way, and `06-relief-animal`, retired on 2026-09-17 after the owner put an
 animal subject into the relief types (ADR-095). `registry/pdp-dr-index.yaml` gains none of them.
-What routes on an LP2 page today is the seventeen verbatim copies of the active image types,
-through that index, ordered by `mapping/pdp-dr-rules.md` (ADR-091).
+What routes on an LP2 page today is the seventeen verbatim copies of the active image types and
+`04-proof-testing`, copied from the toplist namespace (ADR-097), through that index, ordered by `mapping/pdp-dr-rules.md` (ADR-091).
 
 **Six drafts clear SPEC §6.3 criterion 1** — `03-spec-callout`, `06-relief-claimstack`,
 `07-identity-pack`, `03-spec-claimstack`, `03-spec-dimension` and `03-spec-hero`, at 11, 10,
