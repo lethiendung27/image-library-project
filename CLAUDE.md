@@ -20,7 +20,7 @@ tasks to entry points and must stay logic-free.
 | Choose the lede image for a top-N listicle | `registry/toplist-instruction.md`, then `mapping/toplist-rules.md` |
 | Add / edit a toplist type | `SPEC.md` §3.7, then a file in `registry/toplist-types/` |
 | Route images for an LP2 product-gallery page | `registry/pdp-dr-instruction.md`, then `mapping/pdp-dr-rules.md` |
-| Read an LP2 template's image slots | `python3 scripts/pdp-dr-slots.py TEMPLATE.html`, then `mapping/pdp-dr-rules.md` → Slot kinds |
+| Read an LP2 template's image slots | `python3 scripts/pdp-dr-slots.py TEMPLATE.html`, then `mapping/pdp-dr-rules.md` → Slot kinds and Section routing |
 | Add / edit a PDP-DR type | `SPEC.md` §3.8, then a file in `registry/pdp-dr-types/` |
 
 ## Hard rules for any session

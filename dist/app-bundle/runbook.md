@@ -13,16 +13,25 @@ context.
 **An LP2 page routes a different folder** (`page.lpTypeId: pdp_dr`, SPEC §3.0, ADR-091).
 Load `registry/pdp-dr-index.yaml` in place of `registry/index.yaml`, add
 `mapping/pdp-dr-rules.md`, and fill from `registry/pdp-dr-types/` under
-`registry/pdp-dr-instruction.md` — never from `registry/types/`. Keep `mapping/slot-rules.md`:
-its attribute gates and cross-slot rules apply to an LP2 page unchanged, and they reach the
-copies because a copy keeps its parent's id. Any other value of `lpTypeId`, and none, routes
-as above.
+`registry/pdp-dr-instruction.md` — never from `registry/types/`. Keep `mapping/slot-rules.md`
+for its attribute gates and its cross-slot rules 5–6, which reach the copies because a copy keeps
+its parent's id. **Its cross-slot rules 1–4 do not run on an LP2 page** (ADR-102):
+- no `never_with`, `pairs_with`, `avoid_adjacent` or `requires_pair`;
+- no one-type-once;
+- no page arc over the whole page;
+- no step-3 budget.
+
+On an LP2 page, Step 3's item 2 is `mapping/pdp-dr-rules.md`'s cross-slot rules, and no rule
+removes a type from a slot because another slot holds it. Any other value of `lpTypeId`, and
+none, routes as above.
 
 **A page built from an LP2 template gives each image field a KIND before Step 2** — run
 `python3 scripts/pdp-dr-slots.py TEMPLATE.html`, which applies the *Slot kinds* table in
 `mapping/pdp-dr-rules.md` (ADR-096). Only a `gallery` field carries words. A `hero`, `section`,
 `pair`, `buyer-wall` or `closing` field is generated wordless. A `chrome`, `thumb`, `packshot`,
 `portrait` or `chart` field is not generated, and a `gif` field routes by `registry/gif-types/`.
+The same run prints each generated field's **default role** from its section's name
+(*Section routing*, ADR-102). Step 2 starts from that role, and the section's copy may move it.
 
 **And load only the SECTIONS you fill from.** A seven-reason listicle forces eight
 distinct types under one-type-once, so "typically 2–4" understates the worst case and
@@ -87,7 +96,9 @@ With the index + shortlist + `product.attributes` + ALL sections visible at once
 1. Apply every attribute gate from `mapping/slot-rules.md` (deterministic kills).
 2. Enforce cross-slot rules ON THE RECOMMENDED SET: `never_with`, `requires_pair`,
    `avoid_adjacent`, one-type-once, pain-before-relief arc, step-3 budget. They decide
-   what the page recommends, never which types a slot may offer (ADR-090).
+   what the page recommends, never which types a slot may offer (ADR-090). **On an LP2 page
+   these do not run** (ADR-102): enforce `mapping/pdp-dr-rules.md`'s cross-slot rules instead,
+   report its warnings, and never move a slot off a type because another slot holds it.
 3. Select the page as a SET — never slot-by-slot greedily. If two slots compete for
    one type, the type goes where its `use_when` fits best and the other slot
    recommends its next candidate; the type may stay among that slot's options.
@@ -176,7 +187,7 @@ or the surface — never about what the page's other slots recommend:
 the step-3 budget. They decide which option each slot RECOMMENDS and in what order the page
 reads; none of them removes a type from a slot's options. An option the set cannot also hold
 stays on offer and says so in `composition_notes`. `mapping/slot-rules.md` states this field by
-field.
+field. **On an LP2 page none of them runs** (ADR-102), and its index writes the four fields empty.
 
 **Ratio is not one of them** (ADR-082, and ADR-086 for this paragraph). No type declares a
 ratio, so there is nothing to test a slot's shape against. The slot's ratio arrives from
@@ -396,6 +407,7 @@ Rules for what may be proposed:
 1. Same removers as any option — attribute gates, global rules, marketplace legality.
 2. Same cross-slot rules — one-type-once, step-3 budget, `avoid_adjacent`, page arc —
    because a proposal joins the recommended set, which is what those rules bind (ADR-090).
+   On an LP2 page, "the same rules" means `mapping/pdp-dr-rules.md`'s (ADR-102).
    Coverage is not a licence to bloat; those rules exist because more explanation is
    not more persuasion.
 3. Every proposal states **which rung it fills** and **where it would sit**. A proposal

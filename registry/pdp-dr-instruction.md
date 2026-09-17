@@ -18,11 +18,14 @@ and `-B` and `2026-09-03-C` through `-H`, filed against **41 distinct type ids**
 **It is separate for none of the reasons the other two namespaces are separate, and
 saying so is the point.** SPEC §3.6 and §3.7 both justify a namespace the same way: that
 page carries ONE image slot, so the role shortlist of §7.2, the cross-slot pass of §7.3,
-the coverage pass of §7.5 and one-type-once have nothing to act on. **A product gallery
-carries about twelve slots.** Every one of those passes applies to it, harder than to an
-advertorial, because twelve slots is more places for the same argument to appear twice.
+the coverage pass of §7.5 and one-type-once have nothing to act on. **An LP2 page carries
+many slots.** The four templates of 2026-09-17 generate 16 to 37 images each, and that is why
+LP1's cross-slot pass does not run on it (ADR-102): with 17 active types, a rule that refuses a
+type because another slot holds it leaves the page without types. The gallery keeps its own
+checks, most of them warnings. One check runs over the whole page: no two images share a type
+and a message (`mapping/pdp-dr-rules.md`, cross-slot rule 13).
 
-So this namespace stands on three differences of LAW, not of machinery:
+So, beside that cross-slot pass of its own, this namespace stands on three differences of LAW:
 
 1. **Text is baked into the image.** Owner decision, 2026-08-31, taken against the
    advice of the session that raised it: an ad image with words is generated with the
@@ -90,22 +93,25 @@ habit and it is the one to keep: a call saves a paragraph and costs an unwatched
 ## Input is `content.json`, and the gallery is the unit
 
 Unlike the toplist namespace, this one consumes the **whole** `content.json`
-`{ product, page }` and routes through `query/runbook.md` unchanged. A product gallery has
-`page.sections`; the slots are real; §7 applies.
+`{ product, page }` and routes through `query/runbook.md`. A product page has
+`page.sections`; the slots are real; §7 applies, except that Stage 2's cross-slot constraints
+are `mapping/pdp-dr-rules.md`'s own and none of `mapping/slot-rules.md`'s rules 1–4 (ADR-102).
+**An image routes by its section's name and by the copy written in that section**: the name
+gives a default role (`mapping/pdp-dr-rules.md`, *Section routing*), and the copy decides.
 
 **The gallery is a SET and the set is what is checked**, which is `mapping/pdp-dr-rules.md`'s
-whole job. Three of §7's passes do more work here than anywhere else in the library:
+whole job. No rule there removes a type from a slot because of the type another slot holds
+(ADR-102). Three checks watch the gallery more closely than anywhere else in the library:
 
-- **One type at most once in the gallery**, and a twelve-tile gallery is not a repeating section
-  in cross-rule 2's sense. A roundup's five ranked entries are equivalent list items; a
-  gallery's twelve tiles are a linear argument, and repeating a type across a linear funnel
-  repeats an argument.
-- **The page arc (G4 at page level).** Pain and cause tiles precede relief and outcome
-  tiles; pain never reappears after the first relief tile.
-- **The mechanism-class budget.** At most two mechanism-class tiles in one gallery — any
-  mechanism, any comparison or proof, any use steps (`mapping/pdp-dr-rules.md`, rule 3, which
-  widened the step-3 trio in ADR-094). Three is a lecture, and a gallery has room to make that
-  mistake in a way a six-slot advertorial does not.
+- **One type at most once in the gallery — a warning.** A gallery's tiles are a linear
+  argument, and repeating a type across a linear funnel usually repeats an argument. A gallery
+  that needs a type twice takes it twice, with two messages.
+- **The gallery's arc (G4 over its tiles).** Pain and cause tiles precede relief and outcome
+  tiles; pain never reappears after the first relief tile. This one still binds: it orders the
+  tiles and removes no type.
+- **The mechanism-class budget — a warning.** At most two mechanism-class tiles in one gallery —
+  any mechanism, any comparison or proof, any use steps (`mapping/pdp-dr-rules.md`, rule 3, which
+  widened the step-3 trio in ADR-094). Three is a lecture, and the warning says so.
 
 **The first gallery image is out of library scope.** It is a standard product shot; the
 library covers images 2 and after (`mapping/slot-rules.md`, cross-rule 6).

@@ -40,7 +40,8 @@ Invariants any harness must respect:
 2. Routing reads **only** one generated index and its rules file: `registry/index.yaml` +
    `mapping/slot-rules.md` for an LP1 page, `registry/pdp-dr-index.yaml` +
    `mapping/pdp-dr-rules.md` for an LP2 page — which applies `mapping/slot-rules.md`'s gates
-   and cross-slot rules unchanged (§3.0, ADR-091). Full type files are loaded only for the
+   and its cross-slot rules 5–6 unchanged, and none of its cross-slot rules 1–4 (§3.0, ADR-091,
+   ADR-102). Full type files are loaded only for the
    types selected for a slot (progressive disclosure), and only from the page kind's folder.
 3. `ingestion/observations.jsonl` and `feedback/picks.jsonl` are **append-only**. Corrections
    are new records, never edits.
@@ -308,10 +309,14 @@ one-type-once have nothing to act on, and it is never written into `index.yaml`.
 A fourth registry governs the **image gallery of a direct-response product detail page**,
 LP2 (ADR-077), and since ADR-091 it is **the one folder an LP2 page routes**. It is a
 **separate namespace** from image types, and it is separate for none of the reasons §3.6
-and §3.7 give: a product gallery carries about twelve slots, so the role shortlist of
-§7.2, the cross-slot pass of §7.3, the coverage pass of §7.5 and one-type-once all apply
-to it, harder than they apply to an advertorial. It stands on three differences of LAW
-instead — text baked into the image (owner decision 2026-08-31), a ground rule measured
+and §3.7 give: an LP2 page carries many image slots, so the role shortlist of §7.2 and the
+coverage pass of §7.5 have work to do. **Its cross-slot pass is its own** (ADR-102).
+`mapping/slot-rules.md`'s rules 1–4 do not run on it: `never_with`, `pairs_with`,
+`avoid_adjacent`, `requires_pair`, one-type-once, the page arc and the step-3 budget. A page
+that generates 16 to 37 images from 17 active types runs out of types under them. No LP2 rule
+refuses a type for a slot because of the type another slot holds, and an image routes by its
+section's name and that section's copy. Beside that routing difference, it stands on three
+differences of LAW — text baked into the image (owner decision 2026-08-31), a ground rule measured
 on its own corpus (ADR-068), and marketplace legality gating every tile. It is never
 written into `index.yaml`; its active files are written into `registry/pdp-dr-index.yaml`,
 LP2's routing surface, by the same `--write-index`.
@@ -470,7 +475,8 @@ specific source image — binds there as it binds everywhere.
 3. **Stage 2 — portfolio** (judgment, one pass over the whole page): apply
    `product.attributes` against skeleton conditionals; enforce
    cross-slot constraints (`pairs_with`, `never_with`, `avoid_adjacent`,
-   `requires_pair`, pain→relief arc). The page is selected as a **set**, never
+   `requires_pair`, pain→relief arc) on an LP1 page; an LP2 page runs
+   `mapping/pdp-dr-rules.md`'s own instead (ADR-102). The page is selected as a **set**, never
    slot-by-slot greedily. **The pool is content-first** (ADR-090): those constraints
    bind the recommended set, never which types a slot may offer. What removes a type
    from a slot's pool is an attribute gate, a global rule or marketplace legality.

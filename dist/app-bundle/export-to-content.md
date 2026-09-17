@@ -88,7 +88,8 @@ two exports first examined the two rules happened to coincide, 30 slots out of 3
 57 they coincide on 27 exports and diverge on 30 — 313 slots of 934. The coincidence was the
 sample, not the rule. ADR-050 is authoritative here because it is the library's own answer to
 this exact question, written from routed pages; `data-block-key` is kept in the worksheet as
-`_block_keys`, provenance a reader can see and nothing routes on.
+`_block_keys`, provenance a reader can see and nothing in this converter routes on. On an LP2 page
+the section name is a routing input (ADR-102, under *What is judgement* below).
 
 ## What is judgement, and why each one is
 
@@ -101,6 +102,12 @@ Never guessed by the converter. It refuses to emit until each is answered.
   block → role table collapses all seven into one and destroys the page arc
   `mapping/slot-rules.md` cross-rule 3 enforces. The worksheet carries each section's own copy
   so the assignment is made by reading it.
+  **An LP2 template is read differently** (ADR-102). The owner's LP2 templates give each block
+  one argument, and on an LP2 page an image depends on its section's name and on that section's
+  copy (owner decision, 2026-09-17). `mapping/pdp-dr-rules.md`'s *Section routing* table
+  therefore gives a default role by section name, and the copy still decides. The finding above
+  stands for the exports it was measured on. This converter still asks a reader for every role;
+  on an LP2 page, that table is where the reader starts.
 - **`page.channel`.** The export does not carry it. The router learned it by GUESSING from
   `lpTypeId` for five sessions running, which is half of why ADR-059 removed channel as an
   admission test. The converter will not repeat that guess.

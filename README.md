@@ -13,7 +13,7 @@ Nothing here runs a model. An application *consumes* this library and does the g
 | **building the consuming app** | this file → `SPEC.md` §1 (the contract) → §7 (routing) → `dist/app-bundle/` |
 | **adding or editing a rule** | `SPEC.md` §3 (registry model) → §6 (evidence) → the type file → `decisions/log.md` |
 | **running Claude Code here** | `CLAUDE.md` — a thin adapter, entry points only, no logic |
-| **wondering why a rule exists** | `decisions/log.md`, append-only, 102 ADRs, every one cites its evidence |
+| **wondering why a rule exists** | `decisions/log.md`, append-only, 103 ADRs, every one cites its evidence |
 
 ## What an app actually consumes
 
@@ -69,8 +69,9 @@ of the slot ids, **not** the markup's `<section>` elements: the two agree on 27 
 differ on 30, and where they differ the markup packages several argument beats into one
 styling container (ADR-083). That grouping is what the converter declares, and the declared
 sections are what the motion rules count in (ADR-087). What it will not invent: `role` and `copy_summary`
-(measured: seven sibling cards of one repeating block carry six different roles, so no
-block → role table is safe), `page.channel` (ADR-059 — the router used to guess it from
+(measured on the exports: seven sibling cards of one repeating block carry six different roles,
+so no block → role table is safe there; on an LP2 template a section's name gives only a default
+role, and the copy decides, ADR-102), `page.channel` (ADR-059 — the router used to guess it from
 `lpTypeId`), and the eight `product.attributes`, **which the app supplies** (owner decision,
 2026-09-11). `page.lpTypeId` has a home in `mapping/content.schema.json` (ADR-081), and since
 ADR-091 it selects the page kind's folder: `pdp_dr` routes LP2's. It admits or refuses no type.

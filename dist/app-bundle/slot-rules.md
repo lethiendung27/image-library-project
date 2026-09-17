@@ -107,6 +107,10 @@ this gate to the code's behaviour.
 
 ## Cross-slot rules (portfolio constraints)
 
+**Rules 1–4 bind an LP1 page only.** An LP2 page (`pdp_dr`) runs rules 5 and 6 from this list
+and its own cross-slot rules in `mapping/pdp-dr-rules.md`. There, no rule refuses a type because
+of the type another slot holds (owner decision, 2026-09-17, ADR-102).
+
 1. Honor `never_with`, `pairs_with`, `avoid_adjacent`, `requires_pair` from the index.
    Known hard pairs: `01-pain-scene` × `01-pain-split` never share a page;
    `06-relief-scene` requires `01-pain-scene`; `05-social-handoff` not adjacent to

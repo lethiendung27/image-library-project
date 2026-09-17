@@ -23,13 +23,24 @@ field path, or one of two tokens the table defines under it:
 The frame column is read from the image's own sizing classes and reported for the owner,
 who sets the ratio at render time. It never goes into a prompt (ADR-016).
 
+A second table in the same file, `## Section routing`, gives every generated field a DEFAULT
+ROLE from its section's name (ADR-102, owner decision 2026-09-17: on an LP2 page an image depends
+on its section's name and on the copy written in that section). The name is the field's enclosing
+`data-block-key`, or its path's first segment where it has none. A row holds backticked globs over
+that name and ONE backticked value:
+- a role from `section_roles` in `registry/vocabulary.yaml`;
+- `@tile`, a gallery tile, which is routed on its own;
+- `@copy`, where the section's copy alone decides.
+The copy may move any default; the script only says where routing starts.
+
 Usage:
   python3 scripts/pdp-dr-slots.py TEMPLATE.html            # table per field, then counts
   python3 scripts/pdp-dr-slots.py TEMPLATE.html --json     # the same, as JSON
-  python3 scripts/pdp-dr-slots.py --rules                  # the parsed table
+  python3 scripts/pdp-dr-slots.py --rules                  # both parsed tables
   python3 scripts/pdp-dr-slots.py TEMPLATE.html --rules-from FILE   # another table
 
-Exit 1 when the table cannot be parsed or a field matches no row, 2 on bad usage.
+Exit 1 when a table cannot be parsed, a role is not in the vocabulary, or a field matches no
+row, 2 on bad usage.
 """
 import fnmatch
 import json
@@ -40,6 +51,9 @@ from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RULES = os.path.join(ROOT, "mapping", "pdp-dr-rules.md")
+VOCAB = os.path.join(ROOT, "registry", "vocabulary.yaml")
+GENERATED = {"hero", "gallery", "section", "pair", "buyer-wall", "closing"}
+ROLE_TOKENS = {"@tile", "@copy"}
 PORTRAIT_BLOCKS = {"reviews", "expert", "testimonials", "trusted"}
 PORTRAIT_MAX_WIDTH = 160
 VOID = {"img", "br", "hr", "input", "meta", "link", "source", "area", "base",
@@ -81,6 +95,64 @@ def parse_rules(path):
     if not rows:
         raise ValueError(f"{path}: the Slot kinds table has no rows")
     return rows
+
+
+def section_roles(path=VOCAB):
+    """The closed role list, read from the `section_roles: [...]` line of the vocabulary."""
+    with open(path, encoding="utf-8") as f:
+        m = re.search(r"^section_roles:\s*\[([^\]]*)\]", f.read(), re.M)
+    if not m:
+        raise ValueError(f"{path}: no `section_roles: [...]` line")
+    return {r.strip() for r in m.group(1).split(",") if r.strip()}
+
+
+def parse_sections(path, roles):
+    """Rows of the first table under `## Section routing`, as (patterns, role)."""
+    with open(path, encoding="utf-8") as f:
+        text = f.read()
+    m = re.search(r"^## Section routing\b.*?$", text, re.M)
+    if not m:
+        raise ValueError(f"{path}: no `## Section routing` section")
+    body = text[m.end():]
+    nxt = re.search(r"^## ", body, re.M)
+    if nxt:
+        body = body[:nxt.start()]
+    rows, in_table = [], False
+    for line in body.splitlines():
+        if not line.startswith("|"):
+            if in_table:
+                break
+            continue
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if not in_table:
+            if [c.lower() for c in cells[:2]] != ["section name", "default role"]:
+                raise ValueError(f"{path}: the Section routing table must open with "
+                                 "`| section name | default role |`")
+            in_table = True
+            continue
+        if set("".join(cells)) <= set("-: "):
+            continue
+        patterns = re.findall(r"`([^`]+)`", cells[0])
+        values = re.findall(r"`([^`]+)`", cells[1]) if len(cells) > 1 else []
+        if not patterns or len(values) != 1:
+            raise ValueError(f"{path}: a Section routing row needs backticked names and ONE "
+                             f"backticked role: {line}")
+        if values[0] not in roles and values[0] not in ROLE_TOKENS:
+            raise ValueError(f"{path}: `{values[0]}` is neither a section role nor a token: {line}")
+        rows.append((patterns, values[0]))
+    if not rows:
+        raise ValueError(f"{path}: the Section routing table has no rows")
+    return rows
+
+
+def role_of(f, sections):
+    """A generated field's default role; '—' for a field the library does not generate."""
+    if f["kind"] not in GENERATED:
+        return "—"
+    for patterns, role in sections:
+        if any(fnmatch.fnmatchcase(f["block"], p) for p in patterns):
+            return role
+    return None
 
 
 class Fields(HTMLParser):
@@ -160,12 +232,16 @@ def main(argv):
         args = [a for a in args if a != rules_path]
     try:
         rules = parse_rules(rules_path)
+        sections = parse_sections(rules_path, section_roles())
     except ValueError as e:
         print(f"ERROR {e}", file=sys.stderr)
         return 1
     if "--rules" in argv and not args:
         for patterns, kind, words, image in rules:
             print(f"{' '.join(patterns):58} {kind:11} {words}")
+        print()
+        for patterns, role in sections:
+            print(f"{' '.join(patterns):58} {role}")
         return 0
     if len(args) != 1:
         print(__doc__.split("Usage:")[1].split("Exit")[0], file=sys.stderr)
@@ -178,19 +254,27 @@ def main(argv):
     except ValueError as e:
         print(f"ERROR {e}", file=sys.stderr)
         return 1
+    unrouted = []
+    for r in rows:
+        r["role"] = role_of(r, sections)
+        if r["role"] is None:
+            unrouted.append(r["field"])
     if "--json" in argv:
         print(json.dumps({"template": args[0], "fields": rows,
-                          "unmatched": unmatched}, indent=1))
+                          "unmatched": unmatched, "unrouted": unrouted}, indent=1))
     else:
         for r in rows:
-            print(f"{r['field']:40} {r['block']:14} {r['kind']:11} {r['frame']:7} {r['words']}")
+            print(f"{r['field']:40} {r['block']:14} {r['kind']:11} {r['frame']:7} "
+                  f"{r['role'] or '?':18} {r['words']}")
         counts = {}
         for r in rows:
             counts[r["kind"]] = counts.get(r["kind"], 0) + 1
         print("\n" + ", ".join(f"{k} {v}" for k, v in counts.items()))
         for u in unmatched:
             print(f"ERROR {u}: matches no row of the Slot kinds table")
-    return 1 if unmatched else 0
+        for u in unrouted:
+            print(f"ERROR {u}: its section matches no row of the Section routing table")
+    return 1 if unmatched or unrouted else 0
 
 
 if __name__ == "__main__":

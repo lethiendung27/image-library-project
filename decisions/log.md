@@ -8043,3 +8043,142 @@ Python:
   take the format is the owner's to decide.
 
 ---
+
+## ADR-102 · 2026-09-17 · LP2 routing is loose: no rule refuses a type because of the type another slot holds, and an image routes by its section's name and that section's copy
+
+**Owner instructions, 2026-09-17**, in order:
+1. **The app's warnings.** The owner sent a screenshot of the app's *Edit prompt* dialog on an `aure-toplaser-final 2` page with these words: *"app đang trả về thông báo như thế này. các types ảnh trong product detail page - direct response không bị giới hạn routing (never pair with...). đưa ra gợi ý, tác động nếu bỏ các giới hạn này trong pdp-dr"*. The dialog listed eight warnings.
+   - **Four `[never-with]`:** `03-spec-split` on `problem.items.1.image` against:
+     - `03-mechanism-xray` on `expert.photo`;
+     - `03-spec-macro` on `modes.items.0.image`;
+     - `03-spec-macro` on `faq.image`;
+     - `03-spec-explode` on `modes.items.2.image`.
+   - **Four `[one-type-once]`**, each saying the type "already serves" a field "in the SAME configuration":
+     - `05-social-snapshot` (`trusted.cards.1.photo`);
+     - `06-relief-hero` (`hero.image`);
+     - `03-mechanism-ghostbody` (`why.photo`);
+     - `03-spec-macro` (`modes.items.0.image`).
+2. **The ruling, after the analysis:** *"LP2 có rất nhiều slot ảnh, nếu chặn type thì số lượng type ảnh sẽ không đủ để phục vụ LP2. logic routing của các ảnh cũng đang lỏng ở LP2, ảnh phụ thuộc vào section name, content được viết trong section đấy"*. LP2 has so many image slots that blocking types leaves too few to serve it. LP2's routing is loose: an image depends on its section's name and on the copy written in that section.
+3. **The go:** *"tiếp tục"*, to the plan this ADR carries out.
+
+**The app did what the repo said.** Four files ran `mapping/slot-rules.md`'s cross-slot rules 1–4 on every image of an LP2 page: SPEC's invariant 2, SPEC §3.8, `query/runbook.md` and `mapping/pdp-dr-rules.md`. `registry/pdp-dr-instruction.md` argued that they applied "harder than to an advertorial". That argument pictured a twelve-tile gallery. The owner's templates put most of their images outside the gallery.
+
+**Measured, 2026-09-17:**
+- **The templates outgrow the types.** `python3 scripts/pdp-dr-slots.py` counts the generated fields (hero, gallery, section, pair, buyer-wall and closing) on the four templates:
+
+  | template | generated images |
+  |---|---|
+  | `wiboofy` | 22 |
+  | `t1-deal` | 17 |
+  | `t2-eco` | 16 |
+  | `aure-toplaser` | 37 |
+
+  17 types are active. The WiBoofy mapping of the same day, which lives outside the repo (ADR-099), kept 11 of them once its gates and exclusions were applied. A page-wide one-type-once cannot be met on any of the four.
+- **The four `never_with` pairs were never tested on a product page.** They are `01-pain-scene` with `01-pain-split`, and `03-spec-split` with each of `03-spec-macro`, `03-spec-explode` and `03-mechanism-xray`.
+  - They entered with the registry's scaffold and first drafts, 2026-08-10 to 2026-08-12 (`145f9f9`, `0fdfb6b`, `916bacf`). The first product page was filed on 2026-08-31.
+  - `01-pain-scene`, `01-pain-split`, `03-spec-split` and `03-spec-explode` appear on none of the 26 PDP sources (`mapping/pdp-dr-rules.md`, Layer 2).
+- **One pair blocks a construction LP2 prescribes.** Cross-slot rule 11 builds an old-way/new-way pair from `01-pain-split`'s halves. The pair then forbade `01-pain-scene` anywhere on that page.
+- **A page-wide arc fails every template by construction.** The hero is a relief image (Layer 2's `hero` row), and each template's problem block comes after it.
+
+### Decision
+
+1. **`mapping/slot-rules.md`'s cross-slot rules 1–4 do not run on an LP2 page.**
+   - **What stops:** `never_with`, `pairs_with`, `avoid_adjacent`, `requires_pair`, one-type-once, the page arc over the whole page, and the step-3 budget.
+   - **What still binds:**
+     - rule 5 (marketplace legality) and rule 6 (image 1 is out of scope);
+     - every attribute gate and the global rules;
+     - LP2's law that counts nothing: the style lock, wordless images outside the gallery, pairs, buyer tiles, no face beside a name, one product variant, and composition that varies from image to image.
+2. **No LP2 rule refuses a type for a slot because of the type another slot holds.** Four gallery rules counted or paired types across tiles, and each now warns. A set that breaks one reports it and ships.
+   - rule 1: one type once in the gallery;
+   - rule 3's mechanism-class budget;
+   - rule 7: a Lineup beside a Grid;
+   - rule 8: more than two place scenes.
+
+   Rule 2 (the gallery's arc, retitled), rules 4, 5, 6 and 9, and rule 3's one-variant clause keep their force.
+
+   The owner's words named no gallery rule. Turning these four into warnings is this session's reading of "nếu chặn type thì số lượng type ảnh sẽ không đủ". The owner may turn any of them back into a refusal.
+3. **Rule 13 is the only cross-slot check over the whole page, and it is a warning.** No two images share a type AND a message: that is one image shown twice, and the page reuses the file.
+   - It widens rule 10's last sentence from "a section image against a gallery tile" to any two images.
+   - A type may appear on a page as often as the page has messages for it.
+4. **An LP2 image routes from four inputs:**
+   - its kind (*Slot kinds*);
+   - its section's name, which is the enclosing `data-block-key`, or the path's first segment where there is none;
+   - the copy written in that section, item by item in a list block;
+   - the product's attribute gates.
+
+   **A new table, *Section routing*, in `mapping/pdp-dr-rules.md`.**
+   - The table gives a section name a default role, Layer 2's row for that role gives the preference order, and the copy may move the role. The copy also picks the type and the message.
+   - Two tokens cover the sections whose name does not settle a role: `@tile` is the product card's gallery, routed tile by tile; `@copy` is a section whose name says nothing about its argument.
+   - The rows were read from the four templates' blocks and their copy; the table's `read from` column names the templates for each row.
+   - `scripts/pdp-dr-slots.py` now prints each generated field's default role. It fails on a role outside `vocabulary.section_roles`, on a malformed row, and on a generated field that no row matches.
+   - A known-bad run fed it six broken tables, and each failed with its own message. The clean table passes on all four templates.
+5. **Why a section name may route here when an export's block key may not.**
+   - `mapping/export-to-content.md` measured 57 advertorial and listicle exports. There, one `features` block wrapped seven cards that argue six roles, so a block → role table was unsafe, and it still is.
+   - The owner's LP2 templates give each block one argument and list equivalent items inside it. A template whose block wraps unrelated arguments routes those items by `@copy`, whatever the block is called.
+   - The converter still asks a reader for every role. The table is where that reader starts on an LP2 page.
+6. **The app's surface.** `registry/pdp-dr-index.yaml` writes `pairs_with`, `never_with`, `avoid_adjacent` and `requires_pair` empty for every entry, and its header says why.
+   - The entries keep their shape, so a parser that reads those fields keeps working, and a check on them cannot fire.
+   - The type files do not change. The copies stay verbatim (ADR-091), and a draft's declarations stay as the record of what its author meant.
+   - `registry/index.yaml` is byte-identical.
+
+**What the app must change, because this repo cannot change it.** One-type-once, the page arc and the step-3 budget live in app code, not in fields.
+- For `page.lpTypeId: pdp_dr`, the app stops running them.
+- It runs the gallery warnings and rule 13 instead.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `fe8a0e7` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"portfolio constraints"` | 4 | 4 | 2 |
+| `"cross-slot rules unchanged"` | 3 | 3 | 1 |
+| `"cross-slot pass"` | 11 | 8 | 3 |
+| `"harder than"` | 13 | 12 | 4 |
+| `"one-type-once"` | 205 | 52 | 8 |
+| `"never_with"` | 246 | 127 | 61 |
+| `"avoid_adjacent"` | 149 | 60 | 36 |
+| `"page arc"` | 42 | 25 | 5 |
+| `"One type at most once"` | 4 | 4 | 2 |
+| `"still holds"` | 37 | 31 | 8 |
+| `"re-routed rather than shipped"` | 4 | 4 | 2 |
+| `"nothing routes on"` | 7 | 4 | 1 |
+| `"block → role"` | 4 | 4 | 2 |
+| `"data-block-key"` | 44 | 16 | 3 |
+
+- **Rewritten:**
+  - `SPEC.md`: invariant 2, §3.8's opening, and §7's Stage 2;
+  - `query/runbook.md`: the LP2 paragraph, the LP2 template paragraph, Step 3's item 2, the cross-slot fields paragraph, and the coverage pass's rule 2;
+  - `registry/pdp-dr-instruction.md`: the namespace paragraph and the gallery checks;
+  - `mapping/pdp-dr-rules.md`: the new *Section routing* section; the cross-slot opening; rules 1, 3, 7, 8 and 10 and rule 2's title; the new rule 13; the ledger paragraph;
+  - `mapping/slot-rules.md`: a scope line under its cross-slot heading;
+  - `mapping/export-to-content.md`: the `_block_keys` sentence, and an LP2 paragraph under `role`;
+  - `README.md`: the converter's role sentence and the ADR count;
+  - `CLAUDE.md`: the LP2 slots entry point;
+  - `scripts/validate.py`: the LP2 surface header, and its empty pair fields;
+  - `scripts/pdp-dr-slots.py`: the section table and the role column.
+- **These hits stand:**
+  - every `never_with`, `avoid_adjacent` and `pairs_with` in a type file's frontmatter — LP1's, LP2's copies and drafts, staging's. Each is a declaration, not an instruction to an LP2 router, which reads the index;
+  - `mapping/slot-rules.md`'s rules and its table of what binds the set, which are LP1's and now say so;
+  - `query/runbook.md`'s other one-type-once passages, which describe LP1's option pool;
+  - its "re-routed rather than shipped", which is the composition rule that still binds;
+  - the golden fixtures, which are all LP1 pages;
+  - `registry/toplist-instruction.md`, `registry/vocabulary.yaml` and SPEC §3.7, which speak of the one-slot namespaces;
+  - `export-to-content.md`'s measured finding and SPEC §3.0's block-key measurement;
+  - "still holds" and "harder than" where they belong to other sentences.
+- **Generated:**
+  - `registry/pdp-dr-index.yaml`;
+  - `dist/app-bundle/`: SPEC, runbook, the LP2 instruction and rules, the slot rules, the export note, the LP2 index and the manifest.
+  - `registry/index.yaml` does not move.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **The app.** Its one-type-once, page-arc and budget checks are code outside this repo.
+- **No render can test this.** The decision is about which types one page may hold, and a render shows one image. The first LP2 page routed under it is the test.
+- **No golden fixture covers it.** `check_golden` asserts Stage 1 only, never Stage 2, where the cross-slot rules live, and it reads no `lpTypeId`.
+- **The existing sets' checkers are untouched.** A checker that holds a gallery to one type once checks the version it was written for.
+- **The section table was read from four templates.** A block name it does not list falls to the `*` row, `@copy`, until someone writes a row for it.
+- **`@portrait` still reads a block list written into the script** (ADR-096's debt). The section table does not touch it.
+
+---

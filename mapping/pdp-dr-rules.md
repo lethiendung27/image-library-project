@@ -54,6 +54,48 @@ gallery from image 2, the section images, the pairs and the buyer tiles. It gene
 for the chrome, the thumbnails, the portraits or the chart. `python3 scripts/pdp-dr-slots.py`
 prints the per-template counts.
 
+## Section routing — what an image's section name sends it to
+
+**Owner decision, 2026-09-17** (ADR-102): *"logic routing của các ảnh cũng đang lỏng ở LP2, ảnh
+phụ thuộc vào section name, content được viết trong section đấy"* — on an LP2 page an image depends
+on its section's name and on the copy written in that section. A field's section name is its
+enclosing `data-block-key`, or its path's first segment where it has none. The name gives the image
+a **default role**, Layer 2's row for that role gives the preference order, and the section's copy
+decides: it can move the role, it picks the type and the message, and it does so item by item where
+the block is a list (cross-slot rule 10). A type outside the row stays a candidate (ADR-090).
+`python3 scripts/pdp-dr-slots.py TEMPLATE.html` prints each generated field's default role from
+this table; rows are tried in order and the first match wins.
+
+| section name | default role | where the copy moves it | read from |
+|---|---|---|---|
+| `buy` | `@tile` | any role — each gallery tile routes by its own message, under the gallery's rules | all four |
+| `hero` | `hero` | — | all four |
+| `problem` | `problem-agitation` | `cause`, where the copy explains why the problem happens (Deal: "every wall and floor between the two takes another bite out of it") | all four |
+| `how` | `how-to-use` | `mechanism`, where the steps happen inside the product or the body rather than in the buyer's hands (Aure: "Light reaches the root") | wiboofy, deal, aure |
+| `features` `modes` | `mechanism` | `how-to-use` or `personas`, item by item (Eco's washing and its two sizes, Deal's two button presses) | wiboofy, deal, eco; aure |
+| `why` | `outcome` | `comparison`, where the copy names what the product beats | aure |
+| `uses` | `how-to-use` | `personas`, where the list is of people rather than of places or body areas | aure |
+| `safety` | `proof` | — | aure |
+| `expect` | `proof` | — a pair, whose construction rule 11 fixes | aure |
+| `reviews` `ugc` `trusted` `testimonials` | `social-proof` | — buyer tiles and pairs, rules 11 and 12 | all four |
+| `expert` | `@copy` | the quoted claim decides, and the image never shows a face (rule 12) | wiboofy, aure |
+| `faq` | `@copy` | the question the image sits beside decides | wiboofy, aure |
+| `offer` `close` `bundle` | `cta` | `outcome`, where the block argues what the packshot does not (Slot kinds, `closing`) | all four |
+| `*` | `@copy` | — | — |
+
+`@tile` is the product card's gallery, where every tile is routed on its own. `@copy` is a section
+whose name says nothing about its argument, so its copy alone decides. A default role is where
+routing starts, never where it must end. A role outside `vocabulary.section_roles` fails the script,
+and so does a row whose second cell is not one backticked value.
+
+**Why a name may route here when an export's block key may not.** `mapping/export-to-content.md`
+measured 57 advertorial and listicle exports and found one `features` block wrapping seven cards
+that argue six roles, so no block → role table was safe there, and it still is not. The owner's LP2
+templates give each block one argument and list equivalent items inside it. The rows above were
+read from the blocks of `wiboofy`, `t1-deal`, `t2-eco` and `aure-toplaser` on 2026-09-17, with each
+block's copy read before its role was written. A template whose block wraps unrelated arguments
+routes those items by `@copy`, whatever the block is called.
+
 ## Layer 1 — mechanical admission
 
 | condition | effect |
@@ -159,31 +201,45 @@ reference, and it was never in the table above.
 
 ## Cross-slot rules — where a gallery differs from an advertorial
 
-All of `mapping/slot-rules.md`'s portfolio constraints apply. Twelve do more work here — three
-because of the page's shape, six the owner added on 2026-09-16 (ADR-093, ADR-094), and three
-for the images outside the gallery, after the owner's decisions of 2026-09-17 (ADR-096). **Rules
-1, 2, 7, 8 and 9 and rule 3's budget bind the gallery**; rules 4–6 and rule 3's one-variant
-clause bind every image a session emits for the page.
+**None of `mapping/slot-rules.md`'s cross-slot rules 1–4 runs on an LP2 page** (owner decision,
+2026-09-17, ADR-102): no `never_with`, `pairs_with`, `avoid_adjacent` or `requires_pair`, no
+one-type-once, no page arc over the whole page and no step-3 budget. Its rules 5 and 6 still bind
+— marketplace legality and the out-of-scope first image — and so does every attribute gate. The
+owner's reason: *"LP2 có rất nhiều slot ảnh, nếu chặn type thì số lượng type ảnh sẽ không đủ để
+phục vụ LP2"*. The four templates of 2026-09-17 generate 16 to 37 images each from 17 active
+types, so a page-wide one-type-once could never be met.
 
-1. **One type at most once in the gallery**, and a type's variant or form counts as the type. A
-   twelve-tile gallery is **not** a repeating section in cross-rule 2's sense. A roundup's
-   ranked entries are equivalent list items; a gallery's tiles are a linear argument, and
-   repeating a type across a linear funnel repeats an argument. The exception stays available to
-   a review wall inside the page, which is a genuine repeating section.
-2. **Page arc, G4 at page level, with places named.** Image 1 is the standard packshot and out of
-   scope. **Problem tiles sit at images 2–3 and never after the first Outcome Hero** — a split
+**No rule here refuses a type for a slot because of the type another slot holds.** Thirteen rules
+follow:
+- three because of the page's shape;
+- six the owner added on 2026-09-16 (ADR-093, ADR-094);
+- three for the images outside the gallery, after the owner's decisions of 2026-09-17 (ADR-096);
+- rule 13, the one check that runs over the whole page (ADR-102).
+
+**Rules 1, 2, 7, 8 and 9 and rule 3's budget bind the gallery.** Rules 4–6, rule 3's one-variant
+clause and rule 13 bind every image a session emits for the page. **Rules 1, 7 and 8, rule 3's
+budget and rule 13 WARN rather than refuse** (ADR-102): a set that breaks one reports it in its
+notes and ships. The owner may turn any of them back into a refusal.
+
+1. **One type at most once in the gallery — a warning** (ADR-102), and a type's variant or form
+   counts as the type. A gallery's tiles are a linear argument, and repeating a type across a
+   linear funnel usually repeats an argument, which is what the warning points at. It never
+   refuses: a gallery that needs a type twice takes it twice, with two messages (rule 13).
+2. **The gallery's arc, G4 over its tiles, with places named.** Image 1 is the standard
+   packshot and out of scope. **Problem tiles sit at images 2–3 and never after the first Outcome Hero** — a split
    before a rail, a cause anatomy after either and before the mechanism tile. **The mechanism
    tile sits at 3–4**, after the problem tiles and before the use steps; **use steps at about
    4–5**; **an Outcome Hero at 2–3 or closing**, the first one closing the problem phase. With
    twelve slots there is room to break this without noticing.
-3. **The mechanism-class budget** (ADR-094, widening the step-3 trio). **At most two gallery
-   tiles** from three groups: any mechanism (`03-mechanism-*`, and the Principle and Demonstrated
-   forms once they have files); any comparison or proof (`04-proof-lockedframe`, `04-proof-stat`,
-   `03-spec-split`); any use steps (`03-use-sequence`, `03-use-grid`). **One mechanism variant
-   per page** unless the page asks for two. `mapping/slot-rules.md`'s trio — at most two of
-   `03-mechanism-ghostbody`, `03-spec-split` and `03-use-sequence` — sits inside this budget and
-   still holds. `03-spec-macro` is outside it: the corpus's commonest mechanism tile at 13
-   sources, a feature tile in the owner's taxonomy, and one to a gallery whatever the surface.
+3. **The mechanism-class budget** (ADR-094, widening the step-3 trio) — **a warning** since
+   ADR-102. **At most two gallery tiles** from three groups: any mechanism (`03-mechanism-*`, and
+   the Principle and Demonstrated forms once they have files); any comparison or proof
+   (`04-proof-lockedframe`, `04-proof-stat`, `03-spec-split`); any use steps (`03-use-sequence`,
+   `03-use-grid`). Three is a lecture, and the warning says so; it removes nothing. **One mechanism
+   variant per page** unless the page asks for two: this clause still binds, because it is about
+   how the mechanism is drawn, not which type draws it. `mapping/slot-rules.md`'s own trio does not
+   run on an LP2 page. `03-spec-macro` is outside the budget: the corpus's commonest mechanism tile
+   at 13 sources, and a feature tile in the owner's taxonomy.
 4. **One style lock per session.** Every image a session emits for a page — gallery tiles and
    section images alike — shares the lock's two grounds, its text colours, its one accent, its
    typography, its chip form, its design language and its lighting family, named once and then
@@ -196,21 +252,24 @@ clause bind every image a session emits for the page.
    set to re-route, not a page to ship.
 6. **One product variant per page** — the first photograph attached, or the one the page names.
    Another variant appears only in a Lineup tile, or where the page asks.
-7. **A Lineup and a Grid are never adjacent.** `03-spec-lineup` already names both grid types in
-   `avoid_adjacent`.
-8. **At most two "use it in a place" scenes in the gallery** — office, car, truck, gaming, wheelchair,
-   pregnancy — unless the page asks for a persona series; `06-relief-scene` always counts. At
-   two, the idea is re-cut as a feature, an outcome or a grid tile.
+7. **A Lineup beside a Grid — a warning** (ADR-102). `03-spec-lineup` names both grid types in its
+   own `avoid_adjacent`; LP2's index writes that field empty, so this rule is where the warning
+   lives.
+8. **At most two "use it in a place" scenes in the gallery — a warning** (ADR-102) — office, car,
+   truck, gaming, wheelchair, pregnancy — unless the page asks for a persona series;
+   `06-relief-scene` always counts. Past two, the warning suggests re-cutting the idea as a feature,
+   an outcome or a grid tile.
 9. **The words are counted over the gallery**, the only images on the page that carry any. Per
    twelve tiles, scaled to any other count: copy on at most 6, a chip on at most 4, at least 4
    tiles carrying a title alone, at least 1 carrying no words. The law, and what a line may
    never say, are in the instruction's text section.
-10. **An image outside the gallery routes by its own block's copy** — ADR-090's content-first
-    pool — and the template fixes its place, which is why the gallery's rules leave it alone. The
-    items of one block route item by item. One type may serve every item where the items are
-    equivalent — the modes of one device, the stages of one result — and the images then differ
-    on a named dimension (`mapping/slot-rules.md` cross-rule 2). A section image never repeats a
-    gallery tile's type AND its message: that is one tile shown twice.
+10. **An image outside the gallery routes by its section's name and its section's copy** — the
+    name gives the default role (*Section routing*, ADR-102), the copy decides, and the pool is
+    ADR-090's content-first pool. The template fixes the image's place, which is why the gallery's
+    rules leave it alone. The items of one block route item by item. One type may serve every item,
+    and any number of sections. Where the items are equivalent — the modes of one device, the stages
+    of one result — the images differ on a dimension each prompt names. A section image never
+    repeats a gallery tile's type AND its message (rule 13).
 11. **A before-and-after pair is one argument in two files.** Route it once: both files take
     one type — `04-proof-lockedframe --timelapse` where the change happens over time, the two
     halves of `01-pain-split` where it is the old way against the new — and both prompts are
@@ -221,13 +280,20 @@ clause bind every image a session emits for the page.
     block that names a person never shows a face** — the `expert` blocks today. A face beside a
     name is that person's portrait, the `author` row, and an invented person there is the
     endorsement ADR-094 refused; the product or a pair of hands carries that block.
+13. **No two images on the page share a type AND a message — a warning** (ADR-102). That is one
+    image shown twice, and the page reuses the file rather than generating it again. It is the only
+    cross-slot check that runs over the whole page. A type may appear on a page as often as the page
+    has messages for it.
 
 **The set keeps a ledger, and every tile reads it before it chooses anything.** Tile by tile and
 cumulatively: the types used, the message keys used (feature keys, not sentences), the angle
 families used across every image, and the gallery's copy, chip, title-only, wordless and
-place-scene counts. A new tile takes
-a type, a key and an angle the ledger does not already hold; a set whose ledger breaks a count
-above is re-routed rather than shipped. The ledger is what a set's `check.py` checks.
+place-scene counts. A new tile takes a key and an angle the ledger does not already hold, and
+never a type-and-key pair it already holds (rule 13). A type the ledger already holds is a warning
+inside the gallery (rule 1) and nothing outside it. A set whose ledger breaks a refusing count —
+rule 5's angles, rule 9's words — is re-routed rather than shipped. A set that breaks a warning
+(rules 1, 7 and 8, rule 3's budget) ships with the warning in its notes. The ledger is what a
+set's `check.py` checks.
 
 ## What happens when the reserved files unblock
 
