@@ -135,8 +135,24 @@ def ghost(opened, wrong, right, marks, **kw):
 SLOTS = []
 
 # ================================================================== hero
-HERO_SPACE = ("{who} sit whole in the middle three fifths of the frame height, clear of the right edge. "
-              "The left half is quiet: {quiet}.")
+# ADR-103 (e6c84c3): every hero prompt carries these sentences word for word, the fifth only where
+# a person is in the frame. They replace this session's first placement wording.
+HERO_FIXED = [
+    "The product and anyone using it sit together in the right half of the picture, just past the "
+    "centre and well clear of the right edge.",
+    "Together they fill about half the picture's height, and no face, hand or part of the product "
+    "enters its top or bottom fifth.",
+    "The left half continues the same place in soft focus, bright and calm, with nothing in it that "
+    "matters.",
+    "The product is big enough to recognise at a glance, never a small detail in the distance.",
+]
+HERO_PERSON = "Any person turns slightly toward the left side of the picture."
+
+
+def hero_fixed(person):
+    return " ".join(HERO_FIXED + ([HERO_PERSON] if person else []))
+
+
 SLOTS.append({
     "slot_id": "hero.image", "role": "hero", "kind": "hero", "ratio": "16:9",
     "asset": "590-01-hero-relief-hero.png",
@@ -146,66 +162,58 @@ SLOTS.append({
         "The hero's words promise continuous support and relief, and the reader arrives "
         "solution-aware, so the banner shows the fix at work rather than the pain. FIT: "
         "`06-relief-hero` is the hero row's only preferred type on this corpus (16 sources). "
-        "BANNER LAW (ADR-096): the subject sits whole in the right half and the left half stays "
-        "quiet for the page's words; the owner renders it at 16:9. B is the same relief read as a "
-        "public moment after a long drive; C is the product's one-piece curve alone, the page's "
-        "subtitle as a macro. PRODUCT PRESENCE: all three carry the product.",
+        "BANNER LAW (ADR-096, re-measured by ADR-103): the group sits in the safe box, 55–88% "
+        "across and 22–78% down, and every option carries the five fixed sentences, the fifth only "
+        "where a person is in frame; the owner renders it at 16:9. B is the same relief read as a "
+        "public moment after a long drive, with the product brought close enough to recognise; C is "
+        "the product's one-piece curve alone, the page's subtitle as a macro. PRODUCT PRESENCE: all "
+        "three carry the product.",
     "gif": no_gif("A banner argues a held state behind the page's words; nothing crosses a "
                   "boundary in it, so a loop would animate a person sitting still."),
     "options": [
         opt("06-relief-hero", "--commercial", "baseline",
             "A desk worker settled back in her office chair, the product under her and behind her "
-            "lower back, the window beside her and the left half of the banner left quiet.",
+            "lower back, the daylight coming from the left.",
             "Needs the product photo. Passive product, so the pose is relaxed and the gaze is off "
             "the product; the seated product is seen from a rear three-quarter angle, as the LP2 "
             "product section asks.",
             compose(
-                "Commercial lifestyle photograph, a wide banner. One frame, no panels, no insets.",
-                "A North American woman in her forties in a soft knit sweater sits back at a "
-                "home-office desk in the right half of the frame, shoulders loose, one hand resting "
-                "beside her laptop, looking out of the window beside her rather than at the camera. "
-                "Her back rests against the product's upright section along its whole length, and "
-                "her hips sit level with her knees. "
-                + HERO_SPACE.format(who="She and the chair", quiet="a pale wall and soft window light"),
-                place="Render it whole at about 30% of the frame height, on her office chair in the "
-                      "right half of the frame, its seat section under her and its upright section "
-                      "behind her lower back, the joint where the seat meets the chair back, seen "
-                      "from a rear three-quarter angle, " + HOST + "."),
+                "Commercial lifestyle photograph, a wide banner.",
+                "A North American woman in her forties sits back at her home-office desk, looking "
+                "toward the window rather than at the camera, her back fully against the product. "
+                "The daylight comes from the left. "
+                + hero_fixed(True),
+                place="Render it whole on her office chair, under her and behind her lower back, "
+                      "seen from a rear three-quarter angle, " + HOST + "."),
             axes={"register": "commercial", "inset_mode": "none"}),
         opt("06-relief-scene", None, "type: 06-relief-scene",
-            "A driver stepping out of his car at a highway rest stop in one easy movement, the "
-            "product on the seat behind him.",
+            "A driver standing up out of his car at a highway rest stop in one easy movement, the "
+            "product on the driver's seat right beside him.",
             "Needs the product photo. Counts as a place scene; its public place and its product "
-            "standing as its own object are the type's own law.",
+            "standing as its own object are the type's own law. The product sits close, at the "
+            "open door, so the hero's fourth sentence can hold.",
             compose(
-                "Candid documentary photograph, a wide banner, single frame. Natural and unposed, "
-                "as a passer-by could have taken it.",
-                "In the right half of the frame, a North American man in his fifties steps out of "
-                "his car at a highway rest stop after a long drive, standing straight up in one easy "
-                "movement, one hand on the door, already turning toward the coffee kiosk and looking "
-                "at it rather than at the camera. Nothing about him is braced or careful. "
-                + HERO_SPACE.format(who="He and the open door",
-                                    quiet="open sky and the far edge of the parking area, two blurred travellers"),
-                place="Render it whole at about 14% of the frame height, on the driver's seat behind "
-                      "him, seen through the open door, its seat section and upright section both in "
-                      "view, " + HOST + "."),
+                "Candid documentary photograph, a wide banner, natural and unposed.",
+                "A North American man in his fifties stands up out of his car at a highway rest stop "
+                "easily, one hand on the open door, looking toward the coffee kiosk "
+                "rather than at the camera. The daylight comes from the left. " + hero_fixed(True),
+                place="Render it whole on the driver's seat right beside him, seen through the open "
+                      "door, " + HOST + "."),
             axes={}),
         opt("03-spec-macro", None, "type: 03-spec-macro",
             "The subtitle as a surface: the curve where the seat section rises into the back, one "
-            "piece, in close-up on the right, the left half quiet.",
-            "Needs the product photo. The magnified region is a true region of the photograph; it "
-            "is RECOMMENDED nowhere else on the page as a banner, and the gallery's one macro is "
-            "`media.gallery.3`.",
+            "piece, in close-up in the safe box.",
+            "Needs the product photo. The magnified region is a true region of the photograph; the "
+            "gallery's one macro is `media.gallery.3`. A hand is in frame and no person, so the "
+            "fifth fixed sentence is left out.",
             compose(
-                "Polished commercial studio macro photography, a wide banner, close range, razor "
-                "sharp, high detail.",
-                "The surface is resolved exactly as the photo shows it, under raking light from the "
-                "left, the curve reading as one continuous piece with no seam between seat and back. "
-                "Caught mid-use: a hand in a knit sleeve presses into the lower part of the curve, "
-                "the surface giving under the fingers and holding firm around them. "
-                + HERO_SPACE.format(who="The curve and the hand", quiet="the same light falling to a soft pale blur"),
+                "Commercial studio macro photograph, a wide banner, razor sharp.",
+                "The surface is resolved exactly as the photo shows it under raking light from the "
+                "left, one continuous piece with no seam between seat and back. A hand in a knit "
+                "sleeve presses into the lower curve, the surface holding firm around it. "
+                + hero_fixed(False),
                 place="The magnified region is a true region of the product: the curve where its seat "
-                      "section rises into its upright section, shown in the right half of the frame.",
+                      "section rises into its upright section.",
                 ground=SEAMLESS),
             axes={}),
     ],
@@ -1579,6 +1587,11 @@ PAGE_NOTES = [
     "PAIRS STAY IN COLOUR. `01-pain-split` desaturates its BEFORE panel inside one frame; a pair is "
     "two files whose prompts differ in the state line alone (the instruction, 'A pair shares one "
     "description'), and the lock's grade binds both, so neither half is grayscale.",
+
+    "THE HERO WAS RE-WRITTEN UNDER ADR-103 (`e6c84c3`), which landed after this session's first "
+    "commit: its three options now carry the five fixed hero sentences word for word (the fifth only "
+    "where a person is in frame), and option B brings the product to the open door so the fourth "
+    "can hold. No other field is a hero.",
 
     "RATIOS: the template frames the expect pairs and the expert image at 4:5, which ADR-016 does "
     "not allow; they are asked for at 3:4 and the template crops. The hero is a banner and renders "

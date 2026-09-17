@@ -87,6 +87,15 @@ def check(doc, fields):
                     fail.append((ctx, f"a ground line in other words: {ln[:50]!r}"))
             if (o["type"] in LIT_TYPES or s["kind"] == "pair") and not (build.LIGHT in p and build.GRADE in p):
                 fail.append((ctx, "a photographic frame without the lock's light and grade lines"))
+            if s["kind"] == "hero":
+                for line in build.HERO_FIXED:
+                    if flat.count(line) != 1:
+                        fail.append((ctx, f"a hero without the fixed sentence {line[:40]!r}"))
+                person = bool(re.search(r"\b(man|woman|person)\b",
+                                        flat.replace(build.HERO_PERSON, " ").lower()))
+                if (flat.count(build.HERO_PERSON) == 1) != person:
+                    fail.append((ctx, f"the hero's person sentence present="
+                                      f"{build.HERO_PERSON in flat}, person in frame={person}"))
             quoted = re.findall(r'"([^"]+)"', p)
             if s["kind"] == "gallery":
                 if quoted:
@@ -232,6 +241,15 @@ def mutations(doc):
           "a pair half is desaturated"),
         m("macro person uncast", lambda d: _sub(d, "modes.items.2.image", "A", "North American woman's",
                                                 "woman's"), "a person with no casting named"),
+        m("hero sentence dropped", lambda d: _sub(d, "hero.image", "A", build.HERO_FIXED[1], ""),
+          "a hero without the fixed sentence"),
+        m("hero sentence reworded", lambda d: _sub(d, "hero.image", "C", "well clear of the right edge",
+                                                   "clear of the right edge"), "a hero without the fixed sentence"),
+        m("hero person sentence missing", lambda d: _sub(d, "hero.image", "B", build.HERO_PERSON, ""),
+          "the hero's person sentence present=False"),
+        m("hero person sentence without a person", lambda d: _sub(d, "hero.image", "C", build.HERO_FIXED[3],
+                                                                  build.HERO_FIXED[3] + " " + build.HERO_PERSON),
+          "the hero's person sentence present=True"),
         m("lit frame unlit", lambda d: _sub(d, "uses.image", "B", build.GRADE, ""),
           "without the lock's light and grade lines"),
     ]

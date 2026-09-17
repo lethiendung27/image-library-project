@@ -21,21 +21,21 @@ GENERATED from this directory's `build.py`. Never hand-edit this file — edit t
 
 - asset `590-01-hero-relief-hero.png` · Hero banner behind 'Continuous Lower Back Support & Tailbone Relief'.
 - recommended: **option A**
-- The hero's words promise continuous support and relief, and the reader arrives solution-aware, so the banner shows the fix at work rather than the pain. FIT: `06-relief-hero` is the hero row's only preferred type on this corpus (16 sources). BANNER LAW (ADR-096): the subject sits whole in the right half and the left half stays quiet for the page's words; the owner renders it at 16:9. B is the same relief read as a public moment after a long drive; C is the product's one-piece curve alone, the page's subtitle as a macro. PRODUCT PRESENCE: all three carry the product.
+- The hero's words promise continuous support and relief, and the reader arrives solution-aware, so the banner shows the fix at work rather than the pain. FIT: `06-relief-hero` is the hero row's only preferred type on this corpus (16 sources). BANNER LAW (ADR-096, re-measured by ADR-103): the group sits in the safe box, 55–88% across and 22–78% down, and every option carries the five fixed sentences, the fifth only where a person is in frame; the owner renders it at 16:9. B is the same relief read as a public moment after a long drive, with the product brought close enough to recognise; C is the product's one-piece curve alone, the page's subtitle as a macro. PRODUCT PRESENCE: all three carry the product.
 
 ### `hero.image` · option A — `06-relief-hero` `--commercial`
 
-- varies on: baseline · type version `1.20` · 1780 characters
-- A desk worker settled back in her office chair, the product under her and behind her lower back, the window beside her and the left half of the banner left quiet.
+- varies on: baseline · type version `1.20` · 1792 characters
+- A desk worker settled back in her office chair, the product under her and behind her lower back, the daylight coming from the left.
 - **note:** Needs the product photo. Passive product, so the pose is relaxed and the gaze is off the product; the seated product is seen from a rear three-quarter angle, as the LP2 product section asks.
 
 ```
-Commercial lifestyle photograph, a wide banner. One frame, no panels, no insets.
+Commercial lifestyle photograph, a wide banner.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 30% of the frame height, on her office chair in the right half of the frame, its seat section under her and its upright section behind her lower back, the joint where the seat meets the chair back, seen from a rear three-quarter angle, on a host seat clearly different from it in tone and material.
+Render it whole on her office chair, under her and behind her lower back, seen from a rear three-quarter angle, on a host seat clearly different from it in tone and material.
 
-A North American woman in her forties in a soft knit sweater sits back at a home-office desk in the right half of the frame, shoulders loose, one hand resting beside her laptop, looking out of the window beside her rather than at the camera. Her back rests against the product's upright section along its whole length, and her hips sit level with her knees. She and the chair sit whole in the middle three fifths of the frame height, clear of the right edge. The left half is quiet: a pale wall and soft window light.
+A North American woman in her forties sits back at her home-office desk, looking toward the window rather than at the camera, her back fully against the product. The daylight comes from the left. The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge. Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place in soft focus, bright and calm, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance. Any person turns slightly toward the left side of the picture.
 
 Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
 Light: soft daylight from one side, gentle natural shadows, no rim light.
@@ -47,17 +47,17 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `hero.image` · option B — `06-relief-scene`
 
-- varies on: type: 06-relief-scene · type version `3.9` · 1720 characters
-- A driver stepping out of his car at a highway rest stop in one easy movement, the product on the seat behind him.
-- **note:** Needs the product photo. Counts as a place scene; its public place and its product standing as its own object are the type's own law.
+- varies on: type: 06-relief-scene · type version `3.9` · 1798 characters
+- A driver standing up out of his car at a highway rest stop in one easy movement, the product on the driver's seat right beside him.
+- **note:** Needs the product photo. Counts as a place scene; its public place and its product standing as its own object are the type's own law. The product sits close, at the open door, so the hero's fourth sentence can hold.
 
 ```
-Candid documentary photograph, a wide banner, single frame. Natural and unposed, as a passer-by could have taken it.
+Candid documentary photograph, a wide banner, natural and unposed.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 14% of the frame height, on the driver's seat behind him, seen through the open door, its seat section and upright section both in view, on a host seat clearly different from it in tone and material.
+Render it whole on the driver's seat right beside him, seen through the open door, on a host seat clearly different from it in tone and material.
 
-In the right half of the frame, a North American man in his fifties steps out of his car at a highway rest stop after a long drive, standing straight up in one easy movement, one hand on the door, already turning toward the coffee kiosk and looking at it rather than at the camera. Nothing about him is braced or careful. He and the open door sit whole in the middle three fifths of the frame height, clear of the right edge. The left half is quiet: open sky and the far edge of the parking area, two blurred travellers.
+A North American man in his fifties stands up out of his car at a highway rest stop easily, one hand on the open door, looking toward the coffee kiosk rather than at the camera. The daylight comes from the left. The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge. Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place in soft focus, bright and calm, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance. Any person turns slightly toward the left side of the picture.
 
 Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
 Light: soft daylight from one side, gentle natural shadows, no rim light.
@@ -69,17 +69,17 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `hero.image` · option C — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1580 characters
-- The subtitle as a surface: the curve where the seat section rises into the back, one piece, in close-up on the right, the left half quiet.
-- **note:** Needs the product photo. The magnified region is a true region of the photograph; it is RECOMMENDED nowhere else on the page as a banner, and the gallery's one macro is `media.gallery.3`.
+- varies on: type: 03-spec-macro · type version `1.1` · 1704 characters
+- The subtitle as a surface: the curve where the seat section rises into the back, one piece, in close-up in the safe box.
+- **note:** Needs the product photo. The magnified region is a true region of the photograph; the gallery's one macro is `media.gallery.3`. A hand is in frame and no person, so the fifth fixed sentence is left out.
 
 ```
-Polished commercial studio macro photography, a wide banner, close range, razor sharp, high detail.
+Commercial studio macro photograph, a wide banner, razor sharp.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-The magnified region is a true region of the product: the curve where its seat section rises into its upright section, shown in the right half of the frame.
+The magnified region is a true region of the product: the curve where its seat section rises into its upright section.
 
-The surface is resolved exactly as the photo shows it, under raking light from the left, the curve reading as one continuous piece with no seam between seat and back. Caught mid-use: a hand in a knit sleeve presses into the lower part of the curve, the surface giving under the fingers and holding firm around them. The curve and the hand sit whole in the middle three fifths of the frame height, clear of the right edge. The left half is quiet: the same light falling to a soft pale blur.
+The surface is resolved exactly as the photo shows it under raking light from the left, one continuous piece with no seam between seat and back. A hand in a knit sleeve presses into the lower curve, the surface holding firm around it. The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge. Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place in soft focus, bright and calm, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
 Light: soft daylight from one side, gentle natural shadows, no rim light.
