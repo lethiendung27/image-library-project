@@ -3,7 +3,7 @@ id: 03-mechanism-signal
 step: 3
 job: mechanism
 device: signal
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 1: four distinct sources of the five SPEC 6.3 asks. Criterion 2, the router-confusion test against 03-mechanism-contact and 03-use-grid, is unrun. Criterion 3: the owner failed all five founding renders on 2026-09-17, and the 0.3 skeleton has no render."
+blocked_by: "Criterion 1: four distinct sources of the five SPEC 6.3 asks. Criterion 2, the router-confusion test against 03-mechanism-contact and 03-use-grid, is unrun. Criterion 3: the owner failed all five renders of set 01 and all four of set 02 on 2026-09-17, and 0.4 has no render."
 ---
 
 # 03-mechanism-signal — PDP-DR DRAFT
@@ -33,6 +33,11 @@ tệ nếu mang ra so sánh với ảnh tham chiếu"* — next to the reference
 are extremely poor. 0.3 rewrites the skeleton on the owner's feature-image instruction (ADR-100).
 The product is the anchor and in use, the frame has contrast, the signal glows, and the prompt
 is one paragraph.
+
+**The owner failed set 02 as well** (0.3, four renders): *"chất lượng ảnh rất tệ so với trang tham chiếu"*.
+The owner's reference images are the owner's own prompts, written with that instruction and
+generated. 0.4 takes what the four renders showed: the signal drawn as a recognisable symbol,
+both ends of the link large and sharp, and the product named.
 
 | source | frame | what is drawn | the far end | the product |
 |---|---|---|---|---|
@@ -96,15 +101,15 @@ A call-map. The prompt is ONE paragraph written in this order, with no labels; e
 sentence or two of it, and the definition lives in PARTS or MARKS once.
 
 ```
-TYPE: 03-mechanism-signal v0.3
+TYPE: 03-mechanism-signal v0.4
 FORM: one natural paragraph, no labels, the owner's closing sentence last.   -> PARTS/form
 
-[OPENING]        the photograph: camera, who, doing what, where.          -> PARTS/opening
+[OPENING]        the photograph: camera, the product by name, who, where.  -> PARTS/opening
 [ANCHOR]         the product in use or installed; nearest, largest, sharpest. -> PARTS/anchor
-[FAR END]        what the signal reaches, in use, behind or in the other hand. -> PARTS/far-end
+[FAR END]        what the signal reaches, large and sharp, in use.         -> PARTS/far-end
 [BARRIER]        only where the claim passes through something.           -> PARTS/barrier
-[SIGNAL]         its own sentence: one glowing path form, product to far end. -> PARTS/path, MARKS/signal
-[LIGHT, GROUND]  directional daylight; a light real place, out of focus.   -> PARTS/ground
+[SIGNAL]         its own sentence: one glowing symbol, product to far end.  -> PARTS/path, MARKS/signal
+[LIGHT, GROUND]  directional daylight; a light, simple background.         -> PARTS/ground
 [WORDS]          a section: none. A gallery tile: the title sentences.     -> SLOT CONSTRAINTS
 [CORNER]         nothing in the bottom-right corner.                      -> LP2 composition law
 [PRODUCT BLOCK]  the LP2 product block, word for word.                    -> LP2 product section
@@ -127,8 +132,7 @@ Do not change anything related to the original product, including screen, button
 - The signal gets a sentence of its own. A mark buried inside another clause is the one that
   vanishes (`01-pain-scene`, adapter Rule 7).
 - A sentence the set shares is written once and repeated word for word (LP2 rule 4).
-- 0.2's prompts were labelled lines — `Setting:`, `Light:`, `Grade:` — and the owner failed all
-  five.
+- 0.2's prompts were labelled lines, and the owner failed all five.
 
 **`opening`** — the first sentence says what the photograph is: the camera, who is there, what
 they are doing, and where.
@@ -139,12 +143,19 @@ they are doing, and where.
   - an **in-environment installation** for a fixed product;
   - a **feature demonstration** where the product works with nobody touching it.
 - The place is the one the page's use happens in, and it explains why the product matters.
+- **The product is named** as the page names it — "the portable Bluetooth speaker" — the way the
+  instruction takes the product's name as its input. A name says what the object is, and G2
+  still keeps its looks to the photograph. 0.3 wrote only "the product", and 2 of 4 renders
+  invented one: a well-known brand's camera with its wordmark, and a gadget with a display where
+  a floor-vent fan should be. No photo existed for either product.
 
 **`anchor`** — the product, in use or installed, is the visual anchor: **the nearest, largest and
 sharpest object in the frame, whole and unobstructed, filling about 40% of the frame height.**
 - **Measured**, with product boxes read by eye from the full-size files: the product filled
   7.8% and 25.3% of the frame in the two signal references, lp00412-4 and lp00132-3, and
-  1.6%–3.2% in 0.2's five renders. Height alone did not separate them (heights of 0.26 and 0.46 of the frame against
+  1.6%–3.2% in 0.2's five renders. 0.3's anchor sentence moved it to 5.9%–16.0% of the frame and
+  0.42–0.59 of its height, 4 of 4, with contrast at 0.208–0.256; the owner still failed all four, so size
+  and contrast were necessary and not enough. Height alone did not separate them (heights of 0.26 and 0.46 of the frame against
   0.20–0.27). 0.2's product stood far off, small and narrow, in a wide room.
 - **In use** means what the instruction lists: held, pressed, plugged in, installed, or working
   beside the person it serves. lp00412-4 holds the camera in two hands, and lp00132-3 sets it
@@ -155,13 +166,20 @@ sharpest object in the frame, whole and unobstructed, filling about 40% of the f
   them off its face 5 of 5. The owner's runs painted a diagram onto the product 4 times
   (ADR-094).
 
-**`far-end`** — what the signal reaches, and only what the page names, in use. It sits behind
-the anchor and softly out of focus, or it is held in the other hand, as the phone is in
-lp00412-4.
+**`far-end`** — what the signal reaches, and only what the page names, in use, **large and sharp**:
+held in the other hand or set across the frame from the product, as the phone is in lp00412-4,
+where it fills about half the frame height.
+- **0.3 misread that reference.** The soft figure in lp00412-4 is the person being
+  photographed, not the far end, and 0.3 put its far end "softly out of focus". In set 02 the
+  far end came back small and soft 4 of 4 — a phone, a remote, a transmitter a few percent of
+  the frame — and the link had nothing to land on.
 - It shows the result by itself: a person streaming, a device working, a room in use.
 - It never shows the result as a notification or as interface text. lp00412-4 draws an app on
-  its phone; G6 keeps that out of a generated frame, so any screen shows a photograph. 0.2 got
-  a broadcast's graphics on 1 of 3 screens (`KNOWN-FLAKY`).
+  its phone; G6 keeps that out of a generated frame, so the far end's screen shows a photograph.
+  0.2 got a broadcast's graphics on 1 of 3 screens (`KNOWN-FLAKY`).
+- **The screen sentence names the far end's device, never "any screen".** Written for the whole
+  scene, it gave the product a display with a picture on it, 2 of 4: a fan that has none, and a
+  receiver whose real display G6 leaves to the photograph.
 
 **`barrier`** — only where the copy's claim is passing THROUGH something: a wall, a floor, a
 door. The barrier is cut open as a window, so the path is seen crossing it, and the cut shows the
@@ -170,19 +188,24 @@ claim, and no frame in the corpus drew it on a closed wall. 0.2 rendered two cut
 read as damage; one became a brick recess the path ran past (`KNOWN-FLAKY`). **Untested under
 0.3.**
 
-**`path`** — a parameter, and the copy picks it. Each form is drawn as the owner's references
-draw it:
-- `arcs` — nested glowing arcs radiating from beside the sending part (lp00132-3). Reach and
-  emission, 3 of 10.
-- `line` — a glowing curved light trail from the source to the far end, ending just beside it.
-  A dotted trail is a link; a continuous one is a transfer, and it may end in an arrowhead at
-  the far end (lp00412-4). 2 of 10.
+**`path`** — a parameter, and the copy picks it. **Each form is a symbol a buyer already knows,
+drawn as the owner's references draw it:**
+- `arcs` — the Wi-Fi symbol: three or four smooth concentric arcs around a small dot, glowing,
+  beside the sending part, on one side or both (lp00132-3). Reach and emission, 3 of 10. Set 02
+  drew it cleanly, 1 of 1.
+- `line` — one or two broad, smooth, sweeping arrows with a blue gradient and soft motion
+  streaks, from the product to the far end, one each way for a two-way link (lp00412-4). A
+  link or a transfer, 2 of 10. **Never a "trail", and never dotted**: set 02's dotted trails
+  came back as strings of glowing beads, 2 of 2, and its continuous trail as a looping wire,
+  1 of 1.
 - `rings` — glowing rings spreading from the product through the space. Coverage; snapi-18 is
   the only instance, counted with the arcs.
 - 0.2 rendered each form as it was named, 5 of 5, but as thin flat lines, and they read as weak.
 
-**`ground`** — the real place the claim is about, **light in tone and falling softly out of focus
-behind the anchor**, under bright, directional daylight.
+**`ground`** — the real place the claim is about, **light in tone and simple** — a plain wall, a
+bare desk, or a softly blurred place behind both ends — under bright, directional daylight.
+Nothing in it competes with the product, the far end or the signal (lp00412-4's plain wall,
+lp00132-3's bare desk). The background may blur; the far end never does.
 - **The fault 0.2 wrote into its lock was a flat frame**: every surface lit alike, everything in
   focus, "nothing saturated". Luminance contrast measured 0.265 and 0.275 in the two references and
   0.147–0.206 in the renders. Mean saturation did not separate them (0.159 and 0.239 against
@@ -194,7 +217,7 @@ behind the anchor**, under bright, directional daylight.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `signal` | luminous marks of one path form — glowing arcs, a glowing light trail, or glowing rings — bold enough to read at a glance, soft at the edge and bright at the core, beside the product and running to the far end | luminous blue, which may shade toward cyan (G3: working) | one form per frame | corpus 10 of 10, blue on 7; both owner references glow · 0.2's thin flat blue: 5 renders, owner fail |
+| `signal` | one recognisable, clean, glowing symbol — the Wi-Fi arcs with their dot, broad sweeping arrows, or rings — bold enough to read at a glance, beside the product and running to the far end | luminous blue, which may shade toward cyan (G3: working) | one form per frame | corpus 10 of 10, blue on 7; both owner references glow · 0.2's thin flat blue: 5 renders, owner fail · 0.3's glowing trails read as beads or wire 3 of 3, its arcs clean 1 of 1, owner fail 4 of 4 |
 
 - **Bold and luminous, never thin and flat.** 0.2 asked for "thin, clean" marks, and the owner
   failed all five against references whose arcs and arrows glow.
@@ -221,7 +244,8 @@ behind the anchor**, under bright, directional daylight.
   - 0.2: the gallery title came back exact and once, 1 of 1, and the four section images
     carried no words.
 - **G6 on screens.** A television or a phone at the far end may show a photograph or a film
-  scene, never interface text, notifications, bars or numbers.
+  scene, never interface text, notifications, bars or numbers. The sentence names that device
+  (`PARTS/far-end`).
 - **A15.** No figure on the signal. A figure the page supplies belongs in a gallery tile's
   words, never on the drawing.
 - **G8 does not bind a signal**, because there is no visible output. Where the product also
@@ -240,7 +264,8 @@ behind the anchor**, under bright, directional daylight.
 red or green signal marks, marks painted on the product, a rainbow gradient, lightning bolts,
 a second product, the product floating, a closed wall with marks drawn on its paint,
 the product small or far off, a flat evenly lit frame, faint thin lines,
-the product set out on display with nobody using it
+the product set out on display with nobody using it, a string of glowing beads,
+a looping wire, a far end too small to read, a well-known brand's product or wordmark
 ```
 
 ## BLOCK
@@ -260,40 +285,38 @@ It also borders two proposals with no file:
 - `04-proof-interface`, where the argument is a reading on a screen, which this type never
   draws.
 
-**Criterion 3 has no passing render.** The owner failed all five renders of the founding round,
-`sets/03-mechanism-signal-01/`, on 2026-09-17, and the 0.3 skeleton has not rendered. The next
-round is `sets/03-mechanism-signal-02/`.
+**Criterion 3 has no passing render.** On 2026-09-17 the owner failed all five renders of
+`sets/03-mechanism-signal-01/` (0.1) and all four of `sets/03-mechanism-signal-02/` (0.3). 0.4
+has not rendered.
 
 ## KNOWN-FLAKY
 **Observed under 0.2's register**, five renders, 2026-09-17, set `03-mechanism-signal-01`. That
 register is gone, so each entry is a thing to check again, not a clause.
-- **The product was not the page's product, 5 of 5.** No render drew the extender's antennas or
-  its WPS button, which the template's own product photo shows, and the five bodies differ from
-  each other. The round did not record whether the photo was attached, so, as with
-  `07-identity-pack` (ADR-095), this is not evidence against the product block. The next round
-  records the attachment.
-- **Not installed, 1 of 5.** One unit hung on the wall above an empty socket, although the prompt
-  plugged it in.
-- **A broad path read as a cable, 1 of 1.** Asked to differ from a fine dotted path by width, a
-  broad solid path came back as a thick band bent at right angles, and its end rested on the
-  product. Two paths that differ by form alone, at one width, are untested.
-- **A sports broadcast brought its graphics, 1 of 3 screens.** A football match came back with a
-  score bar. A film and a phone photograph stayed clean under the same screen sentence.
-- **A cut asked for down the hallway became a brick recess, 1 of 2 cuts.** The rings ran past it
-  rather than through it, so nothing in the frame caused the fade.
-- **At the problem block's display width the source was lost, 1 of 1.** Shown 208 px wide, the
-  router at the far end of the hallway is a speck, and the product reads as the centre of a
-  target.
+- **Not the page's product, 5 of 5**: no antennas, no WPS button, five different bodies. Whether
+  the photo was attached is unrecorded, so this is not evidence against the product block.
+- **Not installed, 1 of 5**: a unit hung above an empty socket.
+- **A broad path read as a cable, 1 of 1**, bent at right angles and resting on the product.
+- **A sports broadcast brought its score bar, 1 of 3 screens**; a film and a photo stayed clean.
+- **A cut down the hallway became a brick recess the rings ran past, 1 of 2 cuts.**
+- **At 208 px, the problem block's width, the far router was a speck, 1 of 1.**
 - **Struck, because it did not occur** (`eval/render-test.md` §5): a cut-open wall read as
   damage, 0 of 2.
 
-**Predicted for 0.3, and the first things set 02 checks:**
-- the glow spilling onto the product;
-- the enlarged product pushing the far end out of the frame;
-- a product's own screen drawn with an interface;
-- a second colour of glow, or a second family of marks, such as a fan's airflow.
+**Observed under 0.3**, four renders, 2026-09-17, set `03-mechanism-signal-02`; prompt 2 was not
+rendered. The owner failed all four. What 0.4 took from them is in PARTS; the rest:
+- **The product was invented where no photo existed, 2 of 4.** The brief products have no
+  photograph, and the camouflage camera came back as a well-known brand's white camera with
+  its wordmark. A set is written only for products whose photo the owner has.
+- **Predictions checked:** no glow spilled onto the product, 0 of 4; the enlarged product never
+  pushed the far end out, but the far end was small every time; no airflow was drawn, 0 of 1;
+  a product's display got a picture, 2 of 4 (now in `PARTS/far-end`).
 
 ## CHANGELOG
+- 0.4 (2026-09-17): **the owner failed all four 0.3 renders** against the reference page (render-test
+  ts 2026-09-17; speaker, booster fan, camouflage camera, breaker finder). The signal is a known
+  symbol — Wi-Fi arcs or broad sweeping arrows, never a trail (beads or wire 3 of 3); the far end
+  is large and sharp (small and soft 4 of 4); the product is named; the screen sentence names the
+  far end's device (a product display got a picture 2 of 4).
 - 0.3 (2026-09-17): **the owner failed all five 0.2 renders** against the reference images. The
   skeleton is rewritten on the owner's feature-image instruction (ADR-100): one paragraph ending
   in the owner's sentence; the product the nearest, largest and sharpest object, in use; a light
