@@ -33,21 +33,25 @@ BLOCK = ("Use the attached product photo as the exact reference. Preserve its sh
 
 # ------------------------------------------------------------------ the session's style lock
 # Named once here and written into every prompt in the same words (registry/pdp-dr-instruction.md,
-# "One session, one set"). The page carries no style line, so the lock is neutral.
-LIGHT = "Light: soft daylight from one side, gentle natural shadows, no rim light."
-GRADE = "Grade: bright, warm-neutral, true to life."
-ROOM = "Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject."
+# "One session, one set"). The page carries no style line, so its grounds, text and accent are
+# neutral. The page has a hero, so the light and grade are ADR-104's two fixed lines, and "neutral"
+# never names a photograph's grade.
+LIGHT = "Light: bright, warm daylight from the left, with natural shadows and real contrast."
+GRADE = "Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out."
+ROOM = ("Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a "
+        "clear, friendly colour, never beige.")
 SEAMLESS = "Ground: a seamless warm-grey studio sweep with a soft floor shadow."
 NOFRAME = "No frame or border around any photograph or panel."
 CORNER = "Nothing is placed in the bottom-right corner of the frame."
 WORDLESS = "Nothing in the picture carries a word, a number, a label or a badge."
 TYPE_LIGHT = "Title type: one bold geometric sans-serif like Montserrat, wide and round, sentence case, charcoal."
 TYPE_DARK = "Title type: one bold geometric sans-serif like Montserrat, wide and round, sentence case, white."
-HOST = "on a host seat clearly different from it in tone and material"
+HOST = "on a seat clearly unlike it in tone and material"
 
 STYLE_LOCK = {
-    "grounds": "two treatments: a real, lived-in place in warm-neutral tones, or a seamless warm-grey "
-               "studio sweep with a soft floor shadow. A rendered type keeps its own register's field "
+    "grounds": "two treatments: a real, light, uncluttered place with a few clear colours, where anyone "
+               "wears a clear, friendly colour and never beige, or a seamless warm-grey studio sweep "
+               "with a soft floor shadow. A rendered type keeps its own register's field "
                "(`02-cause-anatomy`'s deep field, the white infinity of `03-mechanism-ghostbody`, "
                "`03-spec-split`'s dark render half), which the lock admits",
     "text colour": "charcoal on a light ground, white on a dark ground",
@@ -55,8 +59,12 @@ STYLE_LOCK = {
     "typography": "one bold geometric sans-serif like Montserrat, wide and round, sentence case",
     "chip form": "none used; the gallery carries titles only",
     "design language": "no frame or border around any photograph or panel; generous even margins",
-    "lighting family": "soft daylight from one side, gentle natural shadows, no rim light; "
-                       "bright, warm-neutral, true to life",
+    "lighting family": "ADR-104's two fixed lines, because the page has a hero: bright, warm "
+                       "daylight from the left, with natural shadows and real contrast; editorial "
+                       "realism with vivid, true colour, nothing greyed or washed out. Every "
+                       "photograph carries both, except `01-pain-split`'s tile, whose own law greys "
+                       "its BEFORE panel, so it carries the light line alone; a rendered type keeps "
+                       "its register's own light",
     "corners": "nothing in the bottom-right corner, which carries the generation tool's watermark",
     "casting": "North American, named in each prompt that carries a person (the page prices in US "
                "dollars and names no market)",
@@ -75,8 +83,10 @@ def title_lines(title, where, dark=False):
     return [f'{where}, the title reads "{title}".', TYPE_DARK if dark else TYPE_LIGHT]
 
 
-def compose(head, body, place=None, ground=ROOM, lit=True, title=None, where=None, dark=False):
-    """One paste-and-run prompt. `place` given means the product is in frame and the block ships."""
+def compose(head, body, place=None, ground=ROOM, lit=True, graded=True, title=None, where=None,
+            dark=False):
+    """One paste-and-run prompt. `place` given means the product is in frame and the block ships.
+    `lit` writes the lock's light line; `graded` its grade line beside it."""
     parts = [head, ""]
     if place is not None:
         parts += [BLOCK + "\n" + place, ""]
@@ -84,7 +94,7 @@ def compose(head, body, place=None, ground=ROOM, lit=True, title=None, where=Non
     if ground:
         parts.append(ground)
     if lit:
-        parts += [LIGHT, GRADE]
+        parts += [LIGHT, GRADE] if graded else [LIGHT]
     parts += title_lines(title, where, dark) if title else [WORDLESS]
     parts += [NOFRAME, CORNER]
     return "\n".join(parts).strip()
@@ -135,15 +145,15 @@ def ghost(opened, wrong, right, marks, **kw):
 SLOTS = []
 
 # ================================================================== hero
-# ADR-103 (e6c84c3): every hero prompt carries these sentences word for word, the fifth only where
-# a person is in the frame. They replace this session's first placement wording.
+# ADR-103 (e6c84c3), reworded by ADR-104 (6607fd7): every hero prompt carries these sentences word
+# for word, the fifth only where a person is in the frame. check.py reads them from the law file.
 HERO_FIXED = [
-    "The product and anyone using it sit together in the right half of the picture, just past the "
-    "centre and well clear of the right edge.",
-    "Together they fill about half the picture's height, and no face, hand or part of the product "
-    "enters its top or bottom fifth.",
-    "The left half continues the same place in soft focus, bright and calm, with nothing in it that "
-    "matters.",
+    "The product and anyone using it sit together in the right half, just past the centre and well "
+    "clear of the right edge.",
+    "Seen from a few steps back, the group fills about half the picture's height, and no face, hand "
+    "or part of the product enters its top or bottom fifth.",
+    "The left half continues the same place, softly blurred and full of daylight, with nothing in it "
+    "that matters.",
     "The product is big enough to recognise at a glance, never a small detail in the distance.",
 ]
 HERO_PERSON = "Any person turns slightly toward the left side of the picture."
@@ -162,9 +172,11 @@ SLOTS.append({
         "The hero's words promise continuous support and relief, and the reader arrives "
         "solution-aware, so the banner shows the fix at work rather than the pain. FIT: "
         "`06-relief-hero` is the hero row's only preferred type on this corpus (16 sources). "
-        "BANNER LAW (ADR-096, re-measured by ADR-103): the group sits in the safe box, 55–88% "
-        "across and 22–78% down, and every option carries the five fixed sentences, the fifth only "
-        "where a person is in frame; the owner renders it at 16:9. B is the same relief read as a "
+        "BANNER LAW (ADR-096, re-measured by ADR-103, reworded by ADR-104): the group sits in the "
+        "safe box, 55–88% across and 22–78% down, seen from a few steps back, and every option "
+        "carries the five fixed sentences, the fifth only where a person is in frame; the frame is "
+        "a full-colour photograph under the lock's two fixed light and grade lines; the owner renders "
+        "it at 16:9. B is the same relief read as a "
         "public moment after a long drive, with the product brought close enough to recognise; C is "
         "the product's one-piece curve alone, the page's subtitle as a macro. PRODUCT PRESENCE: all "
         "three carry the product.",
@@ -172,19 +184,17 @@ SLOTS.append({
                   "boundary in it, so a loop would animate a person sitting still."),
     "options": [
         opt("06-relief-hero", "--commercial", "baseline",
-            "A desk worker settled back in her office chair, the product under her and behind her "
-            "lower back, the daylight coming from the left.",
+            "A desk worker settled back in her office chair, relaxed, the product under her and "
+            "behind her lower back, the daylight coming from the left.",
             "Needs the product photo. Passive product, so the pose is relaxed and the gaze is off "
             "the product; the seated product is seen from a rear three-quarter angle, as the LP2 "
             "product section asks.",
             compose(
                 "Commercial lifestyle photograph, a wide banner.",
-                "A North American woman in her forties sits back at her home-office desk, looking "
-                "toward the window rather than at the camera, her back fully against the product. "
-                "The daylight comes from the left. "
-                + hero_fixed(True),
-                place="Render it whole on her office chair, under her and behind her lower back, "
-                      "seen from a rear three-quarter angle, " + HOST + "."),
+                "A North American woman in her forties leans back at her home desk, relaxed, "
+                "looking toward the window, not the camera. " + hero_fixed(True),
+                place="Render it whole on her chair, under her and behind her lower back, seen from "
+                      "a rear three-quarter angle, " + HOST + "."),
             axes={"register": "commercial", "inset_mode": "none"}),
         opt("06-relief-scene", None, "type: 06-relief-scene",
             "A driver standing up out of his car at a highway rest stop in one easy movement, the "
@@ -193,12 +203,12 @@ SLOTS.append({
             "standing as its own object are the type's own law. The product sits close, at the "
             "open door, so the hero's fourth sentence can hold.",
             compose(
-                "Candid documentary photograph, a wide banner, natural and unposed.",
-                "A North American man in his fifties stands up out of his car at a highway rest stop "
-                "easily, one hand on the open door, looking toward the coffee kiosk "
-                "rather than at the camera. The daylight comes from the left. " + hero_fixed(True),
-                place="Render it whole on the driver's seat right beside him, seen through the open "
-                      "door, " + HOST + "."),
+                "Candid documentary photograph, a wide banner.",
+                "A North American man in his fifties, relaxed, stands up out of his car at a rest "
+                "stop, one hand on the door, looking toward the kiosk, not the camera. "
+                + hero_fixed(True),
+                place="Render it whole on the driver's seat beside him, seen through the open door, "
+                      + HOST + "."),
             axes={}),
         opt("03-spec-macro", None, "type: 03-spec-macro",
             "The subtitle as a surface: the curve where the seat section rises into the back, one "
@@ -209,8 +219,8 @@ SLOTS.append({
             compose(
                 "Commercial studio macro photograph, a wide banner, razor sharp.",
                 "The surface is resolved exactly as the photo shows it under raking light from the "
-                "left, one continuous piece with no seam between seat and back. A hand in a knit "
-                "sleeve presses into the lower curve, the surface holding firm around it. "
+                "left, one continuous piece with no seam between seat and back. A hand in a coral "
+                "knit sleeve presses into the lower curve, the surface holding firm around it. "
                 + hero_fixed(False),
                 place="The magnified region is a true region of the product: the curve where its seat "
                       "section rises into its upright section.",
@@ -248,16 +258,15 @@ SLOTS.append({
             compose(
                 SPLIT_TILE,
                 "The same woman in both panels, named once: a North American woman in her forties, "
-                "hair tied back, grey knit sweater, dark trousers, seen from the side at seat height, "
-                "at the same desk with a laptop, on the same office chair, in the same window "
-                "light.\n\n"
+                "in a teal knit sweater and dark trousers, seen from the side at seat height, at the "
+                "same desk with a laptop, on the same office chair.\n\n"
                 "Left panel, grayscale: on the bare chair, her hips sunk below her knees, her pelvis "
                 "rolled back, a gap behind her lower back, her shoulders rounded.\n\n"
                 "Right panel, full colour: on the product, her hips level with her knees, her lower "
-                "back supported, her shoulders over her hips; brighter and airier than the left.\n\n"
+                "back supported; brighter and airier than the left.\n\n"
                 + SPLIT_DISCS,
                 place=SPLIT_PLACE.format(who="her"),
-                ground=None, lit=False,
+                ground=None, graded=False,
                 title="Hips level, back supported",
                 where="Along the bottom edge, from the left, over the pale floor")),
         opt("02-cause-anatomy", "--diagnostic", "type: 02-cause-anatomy",
@@ -395,8 +404,8 @@ SLOTS.append({
                 "Polished commercial studio macro photography, close range, razor sharp, high detail.",
                 "That curve fills about 70% of the frame, the surface resolved exactly as the photo "
                 "shows it under raking light from the left, reading as one continuous piece with no "
-                "seam and no gap between seat and back. Caught mid-use: a hand in a knit sleeve "
-                "presses into the curve from the right, the surface giving under the fingers and "
+                "seam and no gap between seat and back. Caught mid-use: a hand in a coral knit "
+                "sleeve presses into the curve from the right, the surface giving under the fingers and "
                 "holding its shape around them. The upper left of the frame falls to a soft pale "
                 "blur, clear of the texture.",
                 place="The magnified region is a true region of the product: the curve where its "
@@ -578,14 +587,14 @@ SLOTS.append({
                 "white gutters, no outer border, no graphic overlay of any kind.",
                 "The product is visible and unobstructed in every cell, in place on the seat, and "
                 "every cell shares one photographic finish.\n\n"
-                "Top left: a North American man in his fifties at the wheel of a truck on a highway, "
-                "flat afternoon light.\n\n"
+                "Top left: a North American man in his fifties at the wheel of a truck, clear "
+                "afternoon light.\n\n"
                 "Top right: a North American woman in her thirties driving a hatchback to work, "
                 "morning light.\n\n"
-                "Bottom left: a North American man in his forties in a rideshare car at night, city "
-                "lights outside.\n\n"
-                "Bottom right: a North American woman in her sixties on a road trip, a map on the "
-                "passenger seat, warm evening light.\n\n"
+                "Bottom left: a North American man in his forties in a rideshare car downtown at "
+                "midday.\n\n"
+                "Bottom right: a North American woman in her sixties on a road trip, a map beside "
+                "her, late-afternoon sun.\n\n"
                 "No two cells share a palette, a light or a posture; nobody looks at the camera.",
                 place="Show it whole in every cell, on the seat under each driver, " + HOST + "."),
             axes={}),
@@ -614,35 +623,34 @@ GRID_HEAD = ("Clean lifestyle collage for e-commerce, bright, airy, sharp. Four 
 WALL = [
     ("trusted.cards.1.photo", "590-07-trusted1-snapshot.png",
      "Buyer card 1, beside 'It stopped the burning sensation in my hips after long highway shifts.'",
-     "a truck cab at a highway truck stop at dusk",
+     "a truck cab at a highway truck stop in the late afternoon",
      "The product simply where it now lives: on the driver's seat of a long-haul truck at a truck stop "
-     "at dusk, the cab as it is — a jacket over the seat back, a thermos in the door pocket, a "
-     "logbook face down on the dash. The cab's dome light and the last daylight through the "
-     "windscreen, no studio light. The camera is a phone held in one hand from the cab door, framing "
+     "in the late afternoon, the cab as it is — a jacket over the seat back, a thermos in the door "
+     "pocket, a logbook face down on the dash. Low sun through the windscreen, no studio light. The camera is a phone held in one hand from the cab door, framing "
      "slightly off-centre, mild noise in the shadows.",
-     "a trucker at the wheel at dusk",
-     "A North American man in his fifties in a work jacket sits back at the wheel of his truck at "
-     "dusk, both hands loose in his lap, looking out through the windscreen rather than at the "
+     "a trucker at the wheel in the late afternoon",
+     "A North American man in his fifties in a work jacket sits back at the wheel of his truck in "
+     "the late afternoon, both hands loose in his lap, looking out through the windscreen rather than at the "
      "camera, his face turned away. His back rests against the product's upright section.",
-     [("a North American man in his fifties at the wheel of a truck at dusk",
+     [("a North American man in his fifties at the wheel of a truck in the late afternoon",
        "a North American woman in her thirties at an office desk in daylight"),
-      ("a North American man in his forties in a rideshare car at night",
+      ("a North American man in his forties in a rideshare car downtown at midday",
        "a North American woman in her sixties at a kitchen table in the morning")]),
     ("trusted.cards.2.photo", "590-08-trusted2-snapshot.png",
      "Buyer card 2, beside 'I work eight hours at my desk and no longer dread the commute.'",
-     "a commuter car in a parking garage in the morning",
+     "a commuter car in an open-air office car park in the morning",
      "The product mid-use by its owner, the person present only incidentally: on the driver's seat of "
-     "a small commuter car in a parking garage in the morning, a hand in a blazer sleeve setting a "
-     "laptop bag on the passenger seat. Flat fluorescent garage light and a little daylight from the "
-     "ramp, no studio light. The camera is a phone held close, framing tilted, focus casual.",
+     "a small commuter car in an open-air office car park in the morning, a hand in a blazer sleeve "
+     "setting a laptop bag on the passenger seat. Morning sun through the side window, no studio "
+     "light. The camera is a phone held close, framing tilted, focus casual.",
      "a commuter settling in for the drive home",
      "A North American woman in her thirties in office clothes sits back in the driver's seat of her "
-     "car in a parking garage, reaching for her seat belt, looking ahead rather than at the camera. "
+     "car in an open-air office car park, reaching for her seat belt, looking ahead rather than at the camera. "
      "Her back rests against the product's upright section.",
-     [("a North American woman in her thirties in a commuter car in a parking garage",
-       "a North American man in his twenties at a gaming desk at night"),
+     [("a North American woman in her thirties in a commuter car in an office car park",
+       "a North American man in his twenties at a gaming desk by a sunny window"),
       ("a North American man in his fifties in a van on a building site",
-       "a North American woman in her forties at a reception desk under ceiling light")]),
+       "a North American woman in her forties at a reception desk in a bright lobby")]),
     ("trusted.cards.3.photo", "590-09-trusted3-snapshot.png",
      "Buyer card 3, beside 'Solid build that does not slide around on leather car upholstery.'",
      "a leather car seat in a driveway in bright daylight",
@@ -746,7 +754,7 @@ SLOTS.append({
                 "length, his shoulders over his hips; brighter and airier than the left.\n\n"
                 + SPLIT_DISCS,
                 place=SPLIT_PLACE.format(who="him"),
-                ground=None, lit=False)),
+                ground=None, graded=False)),
         opt("02-cause-anatomy", "--diagnostic", "type: 02-cause-anatomy",
             "A flat pad lets the lumbar curve collapse; a continuous support holds it.",
             "Needs no photo: the product is absent or a silhouette on an LP2 cause image.",
@@ -841,7 +849,7 @@ SLOTS.append({
                 "hips level with her knees and her back upright and supported. The right panel is "
                 "brighter and airier than the left.\n\n" + SPLIT_DISCS,
                 place=SPLIT_PLACE.format(who="her"),
-                ground=None, lit=False)),
+                ground=None, graded=False)),
         opt("03-mechanism-ghostbody", None, "type: 03-mechanism-ghostbody",
             "A white seated mannequin: a pillow at mid-back tipping the pelvis back, against the "
             "product holding it upright.",
@@ -910,10 +918,10 @@ SLOTS.append({
                 "The only thing that changes is the day: in the left panel the product is new on the "
                 "chair; in the right panel months later it stands the same height and shape, a tea "
                 "towel now hanging over the chair back.\n\n"
-                "Grade: one neutral grade across both panels, no panel warmer or brighter.",
+                "Both panels share one grade; neither is warmer or brighter.",
                 place="Render it whole on the chair in both panels, the same unit, identical in both, "
                       "" + HOST + ".",
-                ground=None, lit=False),
+                ground=None),
             axes={"camera_lock": "handheld"}),
     ],
 })
@@ -1093,11 +1101,13 @@ SLOTS += pair_files(
       "He sits on the same chair with the product, the small of his back in full contact with its "
       "upright section, no gap anywhere.", False, True, {}),
      ("04-proof-lockedframe", "--timelapse", "type: 04-proof-lockedframe",
-      "Day 1 as a morning and an evening: the product in place and no gap at either end of the day.",
+      "Day 1 as a morning and a late afternoon: the product in place and no gap at either end of "
+      "the day.",
       "Both halves need the product photo. No panel is favoured; one grade across both.",
       "It is the first morning: he has just sat down on the product, the small of his back against its "
       "upright section.",
-      "It is the same day's evening, the office emptier and the light lower: he sits the same way, "
+      "It is late afternoon the same day, the office emptier and the sun lower: he sits the same "
+      "way, "
       "the small of his back still against the product's upright section.", True, True,
       {"camera_lock": "handheld"})],
     "3:4", PAIR_FLAG)
@@ -1110,20 +1120,19 @@ SLOTS += pair_files(
     "old way against the new at the same late hour.",
     "The same scene in both photographs of this pair: a North American woman in her forties in a "
     "cardigan at a home-office desk by a window, photographed from the side at seat height, framed "
-    "from her shoulders to her knees, no face in frame, a mug and a desk lamp on the desk.",
+    "from her shoulders to her knees, no face in frame, a mug and a potted plant on the desk.",
     [("04-proof-lockedframe", "--timelapse", "baseline",
       "The start and the end of a working day: the same settled posture on the product both times.",
       "Both halves need the product photo. No panel is favoured; one grade across both.",
-      "It is the morning, bright daylight at the window: she sits back on the product, settled, "
-      "typing.",
-      "It is the evening, the lamp on and the window dark: she sits exactly as settled on the product, "
-      "still typing.", True, True, {"camera_lock": "handheld"}),
+      "It is the morning: she sits back on the product, settled, typing.",
+      "It is late afternoon, the sun lower at the window: she sits exactly as settled on the "
+      "product, still typing.", True, True, {"camera_lock": "handheld"}),
      ("01-pain-split", "--mirror", "type: 01-pain-split",
       "The same late hour twice: shifting on a bare chair, then still on the product.",
       "The before half has no product; the after half needs the product photo.",
-      GRAY + "It is the evening: she sits on the bare chair, shifted to its front edge, one hand "
+      GRAY + "It is late afternoon: she sits on the bare chair, shifted to its front edge, one hand "
       "pressed into her lower back.",
-      "It is the evening: she sits back on the same chair on the product, settled, both hands on the "
+      "It is late afternoon: she sits back on the same chair on the product, settled, both hands on the "
       "keyboard.", False, True, {})],
     "3:4", PAIR_FLAG)
 
@@ -1135,7 +1144,7 @@ SLOTS += pair_files(
     "old way against the new after the same month.",
     "The same scene in both photographs of this pair: the driver's seat of a family car seen through "
     "the open driver's door from standing height, the seat base and back filling the frame, a "
-    "sunglasses case on the passenger seat, flat overcast daylight.",
+    "sunglasses case on the passenger seat, bright daylight.",
     [("04-proof-lockedframe", "--timelapse", "baseline",
       "The product on the same seat on its first day and after a month of daily drives, unchanged.",
       "Both halves need the product photo. No panel is favoured; one grade across both.",
@@ -1174,9 +1183,9 @@ SLOTS.append({
                 "Top right: a car's driver's seat, photographed low from the open door in morning "
                 "light.\n\n"
                 "Bottom left: a truck cab's driver's seat on a long highway, photographed from the "
-                "passenger side in flat afternoon light.\n\n"
+                "passenger side in clear afternoon light.\n\n"
                 "Bottom right: a wooden dining chair at a kitchen table, photographed from above "
-                "under a warm ceiling light.\n\n"
+                "in afternoon sun.\n\n"
                 "Nobody's face appears in any cell; where a person is present they are only a hand "
                 "setting the product in place. All four cells share one photographic register.",
                 place="Preserve it exactly in every cell, fitted to the seat, " + HOST + ".")),
@@ -1191,8 +1200,8 @@ SLOTS.append({
                 "Top right: a North American man in his forties driving to work in morning light.\n\n"
                 "Bottom left: a North American man in his fifties at the wheel of a truck on a "
                 "highway.\n\n"
-                "Bottom right: a North American man in his twenties at a gaming desk at home at "
-                "night.\n\n"
+                "Bottom right: a North American man in his twenties at a gaming desk at home by a "
+                "sunny window.\n\n"
                 "No two cells share a palette, a light or a posture; nobody looks at the camera.",
                 place="Show it whole in every cell, on the seat under each person, " + HOST + ".")),
         opt("06-relief-hero", "--commercial", "type: 06-relief-hero",
@@ -1257,7 +1266,7 @@ SLOTS.append({
             "Needs the product photo. Hands only, and no clinical dress (ADR-094).",
             compose(
                 "Polished commercial studio macro photography, close range, razor sharp, high detail.",
-                "Two hands in plain knit sleeves press the product at once, one on the curve of its "
+                "Two hands in coral knit sleeves press the product at once, one on the curve of its "
                 "upright section and one on its seat section, the surface resolved exactly as the "
                 "photo shows it under raking light, holding its shape under both.",
                 place="The magnified region is a true region of the product: its upright section and "
@@ -1305,10 +1314,10 @@ SLOTS.append({
                 "The only thing that changes is the time: in the left panel the product is new on "
                 "the seat; in the right panel, months of commutes later, it stands the same height "
                 "and shape, a travel mug now in the cup holder.\n\n"
-                "Grade: one neutral grade across both panels, no panel warmer or brighter.",
+                "Both panels share one grade; neither is warmer or brighter.",
                 place="Render it whole on the seat in both panels, the same unit, identical in both, "
                       "" + HOST + ".",
-                ground=None, lit=False),
+                ground=None),
             axes={"camera_lock": "handheld"}),
         opt("03-spec-macro", None, "type: 03-spec-macro",
             "The grip base pressed square on a leather seat, the stitching sharp beside it.",
@@ -1331,7 +1340,7 @@ MODES_NOTE = ("The three zones are equivalent items of one block, so one type se
 MODES = [
     ("modes.items.0.image", "590-24-mode0-macro.png", "Lumbar Curve — 'Fills the lower spine void'",
      "its upright section's curve where it meets the small of a seated back",
-     "The small of a seated North American woman's back, in a knit sweater, rests into the curve, the curve filling "
+     "The small of a seated North American woman's back, in a teal knit sweater, rests into the curve, the curve filling "
      "the hollow of the lower spine with no gap, the surface resolved exactly as the photo shows it "
      "under raking light.",
      "the lumbar vertebrae", "beside the lumbar vertebrae", "the small of her back"),
@@ -1343,7 +1352,7 @@ MODES = [
      "the pelvis and the tailbone", "under the sitting bones", "her hips and the base of her spine"),
     ("modes.items.2.image", "590-26-mode2-macro.png", "Thigh Support — the front of the seat",
      "the front of its seat section under a seated person's thighs",
-     "A seated North American woman's thighs, in grey trousers, rest along the front of the seat section, supported "
+     "A seated North American woman's thighs, in denim-blue trousers, rest along the front of the seat section, supported "
      "evenly to just behind the knees, the surface resolved exactly as the photo shows it under "
      "raking light.",
      "the thigh bones", "under the thigh bones", "the backs of her thighs"),
@@ -1400,7 +1409,7 @@ TESTI = [
      "The same scene in both photographs of this pair: a phone photo from the passenger seat of a "
      "pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from "
      "the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, "
-     "flat afternoon daylight.",
+     "afternoon daylight.",
      GRAY + "He sits on the bare seat, braced, one hand pressed into his lower back.",
      "He sits on the same seat on the product, settled, both hands easy on the wheel.",
      "It is the first week: he sits settled on the product.",
@@ -1408,18 +1417,19 @@ TESTI = [
     ("testimonials.items.1", "590-28-testi1", "Claire W., donut cushions slid out",
      "The same scene in both photographs of this pair: a phone photo looking down at the driver's "
      "seat of a small car through the open door, the seat base and back filling the frame, a handbag "
-     "on the passenger seat, overcast daylight.",
+     "on the passenger seat, midday sun.",
      GRAY + "A flat ring-shaped foam cushion has slid forward and hangs off the front edge of the seat.",
      "The product sits in place on the same seat, flush against the back.",
      "It is the first day: the product sits flush against the back.",
      "It is weeks later: the product sits exactly where it was, flush against the back."),
     ("testimonials.items.2", "590-29-testi2", "Jason R., eight hours at the desk",
      "The same scene in both photographs of this pair: a phone photo from behind and to the side of a "
-     "North American man in his thirties at a home-office desk in the evening, framed from his "
-     "shoulders to his knees, no face in frame, a monitor and a desk lamp in shot, warm lamplight.",
+     "North American man in his thirties at a home-office desk in the late afternoon, framed from "
+     "his shoulders to his knees, no face in frame, a monitor and a plant in shot, low sun through "
+     "the blinds.",
      GRAY + "He sits forward on the bare chair, one hand pressed into his lower back.",
      "He leans back on the same chair on the product, both hands on the keyboard.",
-     "It is the first evening: he leans back on the product.",
+     "It is the first afternoon: he leans back on the product.",
      "It is weeks later, the same hour: he leans back on the product the same way."),
     ("testimonials.items.3", "590-30-testi3", "Samantha L., seated higher behind the wheel",
      "The same scene in both photographs of this pair: a phone photo from the passenger seat of a "
@@ -1564,9 +1574,22 @@ PAGE_NOTES = [
     "problem block comparing cushion designs rather than re-establishing the pain.",
 
     "THE STYLE LOCK is declared once in `style_lock` and written into every prompt in the same words: "
-    "the product block, the lighting and grade lines on photographic frames, the two grounds, the "
-    "no-frame line, the empty bottom-right corner, and either the wordless line or the typography "
-    "line. Rendered types keep their own register's field, which the lock admits.",
+    "the product block, the light and grade lines on photographs, the two grounds, the no-frame "
+    "line, the empty bottom-right corner, and either the wordless line or the typography line. "
+    "Rendered types keep their own register's field, which the lock admits.",
+
+    "THE LIGHT AND GRADE ARE ADR-104'S (`6607fd7`). The page has a hero, so the lock writes the two "
+    "fixed lines, and the session reads 'for every image it emits' as every PHOTOGRAPH it emits. "
+    "Every photograph carries both, `04-proof-lockedframe` included, whose own grade sentence now "
+    "holds one grade across its panels without calling it neutral. Two constructions differ, and "
+    "both are the types' own law: a rendered type (`03-mechanism-ghostbody`, `02-cause-anatomy`, "
+    "`03-spec-split`, `03-spec-explode`) keeps its register's light, because a 3D render or a "
+    "drawing is not a photograph's grade; `01-pain-split`'s tile carries the light line but not the "
+    "grade line, because its LP2 law makes the BEFORE panel grayscale and the grade line would "
+    "forbid it. The room ground drops 'warm-neutral' and 'nothing saturated' and keeps a few clear "
+    "colours, and anyone in a room wears a clear, friendly colour, never beige. Every night, dusk, "
+    "evening, lamplit, fluorescent or overcast scene moved to daylight, since the light line is "
+    "daylight from the left.",
 
     "THE GALLERY'S WORDS (rule 9, a warning since ADR-102): five generated tiles, four with a title "
     "of 4–5 words and no copy or chip, one wordless. Every other image on the page is wordless "
@@ -1588,10 +1611,12 @@ PAGE_NOTES = [
     "two files whose prompts differ in the state line alone (the instruction, 'A pair shares one "
     "description'), and the lock's grade binds both, so neither half is grayscale.",
 
-    "THE HERO WAS RE-WRITTEN UNDER ADR-103 (`e6c84c3`), which landed after this session's first "
-    "commit: its three options now carry the five fixed hero sentences word for word (the fifth only "
-    "where a person is in frame), and option B brings the product to the open door so the fourth "
-    "can hold. No other field is a hero.",
+    "THE HERO WAS RE-WRITTEN UNDER ADR-103 (`e6c84c3`) AND AGAIN UNDER ADR-104 (`6607fd7`), both "
+    "landing after this session's first commit: its three options carry the five fixed hero "
+    "sentences in ADR-104's words (the fifth only where a person is in frame), the camera stands a "
+    "few steps back, the two people are relaxed, and option B brings the product to the open door "
+    "so the fourth can hold. `check.py` reads the sentences and the two lines from the law file. "
+    "No other field is a hero.",
 
     "RATIOS: the template frames the expect pairs and the expert image at 4:5, which ADR-016 does "
     "not allow; they are asked for at 3:4 and the template crops. The hero is a banner and renders "

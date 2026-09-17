@@ -8,6 +8,9 @@ Exit 0 means the clean set passes AND every mutation fires. Exit 1 otherwise.
 What it checks, per prompt: the length gate; the LP2 product block exactly when the product is in
 frame; the session lock's lines word for word; words only in gallery tiles, as a title of 2-5
 words; casting named positively; no ratio, avoid clause or repo name; no product-describing word.
+Under ADR-104: every photograph carries the lock's light and grade lines (a 01-pain-split tile the
+light line alone); no photograph is set at night or in drained colour; nobody wears a drab colour;
+and the build's hero sentences and light and grade lines equal the law file's, read from it.
 Per page: three distinct types per field or a stated pool basis; pairs carrying one locked
 description; every image field of the exported page either routed or listed as not generated.
 """
@@ -21,6 +24,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, "..", "..", ".."))
 EXPORT = os.path.expanduser("~/Downloads/pdp-dr-ergonomic-memory-foam-seat-cushion-v04.json")
+LAW = os.path.join(ROOT, "registry", "pdp-dr-instruction.md")
 sys.path.insert(0, HERE)
 import build  # noqa: E402  (the constants are defined once, in the build)
 
@@ -32,12 +36,21 @@ PRODUCT_WORDS = ["black colourway", "mesh", "ribbed", "ribs", "vents", "cut-out"
 REPO = [r"\b0\d-[a-z]+-[a-z]+\b", r"--[a-z]", r"\bLP2\b", r"\bADR\b", r"\bG\d+\b", r"\bpdp\b",
         r"\bgallery tile\b", r"\bsection image\b"]
 LIT_TYPES = {"06-relief-hero", "06-relief-scene", "05-social-snapshot", "05-persona-grid",
-             "03-use-grid", "03-spec-macro"}
+             "03-use-grid", "03-spec-macro", "04-proof-lockedframe"}
+DRAINED = re.compile(r"\b(night|dusk|evening|lamplight|lamp|fluorescent|overcast|dim|neutral|"
+                     r"nothing saturated|pale walls|washed-out)\b")
+DRAB = re.compile(r"\b(beige|greige|grey|gray|taupe|oatmeal|khaki)\s+(?:[a-z]+\s+)?(sweater|shirt|"
+                  r"trousers|jacket|cardigan|sleeves?|blazer|top|hoodie|jeans|dress)\b")
 ALLOWED_RATIOS = {"16:9", "4:3", "1:1", "3:4", "9:16"}
 
 
 def check(doc, fields):
     fail = []
+    law = doc["_law"]
+    if build.HERO_FIXED + [build.HERO_PERSON] != law["hero"]:
+        fail.append(("page", "the build's hero sentences differ from the law file's"))
+    if [build.LIGHT, build.GRADE] != law["lock"]:
+        fail.append(("page", "the lock's light or grade line differs from the law file's"))
     slots = [s for s in doc["slots"] if s.get("options")]
     listed = {s["slot_id"] for s in doc["slots"]}
     if set(fields) != listed:
@@ -81,12 +94,25 @@ def check(doc, fields):
                 ln = raw.strip()
                 if ln.startswith("Light:") and ln != build.LIGHT:
                     fail.append((ctx, f"a light line in other words: {ln[:50]!r}"))
-                if ln.startswith("Grade:") and ln != build.GRADE and o["type"] != "04-proof-lockedframe":
+                if ln.startswith("Grade:") and ln != build.GRADE:
                     fail.append((ctx, f"a grade line in other words: {ln[:50]!r}"))
                 if ln.startswith("Ground:") and ln not in (build.ROOM, build.SEAMLESS):
                     fail.append((ctx, f"a ground line in other words: {ln[:50]!r}"))
+            split_tile = o["type"] == "01-pain-split" and s["kind"] != "pair"
             if (o["type"] in LIT_TYPES or s["kind"] == "pair") and not (build.LIGHT in p and build.GRADE in p):
                 fail.append((ctx, "a photographic frame without the lock's light and grade lines"))
+            if split_tile:
+                if flat.count(build.LIGHT) != 1:
+                    fail.append((ctx, "a split tile without the light line"))
+                if build.GRADE in p:
+                    fail.append((ctx, "a split tile carrying the grade line, which forbids its grayscale panel"))
+            if o["type"] in LIT_TYPES or s["kind"] == "pair" or split_tile:
+                hit = DRAINED.search(flat.replace(build.BLOCK, " ").lower())
+                if hit:
+                    fail.append((ctx, f"a night, dim or drained scene under the daylight lock: {hit.group(0)!r}"))
+            hit = DRAB.search(flat.lower())
+            if hit:
+                fail.append((ctx, f"a drab wardrobe: {hit.group(0)!r}"))
             if s["kind"] == "hero":
                 for line in build.HERO_FIXED:
                     if flat.count(line) != 1:
@@ -189,9 +215,9 @@ def mutations(doc):
         m("attachments without block", lambda d: _o(d, "problem.items.1.image", "A").__setitem__(
             "attachments", ["sha256:0000000000000000"]), "product block present=False"),
         m("corner dropped", lambda d: _sub(d, "why.photo", "A", build.CORNER, ""), "lock line corner appears 0"),
-        m("light reworded", lambda d: _sub(d, "why.photo", "A", "no rim light", "a little rim light"),
+        m("light reworded", lambda d: _sub(d, "why.photo", "A", "real contrast", "soft contrast"),
           "a light line in other words"),
-        m("ground reworded", lambda d: _sub(d, "how.image", "A", "nothing saturated", "vivid"),
+        m("ground reworded", lambda d: _sub(d, "how.image", "A", "a few clear colours", "warm-neutral tones"),
           "a ground line in other words"),
         m("words in a section", lambda d: _sub(d, "how.image", "A", build.CORNER,
                                                build.CORNER + ' A sign reads "Home".'),
@@ -252,6 +278,26 @@ def mutations(doc):
           "the hero's person sentence present=True"),
         m("lit frame unlit", lambda d: _sub(d, "uses.image", "B", build.GRADE, ""),
           "without the lock's light and grade lines"),
+        m("lockedframe unlit", lambda d: _sub(d, "safety.image", "B", build.GRADE, ""),
+          "without the lock's light and grade lines"),
+        m("neutral grade", lambda d: _sub(d, "problem.items.2.image", "C", "Both panels share one grade;",
+                                          "Grade: one neutral grade across both panels;"),
+          "a grade line in other words"),
+        m("law hero drift", lambda d: d["_law"]["hero"].__setitem__(2, "The left half is bright and calm."),
+          "the build's hero sentences differ"),
+        m("law lock drift", lambda d: d["_law"]["lock"].__setitem__(1, "Grade: bright, neutral."),
+          "the lock's light or grade line differs"),
+        m("night scene", lambda d: _sub(d, "uses.image", "B", "by a sunny window", "at night"),
+          "a night, dim or drained scene"),
+        m("drained room", lambda d: _sub(d, "trusted.cards.3.photo", "A", "no studio light",
+                                         "pale walls, no studio light"), "a night, dim or drained scene"),
+        m("split tile graded", lambda d: _sub(d, "media.gallery.1.image", "A", build.LIGHT,
+                                              build.LIGHT + "\n" + build.GRADE),
+          "a split tile carrying the grade line"),
+        m("split tile unlit", lambda d: _sub(d, "problem.items.0.image", "A", build.LIGHT, ""),
+          "a split tile without the light line"),
+        m("drab wardrobe", lambda d: _sub(d, "modes.items.2.image", "A", "denim-blue trousers", "grey trousers"),
+          "a drab wardrobe"),
     ]
 
 
@@ -276,8 +322,24 @@ def _set_rec(d, sid, letter):
     _by(d, sid)["recommended_option"] = letter
 
 
+def law_lines():
+    """The hero's five fixed sentences and the lock's two lines, as the law file states them."""
+    text = open(LAW, encoding="utf-8").read()
+
+    def block_after(marker):
+        i = text.index(marker)
+        a = text.index("```", i) + 3
+        b = text.index("```", a)
+        return [ln.strip() for ln in text[a:b].strip().splitlines() if ln.strip()]
+
+    return {"hero": block_after("**Every hero prompt carries these sentences"),
+            "lock": block_after("**A hero is a photograph in full colour**")}
+
+
 def main():
     doc = json.load(open(os.path.join(HERE, "prompts.json"), encoding="utf-8"))
+    doc["_law"] = law_lines()
+    assert len(doc["_law"]["hero"]) == 5 and len(doc["_law"]["lock"]) == 2, doc["_law"]
     fields = fields_from_export()
     clean = check(doc, fields)
     bad = 0

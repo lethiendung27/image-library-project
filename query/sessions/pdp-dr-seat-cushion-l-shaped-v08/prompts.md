@@ -5,13 +5,13 @@ GENERATED from this directory's `build.py`. Never hand-edit this file — edit t
 - page `590` · LP2 (`pdp_dr`) · solution-aware · 35 routed image fields · 91 prompts · 40 fields not generated
 - **Attach the product photo** to every prompt with the product in frame: the 'ONE-PIECE SUPPORT SYSTEM' gallery image, its title cropped off.
 - **The style lock for this session:**
-  - `grounds` — two treatments: a real, lived-in place in warm-neutral tones, or a seamless warm-grey studio sweep with a soft floor shadow. A rendered type keeps its own register's field (`02-cause-anatomy`'s deep field, the white infinity of `03-mechanism-ghostbody`, `03-spec-split`'s dark render half), which the lock admits
+  - `grounds` — two treatments: a real, light, uncluttered place with a few clear colours, where anyone wears a clear, friendly colour and never beige, or a seamless warm-grey studio sweep with a soft floor shadow. A rendered type keeps its own register's field (`02-cause-anatomy`'s deep field, the white infinity of `03-mechanism-ghostbody`, `03-spec-split`'s dark render half), which the lock admits
   - `text colour` — charcoal on a light ground, white on a dark ground
   - `accent` — one muted teal, reserved for a chip; this set carries no chip, so it appears nowhere
   - `typography` — one bold geometric sans-serif like Montserrat, wide and round, sentence case
   - `chip form` — none used; the gallery carries titles only
   - `design language` — no frame or border around any photograph or panel; generous even margins
-  - `lighting family` — soft daylight from one side, gentle natural shadows, no rim light; bright, warm-neutral, true to life
+  - `lighting family` — ADR-104's two fixed lines, because the page has a hero: bright, warm daylight from the left, with natural shadows and real contrast; editorial realism with vivid, true colour, nothing greyed or washed out. Every photograph carries both, except `01-pain-split`'s tile, whose own law greys its BEFORE panel, so it carries the light line alone; a rendered type keeps its register's own light
   - `corners` — nothing in the bottom-right corner, which carries the generation tool's watermark
   - `casting` — North American, named in each prompt that carries a person (the page prices in US dollars and names no market)
 
@@ -21,25 +21,25 @@ GENERATED from this directory's `build.py`. Never hand-edit this file — edit t
 
 - asset `590-01-hero-relief-hero.png` · Hero banner behind 'Continuous Lower Back Support & Tailbone Relief'.
 - recommended: **option A**
-- The hero's words promise continuous support and relief, and the reader arrives solution-aware, so the banner shows the fix at work rather than the pain. FIT: `06-relief-hero` is the hero row's only preferred type on this corpus (16 sources). BANNER LAW (ADR-096, re-measured by ADR-103): the group sits in the safe box, 55–88% across and 22–78% down, and every option carries the five fixed sentences, the fifth only where a person is in frame; the owner renders it at 16:9. B is the same relief read as a public moment after a long drive, with the product brought close enough to recognise; C is the product's one-piece curve alone, the page's subtitle as a macro. PRODUCT PRESENCE: all three carry the product.
+- The hero's words promise continuous support and relief, and the reader arrives solution-aware, so the banner shows the fix at work rather than the pain. FIT: `06-relief-hero` is the hero row's only preferred type on this corpus (16 sources). BANNER LAW (ADR-096, re-measured by ADR-103, reworded by ADR-104): the group sits in the safe box, 55–88% across and 22–78% down, seen from a few steps back, and every option carries the five fixed sentences, the fifth only where a person is in frame; the frame is a full-colour photograph under the lock's two fixed light and grade lines; the owner renders it at 16:9. B is the same relief read as a public moment after a long drive, with the product brought close enough to recognise; C is the product's one-piece curve alone, the page's subtitle as a macro. PRODUCT PRESENCE: all three carry the product.
 
 ### `hero.image` · option A — `06-relief-hero` `--commercial`
 
-- varies on: baseline · type version `1.20` · 1792 characters
-- A desk worker settled back in her office chair, the product under her and behind her lower back, the daylight coming from the left.
+- varies on: baseline · type version `1.20` · 1797 characters
+- A desk worker settled back in her office chair, relaxed, the product under her and behind her lower back, the daylight coming from the left.
 - **note:** Needs the product photo. Passive product, so the pose is relaxed and the gaze is off the product; the seated product is seen from a rear three-quarter angle, as the LP2 product section asks.
 
 ```
 Commercial lifestyle photograph, a wide banner.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole on her office chair, under her and behind her lower back, seen from a rear three-quarter angle, on a host seat clearly different from it in tone and material.
+Render it whole on her chair, under her and behind her lower back, seen from a rear three-quarter angle, on a seat clearly unlike it in tone and material.
 
-A North American woman in her forties sits back at her home-office desk, looking toward the window rather than at the camera, her back fully against the product. The daylight comes from the left. The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge. Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place in soft focus, bright and calm, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance. Any person turns slightly toward the left side of the picture.
+A North American woman in her forties leans back at her home desk, relaxed, looking toward the window, not the camera. The product and anyone using it sit together in the right half, just past the centre and well clear of the right edge. Seen from a few steps back, the group fills about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place, softly blurred and full of daylight, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance. Any person turns slightly toward the left side of the picture.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -47,21 +47,21 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `hero.image` · option B — `06-relief-scene`
 
-- varies on: type: 06-relief-scene · type version `3.9` · 1798 characters
+- varies on: type: 06-relief-scene · type version `3.9` · 1799 characters
 - A driver standing up out of his car at a highway rest stop in one easy movement, the product on the driver's seat right beside him.
 - **note:** Needs the product photo. Counts as a place scene; its public place and its product standing as its own object are the type's own law. The product sits close, at the open door, so the hero's fourth sentence can hold.
 
 ```
-Candid documentary photograph, a wide banner, natural and unposed.
+Candid documentary photograph, a wide banner.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole on the driver's seat right beside him, seen through the open door, on a host seat clearly different from it in tone and material.
+Render it whole on the driver's seat beside him, seen through the open door, on a seat clearly unlike it in tone and material.
 
-A North American man in his fifties stands up out of his car at a highway rest stop easily, one hand on the open door, looking toward the coffee kiosk rather than at the camera. The daylight comes from the left. The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge. Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place in soft focus, bright and calm, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance. Any person turns slightly toward the left side of the picture.
+A North American man in his fifties, relaxed, stands up out of his car at a rest stop, one hand on the door, looking toward the kiosk, not the camera. The product and anyone using it sit together in the right half, just past the centre and well clear of the right edge. Seen from a few steps back, the group fills about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place, softly blurred and full of daylight, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance. Any person turns slightly toward the left side of the picture.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -69,7 +69,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `hero.image` · option C — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1704 characters
+- varies on: type: 03-spec-macro · type version `1.1` · 1779 characters
 - The subtitle as a surface: the curve where the seat section rises into the back, one piece, in close-up in the safe box.
 - **note:** Needs the product photo. The magnified region is a true region of the photograph; the gallery's one macro is `media.gallery.3`. A hand is in frame and no person, so the fifth fixed sentence is left out.
 
@@ -79,11 +79,11 @@ Commercial studio macro photograph, a wide banner, razor sharp.
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
 The magnified region is a true region of the product: the curve where its seat section rises into its upright section.
 
-The surface is resolved exactly as the photo shows it under raking light from the left, one continuous piece with no seam between seat and back. A hand in a knit sleeve presses into the lower curve, the surface holding firm around it. The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge. Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place in soft focus, bright and calm, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance.
+The surface is resolved exactly as the photo shows it under raking light from the left, one continuous piece with no seam between seat and back. A hand in a coral knit sleeve presses into the lower curve, the surface holding firm around it. The product and anyone using it sit together in the right half, just past the centre and well clear of the right edge. Seen from a few steps back, the group fills about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth. The left half continues the same place, softly blurred and full of daylight, with nothing in it that matters. The product is big enough to recognise at a glance, never a small detail in the distance.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -99,7 +99,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `media.gallery.1.image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 1772 characters
+- varies on: baseline · type version `1.10` · 1780 characters
 - The same desk worker on the same chair: hips sunk and back unsupported in grayscale, level and supported in colour with the product.
 - **note:** Needs the product photo, for the right panel. `--mirror`'s invariants block is the route that held one person across two panels. Title 4 words.
 
@@ -107,16 +107,17 @@ Nothing is placed in the bottom-right corner of the frame.
 E-commerce comparison tile, high contrast, sharp. Two panels split hard down the middle, each running to the frame edge.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it in the right panel only, whole, under her and behind the lower back as one piece, seen from the side, on a host seat clearly different from it in tone and material.
+Render it in the right panel only, whole, under her and behind the lower back as one piece, seen from the side, on a seat clearly unlike it in tone and material.
 
-The same woman in both panels, named once: a North American woman in her forties, hair tied back, grey knit sweater, dark trousers, seen from the side at seat height, at the same desk with a laptop, on the same office chair, in the same window light.
+The same woman in both panels, named once: a North American woman in her forties, in a teal knit sweater and dark trousers, seen from the side at seat height, at the same desk with a laptop, on the same office chair.
 
 Left panel, grayscale: on the bare chair, her hips sunk below her knees, her pelvis rolled back, a gap behind her lower back, her shoulders rounded.
 
-Right panel, full colour: on the product, her hips level with her knees, her lower back supported, her shoulders over her hips; brighter and airier than the left.
+Right panel, full colour: on the product, her hips level with her knees, her lower back supported; brighter and airier than the left.
 
 Top-left, a flat solid red disc with a cross cut out; top-right, a flat solid green disc with a check cut out, the same size.
 
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
 Along the bottom edge, from the left, over the pale floor, the title reads "Hips level, back supported".
 Title type: one bold geometric sans-serif like Montserrat, wide and round, sentence case, charcoal.
 No frame or border around any photograph or panel.
@@ -263,7 +264,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `media.gallery.3.image` · option A — `03-spec-macro`
 
-- varies on: baseline · type version `1.1` · 1647 characters
+- varies on: baseline · type version `1.1` · 1706 characters
 - The curve where the seat rises into the back, one piece, a hand pressing into it.
 - **note:** Needs the product photo. The region is a true region of the photograph; no cover is cut open. Title 4 words, off the texture.
 
@@ -273,11 +274,11 @@ Polished commercial studio macro photography, close range, razor sharp, high det
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
 The magnified region is a true region of the product: the curve where its seat section rises into its upright section, same geometry, same material, same finish.
 
-That curve fills about 70% of the frame, the surface resolved exactly as the photo shows it under raking light from the left, reading as one continuous piece with no seam and no gap between seat and back. Caught mid-use: a hand in a knit sleeve presses into the curve from the right, the surface giving under the fingers and holding its shape around them. The upper left of the frame falls to a soft pale blur, clear of the texture.
+That curve fills about 70% of the frame, the surface resolved exactly as the photo shows it under raking light from the left, reading as one continuous piece with no seam and no gap between seat and back. Caught mid-use: a hand in a coral knit sleeve presses into the curve from the right, the surface giving under the fingers and holding its shape around them. The upper left of the frame falls to a soft pale blur, clear of the texture.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 In the upper left, on the blurred background and off the texture, the title reads "One piece, no gap".
 Title type: one bold geometric sans-serif like Montserrat, wide and round, sentence case, charcoal.
 No frame or border around any photograph or panel.
@@ -369,7 +370,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `media.gallery.4.image` · option B — `06-relief-hero` `--commercial`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1543 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1616 characters
 - A driver in stop-start traffic, relaxed, the product exactly where he set it on a leather seat.
 - **note:** Needs the product photo. RECOMMENDED at the hero and at image 6 with other messages, so picking it here puts the type in the gallery twice.
 
@@ -377,13 +378,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 25% of the frame height, on the leather driver's seat under him and behind his lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a host seat clearly different from it in tone and material.
+Render it whole at about 25% of the frame height, on the leather driver's seat under him and behind his lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a seat clearly unlike it in tone and material.
 
 A North American man in his forties waits at a red light in city traffic, one hand loose on the wheel, looking ahead through the windscreen rather than at the camera. His back rests against the product's upright section along its whole length, and the product sits square on the leather seat, not shifted an inch. The upper left of the frame is the quiet headliner.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -391,7 +392,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `media.gallery.4.image` · option C — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1485 characters
+- varies on: type: 03-spec-macro · type version `1.1` · 1571 characters
 - The grip base against leather in close-up, the seat's stitching sharp beside it.
 - **note:** Needs the product photo. The gallery keeps one macro, and `media.gallery.3` holds it, so picking this moves that tile to its option B.
 
@@ -403,9 +404,9 @@ The magnified region is a true region of the product: the edge of its base where
 
 Where the base meets a leather car seat, the surface is resolved exactly as the photo shows it under raking light, pressed flat and square to the leather, the seat's stitching sharp beside it. The upper left of the frame falls to a soft blur of the seat back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 In the upper left, on the blurred background and off the texture, the title reads "Stays put on leather".
 Title type: one bold geometric sans-serif like Montserrat, wide and round, sentence case, charcoal.
 No frame or border around any photograph or panel.
@@ -422,7 +423,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `media.gallery.5.image` · option A — `06-relief-hero` `--commercial`
 
-- varies on: baseline · type version `1.20` · 1574 characters
+- varies on: baseline · type version `1.20` · 1647 characters
 - A driver on an open country highway, loose and at ease, the product under and behind him.
 - **note:** Needs the product photo. Wordless by the gallery's count.
 
@@ -430,13 +431,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 25% of the frame height, on the driver's seat under him and behind his lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a host seat clearly different from it in tone and material.
+Render it whole at about 25% of the frame height, on the driver's seat under him and behind his lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a seat clearly unlike it in tone and material.
 
 A North American man in his fifties drives an open country highway in the afternoon, one hand loose on the wheel, shoulders down, looking out at the long road ahead rather than at the camera. His back rests against the product's upright section along its whole length, and his hips sit level with his knees. Through the windscreen the road runs on toward low hills; a water bottle sits in the cup holder.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -444,7 +445,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `media.gallery.5.image` · option B — `06-relief-scene`
 
-- varies on: type: 06-relief-scene · type version `3.9` · 1473 characters
+- varies on: type: 06-relief-scene · type version `3.9` · 1546 characters
 - A long-haul driver climbing down from his cab at a truck stop, easy and straight, the product on the seat behind him.
 - **note:** Needs the product photo. Counts as a place scene. RECOMMENDED at `why.photo` with a different moment.
 
@@ -452,13 +453,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Candid documentary photograph, single frame. Natural and unposed, as a passer-by could have taken it.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 12% of the frame height, on the driver's seat behind him, seen through the open cab door, on a host seat clearly different from it in tone and material.
+Render it whole at about 12% of the frame height, on the driver's seat behind him, seen through the open cab door, on a seat clearly unlike it in tone and material.
 
 A North American man in his fifties in a work jacket climbs down from the cab of his truck at a truck stop in the late afternoon, one hand on the grab rail, stepping down easily with a straight back, looking toward the diner rather than at the camera. Around him: a row of parked trucks, a fuel island, two blurred drivers further off.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -466,7 +467,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `media.gallery.5.image` · option C — `05-persona-grid` `--2x2`
 
-- varies on: type: 05-persona-grid · type version `1.6` · 1753 characters
+- varies on: type: 05-persona-grid · type version `1.6` · 1792 characters
 - Four long-sitting drivers in four cabs, one photographic finish.
 - **note:** Needs the product photo. Weakest at tile size: four cells inside one square.
 
@@ -474,23 +475,23 @@ Nothing is placed in the bottom-right corner of the frame.
 Clean lifestyle collage for e-commerce, bright, airy, sharp. Four equal cells, thin white gutters, no outer border, no graphic overlay of any kind.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Show it whole in every cell, on the seat under each driver, on a host seat clearly different from it in tone and material.
+Show it whole in every cell, on the seat under each driver, on a seat clearly unlike it in tone and material.
 
 The product is visible and unobstructed in every cell, in place on the seat, and every cell shares one photographic finish.
 
-Top left: a North American man in his fifties at the wheel of a truck on a highway, flat afternoon light.
+Top left: a North American man in his fifties at the wheel of a truck, clear afternoon light.
 
 Top right: a North American woman in her thirties driving a hatchback to work, morning light.
 
-Bottom left: a North American man in his forties in a rideshare car at night, city lights outside.
+Bottom left: a North American man in his forties in a rideshare car downtown at midday.
 
-Bottom right: a North American woman in her sixties on a road trip, a map on the passenger seat, warm evening light.
+Bottom right: a North American woman in her sixties on a road trip, a map beside her, late-afternoon sun.
 
 No two cells share a palette, a light or a posture; nobody looks at the camera.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -507,8 +508,8 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.1.photo` · option A — `05-social-snapshot`
 
-- varies on: baseline · type version `1.2` · 1450 characters
-- The product in a truck cab at a highway truck stop at dusk, photographed as found.
+- varies on: baseline · type version `1.2` · 1515 characters
+- The product in a truck cab at a highway truck stop in the late afternoon, photographed as found.
 - **note:** Needs the product photo. The tile carries no name, badge or star row; the page is what attributes it, which is why the slot ships flagged.
 
 ```
@@ -517,13 +518,13 @@ A real customer's phone photo. One frame, no layout, no layers.
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
 Render it whole at about 40% of the frame height, exactly as the reference shows.
 
-The product simply where it now lives: on the driver's seat of a long-haul truck at a truck stop at dusk, the cab as it is — a jacket over the seat back, a thermos in the door pocket, a logbook face down on the dash. The cab's dome light and the last daylight through the windscreen, no studio light. The camera is a phone held in one hand from the cab door, framing slightly off-centre, mild noise in the shadows.
+The product simply where it now lives: on the driver's seat of a long-haul truck at a truck stop in the late afternoon, the cab as it is — a jacket over the seat back, a thermos in the door pocket, a logbook face down on the dash. Low sun through the windscreen, no studio light. The camera is a phone held in one hand from the cab door, framing slightly off-centre, mild noise in the shadows.
 
 Nobody's face is in the frame.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -531,21 +532,21 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.1.photo` · option B — `06-relief-hero` `--ugc`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1446 characters
-- The same tile with its owner in it: a trucker at the wheel at dusk.
+- varies on: type: 06-relief-hero · type version `1.20` · 1533 characters
+- The same tile with its owner in it: a trucker at the wheel in the late afternoon.
 - **note:** Needs the product photo. The same type is recommended at the hero in its commercial register.
 
 ```
 A phone photo taken by an ordinary person in their own space. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 25% of the frame height, on the seat under them and behind them as one piece, on a host seat clearly different from it in tone and material.
+Render it whole at about 25% of the frame height, on the seat under them and behind them as one piece, on a seat clearly unlike it in tone and material.
 
-A North American man in his fifties in a work jacket sits back at the wheel of his truck at dusk, both hands loose in his lap, looking out through the windscreen rather than at the camera, his face turned away. His back rests against the product's upright section. The framing is casual and a little too close, with no styling.
+A North American man in his fifties in a work jacket sits back at the wheel of his truck in the late afternoon, both hands loose in his lap, looking out through the windscreen rather than at the camera, his face turned away. His back rests against the product's upright section. The framing is casual and a little too close, with no styling.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -553,7 +554,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.1.photo` · option C — `05-persona-grid` `--2x2`
 
-- varies on: type: 05-persona-grid · type version `1.6` · 1662 characters
+- varies on: type: 05-persona-grid · type version `1.6` · 1759 characters
 - The wall's job read as casting: four sitters in four places, one finish.
 - **note:** Needs the product photo. Weakest at tile size; only one tile on the wall could carry it before the wall stops reading as three customers.
 
@@ -561,23 +562,23 @@ Nothing is placed in the bottom-right corner of the frame.
 Clean lifestyle collage for e-commerce, bright, airy, sharp. Four equal cells, thin white gutters, no outer border, no graphic overlay of any kind.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Show it whole in every cell, on the seat under each person, on a host seat clearly different from it in tone and material.
+Show it whole in every cell, on the seat under each person, on a seat clearly unlike it in tone and material.
 
 The product is visible and unobstructed in every cell, in place on the seat, and every cell shares one photographic finish.
 
-Top left: a North American man in his fifties at the wheel of a truck at dusk.
+Top left: a North American man in his fifties at the wheel of a truck in the late afternoon.
 
 Top right: a North American woman in her thirties at an office desk in daylight.
 
-Bottom left: a North American man in his forties in a rideshare car at night.
+Bottom left: a North American man in his forties in a rideshare car downtown at midday.
 
 Bottom right: a North American woman in her sixties at a kitchen table in the morning.
 
 No two cells share a palette, a light or a posture; nobody looks at the camera.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -594,8 +595,8 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.2.photo` · option A — `05-social-snapshot`
 
-- varies on: baseline · type version `1.2` · 1406 characters
-- The product in a commuter car in a parking garage in the morning, photographed as found.
+- varies on: baseline · type version `1.2` · 1473 characters
+- The product in a commuter car in an open-air office car park in the morning, photographed as found.
 - **note:** Needs the product photo. The tile carries no name, badge or star row; the page is what attributes it, which is why the slot ships flagged.
 
 ```
@@ -604,13 +605,13 @@ A real customer's phone photo. One frame, no layout, no layers.
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
 Render it whole at about 40% of the frame height, exactly as the reference shows.
 
-The product mid-use by its owner, the person present only incidentally: on the driver's seat of a small commuter car in a parking garage in the morning, a hand in a blazer sleeve setting a laptop bag on the passenger seat. Flat fluorescent garage light and a little daylight from the ramp, no studio light. The camera is a phone held close, framing tilted, focus casual.
+The product mid-use by its owner, the person present only incidentally: on the driver's seat of a small commuter car in an open-air office car park in the morning, a hand in a blazer sleeve setting a laptop bag on the passenger seat. Morning sun through the side window, no studio light. The camera is a phone held close, framing tilted, focus casual.
 
 Nobody's face is in the frame.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -618,7 +619,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.2.photo` · option B — `06-relief-hero` `--ugc`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1424 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1508 characters
 - The same tile with its owner in it: a commuter settling in for the drive home.
 - **note:** Needs the product photo. The same type is recommended at the hero in its commercial register.
 
@@ -626,13 +627,13 @@ Nothing is placed in the bottom-right corner of the frame.
 A phone photo taken by an ordinary person in their own space. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 25% of the frame height, on the seat under them and behind them as one piece, on a host seat clearly different from it in tone and material.
+Render it whole at about 25% of the frame height, on the seat under them and behind them as one piece, on a seat clearly unlike it in tone and material.
 
-A North American woman in her thirties in office clothes sits back in the driver's seat of her car in a parking garage, reaching for her seat belt, looking ahead rather than at the camera. Her back rests against the product's upright section. The framing is casual and a little too close, with no styling.
+A North American woman in her thirties in office clothes sits back in the driver's seat of her car in an open-air office car park, reaching for her seat belt, looking ahead rather than at the camera. Her back rests against the product's upright section. The framing is casual and a little too close, with no styling.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -640,7 +641,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.2.photo` · option C — `05-persona-grid` `--2x2`
 
-- varies on: type: 05-persona-grid · type version `1.6` · 1671 characters
+- varies on: type: 05-persona-grid · type version `1.6` · 1753 characters
 - The wall's job read as casting: four sitters in four places, one finish.
 - **note:** Needs the product photo. Weakest at tile size; only one tile on the wall could carry it before the wall stops reading as three customers.
 
@@ -648,23 +649,23 @@ Nothing is placed in the bottom-right corner of the frame.
 Clean lifestyle collage for e-commerce, bright, airy, sharp. Four equal cells, thin white gutters, no outer border, no graphic overlay of any kind.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Show it whole in every cell, on the seat under each person, on a host seat clearly different from it in tone and material.
+Show it whole in every cell, on the seat under each person, on a seat clearly unlike it in tone and material.
 
 The product is visible and unobstructed in every cell, in place on the seat, and every cell shares one photographic finish.
 
-Top left: a North American woman in her thirties in a commuter car in a parking garage.
+Top left: a North American woman in her thirties in a commuter car in an office car park.
 
-Top right: a North American man in his twenties at a gaming desk at night.
+Top right: a North American man in his twenties at a gaming desk by a sunny window.
 
 Bottom left: a North American man in his fifties in a van on a building site.
 
-Bottom right: a North American woman in her forties at a reception desk under ceiling light.
+Bottom right: a North American woman in her forties at a reception desk in a bright lobby.
 
 No two cells share a palette, a light or a posture; nobody looks at the camera.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -681,7 +682,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.3.photo` · option A — `05-social-snapshot`
 
-- varies on: baseline · type version `1.2` · 1407 characters
+- varies on: baseline · type version `1.2` · 1493 characters
 - The product in a leather car seat in a driveway in bright daylight, photographed as found.
 - **note:** Needs the product photo. The tile carries no name, badge or star row; the page is what attributes it, which is why the slot ships flagged.
 
@@ -695,9 +696,9 @@ The product simply where it now lives: on the leather driver's seat of a family 
 
 Nobody's face is in the frame.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -705,7 +706,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.3.photo` · option B — `06-relief-hero` `--ugc`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1450 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1523 characters
 - The same tile with its owner in it: a driver getting in at midday.
 - **note:** Needs the product photo. The same type is recommended at the hero in its commercial register.
 
@@ -713,13 +714,13 @@ Nothing is placed in the bottom-right corner of the frame.
 A phone photo taken by an ordinary person in their own space. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 25% of the frame height, on the seat under them and behind them as one piece, on a host seat clearly different from it in tone and material.
+Render it whole at about 25% of the frame height, on the seat under them and behind them as one piece, on a seat clearly unlike it in tone and material.
 
 A North American man in his sixties in a polo shirt lowers himself into the leather driver's seat of his car in a sunny driveway, one hand on the door frame, looking down at the ignition rather than at the camera. The product sits square under him and behind his back. The framing is casual and a little too close, with no styling.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -727,7 +728,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `trusted.cards.3.photo` · option C — `05-persona-grid` `--2x2`
 
-- varies on: type: 05-persona-grid · type version `1.6` · 1664 characters
+- varies on: type: 05-persona-grid · type version `1.6` · 1737 characters
 - The wall's job read as casting: four sitters in four places, one finish.
 - **note:** Needs the product photo. Weakest at tile size; only one tile on the wall could carry it before the wall stops reading as three customers.
 
@@ -735,7 +736,7 @@ Nothing is placed in the bottom-right corner of the frame.
 Clean lifestyle collage for e-commerce, bright, airy, sharp. Four equal cells, thin white gutters, no outer border, no graphic overlay of any kind.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Show it whole in every cell, on the seat under each person, on a host seat clearly different from it in tone and material.
+Show it whole in every cell, on the seat under each person, on a seat clearly unlike it in tone and material.
 
 The product is visible and unobstructed in every cell, in place on the seat, and every cell shares one photographic finish.
 
@@ -749,9 +750,9 @@ Bottom right: a North American woman in her fifties in a van at a delivery stop.
 
 No two cells share a palette, a light or a posture; nobody looks at the camera.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -767,7 +768,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `problem.items.0.image` · option A — `01-pain-split` `--oldway`
 
-- varies on: baseline · type version `1.10` · 1612 characters
+- varies on: baseline · type version `1.10` · 1683 characters
 - The same driver on the same seat: sunk into a flat pad with a gap behind his back, then supported by the product.
 - **note:** Needs the product photo, for the right panel.
 
@@ -775,7 +776,7 @@ Nothing is placed in the bottom-right corner of the frame.
 E-commerce comparison photograph, high contrast, sharp. Two panels, a hard vertical split at 50/50, each running to the frame edge.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it in the right panel only, whole, under him and behind the lower back as one piece, seen from the side, on a host seat clearly different from it in tone and material.
+Render it in the right panel only, whole, under him and behind the lower back as one piece, seen from the side, on a seat clearly unlike it in tone and material.
 
 The same man in both panels, named once: a North American man in his fifties in a denim work shirt, seen from the side at seat height, in the same car's driver's seat, in the same afternoon light through the side window.
 
@@ -785,6 +786,7 @@ Right panel, full colour: on the product, his lower back supported along its who
 
 Top-left, a flat solid red disc with a cross cut out; top-right, a flat solid green disc with a check cut out, the same size.
 
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -873,7 +875,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `problem.items.1.image` · option B — `01-pain-split` `--mirror`
 
-- varies on: type: 01-pain-split · type version `1.10` · 1691 characters
+- varies on: type: 01-pain-split · type version `1.10` · 1762 characters
 - The same commuter photographed twice: shoulders shoved forward by a strap-on pillow, then level on the product.
 - **note:** Needs the product photo, for the right panel. RECOMMENDED in the gallery at image 2 with another message.
 
@@ -881,7 +883,7 @@ Nothing is placed in the bottom-right corner of the frame.
 E-commerce comparison photograph, high contrast, sharp. Two panels, a hard vertical split at 50/50, each running to the frame edge.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it in the right panel only, whole, under her and behind the lower back as one piece, seen from the side, on a host seat clearly different from it in tone and material.
+Render it in the right panel only, whole, under her and behind the lower back as one piece, seen from the side, on a seat clearly unlike it in tone and material.
 
 The same woman in both panels, named once: a North American woman in her thirties in a navy blazer, seen from the side at seat height from the same distance, in the same car's driver's seat, in the same morning light through the side window.
 
@@ -891,6 +893,7 @@ Right panel, in full colour: the same woman in the same seat on the product, her
 
 Top-left, a flat solid red disc with a cross cut out; top-right, a flat solid green disc with a check cut out, the same size.
 
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -954,7 +957,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `problem.items.2.image` · option B — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1361 characters
+- varies on: type: 03-spec-macro · type version `1.1` · 1414 characters
 - A hand pressing into the foam, the cells compressed under the fingers and standing open again just behind them.
 - **note:** Needs the product photo. The region is the product's own seat surface; no cover is cut open.
 
@@ -967,8 +970,8 @@ The magnified region is a true region of the product: its seat surface, same geo
 The seat surface fills about 80% of the frame, resolved exactly as the photo shows it under raking light. Caught mid-work: a hand presses into it at the left, the surface pressed down under the fingers and already rising again a short distance behind the press, so the recovery is visible in the same frame as the load.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -976,7 +979,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `problem.items.2.image` · option C — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1470 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1613 characters
 - The same product on the same kitchen chair on its first day and after months of daily use, the same height both times.
 - **note:** Needs the product photo. Handheld, because the two halves are separated by time; no panel is favoured.
 
@@ -984,14 +987,16 @@ Nothing is placed in the bottom-right corner of the frame.
 Honest documentary product photography, unstyled, natural, sharp. Two equal vertical panels packed across the frame with thin white gutters, no outer border.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole on the chair in both panels, the same unit, identical in both, on a host seat clearly different from it in tone and material.
+Render it whole on the chair in both panels, the same unit, identical in both, on a seat clearly unlike it in tone and material.
 
 One framing for both panels, stated once: a phone at standing height beside a hard wooden kitchen chair at a table, the chair filling the lower two thirds, the table edge and a fruit bowl in the upper left. It reads as one shot taken twice.
 
 The only thing that changes is the day: in the left panel the product is new on the chair; in the right panel months later it stands the same height and shape, a tea towel now hanging over the chair back.
 
-Grade: one neutral grade across both panels, no panel warmer or brighter.
+Both panels share one grade; neither is warmer or brighter.
 
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1007,7 +1012,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `why.photo` · option A — `06-relief-scene`
 
-- varies on: baseline · type version `3.9` · 1500 characters
+- varies on: baseline · type version `3.9` · 1573 characters
 - After two hours on the road, a commuter walks away from her car in a supermarket car park, straight and unhurried, the product on the seat behind her.
 - **note:** Needs the product photo. A different moment from the gallery's truck-stop option.
 
@@ -1015,13 +1020,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Candid documentary photograph, single frame. Natural and unposed, as a passer-by could have taken it.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 12% of the frame height, on the driver's seat of her car, seen through the open door, on a host seat clearly different from it in tone and material.
+Render it whole at about 12% of the frame height, on the driver's seat of her car, seen through the open door, on a seat clearly unlike it in tone and material.
 
 A North American woman in her forties crosses a supermarket car park mid-stride, a tote bag over one shoulder and her keys in her hand, her back straight and her step easy, looking toward the store entrance rather than at the camera. Behind her the driver's door of her car stands open. Around her: trolleys in a bay, painted lines, two blurred shoppers further off.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1029,7 +1034,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `why.photo` · option B — `06-relief-hero` `--commercial`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1460 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1533 characters
 - A commuter at ease at the wheel on a rough city street, the product under and behind her.
 - **note:** Needs the product photo. RECOMMENDED at the hero and at gallery image 6 with other moments.
 
@@ -1037,13 +1042,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 25% of the frame height, on the driver's seat under her and behind her lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a host seat clearly different from it in tone and material.
+Render it whole at about 25% of the frame height, on the driver's seat under her and behind her lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a seat clearly unlike it in tone and material.
 
 A North American woman in her forties drives down a patched city street in the morning, both hands easy on the wheel, shoulders down, looking ahead rather than at the camera. Her back rests against the product's upright section along its whole length, and her hips sit level with her knees.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1082,7 +1087,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `how.image` · option A — `06-relief-hero` `--commercial`
 
-- varies on: baseline · type version `1.20` · 1508 characters
+- varies on: baseline · type version `1.20` · 1581 characters
 - A man settling back onto the product on a hard kitchen chair, the laptop open in front of him.
 - **note:** Needs the product photo.
 
@@ -1090,13 +1095,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 28% of the frame height, on the wooden chair under him and set flush against the chair back as one piece, seen from a side three-quarter angle, on a host seat clearly different from it in tone and material.
+Render it whole at about 28% of the frame height, on the wooden chair under him and set flush against the chair back as one piece, seen from a side three-quarter angle, on a seat clearly unlike it in tone and material.
 
 A North American man in his thirties has just sat back on a hard wooden chair at his kitchen table, one hand still on the chair back, his laptop open in front of him and a coffee beside it, looking at the screen rather than at the camera. His lower back rests fully against the product's upright section, and his hips have settled level with his knees.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1104,7 +1109,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `how.image` · option B — `03-use-grid`
 
-- varies on: type: 03-use-grid · type version `1.1` · 1480 characters
+- varies on: type: 03-use-grid · type version `1.1` · 1553 characters
 - Four seats the product sets straight onto: office chair, car seat, dining chair, wheelchair.
 - **note:** Needs the product photo. RECOMMENDED at `uses.image`, so picking it here spends the type twice on the page with a close message.
 
@@ -1112,13 +1117,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Photographic grid of four equal cells in a 2×2, thin white gutters, no outer border.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Preserve it exactly in every cell, fitted to the seat, on a host seat clearly different from it in tone and material.
+Preserve it exactly in every cell, fitted to the seat, on a seat clearly unlike it in tone and material.
 
 The product is visibly fitted to the seat in each cell, set flush against the back, and each cell has a different camera: an office chair from across a desk; a car's driver's seat from the open door; a wooden dining chair from above; a wheelchair from the side. Where a person is present they are only a hand setting the product in place, and no face appears in any cell. All four cells share one photographic register.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1126,7 +1131,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `how.image` · option C — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1329 characters
+- varies on: type: 03-spec-macro · type version `1.1` · 1415 characters
 - Two hands pressing the upright section flush against a chair back.
 - **note:** Needs the product photo. The gallery's one macro is image 4; this is a section.
 
@@ -1138,9 +1143,9 @@ The magnified region is a true region of the product: its upright section where 
 
 Two hands press the product's upright section flush against the back of a wooden chair, the surface resolved exactly as the photo shows it under raking light, the joint between the product and the chair back closed along its whole length.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1159,7 +1164,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.0.before_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 908 characters
+- varies on: baseline · type version `1.10` · 994 characters
 - Day 1 as the old way and the new: a gap behind his lower back, then none.
 - **note:** The before half has no product and needs no photo; the after half needs the product photo.
 
@@ -1170,9 +1175,9 @@ The same scene in both photographs of this pair: a North American man in his thi
 
 He sits on the bare office chair, an open gap between the chair back and the small of his back, his pelvis rolled back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1180,23 +1185,23 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.0.before_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1494 characters
-- Day 1 as a morning and an evening: the product in place and no gap at either end of the day.
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1567 characters
+- Day 1 as a morning and a late afternoon: the product in place and no gap at either end of the day.
 - **note:** Both halves need the product photo. No panel is favoured; one grade across both.
 
 ```
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
 The same scene in both photographs of this pair: a North American man in his thirties in a light blue shirt at an office desk in a bright open-plan office, photographed from behind and to his right at seat height, framed from his shoulders to his knees, no face in frame, a monitor and a plant along the right edge.
 
 It is the first morning: he has just sat down on the product, the small of his back against its upright section.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1215,7 +1220,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.0.after_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 1506 characters
+- varies on: baseline · type version `1.10` · 1579 characters
 - Day 1 as the old way and the new: a gap behind his lower back, then none.
 - **note:** The before half has no product and needs no photo; the after half needs the product photo.
 
@@ -1223,15 +1228,15 @@ Nothing is placed in the bottom-right corner of the frame.
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
 The same scene in both photographs of this pair: a North American man in his thirties in a light blue shirt at an office desk in a bright open-plan office, photographed from behind and to his right at seat height, framed from his shoulders to his knees, no face in frame, a monitor and a plant along the right edge.
 
 He sits on the same chair with the product, the small of his back in full contact with its upright section, no gap anywhere.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1239,23 +1244,23 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.0.after_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1540 characters
-- Day 1 as a morning and an evening: the product in place and no gap at either end of the day.
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1616 characters
+- Day 1 as a morning and a late afternoon: the product in place and no gap at either end of the day.
 - **note:** Both halves need the product photo. No panel is favoured; one grade across both.
 
 ```
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
 The same scene in both photographs of this pair: a North American man in his thirties in a light blue shirt at an office desk in a bright open-plan office, photographed from behind and to his right at seat height, framed from his shoulders to his knees, no face in frame, a monitor and a plant along the right edge.
 
-It is the same day's evening, the office emptier and the light lower: he sits the same way, the small of his back still against the product's upright section.
+It is late afternoon the same day, the office emptier and the sun lower: he sits the same way, the small of his back still against the product's upright section.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1274,7 +1279,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.1.before_image` · option A — `04-proof-lockedframe` `--timelapse`
 
-- varies on: baseline · type version `1.18` · 1434 characters
+- varies on: baseline · type version `1.18` · 1479 characters
 - The start and the end of a working day: the same settled posture on the product both times.
 - **note:** Both halves need the product photo. No panel is favoured; one grade across both.
 
@@ -1282,15 +1287,15 @@ Nothing is placed in the bottom-right corner of the frame.
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a desk lamp on the desk.
+The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a potted plant on the desk.
 
-It is the morning, bright daylight at the window: she sits back on the product, settled, typing.
+It is the morning: she sits back on the product, settled, typing.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1298,20 +1303,20 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.1.before_image` · option B — `01-pain-split` `--mirror`
 
-- varies on: type: 01-pain-split · type version `1.10` · 856 characters
+- varies on: type: 01-pain-split · type version `1.10` · 948 characters
 - The same late hour twice: shifting on a bare chair, then still on the product.
 - **note:** The before half has no product; the after half needs the product photo.
 
 ```
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
-The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a desk lamp on the desk.
+The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a potted plant on the desk.
 
-It is the evening: she sits on the bare chair, shifted to its front edge, one hand pressed into her lower back.
+It is late afternoon: she sits on the bare chair, shifted to its front edge, one hand pressed into her lower back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1330,7 +1335,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.1.after_image` · option A — `04-proof-lockedframe` `--timelapse`
 
-- varies on: baseline · type version `1.18` · 1447 characters
+- varies on: baseline · type version `1.18` · 1522 characters
 - The start and the end of a working day: the same settled posture on the product both times.
 - **note:** Both halves need the product photo. No panel is favoured; one grade across both.
 
@@ -1338,15 +1343,15 @@ Nothing is placed in the bottom-right corner of the frame.
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a desk lamp on the desk.
+The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a potted plant on the desk.
 
-It is the evening, the lamp on and the window dark: she sits exactly as settled on the product, still typing.
+It is late afternoon, the sun lower at the window: she sits exactly as settled on the product, still typing.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1354,7 +1359,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.1.after_image` · option B — `01-pain-split` `--mirror`
 
-- varies on: type: 01-pain-split · type version `1.10` · 1441 characters
+- varies on: type: 01-pain-split · type version `1.10` · 1520 characters
 - The same late hour twice: shifting on a bare chair, then still on the product.
 - **note:** The before half has no product; the after half needs the product photo.
 
@@ -1362,15 +1367,15 @@ Nothing is placed in the bottom-right corner of the frame.
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a desk lamp on the desk.
+The same scene in both photographs of this pair: a North American woman in her forties in a cardigan at a home-office desk by a window, photographed from the side at seat height, framed from her shoulders to her knees, no face in frame, a mug and a potted plant on the desk.
 
-It is the evening: she sits back on the same chair on the product, settled, both hands on the keyboard.
+It is late afternoon: she sits back on the same chair on the product, settled, both hands on the keyboard.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1389,7 +1394,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.2.before_image` · option A — `04-proof-lockedframe` `--timelapse`
 
-- varies on: baseline · type version `1.18` · 1368 characters
+- varies on: baseline · type version `1.18` · 1434 characters
 - The product on the same seat on its first day and after a month of daily drives, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured; one grade across both.
 
@@ -1397,15 +1402,15 @@ Nothing is placed in the bottom-right corner of the frame.
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, flat overcast daylight.
+The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, bright daylight.
 
 It is the first day: the product sits new on the seat.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1413,20 +1418,20 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.2.before_image` · option B — `01-pain-split` `--oldway`
 
-- varies on: type: 01-pain-split · type version `1.10` · 819 characters
+- varies on: type: 01-pain-split · type version `1.10` · 898 characters
 - After a month: a flat pad squashed thin, against the product unchanged.
 - **note:** The before half has no product; the after half needs the product photo.
 
 ```
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
-The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, flat overcast daylight.
+The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, bright daylight.
 
 It is a month later: a flat foam pad on the seat has squashed thin and slid toward the front edge.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1445,7 +1450,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.2.after_image` · option A — `04-proof-lockedframe` `--timelapse`
 
-- varies on: baseline · type version `1.18` · 1437 characters
+- varies on: baseline · type version `1.18` · 1503 characters
 - The product on the same seat on its first day and after a month of daily drives, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured; one grade across both.
 
@@ -1453,15 +1458,15 @@ Nothing is placed in the bottom-right corner of the frame.
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, flat overcast daylight.
+The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, bright daylight.
 
 It is a month later: the product sits the same height and shape on the seat, a parking receipt tucked into the door pocket.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1469,7 +1474,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expect.items.2.after_image` · option B — `01-pain-split` `--oldway`
 
-- varies on: type: 01-pain-split · type version `1.10` · 1385 characters
+- varies on: type: 01-pain-split · type version `1.10` · 1451 characters
 - After a month: a flat pad squashed thin, against the product unchanged.
 - **note:** The before half has no product; the after half needs the product photo.
 
@@ -1477,15 +1482,15 @@ Nothing is placed in the bottom-right corner of the frame.
 Everyday photograph, natural and unposed, sharp. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, flat overcast daylight.
+The same scene in both photographs of this pair: the driver's seat of a family car seen through the open driver's door from standing height, the seat base and back filling the frame, a sunglasses case on the passenger seat, bright daylight.
 
 It is a month later: the product sits full and square on the same seat.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1501,7 +1506,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `uses.image` · option A — `03-use-grid`
 
-- varies on: baseline · type version `1.1` · 1733 characters
+- varies on: baseline · type version `1.1` · 1797 characters
 - Four seats in four places: an office chair, a car seat, a truck seat, a dining chair.
 - **note:** Needs the product photo. No label, chip or badge in any cell.
 
@@ -1509,7 +1514,7 @@ Nothing is placed in the bottom-right corner of the frame.
 Photographic grid of four equal cells in a 2×2, thin white gutters, no outer border.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Preserve it exactly in every cell, fitted to the seat, on a host seat clearly different from it in tone and material.
+Preserve it exactly in every cell, fitted to the seat, on a seat clearly unlike it in tone and material.
 
 Each cell shows a different seat the product serves, in its own place, with a different camera:
 
@@ -1517,15 +1522,15 @@ Top left: an office chair at a desk, photographed level from across the desk in 
 
 Top right: a car's driver's seat, photographed low from the open door in morning light.
 
-Bottom left: a truck cab's driver's seat on a long highway, photographed from the passenger side in flat afternoon light.
+Bottom left: a truck cab's driver's seat on a long highway, photographed from the passenger side in clear afternoon light.
 
-Bottom right: a wooden dining chair at a kitchen table, photographed from above under a warm ceiling light.
+Bottom right: a wooden dining chair at a kitchen table, photographed from above in afternoon sun.
 
 Nobody's face appears in any cell; where a person is present they are only a hand setting the product in place. All four cells share one photographic register.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1533,7 +1538,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `uses.image` · option B — `05-persona-grid` `--2x2`
 
-- varies on: type: 05-persona-grid · type version `1.6` · 1675 characters
+- varies on: type: 05-persona-grid · type version `1.6` · 1757 characters
 - Four sitters: a desk worker, a commuter, a long-haul driver, a gamer at home.
 - **note:** Needs the product photo.
 
@@ -1541,7 +1546,7 @@ Nothing is placed in the bottom-right corner of the frame.
 Clean lifestyle collage for e-commerce, bright, airy, sharp. Four equal cells, thin white gutters, no outer border, no graphic overlay of any kind.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Show it whole in every cell, on the seat under each person, on a host seat clearly different from it in tone and material.
+Show it whole in every cell, on the seat under each person, on a seat clearly unlike it in tone and material.
 
 The product is visible and unobstructed in every cell, in place on the seat, and every cell shares one photographic finish.
 
@@ -1551,13 +1556,13 @@ Top right: a North American man in his forties driving to work in morning light.
 
 Bottom left: a North American man in his fifties at the wheel of a truck on a highway.
 
-Bottom right: a North American man in his twenties at a gaming desk at home at night.
+Bottom right: a North American man in his twenties at a gaming desk at home by a sunny window.
 
 No two cells share a palette, a light or a posture; nobody looks at the camera.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1565,7 +1570,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `uses.image` · option C — `06-relief-hero` `--commercial`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1388 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1461 characters
 - Home: a woman relaxed at her dining table on a hard chair, the product under and behind her.
 - **note:** Needs the product photo. One place of the four, so the weakest reading of the list.
 
@@ -1573,13 +1578,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 28% of the frame height, on the hard dining chair under her and behind her lower back as one piece, seen from a side three-quarter angle, on a host seat clearly different from it in tone and material.
+Render it whole at about 28% of the frame height, on the hard dining chair under her and behind her lower back as one piece, seen from a side three-quarter angle, on a seat clearly unlike it in tone and material.
 
 A North American woman in her sixties sits back at her dining table in the afternoon, a book open in front of her, looking at the page rather than at the camera. Her back rests against the product's upright section along its whole length.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1638,7 +1643,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `expert.photo` · option C — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1295 characters
+- varies on: type: 03-spec-macro · type version `1.1` · 1348 characters
 - Two hands, no face: one on the lumbar curve, one on the seat base, pressing both at once.
 - **note:** Needs the product photo. Hands only, and no clinical dress (ADR-094).
 
@@ -1648,11 +1653,11 @@ Polished commercial studio macro photography, close range, razor sharp, high det
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
 The magnified region is a true region of the product: its upright section and its seat section together, same geometry, same material, same finish.
 
-Two hands in plain knit sleeves press the product at once, one on the curve of its upright section and one on its seat section, the surface resolved exactly as the photo shows it under raking light, holding its shape under both.
+Two hands in coral knit sleeves press the product at once, one on the curve of its upright section and one on its seat section, the surface resolved exactly as the photo shows it under raking light, holding its shape under both.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1688,7 +1693,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `safety.image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1447 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1590 characters
 - The same product on a commuter's car seat, new and after months of commutes, unchanged.
 - **note:** Needs the product photo. Handheld, because the halves are separated by time. Close in message to `expect.items.2`, so picking both repeats the type and the claim.
 
@@ -1696,14 +1701,16 @@ Nothing is placed in the bottom-right corner of the frame.
 Honest documentary product photography, unstyled, natural, sharp. Two equal panels packed across the frame with thin white gutters, no outer border.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole on the seat in both panels, the same unit, identical in both, on a host seat clearly different from it in tone and material.
+Render it whole on the seat in both panels, the same unit, identical in both, on a seat clearly unlike it in tone and material.
 
 One framing for both panels, stated once: a phone at standing height at the open driver's door of a hatchback, the seat filling the lower two thirds, the steering wheel at the upper right. It reads as one shot taken twice.
 
 The only thing that changes is the time: in the left panel the product is new on the seat; in the right panel, months of commutes later, it stands the same height and shape, a travel mug now in the cup holder.
 
-Grade: one neutral grade across both panels, no panel warmer or brighter.
+Both panels share one grade; neither is warmer or brighter.
 
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1711,7 +1718,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `safety.image` · option C — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1281 characters
+- varies on: type: 03-spec-macro · type version `1.1` · 1367 characters
 - The grip base pressed square on a leather seat, the stitching sharp beside it.
 - **note:** Needs the product photo.
 
@@ -1723,9 +1730,9 @@ The magnified region is a true region of the product: the edge of its base where
 
 Where the base meets a leather car seat, the surface is resolved exactly as the photo shows it under raking light, pressed flat and square to the leather, the seat's stitching sharp beside it.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1741,7 +1748,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `modes.items.0.image` · option A — `03-spec-macro`
 
-- varies on: baseline · type version `1.1` · 1335 characters
+- varies on: baseline · type version `1.1` · 1393 characters
 - The zone in close-up: its upright section's curve where it meets the small of a seated back.
 - **note:** Needs the product photo. No face in frame.
 
@@ -1751,11 +1758,11 @@ Polished commercial studio macro photography, close range, razor sharp, high det
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
 The magnified region is a true region of the product: its upright section's curve where it meets the small of a seated back, same geometry, same material, same finish.
 
-The small of a seated North American woman's back, in a knit sweater, rests into the curve, the curve filling the hollow of the lower spine with no gap, the surface resolved exactly as the photo shows it under raking light. No face is in the frame.
+The small of a seated North American woman's back, in a teal knit sweater, rests into the curve, the curve filling the hollow of the lower spine with no gap, the surface resolved exactly as the photo shows it under raking light. No face is in the frame.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1786,7 +1793,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `modes.items.0.image` · option C — `06-relief-hero` `--commercial`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1330 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1403 characters
 - The zone as a relaxed sitter at a desk, the posture showing it.
 - **note:** Needs the product photo. The weakest reading: a whole person for one zone.
 
@@ -1794,13 +1801,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 28% of the frame height, on her office chair under her and behind her lower back as one piece, seen from the side, on a host seat clearly different from it in tone and material.
+Render it whole at about 28% of the frame height, on her office chair under her and behind her lower back as one piece, seen from the side, on a seat clearly unlike it in tone and material.
 
 A North American woman in her thirties sits back at her desk, relaxed, looking at her screen rather than at the camera, seen from the side so that the product's support at the small of her back is plain.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1816,7 +1823,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `modes.items.1.image` · option A — `03-spec-macro`
 
-- varies on: baseline · type version `1.1` · 1353 characters
+- varies on: baseline · type version `1.1` · 1406 characters
 - The zone in close-up: its seat section around the base of a seated spine.
 - **note:** Needs the product photo. No face in frame.
 
@@ -1829,8 +1836,8 @@ The magnified region is a true region of the product: its seat section around th
 A seated North American woman in dark trousers, seen from behind and to the side, sits into the seat section, the hips cradled evenly and the base of the spine over the product's rear part, the surface resolved exactly as the photo shows it under raking light. No face is in the frame.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1861,7 +1868,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `modes.items.1.image` · option C — `06-relief-hero` `--commercial`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1343 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1416 characters
 - The zone as a relaxed sitter at a desk, the posture showing it.
 - **note:** Needs the product photo. The weakest reading: a whole person for one zone.
 
@@ -1869,13 +1876,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 28% of the frame height, on her office chair under her and behind her lower back as one piece, seen from the side, on a host seat clearly different from it in tone and material.
+Render it whole at about 28% of the frame height, on her office chair under her and behind her lower back as one piece, seen from the side, on a seat clearly unlike it in tone and material.
 
 A North American woman in her thirties sits back at her desk, relaxed, looking at her screen rather than at the camera, seen from the side so that the product's support at her hips and the base of her spine is plain.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1891,7 +1898,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `modes.items.2.image` · option A — `03-spec-macro`
 
-- varies on: baseline · type version `1.1` · 1316 characters
+- varies on: baseline · type version `1.1` · 1375 characters
 - The zone in close-up: the front of its seat section under a seated person's thighs.
 - **note:** Needs the product photo. No face in frame.
 
@@ -1901,11 +1908,11 @@ Polished commercial studio macro photography, close range, razor sharp, high det
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
 The magnified region is a true region of the product: the front of its seat section under a seated person's thighs, same geometry, same material, same finish.
 
-A seated North American woman's thighs, in grey trousers, rest along the front of the seat section, supported evenly to just behind the knees, the surface resolved exactly as the photo shows it under raking light. No face is in the frame.
+A seated North American woman's thighs, in denim-blue trousers, rest along the front of the seat section, supported evenly to just behind the knees, the surface resolved exactly as the photo shows it under raking light. No face is in the frame.
 
 Ground: a seamless warm-grey studio sweep with a soft floor shadow.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1936,7 +1943,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `modes.items.2.image` · option C — `06-relief-hero` `--commercial`
 
-- varies on: type: 06-relief-hero · type version `1.20` · 1332 characters
+- varies on: type: 06-relief-hero · type version `1.20` · 1405 characters
 - The zone as a relaxed sitter at a desk, the posture showing it.
 - **note:** Needs the product photo. The weakest reading: a whole person for one zone.
 
@@ -1944,13 +1951,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 28% of the frame height, on her office chair under her and behind her lower back as one piece, seen from the side, on a host seat clearly different from it in tone and material.
+Render it whole at about 28% of the frame height, on her office chair under her and behind her lower back as one piece, seen from the side, on a seat clearly unlike it in tone and material.
 
 A North American woman in her thirties sits back at her desk, relaxed, looking at her screen rather than at the camera, seen from the side so that the product's support at the backs of her thighs is plain.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1969,20 +1976,20 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.0.before_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 850 characters
+- varies on: baseline · type version `1.10` · 931 characters
 - Trevor M., long highway routes: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
 ```
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
-The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, flat afternoon daylight.
+The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, afternoon daylight.
 
 He sits on the bare seat, braced, one hand pressed into his lower back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -1990,7 +1997,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.0.before_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1425 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1493 characters
 - Trevor M., long highway routes: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -1998,15 +2005,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, flat afternoon daylight.
+The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, afternoon daylight.
 
 It is the first week: he sits settled on the product.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2025,7 +2032,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.0.after_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 1451 characters
+- varies on: baseline · type version `1.10` · 1519 characters
 - Trevor M., long highway routes: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
@@ -2033,15 +2040,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, flat afternoon daylight.
+The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, afternoon daylight.
 
 He sits on the same seat on the product, settled, both hands easy on the wheel.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2049,7 +2056,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.0.after_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1446 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1514 characters
 - Trevor M., long highway routes: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -2057,15 +2064,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, flat afternoon daylight.
+The same scene in both photographs of this pair: a phone photo from the passenger seat of a pickup truck's cab, a North American man in his fifties in a work jacket at the wheel, seen from the side, framed from his shoulders to his knees, no face in frame, a coffee cup in the holder, afternoon daylight.
 
 It is weeks later: he sits the same way, the product exactly where it was.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2084,20 +2091,20 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.1.before_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 788 characters
+- varies on: baseline · type version `1.10` · 867 characters
 - Claire W., donut cushions slid out: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
 ```
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
-The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, overcast daylight.
+The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, midday sun.
 
 A flat ring-shaped foam cushion has slid forward and hangs off the front edge of the seat.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2105,7 +2112,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.1.before_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1352 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1418 characters
 - Claire W., donut cushions slid out: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -2113,15 +2120,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, overcast daylight.
+The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, midday sun.
 
 It is the first day: the product sits flush against the back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2140,7 +2147,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.1.after_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 1358 characters
+- varies on: baseline · type version `1.10` · 1424 characters
 - Claire W., donut cushions slid out: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
@@ -2148,15 +2155,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, overcast daylight.
+The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, midday sun.
 
 The product sits in place on the same seat, flush against the back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2164,7 +2171,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.1.after_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1372 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1438 characters
 - Claire W., donut cushions slid out: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -2172,15 +2179,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, overcast daylight.
+The same scene in both photographs of this pair: a phone photo looking down at the driver's seat of a small car through the open door, the seat base and back filling the frame, a handbag on the passenger seat, midday sun.
 
 It is weeks later: the product sits exactly where it was, flush against the back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2199,20 +2206,20 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.2.before_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 819 characters
+- varies on: baseline · type version `1.10` · 920 characters
 - Jason R., eight hours at the desk: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
 ```
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
-The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the evening, framed from his shoulders to his knees, no face in frame, a monitor and a desk lamp in shot, warm lamplight.
+The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the late afternoon, framed from his shoulders to his knees, no face in frame, a monitor and a plant in shot, low sun through the blinds.
 
 He sits forward on the bare chair, one hand pressed into his lower back.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2220,7 +2227,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.2.before_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1394 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1484 characters
 - Jason R., eight hours at the desk: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -2228,15 +2235,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the evening, framed from his shoulders to his knees, no face in frame, a monitor and a desk lamp in shot, warm lamplight.
+The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the late afternoon, framed from his shoulders to his knees, no face in frame, a monitor and a plant in shot, low sun through the blinds.
 
-It is the first evening: he leans back on the product.
+It is the first afternoon: he leans back on the product.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2255,7 +2262,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.2.after_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 1415 characters
+- varies on: baseline · type version `1.10` · 1503 characters
 - Jason R., eight hours at the desk: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
@@ -2263,15 +2270,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the evening, framed from his shoulders to his knees, no face in frame, a monitor and a desk lamp in shot, warm lamplight.
+The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the late afternoon, framed from his shoulders to his knees, no face in frame, a monitor and a plant in shot, low sun through the blinds.
 
 He leans back on the same chair on the product, both hands on the keyboard.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2279,7 +2286,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.2.after_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1416 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1504 characters
 - Jason R., eight hours at the desk: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -2287,15 +2294,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
-The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the evening, framed from his shoulders to his knees, no face in frame, a monitor and a desk lamp in shot, warm lamplight.
+The same scene in both photographs of this pair: a phone photo from behind and to the side of a North American man in his thirties at a home-office desk in the late afternoon, framed from his shoulders to his knees, no face in frame, a monitor and a plant in shot, low sun through the blinds.
 
 It is weeks later, the same hour: he leans back on the product the same way.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2314,7 +2321,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.3.before_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 822 characters
+- varies on: baseline · type version `1.10` · 908 characters
 - Samantha L., seated higher behind the wheel: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
@@ -2325,9 +2332,9 @@ The same scene in both photographs of this pair: a phone photo from the passenge
 
 She sits low on the bare seat, her knees higher than her hips.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2335,7 +2342,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.3.before_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1428 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1501 characters
 - Samantha L., seated higher behind the wheel: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -2343,15 +2350,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
 The same scene in both photographs of this pair: a phone photo from the passenger seat of a hatchback, a North American woman in her thirties at the wheel seen from the side, framed from her shoulders to her feet, no face in frame, the door and the steering wheel in shot, morning daylight.
 
 It is the first morning: she sits on the product, her hips above her knees.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2370,7 +2377,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.3.after_image` · option A — `01-pain-split` `--mirror`
 
-- varies on: baseline · type version `1.10` · 1410 characters
+- varies on: baseline · type version `1.10` · 1483 characters
 - Samantha L., seated higher behind the wheel: the old way and the new, in the buyer's own phone photos.
 - **note:** The before half needs the product photo only where the product is in it; the after half needs it.
 
@@ -2378,15 +2385,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
 The same scene in both photographs of this pair: a phone photo from the passenger seat of a hatchback, a North American woman in her thirties at the wheel seen from the side, framed from her shoulders to her feet, no face in frame, the door and the steering wheel in shot, morning daylight.
 
 She sits higher on the product, her hips above her knees.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2394,7 +2401,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `testimonials.items.3.after_image` · option B — `04-proof-lockedframe` `--timelapse`
 
-- varies on: type: 04-proof-lockedframe · type version `1.18` · 1409 characters
+- varies on: type: 04-proof-lockedframe · type version `1.18` · 1482 characters
 - Samantha L., seated higher behind the wheel: the product in the first week and weeks later, unchanged.
 - **note:** Both halves need the product photo. No panel is favoured.
 
@@ -2402,15 +2409,15 @@ Nothing is placed in the bottom-right corner of the frame.
 A real person's phone photo, casual framing. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole in place on the seat, as the reference shows, on a host seat clearly different from it in tone and material.
+Render it whole in place on the seat, as the reference shows, on a seat clearly unlike it in tone and material.
 
 The same scene in both photographs of this pair: a phone photo from the passenger seat of a hatchback, a North American woman in her thirties at the wheel seen from the side, framed from her shoulders to her feet, no face in frame, the door and the steering wheel in shot, morning daylight.
 
 It is weeks later: she sits the same way on the product.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2426,7 +2433,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `faq.image` · option A — `06-relief-hero` `--commercial`
 
-- varies on: baseline · type version `1.20` · 1578 characters
+- varies on: baseline · type version `1.20` · 1651 characters
 - A driver seated a little higher on the product, a comfortable hand's width below the roof lining, hips above knees.
 - **note:** Needs the product photo.
 
@@ -2434,13 +2441,13 @@ Nothing is placed in the bottom-right corner of the frame.
 Commercial lifestyle photograph, a wide frame. One frame, no panels, no insets.
 
 Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
-Render it whole at about 25% of the frame height, on the driver's seat under him and behind his lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a host seat clearly different from it in tone and material.
+Render it whole at about 25% of the frame height, on the driver's seat under him and behind his lower back as one piece, seen from a rear three-quarter angle from the passenger side, on a seat clearly unlike it in tone and material.
 
 A North American man in his forties sits at the wheel of a compact car, both hands easy on the wheel, the top of his head a comfortable hand's width below the roof lining, his hips just above his knees, looking ahead through the windscreen rather than at the camera. His back rests against the product's upright section along its whole length. The left of the frame is the quiet passenger side.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
@@ -2468,7 +2475,7 @@ Nothing is placed in the bottom-right corner of the frame.
 
 ### `faq.image` · option C — `03-spec-macro`
 
-- varies on: type: 03-spec-macro · type version `1.1` · 1282 characters
+- varies on: type: 03-spec-macro · type version `1.1` · 1368 characters
 - The grip base pressed square on a leather seat — the FAQ's slide question.
 - **note:** Needs the product photo. Answers the third question rather than the first.
 
@@ -2480,9 +2487,9 @@ The magnified region is a true region of the product: the edge of its base where
 
 Where the base meets a leather car seat, the surface is resolved exactly as the photo shows it under raking light, pressed flat and square to the leather, the seat's stitching sharp beside it.
 
-Ground: a real, lived-in place in warm-neutral tones, nothing saturated behind the subject.
-Light: soft daylight from one side, gentle natural shadows, no rim light.
-Grade: bright, warm-neutral, true to life.
+Ground: a real, light, uncluttered place with a few clear colours; anyone there wears a clear, friendly colour, never beige.
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
 Nothing in the picture carries a word, a number, a label or a badge.
 No frame or border around any photograph or panel.
 Nothing is placed in the bottom-right corner of the frame.
