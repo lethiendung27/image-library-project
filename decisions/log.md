@@ -8265,3 +8265,82 @@ The rule-6c sweeps ran in a clean worktree at `ce29687` (hits / files / TEACHES)
 - **The other sections.** They are the owner's next steps, taken one section at a time.
 
 ---
+
+## ADR-104 · 2026-09-17 · A hero is a photograph in full colour, and its camera stands a few steps back: the owner fails `hero-01`'s colour
+
+**Owner report, 2026-09-17**, with four screenshots of three `hero-01` renders shown in the templates: *"audit các ảnh. màu sắc quá giả, không sống động, không thân thiện"* — audit the images; the colour is too fake, not vivid, not friendly.
+
+**What the renders show.** The harness read each screenshot. The raw files were not supplied, so the three render-test lines cite the screenshots' hashes.
+
+| prompt | template shown | placement | product | colourfulness, saturation |
+|---|---|---|---|---|
+| 1, WiBoofy, seated man | `wiboofy` | held | a white plug-in block with no antennas | 22.9, 0.18 |
+| 3, Hivefold, the control | `t1-deal` | lost: head at the top of the block, loaf at its bottom | a plain linen bag with no print | 26.8, 0.20 |
+| 6, TopLaser, standing woman | `aure-toplaser` | lost, as predicted: head cut at the top | a greige device, not the white one with its gold stripe | 27.1, 0.17 |
+
+**The references, measured the same way:**
+- the TopLaser product photo, 51.0 and 0.30;
+- Aure's own banner, 39.4 and 0.36.
+
+**The measure.** Colourfulness is Hasler and Süsstrunk's: under 33 is "slightly colourful" and 45–59 is "averagely". Saturation is mean HSV saturation over the crop right of the page's panel.
+
+**The cause is in the set's own lock.**
+- **The lock.** `hero-01` wrote *"Setting: a bright, lived-in home in daylight, pale walls, light wood, nothing saturated."*, *"Light: soft window light from the left, gentle shadows, no rim light."* and *"Grade: bright, neutral, true to life."* Its left-half sentence added *"bright and calm"*.
+- **Nothing named a colour to keep,** so every render came back as one beige note under shadowless light.
+- **G11 already said the opposite.** A resolved state is *"high-key: brighter, airier, full colour"*.
+- **So did the owner's feature-image instruction** (ADR-100), which asks for *"vivid color contrast"* and a tone that is *"bright, premium, realistic, and believable"*.
+- **Where "neutral" came from.** The session took it from the instruction's neutral lock, which names grounds, text and an accent, and read it as a grade.
+- **The products came back generic in all three.** That is how a render looks when the photograph is missing. The owner is asked to attach it and to drop the raw files into `feedback/`.
+
+### Decision
+
+1. **A hero is a photograph in full colour.**
+   - A session whose page has a hero writes its lock's light and grade in two fixed lines, for every image it emits:
+     - *"Light: bright, warm daylight from the left, with natural shadows and real contrast."*
+     - *"Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out."*
+   - The room keeps a few real colours, and a person wears a clear, friendly colour, never the room's beige.
+   - A person's expression is natural and relaxed, never a posed or exaggerated smile (the owner's instruction).
+2. **Neutral names the grounds, the text and the accent, never the grade of a photograph.** A real room is not a seamless: the quiet ground was measured on the outer ring of gallery tiles, and in a photographed room quiet means light and uncluttered, never drained.
+3. **The second hero sentence sets the camera back.** It now begins *"Seen from a few steps back, the group fills about half the picture's height"*, because two of the three renders put a face in the top fifth. The third sentence drops *"calm"*, and the first loses *"of the picture"*. The five sentences stay five, and the fifth still goes in only where a person is in frame.
+4. **The next set is `registry/pdp-dr-types/sets/hero-02/`**, owner-gated.
+   - **Scope.** Six prompts on the same four hero fields and the same products, because the owner asked for a test on the templates' own products. Every prompt has a person, following the owner's usage-first instruction.
+   - **Control.** Prompt 1, the seated construction whose placement held; it isolates the new light and grade.
+   - **Known risks.** The counter scene and the standing person.
+   - **Checks.** `check.py` passes the clean set, and `knownbad.py` catches 46 of 46, eight of them for this decision. The prompts run 1,686–1,759 characters.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `198ed16` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"in soft focus, bright and calm"` | 9 | 5 | 1 |
+| `"Together they fill about half"` | 9 | 5 | 1 |
+| `"lock names light from the left"` | 2 | 2 | 1 |
+| `"nothing saturated"` | 123 | 8 | 1 |
+| `"light neutral grounds"` | 2 | 2 | 1 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md`, in three places:
+  - the hero section's sentences, its colour paragraph and its record of `hero-01`;
+  - a sentence under the neutral lock;
+  - a paragraph closing the *Ground* section.
+- **These hits stand:**
+  - `query/sessions/pdp-dr-seat-cushion-l-shaped-v08/` (`198ed16`), whose hero options carry ADR-103's sentences. It is a record, and its next revision takes these.
+  - `registry/pdp-dr-types/03-mechanism-signal.md`'s `ground` paragraph, the one teaching hit for "nothing saturated".
+    - It quotes that phrase as the fault its own 0.2 wrote.
+    - Its measurement found contrast, not mean saturation, separating its references from its renders.
+    - The two findings agree that a flat frame fails. Whether colour also fails is measured here for the hero alone, and that file belongs to the other LP2 session.
+  - The sets that quote the old wording, which are records.
+- **Render tests:** three lines in `eval/render-tests.jsonl`, each with `verdict_by: owner`.
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md` and the manifest. Neither index moves.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render tests the new lines yet.** `hero-02` is the test.
+- **The raw `hero-01` renders are not on disk.** Their lines cite screenshots.
+- **Whether the other LP2 section images take the hero's light and grade lines is not decided.** The neutral-lock sentence already stops a drained grade anywhere, and the lines themselves bind only a session whose page has a hero.
+- **`06-relief-hero`'s own "High-key neutral grade (G11)" in `PARTS/setting` is unchanged.** It is the LP1 copy's wording, G11 governs it, and a re-copy would carry any change. The instruction now says what "neutral" may not mean on an LP2 page.
+
+---

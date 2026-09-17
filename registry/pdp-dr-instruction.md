@@ -143,6 +143,8 @@ neutral where it does not — and repeated in every prompt of that session **in 
 orange accent and warm grounds; the product stays what its photograph shows. Without a style
 line the lock is neutral — light neutral grounds, charcoal or warm-white text, one muted accent —
 because a writer who cannot see the product cannot choose colours to complement it.
+**Neutral names the grounds, the text and the accent, never the grade of a photograph.** A
+photographed room keeps its real colours, and a resolved state is full colour (G11, ADR-104).
 
 **Each field closes a fault the owner's own runs showed** — 64 renders of one cushion in five
 batches and 13 of one comb (ADR-094): a typeface the rest of the set did not use, 3 tiles; a
@@ -445,18 +447,43 @@ panel, and everything the image is about sits inside it:
 first four go in every prompt; the fifth goes in only where a person is in the frame:
 
 ```
-The product and anyone using it sit together in the right half of the picture, just past the centre and well clear of the right edge.
-Together they fill about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth.
-The left half continues the same place in soft focus, bright and calm, with nothing in it that matters.
+The product and anyone using it sit together in the right half, just past the centre and well clear of the right edge.
+Seen from a few steps back, the group fills about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth.
+The left half continues the same place, softly blurred and full of daylight, with nothing in it that matters.
 The product is big enough to recognise at a glance, never a small detail in the distance.
 Any person turns slightly toward the left side of the picture.
 ```
 
-The session's lock names light from the left. The prompt says where things sit and never states
-the frame's shape (ADR-016). A hero carries no words and no inset. It routes like any slot, by
-its section and its copy, with `06-relief-hero` first on this corpus (*Section routing*).
-**Untested:** the first set is `registry/pdp-dr-types/sets/hero-01/`, which the owner grades on
-the four templates themselves.
+**A hero is a photograph in full colour** (ADR-104). It shows a resolved state, so G11 asks for
+full colour. The owner's feature-image instruction asks for *vivid color contrast* and a tone that
+is *bright, premium, realistic, and believable*. So a session whose page has a hero writes its
+lock's light and grade in these words, for every image it emits:
+
+```
+Light: bright, warm daylight from the left, with natural shadows and real contrast.
+Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
+```
+
+- **The room keeps a few real colours** — plants, fruit, textiles.
+- **A person wears a clear, friendly colour**, never the room's beige.
+- **A person's expression is natural and relaxed**, never a posed or exaggerated smile (the
+  owner's instruction).
+
+**What `hero-01` measured** (ADR-104). Its lock said *pale walls*, *nothing saturated* and
+*Grade: bright, neutral*.
+- **Colour.** Its three renders scored 23–27 on the Hasler–Süsstrunk colourfulness scale,
+  against 39 for Aure's own banner and 51 for the TopLaser product photo. The owner called the
+  colour fake, dull and unfriendly.
+- **Placement.** The set held it for a seated person. It lost it for a person at a counter and
+  for a standing one: both put the face in the top fifth. That is why the second sentence now
+  sets the camera back.
+- **Products.** All three came back generic — no antennas, no printed bag, a greige device. Every
+  hero prompt needs its product photo attached.
+
+The prompt says where things sit and never states the frame's shape (ADR-016). A hero carries no
+words and no inset. It routes like any slot, by its section and its copy, with `06-relief-hero`
+first on this corpus (*Section routing*). The next set is `registry/pdp-dr-types/sets/hero-02/`,
+which the owner grades on the four templates themselves.
 
 **A pair shares one description.** A before-and-after pair fills two image fields, and every
 prompt is one call (ADR-021), so nothing but the words holds the two files together.
@@ -519,6 +546,14 @@ brand owns the colour, the room is the argument — and a type whose own tone is
 reason: `02-cause-anatomy`'s deep field, and `03-mechanism-*` where it takes one. **A seamless
 has a floor plane and a cast shadow, never a flat void, and an infographic never sits on pure
 white.**
+
+**A real room is not a seamless** (ADR-104). The quiet ground above was measured on the outer
+ring of gallery tiles. In a photographed room, quiet means light and uncluttered, never drained:
+- the room keeps its real colours, a few of them clear — plants, fruit, textiles;
+- the grade is G11's.
+
+`hero-01`'s lock asked for *pale walls* and *nothing saturated*, and every render came back
+beige. The owner called the colour fake, dull and unfriendly.
 
 ## Composition, scene and people
 
