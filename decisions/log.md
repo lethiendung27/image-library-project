@@ -7931,3 +7931,115 @@ Python:
 - **Criterion 3** now needs an owner pass or partial on a 0.3 render.
 
 ---
+
+## ADR-101 · 2026-09-17 · The owner's trial: `03-mechanism-signal`'s skeleton becomes the feature-image output format, and the LP2 product block leaves its prompts
+
+**Owner instruction, 2026-09-17**, after set 02 failed and 0.4 was committed (`42ebf6e`): *"hãy thử
+đặt skeleton giống output format của feature image txt, cho tôi bộ prompt cho các loại sản phẩm không
+rõ kết quả mà phải thể hiện qua mark"*. Try the skeleton in the feature-image instruction's output
+format, and give a set of prompts for kinds of product whose result cannot be seen and has to be
+shown with a mark.
+
+**What the output format is**, in `~/Downloads/feature image.txt` (ADR-100):
+- each prompt is one natural paragraph that starts directly with the image prompt, with no labels
+  or JSON;
+- the optional elements are human (none, a partial hand, a body, or a face where relevant) and pet
+  (only where relevant);
+- every prompt ends with its fixed sentence.
+
+It has no product block: the instruction's fidelity rules and that closing sentence carry the
+product.
+
+**Why the trial is worth running.** The owner makes the reference images with that format. Sets 01
+and 02 carried the LP2 product block, 466 characters of it, and both failed. In set 02 the block
+held nothing where no photo existed: two of four products were invented, one with a well-known
+brand's wordmark.
+
+### Decision
+
+1. **`03-mechanism-signal` 0.5: the SKELETON is the output format**, with the mark added. It is one
+   paragraph in seven steps:
+   1. the photograph, with the product by name;
+   2. the anchor;
+   3. the far end, large and sharp;
+   4. the mark in a sentence of its own;
+   5. the light and background;
+   6. the words and the corner;
+   7. the reference sentence.
+
+   The instruction's optional human and pet elements follow, then its closing sentence.
+2. **The LP2 product block leaves this type's prompts, as a trial.** G1's obligation stays in one
+   sentence just before the closing one: `Use the attached product photo as the exact reference.`
+   That is G1's first line and the block's first sentence. The closing sentence names what the rest
+   of the block named.
+3. **`registry/pdp-dr-instruction.md` names the exception** in the product section, in the
+   mandatory-block bullet and in its feature-image section. Every other LP2 prompt keeps the block.
+4. **Set `03-mechanism-signal-03`**, owner-gated and uncommitted, is written in the format.
+   - It covers six kinds of invisible result, one new product each, on named fields of the
+     `t1-deal` template:
+     - a two-way wireless link, translation earbuds, the control;
+     - a blocked scan, an RFID wallet;
+     - wireless charging, a 3-in-1 charger;
+     - a radio signal through water, pool lights;
+     - a fault traced along hidden wiring, a fault finder, the known risk;
+     - a scent, rodent repellent, the boundary case, since a scent is not a signal.
+   - The prompts run 1,179–1,333 characters.
+   - `check.py` passes the clean set, and `knownbad.py` fires 42 of 42.
+   - The two runs caught two checker defects before the checker was believed:
+     - the charger's far-end earbuds were flagged as the product's parts;
+     - the far end's word "wire" was satisfied by "wires" elsewhere, so it is now a phrase.
+
+### What the trial does not change
+
+- **G1 keeps its obligation**, in one sentence.
+- **No words outside the gallery** (ADR-096). The set's gallery tile is a wordless one.
+- **G6.** A far end's screen shows a photograph or is dark.
+- **G2.** The product is named and placed, never described.
+- **The quiet ground** (ADR-068) and every other LP2 type's product block.
+- **The TRIGGER.** It still names a signal. The scent frame tests whether it should widen.
+
+### Reversals
+
+- **ADR-100's "the LP2 product block stays"**, for this type, on trial.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `01870f6` (hits / files / TEACHES), counted with
+Python:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"product block is mandatory"` | 2 | 2 | 1 |
+| `"product block"` | 43 | 16 | 10 |
+| `"LP2 product block"` | 4 | 2 | 1 |
+| `"a signal the product sends or senses"` | 7 | 5 | 3 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-mechanism-signal.md`, 0.5.
+- **Amended:** `registry/pdp-dr-instruction.md`, in three places, and `README.md`'s ADR count.
+- **These hits stand:**
+  - `query/runbook.md`, "opens with that namespace's product block instead of G1's". It is true of
+    every prompt QUERY writes for LP2. This type is reserved and QUERY never writes its prompts,
+    so its promotion diff owes the runbook a line.
+  - `registry/argument-faults.md`, A15's LP2 paragraph on a product's printing. For this type the
+    reference and closing sentences keep the printing to the photograph.
+  - `07-identity-pack`, the toplist instruction, `mapping/toplist-rules.md` and the toplist ledes:
+    their own prompts, or another namespace.
+  - "a signal the product sends or senses", in the instruction's type map and in
+    `vocabulary.yaml`'s `signal` device. The trigger does not move until the boundary case
+    renders.
+  - Adapter Rule 6's LP2 paragraph, which is still true.
+- **Generated:** `dist/app-bundle/` rebuilds the instruction. Neither index moves, because the type
+  is reserved.
+- `registry_version` unchanged.
+
+### What is NOT done
+
+- **No render of 0.5.**
+- **No photo of set 03's six products is on disk.** The owner attaches them, or the renderer
+  invents the products again.
+- **The owner's own feature-prompt outputs are still unseen.** The format is taken from the
+  instruction's text.
+- **If the trial fails**, a new ADR brings the block back. If it passes, whether other LP2 types
+  take the format is the owner's to decide.
+
+---

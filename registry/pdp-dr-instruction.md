@@ -200,7 +200,9 @@ across one batch of twenty, in pink and in grey inside another of eleven, the co
 in pink. The sixth batch was seven tiles long.
 
 **The product block, in these words.** On an LP2 page it takes the place of G1's block and keeps
-every G1 obligation, and G1's "do not redesign" sentence stays in it word for word:
+every G1 obligation, and G1's "do not redesign" sentence stays in it word for word. One type
+leaves it out: `03-mechanism-signal`, on the owner's trial of the feature-image output format
+(ADR-101).
 
 ```
 Use the attached product photo as the exact reference. Preserve its shape,
@@ -538,7 +540,9 @@ itself — the owner records an invented "Dr. L. Chen" rendering an Asian face, 
   label or badge (ADR-096).
 - **The product block is mandatory** in every prompt with the product in frame — this
   namespace's form of G1, in the words the product section above fixes, with its two conditional
-  sentences wherever their case exists.
+  sentences wherever their case exists. **One exception, on trial:** `03-mechanism-signal` follows
+  the owner's feature-image output format and carries G1 in one sentence, `Use the attached product
+  photo as the exact reference.`, before the instruction's closing sentence (ADR-101).
 - **G2 limits the PRODUCT slot to four kinds of information** — position, angle, scale in
   frame, and relation to other objects. Not shape, not material, not colour, not
   construction, not an aesthetic adjective. The reference photo carries appearance; the
@@ -689,11 +693,16 @@ seconds.
   closing sentence word for word.
 
 **Where it binds today:** `03-mechanism-signal`, from 0.3, whose `PARTS/form` carries the
-closing sentence. Adapter Rule 6 names the exception to its slot form.
+closing sentence. Adapter Rule 6 names the exception to its slot form. **From 0.5 that type's
+skeleton IS the instruction's output format**, on the owner's instruction *"hãy thử đặt skeleton
+giống output format của feature image txt"* (ADR-101).
+
+**What it changes, on trial, for that type alone:** the product block leaves the prompt. G1's
+obligation stays in one sentence, `Use the attached product photo as the exact reference.`, just
+before the closing sentence, which carries the rest of the fidelity.
 
 **What it does not change here:**
-- The product block in this file's product section stays in every prompt, just before the
-  closing sentence.
+- The product block stays in every other LP2 prompt.
 - The ground stays light by default. The frame's contrast comes from light and focus.
 - Only the product card's gallery carries words (ADR-096).
 - G6 keeps interface text off every screen, and G2 keeps construction words out of the prompt.
