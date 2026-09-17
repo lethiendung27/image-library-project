@@ -228,6 +228,11 @@ waste came from four repeatable mistakes, so the rules are mechanical:
    `[ADVOCATE]`, not `SCENE right 58%:`, per Rule 1b. Slot form was never what leaked; the
    label was, and frame share belongs in the block body.
 
+**One LP2 exception** (ADR-100, owner instruction 2026-09-17). `03-mechanism-signal` is written
+as one natural paragraph with no labels, in the form of the owner's feature-image instruction,
+and it ends with that instruction's closing sentence. Rule 1b still binds inside the paragraph:
+it says where a thing is and never names a region. Every other type keeps slot form.
+
 Reference numbers from that set: a GIF-inset prompt lands at ~1450-1600 characters and
 ~225 words. A prompt past ~2500 characters should be re-read for a duplicated block.
 

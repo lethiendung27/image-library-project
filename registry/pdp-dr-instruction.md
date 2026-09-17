@@ -668,6 +668,38 @@ class the page describes, X-ray only with named components, nothing drawn on the
 surface, one variant to a set; Cause Anatomy — the product absent or a silhouette; every chip in
 the lock's form.
 
+## The owner's feature-image instruction — 2026-09-17
+
+**Owner instruction, 2026-09-17** (ADR-100): the first five renders of `03-mechanism-signal` were
+*"cực kì tệ"* — extremely poor — next to the reference images, and the owner pointed this
+namespace at `~/Downloads/feature image.txt`, the owner's generator for LP2 feature images, *"để
+học cách viết prompt cũng như cấu trúc skeleton của type"*: to learn from it how to write the
+prompt and how to structure the type's skeleton.
+
+**What the instruction asks for:** a contextual, usage-first photograph that reads in three
+seconds.
+- The product is in use or installed, the visual anchor, whole and unobstructed, in a real place
+  that explains why it matters.
+- The light is bright and contrast-driven, and the product separates clearly from its
+  background.
+- Hands or a person appear where they explain the use. Faces are allowed where relevant and
+  never pose. Pets appear only where the product serves them.
+- No decorative props, no product set out for display, and no text overlays.
+- The prompt is one natural paragraph with no labels, and it ends with the instruction's
+  closing sentence word for word.
+
+**Where it binds today:** `03-mechanism-signal`, from 0.3, whose `PARTS/form` carries the
+closing sentence. Adapter Rule 6 names the exception to its slot form.
+
+**What it does not change here:**
+- The product block in this file's product section stays in every prompt, just before the
+  closing sentence.
+- The ground stays light by default. The frame's contrast comes from light and focus.
+- Only the product card's gallery carries words (ADR-096).
+- G6 keeps interface text off every screen, and G2 keeps construction words out of the prompt.
+
+**Not decided:** whether the other types that fill section fields take the same form.
+
 ## What the 157-image corpus measured — 2026-09-11
 
 Ten sources, 156 records, batches A–J. The whole PDP corpus now stands at **315 records, 36

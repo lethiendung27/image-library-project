@@ -7790,3 +7790,144 @@ The rule-6c sweeps ran in a clean worktree at `6fcd3c4` (hits / files / TEACHES)
   fix if it is ever routed there.
 
 ---
+
+## ADR-100 · 2026-09-17 · The owner fails `03-mechanism-signal`'s founding round, and the owner's feature-image instruction rewrites its skeleton: one paragraph, the product as the anchor, a glowing signal
+
+**Owner instruction, 2026-09-17,** after the harness had graded set `03-mechanism-signal-01` five
+partial (`69690b0`): *"các ảnh của type mới có chất lượng cực kì tệ nếu mang ra so sánh với ảnh
+tham chiếu. tham khảo '/Users/lethiendung/Downloads/feature image.txt' để học cách viết prompt cũng
+như cấu trúc skeleton của type"*. Next to the reference images, the new type's images are extremely
+poor, and the type should learn from the owner's feature-image instruction both how to write its
+prompts and how to structure its skeleton.
+
+**What was read before anything was written:**
+- **The instruction.** `~/Downloads/feature image.txt`, saved 11:16, 7,225 bytes, sha256
+  `f469834f2d48`. It is the owner's generator for LP2 feature images: contextual, usage-first
+  photographs with a three-second hook. It sets the product as the visual anchor, in use or
+  installed. It asks for bright, contrast-driven light, a real place that explains the use, hands
+  or a person where they explain it, and no props, passive placement or text overlays. Its prompt
+  is one natural paragraph with no labels, ending with a fixed sentence.
+- **The references.** The seven ClikTric feature images the owner named, in `stills/`, and the
+  six example assets of the WiBoofy template, all opened. Two of the ClikTric images draw a signal:
+  lp00412 feature 4 and lp00132 feature 3.
+- **The five renders** of set 01, opened again beside the two.
+
+**What the comparison measured.** Product boxes were read by eye from the full-size files, and
+contrast is the standard deviation of luminance over 255:
+
+| | product's share of the frame | product's height | contrast | mean saturation |
+|---|---|---|---|---|
+| lp00412 feature 4 | 7.8% | 0.26 | 0.265 | 0.159 |
+| lp00132 feature 3 | 25.3% | 0.46 | 0.275 | 0.239 |
+| set 01, five renders | 1.6%–3.2% | 0.20–0.27 | 0.147–0.206 | 0.119–0.214 |
+
+- **The product was too small to be the anchor.** It stood far off in a wide room, with nobody
+  using it.
+- **The frame was flat.** The fault is light and focus, not colour: saturation did not separate
+  the renders from the references.
+- **The marks were thin and flat**, where the references' arcs and arrows glow.
+
+Every one of these faults was written into the prompts. Set 01's lock asked for the product at
+25–30% of the frame height in a whole room, for "soft daylight", a "neutral" grade and "nothing
+saturated", and for marks "thin, clean and one clear blue".
+
+### Decision
+
+1. **The owner's verdict is recorded**: five correction records in `eval/render-tests.jsonl`,
+   `verdict: fail`, `verdict_by: owner`. They supersede the harness's partials, which stay on the
+   record.
+2. **`03-mechanism-signal` 0.3**, rewritten on the instruction:
+   - `PARTS/form`: one natural paragraph, the LP2 product block just before the owner's closing
+     sentence, the signal in a sentence of its own, no region named;
+   - `PARTS/opening`: the camera, the person and the place in the first sentence, and a layout
+     from the instruction's three;
+   - `PARTS/anchor`: the product in use or installed, the nearest, largest and sharpest object in
+     the frame, whole, at about 40% of the frame height;
+   - `PARTS/ground`: light in tone, softly out of focus, under directional daylight;
+   - `MARKS/signal`: bold, luminous, soft-edged glow of one form, blue shading toward cyan;
+   - the NEGATIVE gains the four faults above;
+   - the failed worked example is dropped, and KNOWN-FLAKY keeps 0.2's observations as things to
+     check again.
+3. **Adapter Rule 6's slot form gains one LP2 exception**, for this type. Rule 1b still binds
+   inside the paragraph.
+4. **`registry/pdp-dr-instruction.md` gains a section** that names the instruction, what it asks
+   for, where it binds, and what it does not change: the product block, the quiet ground, words
+   only in the gallery, G6 on screens and G2.
+5. **Set `03-mechanism-signal-02`**, owner-gated and uncommitted, tests 0.3.
+   - Five products no signal set has used, each on a named field of the owner's
+     `t1-deal-final-product-type 2` template, with the brief's own words:
+     - the M3 Bluetooth speaker, the control;
+     - the tri-mode mouse;
+     - the remote booster fan;
+     - the solar camouflage camera, a gallery tile;
+     - the circuit-breaker finder, the known risk.
+   - The prompts run 1,655–1,784 characters.
+   - `check.py` passes the clean set, and `knownbad.py` fires 45 of 45.
+   - The known-bad run caught one checker defect. The gallery title's word "phone" was standing in
+     for a far end that a mutation had removed, so the checker now strips quoted words before its
+     word checks. The run also caught one mutation that removed the wrong sentence.
+
+### What the instruction does not override, and why
+
+- **The LP2 product block stays.** It is namespace law, and it is G1's form here. The
+  instruction's closing sentence is added after it, not in its place.
+- **The ground stays quiet by default.** ADR-068 measured the market's ground as light and
+  nearly colourless, and both references keep a light ground. Their contrast comes from light,
+  focus and the marks.
+- **No words outside the gallery.** The references carry captions and platform marks; ADR-096
+  keeps those off section images.
+- **G6.** lp00412 feature 4 draws an app on its phone, and a generated frame still may not.
+- **G2.** The instruction keeps the product's form to the photograph, which is G2's own point, so
+  the prompt still names no part.
+
+### Reversals
+
+- **Adapter Rule 6, item 4, for one type:** slot form → one natural paragraph.
+- **`03-mechanism-signal` 0.2's register:** a quiet photograph with a small product and thin flat
+  marks → an editorial photograph with the product as the anchor and glowing marks.
+- **The harness's five partials** → the owner's five fails.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `a8e40b6` (hits / files / TEACHES), counted with
+Python:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"slot form"` | 11 | 5 | 2 |
+| `"prose"` | 124 | 59 | 25 |
+| `"thin, clean"` | 1 | 1 | 1 |
+| `"one clear blue"` | 2 | 1 | 1 |
+| `"nothing saturated"` | 3 | 3 | 1 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-mechanism-signal.md`, the one teaching file for
+  "thin, clean", "one clear blue" and "nothing saturated".
+- **Amended:**
+  - `adapters/nano-banana.md`, Rule 6: the LP2 exception after item 4;
+  - `registry/pdp-dr-instruction.md`: the new section;
+  - `README.md`: the ADR count, regenerated.
+- **These hits stand:**
+  - "slot form" in `registry/toplist-instruction.md`, which is "slot format", another sense;
+  - every other "prose" in a teaching file, each in another sense: a brief's prose, a
+    field's prose, a GIF brief written as one paragraph, a warning against longer prose in a
+    NEGATIVE, "describe each panel in prose". `01-pain-scene`'s "a mark buried in prose is the
+    one that vanishes" agrees with 0.3, whose signal gets a sentence of its own;
+  - the decision log and the render ledger, which are records.
+- **Generated:**
+  - `dist/app-bundle/` rebuilds the adapter and the instruction;
+  - neither index moves, because the type is reserved.
+- `registry_version` unchanged.
+
+### What is NOT done
+
+- **No render tests 0.3.** Set 02 waits on the owner.
+- **The WiBoofy page's own five fields** still have no passing image. Set 02 uses new products by
+  the standing rule, so a WiBoofy re-render under 0.3 is a page delivery for the owner to ask for.
+- **Whether the renders of set 01 had the product photo attached** is still unknown.
+- **Other types that fill section fields** do not take the instruction's form. The owner named
+  this type, and a wider move is the owner's to decide.
+- **The instruction lives outside the repo**, as the gallery instruction does (ADR-094), and is
+  cited by path and hash.
+- **Criterion 3** now needs an owner pass or partial on a 0.3 render.
+
+---
