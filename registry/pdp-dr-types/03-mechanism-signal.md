@@ -3,7 +3,7 @@ id: 03-mechanism-signal
 step: 3
 job: mechanism
 device: signal
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 1: four distinct sources of the five SPEC 6.3 asks. Criterion 2, the router-confusion test against 03-mechanism-contact and 03-use-grid, is unrun. Criterion 3 has no render."
+blocked_by: "Criterion 1: four distinct sources of the five SPEC 6.3 asks. Criterion 2, the router-confusion test against 03-mechanism-contact and 03-use-grid, is unrun. Criterion 3 now has five renders, all partial, but every verdict is the harness's own and ADR-011 excludes those from promotion."
 ---
 
 # 03-mechanism-signal — PDP-DR DRAFT
@@ -27,6 +27,11 @@ source short.** Drafted on the owner's instruction of 2026-09-17: the owner reje
 that proved a Wi-Fi extender's reach with a lineup of product photos, and named two ClikTric
 pages whose feature images draw the invisible instead. Every frame below was opened and
 looked at before this file was written (ADR-092's discipline).
+
+**Founding round rendered 2026-09-17** — five prompts on the owner's WiBoofy template, all five
+partial, graded by the harness under ADR-011. The drawn layer held. Each failure is a single
+instance and sits in `KNOWN-FLAKY`, except the product's identity, whose cause the round did not
+record.
 
 | source | frame | what is drawn | the far end | the product |
 |---|---|---|---|---|
@@ -89,7 +94,7 @@ use_when: >
 A call-map. Each arrow names an entry in PARTS or MARKS; the definition lives there once.
 
 ```
-TYPE: 03-mechanism-signal v0.1
+TYPE: 03-mechanism-signal v0.2
 REGISTER: a photograph of the product and what it reaches, the signal drawn over it. -> PARTS/register
 
 [PRODUCT REFERENCE]  the attached photo is the exact reference.       -> the LP2 product block
@@ -115,24 +120,33 @@ installed position (G7-X): a plug-in unit sits in a wall socket. The marks leave
 that sends — an antenna, a lens, a sensor face — and **never start on the product's surface or
 cover it**. The owner's runs painted a diagram onto the product 4 times (ADR-094). Of the 9
 frames here with the product in them, 8 keep the marks beside the body; pawdi-06 lights the
-camera itself red.
+camera itself red. **Rendered 2026-09-17:** the unit was plugged in 4 of 5, and no mark crossed
+its face in any of the five. The one mark that touched it was a band the prompt had asked to be
+broad (`KNOWN-FLAKY`).
 
 **`far-end`** — what the signal reaches, and only what the page names: a television, a phone, a
 room, a lock, a person, the contents of a wall. It is in frame and legible, **and it shows the
 result by itself** — the television playing, the room in use, the lock lit. It never shows the
 result as a notification or as interface text. Four of the ten used a phone screen for the
-result, and a generated frame cannot.
+result, and a generated frame cannot. **Rendered 2026-09-17:** a film on a television and a
+photograph on a phone stayed pictures, and a football match brought its score graphics, 1 of 3
+screens (`KNOWN-FLAKY`).
 
 **`barrier`** — only where the copy's claim is passing THROUGH something: a wall, a floor, a
 door. The barrier is cut open as a window, so the path is seen crossing it, and the cut shows the
 layers the page names and nothing deeper. snapi-stud cut the wall both times it made this
-claim, and no frame in the corpus drew it on a closed wall.
+claim, and no frame in the corpus drew it on a closed wall. **Rendered 2026-09-17, and neither
+cut read as damage, 0 of 2.** A cut asked for as the end of the wall the product hangs on read as
+a clean section the arcs cross, 1 of 1. A cut asked for in a wall down the hallway came back as a
+brick recess the rings run past, 1 of 1 (`KNOWN-FLAKY`).
 
 **`path`** — a parameter, and the copy picks it:
 - `arcs` — nested arcs leaving the sending part. Reach and emission, 3 of 10.
 - `line` — a dotted or solid path from the source to the far end. A link or a transfer, 2 of 10.
 - `rings` — concentric rings around the source, for coverage of a space. snapi-18 is the only
   instance, and it is counted with the arcs above.
+- **Each form rendered as it was named, 5 of 5** (2026-09-17): the line in two frames, the arcs
+  in two, the rings in one.
 
 **`ground`** — the real place the claim is about: a hallway, a living room, a desk. It is quiet
 in value and colour, so the drawn signal is the strongest colour in the frame.
@@ -141,7 +155,7 @@ in value and colour, so the drawn signal is the strongest colour in the frame.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `signal` | clean flat marks of one family — arcs, rings, or a dotted line — beside the product and running to the far end, fading only where the copy argues loss | one clear blue (G3: working) | one family per frame | 10 of 10 draw one; blue on 7 |
+| `signal` | clean flat marks of one family — arcs, rings, or a dotted line — beside the product and running to the far end, fading only where the copy argues loss | one clear blue (G3: working) | one family per frame | corpus 10 of 10, blue on 7 · 5 renders, one family and one blue in all five, no bar or figure |
 
 - **One family, one colour.** snapi-stud's arcs, pawdi-11's sight line and ClikTric's arrows each
   keep to one family. pawdi-cas's detection frames stack brackets, sirens and notifications into
@@ -153,13 +167,16 @@ in value and colour, so the drawn signal is the strongest colour in the frame.
 
 ## SLOT CONSTRAINTS
 - **The prompt budget** (ADR-013, ADR-015): a clause earns its place only after a render failed
-  without it. **This file has no render**, and every clause above is derived from the corpus.
+  without it. Every clause above is derived from the corpus. The founding round (2026-09-17)
+  added none, because each failure it showed is a single instance.
 - **Words.**
   - In the product card's gallery: a title of 2–5 words saying what the signal does, in the
     buyer's words.
   - One 1–3 word label beside the far end, only where the far end is not obvious; it counts as
     the tile's chip.
   - Outside the gallery, no words at all (ADR-096).
+  - Rendered 2026-09-17: the gallery title came back exact and once, 1 of 1, and the four
+    section images carried no words.
 - **G6 on screens.** A television or a phone at the far end may show a picture — a film scene,
   a photograph — but never interface text, notifications, bars or numbers.
 - **A15.** No figure on the signal. A figure the page supplies belongs in a gallery tile's
@@ -179,6 +196,32 @@ red or green signal marks, marks painted on the product, a rainbow gradient, lig
 a second product, the product floating, a closed wall with marks drawn on its paint
 ```
 
+## WORKED EXAMPLES
+The control of the founding round, kept in full text because that text is the only record of
+what rendered (SPEC §3.3). The verdict is the harness's own (ADR-011), so it cannot serve SPEC
+§6.3(3).
+
+### example: wiboofy-router-link — skeleton@0.1, run: partial
+```
+Photograph of a home network link, one frame, no panels, no insets, no words.
+
+Use the attached product photo as the exact reference. Preserve its shape, proportions, construction, seams, surface texture, finish and colour exactly. Do not redesign, restyle, simplify or add features. The product appears in one of its real colourways only, never restyled to match the scene or the set palette; no added piping, trim, logos, patterns or printed text. Every part keeps its photographed colour and finish; no part is tinted toward the set's accent.
+Render it at 30% of the frame height, plugged into a wall socket right of centre at mid height in a hallway, seen from a front three-quarter angle at waist height.
+
+On a small shelf at the left stands a plain, unbranded grey home router. One dotted line runs level from the router to the product and ends at the product's edge.
+
+Setting: a bright European flat in daylight, pale walls, light oak floors, plain furniture, nothing saturated.
+Light: soft daylight from the left, gentle shadows, no rim light.
+Grade: bright, neutral, true to life.
+Every drawn mark is thin, clean and one clear blue, stays beside the product and never on it, and nothing else in the picture is drawn.
+Any screen shows only a picture, with no interface, text or numbers.
+Nothing in the picture carries a word, a number, a label or a badge.
+Nothing is placed in the bottom-right corner of the frame.
+```
+The line path at its simplest: two objects, one level dotted line, no barrier. The drawn layer
+held exactly: the line runs from the router's lit light to the unit's edge, and nothing else is
+drawn. The render is partial only because the unit is not the page's extender (`KNOWN-FLAKY`).
+
 ## BLOCK
 **Criterion 1 is one source short**: snapi-stud, pawdi-cas, ezy-talux and cliktric, of the five
 SPEC §6.3 asks. The fifth should be a device that reaches a place rather than a person: a
@@ -196,17 +239,39 @@ It also borders two proposals with no file:
 - `04-proof-interface`, where the argument is a reading on a screen, which this type never
   draws.
 
-**Criterion 3 has no render.** The first set is written on the fields the owner's WiBoofy
-template names, and it waits on the owner.
+**Criterion 3 has five renders and no owner verdict.** The founding round,
+`sets/03-mechanism-signal-01/`, rendered 2026-09-17 on the fields the owner's WiBoofy template
+names: five partial, every verdict the harness's own, which ADR-011 excludes from promotion.
 
 ## KNOWN-FLAKY
-- **Nothing observed.** No prompt, no render.
-- **Predicted from the corpus, and the first things a set should check:**
-  - whether a drawn signal stays off the product's surface;
-  - whether a cut-open wall reads as a window rather than as damage;
-  - whether a far-end screen stays free of interface text.
+Five renders, 2026-09-17, set `03-mechanism-signal-01`.
+- **The product was not the page's product, 5 of 5.** No render drew the extender's antennas or
+  its WPS button, which the template's own product photo shows, and the five bodies differ from
+  each other. The round did not record whether the photo was attached, so, as with
+  `07-identity-pack` (ADR-095), this is not evidence against the product block. The next round
+  records the attachment.
+- **Not installed, 1 of 5.** One unit hung on the wall above an empty socket, although the prompt
+  plugged it in.
+- **A broad path read as a cable, 1 of 1.** Asked to differ from a fine dotted path by width, a
+  broad solid path came back as a thick band bent at right angles, and its end rested on the
+  product. The prompt had asked for width against the `signal` mark's "thin". Two paths that
+  differ by dash alone, both thin, are untested.
+- **A sports broadcast brought its graphics, 1 of 3 screens.** A football match came back with a
+  score bar. A film and a phone photograph stayed clean under the same screen sentence.
+- **A cut asked for down the hallway became a brick recess, 1 of 2 cuts.** The rings ran past it
+  rather than through it, so nothing in the frame caused the fade.
+- **At the problem block's display width the source was lost, 1 of 1.** Shown 208 px wide, the
+  router at the far end of the hallway is a speck, and the product reads as the centre of a
+  target.
+- **Struck, because it did not occur** (`eval/render-test.md` §5): a cut-open wall read as
+  damage, 0 of 2. The other two predictions are now observed above.
 
 ## CHANGELOG
+- 0.2 (2026-09-17): **founding round — five renders, all partial** (render-test ts 2026-09-17,
+  the WiBoofy extender on five template fields). The drawn layer held: one family and one blue in
+  all five, each path form as named, no mark across the product, words only in the gallery tile.
+  No clause added, since each failure is a single instance: six entries in KNOWN-FLAKY, one
+  prediction struck. The control is a worked example, harness-graded.
 - 0.1 (2026-09-17): drafted from ten observations across four distinct sources: pawdi-cas,
   snapi-stud and ezy-talux in batches 2026-09-03-H, 2026-09-11-I and -J, and cliktric in
   2026-09-17-A, all ten opened first. Tier 2 at three sources in `_CURATION-2026-09-11.md`, and the owner's ClikTric
