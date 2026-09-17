@@ -1,0 +1,384 @@
+{
+  "product": {
+    "name": "Ergonomic Memory Foam Seat Cushion",
+    "category": "home",
+    "specification": "One-piece continuous L-shaped structure whose seat base and lumbar backrest are a single moulded unit · high-density slow-rebound memory foam core · textured non-slip grip base requiring no straps or buckles · spinal contour shaped to the lower back curve · moves between car seat, office chair, gaming seat, wheelchair and hard dining chair. Seats the user measurably higher, and feels firm for the first days before contouring. Not designed for deep bucket racing seats with aggressive side bolsters. Dimensions, weight, foam density and cover material to be supplied by the manufacturer.",
+    "reference_photos": [
+      "sha256:0ee3fb64a6db0ec6d1ca1dda34f1d2c68a8da198d2630b6260ddbaa17a3504df",
+      "sha256:3fbfa505d29c9c21aa453a905df40f82eab8818d3172cd6986dbc1757e1fb46e",
+      "sha256:006bf1403873e32cb4604ad28b0ea714d3dfd396228f49ead8c3d778f17857a7",
+      "sha256:b88c203bc1d12c01f7a41f567ab3ca235b7550350adc87983efeadf43d6e1a68",
+      "sha256:624e6f82eed15c60b0a8f965a7fbb998e3a6183330b3a194eaf0254a332b4f07",
+      "sha256:6d75e2b27e5bd65d4dc3d58e55a70679f155068b39a0cc0dae2cb848c683916a"
+    ],
+    "attributes": {
+      "operation": "passive",
+      "visible_output": "none",
+      "mounting": "freestanding",
+      "colorways": [
+        "black"
+      ],
+      "body_contact": true,
+      "symptom_visibility": "visible",
+      "result_visibility": "on-body",
+      "multi_step_usage": false
+    },
+    "problems_solved": [
+      "Lower back and hip pain that arrives on a schedule — mid-afternoon at the desk, or on the drive home",
+      "Hips locking solid after a drive, so standing up needs another person or a door frame to lean on",
+      "Car and desk seats angle backward, dropping the hips below the knees so the pelvis rolls back and the lumbar curve collapses",
+      "A separated seat base and backrest leave a gap at the pelvis that no single-piece fix has bridged",
+      "Flat and doughnut cushions only raise the hips and slide forward under braking",
+      "Strap-on lumbar pillows push the shoulders forward while the hips stay sunken",
+      "Money already spent on foam pads, lumbar rolls, beaded covers and expensive chairs that did not hold"
+    ],
+    "personas": [
+      "Long-distance and delivery drivers, 35-60, sitting eight or more hours a day",
+      "Office and desk workers whose pain arrives mid-afternoon",
+      "Rideshare drivers and commuters who dread the drive home",
+      "Wheelchair users sitting for long unbroken hours",
+      "Gamers in fixed seating, and pregnant women wanting more support"
+    ],
+    "raw_features": [
+      "One-piece continuous L-shaped structure: the seat base and the lumbar backrest are a single moulded unit, so the pelvic gap is bridged rather than packed",
+      "High-density slow-rebound memory foam core that does not flatten out the way cheap foam does within weeks",
+      "Textured non-slip grip base that holds against leather upholstery with no straps, buckles or tools",
+      "Spinal contour shaped to the lower back curve, holding the lumbar arch instead of pushing the shoulders forward",
+      "The seat section elevates the hips toward knee level so the pelvis stops rolling backward",
+      "Stays in place under sudden braking and does not separate mid-drive",
+      "Moves between car seat, office chair, gaming seat, wheelchair and hard dining chair",
+      "Slow-rebound core dampens harsh road vibration on long drives",
+      "Honest limitation stated in the copy: it seats the driver noticeably higher, which may not suit minimal-headroom vehicles",
+      "Honest limitation stated in the copy: it feels firm for the first few days rather than soft, before contouring",
+      "Positioned against custom seat re-upholstery, recurring physiotherapy sessions and premium ergonomic chairs on cost"
+    ]
+  },
+  "page": {
+    "channel": "landing-page",
+    "lpTypeId": "pdp_dr",
+    "sections": [
+      {
+        "id": "hero",
+        "role": "hero",
+        "copy_summary": "Hero banner behind 'Continuous Lower Back Support & Tailbone Relief'.",
+        "image_slots": [
+          {
+            "slot_id": "hero.image",
+            "ratio": "16:9"
+          }
+        ]
+      },
+      {
+        "id": "media.gallery.1",
+        "role": "problem-agitation",
+        "copy_summary": "Product card gallery, image 2, the problem tile.",
+        "image_slots": [
+          {
+            "slot_id": "media.gallery.1.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "media.gallery.2",
+        "role": "mechanism",
+        "copy_summary": "Product card gallery, image 3, the mechanism tile.",
+        "image_slots": [
+          {
+            "slot_id": "media.gallery.2.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "media.gallery.3",
+        "role": "mechanism",
+        "copy_summary": "Product card gallery, image 4, the one-piece tile.",
+        "image_slots": [
+          {
+            "slot_id": "media.gallery.3.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "media.gallery.4",
+        "role": "comparison",
+        "copy_summary": "Product card gallery, image 5, the grip tile.",
+        "image_slots": [
+          {
+            "slot_id": "media.gallery.4.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "media.gallery.5",
+        "role": "outcome",
+        "copy_summary": "Product card gallery, image 6, the closing outcome tile, wordless.",
+        "image_slots": [
+          {
+            "slot_id": "media.gallery.5.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "trusted",
+        "role": "social-proof",
+        "copy_summary": "Buyer card 1, beside 'It stopped the burning sensation in my hips after long highway shifts.'",
+        "image_slots": [
+          {
+            "slot_id": "trusted.cards.1.photo",
+            "ratio": "1:1"
+          },
+          {
+            "slot_id": "trusted.cards.2.photo",
+            "ratio": "1:1"
+          },
+          {
+            "slot_id": "trusted.cards.3.photo",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "problem.items.0",
+        "role": "problem-agitation",
+        "copy_summary": "Beside 'Flat pads sink down and leave your lower back unsupported'.",
+        "image_slots": [
+          {
+            "slot_id": "problem.items.0.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "problem.items.1",
+        "role": "cause",
+        "copy_summary": "Beside 'Separate pillows push upper back forward while hips drop below knees'.",
+        "image_slots": [
+          {
+            "slot_id": "problem.items.1.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "problem.items.2",
+        "role": "comparison",
+        "copy_summary": "Beside 'Cheap foam flattens out under body weight within a few weeks'.",
+        "image_slots": [
+          {
+            "slot_id": "problem.items.2.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "why",
+        "role": "outcome",
+        "copy_summary": "Beside 'Complete Ergonomic Geometry — relieve pelvic pressure and cushion road vibration'.",
+        "image_slots": [
+          {
+            "slot_id": "why.photo",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "how",
+        "role": "how-to-use",
+        "copy_summary": "Beside 'Here Is How It Works': place on seat, sit back, feel the relief.",
+        "image_slots": [
+          {
+            "slot_id": "how.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "expect.items.0",
+        "role": "proof",
+        "copy_summary": "What To Expect, 'Day 1 — zero gap behind your lower back', the BEFORE photograph.",
+        "image_slots": [
+          {
+            "slot_id": "expect.items.0.before_image",
+            "ratio": "3:4"
+          },
+          {
+            "slot_id": "expect.items.0.after_image",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "expect.items.1",
+        "role": "proof",
+        "copy_summary": "What To Expect, 'Week 2 — comfortable sitting without shifting positions', the BEFORE photograph.",
+        "image_slots": [
+          {
+            "slot_id": "expect.items.1.before_image",
+            "ratio": "3:4"
+          },
+          {
+            "slot_id": "expect.items.1.after_image",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "expect.items.2",
+        "role": "proof",
+        "copy_summary": "What To Expect, 'Month 1 — total confidence', the BEFORE photograph.",
+        "image_slots": [
+          {
+            "slot_id": "expect.items.2.before_image",
+            "ratio": "3:4"
+          },
+          {
+            "slot_id": "expect.items.2.after_image",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "uses",
+        "role": "how-to-use",
+        "copy_summary": "Beside 'Support Wherever You Sit': Office, Car, Long Drives, Home.",
+        "image_slots": [
+          {
+            "slot_id": "uses.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "expert",
+        "role": "mechanism",
+        "copy_summary": "Beside the quote 'Supporting both the lower back and pelvic base simultaneously stops slouching at the source'.",
+        "image_slots": [
+          {
+            "slot_id": "expert.photo",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "safety",
+        "role": "proof",
+        "copy_summary": "Beside 'Tested for Daily Support': slow-rebound core, anti-slip bottom, washable cover.",
+        "image_slots": [
+          {
+            "slot_id": "safety.image",
+            "ratio": "1:1"
+          }
+        ]
+      },
+      {
+        "id": "modes.items.0",
+        "role": "mechanism",
+        "copy_summary": "Contoured Zones, Lumbar Curve — 'Fills the lower spine void'.",
+        "image_slots": [
+          {
+            "slot_id": "modes.items.0.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "modes.items.1",
+        "role": "mechanism",
+        "copy_summary": "Contoured Zones, Pelvic Cradle — 'Relieves tailbone pressure evenly'.",
+        "image_slots": [
+          {
+            "slot_id": "modes.items.1.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "modes.items.2",
+        "role": "mechanism",
+        "copy_summary": "Contoured Zones, Thigh Support — the front of the seat.",
+        "image_slots": [
+          {
+            "slot_id": "modes.items.2.image",
+            "ratio": "4:3"
+          }
+        ]
+      },
+      {
+        "id": "testimonials.items.0",
+        "role": "social-proof",
+        "copy_summary": "Real Feedback, Trevor M., long highway routes, the BEFORE photograph.",
+        "image_slots": [
+          {
+            "slot_id": "testimonials.items.0.before_image",
+            "ratio": "3:4"
+          },
+          {
+            "slot_id": "testimonials.items.0.after_image",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "testimonials.items.1",
+        "role": "social-proof",
+        "copy_summary": "Real Feedback, Claire W., donut cushions slid out, the BEFORE photograph.",
+        "image_slots": [
+          {
+            "slot_id": "testimonials.items.1.before_image",
+            "ratio": "3:4"
+          },
+          {
+            "slot_id": "testimonials.items.1.after_image",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "testimonials.items.2",
+        "role": "social-proof",
+        "copy_summary": "Real Feedback, Jason R., eight hours at the desk, the BEFORE photograph.",
+        "image_slots": [
+          {
+            "slot_id": "testimonials.items.2.before_image",
+            "ratio": "3:4"
+          },
+          {
+            "slot_id": "testimonials.items.2.after_image",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "testimonials.items.3",
+        "role": "social-proof",
+        "copy_summary": "Real Feedback, Samantha L., seated higher behind the wheel, the BEFORE photograph.",
+        "image_slots": [
+          {
+            "slot_id": "testimonials.items.3.before_image",
+            "ratio": "3:4"
+          },
+          {
+            "slot_id": "testimonials.items.3.after_image",
+            "ratio": "3:4"
+          }
+        ]
+      },
+      {
+        "id": "faq",
+        "role": "outcome",
+        "copy_summary": "Beside the FAQ, whose first question is 'Will this cushion sit me too tall behind the steering wheel?'.",
+        "image_slots": [
+          {
+            "slot_id": "faq.image",
+            "ratio": "16:9"
+          }
+        ]
+      }
+    ]
+  }
+}
