@@ -8476,3 +8476,69 @@ The rule-6c sweeps ran at `d79bf53` (hits / files / TEACHES):
 - **Non-Latin text in a mark is untested.** Frame 11's speech bubbles carry four scripts; this library has never rendered one, and set 04 does not try it.
 
 ---
+
+## ADR-107 · 2026-09-18 · Full colour is a spread of hues, not a warm one, and the band above the head replaces the camera
+
+**Owner report, 2026-09-18**, on the six `hero-03` renders: *"audit ảnh mới, màu ảnh quá AI, quá yellowish, không chân thực"* — the colour is too AI, too yellowish, not real.
+
+**The owner is right, and the measurement says how far.** Each render was opened at full size and measured on the whole frame.
+
+| set | colourfulness | saturation | warm cast (R−B) | saturated pixels outside the orange band |
+|---|---|---|---|---|
+| `hero-01`, before ADR-104 | 23–27 | 0.17–0.20 | 26–29 | not measured |
+| `hero-03`, after ADR-104 | **40–55** | **0.23–0.43** | **33–58** | **12–30%** |
+
+- **ADR-104 worked and overshot.** Colour arrived, and it arrived in one family: 70–88% of every frame's saturated pixels sit in the 20–70 degree orange band.
+- **The cast is not a white-balance error.** The brightest tenth of each frame drifts only 0.7–5.2% from neutral, so the yellow is in the light and in the objects, not in a global tint.
+- **The prompt asked for it.** ADR-104's lock said *warm daylight* and *editorial realism*, and the set's own setting line named *fruit*: five of six renders put a bowl of oranges in the frame.
+
+**What else the six showed.**
+- **A face sat in the top fifth in five of six.** *"Seen from a few steps back"* did not move the camera. The one frame that held it — the couple seen from behind — is also the one where no face was in shot.
+- **Five of six products were not the product:** a knitted throw pillow and a decorative pillow for the cushion, an extender with no antennas, a bag with no print. The prompts carry `ATTACH 1`, so this is the reference photo not reaching the render.
+- **The seated-product rule held, 1 of 1.** The sixth render put a real seat cushion, whole, seen from the side, on a chair of another tone — exactly what the instruction's product section asks for after six earlier cushion renders hid it.
+- **Two people fit the safe box.** That question is answered.
+- **What reads as artificial:** window bloom, a haze over the left half, plastic-smooth skin, and in one frame a laptop screen carrying model-drawn text.
+
+### Decision
+
+1. **The hero's light and grade lines are neutral.** A session whose page has a hero writes:
+   - `Light: bright daylight from the left, with natural shadows and real contrast.`
+   - `Grade: true colour, neutral whites, no warm filter and no glow.`
+2. **Full colour is a spread of hues.** The room's colours come from more than one family — greens, blues and reds as well as wood and skin — and never from a fruit bowl.
+3. **The second fixed sentence names a band, not a camera.** It now reads: *"The group fills about half the picture's height, with a clear band of room above every head and below every hand, each about a fifth."* A region is a thing the renderer can draw; a camera instruction is not (adapter Rule 1b).
+4. **A fifth fixed sentence asks for a photograph:** *"It is a real photograph: skin keeps its texture, with no glow and no haze."* The person sentence stays, and it is now the sixth.
+5. **Where a screen can appear, the prompt carries G6's sentence**, `Any screen shows only a picture, with no interface, text or numbers.`
+6. **The next set is `registry/pdp-dr-types/sets/hero-04/`**, owner-gated.
+   - It re-runs `hero-03`'s six frames with one variable changed, the lines. That is a deliberate exception to the rule that a set takes products it has not used: the question is whether the law works, not whether it generalises to a new product, and the four products are the only ones whose photographs the owner holds.
+   - Control: prompt 1, the seated cushion, the one frame whose product and placement held.
+   - `check.py` passes the clean set and `knownbad.py` catches 52 of 52, thirteen of them for this decision. The prompts run 1,691–1,794 characters.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `cf0ba39` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"Seen from a few steps back"` | 13 | 6 | 1 |
+| `"warm daylight"` | 150 | 8 | 2 |
+| `"editorial realism"` | 140 | 6 | 1 |
+| `"vivid, true colour"` | 141 | 6 | 1 |
+| `"plants, fruit, textiles"` | 4 | 2 | 1 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the fixed sentences, the colour paragraph, the *Ground* section's colour bullet, and a new record of what `hero-03` measured.
+- **These hits stand:**
+  - `registry/toplist-types/lede-inuse.md`'s *warm daylight*, which is that namespace's own measured finding on its own corpus;
+  - the sets and query sessions that quote the old lines, which are records.
+- **Render tests:** six lines in `eval/render-tests.jsonl`, `verdict_by: owner`, each citing its render's hash.
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md` and the manifest. Neither index moves.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **The reference photo is still not reaching the render.** Five of six products came back generic, and no prompt can fix that; the owner attaches the photograph.
+- **No render tests the new lines.** `hero-04` is the test, and it is the third attempt at a standing person.
+- **The colour target has no number yet.** This decision names the fault in words. If the next set overshoots again, a measured band — colourfulness, warm cast and hue spread — is the instrument to write.
+- **`hero-01` to `hero-03` keep their own checkers**, which hold the wording each was written for.
+
+---

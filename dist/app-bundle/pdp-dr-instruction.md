@@ -476,13 +476,14 @@ panel, and everything the image is about sits inside it:
 - **The light comes from the left**, the page's side, and a person turns slightly toward it.
 
 **Every hero prompt carries these sentences, word for word, whatever type fills the field.** The
-first four go in every prompt; the fifth goes in only where a person is in the frame:
+first five go in every prompt; the sixth goes in only where a person is in the frame:
 
 ```
 The product and anyone using it sit together in the right half, just past the centre and well clear of the right edge.
-Seen from a few steps back, the group fills about half the picture's height, and no face, hand or part of the product enters its top or bottom fifth.
+The group fills about half the picture's height, with a clear band of room above every head and below every hand, each about a fifth.
 The left half continues the same place, softly blurred and full of daylight, with nothing in it that matters.
 The product is big enough to recognise at a glance, never a small detail in the distance.
+It is a real photograph: skin keeps its texture, with no glow and no haze.
 Any person turns slightly toward the left side of the picture.
 ```
 
@@ -492,14 +493,21 @@ is *bright, premium, realistic, and believable*. So a session whose page has a h
 lock's light and grade in these words, for every image it emits:
 
 ```
-Light: bright, warm daylight from the left, with natural shadows and real contrast.
-Grade: editorial realism with vivid, true colour; nothing looks greyed or washed out.
+Light: bright daylight from the left, with natural shadows and real contrast.
+Grade: true colour, neutral whites, no warm filter and no glow.
 ```
 
-- **The room keeps a few real colours** — plants, fruit, textiles.
+**Full colour is a spread of hues, not a warm one** (ADR-107). `hero-03` asked for *warm
+daylight*, *editorial realism* and a bowl of fruit, and came back yellow: 70–88% of every frame's
+saturated pixels sat in the orange band.
+- **The room's colours come from more than one family** — greens, blues and reds as well as wood
+  and skin. Never a fruit bowl: five of six renders put one in the frame.
 - **A person wears a clear, friendly colour**, never the room's beige.
 - **A person's expression is natural and relaxed**, never a posed or exaggerated smile (the
   owner's instruction).
+- **Where a screen can appear**, the prompt carries G6's sentence: `Any screen shows only a
+  picture, with no interface, text or numbers.` A laptop in `hero-03` came back carrying a page
+  of model-drawn text.
 
 **What `hero-01` measured** (ADR-104). Its lock said *pale walls*, *nothing saturated* and
 *Grade: bright, neutral*.
@@ -511,6 +519,22 @@ Grade: editorial realism with vivid, true colour; nothing looks greyed or washed
   sets the camera back.
 - **Products.** All three came back generic — no antennas, no printed bag, a greige device. Every
   hero prompt needs its product photo attached.
+
+**What `hero-03` measured** (ADR-107), six renders under ADR-104's lines.
+- **Colour, the owner's word:** *"màu ảnh quá AI, quá yellowish, không chân thực"*. Measured,
+  the lines worked and overshot: saturation rose from 0.17–0.20 to 0.23–0.43 and colourfulness
+  from 23–27 to 40–55, but the warm cast rose with them, from 26–29 to 33–58, and 70–88% of the
+  saturated pixels landed in the orange band. The white point stayed near neutral, so the yellow
+  is in the objects and the light, not in a global cast.
+- **Placement.** A face sat in the top fifth in five of six. *"Seen from a few steps back"* did
+  not move the camera, so the sentence now names the band of room above the head instead —
+  a region the renderer can draw, which is what adapter Rule 1b says works.
+- **Products.** Five of six came back generic: a knitted throw pillow and a decorative pillow
+  for the cushion, an extender with no antennas, an unprinted bag. The sixth, the seated
+  cushion, is the one that held — and it proves the instruction's seated-product rule, whole
+  silhouette from the side on a chair of another tone.
+- **The photograph.** The renders that looked most artificial carried window bloom, a haze and
+  plastic skin, which is why the fifth sentence now asks for a real photograph.
 
 The prompt says where things sit and never states the frame's shape (ADR-016). A hero carries no
 words and no inset. It routes like any slot, by its section and its copy, with `06-relief-hero`
@@ -581,7 +605,8 @@ white.**
 
 **A real room is not a seamless** (ADR-104). The quiet ground above was measured on the outer
 ring of gallery tiles. In a photographed room, quiet means light and uncluttered, never drained:
-- the room keeps its real colours, a few of them clear — plants, fruit, textiles;
+- the room keeps its real colours, from more than one family — greens, blues and reds as well
+  as wood and skin (ADR-107);
 - the grade is G11's.
 
 `hero-01`'s lock asked for *pale walls* and *nothing saturated*, and every render came back
