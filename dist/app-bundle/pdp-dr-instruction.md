@@ -428,6 +428,13 @@ It may carry, once and only where the mark needs it:
   `IP68 Waterproof`, `$0 Running Cost`, `Regional Dialects Supported`;
 - **and the labels its chart or its call-out lines need**, one to three words each.
 
+**A drawn figure must be true of the frame it sits in** (ADR-109). A figure that names a
+DISTANCE, a TIME or a COUNT matches what the frame draws — `100 m` set over a driveway the frame
+draws at two metres is the fault that made this rule, and the owner failed it on sight. Either the
+frame draws the distance honestly, or the figure stays in the page's HTML. A figure that names a
+FORCE, a RATING or a CAPACITY names the thing the frame shows in use: a hold on a joint that is
+holding, a suction on glass that is gripped, a size beside the hand that holds it.
+
 **G16 is not bypassed**: the line lives in the type's declared `text_layer`, the tag in the
 `title` slot at two to five words and the figure in the `badge` slot, verbatim from the page —
 G16's slots are `title`, `copy` and `badge`, and the gallery's own word for a badge is a chip. A
@@ -646,8 +653,21 @@ underside. Depth of field, elevation and lens feel change with the type. A type 
 layout — a split, a rail, a sequence, a grid, a lineup — still rotates angle, crop, distance and
 place inside it.
 
-**Two or three devices in one frame, where the frame earns them:** an inset zoom; a cutaway,
-section or ghosted layer; an exploded view; a hard-divided split or before-and-after; callout
+**A cutaway belongs to building fabric, never to a thing the buyer owns** (ADR-109). A wall, a
+floor, a ceiling, a duct run or a pipe chase may be cut open as a clean squared window, because a
+buyer already accepts that a building is opened to be worked on. A car, a mattress, an appliance,
+a bag, a garment, a case or a piece of furniture is never cut: the hole reads as damage, and on a
+marketplace frame as damage the product did. Measured: 3 of the 4 cuts this library has asked for
+came back as damage — a torn bonnet with peeled metal, a torn and stained mattress, a brick recess
+— and every one of them cut a possession. Where the inside of a possession is the argument, use an
+INSET (a separate rounded window beside the product, plainly drawn), the product's own screen, or a
+real opened state the object has — a propped bonnet, an undone zip, a lifted lid. A DRAWN register
+is untouched: `03-mechanism-ghostbody`, `03-mechanism-xray`, `02-cause-anatomy` and
+`03-mechanism-contact` open a rendered body or component, where nothing photographic can look
+broken.
+
+**Two or three devices in one frame, where the frame earns them:** an inset zoom; a cutaway of
+building fabric, a section or a ghosted layer; an exploded view; a hard-divided split or before-and-after; callout
 lines, at most three outside `03-spec-callout`; a sequence strip; macro against soft-focus
 context; typographic negative space; a reflection or a ground plane; the product in its place
 with one real functional cue in motion.
@@ -686,6 +706,12 @@ balanced, with no flat or blown glare.
   does not make.
 - **Props only where they serve the message**, and in the set's palette; the product keeps its
   photograph's.
+- **The place is named so that it carries no signage** (ADR-109). A frame whose only allowed words
+  are its own line still comes back with shop signs, a sandwich board, labelled bottles or a real
+  brand's sign when the place is a shopping street or a cleaning cupboard — 2 of 6 renders on
+  2026-09-18, one of them carrying a well-known chain's sign into a generated frame. Name a place
+  without shopfronts, labelled packaging or hoardings, and let the words sentence say the
+  background carries none.
 
 **People appear wherever they serve the tile's message** — any number, framing, crop or role —
 **and G13 binds as it always has**: no private room, no age in years, a neutral face. The owner's

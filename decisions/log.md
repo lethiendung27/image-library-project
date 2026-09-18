@@ -8601,3 +8601,82 @@ The rule-6c sweeps ran in the worktree at `b603360` (hits / files / TEACHES):
 - **Texture has no clause.** It is the one metric near its floor, and `hero-05` carries no new sentence for it: ADR-107's real-photograph sentence has not been tested against a set that changes nothing else.
 
 ---
+
+## ADR-109 · 2026-09-18 · A cutaway belongs to building fabric, never to a thing the buyer owns, and a drawn figure must be true of the frame it sits in
+
+**Owner report, 2026-09-18**, on the six renders of `sets/03-mechanism-signal-04/`: *"audit ảnh mới. các ảnh này đều không đạt, các ảnh cắt xuyên xử lí rất tệ, nhìn như xe hỏng đệm hỏng. ghi 100m trong khi người đứng cách 2m"* — the new images all fail; the cut-through frames are handled very badly and look like a broken car and a broken mattress; and one writes 100m while the person stands two metres away.
+
+The harness opened all six at full size before this was written (ADR-011). Six render-test lines land with this commit, `verdict_by: owner`.
+
+| # | product | what came back | `frame-colour.py` |
+|---|---|---|---|
+| 1 CONTROL | open-ear headphones | scale HELD — the earpiece is the size an ear gives it, the first frame in this type with a product neither swollen nor a speck; the line is spelled right; **the halo came back as an edgeless blur**, and the street brought shop signage and a well-known coffee chain's sign | sat 0.37 · colour 29.8 · contrast 72.9 |
+| 2 | UV mosquito trap | the four flight paths came back as **broad white wind streaks** with the mosquitoes sitting on them; the palest frame of the six | colour **19.8\*** below the owner's band |
+| 3 | phone endoscope | **the through-view WORKED** — the phone shows the pipe wall and the clog as a photograph, no interface, no readings — but **the probe reads as a plain black cable** and its lamp ring and lens are not in frame; the cupboard's bottles and a printed box carry text | sat **0.49\*** · colour 50.8 |
+| 4 KNOWN RISK | remote battery disconnect | **the bonnet cut came back as a torn hole with peeled metal**; the figure `100 m` sits over a driveway the frame draws at about two metres; two mark forms in one frame | colour 25.3 |
+| 5 BOUNDARY | dust mite remover | **the mattress cut came back as a torn, stained hole with frayed fibres**, reading as damage the product did; the scale and the dust plume held | colour 24.3 |
+| 6 | foldable solar panel | **the band of light along the cable turned the cable into a glowing tube**; the power station's display carries an icon and a reading; the title is spelled right; the panel's scale held | colour 39.6 · drift **22.5\*** |
+
+**Colour is not the fault this time.** Measured with `scripts/frame-colour.py` (ADR-108), five of six frames sit inside the 10th–90th percentile band of the owner's own stills on colourfulness, and the owner's report names construction only. What failed is what the prompts asked to be DRAWN.
+
+**The cut is the headline, and it now has a history:**
+- set 04: the car bonnet and the mattress, **2 of 2**;
+- 0.2: a cut down a hallway became a brick recess the rings ran past, **1 of 2**;
+- the corpus's two working cuts are `snapi-stud`'s, and both are a **WALL** — building fabric, not a possession.
+
+So **3 of 4 cuts this library has asked for have failed, and every failure cut a thing somebody owns.** SPEC §6.2 asks for two in three before a clause moves; this is three in four.
+
+### Decision
+
+1. **A cutaway belongs to building fabric. It is never taken out of a thing the buyer owns.**
+   - **May be cut**, as a clean window with a squared edge: a wall, a floor, a ceiling, a duct run, a pipe chase, the ground — the fabric a building is made of, which a buyer already accepts is opened to be worked on.
+   - **Never cut**: a car, a mattress, an appliance, a bag, a garment, a case, a piece of furniture — anything the page is selling to, or selling for. A hole in it reads as damage, and on a marketplace frame it reads as damage the product did.
+   - **Where the inside of a possession is the argument, three routes replace the cut**, all of them in the owner's own reference frames or in this set's one win:
+     - an **INSET** — a separate rounded window beside the product, plainly a drawn panel rather than a hole, showing the interior (the owner's monocular and binocular frames);
+     - **the product's own screen**, where it has one (set 04's endoscope, which kept G6);
+     - **a real opened state the object genuinely has** — a bonnet propped open, a zip undone, a lid lifted.
+   - The drawn registers are untouched: `03-mechanism-ghostbody`, `03-mechanism-xray`, `02-cause-anatomy` and `03-mechanism-contact` open a rendered body or a rendered component, where nothing photographic can look broken. The ban is on cutting a PHOTOGRAPHED possession.
+2. **A drawn figure must be true of the frame it sits in** (narrows ADR-106's one short line).
+   - A figure that names a **distance, a time or a count** must match what the frame draws. `100 m` over a two-metre driveway is the fault; either the frame draws the distance honestly, or the figure stays in the page's HTML.
+   - A figure that names a **force, a rating or a capacity** names the thing the frame shows in use — a hold on a joint that is holding, a suction on glass that is gripped, a size beside the hand that holds it.
+   - The tag of two to five words is unchanged.
+3. **A mark never runs along a wire, a cable or a cord.** It lands at the ends. Twice now a mark drawn along a line became the line: set 02's continuous trail read as a tangled wire, and set 04's charge band turned a cable into a glowing tube, **2 of 2**.
+4. **The place is named so that it carries no signage.** Two of six frames brought shop signs, a real brand's sign and printed packaging into a frame whose only allowed words are its one line. The prompt names a place without shopfronts, labelled packaging or hoardings, and the words sentence says the background carries none.
+5. **A thin product is framed on its working end.** A probe, a cable, a strip or a wand reads as a plain cable unless the end that does the work — the lens and its lamps, the connector, the head — is the large, sharp thing in the frame. `1 of 1` disappeared.
+6. **`03-mechanism-signal` goes to 0.7** with all five, and its `barrier` part is rewritten from *cut the barrier open* to *cut only fabric, otherwise inset*. The next set is `sets/03-mechanism-signal-05/`, owner-gated: six products none of the earlier sets used, the permitted cut tested once on a duct run, a figure that names what its frame shows, a mark that lands at two ends beside a cable it never runs along, a thin product framed on its connector, and a place with no signage.
+
+### Consequences
+
+The rule-6c sweeps ran at `b08511b` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"cut open"` | 46 | 27 | 10 |
+| `"cutaway"` | 199 | 43 | 14 |
+| `"as a window"` | 1 | 1 | 1 |
+| `"a figure the page supplies"` | 14 | 9 | 7 |
+| `"along the cable"` | 0 | 0 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the cutaway in *Composition*'s device list, the figure under the feature image's one short line, and the place's signage under *Composition*.
+- **Rewritten:** `registry/pdp-dr-types/03-mechanism-signal.md` to 0.7 — `PARTS/barrier`, `PARTS/anchor` (the working end), `PARTS/path` and `MARKS` (never along a cable; a halo has an edge), `PARTS/ground` (no signage), `SLOT CONSTRAINTS` (the figure), `NEGATIVE`, `KNOWN-FLAKY` and the changelog. It holds the `"as a window"` hit and two of the `"cut open"` hits.
+- **These hits stand**, every one read:
+  - `03-mechanism-contact`, `03-mechanism-ghostbody`, `03-mechanism-xray`, `02-cause-anatomy`, `registry/types/*` and `registry/gif-types/mechanism.md` and `use.md`: a rendered body or a rendered component opened in a drawn register, which decision 1 exempts by name.
+  - `03-spec-macro`'s *"no cover cut open to show a core"*, `04-proof-lockedframe`'s *"nothing cut open, propped or arranged"*, `07-identity-pack`'s and `registry/rules.md` G7's *"nothing is cut open"*: these already ban it, and this decision agrees with them.
+  - `registry/vocabulary.yaml`'s definition of the `contact` device, which describes a rendered body.
+  - The `"a figure the page supplies"` hits in `03-spec-claimstack`, `03-spec-dimension`, `03-spec-hero`, `04-proof-lockedframe` and `03-mechanism-contact`: they say where a figure may COME FROM, which is unchanged. Decision 2 says what a figure must AGREE WITH, and the instruction now carries it where the line is defined.
+  - The toplist and advertorial sessions and every set: records.
+- **Render tests:** six lines in `eval/render-tests.jsonl`, `verdict_by: owner`.
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md` and the manifest; `03-mechanism-signal` is reserved and not bundled.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **Nothing here is re-rendered.** Set 05 is the test, and it is owner-gated.
+- **Whether a product photo was attached to any of the six is unrecorded**, and all six bodies read as invented. The set said to say so per render, and the answer did not come back. It stays the type's largest open variable.
+- **The router question set 04 asked is unanswered.** Prompt 5 was to say whether a handheld working through a surface reads as this type or as `03-mechanism-contact`; the torn mattress swamped the frame, so criterion 2 is still unrun.
+- **The halo is not retired, only given an edge.** One render is one instance (SPEC §6.2), and the owner's own frame `525f1c50` holds a halo that works.
+- **The two frames that brought background text are not evidence about places in general** — a city pavement and a sink cupboard are both places full of print. Decision 4 changes what the prompt NAMES, not what the renderer may invent, and the next set measures it.
+- **`04-proof-stat` and `03-spec-callout` are still not touched**, though decision 2 governs any figure they draw on an LP2 page.
+
+---
