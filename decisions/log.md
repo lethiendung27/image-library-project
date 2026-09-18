@@ -8913,3 +8913,109 @@ The rule-6c sweeps ran in a clean worktree at `4fe7da6` (hits / files / TEACHES)
   built from the ledger; this one is built from the owner's instruction.
 
 ---
+
+## ADR-111 · 2026-09-18 · The owner fails section-02 on quality against the instruction, and the next set tests the instruction as it stands: ADR-110's section form goes on trial
+
+**Owner report, 2026-09-18**, on the eight renders of `sets/section-02/` — the section images of the
+owner's page `pdp-dr-ergonomic-memory-foam-seat-cushion-v17`, one per prompt, filed in
+`image-library-assets/feedback/` at 15:33–15:34: *"feedback của tôi là các ảnh trên chất lượng vẫn
+còn kém so với instruction, hãy test những prompt này nhưng sử dụng instruction mà tôi input"*. The
+images are still poor next to the owner's image instruction; test these prompts using the
+instruction the owner supplied (`~/Downloads/images prompt.txt`).
+
+### What the harness saw first
+
+The owner's word arrived while the audit was running. Every render had already been opened at full
+size and graded in the mandatory order — G7 and staging first, the type's law, then the prompt:
+pass 3 (`how.image`, `features.items.0`, `faq.help_image`), partial 4 (`problem.image`, the control,
+predicted pass; `features.items.2`; `expert.scene`, the known risk, predicted partial;
+`close.image`), fail 1 (`features.items.1`). Every finding is a single instance:
+
+- **Words**: one title of three drawn twice — *Raises Hips* in a window and *Raises Hips Level* above
+  the thighs.
+- **Accent**: a cobalt outline traced around the whole cushion, never asked for.
+- **The gate**: a level line over thighs that slope from knee to hip, after the sentence putting the
+  body level was cut to meet 1,200 characters.
+- **The control**: the old way came back working — the lumbar pillow upright in the corner it was
+  meant to have left — so only a hand on the lower back carried the problem.
+- **A label** naming what the cushion removes (*Seat gap*), whose leader had nothing to end on.
+- **A claim nobody can see** (*Stays Firmly Anchored*) shown as a man rising, with nothing holding.
+- **The product**: the tone drifted in 3 of 7 frames, and the reference's ribbed back held in 1 of
+  the 4 frames that show it. Whether the photo was attached is unrecorded.
+- **Colour** (`scripts/frame-colour.py`): nothing outside the owner's band that the frame explains,
+  and one beige room with 92% of its saturated pixels in the orange band.
+
+**The owner's verdict is different in kind.** It measures quality against the instruction's own
+results, not faithfulness to the prompt. And every finding above would ADD a clause to a form the
+owner has just said loses to the instruction as it stands. So none is written into the types: each
+goes to its type's KNOWN-FLAKY, and the form itself goes on trial.
+
+### Decision
+
+1. **Eight ledger lines**, `verdict: fail`, `verdict_by: owner`. The harness's own grade is kept in
+   each line as an observation.
+2. **Set `section-03` is arm B of an A/B**, owner-gated and uncommitted. It holds fixed the page, the
+   eight fields, the product, each field's image type and what each picture is meant to show. It
+   changes only how the prompt is written: each is what the owner's instruction produces from
+   Image_Type and Description. Nothing ADR-110's section form adds goes in:
+   - no fixed light sentence and no no-words sentence;
+   - no scale or seated sentence;
+   - no reference sentence and no closing sentence;
+   - no accent, and no 1,200-character budget.
+
+   Two things stay, because they are the owner's own standing rules rather than the repo's: casting
+   named as North American, and no face in the block that quotes a named expert. The words a frame
+   carries are the page's own.
+   - The prompts run 438–605 characters, against arm A's 803–1,199.
+   - `check.py` also checks the arm's purity, that none of those sentences leaks in.
+   - `knownbad.py` fires 37 of 37.
+3. **A third arm is one paste away.** Each field carries its instruction input — Image_Type and
+   Description — in a copy-ready block. Pasted into the owner's own GPT, it gives the prompt the
+   owner's tool would write for the same field. That separates the two causes: a gap between the
+   GPT's renders and arm B's is in how the harness runs the instruction; a gap between arm B and
+   arm A is the section form's additions.
+4. **The result decides the six skeletons.**
+   - If arm B wins, the section form becomes the instruction as it stands. A sentence of the old form
+     comes back only where a render of the new form fails without it, the rule every LP2 clause
+     already lives under.
+   - If arm A wins, the form stays and the KNOWN-FLAKY findings are written in.
+   - Nothing moves before the render.
+5. **The six types go to 0.2.** Their renders are recorded, and their BLOCK and `blocked_by` say the
+   owner failed the first round and name the trial. Every skeleton is unchanged.
+6. **The attachment is named in the set, not in law.** Both arms ask for the one photo, the
+   ONE-PIECE SUPPORT SYSTEM tile with its title cropped off. The page's own *Stop the slump* tile
+   draws the cushion in another colour, and a render can only hold the product it is given.
+
+### What this does not change
+
+- ADR-110's six types, their triggers and routing, and *Section routing*'s third column.
+- The gallery, the hero, the buyer walls, the slot kinds, and ADR-102's loose routing.
+- `sets/section-01/`, which is unrendered and written in 0.1's form. Rendering it now would test arm A
+  on new products, so it waits for the A/B.
+
+### Consequences
+
+**No term is retired, so there is no rule-6c sweep.** The section form stays law until the A/B
+decides, and `registry/pdp-dr-instruction.md` says so where it introduces the form.
+
+- **Ledger:** eight lines in `eval/render-tests.jsonl`, spliced onto HEAD's file. Another lane's
+  six uncommitted lines stay in the working tree and out of this commit.
+- **Type files:** the six section types at 0.2 — frontmatter, the `TYPE` line, `blocked_by`, BLOCK, a
+  new KNOWN-FLAKY section and the changelog. Each was checked by hand in all three places.
+- **Instruction:** `registry/pdp-dr-instruction.md`, one paragraph before *The section form*.
+- **Generated:** `dist/app-bundle/` rebuilds the instruction. `registry/pdp-dr-index.yaml` does not
+  move, because the six are reserved.
+- `README.md`: the ADR count. `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render of arm B.**
+- **Whether the photo was attached to arm A is unrecorded**, so arm A's product drift is not yet the
+  prompt's fault or the attachment's. Arm B asks the question in its header.
+- **The third arm depends on the owner pasting the inputs** into the owner's GPT. The harness has
+  still never seen a prompt that GPT wrote.
+- **The harness's findings are unwritten by design.** If arm A wins, they are the patch list, and the
+  first is the one the owner's word does not reach: a load-bearing sentence was cut to meet a
+  budget nobody had measured.
+
+---

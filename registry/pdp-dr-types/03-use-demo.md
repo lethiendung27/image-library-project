@@ -3,7 +3,7 @@ id: 03-use-demo
 step: 3
 job: use
 device: demo
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: no render, and the verdict SPEC 6.3 asks for is the owner's; set section-01 is its first. Criterion 1 reads as met, 5 distinct sources by `python3 scripts/validate.py --evidence` on 2026-09-18, but no record was re-read for this draft. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1 reads as met, 5 distinct sources by `python3 scripts/validate.py --evidence` on 2026-09-18, but no record was re-read for this draft. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 03-use-demo — PDP-DR SECTION TYPE, DRAFT
@@ -65,7 +65,7 @@ The section form: one concise natural paragraph, no labels, in this order. Each 
 entry in PARTS; the fixed sentences are the form's and are written word for word.
 
 ```
-TYPE: 03-use-demo v0.1
+TYPE: 03-use-demo v0.2
 
   1. The picture: an editorial photograph, its angle and distance, and
      the real place this step happens in.                            -> PARTS/scene
@@ -124,10 +124,13 @@ shop signs or labelled packaging in the background
 ```
 
 ## BLOCK
-**Criterion 3 has no render.** The owner's statement of 2026-09-18 — that the instruction's own
-results *"vượt xa các types hiện tại trong pdp-dr"* — is a verdict on the instruction, not on this
-skeleton, and no repo prompt made those renders. `sets/section-01/` is the first set; its image 4
-is this type's.
+**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
+page v17, image 2, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
+kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
+had graded it pass before that; the observations are under KNOWN-FLAKY and none is written into the
+skeleton yet. **The trial is `sets/section-03/`**: the same field, written by the owner's
+instruction as it stands, with nothing the section form adds. Its result decides this skeleton.
+`sets/section-01/` is unrendered and in 0.1's form.
 
 **Criterion 1 reads as met, and the reading is unchecked.** `python3 scripts/validate.py
 --evidence` counts 10 observations across 5 distinct sources on 2026-09-18, now that the id has a
@@ -141,7 +144,17 @@ block whose steps are the buyer's actions — WiBoofy's, Deal's — and the feat
 act: *One press to pair*, *Wash it, use it again*. It contests no gallery tile; `03-use-sequence`
 and `03-use-grid` keep those, and their `multi_step_usage` gate does not reach this id.
 
+## KNOWN-FLAKY
+Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+
+- **Set `section-02`, image 2** (harness pass). One step, two hands pressing the cushion flush into a
+  car seat mid-act, the place plain. The wheel and dashboard came back sharp where the prompt asked
+  them soft.
+
 ## CHANGELOG
+- 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
+  quality against the instruction (ADR-111). No clause added: the harness's observations wait in
+  KNOWN-FLAKY while `section-03` tests the instruction as written against this form.
 - 0.1 (2026-09-18): first draft of the corpus proposal ADR-078 left undrafted, written from the
   owner's image instruction, the HOW TO USE mode, with the section form as its skeleton (ADR-110).
   The device `demo` leaves its reserved state. No render.

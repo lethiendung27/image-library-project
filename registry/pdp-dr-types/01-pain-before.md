@@ -3,7 +3,7 @@ id: 01-pain-before
 step: 1
 job: pain
 device: before
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: no render, and the verdict SPEC 6.3 asks for is the owner's; set section-01 is its first. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 01-pain-before — PDP-DR SECTION TYPE, DRAFT
@@ -58,7 +58,7 @@ The section form: one concise natural paragraph, no labels, in this order. Each 
 entry in PARTS; the fixed sentences are the form's and are written word for word.
 
 ```
-TYPE: 01-pain-before v0.1 [register: commercial | ugc]
+TYPE: 01-pain-before v0.2 [register: commercial | ugc]
 
   1. The picture: an editorial photograph, its angle and distance, the ordinary
      place the problem is noticed in, and who or what is in it.      -> PARTS/scene
@@ -114,10 +114,13 @@ shop signs or labelled packaging in the background
 ```
 
 ## BLOCK
-**Criterion 3 has no render.** The owner's statement of 2026-09-18 — that the instruction's own
-results *"vượt xa các types hiện tại trong pdp-dr"* — is a verdict on the instruction, not on this
-skeleton, and no repo prompt made those renders. `sets/section-01/` is the first set; its image 1
-is this type's.
+**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
+page v17, image 1, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
+kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
+had graded it partial (the control, predicted pass) before that; the observations are under
+KNOWN-FLAKY and none is written into the skeleton yet. **The trial is `sets/section-03/`**: the same
+field, written by the owner's instruction as it stands, with nothing the section form adds. Its
+result decides this skeleton. `sets/section-01/` is unrendered and in 0.1's form.
 
 **Criterion 1 cannot be met from the ledger as it stands**: the PDP corpus is gallery tiles, and
 this type fills section fields. The type comes from the owner's tested instruction, so the count
@@ -128,6 +131,20 @@ fields, this type takes `problem.*` and every `*before_image`, and it contests n
 its trigger refuses one. Its live neighbour is `01-pain-scene`, LP1's cinematic pain frame, whose
 trigger names cold traffic and an advertorial header and no LP2 section.
 
+## KNOWN-FLAKY
+Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+
+- **Set `section-02`, image 1** (the control, predicted pass; harness partial). The old way came
+  back working: the separate lumbar pillow stood upright in the seat-back corner, filling the gap
+  the prompt said was empty, and the pad was flat but ordinary. What was left to carry the problem
+  was a hand on the lower back and a grimace, G9's weakest rank — though the owner's own *Stop the
+  slump* tile uses that same gesture for its wrong state. The prompt wrote the failure as a small
+  change of state (*slipped down*, *flattened*), where `01-pain-scene` records that a failure renders
+  as a displaced object; and *hips sunk below his knees*, a comparison, did not render, 1 of 1.
+
 ## CHANGELOG
+- 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
+  quality against the instruction (ADR-111). No clause added: the harness's observations wait in
+  KNOWN-FLAKY while `section-03` tests the instruction as written against this form.
 - 0.1 (2026-09-18): drafted from the owner's image instruction, the WITHOUT / BEFORE mode, with
   the section form as its skeleton (ADR-110). New device `before`. No render.

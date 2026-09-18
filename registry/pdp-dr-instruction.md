@@ -969,9 +969,19 @@ types and its text law, the hero keeps its own law, a buyer tile stays `05-socia
 **a section type never fills a gallery tile** — every one of the six triggers refuses one.
 
 **All six are reserved drafts today, so none routes yet.** Each waits on the owner's verdict on
-its first render (SPEC §6.3, criterion 3), and `sets/section-01/` is that round. A draft is
-promoted in place, one at a time. Until a section's type is active, its field routes as before:
-by its default role, through Layer 2.
+a render (SPEC §6.3, criterion 3). A draft is promoted in place, one at a time. Until a section's
+type is active, its field routes as before: by its default role, through Layer 2.
+
+**The first round failed, and the form below is on trial** (ADR-111). Set `section-02` wrote the
+eight section fields of the owner's page v17 in this form, and the owner judged the renders still
+poor next to the instruction's own results. Set `section-03` writes the same eight fields, same
+product, same descriptions, by the owner's instruction as it stands — Image_Type and Description in,
+one concise prompt out — with nothing this section adds: no fixed sentence, no reference or closing
+sentence, no accent and no 1,200 budget. The owner's own standing rules stay: casting, and no face
+beside a named expert. **Which set wins decides the six skeletons.** If `section-03` does, the form
+becomes the instruction as it stands, and a sentence of this form comes back only where a render of
+the new form failed without it. Until then this section is law and none of the harness's findings
+on `section-02` is written into it.
 
 ### The section form
 

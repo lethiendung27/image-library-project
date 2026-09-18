@@ -3,7 +3,7 @@ id: 05-persona-lifestyle
 step: 5
 job: persona
 device: lifestyle
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -16,7 +16,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: no render, and the verdict SPEC 6.3 asks for is the owner's; set section-01 is its first. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 05-persona-lifestyle — PDP-DR SECTION TYPE, DRAFT
@@ -56,7 +56,7 @@ The section form: one concise natural paragraph, no labels, in this order. Each 
 entry in PARTS; the fixed sentences are the form's and are written word for word.
 
 ```
-TYPE: 05-persona-lifestyle v0.1
+TYPE: 05-persona-lifestyle v0.2
 
   1. The picture: an editorial photograph, its angle and distance, the lived-in
      place, the time of day, and who is there doing what.           -> PARTS/scene
@@ -104,10 +104,13 @@ a pale or drained grade, a warm yellow cast, shop signs or labelled packaging in
 ```
 
 ## BLOCK
-**Criterion 3 has no render.** The owner's statement of 2026-09-18 — that the instruction's own
-results *"vượt xa các types hiện tại trong pdp-dr"* — is a verdict on the instruction, not on this
-skeleton, and no repo prompt made those renders. `sets/section-01/` is the first set; its image 6
-is this type's.
+**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
+page v17, image 7, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
+kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
+had graded it pass before that; the observations are under KNOWN-FLAKY and none is written into the
+skeleton yet. **The trial is `sets/section-03/`**: the same field, written by the owner's
+instruction as it stands, with nothing the section form adds. Its result decides this skeleton.
+`sets/section-01/` is unrendered and in 0.1's form.
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -119,6 +122,15 @@ contests no gallery tile and no buyer tile. **It is the catch-all, which is the 
 that cannot decide lands here, so the trigger names the five it must rule out first, and a session
 whose section images mostly land on this type re-reads its copy before it ships.
 
+## KNOWN-FLAKY
+Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+
+- **Set `section-02`, image 7** (harness pass). A real kitchen in full colour, unposed, the phone
+  showing a picture, and the cushion's outline reading against the wooden chair.
+
 ## CHANGELOG
+- 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
+  quality against the instruction (ADR-111). No clause added: the harness's observations wait in
+  KNOWN-FLAKY while `section-03` tests the instruction as written against this form.
 - 0.1 (2026-09-18): drafted from the owner's image instruction, the OTHER mode, with the section
   form as its skeleton (ADR-110). New device `lifestyle`. No render.

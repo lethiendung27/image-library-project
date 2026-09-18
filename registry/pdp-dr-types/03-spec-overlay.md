@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: no render, and the verdict SPEC 6.3 asks for is the owner's; set section-01 is its first. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110, and its three reserved neighbours are named in BLOCK."
+blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110, and its three reserved neighbours are named in BLOCK."
 ---
 
 # 03-spec-overlay — PDP-DR SECTION TYPE, DRAFT
@@ -63,7 +63,7 @@ The section form: one concise natural paragraph, no labels, in this order. Each 
 entry in PARTS or MARKS; the fixed sentences are the form's and are written word for word.
 
 ```
-TYPE: 03-spec-overlay v0.1 [overlay: mark | icon | figure | tag | callout | view]
+TYPE: 03-spec-overlay v0.2 [overlay: mark | icon | figure | tag | callout | view]
 
   1. The picture: an editorial photograph, its angle and distance, the real
      place the feature matters in, and who or what is there.        -> PARTS/scene
@@ -101,7 +101,7 @@ beside the hand that holds it (ADR-109).
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols beside the product. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on thin leaders, each ending ON its part. `view`: an inset shaped like the optic, showing what the user sees | the session lock's one accent, or luminous blue for a working signal (G3); never red, never a flat green | one form to a frame, and the one short line beside it | the owner's twelve feature frames: the mark is the thing itself 12 of 12, lands on or inside the subject 8 of 12, a generic glowing arc 0 of 12, words in frame 10 of 12, a sentence 0 of 12 (ADR-106) · `03-mechanism-signal` set 04: one short line spelled right 3 of 3, the view on a product's own screen 1 of 1 · **no render of this type** |
+| `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols beside the product. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on thin leaders, each ending ON its part. `view`: an inset shaped like the optic, showing what the user sees | the session lock's one accent, or luminous blue for a working signal (G3); never red, never a flat green | one form to a frame, and the one short line beside it | the owner's twelve feature frames: the mark is the thing itself 12 of 12, lands on or inside the subject 8 of 12, a generic glowing arc 0 of 12, words in frame 10 of 12, a sentence 0 of 12 (ADR-106) · `03-mechanism-signal` set 04: one short line spelled right 3 of 3, the view on a product's own screen 1 of 1 · this type's first three renders: `section-02`, under KNOWN-FLAKY |
 
 - **The mark LANDS on the subject the feature acts on** and never floats beside the product
   touching nothing; it never covers the product's own face or repaints it (ADR-094, ADR-106).
@@ -142,10 +142,13 @@ shop signs or labelled packaging in the background, a soft edgeless glow
 ```
 
 ## BLOCK
-**Criterion 3 has no render.** The owner's statement of 2026-09-18 — that the instruction's own
-results *"vượt xa các types hiện tại trong pdp-dr"* — is a verdict on the instruction, not on this
-skeleton, and no repo prompt made those renders. `sets/section-01/` is the first set; its image 5
-is this type's.
+**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
+page v17, images 3 to 5, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn
+còn kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The
+harness had graded them pass, fail and partial before that; the observations are under KNOWN-FLAKY
+and none is written into the skeleton yet. **The trial is `sets/section-03/`**: the same field,
+written by the owner's instruction as it stands, with nothing the section form adds. Its result
+decides this skeleton. `sets/section-01/` is unrendered and in 0.1's form.
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -160,7 +163,26 @@ parameter, on the absorption ladder's first rung. Whether the three retire into 
 decided: the owner failed every render of `03-mechanism-signal`'s sets 01, 02 and 04, and this
 type's first set is the evidence that decision waits for.
 
+## KNOWN-FLAKY
+Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+
+- **Set `section-02`, image 3** (harness pass). The words set once and spelled right, the leader
+  ending on the joint, and the one frame of seven whose cushion carried the reference's ribbed back
+  and two-tone shell. Book covers in the background carried pseudo-lettering, and the room was beige:
+  92% of its saturated pixels in the orange band (`scripts/frame-colour.py`).
+- **Image 4** (harness fail). The words drawn twice — *Raises Hips* in the window and *Raises Hips
+  Level* above the thighs; a cobalt outline traced around the whole cushion, never asked for and
+  barred by the namespace's accent law; and a level line over thighs that sloped down from knee to
+  hip, after the sentence putting the body level had been cut to meet the 1,200-character gate.
+- **Image 5** (harness partial). The words once and right, but the claim did not read: he was still
+  on the cushion's front edge, so nothing showed it staying put; his other hand rested at his lower
+  back as he rose, a pain cue on a relief-side frame; and the cushion's face came back light grey,
+  the reverse of the reference.
+
 ## CHANGELOG
+- 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
+  quality against the instruction (ADR-111). No clause added: the harness's observations wait in
+  KNOWN-FLAKY while `section-03` tests the instruction as written against this form.
 - 0.1 (2026-09-18): drafted from the owner's image instruction, the FEATURES mode, with the
   section form as its skeleton and ADR-106's feature-image law as its words (ADR-110). New device
   `overlay`. No render.

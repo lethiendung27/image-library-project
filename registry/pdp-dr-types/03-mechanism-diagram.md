@@ -3,7 +3,7 @@ id: 03-mechanism-diagram
 step: 3
 job: mechanism
 device: diagram
-version: "0.1"
+version: "0.2"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: no render, and the verdict SPEC 6.3 asks for is the owner's; set section-01 is its first. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 03-mechanism-diagram — PDP-DR SECTION TYPE, DRAFT
@@ -62,7 +62,7 @@ The section form: one concise natural paragraph, no labels, in this order. Each 
 entry in PARTS or MARKS; the fixed sentences are the form's and are written word for word.
 
 ```
-TYPE: 03-mechanism-diagram v0.1
+TYPE: 03-mechanism-diagram v0.2
 
   1. The picture: a clean technical visualisation, 2D or 3D, its view and
      its ground, and the product BY NAME in it.                     -> PARTS/view
@@ -128,11 +128,15 @@ a label set along an arrow, an invented interior, a face that is not needed, a f
 ```
 
 ## BLOCK
-**Criterion 3 has no render.** The owner's statement of 2026-09-18 — that the instruction's own
-results *"vượt xa các types hiện tại trong pdp-dr"* — is a verdict on the instruction, not on this
-skeleton, and no repo prompt made those renders. `sets/section-01/` is the first set; its image 3
-is this type's. The Principle form it succeeds has no passing render either: the owner's runs
-tried it three times and painted all three onto the product (ADR-094).
+**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
+page v17, image 6, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
+kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
+had graded it partial (the known risk, predicted partial) before that; the observations are under
+KNOWN-FLAKY and none is written into the skeleton yet. **The trial is `sets/section-03/`**: the same
+field, written by the owner's instruction as it stands, with nothing the section form adds. Its
+result decides this skeleton. `sets/section-01/` is unrendered and in 0.1's form. The Principle form
+it succeeds has no passing render either: the owner's runs tried it three times and painted all
+three onto the product (ADR-094).
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -143,6 +147,19 @@ block whose steps are not the buyer's actions — Aure's — and an item or an e
 a process. It contests no gallery tile. Its neighbours are all reserved or gallery types, and the
 line against each is in the trigger.
 
+## KNOWN-FLAKY
+Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+
+- **Set `section-02`, image 6** (the known risk, predicted partial; harness partial). It read at
+  once: three labels spelled right, the blue band on the line where body meets cushion, and no
+  face. But the *Seat gap* leader ended mid-seat under the thigh — the label named what the cushion
+  removes, so there was nothing for its leader to end on; the crop was ignored, a full figure with
+  the lower head in frame, and the no-face law held only because the figure is featureless; and the
+  cushion came back as a plain L, without the reference's ribs or the slot at its joint.
+
 ## CHANGELOG
+- 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
+  quality against the instruction (ADR-111). No clause added: the harness's observations wait in
+  KNOWN-FLAKY while `section-03` tests the instruction as written against this form.
 - 0.1 (2026-09-18): drafted from the owner's image instruction, the HOW IT WORKS mode, with the
   section form as its skeleton (ADR-110). New device `diagram`. No render.
