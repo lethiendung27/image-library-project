@@ -570,6 +570,8 @@ mapping/pdp-dr-rules.md  routing a product gallery; preference table is MEASURED
                          carries the cross-file CALL REGISTER nothing else validates
 scripts/pdp-dr-slots.py  gives every image field of an LP2 template its KIND, by the
                          *Slot kinds* table it parses from mapping/pdp-dr-rules.md
+scripts/frame-colour.py  measures a render's colour, contrast and texture against the band
+                         of the owner's own reference stills (ADR-108)
 ingestion/               classify template, runbooks, observations ledger
 ingestion/gifs.jsonl     append-only index of the external GIF library
 scripts/gen-gif-cards.py generates the library's folder cards from the gif type files

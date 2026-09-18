@@ -8542,3 +8542,62 @@ The rule-6c sweeps ran in a clean worktree at `cf0ba39` (hits / files / TEACHES)
 - **`hero-01` to `hero-03` keep their own checkers**, which hold the wording each was written for.
 
 ---
+
+## ADR-108 · 2026-09-18 · The colour numbers are now inside the owner's own band, and the frame still reads as made: a measured band, the room's own colours, and the owner's form on trial for a hero
+
+**Owner report, 2026-09-18**, on `hero-04`'s six renders: *"audit ảnh mới. màu ảnh vẫn giả"* — the colour still looks fake.
+
+**This is the third colour verdict in a row, and the first one the numbers cannot explain.**
+
+| set | the owner's word | colourfulness | warm cast R−B | white drift |
+|---|---|---|---|---|
+| `hero-01` | fake, dull, unfriendly | 23–27 | 26–29 | — |
+| `hero-03` | too AI, too yellowish | 40–55 | 33–58 | 0.7–5.2% |
+| `hero-04` | still fake | 31–54 | 9.6–29.2 | −0.4–2.4% |
+
+Measured against the owner's own reference stills — 60 of the 131 in `image-library-assets/stills/` — **every one of `hero-04`'s six frames sits inside the 10th–90th band on every metric**: saturation, value, colourfulness, contrast, warm cast, white drift, hue spread and texture. ADR-107's neutral lines did what they were written for.
+
+**So what is left is not the grade.** Reading the six at full size:
+- **The colour is bought with props.** ADR-107 asked for colours *from more than one family*, and four of six frames answered with a red tea towel against blue cabinets, or a scatter of coloured cushions. That is arrangement, and arrangement is what a made picture looks like.
+- **The product is not the product, in twelve of the fifteen hero renders graded so far** — a cream throw pillow, a red scatter cushion, a drawstring sack, an extender with no antennas. A buyer who knows the product sees a different object; nothing else in the frame can survive that.
+- **Two fixes did hold.** The band above the head kept every head whole, including the third standing person, and G6's screen sentence turned a page of model-drawn text into a picture. The seated-product rule held again, though the cushion sat on a chair of nearly its own tone, which its own clause forbids.
+- **Texture is the one metric near the floor**, 14.1–22.3 against the corpus median of 21.8, and the frame with the smoothest skin also carried a blooming window.
+
+### Decision
+
+1. **A room's colours are its own.** Nothing is added to a frame to supply a colour. Colour comes from what the room already has — wood, plants, fabric, skin — and from what the person wears. The line that asked for greens, blues and reds is withdrawn.
+2. **`scripts/frame-colour.py` is the instrument**, and it ships with the band it was measured against. It prints a frame's saturation, value, colourfulness, contrast, warm cast, white drift, hue spread and texture beside the 10th–90th percentile of the owner's stills, and flags what falls outside.
+   - **The band is a description, not a target.** `hero-04` is inside it everywhere and still failed. A number out of band is a reason to look again; a number in band proves nothing.
+   - `python3 scripts/frame-colour.py --corpus image-library-assets/stills -n 60` re-measures it.
+3. **The owner's feature-image form goes on trial for a hero**, as ADR-101 put it on trial for `03-mechanism-signal`. Half of `hero-05` is written in it: one natural paragraph, no `Setting:`, `Light:` or `Grade:` labels, no product block, ending with the instruction's two fixed sentences. The labelled form has now produced three failed sets, and the owner's own reference images were made in this one.
+4. **The next set is `registry/pdp-dr-types/sets/hero-05/`**, owner-gated: three scenes, each written in both forms, so a pair differs only in the form.
+   - Control: prompt 1, the labelled seated cushion, the frame that held best.
+   - `check.py` knows both forms and passes the clean set; `knownbad.py` catches 50 of 50. The labelled prompts run 1,749–1,790 characters and the paragraph prompts 1,325–1,379.
+5. **A hero prompt for a product whose photograph cannot be attached is not written.** Twelve of fifteen is not a prompt fault, and the sets say so at the top.
+
+### Consequences
+
+The rule-6c sweeps ran in the worktree at `b603360` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"more than one family"` | 3 | 2 | 0 |
+| `"greens, blues and reds"` | 4 | 3 | 1 |
+| `"bright textiles"` | 0 | 0 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the colour bullet, the *Ground* section's colour bullet, and a new paragraph carrying the band and how to read it.
+- **The one teaching hit that stands** is this decision's own sentence, which quotes what `hero-04` asked for as the fault it names.
+- **New:** `scripts/frame-colour.py`, and its line in SPEC's repo map.
+- **Render tests:** six lines in `eval/render-tests.jsonl`, `verdict_by: owner`, each citing its render's hash and its measurements.
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md` and the manifest. Neither index moves.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **Nothing is decided about the form.** `hero-05` answers it, and until it does the labelled form stays the law.
+- **The product photograph still does not reach the render.** This is the owner's workflow, and it now has a number: twelve of fifteen.
+- **The band has no gate.** No script fails a set for sitting outside it, because the first frames to sit outside it may well be right.
+- **Texture has no clause.** It is the one metric near its floor, and `hero-05` carries no new sentence for it: ADR-107's real-photograph sentence has not been tested against a set that changes nothing else.
+
+---

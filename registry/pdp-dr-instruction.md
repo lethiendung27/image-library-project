@@ -500,8 +500,11 @@ Grade: true colour, neutral whites, no warm filter and no glow.
 **Full colour is a spread of hues, not a warm one** (ADR-107). `hero-03` asked for *warm
 daylight*, *editorial realism* and a bowl of fruit, and came back yellow: 70–88% of every frame's
 saturated pixels sat in the orange band.
-- **The room's colours come from more than one family** — greens, blues and reds as well as wood
-  and skin. Never a fruit bowl: five of six renders put one in the frame.
+- **The room's colours are its own, and nothing is added to supply one** (ADR-108). `hero-04`
+  asked for greens, blues and reds and bought them with props: a red tea towel against blue
+  cabinets, a scatter of coloured cushions, in four of six frames. Colour comes from what the room
+  already has — wood, plants, fabric, skin — and from what the person wears. Never a fruit bowl:
+  five of `hero-03`'s six renders put one in the frame.
 - **A person wears a clear, friendly colour**, never the room's beige.
 - **A person's expression is natural and relaxed**, never a posed or exaggerated smile (the
   owner's instruction).
@@ -519,6 +522,26 @@ saturated pixels sat in the orange band.
   sets the camera back.
 - **Products.** All three came back generic — no antennas, no printed bag, a greige device. Every
   hero prompt needs its product photo attached.
+
+**The band, and how to read a hero render** (ADR-108). `scripts/frame-colour.py` measures a frame
+and prints it beside the band of the owner's own reference stills — 60 of the 131 in
+`image-library-assets/stills/`, measured 2026-09-18:
+
+| metric | median | 10th–90th |
+|---|---|---|
+| saturation | 0.23 | 0.05–0.46 |
+| value | 0.75 | 0.29–0.90 |
+| colourfulness | 38.6 | 22.2–81.8 |
+| contrast | 52.0 | 31.4–79.5 |
+| warm cast, R−B | 9.9 | −46.6–40.1 |
+| white drift | 0.1% | −11.9–8.9% |
+| hue outside the orange band | 68% | 2.2–100% |
+| texture | 21.8 | 12.2–34.8 |
+
+**The band is a description, not a target.** `hero-04`'s six renders sit inside it on every
+metric, and the owner still read them as fake. So a number out of band is a reason to look again,
+and a number in band proves nothing: what was wrong in `hero-04` was staged props and a product
+that was not the product.
 
 **What `hero-03` measured** (ADR-107), six renders under ADR-104's lines.
 - **Colour, the owner's word:** *"màu ảnh quá AI, quá yellowish, không chân thực"*. Measured,
@@ -605,8 +628,8 @@ white.**
 
 **A real room is not a seamless** (ADR-104). The quiet ground above was measured on the outer
 ring of gallery tiles. In a photographed room, quiet means light and uncluttered, never drained:
-- the room keeps its real colours, from more than one family — greens, blues and reds as well
-  as wood and skin (ADR-107);
+- the room keeps its real colours, its own ones — wood, plants, fabric, skin — with nothing
+  added to supply a colour (ADR-107, ADR-108);
 - the grade is G11's.
 
 `hero-01`'s lock asked for *pale walls* and *nothing saturated*, and every render came back
