@@ -33,7 +33,7 @@ So, beside that cross-slot pass of its own, this namespace stands on three diffe
    overlay. Every type here may declare `text_layer` and G16 binds the ones that do.
    Advertorial and listicle types overwhelmingly do not. **Since 2026-09-17 those words
    belong to the product card's gallery alone** (ADR-096); every other image on the page
-   is wordless.
+   is wordless, except a feature image's one short line (ADR-106).
 2. **The ground rule is measured on this corpus.** ADR-068 measured the outer 8% ring of
    119 frames from these batches: **VALUE median 0.89, SATURATION median 0.06.** That is
    a fact about these pages and it does not transfer — ADR-073 had to re-measure the same
@@ -253,6 +253,15 @@ same thing and names nothing.
   RELATION — *in a tone and material clearly different from the product* — never as a named
   colour. Six of the cushion's seated scenes hid it behind the sitter or set it on a chair of its
   own grey.
+- **Scale comes from the host, never from a share of the frame** (owner audit, 2026-09-18,
+  ADR-106). Where a hand, an ear, a body, a seat, a pane, a wall or a plant is in frame, that
+  host fixes how big the product is; the prompt moves the CAMERA instead — *shot close enough
+  that the product reads whole*. A share of the frame is named ONLY where nothing in the frame
+  fixes the size, on a studio or a graphic ground, and there it is 40–60%. Measured on the
+  owner's twelve feature frames: the product runs **20–75% of the frame height, median ~47%**,
+  and it always agrees with its host — the same earbud is 20% on an ear and 48% alone on a lit
+  map. `03-mechanism-signal` v0.5 asked every prompt for *"about 40% of the frame height"*, and
+  so asked for a charging case the size of a lunch box and a pool light the size of a chair.
 - **No interior the reference does not show**, and no diagram painted on the product's surface.
   The one exception is `03-mechanism-xray` showing components the page names. Three cushion
   renders cut the cover open or drew a structure inside a product that has none, and four
@@ -268,8 +277,8 @@ same thing and names nothing.
 ## Text: TITLE ONLY by default, and G16 narrowed for this namespace
 
 **This section governs the product card's gallery tiles**, the only images on an LP2 page that
-carry words (ADR-096). Every other image carries none — see *Images outside the product card's
-gallery*.
+carry a TITLE (ADR-096). A feature image may carry one short line and nothing else (ADR-106);
+every other image carries no words — see *Images outside the product card's gallery*.
 
 **Owner instruction, 2026-09-16 (ADR-094):** *"TITLE ONLY. Copy and chips are earned, never
 template slots."* G16 is not lifted — it is narrowed here, and this namespace is where it does
@@ -401,14 +410,37 @@ unnamed person showing how the product works, with no name, no title and no clin
 
 ## Images outside the product card's gallery
 
-**Only the product card's gallery carries words** (owner decision, 2026-09-17, ADR-096). The
-hero, every section image, both halves of a before-and-after pair, a buyer-photo tile and a
-closing image carry none — no title, no copy, no chip, no label, no badge — because the page
-sets its words beside them in HTML. A type that declares `text_layer` fills such a slot without
+**Only the product card's gallery carries words** (owner decision, 2026-09-17, ADR-096), **and
+from 2026-09-18 a feature image may carry one short line** (owner instruction, ADR-106). The
+hero, both halves of a before-and-after pair, a buyer-photo tile, a closing image and every
+section image that is not a feature image carry none — no title, no copy, no chip, no label, no
+badge — because the page sets its words beside them in HTML. A type that declares `text_layer` fills such a slot without
 it: the `[TITLE]`, `[COPY]` and label slots an `LP2 LAW` section adds are for a gallery tile, and
 the prompt keeps G6's `text, letters, numbers` whole. The product's own printing is not a word
 the prompt writes; the product block keeps it. Which field is which is read from the template by
 `mapping/pdp-dr-rules.md`'s *Slot kinds*.
+
+**A FEATURE IMAGE is a section image whose block argues ONE named feature** — the `mechanism` and
+`how-to-use` roles, which is where `features.*`, `modes.*` and `how.*` land (*Section routing*).
+It may carry, once and only where the mark needs it:
+- **a figure with its unit, as the page states it** — `5,600 Pa`, `$0`, `12h`, `144`;
+- **and/or a tag of two to five words naming that feature**, in the page's own words —
+  `IP68 Waterproof`, `$0 Running Cost`, `Regional Dialects Supported`;
+- **and the labels its chart or its call-out lines need**, one to three words each.
+
+**G16 is not bypassed**: the line lives in the type's declared `text_layer`, the tag in the
+`title` slot at two to five words and the figure in the `badge` slot, verbatim from the page —
+G16's slots are `title`, `copy` and `badge`, and the gallery's own word for a badge is a chip. A
+type with no text layer carries no line.
+
+Never a sentence, never a claim the page's copy does not make, never a brand or a price, never a
+second line, and never a word on a hero, a pair, a buyer tile or a closing image. The gallery
+keeps its own text law above, and a gallery tile does not take this line as well as a title.
+
+**Measured on the owner's twelve feature frames of 2026-09-18** (ADR-106): words in frame 10 of
+12; a figure with its unit 7; a two-to-five-word tag 6; chart or call-out labels 4; **a sentence
+0 of 12**. The two wordless frames carry a mark that needs no naming — music drawn as notes, and
+a sound drawn as the icon of what it plays.
 
 **The hero is a banner the template crops** (ADR-096, re-measured by ADR-103). The owner
 renders it at 16:9, the widest ratio the set allows (ADR-016). Read from the markup of the four
@@ -581,6 +613,17 @@ order and one focal point; layering, never clutter; a crop with a purpose.
 - **A leader, an arrow or a bracket exists only where a type calls for one** — a Callout label, a
   Rail, an Outcome Hero recall arrow, a Lineup label — **and it ends ON the part it names.** Three
   cushion renders ran a leader into empty ground, and a fourth drew a line that meant nothing.
+- **A mark draws the thing itself, and it lands on the subject the product acts on**
+  (ADR-106). A feature image answers *what does this do to the thing it is for*, so the mark is
+  that thing in its own form — sound as notes or as a spoken bubble, a frequency as a chart
+  keyed to the animals it targets, a lure as the paths the insects fly, a view as the view. On
+  the owner's twelve frames the mark is the thing itself **12 of 12** and it lands on or inside
+  the subject **8 of 12**; a generic glowing arc, arrow or ring appears **0 of 12**, and a mark
+  floating beside the product touching nothing appears **0 of 12**. The families measured there
+  are the vocabulary: the thing itself, the subject's own paths, a chart keyed to the subjects,
+  the view through the product, a halo on the subject, a call-out line to a label, a badge, one
+  typographic figure. An arc or an arrow stays legal where the claim IS a link between two
+  devices, and it is no longer the default.
 - **Words live in the title, the copy and a type's own labels — never on an arrow, a line or a
   diagram.** A caption set along an arrow came back as *"Hips are lep or one with knees"*, and a
   stopwatch icon came back labelled.
@@ -612,7 +655,7 @@ itself — the owner records an invented "Dr. L. Chen" rendering an Asian face, 
   reference photos as the type needs — one per product in frame (ADR-021, ADR-076). Never a
   multi-pass option, an edit chain or a post-assembly step.
 - **An image outside the product card's gallery carries no words** — no title, copy, chip,
-  label or badge (ADR-096).
+  label or badge (ADR-096) — **except a feature image, which may carry one short line** (ADR-106).
 - **The product block is mandatory** in every prompt with the product in frame — this
   namespace's form of G1, in the words the product section above fixes, with its two conditional
   sentences wherever their case exists. **One exception, on trial:** `03-mechanism-signal` follows
@@ -779,8 +822,23 @@ before the closing sentence, which carries the rest of the fidelity.
 **What it does not change here:**
 - The product block stays in every other LP2 prompt.
 - The ground stays light by default. The frame's contrast comes from light and focus.
-- Only the product card's gallery carries words (ADR-096).
+- Only the product card's gallery carries words (ADR-096); a feature image may carry one short
+  line (ADR-106).
 - G6 keeps interface text off every screen, and G2 keeps construction words out of the prompt.
+
+**Where the owner's own feature frames belong, type by type** (ADR-106, twelve frames of
+2026-09-18). The feature block routes among three constructions, and the owner's references are
+one of each:
+
+| what the frame does | the type | the owner's frames |
+|---|---|---|
+| something invisible crosses a distance, and the mark is that thing | `03-mechanism-signal` | the music pad, the repeller's frequency chart, the sound machine, the earbud's speech |
+| one figure is the subject of the frame | `04-proof-stat` | `$0`, `5,600 Pa`, `5120 x 2880` |
+| labels or a badge are pinned beside the product | `03-spec-callout` | `IP68 Waterproof`, the map's two call-outs, `Comfort / 12h Battery` |
+| an inset shaped like the optic shows what the user sees | **no type owns this** | the monocular, the binoculars |
+
+The last is a PROPOSAL and gets no file: two frames from one source family is under SPEC §3's
+bar, and `03-spec-macro` shows the product's own surface rather than its output.
 
 **Not decided:** whether the other types that fill section fields take the same form.
 

@@ -8394,3 +8394,85 @@ The rule-6c sweeps ran in a clean worktree at `cf8f021` (hits / files / TEACHES)
 - **The assets are still outside the repo** (SPEC §6.4), so a clone has the ledger's hashes and none of the images.
 
 ---
+
+## ADR-106 · 2026-09-18 · A feature image draws the thing itself on the subject it acts on, keeps the product's real scale, and may carry one short line
+
+**Owner audit, 2026-09-18**, of `registry/pdp-dr-types/sets/03-mechanism-signal-03/`, with twelve reference frames attached: *"audit bộ 03-mechanism-signal-03, chưa thể hiện rõ tính năng/công dụng của sản phẩm. có thể dùng nhiều loại visual marks để thể hiện tác động lên chủ thể sản phẩm phục vụ/nhắm tới. cần giữ đúng scale của sản phẩm (tai nghe quá to, đèn led quá to). visual mark cần truyền tải/phục vụ được thông điệp … có thể có copy ngắn highlight feature đang nói đến … những ảnh tham chiếu có thể thuộc về type khác phục vụ section feature trong pdp-dr"* — the set does not show the product's feature; many kinds of visual mark may be used to show the effect on the subject the product serves; keep the product's real scale (the earbuds are too big, the LED light is too big); the mark has to carry the message; a short line of copy highlighting the feature is allowed; and the reference frames may belong to another type serving the feature section.
+
+**No render exists.** Set 03 has never been rendered, and nothing was dropped in `feedback/`, so this is an audit of the set's own words against the twelve frames. No verdict is assigned to any image (ADR-011).
+
+**The twelve frames.** Supplied in the owner's message, hashed here and NOT in the assets tree, so they are cited and never ledgered. Boxes read by eye; colourfulness is Hasler and Süsstrunk's, contrast the standard deviation of luma, both over the frame (for the two feature cards, over the picture tile alone).
+
+| # | sha256 | product | the subject the mark acts on | mark family | words in frame | product | C / contrast |
+|---|---|---|---|---|---|---|---|
+| 1 | `cb0c18d8` | wall music boxing pad | the boxer's fist, the music | staff and notes, equaliser bars, an impact halo at the struck target | none | ~70% | 64.2 / 0.232 |
+| 2 | `41c4a7e5` | solar ultrasonic repeller | the garden it guards | one giant typographic figure behind the product | `$0 Running Cost` | ~45% | 61.1 / 0.271 |
+| 3 | `455e0e9a` | the same repeller, as a feature card | the animals it targets | a translucent chart keyed to four animal silhouettes, each with its band | `Frequency`, `Deer (15-25 kHz)`, `Raccoon`, `Cat`, `Bird`, `40+ kHz` | ~55% | 32.6 / 0.190 |
+| 4 | `33f02fdc` | window-cleaning robot | the glass it grips | a shield glyph with its figure, drawn on the pane | `5,600 Pa` | ~75% | 13.9 / 0.221 |
+| 5 | `e653edfc` | baby sound machine | the room it plays into | a beam from the product to a rounded icon tile of the sound it plays | none | ~37% | 52.7 / 0.180 |
+| 6 | `12d6f474` | compact 5K camera | the picture it makes | a perspective grid and a giant figure | `5120 x 2880` | ~58% | 25.1 / 0.157 |
+| 7 | `8f353d87` | metal-detector coil in a stream | the water it works in | one corner badge, an icon and its rating | `IP68 Waterproof` | ~48% | 34.3 / 0.210 |
+| 8 | `ae3999e2` | monocular on a boulder | what the user sees | a circular inset of the magnified view, over the product, and a typographic row | `10X PRECISION`, `6.5° FIELD OF VIEW` | ~40% | 32.4 / 0.192 |
+| 9 | `9a8d78df` | binoculars in a hand | the view through them | a field-of-view mask in the shape of the optic, with two labelled chips inside | `BAK4 Light Boost`, `No Edge Distortion` | ~38% | 43.5 / 0.318 |
+| 10 | `71da3ebe` | translation earbud, studio | the languages it covers | two call-out lines from the product to short labels, over a lit map | `144 Languages`, `Regional Dialects Supported` | ~48% | 42.4 / 0.139 |
+| 11 | `459eab20` | the same earbud, on an ear | the ear, and the speech | four speech bubbles in four scripts, and a shield with its figure | the bubbles' words, `97% accuracy` | ~28% | 49.5 / 0.234 |
+| 12 | `525f1c50` | the same earbud, wider | the ear | a warm halo around the ear, and two icon-and-label pairs | `Comfort`, `12h Battery` | ~20% | 29.0 / 0.198 |
+
+**What the twelve say, counted:**
+1. **The mark is the thing itself, 12 of 12** — notes, speech, frequencies, pressure, a magnified view, a field of view, a resolution, a halo. **The generic glowing arc, arrow or ring appears 0 of 12.** That vocabulary is the whole of set 03, and of `03-mechanism-signal` v0.5's `PARTS/path`.
+2. **The mark lands on or inside the subject the product acts on, 8 of 12** — the fist, the animals, the glass, the room, the view twice, the ear twice. The other four sit beside the product as a figure or a badge. **A mark that floats beside the product and touches nothing appears 0 of 12**, and it is what set 03 asks for in all six prompts: *"stays beside the product and never lies on it"*.
+3. **Words in frame, 10 of 12.** A figure with its unit, 7; a tag of two to five words, 6; the labels a chart or a call-out needs, 4. **A sentence: 0 of 12.** The longest text is frame 3's axis and four band labels.
+4. **Product share, 20-75%, median ~47%** — and it always agrees with the host. The earbud is 20% on an ear and 48% alone on a graphic ground; the wall pad is 70% because a wall pad is that big. **No frame enlarges the product against the thing beside it.**
+5. **Colourfulness 13.9-64.2, contrast 0.139-0.318.** Neither separates the frames, so the gap set 03 has to close is the drawing and the scale, not the colour (the same finding as ADR-100's).
+
+### Decision
+
+1. **The mark draws the thing itself, and it lands on the subject the product acts on.** The question a feature image answers is *what does this do to the thing it is for*, so the mark is that thing in its own form — sound as notes or a spoken bubble, a frequency as a chart, a lure as the paths the insects fly, a view as the view. A glowing arc or arrow stays legal where the claim IS a link between two devices (`lp00412-4`), and it stops being the default. The families measured above are the vocabulary: **the thing itself, the subject's own paths, a chart keyed to the subjects, the view through the product, a halo on the subject, a call-out line to a label, a badge, a typographic figure.**
+2. **Scale comes from the host, never from a share of the frame.** A prompt gives the product's share of the frame ONLY where nothing in the frame fixes its size — a studio or a graphic ground — and there the band is 40-60%. Where a hand, an ear, a body, a seat, a pane, a wall or a plant is in frame, the host fixes the size and the prompt moves the CAMERA: *"shot close enough that the product reads whole"*. `03-mechanism-signal` v0.5 wrote *"filling about 40% of the frame height"* into every prompt of set 03 and so asked for a charging case the size of a lunch box and a pool light the size of a chair, which is what the owner failed.
+3. **A feature image may carry one short line** (amends ADR-096). A FEATURE IMAGE is a section image whose block argues ONE named feature — the `mechanism` and `how-to-use` roles, which is where `features.*`, `modes.*` and `how.*` land. It may carry, once:
+   - a figure with its unit, as the page states it (`5,600 Pa`, `$0`, `12h`, `144`); and/or
+   - a tag of two to five words naming that feature, in the page's own words; and
+   - the labels its chart or its call-out lines need, one to three words each.
+   Never a sentence, never a claim the page's copy does not make, never a brand or a price, and never a second line. The line lives in the type's declared `text_layer`, the tag in the `title` slot and the figure in the `badge` slot, so G16 binds unchanged. **ADR-096 stands everywhere else**: the hero, both halves of a pair, a buyer-photo tile, a closing image and every other section role carry no words, and the product card's gallery keeps its own text law.
+4. **The twelve frames belong to three types this namespace already has, and one construction it does not.**
+   - `03-mechanism-signal` — frames 1, 3, 5, 11: something invisible crosses a distance and the mark is that thing.
+   - `04-proof-stat` — frames 2, 4, 6: one figure is the subject of the frame.
+   - `03-spec-callout` — frames 7, 10, 12: labels or a badge pinned beside the product, on a ground with room for them.
+   - **The view through the product** — frames 8 and 9: an inset shaped like the optic, showing what the user sees. Two frames from one source family, below SPEC §3's bar, so it is a PROPOSAL and gets no file. `03-spec-macro` shows the product's own surface, not its output, and no type in this folder owns the inset.
+5. **`03-mechanism-signal` goes to 0.6** with 1, 2 and 3 written into it, and set 03 stands unrewritten as the record the audit is about. The next set is `sets/03-mechanism-signal-04/`, owner-gated: six products none of the earlier sets used, one mark family each, the copy law exercised in three prompts and left out of three.
+
+### Consequences
+
+The rule-6c sweeps ran at `d79bf53` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"40% of the frame height"` | 10 | 5 | 1 |
+| `"nothing else is drawn"` | 2 | 1 | 0 |
+| `"no words at all"` | 12 | 12 | 8 |
+| `"one form per frame"` | 1 | 1 | 1 |
+| `"carries no words"` | 10 | 8 | 3 |
+| `"carries none"` | 19 | 13 | 5 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the words law in its four places, and a new paragraph under *Composition* for scale and for the mark.
+- **Rewritten:** `registry/pdp-dr-types/03-mechanism-signal.md` to 0.6 — `PARTS/anchor` (the share sentence goes), `PARTS/path` and `MARKS` (the vocabulary), `SLOT CONSTRAINTS` (the words), the source table, `KNOWN-FLAKY` and the changelog. It holds the other two hits, `"nothing else is drawn"` and `"one form per frame"`.
+- **These hits stand:**
+  - `registry/rules.md`'s G16 — *"Every other type carries no words at all"* — because the line is not an exception to G16: it lives in the type's declared `text_layer`, the tag in `title` and the figure in `chip`, and a type with no text layer carries no line. The instruction now says so where the line is defined.
+  - `registry/pdp-dr-instruction.md` line 296, *"carrying no words at all"* — the gallery's title table, where it means a tile with no title. The gallery is untouched.
+  - Both `05-social-snapshot` files and `registry/toplist-types/*`. A UGC snapshot carries no words because it is a phone photo, and the toplist corpus measured its own frames. Neither is ADR-096 (`rules do not cross corpora`).
+  - `query/sessions/pdp-dr-seat-cushion-l-shaped-v08/` and `sets/03-mechanism-signal-03/`, which are records of the law they were written under.
+  - Page 590's own prompts: 35 fields, of which `modes.items.*` and `how.image` are feature images by this decision. They are wordless, which stays legal — the line is allowed, never required — so the session is not rebuilt.
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md`, `dist/app-bundle/pdp-dr-types/03-mechanism-signal.md` and the manifest. `registry/pdp-dr-index.yaml` moves on the version bump.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render tests any of this.** Set 04 is the test, and it is owner-gated.
+- **The six products of set 04 have no photo on disk**, as set 03's six had none, and the briefs carry no image. Every prompt names the attachment; a render without it grades the mark, the scale and the words, and says nothing about the product's body.
+- **Set 03 is not rewritten.** It is the record this audit reads, and a set changes only on the owner's word.
+- **`04-proof-stat` and `03-spec-callout` are not touched.** Decision 4 says where the frames belong; neither file is re-measured here, and the feature block's routing between the three is written in the instruction, not in the types.
+- **The through-the-product view has no file** and no third source. Set 04's endoscope prompt draws the nearest legal form of it — the phone's own screen showing what the probe sees — so the construction gets one render before it is proposed again.
+- **Non-Latin text in a mark is untested.** Frame 11's speech bubbles carry four scripts; this library has never rendered one, and set 04 does not try it.
+
+---

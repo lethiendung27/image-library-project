@@ -3,14 +3,14 @@ id: 03-mechanism-signal
 step: 3
 job: mechanism
 device: signal
-version: "0.5"
+version: "0.6"
 status: reserved
 replaced_by: null
 channels: [landing-page, marketplace]
 requires_product_photo: true
 generation_mode: single-pass
 axes: {}
-text_layer: [title]
+text_layer: [title, badge]
 variants: []
 exempt_from: []
 pairs_with: []
@@ -49,6 +49,23 @@ instruction's output format as the skeleton, without the LP2 product block (ADR-
 
 The two ClikTric pages sell one product and are one source (batch 2026-09-17-A).
 
+**The owner's four signal frames of 2026-09-18** (ADR-106). Twelve feature frames arrived in the
+owner's audit message; four argue a signal, and they are cited by sha256 and NOT ledgered, because
+they are not in the assets tree and no source page is named. They are evidence for the REGISTER
+and they are not counted toward criterion 1.
+
+| sha256 | product | what is drawn | the subject it lands on | the product |
+|---|---|---|---|---|
+| `cb0c18d8` | wall music boxing pad | a staff with notes, equaliser bars, a halo at the struck target | the boxer's fist | yes |
+| `455e0e9a` | ultrasonic repeller | a chart of the frequencies, keyed to four animal silhouettes with their bands | the animals it targets | yes |
+| `e653edfc` | baby sound machine | a beam to a rounded icon tile of the sound it plays | the room it plays into | yes |
+| `459eab20` | translation earbud | four speech bubbles, and a shield with its figure | the ear, and the speech | yes |
+
+**What they change, counted with the ten above:** the mark is **the thing itself 4 of 4**, and it
+lands on or inside the subject **4 of 4**. A glowing arc, arrow or ring appears **0 of 4** — and
+0 of 12 across the whole audit set — so the symbol vocabulary this file called the mark is one
+case of it, not the whole.
+
 **What the ten share, counted from the set:**
 1. **Something invisible is drawn, 10 of 10**: arcs or rings from the product 3, a path to what it
    reaches 2, marks on the thing detected 3, waveforms 2, speech bubbles 1.
@@ -65,6 +82,10 @@ sends or senses, drawn as luminous marks over an editorial photograph in which t
 the anchor and in use. The frame answers *"how does it get there"* — through a wall, across a
 room, into a phone — and the far end shows that it arrived. It must read in three seconds.
 
+**The mark is the thing itself** (ADR-106): sound drawn as notes or as a spoken bubble, a
+frequency as a chart keyed to what it acts on, a lure as the paths the insects fly. **It lands on
+or inside the subject the product acts on**, never floating beside the product touching nothing.
+
 ## TRIGGER
 use_when: >
   The copy's claim is a signal the product sends or senses and nobody can see: WiFi or
@@ -73,7 +94,9 @@ use_when: >
   problem or support section whose copy names what the signal reaches or passes through.
   Take 03-mechanism-contact when the product touches a body at one place;
   03-use-grid when the argument is the range of hosts rather than the link to them;
-  03-spec-macro when the claim is the product's own part rather than what that part sends.
+  03-spec-macro when the claim is the product's own part rather than what that part sends;
+  04-proof-stat when the claim IS a figure and the figure is the subject of the frame;
+  03-spec-callout when the claim is several capabilities pinned as labels beside the product.
   Never a lineup of products: a still cannot show a difference nobody can see.
 
 ## SKELETON
@@ -87,16 +110,17 @@ Each prompt is one natural paragraph, starting directly with the image prompt, w
 or JSON, in this order:
   1. The photograph: its camera and layout, the product BY NAME, what it is doing, where.
                                                                          -> PARTS/opening
-  2. The product: the nearest, largest and sharpest object in the frame, whole and
-     unobstructed, filling about 40% of the frame height.                -> PARTS/anchor
+  2. The product: the nearest and sharpest object in the frame, whole and unobstructed, at
+     the size its host gives it, with the camera close enough to read it. -> PARTS/anchor
   3. The far end: what the signal reaches or is stopped short of, large and in sharp focus,
      showing the result by itself; a barrier only where the claim passes through one.
                                                                          -> PARTS/far-end, PARTS/barrier
-  4. The mark, in a sentence of its own: one known glowing symbol from beside the product to
-     the far end, and what it shows; then the set's mark sentence.       -> PARTS/path, MARKS/signal
+  4. The mark, in a sentence of its own: the invisible thing drawn in its own form, landing on
+     the subject it acts on, and what it shows; then the set's mark sentence.
+                                                                         -> PARTS/path, MARKS/signal
   5. Light and background: the set's two sentences.                      -> PARTS/ground
-  6. Words and the corner: the set's sentence; a gallery tile adds its title sentences.
-                                                                         -> SLOT CONSTRAINTS
+  6. Words and the corner: the set's sentence; a gallery tile adds its title sentences, and a
+     feature image may add its one short line.                           -> SLOT CONSTRAINTS
   7. "Use the attached product photo as the exact reference."            -> PARTS/form (G1)
 
 Optional elements:
@@ -143,11 +167,22 @@ they are doing, and where.
   invented one: a well-known brand's camera with its wordmark, and a gadget with a display where
   a floor-vent fan should be. No photo existed for either product.
 
-**`anchor`** — the product, in use or installed, is the visual anchor: **the nearest, largest and
-sharpest object in the frame, whole and unobstructed, filling about 40% of the frame height.**
-- **Measured** (boxes read by eye): the product filled 7.8% and 25.3% of the two signal
-  references, 1.6%–3.2% of 0.2's renders, and 5.9%–16.0% of 0.3's under this sentence, 4 of 4.
-  The owner still failed 0.3's, so size was necessary and not enough.
+**`anchor`** — the product, in use or installed, is the visual anchor: **the nearest and sharpest
+object in the frame, whole and unobstructed, at the size its host gives it.**
+- **Scale comes from the host, never from a share of the frame** (ADR-106). A hand, an ear, a
+  body, a seat, a pane, a wall or a plant in frame fixes how big the product is, and the prompt
+  moves the CAMERA: *shot close enough that the product reads whole*. A share is named ONLY on a
+  studio or a graphic ground, where nothing fixes the size, and there it is 40–60%.
+- **Measured on the owner's twelve feature frames of 2026-09-18**: 20–75% of the frame height,
+  median ~47%, always agreeing with the host — the same earbud is 20% on an ear and 48% alone on
+  a lit map.
+- **0.5 wrote one share into every prompt** — *"filling about 40% of the frame height"* — and set
+  03 asked for a charging case the size of a lunch box and a pool light the size of a chair. The
+  owner failed exactly that, 2026-09-18: *"cần giữ đúng scale của sản phẩm (tai nghe quá to, đèn
+  led quá to)"*.
+- **Measured before that** (boxes read by eye): the product filled 7.8% and 25.3% of the two
+  signal references, 1.6%–3.2% of 0.2's renders, and 5.9%–16.0% of 0.3's. The owner failed 0.3's,
+  so size was necessary and not enough.
 - **In use**: held, pressed, plugged in, installed, or working beside the person it serves.
 - **A fixed product stays installed** (G7-X): a plug-in unit sits in its socket. 0.2 kept it
   there 4 of 5.
@@ -174,8 +209,23 @@ claim, and no frame in the corpus drew it on a closed wall. 0.2 rendered two cut
 read as damage; one became a brick recess the path ran past (`KNOWN-FLAKY`). **Untested under
 0.3.**
 
-**`path`** — a parameter, and the copy picks it. **Each form is a symbol a buyer already knows,
-drawn as the owner's references draw it:**
+**`path`** — a parameter, and the copy picks it. **The first question is what the invisible thing
+IS, and the mark draws that** (ADR-106); the symbol families below are the case where the thing
+is a link or a reach. Every form lands on or inside the subject it acts on.
+
+- `thing-itself` — the invisible thing in its own form: music as a staff and notes, speech as a
+  bubble, a frequency as a chart keyed to what it targets, a played sound as the icon of what it
+  plays. The owner's audit frames, 4 of 4; **untested here**.
+- `subject-paths` — the paths the subjects themselves take: insects drawn into an intake, air into
+  a vent. **Untested here.**
+- `through-view` — what the user sees through the product, shown where the product really shows
+  it: a screen, an eyepiece, a viewfinder. G6 keeps interface text out, so the screen carries a
+  photograph. **Untested here.**
+- `halo` — a soft ring or glow on the subject where the product reaches it: an ear, a hand, a
+  surface. The owner's frame `525f1c50`; **untested here**.
+
+**The link family, each form a symbol a buyer already knows, drawn as the owner's references draw
+it:**
 - `arcs` — the Wi-Fi symbol: three or four smooth concentric arcs around a small dot, glowing,
   beside the sending part, on one side or both (lp00132-3). Reach and emission, 3 of 10. Set 02
   drew it cleanly, 1 of 1.
@@ -203,13 +253,18 @@ lp00132-3's bare desk). The background may blur; the far end never does.
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `signal` | one recognisable, clean, glowing symbol — the Wi-Fi arcs with their dot, broad sweeping arrows, or rings — bold enough to read at a glance, beside the product and running to the far end | luminous blue, which may shade toward cyan (G3: working) | one form per frame | corpus 10 of 10, blue on 7; both owner references glow · 0.2's thin flat blue: 5 renders, owner fail · 0.3's glowing trails read as beads or wire 3 of 3, its arcs clean 1 of 1, owner fail 4 of 4 |
+| `signal` | the invisible thing drawn in its own form — notes, a spoken bubble, a chart keyed to what it targets, the subjects' own paths, a halo on the subject, the view through the product — or, where the claim is a link, one known symbol: Wi-Fi arcs with their dot, broad sweeping arrows, rings. Bold enough to read at a glance, and it LANDS on the subject it acts on | luminous blue, which may shade toward cyan (G3: working); a warm glow where the thing itself is warm — the owner's `525f1c50` halo | one family to a frame | the thing itself: owner audit 4 of 4, landing on the subject 4 of 4, glowing arcs 0 of 12 (ADR-106) · corpus 10 of 10 draw something invisible, blue on 7 · 0.2's thin flat blue: 5 renders, owner fail · 0.3's glowing trails read as beads or wire 3 of 3, its arcs clean 1 of 1, owner fail 4 of 4 |
 
 - **Bold and luminous, never thin and flat.** 0.2 asked for "thin, clean" marks, and the owner
   failed all five against references whose arcs and arrows glow.
-- **One form, one colour.** snapi-stud's arcs, pawdi-11's sight line and ClikTric's arrows each
-  keep to one family. pawdi-cas's detection frames stack brackets, sirens and notifications into
-  one picture, and they are the busiest of the ten.
+- **It lands on the subject, and a mark that floats beside the product touching nothing is the
+  fault this file wrote into 0.5** — *"stays beside the product and never lies on it"*, all six
+  prompts of set 03. The clause it was protecting stands in a narrower form: **the mark never
+  covers the product's own face or repaints it**, which is what the owner's own runs did four
+  times (ADR-094). On the subject, it may touch.
+- **One family to a frame, one colour.** snapi-stud's arcs, pawdi-11's sight line and ClikTric's
+  arrows each keep to one family. pawdi-cas's detection frames stack brackets, sirens and
+  notifications into one picture, and they are the busiest of the ten.
 - **Never red, and never a flat green.** Red is pain and wrong states, and green is the verdict
   (G3). lp00412-4's arrows shade from blue into green; this file stops the shade at cyan.
 - **No bars and no figures on the marks.** A signal-strength meter or an Mbps number drawn on the
@@ -226,7 +281,12 @@ lp00132-3's bare desk). The background may blur; the far end never does.
     buyer's words, written as a sentence of the paragraph.
   - One 1–3 word label beside the far end, only where the far end is not obvious; it counts as
     the tile's chip.
-  - Outside the gallery, no words at all (ADR-096).
+  - **In a feature image — a section image whose block argues one named feature, the `mechanism`
+    and `how-to-use` roles — one short line (ADR-106)**: a figure with its unit as the page states
+    it, and/or a tag of two to five words naming that feature, plus the one-to-three-word labels a
+    chart or a call-out needs. Never a sentence, never a second line. The tag takes this type's
+    `title` slot and the figure its `badge` slot, so G16 binds as it always has.
+  - In every other section image, no words (ADR-096).
   - 0.2: the gallery title came back exact and once, 1 of 1, and the four section images
     carried no words.
 - **G6 on screens.** A television or a phone at the far end may show a photograph or a film
@@ -251,7 +311,9 @@ red or green signal marks, marks painted on the product, a rainbow gradient, lig
 a second product, the product floating, a closed wall with marks drawn on its paint,
 the product small or far off, a flat evenly lit frame, faint thin lines,
 the product set out on display with nobody using it, a string of glowing beads,
-a looping wire, a far end too small to read, a well-known brand's product or wordmark
+a looping wire, a far end too small to read, a well-known brand's product or wordmark,
+the product enlarged against the hand, ear or body beside it, a mark floating beside the
+product and touching nothing, a sentence of copy, a second line of words
 ```
 
 ## BLOCK
@@ -273,7 +335,13 @@ It also borders two proposals with no file:
 
 **Criterion 3 has no passing render.** On 2026-09-17 the owner failed all five renders of
 `sets/03-mechanism-signal-01/` (0.1) and all four of `sets/03-mechanism-signal-02/` (0.3). 0.5
-has not rendered; its first set is `sets/03-mechanism-signal-03/`.
+never rendered: on 2026-09-18 the owner audited its set `sets/03-mechanism-signal-03/` on the
+words alone and failed it for scale, for a mark that carries no message and for having no copy
+(ADR-106). 0.6's first set is `sets/03-mechanism-signal-04/`.
+
+**The owner's four audit frames do not clear criterion 1.** They have no named source page and
+they are not in the assets tree, so they are cited for the register and not counted. The fifth
+source is still owed, and it should still be a device that reaches a place rather than a person.
 
 ## KNOWN-FLAKY
 **Under 0.2** (set 01, five renders; the register is gone, so these are checks, not clauses):
@@ -294,12 +362,27 @@ has not rendered; its first set is `sets/03-mechanism-signal-03/`.
   pushed the far end out, but the far end was small every time; no airflow was drawn, 0 of 1;
   a product's display got a picture, 2 of 4 (now in `PARTS/far-end`).
 
-**Predicted for 0.5, and what set 03 checks first:**
+**Predicted for 0.5, and never tested** — set 03 was audited on its words and not rendered:
 - without the block, the product drifting from its photo even where one is attached;
 - a blocked signal, which no earlier set drew, passing through what should stop it;
 - a scent, which is not a signal, rendering as smoke: set 03's boundary case.
 
+**Predicted for 0.6, and what set 04 checks first:**
+- the thing itself rendering as a generic glow anyway, the habit of four sets;
+- a mark that lands ON the subject spilling onto the product's own face;
+- the camera sentence leaving the product too small now that no share is named;
+- the one short line rendering as a sentence, a second line, or gibberish lettering;
+- a chart keyed to subjects — the owner's `455e0e9a` — which no render of this library has drawn.
+
 ## CHANGELOG
+- 0.6 (2026-09-18): **the owner audited set 03 on its words, with twelve reference frames**
+  (ADR-106). Three clauses change. The mark is the invisible thing drawn in its OWN form and it
+  lands on the subject the product acts on — a glowing arc or arrow appears in 0 of the owner's 12
+  frames, and 0.5 asked for one in all six prompts. Scale comes from the host and the camera
+  moves; the single *"about 40% of the frame height"* is gone, and a share is named only on a
+  studio or graphic ground. A feature image may carry one short line — a figure with its unit or a
+  two-to-five-word tag — inside this type's declared text layer. `PARTS/path` gains four untested
+  families; the sources gain the owner's four signal frames, cited and not counted. No render yet.
 - 0.5 (2026-09-17): owner instruction, *"hãy thử đặt skeleton giống output format của feature image
   txt"*. The SKELETON is the instruction's output format, one paragraph in seven steps, its
   optional human and pet elements, and its closing sentence. The LP2 product block leaves the
