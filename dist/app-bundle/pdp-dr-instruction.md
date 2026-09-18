@@ -211,8 +211,8 @@ in pink. The sixth batch was seven tiles long.
 **The product block, in these words.** On an LP2 page it takes the place of G1's block and keeps
 every G1 obligation, and G1's "do not redesign" sentence stays in it word for word. Seven types
 leave it out: `03-mechanism-signal`, on the owner's trial of the feature-image output format
-(ADR-101), and the six section types, whose one form carries G1 as that format's reference and
-closing sentences (ADR-110, *The section form*).
+(ADR-101), and the six section types, which carry G1 in that one sentence and nothing else of the
+block (ADR-112, *The section form*).
 
 ```
 Use the attached product photo as the exact reference. Preserve its shape,
@@ -749,7 +749,8 @@ itself — the owner records an invented "Dr. L. Chen" rendering an Asian face, 
   sentences wherever their case exists. **One exception, on trial:** `03-mechanism-signal` follows
   the owner's feature-image output format and carries G1 in one sentence, `Use the attached product
   photo as the exact reference.`, before the instruction's closing sentence (ADR-101). **The six
-  section types take the same form** (ADR-110, *The section form*).
+  section types carry the same one sentence, last, and no closing sentence** (ADR-112, *The
+  section form*).
 - **G2 limits the PRODUCT slot to four kinds of information** — position, angle, scale in
   frame, and relation to other objects. Not shape, not material, not colour, not
   construction, not an aesthetic adjective. The reference photo carries appearance; the
@@ -902,8 +903,8 @@ seconds.
   closing sentence word for word.
 
 **Where it binds today:** `03-mechanism-signal`, from 0.3, whose `PARTS/form` carries the
-closing sentence, and from 2026-09-18 the six section types, whose one form ends with the same
-sentence (ADR-110). Adapter Rule 6 names the exceptions to its slot form. **From 0.5 that type's
+closing sentence. The six section types are written by the owner's other instruction, the image
+instruction, since ADR-112. Adapter Rule 6 names the exceptions to its slot form. **From 0.5 that type's
 skeleton IS the instruction's output format**, on the owner's instruction *"hãy thử đặt skeleton
 giống output format của feature image txt"* (ADR-101).
 
@@ -972,67 +973,105 @@ types and its text law, the hero keeps its own law, a buyer tile stays `05-socia
 a render (SPEC §6.3, criterion 3). A draft is promoted in place, one at a time. Until a section's
 type is active, its field routes as before: by its default role, through Layer 2.
 
-**The first round failed, and the form below is on trial** (ADR-111). Set `section-02` wrote the
-eight section fields of the owner's page v17 in this form, and the owner judged the renders still
-poor next to the instruction's own results. Set `section-03` writes the same eight fields, same
-product, same descriptions, by the owner's instruction as it stands — Image_Type and Description in,
-one concise prompt out — with nothing this section adds: no fixed sentence, no reference or closing
-sentence, no accent and no 1,200 budget. The owner's own standing rules stay: casting, and no face
-beside a named expert. **Which set wins decides the six skeletons.** If `section-03` does, the form
-becomes the instruction as it stands, and a sentence of this form comes back only where a render of
-the new form failed without it. Until then this section is law and none of the harness's findings
-on `section-02` is written into it.
+**Two rounds chose the form below** (ADR-111, ADR-112). `section-02` wrote the owner's page v17 in
+ADR-110's form and the owner failed it on quality. `section-03` wrote the same eight fields by the
+owner's instruction as it stands, and the owner's word narrowed to the size of its drawn words and
+marks. So the form is now the instruction as it stands, and what came back is only what an arm-B
+render failed without. `sets/section-04/` is the six types' first set at 0.3.
 
 ### The section form
 
-**Every section type's skeleton is one form, and it is the owner's output format**: *"a single,
+**Since ADR-112 the section form IS the owner's image instruction as it stands**, with G1 in one
+sentence and what two render rounds earned. The prompt is what the instruction produces from its
+two inputs — Image_Type, the type's mode, and Description, the field's own page values: *"a single,
 concise image prompt describing the full visual: environment, product visibility,
 problem/solution logic, lighting, angle, and permitted diagram elements if applicable."*
 
 ```
-One concise natural paragraph, starting directly with the picture, with no labels, no
-headings and no JSON, in this order:
-  1. the picture — what kind of image it is, the camera's angle and distance, the place,
-     and who or what is doing what;
-  2. the product — BY NAME, where it is and what state it is in: absent, idle or working;
-  3. the logic — the one visible cue that carries the section's line;
-  4. the drawn layer — only where the type permits one, in a sentence of its own;
-  5. the light — the form's light sentence;
-  6. the words — the type's own sentence: none, or what it declares.
-Where the product is in the frame, the prompt ends with the reference sentence and then
-the closing sentence. Where it is not, the prompt ends at the words and carries neither.
+One concise natural paragraph, starting directly with the picture, no labels, no JSON:
+  1. the register and the camera — "Editorial realism photo" (a diagram: "Clean 3D
+     technical cutaway"), the angle and the distance;
+  2. the place, and who is there;
+  3. the product BY NAME and its state — absent, idle, in the hand, working;
+  4. the logic — the one visible cue that carries the section's line;
+  5. the drawn elements the type permits, in a sentence of their own, sized for a phone;
+  6. the light and the instruction's tone — "... light, balanced contrast, readable in
+     three seconds";
+  7. the type's text rule — "No text.", or the words it declares;
+  8. where the product is in frame, G1 in one sentence, last:
+     "Use the attached product photo as the exact reference."
 ```
 
-**The fixed sentences, written word for word in every prompt that takes them:**
+**How the form was chosen — two rounds on the owner's page v17, the same eight fields.**
+- **`section-02`** wrote them in ADR-110's form: nine fixed sentences — light, no words, scale,
+  seated, reference, closing, the accent, the words' tail — and a 1,200-character budget. The owner
+  failed every render on quality against the instruction (ADR-111).
+- **`section-03`** wrote them by the instruction as it stands, with none of those sentences. The
+  owner's word on its renders narrowed to one thing, the size of the drawn words and marks. Beside
+  arm A, field by field, it held the product better — the reference's ribbed back came back in two
+  of its frames against one — and it made the claim of the two features arm A lost.
+- **So the fixed sentences left, and two things came back, each earned by an arm-B render that
+  failed without it:** the words and marks sized for a phone (below), and a seated product on a
+  seat of a clearly different tone. Arm B dropped the seated sentence and 2 of its 3 seated frames
+  put the cushion on a black seat of its own tone, where arm A carried it 4 of 4.
+- **G1 stays, in one sentence.** Arm B ran without it as the test, but G1 admits no exemption where
+  the product is in frame, so it keeps the one-sentence form ADR-101 gave `03-mechanism-signal`. The
+  owner attaches the photo.
 
-| name | the sentence |
-|---|---|
-| light | the session lock's light and grade, as ONE sentence. On a page with a hero that is ADR-104's two lines joined: `Bright daylight from the left, with natural shadows and real contrast, in true colour with neutral whites, no warm filter and no glow.` A diagram names `clean, even studio light with a soft shadow` instead, since the lock's daylight is a photograph's |
-| no words | `There is no text, label, logo or number anywhere in the picture, background included.` |
-| reference | `Use the attached product photo as the exact reference.` |
-| closing | `Do not change anything related to the original product, including screen, buttons, display, interface, ports, technical indicators, color, shape, proportions, dimensions, or functionality.` |
+**Nothing else is carried as a fixed sentence.** A clause enters a section prompt when a render of
+this form has failed without it — the rule every LP2 clause lives under. **The owner's own standing
+rules are not clauses of this kind**, and they stay: people are cast as the page's market, and as
+North American where it names none; and a block that quotes a named expert shows no face.
 
-A type that draws words writes its own words sentence in place of *no words*, and that sentence
-ends *nothing else in the picture carries text, and the bottom-right corner stays clear* — the
-wording `03-mechanism-signal`'s set 04 spelled its three lines under, 3 of 3.
+### Words and marks on a phone
 
-**Concise is a gate: at most 1,200 characters**, the reference and closing sentences included.
-The number is DECLARED, not measured. The owner's word is *concise*; those two sentences take 243
-of the characters; and `sets/section-01/` is the first test of it. The namespace's 1,800 is a
-gallery tile's.
+**Owner, 2026-09-18, on `section-03`:** *"chữ và các yếu tố đồ hoạ cần to rõ ràng hơn. mobile
+first"* — the words and the graphic elements must be larger and clearer, phone first (ADR-112).
 
-**What the form leaves out, and why.**
-- **The LP2 product block.** G1 keeps its obligation in the reference sentence and the closing
-  sentence carries the rest — the form ADR-101 put on trial for `03-mechanism-signal`. That trial
-  still has no verdict on the product: set 04 rendered under it, and whether the photos were
-  attached did not come back. **Every prompt with the product in frame ships with its reference
-  flag set, and the owner attaches the photo.**
-- **The rest of the style lock.** Two grounds, the text colours, the accent, the chip form and the
-  design language bind words and graphic grounds, and a section photograph has neither. It carries
-  the lock's light and grade. A type that draws words takes the lock's type face and its accent in
-  its words sentence.
-- **Labelled slots.** Adapter Rule 6 names the six beside `03-mechanism-signal` as the types
-  written as one paragraph.
+A section image is read on a phone first, at the width its template fixes. On the WiBoofy template
+with a 390-px phone and its 16-px gutters:
+- a features item shows 358 px square;
+- the expert scene shows 358 × 268;
+- the how image shows up to 318 px square;
+- the problem image shows 224 px square.
+
+So a 1,200-pixel render reaches the screen at a quarter to two-fifths of its size.
+
+| on a 390-px phone | the owner's own gallery titles on this page | `section-03` | target |
+|---|---|---|---|
+| a tag's capitals | 24–25 px | 8.4–14 px | at least 18 px |
+| a label's capitals | — | 7.2–7.5 px | at least 12 px |
+| a drawn line | — | 0.6–2.4 px | at least 3 px |
+| the words' contrast with their ground | 8.1–11.1:1 | 2.7–14.4:1 | at least 4.5:1 |
+
+`scripts/text-size.py` reads a render's capitals, lines and contrast and prints them at the field's
+phone width, against these targets. **The targets are checked on a render and never written into a
+prompt as numbers.** What sizes words is already measured in this file. Naming the AREA they fill
+worked: the owner's short titles filled their named area, once, in all 76 renders that carried one
+(the text section, *Never reserve space you do not fill*). Setting a headline against a named object
+ran backwards (the badge rule beside it).
+
+**How a prompt gets there:**
+- **Concise means few words, not small letters; minimal means few labels, not faint ones.**
+  `section-03`'s prompts asked for a *concise text overlay*, *minimal technical labels*, a *thin*
+  pointer line and a *small* grip icon, and every one came back small or thin, 4 of 4. A drawn
+  element is never called small, thin, minimal or concise.
+- **Name the area the words fill, and call them large and bold**: *set large in bold capitals
+  across the band above the seat*; a line *bold and thick*; labels *in large clear type*.
+- **Words sit on a plain ground of the opposite value**: dark words on a light wall, white words
+  over a dark seat. Contrast comes from the ground under the words, and the namespace's text law
+  still bars an outline, a shadow and a box. `section-03`'s white tag on a pale wall measured
+  2.7:1.
+- **Few elements, each large**: one tag, one line or one icon, or three labels at most.
+
+### The frame
+
+**The owner renders each section field at the frame its template shows**, which
+`python3 scripts/pdp-dr-slots.py` prints. The prompt never states it (ADR-016). `section-03` came
+back at 1,200 × 896 for square fields. A template that covers a square with a 4:3 render crops its
+sides, and image 5's icon sat in the band that crop removes. **Where a render is wider than its
+field, the words and marks sit in the middle, clear of both sides.** A field shown with
+`object-contain`, such as WiBoofy's FAQ image, letterboxes a wider render instead.
 
 **What the owner's instruction allows and avoids, for all six** — its global rules, in its words:
 
@@ -1046,14 +1085,15 @@ Tone:     editorial realism; premium clarity; clean lighting, balanced contrast;
           scene must be readable within 3 seconds
 ```
 
-**What this file still binds in a section prompt** — each earned by a render, and none restated in
-a type file beyond a pointer:
+**What still binds the WRITER of a section prompt** — each was earned by a render, and none is a
+fixed sentence. The writer applies each where its case exists:
 - the product is NAMED as the page names it and never described (G2): where the prompt said only
   "the product", 2 of 4 renders invented one (`03-mechanism-signal` 0.3);
 - scale comes from the host, never from a share of the frame (ADR-106);
 - a drawn mark is the thing itself and lands on its subject (ADR-106), never runs along a cable,
   and nothing the buyer owns is cut open (ADR-109);
-- a drawn figure is true of its frame, and the place carries no signage (ADR-109);
+- a drawn figure is true of its frame, and so is a drawn relation such as *level*; the place
+  carries no signage (ADR-109, ADR-112);
 - full colour from the room's own things, never a pale grade and never a warm cast (ADR-104,
   ADR-107, ADR-108);
 - G6 on screens, G13, the casting rule, and no face in a block that names a person;

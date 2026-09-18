@@ -3,7 +3,7 @@ id: 05-persona-lifestyle
 step: 5
 job: persona
 device: lifestyle
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -16,7 +16,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 05-persona-lifestyle — PDP-DR SECTION TYPE, DRAFT
@@ -52,21 +52,23 @@ use_when: >
   tile, which is 05-social-snapshot's.
 
 ## SKELETON
-The section form: one concise natural paragraph, no labels, in this order. Each arrow names an
-entry in PARTS; the fixed sentences are the form's and are written word for word.
+The section form since ADR-112: the owner's image instruction as it stands. Its Image_Type is this
+type's mode and its Description the field's own page values; the prompt is one concise natural
+paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 05-persona-lifestyle v0.2
+TYPE: 05-persona-lifestyle v0.3
+Image_Type: OTHER
 
-  1. The picture: an editorial photograph, its angle and distance, the lived-in
-     place, the time of day, and who is there doing what.           -> PARTS/scene
-  2. The product BY NAME, at home in that place: where it sits and what it is
-     doing there. Or the sentence that it is not in the frame.      -> PARTS/product
-  3. The light: the form's light sentence.
-  4. The words: the form's no-words sentence.
+  1. The register and the camera: "Editorial realism lifestyle photo".
+  2. The lived-in place, and who is there doing what.                -> PARTS/scene
+  3. The product BY NAME, at home in that place, on a seat of a clearly
+     different tone where it is sat on — or absent.                  -> PARTS/product
+  4. The light and the instruction's tone.
+  5. "No text."
 
-Where the product is in frame, the form's reference and closing sentences end the prompt.
-Where it is absent, the prompt ends at step 4 and carries neither.
+Where the product is in frame, G1's one sentence ends the prompt:
+"Use the attached product photo as the exact reference." Where it is absent, nothing follows.
 ```
 
 ## PARTS
@@ -77,12 +79,14 @@ rather than styled: the room's colours are its own, with nothing added to supply
 person appears where the life needs one, busy with their own thing and never posing; a pet only
 where the product serves one.
 
-**`product`** — named as the page names it, placed and never described (G2), in use or in its
-real place, at the size its host gives it (ADR-106). It may be small, and it may be absent where
-the block is about the buyer's situation rather than the object — a help image, a support block.
-**Never the product set out on a surface for display**: the owner's feature-image instruction
-rules that frame out, and with the product idle on a table this type turns into the packshot the
-library does not make.
+**`product`** — named as the page names it, placed and never described (G2), in use or in its real
+place, at the size its host gives it (ADR-106). It may be small, and it may be absent where the
+block is about the buyer's situation rather than the object — a help image, a support block. **Never
+the product set out on a surface for display**: the owner's feature-image instruction rules that
+frame out, and with the product idle on a table this type turns into the packshot the library does
+not make. **A seated product sits on a seat of a clearly different tone**, asked as a relation,
+never as a colour: arm B of ADR-111 left the sentence out and 2 of its 3 seated frames put the
+cushion on a black seat of its own tone, where arm A carried it 4 of 4 (ADR-112).
 
 ## SLOT CONSTRAINTS
 - **One frame**, no panel, no inset and no collage of places: a block that must show several
@@ -94,7 +98,8 @@ library does not make.
   place and message as another image on the page.
 - **Any screen** shows only a picture, with no interface, text or numbers (G6).
 - **G13 binds**, casting follows the namespace, and a block that names a person shows no face.
-- **Length and ratio** are the form's: at most 1,200 characters, and no frame shape in the prompt.
+- **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
+  template shows (*The section form*, *The frame*).
 
 ## NEGATIVE
 ```
@@ -104,13 +109,12 @@ a pale or drained grade, a warm yellow cast, shop signs or labelled packaging in
 ```
 
 ## BLOCK
-**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
-page v17, image 7, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
-kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
-had graded it pass before that; the observations are under KNOWN-FLAKY and none is written into the
-skeleton yet. **The trial is `sets/section-03/`**: the same field, written by the owner's
-instruction as it stands, with nothing the section form adds. Its result decides this skeleton.
-`sets/section-01/` is unrendered and in 0.1's form.
+**Criterion 3: two rounds, and 0.3 is what they left.** Set `section-02` wrote the owner's page v17
+in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
+`section-03` wrote the same fields by the instruction as it stands, image 7 here, and the owner's
+word narrowed to the size of the drawn words and marks; the harness graded it pass (ADR-112). 0.3 is
+the instruction as it stands plus what the two rounds earned. It has no render: `sets/section-04/`
+is its first, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -123,12 +127,18 @@ that cannot decide lands here, so the trigger names the five it must rule out fi
 whose section images mostly land on this type re-reads its copy before it ships.
 
 ## KNOWN-FLAKY
-Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+Single observations; what recurred across both rounds is written into 0.3, and the rest waits here.
 
 - **Set `section-02`, image 7** (harness pass). A real kitchen in full colour, unposed, the phone
   showing a picture, and the cushion's outline reading against the wooden chair.
 
+- **Set `section-03`, image 7** (harness pass). A bright kitchen, the cushion's ribbed back as the
+  reference has it, on a wooden chair of another tone. A beige sweater in a white kitchen; the
+  frame's colourfulness 32.0 sits inside the owner's band.
+
 ## CHANGELOG
+- 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
+  with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
   quality against the instruction (ADR-111). No clause added: the harness's observations wait in
   KNOWN-FLAKY while `section-03` tests the instruction as written against this form.

@@ -40,10 +40,11 @@ six types the owner's image instruction names, which a `section`, `pair` or `clo
 ahead of its role's Layer 2 row, once that type is active. The script prints a type's `status`
 where it is not `active`, and a reserved one does not route: that field routes by its role, as
 before. **A prompt filled from a section type is written in the SECTION FORM**
-(`registry/pdp-dr-instruction.md`, *The owner's image instruction*) — one concise paragraph of at
-most 1,200 characters, with no labels, no product block and no style-lock table, ending with the
-form's reference and closing sentences where the product is in frame. Its DESCRIPTION is the
-field's own block's content values: for an item field, that item's lines first.
+(`registry/pdp-dr-instruction.md`, *The owner's image instruction*). That is the owner's image
+instruction as it stands: one concise paragraph, with no labels, no product block and no style-lock
+table. Its words and marks are sized for a phone, and G1's one sentence comes last where the product
+is in frame (ADR-112). Its DESCRIPTION is the field's own block's content values: for an item field,
+that item's lines first. **The owner renders each section field at the frame this script prints.**
 
 **And load only the SECTIONS you fill from.** A seven-reason listicle forces eight
 distinct types under one-type-once, so "typically 2–4" understates the worst case and
@@ -362,9 +363,9 @@ opens with that namespace's product block instead of G1's, and its words are cou
 gallery** — copy, chips, title-only and wordless tiles (ADR-094). Only the product card's gallery
 carries words; every other image on the page is wordless (ADR-096), except the few words a
 section type declares (ADR-106, ADR-110). **A section-form prompt is the exception to both
-halves of that sentence**: it carries the lock's light and grade as one sentence and nothing else
-of the lock, and G1 as the form's reference and closing sentences rather than as the block
-(ADR-110). The deliverable is a set that reads as one set.
+halves of that sentence**: it carries none of the lock, only the owner's image instruction's own
+light and tone, and it carries G1 as one sentence rather than as the block (ADR-112). The
+deliverable is a set that reads as one set.
 
 ## Step 6 — Render through the adapter
 

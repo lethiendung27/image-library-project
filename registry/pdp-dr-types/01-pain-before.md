@@ -3,7 +3,7 @@ id: 01-pain-before
 step: 1
 job: pain
 device: before
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 01-pain-before — PDP-DR SECTION TYPE, DRAFT
@@ -54,21 +54,25 @@ use_when: >
   fills.
 
 ## SKELETON
-The section form: one concise natural paragraph, no labels, in this order. Each arrow names an
-entry in PARTS; the fixed sentences are the form's and are written word for word.
+The section form since ADR-112: the owner's image instruction as it stands. Its Image_Type is this
+type's mode and its Description the field's own page values; the prompt is one concise natural
+paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 01-pain-before v0.2 [register: commercial | ugc]
+TYPE: 01-pain-before v0.3 [register: commercial | ugc]
+Image_Type: WITHOUT / BEFORE
 
-  1. The picture: an editorial photograph, its angle and distance, the ordinary
-     place the problem is noticed in, and who or what is in it.      -> PARTS/scene
-  2. The problem as a physical fact: the one thing the eye lands on. -> PARTS/problem
-  3. The product: absent, or in frame and plainly not working.       -> PARTS/product
-  4. The light: the form's light sentence.
-  5. The words: the form's no-words sentence.
+  1. The register and the camera: "Editorial realism photo", the angle and distance.
+  2. The ordinary place the problem is noticed in, and who is there.  -> PARTS/scene
+  3. The problem as a physical fact; the old way's failure as a
+     DISPLACED object, the one thing the eye lands on.               -> PARTS/problem
+  4. The product: absent, or in frame and plainly not working.       -> PARTS/product
+  5. "No solution cues", the light, and the instruction's tone:
+     "... light, balanced contrast, readable in three seconds."
+  6. "No text."
 
-Where the idle product is in frame, the form's reference and closing sentences end the
-prompt. Where it is absent, the prompt ends at step 5 and carries neither.
+Where the idle product is in frame, G1's one sentence ends the prompt:
+"Use the attached product photo as the exact reference." Where it is absent, nothing follows.
 ```
 
 ## PARTS
@@ -79,8 +83,12 @@ is allowed where it is relevant and it never performs for the lens: the body and
 the problem (G9), and the expression is only what that moment would really bring.
 
 **`problem`** — the symptom as a thing in the frame, written as itself and never as a comparison.
-*Borrowed from `01-pain-scene`, where a symptom written as a difference came back as an ordinary
-body both times LP1 tried it; untested here.* Where the copy names the OLD WAY — the razor, the
+**The old way's failure is a DISPLACED object**, somewhere it plainly is not in use — the lumbar
+pillow fallen on the floor beside the chair, the pad pushed half off the seat — never a small
+change of state. *Slipped down onto the seat* came back with the pillow upright in its corner in
+both rounds, 2 of 2, which is `01-pain-scene`'s rule (*its residue is a displaced object*) now
+evidenced here; *hips sunk below his knees*, a comparison, did not render either, 2 of 2. Where
+the copy names the OLD WAY — the razor, the
 plastic bag, the flat pad — that object may be the subject, generic and unbranded (SPEC §6.4). One
 problem to a frame: a block of three items is three frames, each on its own item's line.
 
@@ -103,7 +111,8 @@ borrowed). It is named as the page names it and never described (G2).
 - **`register: ugc`** only in a block of buyers' own photos — `testimonials` today — in
   `05-social-snapshot`'s register, and the prompt ships with G14's flag and note (ADR-089).
 - **G13 binds**, casting follows the namespace, and a block that names a person shows no face.
-- **Length and ratio** are the form's: at most 1,200 characters, and no frame shape in the prompt.
+- **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
+  template shows (*The section form*, *The frame*).
 
 ## NEGATIVE
 ```
@@ -114,13 +123,12 @@ shop signs or labelled packaging in the background
 ```
 
 ## BLOCK
-**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
-page v17, image 1, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
-kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
-had graded it partial (the control, predicted pass) before that; the observations are under
-KNOWN-FLAKY and none is written into the skeleton yet. **The trial is `sets/section-03/`**: the same
-field, written by the owner's instruction as it stands, with nothing the section form adds. Its
-result decides this skeleton. `sets/section-01/` is unrendered and in 0.1's form.
+**Criterion 3: two rounds, and 0.3 is what they left.** Set `section-02` wrote the owner's page v17
+in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
+`section-03` wrote the same fields by the instruction as it stands, image 1 here, and the owner's
+word narrowed to the size of the drawn words and marks; the harness graded it partial (ADR-112). 0.3
+is the instruction as it stands plus what the two rounds earned. It has no render:
+`sets/section-04/` is its first, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 cannot be met from the ledger as it stands**: the PDP corpus is gallery tiles, and
 this type fills section fields. The type comes from the owner's tested instruction, so the count
@@ -132,7 +140,7 @@ its trigger refuses one. Its live neighbour is `01-pain-scene`, LP1's cinematic 
 trigger names cold traffic and an advertorial header and no LP2 section.
 
 ## KNOWN-FLAKY
-Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+Single observations; what recurred across both rounds is written into 0.3, and the rest waits here.
 
 - **Set `section-02`, image 1** (the control, predicted pass; harness partial). The old way came
   back working: the separate lumbar pillow stood upright in the seat-back corner, filling the gap
@@ -142,7 +150,14 @@ Single observations, none yet a clause (SPEC §6.2); what the trial decides come
   change of state (*slipped down*, *flattened*), where `01-pain-scene` records that a failure renders
   as a displaced object; and *hips sunk below his knees*, a comparison, did not render, 1 of 1.
 
+- **Set `section-03`, image 1** (the instruction as it stands; harness partial). A cleaner
+  photograph than arm A's, and the same fault: the lumbar pillow came back upright in its corner
+  though the prompt had it *slipped down onto the seat*, 2 of 2 across both arms — the clause
+  0.3's PARTS/problem now carries.
+
 ## CHANGELOG
+- 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
+  with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
   quality against the instruction (ADR-111). No clause added: the harness's observations wait in
   KNOWN-FLAKY while `section-03` tests the instruction as written against this form.

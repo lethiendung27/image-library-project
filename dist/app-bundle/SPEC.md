@@ -350,8 +350,9 @@ LP2's routing surface, by the same `--write-index`.
   mode of the owner's image instruction — `01-pain-before`, `06-relief-after`,
   `03-mechanism-diagram`, `03-use-demo`, `03-spec-overlay`, `05-persona-lifestyle` — for the
   images OUTSIDE the product card's gallery. A section type is one frame that sits beside its own
-  HTML copy, its skeleton is one concise paragraph rather than labelled slots (the SECTION FORM,
-  `registry/pdp-dr-instruction.md`), and it never fills a gallery tile. Which section takes which
+  HTML copy, its skeleton is one concise paragraph rather than labelled slots — since ADR-112 the
+  owner's image instruction as it stands (the SECTION FORM, `registry/pdp-dr-instruction.md`) — and
+  it never fills a gallery tile. Which section takes which
   is the third column of *Section routing* in `mapping/pdp-dr-rules.md`; that preference is
   DECLARED on the owner's instruction, where Layer 2's gallery order is measured.
 - **A draft is promoted in place** — a status change, never a `git mv`, which would take it

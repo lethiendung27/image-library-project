@@ -65,7 +65,7 @@ devices:
   # 2026-09-18). Each names HOW a single frame beside its own HTML copy makes its argument.
   before: "one realistic frame of the problem, the product absent or idle and no cue of the fix; on a pair field, the first half of a before-and-after written from the pair's one locked description"
   after: "one realistic frame of the product working and the improvement visible; on a pair field, the second half of a before-and-after written from the pair's one locked description"
-  diagram: "a clean 2D or 3D visualisation or drawn cutaway of how the product works: arrows, particles, paths or waves, and minimal technical labels"
+  diagram: "a clean 2D or 3D visualisation or drawn cutaway of how the product works: arrows, particles, paths or waves, and a few technical labels, each large enough to read on a phone (ADR-112)"
   overlay: "the product clearly presented, in use where the feature acts on something, under a functional drawn layer: the feature's own mark, an icon, a figure or one short tag"
   lifestyle: "a realistic lived-in place the product belongs to, read at a glance; the person and the place carry the argument, and the product may be small or absent"
   # `animal` names WHAT is photographed rather than HOW the argument is made, which is the

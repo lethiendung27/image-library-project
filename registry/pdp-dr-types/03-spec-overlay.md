@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110, and its three reserved neighbours are named in BLOCK."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110, and its three reserved neighbours are named in BLOCK."
 ---
 
 # 03-spec-overlay — PDP-DR SECTION TYPE, DRAFT
@@ -59,22 +59,25 @@ use_when: >
   which this type never fills.
 
 ## SKELETON
-The section form: one concise natural paragraph, no labels, in this order. Each arrow names an
-entry in PARTS or MARKS; the fixed sentences are the form's and are written word for word.
+The section form since ADR-112: the owner's image instruction as it stands. Its Image_Type is this
+type's mode and its Description the field's own page values; the prompt is one concise natural
+paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-spec-overlay v0.2 [overlay: mark | icon | figure | tag | callout | view]
+TYPE: 03-spec-overlay v0.3 [overlay: mark | icon | figure | tag | callout | view]
+Image_Type: FEATURES
 
-  1. The picture: an editorial photograph, its angle and distance, the real
-     place the feature matters in, and who or what is there.        -> PARTS/scene
-  2. The product BY NAME, clearly presented: the nearest and sharpest thing
-     in the frame, whole, at the size its host gives it.            -> PARTS/product
-  3. The feature at work: what it is doing, to what.                -> PARTS/feature
-  4. The drawn layer, in a sentence of its own: what is drawn, in its own
-     form, and what it lands on.                                    -> MARKS/overlay
-  5. The light: the form's light sentence.
-  6. The words: the one-line sentence, or the form's no-words sentence. -> SLOT CONSTRAINTS
-  7. The form's reference sentence, then its closing sentence.
+  1. The register and the camera: "Editorial realism product feature image",
+     the angle and distance, the real place the feature matters in.   -> PARTS/scene
+  2. The product BY NAME, fully visible and clearly presented; on a seat
+     of a clearly different tone where it is sat on.                   -> PARTS/product
+  3. The feature at work: what it is doing, to what.                   -> PARTS/feature
+  4. The drawn layer, in a sentence of its own: what is drawn, what it
+     lands on, and that it is bold and large enough to read on a phone. -> MARKS/overlay
+  5. The words: the page's own tag, set once, large and bold, on a plain
+     ground of the opposite value, in the middle of the picture.       -> SLOT CONSTRAINTS
+  6. The light and the instruction's tone.
+  7. G1 in one sentence: "Use the attached product photo as the exact reference."
 ```
 
 ## PARTS
@@ -84,13 +87,15 @@ TYPE: 03-spec-overlay v0.2 [overlay: mark | icon | figure | tag | callout | view
 own line). A person appears where the feature acts on one; the expression is neutral and
 contextual, as the owner's rule says, and never poses.
 
-**`product`** — named as the page names it, placed and never described (G2). **Clearly
-presented** is the owner's word and it is the difference from `06-relief-after`: here the product
-is the subject, the nearest and sharpest thing in the frame. **Scale comes from the host**, never
-from a share of the frame, and the prompt moves the camera: *shot close enough that the product
-reads whole* (ADR-106; held 6 of 6 in `03-mechanism-signal`'s set 04). A thin product is framed on
-its working end (ADR-109). A share of the frame, 40–60%, is named only on a studio or a graphic
-ground, where nothing fixes the size.
+**`product`** — named as the page names it, placed and never described (G2). **Clearly presented**
+is the owner's word and it is the difference from `06-relief-after`: here the product is the
+subject, the nearest and sharpest thing in the frame. **Scale comes from the host**, never from a
+share of the frame, and the prompt moves the camera: *shot close enough that the product reads
+whole* (ADR-106; held 6 of 6 in `03-mechanism-signal`'s set 04). A thin product is framed on its
+working end (ADR-109). **A seated product sits on a seat of a clearly different tone**, asked as a
+relation, never as a colour: arm B of ADR-111 left the sentence out and 2 of its 3 seated frames put
+the cushion on a black seat of its own tone, where arm A carried it 4 of 4 (ADR-112). A share of the
+frame, 40–60%, is named only on a studio or a graphic ground, where nothing fixes the size.
 
 **`feature`** — the one feature the item names, doing its work on the thing it is for. Where the
 feature is a part, the camera shows that part in use; where it is a capacity or a rating, the
@@ -106,6 +111,10 @@ beside the hand that holds it (ADR-109).
 - **The mark LANDS on the subject the feature acts on** and never floats beside the product
   touching nothing; it never covers the product's own face or repaints it (ADR-094, ADR-106).
 - **Never along a cable**: a mark drawn along a wire became the wire 2 of 2 (ADR-109).
+- **A mark that asserts a relation — level, straight, aligned — is drawn where the frame makes it
+  true** (ADR-109). A driving posture puts the knees above the hips, and a level line over those
+  thighs came back false in both rounds, 2 of 2. Draw it where the frame can hold it: along the
+  product's own top surface, which stays level on a sloping seat.
 - **Never a hole in a thing the buyer owns** (ADR-109): where the inside matters, the `view`
   inset, the product's own screen, or a real opened state the object has.
 - Bold with a clean edge, never thin and flat and never a soft edgeless glow; no bars and no
@@ -119,8 +128,9 @@ beside the hand that holds it (ADR-109).
   words (`title` slot), and the one-to-three-word labels an icon row, a chart or a call-out
   needs. Never a sentence, never a second line, never a brand or a price, never a superlative or a
   verdict word the page does not supply (the instruction's text section). G16 binds both slots.
-  The one-line sentence ends: *nothing else in the picture carries text, and the bottom-right
-  corner stays clear.* A feature that needs no naming carries no words.
+  The tag is set once, large and bold, on a plain ground of the opposite value, sized for a phone
+  (*The section form*, *Words and marks on a phone*). A feature that needs no naming carries no
+  words.
 - **A drawn figure must be true of the frame it sits in** (ADR-109): a distance, a time or a
   count matches what the frame draws, or the figure stays in the page's HTML.
 - **A certification, award, rating, press or platform mark** only where `content.json` names it
@@ -128,7 +138,8 @@ beside the hand that holds it (ADR-109).
 - **Any screen at the far end** names its device and shows a picture, never interface text,
   notifications, bars or numbers (G6; `03-mechanism-signal` lost this 5 times).
 - **G13 binds**, casting follows the namespace, and a block that names a person shows no face.
-- **Length and ratio** are the form's: at most 1,200 characters, and no frame shape in the prompt.
+- **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
+  template shows (*The section form*, *The frame*).
 
 ## NEGATIVE
 ```
@@ -142,13 +153,12 @@ shop signs or labelled packaging in the background, a soft edgeless glow
 ```
 
 ## BLOCK
-**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
-page v17, images 3 to 5, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn
-còn kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The
-harness had graded them pass, fail and partial before that; the observations are under KNOWN-FLAKY
-and none is written into the skeleton yet. **The trial is `sets/section-03/`**: the same field,
-written by the owner's instruction as it stands, with nothing the section form adds. Its result
-decides this skeleton. `sets/section-01/` is unrendered and in 0.1's form.
+**Criterion 3: two rounds, and 0.3 is what they left.** Set `section-02` wrote the owner's page v17
+in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
+`section-03` wrote the same fields by the instruction as it stands, images 3 to 5 here, and the
+owner's word narrowed to the size of the drawn words and marks; the harness graded them partial,
+fail and partial (ADR-112). 0.3 is the instruction as it stands plus what the two rounds earned. It
+has no render: `sets/section-04/` is its first, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -164,7 +174,7 @@ decided: the owner failed every render of `03-mechanism-signal`'s sets 01, 02 an
 type's first set is the evidence that decision waits for.
 
 ## KNOWN-FLAKY
-Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+Single observations; what recurred across both rounds is written into 0.3, and the rest waits here.
 
 - **Set `section-02`, image 3** (harness pass). The words set once and spelled right, the leader
   ending on the joint, and the one frame of seven whose cushion carried the reference's ribbed back
@@ -179,7 +189,19 @@ Single observations, none yet a clause (SPEC §6.2); what the trial decides come
   back as he rose, a pain cue on a relief-side frame; and the cushion's face came back light grey,
   the reverse of the reference.
 
+- **Set `section-03`, images 3–5** (the instruction as it stands). The owner: *"chữ và các yếu tố
+  đồ hoạ cần to rõ ràng hơn. mobile first"* — and `scripts/text-size.py` agrees on every
+  frame: the tags' capitals 9.6, 8.4 and 14 px on a 390-px phone against 18, the lines 1.2 and
+  2.4 px against 3, and image 3's white tag on a pale wall at 2.7:1. The prompts had asked for a
+  *concise text overlay*, a *thin* pointer line and a *small* grip icon, and got exactly those.
+- **Image 4** (harness fail): the level line lay over thighs sloping down from knee to hip
+  again, 2 of 2 across both arms, and the cushion sat on a black seat of its own tone.
+- **Image 5** (harness partial): the claim read — a hand pressing, the cushion still — but the
+  icon sat at the left edge, in the band a square field's crop removes (a 1,200 × 896 render).
+
 ## CHANGELOG
+- 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
+  with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
   quality against the instruction (ADR-111). No clause added: the harness's observations wait in
   KNOWN-FLAKY while `section-03` tests the instruction as written against this form.

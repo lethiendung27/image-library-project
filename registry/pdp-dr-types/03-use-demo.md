@@ -3,7 +3,7 @@ id: 03-use-demo
 step: 3
 job: use
 device: demo
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1 reads as met, 5 distinct sources by `python3 scripts/validate.py --evidence` on 2026-09-18, but no record was re-read for this draft. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1 reads as met, 5 distinct sources by `python3 scripts/validate.py --evidence` on 2026-09-18, but no record was re-read for this draft. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 03-use-demo — PDP-DR SECTION TYPE, DRAFT
@@ -37,12 +37,12 @@ The owner's rules for this mode, word for word:
 - No text except essential step markers
 ```
 
-The id is not new. `03-use-demo` has stood in the ledger as a corpus proposal since 2026-08-11 —
-the instruction's type map names it as the nearest proposal to the owner's *Applied Use
-Storytelling*, and ADR-092, ADR-094 and ADR-097 each left it undrafted — and the vocabulary held the device
-`demo` reserved for it. This file is its first draft. **Two of its ledger records are section
-images, as this type's fields are**: Densjet's `benefit-braces`, and ClikTric's third feature
-item, which the owner chose on 2026-09-17 as a reference for feature images.
+The id is not new. `03-use-demo` has stood in the ledger as a corpus proposal since 2026-08-11 — the
+instruction's type map names it as the nearest proposal to the owner's *Applied Use Storytelling*,
+and ADR-092, ADR-094 and ADR-097 each left it undrafted — and the vocabulary held the device `demo`
+reserved for it. This file is its first draft. **Two of its ledger records are section images, as
+this type's fields are**: Densjet's `benefit-braces`, and ClikTric's third feature item, which the
+owner chose on 2026-09-17 as a reference for feature images.
 
 ## PURPOSE
 Show ONE step of using the product, as one realistic photograph: a hand or a person doing exactly
@@ -61,21 +61,23 @@ use_when: >
   gallery tile that strings several steps together, which this type never fills.
 
 ## SKELETON
-The section form: one concise natural paragraph, no labels, in this order. Each arrow names an
-entry in PARTS; the fixed sentences are the form's and are written word for word.
+The section form since ADR-112: the owner's image instruction as it stands. Its Image_Type is this
+type's mode and its Description the field's own page values; the prompt is one concise natural
+paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-use-demo v0.2
+TYPE: 03-use-demo v0.3
+Image_Type: HOW TO USE
 
-  1. The picture: an editorial photograph, its angle and distance, and
-     the real place this step happens in.                            -> PARTS/scene
-  2. The step, as the copy states it: whose hand, doing what, to which
-     part of what.                                                   -> PARTS/step
-  3. The product BY NAME, whole and unobstructed, at the size the hand
-     or the host gives it.                                           -> PARTS/product
-  4. The light: the form's light sentence.
-  5. The words: the form's no-words sentence, or the step-marker sentence. -> SLOT CONSTRAINTS
-  6. The form's reference sentence, then its closing sentence.
+  1. The register and the camera: "Editorial realism close-up", partial hand,
+     over the shoulder or a 45-degree usage angle.
+  2. The real place this step happens in.                            -> PARTS/scene
+  3. The step, as the copy states it — "One focused step": whose hands,
+     doing what, to which part of what.                              -> PARTS/step
+  4. The product BY NAME, fully visible, at the size the hand gives it. -> PARTS/product
+  5. The light and the instruction's tone.
+  6. "No text." — or the step's numeral alone, where every step has its own image.
+  7. G1 in one sentence: "Use the attached product photo as the exact reference."
 ```
 
 ## PARTS
@@ -104,8 +106,8 @@ fixed product stays installed (G7-X).
 - **One frame.** No panel, no strip and no inset.
 - **Words: none by default.** The page numbers its steps in HTML beside the image. Where a block
   gives every step its own image, a frame may carry its step's numeral and nothing else — the
-  owner's *essential step marker* — small, in the top-left corner, in the session lock's type
-  face. It takes this type's `badge` slot, so G16 binds it. Never a word, an arrow or a caption.
+  owner's *essential step marker* — large and bold in the top-left corner, sized for a phone. It
+  takes this type's `badge` slot, so G16 binds it. Never a word, an arrow or a caption.
 - **Hands** are this renderer's weakest subject (adapter Rule 5): one hand where one will do, its
   action named in a few functional words.
 - **Nothing drawn anywhere, including on packaging** (`03-use-sequence`'s LP2 law, borrowed: two
@@ -113,7 +115,8 @@ fixed product stays installed (G7-X).
 - **Any screen** shows only a picture, with no interface, text or numbers (G6).
 - **G13 binds**, casting follows the namespace, and a block that names a person shows hands and
   no face.
-- **Length and ratio** are the form's: at most 1,200 characters, and no frame shape in the prompt.
+- **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
+  template shows (*The section form*, *The frame*).
 
 ## NEGATIVE
 ```
@@ -124,13 +127,12 @@ shop signs or labelled packaging in the background
 ```
 
 ## BLOCK
-**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
-page v17, image 2, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
-kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
-had graded it pass before that; the observations are under KNOWN-FLAKY and none is written into the
-skeleton yet. **The trial is `sets/section-03/`**: the same field, written by the owner's
-instruction as it stands, with nothing the section form adds. Its result decides this skeleton.
-`sets/section-01/` is unrendered and in 0.1's form.
+**Criterion 3: two rounds, and 0.3 is what they left.** Set `section-02` wrote the owner's page v17
+in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
+`section-03` wrote the same fields by the instruction as it stands, image 2 here, and the owner's
+word narrowed to the size of the drawn words and marks; the harness graded it partial (ADR-112). 0.3
+is the instruction as it stands plus what the two rounds earned. It has no render:
+`sets/section-04/` is its first, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 reads as met, and the reading is unchecked.** `python3 scripts/validate.py
 --evidence` counts 10 observations across 5 distinct sources on 2026-09-18, now that the id has a
@@ -145,13 +147,19 @@ act: *One press to pair*, *Wash it, use it again*. It contests no gallery tile; 
 and `03-use-grid` keep those, and their `multi_step_usage` gate does not reach this id.
 
 ## KNOWN-FLAKY
-Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+Single observations; what recurred across both rounds is written into 0.3, and the rest waits here.
 
 - **Set `section-02`, image 2** (harness pass). One step, two hands pressing the cushion flush into a
   car seat mid-act, the place plain. The wheel and dashboard came back sharp where the prompt asked
   them soft.
 
+- **Set `section-03`, image 2** (harness partial). The best product in either round — the
+  charcoal mesh, the light shell, the ribbed back and the slot at the joint — and one step, two
+  hands. A real car maker's badge sits on the steering wheel, which G6's `logo` bars.
+
 ## CHANGELOG
+- 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
+  with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
   quality against the instruction (ADR-111). No clause added: the harness's observations wait in
   KNOWN-FLAKY while `section-03` tests the instruction as written against this form.

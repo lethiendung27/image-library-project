@@ -277,10 +277,10 @@ notes and ships. The owner may turn any of them back into a refusal.
    section images alike — shares the lock's two grounds, its text colours, its one accent, its
    typography, its chip form, its design language and its lighting family, named once and then
    repeated in every prompt in the same words. The fields are in
-   `registry/pdp-dr-instruction.md`. **A prompt in the section form repeats the lock's light and
-   grade as one sentence and nothing else of it** (ADR-110): a section photograph has no words,
-   chips or graphic ground for the other fields to bind, and a section type that draws words
-   takes the lock's type face and accent in its words sentence.
+   `registry/pdp-dr-instruction.md`. **A prompt in the section form carries none of the lock**
+   (ADR-112). It is written by the owner's image instruction, in its own light and tone, and a
+   section type that draws words sets them large and bold on a ground of the opposite value (the
+   instruction, *Words and marks on a phone*).
 5. **Composition varies tile to tile.** Layout, camera angle, crop and the product's share of
    frame are where a gallery shows design, and the style lock is not a licence to repeat one
    frame twelve times. **No tile repeats the previous tile's angle, and no angle family appears

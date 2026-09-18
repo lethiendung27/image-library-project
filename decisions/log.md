@@ -9019,3 +9019,133 @@ decides, and `registry/pdp-dr-instruction.md` says so where it introduces the fo
   budget nobody had measured.
 
 ---
+
+## ADR-112 · 2026-09-18 · The owner's image instruction as it stands becomes the section form, and a section image's words and marks are sized for a phone
+
+**Owner report, 2026-09-18**, on the eight renders of `sets/section-03/`, arm B of ADR-111: *"audit
+ảnh mới, chữ và các yếu tố đồ hoạ cần to rõ ràng hơn. mobile first"*. The words and the graphic
+elements must be larger and clearer, phone first.
+
+### What the audit found
+
+Every render was opened at full size. Four carry words or marks, and each of those was measured
+by the new `scripts/text-size.py` at the width its field has on a 390-px phone on the WiBoofy
+template (features 358 px square, the expert scene 358 × 268, how up to 318, problem 224):
+
+| on the phone | the owner's own gallery titles on this page | `section-03` | `section-02` |
+|---|---|---|---|
+| a tag's capitals | 24–25 px | 8.4–14 px | 7.3–17.8 px |
+| a label's capitals | — | 7.2–7.5 px | 6.3 px |
+| a drawn line | — | 0.6–2.4 px | — |
+| contrast | 8.1–11.1:1 | 2.7–14.4:1 | 11.9–20.6:1 |
+
+- **The cause is in the prompts.** They asked for a *concise text overlay*, *minimal technical
+  labels*, a *thin* pointer line and a *small* grip icon — the instruction's words, which mean few
+  rather than small — and got exactly that, 4 of 4. One tag was white on a pale wall, 2.7:1.
+- **The frame.** Every render came back at 1,200 × 896. The template shows problem, how, features
+  and faq square: it covers with a 4:3 render and crops its sides, and it letterboxes the FAQ
+  image, which it shows with `object-contain`. Image 5's icon sat in the band the crop removes.
+- **Arm B against arm A, field by field.**
+  - B held the product better: the reference's ribbed back came back in two of its frames against
+    one of A's.
+  - B made the claims of two features A lost.
+  - A kept more colour. B's people wore beige in three of its five frames with a person, and four
+    of its seven photographs fall under the 10th percentile of the owner's colourfulness band, against
+    none of A's.
+- **Across both arms:**
+  - The problem frame's pillow came back in place, 2 of 2.
+  - The level line lay over thighs sloping from knee to hip, 2 of 2.
+  - One diagram leader in each round ended off its part, 2 of 2.
+  - B dropped the seated sentence, and 2 of its 3 seated frames put the cushion on a black seat of
+    its own tone. A carried the sentence and held it 4 of 4.
+- **Harness grades:** pass 1, partial 6, fail 1. Eight ledger lines, `verdict_by: harness`, with the
+  owner's word folded into the four frames it reaches.
+
+### Decision
+
+1. **Arm B wins, and the section form is the owner's image instruction as it stands.** Two things
+   decide it. The owner's word on B narrowed from quality to the size of the drawn words and marks,
+   and B won the harness's side-by-side above. ADR-110's fixed sentences, the accent and the
+   1,200-character budget leave for good.
+2. **G1 stays, in one sentence, last, where the product is in frame.** G1 admits no exemption
+   there, and this is the form ADR-101 gave `03-mechanism-signal`. Arm B ran without it as the test.
+3. **Words and marks on a phone — the owner's word, as law in the section form.**
+   - **Targets on a 390-px phone:** a tag's capitals at least 18 px, a label's at least 12, a line at
+     least 3, contrast at least 4.5:1. `scripts/text-size.py` checks them on a render, and no prompt
+     states them as numbers.
+   - **Concise means few words; minimal means few labels.** A drawn element is never called small,
+     thin, minimal or concise.
+   - **The prompt names the area the words fill and calls them large and bold.** This namespace
+     already measured that naming the area holds, and that setting a headline against a named
+     object ran backwards.
+   - **The words sit on a plain ground of the opposite value.**
+4. **The frame.** The owner renders each section field at the frame its template shows, which
+   `scripts/pdp-dr-slots.py` prints. Where a render is wider than its field, the words and marks sit
+   in the middle, clear of both sides.
+5. **Clauses earned by recurrence across both arms, written into the types:**
+   - `01-pain-before`: the old way's failure is a displaced object, 2 of 2;
+   - `03-spec-overlay`: a mark that asserts a relation is drawn where the frame makes it true, 2 of 2;
+   - `03-mechanism-diagram`: the prompt says what each label's line touches, 2 of 2;
+   - the seated relation returns to the three types that seat the product: with it 4 of 4 in arm A,
+     and without it 2 of 3 failed in arm B.
+6. **What does not come back.** Colour is the one A/B loss B carries, and it is not written in. The
+   person in a clear colour, ADR-104's line, did lift arm A's colourfulness. But no render has been
+   failed for colour, and a clause enters a section prompt when a render fails without it. If the
+   owner reads B's frames as dull, that sentence is the one the A/B already holds evidence for.
+7. **The six types go to 0.3, and set `section-04` is the owner's page v17 again at 0.3**, all
+   eight fields, owner-gated. It is a page delivery on the product the fixes were learned on. Their
+   first test on a product they have never seen is still owed: `section-01` is in 0.1's retired
+   form and is rewritten when it runs.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `252383b` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"section form"` | 48 | 18 | 10 |
+| `"1,200"` | 20 | 14 | 9 |
+| `"no-words sentence"` | 9 | 8 | 6 |
+| `"light sentence"` | 9 | 8 | 6 |
+| `"reference sentence"` | 10 | 7 | 5 |
+| `"closing sentence"` | 36 | 14 | 10 |
+| `"form's reference"` | 10 | 8 | 7 |
+| `"concise text overlay"` | 1 | 1 | 1 |
+| `"minimal technical labels"` | 5 | 5 | 3 |
+
+- **Rewritten, `registry/pdp-dr-instruction.md`:**
+  - *The section form*, whole: the instruction as it stands, *How the form was chosen*, the new
+    *Words and marks on a phone* and *The frame*, and what still binds the writer;
+  - the status paragraph above it;
+  - the product block's exceptions, *What binds every prompt*, and the feature-image section's note.
+- **Rewritten, the six section types to 0.3:** SKELETON, the ratio line, and the clauses of decision
+  5, with BLOCK, `blocked_by`, KNOWN-FLAKY and the changelog.
+- **Rewritten elsewhere:**
+  - `mapping/pdp-dr-rules.md` rule 4;
+  - `query/runbook.md`, two passages;
+  - `adapters/nano-banana.md` Rule 6's LP2 paragraph;
+  - `SPEC.md` §3.8's section-type bullet;
+  - `registry/vocabulary.yaml`'s `diagram` device, which taught *minimal technical labels*.
+- **New: `scripts/text-size.py`.** It passes the owner's own *Stop the slump* tile, at 24.5-px
+  capitals and 11.1:1, and fails all four of arm B's frames with words.
+- **These hits stand:**
+  - `03-mechanism-signal`'s closing sentence, which is its own trial, ADR-101;
+  - the owner's instruction quoted verbatim in two type files and in the instruction's global
+    rules block — *concise text overlays*, *minimal technical labels* — which the new law interprets
+    rather than rewrites;
+  - the ADRs and the sets, as records.
+- **Generated:** `dist/app-bundle/` rebuilds the instruction, the rules, the runbook, the adapter,
+  SPEC and the vocabulary. `registry/pdp-dr-index.yaml` does not move, because the six are reserved.
+- `README.md`: the ADR count. `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render of 0.3.**
+- **The phone widths are WiBoofy's.** The other three templates' are unmeasured, and the script
+  takes a width as an argument.
+- **The targets are declared**, from the owner's own titles on this page and ordinary reading sizes
+  on a phone, not from a failed and a passed pair. A render that meets them and still reads badly
+  moves them.
+- **Whether any render carried the product photo** is still unrecorded.
+
+---

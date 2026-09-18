@@ -3,7 +3,7 @@ id: 03-mechanism-diagram
 step: 3
 job: mechanism
 device: diagram
-version: "0.2"
+version: "0.3"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,7 +17,7 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: the owner failed this type's first render, set section-02, on quality against the instruction (ADR-111); set section-03, the same fields written by the instruction as it stands, is the trial that decides the skeleton, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 03-mechanism-diagram — PDP-DR SECTION TYPE, DRAFT
@@ -58,21 +58,23 @@ use_when: >
   type never fills.
 
 ## SKELETON
-The section form: one concise natural paragraph, no labels, in this order. Each arrow names an
-entry in PARTS or MARKS; the fixed sentences are the form's and are written word for word.
+The section form since ADR-112: the owner's image instruction as it stands. Its Image_Type is this
+type's mode and its Description the field's own page values; the prompt is one concise natural
+paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-mechanism-diagram v0.2
+TYPE: 03-mechanism-diagram v0.3
+Image_Type: HOW IT WORKS
 
-  1. The picture: a clean technical visualisation, 2D or 3D, its view and
-     its ground, and the product BY NAME in it.                     -> PARTS/view
-  2. What is opened, where the principle is inside something: the body,
-     the material or the building, drawn as a clean section.        -> PARTS/section
+  1. The register and the view: "Clean 3D technical cutaway" (or 2D), the view,
+     a light neutral ground, and the product BY NAME in it.          -> PARTS/view
+  2. What is opened, drawn as a clean section.                       -> PARTS/section
   3. The principle, in a sentence of its own: what is drawn, in its own
-     form, where it starts and what it lands on.                    -> MARKS/flow
-  4. The light: clean, even studio light with a soft shadow.
-  5. The words: the labels sentence, or the form's no-words sentence. -> SLOT CONSTRAINTS
-  6. The form's reference sentence, then its closing sentence.
+     form, bold, where it starts and what it lands on.               -> MARKS/flow
+  4. The labels: each named with the part its line touches, set large
+     and dark on the light ground.                                   -> SLOT CONSTRAINTS
+  5. "Clean even lighting, balanced contrast, no marketing text."
+  6. G1 in one sentence: "Use the attached product photo as the exact reference."
 ```
 
 ## PARTS
@@ -110,14 +112,17 @@ one.
   or a stage, **at most three** (the namespace's limit for call-out lines outside
   `03-spec-callout`), each beside the thing it names and never on an arrow or a line. No title,
   no sentence, no marketing word, and no figure unless the page supplies it (A15, ADR-095). The
-  labels take this type's `badge` slot, so G16 binds them. The labels sentence ends: *nothing else
-  in the picture carries text, and the bottom-right corner stays clear.*
+  labels take this type's `badge` slot, so G16 binds them. **The prompt says what each label's line
+  touches**: one line in each round ended off its part, 2 of 2 (`section-02`'s *Seat gap*,
+  `section-03`'s *Pelvis upright*). The labels are set large and dark on the light ground, sized for
+  a phone (*The section form*, *Words and marks on a phone*).
 - **A drawn figure must be true of the frame it sits in** (ADR-109).
 - **Health and medical outcomes are never drawn as fact** (the instruction's text section): the
   diagram shows what the product sends and where it goes, in the page's own words.
 - **One mechanism variant to a page** unless the page asks for two (`mapping/pdp-dr-rules.md`,
   rule 3).
-- **Length and ratio** are the form's: at most 1,200 characters, and no frame shape in the prompt.
+- **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
+  template shows (*The section form*, *The frame*).
 
 ## NEGATIVE
 ```
@@ -128,15 +133,12 @@ a label set along an arrow, an invented interior, a face that is not needed, a f
 ```
 
 ## BLOCK
-**Criterion 3: the owner failed this type's first render.** Set `section-02` put it on the owner's
-page v17, image 6, and the owner judged the set's eight renders *"các ảnh trên chất lượng vẫn còn
-kém so với instruction"* — still poor next to the instruction's own results (ADR-111). The harness
-had graded it partial (the known risk, predicted partial) before that; the observations are under
-KNOWN-FLAKY and none is written into the skeleton yet. **The trial is `sets/section-03/`**: the same
-field, written by the owner's instruction as it stands, with nothing the section form adds. Its
-result decides this skeleton. `sets/section-01/` is unrendered and in 0.1's form. The Principle form
-it succeeds has no passing render either: the owner's runs tried it three times and painted all
-three onto the product (ADR-094).
+**Criterion 3: two rounds, and 0.3 is what they left.** Set `section-02` wrote the owner's page v17
+in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
+`section-03` wrote the same fields by the instruction as it stands, image 6 here, and the owner's
+word narrowed to the size of the drawn words and marks; the harness graded it partial (ADR-112). 0.3
+is the instruction as it stands plus what the two rounds earned. It has no render:
+`sets/section-04/` is its first, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -148,7 +150,7 @@ a process. It contests no gallery tile. Its neighbours are all reserved or galle
 line against each is in the trigger.
 
 ## KNOWN-FLAKY
-Single observations, none yet a clause (SPEC §6.2); what the trial decides comes first.
+Single observations; what recurred across both rounds is written into 0.3, and the rest waits here.
 
 - **Set `section-02`, image 6** (the known risk, predicted partial; harness partial). It read at
   once: three labels spelled right, the blue band on the line where body meets cushion, and no
@@ -157,7 +159,15 @@ Single observations, none yet a clause (SPEC §6.2); what the trial decides come
   the lower head in frame, and the no-face law held only because the figure is featureless; and the
   cushion came back as a plain L, without the reference's ribs or the slot at its joint.
 
+- **Set `section-03`, image 6** (harness partial). Clean, with blue support arrows along the back
+  and under the pelvis, a featureless figure, three labels spelled right. The *Pelvis upright* line
+  ended on the cushion's back edge, not on the pelvis — one leader off its part in each round, 2
+  of 2. **On a phone the labels' capitals measure 7.2–7.5 px and the lines 0.6 px** — the owner:
+  *"chữ và các yếu tố đồ hoạ cần to rõ ràng hơn. mobile first"*.
+
 ## CHANGELOG
+- 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
+  with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on
   quality against the instruction (ADR-111). No clause added: the harness's observations wait in
   KNOWN-FLAKY while `section-03` tests the instruction as written against this form.
