@@ -346,13 +346,14 @@ LP2's routing surface, by the same `--write-index`.
   evidence it waits on. There is no separate `BOUNDARY` section: an image type carries its
   discriminator inside `use_when`, which is where ADR-060 put the whole trigger, and a second
   home for it would be a second place to go stale.
-- **Six of the drafts are the SECTION TYPES** (ADR-110, owner instruction 2026-09-18): one per
-  mode of the owner's image instruction — `01-pain-before`, `06-relief-after`,
-  `03-mechanism-diagram`, `03-use-demo`, `03-spec-overlay`, `05-persona-lifestyle` — for the
-  images OUTSIDE the product card's gallery. A section type is one frame that sits beside its own
-  HTML copy, its skeleton is one concise paragraph rather than labelled slots — since ADR-112 the
-  owner's image instruction as it stands (the SECTION FORM, `registry/pdp-dr-instruction.md`) — and
-  it never fills a gallery tile. Which section takes which
+- **Seven of the drafts are the SECTION TYPES**, for the images OUTSIDE the product card's
+  gallery: six, one per mode of the owner's image instruction (ADR-110) — `01-pain-before`,
+  `06-relief-after`, `03-mechanism-diagram`, `03-use-demo`, `03-spec-overlay`,
+  `05-persona-lifestyle` — and `05-social-endorsed`, the expert block's image (ADR-113). They share
+  the page's style lock, which the writer proposes from the product (ADR-113). A section type is
+  one frame that sits beside its own HTML copy, its skeleton is one concise paragraph rather than
+  labelled slots — since ADR-112 the owner's image instruction as it stands (the SECTION FORM,
+  `registry/pdp-dr-instruction.md`) — and it never fills a gallery tile. Which section takes which
   is the third column of *Section routing* in `mapping/pdp-dr-rules.md`; that preference is
   DECLARED on the owner's instruction, where Layer 2's gallery order is measured.
 - **A draft is promoted in place** — a status change, never a `git mv`, which would take it
@@ -374,10 +375,11 @@ LP2's routing surface, by the same `--write-index`.
   owns no rule of its own.
 - **A PDP-DR type MAY declare `text_layer`**, for a gallery tile, and G16 binds the types that
   do, as `registry/pdp-dr-instruction.md` narrows it: a title of 2–5 words, copy and chips only
-  where earned, the words counted over the gallery (ADR-094, ADR-096). One row of
-  G16 is LAW rather than taste and no type-scoped permission reaches it: a named-person or
-  named-profession endorsement (G14 binds the SLOT). The other, a certification, award, rating
-  or press mark — the trademark question of 2026-08-18 — the owner lifted for this namespace on
+  where earned, the words counted over the gallery (ADR-094, ADR-096). Two rows of G16 were
+  not G16's to waive, and the owner has answered both for this namespace. A named-person or
+  named-profession endorsement is FLAGGED, not refused: G14 binds the SLOT and flags it
+  (ADR-089), and an expert block's image shows the expert's face (ADR-113). A certification,
+  award, rating or press mark — the trademark question of 2026-08-18 — the owner lifted on
   2026-09-16, for a mark `content.json` names (ADR-095).
 - Law shared by every type is stated once in `registry/pdp-dr-instruction.md` and never
   restated in a type file, exactly as §5 treats global rules. **It binds the copies too**:

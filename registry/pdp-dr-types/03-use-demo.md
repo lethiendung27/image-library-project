@@ -3,7 +3,7 @@ id: 03-use-demo
 step: 3
 job: use
 device: demo
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,14 +17,14 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1 reads as met, 5 distinct sources by `python3 scripts/validate.py --evidence` on 2026-09-18, but no record was re-read for this draft. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.4 adds the owner's design rules (ADR-113) and has no render; set section-06 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1 reads as met, 5 distinct sources by `python3 scripts/validate.py --evidence` on 2026-09-18, but no record was re-read for this draft. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 03-use-demo — PDP-DR SECTION TYPE, DRAFT
 
 **The HOW TO USE mode of the owner's image instruction** (`~/Downloads/images prompt.txt`,
-2026-09-18, ADR-110). One of six section types, for the images outside the product card's gallery;
-`registry/pdp-dr-instruction.md`, *The section form*, carries the form and the law all six share.
+2026-09-18, ADR-110). One of the seven section types, for the images outside the product card's gallery;
+`registry/pdp-dr-instruction.md`, *The section form*, carries the form and the law they all share.
 
 The owner's rules for this mode, word for word:
 
@@ -66,7 +66,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-use-demo v0.3
+TYPE: 03-use-demo v0.4
 Image_Type: HOW TO USE
 
   1. The register and the camera: "Editorial realism close-up", partial hand,
@@ -75,7 +75,8 @@ Image_Type: HOW TO USE
   3. The step, as the copy states it — "One focused step": whose hands,
      doing what, to which part of what.                              -> PARTS/step
   4. The product BY NAME, fully visible, at the size the hand gives it. -> PARTS/product
-  5. The light and the instruction's tone.
+  5. The light that is there, in the lock's lighting family and colour tone, and the
+     instruction's tone.
   6. "No text." — or the step's numeral alone, where every step has its own image.
   7. G1 in one sentence: "Use the attached product photo as the exact reference."
 ```
@@ -83,7 +84,8 @@ Image_Type: HOW TO USE
 ## PARTS
 
 **`scene`** — where this step really happens: the hallway socket, the chair at the desk, the
-bathroom shelf. Partial-hand, over-the-shoulder or a 45-degree usage angle (the owner's
+bathroom shelf. **A real home at close range, in the light that is there, with nothing propped**
+(owner, ADR-113): never an instruction-manual look, clinical light or staged perfection. Partial-hand, over-the-shoulder or a 45-degree usage angle (the owner's
 feature-image instruction's list); close enough that the act fills the frame. A face appears only
 where the step needs the person, and it attends to the task, never to the lens.
 
@@ -96,6 +98,8 @@ where the step needs the person, and it attends to the task, never to the lens.
   the copy says, to the part the copy names, and nothing the product's photograph does not show.
 - The act is caught mid-way — a finger on the button, the plug a moment from the socket — so the
   frame reads as doing, not as holding.
+- **The point where the hand meets the product stays in view** (owner, ADR-113), and a face, where
+  one is in frame, looks at the point of use.
 
 **`product`** — named as the page names it, placed and never described (G2). **Scale comes from
 the hand or the host** and the prompt moves the camera: *shot close enough that the product reads
@@ -106,15 +110,17 @@ fixed product stays installed (G7-X).
 - **One frame.** No panel, no strip and no inset.
 - **Words: none by default.** The page numbers its steps in HTML beside the image. Where a block
   gives every step its own image, a frame may carry its step's numeral and nothing else — the
-  owner's *essential step marker* — large and bold in the top-left corner, sized for a phone. It
+  owner's *essential step marker* — large and bold in a corner, in the lock's typeface and text
+  colour, sized for a phone. It
   takes this type's `badge` slot, so G16 binds it. Never a word, an arrow or a caption.
 - **Hands** are this renderer's weakest subject (adapter Rule 5): one hand where one will do, its
   action named in a few functional words.
 - **Nothing drawn anywhere, including on packaging** (`03-use-sequence`'s LP2 law, borrowed: two
   of the owner's renders printed an arrow on the shipping box).
 - **Any screen** shows only a picture, with no interface, text or numbers (G6).
-- **G13 binds**, casting follows the namespace, and a block that names a person shows hands and
-  no face.
+- **Real, never worn** (*The owner's design rules*, ADR-113): nothing in the frame is old, worn,
+  scratched, stained or faded.
+- **G13 binds**, and casting follows the namespace.
 - **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
   template shows (*The section form*, *The frame*).
 
@@ -123,7 +129,9 @@ fixed product stays installed (G7-X).
 [G6] + a collage of steps, a strip of panels, two moments in one frame, an arrow, a caption,
 a word of any kind, a step the page does not give, the product set out on display with
 nobody using it, the product enlarged against the hand beside it, a face posing for the lens,
-shop signs or labelled packaging in the background
+shop signs or labelled packaging in the background, an instruction-manual look, clinical light,
+a staged or propped scene, the point where the hand meets the product hidden,
+a worn, scratched, stained or faded surface
 ```
 
 ## BLOCK
@@ -131,8 +139,9 @@ shop signs or labelled packaging in the background
 in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
 `section-03` wrote the same fields by the instruction as it stands, image 2 here, and the owner's
 word narrowed to the size of the drawn words and marks; the harness graded it partial (ADR-112). 0.3
-is the instruction as it stands plus what the two rounds earned. It has no render:
-`sets/section-04/` is its first, and the verdict SPEC §6.3 asks for is the owner's.
+is the instruction as it stands plus what the two rounds earned. It has no render: `sets/section-04/`
+was written for it. **0.4 adds the owner's design rules of 2026-09-18** (ADR-113); `sets/section-06/`
+is its first set, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 reads as met, and the reading is unchecked.** `python3 scripts/validate.py
 --evidence` counts 10 observations across 5 distinct sources on 2026-09-18, now that the id has a
@@ -158,6 +167,10 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   hands. A real car maker's badge sits on the steering wheel, which G6's `logo` bars.
 
 ## CHANGELOG
+- 0.4 (2026-09-18): the owner's design rules (ADR-113) — a real home at close range in the light
+  that is there, nothing staged, no manual look; the point where the hand meets the product in
+  view; the numeral in the lock's typeface and colour, in any corner; real and never worn. The
+  no-face clause left with the expert block's new type.
 - 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
   with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on

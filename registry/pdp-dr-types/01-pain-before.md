@@ -3,7 +3,7 @@ id: 01-pain-before
 step: 1
 job: pain
 device: before
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,14 +17,14 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.4 adds the owner's design rules (ADR-113) and has no render; set section-06 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110."
 ---
 
 # 01-pain-before — PDP-DR SECTION TYPE, DRAFT
 
 **The WITHOUT / BEFORE mode of the owner's image instruction** (`~/Downloads/images prompt.txt`,
-2026-09-18, ADR-110). One of six section types, for the images outside the product card's gallery;
-`registry/pdp-dr-instruction.md`, *The section form*, carries the form and the law all six share.
+2026-09-18, ADR-110). One of the seven section types, for the images outside the product card's gallery;
+`registry/pdp-dr-instruction.md`, *The section form*, carries the form and the law they all share.
 
 The owner's rules for this mode, word for word:
 
@@ -59,7 +59,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 01-pain-before v0.3 [register: commercial | ugc]
+TYPE: 01-pain-before v0.4 [register: commercial | ugc]
 Image_Type: WITHOUT / BEFORE
 
   1. The register and the camera: "Editorial realism photo", the angle and distance.
@@ -67,8 +67,8 @@ Image_Type: WITHOUT / BEFORE
   3. The problem as a physical fact; the old way's failure as a
      DISPLACED object, the one thing the eye lands on.               -> PARTS/problem
   4. The product: absent, or in frame and plainly not working.       -> PARTS/product
-  5. "No solution cues", the light, and the instruction's tone:
-     "... light, balanced contrast, readable in three seconds."
+  5. "No solution cues", the lock's lighting family and colour tone, and the
+     instruction's tone: "..., balanced contrast, readable in three seconds."
   6. "No text."
 
 Where the idle product is in frame, G1's one sentence ends the prompt:
@@ -100,6 +100,9 @@ borrowed). It is named as the page names it and never described (G2).
 ## SLOT CONSTRAINTS
 - **One frame.** No panel, no inset, no split and no second state; the after is another file.
 - **No solution cue**: no product glow, no arrow, no tick or cross, no brighter corner.
+- **Discomfort, never injury** (owner, 2026-09-18, ADR-113): no red mark, no blood and no wound,
+  and never accumulated damage. The problem is a state the product can switch off, not wear
+  that has built up.
 - **Words: none**, and no drawn layer beyond one subtle effect the problem needs, which the
   owner's instruction allows every mode — a faint fading signal, a draught of cold air. Where a
   screen shows the problem it carries a picture or one plain symbol, never interface text or
@@ -110,7 +113,9 @@ borrowed). It is named as the page names it and never described (G2).
   the state changes, the light does not.
 - **`register: ugc`** only in a block of buyers' own photos — `testimonials` today — in
   `05-social-snapshot`'s register, and the prompt ships with G14's flag and note (ADR-089).
-- **G13 binds**, casting follows the namespace, and a block that names a person shows no face.
+- **Real, never worn** (*The owner's design rules*, ADR-113): nothing in the frame is old, worn,
+  scratched, stained or faded.
+- **G13 binds**, and casting follows the namespace.
 - **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
   template shows (*The section form*, *The frame*).
 
@@ -119,7 +124,8 @@ borrowed). It is named as the page names it and never described (G2).
 [G6] + the product working, a solution cue of any kind, an arrow, a tick or a cross,
 a split frame, an inset, a second panel, a staged or theatrical expression, a posed smile,
 a broken, cracked or dirty product, a rival brand's mark or packaging,
-shop signs or labelled packaging in the background
+shop signs or labelled packaging in the background, a wound, blood or red marks,
+accumulated damage, a worn, scratched, stained or faded surface
 ```
 
 ## BLOCK
@@ -127,8 +133,9 @@ shop signs or labelled packaging in the background
 in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
 `section-03` wrote the same fields by the instruction as it stands, image 1 here, and the owner's
 word narrowed to the size of the drawn words and marks; the harness graded it partial (ADR-112). 0.3
-is the instruction as it stands plus what the two rounds earned. It has no render:
-`sets/section-04/` is its first, and the verdict SPEC §6.3 asks for is the owner's.
+is the instruction as it stands plus what the two rounds earned. It has no render: `sets/section-04/`
+was written for it. **0.4 adds the owner's design rules of 2026-09-18** (ADR-113); `sets/section-06/`
+is its first set, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 cannot be met from the ledger as it stands**: the PDP corpus is gallery tiles, and
 this type fills section fields. The type comes from the owner's tested instruction, so the count
@@ -156,6 +163,9 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   0.3's PARTS/problem now carries.
 
 ## CHANGELOG
+- 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's lighting family and colour
+  tone, a photograph real and never worn, and discomfort never injury: no red mark, no blood, no
+  wound, no accumulated damage. The no-face clause left with the expert block's new type.
 - 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
   with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on

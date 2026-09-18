@@ -231,13 +231,13 @@ waste came from four repeatable mistakes, so the rules are mechanical:
 **One LP2 exception** (ADR-100, owner instruction 2026-09-17). `03-mechanism-signal` is written
 as one natural paragraph with no labels, in the form of the owner's feature-image instruction,
 and it ends with that instruction's closing sentence. Rule 1b still binds inside the paragraph:
-it says where a thing is and never names a region. **The six LP2 section types take the same
-form** (ADR-110, owner instruction 2026-09-18) — `01-pain-before`, `06-relief-after`,
-`03-mechanism-diagram`, `03-use-demo`, `03-spec-overlay` and `05-persona-lifestyle` — as one
-concise paragraph in the form of the owner's image instruction (ADR-112), well under the band
-below. Every other type keeps slot form. **In those six, a drawn element is never called small,
-thin, minimal or concise**: the renderer took each word literally, 4 of 4, and the owner reads the
-result on a phone.
+it says where a thing is and never names a region. **The seven LP2 section types take the same
+form** (ADR-110, ADR-113, owner instructions 2026-09-18) — `01-pain-before`, `06-relief-after`,
+`03-mechanism-diagram`, `03-use-demo`, `03-spec-overlay`, `05-persona-lifestyle` and
+`05-social-endorsed` — as one concise paragraph in the form of the owner's image instruction
+(ADR-112), well under the band below. Every other type keeps slot form. **In those seven, a drawn
+element is never called small, thin, minimal or concise**: the renderer took each word literally,
+4 of 4, and the owner reads the result on a phone.
 
 Reference numbers from that set: a GIF-inset prompt lands at ~1450-1600 characters and
 ~225 words. A prompt past ~2500 characters should be re-read for a duplicated block.

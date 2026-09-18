@@ -126,8 +126,9 @@ first and the third rule are about the SET; the second and the fourth are about 
 **1. Every prompt a session emits belongs to ONE set.** A page's gallery tiles and its section
 images are one body of work: one palette, one typography, one chip form and one lighting family,
 while the product keeps the exact look of its reference photograph in every frame. The lock is
-written once, before the first prompt — seeded by the page's style line where it has one, and
-neutral where it does not — and repeated in every prompt of that session **in the same words**:
+written once, before the first prompt — seeded by a style line where the owner gives one, and
+proposed by the writer from the product where not (ADR-113) — and repeated in every prompt of that
+session **in the same words**:
 
 | locked | what the lock names |
 |---|---|
@@ -141,11 +142,24 @@ neutral where it does not — and repeated in every prompt of that session **in 
 | register | photograph or render, wherever the types in the set leave that open |
 
 **The style line seeds the lock and never touches the product.** "An orange theme" means an
-orange accent and warm grounds; the product stays what its photograph shows. Without a style
-line the lock is neutral — light neutral grounds, charcoal or warm-white text, one muted accent —
-because a writer who cannot see the product cannot choose colours to complement it.
-**Neutral names the grounds, the text and the accent, never the grade of a photograph.** A
-photographed room keeps its real colours, and a resolved state is full colour (G11, ADR-104).
+orange accent and warm grounds; the product stays what its photograph shows.
+
+**Without a style line the writer proposes the lock from the product, never from the page's
+template** (owner, 2026-09-18, ADR-113): *"AI recommend font và màu phù hợp với sản phẩm"*, and *"không
+thấy theo file export hoặc style của trang vì đấy chỉ là template"* — not the export's design
+tokens, not the page's font and colours, because those belong to a template that serves many
+products. The writer chooses a typeface, a palette and a lighting family that suit what the page
+says the product is, does and who buys it: its category, its use, its buyer. Two limits keep the
+proposal honest:
+- it is made from the product's category and use, never from a guess at the product's own colour,
+  which only the photograph carries, and the product is never tinted toward it;
+- it keeps the ground law below — light and quiet by default, a dark or saturated ground only
+  with the reason the prompt states.
+
+Where the page says too little to propose from, the lock falls back to neutral: light neutral
+grounds, charcoal or warm-white text, one muted accent. That was this file's default until
+ADR-113. **Neutral names the grounds, the text and the accent, never the grade of a photograph.**
+A photographed room keeps its real colours, and a resolved state is full colour (G11, ADR-104).
 
 **Each field closes a fault the owner's own runs showed** — 64 renders of one cushion in five
 batches and 13 of one comb (ADR-094): a typeface the rest of the set did not use, 3 tiles; a
@@ -209,10 +223,10 @@ across one batch of twenty, in pink and in grey inside another of eleven, the co
 in pink. The sixth batch was seven tiles long.
 
 **The product block, in these words.** On an LP2 page it takes the place of G1's block and keeps
-every G1 obligation, and G1's "do not redesign" sentence stays in it word for word. Seven types
+every G1 obligation, and G1's "do not redesign" sentence stays in it word for word. Eight types
 leave it out: `03-mechanism-signal`, on the owner's trial of the feature-image output format
-(ADR-101), and the six section types, which carry G1 in that one sentence and nothing else of the
-block (ADR-112, *The section form*).
+(ADR-101), and the seven section types, which carry G1 in that one sentence and nothing else of the
+block (ADR-112, ADR-113, *The section form*).
 
 ```
 Use the attached product photo as the exact reference. Preserve its shape,
@@ -377,15 +391,21 @@ block occupies AND that it appears once, in one place, and nowhere else. **The o
 titles were drawn once in all 76 renders that carried one**, set large enough to fill their
 area; a two-word title still needs its area named.
 
-### One row that is LAW and not taste, and one the owner lifted
+### Two rows the owner has answered: one flagged, one lifted
 
 The owner waived G16's caps on 2026-09-03 after finding the copy too weak to ship, and set this
 namespace's own counts on 2026-09-16. **Two rows moved with neither decision**, because neither
-is G16's to waive. The owner has since answered the second:
+is G16's to waive. The owner has since answered both:
 
-1. **A named-person or named-profession endorsement — LAW.** G14 calls it illegal in its own
-   words (FTC endorsement rules), and G14 binds the SLOT rather than the type — so there is
-   nothing here for a type-scoped permission to lift.
+1. **A named-person or named-profession endorsement — FLAGGED, not refused, since the owner's
+   decision of 2026-09-18** (ADR-113): *"Tile chuyên gia (Endorsed) có hiện mặt, không có hạn chế
+   nào"*. G14 still binds the SLOT, and in a harness that renders it flags and never refuses
+   (ADR-089). The expert block's image is `05-social-endorsed`; it shows the expert's face, and every
+   prompt ships with the `endorsed-expert` flag. The flag's note says what G14 says in its own words:
+   an endorser who does not exist, or lacks the expertise shown, is a fabricated endorsement under
+   the FTC's rules. The merchant decides. **Two lines stay**, both from the owner's own Endorsed
+   rule: no prompt names or depicts a real, identifiable person, and no real institution's name, logo
+   or uniform enters the frame.
 2. **A certification seal, an award, a rating or a press mark — MAY BE DRAWN** (owner decision,
    2026-09-16, ADR-095, answering the trademark question put on 2026-08-18). So may the third
    class the corpus showed, a **compatibility bar** of the platforms a product works with.
@@ -399,17 +419,17 @@ is G16's to waive. The owner has since answered the second:
    namespace has drawn one of these marks yet; the first set that does grades each against the
    real mark.
 
-**The owner's Endorsed tile has no generated form this namespace can write** (ADR-094). The
-instruction of 2026-09-16 lets an expert figure recommend the product, under a persona the page
-supplies or one the writer invents, with a plausible name and role. **An invented expert is a
-fabricated endorsement** — row 1 above, whatever the name, because the FTC's endorsement rules
-that G14 cites turn on an endorser who exists and holds the expertise claimed. **A real expert is
-a real photograph**: the instruction itself forbids generating a real person's likeness, and a
-portrait of a named person is the `author` row of `mapping/slot-rules.md`, out of library scope
-since 2026-08-18. The render behind the instruction — an invented dermatologist holding the comb
-under the words "Expert Approved" — is that case. **Where a page needs the authority an expert
-would lend, a mechanism tile carries it**: the `Demonstrated` form in the type map below, an
-unnamed person showing how the product works, with no name, no title and no clinical dress.
+**The owner's Endorsed form is written for the expert block, as a section image** (ADR-113), after
+ADR-094 found no form it could write. The owner's gallery instruction lets an expert figure
+recommend the product, under a persona the page supplies or one the writer invents; the owner's
+decision of 2026-09-18 shows that person's face with no further restriction. Outside the gallery
+it is `05-social-endorsed`, flagged under row 1 above. **As a gallery tile it still has no file**:
+this decision was taken for the images outside the gallery, and a gallery Endorsed tile would be a
+routing decision of its own. **A real expert is still a real photograph**: the prompt never names
+or depicts a real person, and a portrait of a named person is the `author` row of
+`mapping/slot-rules.md`, out of library scope since 2026-08-18. The render behind the owner's
+instruction — an invented dermatologist holding the comb under the words "Expert Approved" — is
+the case the flag's note describes.
 
 ## Images outside the product card's gallery
 
@@ -420,7 +440,8 @@ section image that is not a feature image carry none — no title, no copy, no c
 badge — because the page sets its words beside them in HTML. **Two section types draw a little
 more, by the owner's image instruction of 2026-09-18** (ADR-110): `03-mechanism-diagram` its
 technical labels, and `03-use-demo` its step's numeral — see *The owner's image instruction*
-below, which is where the six section types and their one form are law. A type that declares `text_layer` fills such a slot without
+below, which is where the section types and their one form are law. A type that declares
+`text_layer` fills such a slot without
 it: the `[TITLE]`, `[COPY]` and label slots an `LP2 LAW` section adds are for a gallery tile, and
 the prompt keeps G6's `text, letters, numbers` whole. The product's own printing is not a word
 the prompt writes; the product block keeps it. Which field is which is read from the template by
@@ -600,9 +621,12 @@ AFTER mode, once those drafts are active.
 - Where G14's attribution test fires, the prompt ships with its flag and note (ADR-089), and the
   merchant decides. No LP2 session refuses.
 
-**A block that names a person shows no face** — the `expert` blocks today. A face beside a name
-is that person's portrait, and an invented person there is the endorsement this file already
-refuses. The product or a pair of working hands carries the block.
+**An expert block may show the expert's face** (owner decision, 2026-09-18, ADR-113). Its image is
+`05-social-endorsed`, flagged under the text section's row 1, and its prompt describes the person
+by role, age and casting, never by the name the page prints. The small avatar beside the name
+stays out of scope; the page reuses a crop of this image for it, so the block shows one face.
+Where the quote is about a process or a working act, the block's copy may still move the image to
+`03-mechanism-diagram` or `03-use-demo`.
 
 ## Ground: quiet by default, and a dark one is a CHOICE
 
@@ -690,7 +714,8 @@ order and one focal point; layering, never clutter; a crop with a purpose.
 
 - **The named corners are the top-left, the top-right and the bottom-left.** Nothing is placed in
   the bottom-right corner, which carries the generation tool's watermark (adapter Rule 7). The
-  owner's runs put an inset or a locator there twice.
+  owner's runs put an inset or a locator there twice. **This binds a gallery tile; a section image
+  is free of it** (owner, 2026-09-18, ADR-113: *"không cần, bỏ rule này"*).
 - **A leader, an arrow or a bracket exists only where a type calls for one** — a Callout label, a
   Rail, an Outcome Hero recall arrow, a Lineup label — **and it ends ON the part it names.** Three
   cushion renders ran a leader into empty ground, and a fourth drew a line that meant nothing.
@@ -748,9 +773,9 @@ itself — the owner records an invented "Dr. L. Chen" rendering an Asian face, 
   namespace's form of G1, in the words the product section above fixes, with its two conditional
   sentences wherever their case exists. **One exception, on trial:** `03-mechanism-signal` follows
   the owner's feature-image output format and carries G1 in one sentence, `Use the attached product
-  photo as the exact reference.`, before the instruction's closing sentence (ADR-101). **The six
-  section types carry the same one sentence, last, and no closing sentence** (ADR-112, *The
-  section form*).
+  photo as the exact reference.`, before the instruction's closing sentence (ADR-101). **The seven
+  section types carry the same one sentence, last, and no closing sentence** (ADR-112, ADR-113,
+  *The section form*).
 - **G2 limits the PRODUCT slot to four kinds of information** — position, angle, scale in
   frame, and relation to other objects. Not shape, not material, not colour, not
   construction, not an aesthetic adjective. The reference photo carries appearance; the
@@ -802,7 +827,7 @@ is a verbatim copy, and in place where it is LP2's own draft.
 | Mechanism · Product X-ray | `03-mechanism-xray` | active copy | **below, until its re-copy** |
 | Mechanism · Principle | — | **no gallery file** | below; a signal the product sends or senses is `03-mechanism-signal`, a reserved draft (ADR-099); outside the gallery the form's file is `03-mechanism-diagram`, a reserved draft (ADR-110) |
 | Mechanism · Demonstrated | — | **no file** | below |
-| Mechanism · Endorsed | — | **not written** | the LAW row of the text section |
+| Mechanism · Endorsed | — | **no gallery file** | outside the gallery, `05-social-endorsed`, a reserved section type (ADR-113); the text section's row 1 |
 | Use Steps · Sequence | `03-use-sequence` | active copy | its `LP2 LAW` |
 | Use Steps · Grid | `03-use-grid` | active copy | its `LP2 LAW` |
 | Outcome Hero | `06-relief-hero` | active copy | its `LP2 LAW` |
@@ -861,9 +886,9 @@ those refuses a gallery tile, so as gallery forms all three still have none.
   ADR-099, whose marks run from the product to what it reaches.
 - **Demonstrated** — an unnamed, untitled person demonstrates the mechanism on a spine or pelvis
   model, or on a seated person; the model may carry 1–3 word part labels. No "recommended by", no
-  "clinically", **and no clinical dress or clinic setting**, which would present the demonstrator
-  as a practitioner and make the tile the named-profession endorsement the LAW row refuses. The
-  authority is the demonstration's. No render and no corpus id.
+  "clinically", **and no clinical dress or clinic setting**: dressed as a practitioner, the
+  demonstrator becomes the Endorsed form, which outside the gallery is `05-social-endorsed` and ships
+  flagged (ADR-113). The authority is the demonstration's. No render and no corpus id.
 - **Applied Use Storytelling** — a feature in real, energetic use: the light, motion and water of
   the place, with the product and the place integrated — splashes, sweat, reflections. Copy only
   where earned; a "For [use]" chip only where the picture does not show the use.
@@ -903,7 +928,7 @@ seconds.
   closing sentence word for word.
 
 **Where it binds today:** `03-mechanism-signal`, from 0.3, whose `PARTS/form` carries the
-closing sentence. The six section types are written by the owner's other instruction, the image
+closing sentence. The section types are written by the owner's other instruction, the image
 instruction, since ADR-112. Adapter Rule 6 names the exceptions to its slot form. **From 0.5 that type's
 skeleton IS the instruction's output format**, on the owner's instruction *"hãy thử đặt skeleton
 giống output format của feature image txt"* (ADR-101).
@@ -939,7 +964,7 @@ is the FEATURES one, and it holds the four constructions in the table above as o
 parameter, including the inset view no type owned. Whether `03-mechanism-signal` and
 `04-proof-stat` retire into it waits on its first render.
 
-## The owner's image instruction — 2026-09-18: six section types, one form
+## The owner's image instruction — 2026-09-18: the section types, one form
 
 **Owner instruction, 2026-09-18** (ADR-110): *"hãy đọc và tham khảo instruction này cho các types
 ngoài product gallery của pdp-dr … tôi đã test và kết quả vượt xa các types hiện tại trong
@@ -961,15 +986,17 @@ instruction are six **section types**, LP2's own, one frame each:
 | HOW TO USE | `03-use-demo` | one focused step, a hand doing it | in the hand | none, or the step's numeral |
 | FEATURES | `03-spec-overlay` | the product clearly presented under a functional drawn layer | the subject of the frame | the feature image's one short line |
 | OTHER | `05-persona-lifestyle` | the lived-in place the product belongs to | small, or absent | none |
+| — the owner's decision (ADR-113) | `05-social-endorsed` | the expert the block quotes, face shown | in the hand | none |
 
-Each file carries its mode's rules in the owner's own words. Which section takes which type is
-`mapping/pdp-dr-rules.md`, *Section routing*.
+Each file carries its mode's rules in the owner's own words; the seventh, the expert block's image,
+comes from the owner's decision of 2026-09-18 and the Endorsed form of the owner's gallery
+instruction. Which section takes which type is `mapping/pdp-dr-rules.md`, *Section routing*.
 
 **They fill `section`, `pair` and `closing` fields** (*Slot kinds*). The gallery keeps its own
 types and its text law, the hero keeps its own law, a buyer tile stays `05-social-snapshot`'s, and
-**a section type never fills a gallery tile** — every one of the six triggers refuses one.
+**a section type never fills a gallery tile** — every section type's trigger refuses one.
 
-**All six are reserved drafts today, so none routes yet.** Each waits on the owner's verdict on
+**All seven are reserved drafts today, so none routes yet.** Each waits on the owner's verdict on
 a render (SPEC §6.3, criterion 3). A draft is promoted in place, one at a time. Until a section's
 type is active, its field routes as before: by its default role, through Layer 2.
 
@@ -977,7 +1004,8 @@ type is active, its field routes as before: by its default role, through Layer 2
 ADR-110's form and the owner failed it on quality. `section-03` wrote the same eight fields by the
 owner's instruction as it stands, and the owner's word narrowed to the size of its drawn words and
 marks. So the form is now the instruction as it stands, and what came back is only what an arm-B
-render failed without. `sets/section-04/` is the six types' first set at 0.3.
+render failed without. `sets/section-04/` is the six types' first set at 0.3. The owner's design
+rules of 2026-09-18 came after it (below, ADR-113), and `sets/section-06/` is the first set at 0.4.
 
 ### The section form
 
@@ -994,9 +1022,10 @@ One concise natural paragraph, starting directly with the picture, no labels, no
   2. the place, and who is there;
   3. the product BY NAME and its state — absent, idle, in the hand, working;
   4. the logic — the one visible cue that carries the section's line;
-  5. the drawn elements the type permits, in a sentence of their own, sized for a phone;
-  6. the light and the instruction's tone — "... light, balanced contrast, readable in
-     three seconds";
+  5. the drawn elements the type permits, marks before words, in a sentence of their own,
+     sized for a phone, in the lock's typeface, colours and icon style;
+  6. the lock's lighting family and colour tone, and the instruction's tone — "...,
+     balanced contrast, readable in three seconds";
   7. the type's text rule — "No text.", or the words it declares;
   8. where the product is in frame, G1 in one sentence, last:
      "Use the attached product photo as the exact reference."
@@ -1021,7 +1050,63 @@ One concise natural paragraph, starting directly with the picture, no labels, no
 **Nothing else is carried as a fixed sentence.** A clause enters a section prompt when a render of
 this form has failed without it — the rule every LP2 clause lives under. **The owner's own standing
 rules are not clauses of this kind**, and they stay: people are cast as the page's market, and as
-North American where it names none; and a block that quotes a named expert shows no face.
+North American where it names none; and the owner's design rules below.
+
+### The owner's design rules — 2026-09-18
+
+**Owner decision, 2026-09-18** (ADR-113), item by item on a list drawn from the owner's gallery
+instruction, whose style lock already covered *"every image of the session — gallery tiles and any
+ad, banner, landing-page still"*: *"các ảnh ngoài gallery cũng cần đồng bộ tone màu"* — the images
+outside the gallery share the set's colour tone. They are the owner's standing rules, so they enter
+a section prompt without a failed render first, as ADR-111 settled for an owner's tested
+instruction.
+
+**The lock in a section prompt.** One lock serves the whole page (*One session, one set*), and the
+writer proposes it from the product, never from the page's template. A section prompt carries the
+fields its picture uses, as short phrases inside its paragraph, in the lock's own words:
+- **the lighting family and the colour tone**, in every photograph. Tone means the grade and the
+  dominant colours of the room, the clothes and the props, all within the lock's palette. Colour
+  still comes from what the place already holds, never from props added to supply it (ADR-108),
+  and the product keeps its photograph's colours;
+- **the typeface, in the lock's words, and the text colour for the ground under the words**,
+  wherever a section type draws words: a feature image's line, a diagram's labels, a step's numeral;
+- **the chip form**, for a figure or a label that has to sit over a busy part of the picture. The
+  chip carries its own contrast. A feature's tag stays bare text, never inside a chip;
+- **the accent, on a chip or a call-out line and nowhere else**: never a mark, a ring, a glow, a
+  frame or the product;
+- **the icon style and the margin rhythm**, and no frame or border around a photograph or an inset.
+  The lock's design words never name a device;
+- **the seamless ground**, wherever the picture is not a real place: a diagram, or a feature image
+  on a studio ground. It has a floor plane and a soft shadow, and it is never pure white.
+
+The two grounds' rotation is the gallery's: a section photograph's ground is its own room.
+
+**Marks first, few words, large** (owner: *"chữ to, ưu tiên mobile first, có thể dính vào sản
+phẩm. đối với các ảnh ngoài gallery thì ưu tiên các mark và ít chữ"*). A section image argues with its
+mark; words, where its type allows any, are few, large and bold, and read on a phone first. **Words
+may sit on or against the product**, as a flat layer in front of it — never lettered onto its surface
+as if the product carried them, which the product block bars.
+
+**No corner rule.** A section image is free of *Composition*'s named corners (owner: *"không cần, bỏ
+rule này"*); the gallery keeps them.
+
+**A leader exists only where the type calls for one, and it ends ON the part it names**: a feature
+image's call-out, a diagram's label. The prompt says what each line touches, and no word sits on a
+line or an arrow.
+
+**The camera rotates across the page's section images** (`mapping/pdp-dr-rules.md`, rule 5). In
+page order, a section image never repeats the previous one's angle family, and no family appears
+more than twice in twelve. The two files of a pair keep one camera.
+
+**Real, never worn** (owner: *"ảnh thật nhưng không cũ kĩ, trầy xước"*). A photograph has true
+texture, a cast shadow and a shallow depth of field, never the 3D-render look of plastic sheen and
+weightless objects. Nothing in the frame is old, worn, scratched, stained or faded: real means true
+to life, not aged.
+
+**Each type carries its own**: `03-mechanism-diagram` draws its lines, arrows and labels in one
+neutral colour; `03-use-demo` shoots a real home in the light that is there, with nothing staged;
+`01-pain-before` shows discomfort and never injury; and `06-relief-after`, `03-use-demo` and
+`05-persona-lifestyle` keep the point where the product meets the person in view.
 
 ### Words and marks on a phone
 
@@ -1061,8 +1146,10 @@ ran backwards (the badge rule beside it).
 - **Words sit on a plain ground of the opposite value**: dark words on a light wall, white words
   over a dark seat. Contrast comes from the ground under the words, and the namespace's text law
   still bars an outline, a shadow and a box. `section-03`'s white tag on a pale wall measured
-  2.7:1.
-- **Few elements, each large**: one tag, one line or one icon, or three labels at most.
+  2.7:1. **Where no plain ground is free, a figure or a label sits in the lock's chip**, which
+  carries its own contrast (ADR-113).
+- **Few elements, each large, marks before words**: one tag, one line or one icon, or three labels
+  at most — and the words may sit on or against the product (*The owner's design rules*).
 
 ### The frame
 
@@ -1073,7 +1160,8 @@ sides, and image 5's icon sat in the band that crop removes. **Where a render is
 field, the words and marks sit in the middle, clear of both sides.** A field shown with
 `object-contain`, such as WiBoofy's FAQ image, letterboxes a wider render instead.
 
-**What the owner's instruction allows and avoids, for all six** — its global rules, in its words:
+**What the owner's instruction allows and avoids, for every section type** — its global rules, in
+its words:
 
 ```
 Allowed:  human faces, partials, hands, head, silhouettes (context-driven);
@@ -1096,7 +1184,8 @@ fixed sentence. The writer applies each where its case exists:
   carries no signage (ADR-109, ADR-112);
 - full colour from the room's own things, never a pale grade and never a warm cast (ADR-104,
   ADR-107, ADR-108);
-- G6 on screens, G13, the casting rule, and no face in a block that names a person;
+- G6 on screens, G13 and the casting rule; an expert block's face is `05-social-endorsed`'s, and
+  its prompt ships flagged (ADR-113);
 - a pair shares one description, and a testimonial pair ships with G14's flag (ADR-089);
 - never the frame's shape or ratio (ADR-016).
 
@@ -1208,9 +1297,9 @@ draws a mark.
 
 ## What this namespace is still waiting on
 
-**None of LP2's own drafts routes.** Twenty-three files: twenty-one `status: reserved`, each
-carrying a `blocked_by` and a `BLOCK` — six of them the section types of 2026-09-18 (ADR-110) —
-and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
+**None of LP2's own drafts routes.** Twenty-four files: twenty-two `status: reserved`, each
+carrying a `blocked_by` and a `BLOCK` — seven of them the section types of 2026-09-18 (ADR-110,
+ADR-113) — and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
 and replaced by `03-spec-callout` after a control render and a ten-source corpus answered the
 same question the same way, and `06-relief-animal`, retired on 2026-09-17 after the owner put an
 animal subject into the relief types (ADR-095). `registry/pdp-dr-index.yaml` gains none of them.

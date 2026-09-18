@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.3"
+version: "0.4"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -17,14 +17,14 @@ pairs_with: []
 never_with: []
 avoid_adjacent: []
 requires_pair: null
-blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.3 has no render, set section-04 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110, and its three reserved neighbours are named in BLOCK."
+blocked_by: "Criterion 3: two rounds on the owner's page v17 — section-02 failed by the owner on quality, section-03 (the instruction as it stands) graded by the harness after the owner's word on the size of its words and marks (ADR-112); 0.4 adds the owner's design rules (ADR-113) and has no render; set section-06 is its first, and the verdict SPEC 6.3 asks for is the owner's. Criterion 1: no corpus record carries this id, because the type is written from the owner's image instruction of 2026-09-18 rather than from the ledger, so the count is the owner's to waive as ADR-057 did. Criterion 2 was run on paper in ADR-110, and its three reserved neighbours are named in BLOCK."
 ---
 
 # 03-spec-overlay — PDP-DR SECTION TYPE, DRAFT
 
 **The FEATURES mode of the owner's image instruction** (`~/Downloads/images prompt.txt`,
-2026-09-18, ADR-110). One of six section types, for the images outside the product card's gallery;
-`registry/pdp-dr-instruction.md`, *The section form*, carries the form and the law all six share.
+2026-09-18, ADR-110). One of the seven section types, for the images outside the product card's gallery;
+`registry/pdp-dr-instruction.md`, *The section form*, carries the form and the law they all share.
 
 The owner's rules for this mode, word for word:
 
@@ -64,7 +64,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-spec-overlay v0.3 [overlay: mark | icon | figure | tag | callout | view]
+TYPE: 03-spec-overlay v0.4 [overlay: mark | icon | figure | tag | callout | view]
 Image_Type: FEATURES
 
   1. The register and the camera: "Editorial realism product feature image",
@@ -74,9 +74,11 @@ Image_Type: FEATURES
   3. The feature at work: what it is doing, to what.                   -> PARTS/feature
   4. The drawn layer, in a sentence of its own: what is drawn, what it
      lands on, and that it is bold and large enough to read on a phone. -> MARKS/overlay
-  5. The words: the page's own tag, set once, large and bold, on a plain
-     ground of the opposite value, in the middle of the picture.       -> SLOT CONSTRAINTS
-  6. The light and the instruction's tone.
+  5. The words, after the mark: the page's own tag, set once, large and bold in
+     the lock's typeface and text colour, on a plain ground of the opposite value
+     or with a figure in the lock's chip, in the middle of the picture; they may
+     sit on or against the product.                                  -> SLOT CONSTRAINTS
+  6. The lock's lighting family and colour tone, and the instruction's tone.
   7. G1 in one sentence: "Use the attached product photo as the exact reference."
 ```
 
@@ -106,7 +108,7 @@ beside the hand that holds it (ADR-109).
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols beside the product. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on thin leaders, each ending ON its part. `view`: an inset shaped like the optic, showing what the user sees | the session lock's one accent, or luminous blue for a working signal (G3); never red, never a flat green | one form to a frame, and the one short line beside it | the owner's twelve feature frames: the mark is the thing itself 12 of 12, lands on or inside the subject 8 of 12, a generic glowing arc 0 of 12, words in frame 10 of 12, a sentence 0 of 12 (ADR-106) · `03-mechanism-signal` set 04: one short line spelled right 3 of 3, the view on a product's own screen 1 of 1 · this type's first three renders: `section-02`, under KNOWN-FLAKY |
+| `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols in the lock's icon style. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on bold leaders, each ending ON the part it names, and the prompt names that part. `view`: an inset shaped like the optic, showing what the user sees | a mark in the colour of the thing itself — luminous blue for a working signal (G3), warm where the thing is warm; an icon in the lock's icon style and text colour; the lock's accent only on a call-out line or a chip (ADR-113); never red, never a flat green, never on the product | one form to a frame, and the one short line beside it | the owner's twelve feature frames: the mark is the thing itself 12 of 12, lands on or inside the subject 8 of 12, a generic glowing arc 0 of 12, words in frame 10 of 12, a sentence 0 of 12 (ADR-106) · `03-mechanism-signal` set 04: one short line spelled right 3 of 3, the view on a product's own screen 1 of 1 · this type's first three renders: `section-02`, under KNOWN-FLAKY |
 
 - **The mark LANDS on the subject the feature acts on** and never floats beside the product
   touching nothing; it never covers the product's own face or repaints it (ADR-094, ADR-106).
@@ -128,16 +130,20 @@ beside the hand that holds it (ADR-109).
   words (`title` slot), and the one-to-three-word labels an icon row, a chart or a call-out
   needs. Never a sentence, never a second line, never a brand or a price, never a superlative or a
   verdict word the page does not supply (the instruction's text section). G16 binds both slots.
-  The tag is set once, large and bold, on a plain ground of the opposite value, sized for a phone
-  (*The section form*, *Words and marks on a phone*). A feature that needs no naming carries no
-  words.
+  **The mark comes first and the words are few** (*The owner's design rules*, ADR-113). The tag
+  is set once, large and bold in the lock's typeface and text colour, on a plain ground of the
+  opposite value, sized for a phone (*Words and marks on a phone*). A figure over a busy part of
+  the picture sits in the lock's chip; the tag never does. The words may sit on or against the
+  product, never lettered onto its surface. A feature that needs no naming carries no words.
 - **A drawn figure must be true of the frame it sits in** (ADR-109): a distance, a time or a
   count matches what the frame draws, or the figure stays in the page's HTML.
 - **A certification, award, rating, press or platform mark** only where `content.json` names it
   (ADR-095).
 - **Any screen at the far end** names its device and shows a picture, never interface text,
   notifications, bars or numbers (G6; `03-mechanism-signal` lost this 5 times).
-- **G13 binds**, casting follows the namespace, and a block that names a person shows no face.
+- **Real, never worn** (*The owner's design rules*, ADR-113): nothing in the frame is old, worn,
+  scratched, stained or faded.
+- **G13 binds**, and casting follows the namespace.
 - **Ratio** never goes into the prompt (ADR-016); the owner renders the field at the frame its
   template shows (*The section form*, *The frame*).
 
@@ -149,7 +155,9 @@ a generic glowing arc where the thing has a form of its own, red or green marks,
 bars or readings on a mark, a hole cut in anything the buyer owns, a figure that contradicts
 the frame, the product small or far off, the product enlarged against the hand or body beside it,
 the product set out on display with nobody using it, a well-known brand's product or wordmark,
-shop signs or labelled packaging in the background, a soft edgeless glow
+shop signs or labelled packaging in the background, a soft edgeless glow, the accent on a mark,
+a ring or the product, a tag inside a chip, words lettered onto the product's surface,
+a leader ending off its part, a worn, scratched, stained or faded surface
 ```
 
 ## BLOCK
@@ -157,8 +165,9 @@ shop signs or labelled packaging in the background, a soft edgeless glow
 in 0.1's form, and the owner failed it on quality against the instruction (ADR-111). Set
 `section-03` wrote the same fields by the instruction as it stands, images 3 to 5 here, and the
 owner's word narrowed to the size of the drawn words and marks; the harness graded them partial,
-fail and partial (ADR-112). 0.3 is the instruction as it stands plus what the two rounds earned. It
-has no render: `sets/section-04/` is its first, and the verdict SPEC §6.3 asks for is the owner's.
+fail and partial (ADR-112). 0.3 is the instruction as it stands plus what the two rounds earned. It has no render: `sets/section-04/`
+was written for it. **0.4 adds the owner's design rules of 2026-09-18** (ADR-113); `sets/section-06/`
+is its first set, and the verdict SPEC §6.3 asks for is the owner's.
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -200,6 +209,10 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   icon sat at the left edge, in the band a square field's crop removes (a 1,200 × 896 render).
 
 ## CHANGELOG
+- 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's typeface, text colour, chip,
+  icon style, lighting family and colour tone; the accent only on a call-out line or a chip;
+  marks first, words few and large and free to touch the product; leaders bold and ending on
+  their part, where the 0.3 table still said thin; real and never worn.
 - 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
   with G1 in one sentence (ADR-112). The two rounds' earned clauses are written in.
 - 0.2 (2026-09-18): first render — set `section-02`, the owner's page v17 — failed by the owner on

@@ -9149,3 +9149,194 @@ The rule-6c sweeps ran in a clean worktree at `252383b` (hits / files / TEACHES)
 - **Whether any render carried the product photo** is still unrecorded.
 
 ---
+
+## ADR-113 · 2026-09-18 · The owner's design rules reach the images outside the gallery: one lock the writer proposes from the product, marks before words, real and never worn — and the expert block shows its expert's face
+
+**Owner answers, 2026-09-18**, item by item, to a seventeen-item list of graphic and design rules
+drawn from `~/Downloads/product-gallery-instruction.txt` for the section types:
+- **Item 1**, where the lock comes from: *"khác font và màu của trang gốc, AI tự đề xuất theo sản
+  phẩm"*, then, mid-turn: *"không thấy theo file export hoặc style của trang vì đấy chỉ là template.
+  AI recommend font và màu phù hợp với sản phẩm, các ảnh ngoài gallery cũng cần đồng bộ tone màu"*.
+  The lock is not taken from the export or the page's style, which is only a template. The writer
+  recommends a font and colours that suit the product, and the images outside the gallery share
+  the set's colour tone.
+- **Items 2–8, 11, 12 and 14–17**: *"duyệt"* and *"ok"*.
+- **Item 9**: *"có thể linh hoạt hơn: chữ to, ưu tiên mobile first, có thể dính vào sản phẩm. đối
+  với các ảnh ngoài gallery thì ưu tiên các mark và ít chữ, tương tự như instruction"*. More
+  flexible: large words, phone first, free to touch the product; outside the gallery, marks first
+  and few words, as the image instruction says.
+- **Item 10**, the corner rule: *"không cần, bỏ rule này"* — dropped.
+- **Item 13**: *"ảnh thật nhưng không cũ kĩ, trầy xước"* — real, but not old or scratched.
+- **And, against the list's advice**: *"Tile chuyên gia (Endorsed) có hiện mặt, không có hạn chế
+  nào"* — the expert image shows a face, with no restriction.
+
+**The tree this was written on.** At 16:50 a rewind of this session returned eight files to
+ADR-110's text: the six section types, `registry/pdp-dr-instruction.md` and
+`mapping/pdp-dr-rules.md`. The rewind also deleted `scripts/text-size.py` and the uncommitted
+checkers of `sets/section-02`..`05`. Git kept ADR-111 and ADR-112. The owner was shown the split and
+did not ask to drop them, and item 9's *"mobile first"* builds on ADR-112. So the eight files and the
+script were restored from HEAD before any edit. That loses nothing: their ADR-110 text is in
+`3a9c1bd`. The sets' checkers are gone for good; their prompts survive.
+
+### Decision
+
+1. **The lock is proposed from the product, never from the page's template.** Where the owner
+   gives no style line, the writer chooses a typeface, a palette and a lighting family from what the
+   page says the product is, does and who buys it. It never takes the export's design tokens or the
+   template's font and colours. Two limits hold:
+   - no guess at the product's own colour, which only the photograph carries;
+   - the ground law, light and quiet by default.
+
+   Neutral stays the fallback where the page says too little to propose from. One lock serves the
+   whole page, so the gallery takes the proposal too.
+2. **A section prompt carries the lock's fields its picture uses**, as short phrases inside its
+   paragraph, in the lock's own words:
+   - the lighting family and the colour tone in every photograph — the grade and the dominant
+     colours of room, clothes and props within the lock's palette, with nothing added to supply a
+     colour (ADR-108);
+   - wherever a section type draws words or icons: the typeface, the text colour, the chip for a
+     figure or a label over a busy part, the accent on a chip or a call-out line and nowhere else,
+     and the icon style with the margin rhythm;
+   - the seamless ground wherever the picture is not a real place.
+
+   ADR-112's *"carries none of the lock"* leaves.
+3. **Marks first, few words, large, and free to touch the product** — as a flat layer in front of
+   it, never lettered onto its surface, which the product block bars.
+4. **The corner rule binds the gallery only.**
+5. **A leader exists only where the type calls for one and ends ON its part.** `03-spec-overlay`'s
+   table still said *thin leaders*; it says bold ones now.
+6. **The camera rotates across the page's section images**, as `mapping/pdp-dr-rules.md` rule 5
+   already asked of gallery tiles. The two files of a pair keep one camera.
+7. **Real, never worn**: true texture, a cast shadow, a shallow depth of field, no 3D-render look,
+   and nothing in frame old, worn, scratched, stained or faded.
+8. **Per type**, in each file:
+   - `03-mechanism-diagram` draws its lines, arrows, leaders and labels in one neutral colour — the
+     owner's Principle rule — and the phenomenon keeps one colour of its own;
+   - `03-use-demo` shoots a real home at close range in the light that is there, with nothing
+     staged and no manual look;
+   - `01-pain-before` shows discomfort, never injury or accumulated damage;
+   - `06-relief-after`, `03-use-demo` and `05-persona-lifestyle` keep the point where the product
+     meets the person in view.
+9. **The expert block's image is a seventh section type, `05-social-endorsed`**, reserved. It is
+   the Endorsed form of the owner's gallery instruction: the expert at eye level, face shown, with
+   the product in hand. The prompt describes the person by role, age and casting, never by the name
+   the page prints.
+   - **G14 flags it and never refuses** (ADR-089). `query/output.schema.json` gains
+     `endorsed-expert`, and the note says what G14 says: an endorser who does not exist, or lacks
+     the expertise shown, is a fabricated endorsement under the FTC's rules. The merchant decides.
+   - **Two lines stay**, both from the owner's own Endorsed rule: no real, identifiable person, and
+     no real institution's name, logo or uniform.
+   - The small avatar stays out of scope; the page reuses a crop of this image.
+   - The expert row of *Section routing* now names the type.
+10. **The six section types go to 0.4**, `05-social-endorsed` starts at 0.1, and set
+    `section-06` — owner-gated, below — is the first render of the design rules.
+
+The rules enter without a failed render first: they are the owner's standing rules, from a tested
+instruction, which is how ADR-111 settled that question.
+
+### What this does not change
+
+- The gallery's types, its text law and its measured Layer 2. The gallery changes in one place: its
+  lock is now proposed from the product rather than neutral by default.
+- The hero, the owner's lane.
+- The buyer walls. `05-social-testimony` stays blocked: a buyer's filmed testimony is G14's
+  attribution case, which a decision about experts does not reach.
+- The section form's shape (ADR-112), G1's one sentence, and the phone-size targets.
+- G14's text, G13, G2, G6, A15 and the casting rule.
+- `mapping/content.schema.json`.
+
+### Reversals
+
+- **ADR-093 and ADR-094's neutral lock without a style line.** It becomes the fallback.
+- **ADR-112's section prompt that carries none of the lock.**
+- **ADR-094's refusal of a named-person or named-profession endorsement, and its Endorsed form "not
+  written".** Outside the gallery they become `05-social-endorsed`, flagged.
+- **ADR-096 and ADR-102's rule 12 (*"a section image in a block that names a person never shows a
+  face"*), and ADR-111's standing rule of the same meaning.**
+- **The corner rule, for a section image only.**
+- **`03-mechanism-diagram`'s blue or cyan flow lines**, 0.1–0.3.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `9d7fd22` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"shows no face"` | 13 | 11 | 6 |
+| `"never shows a face"` | 4 | 2 | 1 |
+| `"a block that names a person"` | 11 | 8 | 6 |
+| `"neutral where it does not"` | 2 | 2 | 1 |
+| `"the lock is neutral"` | 3 | 3 | 1 |
+| `"carries none of the lock"` | 4 | 4 | 2 |
+| `"session lock's one accent"` | 1 | 1 | 1 |
+| `"thin leaders"` | 1 | 1 | 1 |
+| `"named-profession endorsement"` | 9 | 5 | 3 |
+| `"no generated form"` | 2 | 2 | 1 |
+| `"fabricated endorsement"` | 91 | 32 | 9 |
+| `"bottom-right"` | 261 | 39 | 19 |
+| `"luminous blue or cyan"` | 1 | 1 | 1 |
+| `"six section types"` | 18 | 9 | 7 |
+| `"Endorsed"` | 8 | 3 | 1 |
+
+- **New:** `registry/pdp-dr-types/05-social-endorsed.md`, reserved.
+- **Rewritten, `registry/pdp-dr-instruction.md`:**
+  - the lock's seed, in *One session, one set*;
+  - the product block's exceptions;
+  - the text section's endorsement row, its heading, and the Endorsed paragraph;
+  - the images outside the gallery, where the expert paragraph replaces the no-face one;
+  - *Composition*'s corners;
+  - the Demonstrated form's reason;
+  - the type map's Endorsed row;
+  - *What binds every prompt*;
+  - the feature-image note;
+  - the section types' table and counts, the form's steps 5 and 6, a new *The owner's design
+    rules*, *Words and marks on a phone*, and the writer's list;
+  - the draft count.
+- **Rewritten, `mapping/pdp-dr-rules.md`:**
+  - the `expert` rows of *Slot kinds* and *Section routing*;
+  - the section-type paragraphs and Layer 2's declared order;
+  - rules 4, 5, 10's wrapping, and 12.
+- **Rewritten, the six section types to 0.4.** Five carried the no-face clause, and all six carried
+  *"one of six section types"*. The overlay's table carried the accent on marks and *thin leaders*,
+  and the diagram's *blue or cyan* lines.
+- **Rewritten elsewhere:**
+  - `SPEC.md` §3.8's section-type and text-layer bullets;
+  - `query/runbook.md`'s two passages;
+  - `adapters/nano-banana.md` Rule 6;
+  - `registry/vocabulary.yaml`, with the device `endorsed` and the type in `pdp_dr_types`;
+  - `query/output.schema.json`, with the flag and its description.
+- **These hits stand**, every one read:
+  - `lede-authority`'s *"shows no face"*: another namespace, a method's frame.
+  - `07-identity-callout`'s endorsement hits: a deprecated file's history.
+  - G14's four hits in `registry/rules.md`: this ADR applies ADR-089's flag and leaves G14's text
+    whole.
+  - The same term in `registry/argument-faults.md`, the toplist instruction and `lede-winner`: other
+    namespaces.
+  - `05-social-testimony`: still blocked, as above.
+  - `06-relief-animal`: deprecated.
+  - `ready-to-push`: a set's record.
+  - The `"bottom-right"` hits outside *Composition*: gallery types' own corner rules, adapter Rule
+    7's fact about the renderer's watermark, the toplist namespace, and the KNOWN-FLAKY records of
+    the sparkle glyph. The owner's word dropped the rule for section images only.
+- **Checked:** `scripts/pdp-dr-slots.py` runs clean on all four templates, and prints
+  `05-social-endorsed (reserved)` for WiBoofy's `expert.scene` and Aure's `expert.photo`.
+- **Generated:** `dist/app-bundle/` rebuilds the instruction, the rules, the runbook, the adapter,
+  SPEC, the vocabulary and the output schema. `registry/pdp-dr-index.yaml` does not move, because the
+  seven section types are reserved.
+- `README.md`: the ADR count. `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render of 0.4, and none of `05-social-endorsed`.** `sets/section-06/` is the round. It holds
+  six prompts on the templates' own products, each on a named field: a before-and-after pair, a
+  diagram, the demo control, a feature image and the expert. It is owner-gated and uncommitted.
+- **`05-persona-lifestyle` 0.4 has no set.** Its changes are the shared ones.
+- **`sets/section-04` and `section-05` are 0.3 and stale.** The rewind took their checkers.
+- **The writer's product-based lock is untested.** `section-06` proposes one for each of its three
+  products and states it in its header.
+- **An Endorsed gallery tile has no file.** The decision was taken for the images outside the
+  gallery.
+- **The app** sees no change until a section type is promoted, and must accept the new flag value
+  when it validates output.
+
+---
