@@ -27,11 +27,23 @@ none, routes as above.
 
 **A page built from an LP2 template gives each image field a KIND before Step 2** — run
 `python3 scripts/pdp-dr-slots.py TEMPLATE.html`, which applies the *Slot kinds* table in
-`mapping/pdp-dr-rules.md` (ADR-096). Only a `gallery` field carries words. A `hero`, `section`,
-`pair`, `buyer-wall` or `closing` field is generated wordless. A `chrome`, `thumb`, `packshot`,
+`mapping/pdp-dr-rules.md` (ADR-096). Only a `gallery` field carries a title, copy or chips. A
+`hero`, `pair`, `buyer-wall` or `closing` field is generated wordless, and a `section` field
+carries only what its section type declares — nothing, a feature image's one short line, a
+diagram's labels or a step's numeral (ADR-106, ADR-110). A `chrome`, `thumb`, `packshot`,
 `portrait` or `chart` field is not generated, and a `gif` field routes by `registry/gif-types/`.
 The same run prints each generated field's **default role** from its section's name
 (*Section routing*, ADR-102). Step 2 starts from that role, and the section's copy may move it.
+
+**It also prints the field's SECTION TYPE** (owner instruction, 2026-09-18, ADR-110): one of the
+six types the owner's image instruction names, which a `section`, `pair` or `closing` field takes
+ahead of its role's Layer 2 row, once that type is active. The script prints a type's `status`
+where it is not `active`, and a reserved one does not route: that field routes by its role, as
+before. **A prompt filled from a section type is written in the SECTION FORM**
+(`registry/pdp-dr-instruction.md`, *The owner's image instruction*) — one concise paragraph of at
+most 1,200 characters, with no labels, no product block and no style-lock table, ending with the
+form's reference and closing sentences where the product is in frame. Its DESCRIPTION is the
+field's own block's content values: for an item field, that item's lines first.
 
 **And load only the SECTIONS you fill from.** A seven-reason listicle forces eight
 distinct types under one-type-once, so "typically 2–4" understates the worst case and
@@ -348,8 +360,11 @@ angle, crop and the product's share of frame are what change between prompts; a 
 resolves to twelve versions of one frame is re-routed rather than shipped. **An LP2 prompt
 opens with that namespace's product block instead of G1's, and its words are counted over the
 gallery** — copy, chips, title-only and wordless tiles (ADR-094). Only the product card's gallery
-carries words; every other image on the page is wordless (ADR-096). The deliverable is a set that
-reads as one set.
+carries words; every other image on the page is wordless (ADR-096), except the few words a
+section type declares (ADR-106, ADR-110). **A section-form prompt is the exception to both
+halves of that sentence**: it carries the lock's light and grade as one sentence and nothing else
+of the lock, and G1 as the form's reference and closing sentences rather than as the block
+(ADR-110). The deliverable is a set that reads as one set.
 
 ## Step 6 — Render through the adapter
 

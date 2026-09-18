@@ -105,7 +105,8 @@ Never guessed by the converter. It refuses to emit until each is answered.
   **An LP2 template is read differently** (ADR-102). The owner's LP2 templates give each block
   one argument, and on an LP2 page an image depends on its section's name and on that section's
   copy (owner decision, 2026-09-17). `mapping/pdp-dr-rules.md`'s *Section routing* table
-  therefore gives a default role by section name, and the copy still decides. The finding above
+  therefore gives a default role by section name — and, since ADR-110, the section type a field
+  outside the gallery takes first — and the copy still decides. The finding above
   stands for the exports it was measured on. This converter still asks a reader for every role;
   on an LP2 page, that table is where the reader starts.
 - **`page.channel`.** The export does not carry it. The router learned it by GUESSING from

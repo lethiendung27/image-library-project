@@ -33,7 +33,8 @@ So, beside that cross-slot pass of its own, this namespace stands on three diffe
    overlay. Every type here may declare `text_layer` and G16 binds the ones that do.
    Advertorial and listicle types overwhelmingly do not. **Since 2026-09-17 those words
    belong to the product card's gallery alone** (ADR-096); every other image on the page
-   is wordless, except a feature image's one short line (ADR-106).
+   is wordless, except the few words a section type declares: a feature image's one short
+   line (ADR-106), a diagram's labels and a step's numeral (ADR-110).
 2. **The ground rule is measured on this corpus.** ADR-068 measured the outer 8% ring of
    119 frames from these batches: **VALUE median 0.89, SATURATION median 0.06.** That is
    a fact about these pages and it does not transfer — ADR-073 had to re-measure the same
@@ -208,9 +209,10 @@ across one batch of twenty, in pink and in grey inside another of eleven, the co
 in pink. The sixth batch was seven tiles long.
 
 **The product block, in these words.** On an LP2 page it takes the place of G1's block and keeps
-every G1 obligation, and G1's "do not redesign" sentence stays in it word for word. One type
-leaves it out: `03-mechanism-signal`, on the owner's trial of the feature-image output format
-(ADR-101).
+every G1 obligation, and G1's "do not redesign" sentence stays in it word for word. Seven types
+leave it out: `03-mechanism-signal`, on the owner's trial of the feature-image output format
+(ADR-101), and the six section types, whose one form carries G1 as that format's reference and
+closing sentences (ADR-110, *The section form*).
 
 ```
 Use the attached product photo as the exact reference. Preserve its shape,
@@ -277,8 +279,9 @@ same thing and names nothing.
 ## Text: TITLE ONLY by default, and G16 narrowed for this namespace
 
 **This section governs the product card's gallery tiles**, the only images on an LP2 page that
-carry a TITLE (ADR-096). A feature image may carry one short line and nothing else (ADR-106);
-every other image carries no words — see *Images outside the product card's gallery*.
+carry a TITLE (ADR-096). A feature image may carry one short line and nothing else (ADR-106), a
+diagram its technical labels and a single step its numeral (ADR-110); every other image carries
+no words — see *Images outside the product card's gallery*.
 
 **Owner instruction, 2026-09-16 (ADR-094):** *"TITLE ONLY. Copy and chips are earned, never
 template slots."* G16 is not lifted — it is narrowed here, and this namespace is where it does
@@ -414,7 +417,10 @@ unnamed person showing how the product works, with no name, no title and no clin
 from 2026-09-18 a feature image may carry one short line** (owner instruction, ADR-106). The
 hero, both halves of a before-and-after pair, a buyer-photo tile, a closing image and every
 section image that is not a feature image carry none — no title, no copy, no chip, no label, no
-badge — because the page sets its words beside them in HTML. A type that declares `text_layer` fills such a slot without
+badge — because the page sets its words beside them in HTML. **Two section types draw a little
+more, by the owner's image instruction of 2026-09-18** (ADR-110): `03-mechanism-diagram` its
+technical labels, and `03-use-demo` its step's numeral — see *The owner's image instruction*
+below, which is where the six section types and their one form are law. A type that declares `text_layer` fills such a slot without
 it: the `[TITLE]`, `[COPY]` and label slots an `LP2 LAW` section adds are for a gallery tile, and
 the prompt keeps G6's `text, letters, numbers` whole. The product's own printing is not a word
 the prompt writes; the product block keeps it. Which field is which is read from the template by
@@ -422,7 +428,8 @@ the prompt writes; the product block keeps it. Which field is which is read from
 
 **A FEATURE IMAGE is a section image whose block argues ONE named feature** — the `mechanism` and
 `how-to-use` roles, which is where `features.*`, `modes.*` and `how.*` land (*Section routing*).
-It may carry, once and only where the mark needs it:
+Its section type is `03-spec-overlay`, the FEATURES mode of the owner's image instruction
+(ADR-110). It may carry, once and only where the mark needs it:
 - **a figure with its unit, as the page states it** — `5,600 Pa`, `$0`, `12h`, `144`;
 - **and/or a tag of two to five words naming that feature**, in the page's own words —
   `IP68 Waterproof`, `$0 Running Cost`, `Regional Dialects Supported`;
@@ -572,11 +579,17 @@ first on this corpus (*Section routing*). The next set is `registry/pdp-dr-types
 which the owner grades on the four templates themselves.
 
 **A pair shares one description.** A before-and-after pair fills two image fields, and every
-prompt is one call (ADR-021), so nothing but the words holds the two files together.
+prompt is one call (ADR-021), so nothing but the words holds the two files together. **The two
+files are the two halves of the owner's instruction** (ADR-110): the before field takes
+`01-pain-before`, its WITHOUT / BEFORE mode, and the after field `06-relief-after`, its WITH /
+AFTER mode, once those drafts are active.
 - Write the locked description once: the subject — the same body area or object, the same
   person where a person shows — the framing, the camera height and distance, the light and the
   ground. Paste it into both prompts word for word.
 - The two prompts differ in one line, the state. Nothing else moves: not a prop, not the crop.
+  **The state may be the product's own presence**: where the claim is what the product holds up,
+  the before is the frame without it and the after the same frame with it in place and working.
+  That is the switchable state a comparison owes: take the product out, and the harm returns.
 - **Untested.** No pair has rendered under this law, and the first set that ships one grades
   whether two calls hold one frame.
 
@@ -729,12 +742,14 @@ itself — the owner records an invented "Dr. L. Chen" rendering an Asian face, 
   reference photos as the type needs — one per product in frame (ADR-021, ADR-076). Never a
   multi-pass option, an edit chain or a post-assembly step.
 - **An image outside the product card's gallery carries no words** — no title, copy, chip,
-  label or badge (ADR-096) — **except a feature image, which may carry one short line** (ADR-106).
+  label or badge (ADR-096) — **except what its section type declares**: a feature image's one
+  short line (ADR-106), a diagram's technical labels and a step's numeral (ADR-110).
 - **The product block is mandatory** in every prompt with the product in frame — this
   namespace's form of G1, in the words the product section above fixes, with its two conditional
   sentences wherever their case exists. **One exception, on trial:** `03-mechanism-signal` follows
   the owner's feature-image output format and carries G1 in one sentence, `Use the attached product
-  photo as the exact reference.`, before the instruction's closing sentence (ADR-101).
+  photo as the exact reference.`, before the instruction's closing sentence (ADR-101). **The six
+  section types take the same form** (ADR-110, *The section form*).
 - **G2 limits the PRODUCT slot to four kinds of information** — position, angle, scale in
   frame, and relation to other objects. Not shape, not material, not colour, not
   construction, not an aesthetic adjective. The reference photo carries appearance; the
@@ -776,7 +791,7 @@ is a verbatim copy, and in place where it is LP2's own draft.
 | Problem Tile · Symptom Rail | `02-symptom-rail` | active copy | its `LP2 LAW` |
 | Problem Tile · Cause Anatomy | `02-cause-anatomy` | active copy | its `LP2 LAW` |
 | Hero + Angle & Detail | `03-spec-hero` | reserved draft | in place, 0.2 |
-| Feature + Benefit · Applied Use Storytelling | — | **no file** | below; the nearest corpus proposal is `03-use-demo`, 4 sources, undrafted (ADR-078) |
+| Feature + Benefit · Applied Use Storytelling | — | **no gallery file** | below; the nearest corpus proposal, `03-use-demo`, was drafted on 2026-09-18 as a SECTION type that refuses a gallery tile (ADR-110) |
 | Feature + Benefit · Comparative / Proof | `04-proof-lockedframe` | active copy | its `LP2 LAW` |
 | Feature + Benefit · Callout | `03-spec-callout` | reserved draft | in place, 0.4 |
 | Feature + Benefit · Material Macro | `03-spec-macro` | active copy | its `LP2 LAW` |
@@ -784,7 +799,7 @@ is a verbatim copy, and in place where it is LP2's own draft.
 | Mechanism · Body | `03-mechanism-ghostbody` | active copy | **below, until its re-copy** |
 | Mechanism · Contact | `03-mechanism-contact` | reserved draft | in place, 0.4 |
 | Mechanism · Product X-ray | `03-mechanism-xray` | active copy | **below, until its re-copy** |
-| Mechanism · Principle | — | **no file** | below; a signal the product sends or senses is `03-mechanism-signal`, a reserved draft (ADR-099) |
+| Mechanism · Principle | — | **no gallery file** | below; a signal the product sends or senses is `03-mechanism-signal`, a reserved draft (ADR-099); outside the gallery the form's file is `03-mechanism-diagram`, a reserved draft (ADR-110) |
 | Mechanism · Demonstrated | — | **no file** | below |
 | Mechanism · Endorsed | — | **not written** | the LAW row of the text section |
 | Use Steps · Sequence | `03-use-sequence` | active copy | its `LP2 LAW` |
@@ -832,7 +847,9 @@ here until then, and it binds them now, since this file binds every copy in the 
   and to nothing else (A15, ADR-095).
 - A dark key is allowed. The words as for any mechanism tile.
 
-**Three mechanisms with no file.**
+**Three mechanisms with no gallery file.** Two of them gained a SECTION type on 2026-09-18
+(ADR-110) — `03-mechanism-diagram` for Principle and `03-use-demo` for Applied Use — and each of
+those refuses a gallery tile, so as gallery forms all three still have none.
 - **Principle** — the science is general physics or biology: a point load against a spread load,
   slow rebound, airflow, an ingredient's action. One clean 2D or 3D diagram BESIDE the product or
   in an inset, in one neutral line colour, **never painted onto the product and never a rainbow
@@ -885,7 +902,8 @@ seconds.
   closing sentence word for word.
 
 **Where it binds today:** `03-mechanism-signal`, from 0.3, whose `PARTS/form` carries the
-closing sentence. Adapter Rule 6 names the exception to its slot form. **From 0.5 that type's
+closing sentence, and from 2026-09-18 the six section types, whose one form ends with the same
+sentence (ADR-110). Adapter Rule 6 names the exceptions to its slot form. **From 0.5 that type's
 skeleton IS the instruction's output format**, on the owner's instruction *"hãy thử đặt skeleton
 giống output format của feature image txt"* (ADR-101).
 
@@ -914,7 +932,133 @@ one of each:
 The last is a PROPOSAL and gets no file: two frames from one source family is under SPEC §3's
 bar, and `03-spec-macro` shows the product's own surface rather than its output.
 
-**Not decided:** whether the other types that fill section fields take the same form.
+**Decided on 2026-09-18** (ADR-110): the types that fill section fields take the same form. They
+are six new drafts, the section types of the next section, and not the copies. `03-spec-overlay`
+is the FEATURES one, and it holds the four constructions in the table above as overlay FORMS — a
+parameter, including the inset view no type owned. Whether `03-mechanism-signal` and
+`04-proof-stat` retire into it waits on its first render.
+
+## The owner's image instruction — 2026-09-18: six section types, one form
+
+**Owner instruction, 2026-09-18** (ADR-110): *"hãy đọc và tham khảo instruction này cho các types
+ngoài product gallery của pdp-dr … tôi đã test và kết quả vượt xa các types hiện tại trong
+pdp-dr. input để xử lí vẫn là các value (content generated) của content landing page.json"*. The
+instruction is `~/Downloads/images prompt.txt`. It takes an image TYPE and a paragraph describing
+the picture, and returns one concise prompt under that type's rules.
+
+**What it changes.** Until this decision an image outside the gallery was filled from a verbatim
+copy of an LP1 type — a split, a rail, a grid, a ghost body — a frame built to carry a whole
+argument alone on an advertorial. An LP2 section image never stands alone. It sits beside its own
+HTML copy, in a card, and makes ONE line of that copy visible. So the six modes of the owner's
+instruction are six **section types**, LP2's own, one frame each:
+
+| the instruction's mode | section type | the frame | the product | words |
+|---|---|---|---|---|
+| WITHOUT / BEFORE | `01-pain-before` | the problem, in a realistic place | absent, or idle | none |
+| WITH / AFTER | `06-relief-after` | the product working, the improvement visible | in frame, working | none |
+| HOW IT WORKS | `03-mechanism-diagram` | a clean 2D or 3D visualisation, or a drawn cutaway | drawn at the working end | up to three technical labels |
+| HOW TO USE | `03-use-demo` | one focused step, a hand doing it | in the hand | none, or the step's numeral |
+| FEATURES | `03-spec-overlay` | the product clearly presented under a functional drawn layer | the subject of the frame | the feature image's one short line |
+| OTHER | `05-persona-lifestyle` | the lived-in place the product belongs to | small, or absent | none |
+
+Each file carries its mode's rules in the owner's own words. Which section takes which type is
+`mapping/pdp-dr-rules.md`, *Section routing*.
+
+**They fill `section`, `pair` and `closing` fields** (*Slot kinds*). The gallery keeps its own
+types and its text law, the hero keeps its own law, a buyer tile stays `05-social-snapshot`'s, and
+**a section type never fills a gallery tile** — every one of the six triggers refuses one.
+
+**All six are reserved drafts today, so none routes yet.** Each waits on the owner's verdict on
+its first render (SPEC §6.3, criterion 3), and `sets/section-01/` is that round. A draft is
+promoted in place, one at a time. Until a section's type is active, its field routes as before:
+by its default role, through Layer 2.
+
+### The section form
+
+**Every section type's skeleton is one form, and it is the owner's output format**: *"a single,
+concise image prompt describing the full visual: environment, product visibility,
+problem/solution logic, lighting, angle, and permitted diagram elements if applicable."*
+
+```
+One concise natural paragraph, starting directly with the picture, with no labels, no
+headings and no JSON, in this order:
+  1. the picture — what kind of image it is, the camera's angle and distance, the place,
+     and who or what is doing what;
+  2. the product — BY NAME, where it is and what state it is in: absent, idle or working;
+  3. the logic — the one visible cue that carries the section's line;
+  4. the drawn layer — only where the type permits one, in a sentence of its own;
+  5. the light — the form's light sentence;
+  6. the words — the type's own sentence: none, or what it declares.
+Where the product is in the frame, the prompt ends with the reference sentence and then
+the closing sentence. Where it is not, the prompt ends at the words and carries neither.
+```
+
+**The fixed sentences, written word for word in every prompt that takes them:**
+
+| name | the sentence |
+|---|---|
+| light | the session lock's light and grade, as ONE sentence. On a page with a hero that is ADR-104's two lines joined: `Bright daylight from the left, with natural shadows and real contrast, in true colour with neutral whites, no warm filter and no glow.` A diagram names `clean, even studio light with a soft shadow` instead, since the lock's daylight is a photograph's |
+| no words | `There is no text, label, logo or number anywhere in the picture, background included.` |
+| reference | `Use the attached product photo as the exact reference.` |
+| closing | `Do not change anything related to the original product, including screen, buttons, display, interface, ports, technical indicators, color, shape, proportions, dimensions, or functionality.` |
+
+A type that draws words writes its own words sentence in place of *no words*, and that sentence
+ends *nothing else in the picture carries text, and the bottom-right corner stays clear* — the
+wording `03-mechanism-signal`'s set 04 spelled its three lines under, 3 of 3.
+
+**Concise is a gate: at most 1,200 characters**, the reference and closing sentences included.
+The number is DECLARED, not measured. The owner's word is *concise*; those two sentences take 243
+of the characters; and `sets/section-01/` is the first test of it. The namespace's 1,800 is a
+gallery tile's.
+
+**What the form leaves out, and why.**
+- **The LP2 product block.** G1 keeps its obligation in the reference sentence and the closing
+  sentence carries the rest — the form ADR-101 put on trial for `03-mechanism-signal`. That trial
+  still has no verdict on the product: set 04 rendered under it, and whether the photos were
+  attached did not come back. **Every prompt with the product in frame ships with its reference
+  flag set, and the owner attaches the photo.**
+- **The rest of the style lock.** Two grounds, the text colours, the accent, the chip form and the
+  design language bind words and graphic grounds, and a section photograph has neither. It carries
+  the lock's light and grade. A type that draws words takes the lock's type face and its accent in
+  its words sentence.
+- **Labelled slots.** Adapter Rule 6 names the six beside `03-mechanism-signal` as the types
+  written as one paragraph.
+
+**What the owner's instruction allows and avoids, for all six** — its global rules, in its words:
+
+```
+Allowed:  human faces, partials, hands, head, silhouettes (context-driven);
+          minimal technical labels (HOW IT WORKS only);
+          infographic icons and short text (FEATURES only);
+          subtle graphic effects, soundwaves, airflow, UI hints
+Avoid:    irrelevant props or overly busy compositions; clutters
+Tone:     editorial realism; premium clarity; clean lighting, balanced contrast;
+          scene must be readable within 3 seconds
+```
+
+**What this file still binds in a section prompt** — each earned by a render, and none restated in
+a type file beyond a pointer:
+- the product is NAMED as the page names it and never described (G2): where the prompt said only
+  "the product", 2 of 4 renders invented one (`03-mechanism-signal` 0.3);
+- scale comes from the host, never from a share of the frame (ADR-106);
+- a drawn mark is the thing itself and lands on its subject (ADR-106), never runs along a cable,
+  and nothing the buyer owns is cut open (ADR-109);
+- a drawn figure is true of its frame, and the place carries no signage (ADR-109);
+- full colour from the room's own things, never a pale grade and never a warm cast (ADR-104,
+  ADR-107, ADR-108);
+- G6 on screens, G13, the casting rule, and no face in a block that names a person;
+- a pair shares one description, and a testimonial pair ships with G14's flag (ADR-089);
+- never the frame's shape or ratio (ADR-016).
+
+**The description is the section's own content values.** The owner's instruction takes a TYPE and
+a DESCRIPTION. On an LP2 page the type comes from *Section routing*, and the description is built
+from the values `content.json` carries for the field's own block: for an item field, that item's
+lines first — its title, its text, its proof or spec line — then the block's heading. Never from
+another block, and never with a figure the page does not carry (A15).
+
+**One block, one type, several frames.** A block that lists equivalent items gives every item its
+own frame of the block's type, each on its own item's line, and the frames differ on a dimension
+each prompt names — the place, the subject, the body area (`mapping/pdp-dr-rules.md`, rule 10).
 
 ## What the 157-image corpus measured — 2026-09-11
 
@@ -1014,8 +1158,9 @@ draws a mark.
 
 ## What this namespace is still waiting on
 
-**None of LP2's own drafts routes.** Seventeen files: fifteen `status: reserved`, each carrying a
-`blocked_by` and a `BLOCK`, and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
+**None of LP2's own drafts routes.** Twenty-three files: twenty-one `status: reserved`, each
+carrying a `blocked_by` and a `BLOCK` — six of them the section types of 2026-09-18 (ADR-110) —
+and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
 and replaced by `03-spec-callout` after a control render and a ten-source corpus answered the
 same question the same way, and `06-relief-animal`, retired on 2026-09-17 after the owner put an
 animal subject into the relief types (ADR-095). `registry/pdp-dr-index.yaml` gains none of them.

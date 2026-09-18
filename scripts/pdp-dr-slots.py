@@ -33,14 +33,23 @@ that name and ONE backticked value:
 - `@copy`, where the section's copy alone decides.
 The copy may move any default; the script only says where routing starts.
 
+Since ADR-110 (owner instruction, 2026-09-18) the same table carries a third column, the
+section's SECTION TYPE: the type a field in that block takes first. It holds ONE backticked
+value, a type with a file in `registry/pdp-dr-types/` or one of four tokens — `@gallery`,
+`@hero`, `@pair`, `@copy`. Where a field's own Slot kinds row names a type in its last cell,
+that type is the field's and the section's is not read: the table says so, and a pair's two
+fields are the case. The script prints the type with its `status` where that is not `active`,
+because a reserved draft does not route yet. A table without the column still parses, and
+the column then prints as `—`.
+
 Usage:
   python3 scripts/pdp-dr-slots.py TEMPLATE.html            # table per field, then counts
   python3 scripts/pdp-dr-slots.py TEMPLATE.html --json     # the same, as JSON
   python3 scripts/pdp-dr-slots.py --rules                  # both parsed tables
   python3 scripts/pdp-dr-slots.py TEMPLATE.html --rules-from FILE   # another table
 
-Exit 1 when a table cannot be parsed, a role is not in the vocabulary, or a field matches no
-row, 2 on bad usage.
+Exit 1 when a table cannot be parsed, a role is not in the vocabulary, a section type has no
+file, or a field matches no row, 2 on bad usage.
 """
 import fnmatch
 import json
@@ -52,16 +61,39 @@ from html.parser import HTMLParser
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RULES = os.path.join(ROOT, "mapping", "pdp-dr-rules.md")
 VOCAB = os.path.join(ROOT, "registry", "vocabulary.yaml")
+TYPES_DIR = os.path.join(ROOT, "registry", "pdp-dr-types")
 GENERATED = {"hero", "gallery", "section", "pair", "buyer-wall", "closing"}
 ROLE_TOKENS = {"@tile", "@copy"}
+TYPE_TOKENS = {"@gallery", "@hero", "@pair", "@copy"}
+TYPE_ID = re.compile(r"^\d\d-[a-z]+-[a-z]+$")
 PORTRAIT_BLOCKS = {"reviews", "expert", "testimonials", "trusted"}
 PORTRAIT_MAX_WIDTH = 160
 VOID = {"img", "br", "hr", "input", "meta", "link", "source", "area", "base",
         "col", "embed", "param", "track", "wbr"}
 
 
+def type_status(tid):
+    """The `status:` of a pdp-dr type file. A type with no file is a table error."""
+    path = os.path.join(TYPES_DIR, tid + ".md")
+    if not os.path.exists(path):
+        raise ValueError(f"`{tid}` has no file in registry/pdp-dr-types/")
+    with open(path, encoding="utf-8") as f:
+        if f.readline().strip() != "---":
+            raise ValueError(f"{path}: no frontmatter")
+        for line in f:
+            if line.strip() == "---":
+                break
+            if line.startswith("status:"):
+                return line.split(":", 1)[1].strip()
+    raise ValueError(f"{path}: no `status:` in its frontmatter")
+
+
 def parse_rules(path):
-    """Rows of the first table under `## Slot kinds`, as (patterns, kind, words, image)."""
+    """Rows of the first table under `## Slot kinds`: (patterns, kind, words, image, type).
+
+    `type` is the first type id backticked in the row's last cell, or None. A row that
+    names one gives it to every field it matches.
+    """
     with open(path, encoding="utf-8") as f:
         text = f.read()
     m = re.search(r"^## Slot kinds\b.*?$", text, re.M)
@@ -91,7 +123,11 @@ def parse_rules(path):
         patterns = re.findall(r"`([^`]+)`", cells[0])
         if not patterns:
             raise ValueError(f"{path}: row with no backticked pattern: {line}")
-        rows.append((patterns, cells[1].strip("*"), cells[2], cells[3]))
+        named = [v for v in re.findall(r"`([^`]+)`", cells[3]) if TYPE_ID.match(v)]
+        if named:
+            type_status(named[0])
+        rows.append((patterns, cells[1].strip("*"), cells[2], cells[3],
+                     named[0] if named else None))
     if not rows:
         raise ValueError(f"{path}: the Slot kinds table has no rows")
     return rows
@@ -107,7 +143,10 @@ def section_roles(path=VOCAB):
 
 
 def parse_sections(path, roles):
-    """Rows of the first table under `## Section routing`, as (patterns, role)."""
+    """Rows of the first table under `## Section routing`: (patterns, role, section type).
+
+    The section type is None where the table has no third column headed `section type`.
+    """
     with open(path, encoding="utf-8") as f:
         text = f.read()
     m = re.search(r"^## Section routing\b.*?$", text, re.M)
@@ -117,7 +156,7 @@ def parse_sections(path, roles):
     nxt = re.search(r"^## ", body, re.M)
     if nxt:
         body = body[:nxt.start()]
-    rows, in_table = [], False
+    rows, in_table, has_type = [], False, False
     for line in body.splitlines():
         if not line.startswith("|"):
             if in_table:
@@ -128,6 +167,7 @@ def parse_sections(path, roles):
             if [c.lower() for c in cells[:2]] != ["section name", "default role"]:
                 raise ValueError(f"{path}: the Section routing table must open with "
                                  "`| section name | default role |`")
+            has_type = len(cells) > 2 and cells[2].lower() == "section type"
             in_table = True
             continue
         if set("".join(cells)) <= set("-: "):
@@ -139,20 +179,56 @@ def parse_sections(path, roles):
                              f"backticked role: {line}")
         if values[0] not in roles and values[0] not in ROLE_TOKENS:
             raise ValueError(f"{path}: `{values[0]}` is neither a section role nor a token: {line}")
-        rows.append((patterns, values[0]))
+        stype = None
+        if has_type:
+            types = re.findall(r"`([^`]+)`", cells[2]) if len(cells) > 2 else []
+            if len(types) != 1:
+                raise ValueError(f"{path}: a Section routing row needs ONE backticked "
+                                 f"section type: {line}")
+            stype = types[0]
+            if stype not in TYPE_TOKENS:
+                if not TYPE_ID.match(stype):
+                    raise ValueError(f"{path}: `{stype}` is neither a type id nor a token: {line}")
+                type_status(stype)
+        rows.append((patterns, values[0], stype))
     if not rows:
         raise ValueError(f"{path}: the Section routing table has no rows")
     return rows
+
+
+def section_of(f, sections):
+    """The Section routing row a generated field's section matches, or None."""
+    for patterns, role, stype in sections:
+        if any(fnmatch.fnmatchcase(f["block"], p) for p in patterns):
+            return role, stype
+    return None
 
 
 def role_of(f, sections):
     """A generated field's default role; '—' for a field the library does not generate."""
     if f["kind"] not in GENERATED:
         return "—"
-    for patterns, role in sections:
-        if any(fnmatch.fnmatchcase(f["block"], p) for p in patterns):
-            return role
-    return None
+    row = section_of(f, sections)
+    return row[0] if row else None
+
+
+def section_type_of(f, sections):
+    """A generated field's section type, with its status where that is not `active`.
+
+    The field's own Slot kinds row wins where it names a type; otherwise the section's row.
+    """
+    if f["kind"] not in GENERATED:
+        return "—"
+    stype = f.get("row_type")
+    if stype is None:
+        row = section_of(f, sections)
+        stype = row[1] if row else None
+    if stype is None:
+        return "—"
+    if stype in TYPE_TOKENS:
+        return stype
+    status = type_status(stype)
+    return stype if status == "active" else f"{stype} ({status})"
 
 
 class Fields(HTMLParser):
@@ -211,9 +287,9 @@ def matches(pattern, f):
 def classify(fields, rules):
     out, unmatched = [], []
     for f in fields:
-        for patterns, kind, words, image in rules:
+        for patterns, kind, words, image, row_type in rules:
             if any(matches(p, f) for p in patterns):
-                out.append(dict(f, kind=kind, words=words, image=image))
+                out.append(dict(f, kind=kind, words=words, image=image, row_type=row_type))
                 break
         else:
             unmatched.append(f["field"])
@@ -237,11 +313,11 @@ def main(argv):
         print(f"ERROR {e}", file=sys.stderr)
         return 1
     if "--rules" in argv and not args:
-        for patterns, kind, words, image in rules:
-            print(f"{' '.join(patterns):58} {kind:11} {words}")
+        for patterns, kind, words, image, row_type in rules:
+            print(f"{' '.join(patterns):58} {kind:11} {words:22} {row_type or ''}")
         print()
-        for patterns, role in sections:
-            print(f"{' '.join(patterns):58} {role}")
+        for patterns, role, stype in sections:
+            print(f"{' '.join(patterns):58} {role:18} {stype or '—'}")
         return 0
     if len(args) != 1:
         print(__doc__.split("Usage:")[1].split("Exit")[0], file=sys.stderr)
@@ -251,21 +327,22 @@ def main(argv):
         parser.feed(f.read())
     try:
         rows, unmatched = classify(parser.fields, rules)
+        unrouted = []
+        for r in rows:
+            r["role"] = role_of(r, sections)
+            if r["role"] is None:
+                unrouted.append(r["field"])
+            r["section_type"] = section_type_of(r, sections)
     except ValueError as e:
         print(f"ERROR {e}", file=sys.stderr)
         return 1
-    unrouted = []
-    for r in rows:
-        r["role"] = role_of(r, sections)
-        if r["role"] is None:
-            unrouted.append(r["field"])
     if "--json" in argv:
         print(json.dumps({"template": args[0], "fields": rows,
                           "unmatched": unmatched, "unrouted": unrouted}, indent=1))
     else:
         for r in rows:
             print(f"{r['field']:40} {r['block']:14} {r['kind']:11} {r['frame']:7} "
-                  f"{r['role'] or '?':18} {r['words']}")
+                  f"{r['role'] or '?':18} {r['section_type']:32} {r['words']}")
         counts = {}
         for r in rows:
             counts[r["kind"]] = counts.get(r["kind"], 0) + 1

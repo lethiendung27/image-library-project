@@ -36,12 +36,18 @@ edit anywhere, and a field no row matches fails the script rather than being gue
 | `hero.*` | hero | none | a banner the template crops — the instruction's section of that name |
 | `proof.items.*` `demo.items.*` | gif | none | a loop, routed by `registry/gif-types/` off the slot's own verdict (ADR-023) |
 | `*avatar*` `@portrait` | portrait | — | a person's face beside their name, out of library scope (`mapping/slot-rules.md`, `author`) |
-| `*before_image` `*after_image` | pair | none | one state of a before-and-after pair. Generated — cross-slot rules 11 and 12 |
+| `*before_image` | pair | none | the before state of a before-and-after pair, `01-pain-before`. Generated — cross-slot rules 11 and 12 |
+| `*after_image` | pair | none | the after state of the same pair, `06-relief-after`. Generated — cross-slot rules 11 and 12 |
 | `reviews.*` `ugc.*` `trusted.*` `testimonials.*` | buyer-wall | none | a buyer-photo tile. Generated, `05-social-snapshot` first — rule 12 |
-| `expert.*` | section | none | routed by the block's copy, and never a face — rule 12 |
+| `expert.*` | section | by its section type | routed by the block's copy to a section type, and never a face — rule 12 |
 | `*chart*` | chart | — | a data chart, built in HTML: without words a chart says nothing |
 | `close.*` `offer.*` `bundle.*` | closing | none | gallery image 1 by default; generated only where the block's copy argues what the packshot does not |
-| `*` | section | none | routed by its block's copy — rule 10 |
+| `*` | section | by its section type | routed by its block's name and copy to a section type — rule 10 |
+
+**Where a row names a type, that type is the field's**, whatever its section's row says below — a
+pair's two fields today. **The `words` cell of a section field is its section type's**: none for
+four of the six, a feature image's one short line, a diagram's labels, a step's numeral
+(`registry/pdp-dr-instruction.md`, *The owner's image instruction*, ADR-110).
 
 `@locked` is a field whose `data-locked` is `true`. `@portrait` is a field in `reviews`,
 `expert`, `testimonials` or `trusted` whose `width` is 160 or less. The script also reports the
@@ -66,27 +72,43 @@ the block is a list (cross-slot rule 10). A type outside the row stays a candida
 `python3 scripts/pdp-dr-slots.py TEMPLATE.html` prints each generated field's default role from
 this table; rows are tried in order and the first match wins.
 
-| section name | default role | where the copy moves it | read from |
-|---|---|---|---|
-| `buy` | `@tile` | any role — each gallery tile routes by its own message, under the gallery's rules | all four |
-| `hero` | `hero` | — | all four |
-| `problem` | `problem-agitation` | `cause`, where the copy explains why the problem happens (Deal: "every wall and floor between the two takes another bite out of it") | all four |
-| `how` | `how-to-use` | `mechanism`, where the steps happen inside the product or the body rather than in the buyer's hands (Aure: "Light reaches the root") | wiboofy, deal, aure |
-| `features` `modes` | `mechanism` | `how-to-use` or `personas`, item by item (Eco's washing and its two sizes, Deal's two button presses) | wiboofy, deal, eco; aure |
-| `why` | `outcome` | `comparison`, where the copy names what the product beats | aure |
-| `uses` | `how-to-use` | `personas`, where the list is of people rather than of places or body areas | aure |
-| `safety` | `proof` | — | aure |
-| `expect` | `proof` | — a pair, whose construction rule 11 fixes | aure |
-| `reviews` `ugc` `trusted` `testimonials` | `social-proof` | — buyer tiles and pairs, rules 11 and 12 | all four |
-| `expert` | `@copy` | the quoted claim decides, and the image never shows a face (rule 12) | wiboofy, aure |
-| `faq` | `@copy` | the question the image sits beside decides | wiboofy, aure |
-| `offer` `close` `bundle` | `cta` | `outcome`, where the block argues what the packshot does not (Slot kinds, `closing`) | all four |
-| `*` | `@copy` | — | — |
+| section name | default role | section type | where the copy moves it | read from |
+|---|---|---|---|---|
+| `buy` | `@tile` | `@gallery` | any role — each gallery tile routes by its own message, under the gallery's rules | all four |
+| `hero` | `hero` | `@hero` | — | all four |
+| `problem` | `problem-agitation` | `01-pain-before` | the role to `cause`, where the copy explains why the problem happens (Deal: "every wall and floor between the two takes another bite out of it"); the type stays, and the frame shows the cause at work | all four |
+| `how` | `how-to-use` | `03-use-demo` | `mechanism` and `03-mechanism-diagram`, where the steps happen inside the product or the body rather than in the buyer's hands (Aure: "Light reaches the root") | wiboofy, deal, aure |
+| `features` `modes` | `mechanism` | `03-spec-overlay` | item by item: `03-use-demo` where the item is an act of the buyer's hands (Deal's two button presses, Eco's washing), `06-relief-after` where it is a state a camera can catch (Eco's bread on day three), `03-mechanism-diagram` where it explains a process | wiboofy, deal, eco; aure |
+| `why` | `outcome` | `06-relief-after` | the role to `comparison`, where the copy names what the product beats; the type stays | aure |
+| `uses` | `how-to-use` | `05-persona-lifestyle` | the role to `personas`, where the list is of people rather than of places or body areas; `03-use-demo`, where the list is of techniques | aure |
+| `safety` | `proof` | `03-spec-overlay` | `06-relief-after`, where the block argues comfort rather than what the product is built with | aure |
+| `expect` | `proof` | `@pair` | — a pair, whose construction rule 11 fixes | aure |
+| `reviews` `ugc` `trusted` `testimonials` | `social-proof` | `05-social-snapshot` | — buyer tiles, and pairs in the buyer's register: rules 11 and 12 | all four |
+| `expert` | `@copy` | `@copy` | the quoted claim decides, and the image never shows a face (rule 12): working hands are `03-use-demo`'s, a process is `03-mechanism-diagram`'s | wiboofy, aure |
+| `faq` | `@copy` | `05-persona-lifestyle` | the question the image sits beside decides | wiboofy, aure |
+| `offer` `close` `bundle` | `cta` | `06-relief-after` | `outcome`, where the block argues what the packshot does not (Slot kinds, `closing`); otherwise the field reuses gallery image 1 and takes no type | all four |
+| `*` | `@copy` | `@copy` | — | — |
 
 `@tile` is the product card's gallery, where every tile is routed on its own. `@copy` is a section
 whose name says nothing about its argument, so its copy alone decides. A default role is where
 routing starts, never where it must end. A role outside `vocabulary.section_roles` fails the script,
 and so does a row whose second cell is not one backticked value.
+
+**The third column is the section's SECTION TYPE** (owner instruction, 2026-09-18, ADR-110): the
+type a `section` or `closing` field in that block takes first, one of the six the owner's image
+instruction names — `01-pain-before`, `06-relief-after`, `03-mechanism-diagram`, `03-use-demo`,
+`03-spec-overlay`, `05-persona-lifestyle` — or `05-social-snapshot` for a buyer wall. It holds ONE
+backticked value: a type with a file in `registry/pdp-dr-types/`, or a token. `@gallery` and
+`@hero` are fields whose own law routes them; `@pair` is a block of pairs, whose fields take the
+types their *Slot kinds* rows name; `@copy` is a block whose copy picks among the six, and takes
+`05-persona-lifestyle` where it argues none of the other five. The script prints the column
+beside each field, with the type's `status` where that is not `active`, and fails on a type with
+no file.
+
+**A section type routes once it is active.** All six are reserved drafts on 2026-09-18, each
+waiting on the owner's verdict on its first render, so until a row's type is promoted its fields
+route as before: by the default role, through Layer 2. Promotion is in place and row by row; the
+table does not change when it happens.
 
 **Why a name may route here when an export's block key may not.** `mapping/export-to-content.md`
 measured 57 advertorial and listicle exports and found one `features` block wrapping seven cards
@@ -136,6 +158,17 @@ badly and SPEC §6.3 counts sources for that reason.
 This is a PREFERENCE ORDER and not the candidate pool (ADR-058). The pool is every active
 type in `registry/pdp-dr-index.yaml`, for every slot; a type outside a row is a candidate, not
 a violation.
+
+**Outside the gallery a field's section type comes first, and that preference is DECLARED, not
+measured** (ADR-110). The table above was counted on gallery tiles — the corpus is product
+galleries — and it is the gallery's order. A `section`, `pair` or `closing` field prefers the type
+*Section routing* and *Slot kinds* give it, ahead of the role's row, because the owner tested the
+instruction those six types are written from and found its results *"vượt xa các types hiện tại
+trong pdp-dr"* — far beyond this namespace's current types. No ledger count stands behind that order.
+What stands behind it is the owner's statement, and each type's own renders as they come in. The
+pool stays content-first (ADR-090): a copy remains a candidate for a section field, offered beside
+the section type and never refused for it. **A section type never fills a gallery tile**; every
+one of the six says so in its own trigger.
 
 **One tile carries one message** (owner instruction, 2026-09-16). A section whose copy names
 three unrelated features is not one slot's worth of argument: the page arc decides which
@@ -244,7 +277,10 @@ notes and ships. The owner may turn any of them back into a refusal.
    section images alike — shares the lock's two grounds, its text colours, its one accent, its
    typography, its chip form, its design language and its lighting family, named once and then
    repeated in every prompt in the same words. The fields are in
-   `registry/pdp-dr-instruction.md`.
+   `registry/pdp-dr-instruction.md`. **A prompt in the section form repeats the lock's light and
+   grade as one sentence and nothing else of it** (ADR-110): a section photograph has no words,
+   chips or graphic ground for the other fields to bind, and a section type that draws words
+   takes the lock's type face and accent in its words sentence.
 5. **Composition varies tile to tile.** Layout, camera angle, crop and the product's share of
    frame are where a gallery shows design, and the style lock is not a licence to repeat one
    frame twelve times. **No tile repeats the previous tile's angle, and no angle family appears
@@ -264,16 +300,20 @@ notes and ships. The owner may turn any of them back into a refusal.
    tiles carrying a title alone, at least 1 carrying no words. The law, and what a line may
    never say, are in the instruction's text section.
 10. **An image outside the gallery routes by its section's name and its section's copy** — the
-    name gives the default role (*Section routing*, ADR-102), the copy decides, and the pool is
-    ADR-090's content-first pool. The template fixes the image's place, which is why the gallery's
-    rules leave it alone. The items of one block route item by item. One type may serve every item,
+    name gives the default role and the section type (*Section routing*, ADR-102, ADR-110), the
+    copy decides, and the pool is ADR-090's content-first pool. The template fixes the image's
+    place, which is why the gallery's rules leave it alone. The items of one block route item by item. One type may serve every item,
     and any number of sections. Where the items are equivalent — the modes of one device, the stages
     of one result — the images differ on a dimension each prompt names. A section image never
     repeats a gallery tile's type AND its message (rule 13).
-11. **A before-and-after pair is one argument in two files.** Route it once: both files take
-    one type — `04-proof-lockedframe --timelapse` where the change happens over time, the two
-    halves of `01-pain-split` where it is the old way against the new — and both prompts are
-    written from one locked description (the instruction, *A pair shares one description*).
+11. **A before-and-after pair is one argument in two files.** Route it once, and write both
+    prompts from one locked description (the instruction, *A pair shares one description*).
+    **The before field takes `01-pain-before` and the after field `06-relief-after`** (ADR-110),
+    the two halves of the owner's image instruction, each a single frame of one state. Until
+    those two drafts are active both files take one type, as before: `04-proof-lockedframe
+    --timelapse` where the change happens over time, the two halves of `01-pain-split` where it
+    is the old way against the new. In a buyers' block the pair is written in the buyer's
+    register (rule 12).
 12. **Buyer-photo tiles and pairs are always generated** (owner decision, 2026-09-17, ADR-096).
     G14's attribution test still runs on each. Where it fires, the prompt ships with its
     `compliance` flag and note (ADR-089), and no LP2 session refuses. **A section image in a
@@ -304,6 +344,12 @@ NOT move to `registry/types/` — that would take it out of the one folder an LP
 Layer 2 table above under its role. **This file grows
 as the namespace succeeds.** ADR-077 wrote the opposite, that promotion was a `git mv` and
 this file would shrink; that was the co-registry, and ADR-091 retired it.
+
+**A section type gains no Layer 2 row when it is promoted** (ADR-110). Layer 2 is the gallery's
+measured order and a section type never fills a gallery tile; its *Section routing* row is already
+written, and the day its `status` is `active` that row starts to route. Its promotion diff owes
+`query/runbook.md` nothing new — the runbook already names the section form — and owes this file
+one edit: the sentence under *Section routing* that says all six are reserved.
 
 ### LP2 drafts LP1 routes too — a register
 

@@ -8680,3 +8680,236 @@ The rule-6c sweeps ran at `b08511b` (hits / files / TEACHES):
 - **`04-proof-stat` and `03-spec-callout` are still not touched**, though decision 2 governs any figure they draw on an LP2 page.
 
 ---
+
+## ADR-110 · 2026-09-18 · The owner's image instruction becomes six section types: an LP2 image outside the gallery is one concise frame beside its own copy, and its section's name picks its type
+
+**Owner instruction, 2026-09-18**, pointing this namespace at `~/Downloads/images prompt.txt`: *"hãy
+đọc và tham khảo instruction này cho các types ngoài product gallery của pdp-dr. instruction này
+đang chia ra các loại image types WITHOUT / BEFORE; WITH / AFTER; HOW IT WORKS; HOW TO USE; OTHER;
+FEATURES … tôi đã test và kết quả vượt xa các types hiện tại trong pdp-dr. input để xử lí vẫn là
+các value (content generated) của content landing page.json. các section của pdp-dr cũng chia ra
+feature/proof/how/... hãy đối chiếu lại toàn bộ các section của lp2 (pdp-dr) trước, sau đó đề
+xuất lại các types ảnh và sửa type, cơ chế, rules cho pdp-dr (trừ hero tôi đang build)"*.
+
+Read the instruction for the types outside the gallery; it splits into six image types, each with
+its own rules; the owner tested it and its results are far beyond this namespace's current types;
+the input is still the page's content values; check every LP2 section first, then re-propose the
+types and fix the types, the mechanism and the rules. The hero is the owner's own lane.
+
+**What the instruction is.** It takes an image TYPE and a DESCRIPTION, a paragraph of what the
+picture should show, and returns *"a single, concise image prompt describing the full visual:
+environment, product visibility, problem/solution logic, lighting, angle, and permitted diagram
+elements if applicable."* Each of its six types has four or five rules: what the frame shows,
+whether the product is in it and in what state, whether a face is allowed, and what may be drawn
+or written.
+
+### The cross-check the owner asked for first
+
+`scripts/pdp-dr-slots.py` over the four templates of 2026-09-17: **171 image fields, of which 48
+are `section`, `pair` or `closing` fields** — the ones this decision is about. By block, with the
+blocks that carry no generated image left out (`compare`, `savings`, `guarantee`, `press`,
+`awards`, `support`, `stock`, the legal and cart furniture):
+
+| block | kind | templates | what its copy argues | the instruction's type |
+|---|---|---|---|---|
+| `problem` | section | all four | what goes wrong without the product; Aure's and the cushion page's items pair each problem line with a solution line | WITHOUT / BEFORE |
+| `why` | section | aure | six benefit lines around one photo | WITH / AFTER |
+| `how` | section | wiboofy, deal, aure | three steps: the buyer's own hands on WiBoofy, Deal and the cushion page; inside the skin on Aure | HOW TO USE, and HOW IT WORKS where the steps are not the buyer's |
+| `features` `modes` | section | wiboofy, deal, eco; aure | one named feature an item, each with a proof or spec line | FEATURES, item by item |
+| `uses` | section | aure | a list of places or body areas around one photo | OTHER |
+| `safety` | section | aure | what the product is built or tested with | FEATURES |
+| `expect` | pair | aure | a result at three dates, each a before and an after | WITHOUT / BEFORE and WITH / AFTER, one pair |
+| `testimonials` | pair | aure | a buyer's own before and after | the same two, in the buyer's register |
+| `expert` | section | wiboofy, aure | a quoted claim beside a named person | by the claim; never a face |
+| `faq` | section | wiboofy, aure | a help prompt beside the questions | OTHER |
+| `offer` `close` `bundle` | closing | all four | the offer; the packshot by default | WITH / AFTER, where the copy argues an outcome |
+| `reviews` `ugc` `trusted` | buyer-wall | all four | buyers' own photos | none of the six: a phone snapshot, `05-social-snapshot` |
+| `demo` `proof` | gif | wiboofy, eco; deal | loops | none: `registry/gif-types/` |
+| `hero` | hero | all four | the banner | the owner's lane |
+| `buy` | gallery | all four | the product card | the gallery's own law (ADR-094) |
+
+**The owner's section names and the instruction's types line up almost one to one.** Counted by
+the script, the 48 fields fall to the six as 13 WITHOUT / BEFORE, 14 WITH / AFTER, 13 FEATURES, 3
+HOW TO USE, 3 OTHER and 2 left to their copy; HOW IT WORKS takes fields only where copy moves them.
+
+**What the current types did with those fields**, read from the owner's own page export
+`pdp-dr-ergonomic-memory-foam-seat-cushion-v04` (generated 2026-09-17, the Aure template): the
+three `problem` items went to `04-proof-lockedframe --verdict`, `03-spec-split --products` and
+`02-cause-anatomy --diagnostic`; `how.image` to `03-use-grid`; `uses.image` to `05-persona-grid
+--2x2`; `why.photo` to `03-mechanism-ghostbody`; `safety.image` to `04-proof-lockedframe
+--capture`; `faq.image` to `03-spec-macro`; and all six `expect` fields to `06-relief-hero`, both
+halves of each pair alike. The plan call ran three times, and its first rejection listed four
+`never-with` and four `one-type-once` faults. Every one of those types is a multi-panel or
+rendered composite built to carry a whole argument ALONE on an advertorial. An LP2 section image
+is never alone: it sits in a card beside its own HTML title and text — the app's placeholders for
+them are 360 px wide — and makes one line visible. A two-by-two grid there is four thumbnails.
+Add to that the one LP2 draft written for section fields: the owner failed every render of
+`03-mechanism-signal`'s sets 01, 02 and 04.
+
+### Decision
+
+1. **Six SECTION TYPES, LP2's own, one per type of the owner's instruction**, each a single frame:
+
+   | the instruction's type | section type | job × device |
+   |---|---|---|
+   | WITHOUT / BEFORE | `01-pain-before` | pain × `before` |
+   | WITH / AFTER | `06-relief-after` | relief × `after` |
+   | HOW IT WORKS | `03-mechanism-diagram` | mechanism × `diagram` |
+   | HOW TO USE | `03-use-demo` | use × `demo` |
+   | FEATURES | `03-spec-overlay` | spec × `overlay` |
+   | OTHER | `05-persona-lifestyle` | persona × `lifestyle` |
+
+   Each file quotes its type's rules in the owner's words and adds only what a render has earned.
+   They fill `section`, `pair` and `closing` fields, and **every trigger refuses a gallery tile**.
+   `03-use-demo` is not a new id: the ledger has proposed it since 2026-08-11, three ADRs left it
+   undrafted, and the vocabulary held `demo` reserved for it.
+2. **They are new files and not `LP2 LAW` on the copies**, which is where ADR-094 put the gallery
+   instruction. Three of the six share a job with a copy — `01-pain-scene`, `06-relief-scene`,
+   `06-relief-hero` — and the copy's skeleton is the thing the owner's test beat: `01-pain-scene`
+   alone is a force, its evidence, its cost and a gaze, measured on LP1's cold-traffic renders. A
+   second skeleton inside those files would give a filler two forms to merge, and rules do not
+   cross corpora. The devices are new because the argument is made differently: one state of a
+   before-and-after in its own file, where `split` and `lockedframe` put both states in one.
+3. **The SECTION FORM is every section type's skeleton, and it is the owner's output format**:
+   one concise natural paragraph — the picture, the product by name and its state, the one visible
+   cue, the drawn layer where the type permits one, the light, the words — with no labels, no LP2
+   product block and no style-lock table. Where the product is in frame the prompt ends with
+   `Use the attached product photo as the exact reference.` and the feature-image instruction's
+   closing sentence, the form ADR-101 put on trial; where it is not, it carries neither.
+   **Concise is a gate, 1,200 characters, DECLARED and not measured**; the two closing sentences
+   take 243 of them. It is law once, in `registry/pdp-dr-instruction.md`.
+4. **The words outside the gallery are each type's own.** None for `before`, `after` and
+   `lifestyle`; ADR-106's one short line for `overlay`; up to three one-to-three-word technical
+   labels for `diagram`; the step's numeral for `demo`, and only where every step has its own
+   image. Each word-carrying type declares `text_layer`, so G16 binds.
+5. **The section's name picks the type, and the copy moves it.** *Section routing* in
+   `mapping/pdp-dr-rules.md` gains a third column, the section type, and *Slot kinds* splits the
+   pair row so `*before_image` names `01-pain-before` and `*after_image` names `06-relief-after`.
+   Outside the gallery a field prefers that type ahead of its role's Layer 2 row. **That
+   preference is declared on the owner's instruction, where Layer 2 is measured**, and the file
+   says so. The pool stays content-first (ADR-090): the copies remain candidates.
+6. **The DESCRIPTION is the field's own block's content values** — for an item field that item's
+   lines first, then the block's heading; never another block's, never a figure the page does not
+   carry. That is the owner's *"input để xử lí vẫn là các value"*, written as a rule.
+7. **A pair is the instruction's first two types in two files**, from one locked description,
+   differing in the state line alone — and the state may be the product's own presence, which is
+   the switchable state a comparison owes. `01-pain-before` takes `exempt_from: [G11]` for that
+   reason: in a pair the state changes and the grade does not.
+8. **All six land `reserved`.** SPEC §6.3's criterion 3 wants the owner's verdict on a render of
+   THIS skeleton, and the owner's test was of the instruction: no repo prompt made those renders.
+   ADR-057 is the precedent and it cuts both ways — the owner may waive criterion 1, as these
+   types need, and criterion 3 was not waived even there. Until a type is active its fields route
+   as before, and promotion is in place, row by row.
+9. **Vocabulary:** devices `before`, `after`, `diagram`, `overlay`, `lifestyle`; `demo` leaves its
+   reserved state; and `spec`'s description stops saying *no people*, which was LP1's habit and
+   would have told a planner to keep a hand out of a feature image.
+10. **`scripts/pdp-dr-slots.py` prints each field's section type**, with its `status` where that
+    is not `active`. It still owns no rule. Eight table cases across the four templates: the clean
+    table and the table as committed before this ADR pass, and six mutations fail.
+11. **Set `sets/section-01/`**, owner-gated and uncommitted: six prompts, one per type, each on a
+    named field of the owner's templates and on that template's own product, so every product has
+    a photo to attach. 777–1,183 characters; `check.py` passes the clean set and `knownbad.py`
+    fires 38 of 38 — after its first run missed 5, all five aimed at the lock table above the
+    prompts, where the checker rightly never looks.
+
+### Criterion 2, on paper
+
+The router-confusion test asks for five briefs that route without stealing an existing type's
+cases. The 48 fields are the briefs. None of the six takes a gallery tile, a hero, a buyer tile or
+a loop, so none contests a case the copies hold in the gallery. Outside it they take every case the
+copies held, which is the decision and not a theft. **The open boundary is inside the six**:
+`03-spec-overlay` against `03-use-demo` and `06-relief-after` on a features item, settled item by
+item by whether the line is a capability, an act or a state a camera can catch; and
+`05-persona-lifestyle` as the catch-all, which a router that cannot decide will over-use.
+
+### What this does not change
+
+- **The gallery**, its seventeen copies, its text law and its measured Layer 2.
+- **The hero**, which is the owner's lane, and the hero's fixed sentences.
+- **Buyer walls** stay `05-social-snapshot`'s, generated and flagged (ADR-096, ADR-089).
+- **The kinds** of ADR-096, and ADR-102's loose routing: no rule refuses a type for another slot's.
+- **G1, G2, G6, G13, G14, A15**, the casting rule, and no face in a block that names a person.
+- **`content.schema.json` and `output.schema.json`.** A section-form prompt is a `prompt` string.
+
+### Reversals
+
+- **ADR-096's wordless page outside the gallery**, narrowed again after ADR-106: a diagram's
+  labels and a step's numeral.
+- **ADR-101's open question** — *"whether the other types that fill section fields take the same
+  form"* — is answered: six new types take it, and the copies do not.
+- **ADR-102's rule 11.** A pair's two files take the two pair types, once those are active.
+- **ADR-094's "no file"** for Principle and Applied Use Storytelling: each has a SECTION file now,
+  and still none as a gallery form.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `4fe7da6` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"wordless"` | 64 | 15 | 4 |
+| `"carries no words"` | 15 | 8 | 3 |
+| `"section image"` | 57 | 29 | 8 |
+| `"timelapse"` | 212 | 40 | 5 |
+| `"slot form"` | 19 | 7 | 3 |
+| `"default role"` | 21 | 10 | 4 |
+| `"03-use-demo"` | 20 | 5 | 2 |
+| `"no file"` | 135 | 54 | 9 |
+| `"product block"` | 63 | 19 | 10 |
+| `"Not decided"` | 6 | 5 | 2 |
+| `"close-up hand demonstration"` | 5 | 3 | 1 |
+| `"no people, no symptoms"` | 3 | 3 | 1 |
+
+- **New:** six files in `registry/pdp-dr-types/`, all `reserved`.
+- **Rewritten, `registry/pdp-dr-instruction.md`:** a new section, *The owner's image instruction —
+  2026-09-18*, with the six types, the section form, its fixed sentences and what still binds; and
+  the places that taught the old rule — the first difference of law, the text section's opening,
+  the images-outside-the-gallery paragraph, the feature image, the pair, two bullets of *What binds
+  every prompt*, the product block's exceptions, two rows and a paragraph of ADR-094's type map,
+  the feature-image section's open question, and the count of drafts.
+- **Rewritten, `mapping/pdp-dr-rules.md`:** *Slot kinds* (the pair rows, two `words` cells), the
+  *Section routing* table and its two new paragraphs, Layer 2's declared preference, rules 4, 10
+  and 11, and what a section type's promotion owes.
+- **Rewritten:** `query/runbook.md`, which still said a `section` field is generated wordless —
+  ADR-106 had missed it — and that every LP2 prompt opens with the product block; `adapters/
+  nano-banana.md` Rule 6; `mapping/export-to-content.md`; `SPEC.md` §3.8 and §9;
+  `registry/vocabulary.yaml`; `scripts/pdp-dr-slots.py`.
+- **These hits stand**, every one read:
+  - `mapping/pdp-dr-rules.md`'s ledger sentence and `registry/rules.md` G16: *wordless* and
+    *carries no words* there are about the gallery's counts and about types with no `text_layer`.
+  - `03-mechanism-signal`'s *"in every other section image, no words"*: true of that type's own
+    prompts.
+  - `04-proof-lockedframe`, `mapping/slot-rules.md` and the golden fixture on `--timelapse`: the
+    variant is untouched; only LP2's rule 11 stopped reaching for it.
+  - `registry/argument-faults.md` A15, `07-identity-pack`, and the toplist files on *product
+    block*: their own prompts, or another namespace. For a section-form prompt the reference and
+    closing sentences keep the product's printing to the photograph, as ADR-101 said of its type.
+  - `mapping/slot-rules.md`'s *Not decided* is about `requires_pair`.
+  - The `"no file"` hits in the drafts and the curation note are about other proposals.
+- **Generated:** `registry/pdp-dr-index.yaml` does not move, because the six are reserved;
+  `dist/app-bundle/` rebuilds the instruction, the rules, the runbook, the adapter, the
+  vocabulary, SPEC and the export law, and gains no type file.
+- **Validator:** 0 errors; five new warnings, one for each new type with no corpus record.
+- `README.md`: the ADR count. `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render.** `sets/section-01/` is the round, and the verdicts are the owner's.
+- **The app sees no routing change yet.** The bundle ships only active types, so it gains the law
+  and not the six. When one is promoted the app's planner must read *Section routing*'s third
+  column, which is app code, as ADR-102's dropped checks were.
+- **`03-mechanism-signal`, `04-proof-stat` and `03-spec-callout` are not retired.**
+  `03-spec-overlay` holds their three constructions as overlay forms, a parameter; whether they
+  retire into it waits on its first render. Set `03-mechanism-signal-05` stays as it is.
+- **No pair has rendered.** `section-01` tests the two types as single frames; the pair, two
+  calls holding one frame, is the next set's.
+- **The 1,200 gate and the new no-words sentence are untested**, and the light sentence carries
+  the hero's *from the left* into section frames unexamined.
+- **`uses` keeps `how-to-use` as its default role** though its section type's job is `persona`;
+  the role still drives today's routing, and moving it without evidence would change that.
+- **`content.json` does not carry the owner's image type.** The rules derive it from the section's
+  name. An app that lets a user pick it per slot needs a field, which is a schema decision.
+- **The ten ledger records under `03-use-demo` were not re-read**, which ADR-092 asks of a draft
+  built from the ledger; this one is built from the owner's instruction.
+
+---

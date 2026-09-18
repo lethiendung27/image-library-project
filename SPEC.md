@@ -346,6 +346,14 @@ LP2's routing surface, by the same `--write-index`.
   evidence it waits on. There is no separate `BOUNDARY` section: an image type carries its
   discriminator inside `use_when`, which is where ADR-060 put the whole trigger, and a second
   home for it would be a second place to go stale.
+- **Six of the drafts are the SECTION TYPES** (ADR-110, owner instruction 2026-09-18): one per
+  mode of the owner's image instruction — `01-pain-before`, `06-relief-after`,
+  `03-mechanism-diagram`, `03-use-demo`, `03-spec-overlay`, `05-persona-lifestyle` — for the
+  images OUTSIDE the product card's gallery. A section type is one frame that sits beside its own
+  HTML copy, its skeleton is one concise paragraph rather than labelled slots (the SECTION FORM,
+  `registry/pdp-dr-instruction.md`), and it never fills a gallery tile. Which section takes which
+  is the third column of *Section routing* in `mapping/pdp-dr-rules.md`; that preference is
+  DECLARED on the owner's instruction, where Layer 2's gallery order is measured.
 - **A draft is promoted in place** — a status change, never a `git mv`, which would take it
   out of the folder LP2 routes. **Whether LP1 routes it as well is the owner's decision, type
   by type**, kept as a register in `mapping/pdp-dr-rules.md`. A type on it is also written into
@@ -569,7 +577,8 @@ registry/pdp-dr-instruction.md  law shared by every pdp-dr type; never restated 
 mapping/pdp-dr-rules.md  routing a product gallery; preference table is MEASURED, and it
                          carries the cross-file CALL REGISTER nothing else validates
 scripts/pdp-dr-slots.py  gives every image field of an LP2 template its KIND, by the
-                         *Slot kinds* table it parses from mapping/pdp-dr-rules.md
+                         *Slot kinds* table it parses from mapping/pdp-dr-rules.md, and its
+                         default role and SECTION TYPE by the *Section routing* table (ADR-110)
 scripts/frame-colour.py  measures a render's colour, contrast and texture against the band
                          of the owner's own reference stills (ADR-108)
 ingestion/               classify template, runbooks, observations ledger
