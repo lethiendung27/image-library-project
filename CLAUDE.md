@@ -71,7 +71,12 @@ tasks to entry points and must stay logic-free.
    evidence cited in the message, and a `Co-Authored-By` trailer naming the model that
    actually performed the operation (`Claude <model> <noreply@anthropic.com>`) — then
    report the commit hash and revert path.
-   Never push. The human gate is the user's explicit inputs (image feeds, picks,
+   **Then push it**: `git push origin main`, right after the commit lands (owner
+   decision, 2026-09-18, ADR-105). The remote is `lethiendung27/image-library-project`,
+   public. Never force-push, never push another branch or a tag unasked, and where a push
+   fails, report it and leave the commit local — the next push carries it. Uncommitted
+   work stays local, so an owner-gated set reaches the remote only when the owner approves
+   the type. The human gate is the user's explicit inputs (image feeds, picks,
    commands, and verdicts where the user gives them). ADR-011: you may assign a
    verdict `pass|partial|fail` yourself, but ONLY for a render you have actually
    opened and looked at, and never for promotion criterion `SPEC.md` §6.3(3). Never

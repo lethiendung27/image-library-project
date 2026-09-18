@@ -8344,3 +8344,53 @@ The rule-6c sweeps ran in a clean worktree at `198ed16` (hits / files / TEACHES)
 - **`06-relief-hero`'s own "High-key neutral grade (G11)" in `PARTS/setting` is unchanged.** It is the LP1 copy's wording, G11 governs it, and a re-copy would carry any change. The instruction now says what "neutral" may not mean on an LP2 page.
 
 ---
+
+## ADR-105 · 2026-09-18 · The library has a public GitHub remote, and every commit is pushed
+
+**Owner instruction, 2026-09-17:** *"tạo repo github, commit để lưu lịch sử cho project này"* — create a GitHub repo and commit, to keep this project's history. The owner then answered four questions:
+
+| question | the owner's answer |
+|---|---|
+| visibility | **public** |
+| what to push | the committed history only |
+| repo name | `image-library-project` |
+| later commits | **pushed automatically**, after each one |
+
+**What the repo held before this.** It had 514 commits, from `145f9f9` on 2026-08-10 to `cf8f021`, and no remote at all. Checked before anything left the machine:
+- **Size.** `.git` is 51 MB and the largest blob in the whole history is `ingestion/observations.jsonl` at 0.8 MB, so nothing needs LFS.
+- **Secrets.** A scan of every commit's patches for key-shaped strings — OpenAI, AWS, GitHub, Slack, Google, Shopify tokens and PEM private keys — and for `api_key`/`token`/`password` assignments returned nothing. The only email addresses in tracked files are `you@example.com` and `noreply@anthropic.com`.
+- **What a public repo now shows**, told to the owner before the push: every commit is authored `LE THIEN DUNG <lethiendung@Ace-2.local>`; `conversation.md` is a 228 KB transcript of the project's first session; and the repo carries URLs to `content.misencorp.com`.
+
+### Decision
+
+1. **The remote is `https://github.com/lethiendung27/image-library-project`, public.** `main` tracks `origin/main`, and the first push carried all 514 commits at `cf8f021`.
+2. **Every commit is pushed right after it lands** — `git push origin main`. `CLAUDE.md` rule 7 said *"Never push"*; it now says the opposite, in the same place, with three limits:
+   - never force-push;
+   - never push another branch or a tag unasked;
+   - where a push fails, report it and leave the commit local, because the next push carries it.
+3. **Uncommitted work stays local.** The other lane's five modified files and every owner-gated set folder were left out of the first push, and they reach the remote only when they are committed under their own rules.
+4. **The tooling.** GitHub CLI was installed with Homebrew, and the owner authorised the device flow themselves as `lethiendung27`; no session handled a token.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `cf8f021` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"Never push"` | 1 | 1 | 1 |
+| `"never push"` | 1 | 1 | 1 |
+| `"git push"` | 0 | 0 | 0 |
+
+- **Rewritten:** `CLAUDE.md` rule 7, the only place that taught it.
+- **Nothing generated.** `CLAUDE.md`, `README.md` and this log are outside `dist/app-bundle/`, so the bundle and both indexes are untouched.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **A session already running holds the old rule** until it re-reads `CLAUDE.md`. The LP2 session was messaged; the lane holding `03-mechanism-ghostbody`, `03-mechanism-xray` and `lede-lineup` could not be identified from here, so the owner was asked to tell it.
+- **No CI, no branch protection and no `.gitattributes`.** Nothing runs `scripts/validate.py` on the remote, so a bad commit is caught here or not at all.
+- **`conversation.md` stays as it is.** Removing it would rewrite history; the owner chose a public repo knowing it is there.
+- **The assets are still outside the repo** (SPEC §6.4), so a clone has the ledger's hashes and none of the images.
+
+---
