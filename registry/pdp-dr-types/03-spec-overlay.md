@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.4"
+version: "0.5"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -64,7 +64,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-spec-overlay v0.4 [overlay: mark | icon | figure | tag | callout | view]
+TYPE: 03-spec-overlay v0.5 [overlay: mark | icon | figure | tag | callout | view]
 Image_Type: FEATURES
 
   1. The register and the camera: "Editorial realism product feature image",
@@ -86,8 +86,8 @@ Image_Type: FEATURES
 
 **`scene`** — the place the feature matters in, named so that it carries no signage (ADR-109:
 2 of 6 frames brought shop signs or labelled packaging into a frame whose only words were its
-own line). A person appears where the feature acts on one; the expression is neutral and
-contextual, as the owner's rule says, and never poses.
+own line). **A person here is the derived USER** (*The person in frame*), with the feature at work in
+their hands; the expression is neutral and contextual, as the owner's rule says, and never poses.
 
 **`product`** — named as the page names it, placed and never described (G2). **Clearly presented**
 is the owner's word and it is the difference from `06-relief-after`: here the product is the
@@ -209,6 +209,8 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   icon sat at the left edge, in the band a square field's crop removes (a 1,200 × 896 render).
 
 ## CHANGELOG
+- 0.5 (2026-09-20): a person in frame is the derived user, with the feature at work in their hands
+  (ADR-114).
 - 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's typeface, text colour, chip,
   icon style, lighting family and colour tone; the accent only on a call-out line or a chip;
   marks first, words few and large and free to touch the product; leaders bold and ending on

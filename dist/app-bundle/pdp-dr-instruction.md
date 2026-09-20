@@ -1108,6 +1108,63 @@ neutral colour; `03-use-demo` shoots a real home in the light that is there, wit
 `01-pain-before` shows discomfort and never injury; and `06-relief-after`, `03-use-demo` and
 `05-persona-lifestyle` keep the point where the product meets the person in view.
 
+### The person in frame: who they are, and what they are doing
+
+**Owner, 2026-09-20**, failing all three renders of `sets/05-social-endorsed-01/`: *"expert/user/author
+phải đang sử dụng hoặc giới thiệu sản phẩm, ở đây chủ yếu là cầm sản phẩm lên, trang phục, môi
+trường không có vẻ gì là đang sử dụng"* — the expert, the user and the author must be USING or
+demonstrating the product; all three held it up, and neither the clothes nor the place looked like
+use. **Who the person is, is DERIVED from the page — never chosen for the look**, and the derivation
+is the same for every product:
+
+1. **Name the constraint the product removes.** It is the sentence the page keeps repeating: no
+   outdoor tap and no socket in the car park; a seat that leaves the lower back unsupported; a signal
+   that dies two rooms away. `brief.personaCorePain`, the `problem` block and the hero's subtitle
+   carry it.
+2. **The USER is the person who lives inside that constraint**, and the page says who: `brief.persona`,
+   the review lines, and the `uses` or FAQ blocks, which name the occasions.
+3. **The EXPERT is the person for whom that constraint is a WORKING CONDITION** — whose trade runs
+   into it daily, so their judgement is worth something. A bucket-fed washer's expert is a mobile
+   detailer, who carries water to every job; an extender's is the installer who fits them in masonry
+   flats.
+4. **The AUTHOR is a user with a name** — the review voices. They never take an expert's framing.
+
+**Three tests, or the role is wrong:**
+- **the constraint test** — would this person meet the page's constraint in an ordinary week?
+- **the judgement test** — does their trade make them judge what the page claims: the spray patterns,
+  the battery, the reach?
+- **the picture test** — is there a real act they do that a camera can catch? A title with no act is
+  not a role: a mechanic repairs and does not wash, and a coat in a laboratory judges nothing the
+  page claims.
+
+**What the frame must show.** A person in a section image is AT WORK, never presenting:
+- **the work is happening** — the product doing its own thing on a real surface: water hitting paint,
+  the plug going into the socket, the blade in the cut;
+- **what the work needs is in frame** — the bucket the intake hose draws from, the socket, the bench.
+  On a page that sells freedom from a precondition, that precondition is the argument;
+- **the work has left a mark** — a wet panel behind the spray, a clean strip beside a dirty one, wet
+  sleeves, dust on the floor;
+- **the body is working** — weight on one leg, elbow bent, leaning in, the eyes on the work. An expert
+  may turn half toward the lens mid-task; nobody stops to pose;
+- **the clothes and the place are the role's** — a trade's working clothes marked by the work, or the
+  user's own weekend clothes in their own parking bay.
+
+**Refused:** the product raised to the lens or held at chest height; a studio ground for a person
+whose work is outdoors; dry clothes and a dry surface where the product moves water; props set out as
+decoration; a face square to the camera with nothing happening.
+
+| | the expert | the user |
+|---|---|---|
+| who | the trade the constraint belongs to | the person the page describes |
+| whose object | a customer's | their own |
+| the hands | the practised grip, the right distance | an ordinary, comfortable one |
+| the place | the job, mid-task | their own everyday place |
+| the eyes | on the work, or half to the lens mid-task | on the work |
+
+**Where the page names nobody, the picture earns the standing.** `expert.name` and `expert.role` are
+empty on the owner's car-wash page, so no title arrives from the HTML and only the work in the frame
+can carry it.
+
 ### Words and marks on a phone
 
 **Owner, 2026-09-18, on `section-03`:** *"chữ và các yếu tố đồ hoạ cần to rõ ràng hơn. mobile

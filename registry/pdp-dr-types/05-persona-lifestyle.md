@@ -3,7 +3,7 @@ id: 05-persona-lifestyle
 step: 5
 job: persona
 device: lifestyle
-version: "0.4"
+version: "0.5"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -57,7 +57,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 05-persona-lifestyle v0.4
+TYPE: 05-persona-lifestyle v0.5
 Image_Type: OTHER
 
   1. The register and the camera: "Editorial realism lifestyle photo".
@@ -75,8 +75,9 @@ Where the product is in frame, G1's one sentence ends the prompt:
 
 **`scene`** — one place from the section's own list, the one most buyers will recognise; a block
 listing four places still gets one frame, and the session's notes name the place it chose. Found
-rather than styled: the room's colours are its own, with nothing added to supply one (ADR-108). A
-person appears where the life needs one, busy with their own thing and never posing; a pet only
+rather than styled: the room's colours are its own, with nothing added to supply one (ADR-108). **A person here is the
+derived USER** — the one the page's constraint belongs to (*The person in frame*) — in their own
+place, busy with their own thing and never posing; where the product is in their hands it is working; a pet only
 where the product serves one. **The point where the product meets the person stays in view**
 (owner, ADR-113): a person at rest with it is relaxed and looks away; a person using it looks at
 the point of use.
@@ -144,6 +145,8 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   frame's colourfulness 32.0 sits inside the owner's band.
 
 ## CHANGELOG
+- 0.5 (2026-09-20): a person in frame is the derived user, and a product in their hands is working
+  (ADR-114).
 - 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's lighting family and colour
   tone, an icon in its icon style, real and never worn, and the point where the product meets
   the person kept in view. The no-face clause left with the expert block's new type. No set

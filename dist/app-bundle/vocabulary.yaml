@@ -69,7 +69,8 @@ devices:
   overlay: "the product clearly presented, in use where the feature acts on something, under a functional drawn layer: the feature's own mark, an icon, a figure or one short tag"
   lifestyle: "a realistic lived-in place the product belongs to, read at a glance; the person and the place carry the argument, and the product may be small or absent"
   # The seventh section type's device (ADR-113, owner decision 2026-09-18): the expert block's image.
-  endorsed: "the expert a block quotes, photographed at eye level with the product in hand or in frame, face shown; the person's standing is the argument, and the page's HTML carries the name, the role and the quote"
+  # ADR-114 (2026-09-20): the standing comes from the WORK, not from the pose.
+  endorsed: "the trade the page's constraint belongs to, photographed at work with the product mid-task, face shown; the work is the argument, and the page's HTML carries the name, the role and the quote"
   # `animal` names WHAT is photographed rather than HOW the argument is made, which is the
   # fault ADR-065 corrected twice (`ingredient` -> `stilllife`, `range` -> `lineup`). It is
   # here so the ledger's three records under `06-relief-animal` can be followed. That file

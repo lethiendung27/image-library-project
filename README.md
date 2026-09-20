@@ -13,7 +13,7 @@ Nothing here runs a model. An application *consumes* this library and does the g
 | **building the consuming app** | this file → `SPEC.md` §1 (the contract) → §7 (routing) → `dist/app-bundle/` |
 | **adding or editing a rule** | `SPEC.md` §3 (registry model) → §6 (evidence) → the type file → `decisions/log.md` |
 | **running Claude Code here** | `CLAUDE.md` — a thin adapter, entry points only, no logic |
-| **wondering why a rule exists** | `decisions/log.md`, append-only, 114 ADRs, every one cites its evidence |
+| **wondering why a rule exists** | `decisions/log.md`, append-only, 115 ADRs, every one cites its evidence |
 
 ## What an app actually consumes
 

@@ -9340,3 +9340,154 @@ The rule-6c sweeps ran in a clean worktree at `9d7fd22` (hits / files / TEACHES)
   when it validates output.
 
 ---
+## ADR-114 · 2026-09-20 · A person in a section image is DERIVED from the page and shown AT WORK: the expert is the trade the constraint belongs to, and the product is doing its own thing
+
+**Owner, 2026-09-20**, failing all three renders of `registry/pdp-dr-types/sets/05-social-endorsed-01/`,
+the first set of `05-social-endorsed` 0.1: *"các ảnh mới đều chưa đạt, expert/user/author phải đang sử
+dụng hoặc giới thiệu sản phẩm, ở đây chủ yếu là cầm sản phẩm lên, trang phục, môi trường không có vẻ gì
+là đang sử dụng"* — the expert, the user and the author must be USING or demonstrating the product;
+these mostly held it up, and neither the clothes nor the place looked like use. **3 of 3.** The owner
+then asked for the reasoning to be tested before it was written down: *"trả lời cho tôi trước, expert,
+user của sản phẩm này là gì để test logic lập luận"*, and on accepting it: *"hãy áp dụng logic suy luận
+dựa theo sản phẩm để ghi vào types để khi generate các sản phẩm khác sẽ có cơ chế suy nghĩ tốt như thế"*
+— write the derivation into the types, so every other product is thought about the same way.
+
+**A second fault in the same three renders, and the owner named it first**: the thing in the hand was a
+brass garden-hose nozzle, not the attached product. The photo either never reached the render or was
+ignored. That is not this decision's to fix — G1 already says what it says — but the round-2 set now
+prints *"if it is not attached the render is void"* and asks, per render, whether it was attached.
+
+**What 0.1 asked for, and why it produced that.** The type was drafted from the Endorsed form of the
+owner's gallery instruction, whose own words are *"the person at eye level, the product in hand or in
+frame, neutral studio"*. Read literally that is a portrait of somebody holding a thing. It was written
+as *"Editorial realism portrait photo at eye level, chest up"*, *"at chest height"*, *"a calm, assured
+expression"* — and the renderer obliged, three times. The instruction is the owner's, but it describes
+a GALLERY tile, where a hand presenting an object at human scale is the whole argument
+(`07-identity-inhand`). A section image outside the gallery argues from the page's copy, and the
+expert block's copy claims judgement. Judgement has to be earned in the frame.
+
+### Decision
+
+1. **Who the person is, is DERIVED from the page, never chosen for the look**, by one procedure for
+   every product:
+   1. **name the constraint the product removes** — the sentence the page repeats
+      (`brief.personaCorePain`, the `problem` block, the hero's subtitle);
+   2. **the USER lives inside that constraint** — `brief.persona`, the review lines, the `uses` and
+      FAQ blocks name the occasions;
+   3. **the EXPERT is the person for whom that constraint is a WORKING CONDITION**, whose trade runs
+      into it daily, so their judgement is worth something;
+   4. **the AUTHOR is a user with a name** — a review voice, who never takes an expert's framing.
+2. **Three tests, or the role is wrong**: the **constraint** test (would they meet it in an ordinary
+   week?), the **judgement** test (does their trade make them judge what the page claims?), and the
+   **picture** test (is there a real act a camera can catch?). A title with no act is not a role: a
+   mechanic repairs and does not wash; a coat in a laboratory judges nothing this page claims.
+3. **A person in a section image is AT WORK, never presenting.** The frame shows: the work happening
+   (the product doing its own thing on a real surface); what the work needs beside it (the bucket the
+   intake hose draws from, the socket, the bench) — because on a page that sells freedom from a
+   precondition, that precondition is the argument; the mark the work has left; a working body, the
+   eyes on the work or half to the lens mid-task; and the role's own clothes and place, marked by the
+   work.
+4. **Refused**: the product raised to the lens or held at chest height; a studio ground for a trade
+   that works outdoors; dry clothes and a dry surface where the product moves water; props set out as
+   decoration; a face square to the camera with nothing happening.
+5. **`05-social-endorsed` goes to 0.2** on that law: PURPOSE, TRIGGER and SKELETON turn on the work, a
+   new `PARTS/work` carries it, `PARTS/person` is the trade rather than a person, and `PARTS/place`
+   carries the mark. It stays `reserved`; its `blocked_by` now names this failure as criterion 3's
+   open item.
+6. **The five section types that can hold a person go to 0.5**, each with the same clause in its own
+   words: `01-pain-before` (the derived user doing the old way), `06-relief-after`, `03-use-demo` (the
+   hands are the derived user's), `03-spec-overlay` (the feature at work in their hands) and
+   `05-persona-lifestyle`. `03-mechanism-diagram` stays at 0.4: it draws no person.
+7. **Where the page names nobody, the picture earns the standing.** `expert.name` and `expert.role`
+   are empty on the owner's car-wash page, so no title arrives from the HTML. The `endorsed-expert`
+   flag (ADR-113) still ships on every prompt of the type, and on this page each note records that
+   `expert.name` and `expert.role` are empty in the HTML, so nothing but the picture makes the claim.
+
+### The derivation, run once in public
+
+For `pdp-dr-multifunctional-car-wash-tool-v01`, before anything was written: the constraint is **no
+outdoor tap and no socket in the car park**; the USER is the **apartment or condo resident, 30–65, who
+washes their own car in the building's lot**; the EXPERT is the **mobile car detailer**, who carries
+water to every job, and second the **building maintenance technician**, who rinses communal balconies
+with no tap of their own. Rejected, and why: a mechanic repairs and does not wash; a car-accessory shop
+owner behind a counter has a title and no act; a laboratory judges nothing the page claims. The owner
+accepted this before it was written into the types.
+
+### What changes
+
+- **New law** in `registry/pdp-dr-instruction.md`: *The person in frame: who they are, and what they
+  are doing* — the owner's verdict, the four-step derivation, the three tests, what the frame must
+  show, the refusals, and an expert/user table.
+- **`registry/pdp-dr-types/05-social-endorsed.md` 0.1 → 0.2.** The old line *"the person at eye level
+  … at chest height … a calm, assured expression"* is gone from the SKELETON and from `PARTS`; it
+  survives once, in the quoted owner instruction the file keeps as provenance, and twice as a ban.
+- **Five section types 0.4 → 0.5**, as above.
+- **`registry/vocabulary.yaml`**: the device `endorsed` said *"photographed at eye level with the
+  product in hand or in frame"*. It now reads *"photographed at work with the product mid-task"*.
+- **`registry/pdp-dr-types/sets/05-social-endorsed-01/` rebuilt as round 2** — three prompts, one
+  control (a detailer mid-rinse along a panel, the intake hose in a filled bucket, a clean strip beside
+  a dusty one) and two that each add one thing: a half-turn to the lens, and a second trade. Its
+  `check.py` now requires the work, the grip, what the work needs, the mark and the wet clothes, and
+  bans the presentation; `knownbad.py` catches 44 of 44.
+- **`registry/pdp-dr-types/sets/section-06/` image 6 rebuilt at 0.2** — the installer mid-fit at a hall
+  socket, his tools where he left them. Its checker gained the at-work rule for that slot;
+  `knownbad.py` catches 50 of 50.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `c5d2a3c` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"at chest height"` | 85 | 39 | 16 |
+| `"assured expression"` | 1 | 1 | 1 |
+| `"portrait photo"` | 33 | 9 | 9 |
+| `"in hand or in frame"` | 4 | 3 | 2 |
+| `"the product in hand"` | 19 | 18 | 2 |
+| `"at eye level"` | 6 | 4 | 2 |
+| `"presenting"` | 45 | 17 | 10 |
+| `"holds the product"` | 2 | 1 | 1 |
+
+- **Rewritten:** `registry/pdp-dr-types/05-social-endorsed.md`, which held every one of the
+  `"assured expression"`, `"at eye level"` and `"portrait photo"` teaching hits in this namespace, and
+  `registry/vocabulary.yaml`, which taught the same thing in one line.
+- **These hits stand**, every one read:
+  - **`registry/pdp-dr-types/07-identity-inhand.md`** — *"presented rather than used. A hand holds the
+    product up"*. It is a GALLERY tile: a hand, no face, no role, where presentation at human scale is
+    the argument. This decision governs the person in a section image, and leaves that type whole.
+  - **`registry/pdp-dr-types/06-relief-claimstack.md`** — *"working the trainer with both hands at
+    chest height, looking down at it"*. The hands are working and the eyes are on the work; that is
+    this decision, not its opposite. The height is where the exercise happens.
+  - **The toplist namespace** — `toplist-instruction.md`, `lede-authority.md`, `lede-testing.md`,
+    `round-1`..`round-3` and the `lede-authority-01`..`07` sets carry most of the `"at chest height"`,
+    `"portrait photo"` and `"presenting"` hits. A rule measured on one corpus does not govern another:
+    `lede-authority`'s register IS an editorial portrait, and it locks PRESENTING to the studio ground
+    on its own evidence. `lede-testing` already says the hands must not also be presenting.
+  - **The stills namespace** — `02-cause-anatomy-05` and `-07` measure a walker's forearm support and a
+    dog bowl at chest height. A height, not a pose. `lede-inuse-06`'s hit is a shelf.
+  - **`registry/gif-types/unboxing.md`** — *"a hand starts operating an item rather than presenting
+    it"*, in the GIF namespace and already on this side of the line.
+  - **`registry/pdp-dr-instruction.md`'s `"presenting"` hit** is *"Asian-presenting"*, a casting term.
+  - **`registry/pdp-dr-index.yaml`'s `"the product in hand"`** is a generated view of a type's own
+    field; it rebuilds with the index.
+  - **The `query/sessions/` and `registry/*/round-*` hits** are delivered prompts: a record of what was
+    sent, never rewritten.
+- **Checked:** `python3 scripts/validate.py` — 0 errors. `registry/pdp-dr-index.yaml` does not move:
+  the seven section types are still reserved, so nothing routes.
+- **Generated:** `dist/app-bundle/` rebuilds the instruction, the six type files and the vocabulary.
+- `README.md`: the ADR count. `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render of 0.2.** Both sets are owner-gated and uncommitted; criterion 3 is still open, and the
+  verdict SPEC §6.3 asks for is the owner's.
+- **The derivation is not machine-checked.** No script reads a page's JSON and names its expert; the
+  law is prose a writer follows, and the sets' checkers test only that the written prompt shows work.
+- **The invisible result has no answer.** `section-06`'s image 6 sells a Wi-Fi extender, whose result
+  cannot be photographed: the frame can show the work and the room being covered, but not the mark the
+  work leaves. The set says so and asks the question.
+- **`05-social-testimony` and `05-social-handoff` are untouched.** Both also put a person in frame,
+  both are reserved and blocked on other grounds; their turn comes with their own evidence.
+- **The app** sees no change until a section type is promoted.
+
+---
