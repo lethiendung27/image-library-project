@@ -9,7 +9,7 @@ and what nothing checks.
 folder, and that folder holds every type the page may use). Its routing surface is
 `registry/pdp-dr-index.yaml`, generated from the folder's active files. Two kinds of file
 live there: a verbatim copy of every active image type, under the parent's id, which is
-what routes today; and LP2's own drafts, every one `reserved` or `deprecated`, which route
+what routes today; and LP2's own drafts, all but one `reserved` or `deprecated`, which route
 nowhere until one is promoted in place.
 
 ## Slot kinds — what each image field of a template is
@@ -106,8 +106,9 @@ and takes `05-persona-lifestyle` where it argues none of the others. The script 
 beside each field, with the type's `status` where that is not `active`, and fails on a type with
 no file.
 
-**A section type routes once it is active.** All seven are reserved drafts on 2026-09-18, each
-waiting on the owner's verdict on its first render, so until a row's type is promoted its fields
+**A section type routes once it is active.** `05-social-endorsed` is active from 2026-09-21
+(ADR-116), so the `expert` row routes; the other six are reserved drafts of 2026-09-18, each
+waiting on the owner's verdict on its first render, and until a row's type is promoted its fields
 route as before: by the default role, through Layer 2. Promotion is in place and row by row; the
 table does not change when it happens.
 
@@ -360,7 +361,7 @@ this file would shrink; that was the co-registry, and ADR-091 retired it.
 measured order and a section type never fills a gallery tile; its *Section routing* row is already
 written, and the day its `status` is `active` that row starts to route. Its promotion diff owes
 `query/runbook.md` nothing new — the runbook already names the section form — and owes this file
-one edit: the sentence under *Section routing* that says all six are reserved.
+one edit: the sentence under *Section routing* that names which types are reserved.
 
 ### LP2 drafts LP1 routes too — a register
 

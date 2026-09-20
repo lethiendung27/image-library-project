@@ -325,8 +325,9 @@ LP2's routing surface, by the same `--write-index`.
   `vocabulary.pdp_dr_types`.
 - **Two kinds of file** (ADR-091; owner instruction, 2026-09-15: each page kind routes one
   folder, and that folder holds every type the page may use). A **verbatim copy of every
-  active `registry/types/` file**, which is what routes today, and LP2's **own drafts**,
-  every one `reserved` or `deprecated`.
+  active `registry/types/` file**, which is what routes today, and LP2's **own drafts**, all but
+  one `reserved` or `deprecated` — `05-social-endorsed` was the first promoted in place, on
+  2026-09-21 (ADR-116).
 - **Ids keep the `{step}-{job}-{device}` grammar**, unlike gif and toplist ids, which are
   arguments, because a copy keeps its parent's id. That is the one respect in which these
   copies cost less than §3.7's: every gate in `mapping/slot-rules.md` is keyed on an id, so

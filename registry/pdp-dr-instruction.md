@@ -827,7 +827,7 @@ is a verbatim copy, and in place where it is LP2's own draft.
 | Mechanism · Product X-ray | `03-mechanism-xray` | active copy | **below, until its re-copy** |
 | Mechanism · Principle | — | **no gallery file** | below; a signal the product sends or senses is `03-mechanism-signal`, a reserved draft (ADR-099); outside the gallery the form's file is `03-mechanism-diagram`, a reserved draft (ADR-110) |
 | Mechanism · Demonstrated | — | **no file** | below |
-| Mechanism · Endorsed | — | **no gallery file** | outside the gallery, `05-social-endorsed`, a reserved section type (ADR-113); the text section's row 1 |
+| Mechanism · Endorsed | — | **no gallery file** | outside the gallery, `05-social-endorsed`, an ACTIVE section type since 2026-09-21 (ADR-113, ADR-116); the text section's row 1 |
 | Use Steps · Sequence | `03-use-sequence` | active copy | its `LP2 LAW` |
 | Use Steps · Grid | `03-use-grid` | active copy | its `LP2 LAW` |
 | Outcome Hero | `06-relief-hero` | active copy | its `LP2 LAW` |
@@ -986,7 +986,7 @@ instruction are six **section types**, LP2's own, one frame each:
 | HOW TO USE | `03-use-demo` | one focused step, a hand doing it | in the hand | none, or the step's numeral |
 | FEATURES | `03-spec-overlay` | the product clearly presented under a functional drawn layer | the subject of the frame | the feature image's one short line |
 | OTHER | `05-persona-lifestyle` | the lived-in place the product belongs to | small, or absent | none |
-| — the owner's decision (ADR-113) | `05-social-endorsed` | the expert the block quotes, face shown | in the hand | none |
+| — the owner's decision (ADR-113) | `05-social-endorsed` | the trade the constraint belongs to, at work, face shown | in the practised grip, mid-task | none |
 
 Each file carries its mode's rules in the owner's own words; the seventh, the expert block's image,
 comes from the owner's decision of 2026-09-18 and the Endorsed form of the owner's gallery
@@ -996,9 +996,11 @@ instruction. Which section takes which type is `mapping/pdp-dr-rules.md`, *Secti
 types and its text law, the hero keeps its own law, a buyer tile stays `05-social-snapshot`'s, and
 **a section type never fills a gallery tile** — every section type's trigger refuses one.
 
-**All seven are reserved drafts today, so none routes yet.** Each waits on the owner's verdict on
-a render (SPEC §6.3, criterion 3). A draft is promoted in place, one at a time. Until a section's
-type is active, its field routes as before: by its default role, through Layer 2.
+**One of the seven routes; six are still reserved drafts.** `05-social-endorsed` was promoted in
+place on 2026-09-21 on the owner's verdict of round 3 (ADR-116), so an `expert` block's section
+image is routed by it. The other six wait on the owner's verdict on a render (SPEC §6.3,
+criterion 3). A draft is promoted in place, one at a time. Until a section's type is active, its
+field routes as before: by its default role, through Layer 2.
 
 **Two rounds chose the form below** (ADR-111, ADR-112). `section-02` wrote the owner's page v17 in
 ADR-110's form and the owner failed it on quality. `section-03` wrote the same eight fields by the
@@ -1383,9 +1385,10 @@ draws a mark.
 
 ## What this namespace is still waiting on
 
-**None of LP2's own drafts routes.** Twenty-four files: twenty-two `status: reserved`, each
-carrying a `blocked_by` and a `BLOCK` — seven of them the section types of 2026-09-18 (ADR-110,
-ADR-113) — and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
+**One of LP2's own drafts routes.** Twenty-four files: one `status: active` —
+`05-social-endorsed`, promoted in place on 2026-09-21 (ADR-116) — twenty-one `status: reserved`,
+each carrying a `blocked_by` and a `BLOCK`, six of them the remaining section types of 2026-09-18
+(ADR-110, ADR-113), and two `deprecated` — `07-identity-callout`, retired on 2026-09-11
 and replaced by `03-spec-callout` after a control render and a ten-source corpus answered the
 same question the same way, and `06-relief-animal`, retired on 2026-09-17 after the owner put an
 animal subject into the relief types (ADR-095). `registry/pdp-dr-index.yaml` gains none of them.

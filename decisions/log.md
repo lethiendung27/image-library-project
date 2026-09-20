@@ -9617,3 +9617,117 @@ The rule-6c sweeps ran in a clean worktree at `878e05f` (hits / files / TEACHES)
   about garments. Both are reserved and blocked on other grounds.
 
 ---
+## ADR-116 · 2026-09-21 · The expert block's image is the first LP2 draft to route: `05-social-endorsed` is promoted in place on the owner's verdict of round 3
+
+**Owner, 2026-09-21:** *"audit ảnh mới, pass expert type cho pdp-dr"*. Three renders of
+`registry/pdp-dr-types/sets/05-social-endorsed-01` round 3 (`05-social-endorsed` 0.3, ADR-115), each
+opened at full size before this was written: `sha256:aa8b7802…` (prompt 1, the control),
+`sha256:b062af9c…` (prompt 2), `sha256:43970242…` (prompt 3), all at 1200×896.
+
+**Every clause the type owns landed, 3 of 3.** Read against the frames:
+
+| the clause | what came back | n |
+|---|---|---|
+| the NAMED garments — grey work coveralls, sleeves pushed up, wet forearms, rubber boots | worn in all three; the boots and the blue kneeling pad both visible in prompt 2 | 3 of 3 |
+| the trade's KIT in frame | the work van with its tailgate up, a second bucket and folded towels on it (twice); the maintenance cart with a bucket and a long-handled brush (once) | 3 of 3 |
+| the work happening, and what it needs | water leaving the tool onto paint, a wheel and a balcony railing; the intake hose running into a filled bucket | 3 of 3 |
+| the eyes on the work | nobody looks at the lens; the half-turn ADR-115 retired did not come back | 3 of 3 |
+| the mark the work has left | clear on the wheel, where brake grime gives the water something to take off; wet-versus-dry rather than dusty-versus-clean on white bodywork and balcony tiles | 1 of 3 |
+| the attached product | a black-and-brass garden-hose spray gun, again | 0 of 3 |
+
+Round 1 was three people holding a product; round 2 put the work in and left the person wrong; round
+3 is a trade at work with its kit. **The owner's verdict on that is this type's SPEC §6.3(3).**
+
+### Decision
+
+1. **`05-social-endorsed` is promoted to `active` at 1.0, in place** — a status change, never a
+   `git mv`, because the folder is the one LP2 routes (SPEC §3.8). `blocked_by` goes to null and the
+   `BLOCK` section is replaced by `WORKED EXAMPLES` and `KNOWN-FLAKY`.
+2. **The four criteria, stated plainly:**
+   - §6.3(3), ≥1 rendered worked example with an owner-confirmed verdict: **given**, above. The
+     example kept in the file is prompt 2 at full prompt text with `run: partial`, as SPEC §3.3
+     requires of anything that actually rendered.
+   - §6.3(1), ≥5 distinct corpus exemplars: **waived**, as ADR-057 waived it for `03-spec-macro`.
+     No ledger record carries this id, because the type is written from the owner's decision of
+     2026-09-18 rather than read out of the corpus. The validator's warning stays, honestly, on the
+     file.
+   - §6.3(2), the router-confusion test: **re-run, not restated.** `scripts/pdp-dr-slots.py` over the
+     owner's own car-wash page (its `htmlCompiled`, 226 479 characters) gives 30 image fields:
+     `expert.scene` now prints `05-social-endorsed` with no `(reserved)`, and every other section
+     type still prints one. It takes one field, steals none, and contests no gallery tile.
+   - §6.3(4), the ADR-007 gate: this commit, reported with its revert path.
+3. **The set that earned it is committed with it.** `sets/05-social-endorsed-01` has been
+   owner-gated since 2026-09-20; the owner's pass releases it, and it lands with its `build.py`,
+   `check.py` (50 of 50 known-bad inputs caught) and three rounds of prompts.
+4. **`section-06` stays uncommitted.** Its image 6 is this type's, but the other five images are the
+   six section types at 0.4, which the owner has not passed.
+
+### What changes
+
+- **`registry/pdp-dr-types/05-social-endorsed.md` 0.3 → 1.0**, `status: active`, `blocked_by: null`,
+  the DRAFT heading dropped, `BLOCK` replaced by `WORKED EXAMPLES` (prompt 2 in full, `run: partial`)
+  and `KNOWN-FLAKY` (the product that never arrives, 9 of 9; the mark that reads wet rather than
+  clean, 2 of 3).
+- **`registry/pdp-dr-index.yaml`** gains its first LP2-own type — 26 lines, written by
+  `scripts/validate.py --write-index`, not by hand.
+- **The three sentences that said the section types were all reserved**: `registry/pdp-dr-instruction.md`
+  (*"All seven are reserved drafts today, so none routes yet"*, and the namespace's waiting-list
+  paragraph), `mapping/pdp-dr-rules.md` (*Section routing*'s note and the drafts line), `SPEC.md` §3.8's
+  *"every one `reserved` or `deprecated`"*.
+- **Two stale descriptions of this type's frame**: the instruction's type map row called it *a
+  reserved section type*, and its section-type table still said the product was *in the hand* — the
+  0.1 reading that ADR-114 and ADR-115 replaced with the practised grip, mid-task.
+- **Three ledger rows** for round 3, each `partial`, each naming the product as its failure.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `49bd762` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"none routes"` | 2 | 2 | 1 |
+| `"all seven"` | 25 | 17 | 7 |
+| `"seven section types"` | 11 | 9 | 7 |
+| `"reserved drafts"` | 6 | 6 | 3 |
+| `"05-social-endorsed"` | 67 | 19 | 12 |
+| `"no section type routes"` | 0 | 0 | 0 |
+
+- **Rewritten:** every teaching hit that asserted the reservation — `registry/pdp-dr-instruction.md`
+  line 999 and the waiting-list paragraph, `mapping/pdp-dr-rules.md` line 109 and line 12, `SPEC.md`
+  line 329 — plus the two stale descriptions above.
+- **These hits stand**, every one read:
+  - **`mapping/pdp-dr-rules.md`'s `expert` row and rule 12**, `query/runbook.md`, `adapters/nano-banana.md`
+    and `SPEC.md` §3.8's list: each names the type without claiming a status, and each is now simply
+    true.
+  - **The four sibling types that cite `sets/05-social-endorsed-01`** (`01-pain-before`,
+    `03-use-demo`, `03-spec-overlay`, `05-persona-lifestyle`): they cite the set as the evidence for
+    ADR-115's garment rule, which is what it is.
+  - **`mapping/export-to-content.md`'s *all seven*** is seven cards in one `features` block, and
+    **`03-mechanism-contact.md`'s** is seven frames in its own corpus. Different sevens.
+  - **`registry/pdp-dr-types/03-spec-overlay.md`'s *three reserved drafts share its ground***: it
+    names them — `03-mechanism-signal`, `04-proof-stat` and `03-spec-callout` — and none is this
+    type.
+  - **`registry/toplist-instruction.md`** — another namespace.
+- **Checked:** `python3 scripts/validate.py` — 0 errors. One warning stands on the promoted file and
+  is meant to: no ledger observation resolves to this id, which is criterion 1 being waived rather
+  than met.
+- **Generated:** `registry/pdp-dr-index.yaml` and `dist/app-bundle/`.
+- `README.md`: the ADR count. `registry_version` is unchanged.
+
+### What is NOT done
+
+- **The wrong product is unexplained after nine renders.** It is filed as KNOWN-FLAKY, not as a
+  skeleton change: the cause is not established, and the one hedge in the prompts (*the only hose in
+  the frame*) is labelled a hypothesis there. Promotion does not close it.
+- **Six section types are still reserved** — `01-pain-before`, `06-relief-after`,
+  `03-mechanism-diagram`, `03-use-demo`, `03-spec-overlay`, `05-persona-lifestyle` — and
+  `sets/section-06` is their first set, unrendered.
+- **The mark clause has one clear render out of three.** If the next set repeats wet-versus-dry on a
+  painted panel, the film clause needs a harder noun; one set is not a rule.
+- **The app** must accept an active type in `registry/pdp-dr-index.yaml` whose `text_layer` is none
+  and whose prompts ship a compliance flag; nothing else about the bundle changes.
+- **This lane's six ledger rows — three for round 2, three for round 3 —** sit in
+  `eval/render-tests.jsonl` beside another lane's six uncommitted lines, so the file is still not
+  staged here. It is append-only, and it goes in with whichever lane commits it first.
+
+---

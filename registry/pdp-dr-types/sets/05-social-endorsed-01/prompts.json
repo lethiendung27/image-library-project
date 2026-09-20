@@ -1,0 +1,90 @@
+{
+ "set": "05-social-endorsed-01",
+ "status": "UNCOMMITTED, owner-gated",
+ "round": 3,
+ "type": "05-social-endorsed",
+ "type_version": "0.3",
+ "adr": "ADR-115",
+ "page": "pdp-dr-multifunctional-car-wash-tool-v01",
+ "template": "TPL-PDP06 · LP2-T1-Deal-Final v1.0.4",
+ "field": "expert.scene",
+ "render_frame": "4:3",
+ "attachment": "media.gallery.0.image — Resize_and_sharpen_image_2K_20260914170835.jpg, sha256 ff37a23bcee5b8c1405a118ad6cf63c96f3eb1a8956c63323f3bd518731da18e",
+ "derivation": {
+  "constraint": "no outdoor tap and no socket in the car park — the page's own pain: a bucket carried down two flights and a sponge rubbed at baked-on dirt",
+  "user": "the apartment or condo resident, 30-65, who washes their own car in the building's lot, spot-cleans bird droppings, rinses a balcony, a bike or patio chairs (brief.persona and the six review lines)",
+  "expert": "the mobile car detailer, whose trade meets that constraint every working day: water is carried to every job, and the judgement the block claims — battery, no tap, spray patterns — is theirs. Second: the building maintenance technician, who rinses communal balconies and walkways with no tap of their own"
+ },
+ "lock": {
+  "proposed from": "a cordless bucket-fed washer for homes with no outdoor tap: practical, outdoor, water",
+  "lighting family and colour tone": "Crisp daylight with a soft directional key, true colour with neutral whites, in a palette of clean white, deep slate grey and a fresh mid-blue",
+  "typeface": "a bold grotesque in the manner of Roboto, with a straight-legged R",
+  "text colour": "charcoal on light grounds, white on dark",
+  "chip": "a flat deep-slate pill with white sentence-case text, no outline and no shadow",
+  "accent": "a fresh mid-blue, on the chip and a call-out line only",
+  "icon style": "simple line icons with square ends",
+  "seamless ground": "a plain mid-grey seamless with a floor plane and a soft shadow"
+ },
+ "slots": [
+  {
+   "n": 1,
+   "type": "05-social-endorsed",
+   "version": "0.3",
+   "field": "expert.scene",
+   "render_frame": "4:3",
+   "attachments": 1,
+   "words": [],
+   "role": "a North American mobile car detailer in her forties",
+   "camera": "from a step back at the side",
+   "place": "an open apartment car park",
+   "changed": "the garments are named, the trade's kit is in frame, the dirt is a film and the eyes never leave the work",
+   "prediction": "PASS — the CONTROL: the named coveralls, the van with its kit, and the film of dust the clean band is cut into",
+   "compliance": {
+    "flag": "endorsed-expert",
+    "note": "The `expert` block presents this face as an expert view of the product: its eyebrow reads \"Expert view\", it carries an award badge and three credential lines, and its own quote recommends the product. `expert.name` and `expert.role` are EMPTY on this page today, so no person is named and no profession is claimed in the HTML; the prompt shows the trade the page's constraint belongs to. If the page later prints a name or a credential beside this face, and that person does not exist or does not hold the expertise shown, the page carries a fabricated endorsement, which the FTC's endorsement rules treat as deceptive. A real expert's own photograph always wins; the merchant decides."
+   },
+   "characters": 1282,
+   "prompt": "Editorial realism photo from a step back at the side, close enough that her hands and the spray read together: a North American mobile car detailer in her forties, in grey work coveralls with the sleeves pushed up and the forearms wet, rubber boots on the wet ground, no logo, badge or name tag, works along the rear quarter panel of a customer's sedan in an open apartment car park. She is mid-rinse: the Cordless Car Wash Tool in her practised grip sends a steady fan of water across the panel, and its intake hose runs down into a filled bucket at her feet, the only hose in the frame. Her work van stands close behind her with its tailgate up, a second bucket and a stack of folded microfibre towels on it. The panel wears an even film of road dust, and behind the spray a bright clean band of paint runs where she has already passed, with water running across the tarmac. Her eyes are on the spray. Crisp daylight with a soft directional key, true colour with neutral whites, in a palette of clean white, deep slate grey and a fresh mid-blue, balanced contrast, readable in three seconds. It is a real photograph with true texture and a soft cast shadow, and nothing in the frame is old, worn, scratched or faded. No text. Use the attached product photo as the exact reference."
+  },
+  {
+   "n": 2,
+   "type": "05-social-endorsed",
+   "version": "0.3",
+   "field": "expert.scene",
+   "render_frame": "4:3",
+   "attachments": 1,
+   "words": [],
+   "role": "a North American mobile car detailer in his fifties",
+   "camera": "from low at the front wheel",
+   "place": "an apartment forecourt",
+   "changed": "one thing against the control: the camera drops to the wheel, so the kit has to survive a low angle",
+   "prediction": "PARTIAL — the low camera may cut the van out of frame, and with it the trade",
+   "compliance": {
+    "flag": "endorsed-expert",
+    "note": "The `expert` block presents this face as an expert view of the product: its eyebrow reads \"Expert view\", it carries an award badge and three credential lines, and its own quote recommends the product. `expert.name` and `expert.role` are EMPTY on this page today, so no person is named and no profession is claimed in the HTML; the prompt shows the trade the page's constraint belongs to. If the page later prints a name or a credential beside this face, and that person does not exist or does not hold the expertise shown, the page carries a fabricated endorsement, which the FTC's endorsement rules treat as deceptive. A real expert's own photograph always wins; the merchant decides."
+   },
+   "characters": 1297,
+   "prompt": "Editorial realism photo from low at the front wheel, close enough that his hands and the spray read together: a North American mobile car detailer in his fifties, in grey work coveralls with the sleeves pushed up and the forearms wet, rubber boots on the wet ground, no logo, badge or name tag, crouches at the front wheel arch of a customer's car on an apartment forecourt. He is mid-rinse: the Cordless Car Wash Tool in his practised grip drives water into the wheel arch, and its intake hose runs down into a filled bucket beside the wheel, the only hose in the frame. A kneeling pad is under one knee, and his work van stands behind him with its tailgate up, a second bucket and a stack of folded microfibre towels on it. The wheel wears an even film of road dust, grime and water sheet off the rim onto the wet ground, and the rim behind the spray is bright where he has already passed. His eyes are on the spray. Crisp daylight with a soft directional key, true colour with neutral whites, in a palette of clean white, deep slate grey and a fresh mid-blue, balanced contrast, readable in three seconds. It is a real photograph with true texture and a soft cast shadow, and nothing in the frame is old, worn, scratched or faded. No text. Use the attached product photo as the exact reference."
+  },
+  {
+   "n": 3,
+   "type": "05-social-endorsed",
+   "version": "0.3",
+   "field": "expert.scene",
+   "render_frame": "4:3",
+   "attachments": 1,
+   "words": [],
+   "role": "a North American building maintenance technician in her forties",
+   "camera": "from a step back along the balcony",
+   "place": "an apartment balcony",
+   "changed": "one thing against the control: a second trade, with its own kit and its own surface",
+   "prediction": "PARTIAL — a second trade, and round 2 wet the whole balcony evenly, so the clean band had nothing to be cut into",
+   "compliance": {
+    "flag": "endorsed-expert",
+    "note": "The `expert` block presents this face as an expert view of the product: its eyebrow reads \"Expert view\", it carries an award badge and three credential lines, and its own quote recommends the product. `expert.name` and `expert.role` are EMPTY on this page today, so no person is named and no profession is claimed in the HTML; the prompt shows the trade the page's constraint belongs to. If the page later prints a name or a credential beside this face, and that person does not exist or does not hold the expertise shown, the page carries a fabricated endorsement, which the FTC's endorsement rules treat as deceptive. A real expert's own photograph always wins; the merchant decides."
+   },
+   "characters": 1238,
+   "prompt": "Editorial realism photo from a step back along the balcony, close enough that her hands and the spray read together: a North American building maintenance technician in her forties, in grey work coveralls with the sleeves pushed up and the forearms wet, rubber boots on the wet ground, no logo, badge or name tag, works along the railing of an apartment balcony. She is mid-rinse: the Cordless Car Wash Tool in her practised grip sends water along the railing and the tiles below it, and its intake hose runs down into a filled bucket at her feet, the only hose in the frame. Her maintenance cart stands behind her with a second bucket and a long-handled brush laid across it. The tiles wear an even film of grey dust, and behind the spray a bright clean band runs the length she has already passed, with water running to the drain. Her eyes are on the spray. Crisp daylight with a soft directional key, true colour with neutral whites, in a palette of clean white, deep slate grey and a fresh mid-blue, balanced contrast, readable in three seconds. It is a real photograph with true texture and a soft cast shadow, and nothing in the frame is old, worn, scratched or faded. No text. Use the attached product photo as the exact reference."
+  }
+ ]
+}

@@ -316,6 +316,32 @@ types:
       Need to show many different kinds of people using the product. Image 4-5
       in the gallery or the closing image. Use when the audience is broad in
       age and context.
+  - id: 05-social-endorsed
+    step: 5
+    job: social
+    device: endorsed
+    version: "1.0"
+    status: active
+    channels: [landing-page]
+    requires_product_photo: true
+    generation_mode: single-pass
+    axes: {}
+    variants: []
+    exempt_from: [G3, G4]
+    pairs_with: []
+    never_with: []
+    avoid_adjacent: []
+    requires_pair: null
+    evidence_count: 0
+    picks: {}
+    use_when: >
+      An LP2 image outside the product card's gallery whose block speaks as an
+      expert: an expert view, a doctor, an installer, a specialist, named or
+      unnamed. The frame is the trade the page's constraint belongs to, at
+      work with the product, face shown. Take 03-use-demo when the block is an
+      act of the buyer's own hands and no trade is claimed; 03-mechanism-
+      diagram when the quoted claim is a process to explain; never a buyer's
+      photo, which is 05-social-snapshot's; never a gallery tile.
   - id: 05-social-handoff
     step: 5
     job: social
