@@ -9491,3 +9491,129 @@ The rule-6c sweeps ran in a clean worktree at `c5d2a3c` (hits / files / TEACHES)
 - **The app** sees no change until a section type is promoted.
 
 ---
+## ADR-115 · 2026-09-20 · Round 2 rendered: the work landed and the person did not — name the garments, bring the trade's kit into frame, keep the eyes on the work, and let the dirt be a film
+
+**The renders.** Three, at 1200×896, of `registry/pdp-dr-types/sets/05-social-endorsed-01` round 2
+(`05-social-endorsed` 0.2, ADR-114), every one opened at full size (ADR-011):
+`sha256:727e1bb6…` (prompt 1, the control), `sha256:e93c979c…` (prompt 2), `sha256:19825e59…`
+(prompt 3). **Owner, 2026-09-20:** *"audit các ảnh mới, điều chỉnh thêm prompt về trang phục, đối
+tượng (user/expert/author) một cách sát nghĩa chân thực nhất. tôi chưa thấy thợ rửa xe lưu động, cư
+dân trang phục không phù hợp cho rửa xe"* — I do not see a mobile car detailer, and the resident's
+clothes are not clothes anyone washes a car in.
+
+**What ADR-114 got right, and it is kept word for word.** 3 of 3 showed water leaving the tool onto a
+real surface, and 3 of 3 showed the intake hose running into a filled bucket. Round 1 had neither:
+three people holding a product. The WORK clause works.
+
+**What failed, read against the frames:**
+
+| written | rendered | n |
+|---|---|---|
+| *a work shirt with the sleeves rolled and wet* | a crisp button-up dress shirt over pale chinos, dry | 2 of 3 |
+| *grey work coveralls, work trousers with knee pockets, work boots* (prompt 3) | a trade at work | 1 of 1 |
+| the trade, named in words | no van, no kit, no second bucket: a resident washing their own car | 2 of 3 |
+| *turns his head toward the lens for a moment without stopping* | a full face to the lens with a faint smile | 1 of 1 |
+| a dusty strip beside a clean one | one car caked in dried mud, one already spotless, one balcony wet end to end | 3 of 3 |
+
+**And the product was wrong for the sixth time.** All three frames hold a black-and-brass garden-hose
+spray gun, not the attached `Cordless Car Wash Tool` — 3 of 3 this round, 6 of 6 across both. Whether
+the photo was attached is still unrecorded; the set has asked twice.
+
+### Decision
+
+1. **Name the garment, never the category.** A prompt writes the pieces — *grey work coveralls, the
+   sleeves pushed up, the forearms wet, rubber boots* — not *a work shirt*, which the renderer reads as
+   office clothing. Evidence: 2 of 3 against 1 of 1, above.
+2. **Where the product moves water, name what keeps the water off**: coveralls or a waterproof apron,
+   rubber boots, wet forearms, a kneeling pad under the knee on wet ground.
+3. **A trade is legible from what it brought, not from a face.** The prompt puts the kit in frame — the
+   van or pickup with its tailgate up, the second bucket, the stack of folded towels, the maintenance
+   cart. It is also what the work needs (ADR-114), so it is one clause doing two jobs. No logo on it:
+   a brand would fabricate an employer.
+4. **The user's own clothes are the clothes that can get wet**, not a shirt and chinos.
+5. **The eyes stay on the work.** ADR-114's half-turn *"toward the lens for a moment without
+   stopping"* is retired for `05-social-endorsed`: it rendered as a full face and a smile, 1 of 1. The
+   pose the owner rejected returns through the gaze.
+6. **Dirt is a film and the clean band is the proof.** The prompt asks for an even film of road dust
+   and a bright clean band behind the spray. Caked mud strains the owner's *real, never worn* rule
+   (ADR-113 item 13), and an already spotless surface leaves the water nothing to remove.
+7. **`05-social-endorsed` goes to 0.3**; the five section types that can hold a person go to **0.6**
+   with one shared sentence: *their clothes are named pieces they own and could get wet in, never a
+   category*. `03-mechanism-diagram` stays at 0.4 — it draws no person.
+8. **One clause is a hypothesis, and it is labelled as one.** Each prompt now says the tool's own
+   intake hose is *the only hose in the frame* — true of a bucket-fed cordless washer, and it takes the
+   garden-hose scene away from the renderer. If the photo was simply never attached, that is the whole
+   cause and the clause comes out. The set says so in its own header.
+
+### What changes
+
+- **`registry/pdp-dr-instruction.md`**, *The person in frame*: a new block, *What the person wears, and
+  what the trade brought*; the working-body bullet retires the half-turn; the clothes bullet asks for
+  named pieces; the expert/user table gains *what they wear* and *what is with them*, and its *eyes*
+  row reads *on the work* in both columns; two more refusals.
+- **`registry/pdp-dr-types/05-social-endorsed.md` 0.2 → 0.3**: `PARTS/person` carries the naming rule
+  and the retired half-turn, `PARTS/work` carries the kit, `PARTS/place` carries the film and the band,
+  and NEGATIVE gains the dress shirt, the kitless trade, the face to the lens, the caked and the
+  spotless surface.
+- **Five section types 0.5 → 0.6**, one identical sentence each.
+- **`sets/05-social-endorsed-01` round 3**: three prompts, 1238–1297 characters, one control and two
+  that each change one thing (the camera drops to the wheel; the trade changes). `check.py` requires
+  the named garments, the kit, the film and the only-hose clause, and bans a category garment, a turn
+  toward the lens, and a caked or spotless surface; `knownbad.py` catches 50 of 50.
+- **`sets/section-06` image 6 → 0.3**: the installer's garments are named (a work jacket, work trousers
+  with knee pockets, boots) and his eyes go to his hands; its checker gained both, and `knownbad.py`
+  catches 52 of 52.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `878e05f` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"work shirt"` | 121 | 30 | 4 |
+| `"toward the lens"` | 26 | 20 | 10 |
+| `"sleeves rolled"` | 4 | 4 | 1 |
+| `"plain work"` | 4 | 4 | 4 |
+| `"kneeling"` | 107 | 31 | 13 |
+| `"dusty strip"` | 0 | 0 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` line 1148 still taught *"may turn half toward the
+  lens mid-task"* — ADR-114's own sentence, three hours old — and `05-social-endorsed.md` taught it
+  too. Both now say the eyes stay on the work. This is the sweep doing its job on the decision before
+  last.
+- **These hits stand**, every one read:
+  - **`registry/types/02-symptom-rail.md`** and **`registry/toplist-types/lede-inuse.md`** — *a work
+    shirt* and *a grey work shirt* in the stills and toplist namespaces, on dry desk and kitchen
+    scenes, one of them a measured record of what six renders wore. A rule measured on one corpus does
+    not govern another, and nothing there moves water.
+  - **`lede-authority-01`, `-03`, `-04`, `-05`** — a dusty work shirt, a barber's smock with sleeves
+    rolled, a work tabard, an apron: delivered prompts in another namespace, and each already names its
+    garment rather than categorising it.
+  - **`registry/types/06-relief-scene.md`** and the toplist sets' *"toward the lens"* — the product
+    turned toward the lens, not a person's face, and `06-relief-scene` argues the opposite case
+    (*present, not presented*) in its own namespace.
+  - **`lede-testing.md`'s *plain working light*** and **`_staging/02-cause-scene.md`'s movers** — a
+    light and a crop, not a garment.
+  - **`"kneeling"`'s 13 teaching files** — knee positions in the stills and toplist namespaces; this
+    decision adds a kneeling pad to one pdp-dr prompt and changes no type that owns those.
+- **Checked:** `python3 scripts/validate.py` — 0 errors. Both sets' checkers pass and their known-bad
+  suites catch 50 of 50 and 52 of 52.
+- **Generated:** `dist/app-bundle/` rebuilds the instruction.
+- `README.md`: the ADR count. `registry_version` is unchanged, and `registry/pdp-dr-index.yaml` does
+  not move — the seven section types are still reserved.
+
+### What is NOT done
+
+- **The three ledger rows are appended but NOT committed.** `eval/render-tests.jsonl` already holds six
+  uncommitted lines from another session's `03-mechanism-ghostbody` lane, and staging that file by name
+  would sweep their work into this commit. The rows are in the working tree, the file is append-only,
+  and they go in with whichever lane commits first.
+- **No render of 0.3.** Round 3 is written but unrendered, and both sets stay owner-gated.
+- **The wrong-product failure is unexplained.** 6 of 6. Until the owner says whether the photo was
+  attached, the *only hose in the frame* clause is a hypothesis and nothing more.
+- **The user types' new sentence is untested.** The evidence is from the expert type; the five that
+  carry a derived user have no render of 0.6.
+- **`05-social-testimony` and `05-social-handoff`** still put a person in frame and still say nothing
+  about garments. Both are reserved and blocked on other grounds.
+
+---

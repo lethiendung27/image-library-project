@@ -3,7 +3,7 @@ id: 05-persona-lifestyle
 step: 5
 job: persona
 device: lifestyle
-version: "0.5"
+version: "0.6"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -57,7 +57,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 05-persona-lifestyle v0.5
+TYPE: 05-persona-lifestyle v0.6
 Image_Type: OTHER
 
   1. The register and the camera: "Editorial realism lifestyle photo".
@@ -77,7 +77,7 @@ Where the product is in frame, G1's one sentence ends the prompt:
 listing four places still gets one frame, and the session's notes name the place it chose. Found
 rather than styled: the room's colours are its own, with nothing added to supply one (ADR-108). **A person here is the
 derived USER** — the one the page's constraint belongs to (*The person in frame*) — in their own
-place, busy with their own thing and never posing; where the product is in their hands it is working; a pet only
+place, busy with their own thing and never posing; their clothes are named pieces they own and could get wet in, never a category (*The person in frame*); where the product is in their hands it is working; a pet only
 where the product serves one. **The point where the product meets the person stays in view**
 (owner, ADR-113): a person at rest with it is relaxed and looks away; a person using it looks at
 the point of use.
@@ -145,6 +145,9 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   frame's colourfulness 32.0 sits inside the owner's band.
 
 ## CHANGELOG
+- 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:
+  *a work shirt* rendered as a button-up dress shirt 2 of 3 in `sets/05-social-endorsed-01` round 2
+  (ADR-115).
 - 0.5 (2026-09-20): a person in frame is the derived user, and a product in their hands is working
   (ADR-114).
 - 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's lighting family and colour

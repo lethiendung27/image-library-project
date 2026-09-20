@@ -3,7 +3,7 @@ id: 06-relief-after
 step: 6
 job: relief
 device: after
-version: "0.5"
+version: "0.6"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -59,7 +59,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 06-relief-after v0.5 [register: commercial | ugc]
+TYPE: 06-relief-after v0.6 [register: commercial | ugc]
 Image_Type: WITH / AFTER
 
   1. The register and the camera: "Editorial realism photo", the angle and distance.
@@ -77,7 +77,7 @@ Image_Type: WITH / AFTER
 
 **`scene`** — the place the section's copy puts the use in. **A person here is the derived USER**
 (*The person in frame*), doing the thing the product now lets them do, with the work happening rather
-than the product held; a face is allowed where it is relevant,
+than the product held; their clothes are named pieces they own and could get wet in, never a category (*The person in frame*); a face is allowed where it is relevant,
 natural and relaxed, never a posed or exaggerated smile (the owner's feature-image instruction).
 **The point where the product meets the person or the thing stays in view** (owner, ADR-113): a
 person using it looks at the point of use; a person at rest with it is relaxed and looks away.
@@ -160,6 +160,9 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   under the 10th percentile of the owner's own stills (22.2).
 
 ## CHANGELOG
+- 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:
+  *a work shirt* rendered as a button-up dress shirt 2 of 3 in `sets/05-social-endorsed-01` round 2
+  (ADR-115).
 - 0.5 (2026-09-20): a person in frame is the derived user, at work rather than presenting (ADR-114).
 - 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's lighting family and colour
   tone, real and never worn, and the point where the product meets the person kept in view, the

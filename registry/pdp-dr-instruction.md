@@ -1144,22 +1144,51 @@ is the same for every product:
   On a page that sells freedom from a precondition, that precondition is the argument;
 - **the work has left a mark** — a wet panel behind the spray, a clean strip beside a dirty one, wet
   sleeves, dust on the floor;
-- **the body is working** — weight on one leg, elbow bent, leaning in, the eyes on the work. An expert
-  may turn half toward the lens mid-task; nobody stops to pose;
-- **the clothes and the place are the role's** — a trade's working clothes marked by the work, or the
-  user's own weekend clothes in their own parking bay.
+- **the body is working** — weight on one leg, elbow bent, leaning in, and **the eyes on the work**.
+  ADR-114 let an expert turn half toward the lens mid-task; it came back as a full face and a smile,
+  1 of 1, so the half-turn is retired and nobody looks at the camera (ADR-115);
+- **the clothes and the place are the role's** — the trade's garments NAMED piece by piece and marked
+  by the work, or the user's own clothes that can get wet, in their own parking bay.
 
 **Refused:** the product raised to the lens or held at chest height; a studio ground for a person
 whose work is outdoors; dry clothes and a dry surface where the product moves water; props set out as
-decoration; a face square to the camera with nothing happening.
+decoration; a face square to the camera with nothing happening; a button-up dress shirt and clean
+chinos on a job that moves water; a trade with none of its kit in frame.
+
+**What the person wears, and what the trade brought** — round 2 of
+`sets/05-social-endorsed-01`, 2026-09-20, where the work itself landed 3 of 3 and the person did not:
+
+- **Name the garment, never the category.** *"a work shirt with the sleeves rolled and wet"* came back
+  as a crisp button-up dress shirt over clean chinos, 2 of 3, and both frames read as a resident.
+  *"grey work coveralls, work trousers with knee pockets and work boots"* came back as a trade, 1 of 1.
+  Name the pieces, not the kind.
+- **Where the product moves water, name what keeps the water off**: coveralls or a waterproof apron,
+  rubber boots, wet forearms, a kneeling pad under the knee on wet ground. Dry clothes on a wet job are
+  the tell the owner reads first.
+- **A trade is legible from what it brought, not from a face.** No frame says *paid to do this* unless
+  the kit is in it: the van or pickup with its tailgate open, the second bucket, the stack of folded
+  towels, the crate of bottles. Two frames named the trade in words, showed no kit, and the owner's
+  answer was *"tôi chưa thấy thợ rửa xe lưu động"* — I do not see a mobile detailer. The kit is also
+  what the work needs, so it is one clause doing two jobs.
+- **The user's own clothes are the clothes that can get wet** — a resident washing their car is in a
+  t-shirt, shorts and rubber slides, the hems wet, not a shirt and chinos: *"cư dân trang phục không
+  phù hợp cho rửa xe"*.
+- **The eyes stay on the work.** The half-turn *"toward the lens for a moment without stopping"*
+  rendered as a full face and a faint smile, 1 of 1 — the pose returns through the gaze. It is retired
+  for `05-social-endorsed`.
+- **Dirt is a film, and the clean band is the proof.** One car came back caked in dried mud, one
+  spotless: the first strains *real, never worn*, the second leaves the water nothing to remove. Ask for
+  an even film of road dust and a bright cleaned band behind the spray.
 
 | | the expert | the user |
 |---|---|---|
 | who | the trade the constraint belongs to | the person the page describes |
 | whose object | a customer's | their own |
+| what they wear | the trade's named pieces, marked by the work | their own clothes that can get wet |
+| what is with them | the kit the trade arrived with | nothing they would not own |
 | the hands | the practised grip, the right distance | an ordinary, comfortable one |
 | the place | the job, mid-task | their own everyday place |
-| the eyes | on the work, or half to the lens mid-task | on the work |
+| the eyes | on the work | on the work |
 
 **Where the page names nobody, the picture earns the standing.** `expert.name` and `expert.role` are
 empty on the owner's car-wash page, so no title arrives from the HTML and only the work in the frame

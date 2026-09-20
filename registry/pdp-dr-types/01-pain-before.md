@@ -3,7 +3,7 @@ id: 01-pain-before
 step: 1
 job: pain
 device: before
-version: "0.5"
+version: "0.6"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -59,7 +59,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 01-pain-before v0.5 [register: commercial | ugc]
+TYPE: 01-pain-before v0.6 [register: commercial | ugc]
 Image_Type: WITHOUT / BEFORE
 
   1. The register and the camera: "Editorial realism photo", the angle and distance.
@@ -80,7 +80,7 @@ Where the idle product is in frame, G1's one sentence ends the prompt:
 **`scene`** — the place the section's copy puts the problem in, and nowhere grander: the back
 room, the kitchen counter, the office chair. **A person here is the derived USER living inside the
 constraint** (*The person in frame*) — carrying the bucket down the stairs, rubbing at the dirt with a
-sponge — doing the old way, never posing beside it. One person at most unless the copy names more. A face
+sponge — doing the old way, never posing beside it. Their clothes are named pieces they own and could get wet in, never a category (*The person in frame*). One person at most unless the copy names more. A face
 is allowed where it is relevant and it never performs for the lens: the body and the object carry
 the problem (G9), and the expression is only what that moment would really bring.
 
@@ -165,6 +165,9 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   0.3's PARTS/problem now carries.
 
 ## CHANGELOG
+- 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:
+  *a work shirt* rendered as a button-up dress shirt 2 of 3 in `sets/05-social-endorsed-01` round 2
+  (ADR-115).
 - 0.5 (2026-09-20): a person in frame is the derived user living the constraint, doing the old way
   (ADR-114).
 - 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's lighting family and colour

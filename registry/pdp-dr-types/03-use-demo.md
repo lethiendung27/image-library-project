@@ -3,7 +3,7 @@ id: 03-use-demo
 step: 3
 job: use
 device: demo
-version: "0.5"
+version: "0.6"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -66,7 +66,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-use-demo v0.5
+TYPE: 03-use-demo v0.6
 Image_Type: HOW TO USE
 
   1. The register and the camera: "Editorial realism close-up", partial hand,
@@ -91,7 +91,7 @@ where the step needs the person, and it attends to the task, never to the lens.
 
 **`step`** — the copy's own step and no other: *"strict: follow the input's step"*. **The hands are
 the derived USER's** (*The section form*, *The person in frame*), and the frame shows the work
-happening: the product doing its own thing, what that work needs beside it, and the mark it leaves.
+happening: the product doing its own thing, what that work needs beside it, and the mark it leaves. Their clothes are named pieces they own and could get wet in, never a category (*The person in frame*).
 - **One image, one step.** Where a block gives ONE image for several steps, the frame takes the
   step that answers *"will I manage this"* — the first act of the buyer's hands on the product —
   and the session's notes name the step it chose. Never a collage and never two moments in one
@@ -169,6 +169,9 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   hands. A real car maker's badge sits on the steering wheel, which G6's `logo` bars.
 
 ## CHANGELOG
+- 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:
+  *a work shirt* rendered as a button-up dress shirt 2 of 3 in `sets/05-social-endorsed-01` round 2
+  (ADR-115).
 - 0.5 (2026-09-20): the hands are the derived user's, and the frame shows the work happening rather
   than the product held (ADR-114).
 - 0.4 (2026-09-18): the owner's design rules (ADR-113) — a real home at close range in the light
