@@ -178,7 +178,7 @@ predicted risk. It is `partial` for the product alone (below).
 - 1.0 (2026-09-21): **promoted to active, in place, on the owner's verdict** — *"pass expert
   type cho pdp-dr"*. Round 3 landed every clause the type owns, 3 of 3. §6.3(3) is the owner's
   and given; §6.3(1) is waived as ADR-057 waived it for `03-spec-macro`; §6.3(2) ran on paper
-  in ADR-113. The expert block's section image now routes. ADR-116.
+  in ADR-113. The expert block's section image now routes. ADR-116, `80e5bb4`.
 - 0.3 (2026-09-20): **round 2 rendered, and the work landed where the person did not** —
   3 of 3 showed water leaving the tool onto a real surface and the intake hose in a filled bucket, which
   round 1 had none of. The owner: *"tôi chưa thấy thợ rửa xe lưu động, cư dân trang phục không phù hợp
