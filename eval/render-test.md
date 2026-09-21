@@ -28,6 +28,22 @@ vocabulary at ADR-067.
 
 Recurrence needs a denominator. One run proves nothing either way (SPEC §6.2).
 
+## 3b. Grade the PRODUCT against its photograph, never against its name
+
+**Open the reference photo before you write a `[PRODUCT]` failure.** A product's name is a marketing
+phrase and it is not its shape. On 2026-09-21 nine renders of `05-social-endorsed` were marked down,
+across three rounds and three ADRs, for holding *"a brass garden-hose nozzle rather than the attached
+`Cordless Car Wash Tool`"*. The photo had been attached every time, and the product IS a black
+pistol-grip spray gun with a brass nozzle collar: every render was carrying it (ADR-117).
+
+- The reference is the file the prompt's G1 sentence points at. Where a session records a
+  `sha256`, fetch that file and look at it; a page's own export carries the URL
+  (`media.gallery.0.image`), and a hash that matches is proof it is the same photo.
+- Where the photo cannot be obtained, a product-identity failure is not recordable. Write what the
+  render shows and say the reference was not seen.
+- This is the one failure kind that cannot be graded from the prompt text, because the prompt is
+  forbidden to describe the product (G2).
+
 ## 4. Record — one line per test session
 
 Append to `eval/render-tests.jsonl` (append-only):

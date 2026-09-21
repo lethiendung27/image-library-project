@@ -9731,3 +9731,105 @@ The rule-6c sweeps ran in a clean worktree at `49bd762` (hits / files / TEACHES)
   staged here. It is append-only, and it goes in with whichever lane commits it first.
 
 ---
+## ADR-117 · 2026-09-21 · A correction: nine renders were marked down for holding the product they were given — grade a product against its photograph, never against its name
+
+**Owner, 2026-09-21**, answering the question three sets had asked in writing: *"có, tôi có đính ảnh
+mỗi lần render"* — the reference photo was attached every time.
+
+That answer is what exposed the error. The photo was then fetched from the page's own export
+(`media.gallery.0.image` → the Shopify CDN URL in `pdp-dr-multifunctional-car-wash-tool-v01.json`),
+its hash checked against the one `sets/05-social-endorsed-01` declares — `sha256:ff37a23b…`, an exact
+match — and **opened**.
+
+**The `Cordless Car Wash Tool` is a black pistol-grip spray gun with a brass nozzle collar, a
+trigger, a brass hose fitting at the foot of the grip, and yellow and orange hose connectors and a
+hose clamp beside it.** It is a bucket-fed handheld washer built on a hose-gun body. Every one of the
+nine renders was holding it.
+
+**What was recorded instead**, across three rounds, three ADRs and six ledger rows: *"the thing in
+the hand is a black-and-brass garden hose spray gun, not the attached Cordless Car Wash Tool"*,
+9 of 9. The harness graded the product against its NAME — a name that promises a battery
+appliance — and never once opened the photograph the prompt's own G1 sentence points at. The renders
+were being marked down for resembling the thing they were given.
+
+**The cost of it.** ADR-114 opened with it as a second fault; ADR-115 made it a headline count of
+9 of 9; ADR-116 filed it as the promoted type's first KNOWN-FLAKY entry and held the type's worked
+example at `partial` because of it; round 3's prompts carry a clause written to fight it. Two sessions
+of prompt engineering were spent on a phantom, and the owner was asked twice for an answer that only
+mattered because the harness had not looked.
+
+### Decision
+
+1. **The `[PRODUCT]` failure is withdrawn from all six ledger rows**, by six corrected rows appended
+   to `eval/render-tests.jsonl` (append-only; nothing is rewritten). The other failures stand on their
+   own evidence.
+2. **The verdicts are restated.** Round 2 is unchanged — `fail`, `fail`, `partial` — for the person
+   and the mark. Round 3 becomes **`partial`, `pass`, `partial`**: prompt 2 had no fault but the
+   product, so with that withdrawn it is a clean pass, and it is the type's worked example.
+   **ADR-116's promotion stands on better evidence than it claimed.**
+3. **`eval/render-test.md` gains step 3b**: open the reference photo before writing a `[PRODUCT]`
+   failure; where a session records a `sha256`, fetch that file and look at it; where the photo
+   cannot be obtained, a product-identity failure is not recordable — write what the render shows and
+   say the reference was not seen. This is the one failure kind that cannot be graded from the prompt
+   text, because G2 forbids the prompt to describe the product.
+4. **`05-social-endorsed` 1.0 → 1.1**: the KNOWN-FLAKY entry is replaced by its withdrawal, the
+   worked example becomes `run: pass`, and the false half of the 0.2 changelog entry carries a
+   bracketed withdrawal in place.
+5. **The *only hose in the frame* clause stays, on a different footing.** It was written to fight the
+   phantom, but the page earns it independently: the close block reads *"Wash Vehicles Anywhere
+   Without Garden Hoses"*, so a garden hose or a tap in the frame would contradict the page's own
+   argument. A clause that survives its original reason must be given a real one, or removed.
+
+### What changes
+
+- **`eval/render-tests.jsonl`**: six corrected rows, each naming the reference hash and the reason.
+- **`registry/pdp-dr-types/05-social-endorsed.md` → 1.1**, as above.
+- **`registry/pdp-dr-types/sets/05-social-endorsed-01/`**: the header's product paragraph, the
+  attachment note and watch item 1 are rewritten; watch item 1 now says to hold the reference photo
+  beside the render. `build.py` regenerates both files; `check.py` is unchanged and `knownbad.py`
+  still catches 50 of 50.
+- **`eval/render-test.md`**: step 3b.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `c6102cc` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"garden-hose nozzle"` | 4 | 3 | 2 |
+| `"not the attached product"` | 3 | 3 | 2 |
+| `"9 of 9"` | 6 | 5 | 2 |
+| `"hose nozzle"` | 8 | 5 | 3 |
+| `"the only hose in the frame"` | 19 | 8 | 6 |
+| `"the attached product does not reach"` | 2 | 2 | 1 |
+
+- **Rewritten:** every teaching hit that asserted the phantom — the set's `build.py` docstring and its
+  two generated paragraphs, watch item 1, the type's KNOWN-FLAKY entry, and the false half of the 0.2
+  changelog line, which now carries its withdrawal in place rather than being deleted.
+- **These hits stand**, every one read:
+  - **`decisions/log.md`** — ADR-114, ADR-115 and ADR-116 keep their text. The log is history: it
+    records what was decided and on what belief, and this entry is the correction on top of it. Anyone
+    reading those three now reaches this one.
+  - **The `"the only hose in the frame"` hits** in the type, the set and the bundle: the clause is
+    kept deliberately, and its reason is restated wherever it is explained.
+  - **`"9 of 9"` elsewhere** — other types' own counts, unrelated to this one.
+- **Checked:** `python3 scripts/validate.py` — 0 errors. The set's `check.py` passes and
+  `knownbad.py` catches 50 of 50.
+- **Generated:** `dist/app-bundle/`.
+- `README.md`: the ADR count. `registry_version` is unchanged, and no index moves: the type was
+  already active.
+
+### What is NOT done
+
+- **The prompts are not rewritten.** Nothing about the three round-3 prompts was wrong; only their
+  grading was. They stand as sent.
+- **The other 34 product-identity failures in the ledger are not re-audited.** 40 of 501 rows name
+  one; six were this set's and are corrected here. The rest belong to other types and other sessions,
+  and each needs its own reference photo opened before anything is claimed about it. Step 3b is what
+  stops the next one.
+- **`eval/render-tests.jsonl` is still not staged by this lane** — another lane's six uncommitted
+  lines share the file.
+- **The mark clause still has one clear render of three.** That finding is unaffected by this
+  correction and still waits on another set.
+
+---

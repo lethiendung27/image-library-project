@@ -3,7 +3,7 @@ id: 05-social-endorsed
 step: 5
 job: social
 device: endorsed
-version: "1.0"
+version: "1.1"
 status: active
 replaced_by: null
 channels: [landing-page]
@@ -56,7 +56,7 @@ The section form: one concise natural paragraph with no labels, in this order. E
 entry below or in *The section form*; the lock's phrases are the session's, word for word.
 
 ```
-TYPE: 05-social-endorsed v1.0
+TYPE: 05-social-endorsed v1.1
 Image_Type: ENDORSED (the owner's decision of 2026-09-18; the image instruction names no such mode)
 
   1. The register and the camera: "Editorial realism photo", the working distance and
@@ -144,7 +144,7 @@ spotless surface where the work is cleaning, a worn, scratched or faded surface
 
 ## WORKED EXAMPLES
 
-### example: car-wash-detailer-wheel — skeleton@1.0, run: partial
+### example: car-wash-detailer-wheel — skeleton@1.1, run: pass
 
 `pdp-dr-multifunctional-car-wash-tool-v01` · `expert.scene` · TPL-PDP06 · 4:3 · one attachment ·
 `sets/05-social-endorsed-01` round 3, prompt 2 · `sha256:b062af9c…` · 2026-09-21
@@ -158,23 +158,35 @@ Editorial realism photo from low at the front wheel, close enough that his hands
 pad, the van with its tailgate up and a second bucket on it, the intake hose in the bucket the
 water comes from, brake grime on the rim with clean metal where the spray has passed, and the
 eyes down on the wheel. The low camera did not cut the kit out of frame, which was this frame's
-predicted risk. It is `partial` for the product alone (below).
+predicted risk. **And the product is the attached one**: the reference photo was opened on
+2026-09-21 and the tool IS a black pistol-grip spray gun with a brass nozzle collar and a brass
+hose fitting at the foot of the grip, which is what the render holds. Nothing is left against this
+frame, so it is a `pass` (ADR-117).
 
 ## KNOWN-FLAKY
 
-- **The attached product does not reach the render: 9 of 9**, across three rounds of
-  `sets/05-social-endorsed-01` on one page. Every frame returned a black-and-brass garden-hose
-  spray gun in place of the `Cordless Car Wash Tool`, while the scene around it rendered as
-  written. Whether the photo was attached is unrecorded, so the cause is not established and this
-  is not a skeleton change (SPEC §6.2 asks for evidence, not a guess). The round-3 prompts carry
-  one hedge — the tool's own intake hose is *the only hose in the frame* — which is true of a
-  bucket-fed cordless washer and takes the garden-hose scene away from the renderer. It comes out
-  the day an attached render proves it unnecessary.
+- **WITHDRAWN, 2026-09-21: there was never a product failure here.** This entry said the attached
+  product did not reach the render, 9 of 9. It was wrong, and the fault was the harness's: the
+  product was graded against its NAME — `Cordless Car Wash Tool` — and never against its
+  photograph. The owner confirmed the photo was attached every time; it was then downloaded from the
+  page's own gallery URL and opened, `sha256:ff37a23b…`, the hash this set declares. **The product
+  IS a black pistol-grip spray gun with a brass nozzle collar, a trigger, a brass hose fitting at
+  the foot of the grip and yellow and orange hose connectors beside it** — which is exactly what
+  every render held. Nine renders were marked down for resembling the thing they were given
+  (ADR-117). **Grade a product against its reference photo, never against its name.**
+- **The *only hose in the frame* clause stays, on a different footing.** It was written to fight a
+  product failure that did not exist, but it is independently earned by the page: the close block
+  reads *"Wash Vehicles Anywhere Without Garden Hoses"*, so a garden hose or a tap in the frame
+  would contradict the page's own argument. It is kept for that reason and nothing else.
 - **The mark of work reads wet-versus-dry rather than dusty-versus-clean, 2 of 3** on painted
   bodywork and balcony tiles, and clearly only on the wheel, where brake grime gives the water
   something to take off. One more set decides whether the film clause needs a harder noun.
 
 ## CHANGELOG
+- 1.1 (2026-09-21): **a correction, not a change of law.** The reference photo was opened for the
+  first time and the nine renders marked down for the wrong product were carrying the right one;
+  the worked example is a `pass`, the KNOWN-FLAKY entry is withdrawn, and the *only hose* clause
+  keeps its place on the page's own claim rather than on a phantom failure. ADR-117.
 - 1.0 (2026-09-21): **promoted to active, in place, on the owner's verdict** — *"pass expert
   type cho pdp-dr"*. Round 3 landed every clause the type owns, 3 of 3. §6.3(3) is the owner's
   and given; §6.3(1) is waived as ADR-057 waived it for `03-spec-macro`; §6.3(2) ran on paper
@@ -185,8 +197,8 @@ predicted risk. It is `partial` for the product alone (below).
   cho rửa xe"*. Name the garments rather than the category, bring the trade's kit into frame, keep the
   eyes on the work, and let the dirt be a film with a clean band behind the spray (ADR-115).
 - 0.2 (2026-09-20): **the owner failed all three renders of `sets/05-social-endorsed-01/`** — each
-  held the product up in clean clothes with nothing in use, and each held a brass hose nozzle rather
-  than the attached product, 3 of 3. The type turns on the WORK: the person is the trade the page's
+  held the product up in clean clothes with nothing in use, 3 of 3. [A wrong-product clause in this
+  entry is WITHDRAWN by ADR-117: the renders carried the attached product.] The type turns on the WORK: the person is the trade the page's
   constraint belongs to, derived by the three tests; the product is doing its own thing on a real
   surface; what the work needs and the mark it has left are in frame; a presentation is refused
   (ADR-114).
