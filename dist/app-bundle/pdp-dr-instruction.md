@@ -540,7 +540,14 @@ saturated pixels sat in the orange band.
   cabinets, a scatter of coloured cushions, in four of six frames. Colour comes from what the room
   already has — wood, plants, fabric, skin — and from what the person wears. Never a fruit bowl:
   five of `hero-03`'s six renders put one in the frame.
-- **A person wears a clear, friendly colour**, never the room's beige.
+- **A person wears a clear, friendly colour**, never the room's beige — and never a charcoal or grey
+  that repeats the ground: six section frames put everyone in *a plain dark tee* on grey concrete
+  (ADR-119). Across a set the colours differ, one clear colour to each person.
+- **A palette of two neutrals and one cool hue is a monochrome** (ADR-119). The car-wash lock named
+  *clean white, deep slate grey and a fresh mid-blue*, and every one of six frames was painted from
+  those three: colourfulness under the owner's median in five, the cold side of R−B in five. A
+  lock's palette names the spread its page's own places hold — the green of trees and grass, the
+  blue of sky and water, the warm tones of wood and skin — and the product keeps its photograph's.
 - **A person's expression is natural and relaxed**, never a posed or exaggerated smile (the
   owner's instruction).
 - **Where a screen can appear**, the prompt carries G6's sentence: `Any screen shows only a
@@ -1182,6 +1189,30 @@ chinos on a job that moves water; a trade with none of its kit in frame.
   spotless: the first strains *real, never worn*, the second leaves the water nothing to remove. Ask for
   an even film of road dust and a bright cleaned band behind the spray.
 
+**Where the product is used is derived too — exactly as the person is** (ADR-119). Owner,
+2026-09-21, failing five of six FAQ renders: *"đa phần là fail do cách sử dụng màu đơn điệu, bối cảnh
+sử dụng sai. hãy check lại xem sản phẩm được sử dụng ở đâu, có phải trong hầm xe, lan can cao tầng,
+cốp xe không?"*
+
+- **Read the page for its occasions and rank them by how many of its fields name them** — hero,
+  reviews, the persona, the how steps, features, details, FAQ answers. On the car-wash page an
+  open-air apartment car park and the car's own paint lead, then a patio's slabs, bird droppings and
+  pollen, the balcony and its windows, then bikes after a muddy ride, a boat at the dock and an RV
+  after a campsite, then a driveway. The set's notes carry the count and the fields.
+- **A place the page never names is invented.** The underground garage, the car boot, the high-rise
+  railing and the football boots of that round are named by NONE of the page's fields — and they
+  are four of its five fails. The harness chose them to test a clause, not because anyone uses the
+  product there.
+- **A named place is still shown where that use really happens**: an open-air lot in daylight,
+  never a garage where the water cannot drain; a flat's own balcony floor and its window, never water
+  sprayed out over a railing onto the balconies below.
+- **The places carry the colour.** The page's own places hold a spread of hues — a boat on blue water
+  against a timber dock, an RV under green trees, a mud-caked bike on grass, green film on patio
+  slabs, a car under a tree in a sunny lot. The invented ones held grey concrete, and six grey frames
+  came out of them. Colour still comes from what the place holds, never from props (ADR-108).
+- **Every set ledger names each frame's place and the page field it comes from**, so a checker can
+  refuse a place with no source.
+
 | | the expert | the user |
 |---|---|---|
 | who | the trade the constraint belongs to | the person the page describes |
@@ -1189,7 +1220,7 @@ chinos on a job that moves water; a trade with none of its kit in frame.
 | what they wear | the trade's named pieces, marked by the work | their own clothes that can get wet |
 | what is with them | the kit the trade arrived with | nothing they would not own |
 | the hands | the practised grip, the right distance | an ordinary, comfortable one |
-| the place | the job, mid-task | their own everyday place |
+| the place | the job, mid-task, at a place the page names | their own everyday place, one the page names |
 | the eyes | on the work | on the work |
 
 **Where the page names nobody, the picture earns the standing.** `expert.name` and `expert.role` are

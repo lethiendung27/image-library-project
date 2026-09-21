@@ -3,7 +3,7 @@ id: 05-social-endorsed
 step: 5
 job: social
 device: endorsed
-version: "1.1"
+version: "1.2"
 status: active
 replaced_by: null
 channels: [landing-page]
@@ -56,7 +56,7 @@ The section form: one concise natural paragraph with no labels, in this order. E
 entry below or in *The section form*; the lock's phrases are the session's, word for word.
 
 ```
-TYPE: 05-social-endorsed v1.1
+TYPE: 05-social-endorsed v1.2
 Image_Type: ENDORSED (the owner's decision of 2026-09-18; the image instruction names no such mode)
 
   1. The register and the camera: "Editorial realism photo", the working distance and
@@ -97,7 +97,8 @@ argument. The owner failed 3 of 3 renders that held the product up with none of 
 tailgate open, the second bucket, the stack of folded towels. Round 2 named the trade in words and showed
 no kit, and the owner's answer was *"tôi chưa thấy thợ rửa xe lưu động"*, 2 of 3.
 
-**`place`** — where that trade really does this job, and **the mark the work has left**: the wet panel
+**`place`** — where that trade really does this job, **at a place the page names** (ADR-119), and
+**the mark the work has left**: the wet panel
 behind the spray, the clean strip beside the dirty one, the water on the ground. **The dirt is a film and
 the clean band is the proof**: round 2 returned one car caked in dried mud, which strains *real, never
 worn*, and one already spotless, which left the water nothing to remove. Nothing in it names an
@@ -135,7 +136,8 @@ where the trade itself works in one.
 [G6] + a name tag, a badge, a logo or a crest on clothing or in the room, a framed certificate or
 diploma, a real hospital, clinic, university or company, a second person, a posed or exaggerated
 smile, a thumbs-up, the product raised to the lens or held at chest height, a person standing square
-to the camera with nothing happening, a face turned to the lens, a studio ground for a trade that works
+to the camera with nothing happening, a face turned to the lens, a place the page never names,
+water sprayed over a high-rise railing, a studio ground for a trade that works
 outdoors, dry clothes and a dry surface where the product moves water, a button-up dress shirt and clean
 chinos on a job that moves water, a trade with none of its kit in frame, props set out as decoration, the
 product set out on display with nobody using it, the product small or far off, caked mud or an already
@@ -161,7 +163,10 @@ eyes down on the wheel. The low camera did not cut the kit out of frame, which w
 predicted risk. **And the product is the attached one**: the reference photo was opened on
 2026-09-21 and the tool IS a black pistol-grip spray gun with a brass nozzle collar and a brass
 hose fitting at the foot of the grip, which is what the render holds. Nothing is left against this
-frame, so it is a `pass` (ADR-117).
+frame, so it is a `pass` (ADR-117). **Its lock sentence is not to be copied**: *clean white, deep
+slate grey and a fresh mid-blue* is the palette ADR-119 retired for this page, after six grey
+frames; the example keeps it because it is what rendered. The page's current lock is the one in
+`sets/05-persona-lifestyle-01`.
 
 ## KNOWN-FLAKY
 
@@ -183,6 +188,8 @@ frame, so it is a `pass` (ADR-117).
   something to take off. One more set decides whether the film clause needs a harder noun.
 
 ## CHANGELOG
+- 1.2 (2026-09-21): the place is one the page names; round 3's balcony railing was named
+  by none of the page's fields, and a railing over a drop is where nobody rinses (ADR-119).
 - 1.1 (2026-09-21): **a correction, not a change of law.** The reference photo was opened for the
   first time and the nine renders marked down for the wrong product were carrying the right one;
   the worked example is a `pass`, the KNOWN-FLAKY entry is withdrawn, and the *only hose* clause

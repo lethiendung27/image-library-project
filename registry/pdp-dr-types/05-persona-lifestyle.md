@@ -3,7 +3,7 @@ id: 05-persona-lifestyle
 step: 5
 job: persona
 device: lifestyle
-version: "0.7"
+version: "0.8"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -60,7 +60,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 05-persona-lifestyle v0.7
+TYPE: 05-persona-lifestyle v0.8
 Image_Type: OTHER
 
   1. The register and the camera: "Editorial realism lifestyle photo".
@@ -76,8 +76,11 @@ Where the product is in frame, G1's one sentence ends the prompt:
 
 ## PARTS
 
-**`scene`** — one place from the section's own list, the one most buyers will recognise; a block
-listing four places still gets one frame, and the session's notes name the place it chose. Found
+**`scene`** — **one place the PAGE names**, ranked by how many of its fields name it, and shown
+where that use really happens (*The person in frame*, ADR-119); a block listing four places still
+gets one frame, and the session's notes name the place and the field it comes from. A place no
+field names is invented: the first set's underground garage, car boot and football boots were
+named by none, and they were three of its five fails. Found
 rather than styled: the room's colours are its own, with nothing added to supply one (ADR-108). **A person here is the
 derived USER** — the one the page's constraint belongs to (*The person in frame*) — in their own
 place, busy with their own thing and never posing; their clothes are named pieces they own and could get wet in, never a category (*The person in frame*); where the product is in their hands it is working; a pet only
@@ -85,9 +88,11 @@ where the product serves one. **The point where the product meets the person sta
 (owner, ADR-113): a person at rest with it is relaxed and looks away; a person using it looks at
 the point of use.
 
-**`product`** — named as the page names it, placed and never described (G2), in use or in its real
-place, at the size its host gives it (ADR-106). It may be small, and it may be absent where the
-block is about the buyer's situation rather than the object — a help image, a support block. **Never
+**`product`** — named as the page names it, placed and never described (G2), **in use**, at the
+size its host gives it (ADR-106). It may be small. It may be absent only where the block is about
+the buyer's situation and not the object — a support block; the first set's product-free FAQ frame
+argued nothing the page claims, 1 of 1, and its frame with nobody in it turned into the packshot
+this type refuses, 1 of 1 (ADR-119). **Never
 the product set out on a surface for display**: the owner's feature-image instruction rules that
 frame out, and with the product idle on a table this type turns into the packshot the library does
 not make. **A seated product sits on a seat of a clearly different tone**, asked as a relation,
@@ -112,7 +117,9 @@ cushion on a black seat of its own tone, where arm A carried it 4 of 4 (ADR-112)
 
 ## NEGATIVE
 ```
-[G6] + the product set out on a surface for display, a collage of places, a split frame,
+[G6] + a place the page never names, an underground garage, water sprayed over a high-rise railing,
+the product laid out in a car boot, a charcoal or grey outfit on a grey ground,
+the product set out on a surface for display, a collage of places, a split frame,
 an inset, staged props, a bowl of fruit, a posed or exaggerated smile, an influencer pose,
 a pale or drained grade, a warm yellow cast, shop signs or labelled packaging in the background,
 the point where the product meets the person hidden, a worn, scratched, stained or faded surface
@@ -148,6 +155,9 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   frame's colourfulness 32.0 sits inside the owner's band.
 
 ## CHANGELOG
+- 0.8 (2026-09-21): the place is one the page names, shown where that use really
+  happens; the product is in use; the owner failed five of six for grey colour and invented
+  places (ADR-119).
 - 0.7 (2026-09-21): the FAQ image is this type's even where a question names an act,
   where the page carries a `how` block; the owner refuses a step type in the FAQ (ADR-118).
 - 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:

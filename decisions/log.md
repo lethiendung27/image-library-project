@@ -9935,3 +9935,117 @@ The rule-6c sweeps ran in a clean worktree at `3f8e84a` (hits / files / TEACHES)
   been this type's ground.
 
 ---
+## ADR-119 · 2026-09-21 · The place is derived from the page like the person, and a lock of two neutrals and one cool hue is a monochrome
+
+**Owner, 2026-09-21**, on the six renders of `sets/05-persona-lifestyle-01` round 1: *"audit các ảnh
+mới, đa phần là fail do cách sử dụng màu đơn điệu, bối cảnh sử dụng sai. hãy check lại xem sản phẩm
+được sử dụng ở đâu, có phải trong hầm xe, lan can cao tầng, cốp xe không?"* — most failed on
+monotonous colour and the wrong place of use; where is this product used — an underground garage, a
+high-rise balcony, a car boot?
+
+**Graded, every frame opened, the reference held beside it**: one `partial` — the control, in an
+open-air apartment car park, grey and with no water leaving the tool — and five `fail`.
+
+### What the page says, counted
+
+Every field of `pdp-dr-multifunctional-car-wash-tool-v01` was read for the places it names, and each
+place counted by how many fields name it — by script, not by eye:
+
+| place | fields |
+|---|---|
+| the car itself: bonnet, roof, paint, road film | 11 |
+| an open-air apartment car park | 9 |
+| a patio: its slabs and concrete | 9 |
+| bird droppings and pollen | 7 |
+| the balcony and its windows | 7 |
+| bikes after a muddy ride / a boat at the dock / an RV after a campsite | 5 each |
+| a driveway | 4 |
+| **an underground garage / a car boot / a high-rise railing / football boots** | **0** |
+
+**The owner's three places, and the football boots, are named by none.** The harness chose them to
+test clauses — the underground garage to test the lock's daylight line, the boot to test the packshot
+edge — not because anyone uses the product there. They are four of the five fails. And the set's own
+note that the boots were *"an occasion the page's reviews name"* was false.
+
+### What the colour measured
+
+`scripts/frame-colour.py` against the owner's stills: colourfulness below the band's median in 5 of
+6, R−B on the cold side of the median in 5 of 6, and 85–97% of saturated pixels outside the orange
+band in 5 of 6. The numbers sit inside the band, and the script says why that is not enough: a frame
+inside it can still be wrong. Read against the frames, every one was painted from the lock's own three
+words — *clean white, deep slate grey and a fresh mid-blue* — on grey concrete, with everyone in *a
+plain dark tee*. The renderer did what it was told. The invented places were grey places.
+
+### Decision
+
+1. **The place is derived from the page exactly as the person is** (`registry/pdp-dr-instruction.md`,
+   *The person in frame*). Read every field for its occasions and rank them by how many fields name
+   them. A place no field names is invented. A named place is still shown where that use really
+   happens: an open-air lot in daylight, never a garage where the water cannot drain; a flat's own
+   balcony floor and glass, never water sent over a railing onto the balconies below.
+2. **Every set ledger names each frame's place and the fields it comes from**, and its checker refuses
+   a frame with no source.
+3. **A palette of two neutrals and one cool hue is a monochrome.** A lock's palette names the spread
+   its page's own places hold — the green of trees and grass, the blue of sky and water, the warm tones
+   of wood and skin — and the product keeps its photograph's. ADR-107 (a spread, not a warm cast) and
+   ADR-108 (colour from what the place holds, never from props) both stand, and this is what they look
+   like on a page whose places are outdoors.
+4. **A person wears a clear colour of their own, never a charcoal or grey that repeats the ground**, and
+   across a set no two people share one. The hero law already said *a clear, friendly colour*; ADR-115's
+   named garments were right about the pieces and wrong to make them dark.
+5. **`05-persona-lifestyle` → 0.8**: its scene is one place the page names; its product is in use.
+   Round 1's product-free frame argued nothing the page claims, 1 of 1, and its frame with nobody in it
+   became the packshot the type refuses, 1 of 1 — both are single observations and both are written as
+   such.
+6. **`05-social-endorsed` → 1.2**: its place is one the page names. Its round-3 technician rinsed an
+   apartment balcony's railing, which no field names; that frame stays in the committed set as what was
+   rendered, and its worked example now warns that its lock sentence is the retired palette.
+
+### The set, round 2
+
+Six frames on `faq.image`, each a place the page names and each citing its fields: the open-air car
+park (the control), bird droppings and pollen under a leafy tree, a townhouse patio's green film, a
+second-floor flat's own balcony glass and floor, a muddy bike on the grass verge, a boat at a timber
+dock. The product is at work in all six; each person wears one clear colour — tomato-red, teal,
+mustard-yellow, coral, cobalt, bright orange. The RV after a campsite and the driveway are left for the
+next set. Round 1's prompts are kept beside the set as `round-1-prompts.md`. `check.py` passes;
+`knownbad.py` catches 43 of 43, among them each of the four invented places, the retired palette, a
+charcoal tee and two people in one colour.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `df27ea3` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"deep slate grey"` | 12 | 6 | 5 |
+| `"may be absent"` | 2 | 1 | 1 |
+| `"the section's own list"` | 1 | 1 | 1 |
+| `"underground parking"` | 1 | 1 | 0 |
+| `"plain dark tee"` | 0 | 0 | 0 |
+| `"high-rise"` | 0 | 0 | 0 |
+
+- **Rewritten:** `05-persona-lifestyle`'s scene and product parts, the two teaching hits above; and a
+  warning under `05-social-endorsed`'s worked example, whose prompt carries the retired palette.
+- **These hits stand**, every one read:
+  - **`sets/05-social-endorsed-01`** (`build.py`, `check.py`, both prompt files) carries *deep slate
+    grey* because that is the lock its three rounds were rendered with. A committed set is a record of
+    what was sent.
+  - **`05-persona-lifestyle`'s *"product may be absent"* in its quoted owner rule** is the owner's own
+    instruction for the OTHER mode, kept verbatim as provenance; the type's own clause now narrows it.
+- **Checked:** `python3 scripts/validate.py` — 0 errors.
+- **Generated:** `dist/app-bundle/`.
+- `README.md`: the ADR count. `registry_version` is unchanged; no index moves.
+
+### What is NOT done
+
+- **The six ledger rows of this round are appended but not committed** — `eval/render-tests.jsonl`
+  still carries another lane's uncommitted lines.
+- **No page's lock is re-audited but this one.** Other sets proposed locks from other products before
+  this rule; each is checked when its page is next worked.
+- **The derivation of places is not a script.** The count in this ADR was made by a one-off script;
+  a set's own checker only refuses a place with no cited field. It cannot tell a field that names the
+  place from one that merely mentions a word.
+- **One product, one page.** As in ADR-118: the next set takes a product this one has never seen.
+
+---
