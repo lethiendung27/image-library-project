@@ -3,7 +3,7 @@ id: 05-social-endorsed
 step: 5
 job: social
 device: endorsed
-version: "1.2"
+version: "1.3"
 status: active
 replaced_by: null
 channels: [landing-page]
@@ -56,7 +56,7 @@ The section form: one concise natural paragraph with no labels, in this order. E
 entry below or in *The section form*; the lock's phrases are the session's, word for word.
 
 ```
-TYPE: 05-social-endorsed v1.2
+TYPE: 05-social-endorsed v1.3
 Image_Type: ENDORSED (the owner's decision of 2026-09-18; the image instruction names no such mode)
 
   1. The register and the camera: "Editorial realism photo", the working distance and
@@ -90,8 +90,8 @@ badge or logo. One person.
 **`work`** — the sentence the type turns on. **The product is doing its own thing on a real surface**,
 in the practised grip and at the distance the trade uses: water leaving the nozzle onto the paint, the
 plug going into the socket. Named as the page names it and never described (G2); **scale comes from
-the hand** (ADR-106). **What the work needs is in frame** — the bucket the intake hose draws from, the
-socket, the bench — because on a page that sells freedom from a precondition, that precondition is the
+the hand** (ADR-106). **What the work needs is in frame**, as the product PHYSICALLY needs it — the hose back to
+the tap, the socket, the bench (ADR-120) — because on a page that sells freedom from a precondition, that precondition is the
 argument. The owner failed 3 of 3 renders that held the product up with none of this, 2026-09-20.
 **And the kit the trade arrived with**, which is what makes the trade legible: the van or pickup with its
 tailgate open, the second bucket, the stack of folded towels. Round 2 named the trade in words and showed
@@ -166,7 +166,8 @@ hose fitting at the foot of the grip, which is what the render holds. Nothing is
 frame, so it is a `pass` (ADR-117). **Its lock sentence is not to be copied**: *clean white, deep
 slate grey and a fresh mid-blue* is the palette ADR-119 retired for this page, after six grey
 frames; the example keeps it because it is what rendered. The page's current lock is the one in
-`sets/05-persona-lifestyle-01`.
+`sets/05-persona-lifestyle-01`. **And its water supply is wrong** (ADR-120): the tool screws onto a
+garden hose and needs a tap, so the intake hose in a bucket is the page's fiction, not the product.
 
 ## KNOWN-FLAKY
 
@@ -179,15 +180,19 @@ frames; the example keeps it because it is what rendered. The page's current loc
   the foot of the grip and yellow and orange hose connectors beside it** — which is exactly what
   every render held. Nine renders were marked down for resembling the thing they were given
   (ADR-117). **Grade a product against its reference photo, never against its name.**
-- **The *only hose in the frame* clause stays, on a different footing.** It was written to fight a
-  product failure that did not exist, but it is independently earned by the page: the close block
-  reads *"Wash Vehicles Anywhere Without Garden Hoses"*, so a garden hose or a tap in the frame
-  would contradict the page's own argument. It is kept for that reason and nothing else.
+- **The *only hose in the frame* clause is WITHDRAWN too** (ADR-120). ADR-117 kept it on the page's
+  claim, *"Wash Vehicles Anywhere Without Garden Hoses"* — but the claim is false. The owner: *"sản
+  phẩm này phải nối với vòi nước để vận hành"*; the reference photo lays out a tap adapter and
+  garden-hose connectors beside the gun. The tool screws onto a garden hose. Every frame of this
+  set drew it fed from a bucket, as the copy said, and every one of them shows a capability the
+  product does not have. What the work needs is the hose back to the tap.
 - **The mark of work reads wet-versus-dry rather than dusty-versus-clean, 2 of 3** on painted
   bodywork and balcony tiles, and clearly only on the wheel, where brake grime gives the water
   something to take off. One more set decides whether the film clause needs a harder noun.
 
 ## CHANGELOG
+- 1.3 (2026-09-21): what the work needs is what the product physically needs, never what
+  the copy says; the worked example's bucket feed is marked wrong (ADR-120).
 - 1.2 (2026-09-21): the place is one the page names; round 3's balcony railing was named
   by none of the page's fields, and a railing over a drop is where nobody rinses (ADR-119).
 - 1.1 (2026-09-21): **a correction, not a change of law.** The reference photo was opened for the

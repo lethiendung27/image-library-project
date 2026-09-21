@@ -17,6 +17,8 @@
 
 **The product was never wrong — the grading was** (ADR-117). Nine renders across three rounds were marked down for holding "a brass garden-hose nozzle" instead of the `Cordless Car Wash Tool`. The owner confirmed the photo was attached every time; it was then downloaded from the page's own gallery URL and opened, `sha256:ff37a23b…`, the hash this set declares. **The product IS a black pistol-grip spray gun with a brass nozzle collar, a trigger, a brass hose fitting at the foot of the grip, and yellow and orange hose connectors beside it.** The renders were carrying it. The product was graded against its NAME and never against its photograph.
 
+**CORRECTION, 2026-09-21 (ADR-120): the product needs a tap.** The owner: *"sản phẩm này phải nối với vòi nước để vận hành"*. The reference photo lays out a tap adapter and garden-hose connectors beside the gun. Every prompt below feeds it from a bucket, as the page's copy says — and the copy is wrong. These prompts are kept as what was rendered; they are not to be reused.
+
 **The *only hose in the frame* clause stays, on a different footing.** It was written to fight that phantom, but the page earns it on its own: the close block reads *"Wash Vehicles Anywhere Without Garden Hoses"*, so a garden hose or a tap in the frame would contradict the page's argument.
 
 **Page:** `pdp-dr-multifunctional-car-wash-tool-v01`, template TPL-PDP06 · LP2-T1-Deal-Final v1.0.4. **Field:** `expert.scene`, one image, rendered at 4:3.

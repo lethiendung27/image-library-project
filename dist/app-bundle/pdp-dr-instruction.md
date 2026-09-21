@@ -1126,6 +1126,22 @@ demonstrating the product; all three held it up, and neither the clothes nor the
 use. **Who the person is, is DERIVED from the page — never chosen for the look**, and the derivation
 is the same for every product:
 
+**Before any of it: how does the product physically work?** (ADR-120). Owner, 2026-09-21:
+*"sản phẩm này phải nối với vòi nước để vận hành"* — this product must be connected to a water tap to
+work. The car-wash page's copy says the opposite in dozens of fields — a battery, a pump, an intake
+hose drawing from a bucket, *"No Tap Needed"* — and every section image of three sets was built on the
+copy. The reference photograph said otherwise all along: beside the gun lie a tap adapter with its
+hose clamp and two garden-hose quick connectors, which is the kit of a spray gun that screws onto a
+hose. **So the derivation starts from the product, not from the page:**
+- **read the reference photograph for how the product is used** — what it connects to, what powers
+  it, what it is filled from; the kit laid out beside a product says it plainly;
+- **the owner's word on the product outranks the page's copy**, and so does the photograph;
+- **a place where the product cannot physically work is refused**, however many fields name it: a
+  hose gun has no use in a car park with no tap, on a flat's balcony *"since we don't have a water
+  valve out there"*, or at a bucket;
+- **where the copy contradicts the photograph, the set reports it as a fault of the PAGE** — never
+  draws it. An image that shows a false capability is a false claim, whoever wrote the words.
+
 1. **Name the constraint the product removes.** It is the sentence the page keeps repeating: no
    outdoor tap and no socket in the car park; a seat that leaves the lower back unsupported; a signal
    that dies two rooms away. `brief.personaCorePain`, the `problem` block and the hero's subtitle
@@ -1149,7 +1165,8 @@ is the same for every product:
 **What the frame must show.** A person in a section image is AT WORK, never presenting:
 - **the work is happening** — the product doing its own thing on a real surface: water hitting paint,
   the plug going into the socket, the blade in the cut;
-- **what the work needs is in frame** — the bucket the intake hose draws from, the socket, the bench.
+- **what the work needs is in frame** — the garden hose running back to the tap, the socket, the
+  bench — as the product physically needs it, never as the copy says it does (ADR-120).
   On a page that sells freedom from a precondition, that precondition is the argument;
 - **the work has left a mark** — a wet panel behind the spray, a clean strip beside a dirty one, wet
   sleeves, dust on the floor;
@@ -1195,10 +1212,11 @@ sử dụng sai. hãy check lại xem sản phẩm được sử dụng ở đâ
 cốp xe không?"*
 
 - **Read the page for its occasions and rank them by how many of its fields name them** — hero,
-  reviews, the persona, the how steps, features, details, FAQ answers. On the car-wash page an
-  open-air apartment car park and the car's own paint lead, then a patio's slabs, bird droppings and
-  pollen, the balcony and its windows, then bikes after a muddy ride, a boat at the dock and an RV
-  after a campsite, then a driveway. The set's notes carry the count and the fields.
+  reviews, the persona, the how steps, features, details, FAQ answers — **then strike every one
+  where the product cannot physically work** (ADR-120). The car-wash page's ranking led with an
+  open-air apartment car park and a flat's balcony, both chosen by its copy BECAUSE they have no tap;
+  the product needs one, so both fall, and the driveway, the patio, the bikes, the boat and the RV
+  at a house with a tap are what stays. The set's notes carry the count, the fields and the strikes.
 - **A place the page never names is invented.** The underground garage, the car boot, the high-rise
   railing and the football boots of that round are named by NONE of the page's fields — and they
   are four of its five fails. The harness chose them to test a clause, not because anyone uses the

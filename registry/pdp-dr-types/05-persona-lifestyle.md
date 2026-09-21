@@ -3,7 +3,7 @@ id: 05-persona-lifestyle
 step: 5
 job: persona
 device: lifestyle
-version: "0.8"
+version: "0.9"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -60,7 +60,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 05-persona-lifestyle v0.8
+TYPE: 05-persona-lifestyle v0.9
 Image_Type: OTHER
 
   1. The register and the camera: "Editorial realism lifestyle photo".
@@ -76,8 +76,9 @@ Where the product is in frame, G1's one sentence ends the prompt:
 
 ## PARTS
 
-**`scene`** — **one place the PAGE names**, ranked by how many of its fields name it, and shown
-where that use really happens (*The person in frame*, ADR-119); a block listing four places still
+**`scene`** — **one place the PAGE names where the product can physically work**, ranked by how
+many of its fields name it, and shown where that use really happens (*The person in frame*,
+ADR-119, ADR-120); a block listing four places still
 gets one frame, and the session's notes name the place and the field it comes from. A place no
 field names is invented: the first set's underground garage, car boot and football boots were
 named by none, and they were three of its five fails. Found
@@ -155,6 +156,9 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   frame's colourfulness 32.0 sits inside the owner's band.
 
 ## CHANGELOG
+- 0.9 (2026-09-21): a place the page names is struck where the product cannot physically
+  work — the owner: the car-wash tool needs a tap, and the copy's car park and balcony have none
+  (ADR-120).
 - 0.8 (2026-09-21): the place is one the page names, shown where that use really
   happens; the product is in use; the owner failed five of six for grey colour and invented
   places (ADR-119).

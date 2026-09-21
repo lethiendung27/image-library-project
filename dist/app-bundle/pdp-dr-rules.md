@@ -341,7 +341,7 @@ notes and ships. The owner may turn any of them back into a refusal.
     (owner decision, 2026-09-21, ADR-118): *"không sử dụng use sequence cho faq do how to use đã
     có"*. The steps already have a slot on the page, and a second set of steps in the FAQ spends
     the last image before the buy button saying what the page has said. Where a FAQ question names
-    an act — submerging an intake hose, rinsing a filter — the ACT belongs to `how.image`
+    an act — screwing the gun onto the hose, twisting the nozzle — the ACT belongs to `how.image`
     (`03-use-demo`), and the FAQ image takes `05-persona-lifestyle`: where the product fits, who
     it is for, what life it belongs to. `03-use-sequence` and `03-use-grid` are refused on a FAQ
     field for the same reason, and not merely deprecated there: rule 13 would have caught the

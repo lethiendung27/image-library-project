@@ -200,6 +200,11 @@ A("**The product was never wrong — the grading was** (ADR-117). Nine renders a
   "grip, and yellow and orange hose connectors beside it.** The renders were carrying it. The product "
   "was graded against its NAME and never against its photograph.")
 A("")
+A("**CORRECTION, 2026-09-21 (ADR-120): the product needs a tap.** The owner: *\"sản phẩm này phải nối với "
+  "vòi nước để vận hành\"*. The reference photo lays out a tap adapter and garden-hose connectors beside "
+  "the gun. Every prompt below feeds it from a bucket, as the page's copy says — and the copy is wrong. "
+  "These prompts are kept as what was rendered; they are not to be reused.")
+A("")
 A("**The *only hose in the frame* clause stays, on a different footing.** It was written to fight that "
   "phantom, but the page earns it on its own: the close block reads *\"Wash Vehicles Anywhere Without "
   "Garden Hoses\"*, so a garden hose or a tap in the frame would contradict the page's argument.")

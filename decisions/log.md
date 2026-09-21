@@ -10049,3 +10049,98 @@ The rule-6c sweeps ran in a clean worktree at `df27ea3` (hits / files / TEACHES)
 - **One product, one page.** As in ADR-118: the next set takes a product this one has never seen.
 
 ---
+## ADR-120 · 2026-09-21 · How the product physically works outranks what the page's copy says it does — the car-wash tool screws onto a garden hose
+
+**Owner, 2026-09-21:** *"sản phẩm này phải nối với vòi nước để vận hành"* — this product has to be
+connected to a water tap to work.
+
+**The reference photograph said so all along.** `sha256:ff37a23b…`, opened on 2026-09-21 for ADR-117:
+beside the gun lie a tap adapter with its hose clamp and key, and two garden-hose quick connectors.
+That is the kit of a spray gun that screws onto a garden hose. ADR-117 described those parts and drew
+no conclusion from them.
+
+**The page's copy says the opposite, in dozens of fields**, counted by script: 15 fields say it draws
+water from a bucket, 10 that no tap or no hose is needed, 28 that it is battery-powered or cordless, 4
+that it has a pump — *"No Tap Needed"*, *"Wash Vehicles Anywhere Without Garden Hoses"*, *"Draws from a
+bucket with no tap"*, a 10000 or 20000 mAh pack. The copy describes a product this is not.
+
+**What the library built on the copy**: every section image of three sets. ADR-114 derived the user as
+the resident with no outdoor tap and put *"its intake hose runs down into a filled bucket"* in every
+frame; ADR-115 kept it; ADR-117 kept *"the only hose in the frame"* on the page's claim; ADR-118 told
+the owner that the green garden hose in the FAQ image **contradicted the page** — when that image,
+from the owner's own generator, was the only one that showed the product as it works; ADR-119 ranked
+the page's places with an apartment car park and a flat's balcony near the top, both chosen by the copy
+precisely because they have no tap.
+
+### Decision
+
+1. **Step 0 of the derivation** (`registry/pdp-dr-instruction.md`, *The person in frame*): **how does
+   the product physically work?** Read the reference photograph — what it connects to, what powers it,
+   what it is filled from; the kit laid out beside a product says it plainly. The owner's word on the
+   product and the photograph both outrank the page's copy.
+2. **A place where the product cannot physically work is struck**, however many fields name it. For
+   this product: the apartment car park (the copy's own premise is that it has no tap), the flat's
+   balcony (*"we don't have a water valve out there"*), and any frame that feeds it from a bucket.
+3. **Where the copy contradicts the photograph, the set reports it as a fault of the PAGE and never
+   draws it.** An image of this product drawing water from a bucket shows a capability it does not
+   have: a false claim, whoever wrote the words. The page's copy is outside this library; its fault is
+   reported to the owner.
+4. **What the work needs is what the product physically needs** — here the garden hose back to the
+   tap — in the instruction, in `05-social-endorsed` → 1.3, and in `05-persona-lifestyle` → 0.9.
+5. **Withdrawn**: ADR-117's footing for *"the only hose in the frame"*; ADR-118's statement that the
+   FAQ image's garden hose contradicted the page (the image was right about the product and the page
+   was wrong about it); rule 14's example act *"submerging an intake hose"*, now *"screwing the gun onto
+   the hose"*. **Rule 14 itself stands**: a FAQ image still never repeats the how-to argument.
+6. **What stands from the earlier ADRs**: the derived person at work (ADR-114), the named garments and
+   the trade's kit (ADR-115), the renders carrying the attached gun (ADR-117), the place derived from
+   the page and the palette of the places' own hues (ADR-119). `05-social-endorsed`'s promotion stands
+   on the owner's verdict; its worked example is marked: its water supply is the copy's, not the
+   product's.
+
+### The set, round 3
+
+`sets/05-persona-lifestyle-01`: the page's occasions at a house with an outdoor tap — the car on the
+driveway (the control), the patio, a muddy bike on the lawn by the garage, the ground-floor windows
+from the garden, a boat on its trailer in the side yard, an RV on the gravel pad after a campsite. In
+every frame the gun is *"screwed onto a green garden hose that runs back to the outdoor tap on the
+wall"*; no bucket, no intake hose, no battery, no pump. One clear colour to each person. Rounds 1 and
+2 are kept beside it. `check.py` refuses a bucket, an intake hose, a battery or pump, and a place with no
+tap; `knownbad.py` catches 44 of 44.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `cb8fb4b` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"intake hose"` | 35 | 12 | 8 |
+| `"filled bucket"` | 20 | 8 | 6 |
+| `"the only hose in the frame"` | 17 | 8 | 6 |
+| `"draws from"` | 7 | 7 | 4 |
+| `"no outdoor tap"` | 5 | 3 | 3 |
+
+- **Rewritten:** the instruction's *what the work needs* line and its place-ranking paragraph; rule
+  14's example; `05-social-endorsed`'s *What the work needs*, its KNOWN-FLAKY entry on the *only hose*
+  clause, and its worked example's note; `05-persona-lifestyle`'s scene part.
+- **These hits stand**, every one read:
+  - **`sets/05-social-endorsed-01`** — every prompt feeds the tool from a bucket, because that is what
+    was rendered and passed. It now opens with a correction saying the prompts are not to be reused.
+  - **`05-social-endorsed`'s worked example and its 0.2–1.0 changelog entries** — the record of what
+    rendered and what was believed, each now under a correction.
+  - **`sets/05-persona-lifestyle-01`'s round-1 and round-2 files** — kept as records beside round 3.
+  - **`decisions/log.md`** — ADR-114 to ADR-119 keep their text; this entry is the correction on top.
+- **Checked:** `python3 scripts/validate.py` — 0 errors. Both sets' checkers pass.
+- **Generated:** `dist/app-bundle/`.
+- `README.md`: the ADR count. `registry_version` is unchanged.
+
+### What is NOT done
+
+- **The page is not fixed, and cannot be from here.** Its copy sells a tapless, battery-powered,
+  bucket-fed washer; the product is a hose gun. That is a claim a buyer will test on day one and a
+  refund the 90-day guarantee will pay. The content must be regenerated from the product, and the
+  library will not draw the copy's version of it.
+- **The library has no check that reads a reference photograph's kit.** Step 0 is a writer's rule.
+- **The ledger rows of this session still wait** in `eval/render-tests.jsonl` beside another lane's
+  uncommitted lines.
+
+---
