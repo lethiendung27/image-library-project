@@ -9833,3 +9833,105 @@ The rule-6c sweeps ran in a clean worktree at `c6102cc` (hits / files / TEACHES)
   correction and still waits on another set.
 
 ---
+## ADR-118 · 2026-09-21 · A FAQ image never repeats the how-to-use argument: rule 14, and `05-persona-lifestyle` gets its first set on the slot
+
+**Owner, 2026-09-21**, on being told the car-wash page's `faq.image` would route to `03-use-sequence`
+today: *"không sử dụng use sequence cho faq do how to use đã có"* — do not use a sequence for the
+FAQ, the how-to-use block already exists.
+
+**What sits in that slot today**, read from the page's own export and opened:
+`flunnel-gen-673-faq-image--A.webp`, `sha256:59ad65bf…`, 1200×896, a three-panel strip from the
+owner's own generator — submerging the intake hose, the grip, rinsing the filter. It is the
+how-to-use argument, made twice on one page. Its middle panel also puts the tool on a **green garden
+hose**, against the page's own close block: *"Wash Vehicles Anywhere Without Garden Hoses"*.
+
+### Decision
+
+1. **Rule 14** (`mapping/pdp-dr-rules.md`): **a FAQ image never repeats the how-to-use argument where
+   the page carries a `how` block.** The steps already have a slot; a second set of steps in the FAQ
+   spends the last image before the buy button saying what the page has said. Where a FAQ question
+   names an act — submerging an intake hose, rinsing a filter — the ACT belongs to `how.image`
+   (`03-use-demo`), and the FAQ image takes `05-persona-lifestyle`: where the product fits, who it is
+   for, what life it belongs to. `03-use-sequence` and `03-use-grid` are refused there for the same
+   reason. A page with **no** `how` block keeps the question's own answer.
+2. **The refusal is of the STEP types only.** Where a FAQ question is an objection about the RESULT,
+   the image still answers it: the one FAQ image this repo has delivered,
+   `query/sessions/pdp-dr-seat-cushion-l-shaped-v08`, took `06-relief-hero` for *"Will this cushion
+   sit me too tall behind the steering wheel?"*. That stands.
+3. **`05-persona-lifestyle` → 0.7** and **`03-use-demo` → 0.7**, each carrying its half of the rule in
+   its own trigger, so a router that reads one file reaches the same answer as one that reads the
+   other.
+4. **The type owes a render, so it gets a set.** `sets/05-persona-lifestyle-01` is its first — six
+   FAQ images for the car-wash page, owner-gated and uncommitted.
+
+### The set
+
+Six frames on `faq.image`, one control and five that each change one thing:
+
+| # | who and where | product | what it tests |
+|---|---|---|---|
+| 1 | a man in his forties, his own car in his building's parking bay | in frame | the CONTROL: the derived USER, his own car, his own clothes |
+| 2 | a woman in her fifties, her own balcony and patio chairs | in frame, smaller | a second occasion the page names |
+| 3 | a man in his sixties, the underground parking bay | in frame | a place with no daylight of its own, against the lock's daylight line |
+| 4 | a woman in her thirties, the walkway behind her block | **ABSENT** | the type's product-free case: does it argue the persona, or fall back into the page's pain? |
+| 5 | nobody, the open boot of a hatchback | in frame | the type's named risk: with nobody using it, does it become a packshot? |
+| 6 | a man in his forties, muddy football boots on his tailgate | in frame | an occasion the reviews name, possessions rather than a vehicle |
+
+It is the USER's set, not the expert's: no work van, no second bucket, no folded towels, no coveralls
+— its checker refuses all of them, because that kit belongs to `05-social-endorsed`. Every frame
+carries the page's lock, the user's own named clothes, *found rather than styled*, and no words. Image
+4 carries **no G1 sentence and no attachment**, because the product is not in it.
+
+`check.py` reads the six against the type and rule 14; `knownbad.py` catches **40 of 40**, including
+the one that matters here — a step sequence written into a FAQ frame.
+
+**One weakness is named rather than hidden**: every frame is the same product and the same page. The
+library's standing rule is that a real rule holds on a product it has never seen, and no second LP2
+export exists to take one from today. When the type's clauses need proving, the next set takes a
+product this one has never used.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `3f8e84a` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"faq"` | 66 | 17 | 5 |
+| `"03-use-sequence"` | 348 | 94 | 20 |
+| `"how-to-use"` | 114 | 67 | 13 |
+| `"a help or FAQ image"` | 1 | 1 | 1 |
+| `"help_image"` | 6 | 2 | 0 |
+
+- **Rewritten:** `mapping/pdp-dr-rules.md`'s `faq` routing row and its new rule 14; the triggers of
+  `05-persona-lifestyle` and `03-use-demo`.
+- **These hits stand**, every one read:
+  - **`SPEC.md` line 125 and `mapping/export-to-content.md`** call `faq` *furniture* shared by all
+    three page kinds — a statement about blocks, not about which type fills an image.
+  - **`registry/pdp-dr-instruction.md`** line 1127 reads the `uses` and FAQ blocks for the occasions a
+    persona is derived from, which this decision relies on, and line 1249 is a frame fact about
+    `object-contain` letterboxing WiBoofy's FAQ image.
+  - **`05-persona-lifestyle`'s criterion-2 note** already names `a faq image` as its ground.
+  - **The 20 teaching files that name `03-use-sequence`** are its own type file, the gallery rules and
+    the sets that use it as a GALLERY tile. Rule 14 refuses it on one section field and changes
+    nothing else about it. Only `mapping/pdp-dr-rules.md` names both it and the FAQ, and that is the
+    file this decision edits.
+  - **`query/sessions/pdp-dr-seat-cushion-l-shaped-v08`** is a delivered record and the precedent
+    quoted in the decision.
+- **Checked:** `python3 scripts/validate.py` — 0 errors. The set's `check.py` passes and its
+  `knownbad.py` catches 40 of 40.
+- **Generated:** `dist/app-bundle/`.
+- `README.md`: the ADR count. `registry_version` is unchanged, and no index moves: both types are
+  still reserved.
+
+### What is NOT done
+
+- **The slot is not fixed yet.** `05-persona-lifestyle` is `reserved`, so `faq.image` still routes by
+  role through Layer 2 until the owner passes a render of this set. What the page shows today is the
+  owner's own generated strip.
+- **The garden hose in the current FAQ image is not this decision's to remove** — it is the owner's
+  file, not a library render. It is recorded here because the page argues against it.
+- **No second product.** As above.
+- **The `uses` block is untouched.** Rule 14 speaks only of a FAQ field; a `uses` block has always
+  been this type's ground.
+
+---

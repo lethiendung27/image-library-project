@@ -3,7 +3,7 @@ id: 05-persona-lifestyle
 step: 5
 job: persona
 device: lifestyle
-version: "0.6"
+version: "0.7"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -46,8 +46,11 @@ use_when: >
   product fits rather than what it does: a uses block listing places, people or
   occasions; a help or FAQ image; a support or brand block; any section whose copy
   names no problem, no result, no process, no step and no single feature. The product
-  may be small in the frame or absent from it. Take 06-relief-after when the copy names
-  what the product changes; 03-use-demo when it names an act; 05-persona-grid or
+  may be small in the frame or absent from it. **A FAQ image is this type's even where a
+  question names an act**, when the page carries a how block: the steps have their slot
+  there (rule 14, ADR-118) — unless that question is an objection about the RESULT, which is
+  06-relief-after's. Take 06-relief-after when the copy names what the product changes;
+  03-use-demo when it names an act and no how block holds it; 05-persona-grid or
   06-relief-scene for a gallery tile, which this type never fills; and never a buyer
   tile, which is 05-social-snapshot's.
 
@@ -57,7 +60,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 05-persona-lifestyle v0.6
+TYPE: 05-persona-lifestyle v0.7
 Image_Type: OTHER
 
   1. The register and the camera: "Editorial realism lifestyle photo".
@@ -145,6 +148,8 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   frame's colourfulness 32.0 sits inside the owner's band.
 
 ## CHANGELOG
+- 0.7 (2026-09-21): the FAQ image is this type's even where a question names an act,
+  where the page carries a `how` block; the owner refuses a step type in the FAQ (ADR-118).
 - 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:
   *a work shirt* rendered as a button-up dress shirt 2 of 3 in `sets/05-social-endorsed-01` round 2
   (ADR-115).

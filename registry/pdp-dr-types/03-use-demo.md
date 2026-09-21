@@ -3,7 +3,7 @@ id: 03-use-demo
 step: 3
 job: use
 device: demo
-version: "0.6"
+version: "0.7"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -58,7 +58,10 @@ use_when: >
   follows the copy's own step strictly. Take 03-mechanism-diagram when the steps happen
   inside the product or the body rather than in the buyer's hands; 06-relief-after when
   the line is the result rather than the act; 03-use-sequence or 03-use-grid for a
-  gallery tile that strings several steps together, which this type never fills.
+  gallery tile that strings several steps together, which this type never fills. A FAQ
+  field is NOT this type's where the page carries a how block: the act has its slot there,
+  and the FAQ image takes 05-persona-lifestyle (rule 14, owner decision 2026-09-21,
+  ADR-118).
 
 ## SKELETON
 The section form since ADR-112: the owner's image instruction as it stands. Its Image_Type is this
@@ -66,7 +69,7 @@ type's mode and its Description the field's own page values; the prompt is one c
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
 ```
-TYPE: 03-use-demo v0.6
+TYPE: 03-use-demo v0.7
 Image_Type: HOW TO USE
 
   1. The register and the camera: "Editorial realism close-up", partial hand,
@@ -169,6 +172,8 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   hands. A real car maker's badge sits on the steering wheel, which G6's `logo` bars.
 
 ## CHANGELOG
+- 0.7 (2026-09-21): a FAQ field is not this type's where the page carries a `how`
+  block — the owner refuses a second set of steps in the FAQ (ADR-118).
 - 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:
   *a work shirt* rendered as a button-up dress shirt 2 of 3 in `sets/05-social-endorsed-01` round 2
   (ADR-115).

@@ -85,7 +85,7 @@ this table; rows are tried in order and the first match wins.
 | `expect` | `proof` | `@pair` | — a pair, whose construction rule 11 fixes | aure |
 | `reviews` `ugc` `trusted` `testimonials` | `social-proof` | `05-social-snapshot` | — buyer tiles, and pairs in the buyer's register: rules 11 and 12 | all four |
 | `expert` | `@copy` | `05-social-endorsed` | the quoted claim decides: the expert with the product, face shown and flagged (rule 12); working hands are `03-use-demo`'s, a process is `03-mechanism-diagram`'s | wiboofy, aure |
-| `faq` | `@copy` | `05-persona-lifestyle` | the question the image sits beside decides | wiboofy, aure |
+| `faq` | `@copy` | `05-persona-lifestyle` | the question decides, EXCEPT that a page with a `how` block never gives its FAQ a step type (rule 14) | wiboofy, aure |
 | `offer` `close` `bundle` | `cta` | `06-relief-after` | `outcome`, where the block argues what the packshot does not (Slot kinds, `closing`); otherwise the field reuses gallery image 1 and takes no type | all four |
 | `*` | `@copy` | `@copy` | — | — |
 
@@ -336,6 +336,20 @@ notes and ships. The owner may turn any of them back into a refusal.
     image shown twice, and the page reuses the file rather than generating it again. It is the only
     cross-slot check that runs over the whole page. A type may appear on a page as often as the page
     has messages for it.
+
+14. **A FAQ image never repeats the how-to-use argument where the page carries a `how` block**
+    (owner decision, 2026-09-21, ADR-118): *"không sử dụng use sequence cho faq do how to use đã
+    có"*. The steps already have a slot on the page, and a second set of steps in the FAQ spends
+    the last image before the buy button saying what the page has said. Where a FAQ question names
+    an act — submerging an intake hose, rinsing a filter — the ACT belongs to `how.image`
+    (`03-use-demo`), and the FAQ image takes `05-persona-lifestyle`: where the product fits, who
+    it is for, what life it belongs to. `03-use-sequence` and `03-use-grid` are refused on a FAQ
+    field for the same reason, and not merely deprecated there: rule 13 would have caught the
+    repeat only as a warning, and this is the owner's refusal. A page with NO `how` block keeps
+    the question's own answer. And the refusal is only of the STEP types: where a FAQ question is
+    an objection about the RESULT rather than an act, the image still answers it — the one FAQ image
+    this repo has delivered, `query/sessions/pdp-dr-seat-cushion-l-shaped-v08`, took `06-relief-hero`
+    for *"Will this cushion sit me too tall behind the steering wheel?"*, and that stands.
 
 **The set keeps a ledger, and every tile reads it before it chooses anything.** Tile by tile and
 cumulatively: the types used, the message keys used (feature keys, not sentences), the angle
