@@ -155,6 +155,16 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   reference has it, on a wooden chair of another tone. A beige sweater in a white kitchen; the
   frame's colourfulness 32.0 sits inside the owner's band.
 
+- **Set `05-persona-lifestyle-01`, round 3** (0.9; harness: four pass, two partial). The first round
+  that drew the product as it works, at a house with a tap, and the first above the owner's median
+  colourfulness in every frame (42.7–57.9, against 5 of 6 below it in round 1). Two single faults:
+  - **a car maker's badge** — the control's hatchback came back with a Volkswagen badge on its grille,
+    a logo G6 refuses; a VW badge also came back in round 1. Two observations across the set, under
+    the recurrence rule's three, so the set's next prompt asks for an unbadged car and the skeleton
+    does not change yet;
+  - **the gun changed in one frame** — beside a boat with a trolling motor on its rail, the gun became
+    a bulky grey-olive tool with no brass collar, 1 of 6; graded against the reference photograph.
+
 ## CHANGELOG
 - 0.9 (2026-09-21): a place the page names is struck where the product cannot physically
   work — the owner: the car-wash tool needs a tap, and the copy's car park and balcony have none
