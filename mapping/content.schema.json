@@ -63,13 +63,9 @@
               "description": "What the product visibly emits: mist | spray | water-jet | steam | foam | light | particles | none. Drives G8 (visible mechanism) and the LIGHT branch. Use 'none' when nothing is visible — never invent an effect."
             },
             "mounting": {
-              "enum": [
-                "fixed-installed",
-                "handheld",
-                "worn",
-                "freestanding"
-              ],
-              "description": "The single mode of use every layer must share (G7-X)."
+              "type": "string",
+              "minLength": 1,
+              "description": "The single mode of use every layer must share (G7-X): how the product is held or installed while it is used. Four tokens stay canonical - fixed-installed, handheld, worn, freestanding - and mapping/slot-rules.md carries a row for fixed-installed that a WRITER applies; no code reads this value, because that row drops no type (see the paragraph under the table). A product none of the four fits says what it is plainly here instead of being forced into the nearest token."
             },
             "colorways": {
               "type": "array",

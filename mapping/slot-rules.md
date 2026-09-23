@@ -77,7 +77,7 @@ forever.
 | `symptom_visibility: invisible` | drop `01-pain-split`; `02-symptom-rail` only if downstream symptoms are photographable (then vignette mode `visible-symptom`) |
 | `visible_output` ≠ `none` | G8 binds: hero options must use the backlight branch; the output is the primary subject |
 | static frame cannot show the product difference | `04-proof-lockedframe`: forbid `--rivals`/`--verdict`, require `--timelapse`/`--capture` (VARIANT SELECTION RULE — verified) |
-| `mounting: fixed-installed` | G7-X: installed mode in every layer; ugc register needs the low-angle reframe (product + output as subject) |
+| `mounting: fixed-installed` | G7-X: installed mode in every layer; ugc register needs the low-angle reframe (product + output as subject). The field is a free string since ADR-121, so this row fires on that token and a writer reads any other wording |
 | `operation: active` / `passive` | POSE branch: mid-action vs relaxed |
 | `body_contact: false` | drop `03-mechanism-ghostbody`; mechanism slots fall to `03-mechanism-xray` (its `avoid_when` went at ADR-060, so trivial interiors and anti-tech-render categories are a FIT judgement now, not a refusal) |
 | `result_visibility: invisible` | drop `06-relief-scene` (close with `06-relief-hero` instead) |

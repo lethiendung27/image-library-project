@@ -10144,3 +10144,78 @@ The rule-6c sweeps ran in a clean worktree at `cb8fb4b` (hits / files / TEACHES)
   uncommitted lines.
 
 ---
+## ADR-121 · 2026-09-23 · `mounting` becomes a string with a description: the dev's schema change, and the enum was never the gate
+
+**The dev's rule update**, row 1 of a table the owner passed on 2026-09-23:
+
+| # | Việc | Ở đâu |
+|---|---|---|
+| 1 | `mounting: enum → type: string (+ description)` | `mapping/content.schema.json` |
+
+Only row 1 is legible in the screenshot; anything below it is unread and undone here.
+
+**What the enum was.** `product.attributes.mounting` is one of the eight attributes every
+`content.json` carries, and the schema fixed it to four tokens: `fixed-installed`, `handheld`,
+`worn`, `freestanding`. `mapping/slot-rules.md` carries one row on it — *G7-X: installed mode in
+every layer; the ugc register needs the low-angle reframe*.
+
+**Two facts, both checked before the change:**
+- **The enum already rejected a real contract.** Of the 18 `mounting` values in this repo's
+  `content.json` files, one is `portable` (`advertorial-optical-drive-7in1-v01`) and one is a whole
+  sentence of prose. Run against the schema, exactly **one** contract failed on this field.
+- **No code has ever read the value.** `parse_attribute_gates()` takes a row only where the effect
+  cell says ``drop `type` ``, and the `mounting` row drops nothing; the executable gates are
+  `symptom_visibility`, `body_contact`, `result_visibility` and `multi_step_usage`.
+  `mapping/slot-rules.md` says so in its own paragraph under the table. So the enum constrained
+  writers, not routing.
+
+### Decision
+
+1. **`mounting` is `type: string`, `minLength: 1`, with a description** — the dev's row 1, applied
+   as written.
+2. **The four tokens stay canonical, in that description**, along with what they are for: the
+   `fixed-installed` row in `mapping/slot-rules.md` is a constraint a WRITER applies, and a product
+   that none of the four fits now says what it is plainly rather than being forced into the nearest
+   token.
+3. **The slot-rules row says the field is a free string** and that the row fires on that token,
+   so the table and the schema cannot drift apart on it.
+
+### Consequences
+
+The rule-6c sweeps ran in a clean worktree at `d6a58c4` (hits / files / TEACHES), counted by script:
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"mounting"` | 76 | 52 | 13 |
+| `"fixed-installed"` | 16 | 16 | 6 |
+| `"freestanding"` | 27 | 18 | 2 |
+| `"the eight"` | 64 | 26 | 11 |
+
+- **Rewritten:** `mapping/content.schema.json` and the `mounting` row of `mapping/slot-rules.md`.
+- **These hits stand**, every one read:
+  - **`eval/golden/fixture-001`, `-002`, `-003`** carry `"mounting": "fixed-installed"` and
+    `fixture-001`'s `expected-routes.yaml` asserts the G7-X line. The canonical token is unchanged,
+    so the fixtures mean what they meant.
+  - **`mapping/slot-rules.md`'s paragraph under the table** already says this row is not executable;
+    this decision relies on it and adds nothing to it.
+  - **`query/runbook.md`'s Stage-1 line** (*mounting → G7-X mode*) is what a writer does with the
+    value, which is exactly what it still is.
+  - **The word "mounting" in six type files** — *its real mounting point*, *external mounting
+    hardware*, *same mounting hub*, *a hand mounting the device* — is English, not the attribute.
+  - **`scripts/export-to-content.py`** requires the key to be present and does not check its value
+    against the enum; `visible_output` keeps the documented-token warning it has always had.
+- **Checked:** `python3 scripts/validate.py` — 0 errors, and contracts rejected on `mounting` go
+  from 1 to 0.
+- **Generated:** `dist/app-bundle/`, which carries the schema.
+- `README.md`: the ADR count. `registry_version` is unchanged; no index moves.
+
+### What is NOT done
+
+- **The rest of the dev's table.** The screenshot shows row 1 only; the rows below it are cut off and
+  nothing was guessed from them.
+- **`visible_output` is not changed.** It has the same shape — eight documented tokens, a warning
+  rather than an enum — and the dev's row did not name it.
+- **No fixture or session content.json is rewritten.** `portable` and the prose value now validate as
+  they are; nothing is normalised into a token it never meant.
+
+---
