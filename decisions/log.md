@@ -10468,3 +10468,60 @@ The rule-6c sweeps ran at `855c7c6` (hits / files / TEACHES):
 - **The small-icon complaint is only half answered.** A badge that is small by design read as weak against a busy background; decision 5 makes the whisper family the default, and the badge's size against its ground is the next thing to measure with `scripts/text-size.py`.
 
 ---
+
+## ADR-126 · 2026-10-05 · Read the product before writing the frame: an operating model, one named STEP of its own procedure, and two hands with a job each
+
+**Owner report, 2026-10-05**, on `sets/section-09/`: *"chất lượng ảnh mới của bộ section 09 vẫn quá đểu, instruction không có cơ chế đọc sản phẩm trước xem nó hoạt động như thế nào. tự nhiên lôi 1 cái fuse hỏng ra rồi đo cái gì? rồi không tham chiếu kĩ ảnh sản phấm sử dụng như thế nào, cứ cầm bừa vào trông ảnh như bãi rác"* — the instruction has no mechanism for READING the product first to see how it works; it pulls out a blown fuse and then measures what?; it never studies the usage photos, so the thing is held any old way and the frame looks like a rubbish heap. Three ledger lines land with this commit.
+
+**What ADR-125 bought, and it is worth saying first.** The one drawn mark in the set came back as LIGHT: a blue bloom out of the contact, spilling along the post and dying into the shade, not a vector arc. *Light, not a graphic* holds, 1 of 1.
+
+**What the three frames show, and all three are the same fault:**
+
+| frame | what is wrong | the owner's words |
+|---|---|---|
+| the fuse | one man holds a fuse in two hands AND a probe in a third; the transmitter lies on the floor mat, leads coiled, **clipped to nothing**, so no circuit is under test; the fuse came back with an unbroken filament | *"lôi 1 cái fuse hỏng ra rồi đo cái gì?"* |
+| the battery | the clip's jaws **hang open beside the terminal**: the connection the whole frame is about was never made, and the blue light between open jaws reads as an arc weld — a short circuit, the opposite of the claim | *"cứ cầm bừa vào"* |
+| the loom | the kit's parts are **swapped**: the alligator leads hang from the body in his right hand, which is the receiver, while the transmitter in his left hand has none; the clips dangle free, so the tone has nothing to travel down | *"không tham chiếu kĩ ảnh sản phẩm sử dụng như thế nào"* |
+
+**The common cause is a missing step, not a missing clause.** `03-spec-overlay` asks what the feature's EVENT is (ADR-124) and how to draw it (ADR-125), and never asks **what the product is and how a person operates it**. So a frame can pass every clause in the file and still show a tool that is plugged into nothing, held by the wrong end, or watching a job it has no part in. A frame in which the product is not working is not a feature image, however well lit.
+
+### Decision
+
+1. **A PRODUCT READING comes before the event, and the set's notes carry it.** Before any prompt is written, the writer states the product's operating model in five lines:
+   - **PARTS** — what each body, lead, probe, clip or button is, and which part is which in the attached photo.
+   - **CONNECTIONS** — what attaches to what, in what order, and to what on the vehicle, body or surface.
+   - **GRIP** — which part a hand holds, and where, as the usage photos show it.
+   - **SEQUENCE** — the real procedure, numbered.
+   - **THE INDICATION** — how the product tells the operator it is working: a lamp, a tone, a reading, a movement.
+   Its sources rank: the attached product photo and the owner's usage photos first, then the brief's own facts, then the page's copy (ADR-120).
+2. **Every frame is ONE NAMED STEP of that sequence**, and the set says which. The product is in its working state in that step: clipped, gripping, connected, switched on, under load. **A product that is in frame but not doing its job voids the frame**, and so does an action that belongs to no step — inspecting a fuse by eye is a step of a different job, not of this tool's.
+3. **Two hands, and each has a job the step needs.** The prompt names what the left hand does and what the right hand does, and asks for nothing that would need a third. Three of this product's last nine frames asked for three hands' worth of work.
+4. **Only the step's props.** Everything the named step does not need stays out of frame: no loose parts, no coiled spare leads, no second tool. This is what makes a frame read as a rubbish heap.
+5. **A drawn light at a connection must read as indication, never as arcing.** It sits where metal actually meets metal, on a closed contact, and never in the gap of an open jaw.
+6. **The set names the photos it needs**: the product photo, and at least one USAGE photo showing the grip. Where no usage photo exists, the set says so and the grip comes from the brief's own description — and the render is graded on the mark and the step, never on the grip.
+7. **`03-spec-overlay` goes to 0.9** with 1 to 5 in it, and `sets/section-10/` is next: the same three feature lines on the same product, each frame a numbered step of the operating model this decision requires.
+
+### Consequences
+
+The rule-6c sweeps ran at `3efe607` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"in use"` | 227 | 75 | 37 |
+| `"the product is working"` | 2 | 2 | 1 |
+| `"one event to a frame"` | 2 | 1 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.9 — a new `PARTS/product-reading`, `PARTS/event` (one named step), `PARTS/scene` (two hands, the step's props only), `MARKS/overlay` (indication, never arcing), `NEGATIVE`, `KNOWN-FLAKY`, the changelog.
+- **The `"in use"` hits stand.** Thirty-seven teaching files across four namespaces say a product should be shown in use, and this decision agrees with every one of them and sharpens the term: *in use* now means *at a named step of its own procedure*. The file that must say HOW is this type's, and it now does. `"the product is working"`'s one teaching hit is `06-relief-after`, which says the same thing for its own mode.
+- **Render tests:** three lines in `eval/render-tests.jsonl`, `verdict_by: owner`.
+- **Generated:** the manifest; the type is reserved and not bundled.
+- `README.md`: the ADR count.
+
+### What is NOT done
+
+- **No usage photo of this product is on disk.** The brief carries none and the renders invented the grip three times. Decision 6 says what a set must ask for; until the owner attaches one, the grip in `section-10` comes from the brief's own sentences and is graded as untested.
+- **The operating model is not a schema field.** It lives in the set's notes, in English, because it is reasoning rather than data. If it proves out, `content.json` may earn a field for it later.
+- **This decision does not touch the other six section types.** They have the same gap, and it is named here rather than fixed: a `03-use-demo` or a `06-relief-after` frame can show a product doing nothing just as easily.
+- **No render tests any of it.** `section-10` is the test.
+
+---
