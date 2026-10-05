@@ -437,7 +437,12 @@ the case the flag's note describes.
 from 2026-09-18 a feature image may carry one short line** (owner instruction, ADR-106). The
 hero, both halves of a before-and-after pair, a buyer-photo tile, a closing image and every
 section image that is not a feature image carry none — no title, no copy, no chip, no label, no
-badge — because the page sets its words beside them in HTML. **Two section types draw a little
+badge — because the page sets its words beside them in HTML. **The rule binds the words the PROMPT
+puts there, and the signage and brand names a scene drags in with it; it does not bind the ordinary
+printing a real object in the frame carries** (ADR-123) — the digits on a bank card, the letters on
+a keyboard, the spine of a book. Three hero renders of a wallet came back with printed digits on
+the fanned cards, 3 of 3, and a card without them is not a card. What stays banned in those frames
+is a sign, a hoarding, a shopfront, a brand name and anything that makes a claim. **Two section types draw a little
 more, by the owner's image instruction of 2026-09-18** (ADR-110): `03-mechanism-diagram` its
 technical labels, and `03-use-demo` its step's numeral — see *The owner's image instruction*
 below, which is where the section types and their one form are law. A type that declares
@@ -522,12 +527,25 @@ first five go in every prompt; the sixth goes in only where a person is in the f
 
 ```
 The product and anyone using it sit together in the right half, just past the centre and well clear of the right edge.
-The group fills about a third of the picture's height and sits across the middle, and no face, no hand and no part of the product reaches into the top third or the bottom third.
+The group fills about a third of the picture's height and sits across the middle, with the place itself — a ceiling, a wall, a floor, a table — filling the whole of the top third and the whole of the bottom third.
 The left half continues the same place, softly blurred and full of daylight, with nothing in it that matters.
 The product is big enough to recognise at a glance, never a small detail in the distance.
 It is a real photograph: skin keeps its texture, with no glow and no haze.
 Any person turns slightly toward the left side of the picture.
 ```
+
+**What `hero-07` measured, and why the second sentence now NAMES what fills the bands** (ADR-123).
+Three renders of a wallet, each read twice — at 16:9, and as the 3:1 banner the template shows:
+- **The sentence that said what may not ENTER the top and bottom thirds placed nothing, 2 of 3.**
+  One face ran from the frame's top edge to 36% and the banner cut it at the eyes; another ran to
+  33% and was cut at the mouth, with the product itself lying 74–92% down, sliced off by the same
+  crop.
+- **The one frame that held is the one whose bands were FULL**: a wall across the top third, a
+  table across the bottom third, the hands and the wallet between them at 29–68%. Nothing was
+  asked to stay out; something was asked to be there.
+- **A region is a thing the renderer can draw, and an empty region is not** (adapter Rule 1b). The
+  same lesson took the camera instruction out of this sentence in ADR-107, and it takes the
+  negative out of it now.
 
 **A hero is a photograph in full colour** (ADR-104). It shows a resolved state, so G11 asks for
 full colour. The owner's feature-image instruction asks for *vivid color contrast* and a tone that

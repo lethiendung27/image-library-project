@@ -10284,3 +10284,55 @@ The rule-6c sweeps ran at `2de63e8` (hits / files / TEACHES):
 - **The 2560px case is measured, not observed.** Nobody has reported a hero cropped on a 2560px monitor; the band comes from the template's own rule, not from a screenshot.
 
 ---
+
+## ADR-123 · 2026-10-05 · A hero sentence names what FILLS the top and bottom thirds, because an empty region places nothing — and a real object's own printing is not a word the prompt wrote
+
+**Owner request, 2026-10-05:** *"audit ảnh mới từ 3 prompt"* — audit the three renders of `hero-07`, the first hero set on a small product (an RFID blocking bifold wallet, 10.9 × 8.0 × 1.5 cm). No verdict came with them, so the harness grades them under ADR-011: every frame was opened at 16:9 **and as the 3:1 banner the template actually shows**, the centre 59.3% of the height with the left 45% under the page's words. Three ledger lines land with this commit.
+
+| # | construction | verdict | what the banner showed |
+|---|---|---|---|
+| 1 CONTROL | seated commuter, chest-up, wallet in hand | **fail** | the fan WORKED — four cards in a stepped staircase, the state this library had never drawn — and the product sat 62–73% across, 53–73% down, inside the box. But his head ran from the frame's top edge to 36%, so the crop took his face **at the eyes**. |
+| 2 | two hands over a table, no face | **partial** | the wallet at 29–68% down, both hands whole in the banner, the left half the table continuing. Faults: the wallet starts at 50% across, five points left of the box, and the right hand runs past 86% to the edge. |
+| 3 | the product forward on a train table | **fail** | the wallet lay **74–92% down** and the banner sliced it off; the man came back sharp instead of out of focus, his head cut at the mouth, and the safe box held nothing but his coat. |
+
+**The pattern, and it is the whole finding.** ADR-122's second sentence says *no face, no hand and no part of the product reaches into the top third or the bottom third*. **It placed nothing, 2 of 3.** The one frame that held is the one whose bands were FULL: a wall across the top third, a table across the bottom third, the subject between them. Nothing in it was asked to stay out; something was asked to be there.
+
+This is the same lesson twice now. ADR-107 took the camera instruction out of this sentence because *a region is a thing the renderer can draw and a camera instruction is not* (adapter Rule 1b). The negative region is the same mistake wearing the other sleeve.
+
+**And a second finding, 3 of 3:** every frame came back with printed digits on the fanned cards, against the lock's *"Nothing in the picture carries a word, a number, a label or a badge."* A bank card without digits is not a bank card. The clause was written against titles, badges and the coffee-chain sign `hero-01` dragged in, not against the world being printed.
+
+### Decision
+
+1. **The second fixed hero sentence names what fills the bands.** It now reads:
+   ```
+   The group fills about a third of the picture's height and sits across the middle, with the place itself — a ceiling, a wall, a floor, a table — filling the whole of the top third and the whole of the bottom third.
+   ```
+   The size and the box are unchanged — ADR-122's 55–86% × 28–72% stands, and it is what the box is FOR that changes: the prompt now hands the renderer two surfaces to draw instead of two regions to avoid.
+2. **The no-words rule binds the words the prompt puts there and the signage a scene drags in — never the ordinary printing a real object carries.** Digits on a bank card, letters on a keyboard, the spine of a book: the frame is a photograph and the world is printed. A sign, a hoarding, a shopfront, a brand name or anything that makes a claim stays banned, and so does every word the prompt itself writes.
+3. **`hero-08` re-runs the same three constructions on the same wallet.** A set normally takes products the type has not seen; this is the deliberate exception ADR-108 already made for `hero-04`, for the same reason — the question is whether the law works, not whether it generalises, and one variable moved.
+
+### Consequences
+
+The rule-6c sweeps ran at `f483fc3` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"top third or the bottom third"` | 3 | 3 | 1 |
+| `"about a third of the picture's height"` | 3 | 3 | 1 |
+| `"carries a word, a number, a label or a badge"` | 161 | 3 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the second fixed sentence, a record of what `hero-07` measured, and the distinction under the words rule.
+- **These hits stand:** `decisions/log.md`'s ADR-122 entry, a record; the 161 hits of the lock line, which are the sets and query sessions that carry it and are unaffected — the line's words do not change, only what counts as breaking it.
+- **Render tests:** three lines in `eval/render-tests.jsonl`, `verdict_by: harness`, each citing its render's hash.
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md` and the manifest.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **`hero-05` and `hero-06` still carry the pre-ADR-122 sentence**, and `hero-07` now carries a sentence one revision old. None has been rendered since; whichever runs next takes the current six.
+- **The fan is not promoted to a clause.** It worked 3 of 3 here, which is one product. It is recorded and watched.
+- **Nothing was measured by code inside the frames.** The boxes are read by eye, as this library's placement findings always have been; the banner crops that show them are in the session's scratchpad, not in the repo (SPEC §6.4 keeps images out).
+- **The owner's own verdict is outstanding.** These three are harness grades; if the owner reads them differently, the correction lands as its own lines.
+
+---
