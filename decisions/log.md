@@ -10403,3 +10403,68 @@ The rule-6c sweeps ran at `cfa0358` (hits / files / TEACHES):
 - **`section-07` is not rewritten.** It is the record the owner failed, and it stays as rendered.
 
 ---
+
+## ADR-125 · 2026-10-05 · It is the prompt, and the proof is in the same six frames: a mark is LIGHT IN THE SCENE with a stated colour, and a line that names three states has one event
+
+**Owner report, 2026-10-05**, on the six renders of `sets/section-08/`: *"audit ảnh mới, t không biết là do model gen ảnh đểu hay prompt kém nữa, chất lượng cực kì tệ. các dấu thì thô, icon thì nhỏ, màu ảnh thì xấu, logic thì sai"* — the owner cannot tell whether the image model or the prompt is at fault; the marks are crude, the icons small, the colour ugly, the logic wrong. Six ledger lines land with this commit.
+
+### The question is answerable, and the answer is the prompt
+
+**What ADR-124 changed, the model obeyed.** The colour rule was written into the lock on the morning of the same day, and the numbers moved on the first render:
+
+| median | `section-07` | `section-08` | the owner's 17 stills |
+|---|---|---|---|
+| saturation | 0.16 | **0.30** | 0.35 |
+| white drift | 48.3% | **2.1%** | 2.0% |
+
+The scenes came back rich: a real garage with a work lamp and oil on the bench, a workshop floor, the underside of a car with a chafed loom and copper showing. **`3B`, the control, is the best frame this product has produced in thirteen attempts** — a mechanic's dirty hand holding a blown fuse up into the probe's own light, with a small corner badge that reads as professional.
+
+**Every failure traces to something the prompt did not say, or said impossibly:**
+
+| what came back | why | count |
+|---|---|---|
+| the marks are RED and ORANGE | the prompts named the mark's shape and size and **never its colour**; G3 keeps red for pain and alert, blue for a working signal | 2 of 3 `event` frames |
+| the marks are thick flat vector arcs with hard edges, sitting on the photograph | the prompts asked for *concentric arcs* and *a band* — the names of GRAPHICS. A renderer asked for a graphic draws a graphic | 3 of 3 `event` frames |
+| a stray black line across the middle that means nothing | `1A` was asked to draw three modes at once, and one of them is OFF. **Nothing happens in OFF, so it cannot be drawn** | 1 of 1 |
+| invented label text on the props — `LAWN MOWER`, `COMMERCIAL TRUCKT`, `AUTOKOTIVE` | the frame called for three different batteries, and a battery is a labelled object; the lock's no-other-text line does not reach a prop's own printing (ADR-123) | 1 of 1 frames with branded props |
+| the picture cannot say which system is being tested | three batteries in frame, leads on one of them | 1 of 1 |
+
+**So: the model renders what it is told and defaults where it is not.** It is not a bad model; it is an obedient one pointed at an underspecified prompt. The one thing that is genuinely the renderer's limit — it draws a *symbol* as flat vector art — is itself a prompt problem, because a mark can be asked for as a thing that exists in the world instead.
+
+### Decision
+
+1. **A drawn mark is LIGHT IN THE SCENE, named as a physical thing, never as a graphic.** The prompt says what the light IS and how it behaves — *a soft blue glow that spills onto the wire and loses itself in the shadow*, *the dust in the beam*, *the sheen it throws on the metal* — and never *arcs*, *a band*, *a bar*, *a wave*, *an icon ring*. A thing described as a graphic comes back as clip art, 3 of 3.
+2. **The mark's colour is always stated, and it follows G3**: luminous blue to cyan for a working signal, warm where the thing itself is warm, and never red or orange unless the claim IS an alert. Unstated, the renderer chose red twice out of three.
+3. **One event to a frame.** Where a feature line names several states, modes or capabilities, the frame draws **the one state in which something happens** and the words carry the rest. `OFF` is not drawable; neither is a mode that does nothing, a setting that is not selected, or a system that is not connected.
+4. **The scene carries no labelled props.** Where a frame needs a second object of a kind that is always branded — a battery, a bottle, a box, a packet — it is cropped to the part that matters or kept out. The renderer letters every label it can see, and the lock's no-other-text line does not reach a prop's own printing.
+5. **The `whisper` family is the house default for a feature image, and `event` is earned.** Three whispers this round scored partial with faults of richness only; three events failed. A prompt takes `event` when the feature's event is a thing light can show — a beam, a glow, a reach — and takes `whisper` otherwise.
+6. **`sets/section-09/`** is next, owner-gated: the same three feature lines, three prompts, each the construction this decision argues for, with the colour stated, the mark named as light, one event per frame and no labelled props.
+
+### Consequences
+
+The rule-6c sweeps ran at `855c7c6` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"concentric arcs"` | 15 | 11 | 10 |
+| `"one form to a frame"` | 2 | 2 | 1 |
+| `"luminous blue"` | 4 | 4 | 3 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.8 — `MARKS/overlay` (light, not graphics; the colour always stated), `PARTS/event` (one event to a frame), `PARTS/scene` (no labelled props), the family default, `NEGATIVE`, `KNOWN-FLAKY`, the changelog.
+- **These hits stand**, every one read:
+  - `03-mechanism-signal`'s `arcs` entry — that type's own measured corpus vocabulary, with its own renders behind it, and its marks are the Wi-Fi symbol a buyer already reads rather than decoration.
+  - `registry/toplist-types/lede-collage.md`, its nine sets and `round-3/prompts.md` — another namespace measured on its own corpus (`rules do not cross corpora`).
+  - `03-mechanism-diagram`'s and `03-mechanism-signal`'s *luminous blue*, which is decision 2 already written in those files; this decision agrees with them and makes it explicit here.
+  - `ingestion/observations.jsonl`, records.
+- **Render tests:** six lines in `eval/render-tests.jsonl`, `verdict_by: owner`.
+- **Generated:** the manifest; the type is reserved and not bundled.
+- `README.md`: the ADR count.
+
+### What is NOT done
+
+- **The renderer's flat-vector habit is not measured, only observed** — 3 of 3 here and 7 of 7 in `section-07`. Decision 1 is the hypothesis that naming light instead of shape fixes it, and `section-09` is its test.
+- **`section-08` is not rewritten.** It is the record the owner failed.
+- **No second model was tried.** The owner's question was whether the model is the problem; this decision answers it from the evidence in hand — the same model rendered the control well — and does not test another one.
+- **The small-icon complaint is only half answered.** A badge that is small by design read as weak against a busy background; decision 5 makes the whisper family the default, and the badge's size against its ground is the next thing to measure with `scripts/text-size.py`.
+
+---
