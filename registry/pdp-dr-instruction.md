@@ -1355,8 +1355,10 @@ fixed sentence. The writer applies each where its case exists:
 - the product is NAMED as the page names it and never described (G2): where the prompt said only
   "the product", 2 of 4 renders invented one (`03-mechanism-signal` 0.3);
 - scale comes from the host, never from a share of the frame (ADR-106);
-- a drawn mark is the thing itself and lands on its subject (ADR-106), never runs along a cable,
-  and nothing the buyer owns is cut open (ADR-109);
+- a drawn mark is the thing itself and lands on its subject (ADR-106), and nothing is drawn ON a
+  wire, a loom or a cable at all — a mark put on one runs along it, 4 of 4 (ADR-109, ADR-128);
+  on a closed run the tool's own lamp and LED are the indication, and nothing the buyer owns is
+  cut open (ADR-109);
 - a drawn figure is true of its frame, and so is a drawn relation such as *level*; the place
   carries no signage (ADR-109, ADR-112);
 - full colour from the room's own things, never a pale grade and never a warm cast (ADR-104,

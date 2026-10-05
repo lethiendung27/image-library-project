@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.10"
+version: "0.11"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -141,6 +141,17 @@ the step's props**: anything the named step does not need stays out of frame —
 coiled spare leads, no second tool. A frame that holds everything at once reads as a rubbish heap,
 which is the owner's own word for 2 of 3 in `section-09`.
 
+**`scene`** — **no hand closes, presses or holds a clip, a plug or a connector** (ADR-128). The
+connection is already made when the frame opens; the hands are on the product's body, on the panel
+or on the loom. Measured: **3 of 3** frames whose prompt put a hand on a clip came back carrying a
+clip the product does not have, and 4 of the 6 that did not ask are correct. **The props clause
+above does not cover this**, and the distinction is the point: it bans a FOREIGN object, and what
+appears here is **a duplicate of the product's own part** — a second red clip is not a prop the step
+does not need, it is the step's own prop drawn twice. Naming each body by what it carries does not
+fix it either: `section-11` did that in all nine prompts and the rate went 3 of 9 to 5 of 9. Two of
+the five are still unexplained, and the lever named twice over is a usage photograph (ADR-126,
+ADR-127).
+
 **`scene`** — **no labelled props** (ADR-125). Where a frame needs a second object of a kind that is
 always branded — a battery, a bottle, a box, a packet — it is cropped to the part that matters or
 kept out: the renderer letters every label it can see, and a frame with three batteries in it came
@@ -171,13 +182,22 @@ beside the hand that holds it (ADR-109).
 
 | name | form | colour | count | evidence |
 |---|---|---|---|---|
-| `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols in the lock's icon style. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on bold leaders, each ending ON the part it names, and the prompt names that part. `view`: an inset shaped like the optic, showing what the user sees | a mark in the colour of the thing itself — luminous blue for a working signal (G3), warm where the thing is warm; an icon in the lock's icon style and text colour; the lock's accent only on a call-out line or a chip (ADR-113); never red, never a flat green, never on the product | one form to a frame, and the one short line beside it | the owner's twelve feature frames: the mark is the thing itself 12 of 12, lands on or inside the subject 8 of 12, a generic glowing arc 0 of 12, words in frame 10 of 12, a sentence 0 of 12 (ADR-106) · `03-mechanism-signal` set 04: one short line spelled right 3 of 3, the view on a product's own screen 1 of 1 · this type's first three renders: `section-02`, under KNOWN-FLAKY |
+| `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols in the lock's icon style. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on bold leaders, each ending ON the part it names, and the prompt names that part. `view`: an inset shaped like the optic, showing what the user sees | a mark in the colour of the thing itself — luminous blue for a working signal (G3), warm where the thing is warm; an icon in the lock's icon style and text colour; the lock's accent only on a call-out line or a chip (ADR-113); never red, never a flat green, never on the product | one form to a frame, and the one short line beside it | the owner's twelve feature frames (ADR-106): the mark is the thing itself 12 of 12, on or inside the subject 8 of 12, a generic glowing arc 0 of 12 · `03-mechanism-signal` set 04: one short line spelled right 3 of 3 · this type's first three renders, under KNOWN-FLAKY |
 
-- **The words are LARGE, and 18 px is the floor** (ADR-127). Every drawn word is set so its capital
-  measures at least 18 px with the field shown 390 px wide — about 5% of a 4:3 render's height — and
-  a headline runs a quarter to a third of the frame's width, as the owner's references do. Measured
-  on `section-10`: 19 px in the render, **8.3 px on the phone**, less than half the floor, 3 of 3.
+- **The words are LARGE, and 18 px is the floor** (ADR-127, held ADR-128). Every drawn word is set
+  so its capital measures at least 18 px with the field shown 390 px wide — about 5% of a 4:3
+  render's height. **This works and it is the fix to copy**: say the size as a share of the picture,
+  *the capitals about a twentieth of the picture's height*, never as an adjective. Measured on
+  `section-10`, written as an adjective: 8.3 px on the phone, 3 of 3. Measured on `section-11`,
+  written as a share: **19.6 to 35.3 px, median 27.9, 9 of 9**, contrast 11.4 to 15.7:1.
   Measure with `scripts/text-size.py` before grading.
+- **A headline runs a quarter to a third of the frame's width, and a third is a CEILING** (ADR-128).
+  Given the band as a bare instruction the renderer read it as a floor and overshot in 6 of 9, one
+  of them running 92.3% of the width and crowding the picture it was there to label. A line past a
+  third is as wrong as a line under the floor.
+- **A drawn word sits directly on the photograph** (ADR-128): no plate, no band, no box behind it.
+  Where the ground under the words is light the words stay white and the dark edge does the work.
+  A light plate appeared 3 times and brought black letters with it all 3.
 - **A light at a connection reads as INDICATION, never as arcing** (ADR-126). It sits where metal
   actually meets metal, on a CLOSED contact, and never in the gap of an open jaw: a bloom between
   open jaws came back reading as an arc weld, which is a short circuit and the opposite of the
@@ -208,7 +228,12 @@ beside the hand that holds it (ADR-109).
   white drift 48.3% against 2.0% — and the fix moved them to 0.30 and 2.1% on the next round.
 - **The mark LANDS on the subject the feature acts on** and never floats beside the product
   touching nothing; it never covers the product's own face or repaints it (ADR-094, ADR-106).
-- **Never along a cable**: a mark drawn along a wire became the wire 2 of 2 (ADR-109).
+- **Nothing is drawn ON a wire, a loom or a cable — not even at one point** (ADR-128). ADR-109
+  banned a mark running *along* one on 2 of 2; `section-11` asked for a bloom at ONE spot that
+  explicitly *goes no further along it* and got it running along the loom on 2 of 2, so the count is
+  **4 of 4** and the narrower form is retired. On a closed run the indication is the tool's OWN
+  light — its lamp, its LED pool on the spot the tip is on — and nothing is drawn. The one find
+  frame that asked for no drawn mark was the best of its three.
 - **A mark that asserts a relation — level, straight, aligned — is drawn where the frame makes it
   true** (ADR-109). A driving posture puts the knees above the hips, and a level line over those
   thighs came back false in both rounds, 2 of 2. Draw it where the frame can hold it: along the
@@ -246,17 +271,20 @@ beside the hand that holds it (ADR-109).
 ## NEGATIVE
 ```
 a cut, stripped or dismantled object in a frame whose product claims it needs none of that,
-a drawn word whose capital falls under 18 px on a 390-px phone,
+a drawn word whose capital falls under 18 px on a 390-px phone, a headline running past a third
+of the frame width, a plate, band or box behind a drawn word,
 a product connected to nothing, a product held by the wrong part, an action that belongs to no step
 of the product's own procedure, a frame needing a third hand, a loose spare part or a coiled lead
 the step does not use, a light in the gap of an open jaw,
+a hand closing or holding a clip, a plug or a connector, a second copy of any lead, clip or
+body the product carries only one of,
 a flat graphic square to the camera pasted over the photograph, a mark asked for as arcs, a band,
 a bar, a wave or a ring, a mark whose colour the prompt leaves to the renderer, red or orange on a
 working signal, a state in which nothing happens, a labelled prop, a legend of icons floating in
 empty sky attached to nothing, a product presented on a bench with nothing happening,
 a chip that is the brightest colour in the frame, a warm cast over the whole picture,
 [G6] + a sentence of copy, a second line of words, a marketing word, a mark floating beside the
-product and touching nothing, a mark painted on the product, a mark running along a cable,
+product and touching nothing, a mark painted on the product, any mark drawn on a wire, a loom or a cable,
 a generic glowing arc where the thing has a form of its own, red or green marks,
 bars or readings on a mark, a hole cut in anything the buyer owns, a figure that contradicts
 the frame, the product small or far off, the product enlarged against the hand or body beside it,
@@ -267,12 +295,11 @@ a leader ending off its part, a worn, scratched, stained or faded surface
 ```
 
 ## BLOCK
-**Criterion 3 has no passing render, and the record is long.** Sets `section-02` and `section-03`
-(0.1 and 0.3) failed on quality and on the size of the drawn words (ADR-111, ADR-112). `section-06`
-was 0.4's first set. Under 0.6 to 0.8 the owner failed `section-07` (7 of 7), `section-08` (6 of 6)
-and `section-09` (3 of 3) — ADR-124, ADR-125 and ADR-126, each of which bought one clause: derive
-from the event; draw light rather than a graphic, with its colour stated; read the product and show
-one step of its own procedure. `sets/section-10/` is 0.9's first set.
+**Criterion 3 has no passing render by the OWNER, and the record is long.** The owner has failed
+every set: `section-02`, `section-03`, `section-07` (7 of 7), `section-08` (6 of 6), `section-09`
+(3 of 3) and `section-10` (3 of 3) — ADR-111 to ADR-127, each buying one clause, listed in the
+CHANGELOG. `section-11` is the first set graded by the model rather than the owner (ADR-011): 1
+pass, 4 partial, 4 fail, and its one pass is a control, so it does not meet this criterion either.
 
 **Criterion 1 cannot be met from the ledger as it stands**: no corpus record carries this id. The
 type comes from the owner's tested instruction, so the count is the owner's to waive, as ADR-057
@@ -292,15 +319,21 @@ here.
 - **Open, from the cushion rounds** (`section-02`, `section-03`): words drawn twice; an outline traced
   round a whole product; a level line over thighs that sloped, 2 of 2; an icon placed in the band a
   square crop removes; a tag at 2.7:1 against its ground.
-- **Open, from the tester rounds** (`section-07` to `section-10`): the renderer **swapped the
-  transmitter and the receiver 3 of 9 frames** across three sets, and lettered every labelled prop it
-  could see. Neither has a clause yet: the first is answered by naming each body by what it carries,
-  and if that fails the answer is a usage photo; the second is answered by keeping labelled props out
-  of frame (ADR-125).
+- **Open, from the tester rounds** (`section-07` to `section-11`): the renderer gets the two bodies
+  and their leads wrong — 3 of 9 by swapping them, then **5 of 9 by drawing a clip the product does
+  not carry**, once by fitting one to the receiver, which has no leads. **Naming each body by what
+  it carries was tried in all nine prompts of `section-11` and the rate went up**, so that answer is
+  spent (ADR-128). What is left: the constructions that lose the parts are retired above, and the
+  lever named by ADR-126, ADR-127 and ADR-128 alike is a usage photograph, which is not on disk.
+  Lettering every labelled prop is answered by keeping labelled props out of frame (ADR-125).
 
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.11 (2026-10-05, ADR-128): the 18-px floor held 9 of 9 and the closed loom held at every acting
+  point; the parts got worse, 5 of 9, so the constructions that lose them are retired instead of
+  re-worded — no hand on a clip, nothing drawn on a loom, no plate behind a word, a third of the
+  frame width as a ceiling.
 - 0.10 (2026-10-05, ADR-127): never show the work done the way the product makes unnecessary — a find
   frame cut open the loom this tool traces through; what is hidden is shown by the indication and a
   mark pointing INTO the closed object; every drawn word meets an 18-px floor on a 390-px phone,
@@ -313,12 +346,6 @@ Each entry is one line; the reasoning is in `decisions/log.md` and the renders i
   no labelled props; `whisper` is the default.
 - 0.7 (2026-10-05, ADR-124): derive before drawing — THE EVENT, THE FRAME, THE LAYER; the layer lives
   in the scene's perspective at frame scale, in one of two families; the colour comes from the scene.
-- 0.6 (2026-09-20, ADR-115): a person's clothes are named pieces, never a category.
-- 0.5 (2026-09-20, ADR-114): a person in frame is the derived user, the feature at work in their hands.
-- 0.4 (2026-09-18, ADR-113): the owner's design rules — typeface, text colour, chip, icon style,
-  lighting family and tone; the accent only on a leader or a chip; marks first, words few and large.
-- 0.3 (2026-09-18, ADR-111, ADR-112): the skeleton is the owner's image instruction as it stands,
-  with G1 in one sentence.
-- 0.2 (2026-09-18, ADR-111): first render, `section-02`, failed by the owner on quality.
-- 0.1 (2026-09-18, ADR-110): drafted from the owner's image instruction, the FEATURES mode. New
-  device `overlay`.
+- 0.1 to 0.6 (2026-09-18 to 2026-09-20, ADR-110 to ADR-115): drafted from the owner's image
+  instruction in its FEATURES mode and taken through the owner's design rules, the derived
+  person at work, and named garments. Full text in `decisions/log.md`, which is the history.

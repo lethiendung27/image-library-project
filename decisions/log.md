@@ -10576,3 +10576,137 @@ The rule-6c sweeps ran at `6a36b6c` (hits / files / TEACHES):
 - **No render tests any of this.** `section-11` is the test.
 
 ---
+
+## ADR-128 · 2026-10-05 · The 18-px floor held 9 of 9 and the closed loom held at every acting point — and the parts got worse, so the constructions that lose them are retired rather than re-worded
+
+**Graded by the model, not the owner.** All nine renders of `sets/section-11/` were opened and the
+named region of each was cropped and looked at before any verdict (ADR-011); no verdict here is
+assigned to a frame that was not seen, and none is assigned for `SPEC.md` §6.3(3). Nine ledger
+lines land with this commit, `verdict_by: claude-opus-5`. **1 pass, 4 partial, 4 fail.**
+
+**What ADR-127 bought, and it is the first clean win this type has had.**
+
+| | measured | instrument |
+|---|---|---|
+| **the words** | every headline clears the floor: capitals run **19.6 to 35.3 px** on a 390-px phone, median 27.9, where the round before measured **8.3** — **9 of 9**, contrast 11.4 to 15.7:1 against a 4.5 target | `scripts/text-size.py --phone 390 --fit cover` |
+| **the closed loom** | **no frame cuts, strips or opens the thing the tip is on**, where the round before cut the loom open in 1 of 1 find frames; 8 of 9 are clean everywhere in frame | looked at, every frame |
+| **the colour** | all nine sit inside the owner's own stills band on saturation, colourfulness, contrast and texture; white-point drift is outside it in 3 (9.5%, 14.8%, 15.8%) | `scripts/frame-colour.py` |
+
+The floor was bought by putting the size in the prompt as a share of the picture — *the capitals
+about a twentieth of the picture's height* — rather than as an adjective. That is the whole fix and
+it should be copied anywhere a drawn word has to survive a phone.
+
+**What failed:**
+
+| | what came back | measured |
+|---|---|---|
+| **the parts** | a clip the product does not carry — a second red clip, a third clip, loose clips on the floor, and in one frame **a black alligator clip fitted to the nose of the RECEIVER**, which has no leads at all | **5 of 9**, against 3 of 9 in the round before |
+| **the mark on a loom** | the cool blue light asked for at ONE spot *and going no further along it* ran along the taped loom instead | **2 of 2** frames that asked for a drawn bloom |
+| **a mark in an open jaw** | the jaws never closed and the light sat in the gap between them, the arc-weld read ADR-126 already banned | 1 of 1 |
+| **the words' colour** | black letters on a light plate laid over the picture, where the lock asks for plain bold white letters with a soft dark edge | **3 of 9** black, **3 of 9** on a plate |
+| **the words' width** | the line runs past the quarter-to-a-third band ADR-127 set — 40.6, 44.3, 44.3, 55.6, 57.8 and **92.3%** of the frame width | **6 of 9**, every one over, none under |
+| **the product's own printing** | garbled or mirrored: *SDORT AND OPEN VYNDER*, *SHOPT QHY CPEA FINGER*, a whole face reversed | **7 of 9** |
+
+### The parts failure is the one that matters, and this round ends an argument
+
+ADR-127 wrote: *"The parts confusion is not solved by a clause … if that fails the answer is a usage
+photo, not another sentence."* `section-11` then named each body by what it carries — *the box that
+carries the three-position switch and the two clip leads*, *the pen with the gooseneck probe* — in
+**every one of the nine prompts**. The error rate went **up**, 3 of 9 to 5 of 9. The sentence lever
+is spent, and this is the third round and the second ADR to say so.
+
+But the nine frames do split, and the split is clean where a prompt caused it:
+
+- **Every frame whose prompt puts a hand ON a clip grew extra clips: 3 of 3** — all three options of
+  `features.items.1`, which asked for a hand closing the red clip and a hand pressing the black one.
+  The two-hand connect is the construction that loses the parts.
+- **Of the six frames where the connection was already made when the frame opened, four are right.**
+  The two that are not (`items.0 B`, `items.2 C`) are wide frames, and **no wording in them explains
+  the extra clip**. That is stated here as unexplained rather than given a cause it does not have.
+
+The type already bans loose props — *anything the named step does not need stays out of frame*.
+It did not catch this, and the distinction is why: that clause bans a FOREIGN object, and what
+appeared was **a duplicate of the product's own part**. A second red clip is not a prop the step
+does not need; it is the step's own prop, drawn twice.
+
+### Decision
+
+1. **No prompt asks a hand to close, press or hold a clip.** The connection is already made when the
+   frame opens; the hands are on the product's body, on the panel or on the loom. Measured: 3 of 3
+   frames that asked for a hand on a clip came back with a clip the product does not carry, and 4 of
+   the 6 that did not ask are correct.
+2. **Nothing is drawn ON a wire, a loom or a cable — not even at one point.** ADR-109 banned a mark
+   running *along* a cable on 2 of 2; this round asked for a bloom at one spot that goes no further
+   and got it running along the loom on 2 of 2, so the count is **4 of 4** and the weaker form of the
+   rule is retired. On a closed loom the indication is the tool's OWN light — its lamp, its LED pool
+   on the spot the tip is on — and nothing is drawn. The one find frame that asked for no drawn mark
+   is the best of the three.
+3. **A drawn word sits directly on the photograph.** No plate, no band, no box behind it. Where the
+   ground under the words is light, the words stay white and the dark edge does the work; a light
+   plate came with black letters 3 of 3 times it appeared.
+4. **A headline never runs past a third of the frame's width.** ADR-127 gave a quarter-to-a-third
+   band and the renderer read it as a floor: 6 of 9 overshot it and one ran 92.3% of the width,
+   crowding the picture it was meant to label. The band now has a stated ceiling.
+5. **`03-spec-overlay` goes to 0.11** with 1 to 4 in it. **`sets/section-12/` is built only from the
+   constructions that have never lost the parts**: the connection already made, one body close in
+   frame, no hand on a clip, no mark on a loom. It tests those four and nothing else.
+
+### Consequences
+
+The rule-6c sweeps ran at `d96fe76` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"along a cable"` | 10 | 7 | 4 |
+| `"behind the words"` | 4 | 4 | 2 |
+| `"the clips go on"` | 1 | 1 | 0 |
+| `"through the tape"` | 0 | 0 | 0 |
+| `"a quarter of its width"` | 0 | 0 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.11 — `MARKS` loses the *never along
+  a cable* form for the whole ban and gains the width ceiling and the no-plate rule, `PARTS/scene`
+  gains the hand-off-the-clip rule and the duplicate-of-its-own-part distinction, `NEGATIVE`, the
+  changelog. `registry/pdp-dr-instruction.md` line 1358 taught the weaker *never runs along a cable*
+  and is rewritten to the whole ban.
+- **These TEACHES hits stand, with the reason:** `registry/pdp-dr-types/03-mechanism-diagram.md`
+  (2) and `registry/pdp-dr-types/03-mechanism-signal.md` (2) teach ADR-109's *along a cable* form,
+  which is still true and is not wrong — it is narrower than what was measured here. The 4-of-4
+  count was measured on `03-spec-overlay`'s corpus, and a rule measured on one corpus does not
+  govern another namespace until it is re-measured there. Both files keep the term; whoever next
+  runs a set on either type re-measures and widens it or does not.
+  `registry/pdp-dr-types/03-spec-claimstack.md` and `registry/pdp-dr-types/06-relief-claimstack.md`
+  already ban *a gradient behind the words* and *a photographic texture behind the words* in their
+  NEGATIVE lists — both teach the same direction as decision 3 and need no change.
+- **Not swept into a ban:** `"panel"` was the obvious term for decision 3 and was rejected — it
+  returns 118 teaching files because a kick panel, a door panel and a split panel are all real
+  things this library talks about. A sweep term has to name the thing banned, not a word it shares.
+- **Render tests:** nine lines in `eval/render-tests.jsonl`, `verdict_by: claude-opus-5`.
+- **Generated:** the manifest.
+- `README.md`: the ADR count.
+
+### What is NOT done
+
+- **Still no usage photo on disk.** Every GRIP clause in every set of this type remains derived from
+  the brief and graded untested (ADR-126, ADR-127). Two decisions in a row have now named a
+  photograph as the lever and the lane cannot supply one — it is an owner ask, restated.
+- **Decision 1 costs a frame type.** `features.items.1` is *Broad DC Voltage Range*, and the
+  connection being made was the obvious way to draw it. The replacement is the connection already
+  made on two different batteries, which is what a range means; that is a claim about what reads,
+  and `section-12` is the first test of it.
+- **Two extra-clip frames are unexplained.** Decision 1 covers 3 of the 5 parts failures. The other
+  two had the connection already made and still grew a clip, and nothing in their wording accounts
+  for it.
+- **The product's own printing is not addressed by any decision here.** It is garbled in 7 of 9, and
+  the two frames where it survives are the two closest views of the box — which is an observation
+  across nine frames, not a rule, and it is not written into the type.
+- **The type file is further over its size budget, not under.** `03-spec-overlay.md` went 24,015 to
+  26,359 discretionary characters against a 22,000 soft limit, because this round added four clauses
+  of law and corrected a KNOWN-FLAKY note that had become false. The trims taken were history only:
+  the 0.1-to-0.6 changelog entries compressed to one line, the MARKS evidence cell, and the BLOCK
+  set-by-set roll call. Everything else in the file is a clause or the count that earns it, and
+  deleting those to meet a soft number would cost more than the number is worth. The real fix is
+  structural - the per-decision workings move to this log and the type keeps the clause and its n -
+  and that is its own decision, not something to do silently inside an audit.
+- **No render tests any of this.** `section-12` is the test.
+
+---
