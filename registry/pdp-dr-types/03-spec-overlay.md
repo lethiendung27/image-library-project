@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.6"
+version: "0.7"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -63,8 +63,21 @@ The section form since ADR-112: the owner's image instruction as it stands. Its 
 type's mode and its Description the field's own page values; the prompt is one concise natural
 paragraph with no labels, in this order. Each arrow names an entry below or in *The section form*.
 
+**Before a word of the prompt** (ADR-124), the set's notes answer three questions in order. The
+owner's verdict on `section-07` was that the mechanism had no thinking in it: six overlay values
+offered as a menu, and a writer picking one.
+
 ```
-TYPE: 03-spec-overlay v0.6 [overlay: mark | icon | figure | tag | callout | view]
+  0a. THE EVENT  — what physically happens when this feature works? Name it as something
+      a camera could see if it were slowed down, opened up or made visible.
+  0b. THE FRAME  — stage that event: who or what does it, to what, where, at what moment.
+      If nothing is happening in the frame, the frame is wrong, whatever is drawn on it.
+  0c. THE LAYER  — draw the EVENT, never a label for it; and say which family it is,
+      `event` or `whisper` (MARKS/overlay).
+```
+
+```
+TYPE: 03-spec-overlay v0.7 [family: event | whisper] [overlay: mark | icon | figure | tag | callout | view]
 Image_Type: FEATURES
 
   1. The register and the camera: "Editorial realism product feature image",
@@ -83,6 +96,15 @@ Image_Type: FEATURES
 ```
 
 ## PARTS
+
+**`event`** — the feature's physical event, and the frame is built on it (ADR-124). The question is
+never *what shall I draw on this product* but *what happens when this feature works*: sound leaving
+a speaker and reaching the animal; the wedge of ground a sensor watches; a pan browning three
+scallops identically; a tone entering a loom at the clip and stopping at the break. **The frame
+contains that event**, with its hand, its subject, its moment — steam, movement, a reaction. A
+product presented on a bench with nothing happening is the fault the owner failed 4 of 7 times in
+`section-07`, and no drawn layer rescues it.
+
 
 **`scene`** — the place the feature matters in, named so that it carries no signage (ADR-109:
 2 of 6 frames brought shop signs or labelled packaging into a frame whose only words were its
@@ -110,6 +132,19 @@ beside the hand that holds it (ADR-109).
 |---|---|---|---|---|
 | `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols in the lock's icon style. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on bold leaders, each ending ON the part it names, and the prompt names that part. `view`: an inset shaped like the optic, showing what the user sees | a mark in the colour of the thing itself — luminous blue for a working signal (G3), warm where the thing is warm; an icon in the lock's icon style and text colour; the lock's accent only on a call-out line or a chip (ADR-113); never red, never a flat green, never on the product | one form to a frame, and the one short line beside it | the owner's twelve feature frames: the mark is the thing itself 12 of 12, lands on or inside the subject 8 of 12, a generic glowing arc 0 of 12, words in frame 10 of 12, a sentence 0 of 12 (ADR-106) · `03-mechanism-signal` set 04: one short line spelled right 3 of 3, the view on a product's own screen 1 of 1 · this type's first three renders: `section-02`, under KNOWN-FLAKY |
 
+- **The layer lives IN the scene, at frame scale** (ADR-124). It takes the scene's perspective — a
+  coverage wedge lying on the ground, arcs passing behind the product, a waveform crossing the gap
+  between the two things involved — and in the owner's own references it spans most of the frame. A
+  flat graphic square to the camera, pasted over the photograph, is retired: `section-07` drew one
+  7 of 7 and the owner failed all seven.
+- **Two families, and a prompt declares which it is** (ADR-124): **`event`**, where the mark IS the
+  picture — the event at frame scale, in perspective, reaching the thing it acts on, with a plain
+  headline and no chip; and **`whisper`**, where the photograph carries the feature so richly that
+  the layer is one small corner badge, an icon and two words. A middling photograph under a middling
+  sticker is neither, and it is what failed.
+- **The colour comes from the scene, never from the layer** (ADR-124). A chip, a leader or a badge
+  may not be the frame's colour source. Measured on `section-07` against the owner's seventeen
+  reference stills, medians: saturation 0.16 against 0.35, white drift 48.3% against 2.0%.
 - **The mark LANDS on the subject the feature acts on** and never floats beside the product
   touching nothing; it never covers the product's own face or repaints it (ADR-094, ADR-106).
 - **Never along a cable**: a mark drawn along a wire became the wire 2 of 2 (ADR-109).
@@ -149,6 +184,9 @@ beside the hand that holds it (ADR-109).
 
 ## NEGATIVE
 ```
+a flat graphic square to the camera pasted over the photograph, a legend of icons floating in
+empty sky attached to nothing, a product presented on a bench with nothing happening,
+a chip that is the brightest colour in the frame, a warm cast over the whole picture,
 [G6] + a sentence of copy, a second line of words, a marketing word, a mark floating beside the
 product and touching nothing, a mark painted on the product, a mark running along a cable,
 a generic glowing arc where the thing has a form of its own, red or green marks,
@@ -209,6 +247,12 @@ Single observations; what recurred across both rounds is written into 0.3, and t
   icon sat at the left edge, in the band a square field's crop removes (a 1,200 × 896 render).
 
 ## CHANGELOG
+- 0.7 (2026-10-05): **the owner failed all seven renders of `section-07`** (ADR-124, seven ledger
+  lines): the marks are poor, the frames are not vivid, and the mechanism has no thinking in it.
+  The file derives before it draws — THE EVENT, THE FRAME, THE LAYER — the layer lives in the
+  scene's perspective at frame scale in one of two families, `event` or `whisper`, and the colour
+  comes from the scene: against the owner's seventeen new stills, saturation 0.16 vs 0.35 and white
+  drift 48.3% vs 2.0%.
 - 0.6 (2026-09-20): a person's clothes are named pieces they could get wet in, never a category:
   *a work shirt* rendered as a button-up dress shirt 2 of 3 in `sets/05-social-endorsed-01` round 2
   (ADR-115).

@@ -10336,3 +10336,70 @@ The rule-6c sweeps ran at `f483fc3` (hits / files / TEACHES):
 - **The owner's own verdict is outstanding.** These three are harness grades; if the owner reads them differently, the correction lands as its own lines.
 
 ---
+
+## ADR-124 · 2026-10-05 · A feature image is built from the physical EVENT, and the drawn layer lives in the scene at frame scale — the owner fails all seven of `section-07`
+
+**Owner report, 2026-10-05**, on the seven renders of `sets/section-07/`: *"audit các ảnh mới trong feedback, tôi đánh giá các visual marks rất nghèo nàn, kém, ảnh không sống động, không mô tả chi tiết được feature/benefit cần show. chưa có logic suy nghĩ trong cơ chế xử lí prompt, hãy tham khảo các ảnh mới trong still để học tập"* — the visual marks are very poor, the images are not vivid, they do not describe the feature or benefit in detail, and **there is no thinking logic in how the prompt is processed**; learn from the new images in `stills/`. Seventeen reference stills arrived in the same hour.
+
+**Measured, `scripts/frame-colour.py`, medians, the seven renders against those seventeen stills:**
+
+| | the seven | the owner's seventeen |
+|---|---|---|
+| saturation | **0.16** | **0.35** |
+| white drift | **48.3%** | **2.0%** |
+| colourfulness | 54.3 | 39.5 |
+| contrast | 67.7 | 50.7 |
+
+The seven are *more* colourful on the meter and **less than half as saturated** underneath, with a yellow cast twenty-four times the references'. The reading is plain once the frames are open: **what colour they have comes from the lock's own safety-yellow chips, not from the world.** The references get their colour from grass, rust, meat, steam, wood and a rabbit, and hold a neutral white point.
+
+**What the seventeen stills do, read one by one.** They split into exactly two families, and this library's frames are in neither:
+
+| family | the frame | the drawn layer | the words |
+|---|---|---|---|
+| **the mark IS the picture** | a real scene, the product in it | the physical event drawn AT FRAME SCALE, in the scene's own perspective: a 110° coverage wedge lying on the lawn in perspective with its figure inside it; ultrasonic arcs spanning the whole frame, passing behind the product and reaching the rabbit; a sound waveform crossing the gap from a tracker card to a phone | a plain headline, no chip |
+| **the photograph carries it** | an event photographed so richly it argues by itself: a steak searing in a hammered pan with steam and butter; three scallops browning identically | a whisper — one small corner badge, an icon and two words | tiny, in the corner |
+
+**What `section-07` did instead, 7 of 7**: a flat sticker facing the camera, pasted over a photograph in which **nothing is happening**. Three frames label a control that is never shown working; three float a legend of icons in empty sky, attached to nothing; one lays a progress-bar scale over a battery. The best of them — a real footwell with the probe's own LED lighting a fuse box — still says nothing about which fuse is blown.
+
+**And the owner's deepest line is about process, not pixels.** *"Chưa có logic suy nghĩ trong cơ chế xử lí prompt"*. It is correct: `03-spec-overlay` 0.6 offers six overlay values as a MENU — `mark | icon | figure | tag | callout | view` — and the writer picks one. Nothing in the file asks what the feature physically DOES before choosing how to draw it. The references were plainly built the other way round: the author decided what event proves the feature, then built both the photograph and the mark around that event.
+
+### Decision
+
+1. **A feature image is derived, in this order, and the type's SKELETON now opens with it.** The writer answers three questions in the set's notes before a word of the prompt is written:
+   - **THE EVENT** — what physically happens when this feature works? Name it as a thing a camera could see if it were slowed down, opened up or made visible: *sound leaves the speaker and reaches the animal*; *the wedge of ground the sensor watches*; *the pan browns three scallops identically*.
+   - **THE FRAME** — stage that event: who or what is doing it, to what, where, at what moment. **If nothing is happening in the frame, the frame is wrong, whatever is drawn on it.**
+   - **THE LAYER** — draw the event itself, not a label for it. The mark is the event's own shape.
+2. **The drawn layer lives in the scene, at frame scale.** It takes the scene's perspective — a coverage wedge lies ON the ground, arcs pass BEHIND the product, a path crosses the gap between the two things involved — and it is large: in the references it spans most of the frame. **A flat graphic square to the camera, pasted over the photograph, is the fault this decision retires.** A leader line and a corner badge stay legal in their own family, where the photograph is doing the arguing.
+3. **The two families are named, and a prompt declares which it is.**
+   - `event` — the mark is the subject, at frame scale, in perspective. The words are a plain headline, and no chip.
+   - `whisper` — the photograph carries the feature by itself, and the layer is one small corner badge with an icon and two words.
+   A frame that is neither — a middling photograph with a middling sticker — is what the owner failed seven times.
+4. **The colour comes from the scene.** A chip, a leader or a badge may never be the frame's colour source. The lock's accent is for the mark alone, and the white point stays neutral: `scripts/frame-colour.py`'s drift reading on a passing frame is near the references' 2%, not 48%.
+5. **`03-spec-overlay` goes to 0.7** with 1 to 4 in it, and `sets/section-08/` is its next set: the same three feature lines of the Automotive Circuit Tester, each written twice — once `event`, once `whisper` — so the two families are tested against each other on copy the owner has already seen fail.
+
+### Consequences
+
+The rule-6c sweeps ran at `cfa0358` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"one form to a frame"` | 1 | 1 | 1 |
+| `"drawn layer"` | 11 | 9 | 5 |
+| `"in the clear space"` | 0 | 0 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.7 — the SKELETON's first step, `PARTS/event` (new), `MARKS/overlay` (perspective, frame scale, the two families), the lock's colour rule, `NEGATIVE`, `KNOWN-FLAKY` and the changelog.
+- **These hits stand:** `01-pain-before` and `06-relief-after` carry *drawn layer* only to say they have none; `registry/vocabulary.yaml` defines the term; `registry/pdp-dr-instruction.md`'s hit is the section-types table, which still reads true.
+- **Render tests:** seven lines in `eval/render-tests.jsonl`, `verdict_by: owner`.
+- **Generated:** the bundle's copy of the type and the manifest.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **The seventeen stills are not ledgered and not classified into the corpus.** They arrived in `stills/`, which is the owner's drop point for reference images, and they are cited here by what they show; filing them is `ingestion/`'s job and its own operation.
+- **G6 is not touched.** One reference puts a phone's real interface in frame — menus, labels, a battery icon — which G6 keeps out of a generated frame. That gap is recorded, not resolved: the reference is a photograph of a real phone and our frames are generated.
+- **No render tests this decision.** `section-08` is the test.
+- **The never-list still bans `safely`**, so slot 2's words stay the figure alone.
+- **`section-07` is not rewritten.** It is the record the owner failed, and it stays as rendered.
+
+---
