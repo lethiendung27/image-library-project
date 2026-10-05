@@ -477,37 +477,44 @@ keeps its own text law above, and a gallery tile does not take this line as well
 0 of 12**. The two wordless frames carry a mark that needs no naming — music drawn as notes, and
 a sound drawn as the icon of what it plays.
 
-**The hero is a banner the template crops** (ADR-096, re-measured by ADR-103). The owner
-renders it at 16:9, the widest ratio the set allows (ADR-016). Read from the markup of the four
-templates of 2026-09-17, every one of which crops about the centre on a desktop:
+**The hero is a banner the template crops** (ADR-096, ADR-103, re-measured by ADR-122). The owner
+renders it at 16:9, the widest ratio the set allows (ADR-016), and every template crops it with
+`object-fit: cover` into a block that is far wider. `python3 scripts/hero-safe-box.py --owner`
+reads each block's own classes and prints this; run on 2026-10-05:
 
-| screen | what the template shows | what a 16:9 render keeps |
-|---|---|---|
-| desktop, 1024–1536 px | the block at 12:5 | its height from 13% to 87% |
-| desktop, 1920 px | about 3:1, because the block stops growing taller at 640 px | its height from 20% to 80% |
-| tablet, 768–1023 px | 16:9, with the words stacked above or below | all of it |
-| phone | 4:3, anchored to the right edge — at 77% across on `t2-eco` | its width from 25% to 100%, or 19% to 94% |
+| template | the block's height rule | ≤1536 px | 1920 px | 2560 px |
+|---|---|---|---|---|
+| `t2-eco`, `wiboofy`, `aure` | 12:5, capped at 640 px tall and 1920 px wide | 2.40:1 · keeps 13.0–87.0% | **3.00:1 · 20.4–79.6%** | 3.00:1 · 20.4–79.6% |
+| `t1-deal` | `clamp(496px, 33vw, 656px)`, set by its words, **picture full-bleed, nothing capped** | 2.58–3.03:1 · 15.6–79.3% | 3.03:1 · 20.7–79.3% | **3.90:1 · 27.2–72.8%** |
 
-- **On a desktop the page's words sit in a panel over the image's left side.** On three
-  templates the panel reaches 45–46% of the width.
-- **`t1-deal` sizes its block by its words and lays its panel over the image from 768 px.**
-  - The panel reaches 72% of the width at 768 px and 54% at 1024 px.
-  - On a 2560 px screen, a 16:9 render keeps only 27–73% of its height.
-  - The owner keeps the templates as they are (2026-09-17), so these are limits a render lives
-    with, not faults a prompt can fix.
+- **3:1 is a ceiling for three templates and not for the fourth.** Three stop at 1920 px wide and
+  640 px tall, so they reach exactly 3:1 and stay there. `t1-deal` caps nothing, so a 2560 px
+  monitor makes it 3.90:1 and throws away the top and bottom 27% of the render. **Capping
+  `t1-deal`'s hero block at 1920 px, as the other three do, would return the band to 20.4–79.6%**
+  — the owner's call, and the box below holds either way (ADR-122).
+- **On a desktop the page's words sit in a panel over the image's left side, and it reaches
+  45–48.1% across**: a 45% column on `aure` and `wiboofy`, 46% on `t2-eco`, and on `t1-deal` a
+  528 px card inside a 1200 px column, which lands at 46.2% on a 1280 px screen and 48.1% on a
+  2560 px one.
+- **Tablet, 768–1023 px: 16:9, the whole render**, with the words stacked above or below.
+- **Phone: a 4:3 crop keeping three quarters of the width**, anchored differently per template —
+  centred on `t1-deal` and `wiboofy` (12.5–87.5%), at 77% on `t2-eco` (19.2–94.2%), at the right
+  edge on `aure` (25.0–100%).
 
-**The safe box is 55–88% across and 22–78% down.** It is where those windows overlap, less the
-panel, and everything the image is about sits inside it:
-- **The group** — the product, and anyone using it — fills about half the height. A 3:1 desktop
-  then shows it across about four fifths of what it keeps, and a phone shows it just right of centre.
+**Every window overlaps at 48.1–87.5% across and 27.2–72.8% down. The safe box is 55–86% across
+and 28–72% down**, that overlap with a margin, and everything the image is about sits inside it:
+- **The group** — the product, and anyone using it — fills about a THIRD of the render's height
+  and sits across the middle. **A third of the full frame is more than half of what the banner
+  shows**: at 3:1 the block keeps 59% of the render's height, so a group filling a third of the
+  16:9 frame fills 56% of what the reader sees. The subject gets bigger on the page, not smaller.
 - **The product** is at least about an eighth of the width, so a 390 px phone still shows it
   whole and recognisable.
 - **The left half** is the same place continuing: soft in focus, bright and low in contrast. It
   sits under the panel on a desktop and inside the frame on a phone. `PARTS/setting`'s "never
   blank" still holds, but nothing there matters to the argument, and nothing important sits where
   a phone window cuts, 19–25% across.
-- **The top and bottom fifths** hold none of the group.
-- **The right edge** keeps a margin, because one phone window ends at 94%.
+- **The top and bottom THIRDS** hold none of the group — no face, no hand, no part of the product.
+- **The right edge** keeps a margin, because the narrowest phone window ends at 87.5%.
 - **The light comes from the left**, the page's side, and a person turns slightly toward it.
 
 **Every hero prompt carries these sentences, word for word, whatever type fills the field.** The
@@ -515,7 +522,7 @@ first five go in every prompt; the sixth goes in only where a person is in the f
 
 ```
 The product and anyone using it sit together in the right half, just past the centre and well clear of the right edge.
-The group fills about half the picture's height, with a clear band of room above every head and below every hand, each about a fifth.
+The group fills about a third of the picture's height and sits across the middle, and no face, no hand and no part of the product reaches into the top third or the bottom third.
 The left half continues the same place, softly blurred and full of daylight, with nothing in it that matters.
 The product is big enough to recognise at a glance, never a small detail in the distance.
 It is a real photograph: skin keeps its texture, with no glow and no haze.
@@ -600,6 +607,21 @@ that was not the product.
   silhouette from the side on a chair of another tone.
 - **The photograph.** The renders that looked most artificial carried window bloom, a haze and
   plastic skin, which is why the fifth sentence now asks for a real photograph.
+
+**What kind of picture survives a banner crop** (ADR-122). The usable area is about a third of
+the width by a little under half the height, so the question is not what looks good at 16:9 but
+what still reads inside that box:
+- **A seated or leaning person with the product, framed chest-up** — `06-relief-hero`. The head
+  stays out of the top third because the camera stands back (ADR-104), and the body cut by the
+  box's bottom is what a banner looks like anyway.
+- **The product alone, large, on the surface it works on, with its result visible beside it.** No
+  head to lose, and the strongest thing at 390 px.
+- **A horizontal subject** — the product lying along the frame, a hand entering from the right. It
+  has no vertical extent to lose, so the crop costs it nothing.
+- **A macro of the working surface** — `03-spec-macro`. The crop takes texture, not meaning.
+- **Never in a hero**: a standing full-length person (`hero-01` and `hero-03` both put the head in
+  the top fifth and lost it), a grid, a split, a before-and-after, an exploded view, a parts
+  callout, anything carrying words, and anything whose argument is a small part.
 
 The prompt says where things sit and never states the frame's shape (ADR-016). A hero carries no
 words and no inset. It routes like any slot, by its section and its copy, with `06-relief-hero`

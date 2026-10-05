@@ -10219,3 +10219,68 @@ The rule-6c sweeps ran in a clean worktree at `d6a58c4` (hits / files / TEACHES)
   they are; nothing is normalised into a token it never meant.
 
 ---
+
+## ADR-122 · 2026-10-05 · The hero's safe box is 55–86% across and 28–72% down, measured from the templates again — and one template line would buy back seven points of height
+
+**Owner question, 2026-10-05:** *"đối với type hero banner của LP2 … các template của tôi trên desktop có tỉ lệ 3:1, tuy nhiên ảnh generate sẽ theo tỉ lệ 16:9, tức là phần trên và dưới của ảnh sẽ thừa ra khi đặt vào khung 3:1, ngoài ra còn block về headline, copy, CTA bên trái hero section nên cần tư vấn về safe zone của ảnh để hiển thị sản phẩm & sử dụng / các loại ảnh liên quan đến hero banner."* — the desktop templates are 3:1, the render is 16:9, so the top and the bottom spill out of the frame; the headline, copy and CTA sit in a block on the left; what is the safe zone, and what kinds of picture belong in a hero banner.
+
+**The measurement.** `scripts/hero-safe-box.py` reads the hero block's own Tailwind classes out of each template and computes what a 16:9 render keeps under `object-fit: cover`. Run on the four templates in `~/Downloads` on 2026-10-05:
+
+| template | the block's height rule | 1280 | 1440 | 1536 | 1920 | 2560 |
+|---|---|---|---|---|---|---|
+| `t1-deal` | `clamp(496px, 33vw, 656px)`, set by its words, **and the picture is full-bleed** | 2.58:1 · keeps 15.6–84.4% | 2.90:1 · 19.4–80.6% | 3.03:1 · 20.7–79.3% | 3.03:1 · 20.7–79.3% | **3.90:1 · 27.2–72.8%** |
+| `t2-eco` | `aspect-12/5`, capped at 640px and 1920px wide | 2.40:1 · 13.0–87.0% | 2.40:1 · 13.0–87.0% | 2.40:1 · 13.0–87.0% | **3.00:1 · 20.4–79.6%** | 3.00:1 · 20.4–79.6% |
+| `wiboofy` | `h-[min(41.6667cqw,640px)]`, capped at 1920px | 2.40:1 · 13.0–87.0% | 2.40:1 · 13.0–87.0% | 2.40:1 · 13.0–87.0% | **3.00:1 · 20.4–79.6%** | 3.00:1 · 20.4–79.6% |
+| `aure` | `aspect-[12/5]`, capped at 640px and 1920px wide | 2.40:1 · 13.0–87.0% | 2.40:1 · 13.0–87.0% | 2.40:1 · 13.0–87.0% | **3.00:1 · 20.4–79.6%** | 3.00:1 · 20.4–79.6% |
+
+- **The owner is right about 3:1, and it is a ceiling for three templates and not for the fourth.** Three cap their block at 1920px wide and 640px tall, so they reach exactly 3:1 and stop. `t1-deal` caps nothing: its picture is full-bleed and its height is set by its own words, so a 2560px monitor makes it **3.90:1** and throws away the top and bottom 27% of the render.
+- **The words reach 45–48.1% across** — a 45% column on `aure` and `wiboofy`, 46% on `t2-eco`, and on `t1-deal` a 528px card inside a 1200px column, which lands at 46.2% on a 1280px screen and 48.1% on a 2560px one.
+- **The phone crop is 4:3, which keeps three quarters of the width**, and the templates anchor it differently: centred on `t1-deal` and `wiboofy` (12.5–87.5%), at 77% on `t2-eco` (19.2–94.2%), at the right edge on `aure` (25.0–100%).
+
+**Where every window overlaps**: vertically **27.2–72.8%**, horizontally **48.1% to 87.5%**.
+
+**What the old box got wrong.** ADR-103 set it at 55–88% across and 22–78% down, measured when `t1-deal`'s worst case was read at 1920 and the phone crops were read as right-anchored. Both corrections are small and both are real: 22% is above a band that starts at 27.2%, and 88% is outside a phone window that ends at 87.5%.
+
+### Decision
+
+1. **The safe box is 55–86% across and 28–72% down.** It is the overlap above with a margin, and everything the image is about sits inside it: the product, the hands, the face, the thing the product acts on.
+2. **The second fixed sentence changes.** It said *"The group fills about half the picture's height, with a clear band of room above every head and below every hand, each about a fifth."* — a group across the middle half reaches to 25% and 75%, outside the band. It now reads:
+   ```
+   The group fills about a third of the picture's height and sits across the middle, and no face, no hand and no part of the product reaches into the top third or the bottom third.
+   ```
+   **A third of the full frame is more than half of what the banner shows.** At 3:1 the block keeps 59% of the render's height, so a group filling a third of the 16:9 frame fills 56% of what the reader sees. The subject gets bigger on the page, not smaller.
+3. **What kind of picture survives a banner crop** — the usable area is about a third of the width by a little under half the height, so the question is not what looks good at 16:9 but what still reads inside that box:
+   - **A seated or leaning person with the product, framed chest-up** — `06-relief-hero`. The head stays out of the top third because the camera stands back (ADR-104) and the body is cut by the box's bottom, which a banner reads as normal.
+   - **The product alone, large, on the surface it works on, with its result visible beside it** — no head to lose, and the strongest thing at 390px.
+   - **A horizontal subject**: the product lying along the frame, a hand entering from the right. It has no vertical extent to lose, so the crop costs it nothing.
+   - **A macro of the working surface** — `03-spec-macro`. The crop takes texture, not meaning.
+   - **Never in a hero**: a standing full-length person (the head is in the top third and the crop beheads it — `hero-01` and `hero-03` both did), a grid, a split, a before-and-after, an exploded view, a parts callout, anything carrying words, and anything whose argument is a small part.
+4. **One template line would buy back seven points of height.** Capping `t1-deal`'s hero block at 1920px wide, as the other three already do, makes 3:1 the worst case everywhere and returns the band to 20.4–79.6%. It is the owner's call and the law does not assume it; the box above holds either way.
+
+### Consequences
+
+The rule-6c sweeps ran at `2de63e8` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"55–88%"` | 7 | 6 | 1 |
+| `"22–78%"` | 7 | 6 | 1 |
+| `"about half the picture's height"` | 13 | 7 | 2 |
+| `"top or bottom fifth"` | 7 | 3 | 0 |
+| `"13% to 87%"` | 2 | 2 | 1 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the crop table, the safe box, the second fixed sentence, and a new paragraph on what kind of picture survives a banner.
+- **Added:** `scripts/hero-safe-box.py`, which re-measures all of this from the templates. Its first run caught three faults in itself before any number was believed — a text column read as 6667% wide, `t1-deal`'s full-bleed picture measured against its text container, and a phone anchor ignored.
+- **These hits stand:** `query/sessions/pdp-dr-seat-cushion-l-shaped-v08/`, whose hero carries the old sentence and is a record; `registry/pdp-dr-types/ready-to-push/prompts.md`, a round-2 record from 2026-09-03; `decisions/log.md`'s own ADR-103 and ADR-107 entries.
+- **Generated:** `dist/app-bundle/pdp-dr-instruction.md` and the manifest.
+- `README.md`: the ADR count.
+- `registry_version` is unchanged.
+
+### What is NOT done
+
+- **No render tests this box.** The next hero set does.
+- **`hero-05` and `hero-06` carry the old second sentence.** Both are uncommitted and owner-gated, and neither is rewritten here; whichever is rendered next takes the new sentence first.
+- **The `t1-deal` template is not changed.** The repo does not edit the owner's templates, and decision 4 is a recommendation with its number attached.
+- **The 2560px case is measured, not observed.** Nobody has reported a hero cropped on a 2560px monitor; the band comes from the template's own rule, not from a screenshot.
+
+---
