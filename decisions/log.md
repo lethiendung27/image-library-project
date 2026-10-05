@@ -10525,3 +10525,54 @@ The rule-6c sweeps ran at `3efe607` (hits / files / TEACHES):
 - **No render tests any of it.** `section-10` is the test.
 
 ---
+
+## ADR-127 · 2026-10-05 · Never show the frame doing what the product makes unnecessary, and the words are LARGE: measured at 8.3 px where 18 is the target
+
+**Owner report, 2026-10-05**, on `sets/section-10/`: *"audit ảnh mới, chưa đạt do cơ chế sản phẩm vẫn sai. về cơ chế: sản phẩm này tìm lỗi trong dây kín, bị hỏng bên trong, không cắt hở. về marks: các icon/chữ/marks quá bé để đọc, hình thức không đẹp như các ảnh tham chiếu. hãy sửa và tạo đủ các option cho từng slot"* — the mechanism is still wrong: this tool finds a fault inside CLOSED wiring, damaged on the inside, nothing cut open; and the icons, words and marks are too small to read and do not look as good as the reference stills. Three ledger lines land with this commit.
+
+**What ADR-126 bought.** The transmitter is clipped on and hanging in 2 of 3 frames instead of lying on a mat, and each hand has a job. The step structure holds.
+
+**What failed:**
+
+| | what came back | measured |
+|---|---|---|
+| **the mechanism** | the find frame asked for *insulation chafed open with the copper showing* and got a loom **cut open**, a bundle of bare strands at the probe tip | 1 of 1 find frames |
+| **the parts** | he holds the RECEIVER and presses its button while the TONE/OFF/CONT switch belongs to the TRANSMITTER; the leads lie coiled with their clips on nothing | 2 of 3 |
+| **the words** | the corner badge's capital is 19 px in a 1,200-px render — **8.3 px on a 390-px phone against ADR-112's 18-px target** (`scripts/text-size.py`) | 3 of 3 |
+
+**The mechanism fault is the deepest, and it is a general one.** The product's claim is *finds a short or a break through the loom without cutting, stripping or unplugging it*. A frame that shows a cut-open loom with bare copper at the probe tip **shows the job being done the old way**, which is the way this product exists to replace. The picture then argues against its own page. The same trap waits for every product whose claim is *without*: without dismantling, without draining, without removing, without a second tool.
+
+**The words fault has a number and a cause.** ADR-124 put a *small corner badge* in the `whisper` family's definition, and the renderer gave exactly that: small. The owner's own reference stills run their headline across a quarter to a third of the frame width — *Complete Area Coverage*, *$0 Running Cost*, *Ultrasonic Technology* — and this library has been asking for the opposite since the family was written.
+
+### Decision
+
+1. **A frame never shows the work being done the way the product makes unnecessary.** Where a claim is *without cutting*, nothing in frame is cut; *without dismantling*, nothing is apart; *without a second tool*, no second tool. The object stays whole and closed, and the product's own indication carries the find.
+2. **What is hidden is shown by the INDICATION and by a mark that points INTO the closed object** — a glow at one spot inside intact insulation, a soft bloom under the tape where the fault sits, the tool's lamp on that spot — never by opening it. The mark lands on ONE point (ADR-109 still bars a mark running along a wire, and ADR-109's cut ban still bars a hole in anything the buyer owns).
+3. **The words are LARGE, and 18 px is the floor.** Every drawn word in a section image is set so its capital measures at least 18 px when the field is shown 390 px wide — about 5% of a 4:3 render's height — and a headline runs a quarter to a third of the frame's width, as the owner's references do. **The small corner badge is retired as a default**: `whisper` keeps a badge only where it is that size. Measure with `scripts/text-size.py` before grading.
+4. **A feature slot gets THREE options.** The owner asked for *đủ các option cho từng slot*: a set covering a block of feature lines offers three constructions per line, so the owner can pick per slot rather than per set.
+5. **`03-spec-overlay` goes to 0.10** with 1 to 3 in it, and `sets/section-11/` is next: the three lines of the Automotive Circuit Tester, **three options each, nine prompts**, with the loom closed in every one and the words at the floor.
+
+### Consequences
+
+The rule-6c sweeps ran at `6a36b6c` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"small badge"` | 2 | 2 | 1 |
+| `"chafed"` | 1 | 1 | 0 |
+| `"without cutting"` | 0 | 0 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.10 — `PARTS/product-reading` gains the *what the product makes unnecessary* line, `MARKS/overlay` gains the pointing-in rule and the 18-px floor, the `whisper` family loses *small*, `NEGATIVE`, the changelog.
+- **These hits stand:** the one `chafed` hit is `eval/render-tests.jsonl`, a record of what was drawn; `"without cutting"` has no tracked hit at all, which is itself the finding — the claim this decision protects was never written anywhere in the library, only in the product's brief.
+- **Render tests:** three lines in `eval/render-tests.jsonl`, `verdict_by: owner`.
+- **Generated:** the manifest.
+- `README.md`: the ADR count.
+
+### What is NOT done
+
+- **The parts confusion is not solved by a clause.** The renderer has now swapped the transmitter and the receiver in 3 of 9 frames across three sets. `section-11` names each body by what it carries — *the box with the three-position switch and the two leads*, *the pen with the gooseneck* — in every prompt, and if that fails the answer is a usage photo, not another sentence.
+- **No usage photo is on disk yet.** The GRIP in every set so far is derived from the brief's sentences and graded untested (ADR-126).
+- **The 18-px floor is a floor, not a design.** It says nothing about where the words sit or what they look like; the owner's references put them top-left or bottom-left in plain white, and `section-11` follows that without making it law yet.
+- **No render tests any of this.** `section-11` is the test.
+
+---

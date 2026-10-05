@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.9"
+version: "0.10"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -105,7 +105,15 @@ operating model in five lines: **PARTS** (what each body, lead, probe, clip or b
 is which in the attached photo); **CONNECTIONS** (what attaches to what, in what order, and to what
 on the vehicle, body or surface); **GRIP** (which part a hand holds and where, as the usage photos
 show it); **SEQUENCE** (the real procedure, numbered); **THE INDICATION** (how the product tells the
-operator it is working — a lamp, a tone, a reading, a movement). Sources rank: the attached product
+operator it is working — a lamp, a tone, a reading, a movement); and **WHAT IT MAKES UNNECESSARY**
+(ADR-127) — the old way the buyer no longer has to use.
+- **A frame never shows the work being done the way the product makes unnecessary.** Where the claim
+  is *without cutting*, nothing in frame is cut; *without dismantling*, nothing is apart; *without a
+  second tool*, no second tool. A find frame for a tool that traces a fault through a closed loom
+  came back with the loom cut open and bare strands at the probe tip, which argues against the page
+  it sits on, 1 of 1.
+- **What is hidden is shown by the INDICATION and by a mark pointing INTO the closed object** — a
+  glow at one spot under intact insulation, the tool's own lamp on that spot — never by opening it. Sources rank: the attached product
 photo and the owner's usage photos, then the brief, then the page's copy (ADR-120).
 - **Every frame is ONE NAMED STEP of that sequence, and the set says which.** The product is in its
   working state in that step: clipped, gripping, connected, switched on, under load. **A product in
@@ -165,6 +173,11 @@ beside the hand that holds it (ADR-109).
 |---|---|---|---|---|
 | `overlay` | a parameter, and the item's line picks it. `mark`: the invisible thing in its OWN form — sound as notes or a spoken bubble, a frequency as a chart keyed to what it targets, a lure as the paths the insects fly, a signal as the known symbol a buyer already reads. `icon`: one to three plain supporting symbols in the lock's icon style. `figure`: the page's figure with its unit. `tag`: two to five words naming the feature. `callout`: up to three labels on bold leaders, each ending ON the part it names, and the prompt names that part. `view`: an inset shaped like the optic, showing what the user sees | a mark in the colour of the thing itself — luminous blue for a working signal (G3), warm where the thing is warm; an icon in the lock's icon style and text colour; the lock's accent only on a call-out line or a chip (ADR-113); never red, never a flat green, never on the product | one form to a frame, and the one short line beside it | the owner's twelve feature frames: the mark is the thing itself 12 of 12, lands on or inside the subject 8 of 12, a generic glowing arc 0 of 12, words in frame 10 of 12, a sentence 0 of 12 (ADR-106) · `03-mechanism-signal` set 04: one short line spelled right 3 of 3, the view on a product's own screen 1 of 1 · this type's first three renders: `section-02`, under KNOWN-FLAKY |
 
+- **The words are LARGE, and 18 px is the floor** (ADR-127). Every drawn word is set so its capital
+  measures at least 18 px with the field shown 390 px wide — about 5% of a 4:3 render's height — and
+  a headline runs a quarter to a third of the frame's width, as the owner's references do. Measured
+  on `section-10`: 19 px in the render, **8.3 px on the phone**, less than half the floor, 3 of 3.
+  Measure with `scripts/text-size.py` before grading.
 - **A light at a connection reads as INDICATION, never as arcing** (ADR-126). It sits where metal
   actually meets metal, on a CLOSED contact, and never in the gap of an open jaw: a bloom between
   open jaws came back reading as an arc weld, which is a short circuit and the opposite of the
@@ -186,8 +199,9 @@ beside the hand that holds it (ADR-109).
   alone while three events failed.
 - **Two families, and a prompt declares which it is** (ADR-124): **`event`**, where the mark IS the
   picture — the event at frame scale, in perspective, reaching the thing it acts on, with a plain
-  headline and no chip; and **`whisper`**, where the photograph carries the feature so richly that
-  the layer is one small corner badge, an icon and two words. A middling photograph under a middling
+  headline and no chip; and **`whisper`**, where the photograph carries the feature so richly that the
+  layer is one corner badge of an icon and two words — **at the 18-px floor like every other drawn
+  word; `small` is retired** (ADR-127). A middling photograph under a middling
   sticker is neither, and it is what failed.
 - **The colour comes from the scene, never from the layer** (ADR-124): a chip, a leader or a badge is
   not the frame's colour source. Measured against the owner's stills: saturation 0.16 against 0.35,
@@ -231,6 +245,8 @@ beside the hand that holds it (ADR-109).
 
 ## NEGATIVE
 ```
+a cut, stripped or dismantled object in a frame whose product claims it needs none of that,
+a drawn word whose capital falls under 18 px on a 390-px phone,
 a product connected to nothing, a product held by the wrong part, an action that belongs to no step
 of the product's own procedure, a frame needing a third hand, a loose spare part or a coiled lead
 the step does not use, a light in the gap of an open jaw,
@@ -270,42 +286,39 @@ sorted the owner's feature frames into — and here each is an overlay FORM, a p
 they retire into this type waits on this type's first passing render.
 
 ## KNOWN-FLAKY
-Single observations; what recurred across both rounds is written into 0.3, and the rest waits here.
+Single instances. What recurred is law and lives above; what the ledger already holds is not repeated
+here.
 
-- **Sets `section-02` and `section-03`, six cushion frames.** What stood: words set once and spelled
-  right, a leader ending on its joint, one product that matched its reference. What failed as single
-  instances: words drawn twice; an outline traced round the whole product, barred by the accent law;
-  a level line over thighs that sloped, 2 of 2; an icon in the band a square crop removes; a tag at
-  2.7:1 against its ground. The owner's verdict on the round was size — *"chữ và các yếu tố đồ hoạ
-  cần to rõ ràng hơn. mobile first"* — with `scripts/text-size.py` measuring capitals at 8.4–14 px on
-  a 390-px phone against 18, after prompts had asked for a *concise* overlay, a *thin* line and a
-  *small* icon. That is ADR-112, and it is law now, not flake.
+- **Open, from the cushion rounds** (`section-02`, `section-03`): words drawn twice; an outline traced
+  round a whole product; a level line over thighs that sloped, 2 of 2; an icon placed in the band a
+  square crop removes; a tag at 2.7:1 against its ground.
+- **Open, from the tester rounds** (`section-07` to `section-10`): the renderer **swapped the
+  transmitter and the receiver 3 of 9 frames** across three sets, and lettered every labelled prop it
+  could see. Neither has a clause yet: the first is answered by naming each body by what it carries,
+  and if that fails the answer is a usage photo; the second is answered by keeping labelled props out
+  of frame (ADR-125).
 
 ## CHANGELOG
-- 0.9 (2026-10-05): **the owner failed `section-09`** (ADR-126, three lines): *"instruction không có
-  cơ chế đọc sản phẩm trước xem nó hoạt động như thế nào … cứ cầm bừa vào trông ảnh như bãi rác"*.
-  The file now READS the product before it writes a frame — PARTS, CONNECTIONS, GRIP, SEQUENCE, THE
-  INDICATION — and every frame is one named step of that sequence with the product working in it; two
-  hands each with a job; only the step's props; a light at a contact reads as indication, never as
-  arcing. ADR-125's light clause held, 1 of 1.
-- 0.8 (2026-10-05): **the owner failed `section-08`, asking whether the model or the prompt is at
-  fault** (ADR-125, six lines). It is the prompt: ADR-124's colour rule moved saturation 0.16 to 0.30
-  and drift 48.3% to 2.1% on the first render. The mark is now LIGHT named as a physical thing, never
-  a graphic (clip art 3 of 3); its colour is always stated, G3 (red chosen 2 of 3 unstated); one event
-  to a frame (OFF is undrawable); no labelled props; `whisper` is the default.
-- 0.7 (2026-10-05): **the owner failed all seven renders of `section-07`** (ADR-124, seven lines):
-  poor marks, frames with nothing happening, no thinking in the mechanism. The file derives before it
-  draws — THE EVENT, THE FRAME, THE LAYER — the layer lives in the scene's perspective at frame scale
-  in one of two families, and the colour comes from the scene (0.16 vs the stills' 0.35).
-- 0.6 (2026-09-20): a person's clothes are named pieces, never a category — *a work shirt* rendered
-  as a dress shirt 2 of 3 (ADR-115).
-- 0.5 (2026-09-20): a person in frame is the derived user, the feature at work in their hands (ADR-114).
-- 0.4 (2026-09-18): the owner's design rules (ADR-113) — the lock's typeface, text colour, chip, icon
-  style, lighting family and tone; the accent only on a leader or a chip; marks first, words few and
-  large; leaders bold and ending on their part; real and never worn.
-- 0.3 (2026-09-18): the skeleton is the owner's image instruction as it stands, arm B of ADR-111,
-  with G1 in one sentence (ADR-112).
-- 0.2 (2026-09-18): first render — `section-02` — failed by the owner on quality against the
-  instruction (ADR-111). No clause added; the observations wait in KNOWN-FLAKY.
-- 0.1 (2026-09-18): drafted from the owner's image instruction, the FEATURES mode, with ADR-106's
-  feature-image law as its words (ADR-110). New device `overlay`.
+Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
+`eval/render-tests.jsonl`.
+- 0.10 (2026-10-05, ADR-127): never show the work done the way the product makes unnecessary — a find
+  frame cut open the loom this tool traces through; what is hidden is shown by the indication and a
+  mark pointing INTO the closed object; every drawn word meets an 18-px floor on a 390-px phone,
+  measured at 8.3; `small` leaves the `whisper` family; a feature slot gets three options.
+- 0.9 (2026-10-05, ADR-126): READ the product first — PARTS, CONNECTIONS, GRIP, SEQUENCE, THE
+  INDICATION — and make every frame one named step of its own procedure, the product working in it,
+  two hands each with a job, only the step's props, a light at a connection reading as indication.
+- 0.8 (2026-10-05, ADR-125): the mark is LIGHT named as a physical thing, never a graphic (clip art
+  3 of 3); its colour is always stated, G3 (red chosen 2 of 3 when unstated); one event to a frame;
+  no labelled props; `whisper` is the default.
+- 0.7 (2026-10-05, ADR-124): derive before drawing — THE EVENT, THE FRAME, THE LAYER; the layer lives
+  in the scene's perspective at frame scale, in one of two families; the colour comes from the scene.
+- 0.6 (2026-09-20, ADR-115): a person's clothes are named pieces, never a category.
+- 0.5 (2026-09-20, ADR-114): a person in frame is the derived user, the feature at work in their hands.
+- 0.4 (2026-09-18, ADR-113): the owner's design rules — typeface, text colour, chip, icon style,
+  lighting family and tone; the accent only on a leader or a chip; marks first, words few and large.
+- 0.3 (2026-09-18, ADR-111, ADR-112): the skeleton is the owner's image instruction as it stands,
+  with G1 in one sentence.
+- 0.2 (2026-09-18, ADR-111): first render, `section-02`, failed by the owner on quality.
+- 0.1 (2026-09-18, ADR-110): drafted from the owner's image instruction, the FEATURES mode. New
+  device `overlay`.
