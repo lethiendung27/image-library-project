@@ -10833,3 +10833,75 @@ The rule-6c sweeps ran at `2cc19f4` (hits / files / TEACHES):
   that disagreement is possible, not to be precise to the frame.
 
 ---
+
+## ADR-130 · 2026-10-06 · The owner approves the set and the card: a feature image's FIGURE CARD is named as its own device, and the gallery's flat chip is left alone
+
+**Owner, 2026-10-06**, answering the question ADR-129 left open and the standing ask on
+`sets/section-12/`: *"cho phép tất cả. xuất lại prompt để test v13"* — allow all of it, and issue
+the prompts again to test v13. **This is the explicit word `sets/section-12/` was waiting for**
+(type-loop, owner-gated), and it settles the conflict ADR-129 declined to settle on its own.
+
+### What was in conflict
+
+ADR-129 found that four of the owner's seventeen reference stills of 2026-10-05 put a figure with
+its unit inside a **drawn card with a thin glowing border and a translucent fill** — and that
+`registry/pdp-dr-instruction.md` line 139 fixes the namespace's **chip form** as *one shape (pill or
+rectangle), one fill, one text case, flat: no outline, no shadow, no 3D, no stacking and no boxed
+figure*. The card is an outline, a glow and a boxed figure: three of the things that line bans.
+
+### Decision
+
+1. **A FEATURE IMAGE's figure card is its own device, and `03-spec-overlay` owns it.** Where a
+   feature frame carries a figure with its unit, it may stand inside a drawn card with a thin
+   glowing border and a faint translucent fill, floating in the scene at about the size of a hand.
+   Measured: 4 of 4 figures in the owner's 2026-10-05 references are set this way.
+2. **The gallery's flat chip form is NOT loosened.** Line 139 governs the product card's gallery
+   tiles, where one chip form across the set is what makes twelve tiles read as one body of work,
+   and `03-spec-callout` records that *the namespace's flat chip form now owns that word* (ADR-068,
+   its own 0.x). Two different devices, two different jobs: the chip is a page-wide consistency
+   lock, the card is a feature frame's own overlay. Line 139 gains a pointer so a reader of it is
+   sent here rather than concluding the card is banned.
+3. **A headline and a label still sit directly on the picture** (ADR-128, ADR-129). The card is the
+   figure's exemption and the box is the icon's; neither reaches a headline.
+4. **`03-spec-overlay` goes to 0.13** with 1 to 3 in it, and **`sets/section-12/` is committed** on
+   the owner's word, re-stamped for 0.13. It has never been rendered at any version; this commit
+   makes it the record of what will be rendered, not of what was.
+
+### Consequences
+
+The rule-6c sweeps ran at `71e59ae` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"no boxed figure"` | 2 | 2 | 1 |
+| `"chip form"` | 29 | 13 | 6 |
+
+- **Rewritten:** `registry/pdp-dr-instruction.md` — the FEATURE IMAGE section names the figure card
+  and scopes it, and the `chip form` row of the design-lock table gains a pointer to it.
+  `registry/pdp-dr-types/03-spec-overlay.md` to 0.13. `sets/section-12/` re-stamped and committed.
+- **The one `"no boxed figure"` TEACHES hit is the line this ADR scopes**, and it keeps its words:
+  the gallery chip stays flat and unboxed. Only the sentence after it is new.
+- **These `"chip form"` TEACHES hits stand:** `mapping/pdp-dr-rules.md` (2), `query/runbook.md` (1)
+  and `registry/pdp-dr-instruction.md` lines 127, 137 and 383 all name the chip form as one of the
+  parameters a session locks for a page — true before and true after, because the lock is
+  unchanged. `registry/pdp-dr-types/03-spec-callout.md` (4) renamed its own badge form to
+  `icon-disc` precisely because the flat chip owns the word `chip`; leaving the chip flat is what
+  keeps that rename correct, and loosening it would have broken a type this lane does not own.
+- **Render tests:** none. Nothing has been rendered since ADR-127.
+- **Generated:** the manifest.
+- `README.md`: the ADR count.
+
+### What is NOT done
+
+- **The approval was blanket and this ADR reads it narrowly.** *"Cho phép tất cả"* answered a
+  message that asked three things: commit the set, settle the chip, and render. It is read here as
+  yes to the set and yes to the card **for a feature image**, because that is where every reference
+  that shows a card is. It is not read as permission to put a glowing card on a gallery tile, which
+  nothing measured asks for.
+- **Still no render.** `section-12` is committed but untested; nine frames, six overlay forms, and
+  the first test of whether this renderer draws a line icon in a box without turning it into clip
+  art.
+- **Still no usage photo** for the Automotive Circuit Tester, and the parts error is still 5 of 9
+  (ADR-126, ADR-127, ADR-128).
+
+---

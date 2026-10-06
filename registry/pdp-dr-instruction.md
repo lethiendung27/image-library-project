@@ -136,7 +136,7 @@ session **in the same words**:
 | text colour | one colour for words on a light ground, one for words on a dark ground |
 | accent | **ONE colour**, allowed on the chip form, a Callout leader and a badge a type declares, and nowhere else: never a frame, a border, a ring, an arrow, a line, a glow or a mark, and never the product. Red belongs to wrong-state marks and green to the verdict check; the accent is neither |
 | typography | **one family for every word** — or, where the page's style line names two, one title face and one copy face, both fixed for the set — written as a style the renderer holds plus two concrete traits, with the title's weight and case and the copy's weight and case |
-| chip form | one shape (pill or rectangle), one fill, one text case, flat: no outline, no shadow, no 3D, no stacking and no boxed figure |
+| chip form | one shape (pill or rectangle), one fill, one text case, flat: no outline, no shadow, no 3D, no stacking and no boxed figure. **This is the GALLERY's chip.** A feature image's figure card is a different device and `03-spec-overlay` owns it — see *A figure with its unit may stand in a FIGURE CARD* above (ADR-130) |
 | design language | corner radius, margin rhythm, overlay treatment, icon style. **It never names a device** — "leaders", "arrows", "insets" — because a named device gets drawn in every tile. **No frame or border around a photograph or a panel**; only the divider and the gutters a type defines |
 | lighting family | one family, with the material vocabulary of the grounds and the props |
 | register | photograph or render, wherever the types in the set leave that open |
@@ -460,6 +460,15 @@ Its section type is `03-spec-overlay`, the FEATURES mode of the owner's image in
 - **and/or a tag of two to five words naming that feature**, in the page's own words —
   `IP68 Waterproof`, `$0 Running Cost`, `Regional Dialects Supported`;
 - **and the labels its chart or its call-out lines need**, one to three words each.
+
+**A figure with its unit may stand in a FIGURE CARD, and that card is this type's own device**
+(ADR-130). It is a drawn card with a thin glowing border and a faint translucent fill, floating in
+the scene at about the size of a hand, the figure in plain bold white inside it — measured 4 of 4 on
+the owner's reference stills of 2026-10-05. **It is not the chip form** in the design-lock table
+below: the chip is a page-wide consistency lock on the product card's gallery tiles and stays flat,
+unboxed and unglowing, which is also what keeps `03-spec-callout`'s rename of its own badge form to
+`icon-disc` correct. A HEADLINE and a LABEL take neither — they sit directly on the picture
+(ADR-128, ADR-129), and an ICON keeps its own outline box.
 
 **A drawn figure must be true of the frame it sits in** (ADR-109). A figure that names a
 DISTANCE, a TIME or a COUNT matches what the frame draws — `100 m` set over a driveway the frame

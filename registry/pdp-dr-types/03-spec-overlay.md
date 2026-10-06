@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.12"
+version: "0.13"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -199,10 +199,12 @@ beside the hand that holds it (ADR-109).
   plate, no band, no box behind them. Where the ground is light the words stay white and the dark
   edge does the work. A light plate appeared 3 times and brought black letters with it all 3; in the
   owner's seventeen references of 2026-10-05 a headline or a label sits directly on the picture
-  9 of 9. **A FIGURE WITH ITS UNIT is the exception and keeps its chip or card** — the instruction
-  legislates it (`badge` slot, chip form) and the owner's references put the figure inside a drawn
-  card 4 of 4. **An ICON keeps its own outline box.** ADR-128 banned all three by writing the
-  headline's fault as a property of every drawn word.
+  9 of 9. **A FIGURE WITH ITS UNIT is the exception and keeps its card** — the FIGURE CARD, a drawn
+  card with a thin glowing border and a faint translucent fill, floating in the scene at about the
+  size of a hand, which **this type owns** and which is NOT the gallery's flat chip form (ADR-130,
+  on the owner's word *"cho phép tất cả"*); the owner's references set the figure this way 4 of 4.
+  **An ICON keeps its own outline box.** ADR-128 banned all three by writing the headline's fault as
+  a property of every drawn word.
 - **A SET spans the overlay forms** (ADR-129). A set of nine uses **at least four of the six**, and
   no form more than three times. One form to a FRAME stands (ADR-125); one form to a SET is the
   fault — `section-12` was written with `tag` 9 times and `figure`, `icon`, `callout`, `view` and
@@ -351,6 +353,9 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.13 (2026-10-06, ADR-130): the owner allows it all — `sets/section-12/` is approved and
+  committed, and the FIGURE CARD is named as this type's own device, distinct from the gallery's
+  flat chip form, which is left alone.
 - 0.12 (2026-10-06, ADR-129): a set spans the overlay forms — at least four of six, none more
   than three times — and a feature frame is product-led, half of them in a studio; ADR-128's
   no-plate rule narrows to a headline and a label, because a figure keeps the chip the instruction
