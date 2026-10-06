@@ -11166,3 +11166,122 @@ The rule-6c sweeps ran at `af86b2f` (hits / files / TEACHES):
   question.
 
 ---
+
+## ADR-133 · 2026-10-06 · A controlled comparison, by accident: copy that names an EVENT makes nine different pictures, copy that names an ATTRIBUTE makes five packshots — and the owner's one-short-line rule was already in the instruction
+
+**Owner, 2026-10-06:** *"audit các ảnh mới, breakdown luồng xử lí từ content > prompt engineer như
+thế nào?"* — audit the new images, and break down the flow from content to prompt engineering. He
+rendered **two** sets forty minutes apart: `sets/section-13/` at 10:14 and `sets/section-14/` at
+10:54. **Eighteen ledger lines land with this commit, `verdict_by: claude-opus-5`.**
+section-13: 0 pass, 3 partial, 6 fail. section-14: 0 pass, 5 partial, 4 fail.
+
+### The comparison nobody designed, and it is the most useful thing this lane has had
+
+The two sets are **the same product, the same type version 0.15, the same FRAME law, the same
+renderer, forty minutes apart.** One variable differs: `section-13`'s three feature lines were
+**invented by the model from the brief** — *Three Mode Transmitter Switch*, *Broad DC Voltage
+Range*, *Solve Multiple Electrical Faults*. `section-14`'s are **the page's own blocks**, supplied
+by the owner — *Locate Breaks Without Stripping Wires*, *Trace Through Trim Panels*, *Tune Out
+False Signals Instantly*.
+
+| | section-13 (invented) | section-14 (the page's) | the owner's 17 |
+|---|---|---|---|
+| **closest composition pair** | **15.9** | **42.8** | 30.3 |
+| warmth, R−B | −4.61 | **+7.52** | +9.23 |
+| value | 0.25 | 0.29 | 0.46 |
+| colourfulness | 29.2 | 26.4 | 43.5 |
+| texture | 15.8 | 16.9 | 24.6 |
+
+**The invented set repeats itself and the content-derived set does not** — and by a wide margin:
+section-14's two most-alike frames sit further apart than the owner's own two most-alike
+references. Five of section-13's nine are the same picture, a product on an empty dark ground.
+
+**Why, and this is the flow the owner asked for.** The invented lines name **attributes of the
+object**: a switch with three modes, a voltage range, a list of fault types. An attribute can only
+be shown by photographing the object, so every frame becomes a packshot and they converge. The
+page's lines name **things that happen in a place**: a break located inside a loom, a signal
+followed behind a trim panel, interference dialled out. An event has a place, a moment and a hand,
+so each one forces a different scene, and three options on each force nine.
+
+**So the first step of writing a feature image is not visual at all.** It is to read the block's
+title and ask whether it names something that HAPPENS or something the object HAS. That question
+decides whether the set can have variety before a single clause is written.
+
+### The word floor failed again, and the rule that fixes it was already written
+
+Drawn words across `section-14`, `scripts/text-size.py --phone 390 --fit cover`:
+**19.2, 7.4, 10.4, 14.4, 20.9, 12.6, 17.0 px.** **Two of seven clear the 18-px floor.** Third round
+running: 8.3 px under ADR-127, 11.3–16.5 under ADR-131, 7.4–20.9 here.
+
+The rule-6c sweep found the answer in a file this lane has been editing for a month.
+`registry/pdp-dr-instruction.md` lines 296 and 437: **"A feature image may carry ONE SHORT LINE and
+nothing else"** — owner instruction, 2026-09-18, ADR-106.
+
+ADR-129 then shipped two forms that put **three** labels in a frame: `callout`, three labels on
+three leaders, and `icon`, three labels under three boxes. **Those are the frames with the smallest
+words.** The two `callout` frames measured **7.4 and 12.6 px**, the two smallest drawn words this
+type has ever produced; the `icon` frames 19.2 and 14.4; the single-line `tag` frames 17.0 and 20.9.
+The renderer divides the available size by the number of things it has to letter.
+
+And the owner's own corpus agrees. Of his seventeen references, the frames that pair icons with ONE
+line — *7 NOAA CHANNELS* over three unlabelled weather icons, *No Shake* beside one crossed-out
+camera, *Non-Reactive Surface* beside one shield — carry his largest words. The one frame that
+labels three icons separately, the three hob symbols, carries his smallest.
+
+### Decision
+
+1. **Classify the block before writing a frame.** Does its title name an EVENT or an ATTRIBUTE?
+   Attribute copy yields packshots that converge — measured 15.9 against 42.8 on the same product,
+   same law, same day. Where a block names an attribute, the event is derived from its copy's verb,
+   or the set is told it cannot have variety and the owner decides.
+2. **ONE drawn line to a frame, and the line is the only lettering.** The owner's instruction said
+   this on 2026-09-18 and this type's `callout` and `icon` forms broke it. **A row of icons goes
+   UNLABELLED and the one line names what they are** — his `7 NOAA CHANNELS` over three unlabelled
+   icons is the pattern. `callout` is retired as a form that letters its leaders: a leader may point,
+   but only one of them carries words.
+3. **One word-form to a SET.** The only round that ever held the floor was `section-11`, nine
+   prompts carrying one `tag` clause: 9 of 9, 19.6 to 35.3 px. Every mixed-form set since has
+   failed. The DEVICE spread of ADR-129 survives and is still right — `mark` and `view` carry no
+   words at all, so a set can span forms and still letter only one way.
+4. **A frame whose scene contradicts its own block is void**, however good the picture. The `icon`
+   frame for *Trace Through Trim Panels* came back showing a dash with its trim already removed.
+   Grade the scene against the block's claim before anything else.
+5. **`03-spec-overlay` goes to 0.16** with 1 to 4 in it.
+
+### Consequences
+
+The rule-6c sweeps ran at `d231a1b` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"one short line"` | 24 | 10 | 6 |
+| `"spans the overlay forms"` | 6 | 5 | 4 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.16 — `FRAME` gains the
+  event-or-attribute question and the contradicts-its-block rule, `MARKS` gains the one-line rule
+  and narrows `callout` and `icon`, `NEGATIVE`, the changelog.
+- **The six `"one short line"` TEACHES hits all stand and none is rewritten** — `mapping/`,
+  `query/runbook.md`, `registry/pdp-dr-instruction.md` and `03-mechanism-signal.md` were right the
+  whole time. **This ADR exists because the type disagreed with them and nobody swept.** That is the
+  second time the sweep has caught this lane contradicting a rule it already had: ADR-129 did it to
+  the chip, and this does it to the line.
+- **The four `"spans the overlay forms"` TEACHES hits stand.** The spread is not withdrawn; what
+  changes is that only one of the forms in a set letters anything.
+- **Render tests:** eighteen lines in `eval/render-tests.jsonl`, `verdict_by: claude-opus-5`.
+- **Generated:** the manifest. `README.md`: the ADR count.
+
+### What is NOT done
+
+- **The picture is still short of the owner's corpus** on value, colourfulness and texture in both
+  sets, and this ADR writes no clause for it — ADR-132 already did and it did not land. Two rounds
+  of measurement now say the frames come back dark; a third will say whether that is the prompt or
+  the renderer.
+- **The white point drifted the other way**: 17.0% in section-14 against the owner's 3.7%, because
+  the work-lamp clause pushed everything amber. One round, no clause.
+- **`Non Non Destructive Tracing`** — a drawn word printed twice. No clause can stop it; the
+  only defence is measuring and re-rendering, which is what the watch items say.
+- **No usage photograph still**, for the fifth decision running.
+- **`section-13` is superseded, not deleted.** Its nine renders are in the ledger because they are
+  the control half of the comparison, and that is the only reason they are worth keeping.
+
+---

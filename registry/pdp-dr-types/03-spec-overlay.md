@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.15"
+version: "0.16"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -210,6 +210,17 @@ with `scripts/frame-colour.py`: colourfulness **25.6 against 43.5**, texture **1
 saturation **0.21 against 0.35**, warmth **−4.6 against +9.2**. The richest of the nine was below
 his median.
 
+- **FIRST, CLASSIFY THE BLOCK: does its title name an EVENT or an ATTRIBUTE?** (ADR-133). This is
+  the first step of writing a feature image and it is not visual. **An attribute can only be shown
+  by photographing the object, so every frame becomes a packshot and they converge**; an event has a
+  place, a moment and a hand, so each one forces a different scene. Measured on the same product,
+  the same law and the same day: nine frames from three INVENTED attribute lines had a closest
+  composition pair of **15.9**; nine from the page's own three EVENT lines had **42.8**, further
+  apart than the owner's own two most-alike references at 30.3. Where a block names an attribute,
+  the event comes from its copy's verb or the set is told it cannot have variety.
+- **A frame whose scene contradicts its own block is void**, however good the picture (ADR-133): the
+  `icon` frame for *Trace Through Trim Panels* came back showing a dash with its trim already
+  removed. Grade the scene against the block's claim before anything else.
 - **The product is the SUBJECT**: the largest, brightest, best-resolved thing in frame, standing or
   held three-quarter, lit so it separates from its ground. **Never laid flat, never dark-on-dark,
   never a components lay-out.** It read at about a fifth of the frame in the failed round against
@@ -246,6 +257,19 @@ his median.
   `section-10`, written as an adjective: 8.3 px on the phone, 3 of 3. Measured on `section-11`,
   written as a share: **19.6 to 35.3 px, median 27.9, 9 of 9**, contrast 11.4 to 15.7:1.
   Measure with `scripts/text-size.py` before grading.
+- **ONE drawn line to a frame, and that line is the only lettering** (ADR-133, and
+  `registry/pdp-dr-instruction.md` has said so since ADR-106: *a feature image may carry one short
+  line and nothing else*). **A row of icons goes UNLABELLED and the one line names what they are** —
+  the owner's `7 NOAA CHANNELS` over three unlabelled weather icons is the pattern. `callout` may
+  point with leaders but only one of them carries words. Measured: the renderer divides the
+  available size by the number of things it must letter — the two three-label `callout` frames came
+  back at **7.4 and 12.6 px**, the two smallest drawn words this type has produced, the three-label
+  `icon` frames at 19.2 and 14.4, and the single-line `tag` frames at 17.0 and 20.9. The owner's own
+  corpus agrees: his frames that pair icons with ONE line carry his largest words, and the one frame
+  that labels three icons separately carries his smallest.
+- **ONE word-form to a SET** (ADR-133). The only round that ever held the floor was `section-11`,
+  nine prompts carrying one `tag` clause: **9 of 9, 19.6 to 35.3 px**. Every mixed-form set since has
+  failed. The device spread of ADR-129 survives, because `mark` and `view` carry no words at all.
 - **EVERY form's clause carries the size rule, not just `tag`'s** (ADR-131). A headline, a label
   under an icon, a call-out label and a figure in its card each state their height as a share of the
   picture, and 18 px is the floor for all of them. ADR-127 bought the floor and wrote it into the
@@ -361,6 +385,8 @@ a cut, stripped or dismantled object in a frame whose product claims it needs no
 a product laid flat, dark on a dark ground, or small in its own frame, a components lay-out of a
 product that assembles, an empty floor offered as a studio ground, two frames of one set sharing
 a composition, a round below the owner's corpus band on colourfulness or texture,
+a second line of lettering in a feature image, a row of icons each with its own label, a set
+that letters in more than one form, a frame whose scene contradicts the block it illustrates,
 a drawn word whose capital falls under 18 px on a 390-px phone, a drawn word whose clause states
 no size, a drawn word under 4.5:1 against the ground it sits on, a headline running past a third
 of the frame width, a plate, band or box behind a HEADLINE or a LABEL, a set that plays one
@@ -426,6 +452,11 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.16 (2026-10-06, ADR-133): classify the block first — an EVENT line makes nine different
+  pictures, an ATTRIBUTE line makes packshots that converge (15.9 against 42.8, same product, same
+  day); ONE drawn line to a frame and ONE word-form to a set, which the instruction has said since
+  ADR-106 and this type's callout and icon forms broke; a frame that contradicts its own block is
+  void.
 - 0.15 (2026-10-06, ADR-132): the owner failed all nine — three decisions in a row legislated the
   drawn layer and none the photograph. A new FRAME section puts the picture first: the product is
   the subject, assembled and working, a studio ground still argues, no two frames share a
