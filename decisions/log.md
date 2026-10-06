@@ -11385,3 +11385,114 @@ The rule-6c sweep ran at `563a732` (hits / files / TEACHES):
 - **No usage photograph still**, for the sixth decision running.
 
 ---
+
+## ADR-135 · 2026-10-06 · The owner's flow fixed the thinking and this lane emptied the picture: an either/or was read as a neither, and `1 màu nhấn` was read as drain the world
+
+**Owner, 2026-10-06**, on the nine renders of `sets/section-15/`, the first set written by his own
+eight-step flow: *"workflow của tôi về mặt idea, message thì đã rất compact, tuy nhiên về visual còn
+kém xa so với các ảnh input tham chiếu, thiếu marks/visual cues, thiếu context"* — the thinking and
+the message are compact, but the visual is far below his reference images: **missing marks and
+visual cues, missing context.** Nine ledger lines, `verdict_by: claude-opus-5`. **0 pass, 6 partial,
+3 fail.**
+
+### What the round bought, and three of these are firsts
+
+| | section-14 | **section-15** | his 17 |
+|---|---|---|---|
+| **brightness** | 0.29 | **0.40** | 0.46 |
+| **white-point drift** | 17.0% | **0.92%** | 3.7% |
+| closest composition pair | 42.8 | 32.3 | 30.3 |
+| **the drawn word** | 2 of 7 over the floor | **every measurable frame over it** — 19.2, 23.5, 30.5, 33.5, 41.4 px | — |
+
+**The word floor finally held**, for the first time since `section-11`, and it held exactly as
+ADR-133 predicted: one word-form, one line, nine frames. The darkness that ADR-132 measured and
+could not fix is largely gone, and the amber cast ADR-133 recorded is gone outright.
+
+### What it cost, and what it never had
+
+| | section-14 | **section-15** | his 17 |
+|---|---|---|---|
+| **colourfulness** | 26.4 | **22.3** — lowest of five rounds | **43.5** |
+| **saturation** | 0.28 | **0.21** | 0.35 |
+| **frames carrying any visual cue** | 7 of 9 | **0 of 9** | 16 of 17 |
+
+**Two clauses did this, and this lane wrote both.**
+
+**One: an either/or read as a neither.** The owner's step 6 is *1 headline ngắn. **Hoặc** icon
+callout như apple style* — one short headline, **OR** an Apple-style icon callout. His step 8 bans
+*badge, callout **dày**, infographic **nặng**, **quá nhiều** icon* — the heavy callout, the dense
+infographic, too many icons. ADR-134 turned both into a ban on every mark, and `section-15`'s
+checker was given a regex that fails any prompt containing the word `drawn`. **The type file itself
+says otherwise at line 220** — *ONE short headline, **or** one Apple-style icon callout* — so the
+set contradicted its own type, and the sweep is how that was found. He offered a choice between two
+things and got neither.
+
+**Two: `1 màu nhấn` read as drain the world.** The clause this lane wrote into all nine prompts was
+*the only saturated colour in the picture is the red of the product's leads and its status lamp;
+everything else is held in neutral greys, blacks and the material's own tone.* **One accent colour
+governs the drawn LAYER. It was never an instruction to desaturate the photograph.** The cost is
+measured: 22.3 colourfulness against his 43.5, the lowest this lane has produced in five rounds, and
+it moved the wrong way while brightness moved the right way.
+
+### And the pendulum, stated plainly
+
+ADR-132 banned the plain studio ground. ADR-134 freed it. **Both were wrong**: the ground is allowed
+and it must still carry a world, which is what ADR-132 said in its first clause before its second
+over-reached. ADR-129 gave this type six overlay forms. ADR-134 removed every mark. **Both were
+wrong**: one cue, not six devices and not none.
+
+This library already has a rule for this — *fix with a distinction, not the opposite* — and this
+lane has now broken it twice in two days. A failure measured at one extreme is not evidence for the
+other extreme; it is evidence that the axis needs a finer cut.
+
+### Decision
+
+1. **Every feature frame carries exactly ONE visual cue, and zero is a failure.** Measured: nine
+   frames with none, rejected on sight; sixteen of the owner's seventeen references carry one. The
+   cue is a drawn mark, **or** an Apple-style icon callout, **or** the product's own indication made
+   unmistakable — his own either/or, restored. More than one is the *callout dày* he banned.
+2. **`1 màu nhấn` binds the drawn layer only.** The photograph keeps the colour of its own world,
+   and a round below the owner's corpus band on colourfulness fails whatever else it did. The
+   draining clause is struck from the type and from any set carrying it.
+3. **A studio ground still carries a world.** White seamless, dark studio and contextual all remain
+   available — and in all three the product is doing something and the place it belongs to is
+   implied, exactly as the owner's own `ULTRA-LIGHT` white seamless implies a hand and a pocket.
+   This restores ADR-132's first clause, which ADR-134 over-relaxed along with its second.
+4. **`03-spec-overlay` goes to 0.18** with 1 to 3 in it, and **`sets/section-16/`** is `section-15`
+   with one cue added to every frame, the accent clause repaired and the context restored — the
+   three things the owner named, and nothing else, so the next round measures those three alone.
+
+### Consequences
+
+The rule-6c sweeps ran at `0a2e92a` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"icon callout"` | 15 | 3 | 1 |
+| `"1 màu nhấn"` | 11 | 2 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.18 — `FLOW` step 6 gains the
+  one-cue floor so the either/or cannot be read as a neither again, step 8's accent is scoped to the
+  layer, `FRAME`'s ground clause restores the world, `NEGATIVE`, the changelog.
+- **The one `"icon callout"` TEACHES hit is `03-spec-overlay.md` line 220, and it was RIGHT.** It
+  carried the owner's either/or correctly the whole time; what contradicted it was a set and a
+  checker written against the same ADR. It is not rewritten, it is the evidence.
+- **`"1 màu nhấn"` has no teaching hit at all** — the misreading never entered a rule, only nine
+  prompts, which is why it cost one round rather than five.
+- **Render tests:** nine lines in `eval/render-tests.jsonl`, `verdict_by: claude-opus-5`.
+- **Generated:** the manifest. `README.md`: the ADR count.
+
+### What is NOT done
+
+- **No clause here says WHICH cue a frame should carry.** The owner's references use a different one
+  almost every time — radiating arcs, a glow on the part that works, a coverage wedge on the ground,
+  a crossed-out symbol, a shield. Choosing it is step 3's job, from the claim, and `section-16` picks
+  one per block and is the test of whether that choice can be derived rather than guessed.
+- **Texture is still short** — 15.1 against his 24.6, and it has not improved in five rounds. No
+  round has varied anything that would move it, so there is nothing to conclude yet.
+- **The white-ground frames defeat the text measurement**, because the words and the ground are the
+  same colour and the locator cannot separate them. Those three are read by eye only, and the
+  numbers quoted above are from the six dark and contextual frames.
+- **No usage photograph still**, for the seventh decision running.
+
+---

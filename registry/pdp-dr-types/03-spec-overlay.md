@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.17"
+version: "0.18"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -219,11 +219,18 @@ notes show the work at each step, so the thinking can be corrected instead of th
    seen at once, everything else is demoted.
 6. **Cut the copy to the minimum**: ONE short headline, **or** one Apple-style icon callout, never
    both and never more. The rest is carried by the photograph.
+   **EVERY FRAME CARRIES EXACTLY ONE VISUAL CUE, AND ZERO IS A FAILURE** (ADR-135). The cue is a
+   drawn mark, **or** an Apple-style icon callout, **or** the product's own indication made
+   unmistakable. *Minimal is not none*: a set shipped with no cue at all in 9 of 9 frames was
+   rejected on sight, against 16 of the owner's 17 references that carry one. More than one is the
+   *callout dày* step 8 bans.
 7. **Keep fidelity to the reference photo** — shape, colour, structure. The model may still get
    small text and logos wrong, which is a grading problem, not a prompt one.
 8. **State the art direction and the negative constraints**: white seamless, studio or contextual;
-   **one accent colour**; few words. **Banned: a badge, a heavy lettered callout, a dense infographic,
-   a crowd of icons.**
+   **one accent colour — and that binds the DRAWN LAYER, not the photograph** (ADR-135): the scene
+   keeps the colour of its own world. Read as an instruction to desaturate the picture it cost 22.3
+   colourfulness against the owner's 43.5, the lowest of five rounds. Few words. **Banned: a badge,
+   a heavy lettered callout, a dense infographic, a crowd of icons.**
 
 This supersedes the derivation order that stood before it, and steps 5 and 8 replace two things this
 type legislated wrong: the ground was never the fault, the HIERARCHY was, and the form spread of
@@ -262,9 +269,11 @@ his median.
 - **A studio frame still has something behind it that ARGUES** — the world the product serves,
   defocused; a graduated ground that gives the product form; or a graphic ground that means
   something, as his technical grid does — **and a plain white seamless is equally allowed**
-  (ADR-134: the owner's art direction is *nền trắng / studio / contextual*, and his own `ULTRA-LIGHT`
-  reference is a white seamless with nothing behind it). **The ground was never the fault; the
-  HIERARCHY was** — a small dark product lying flat on it. ADR-132 banned the plain ground and that
+  (ADR-134: the owner's art direction is *nền trắng / studio / contextual*). **But a studio ground
+  still carries a WORLD** (ADR-135, restoring what ADR-134 over-relaxed): in all three directions the
+  product is doing something and the place it belongs to is implied — his own `ULTRA-LIGHT` white
+  seamless implies a hand and a pocket, and a ground with nothing happening on it was rejected 9 of
+  9. **The ground was never the fault; the HIERARCHY and the EMPTINESS were** — a small dark product lying flat on it. ADR-132 banned the plain ground and that
   was an over-correction, narrowed here. The clause *with no place and no person* stays retired,
   because it forbade the hierarchy too.
 - **Every frame of his has a subject that proves the claim** — mountains behind the camera, a galaxy
@@ -419,6 +428,8 @@ a cut, stripped or dismantled object in a frame whose product claims it needs no
 a product laid flat, dark on a dark ground, or small in its own frame, a components lay-out of a
 product that assembles, an empty floor offered as a studio ground, two frames of one set sharing
 a composition, a round below the owner's corpus band on colourfulness or texture,
+a frame with no visual cue at all, a photograph desaturated to serve the accent rule, a studio
+ground with nothing happening on it,
 a badge, a heavy lettered callout, a dense infographic, a crowd of icons, more than one accent
 colour, a frame with no stated visual hierarchy, an adjective asked for in place of the physical
 fact that proves it, a whole content block crammed into one image,
@@ -489,6 +500,10 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.18 (2026-10-06, ADR-135): the flow fixed the thinking and this lane emptied the picture — every
+  frame carries exactly ONE visual cue and zero is a failure (an either/or was read as a neither);
+  `1 màu nhấn` binds the drawn layer, not the photograph, which lost 4 points of colourfulness to
+  the misreading; and a studio ground still carries a world.
 - 0.17 (2026-10-06, ADR-134): the owner's eight-step flow becomes the skeleton, verbatim — read the
   content, choose ONE message, turn each claim word into a visual proof, build the scene, state the
   hierarchy, cut to one headline or one icon callout, keep fidelity, declare the art direction and
