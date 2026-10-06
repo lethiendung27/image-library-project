@@ -11285,3 +11285,103 @@ The rule-6c sweeps ran at `d231a1b` (hits / files / TEACHES):
   the control half of the comparison, and that is the only reason they are worth keeping.
 
 ---
+
+## ADR-134 · 2026-10-06 · The owner's own flow becomes the skeleton for a feature image, verbatim — and it corrects two things this lane legislated wrong
+
+**Owner, 2026-10-06**, giving the processing flow he wants for this kind of image:
+
+> **Đọc content → tách ý** — Feature chính · Hành động · Bối cảnh · Benefit/kết quả
+> **Chọn 1 thông điệp chính** — *"Không cố nhồi toàn bộ content vào một ảnh."* Ví dụ: chỉ tập trung vào *"Ultra-Flexible Gooseneck"*.
+> **Biến claim thành "visual proof"** — *"Flexible"* → đầu dò phải cong rõ. *"Crowded wires"* → đặt trong cụm dây chật. *"Reach tight spaces"* → cho probe luồn vào khe hẹp.
+> **Xây scene** — môi trường phù hợp; hero object, action, background, props phụ.
+> **Thiết lập visual hierarchy** — product chính nổi bật nhất; feature được nhìn thấy ngay; các thành phần phụ giảm vai trò.
+> **Rút copy xuống tối thiểu** — 1 headline ngắn. Hoặc icon callout như apple style. Phần còn lại để hình ảnh tự truyền đạt.
+> **Giữ fidelity từ ảnh reference** — giữ shape, màu, cấu trúc sản phẩm; generative model vẫn có thể sai text/logo nhỏ.
+> **Thêm art direction + negative constraints** — nền trắng/studio/contextual, 1 màu nhấn, ít chữ. Cấm badge, callout dày, infographic nặng, quá nhiều icon.
+>
+> **Content → Extract feature → Choose one message → Visual proof → Scene → Hierarchy → Minimal copy/marks → Prompt**
+
+**It runs as written first** (ADR-111). This is an owner instruction, not a proposal, and the lane's
+job is to execute it before arguing with any part of it.
+
+### What is NEW in it, and this lane had none of it
+
+**CHOOSE ONE MESSAGE is the step that was missing.** Every set this lane has written tried to carry a
+whole block — its title, its copy and its badge — in each frame. The owner's rule is the opposite:
+*không cố nhồi toàn bộ content vào một ảnh*. His own example proves the point: from a block about
+tracing behind panels he picks **"Ultra-Flexible Gooseneck"**, which is not the block's title at all
+but the one physically provable thing inside it.
+
+**VISUAL PROOF is sharper than the EVENT step ADR-133 just wrote.** ADR-133 asked whether a block
+names an event or an attribute. The owner asks something better of each word: *what would I have to
+photograph for this adjective to be undeniable?* `Flexible` → the gooseneck is visibly bent.
+`Crowded` → it is in a genuinely crowded bundle. `Tight` → it is threaded into a narrow gap. An
+attribute is not undrawable after all — it needs its proof found.
+
+### What it CORRECTS in this lane's law
+
+1. **ADR-132 banned the plain studio ground and that was an over-correction.** Its words:
+   *"An empty floor is not a studio ground."* The owner's art direction reads
+   **nền trắng / studio / contextual** — a white seamless is one of three he names, and his own
+   `ULTRA-LIGHT` reference is a white seamless with nothing behind it. The fault in the round
+   ADR-132 was written about was never the ground; it was the **hierarchy** — a small dark product
+   lying flat, which his step 5 forbids directly. **The ground is freed; the hierarchy is the rule.**
+2. **ADR-129's form spread is suspended for this type.** His negative constraints —
+   *cấm badge, callout dày, infographic nặng, quá nhiều icon* — ban three of the six overlay forms
+   outright. A set now letters in ONE way: **one short headline, or one Apple-style icon callout, and
+   nothing else.** The measured support is already in the ledger: `section-11`, nine prompts carrying
+   one `tag` clause, is the only round that ever held the 18-px floor at 9 of 9.
+
+### Decision
+
+1. **The owner's eight steps ARE the skeleton for a feature image**, in his order, and a set's notes
+   show the work at each step so he can correct the thinking rather than the prompt.
+2. **One message to an image**, extracted from the block, and it may be a detail inside the copy
+   rather than the block's title.
+3. **Every claim word gets a visual proof** named in the prompt as a physical fact — bent, crowded,
+   narrow, sealed — never as the adjective itself.
+4. **Visual hierarchy is stated explicitly**: what is the hero, what the feature is that must be
+   seen at once, and what is demoted. This replaces ADR-132's ground rule, which is narrowed to
+   hierarchy and no longer bans a plain ground.
+5. **Minimal copy: one short headline OR one icon callout, never both, never more**, and the rest is
+   carried by the photograph. `callout` with lettered leaders, `icon` rows and `figure` cards are
+   out of this type until the owner asks for one back.
+6. **Art direction is declared per frame** — white seamless, studio, or contextual — with **one
+   accent colour** and nothing else.
+7. **`03-spec-overlay` goes to 0.17** with 1 to 6 in it, and **`sets/section-15/`** is written by
+   these steps on the same three blocks, so the flow is tested against a set this lane has already
+   rendered twice.
+
+### Consequences
+
+The rule-6c sweep ran at `563a732` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"An empty floor is not a studio ground"` | 2 | 2 | 1 |
+| `"visual proof"` | 0 | 0 | 0 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.17 — a new `FLOW` section carrying
+  the owner's eight steps ahead of everything else; `FRAME`'s ground rule narrowed to hierarchy;
+  `MARKS` reduced to one headline or one icon callout; `NEGATIVE`; the changelog.
+- **The one `"An empty floor is not a studio ground"` TEACHES hit is the line this ADR narrows**,
+  and it is rewritten rather than left standing — it is the over-correction itself.
+- **`"visual proof"` has no tracked hit at all**, which is the finding: the step the owner regards as
+  central to this kind of image was not in the library in any form.
+- **Render tests:** none. Nothing new was rendered.
+- **Generated:** the manifest. `README.md`: the ADR count.
+
+### What is NOT done
+
+- **ADR-133's event-or-attribute question is not withdrawn, it is demoted.** It was a true
+  observation measured at 15.9 against 42.8, and the owner's *visual proof* step subsumes it: an
+  attribute line is hard to photograph precisely because its proof has not been found yet, not
+  because it cannot be. The classification stays as a warning sign, not as a gate.
+- **The owner's flow says nothing about the picture being too dark**, which is the one fault
+  measured in all three rounds and still unfixed — value 0.25 to 0.29 against his 0.46. His step 8
+  names art direction, so `section-15` states a bright key per frame and the next round measures it.
+- **`1 màu nhấn` is adopted without a measurement.** No round has varied the accent count, so the
+  rule is his instruction standing on its own until a set tests it.
+- **No usage photograph still**, for the sixth decision running.
+
+---

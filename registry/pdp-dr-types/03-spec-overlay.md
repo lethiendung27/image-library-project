@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.16"
+version: "0.17"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -198,6 +198,37 @@ feature is a part, the camera shows that part in use; where it is a capacity or 
 frame shows the thing in use that the figure is about: a hold on a joint that is holding, a size
 beside the hand that holds it (ADR-109).
 
+## FLOW
+
+**The owner's own eight steps, 2026-10-06, and they run as written** (ADR-134, ADR-111). A set's
+notes show the work at each step, so the thinking can be corrected instead of the prompt.
+
+`Content → Extract feature → Choose one message → Visual proof → Scene → Hierarchy → Minimal copy/marks → Prompt`
+
+1. **Read the content and split it** into **feature · action · context · benefit**.
+2. **Choose ONE message.** *Không cố nhồi toàn bộ content vào một ảnh.* **It may be a detail inside
+   the copy rather than the block's title** — the owner's own example takes *Ultra-Flexible
+   Gooseneck* out of a block whose title is about tracing behind panels.
+3. **Turn the claim into VISUAL PROOF.** For each claim word, ask what would have to be photographed
+   for it to be undeniable: *flexible* → the gooseneck is visibly bent; *crowded wires* → a genuinely
+   crowded bundle; *reach tight spaces* → the probe threaded into a narrow gap. **Name the physical
+   fact, never the adjective.**
+4. **Build the scene**: the environment, then the hero object, the action, the background and the
+   minor props.
+5. **Set the visual hierarchy explicitly**: the product is the most prominent thing, the feature is
+   seen at once, everything else is demoted.
+6. **Cut the copy to the minimum**: ONE short headline, **or** one Apple-style icon callout, never
+   both and never more. The rest is carried by the photograph.
+7. **Keep fidelity to the reference photo** — shape, colour, structure. The model may still get
+   small text and logos wrong, which is a grading problem, not a prompt one.
+8. **State the art direction and the negative constraints**: white seamless, studio or contextual;
+   **one accent colour**; few words. **Banned: a badge, a heavy lettered callout, a dense infographic,
+   a crowd of icons.**
+
+This supersedes the derivation order that stood before it, and steps 5 and 8 replace two things this
+type legislated wrong: the ground was never the fault, the HIERARCHY was, and the form spread of
+ADR-129 is suspended because step 8 bans three of its six forms outright.
+
 ## FRAME
 
 **The photograph is legislated before the drawn layer, and a frame is graded as a photograph
@@ -230,9 +261,12 @@ his median.
   mounted on the telescope, the pan is on the hob with food in it.
 - **A studio frame still has something behind it that ARGUES** — the world the product serves,
   defocused; a graduated ground that gives the product form; or a graphic ground that means
-  something, as his technical grid does. **An empty floor is not a studio ground, and the clause
-  *with no place and no person* is retired.** Read back against the corpus it was meant to come
-  from, that clause forbade everything that makes his studio frames good.
+  something, as his technical grid does — **and a plain white seamless is equally allowed**
+  (ADR-134: the owner's art direction is *nền trắng / studio / contextual*, and his own `ULTRA-LIGHT`
+  reference is a white seamless with nothing behind it). **The ground was never the fault; the
+  HIERARCHY was** — a small dark product lying flat on it. ADR-132 banned the plain ground and that
+  was an over-correction, narrowed here. The clause *with no place and no person* stays retired,
+  because it forbade the hierarchy too.
 - **Every frame of his has a subject that proves the claim** — mountains behind the camera, a galaxy
   behind the telescope, a peacock feather for the resolution, a scallop searing for the heat — and
   the drawn device is the smallest part of the picture, often a corner element.
@@ -385,6 +419,9 @@ a cut, stripped or dismantled object in a frame whose product claims it needs no
 a product laid flat, dark on a dark ground, or small in its own frame, a components lay-out of a
 product that assembles, an empty floor offered as a studio ground, two frames of one set sharing
 a composition, a round below the owner's corpus band on colourfulness or texture,
+a badge, a heavy lettered callout, a dense infographic, a crowd of icons, more than one accent
+colour, a frame with no stated visual hierarchy, an adjective asked for in place of the physical
+fact that proves it, a whole content block crammed into one image,
 a second line of lettering in a feature image, a row of icons each with its own label, a set
 that letters in more than one form, a frame whose scene contradicts the block it illustrates,
 a drawn word whose capital falls under 18 px on a 390-px phone, a drawn word whose clause states
@@ -452,6 +489,12 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.17 (2026-10-06, ADR-134): the owner's eight-step flow becomes the skeleton, verbatim — read the
+  content, choose ONE message, turn each claim word into a visual proof, build the scene, state the
+  hierarchy, cut to one headline or one icon callout, keep fidelity, declare the art direction and
+  the negative constraints. It corrects two things this type had wrong: the plain ground is allowed
+  again because the fault was hierarchy, and the form spread is suspended because his constraints
+  ban three of the six forms.
 - 0.16 (2026-10-06, ADR-133): classify the block first — an EVENT line makes nine different
   pictures, an ATTRIBUTE line makes packshots that converge (15.9 against 42.8, same product, same
   day); ONE drawn line to a frame and ONE word-form to a set, which the instruction has said since
