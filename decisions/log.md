@@ -11043,3 +11043,126 @@ The rule-6c sweeps ran at `7898796` (hits / files / TEACHES):
   round can speak for is prompt 8.
 
 ---
+
+## ADR-132 · 2026-10-06 · Three decisions in a row legislated the drawn layer and left the PHOTOGRAPH unlegislated — the owner rejects all nine, and the numbers say he is right on every axis
+
+**Owner, 2026-10-06**, on all nine renders of `sets/section-12/`: *"tất cả các ảnh mới đều tệ, thử
+tự so sánh với các ảnh tôi input xem. logic thì kém, chữ in lung tung, chỉ lung tung. chất lượng
+quá tệ, kém hơn cả các ảnh tôi làm cách đây nửa năm trước với những model AI sơ khai"* — all of
+them are bad; compare them yourself against the images I gave you; the logic is poor, the printing
+is all over the place, the pointers are all over the place; the quality is far worse than images he
+made six months ago with primitive models.
+
+**ADR-131 called the same nine renders "the cleanest result this type has had" because all six
+overlay forms matched their clauses.** That verdict graded the render against the prompt instead of
+against the owner's references, which is the exact trap this library already names, and it made a
+shallow win read as progress while the picture underneath got worse.
+
+### Measured, his seventeen reference stills against these nine renders
+
+Same instruments, same corpus (`scripts/frame-colour.py`, and a 16×16 luma signature for
+composition distance). Medians:
+
+| | his 17 | these 9 | |
+|---|---|---|---|
+| colourfulness | **43.5** | **25.6** | the richest of the nine, 40.1, is below his MEDIAN |
+| texture (detail) | **24.6** | **15.9** | |
+| saturation | 0.35 | 0.21 | |
+| warmth (R−B) | +9.2 | −4.6 | his are warm, these are cold |
+| **composition distance, closest pair** | **30.3** | **10.7** | |
+
+The last row is the hardest one. Across seventeen reference frames the two most alike sit 30.3
+apart. Across nine renders, frames 1 and 5 sit **10.7** apart, frames 2 and 5 at 14.7, frames 1 and
+2 at 19.1 — **three pairs closer to each other than any two frames in the owner's entire corpus.**
+Five of the nine are the same photograph: two black objects lying flat on a dark grey floor, lit
+from the left, with a graphic above them.
+
+### What the side-by-side shows, and it is not about the devices
+
+| his frame | these frames |
+|---|---|
+| a camera on a white podium **against a mountain range**, its own screen showing the shot | two black objects **lying on an empty floor** |
+| a telescope **in a starfield**, its finder glowing, standing three-quarter and filling the frame | the same two black objects, same angle, different icons |
+| a **peacock feather macro**, iridescent, filling the frame — the picture IS the 75MP claim | a dirty engine bay, the product small and almost invisible in the clutter |
+| a **scallop searing in a pan**, steam, beautiful light, a small tick-and-thermometer in the corner | a basement joist, a pen clamped in a vice, a grey smudge of arcs |
+
+**Every one of his frames has a subject that proves the claim.** The mountains prove the camera, the
+galaxy proves the telescope, the feather proves the resolution, the scallop proves the heat. The
+drawn device is the smallest part of the image and usually sits in a corner.
+
+**These nine have no subject.** The product is a dark object on a dark ground at a fifth of the
+frame, laid out like a parts photograph, and the graphic above it is doing all the work. The
+clause responsible is one this lane wrote: *a dark seamless studio ground with no place and no
+person*. Read back against the corpus it was supposedly derived from, that clause **forbids
+everything that makes his studio frames good.** His dark-studio frames are not voids — the product
+is large, standing, lit so it separates from the ground, and **assembled into its working
+configuration**: the phone mounted on the telescope, the pan on the hob with food in it. Not two
+components lying side by side.
+
+**So the real fault is one of priority.** ADR-129 found the overlay forms and legislated them.
+ADR-130 legislated the figure card. ADR-131 legislated sizes, halos and anatomy. **Three decisions
+in a row about the drawn layer, and not one clause about the photograph it sits on** — while
+colourfulness fell to 59% of the corpus median and three frames converged on one composition. The
+overlay was the easy thing to see in his references and the least of what makes them work.
+
+### Decision
+
+1. **The PHOTOGRAPH is legislated before the overlay, and a frame is graded as a photograph first.**
+   A frame that would be a poor photograph with the drawn layer removed is a fail, whatever the layer
+   does. Grading beside the owner's references is the method, not grading against the prompt.
+2. **The product is the subject: largest, brightest, best-resolved thing in frame**, standing or
+   held three-quarter, lit so it separates from its ground. **Never laid flat, never dark-on-dark,
+   never a components lay-out.** Measured: the product reads at about a fifth of the frame in these
+   nine against roughly a third to a half in his.
+3. **The product is in its WORKING CONFIGURATION, assembled.** Where a product has two bodies they
+   are connected and doing the job, not laid out side by side like a parts list.
+4. **A studio frame still has something behind it that argues** — the world the product serves,
+   defocused; a graduated ground that gives the product form; or a graphic ground that means
+   something, as his technical grid does. **An empty floor is not a studio ground**, and the clause
+   *with no place and no person* is retired.
+5. **No two frames in a set share a composition.** Checked with a 16×16 luma signature: any pair
+   under **25** is a repeat, the floor being the 30.3 his own corpus never goes below.
+6. **A set is measured against the owner's corpus before it ships**, not only after it renders:
+   `scripts/frame-colour.py` on the delivered renders must land inside his band on colourfulness and
+   texture, and a round that lands below is a fail even if every clause matched.
+7. **`03-spec-overlay` goes to 0.15** with 1 to 6 in it, and **`sets/section-13/` is rewritten before
+   it is ever rendered** — as written it carries five more frames of the retired clause.
+
+### Consequences
+
+The rule-6c sweeps ran at `af86b2f` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"no place and no person"` | 4 | 2 | 2 |
+| `"seamless studio ground"` | 4 | 2 | 1 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.15 — a new `FRAME` section that
+  legislates the photograph ahead of `MARKS`, the retirement of the empty-ground clause, the
+  working-configuration rule, the no-repeat rule and the corpus gate; `NEGATIVE`; the changelog.
+  `sets/section-13/` rewritten whole.
+- **Every TEACHES hit is inside `sets/section-12/`** — its three prompts and one mutation in its
+  `knownbad.py`. It is history and keeps its words: it is the record of what produced these nine
+  frames. `sets/section-13/` carries the same clause in five more prompts and does NOT appear in
+  either sweep, because it is untracked and the sweep reads tracked files only — a reminder that a
+  clean sweep says nothing about work that has not been committed yet. It is rewritten here.
+- **Render tests:** no new lines. The nine ledger lines for these frames landed with ADR-131 and
+  they stand; what changes is the reading, and that reading is this ADR.
+- **Generated:** the manifest. `README.md`: the ADR count.
+
+### What is NOT done
+
+- **No clause here will make a beautiful photograph.** Decisions 2 to 4 remove the ways this lane
+  made ugly ones; they do not supply the thing his references have, which is a subject worth
+  photographing. For this product that subject is a car with a fault in it, and the lane has never
+  had a photograph of the product in use to build one from — the ask that ADR-126, ADR-127, ADR-128
+  and ADR-131 have each made in turn.
+- **Decision 6 is a gate the lane cannot run before delivery**, because the lane does not render.
+  It binds the grading, not the writing, and it will catch a bad round one round late.
+- **The composition floor of 25 is borrowed from one corpus of seventeen** and is a starting number,
+  not a measured threshold. It fires on 10.7, 14.7 and 19.1, which is what it is for.
+- **ADR-129's form spread is NOT withdrawn.** The forms rendered correctly and they are still the
+  answer to *what kind of image is this*. What was wrong was treating that question as the whole
+  question.
+
+---

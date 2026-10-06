@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.14"
+version: "0.15"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -198,6 +198,41 @@ feature is a part, the camera shows that part in use; where it is a capacity or 
 frame shows the thing in use that the figure is about: a hold on a joint that is holding, a size
 beside the hand that holds it (ADR-109).
 
+## FRAME
+
+**The photograph is legislated before the drawn layer, and a frame is graded as a photograph
+first** (ADR-132). A frame that would be a poor photograph with its layer removed is a fail,
+whatever the layer does. Three decisions in a row — ADR-129, ADR-130, ADR-131 — legislated the
+overlay and wrote no clause about the picture under it, and the owner failed all nine of
+`section-12`: *"tất cả các ảnh mới đều tệ … chất lượng quá tệ, kém hơn cả các ảnh tôi làm cách đây
+nửa năm trước với những model AI sơ khai"*. Measured against his own seventeen reference stills
+with `scripts/frame-colour.py`: colourfulness **25.6 against 43.5**, texture **15.9 against 24.6**,
+saturation **0.21 against 0.35**, warmth **−4.6 against +9.2**. The richest of the nine was below
+his median.
+
+- **The product is the SUBJECT**: the largest, brightest, best-resolved thing in frame, standing or
+  held three-quarter, lit so it separates from its ground. **Never laid flat, never dark-on-dark,
+  never a components lay-out.** It read at about a fifth of the frame in the failed round against
+  roughly a third to a half in the owner's references.
+- **The product is in its WORKING CONFIGURATION, assembled.** Two bodies are connected and doing the
+  job, not laid side by side like a parts list. His dark-studio frames are not voids: the phone is
+  mounted on the telescope, the pan is on the hob with food in it.
+- **A studio frame still has something behind it that ARGUES** — the world the product serves,
+  defocused; a graduated ground that gives the product form; or a graphic ground that means
+  something, as his technical grid does. **An empty floor is not a studio ground, and the clause
+  *with no place and no person* is retired.** Read back against the corpus it was meant to come
+  from, that clause forbade everything that makes his studio frames good.
+- **Every frame of his has a subject that proves the claim** — mountains behind the camera, a galaxy
+  behind the telescope, a peacock feather for the resolution, a scallop searing for the heat — and
+  the drawn device is the smallest part of the picture, often a corner element.
+- **No two frames in a set share a composition** (ADR-132). Checked with a 16×16 luma signature: any
+  pair under **25** is a repeat. The failed round had three pairs at 10.7, 14.7 and 19.1, closer to
+  each other than any two of the owner's seventeen, whose nearest pair is 30.3.
+- **A round is measured against the owner's corpus when it is graded**, not only clause by clause:
+  `scripts/frame-colour.py` on the renders must land inside his band on colourfulness and texture,
+  and a round below it fails even if every clause matched. Grading a render against the prompt that
+  made it is what let ADR-131 call this round the cleanest this type had had.
+
 ## MARKS
 
 | name | form | colour | count | evidence |
@@ -323,6 +358,9 @@ beside the hand that holds it (ADR-109).
 ## NEGATIVE
 ```
 a cut, stripped or dismantled object in a frame whose product claims it needs none of that,
+a product laid flat, dark on a dark ground, or small in its own frame, a components lay-out of a
+product that assembles, an empty floor offered as a studio ground, two frames of one set sharing
+a composition, a round below the owner's corpus band on colourfulness or texture,
 a drawn word whose capital falls under 18 px on a 390-px phone, a drawn word whose clause states
 no size, a drawn word under 4.5:1 against the ground it sits on, a headline running past a third
 of the frame width, a plate, band or box behind a HEADLINE or a LABEL, a set that plays one
@@ -388,6 +426,11 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.15 (2026-10-06, ADR-132): the owner failed all nine — three decisions in a row legislated the
+  drawn layer and none the photograph. A new FRAME section puts the picture first: the product is
+  the subject, assembled and working, a studio ground still argues, no two frames share a
+  composition, and a round is measured against the owner's corpus. Measured gap: colourfulness 25.6
+  against his 43.5, texture 15.9 against 24.6, closest composition pair 10.7 against his 30.3.
 - 0.14 (2026-10-06, ADR-131): all six overlay forms landed first time and six of nine frames drew
   the WRONG product — a prompt names only a product whose photograph is on disk (2 of 2 against 0 of
   6) and never asserts anatomy nobody has seen; every form's clause carries the size rule, because
