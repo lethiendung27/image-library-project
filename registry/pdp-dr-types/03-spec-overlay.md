@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.11"
+version: "0.12"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -195,9 +195,28 @@ beside the hand that holds it (ADR-109).
   Given the band as a bare instruction the renderer read it as a floor and overshot in 6 of 9, one
   of them running 92.3% of the width and crowding the picture it was there to label. A line past a
   third is as wrong as a line under the floor.
-- **A drawn word sits directly on the photograph** (ADR-128): no plate, no band, no box behind it.
-  Where the ground under the words is light the words stay white and the dark edge does the work.
-  A light plate appeared 3 times and brought black letters with it all 3.
+- **A HEADLINE and a LABEL sit directly on the photograph** (ADR-128, narrowed by ADR-129): no
+  plate, no band, no box behind them. Where the ground is light the words stay white and the dark
+  edge does the work. A light plate appeared 3 times and brought black letters with it all 3; in the
+  owner's seventeen references of 2026-10-05 a headline or a label sits directly on the picture
+  9 of 9. **A FIGURE WITH ITS UNIT is the exception and keeps its chip or card** — the instruction
+  legislates it (`badge` slot, chip form) and the owner's references put the figure inside a drawn
+  card 4 of 4. **An ICON keeps its own outline box.** ADR-128 banned all three by writing the
+  headline's fault as a property of every drawn word.
+- **A SET spans the overlay forms** (ADR-129). A set of nine uses **at least four of the six**, and
+  no form more than three times. One form to a FRAME stands (ADR-125); one form to a SET is the
+  fault — `section-12` was written with `tag` 9 times and `figure`, `icon`, `callout`, `view` and
+  `mark` none, against a corpus whose commonest form is the figure (7 of 12, ADR-106; 6 of 17 in the
+  2026-10-05 references). The form is this type's answer to *what kind of image is this*, and a set
+  that uses one has not asked.
+- **A feature frame is PRODUCT-LED** (ADR-129): a person appears only where the step needs a hand.
+  Measured 2 of 17 in the owner's references against 7 of 9 in the set that was rejected. Where the
+  frame argues an indication, a range or a compatibility there is no person and often no place —
+  **8 of the 17 references are a dark studio, a seamless ground or a technical grid.**
+- **A drawn mark may sit in the AIR between the product and its subject** (ADR-129). Nothing is
+  drawn ON a wire, a loom or a cable (ADR-128) — but arcs in the air showing a sensing field reach
+  the subject without touching it, which is what the owner's reference does with its radiating
+  arcs.
 - **A light at a connection reads as INDICATION, never as arcing** (ADR-126). It sits where metal
   actually meets metal, on a CLOSED contact, and never in the gap of an open jaw: a bloom between
   open jaws came back reading as an arc weld, which is a short circuit and the opposite of the
@@ -272,7 +291,9 @@ beside the hand that holds it (ADR-109).
 ```
 a cut, stripped or dismantled object in a frame whose product claims it needs none of that,
 a drawn word whose capital falls under 18 px on a 390-px phone, a headline running past a third
-of the frame width, a plate, band or box behind a drawn word,
+of the frame width, a plate, band or box behind a HEADLINE or a LABEL, a set that plays one
+overlay form more than three times in nine, a person in a frame whose argument is the product's
+own indication, range or compatibility,
 a product connected to nothing, a product held by the wrong part, an action that belongs to no step
 of the product's own procedure, a frame needing a third hand, a loose spare part or a coiled lead
 the step does not use, a light in the gap of an open jaw,
@@ -330,6 +351,10 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.12 (2026-10-06, ADR-129): a set spans the overlay forms — at least four of six, none more
+  than three times — and a feature frame is product-led, half of them in a studio; ADR-128's
+  no-plate rule narrows to a headline and a label, because a figure keeps the chip the instruction
+  legislates and an icon keeps its box.
 - 0.11 (2026-10-05, ADR-128): the 18-px floor held 9 of 9 and the closed loom held at every acting
   point; the parts got worse, 5 of 9, so the constructions that lose them are retired instead of
   re-worded — no hand on a clip, nothing drawn on a loom, no plate behind a word, a third of the

@@ -10710,3 +10710,126 @@ The rule-6c sweeps ran at `d96fe76` (hits / files / TEACHES):
 - **No render tests any of this.** `section-12` is the test.
 
 ---
+
+## ADR-129 · 2026-10-06 · Nine frames, one overlay form: a set spans the forms the type already owns — and ADR-128 banned the chip, which the instruction legislates
+
+**Owner report, 2026-10-06**, on `sets/section-12/` before it was rendered: *"hãy đọc lại
+instruction trước xem có những kiểu ảnh gì. hiện tại cả 9 prompt đều chỉ trả ra ảnh và 1 dòng chữ
+trắng, thiếu các loại ảnh khác nhau, các loại visual khác nhau. có vẻ như chưa tham chiếu kĩ các
+ảnh t đưa vào"* — re-read the instruction and see what kinds of image it has; all nine prompts
+return a photograph and one line of white text, with none of the different image kinds or visual
+kinds; it looks like the reference images were not studied. **The owner is right on both counts and
+the fault is not in the law — the law already said this.**
+
+### What the law already held, and what the set did
+
+`03-spec-overlay` has carried an `overlay` parameter with **six forms** since 0.1: `mark`, `icon`,
+`figure`, `tag`, `callout`, `view`. `registry/pdp-dr-instruction.md` spells out what a FEATURE
+IMAGE may carry — *a figure with its unit, as the page states it*; *a tag of two to five words*;
+*the labels its chart or its call-out lines need*. ADR-106 measured the owner's own twelve feature
+frames and found **a figure with its unit 7 of 12, a tag 6 of 12, chart or call-out labels 4 of
+12**.
+
+`section-12` used `tag` **9 times out of 9**, and `figure`, `icon`, `callout`, `view` and `mark`
+**zero times**. The form that the owner's own corpus uses most was the one it never used.
+
+### What the owner's references actually do
+
+Seventeen reference stills landed in `image-library-assets/stills/` on 2026-10-05 at 16:21–16:25
+and are the visual standard. Read by eye, one pass, each frame classified once (this is a reading,
+not a script, and it is recorded so the next round can argue with it):
+
+| | count of 17 |
+|---|---|
+| a drawn **icon** set, line art, sometimes in its own outline box, with a caps label | 6 |
+| a **figure with its unit**, four of them inside a drawn card with a glowing border | 6 |
+| a **tag / headline** in plain white | 7 |
+| a drawn **mark** — concentric arcs, a soundwave, a coverage wedge on the ground | 4 |
+| a **view** — the galaxy inside the lens, the product's own screen carrying the proof | 4 |
+| **no overlay at all** — the problem photographed, no product, no word | 1 |
+| studio: seamless white, dark studio, or a technical grid | **8** |
+| a real place | 9 |
+| **any part of a person in frame** | **2** |
+
+`section-12` as written: one form, nine real places, **a person in 7 of 9**. Against a corpus that
+puts a person in 2 of 17 and shoots half its frames in a studio, the set was a single note played
+nine times.
+
+### ADR-128 decision 3 was too broad, and the sweep that would have caught it was not run
+
+ADR-128 said *a drawn word sits directly on the photograph — no plate, no band, no box behind it*.
+That is true of a **headline or a label**, and false of a **figure**. In the owner's references a
+headline or a label sits directly on the picture **9 of 9 times**, and a figure with its unit sits
+inside a drawn card **4 of 4 times**.
+
+Worse, the banned thing has a name and a law. `registry/pdp-dr-instruction.md` line 139 legislates
+the **chip form** as a parameter of the LP2 design lock, line 473 says *the figure in the `badge`
+slot* and *the gallery's own word for a badge is a chip*, and line 378 says *a badge is a MARK and
+the type owns its forms*. ADR-128 swept `"behind the words"` (2 TEACHES, both agreeing) and called
+the blast radius done. The term it needed was `"chip"` — **34 TEACHES files** — or `"a badge"` —
+**57**. One sweep term was rejected for being too broad (`"panel"`, 118 files) and the replacement
+was too narrow in the other direction. **Rule 6c is satisfied by sweeping the thing, not a phrase
+that happens to describe it.**
+
+### Decision
+
+1. **ADR-128 decision 3 is narrowed, not withdrawn.** A **headline and a label** sit directly on
+   the photograph with no plate, band or box behind them — that is what the 3-of-9 black-on-plate
+   failure measured and it stands. A **figure with its unit** keeps the chip or card the
+   instruction already legislates, and an **icon** keeps its own outline box. The fault ADR-128 saw
+   was a headline put on a plate, and the plate then flipping the letters black.
+2. **A set spans the overlay forms.** A set of nine covering a block of feature lines uses **at
+   least four of the six forms**, and never one form more than three times. One form to a FRAME
+   stands (ADR-125); one form to a SET is what failed here. The forms are the type's answer to
+   *what kind of image is this* and a set that uses one has not asked the question.
+3. **A feature frame is product-led.** A person appears only where the step needs a hand, measured
+   at 2 of 17 in the owner's corpus against 7 of 9 in this set. Where the frame is about the
+   product's own indication, its range or its compatibility, there is no person and often no place
+   — a dark studio or a seamless ground, which is half of the owner's corpus.
+4. **A drawn mark may sit in the AIR between the product and its subject.** ADR-128 bans drawing
+   ON a wire, a loom or a cable and that stands; arcs in the air showing a sensing field reach the
+   subject without touching it, which is what the owner's reference does with its radiating arcs.
+5. **`03-spec-overlay` goes to 0.12** with 1 to 4 in it, and **`sets/section-12/` is rewritten**
+   before it is rendered: same three products, same three feature lines, nine frames now spanning
+   six forms, five of them in a studio and two carrying a person.
+
+### Consequences
+
+The rule-6c sweeps ran at `2cc19f4` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"chip"` | 265 | 70 | 34 |
+| `"a badge"` | 388 | 74 | 57 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.12 — `MARKS` narrows ADR-128's
+  no-plate rule to a headline and a label, gains the form-spread rule, the product-led count and
+  the mark-in-the-air clause; `NEGATIVE`; the changelog. `sets/section-12/` is rewritten whole.
+- **These TEACHES hits stand, and they are the reason this ADR exists:** the 34 `chip` files and
+  the 57 `badge` files teach the device ADR-128 banned by accident. None is rewritten — they were
+  right and ADR-128 was wrong. The two files ADR-128 did read, `03-spec-claimstack.md` and
+  `06-relief-claimstack.md`, ban a *gradient* and a *photographic texture* behind the words, which
+  is the headline case and still agrees.
+- **Render tests:** none. Nothing was rendered between ADR-128 and this; the evidence here is the
+  owner's report, the owner's seventeen reference stills and ADR-106's own counts.
+- **Generated:** the manifest.
+- `README.md`: the ADR count.
+
+### What is NOT done
+
+- **The chip's own form is now in conflict and this ADR does not settle it.**
+  `registry/pdp-dr-instruction.md` line 139 fixes the chip as *flat: no outline, no shadow, no 3D*,
+  measured before 2026-10-05. Four of the owner's seventeen new references put the figure in a card
+  with a glowing border and a translucent fill, which is none of those things. `section-12` follows
+  the owner's references, because named example frames are the definition, and the line in the
+  shared instruction is left alone: it is a page-wide consistency lock and changing it reaches every
+  type. The owner or a later ADR settles whether the flat chip survives its own corpus.
+- **No render tests any of this.** `section-12` is still the test, and it now tests six things
+  rather than four.
+- **The parts problem is untouched by this ADR.** It is still 5 of 9 and the lever is still a usage
+  photograph (ADR-126, ADR-127, ADR-128).
+- **The reading of the seventeen references is by eye.** Nothing measures *is this an icon or a
+  mark*, and a second reader would move one or two frames between rows. The counts are recorded so
+  that disagreement is possible, not to be precise to the frame.
+
+---
