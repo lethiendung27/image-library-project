@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.18"
+version: "0.19"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -205,6 +205,17 @@ notes show the work at each step, so the thinking can be corrected instead of th
 
 `Content → Extract feature → Choose one message → Visual proof → Scene → Hierarchy → Minimal copy/marks → Prompt`
 
+**Step 0, before his step 1: is the chosen claim an OBJECT claim or a DELIVERY claim?** (ADR-136).
+An OBJECT claim — what the thing is made of, how light it is, which part it has — is proved by
+photographing the object, and the object then fills the frame: his `ULTRA-LIGHT`, his
+`Non-Reactive Surface`. A DELIVERY claim — what you see, hear, find, cover, save — is proved by
+photographing **what comes out**, and the object is the ANCHOR, not the hero. Measured on one round
+of eleven, same product and same day: the one block of three that was an object claim returned
+**36.4** colourfulness at value **0.64**; the two delivery blocks, built as object claims, returned
+**9.3 to 22.7** against the owner's median of 39.1. **A delivery claim built as an object claim is
+why a set reads flat however varied its compositions are** — that round's closest composition pair
+was 30.8 against his own 30.3 and it failed anyway.
+
 1. **Read the content and split it** into **feature · action · context · benefit**.
 2. **Choose ONE message.** *Không cố nhồi toàn bộ content vào một ảnh.* **It may be a detail inside
    the copy rather than the block's title** — the owner's own example takes *Ultra-Flexible
@@ -219,14 +230,30 @@ notes show the work at each step, so the thinking can be corrected instead of th
    seen at once, everything else is demoted.
 6. **Cut the copy to the minimum**: ONE short headline, **or** one Apple-style icon callout, never
    both and never more. The rest is carried by the photograph.
+   **A drawn word never restates a word the page already prints** (ADR-136). The LP2 features block
+   prints the headline, the body copy and a pill beside the image, and a set drew that pill's exact
+   string into 11 of 11 frames. Counted across his 21 references: **4 carry a word headline, 8 lead
+   with a FIGURE and its unit, 5 carry an icon with a short label, 4 carry no lettering at all.**
+   His own instructions say it twice — *text is the minimum the picture cannot say*, *a chip
+   restating title or copy is cut*. **So the line is EARNED, by a figure or a unit the block's copy
+   does not print, and a set of six letters in at most TWO frames.** The slot rule is unchanged: one
+   short line is allowed (`mapping/pdp-dr-rules.md`, *Slot kinds*). What is banned is the echo.
    **EVERY FRAME CARRIES EXACTLY ONE VISUAL CUE, AND ZERO IS A FAILURE** (ADR-135). The cue is a
    drawn mark, **or** an Apple-style icon callout, **or** the product's own indication made
    unmistakable. *Minimal is not none*: a set shipped with no cue at all in 9 of 9 frames was
    rejected on sight, against 16 of the owner's 17 references that carry one. More than one is the
-   *callout dày* step 8 bans.
+   *callout dày* step 8 bans. **A cue is a mark or an icon, never a caption** (ADR-136): a frame
+   that carries no words still owes its cue, and a headline does not discharge it.
 7. **Keep fidelity to the reference photo** — shape, colour, structure. The model may still get
    small text and logos wrong, which is a grading problem, not a prompt one.
-8. **State the art direction and the negative constraints**: white seamless, studio or contextual;
+8. **State the art direction and the negative constraints**: white seamless, daylight on location,
+   or studio — **and the ground's VALUE is read off the PRODUCT, never chosen as a style**
+   (ADR-136, owner: *tôi không ưu tiên tone tối trừ khi sản phẩm đặc thù*). A dark ground is allowed
+   only where the product is saturated or emits: his orange radio measures **44.1** colourfulness on
+   one, his telescope holds a galaxy, his tent holds a lamp. A matte-black, non-emitting product on
+   a dark ground returns the picture nothing — 5 of 11 frames at value ≤ 0.22 against his median of
+   0.46, and the round's two worst-textured frames, 6.6 and 9.2 against his 27.4, were both dark
+   studio. Where the product is dark and dead, the third direction is **daylight on location**;
    **one accent colour — and that binds the DRAWN LAYER, not the photograph** (ADR-135): the scene
    keeps the colour of its own world. Read as an instruction to desaturate the picture it cost 22.3
    colourfulness against the owner's 43.5, the lowest of five rounds. Few words. **Banned: a badge,
@@ -259,10 +286,17 @@ his median.
 - **A frame whose scene contradicts its own block is void**, however good the picture (ADR-133): the
   `icon` frame for *Trace Through Trim Panels* came back showing a dash with its trim already
   removed. Grade the scene against the block's claim before anything else.
-- **The product is the SUBJECT**: the largest, brightest, best-resolved thing in frame, standing or
-  held three-quarter, lit so it separates from its ground. **Never laid flat, never dark-on-dark,
-  never a components lay-out.** It read at about a fifth of the frame in the failed round against
-  roughly a third to a half in the owner's references.
+- **The product is the most READABLE thing in the frame, not necessarily the largest** (ADR-136,
+  narrowing what stood here). Sharp, lit, unobstructed, in its working configuration and nameable in
+  every crop — **never laid flat, never dark-on-dark, never a components lay-out.** It is the frame's
+  ANCHOR. Whether it is also the frame's SUBJECT is decided by FLOW step 0: on an OBJECT claim it
+  is, and it fills the frame; on a DELIVERY claim the subject is what comes out of it, and the
+  product may be small. **Unreadable is the fault; small is not.** His compact camera sits at
+  roughly a seventh of the panorama frame and is perfectly readable; his peacock frame carries no
+  product at all and still sells the sensor. The clause this replaces — *the largest, brightest,
+  best-resolved thing in frame ... roughly a third to a half in the owner's references* — was
+  measured on his packshot frames only, and reading it as a law for every frame is what kept eleven
+  renders at a hand holding a tool.
 - **The product is in its WORKING CONFIGURATION, assembled.** Two bodies are connected and doing the
   job, not laid side by side like a parts list. His dark-studio frames are not voids: the phone is
   mounted on the telescope, the pan is on the hob with food in it.
@@ -276,6 +310,13 @@ his median.
   9. **The ground was never the fault; the HIERARCHY and the EMPTINESS were** — a small dark product lying flat on it. ADR-132 banned the plain ground and that
   was an over-correction, narrowed here. The clause *with no place and no person* stays retired,
   because it forbade the hierarchy too.
+- **The scene names at least one real saturated colour that BELONGS to it** (ADR-136). Measured:
+  a round median of 16.2 colourfulness against his 39.1, with 9 of 11 frames below his 10th
+  percentile of 19.1 — and the prompts had asked for it, specifying *wrapped edge to edge in
+  unbroken black harness tape* in every frame of a block, when a real automotive harness is a bundle
+  of red, yellow, blue and green wires. Where the world has a colour, the prompt NAMES it; where it
+  has none, **the place is re-chosen rather than the picture graded**. The accent rule binds the
+  drawn layer and has never bound the world (ADR-135).
 - **Every frame of his has a subject that proves the claim** — mountains behind the camera, a galaxy
   behind the telescope, a peacock feather for the resolution, a scallop searing for the heat — and
   the drawn device is the smallest part of the picture, often a corner element.
@@ -348,6 +389,13 @@ his median.
   Measured 2 of 17 in the owner's references against 7 of 9 in the set that was rejected. Where the
   frame argues an indication, a range or a compatibility there is no person and often no place —
   **8 of the 17 references are a dark studio, a seamless ground or a technical grid.**
+- **Where the claim is about something HIDDEN, the cue is a WINDOW onto the hidden state, never a
+  symbol of the medium** (ADR-136). A set drew concentric arcs leaving the speaker grille into empty
+  air in 3 of 3 frames: they say the product has a speaker, they never reach the loom, and they
+  prove nothing about finding a break. His device is a window — the feather magnified in a disc
+  beside the monocular, the ridge inside the binocular's field, the galaxy inside the lens. The
+  window shows the state the buyer cannot see, AT the place the product is pointing: for a tester,
+  the copper inside the loom, whole along its length and broken at the one point under the tip.
 - **A drawn mark may sit in the AIR between the product and its subject** (ADR-129). Nothing is
   drawn ON a wire, a loom or a cable (ADR-128) — but arcs in the air showing a sensing field reach
   the subject without touching it, which is what the owner's reference does with its radiating
@@ -448,6 +496,11 @@ of the product's own procedure, a frame needing a third hand, a loose spare part
 the step does not use, a light in the gap of an open jaw,
 a hand closing or holding a clip, a plug or a connector, a second copy of any lead, clip or
 body the product carries only one of,
+a delivery claim built as a packshot, a frame of a delivery claim in which the product's own output
+is nowhere, a dark ground under a matte product that neither emits nor carries a saturated colour,
+a scene with no real saturated colour named in it, a drawn word that restates a word the page
+already prints beside the image, a set of six lettering in more than two frames, a caption offered
+in place of the frame's one cue, a symbol of the medium where the claim is about a hidden state,
 a flat graphic square to the camera pasted over the photograph, a mark asked for as arcs, a band,
 a bar, a wave or a ring, a mark whose colour the prompt leaves to the renderer, red or orange on a
 working signal, a state in which nothing happens, a labelled prop, a legend of icons floating in
@@ -457,7 +510,8 @@ a chip that is the brightest colour in the frame, a warm cast over the whole pic
 product and touching nothing, a mark painted on the product, any mark drawn on a wire, a loom or a cable,
 a generic glowing arc where the thing has a form of its own, red or green marks,
 bars or readings on a mark, a hole cut in anything the buyer owns, a figure that contradicts
-the frame, the product small or far off, the product enlarged against the hand or body beside it,
+the frame, the product unreadable — soft, unlit, obstructed or unnameable in its crop — the product
+enlarged against the hand or body beside it,
 the product set out on display with nobody using it, a well-known brand's product or wordmark,
 shop signs or labelled packaging in the background, a soft edgeless glow, the accent on a mark,
 a ring or the product, a tag inside a chip, words lettered onto the product's surface,
@@ -500,6 +554,13 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.19 (2026-10-06, ADR-136): the compositions reached his own corpus — closest pair 30.8 against
+  his 30.3 — and the pictures still read flat, so the fault was never variety. A claim is classified
+  OBJECT or DELIVERY before the frame is built, and a delivery claim is proved by photographing what
+  comes OUT; the product is the most READABLE thing, not the largest; the ground's value is read off
+  the product, so a dark ground needs a product that emits or is saturated; the scene names a real
+  colour; a drawn word never restates the pill the page already prints, and a set of six letters in
+  at most two frames; a hidden state is shown through a WINDOW, not a symbol of the medium.
 - 0.18 (2026-10-06, ADR-135): the flow fixed the thinking and this lane emptied the picture — every
   frame carries exactly ONE visual cue and zero is a failure (an either/or was read as a neither);
   `1 màu nhấn` binds the drawn layer, not the photograph, which lost 4 points of colourfulness to

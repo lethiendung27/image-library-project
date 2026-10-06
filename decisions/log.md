@@ -11496,3 +11496,154 @@ The rule-6c sweeps ran at `0a2e92a` (hits / files / TEACHES):
 - **No usage photograph still**, for the seventh decision running.
 
 ---
+
+## ADR-136 · 2026-10-06 · The compositions are now as far apart as his own corpus and the pictures still read flat: a claim is OBJECT or DELIVERY, dark is a property of the product, and every drawn line restated the page
+
+**Owner, 2026-10-06**, on the eleven renders of `sets/section-16/`, three sentences and a
+screenshot:
+
+> *"tôi không ưu tiên tone tối trừ khi sản phẩm đặc thù"*
+> *"về reasoning, logic thì đã ổn nhưng các ảnh chưa được đẩy lên 1 level khác, cả về visual và
+> meaning. có thể là do sản phẩm khó?"*
+> *"chữ cũng xuất hiện quá nhiều, có rất nhiều ảnh có thể không có chữ nhưng vẫn resonate với
+> content"*
+
+The screenshot is the LP2 features block the set writes for: the template itself prints the
+headline *Locate Breaks Without Stripping Wires*, three lines of body copy, and a pill reading
+**`Tone Audio Signal`** — the exact string this set drew into frames 1, 2 and 3.
+
+### What section-16 bought, and one of these closes a clause that has been open since ADR-132
+
+ADR-135 asked for three things and got all three: a cue in 11 of 11 frames, the draining accent
+clause struck, a world behind every ground. And the composition floor, legislated since ADR-132 and
+never once computed by a tool, is now met:
+
+| | section-15 | **section-16** | his 21 |
+|---|---|---|---|
+| frames carrying a visual cue | 0 of 9 | **11 of 11** | 20 of 21 (ADR-135 counted 16 of 17) |
+| closest composition pair | 32.3 | **30.8** | **30.3** |
+| median composition pair | — | **78.5** | 74.4 |
+
+**`scripts/compo-spread.py` is new and self-tests** (`--selftest`: an identical pair scores 0.0, an
+opposed pair 126.0, against the floor of 25). Four decisions quoted numbers from this metric and
+none of them could be reproduced; they can now. **The set is as varied as his corpus and it still
+fails**, which is the finding: variety was never the thing that was missing.
+
+### What is still missing, measured against his 21 references
+
+| | **section-16**, 11 frames | his 21 |
+|---|---|---|
+| colourfulness, median | **16.2** | **39.1** |
+| frames below his 10th percentile of 19.1 | **9 of 11** | — |
+| value, median | **0.20** | **0.46** |
+| frames at value ≤ 0.22 | **5 of 11** | — |
+| texture, median | **13.6** | **27.4** |
+| the product's own OUTPUT visible in the frame | **0 of 11** | 4 of 4 in the newest four |
+
+### The owner asks whether the product is the limit. It is not, and his own corpus is the proof
+
+An automotive circuit tester is matte black, carries no display, and its output is a SOUND. Three
+strikes. But the four reference stills he added on 2026-10-06 are **binoculars, a monocular, a
+peacock feather and a compact camera** — two matte-black optical products whose output is equally
+unphotographable, *a view* — and they measure **43.5, 32.4, 72.6 and 24.1** colourfulness against
+this round's median of 16.2. He did not photograph the glass. He photographed **the sunrise ridge
+inside the binocular's field, the feather magnified in a disc beside the monocular, the peacock at
+75MP with no product in the frame at all, and the mountain panorama on the camera's flip screen.**
+
+The product constrains the PACKSHOT. It does not constrain the feature image, because the feature
+image's subject is not the product.
+
+### Decision
+
+1. **Classify the claim before building the frame: is it an OBJECT claim or a DELIVERY claim?**
+   An object claim — what it is made of, how light it is, which part it has — is proved by
+   photographing the object, and the object then fills the frame: his `ULTRA-LIGHT`, his
+   `Non-Reactive Surface`. A delivery claim — what you see, hear, find, cover, save — is proved by
+   photographing **what comes out**, and the object is the ANCHOR, not the hero.
+   Measured on this round: the one block of three that is an object claim, *Adjustable Sensitivity
+   Dial*, produced the best frame of the eleven — **36.4** colourfulness at value **0.64** against
+   a round median of 16.2 at 0.20. The two delivery blocks were built as object claims and returned
+   **9.3 to 22.7**. Same product, same day, same law.
+2. **The product must be the most READABLE thing in the frame, not the largest.** This narrows
+   `FRAME`'s *largest, brightest, best-resolved thing in frame* and `NEGATIVE`'s *the product small
+   or far off*, both of which read today as a size rule. **Unreadable is the fault; small is not.**
+   His camera sits at roughly a seventh of the panorama frame and is sharp, lit, unobstructed and
+   nameable; his peacock frame carries no product at all and still sells the sensor.
+3. **The ground's VALUE is read off the product, never chosen as a style.** Owner: no dark tone
+   unless the product is specific. Measured: 5 of 11 frames at value ≤ 0.22 against his median of
+   0.46, and the two worst-textured frames of the round — **6.6 and 9.2 against his 27.4** — are
+   both dark studio. Every dark frame in his corpus has a subject that gives the dark something to
+   hold: the orange radio at **44.1** colourfulness, the galaxy inside the telescope's lens, the
+   lamp inside the tent. **A matte-black, non-emitting product on a dark ground returns the picture
+   nothing.** `dark studio` leaves this type's three standing art directions and becomes
+   conditional — allowed where the product is saturated or emits, and replaced otherwise by
+   **daylight on location**.
+4. **The scene names at least one real saturated colour that belongs to it.** Self-inflicted, and
+   this lane wrote it: the prompts specify *wrapped edge to edge in unbroken black harness tape* in
+   every frame of block A, when a real automotive harness is a bundle of red, yellow, blue and green
+   wires. Where the world has a colour, the prompt names it. Where it has none, **the place is
+   re-chosen rather than the picture graded.**
+5. **A drawn word never restates a word the page already prints.** Counted by eye across his 21
+   references: **4 carry a word headline, 8 lead with a FIGURE and its unit, 5 carry an icon with a
+   short label, and 4 carry no lettering at all.** `section-16` is 11 of 11 a word headline, and
+   11 of 11 restate the block's own chip. He has written this twice in his own instructions —
+   *text is the minimum the picture cannot say* and *a chip restating title or copy is cut*
+   (`product-gallery-instruction.txt`), *no text overlays, no labels*
+   (`feature image.txt`).
+   The slot rule is unchanged: a feature image may carry one short line
+   (`mapping/pdp-dr-rules.md`, *Slot kinds*). **So this is not a ban. The line must be EARNED by a
+   figure or a unit the block's copy does not print, and a set of six carries words in at most
+   two frames.** ADR-135's one cue per frame is untouched: **a cue is a mark or an icon, never a
+   caption**, and a frame with no words still carries its cue.
+6. **Where the claim is about something hidden, the cue is a WINDOW onto the hidden state — never a
+   symbol of the medium.** `section-16` drew concentric arcs leaving the speaker grille into empty
+   air in 3 of 3 frames of block A: they say the product has a speaker, they never reach the loom,
+   and they are what this type's own MARKS clause forbids — *a drawn mark may sit in the AIR between
+   the product and its subject* presumes it reaches the subject. His device is a window: the feather
+   in a disc, the ridge inside the field, the galaxy inside the lens. For a tester, the window shows
+   **the copper inside the loom, whole along its length and broken at the one place the tip is
+   pointing**.
+7. **`03-spec-overlay` goes to 0.19** with 1 to 6 in it, and **`sets/section-17/`** is six frames
+   built on them, with the control declared: one frame is `section-16`'s own construction in
+   daylight — product-led, no output in frame — predicted to fail beside the five.
+
+### Consequences
+
+The rule-6c sweeps ran at `3f3938d` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"dark studio"` | 12 | 5 | 3 |
+| `"the product is the SUBJECT"` | 5 | 5 | 1 |
+| `"one short headline"` | 5 | 2 | 1 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.19 — `FLOW` gains step 0, the
+  OBJECT/DELIVERY classification, and step 6's line is scoped to what the page does not print;
+  `FRAME` replaces *largest* with *most readable* and makes the ground's value conditional on the
+  product; `MARKS` gains the window; `NEGATIVE` and the changelog.
+- **`"dark studio"`, the two other TEACHES hits are left standing and both are RECORDS in
+  disguise**: `sets/section-12/prompts.md` is a shipped set, which is history the moment it renders,
+  and `registry/toplist-types/lede-authority.md` line 710 is a measured render verdict in another
+  namespace — *rules do not cross corpora*, and nothing in this decision was measured on toplists.
+- **`"the product is the SUBJECT"` and `"one short headline"` have one teaching hit each and it is
+  the same file**, which this ADR rewrites. The four `query/sessions/` hits are a delivered export,
+  never re-read as law.
+- **New:** `scripts/compo-spread.py`, with `--selftest`. The clause it serves was four decisions old
+  and had no tool.
+- **Render tests:** eleven lines in `eval/render-tests.jsonl`, `verdict_by: claude-opus-5` —
+  0 pass, 6 partial, 5 fail, all eleven opened.
+- **Generated:** the manifest, `registry/index.yaml`. `README.md`: the ADR count.
+
+### What is NOT done
+
+- **No clause here says how BIG the delivered thing should be**, only that it must be in the frame
+  and that the product must stay readable. His four newest put it at everything from a disc inset to
+  the whole frame, and `section-17` spans that range on purpose rather than fixing it early.
+- **Texture is still short** — 13.6 against his 27.4, and it has now been short for six rounds. This
+  decision moves the PLACE and the light, which is the first change that could plausibly move it, so
+  the next round is the first evidence rather than the sixth repetition.
+- **The three white-seamless frames still defeat the text measurement**, words and ground being the
+  same colour; they are read by eye.
+- **No usage photograph still**, for the eighth decision running.
+
+---
