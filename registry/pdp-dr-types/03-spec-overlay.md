@@ -3,7 +3,7 @@ id: 03-spec-overlay
 step: 3
 job: spec
 device: overlay
-version: "0.13"
+version: "0.14"
 status: reserved
 replaced_by: null
 channels: [landing-page]
@@ -107,7 +107,27 @@ on the vehicle, body or surface); **GRIP** (which part a hand holds and where, a
 show it); **SEQUENCE** (the real procedure, numbered); **THE INDICATION** (how the product tells the
 operator it is working — a lamp, a tone, a reading, a movement); and **WHAT IT MAKES UNNECESSARY**
 (ADR-127) — the old way the buyer no longer has to use.
-- **A frame never shows the work being done the way the product makes unnecessary.** Where the claim
+- **A PROMPT NAMES ONLY A PRODUCT THE OWNER CAN ATTACH A PHOTOGRAPH OF** (ADR-131), and the set
+  asks him WHICH before it is written. Measured on `section-12`: **2 of 2** frames of the product he
+  had a photograph of drew the right product, **0 of 6** frames of the two he did not. Note the test
+  carefully: no product photograph for any of the three is in `image-library-assets/` — he attaches
+  it by hand at render time from a library this lane cannot see, so the repo cannot answer the
+  question and only he can. Every prompt ends with *Use the attached product photo as the exact
+  reference*, so naming a product he has no photo of sends the renderer to whatever photo IS
+  attached, and it draws that instead.
+- **A prompt never asserts anatomy nobody has seen** (ADR-131). No display, screen, dial, lamp,
+  port, button or indicator is named unless it is visible in the attached photograph. Where the
+  brief's copy names a part the photograph does not show, **the photograph wins** — ADR-120 ruled
+  that for how a product works and this widens it to what it IS. Measured: a colour display grafted
+  onto a receiver pen that has none 1 of 1, two `view` frames with no screen to show 2 of 2, and a
+  re-run that invented a reading of `14.40 V` on an invented screen.
+- **The `view` form requires a screen in the photograph.** It is the one form whose whole subject is
+  anatomy, and with no screen it returns a plain product shot, 3 of 3.
+- **A frame never shows the work being done the way the product makes unnecessary** — and this
+  reaches the DRAWN LAYER, not only the photograph (ADR-131). An icon of what the product fixes
+  shows the FAULT, never the repair method the product replaces: asked for an icon of *wires*, the
+  renderer drew a wire stripped back to bare frayed strands, which is the one thing this tool exists
+  not to need, 1 of 1. Where the claim
   is *without cutting*, nothing in frame is cut; *without dismantling*, nothing is apart; *without a
   second tool*, no second tool. A find frame for a tool that traces a fault through a closed loom
   came back with the loom cut open and bare strands at the probe tip, which argues against the page
@@ -191,6 +211,17 @@ beside the hand that holds it (ADR-109).
   `section-10`, written as an adjective: 8.3 px on the phone, 3 of 3. Measured on `section-11`,
   written as a share: **19.6 to 35.3 px, median 27.9, 9 of 9**, contrast 11.4 to 15.7:1.
   Measure with `scripts/text-size.py` before grading.
+- **EVERY form's clause carries the size rule, not just `tag`'s** (ADR-131). A headline, a label
+  under an icon, a call-out label and a figure in its card each state their height as a share of the
+  picture, and 18 px is the floor for all of them. ADR-127 bought the floor and wrote it into the
+  `tag` clause; ADR-129 added five more forms and carried it into none, and the words went straight
+  back under: **11.3, 14.4, 15.7 and 16.5 px, 4 of 4**, the callout labels the smallest drawn word
+  since the badge ADR-127 retired. **A floor bought once is lost the moment a form is written
+  without it.**
+- **On a light ground the words take a dark HALO, not an edge** (ADR-131). *A soft dark edge*
+  measured **2.2:1** against the 4.5 target on a white wall. The clause names a dark halo wide
+  enough to separate the letters from the ground, and the contrast is read with
+  `scripts/text-size.py` before grading.
 - **A headline runs a quarter to a third of the frame's width, and a third is a CEILING** (ADR-128).
   Given the band as a bare instruction the renderer read it as a floor and overshot in 6 of 9, one
   of them running 92.3% of the width and crowding the picture it was there to label. A line past a
@@ -292,10 +323,14 @@ beside the hand that holds it (ADR-109).
 ## NEGATIVE
 ```
 a cut, stripped or dismantled object in a frame whose product claims it needs none of that,
-a drawn word whose capital falls under 18 px on a 390-px phone, a headline running past a third
+a drawn word whose capital falls under 18 px on a 390-px phone, a drawn word whose clause states
+no size, a drawn word under 4.5:1 against the ground it sits on, a headline running past a third
 of the frame width, a plate, band or box behind a HEADLINE or a LABEL, a set that plays one
 overlay form more than three times in nine, a person in a frame whose argument is the product's
-own indication, range or compatibility,
+own indication, range or compatibility, a product named in a prompt with no photograph of it on
+disk, a display, screen, dial, lamp or port named that the attached photograph does not show,
+a `view` frame of a product with no screen, an icon drawing the repair method the product
+makes unnecessary,
 a product connected to nothing, a product held by the wrong part, an action that belongs to no step
 of the product's own procedure, a frame needing a third hand, a loose spare part or a coiled lead
 the step does not use, a light in the gap of an open jaw,
@@ -353,6 +388,11 @@ here.
 ## CHANGELOG
 Each entry is one line; the reasoning is in `decisions/log.md` and the renders in
 `eval/render-tests.jsonl`.
+- 0.14 (2026-10-06, ADR-131): all six overlay forms landed first time and six of nine frames drew
+  the WRONG product — a prompt names only a product whose photograph is on disk (2 of 2 against 0 of
+  6) and never asserts anatomy nobody has seen; every form's clause carries the size rule, because
+  adding five forms without it put the words back under the floor 4 of 4; a dark halo replaces the
+  soft edge; the drawn layer may not show the repair the product makes unnecessary.
 - 0.13 (2026-10-06, ADR-130): the owner allows it all — `sets/section-12/` is approved and
   committed, and the FIGURE CARD is named as this type's own device, distinct from the gallery's
   flat chip form, which is left alone.

@@ -10905,3 +10905,141 @@ The rule-6c sweeps ran at `71e59ae` (hits / files / TEACHES):
   (ADR-126, ADR-127, ADR-128).
 
 ---
+
+## ADR-131 · 2026-10-06 · All six overlay forms landed first time, and six of nine frames drew the wrong product: a prompt names only a product whose photograph is on disk, and never asserts anatomy nobody has seen
+
+**Owner, 2026-10-06**, giving the rule before the renders were read: *"nên nhớ là khi tạo prompt AI
+chưa biết hình dáng sản phẩm như thế nào, có màn hình display không nên rất dễ ra sai"* — remember
+that when the prompt is written, the AI does not know what the product looks like or whether it has
+a display, so it is very easy to get wrong. **Nine renders of `sets/section-12/` were opened and the
+named region of each cropped and looked at (ADR-011). Nine ledger lines, `verdict_by:
+claude-opus-5`. 0 pass, 3 partial, 6 fail — and the owner's sentence names the cause exactly.**
+
+### What ADR-129 bought, and it is the cleanest result this type has had
+
+**All six overlay forms rendered correctly on the first attempt.**
+
+| form | what came back | |
+|---|---|---|
+| `icon` | line art in rounded outline boxes with caps labels under each — FUSES / WIRES / DRAINS and CAR / BIKE / MOWER, the owner's reference device exactly | **2 of 2** |
+| `callout` | three labels on straight leaders, each ending ON the part it names: the switch, the clip, the sensing tip | **1 of 1** |
+| `figure` | the FIGURE CARD with the glowing cyan border and translucent fill, as the references use it | **1 of 1** |
+| `mark` | concentric cyan arcs standing in the AIR between the probe tip and an untouched cable | **1 of 1** |
+| `tag` | white, directly on the photograph, no plate | **1 of 1** |
+| `view` | nothing to view — see below; the form is not at fault, the anatomy was | 0 of 3 |
+
+The `icon` form was the predicted risk: a graphic asked for by name came back as clip art 3 of 3
+under ADR-125. It did not this time, and the difference is that the scene behind it is a plain
+studio ground with nothing for it to sit badly on top of. **The five studio frames all read as a
+studio and not one invented a place.** ADR-129's form spread is the right law and it is kept.
+
+### What failed, and it is one fault with three faces
+
+| | measured |
+|---|---|
+| **the wrong product** | **6 of 9** frames draw the Automotive Circuit Tester where the prompt names the Smart Automatic Car Battery Charger or the True RMS Digital Multimeter |
+| **the split that explains it** | **2 of 2** frames of the product the owner has a photograph of drew the right product. **0 of 6** frames of the two he does not did |
+| **invented anatomy** | a colour display grafted onto a receiver pen that has none, 1 of 1; two `view` frames with no screen to show, because the product has none; a re-run that produced a multimeter carrying the tester's `EM415Pro` branding, a monochrome segment LCD where the brief says a colour display, alligator clips where a multimeter has probes, **and a reading of `14.40 V` that no prompt asked for and no page states** |
+| **the words shrank back under the floor** | **11.3, 14.4, 15.7 and 16.5 px** on a 390-px phone, **4 of 4 under 18**, where `section-11`'s nine measured 19.6 to 35.3 |
+| **contrast** | 2.2:1 against a 4.5 target — white letters on a white wall, the *soft dark edge* did not survive |
+| **the studio ground** | value 0.18–0.21 and colourfulness 18–21, below the owner's own stills band, in **3 of 5** studio frames |
+
+**The product fault is not the renderer's, and the mechanism is worth stating precisely.** No
+product photograph for ANY of the three is in `image-library-assets/` — not the tester's either.
+The owner attaches it by hand at render time, from a library this lane cannot see. He has one for
+the Automotive Circuit Tester and he does not have one for briefs 20 and 25. The prompts named
+those two anyway and still ended with `Use the attached product photo as the exact reference.`, so
+the renderer used the only photo it had been given, which was the tester's. The
+anatomy in those prompts — *its display*, *the stage lamps*, *the colour display with a numeric
+reading and an analogue bar graph beside it*, *the rotary dial*, *the flashlight on the body* — was
+read out of the brief's marketing copy by a writer who had never seen the thing. ADR-120 already
+ruled that how a product physically works, from the photograph, outranks what the page's copy says
+it does. This round shows the same rule governs what it LOOKS like, and that the failure is total
+rather than partial: not one of the six got a recognisable product.
+
+**The word fault is a regression with a precise cause.** ADR-127 bought the 18-px floor by writing
+the size as a share of the picture, and wrote it into the `tag` clause. ADR-129 then added five more
+forms — `icon`, `callout`, `figure`, `mark`, `view` — and carried the size rule into none of them.
+The icon labels measured 14.4 and 15.7 px and the callout labels 11.3, the smallest drawn word this
+type has produced since the badge ADR-127 retired. A floor bought once is lost the moment a new form
+is written without it.
+
+### Decision
+
+1. **A prompt names only a product the owner can attach a photograph of, and the set CONFIRMS which
+   those are before it is written.** Measured 2 of 2 against 0 of 6. The test is not whether a photo
+   sits in `image-library-assets/` — none of the three does — but whether the owner holds one, which
+   only he can say. So the question goes to him before a set is drafted, not after it is rendered.
+   A product he has no photograph of does not get a prompt; it waits. This supersedes nothing — it
+   makes explicit what `Use the attached product photo as the exact reference.` always assumed.
+2. **A prompt never asserts anatomy nobody has seen.** No display, screen, dial, lamp, port, button
+   or indicator is named unless it is visible in the attached photograph. Where the brief's copy
+   names a part the photograph does not show, the photograph wins (ADR-120, widened from how it
+   works to what it is).
+3. **The `view` form requires a screen in the photograph.** It is the one form whose whole subject
+   is anatomy, and it returned a plain product shot 3 of 3 when there was no screen.
+4. **EVERY form's clause carries the size rule, not just `tag`'s.** Every drawn word — a headline, a
+   label under an icon, a call-out label, a figure in its card — states its height as a share of the
+   picture, and 18 px on a 390-px phone is the floor for all of them. A form written without it
+   measured 11.3 px.
+5. **On a light ground the dark edge is stated as a dark halo, not as an edge.** *A soft dark edge*
+   produced 2.2:1 on a white wall. The clause names a dark halo wide enough to separate the letters
+   from the ground, and `scripts/text-size.py` reports the contrast before grading.
+6. **ADR-127's ban reaches the DRAWN layer, not only the photograph.** The `WIRES` icon drew a wire
+   stripped back to bare frayed strands — the old way this product exists to replace, drawn as the
+   icon for it. An icon of what the product fixes shows the fault, never the repair method the
+   product makes unnecessary.
+7. **`03-spec-overlay` goes to 0.14** with 1 to 6 in it, and **`sets/section-13/`** is the next set:
+   **the Automotive Circuit Tester alone**, because it is the only one of the three the owner has
+   shown he can attach a photograph of, nine frames across five forms (`view` is out — this product
+   has no screen, which is itself a thing decision 2 forbids a prompt to invent).
+
+### Consequences
+
+The rule-6c sweeps ran at `7898796` (hits / files / TEACHES):
+
+| term | hits | files | TEACHES |
+|---|---|---|---|
+| `"a twentieth of the picture"` | 8 | 5 | 4 |
+| `"soft dark edge"` | 12 | 5 | 3 |
+| `"no usage photo on disk"` | 2 | 2 | 1 |
+| `"the attached product photo"` | 455 | 81 | 49 |
+
+- **Rewritten:** `registry/pdp-dr-types/03-spec-overlay.md` to 0.14 — `PARTS/product-reading` gains
+  the photograph precondition and the no-invented-anatomy rule, `MARKS` carries the size rule into
+  every form and replaces the soft edge with a dark halo, `NEGATIVE`, the changelog.
+- **Of the `"a twentieth of the picture"` and `"soft dark edge"` TEACHES hits**, all but one are
+  inside `sets/section-12/`, which is history now and keeps its words; the one in
+  `03-spec-overlay.md` line 190 is rewritten. **`sets/section-12/` is not edited**: it is the record
+  of what produced these nine frames, and editing it would make the evidence for this ADR
+  unverifiable.
+- **`"the attached product photo"` is NOT banned and was swept to prove it should not be.** 49
+  teaching files carry G1's sentence and every one of them is right; the sentence is not the fault.
+  What was missing was a precondition on naming the product, which no file stated, and which
+  decision 1 now states in one place rather than in 49.
+- **Render tests:** nine lines in `eval/render-tests.jsonl`, `verdict_by: claude-opus-5`.
+- **Generated:** the manifest. `README.md`: the ADR count.
+
+### What is NOT done
+
+- **Decision 1 collides with a standing rule and the collision is real.** A set is supposed to use
+  products the rules have never been tried on, so that a fix is not re-run on the product that broke
+  it. The Automotive Circuit Tester is the only one of the three the owner has demonstrably been
+  able to attach, so `section-13` cannot do both. It takes the photograph, because a set that draws
+  the wrong product tests nothing at all — and the cost is that `section-13` proves the rules on a
+  product they have already seen. **The ask to the owner is now blocking in a way it was not before,
+  and it is a question rather than a request: which products do you have photographs of?**
+- **Nothing in the repo records which products the owner holds photographs for**, and this ADR adds
+  no file for it. One more round will say whether a list is worth keeping or whether asking per set
+  is enough.
+- **The parts count is still not solved.** Three clips in one frame and four in another, where the
+  product carries two. Four frames got it right. The lever named by ADR-126, ADR-127 and ADR-128 is
+  still a usage photograph.
+- **The studio ground is below the owner's band on value and colourfulness in 3 of 5 frames** and
+  this ADR writes no clause for it. One round of five frames is thin evidence for a colour rule, and
+  the owner's own dark-studio references are dark too; `section-13` measures it again before a
+  clause is written.
+- **Prompt 2 of `section-12` was never rendered**, so the only `tag` frame in a real place that this
+  round can speak for is prompt 8.
+
+---
